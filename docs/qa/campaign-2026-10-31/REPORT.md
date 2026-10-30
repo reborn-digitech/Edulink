@@ -32,25 +32,25 @@ No password was typed. Sessions were minted with `npm run zz:token -- ROLE [emai
 
 | ID | Sev | Type | Platform | Finding | Status |
 |---|---|---|---|---|---|
-| QB-01 | Medium | Functional | Both | College practice units named after syllabus-document headings, and questions about the document | Fixed, <commit pending> |
-| QB-02 | Low | Security | Both | The class door gives a timetable-only teacher the join code | Fixed, <commit pending> |
-| QB-03 | Low | Functional | Both | The gradebook door never answers the subject | Fixed, <commit pending> |
-| QB-04 | Low | Functional | Both | A lesson is stored with the subject as typed ("english"), outside the class's English syllabus | Fixed, <commit pending> |
-| QB-05 | Low | UI-UX | Both | A subject teacher's syllabus opens on Art, read-only and empty; the picker sorts Grade 10 before Grade 3 | Fixed, <commit pending> |
-| QB-06 | Low | Functional | Both | A second "Add support staff" press answers `salary: null` | Fixed, <commit pending> |
-| QB-07 | Low | Functional | Web | The bank advice has no Slip Ref column | Fixed, <commit pending> |
-| QB-08 | Low | Functional | Both | A refused UTR sheet marks good lines `RECORDED` | Fixed, <commit pending> |
-| QB-09 | Low | UI-UX | Web | Run page order and slip-reference numbering disagree (001, 005, 002…) | Fixed, <commit pending> |
-| QB-10 | Low | UI-UX | Web | A support worker is told to ask for an advance, with no form | Fixed, <commit pending> |
-| QB-11 | Low | UI-UX | Both | Copy: "1 rows", "1 titles added", an overpayment called a part payment, an empty ISBN list "That is not valid." | Fixed, <commit pending> (payroll copy qb-B, ISBN copy qb-C) |
-| QB-12 | Low | Functional | Both | E-resource correction by name is exact-match only | Fixed, <commit pending> |
-| QB-13 | Low | Functional | Both | ISBN-10 and ISBN-13 of one book become two titles | Fixed, <commit pending> |
-| QB-14 | Low | BDD, Functional | Both | Room-change refusals are 403; a race loser is told the boarder was not found | Fixed, <commit pending> |
-| QB-15 | Low | Functional | Web | The roster sends Sunrise accounts to vacancy pages that are 404 while JOB_BOARD is off | Fixed, <commit pending> |
-| QB-16 | Low | Functional | Both | "My bus" shows the evening run before the morning one has started | Fixed, <commit pending> |
-| QB-17 | Low | UI-UX | Both | Bank names in odd capitals or with a suffix; a misspelt book title; no book on the chapter page | Fixed, <commit pending> |
-| QB-18 | Low | Functional | Both | 28 Hindi and Marathi names with labels, numbers or a summary; one Marathi name is Hindi | Fixed, <commit pending> |
-| QB-19 | Low | Functional | Web | The duplicates page scores different maths questions as 1.0 identical | Fixed, <commit pending> |
+| QB-01 | Medium | Functional | Both | College practice units named after syllabus-document headings, and questions about the document | Fixed, commit f3ae34ec |
+| QB-02 | Low | Security | Both | The class door gives a timetable-only teacher the join code | Fixed, commit f3ae34ec |
+| QB-03 | Low | Functional | Both | The gradebook door never answers the subject | Fixed, commit f3ae34ec |
+| QB-04 | Low | Functional | Both | A lesson is stored with the subject as typed ("english"), outside the class's English syllabus | Fixed, commit f3ae34ec |
+| QB-05 | Low | UI-UX | Both | A subject teacher's syllabus opens on Art, read-only and empty; the picker sorts Grade 10 before Grade 3 | Fixed, commit f3ae34ec |
+| QB-06 | Low | Functional | Both | A second "Add support staff" press answers `salary: null` | Fixed, commit f3ae34ec |
+| QB-07 | Low | Functional | Web | The bank advice has no Slip Ref column | Fixed, commit f3ae34ec |
+| QB-08 | Low | Functional | Both | A refused UTR sheet marks good lines `RECORDED` | Fixed, commit f3ae34ec |
+| QB-09 | Low | UI-UX | Web | Run page order and slip-reference numbering disagree (001, 005, 002…) | Fixed, commit f3ae34ec |
+| QB-10 | Low | UI-UX | Web | A support worker is told to ask for an advance, with no form | Fixed, commit f3ae34ec |
+| QB-11 | Low | UI-UX | Both | Copy: "1 rows", "1 titles added", an overpayment called a part payment, an empty ISBN list "That is not valid." | Fixed, commit f3ae34ec (payroll copy qb-B, ISBN copy qb-C) |
+| QB-12 | Low | Functional | Both | E-resource correction by name is exact-match only | Fixed, commit f3ae34ec |
+| QB-13 | Low | Functional | Both | ISBN-10 and ISBN-13 of one book become two titles | Fixed, commit f3ae34ec |
+| QB-14 | Low | BDD, Functional | Both | Room-change refusals are 403; a race loser is told the boarder was not found | Fixed, commit f3ae34ec |
+| QB-15 | Low | Functional | Web | The roster sends Sunrise accounts to vacancy pages that are 404 while JOB_BOARD is off | Fixed, commit f3ae34ec |
+| QB-16 | Low | Functional | Both | "My bus" shows the evening run before the morning one has started | Fixed, commit f3ae34ec |
+| QB-17 | Low | UI-UX | Both | Bank names in odd capitals or with a suffix; a misspelt book title; no book on the chapter page | Fixed, commit f3ae34ec |
+| QB-18 | Low | Functional | Both | 28 Hindi and Marathi names with labels, numbers or a summary; one Marathi name is Hindi | Fixed, commit f3ae34ec |
+| QB-19 | Low | Functional | Web | The duplicates page scores different maths questions as 1.0 identical | Fixed, commit f3ae34ec |
 
 ### QB-01 · Medium · Functional · Both · Question bank, college scope
 
@@ -66,7 +66,7 @@ No password was typed. Sessions were minted with `npm run zz:token -- ROLE [emai
 
 **Files:** apps/web/scripts/quiz-gen/college.ts (selectCollegeUnit, generateCollegeUnit); src/lib/college-syllabi.ts; scripts/corpus-titles.ts.
 
-**Status:** Fixed, <commit pending> (qb-A). A unit's name is refused when it is cut after a mark ("Notes:"), a label of the document ("Syllabus", "Core Subjects"), the programme's facts ("Intake: 60 Duration: 4 Year"), the document's title with its year ("MM Curriclum upadated structure 2024"), a list of programmes or a sentence (`unitNameRefusal`); a unit headed by the document's title while the document has others is its title page and refused; a lone label, or a document read as one unit, takes the subject its title names ("F.Y.B.A. Psychology Syllabus From 2024-25" → "Psychology", `subjectOfTitle`), else stays refused. Numbers are kept, so no slug moves. A refused unit is left out of the plan and the card, `selectCollegeUnit` refuses it and runs corpus-titles' `titleFragment` on the name, and the loader refuses a new college topic so named. Across the 715 syllabus documents: 956 units drafted, 96 refused, 86 named from the title. Applied through an audited script (owner connection, deleted after): 25 served questions of 7 units taken down OFF_SYLLABUS with a TAKE_DOWN stamp and an audit row each ("Notes:", "Intake…", "MM Curriclum…", "BA LL. B.…", "Core Subjects" ×2, and Data Science's title page, d8534680-u1, whose 3 questions asked about the course); the three "Syllabus" units renamed to their documents' subjects (Foundation Course in Cyber Security, Data Science, Ethical Hacking), their questions on the subject left up and their Hindi and Marathi rows deleted. data:audit gains `college-unit-names`. Test: tests/bank-content-qb.test.ts (QB-01 ×4), tests/college-practice.test.ts (unit 3 "Notes:" refused, the card, the loader).
+**Status:** Fixed, commit f3ae34ec (qb-A). A unit's name is refused when it is cut after a mark ("Notes:"), a label of the document ("Syllabus", "Core Subjects"), the programme's facts ("Intake: 60 Duration: 4 Year"), the document's title with its year ("MM Curriclum upadated structure 2024"), a list of programmes or a sentence (`unitNameRefusal`); a unit headed by the document's title while the document has others is its title page and refused; a lone label, or a document read as one unit, takes the subject its title names ("F.Y.B.A. Psychology Syllabus From 2024-25" → "Psychology", `subjectOfTitle`), else stays refused. Numbers are kept, so no slug moves. A refused unit is left out of the plan and the card, `selectCollegeUnit` refuses it and runs corpus-titles' `titleFragment` on the name, and the loader refuses a new college topic so named. Across the 715 syllabus documents: 956 units drafted, 96 refused, 86 named from the title. Applied through an audited script (owner connection, deleted after): 25 served questions of 7 units taken down OFF_SYLLABUS with a TAKE_DOWN stamp and an audit row each ("Notes:", "Intake…", "MM Curriclum…", "BA LL. B.…", "Core Subjects" ×2, and Data Science's title page, d8534680-u1, whose 3 questions asked about the course); the three "Syllabus" units renamed to their documents' subjects (Foundation Course in Cyber Security, Data Science, Ethical Hacking), their questions on the subject left up and their Hindi and Marathi rows deleted. data:audit gains `college-unit-names`. Test: tests/bank-content-qb.test.ts (QB-01 ×4), tests/college-practice.test.ts (unit 3 "Notes:" refused, the card, the loader).
 
 ### QB-02 · Low · Security · Both · Subject teachers (item 1)
 
@@ -82,7 +82,7 @@ No password was typed. Sessions were minted with `npm run zz:token -- ROLE [emai
 
 **Files:** src/lib/api-reads/staff.ts:333; contracts staff.ts.
 
-**Status:** Fixed, <commit pending> (qb-B). `staffClassDetail` answers `joinCode: null` unless the caller is the class's form teacher or the office; the contract's `joinCode` is nullable; the phone shows and shares the code only when one is sent (its empty-roster share door too). Test: tests/qb-b-teaching.test.ts (QB-02), phone teacher-class-detail.
+**Status:** Fixed, commit f3ae34ec (qb-B). `staffClassDetail` answers `joinCode: null` unless the caller is the class's form teacher or the office; the contract's `joinCode` is nullable; the phone shows and shares the code only when one is sent (its empty-roster share door too). Test: tests/qb-b-teaching.test.ts (QB-02), phone teacher-class-detail.
 
 ### QB-03 · Low · Functional · Both · Subject teachers
 
@@ -97,7 +97,7 @@ No password was typed. Sessions were minted with `npm run zz:token -- ROLE [emai
 
 **Files:** src/lib/api-reads/teaching.ts:60–72; (app)/teacher/assignments/[assignmentId]/page.tsx.
 
-**Status:** Fixed, <commit pending> (qb-B). `teachingGradebook` answers `assignment.subject`; the web gradebook page and the phone's assignment screen say it after the class. Test: tests/qb-b-teaching.test.ts (QB-03), phone teaching-assignment-detail.
+**Status:** Fixed, commit f3ae34ec (qb-B). `teachingGradebook` answers `assignment.subject`; the web gradebook page and the phone's assignment screen say it after the class. Test: tests/qb-b-teaching.test.ts (QB-03), phone teaching-assignment-detail.
 
 ### QB-04 · Low · Functional · Both · Syllabus
 
@@ -113,7 +113,7 @@ No password was typed. Sessions were minted with `npm run zz:token -- ROLE [emai
 
 **Files:** src/lib/syllabus.ts:53, 101.
 
-**Status:** Fixed, <commit pending> (qb-B). A lesson is stored in the class's spelling of its subject (`matchSubject` over the class's subjects, else the typed words tidied), and the syllabus read matches `?subject=` the same way, so "english" lists under English. Test: tests/qb-b-teaching.test.ts (QB-04).
+**Status:** Fixed, commit f3ae34ec (qb-B). A lesson is stored in the class's spelling of its subject (`matchSubject` over the class's subjects, else the typed words tidied), and the syllabus read matches `?subject=` the same way, so "english" lists under English. Test: tests/qb-b-teaching.test.ts (QB-04).
 
 ### QB-05 · Low · UI-UX · Both · Subject teachers
 
@@ -128,7 +128,7 @@ No password was typed. Sessions were minted with `npm run zz:token -- ROLE [emai
 
 **Files:** src/lib/syllabus.ts:173; src/lib/teaching-reach.ts.
 
-**Status:** Fixed, <commit pending> (qb-B). With no subject asked for, the syllabus opens on the caller's own subject in the class (the first the week meets), else the class's first; a reader who cannot edit is told only that the office writes the list (web and phone, no "plan a lesson" door); the class pickers and lists (classes door, work picker, the web classes, assignments and new-work pages) sort by grade number then name (`inGradeOrder`). Test: tests/qb-b-teaching.test.ts (QB-05 ×3), phone teacher-syllabus.
+**Status:** Fixed, commit f3ae34ec (qb-B). With no subject asked for, the syllabus opens on the caller's own subject in the class (the first the week meets), else the class's first; a reader who cannot edit is told only that the office writes the list (web and phone, no "plan a lesson" door); the class pickers and lists (classes door, work picker, the web classes, assignments and new-work pages) sort by grade number then name (`inGradeOrder`). Test: tests/qb-b-teaching.test.ts (QB-05 ×3), phone teacher-syllabus.
 
 ### QB-06 · Low · Functional · Both · Support staff (2a)
 
@@ -143,7 +143,7 @@ No password was typed. Sessions were minted with `npm run zz:token -- ROLE [emai
 
 **Files:** src/lib/support-staff.ts:86, 106.
 
-**Status:** Fixed, <commit pending> (qb-B). A press that finds the worker answers with the salary the first press saved (`salaryViewOf`), waiting up to 5 s for it when the two arrive together; should the first press's salary be refused and its worker removed, the press adds afresh once. Test: tests/qb-b-payroll.test.ts (two presses at once and a third later, all three carry the salary, one person, one audit row).
+**Status:** Fixed, commit f3ae34ec (qb-B). A press that finds the worker answers with the salary the first press saved (`salaryViewOf`), waiting up to 5 s for it when the two arrive together; should the first press's salary be refused and its worker removed, the press adds afresh once. Test: tests/qb-b-payroll.test.ts (two presses at once and a third later, all three carry the salary, one person, one audit row).
 
 ### QB-07 · Low · Functional · Web · Salary payout (2b)
 
@@ -158,7 +158,7 @@ No password was typed. Sessions were minted with `npm run zz:token -- ROLE [emai
 
 **Files:** src/lib/payroll.ts:703, 755–761; module-file-headings.ts.
 
-**Status:** Fixed, <commit pending> (qb-B). The bank advice gains a last column, Slip Ref (module-file-headings and payroll.ts), the narration unchanged. Exports cut before this keep their own SHA-256; a new cut has new bytes. Test: tests/qb-b-payroll.test.ts pins the bytes.
+**Status:** Fixed, commit f3ae34ec (qb-B). The bank advice gains a last column, Slip Ref (module-file-headings and payroll.ts), the narration unchanged. Exports cut before this keep their own SHA-256; a new cut has new bytes. Test: tests/qb-b-payroll.test.ts pins the bytes.
 
 ### QB-08 · Low · Functional · Both · Salary payout
 
@@ -172,7 +172,7 @@ No password was typed. Sessions were minted with `npm run zz:token -- ROLE [emai
 
 **Files:** src/lib/salary-payments.ts:200–242; contracts utrSheetAnswerSchema.
 
-**Status:** Fixed, <commit pending> (qb-B). A line judged good on a sheet refused whole answers `WOULD_RECORD` (contract enum widened); `RECORDED` only when written. Test: tests/qb-b-payroll.test.ts (QB-08); tests/salary-payments.test.ts updated.
+**Status:** Fixed, commit f3ae34ec (qb-B). A line judged good on a sheet refused whole answers `WOULD_RECORD` (contract enum widened); `RECORDED` only when written. Test: tests/qb-b-payroll.test.ts (QB-08); tests/salary-payments.test.ts updated.
 
 ### QB-09 · Low · UI-UX · Web · Salary payout
 
@@ -186,7 +186,7 @@ No password was typed. Sessions were minted with `npm run zz:token -- ROLE [emai
 
 **Files:** src/lib/salary-payment-rules.ts:28–31; payroll.ts:554, 713.
 
-**Status:** Fixed, <commit pending> (qb-B). One comparator (`compareSlips` in salary-payment-rules.ts: name case- and accent-insensitive with numbers as numbers, then exact spelling, then membership id) orders the run page, the door, the files and the references; the database's collation no longer orders slips. A run whose names differ only in case or accents may renumber once (references are read, never stored). Test: tests/qb-b-payroll.test.ts (pure order with a lower-case and an accented name; a run with "ZZ item12 Ramu Gardener" numbered 001 to 004 down the page).
+**Status:** Fixed, commit f3ae34ec (qb-B). One comparator (`compareSlips` in salary-payment-rules.ts: name case- and accent-insensitive with numbers as numbers, then exact spelling, then membership id) orders the run page, the door, the files and the references; the database's collation no longer orders slips. A run whose names differ only in case or accents may renumber once (references are read, never stored). Test: tests/qb-b-payroll.test.ts (pure order with a lower-case and an accented name; a run with "ZZ item12 Ramu Gardener" numbered 001 to 004 down the page).
 
 ### QB-10 · Low · UI-UX · Web · Support staff
 
@@ -200,7 +200,7 @@ No password was typed. Sessions were minted with `npm run zz:token -- ROLE [emai
 
 **Files:** src/app/account/payslips/page.tsx:143–160.
 
-**Status:** Fixed, <commit pending> (qb-B). For SUPPORT the advances card shows only when an advance exists, and then without the invitation. Test: tests/qb-b-payroll.test.ts (QB-10).
+**Status:** Fixed, commit f3ae34ec (qb-B). For SUPPORT the advances card shows only when an advance exists, and then without the invitation. Test: tests/qb-b-payroll.test.ts (QB-10).
 
 ### QB-11 · Low · UI-UX · Both · Items 2b and 9 copy
 
@@ -215,9 +215,9 @@ No password was typed. Sessions were minted with `npm run zz:token -- ROLE [emai
 
 **Files:** (app)/admin/payroll/runs/[month]/page.tsx; (app)/library/actions.ts; src/lib/salary-payments.ts; packages/i18n.
 
-**Status (ISBN copy):** Fixed, <commit pending> (qb-C). The ISBN list's answer is a One or a Many key (`campusForms.isbnAddedOne/Many`, with `…Named` when check digits fail): "1 title added, 0 already in the catalogue." `isbnImportSentence` (college-campus.ts) is the one sentence for the school's catalogue form and the college's campus page, whose "{invalid} ISBNs did not check" it replaces. An empty or whitespace-only paste is refused beside the box with "Paste the list first: one book a line, the ISBN first." (`campusForms.isbnEmpty`). en, hi and mr. Test: tests/qb-c-campus.test.ts (QB-11).
+**Status (ISBN copy):** Fixed, commit f3ae34ec (qb-C). The ISBN list's answer is a One or a Many key (`campusForms.isbnAddedOne/Many`, with `…Named` when check digits fail): "1 title added, 0 already in the catalogue." `isbnImportSentence` (college-campus.ts) is the one sentence for the school's catalogue form and the college's campus page, whose "{invalid} ISBNs did not check" it replaces. An empty or whitespace-only paste is refused beside the box with "Paste the list first: one book a line, the ISBN first." (`campusForms.isbnEmpty`). en, hi and mr. Test: tests/qb-c-campus.test.ts (QB-11).
 
-**Status:** The payroll copy fixed, <commit pending> (qb-B): "{file}: 1 row" (`teachPay.exportLineOne`), one refused sheet line in the singular (`teachPay.refuseSheetOne`), and an amount other than the net refused neutrally with the net as `formatPaise` ("₹17,669.00", `teachPay.refuseAmount`; `salaryPay.refusePartial` removed), each in en, hi and mr. The ISBN copy is Part C's. Test: tests/qb-b-payroll.test.ts (QB-11 ×2).
+**Status:** The payroll copy fixed, commit f3ae34ec (qb-B): "{file}: 1 row" (`teachPay.exportLineOne`), one refused sheet line in the singular (`teachPay.refuseSheetOne`), and an amount other than the net refused neutrally with the net as `formatPaise` ("₹17,669.00", `teachPay.refuseAmount`; `salaryPay.refusePartial` removed), each in en, hi and mr. The ISBN copy is Part C's. Test: tests/qb-b-payroll.test.ts (QB-11 ×2).
 
 ### QB-12 · Low · Functional · Both · E-resources
 
@@ -234,7 +234,7 @@ No password was typed. Sessions were minted with `npm run zz:token -- ROLE [emai
 
 **Files:** src/lib/college-campus.ts:102–105; schema LibraryEResource.
 
-**Status:** Fixed, <commit pending> (qb-C). `LibraryEResource.nameKey` (migration 20261031120000_library_eresource_name_key): the name trimmed, every run of spaces one space, lower case (`eResourceNameKey` in contracts, its only writer), unique per school in place of the exact name; the 9 rows of 31 October had 9 distinct keys. `saveEResource` upserts by it, keeps the name as first written, and retries a lost race as the correction. data:audit gains `eresource-name-key`. Test: tests/qb-c-campus.test.ts (the QA's four steps give one row with the last link; two adds at once in different capitals give one row).
+**Status:** Fixed, commit f3ae34ec (qb-C). `LibraryEResource.nameKey` (migration 20261031120000_library_eresource_name_key): the name trimmed, every run of spaces one space, lower case (`eResourceNameKey` in contracts, its only writer), unique per school in place of the exact name; the 9 rows of 31 October had 9 distinct keys. `saveEResource` upserts by it, keeps the name as first written, and retries a lost race as the correction. data:audit gains `eresource-name-key`. Test: tests/qb-c-campus.test.ts (the QA's four steps give one row with the last link; two adds at once in different capitals give one row).
 
 ### QB-13 · Low · Functional · Both · ISBN list
 
@@ -249,7 +249,7 @@ No password was typed. Sessions were minted with `npm run zz:token -- ROLE [emai
 
 **Files:** src/lib/college-campus.ts:125.
 
-**Status:** Fixed, <commit pending> (qb-C). `importIsbnList` reads every line as its ISBN-13 (`isbn13`, contracts), finds a title already catalogued under either form (`isbnForms`; the desk's own single add still keeps an ISBN-10 as typed), adds a book twice in one list once, and stores what is new as its ISBN-13. Test: tests/qb-c-campus.test.ts (the QA's step 2 answers 0 added, 3 already; a title kept as 080442957X is found by 9780804429573).
+**Status:** Fixed, commit f3ae34ec (qb-C). `importIsbnList` reads every line as its ISBN-13 (`isbn13`, contracts), finds a title already catalogued under either form (`isbnForms`; the desk's own single add still keeps an ISBN-10 as typed), adds a book twice in one list once, and stores what is new as its ISBN-13. Test: tests/qb-c-campus.test.ts (the QA's step 2 answers 0 added, 3 already; a title kept as 080442957X is found by 9780804429573).
 
 ### QB-14 · Low · BDD, Functional · Both · Room change
 
@@ -263,7 +263,7 @@ As zz.warden: 1. Move a boarder to a taken bed. 2. Move them to bed 3 of a 2-bed
 
 **Files:** src/lib/college-campus.ts:204.
 
-**Status:** Fixed, <commit pending> (qb-C). `changeRoom` refuses a bed the room lacks as `RuleRefusal` 422 and a taken bed as 409, both about `bed` (the door answers through `moduleFailure`: BAD_REQUEST or CONFLICT with `issues.bed`); the old place is ended only while still ACTIVE inside the transaction, so the second of two moves at once, or a press after the move, is told 409 "This boarder has just been moved to another bed…" (`campusForms.refuseJustMoved`) instead of 404; an id that was never a place stays 404. Test: tests/qb-c-campus.test.ts (two moves together: one 200, one 409, one live place).
+**Status:** Fixed, commit f3ae34ec (qb-C). `changeRoom` refuses a bed the room lacks as `RuleRefusal` 422 and a taken bed as 409, both about `bed` (the door answers through `moduleFailure`: BAD_REQUEST or CONFLICT with `issues.bed`); the old place is ended only while still ACTIVE inside the transaction, so the second of two moves at once, or a press after the move, is told 409 "This boarder has just been moved to another bed…" (`campusForms.refuseJustMoved`) instead of 404; an id that was never a place stays 404. Test: tests/qb-c-campus.test.ts (two moves together: one 200, one 409, one live place).
 
 ### QB-15 · Low · Functional · Web · Sunrise roster (item 4)
 
@@ -277,7 +277,7 @@ As zz.warden: 1. Move a boarder to a taken bed. 2. Move them to bed 3 of a 2-bed
 
 **Files:** scripts/demo-schools.ts (rosterMarkdown); docs/demo-schools.md; scripts/demo-school-check.ts.
 
-**Status:** Fixed, <commit pending> (qb-C). scripts/demo-feature-paths.ts holds the pages each platform switch closes (a test holds it to every layout that calls featurePageLock or requireFeatureSwitchPage); rosterMarkdown marks every such path "(behind JOB_BOARD)" and so on, with a legend saying each switch's state at the run (all seven off on 31 October); demo-school-check's `qb-C` block reads the roster back and makes each gated path a fact (marked, and 404 for every account while off), with a gap for a stray mark. demo:schools rerun. The demo:accounts section (another generator's) still names /expert/availability unmarked. Test: tests/qb-c-campus.test.ts (QB-15).
+**Status:** Fixed, commit f3ae34ec (qb-C). scripts/demo-feature-paths.ts holds the pages each platform switch closes (a test holds it to every layout that calls featurePageLock or requireFeatureSwitchPage); rosterMarkdown marks every such path "(behind JOB_BOARD)" and so on, with a legend saying each switch's state at the run (all seven off on 31 October); demo-school-check's `qb-C` block reads the roster back and makes each gated path a fact (marked, and 404 for every account while off), with a gap for a stray mark. demo:schools rerun. The demo:accounts section (another generator's) still names /expert/availability unmarked. Test: tests/qb-c-campus.test.ts (QB-15).
 
 ### QB-16 · Low · Functional · Both · My bus (item 5) and family transport
 
@@ -291,7 +291,7 @@ As zz.warden: 1. Move a boarder to a taken bed. 2. Move them to bed 3 of a 2-bed
 
 **Files:** src/lib/transport.ts:992–993.
 
-**Status:** Fixed, <commit pending> (qb-C). `nextRunOf` (transport.ts) picks the LIVE run, else the earliest still SCHEDULED by its first stop's time (readStatus has already read a run past its grace as MISSED by the school's zone), else the run most lately due; `familyTransport` takes the clock (`now`) for its day and statuses. Test: tests/qb-c-campus.test.ts (pinned to 03:00 IST on 3 November 2026: the morning, waiting; at 10:00 after it ended, the evening; at 22:00, the evening's end).
+**Status:** Fixed, commit f3ae34ec (qb-C). `nextRunOf` (transport.ts) picks the LIVE run, else the earliest still SCHEDULED by its first stop's time (readStatus has already read a run past its grace as MISSED by the school's zone), else the run most lately due; `familyTransport` takes the clock (`now`) for its day and statuses. Test: tests/qb-c-campus.test.ts (pinned to 03:00 IST on 3 November 2026: the morning, waiting; at 10:00 after it ended, the evening; at 22:00, the evening's end).
 
 ### QB-17 · Low · UI-UX · Both · The bank (items 6–8)
 
@@ -303,7 +303,7 @@ As zz.warden: 1. Move a boarder to a taken bed. 2. Move them to bed 3 of a 2-bed
 
 **Files:** scripts/quiz-gen/select.ts; src/lib/chapter-title-case.ts; src/lib/bank-desk.ts; appadmin/quiz-review/chapter/[slug]/page.tsx.
 
-**Status:** Fixed, <commit pending> (qb-A). `fixShoutedTitle` (chapter-title-case.ts) puts a run of capitals in title case, abbreviations kept, and the generator's `chapterTitleOf` applies it ("HUMAN SETTLEMENTS" → "Human Settlements"). Audited renames: "CHANGING TRADITIONS", "THE THREE ORDERS", "TOWARDS Modernisation", "early societies", "empires" and "Thinkers, Beliefs and Buildings FOUR" (now "Thinkers, Beliefs and Buildings"), name, line and batch file. `NCERT_BOOK_TITLES` gains keps2 "Indian Constitution at Work"; `npm run quiz:book-lines -- --grades=11 --apply` rewrote the 2 lines and 2 batch files, a second review 0 and 0. The chapter door carries `book` (contract) and the page's heading reads "Class 11 · Civics · NCERT · Indian Constitution at Work". Test: tests/bank-content-qb.test.ts (QB-17 ×2); live on :3000.
+**Status:** Fixed, commit f3ae34ec (qb-A). `fixShoutedTitle` (chapter-title-case.ts) puts a run of capitals in title case, abbreviations kept, and the generator's `chapterTitleOf` applies it ("HUMAN SETTLEMENTS" → "Human Settlements"). Audited renames: "CHANGING TRADITIONS", "THE THREE ORDERS", "TOWARDS Modernisation", "early societies", "empires" and "Thinkers, Beliefs and Buildings FOUR" (now "Thinkers, Beliefs and Buildings"), name, line and batch file. `NCERT_BOOK_TITLES` gains keps2 "Indian Constitution at Work"; `npm run quiz:book-lines -- --grades=11 --apply` rewrote the 2 lines and 2 batch files, a second review 0 and 0. The chapter door carries `book` (contract) and the page's heading reads "Class 11 · Civics · NCERT · Indian Constitution at Work". Test: tests/bank-content-qb.test.ts (QB-17 ×2); live on :3000.
 
 ### QB-18 · Low · Functional · Both · Bank translations (items 6 and 10)
 
@@ -317,7 +317,7 @@ As zz.warden: 1. Move a boarder to a taken bed. 2. Move them to bed 3 of a 2-bed
 
 **Files:** scripts/quiz-queue-load.ts; QuizTopicTranslation rows.
 
-**Status:** Fixed, <commit pending> (qb-A). `cleanTranslatedName` also drops a class and subject in front, a label with a number in words or an ordinal ("अध्याय नौ:", "चौथा अध्याय -"), a unit's label ("इकाई 1 -"), a number in front ("5.") and a summary run on after a danda or full stop, and gives no name over 80 characters; `translatedNameFor` gives no name to a Marathi row in Hindi or a Hindi row in Marathi, and the loader uses it. Applied through the audited script: 47 rows, 27 cleaned and 20 deleted (English shows): the science-7 adolescence mr row and science-7 life-processes mr row (Hindi), eight Hindi rows written in Marathi (six Balbharati class 6 maths, Balbharati 8 health, one college unit), maths-9-chapter-3's two bare "अध्याय 3", and the renamed or taken-down college units' rows. data:audit gains `bank-translation-names` (1,280 names read, 0 FAIL). Left for a speaker: meaning, not form (for example history-12-kinship-caste-and-class "किंग्स एवं जाति एवं वर्ग", Kinship read as Kings; geography-12's hi and mr names cleaned of "चौथा/नऊवा अध्याय"). Test: tests/bank-content-qb.test.ts (QB-18 ×2).
+**Status:** Fixed, commit f3ae34ec (qb-A). `cleanTranslatedName` also drops a class and subject in front, a label with a number in words or an ordinal ("अध्याय नौ:", "चौथा अध्याय -"), a unit's label ("इकाई 1 -"), a number in front ("5.") and a summary run on after a danda or full stop, and gives no name over 80 characters; `translatedNameFor` gives no name to a Marathi row in Hindi or a Hindi row in Marathi, and the loader uses it. Applied through the audited script: 47 rows, 27 cleaned and 20 deleted (English shows): the science-7 adolescence mr row and science-7 life-processes mr row (Hindi), eight Hindi rows written in Marathi (six Balbharati class 6 maths, Balbharati 8 health, one college unit), maths-9-chapter-3's two bare "अध्याय 3", and the renamed or taken-down college units' rows. data:audit gains `bank-translation-names` (1,280 names read, 0 FAIL). Left for a speaker: meaning, not form (for example history-12-kinship-caste-and-class "किंग्स एवं जाति एवं वर्ग", Kinship read as Kings; geography-12's hi and mr names cleaned of "चौथा/नऊवा अध्याय"). Test: tests/bank-content-qb.test.ts (QB-18 ×2).
 
 ### QB-19 · Low · Functional · Web · Duplicates finder (0bac269d)
 
@@ -332,7 +332,7 @@ As zz.warden: 1. Move a boarder to a taken bed. 2. Move them to bed 3 of a 2-bed
 
 **Files:** src/lib/bank-tools.ts:253–260, 334–340, 437.
 
-**Status:** Fixed, <commit pending> (qb-A). NORM stays the index's expression and finds the candidates; each is scored on strict stems that keep every digit and symbol (signs, roots, powers, brackets, a decimal point) and drop only spaces, quotes, sentence marks and a hyphen inside a word: 1.0 for equal strict stems alone, else pg_trgm's measure over the characters, kept at 0.8 or above. The stored report is read under new rows (t2/e2), so the old scores are not served. The answer and contract carry `totalPairs`; the page says "The 500 closest of 537 pairs are listed." Live: 537 pairs, 100 at 1.0, all equal stems; sin⁻¹(1/2) against sin⁻¹(−1/2) now 0.896. Test: tests/bank-tooling.test.ts (QB-19, five stems in the database), tests/bank-content-qb.test.ts (QB-19).
+**Status:** Fixed, commit f3ae34ec (qb-A). NORM stays the index's expression and finds the candidates; each is scored on strict stems that keep every digit and symbol (signs, roots, powers, brackets, a decimal point) and drop only spaces, quotes, sentence marks and a hyphen inside a word: 1.0 for equal strict stems alone, else pg_trgm's measure over the characters, kept at 0.8 or above. The stored report is read under new rows (t2/e2), so the old scores are not served. The answer and contract carry `totalPairs`; the page says "The 500 closest of 537 pairs are listed." Live: 537 pairs, 100 at 1.0, all equal stems; sin⁻¹(1/2) against sin⁻¹(−1/2) now 0.896. Test: tests/bank-tooling.test.ts (QB-19, five stems in the database), tests/bank-content-qb.test.ts (QB-19).
 
 ## 3. Coverage summary
 
