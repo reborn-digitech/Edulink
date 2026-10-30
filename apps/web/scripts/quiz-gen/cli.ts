@@ -51,8 +51,20 @@ export function sourceLine(chapter: Pick<SelectedChapter, "board" | "subject" | 
   return `generated against ${chapter.board} ${chapter.subject}, Class ${chapter.classLevel}, chapter ${chapter.chapterNumber}${chapter.bookPlace ? ` (${chapter.bookPlace})` : ""}${chapter.edition ? ` (${chapter.edition})` : ""}`;
 }
 
-export function fileNameFor(chapter: Pick<SelectedChapter, "board" | "classLevel" | "subjectCode" | "chapterNumber">): string {
-  return `${chapter.board.toLowerCase()}-${chapter.classLevel}-${chapter.subjectCode.toLowerCase()}-${chapter.chapterNumber}`;
+/**
+ * The batch's name: ncert-8-science-4. owner-batch-item8: a chapter of a book the plan names (two books under one number,
+ * select.ts planNcert) carries the book's code before the number: ncert-12-civics-leps1-5. readFileName reads it back.
+ */
+export function fileNameFor(chapter: Pick<SelectedChapter, "board" | "classLevel" | "subjectCode" | "chapterNumber"> & { planBook?: { code: string } | null }): string {
+  const book = chapter.planBook ? `${chapter.planBook.code.toLowerCase()}-` : "";
+  return `${chapter.board.toLowerCase()}-${chapter.classLevel}-${chapter.subjectCode.toLowerCase()}-${book}${chapter.chapterNumber}`;
+}
+
+/** owner-batch-item8: a batch file's name read back (fileNameFor's inverse), or null for another file. Pure. */
+export function readFileName(name: string): { board: string; classLevel: number; subjectCode: string; bookCode: string | null; chapterNumber: number } | null {
+  const m = /^(ncert|balbharati)-(\d{1,2})-([a-z]+)-(?:([a-z]{2,6}\d{1,2})-)?(\d{1,2})(?:\.json)?$/.exec(name);
+  if (!m) return null;
+  return { board: m[1]!, classLevel: Number(m[2]), subjectCode: m[3]!.toUpperCase(), bookCode: m[4] ?? null, chapterNumber: Number(m[5]) };
 }
 
 /** quiz-topup (19 Oct 2026): `variant` is what the chapter already holds when a target run asks again (0 on the first asking), mixed into the drafting seeds so the asking that tops a chapter up drafts differently from the one that filled it. */
@@ -86,14 +98,19 @@ export async function generateChapter(db: PrismaClient, chapterNumber: number, a
   const endpoints = requireAssistantConfig("quiz:gen");
   const client = await generatorClient(endpoints, log);
   const [stems, topics, glossary, style] = await Promise.all([
-    bankStems(db, chapter.subjectCode, chapter.classLevel),
+    // owner-batch-item8: the duplicate check reads the chapter's own board's questions only.
+    bankStems(db, chapter.subjectCode, chapter.classLevel, chapter.board.toUpperCase()),
     bankTopics(db, chapter.subjectCode, chapter.classLevel),
     glossaryFor(db, chapter.subject),
     styleExcerpts(db, endpoints.embed, { subject: chapter.subject, classLevel: chapter.classLevel, chapterName: chapter.chapterName }),
   ]);
-  const existing = matchTopic(topics, chapter.chapterNumber, chapter.chapterName);
+  // owner-batch-item8: a chapter of a named book extends that book's chapter only, and a new one's slug carries the book's
+  // short name where another book's chapter of the same name holds the plain slug.
+  const book = chapter.planBook?.title ?? null;
+  // owner-batch-item8: and only its own board's topics (a Balbharati chapter never extends an NCERT one of the same title).
+  const existing = matchTopic(topics, chapter.chapterNumber, chapter.chapterName, book, chapter.board.toUpperCase());
   // owner-batch-item6: a new topic never takes a slug another chapter of another name holds (slugForNewTopic).
-  const slug = existing?.slug ?? slugForNewTopic(topics, chapter.board, chapter.subjectCode, chapter.classLevel, chapter.chapterName, chapter.chapterNumber);
+  const slug = existing?.slug ?? slugForNewTopic(topics, chapter.board, chapter.subjectCode, chapter.classLevel, chapter.chapterName, chapter.chapterNumber, book);
   log(`  topic: ${existing ? `the bank's "${existing.slug}" (${existing.chapter})` : `new, "${slug}"`}; ${stems.length} served questions in class ${chapter.classLevel} ${chapter.subjectCode} for the duplicate check`);
 
   const { questions, log: runLog, topicWords, stopped } = await runChapter(client, chapter, { limit: args.limit, perLevel: args.perLevel, variant: args.variant, bankStems: stems, glossary, style, log, onProgress: hooks.onProgress, shouldStop: hooks.shouldStop });
@@ -197,7 +214,7 @@ async function main() {
   const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_URL });
   try {
     if (arg("list") === "true") {
-      for (const c of await listChapters(db, { board, grade, subject, book: arg("book") })) console.log(`  ${String(c.number).padStart(2)}  ${c.name || "(no title in the corpus)"}  [${c.bookCode ?? "?"} "${c.book}"]`);
+      for (const c of await listChapters(db, { board, grade, subject, book: arg("book") }, (l) => console.log(l))) console.log(`  ${String(c.number).padStart(2)}  ${c.name || "(no title in the corpus)"}  [${c.bookCode ?? "?"} "${c.book}"]${c.planBook ? ` (named: "${c.planBook}")` : ""}`);
       return;
     }
     const limit = Number(arg("limit") ?? 0);
@@ -206,11 +223,13 @@ async function main() {
     const common = { board, grade, subject, book: arg("book"), limit, perLevel, dry };
     if (arg("all-chapters") === "true") {
       const chapters = await listChapters(db, { board, grade, subject, book: arg("book") });
-      const seen = new Set<number>();
+      const seen = new Set<string>();
       for (const c of chapters) {
-        if (seen.has(c.number)) continue;
-        seen.add(c.number);
-        await one(db, c.number, common);
+        // owner-batch-item8: a plan that names its books has one chapter of each number per book.
+        const key = `${c.planBook ? c.bookCode : ""}|${c.number}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
+        await one(db, c.number, { ...common, book: c.planBook ? (c.bookCode ?? undefined) : common.book });
       }
       return;
     }

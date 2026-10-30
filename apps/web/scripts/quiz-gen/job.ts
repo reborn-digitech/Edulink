@@ -25,15 +25,15 @@ import { config } from "dotenv";
 import { existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { execFileSync } from "node:child_process";
-import type { QuizGenProgress, QuizGenStage } from "@edulink/contracts";
+import type { QuizGenProgress, QuizGenRequest, QuizGenStage } from "@edulink/contracts";
 import { readAssistantConfig } from "../../src/lib/assistant-env";
 import { chat2Enabled, requiredServers } from "../../src/lib/model-holders";
 import { MACHINE, emptyProgress, finishJob, heartbeat, markRunning, modelReady, modelServers, runnerRow, writeProgress, type JobDb } from "../../src/lib/quiz-jobs";
 import { loadGeneratedBatches, type QueueBatch } from "../quiz-queue-load";
 import { fileNameFor, generateChapter, OUT_DIR, type ChapterHooks, type GeneratedChapter } from "./cli";
-import { chaptersWanted, planCombos } from "./plan";
+import { chaptersWanted, planCombos, type Combo } from "./plan";
 import { collegePlan, generateCollegeUnit } from "./college"; // college-content (12 Oct 2026)
-import { listChapters } from "./select";
+import { chapterLineFilter, listChapters, type ListedChapter } from "./select";
 // owner-batch-item6 (30 Oct 2026): saturated and failing chapters set aside for the run (scripts/quiz-gen/set-aside.ts).
 import { afterOutcome, freshStreak, passContinues, refusedItems, type ChapterOutcome, type ChapterStreak } from "./set-aside";
 import type { RunLog } from "./pipeline";
@@ -64,19 +64,54 @@ export { passContinues };
 
 /**
  * The served questions a chapter already has: the live items of every topic of that board, class and subject whose
- * chapter line starts "Chapter <number> " (the loader writes "Chapter N — Name"; two books may carry one number, and
- * both count). Read through the app connection, which sees every served item.
+ * chapter line starts "Chapter <number> " (the loader writes "Chapter N — Name"; the authored bank's chapter and a
+ * generated one of the same number both count). owner-batch-item8: a chapter of a book the plan names (two books under
+ * one number) counts its book's lines alone, "Chapter N (Book) "; a plain chapter never counts another book's. Read
+ * through the app connection, which sees every served item.
  */
-export async function servedCount(db: PrismaClient, ref: Pick<ChapterRef, "board" | "grade" | "subject" | "number">): Promise<number> {
+export async function servedCount(db: PrismaClient, ref: Pick<ChapterRef, "board" | "grade" | "subject" | "number">, book: string | null = null): Promise<number> {
   const topics = await db.quizTopic.findMany({
-    where: { board: ref.board, classLevel: ref.grade, subject: ref.subject, audience: "SCHOOL", retiredAt: null, chapter: { startsWith: `Chapter ${ref.number} ` } },
+    where: { board: ref.board, classLevel: ref.grade, subject: ref.subject, audience: "SCHOOL", retiredAt: null, chapter: chapterLineFilter(ref.number, book) },
     select: { id: true },
   });
   if (topics.length === 0) return 0;
   return db.quizQuestion.count({ where: { topicId: { in: topics.map((t) => t.id) }, takenDownAt: null } });
 }
 
-type Work = { ref: ChapterRef; label: string; fileName: string; generate: (hooks: ChapterHooks, variant?: number) => Promise<GeneratedChapter> };
+type Work = { ref: ChapterRef; label: string; fileName: string; book?: string | null; generate: (hooks: ChapterHooks, variant?: number) => Promise<GeneratedChapter> };
+
+/** One chapter a run takes of a class and subject: what it is called, its batch file and the book it is of when the plan names one. */
+export type ChapterWork = { ref: ChapterRef; number: number; book: { code: string; title: string } | null; label: string; fileName: string };
+
+/**
+ * owner-batch-item8 (31 Oct 2026): the chapters a run takes of one class and subject's list (listChapters), in its order.
+ * A plan that names its books (two books under one number, select.ts planNcert) gives one chapter of a number per book,
+ * each with its own batch file (ncert-12-civics-leps1-5.json), served count and live name; otherwise one per number, the
+ * first name given winning. Pure.
+ */
+export function chapterWork(combo: Combo, chapters: readonly ListedChapter[], request: Pick<QuizGenRequest, "chapterFrom" | "chapterTo">): ChapterWork[] {
+  const wanted = new Set(chaptersWanted(chapters.map((c) => c.number), request));
+  const byKey = new Map<string, ListedChapter>();
+  for (const c of chapters) {
+    const key = `${c.planBook ? c.bookCode : ""}|${c.number}`;
+    const had = byKey.get(key);
+    if (!had || (!had.name && c.name)) byKey.set(key, c);
+  }
+  const named = chapters.some((c) => c.planBook);
+  const list = [...byKey.values()].filter((c) => wanted.has(c.number));
+  if (!named) list.sort((a, b) => a.number - b.number);
+  return list.map((c) => {
+    const book = c.planBook && c.bookCode ? { code: c.bookCode, title: c.planBook } : null;
+    return {
+      // The card's live line names the book beside the title when the plan names it.
+      ref: { board: combo.boardCode, grade: combo.grade, subject: combo.subjectCode, number: c.number, name: book && c.name ? `${c.name} · ${book.title}` : c.name },
+      number: c.number,
+      book,
+      label: `${combo.board} class ${combo.grade} ${combo.subject}, ${book ? `"${book.title}" ` : ""}chapter ${c.number}${c.name ? ` (${c.name})` : ""}`,
+      fileName: `${fileNameFor({ board: combo.board, classLevel: combo.grade, subjectCode: combo.subjectCode, chapterNumber: c.number, planBook: book })}.json`,
+    };
+  });
+}
 
 /** The run's numbers out of the pipeline's log, for the "last chapter" line. */
 function chapterNumbers(ref: ChapterRef, log: RunLog, loaded: number): NonNullable<QuizGenProgress["last"]> {
@@ -313,16 +348,14 @@ export async function runJob(jobId: string): Promise<void> {
       log(`${combos.length} book(s) to work through`);
       for (const combo of combos) {
         const chapters = await listChapters(appDb, { board: combo.board, grade: combo.grade, subject: combo.subject }, log);
-        // Two books may carry one number (NCERT class 8 science: "Curiosity" and the 2024 "Science"); the first name given wins.
-        const names = new Map<number, string>();
-        for (const c of chapters) if (c.name && !names.get(c.number)) names.set(c.number, c.name);
-        for (const number of chaptersWanted(chapters.map((c) => c.number), request)) {
-          const name = names.get(number) ?? "";
+        // owner-batch-item8: one chapter per number, or per book and number when the plan names its books (chapterWork).
+        for (const w of chapterWork(combo, chapters, request)) {
           yield {
-            ref: { board: combo.boardCode, grade: combo.grade, subject: combo.subjectCode, number, name },
-            label: `${combo.board} class ${combo.grade} ${combo.subject}, chapter ${number}${name ? ` (${name})` : ""}`,
-            fileName: `${fileNameFor({ board: combo.board, classLevel: combo.grade, subjectCode: combo.subjectCode, chapterNumber: number })}.json`,
-            generate: (hooks, variant) => generateChapter(appDb, number, { board: combo.board, grade: combo.grade, subject: combo.subject, limit, perLevel: 4, variant }, hooks),
+            ref: w.ref,
+            label: w.label,
+            fileName: w.fileName,
+            book: w.book?.title ?? null,
+            generate: (hooks, variant) => generateChapter(appDb, w.number, { board: combo.board, grade: combo.grade, subject: combo.subject, book: w.book?.code, limit, perLevel: 4, variant }, hooks),
           };
         }
       }
@@ -359,7 +392,7 @@ export async function runJob(jobId: string): Promise<void> {
       if (setAside.has(fileName)) continue;
       let have = 0;
       if (target) {
-        have = await servedCount(appDb, ref);
+        have = await servedCount(appDb, ref, work.book ?? null);
         if (have >= target) {
           progress.chaptersSkipped++;
           await write();

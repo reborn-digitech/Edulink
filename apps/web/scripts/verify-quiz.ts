@@ -443,7 +443,12 @@ export function createVerifier(): Verifier {
         levelCounts[question.difficulty - 1]!++;
       }
 
-      const key = question.stem?.trim().toLowerCase();
+      // owner-batch-item8 (31 Oct 2026, the coordinator's decision): Balbharati's stems are their own catalogue. The same
+      // stem in an NCERT and a Balbharati chapter is not a duplicate (different pupils); within a board, and an authored
+      // file against everything NCERT, the rule is as before. The loader needs nothing wider: it matches a stem within its
+      // own topic (quiz-queue-load.ts byStem) and QuizQuestion has no unique stem.
+      const stem = question.stem?.trim().toLowerCase();
+      const key = stem ? `${college ? "" : asQuizBoard(topic.board) === "BALBHARATI" ? "BALBHARATI|" : ""}${stem}` : "";
       if (key) {
         const previous = seenStems.get(key);
         if (previous) fail(at, `duplicate of a question already in ${previous}`);

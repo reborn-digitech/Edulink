@@ -189,7 +189,7 @@ async function main() {
   // Which documents the generator plans for each class and subject (scripts/quiz-gen/select.ts reads the same rule).
   const combos = new Map<string, Doc[]>();
   for (const d of docs) combos.set(`${d.gradeOrProgramme}|${d.subject}`, [...(combos.get(`${d.gradeOrProgramme}|${d.subject}`) ?? []), d]);
-  const plan: { grade: string; subject: string; books: string[]; editions: { path: string; title: string; of: string; reason: string }[]; misfiled: { path: string; title: string; reason: string }[] }[] = [];
+  const plan: { grade: string; subject: string; books: string[]; editions: { path: string; title: string; of: string; reason: string }[]; misfiled: { path: string; title: string; reason: string }[]; otherStream: { path: string; title: string; reason: string }[] }[] = [];
   for (const [key, group] of combos) {
     const [grade, subject] = key.split("|") as [string, string];
     const choice = chooseBooks(group);
@@ -199,9 +199,10 @@ async function main() {
       books: choice.books.map((b) => b.path),
       editions: choice.editions.map((e) => ({ path: e.doc.path, title: e.doc.title, of: e.of.path, reason: e.reason })),
       misfiled: choice.misfiled.map((m) => ({ path: m.doc.path, title: m.doc.title, reason: m.reason })),
+      otherStream: choice.otherStream.map((m) => ({ path: m.doc.path, title: m.doc.title, reason: m.reason })),
     });
   }
-  const setAside = plan.flatMap((p) => [...p.editions.map((e) => `${e.path} (edition of ${e.of})`), ...p.misfiled.map((m) => `${m.path} (misfiled: ${m.reason})`)]);
+  const setAside = plan.flatMap((p) => [...p.editions.map((e) => `${e.path} (edition of ${e.of})`), ...p.misfiled.map((m) => `${m.path} (misfiled: ${m.reason})`), ...p.otherStream.map((m) => `${m.path} (${m.reason})`)]);
 
   const split = reports.filter((r) => r.outcome === "split");
   const kept = reports.filter((r) => r.outcome === "kept");

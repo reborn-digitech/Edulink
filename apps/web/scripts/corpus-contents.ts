@@ -888,7 +888,17 @@ export type BookChoice<D extends BookDoc> = {
   editions: { doc: D; of: D; reason: string }[];
   /** Filed under another class than the one the book's id names. */
   misfiled: { doc: D; reason: string }[];
+  /** owner-batch-item8: a stream's book the school bank does not plan (COMMERCE_BOOK). */
+  otherStream: { doc: D; reason: string }[];
 };
+
+/**
+ * owner-batch-item8 (31 Oct 2026): the Commerce stream's "Mathematics and Statistics" books of classes 11 and 12, whose
+ * titles name the stream ("११ वी गणित व सं.शास्त्र(वाणिज्य)भा-१ इंग्रजी"). Their chapters share titles with the Arts and
+ * Science books' ("Complex Numbers", "Probability", "Matrices"), so their questions would land in those chapters: the
+ * school bank's plan leaves them out until a commerce stream asks for them.
+ */
+export const COMMERCE_BOOK = /वाणिज्य|\bcommerce\b/iu;
 
 /** "जि. मुंबई": a district edition's mark in a Balbharati title. */
 const DISTRICT = /जि\.\s*\S+/u;
@@ -926,15 +936,18 @@ export function standardOfBookId(id: string | null | undefined): number | null {
  * set aside as misfiled (1203020415, the Standard XII physics, is filed under class 11). Documents whose titles name one
  * book once the district and the part are taken off are editions of it when they are the same part: the one whose title
  * names no district is planned, else the newest by the site's Last-Modified (then the path), the rest listed. The books
- * left are ordered by that key (a stream's books together: Arts and Science before Commerce) and then by part. Pure.
+ * left are ordered by that key (a stream's books together: Arts and Science before Commerce) and then by part. A
+ * Commerce book (COMMERCE_BOOK, owner-batch-item8) is left out of the school bank's plan. Pure.
  */
 export function chooseBooks<D extends BookDoc>(docs: readonly D[]): BookChoice<D> {
   const misfiled: BookChoice<D>["misfiled"] = [];
+  const otherStream: BookChoice<D>["otherStream"] = [];
   const kept: D[] = [];
   for (const d of docs) {
     const id = (d.extra as { bookId?: string } | null)?.bookId ?? null;
     const std = standardOfBookId(id);
     if (std !== null && String(std) !== d.gradeOrProgramme) misfiled.push({ doc: d, reason: `its book id ${id} names Standard ${std}, not ${d.gradeOrProgramme}` });
+    else if (COMMERCE_BOOK.test(d.title)) otherStream.push({ doc: d, reason: "the Commerce stream's book: left out of the school bank until a commerce stream asks for it" });
     else kept.push(d);
   }
   const groups = new Map<string, D[]>();
@@ -952,5 +965,5 @@ export function chooseBooks<D extends BookDoc>(docs: readonly D[]): BookChoice<D
     for (const d of sorted.slice(1)) editions.push({ doc: d, of: chosen, reason: why });
   }
   books.sort((a, b) => bookKey(a.title).localeCompare(bookKey(b.title)) || (partOfTitle(a.title) ?? 0) - (partOfTitle(b.title) ?? 0) || a.path.localeCompare(b.path));
-  return { books, editions, misfiled };
+  return { books, editions, misfiled, otherStream };
 }

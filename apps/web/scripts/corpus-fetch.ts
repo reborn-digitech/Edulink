@@ -43,6 +43,7 @@ import { pipeline } from "node:stream/promises";
 import { config } from "dotenv";
 import { CORPUS_ROOT, SOURCES, readFolderManifest, removeManifestEntries, slug, writeManifestEntry, type ContentKind, type Licence, type ManifestEntry, type SourceKey } from "./corpus-lib";
 import { PAPER_BODIES, type PapersNet } from "./corpus-papers";
+import { standardOfBookId } from "./corpus-contents";
 import { MIN_ARTICLE_CHARS, REFUSED_SOURCES, WIKIPEDIA_ARTICLES, WIKIPEDIA_RIGHTS_URL, WIKIPEDIA_STREAMS, trimArticle, wikipediaApiUrl, wikipediaEntry, wikipediaFolder, wikipediaLicence, wikipediaPageOf, type WikipediaStream } from "./corpus-college";
 
 config();
@@ -697,12 +698,15 @@ async function discoverBalbharati(): Promise<Item[]> {
     if (OTHER_LANGUAGE.test(book.title)) continue;
     const grade = balbharatiGrade(book.title);
     if (!grade || grade > 12 || !gradeWanted(grade)) continue;
+    // owner-batch-item8 (31 Oct 2026): a book whose id names another standard than its listing's title is filed under the
+    // id's (1203020415, "११ वी भौतिकशास्त्र", is the Standard XII Physics): the folder stays the title's, where the file is.
+    const standard = standardOfBookId(book.id);
     const named = book.title.replace(/^\s*[०-९]{1,2}\s*\S+\s*/, "").replace(/\s*इंग्रजी\s*$/, "");
     const subject = BALBHARATI_SUBJECTS.find(([re]) => re.test(named))?.[1] ?? "Other";
     items.push({
       title: book.title,
       board: "Balbharati (Maharashtra State Bureau of Textbook Production and Curriculum Research)",
-      gradeOrProgramme: String(grade),
+      gradeOrProgramme: String(standard && standard !== grade ? standard : grade),
       subject,
       language: "en",
       edition: null,

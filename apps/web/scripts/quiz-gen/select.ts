@@ -6,19 +6,22 @@
  * NCERT is one document per chapter (extra.chapter); Balbharati one document per book, cut by the
  * chapter name at the head of each chunk's headingPath ("3. Force and Pressure"; scripts/corpus-balbharati-chapters.ts
  * writes them from the book's contents page). A Balbharati class and subject plans one book of each edition and its
- * parts in order, a later part's chapters numbered on after the earlier's (planBalbharati, owner-batch-item7). Two NCERT books
- * may cover one class and subject (the 2024 "Science" and the 2026 "Curiosity"): `--book=<code>`
- * picks one, else the most recently modified book is taken and the choice printed.
+ * parts in order, a later part's chapters numbered on after the earlier's (planBalbharati, owner-batch-item7). An NCERT
+ * class and subject plans its books the same way (planNcert, owner-batch-item8): a book another has replaced is left out
+ * (class 8's 2024 Science and Mathematics), the parts of one book are numbered on (Mathematics Part II's "Integrals" is
+ * chapter 7, as the book prints it and the authored bank numbers it), and two different books that carry one number
+ * (class 12 political science: Contemporary World Politics and Politics in India since Independence) are both planned,
+ * each chapter naming its book in the bank's line, the batch file and the run's chapter. `--book=<code>` picks one.
  *
  * Reads as the app role: the content tables are outside the tenant fence.
  */
 import { existsSync, readFileSync } from "node:fs";
 import { basename, dirname, join } from "node:path";
-import type { PrismaClient } from "@prisma/client";
+import type { Prisma, PrismaClient } from "@prisma/client";
 import type { AssistantEndpoint } from "../../src/lib/assistant-env";
 import { asQuery, embedTexts, vectorLiteral } from "../../src/lib/assistant-model";
 import { CORPUS_ROOT } from "../corpus-lib";
-import { chapterNameOf, chapterNumberOf } from "./checks";
+import { chapterLineFor, chapterNameOf, chapterNumberOf } from "./checks";
 // owner-batch-item6 (30 Oct 2026): a chapter's name is its book's title, never a fragment of one (corpus-titles' rules).
 import { loadDictionary, titleCase, titleFragment, vocabularyOf } from "../corpus-titles";
 import { fixTitleCase } from "../../src/lib/chapter-title-case";
@@ -63,6 +66,11 @@ export type SelectedChapter = {
    * ("९ वी गणित भाग-२ इंग्रजी", chapter 3): the plan's number then runs on from the earlier book's chapters.
    */
   bookPlace?: string;
+  /**
+   * owner-batch-item8: the book, when the class and subject's NCERT plan carries more than one book under one chapter
+   * number (planNcert): the bank's chapter line, the batch file's name and the run's chapter then name it.
+   */
+  planBook?: { code: string; title: string };
   /**
    * college-content (12 Oct 2026): a line the drafting prompt carries for a college unit (the passage is a
    * university syllabus, not a textbook: ask about what it lists, never about the syllabus itself).
@@ -228,11 +236,171 @@ export function planBalbharati<D extends { id: string; path: string; title: stri
   return { chapters, choice };
 }
 
+/* ---------------------------------------------------------------------------------------------------------------
+   owner-batch-item8 (31 October 2026): the NCERT plan of a class and subject — which books, under which numbers
+   --------------------------------------------------------------------------------------------------------------- */
+
+/**
+ * NCERT books the plan leaves out while the book that replaced them is in the corpus (a per-book rule). The owner chose
+ * the current books for class 8 on 23 October 2026 (57794753): Curiosity, not the 2024 Science; Ganita Prakash Parts I
+ * and II, not the 2024 Mathematics. Class 5's Math-Magic (2024) is replaced by Math-Mela (2026) the same way; it was
+ * never drafted (the newest book took every number) and stays out. Their authored chapters keep serving.
+ * `--book=<code>` still drafts one on purpose.
+ */
+export const NCERT_SUPERSEDED: Readonly<Record<string, { by: readonly string[]; why: string }>> = {
+  hesc1: { by: ["hecu1"], why: "class 8 Science (2024) is replaced by Curiosity: the owner's choice of 23 October 2026 keeps class 8 on the current books" },
+  hemh1: { by: ["hegp1", "hegp2"], why: "class 8 Mathematics (2024) is replaced by Ganita Prakash Parts I and II: the owner's choice of 23 October 2026" },
+  eemh1: { by: ["eemm1"], why: "class 5 Math-Magic (2024) is replaced by Math-Mela (2026), as class 8's older books are" },
+};
+
+/**
+ * A book's title as the book prints it, where the site's listing (ContentDocument.title) spells it otherwise: the name a
+ * chapter line carries beside its number when the plan names the book. Only books a plan names are listed.
+ */
+export const NCERT_BOOK_TITLES: Readonly<Record<string, string>> = {
+  kegy2: "Fundamentals of Physical Geography",
+  kegy3: "Practical Work in Geography Part I",
+  legy2: "India: People and Economy",
+};
+
+/** "Physics Part-II" → { work: "physics", part: 2 }; "Chemistry-I", "Ganita Manjari PART-II", "Themes in Indian History-III"; no mark is part 1. Pure. */
+export function ncertPartOf(title: string): { work: string; part: number } {
+  const t = title.trim().replace(/\s+/g, " ");
+  const m = /^(.*?\S)\s*(?:[-–]\s*|\s+)(?:part\s*[-–]?\s*)?(IV|I{1,3}|[1-4])$/i.exec(t);
+  const roman: Record<string, number> = { i: 1, ii: 2, iii: 3, iv: 4 };
+  const work = (m ? m[1]! : t).replace(/\s*\bpart\s*$/i, "");
+  const part = m ? (roman[m[2]!.toLowerCase()] ?? Number(m[2])) : 1;
+  return { work: work.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim(), part };
+}
+
+export type NcertDoc = { id: string; path: string; title: string; extra: unknown };
+
+export type NcertChapter<D> = {
+  /** The number the bank, the batch file and a run know the chapter by. */
+  planNumber: number;
+  /** The number the chapter's own heading carries ("Chapter 8: Fractions in Disguise"), else the file's. */
+  number: number;
+  /** The file's number (extra.chapter): what an older plan called the chapter. */
+  fileNumber: number;
+  label: string;
+  doc: D;
+  /** Set when the class and subject plan more than one book under one number: the book the chapter is of. */
+  book: { code: string; title: string } | null;
+};
+
+export type NcertPlan<D> = {
+  chapters: NcertChapter<D>[];
+  /** Books left out because another replaced them (NCERT_SUPERSEDED). */
+  superseded: { code: string; title: string; docs: D[]; why: string }[];
+  /** True when two books share a number: every chapter then names its book. */
+  named: boolean;
+};
+
+const codeOf = (extra: unknown): string | null => {
+  const e = extra as { bookCode?: string; bookId?: string } | null;
+  return e?.bookCode ?? e?.bookId ?? null;
+};
+
+/** owner-batch-item8: the title a chapter line names a book by. Pure. */
+export function ncertBookTitle(code: string, title: string): string {
+  return NCERT_BOOK_TITLES[code] ?? title.trim().replace(/\s+/g, " ");
+}
+
+/**
+ * owner-batch-item8: the chapters an NCERT class and subject offers, in the order a run takes them. Pure.
+ *
+ *   1. A book another has replaced (NCERT_SUPERSEDED) is left out while the other is in the corpus.
+ *   2. A chapter's number is the one its own heading carries (the corpus numbers Ganita Prakash Part II 8 to 14 and
+ *      Ganita Manjari Part II 9 to 14, the owner's serial of 23 October), else the file's (extra.chapter).
+ *   3. The parts of one book (titles alike but for "Part II", "-II": Physics, Mathematics and Chemistry of classes 11
+ *      and 12, Themes in Indian History I to III, Ganita Prakash) are numbered on: a later part keeps its numbers when
+ *      they already start past the earlier parts' last, else runs on from it (Mathematics Part II's chapter 1 is 7). This
+ *      is how the books print them and how the authored bank numbers them.
+ *   4. Two different books left with one number (Contemporary World Politics and Politics in India since Independence,
+ *      class 12; Political Theory and Indian Constitution at Work, class 11; the economics and geography books of 11 and
+ *      12) are both planned, every chapter naming its book (`book`); the batch file is ncert-12-civics-leps1-5.json and
+ *      the bank's line "Chapter 5 (Contemporary World Politics) — Security in the Contemporary World".
+ */
+export function planNcert<D extends NcertDoc>(docs: readonly D[], labelOf: (doc: D) => string): NcertPlan<D> {
+  const chapterDocs = docs.filter((d) => typeof (d.extra as { chapter?: unknown } | null)?.chapter === "number");
+  const codes = new Set(chapterDocs.map((d) => codeOf(d.extra) ?? ""));
+  const superseded: NcertPlan<D>["superseded"] = [];
+  const books = new Map<string, { code: string; title: string; docs: D[] }>();
+  for (const d of chapterDocs) {
+    const code = codeOf(d.extra) ?? "";
+    const rule = NCERT_SUPERSEDED[code];
+    if (rule && rule.by.some((b) => codes.has(b))) {
+      const s = superseded.find((x) => x.code === code) ?? superseded[superseded.push({ code, title: d.title, docs: [], why: rule.why }) - 1]!;
+      s.docs.push(d);
+      continue;
+    }
+    const b = books.get(code) ?? { code, title: d.title, docs: [] };
+    b.docs.push(d);
+    books.set(code, b);
+  }
+  // The works: books whose titles are one but for the part, parts in order; works in the order of their first code.
+  const works = new Map<string, { code: string; title: string; docs: D[]; part: number }[]>();
+  for (const b of books.values()) {
+    const { work, part } = ncertPartOf(b.title);
+    works.set(work, [...(works.get(work) ?? []), { ...b, part }]);
+  }
+  const ordered = [...works.values()].map((parts) => parts.sort((a, b) => a.part - b.part || a.code.localeCompare(b.code))).sort((a, b) => a[0]!.code.localeCompare(b[0]!.code));
+  const perWork: NcertChapter<D>[][] = [];
+  for (const parts of ordered) {
+    const out: NcertChapter<D>[] = [];
+    let offset = 0;
+    for (const part of parts) {
+      const own: { doc: D; number: number; fileNumber: number; label: string }[] = [];
+      for (const d of part.docs) {
+        const fileNumber = (d.extra as { chapter: number }).chapter;
+        const label = labelOf(d);
+        own.push({ doc: d, number: chapterNumberOf(label) ?? fileNumber, fileNumber, label });
+      }
+      own.sort((a, b) => a.number - b.number || a.doc.path.localeCompare(b.doc.path));
+      const first = own[0]?.number ?? 0;
+      const shift = first > offset ? 0 : offset;
+      for (const o of own) {
+        const planNumber = o.number + shift;
+        if (out.some((c) => c.planNumber === planNumber)) continue;
+        out.push({ planNumber, number: o.number, fileNumber: o.fileNumber, label: o.label, doc: o.doc, book: { code: part.code, title: ncertBookTitle(part.code, part.title) } });
+      }
+      offset = Math.max(offset, ...out.map((c) => c.planNumber));
+    }
+    perWork.push(out);
+  }
+  const seen = new Set<number>();
+  let named = false;
+  for (const w of perWork) {
+    const mine = new Set(w.map((c) => c.planNumber));
+    for (const n of mine) if (seen.has(n)) named = true;
+    for (const n of mine) seen.add(n);
+  }
+  const chapters = named ? perWork.flat() : perWork.flat().map((c) => ({ ...c, book: null })).sort((a, b) => a.planNumber - b.planNumber);
+  return { chapters, superseded, named };
+}
+
+/** owner-batch-item8: what an NCERT plan leaves out or names, one line, for the run log. */
+function ncertNote(plan: NcertPlan<DocRow>, args: { grade: number; subject: string }): string | null {
+  const out: string[] = [];
+  for (const s of plan.superseded) out.push(`${s.code} "${s.title}" left out (${s.why})`);
+  if (plan.named) out.push(`two books share chapter numbers, so each chapter names its book: ${[...new Map(plan.chapters.map((c) => [c.book!.code, c.book!.title])).entries()].map(([c, t]) => `${c} "${t}"`).join(", ")}`);
+  return out.length ? `  NCERT class ${args.grade} ${args.subject}: ${out.join("; ")}` : null;
+}
+
+/**
+ * owner-batch-item8: the bank's chapter lines of one chapter (QuizTopic.chapter), the line the generator writes: "Chapter
+ * N (Book) — …" for a chapter of a named book; otherwise "Chapter N …" and never another book's "Chapter N (…".
+ */
+export function chapterLineFilter(number: number, book: string | null): Prisma.StringFilter {
+  return book ? { startsWith: `Chapter ${number} (${book}) ` } : { startsWith: `Chapter ${number} `, not: { startsWith: `Chapter ${number} (` } };
+}
+
 /** owner-batch-item7: what a Balbharati plan leaves out, one line each, for the run log. */
 function choiceNote(choice: BookChoice<DocRow>, args: { grade: number; subject: string }): string | null {
   const out: string[] = [];
   if (choice.editions.length) out.push(`${choice.editions.length} edition(s) set aside for ${choice.editions[0]!.of.path} ("${choice.editions[0]!.of.title}")`);
   for (const m of choice.misfiled) out.push(`${m.doc.path} set aside (${m.reason})`);
+  for (const m of choice.otherStream) out.push(`${m.doc.path} "${m.doc.title}" left out (${m.reason})`);
   if (choice.books.length > 1) out.push(`${choice.books.length} books planned in this order: ${choice.books.map((b) => `"${b.title}"`).join(", ")}`);
   return out.length ? `  Balbharati class ${args.grade} ${args.subject}: ${out.join("; ")}` : null;
 }
@@ -244,10 +412,16 @@ async function labelsByDoc(db: PrismaClient, docs: readonly DocRow[]): Promise<M
   return out;
 }
 
-function lastModifiedOf(doc: DocRow): number {
-  const lm = (doc.extra as { lastModified?: string } | null)?.lastModified;
-  const t = lm ? Date.parse(lm) : NaN;
-  return Number.isFinite(t) ? t : 0;
+/** One chapter of a plan as listChapters gives it. `planBook` is the book's title when the plan names the book (planNcert). */
+export type ListedChapter = { number: number; name: string; bookCode: string | null; book: string; planBook: string | null };
+
+/** owner-batch-item8: an NCERT class and subject's plan, read from the corpus; a `book` the plan leaves out is planned alone when asked for by name. */
+async function ncertPlanOf(db: PrismaClient, docs: DocRow[], book?: string): Promise<NcertPlan<DocRow>> {
+  const labels = await labelsByDoc(db, docs);
+  const first = (d: DocRow) => (labels.get(d.id) ?? []).find((l) => l.trim()) ?? "";
+  const plan = planNcert(docs, first);
+  if (book && !plan.chapters.some((c) => bookCodeOf(c.doc) === book)) return planNcert(docs.filter((d) => bookCodeOf(d) === book), first);
+  return plan;
 }
 
 /**
@@ -259,21 +433,24 @@ export async function listChapters(
   db: PrismaClient,
   args: { board: string; grade: number; subject: string; book?: string },
   log: (line: string) => void = () => {},
-): Promise<{ number: number; name: string; bookCode: string | null; book: string }[]> {
+): Promise<ListedChapter[]> {
   const { source } = boardSource(args.board);
   const docs = await books(db, source, args.grade, args.subject);
-  const out: { number: number; name: string; bookCode: string | null; book: string }[] = [];
+  const out: ListedChapter[] = [];
   if (source === "ncert") {
-    for (const d of docs) {
-      const code = bookCodeOf(d);
+    // owner-batch-item8: the plan (planNcert): books replaced left out, parts numbered on, two books under one number named.
+    const plan = await ncertPlanOf(db, docs, args.book);
+    const note = ncertNote(plan, args);
+    if (note) log(note);
+    for (const c of plan.chapters) {
+      const code = bookCodeOf(c.doc);
       if (args.book && code !== args.book) continue;
-      const n = (d.extra as { chapter?: number } | null)?.chapter;
-      if (!n) continue;
-      const heads = await db.contentChunk.findMany({ where: { documentId: d.id }, orderBy: { ordinal: "asc" }, select: { chapter: true, headingPath: true } });
-      const name = chapterTitleOf(firstLabel(heads), n);
-      if (!name) log(`  ${args.board} class ${args.grade} ${args.subject}, chapter ${n} ("${d.title}", ${d.path}) has no title in the corpus`);
-      out.push({ number: n, name, bookCode: code, book: d.title });
+      const name = chapterTitleOf(c.label, c.number);
+      if (!name) log(`  ${args.board} class ${args.grade} ${args.subject}, chapter ${c.planNumber} ("${c.doc.title}", ${c.doc.path}) has no title in the corpus`);
+      out.push({ number: c.planNumber, name, bookCode: code, book: c.doc.title, planBook: c.book?.title ?? null });
     }
+    // A plan that names its books keeps its order (one book's chapters, then the next's).
+    return plan.named ? out : out.sort((a, b) => a.number - b.number);
   } else {
     // owner-batch-item7: one book of each edition, its parts in order, a chapter known by its plan number.
     const mine = args.book ? docs.filter((d) => bookCodeOf(d) === args.book) : docs;
@@ -284,7 +461,7 @@ export async function listChapters(
     for (const c of chapters) {
       const name = chapterTitleOf(c.label, c.number);
       if (!name) log(`  ${args.board} class ${args.grade} ${args.subject}, chapter ${c.planNumber} ("${c.doc.title}", ${c.doc.path}${c.part ? `, ${c.part}` : ""}, chapter ${c.number}) has no title in the corpus`);
-      out.push({ number: c.planNumber, name, bookCode: bookCodeOf(c.doc), book: c.doc.title });
+      out.push({ number: c.planNumber, name, bookCode: bookCodeOf(c.doc), book: c.doc.title, planBook: null });
     }
   }
   return out.sort((a, b) => a.number - b.number);
@@ -294,10 +471,10 @@ export async function selectChapter(db: PrismaClient, args: { board: string; gra
   const { source, board } = boardSource(args.board);
   let docs = await books(db, source, args.grade, args.subject);
   if (!docs.length) throw new Error(`no ${board} textbook for class ${args.grade} ${args.subject} in the corpus (ContentDocument)`);
-  if (args.book) {
-    docs = docs.filter((d) => bookCodeOf(d) === args.book);
-    if (!docs.length) throw new Error(`no ${board} book with code "${args.book}" for class ${args.grade} ${args.subject}`);
-  }
+  if (args.book && !docs.some((d) => bookCodeOf(d) === args.book)) throw new Error(`no ${board} book with code "${args.book}" for class ${args.grade} ${args.subject}`);
+  // Balbharati plans its books itself (a `book` narrows it to that book's documents, as before); NCERT plans every book
+  // and the `book` picks among its chapters (owner-batch-item8), so a part's chapter keeps its plan number.
+  if (args.book && source !== "ncert") docs = docs.filter((d) => bookCodeOf(d) === args.book);
 
   let doc: DocRow;
   let chunks: SelectedChunk[];
@@ -305,19 +482,23 @@ export async function selectChapter(db: PrismaClient, args: { board: string; gra
   // owner-batch-item7: the number the book prints (a Balbharati part's own), and where the chapter sits when it is not the plan's.
   let bookNumber = args.chapter;
   let bookPlace: string | undefined;
+  let planBook: { code: string; title: string } | undefined;
   if (source === "ncert") {
-    const candidates = docs.filter((d) => (d.extra as { chapter?: number } | null)?.chapter === args.chapter);
-    if (!candidates.length) throw new Error(`NCERT class ${args.grade} ${args.subject} has no chapter ${args.chapter} in the corpus`);
-    const byBook = new Map<string | null, DocRow>();
-    for (const c of candidates) byBook.set(bookCodeOf(c), c);
-    if (byBook.size > 1) {
-      const newest = [...byBook.values()].sort((a, b) => lastModifiedOf(b) - lastModifiedOf(a))[0]!;
-      log(`  ${byBook.size} books carry chapter ${args.chapter}: ${[...byBook.values()].map((d) => `${bookCodeOf(d)} "${d.title}"${d.edition ? ` (${d.edition})` : ""}`).join("; ")} — taking the newest, ${bookCodeOf(newest)}; --book=<code> picks another`);
-      doc = newest;
-    } else doc = candidates[0]!;
+    // owner-batch-item8: the chapter of the plan (planNcert) by its plan number, of the book asked for when one is. The old
+    // rule took the newest book for a number two books carry, so Contemporary World Politics was never drafted.
+    const plan = await ncertPlanOf(db, docs, args.book);
+    const matches = plan.chapters.filter((c) => c.planNumber === args.chapter && (!args.book || bookCodeOf(c.doc) === args.book));
+    if (!matches.length) throw new Error(`NCERT class ${args.grade} ${args.subject} has no chapter ${args.chapter}${args.book ? ` in ${args.book}` : ""} in the corpus`);
+    const planned = matches[0]!;
+    if (matches.length > 1) log(`  ${matches.length} books carry chapter ${args.chapter}: ${matches.map((c) => `${bookCodeOf(c.doc)} "${c.doc.title}"`).join("; ")} — taking ${bookCodeOf(planned.doc)}, the plan's first; --book=<code> picks another`);
+    doc = planned.doc;
     const rows = await db.contentChunk.findMany({ where: { documentId: doc.id }, orderBy: { ordinal: "asc" }, select: { id: true, ordinal: true, headingPath: true, pageStart: true, pageEnd: true, text: true, tokens: true, figureKeys: true, chapter: true } });
     chunks = rows.map((r) => ({ id: r.id, ordinal: r.ordinal, headingPath: r.headingPath, pageStart: r.pageStart, pageEnd: r.pageEnd, text: r.text, tokens: r.tokens, figureKeys: r.figureKeys }));
     chapterLabel = firstLabel(rows) || `Chapter ${args.chapter}`;
+    bookNumber = planned.number;
+    if (planned.book) planBook = planned.book;
+    // A later part's chapter numbered on (Mathematics Part II's chapter 1 is the plan's 7): the source line says where the book prints it.
+    if (planned.planNumber !== planned.fileNumber) bookPlace = `"${doc.title}", chapter ${planned.fileNumber}`;
   } else {
     // owner-batch-item7: the plan listChapters gives (editions collapsed, parts in order), the chapter by its plan number.
     const labels = await labelsByDoc(db, docs);
@@ -349,7 +530,7 @@ export async function selectChapter(db: PrismaClient, args: { board: string; gra
   const fragment = chapterName ? titleFragment(chapterName, ctx) : null;
   if (!chapterName || fragment) {
     const known = await db.quizTopic.findFirst({
-      where: { audience: "SCHOOL", retiredAt: null, board, classLevel: args.grade, subject: subjectCodeOf(args.subject), chapter: { startsWith: `Chapter ${args.chapter} ` }, NOT: { name: "" } },
+      where: { audience: "SCHOOL", retiredAt: null, board, classLevel: args.grade, subject: subjectCodeOf(args.subject), chapter: chapterLineFilter(args.chapter, planBook?.title ?? null), NOT: { name: "" } },
       orderBy: { position: "asc" },
       select: { name: true, slug: true },
     });
@@ -375,13 +556,15 @@ export async function selectChapter(db: PrismaClient, args: { board: string; gra
     subjectCode: subjectCodeOf(doc.subject),
     chapterNumber: args.chapter,
     chapterName,
-    chapterLabel: `Chapter ${args.chapter} — ${chapterName}`,
+    // owner-batch-item8: the book beside the number when the plan names it ("Chapter 5 (Contemporary World Politics) — …").
+    chapterLabel: chapterLineFor(args.chapter, chapterName, planBook?.title ?? null),
     edition: editionOf(doc),
     sourceUrl: doc.sourceUrl,
     chunks,
     figures,
     headings,
     ...(bookPlace ? { bookPlace } : {}),
+    ...(planBook ? { planBook } : {}),
   };
 }
 
@@ -413,18 +596,25 @@ export function glossaryLinesFor(glossary: { text: string }[], item: { stem: str
   return out;
 }
 
-/** The served bank's questions for a subject and class, for the near-duplicate check. */
-export async function bankStems(db: PrismaClient, subjectCode: string, classLevel: number): Promise<{ id: string; stem: string; topicSlug: string }[]> {
+/**
+ * The served bank's questions for a subject and class, for the near-duplicate check. owner-batch-item8 (31 Oct 2026, the
+ * coordinator's decision): a school chapter is compared with its own board's questions only (`board`, a QUIZ_BOARDS
+ * code). NCERT and Balbharati are separate catalogues for different pupils and may hold similar questions: NCERT's
+ * fraction questions had left Balbharati class 6 "Fractions" and "Decimal Fractions" with nothing new. A college unit
+ * passes no board and is compared as before.
+ */
+export async function bankStems(db: PrismaClient, subjectCode: string, classLevel: number, board?: string): Promise<{ id: string; stem: string; topicSlug: string }[]> {
   const rows = await db.quizQuestion.findMany({
-    where: { topic: { subject: subjectCode, classLevel } },
+    where: { topic: { subject: subjectCode, classLevel, ...(board ? { board } : {}) } },
     select: { id: true, stem: true, topic: { select: { slug: true } } },
   });
   return rows.map((r) => ({ id: r.id, stem: r.stem, topicSlug: r.topic.slug }));
 }
 
-export async function bankTopics(db: PrismaClient, subjectCode: string, classLevel: number): Promise<{ slug: string; chapter: string; name: string; position: number; retired: boolean }[]> {
-  const rows = await db.quizTopic.findMany({ where: { subject: subjectCode, classLevel }, select: { slug: true, chapter: true, name: true, position: true, retiredAt: true } });
-  return rows.map((r) => ({ slug: r.slug, chapter: r.chapter, name: r.name, position: r.position, retired: r.retiredAt !== null }));
+/** The bank's topics of a subject and class, every board's, each with its board (owner-batch-item8: the match is board-scoped, the slug check is not). */
+export async function bankTopics(db: PrismaClient, subjectCode: string, classLevel: number): Promise<{ slug: string; chapter: string; name: string; position: number; retired: boolean; board: string | null }[]> {
+  const rows = await db.quizTopic.findMany({ where: { subject: subjectCode, classLevel }, select: { slug: true, chapter: true, name: true, position: true, retiredAt: true, board: true } });
+  return rows.map((r) => ({ slug: r.slug, chapter: r.chapter, name: r.name, position: r.position, retired: r.retiredAt !== null, board: r.board }));
 }
 
 /* ---------------------------------------------------------------------------

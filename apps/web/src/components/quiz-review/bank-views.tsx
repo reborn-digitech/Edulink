@@ -236,6 +236,8 @@ export function BankChapterGroups({ data, base, t }: { data: QuizBankChapters; b
                           {/* The title alone (the owner, 23 Oct 2026): two books of one class share chapter numbers, so a number in front read as a duplicate; the rows keep their book order. */}
                           {c.name}
                         </Link>
+                        {/* owner-batch-item8: the book beside the title where two books of the class share chapter numbers. */}
+                        {c.book && <span className="ml-2 text-xs text-fg-muted">{c.book}</span>}
                         <span className="ml-2 inline-flex flex-wrap gap-1 align-middle">
                           {c.maker && (
                             <Badge tone={c.maker === "GENERATED" ? "accent" : c.maker === "AUTHORED" ? "outline" : "info"} size="sm">

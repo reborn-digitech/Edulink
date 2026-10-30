@@ -1,0 +1,314 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T20:41:34.421Z",
+  "finishedAt": "2026-10-30T20:46:50.976Z",
+  "seconds": 317,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "603050012",
+    "document": "balbharati/6/science/603050012.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 12 — Motion and Types of Motion",
+    "edition": "First Edition 2026",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2010 — question paper]\n48. Which of the following is not a simple harmonic motion?\na) Earth moving around Sun\nb) pendulum\nc) oscillating mass attached to a spring\nd) vibrating string of guitar",
+      "[INJSO 2020 — solutions or answer key]\n18. A body is performing one dimensional motion. After time instant t = t , the body covers 1\nequal distances in two successive time intervals ∆t 1 each. Also, the speed of the body at time\ninstants t = t 1 and at t = t 1 + 2∆t 1 happens to be the same. Therefore, the\nA. acceleration may be zero.\nB. body may be moving with a constant non-zero acceleration.\nC. body may be moving with an acceleration proportional to displacement\n(from a suitably defined origin) and directed opposite to it.\nD. body may be coming to a halt momentarily.\nSolution:\nOption (A) is possible for uniform motion.\nOption (B) is possible if the uniform nonzero acceleration is opposite to the initial velocity.\nThe two inter",
+      "[INJSO 2011 — question paper]\n18. A vehicle is moving on a road. Ink drops are falling, one at a time, on the road from the vehicle.\nAfter the vehicle has moved away, what one observes is shown (qualitatively) in the figure given\nbelow. From the figure we can conclude about the vehicle to be moving...\na) from left to right with increasing speed\nb) from left to right with decreasing speed\nc) from right to left with increasing speed\nd) from right to left with decreasing speed",
+      "[INJSO 2022 — solutions or answer key]\n6. A. frequency of sound waves will not change due to motion of air."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 91559,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 8696,
+      "completionTokens": 2456
+    },
+    "critique": {
+      "calls": 15,
+      "ms": 168998,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 6667,
+      "completionTokens": 2584
+    },
+    "solver": {
+      "calls": 81,
+      "ms": 67700,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 12921,
+      "completionTokens": 805
+    },
+    "form": {
+      "calls": 1,
+      "ms": 2878,
+      "in": 12,
+      "out": 6,
+      "rejects": 6,
+      "promptTokens": 258,
+      "completionTokens": 74
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 62,
+      "ms": 35900,
+      "in": 6,
+      "out": 5,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 251477,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 11238,
+      "completionTokens": 5550
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 1,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which type of motion is described as 'motion of an object that moves continuously up and down or back and forth on the same path' according to the passage?",
+      "ms": {
+        "draft": 6270,
+        "critique": 6678,
+        "solver": 2816,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of non-linear motion according to the passage?",
+      "ms": {
+        "draft": 6270,
+        "critique": 8548,
+        "solver": 3159,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage says that all objects on Earth are in motion. Which of the following best explains this statement?",
+      "ms": {
+        "draft": 6270,
+        "critique": 5934,
+        "solver": 1348,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage describes the motion of a sewing machine. Which of the following parts of the sewing machine exhibits linear motion?",
+      "ms": {
+        "draft": 6270,
+        "critique": 7921,
+        "solver": 15157,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which type of motion is described as 'motion in a straight line' according to the passage?",
+      "ms": {
+        "draft": 6270,
+        "critique": 5434,
+        "solver": 12693,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a car is moving in a straight line but its speed is changing, what type of motion is it exhibiting?",
+      "ms": {
+        "draft": 8990,
+        "critique": 17829,
+        "solver": 32367,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of linear motion?",
+      "ms": {
+        "draft": 8990,
+        "critique": 15620,
+        "solver": 3913,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What type of motion does a pendulum exhibit?",
+      "ms": {
+        "draft": 8990,
+        "critique": 12871,
+        "solver": 4204,
+        "form": 0,
+        "translation": 50470
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A child is riding a merry-go-round. What type of motion does the child experience?",
+      "ms": {
+        "draft": 8990,
+        "critique": 20829,
+        "solver": 4014,
+        "form": 0,
+        "translation": 54012
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student observes an object that is moving in a straight line and then changes direction. What type of motion is this object exhibiting?",
+      "ms": {
+        "draft": 6270,
+        "critique": 8394,
+        "solver": 2152,
+        "form": 2878,
+        "translation": 63897
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A car is moving on a straight road, but the distance it covers in each second keeps changing. What can be said about its motion?",
+      "ms": {
+        "draft": 8990,
+        "critique": 20419,
+        "solver": 3480,
+        "form": 0,
+        "translation": 41701
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A ball is thrown vertically upwards. What type of motion does it exhibit during its ascent?",
+      "ms": {
+        "draft": 8990,
+        "critique": 11841,
+        "solver": 1257,
+        "form": 0,
+        "translation": 36609
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which type of motion is described as 'motion of an object that moves continuously up and down or back and forth on the same path' according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed.','Confuses oscillatory mot…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of non-linear motion according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage says that all objects on Earth are in motion. Which of the following best explains this statement?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The passage describes the motion of a sewing machine. Which of the following parts of the sewing machine exhibits linear motion?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; option lengths are unalike (9 to 46 characters); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which type of motion is described as 'motion in a straight line' according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a car is moving in a straight line but its speed is changing, what type of motion is it exhibiting?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is an example of linear motion?",
+      "reason": "near-duplicate of served question cmviqv6bd0e3egpfh05taujh1 (cosine 0.908 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

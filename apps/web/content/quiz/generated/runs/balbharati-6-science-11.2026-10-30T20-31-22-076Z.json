@@ -1,0 +1,553 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T20:31:22.076Z",
+  "finishedAt": "2026-10-30T20:41:32.052Z",
+  "seconds": 610,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "603050012",
+    "document": "balbharati/6/science/603050012.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 11 — Force and Pressure",
+    "edition": "First Edition 2026",
+    "chunks": 8,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2013 — question paper]\n62. The atmospheric pressure on the earth’s surface is P N/m . A table of area 2 m is a 2 2\ntilted at 45 to the horizontal. The force on the top surface of the table due to the 0\natmosphere is (in newtons):\nA. 2 P √ a\nB. √ 2P a\nC. 2 2P √ a\nD. P / 2 a",
+      "[NSEJS 2020 — answer key]\n2. External pressure will increase with depth:\nF = PA = hρg A\nHence, h = F/ρ g A = 2.5 / (9.8 X 1.05 X10 X 3.14 X (0.5 X 10 ) ) = 3.09 m ~ 3m 3 -2 2",
+      "[INJSO 2013 — solutions or answer key]\n62. The atmospheric pressure on the earth’s surface is P N/m . A table of area 2 m is a 2 2\ntilted at 45 to the horizontal. The force on the top surface of the table due to the 0\natmosphere is (in newtons):\nA. 2 P √ a\nB. √ 2P a\nC. 2 2P √ a\nD. P / 2 a",
+      "[INJSO 2010 — question paper]\n59. A man of mass 100 kg stands on a wood plank of area 4 m . What is the pressure 2\nexerted on the floor? Assume the area of a human foot to be 200 cm . 2\na) 500 N b) 25 N c) 50000 N d) 250 N"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 117726,
+      "in": 30,
+      "out": 28,
+      "rejects": 2,
+      "promptTokens": 24936,
+      "completionTokens": 5526
+    },
+    "critique": {
+      "calls": 35,
+      "ms": 255116,
+      "in": 28,
+      "out": 26,
+      "rejects": 2,
+      "promptTokens": 14854,
+      "completionTokens": 6005
+    },
+    "solver": {
+      "calls": 177,
+      "ms": 97986,
+      "in": 26,
+      "out": 24,
+      "rejects": 2,
+      "promptTokens": 29073,
+      "completionTokens": 1786
+    },
+    "form": {
+      "calls": 16,
+      "ms": 48888,
+      "in": 24,
+      "out": 18,
+      "rejects": 6,
+      "promptTokens": 3744,
+      "completionTokens": 1132
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 62,
+      "ms": 16074,
+      "in": 18,
+      "out": 16,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 67,
+      "ms": 779719,
+      "in": 32,
+      "out": 32,
+      "rejects": 0,
+      "promptTokens": 38938,
+      "completionTokens": 19582
+    }
+  },
+  "kept": 16,
+  "keptByLevel": {
+    "1": 3,
+    "2": 2,
+    "3": 4,
+    "4": 3,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 7,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 6,
+      "stem": "A brick is placed on a surface in two different orientations. In which orientation is the pressure on the surface higher?",
+      "ms": {
+        "draft": 14964,
+        "critique": 8102,
+        "solver": 2005,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A man of mass 100 kg stands on a wood plank of area 4 m². What is the pressure exerted on the floor? (Assume the area of a human foot is 200 cm²)",
+      "ms": {
+        "draft": 14964,
+        "critique": 8711,
+        "solver": 19290
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the unit of pressure according to the passage?",
+      "ms": {
+        "draft": 3549,
+        "critique": 7675
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens when there is a difference in atmospheric pressure between two places?",
+      "ms": {
+        "draft": 3549,
+        "critique": 7079,
+        "solver": 16765,
+        "form": 3292
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person is walking on a bus and keeps their bag in the same place, what will be the state of the bag according to the person?",
+      "ms": {
+        "draft": 3549,
+        "critique": 7229,
+        "solver": 1004
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a ball is in the bowler’s hand and then is thrown towards the batsman, what can be said about the ball’s motion?",
+      "ms": {
+        "draft": 3549,
+        "critique": 5358,
+        "solver": 5117,
+        "form": 1655
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which statement about pressure is true according to the passage?",
+      "ms": {
+        "draft": 2496,
+        "critique": 8111,
+        "solver": 1411,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A force is applied on a unit area. What is this measured quantity called?",
+      "ms": {
+        "draft": 4703,
+        "critique": 7230
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct correlation according to the passage?",
+      "ms": {
+        "draft": 2496,
+        "critique": 8133,
+        "solver": 16880,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A brick is dropped into wet soil in two positions - vertical and horizontal. In which position does the brick sink deeper into the soil?",
+      "ms": {
+        "draft": 4703,
+        "critique": 9304,
+        "solver": 1750,
+        "form": 5015
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the pressure exerted by the air called?",
+      "ms": {
+        "draft": 2496,
+        "critique": 6864,
+        "solver": 1695,
+        "form": 4640
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A performer stands on a board with many sharp nails. Why do the nails not pierce the performer's feet?",
+      "ms": {
+        "draft": 4703,
+        "critique": 8097,
+        "solver": 14768,
+        "form": 2123
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which force is used to press a light switch?",
+      "ms": {
+        "draft": 5051,
+        "critique": 7776,
+        "solver": 2098,
+        "form": 2645,
+        "translation": 32698
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the unit of pressure?",
+      "ms": {
+        "draft": 14964,
+        "critique": 6431,
+        "solver": 1547,
+        "form": 3658,
+        "translation": 31883
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the pressure exerted by the air called?",
+      "ms": {
+        "draft": 3549,
+        "critique": 5038,
+        "solver": 15133,
+        "form": 3440,
+        "translation": 45871
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to an object thrown upwards due to Earth's force?",
+      "ms": {
+        "draft": 5051,
+        "critique": 7002,
+        "solver": 1762,
+        "form": 3190,
+        "translation": 37992
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the force produced due to static electric charges called?",
+      "ms": {
+        "draft": 14964,
+        "critique": 6734,
+        "solver": 1338,
+        "form": 4105,
+        "translation": 47694
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which force is responsible for the attraction of iron objects to a magnet?",
+      "ms": {
+        "draft": 5051,
+        "critique": 6780,
+        "solver": 1361,
+        "form": 3782,
+        "translation": 39227
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A brick is dropped into wet soil in two different positions: vertical and horizontal. Which position causes the brick to sink deeper into the soil?",
+      "ms": {
+        "draft": 14964,
+        "critique": 6226,
+        "solver": 2298,
+        "form": 0,
+        "translation": 58879
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a force that causes objects to move in different games?",
+      "ms": {
+        "draft": 3549,
+        "critique": 7701,
+        "solver": 14484,
+        "form": 4276,
+        "translation": 49573
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the pressure of air if the area of contact increases?",
+      "ms": {
+        "draft": 2496,
+        "critique": 7744,
+        "solver": 1881,
+        "form": 3341,
+        "translation": 41263
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why does a marble travel a different distance on a smooth floor compared to a rough floor?",
+      "ms": {
+        "draft": 5051,
+        "critique": 7922,
+        "solver": 1976,
+        "form": 4382,
+        "translation": 46917
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "A force is applied to change the position of an object. Which of the following scenarios best represents this idea?",
+      "ms": {
+        "draft": 4887,
+        "critique": 8791,
+        "solver": 1670,
+        "form": 0,
+        "translation": 64796
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "A performer stands on a board with many sharp nails. Why do the nails not pierce his feet?",
+      "ms": {
+        "draft": 14964,
+        "critique": 5688,
+        "solver": 1449,
+        "form": 0,
+        "translation": 45993
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student pushes a box with a force of 100 N on a smooth surface. The same box is pushed with the same force on a rough surface. How does the motion differ?",
+      "ms": {
+        "draft": 5051,
+        "critique": 7670,
+        "solver": 1399,
+        "form": 4746,
+        "translation": 90315
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student pushes a box with a force of 10 N, but the box does not move. What could be the reason for this?",
+      "ms": {
+        "draft": 4887,
+        "critique": 7174,
+        "solver": 1903,
+        "form": 0,
+        "translation": 46229
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student strikes a marble with the same force on two different surfaces. The marble travels a shorter distance on one surface. What could be the reason?",
+      "ms": {
+        "draft": 5051,
+        "critique": 7899,
+        "solver": 2188,
+        "form": 2913,
+        "translation": 48824
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Two objects, one with a mass of 5 kg and another with a mass of 10 kg, are dropped from the same height. Which object will reach the ground first if there is no air resistance?",
+      "ms": {
+        "draft": 4887,
+        "critique": 8122,
+        "solver": 1106,
+        "form": 0,
+        "translation": 45315
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A brick is placed on a surface in two different orientations. In which orientation is the pressure on the surface higher?",
+      "reason": "options 0 and 1 say the same thing (\"When the brick is placed on its largest face\" / \"When the brick is placed on its smallest face\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A man of mass 100 kg stands on a wood plank of area 4 m². What is the pressure exerted on the floor? (Assume the area of a human foot is 200 cm²)",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the unit of pressure according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What happens when there is a difference in atmospheric pressure between two places?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a person is walking on a bus and keeps their bag in the same place, what will be the state of the bag according to the person?",
+      "reason": "the solver picked option 0 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a ball is in the bowler’s hand and then is thrown towards the batsman, what can be said about the ball’s motion?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is an example of atmospheric pressure causing wind?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What will happen if a lubricant is not applied to a bicycle chain?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which statement about pressure is true according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A force is applied on a unit area. What is this measured quantity called?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct correlation according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A brick is dropped into wet soil in two positions - vertical and horizontal. In which position does the brick sink deeper into the soil?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"correct answer…\"); distractor 3's reason is not a one-line misconception (\"overlooks the relationship between area and pressure as expl…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the pressure exerted by the air called?",
+      "reason": "near-duplicate of batch item \"What is the pressure exerted by the air called?…\" (cosine 1.000 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "A performer stands on a board with many sharp nails. Why do the nails not pierce the performer's feet?",
+      "reason": "near-duplicate of batch item \"A performer stands on a board with many sharp nail…\" (cosine 0.975 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

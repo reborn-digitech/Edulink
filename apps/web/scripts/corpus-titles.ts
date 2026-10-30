@@ -621,7 +621,8 @@ export function headingNumber(heading: string): number | null {
 type Decision = {
   path: string;
   documentId: string;
-  kind: "bare" | "garbled";
+  /** owner-batch-item8: "reviewed" is a title a person read from the book (REVIEWED_TITLES), written as it is. */
+  kind: "bare" | "garbled" | "reviewed";
   chapterNumber: number;
   oldHeading: string;
   oldTitle: string | null;
@@ -636,6 +637,8 @@ type Decision = {
   considered: Choice["considered"];
   reason: string | null;
   applied: boolean;
+  /** owner-batch-item8: where a reviewed title was read (REVIEWED_TITLES). */
+  reviewedFrom?: string;
 };
 
 function arg(name: string): string | undefined {
@@ -668,6 +671,28 @@ export const REVIEWED_REFUSED: Record<string, string> = {
   "ncert/11/fine-art/kefa103.pdf": "\"Rts\" mended to \"Parts\"; the title is \"Arts of the Mauryan Period\"",
 };
 
+/**
+ * owner-batch-item8 (31 October 2026): titles a person read from the book itself, for chapters the reading above cannot
+ * title (a heading drawn as a picture, a drop capital on a unit's page) or titles it reads right that the word check
+ * refuses (a word the dictionary lacks). The path, the title and where it was read. `--apply` writes "Chapter N: Title"
+ * into a document whose heading differs; topic-titles.ts counts a reviewed title as known.
+ */
+export const REVIEWED_TITLES: Readonly<Record<string, { title: string; from: string }>> = {
+  "ncert/4/environmental-studies/deap121.pdf": { title: "Food and Fun", from: "the book's contents, deap1ps.pdf p. 12 (\"21. Food and Fun 174\"), and the chapter's running head" },
+  "ncert/1/mathematics/aejm109.pdf": { title: "Utsav", from: "the book's contents, aejm1ps.pdf p. 13 (\"9. Utsav (Patterns)\"; the other chapters are titled without their bracketed topic)" },
+  "ncert/5/mathematics/eemh108.pdf": {
+    title: "Mapping Your Way",
+    from: "the book's contents, eemh1ps.pdf p. 7 (\"Mapping Your Way 112\"); \"Chapter 8 — Raghu Rai and Delhi Tourism\" on p. 6 is the acknowledgements' photograph credit for the chapter, not its title",
+  },
+  "ncert/11/geography/kegy101.pdf": { title: "India — Location", from: "the book's contents, kegy1ps.pdf p. 11 (Unit I: \"India — Location\"); the chapter's own page prints the unit's heading over a drop capital" },
+  "ncert/11/geography/kegy104.pdf": { title: "Climate", from: "the book's contents, kegy1ps.pdf p. 11 (Unit III: \"Climate\", then \"Natural Vegetation\", chapter 5); the chapter's own page prints the unit's heading" },
+  // Themes in Indian History: the theme's number ("THEME FOUR") ran into the title. Parts II and III enter the plan now.
+  "ncert/12/history/lehs104.pdf": { title: "Thinkers, Beliefs and Buildings", from: "the contents of Parts I and II, lehs1ps.pdf p. 11 (Theme Four, \"THINKERS, BELIEFS AND BUILDINGS\" over \"Cultural Developments\")" },
+  "ncert/12/history/lehs201.pdf": { title: "Through the Eyes of Travellers", from: "the contents of Parts I and II, lehs1ps.pdf p. 11 (Theme Five, \"THROUGH THE EYES OF TRAVELLERS:\" over \"Perceptions of Society\")" },
+  "ncert/12/history/lehs202.pdf": { title: "Bhakti-Sufi Traditions", from: "the contents of Parts I and II, lehs1ps.pdf p. 11 (Theme Six, \"BHAKTI –SUFI TRADITIONS:\" over \"Changes in Religious Beliefs and Devotional Texts\")" },
+  "ncert/12/history/lehs303.pdf": { title: "Mahatma Gandhi and the Nationalist Movement", from: "the contents of Part III, lehs3ps.pdf p. 11 (Theme Eleven, \"MAHATMA GANDHI AND THE NATIONALIST MOVEMENT\" over \"Civil Disobedience and Beyond\")" },
+};
+
 let dictionaryRead: Set<string> | undefined | null = null;
 /** The English word list on this machine, lower case, or undefined when there is none. Read once. */
 export function loadDictionary(): Set<string> | undefined {
@@ -680,7 +705,8 @@ export function loadDictionary(): Set<string> | undefined {
 async function corpusPass(db: PrismaClient): Promise<void> {
   const { extractPdf } = await import("./corpus-pdf");
   const apply = arg("apply") === "true";
-  const prefix = arg("prefix")?.replace(/^\/+|\/+$/g, "");
+  // owner-batch-item8: several folders or files, comma-separated.
+  const prefixes = (arg("prefix") ?? "").split(",").map((p) => p.trim().replace(/^\/+|\/+$/g, "")).filter(Boolean);
   const dictionary = loadDictionary();
   console.log(dictionary ? `Dictionary: /usr/share/dict/words, ${dictionary.size} words.` : "No dictionary on this machine: the word check uses the chapter's own words alone.");
   // The first chunk of every NCERT and Balbharati textbook: its heading, its number and the book.
@@ -691,7 +717,7 @@ async function corpusPass(db: PrismaClient): Promise<void> {
      WHERE d."kind" = 'textbook' AND d."source" IN ('ncert', 'balbharati')
        AND c."ordinal" = (SELECT min(x."ordinal") FROM "ContentChunk" x WHERE x."documentId" = d."id")
      ORDER BY d."path"`;
-  const docs = firsts.filter((d) => !prefix || d.path.startsWith(prefix));
+  const docs = firsts.filter((d) => !prefixes.length || prefixes.some((p) => d.path.startsWith(p)));
   // The chapter's own words: its text, and the words of its section headings the dictionary knows (a title's words
   // are often a section's too; a heading's drop capitals, "RIGIN", must not become words).
   const vocabFor = async (documentId: string) => {
@@ -713,7 +739,36 @@ async function corpusPass(db: PrismaClient): Promise<void> {
   // Which documents to read: a bare first heading, or (one chapter a file) a title cut short or short of a letter.
   const work: { doc: (typeof docs)[number]; kind: "bare" | "garbled"; vocab: Vocabulary; n: number; flagged?: string }[] = [];
   const garbledBooks: string[] = [];
+  // owner-batch-item8: a title a person read from the book is written as it is (REVIEWED_TITLES), the page not read again.
+  const reviewed: Decision[] = [];
   for (const d of docs) {
+    const r = REVIEWED_TITLES[d.path];
+    if (!r) continue;
+    const heading = (d.heading ?? "").trim();
+    const n = headingNumber(heading) ?? ((d.extra as { chapter?: number } | null)?.chapter ?? null);
+    if (n === null || titlePart(heading) === r.title) continue;
+    reviewed.push({
+      path: d.path,
+      documentId: d.id,
+      kind: "reviewed",
+      chapterNumber: n,
+      oldHeading: heading,
+      oldTitle: titlePart(heading) || null,
+      flagged: null,
+      newHeading: `Chapter ${n}: ${r.title}`,
+      title: r.title,
+      source: "contents",
+      agreed: [],
+      repaired: [],
+      prelims: null,
+      considered: [],
+      reason: null,
+      applied: false,
+      reviewedFrom: r.from,
+    });
+  }
+  for (const d of docs) {
+    if (REVIEWED_TITLES[d.path]) continue;
     const heading = (d.heading ?? "").trim();
     const n = headingNumber(heading) ?? ((d.extra as { chapter?: number } | null)?.chapter ?? null);
     if (isBareHeading(heading)) {
@@ -828,15 +883,16 @@ async function corpusPass(db: PrismaClient): Promise<void> {
     });
   }
 
+  decisions.push(...reviewed);
   // The review table.
   const resolved = decisions.filter((d) => d.newHeading);
   const left = decisions.filter((d) => !d.newHeading);
   const pad = (s: string, w: number) => (s.length > w ? `${s.slice(0, w - 1)}…` : s.padEnd(w));
   console.log(`\n${pad("path", 44)} ${pad("old heading", 30)} ${pad("new title", 58)} source`);
   for (const d of decisions) {
-    console.log(`${pad(d.path, 44)} ${pad(d.oldHeading, 30)} ${pad(d.title ?? `— ${d.reason}`, 58)} ${d.source ?? ""}${d.agreed.length ? ` +${d.agreed.join("+")}` : ""}${d.repaired.length ? ` (mended: ${d.repaired.join(", ")})` : ""}`);
+    console.log(`${pad(d.path, 44)} ${pad(d.oldHeading, 30)} ${pad(d.title ?? `— ${d.reason}`, 58)} ${d.reviewedFrom ? `reviewed: ${d.reviewedFrom}` : (d.source ?? "")}${d.agreed.length ? ` +${d.agreed.join("+")}` : ""}${d.repaired.length ? ` (mended: ${d.repaired.join(", ")})` : ""}`);
   }
-  console.log(`\n${decisions.length} document(s) read: ${decisions.filter((d) => d.kind === "bare").length} with a bare heading, ${decisions.filter((d) => d.kind === "garbled").length} with a garbled one; ${resolved.length} titled, ${left.length} left as they are.`);
+  console.log(`\n${decisions.length} document(s) read: ${decisions.filter((d) => d.kind === "bare").length} with a bare heading, ${decisions.filter((d) => d.kind === "garbled").length} with a garbled one, ${decisions.filter((d) => d.kind === "reviewed").length} titled by review (REVIEWED_TITLES); ${resolved.length} titled, ${left.length} left as they are.`);
   if (garbledBooks.length) {
     console.log(`${garbledBooks.length} book-a-file document(s) (Balbharati) open on a heading that fails the check; a book is not read again here:`);
     for (const g of garbledBooks) console.log(`  ${g}`);

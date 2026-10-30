@@ -363,29 +363,62 @@ export function chapterNumberOf(chapter: string): number | null {
 export function chapterNameOf(chapter: string): string {
   const name = chapter
     .trim()
-    .replace(/^(?:chapter|unit|lesson)?\s*\d{1,2}\s*[:.]?\s*[—–-]?\s*/i, "")
+    // owner-batch-item8: "Chapter 5 (Contemporary World Politics) — …": the book beside the number is not the name.
+    .replace(/^(?:chapter|unit|lesson)?\s*\d{1,2}\s*(?:\([^()]*\)\s*)?[:.]?\s*[—–-]?\s*/i, "")
     .replace(/\s+/g, " ")
     .trim();
   return /^(?:chapter|unit|lesson)?\s*\d{0,2}\s*[:.]?$/i.test(name) ? "" : name;
 }
 
+/**
+ * owner-batch-item8 (31 Oct 2026): the book a bank chapter line names beside its number — "Chapter 5 (Contemporary World
+ * Politics) — Security in the Contemporary World" → "Contemporary World Politics" — or null. A class and subject whose
+ * NCERT plan carries two books under one number (class 12 political science: Contemporary World Politics and Politics in
+ * India since Independence) names the book in every chapter line, so the two chapter 5s are two chapters. Pure.
+ */
+export function chapterBookOf(line: string): string | null {
+  const m = /^\s*(?:chapter|unit)\s+\d{1,2}\s+\(([^()]+)\)/i.exec(line);
+  return m ? m[1]!.trim() : null;
+}
+
+/** owner-batch-item8: the bank's chapter line, "Chapter N — Title", with the book beside the number when the plan names it. Pure. */
+export function chapterLineFor(number: number, name: string, book: string | null = null): string {
+  return `Chapter ${number}${book ? ` (${book})` : ""} — ${name}`;
+}
+
+/** owner-batch-item8: a book's short name for a slug ("Introductory Macroeconomics" → "introductory-macroeconomics"): its words up to 30 letters. Pure. */
+export function bookSlug(title: string): string {
+  let out = "";
+  for (const w of slugify(title, 200).split("-")) {
+    if (!w) continue;
+    const next = out ? `${out}-${w}` : w;
+    if (next.length > 30 && out) break;
+    out = next;
+  }
+  return out;
+}
 
 function contentWords(s: string): Set<string> {
   return new Set(words(s).filter((w) => !STOP.has(w) && w.length > 1));
 }
 
-export type ExistingTopic = { slug: string; chapter: string; name: string; position: number; retired: boolean };
+export type ExistingTopic = { slug: string; chapter: string; name: string; position: number; retired: boolean; /** owner-batch-item8: the topic's board (QUIZ_BOARDS code), when the caller read it. */ board?: string | null };
 
 /**
  * The bank's topic for a chapter, by subject and class (the caller's query), then by the chapter's
  * NUMBER and its NAME together: the number alone would send Curiosity's chapter 4 (electricity) into
  * the old book's chapter 4 (metals). Three fifths of the name's content words must match.
  */
-export function matchTopic(existing: ExistingTopic[], chapterNumber: number | null, chapterName: string): ExistingTopic | null {
+export function matchTopic(existing: ExistingTopic[], chapterNumber: number | null, chapterName: string, book: string | null = null, board: string | null = null): ExistingTopic | null {
   const want = contentWords(chapterName);
   let best: { topic: ExistingTopic; score: number } | null = null;
   for (const t of existing) {
     if (t.retired) continue;
+    // owner-batch-item8: a board's chapter matches only that board's topics (Balbharati class 6 "Lines and Angles" took
+    // the NCERT topic's slug, and the loader held the batch for the board clash).
+    if (board !== null && t.board !== undefined && (t.board ?? "").toUpperCase() !== board.toUpperCase()) continue;
+    // owner-batch-item8: a chapter of a book the plan names matches only that book's chapters, and a plain chapter none of them.
+    if ((chapterBookOf(t.chapter) ?? null) !== book) continue;
     const have = contentWords(`${chapterNameOf(t.chapter)} ${t.name}`);
     let both = 0;
     for (const w of want) if (have.has(w)) both++;
@@ -412,6 +445,11 @@ export function slugify(s: string, max = 60): string {
  * written against NCERT); another board is prefixed, because QuizTopic carries no board column and
  * "science-8-force-and-pressure" from Balbharati would otherwise sit beside NCERT's as a twin.
  */
+/** owner-batch-item8: "Balbharati" (the generator's spelling) → "BALBHARATI" (the bank's QUIZ_BOARDS code). Pure. */
+export function boardCodeOf(board: string): string {
+  return board.trim().toUpperCase();
+}
+
 export function newTopicSlug(board: string, subject: string, classLevel: number, chapterName: string): string {
   const prefix = /^ncert/i.test(board) ? "" : `${slugify(board.split(/[\s(]/)[0] ?? board)}-`;
   return `${prefix}${subject.toLowerCase()}-${classLevel}-${slugify(chapterName, 40)}`;
@@ -424,13 +462,28 @@ export function newTopicSlug(board: string, subject: string, classLevel: number,
  * SAME name is the same chapter in a book that numbers it differently (NCERT class 12 mathematics Part II restarts at
  * 1): the batch extends it, as before. Pure.
  */
-export function slugForNewTopic(existing: readonly Pick<ExistingTopic, "slug" | "name">[], board: string, subject: string, classLevel: number, chapterName: string, chapterNumber: number): string {
+export function slugForNewTopic(
+  existing: readonly (Pick<ExistingTopic, "slug" | "name"> & { chapter?: string; board?: string | null })[],
+  board: string,
+  subject: string,
+  classLevel: number,
+  chapterName: string,
+  chapterNumber: number,
+  book: string | null = null,
+): string {
   const base = newTopicSlug(board, subject, classLevel, chapterName);
   const squash = (s: string) => s.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, "");
   const holder = existing.find((t) => t.slug === base);
-  if (!holder || squash(holder.name) === squash(chapterName)) return base;
+  // owner-batch-item8 (31 Oct 2026): the same name in ANOTHER book (class 12 geography's two "Transport and Communication"
+  // chapters, one in each book) is another chapter: the slug carries the book's short name.
+  const sameBook = (t: { chapter?: string }) => t.chapter === undefined || (chapterBookOf(t.chapter) ?? null) === book;
+  // owner-batch-item8: another board's topic is never extended (newTopicSlug prefixes every board but NCERT, so this is
+  // an older slug that lost its prefix).
+  const sameBoard = (t: { board?: string | null }) => t.board === undefined || (t.board ?? "").toUpperCase() === boardCodeOf(board);
+  if (!holder || (squash(holder.name) === squash(chapterName) && sameBook(holder) && sameBoard(holder))) return base;
+  const stem = book && squash(holder.name) === squash(chapterName) ? `${base}-${bookSlug(book)}` : `${base}-${chapterNumber}`;
   for (let k = 0; ; k++) {
-    const slug = k === 0 ? `${base}-${chapterNumber}` : `${base}-${chapterNumber}-${k + 1}`;
+    const slug = k === 0 ? stem : `${stem}-${k + 1}`;
     if (!existing.some((t) => t.slug === slug)) return slug;
   }
 }

@@ -1,0 +1,551 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T20:00:30.582Z",
+  "finishedAt": "2026-10-30T20:11:05.160Z",
+  "seconds": 635,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "603050012",
+    "document": "balbharati/6/science/603050012.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 8 — Beyond the Sky",
+    "edition": "First Edition 2026",
+    "chunks": 11,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2026-27]\nthe inference he draws on the basis of his experiment be correct? Justify\nyour answer.",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n6. B. (ii), (iii), (iv)",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n31. A. As sunlight passes through the atmosphere, Rayleigh scattering causes 1\nshorter wavelengths, such as blue and violet, to scatter more than other\ncolors, but our eyes are more sensitive to blue than violet.",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n31. Choose the correct option from the below which explains the reason for us to 1\nperceive the day sky as blue.\nA. As sunlight passes through the atmosphere, shorter wavelengths, such\nas blue are scattered more than other colors.\nB. The sky appears blue because all colors are scattered equally, but\nblue light is stronger and more visible to the human eye.\nC. The blue color of the sky is due to longer wavelengths like red and\norange scattering more than shorter wavelengths, making blue stand\nout more.\nD. The atmosphere contains blue-colored particles that give the sky its\nblue appearance.\nThe following question consists of two statements – Assertion (A) and Reason (R). Answer\nthese questions"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 111746,
+      "in": 30,
+      "out": 29,
+      "rejects": 1,
+      "promptTokens": 26194,
+      "completionTokens": 5401
+    },
+    "critique": {
+      "calls": 31,
+      "ms": 229467,
+      "in": 29,
+      "out": 27,
+      "rejects": 2,
+      "promptTokens": 13295,
+      "completionTokens": 5262
+    },
+    "solver": {
+      "calls": 146,
+      "ms": 81238,
+      "in": 27,
+      "out": 21,
+      "rejects": 6,
+      "promptTokens": 21857,
+      "completionTokens": 1374
+    },
+    "form": {
+      "calls": 17,
+      "ms": 58653,
+      "in": 21,
+      "out": 18,
+      "rejects": 3,
+      "promptTokens": 4086,
+      "completionTokens": 1201
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 60,
+      "ms": 11416,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 73,
+      "ms": 906719,
+      "in": 36,
+      "out": 36,
+      "rejects": 0,
+      "promptTokens": 42463,
+      "completionTokens": 21389
+    }
+  },
+  "kept": 18,
+  "keptByLevel": {
+    "1": 3,
+    "2": 4,
+    "3": 3,
+    "4": 4,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 8,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 6,
+      "stem": "Which of the following is a correct inference based on the passage?",
+      "ms": {
+        "draft": 3500,
+        "critique": 7798,
+        "solver": 2153,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT a way humans understood the sky before telescopes?",
+      "ms": {
+        "draft": 3500,
+        "critique": 9095,
+        "solver": 17834
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Why did people in Los Angeles get scared when they saw a shining, smoky white band in the sky?",
+      "ms": {
+        "draft": 4268,
+        "critique": 8125,
+        "solver": 2006
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which organization is known for conducting space missions in India?",
+      "ms": {
+        "draft": 3129,
+        "critique": 7583
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of the Aditya-L1 spacecraft?",
+      "ms": {
+        "draft": 3129,
+        "critique": 7077
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the main difference between the sky and space according to the passage?",
+      "ms": {
+        "draft": 3129,
+        "critique": 3205,
+        "solver": 957,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which organization is well known for conducting space missions?",
+      "ms": {
+        "draft": 2992,
+        "critique": 8011,
+        "solver": 2561
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is NOT a necessary activity for sky observation?",
+      "ms": {
+        "draft": 2992,
+        "critique": 6528,
+        "solver": 18350
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Why did people in Los Angeles get scared when they saw a shining, smoky white band in the sky?",
+      "ms": {
+        "draft": 19972,
+        "critique": 7852,
+        "solver": 2174
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Why does the sky appear blue during the day?",
+      "ms": {
+        "draft": 6526,
+        "critique": 8009,
+        "solver": 1676,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What can be inferred about the size of the Sun compared to other stars in the Milky Way?",
+      "ms": {
+        "draft": 19972,
+        "critique": 9371,
+        "solver": 2500
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the thick envelope of air around the Earth called?",
+      "ms": {
+        "draft": 3500,
+        "critique": 7244,
+        "solver": 2681,
+        "form": 2990,
+        "translation": 42999
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which celestial object is visible in the north direction but not from the southern hemisphere of the earth?",
+      "ms": {
+        "draft": 19972,
+        "critique": 6535,
+        "solver": 1563,
+        "form": 4089,
+        "translation": 43664
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which mission of ISRO was launched to study the sun?",
+      "ms": {
+        "draft": 2992,
+        "critique": 7433,
+        "solver": 1397,
+        "form": 3931,
+        "translation": 39000
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why does the sky appear blue during the day?",
+      "ms": {
+        "draft": 3500,
+        "critique": 6830,
+        "solver": 2145,
+        "form": 3660,
+        "translation": 58148
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements is true about the visibility of constellations from different parts of the earth?",
+      "ms": {
+        "draft": 4268,
+        "critique": 9501,
+        "solver": 1632,
+        "form": 4444,
+        "translation": 68164
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason that people in the southern hemisphere cannot see the stars in the northern hemisphere?",
+      "ms": {
+        "draft": 4268,
+        "critique": 7810,
+        "solver": 2158,
+        "form": 2634,
+        "translation": 48588
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a celestial object made of rocks, dust and frozen material?",
+      "ms": {
+        "draft": 2992,
+        "critique": 7674,
+        "solver": 2016,
+        "form": 4371,
+        "translation": 53505
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a celestial object?",
+      "ms": {
+        "draft": 3500,
+        "critique": 6797,
+        "solver": 1139,
+        "form": 4278,
+        "translation": 42626
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the frozen material of a comet when it comes closer to the sun?",
+      "ms": {
+        "draft": 4268,
+        "critique": 7008,
+        "solver": 2119,
+        "form": 3703,
+        "translation": 66662
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a space mission conducted by ISRO?",
+      "ms": {
+        "draft": 3129,
+        "critique": 7283,
+        "solver": 1772,
+        "form": 4949,
+        "translation": 51729
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the reason for the night sky appearing as a smoky white band called Akashganga?",
+      "ms": {
+        "draft": 4268,
+        "critique": 7482,
+        "solver": 1873,
+        "form": 4845,
+        "translation": 58280
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason for the pole star being visible only in the northern hemisphere?",
+      "ms": {
+        "draft": 19972,
+        "critique": 7548,
+        "solver": 1902,
+        "form": 3756,
+        "translation": 41019
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the significance of the Chandrayaan-1 mission?",
+      "ms": {
+        "draft": 3129,
+        "critique": 7799,
+        "solver": 1536,
+        "form": 3413,
+        "translation": 46801
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the main purpose of the NISAR satellite?",
+      "ms": {
+        "draft": 2992,
+        "critique": 5845,
+        "solver": 1788,
+        "form": 3676,
+        "translation": 46413
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Why did humans draw paintings of comets on cave walls?",
+      "ms": {
+        "draft": 3500,
+        "critique": 7828,
+        "solver": 1489,
+        "form": 5493,
+        "translation": 48044
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What is the main reason people should not believe in blind beliefs about celestial events?",
+      "ms": {
+        "draft": 3129,
+        "critique": 7407,
+        "solver": 1810,
+        "form": 2896,
+        "translation": 52876
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the main reason for the development of space exploration and the use of spacecraft?",
+      "ms": {
+        "draft": 6526,
+        "critique": 7507,
+        "solver": 1794,
+        "form": 0,
+        "translation": 46894
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the significance of the statement that the galaxy Mandakini is named as Akashganga?",
+      "ms": {
+        "draft": 4268,
+        "critique": 8179,
+        "solver": 2061,
+        "form": 3304,
+        "translation": 47990
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is a correct inference based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is NOT a way humans understood the sky before telescopes?",
+      "reason": "after redrafting distractors 0, 1, 2: option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Why did people in Los Angeles get scared when they saw a shining, smoky white band in the sky?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which organization is known for conducting space missions in India?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the purpose of the Aditya-L1 spacecraft?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the main difference between the sky and space according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"The sky is the region around the Earth and space is beyond the sky\" / \"The sky is the region beyond the Earth and space is around the Earth\"); options 2 and 3 say the same thing (\"The sky is the region with stars and space is the region without stars\" / \"The sky is the region with clouds and space is the region without clouds\")"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about stars?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which organization is well known for conducting space missions?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is NOT a necessary activity for sky observation?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Why did people in Los Angeles get scared when they saw a shining, smoky white band in the sky?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Why does the sky appear blue during the day?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Incorrectly assumes blue light is more present than other co…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What can be inferred about the size of the Sun compared to other stars in the Milky Way?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

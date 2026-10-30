@@ -1,0 +1,488 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T20:21:48.409Z",
+  "finishedAt": "2026-10-30T20:31:18.206Z",
+  "seconds": 570,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "603050012",
+    "document": "balbharati/6/science/603050012.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 10 — Into the Magical World of Magnets",
+    "edition": "First Edition 2026",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2022-23]\n32. (a) When iron filings are placed in a magnetic field around a bar magnet, they 3\nbehave like tiny magnets. The magnetic force experienced by these tiny magnets\nmake them rotate and align themselves along the direction of field lines. (1 mark)\n(b)The physical property indicated by this arrangement is the magnetic field\nproduced by the bar magnet. (1 mark)\n(c) Magnetic field lines never intersect, magnetic field lines are closed curves.\n(1mark)\nOR\n(a) The deflection in the compass needle increases as Magnetic field of the current\ncarrying conductor is directly proportional to current flowing through it.\n(1.5marks)\n(b) The deflection in the needle decreases as the magnetic field is inversel",
+      "[CBSE Class X Science, sample question paper, 2022-23]\n32. A student fixes a white sheet of paper on a drawing board. He places a bar magnet 3\nin the centre and sprinkles some iron filings uniformly around the bar magnet. Then\nhe taps gently and observes that iron filings arrange themselves in a certain pattern.\n(a) Why do iron filings arrange themselves in a particular pattern?\n(b) Which physical quantity is indicated by the pattern of field lines around the\nbar magnet?\n(c) State any two properties of magnetic field lines.\nOR\nA compass needle is placed near a current carrying wire. State your observations for\nthe following cases and give reasons for the same in each case-\n(a) Magnitude of electric current in wire is increased.\n(b) The compass n",
+      "[INJSO 2011 — question paper]\n43. You are given two identical steel pieces A and B and only one of those is magnetized. In all the\nfollowing arrangements, there is attraction between A and B. Which of the following\narrangements helps us in identifying the magnet? HBCSE Homi Bhabha Centre for Science Education Tata Institute of Fundamental Research, Mumbai",
+      "[CBSE Class X Science, sample question paper, 2026-27]\n38. A school has installed an automatic electromagnetic door-locking system at the 4\nmain entrance. The locking mechanism uses a solenoid controlled by a switch at\nthe security desk. When electricity flows through the solenoid, it creates a\nmagnetic field strong enough to pull an iron bolt, unlocking the door.\nAs soon as the switch is turned off, the magnetic field disappears, and a spring\npushes the bolt back, locking the door.\nA. Why is an iron core kept inside the solenoid in this locking mechanism?\nB. How can we determine the magnetic poles in this solenoid?\nAttempt either subpart (C) or (D).\nC. If the current in the solenoid is increased from 1 A to 2 A, explain how the\nmagnetic effect "
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 117090,
+      "in": 23,
+      "out": 23,
+      "rejects": 0,
+      "promptTokens": 17781,
+      "completionTokens": 5565
+    },
+    "critique": {
+      "calls": 25,
+      "ms": 185095,
+      "in": 23,
+      "out": 20,
+      "rejects": 3,
+      "promptTokens": 11846,
+      "completionTokens": 4217
+    },
+    "solver": {
+      "calls": 113,
+      "ms": 60300,
+      "in": 20,
+      "out": 17,
+      "rejects": 3,
+      "promptTokens": 16984,
+      "completionTokens": 971
+    },
+    "form": {
+      "calls": 18,
+      "ms": 84854,
+      "in": 17,
+      "out": 10,
+      "rejects": 7,
+      "promptTokens": 11638,
+      "completionTokens": 1846
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 61,
+      "ms": 14795,
+      "in": 10,
+      "out": 8,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 482499,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 19619,
+      "completionTokens": 10539
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 3,
+    "4": 1,
+    "5": 0,
+    "6": 2
+  },
+  "flagged": 3,
+  "needsFigure": 2,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 5,
+      "stem": "What does the passage suggest about the use of magnets in ATM cards?",
+      "ms": {
+        "draft": 3601,
+        "critique": 5797,
+        "solver": 1829,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens when a magnet is taken near dry black soil from a barren field?",
+      "ms": {
+        "draft": 3601,
+        "critique": 6008,
+        "solver": 2406
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a magnetic substance?",
+      "ms": {
+        "draft": 18320,
+        "critique": 9093
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a bar magnet is taken near iron fillings, then most of the iron fillings stick to",
+      "ms": {
+        "draft": 18320,
+        "critique": 6717,
+        "solver": 1374,
+        "form": 2748
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Stainless steel is a magnetic substance. Write true or false.",
+      "ms": {
+        "draft": 18320,
+        "critique": 7711,
+        "solver": 1990,
+        "form": 2923
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student fixes a white sheet of paper on a drawing board. He places a bar magnet in the centre and sprinkles some iron filings uniformly around the bar magnet. Then he taps gently and observes that iron filings arrange themselves in a certain pattern. Why do iron filings arrange themselves in a particular pattern?",
+      "ms": {
+        "draft": 18320,
+        "critique": 7574,
+        "solver": 1902,
+        "form": 4315
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A school has installed an automatic electromagnetic door-locking system at the main entrance. The locking mechanism uses a solenoid controlled by a switch at the security desk. When electricity flows through the solenoid, it creates a magnetic field strong enough to pull an iron bolt, unlocking the door. As soon as the switch is turned off, the magnetic field disappears, and a spring pushes the bolt back, locking the door. Why is an iron core kept inside the solenoid in this locking mechanism?",
+      "ms": {
+        "draft": 18320,
+        "critique": 7441,
+        "solver": 7416,
+        "form": 1787
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "If a bar magnet is taken near iron fillings, then most of the iron fillings stick to",
+      "ms": {
+        "draft": 3388,
+        "critique": 6117
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a magnetic substance?",
+      "ms": {
+        "draft": 3388,
+        "critique": 6545
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Out of the following, which poles of magnet show attraction?",
+      "ms": {
+        "draft": 3388,
+        "critique": 7245,
+        "solver": 1687
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A bar magnet is cut in three pieces. Which of the following is the correct position?",
+      "ms": {
+        "draft": 3388,
+        "critique": 7173,
+        "solver": 2699,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a magnetic substance?",
+      "ms": {
+        "draft": 19219,
+        "critique": 9428,
+        "solver": 1814,
+        "form": 2780
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which part of a bar magnet attracts magnetic substances the most strongly?",
+      "ms": {
+        "draft": 19219,
+        "critique": 9832,
+        "solver": 20875
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the magnet shown below is moved above the iron fillings, then at which part most of the iron fillings will stick?",
+      "ms": {
+        "draft": 3388,
+        "critique": 8959,
+        "solver": 1776,
+        "form": 3801
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student places a bar magnet in the center of a white sheet of paper and sprinkles iron filings around it. When tapped, the iron filings arrange themselves in a pattern. What does this pattern indicate?",
+      "ms": {
+        "draft": 19219,
+        "critique": 7443,
+        "solver": 3084,
+        "form": 3316
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "A suspended magnet settles in",
+      "ms": {
+        "draft": 3388,
+        "critique": 7066,
+        "solver": 1832,
+        "form": 2613,
+        "translation": 44122
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens when a magnet is taken near objects like utensils, coins, and decorative articles?",
+      "ms": {
+        "draft": 3601,
+        "critique": 7923,
+        "solver": 2368,
+        "form": 3653,
+        "translation": 66713
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens when a freely suspended magnet is pushed and shifted in different directions?",
+      "ms": {
+        "draft": 3601,
+        "critique": 7257,
+        "solver": 1213,
+        "form": 6000,
+        "translation": 76576
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens when a bar magnet is suspended freely in a horizontal position?",
+      "ms": {
+        "draft": 19219,
+        "critique": 8848,
+        "solver": 2129,
+        "form": 4629,
+        "translation": 56633
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the magnet shown below is moved above the iron fillings, then at which part most of the iron fillings will stick?",
+      "ms": {
+        "draft": 18320,
+        "critique": 7747,
+        "solver": 1846,
+        "form": 0,
+        "translation": 48696
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the arrangement of iron filings around a bar magnet indicate?",
+      "ms": {
+        "draft": 3601,
+        "critique": 7524,
+        "solver": 1880,
+        "form": 3888,
+        "translation": 55729
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What can be inferred about the properties of a magnet based on the experiment with the freely suspended magnet?",
+      "ms": {
+        "draft": 3601,
+        "critique": 6142,
+        "solver": 1565,
+        "form": 4033,
+        "translation": 66103
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student suspends a bar magnet freely and observes that it always points in the north-south direction. What does this observation prove about the magnet?",
+      "ms": {
+        "draft": 19219,
+        "critique": 8686,
+        "solver": 1890,
+        "form": 4986,
+        "translation": 62190
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What does the passage suggest about the use of magnets in ATM cards?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What happens when a magnet is taken near dry black soil from a barren field?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a magnetic substance?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If a bar magnet is taken near iron fillings, then most of the iron fillings stick to",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Incorrectly assumes the middle has the strongest magnetic fo…\"); distractor 1's reason is not a one-line misconception (\"difficulty':2,'stem':'A suspended magnet settles in','option…\"); distractor 2's reason is not a one-line misconception (\"difficulty':2,'stem':'Out of the following, which poles of m…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Stainless steel is a magnetic substance. Write true or false.",
+      "reason": "distractor 2's reason is not a one-line misconception (\"difficulty':1,'stem':'Magnetite is a natural magnet. Write t…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student fixes a white sheet of paper on a drawing board. He places a bar magnet in the centre and sprinkles some iron filings uniformly around the bar magnet. Then he taps gently and observes that iron filings arrange themselves in a certain pattern. Why do iron filings arrange themselves in a particular pattern?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"difficulty':5,'stem':'A compass needle is placed near a curr…\"); distractor 3's reason is not a one-line misconception (\"difficulty':6,'stem':'You are given two identical steel piec…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A school has installed an automatic electromagnetic door-locking system at the main entrance. The locking mechanism uses a solenoid controlled by a switch at the security desk. When electricity flows through the solenoid, it creates a magnetic field strong enough to pull an iron bolt, unlocking the door. As soon as the switch is turned off, the magnetic field disappears, and a spring pushes the bolt back, locking the door. Why is an iron core kept inside the solenoid in this locking mechanism?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'solenoid'"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "If a bar magnet is taken near iron fillings, then most of the iron fillings stick to",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a magnetic substance?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Out of the following, which poles of magnet show attraction?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A bar magnet is cut in three pieces. Which of the following is the correct position?",
+      "reason": "option 3 is a catch-all (\"(d) None of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a magnetic substance?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, but it is the only…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which part of a bar magnet attracts magnetic substances the most strongly?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "If the magnet shown below is moved above the iron fillings, then at which part most of the iron fillings will stick?",
+      "reason": "near-duplicate of batch item \"If the magnet shown below is moved above the iron …\" (cosine 1.000 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A student places a bar magnet in the center of a white sheet of paper and sprinkles iron filings around it. When tapped, the iron filings arrange themselves in a pattern. What does this pattern indicate?",
+      "reason": "near-duplicate of served question cmv48tezj005xgnbaxl0ff6uc (cosine 0.911 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

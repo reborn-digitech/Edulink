@@ -84,6 +84,8 @@ export const quizBankChapterRowSchema = z.object({
   name: z.string(),
   /** The book's chapter number, when the chapter line carries one. */
   number: z.number().int().nullable(),
+  /** owner-batch-item8: the book the chapter line names beside its number, where two books of the class share chapter numbers; null otherwise. */
+  book: z.string().nullable(),
   /** Served questions at levels 1 to 6, and in all. */
   levels: z.array(count).length(6),
   total: count,

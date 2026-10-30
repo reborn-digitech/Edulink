@@ -1,0 +1,183 @@
+{
+  "subject": "MATHS",
+  "classLevel": 12,
+  "chapter": "Chapter 8 — Application of Integrals",
+  "name": "Application of Integrals",
+  "slug": "maths-12-application-of-integrals",
+  "summary": "This chapter explains how to use integrals to find areas under curves and between curves.",
+  "position": 2,
+  "source": "generated against NCERT Mathematics, Class 12, chapter 2 (Reprint 2026-27)",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {
+    "hi": {
+      "name": "अध्याय 2 - समाकलों के अनुप्रयोग",
+      "summary": "इस अध्याय में समाकलों का उपयोग वक्रों के नीचे और वक्रों के बीच के क्षेत्रफल ज्ञात करने के लिए किया जाता है।"
+    },
+    "mr": {
+      "name": "अध्याय 2 - समाकलांचे अनुप्रयोग",
+      "summary": "हा अध्याय समाकलांचा वापर वक्रांच्या खालील आणि वक्रांमधील क्षेत्रफळ शोधण्यासाठी करतो."
+    }
+  },
+  "board": "NCERT",
+  "book": "Mathematics Part-II",
+  "edition": "Reprint 2026-27",
+  "generatedAt": "2026-10-28T23:36:12.365Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": true,
+  "questions": [
+    {
+      "difficulty": 3,
+      "stem": "What is the main idea behind the method of exhaustion?",
+      "choices": [
+        "To find the area of a shape by dividing it into small parts",
+        "To approximate the value of a limit",
+        "To calculate the derivative of a function",
+        "To determine the inverse of a function"
+      ],
+      "answerIndex": 0,
+      "solution": "The main idea behind the method of exhaustion is to find the area of a shape by dividing it into small parts. This approach involves approximating the area using simpler shapes whose areas can be calculated. The other options describe different mathematical concepts, such as limits, derivatives, and inverses, which are not the primary purpose of the method of exhaustion.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अग्रणी विधि का मुख्य विचार क्या है?",
+          "choices": [
+            "एक आकृति के क्षेत्रफल को छोटे भागों में विभाजित करके ज्ञात करना",
+            "एक सीमा के मान का अनुमान लगाना",
+            "एक फलन के अवकलज की गणना करना",
+            "एक फलन के व्युत्क्रम का निर्धारण करना"
+          ],
+          "solution": "अग्रणी विधि के पीछे मुख्य विचार एक आकृति के क्षेत्रफल को छोटे भागों में विभाजित करके ज्ञात करना है। इस दृष्टिकोण में सरल आकृतियों के उपयोग से क्षेत्रफल का अनुमान लगाया जाता है जिनके क्षेत्रफल की गणना की जा सकती है। अन्य विकल्प सीमाओं, अवकलजों और व्युत्क्रमों जैसी अलग-अलग गणितीय अवधारणाओं का वर्णन करते हैं, जो अग्रणी विधि के मुख्य उद्देश्य नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate and maintains the original meaning, with appropriate mathematical terminology used in a Hindi-medium context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आयतेपणाच्या पद्धतीचा मुख्य विचार काय आहे?",
+          "choices": [
+            "एका आकृतीचे क्षेत्रफळ लहान भागांमध्ये विभागून शोधणे",
+            "एका सीमेच्या मूल्याचे अंदाज लावणे",
+            "एका फलनाच्या व्युत्पन्नाची गणना करणे",
+            "एका फलनाच्या व्युत्क्रमाची निश्चित करणे"
+          ],
+          "solution": "आयतेपणाच्या पद्धतीचा मुख्य विचार एका आकृतीचे क्षेत्रफळ लहान भागांमध्ये विभागून शोधणे आहे. ह्या पद्धतीमध्ये सोप्या आकृतींच्या क्षेत्रफळांच्या अंदाजाने क्षेत्रफळाचे अंदाज लावला जातो. इतर विकल्पांमध्ये सीमा, व्युत्पन्न आणि व्युत्क्रम यांसारख्या वेगवेगळ्या गणितीय संकल्पना आहेत, ज्यांचा मुख्य उद्देश आयतेपणाच्या पद्धतीचा नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Describes a general idea of integration, not the specific method of exhaustion.",
+        "Refers to a concept in calculus related to limits, not the method of exhaustion.",
+        "Refers to a concept in differential calculus, not the method of exhaustion."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as the method of exhaustion is indeed about finding the area of a shape by dividing it into small parts. The other options are unrelated to the method and represent other calculus concepts, which aligns with the author's reasoning.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh202.pdf",
+          "ordinal": 4,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 2: Application of Integrals"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T23:36:12.365Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "What is the significance of the relationship between the antiderivative and the definite integral?",
+      "choices": [
+        "It allows for the calculation of limits",
+        "It provides a way to find the derivative of a function",
+        "It establishes that differentiation and integration are inverse operations",
+        "It helps in finding the area under a curve using the method of exhaustion"
+      ],
+      "answerIndex": 2,
+      "solution": "The significance of the relationship between the antiderivative and the definite integral is that it establishes that differentiation and integration are inverse operations. This fundamental principle allows one to compute definite integrals by finding antiderivatives. The other options describe different concepts in calculus and do not directly address this core relationship.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अंतर्विलोम फलन और निश्चित समाकल के बीच संबंध का क्या महत्व है?",
+          "choices": [
+            "यह सीमा की गणना की अनुमति देता है",
+            "यह एक फलन के अवकलज की गणना करने का एक तरीका प्रदान करता है",
+            "यह स्थापित करता है कि अवकलन और समाकलन विलोम संक्रियाएं हैं",
+            "यह अतिरिक्त विधि का उपयोग करके वक्र के नीचे के क्षेत्रफल की गणना में सहायता करता है"
+          ],
+          "solution": "अंतर्विलोम फलन और निश्चित समाकल के बीच संबंध का महत्व यह है कि यह स्थापित करता है कि अवकलन और समाकलन विलोम संक्रियाएं हैं। यह मूलभूत सिद्धांत एक निश्चित समाकल की गणना अंतर्विलोम फलन खोजकर करने की अनुमति देता है। अन्य विकल्प कलन के अलग अवधारणाओं का वर्णन करते हैं और इस मूलभूत संबंध के सीधे रूप से उल्लेख नहीं करते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard mathematical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अंतर्विलोम आणि निश्चित समाकलाच्या संबंधाचा अर्थ काय आहे?",
+          "choices": [
+            "ते सीमा गणनेची परवानगी देते",
+            "ते फलनाच्या व्युत्पन्नाच्या शोधण्याचा एक मार्ग प्रदान करते",
+            "ते व्युत्पन्न आणि समाकलन यांच्या व्युत्क्रम क्रियांची निर्मिती करते",
+            "ते अतिक्रमणाच्या पद्धतीने वक्राखालील क्षेत्रफळ शोधण्यात मदत करते"
+          ],
+          "solution": "अंतर्विलोम आणि निश्चित समाकलाच्या संबंधाचा अर्थ असा आहे की व्युत्पन्न आणि समाकलन यांच्या व्युत्क्रम क्रियांची निर्मिती करते. हा मूलभूत तत्त्व अंतर्विलोम शोधून निश्चित समाकलांची गणना करण्यास परवानगी देते. इतर विकल्पांमध्ये कॅल्क्युलसमधील वेगळे अर्थ आहेत आणि या मूलभूत संबंधाला थेट निर्देश करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Students often confuse the Fundamental Theorem of Calculus with the definition of limits",
+        "Confuses the Fundamental Theorem of Calculus with the definition of the derivative",
+        null,
+        "Believes the method of exhaustion is the primary method for calculating areas under curves, rather than the Fundamental Theorem of Calculus"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as the Fundamental Theorem of Calculus establishes that differentiation and integration are inverse operations. The other options reflect common misconceptions or misunderstandings about the relationship between antiderivatives and definite integrals.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh202.pdf",
+          "ordinal": 4,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 2: Application of Integrals"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T23:36:12.365Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}

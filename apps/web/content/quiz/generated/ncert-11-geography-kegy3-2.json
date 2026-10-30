@@ -1,0 +1,301 @@
+{
+  "subject": "GEOGRAPHY",
+  "classLevel": 11,
+  "chapter": "Chapter 2 (Practical Work in Geography Part I) — Map Scale",
+  "name": "Map Scale",
+  "slug": "geography-11-map-scale",
+  "summary": "The chapter explains different types of map scales and how to use them to measure distances on maps.",
+  "position": 2,
+  "source": "generated against NCERT Geography, Class 11, chapter 2 (2026 edition (the site's Last-Modified))",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {
+    "hi": {
+      "name": "मानचित्र के पैमाने",
+      "summary": "अध्याय मानचित्र के विभिन्न प्रकार के पैमाने और उनका उपयोग मानचित्र पर दूरी मापने के लिए कैसे करें, इसके बारे में समझाता है।"
+    },
+    "mr": {
+      "name": "मानचित्र पैमाना",
+      "summary": "ही अध्याय मानचित्रावरी अंतर निर्माण करण्यासाठी वापरल्या जाणार्‍या विविध पैमान्यांचे विवरण आहे."
+    }
+  },
+  "board": "NCERT",
+  "book": "Pratical Work in Geography",
+  "edition": "2026 edition (the site's Last-Modified)",
+  "generatedAt": "2026-10-28T18:53:04.568Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": false,
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a method of expressing the scale of a map?",
+      "choices": [
+        "Statement of Scale",
+        "Map Legend",
+        "Map Orientation",
+        "Map Title"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct method of expressing the scale of a map is the Statement of Scale, which provides a direct numerical or verbal representation of the relationship between map distance and real-world distance. A Map Legend explains symbols, a Map Orientation indicates direction, and a Map Title identifies the subject of the map, none of which express scale.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी एक मानचित्र के पैमाने को व्यक्त करने की विधि है?",
+          "choices": [
+            "पैमाने का कथन",
+            "मानचित्र संकेत चिह्न",
+            "मानचित्र दिशा",
+            "मानचित्र शीर्षक"
+          ],
+          "solution": "मानचित्र के पैमाने को व्यक्त करने की सही विधि पैमाने का कथन है, जो मानचित्र दूरी एवं वास्तविक दूरी के संबंध के सीधे संख्यात्मक या शब्दाक्षरिक प्रतिनिधित्व प्रदान करता है। मानचित्र संकेत चिह्न प्रतीकों की व्याख्या करता है, मानचित्र दिशा दिशा का संकेत देता है, एवं मानचित्र शीर्षक मानचित्र के विषय की पहचान करता है, जो कोई भी पैमाने को व्यक्त नहीं करता।",
+          "imageAlt": "एक बार पैमाने में मानचित्र पर दूरी के साथ भूमि पर दूरी दिखाई गई है।",
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for geographical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते नकाशाच्या पैमान्याचे व्यक्तीकरण करण्याचे एक पद्धत आहे?",
+          "choices": [
+            "पैमान्याचे विधान",
+            "नकाशाचा विषय",
+            "नकाशाचे दिशासूचक",
+            "नकाशाचे शीर्षक"
+          ],
+          "solution": "नकाशाच्या पैमान्याचे व्यक्तीकरण करण्याचे योग्य पद्धत पैमान्याचे विधान आहे, जे नकाशावरील अंतर आणि खर्च जगातील अंतराच्या संबंधाचे सीधा संख्यात्मक किंवा शब्दातील प्रतिनिधित्व प्रदान करते. नकाशाचा विषय प्रतीकांचे स्पष्टीकरण करतो, नकाशाचे दिशासूचक दिशा दर्शवतो आणि नकाशाचे शीर्षक नकाशाच्या विषयाचे ओळख देते, जे कोणतेही पैमान्याचे व्यक्तीकरण करत नाही.",
+          "imageAlt": "एक बार पैमान्य जे नकाशावरील अंतर आणि जमिनीवरील अंतर दर्शवते.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for geographical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A bar scale showing distance on map versus distance on ground.",
+      "figure": {
+        "kind": "graph",
+        "spec": {
+          "x": {
+            "min": 0,
+            "max": 10,
+            "step": 1,
+            "label": "distanceOnMap"
+          },
+          "y": {
+            "min": 0,
+            "max": 50,
+            "step": 10,
+            "label": "distanceOnGround"
+          },
+          "grid": true,
+          "curves": [
+            {
+              "poly": [
+                0,
+                0,
+                10,
+                50
+              ],
+              "label": "scaleLine"
+            }
+          ]
+        },
+        "labels": {
+          "distanceOnMap": {
+            "en": "Distance on Map (cm)",
+            "hi": "मानचित्र पर दूरी (सेमी)",
+            "mr": "नकाशावरील अंतर (सेमी)"
+          },
+          "distanceOnGround": {
+            "en": "Distance on Ground (km)",
+            "hi": "भूमि पर दूरी (किमी)",
+            "mr": "जमिनीवरील अंतर (किमी)"
+          },
+          "scaleLine": {
+            "en": "Scale Line",
+            "hi": "पैमाने रेखा",
+            "mr": "पैमान्य रेषा"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        null,
+        "Confuses map legend with scale",
+        "Incorrectly assumes map orientation is a method of scale",
+        "Incorrectly assumes map title is a method of scale"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is accurate. The correct answer is 'Statement of Scale,' and the other options are reasonable distractors based on common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy302.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 2: Map Scale"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy302.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 2: Map Scale"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-28T18:53:04.568Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A graphical scale is constructed to show distances in kilometers and meters. If the main scale is divided into 5 equal parts and each part is further subdivided into 10 equal parts, how many total divisions are there?",
+      "choices": [
+        "10",
+        "15",
+        "50",
+        "60"
+      ],
+      "answerIndex": 2,
+      "solution": "The main scale has 5 divisions, and each division is subdivided into 10 parts. This results in 5 × 10 = 50 total divisions. The option '10' is incorrect as it counts only the subdivisions. '15' is wrong as it adds 5 and 10. '60' is too high and includes the main scale as part of the subdivisions. The correct answer is 50.",
+      "checkExpr": "5*10",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक ग्राफिकल स्केल को किलोमीटर और मीटर में दूरी दिखाने के लिए बनाया गया है। यदि मुख्य स्केल को 5 समान भागों में विभाजित किया गया है और प्रत्येक भाग को 10 समान भागों में विभाजित किया गया है, तो कुल विभाजन कितने हैं?",
+          "choices": [
+            "10",
+            "15",
+            "50",
+            "60"
+          ],
+          "solution": "मुख्य स्केल में 5 विभाजन हैं, और प्रत्येक विभाजन को 10 भागों में विभाजित किया गया है। इससे 5 × 10 = 50 कुल विभाजन प्राप्त होते हैं। '10' गलत है क्योंकि यह केवल उपविभाजनों की गणना करता है। '15' गलत है क्योंकि यह 5 और 10 को जोड़ देता है। '60' बहुत अधिक है और मुख्य स्केल को उपविभाजनों में शामिल कर लेता है। सही उत्तर 50 है।",
+          "imageAlt": "बार चार्ट में 5 मुख्य विभाजन और प्रत्येक में 10 उपविभाजन दिखाए गए हैं",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक आलेखीय अंतर मापन वापरून किलोमीटर आणि मीटरमध्ये अंतर दर्शविले जाते. जर मुख्य मापन निर्माण करण्यात आले असेल आणि प्रत्येक भागाला 10 समान भागांमध्ये विभाजित केले जात असेल, तर एकूण किती विभाग असतील?",
+          "choices": [
+            "10",
+            "15",
+            "50",
+            "60"
+          ],
+          "solution": "मुख्य मापनाचे 5 विभाग असतात आणि प्रत्येक विभागाला 10 भागांमध्ये विभाजित केले जाते. यामुळे 5 × 10 = 50 एकूण विभाग असतात. '10' अशी निवड चुकीची आहे कारण ती केवळ उपविभाग गणते. '15' चुकीचा आहे कारण तो 5 आणि 10 जोडतो. '60' खूप जास्त आहे आणि मुख्य मापन उपविभागांचा भाग मानते. योग्य उत्तर 50 आहे.",
+          "imageAlt": "5 मुख्य विभाग आणि प्रत्येकी 10 उपविभाग दर्शविणारा बार चार्ट",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "Bar chart showing 5 main divisions and 10 subdivisions each",
+      "figure": {
+        "kind": "bar",
+        "spec": {
+          "xLabel": "Divisions",
+          "yLabel": "Count",
+          "categories": [
+            "Main",
+            "Subdivisions"
+          ],
+          "series": [
+            {
+              "name": "count",
+              "values": [
+                5,
+                10
+              ]
+            }
+          ]
+        },
+        "labels": {
+          "Divisions": {
+            "en": "Divisions",
+            "hi": "विभाजन",
+            "mr": "विभाग"
+          },
+          "Count": {
+            "en": "Count",
+            "hi": "गणना",
+            "mr": "गणना"
+          },
+          "Main": {
+            "en": "Main",
+            "hi": "मुख्य",
+            "mr": "मुख्य"
+          },
+          "Subdivisions": {
+            "en": "Subdivisions",
+            "hi": "उपविभाजन",
+            "mr": "उपविभाग"
+          },
+          "count": {
+            "en": "count",
+            "hi": "गणना",
+            "mr": "गणना"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "counts only the subdivisions",
+        "adds main and subdivisions incorrectly",
+        null,
+        "includes the main scale in the total count"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed and the solution is logically sound. The correct answer is 50, and the distractors are based on common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy302.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 2: Map Scale"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy302.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 2: Map Scale"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy302.pdf",
+          "ordinal": 4,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 2: Map Scale"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-28T18:53:04.568Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}

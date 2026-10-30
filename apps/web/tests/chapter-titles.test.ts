@@ -21,9 +21,9 @@ import {
 import { chapterNameOf, slugForNewTopic } from "../scripts/quiz-gen/checks";
 import { adoptsTopic, batchNameRefusal, chapterLineNumber, cleanTranslatedName, isBareChapterName, loadGeneratedBatches, type QueueBatch } from "../scripts/quiz-queue-load";
 // owner-batch-item6 (30 Oct 2026): a chapter's name is its book's title, never a fragment and never the model's.
-import { titleFragment } from "../scripts/corpus-titles";
+import { REVIEWED_TITLES, titleFragment } from "../scripts/corpus-titles";
 import { chapterTitleOf } from "../scripts/quiz-gen/select";
-import { slugWords, titleVerdict, titlesAgree, type CorpusChapter } from "../scripts/topic-titles";
+import { slugWords, titleRefusal, titleVerdict, titlesAgree, type CorpusChapter } from "../scripts/topic-titles";
 
 /**
  * Every chapter carries its own title, never a bare "Chapter N" (chapter-titles, 19 October 2026).
@@ -244,6 +244,16 @@ describe("owner-batch-item6: a chapter's name is its book's title", () => {
     // A corpus title cut short ("Electric Charges") agrees, but neither the line nor the slug spells it: listed, never renamed.
     expect(titleVerdict(topic("biology-11-electric-charges-and-fields", "Chapter 2 — Electric Charges and Fields", "Electric Charges and Fields"), corpus)).toMatchObject({ kind: "CLOSE" });
     expect(titleVerdict(topic("biology-11-x", "Chapter 30 — X", "X"), corpus)).toMatchObject({ kind: "UNKNOWN" });
+  });
+  it("owner-batch-item8: a line that names its book is compared with that book's chapter only; a title a person read from the book is known", () => {
+    const civ = (number: number, title: string, planBook: string): CorpusChapter => ({ board: "NCERT", grade: 12, subjectCode: "CIVICS", number, title, refusal: null, book: planBook, bookCode: null, planBook, path: `ncert/12/political-science/${planBook}${number}.pdf`, vocab: vocabOf({ security: 9, congress: 9 }) });
+    const corpus = [civ(5, "Security in the Contemporary World", "Contemporary World Politics"), civ(5, "Challenges to and Restoration of the Congress System", "Politics in India Since Independence")];
+    const topic = { id: "t", slug: "civics-12-challenges-to-and-restoration-of-the-con", board: "NCERT", classLevel: 12, subject: "CIVICS", chapter: "Chapter 5 (Politics in India Since Independence) — Challenges to and Restoration of the Congress System", name: "Challenges to and Restoration of the Congress System" };
+    expect(titleVerdict(topic, corpus)).toMatchObject({ kind: "OK", chapter: { planBook: "Politics in India Since Independence" } });
+    expect(titleVerdict({ ...topic, chapter: "Chapter 5 (Contemporary World Politics) — Challenges to and Restoration of the Congress System" }, corpus)).toMatchObject({ kind: "UNKNOWN" });
+    expect(REVIEWED_TITLES["ncert/5/mathematics/eemh108.pdf"]!.title).toBe("Mapping Your Way");
+    expect(titleRefusal("Mapping Your Way", { vocab: vocabOf({}), bookTitle: "Math-Magic", dictionary: new Set(["your", "way"]), path: "ncert/5/mathematics/eemh108.pdf" })).toBeNull();
+    expect(titleRefusal("Mapping Your Way", { vocab: vocabOf({}), bookTitle: "Math-Magic", dictionary: new Set(["your", "way"]) })).toMatch(/neither the chapter nor the dictionary/);
   });
 
   const db = new PrismaClient();

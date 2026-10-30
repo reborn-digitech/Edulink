@@ -1,0 +1,720 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T20:11:07.309Z",
+  "finishedAt": "2026-10-30T20:21:46.269Z",
+  "seconds": 639,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "603050012",
+    "document": "balbharati/6/science/603050012.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 9 — From Diet to Health",
+    "edition": "First Edition 2026",
+    "chunks": 11,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2023-24]\n29. We are advised to take iodised salt in our diet by doctors. Justify it's importance in our 3\nbody.",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n7. B. Cooking of food",
+      "[CBSE Class X Science, sample question paper, 2022-23]\n23. Patients whose gallbladder are removed are recommended to eat less oily food. 2\nWhy?",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n4. D. insulin from pancreas"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 158221,
+      "in": 41,
+      "out": 37,
+      "rejects": 4,
+      "promptTokens": 32009,
+      "completionTokens": 7442
+    },
+    "critique": {
+      "calls": 47,
+      "ms": 369208,
+      "in": 37,
+      "out": 29,
+      "rejects": 8,
+      "promptTokens": 19851,
+      "completionTokens": 7993
+    },
+    "solver": {
+      "calls": 214,
+      "ms": 138243,
+      "in": 29,
+      "out": 27,
+      "rejects": 2,
+      "promptTokens": 36631,
+      "completionTokens": 2205
+    },
+    "form": {
+      "calls": 20,
+      "ms": 56031,
+      "in": 27,
+      "out": 18,
+      "rejects": 9,
+      "promptTokens": 4614,
+      "completionTokens": 1332
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 61,
+      "ms": 12345,
+      "in": 18,
+      "out": 15,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 65,
+      "ms": 781492,
+      "in": 30,
+      "out": 30,
+      "rejects": 1,
+      "promptTokens": 37148,
+      "completionTokens": 18890
+    }
+  },
+  "kept": 15,
+  "keptByLevel": {
+    "1": 2,
+    "2": 4,
+    "3": 3,
+    "4": 1,
+    "5": 3,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the main purpose of food according to the passage?",
+      "ms": {
+        "draft": 5126,
+        "critique": 8472,
+        "solver": 16358,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why is it important to include seasonal fruits and vegetables in the diet according to the passage?",
+      "ms": {
+        "draft": 5126,
+        "critique": 9206,
+        "solver": 16901,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a regional diet according to the passage?",
+      "ms": {
+        "draft": 5126,
+        "critique": 8935,
+        "solver": 18307
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the meaning of a balanced diet?",
+      "ms": {
+        "draft": 5126,
+        "critique": 8487,
+        "solver": 15840,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, which of the following would be most beneficial for a person living in a cold climate?",
+      "ms": {
+        "draft": 5126,
+        "critique": 9714,
+        "solver": 13955,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the importance of food culture in a region?",
+      "ms": {
+        "draft": 5126,
+        "critique": 8032,
+        "solver": 15576,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which nutrient is essential for recovery from wear and tear and growth of the body?",
+      "ms": {
+        "draft": 4123,
+        "critique": 9043
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person is not consuming enough milk, which nutrient might they be lacking?",
+      "ms": {
+        "draft": 4123,
+        "critique": 7605
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Why are tribal people in mountainous regions at risk of developing goitre?",
+      "ms": {
+        "draft": 4123,
+        "critique": 9332
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the significance of the Rigveda in relation to diet and health?",
+      "ms": {
+        "draft": 4123,
+        "critique": 9338
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage say about the importance of including fibres in the diet?",
+      "ms": {
+        "draft": 4123,
+        "critique": 11355,
+        "solver": 18039,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has night blindness, which food should they include in their diet?",
+      "ms": {
+        "draft": 3802,
+        "critique": 7128,
+        "solver": 19401,
+        "form": 3375
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A person with a deficiency of vitamin C is advised to include which of the following in their diet?",
+      "ms": {
+        "draft": 3802,
+        "critique": 9926,
+        "solver": 16580,
+        "form": 2213
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage say about the role of fibre in the diet?",
+      "ms": {
+        "draft": 2991,
+        "critique": 7661,
+        "solver": 1536,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements about millets is true according to the passage?",
+      "ms": {
+        "draft": 2991,
+        "critique": 8180,
+        "solver": 2289
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a source of carbohydrates?",
+      "ms": {
+        "draft": 4332,
+        "critique": 6372
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main function of water in the body according to the passage?",
+      "ms": {
+        "draft": 4332,
+        "critique": 7145
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the importance of including fibre in the diet as mentioned in the passage?",
+      "ms": {
+        "draft": 4332,
+        "critique": 6728
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Why is iodized salt recommended according to the passage?",
+      "ms": {
+        "draft": 4332,
+        "critique": 7283
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "The useful substances that our body gets from food items are called ______.",
+      "ms": {
+        "draft": 2991,
+        "critique": 7869,
+        "solver": 2762,
+        "form": 2351
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which vitamin is required for the proper growth of bones in children?",
+      "ms": {
+        "draft": 3551,
+        "critique": 8043,
+        "solver": 1769,
+        "form": 3935
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a test for identifying the presence of starch in food?",
+      "ms": {
+        "draft": 3551,
+        "critique": 7031,
+        "solver": 1464,
+        "form": 2122
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which vitamin is required for the proper growth of bones in children?",
+      "ms": {
+        "draft": 3802,
+        "critique": 7780,
+        "solver": 1375,
+        "form": 4073,
+        "translation": 52338
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "The useful substances that our body gets from food items are called ______.",
+      "ms": {
+        "draft": 2669,
+        "critique": 6748,
+        "solver": 1272,
+        "form": 2407,
+        "translation": 43187
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of carbohydrates in the body?",
+      "ms": {
+        "draft": 4123,
+        "critique": 9759,
+        "solver": 16987,
+        "form": 2934,
+        "translation": 56698
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for recommending iodized salt in the diet?",
+      "ms": {
+        "draft": 3802,
+        "critique": 8480,
+        "solver": 1659,
+        "form": 3525,
+        "translation": 51925
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a remedy for goitre?",
+      "ms": {
+        "draft": 2669,
+        "critique": 7565,
+        "solver": 1053,
+        "form": 1570,
+        "translation": 39249
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a remedy for a deficiency of vitamin C?",
+      "ms": {
+        "draft": 2991,
+        "critique": 7567,
+        "solver": 1422,
+        "form": 4298,
+        "translation": 47740
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student from Maharashtra is advised to include more of which food item in their diet?",
+      "ms": {
+        "draft": 5439,
+        "critique": 6228,
+        "solver": 1228,
+        "form": 2796,
+        "translation": 46417
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What should be done to prevent rickets in children?",
+      "ms": {
+        "draft": 3551,
+        "critique": 6998,
+        "solver": 1384,
+        "form": 2275,
+        "translation": 38824
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if someone eats only noodles, biscuits, and bread and avoids leafy vegetables, fruits, and milk?",
+      "ms": {
+        "draft": 2991,
+        "critique": 7826,
+        "solver": 1967,
+        "form": 4243,
+        "translation": 97757
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which test is used to detect the presence of starch in food?",
+      "ms": {
+        "draft": 3802,
+        "critique": 7450,
+        "solver": 2048,
+        "form": 3482,
+        "translation": 47224
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A person in the Konkan region eats a diet that includes seasonal fruits and vegetables. Why is this advised?",
+      "ms": {
+        "draft": 5439,
+        "critique": 6392,
+        "solver": 932,
+        "form": 1334,
+        "translation": 29617
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Why are patients who have had their gallbladder removed advised to eat less oily food?",
+      "ms": {
+        "draft": 3551,
+        "critique": 8094,
+        "solver": 1863,
+        "form": 3389,
+        "translation": 74938
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a person is suffering from night blindness, which food item should they include in their diet to improve their condition?",
+      "ms": {
+        "draft": 2991,
+        "critique": 7864,
+        "solver": 2152,
+        "form": 4797,
+        "translation": 49455
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to cut vegetables only after washing them?",
+      "ms": {
+        "draft": 3802,
+        "critique": 10295,
+        "solver": 1746,
+        "form": 2837,
+        "translation": 45366
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the importance of including vitamin C-rich foods in the diet?",
+      "ms": {
+        "draft": 3551,
+        "critique": 6758,
+        "solver": 1235,
+        "form": 4316,
+        "translation": 56943
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "The substances which contain starch are called as ______.",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "______ helps in removing waste substances produced in the body which are not needed by the body.",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "______ are necessary for the growth and repair of the body.",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "______ enhances the immunity of the body.",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main purpose of food according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Confuses food with something that makes the body tired, whic…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Why is it important to include seasonal fruits and vegetables in the diet according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"The passage says that seasonal fruits and vegetables are nut…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a regional diet according to the passage?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the meaning of a balanced diet?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"The passage defines a balanced diet as one that fulfills all…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Based on the passage, which of the following would be most beneficial for a person living in a cold climate?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"The passage says eating light and boiled food is better for …\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the importance of food culture in a region?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"This is not the correct understanding of the passage's messa…\"); distractor 3's reason is not a one-line misconception (\"The passage discusses the importance of food culture in both…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which nutrient is essential for recovery from wear and tear and growth of the body?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person is not consuming enough milk, which nutrient might they be lacking?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Why are tribal people in mountainous regions at risk of developing goitre?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "According to the passage, what is the significance of the Rigveda in relation to diet and health?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage say about the importance of including fibres in the diet?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person has night blindness, which food should they include in their diet?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A person with a deficiency of vitamin C is advised to include which of the following in their diet?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage say about the role of fibre in the diet?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following statements about millets is true according to the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is a source of carbohydrates?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the main function of water in the body according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What is the importance of including fibre in the diet as mentioned in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Why is iodized salt recommended according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "The useful substances that our body gets from food items are called ______.",
+      "reason": "near-duplicate of batch item \"The useful substances that our body gets from food…\" (cosine 1.000 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which vitamin is required for the proper growth of bones in children?",
+      "reason": "near-duplicate of batch item \"Which vitamin is required for the proper growth of…\" (cosine 1.000 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Which of the following is a test for identifying the presence of starch in food?",
+      "reason": "near-duplicate of batch item \"Which test is used to detect the presence of starc…\" (cosine 0.955 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,6 +1,6 @@
 # Data-flow audit — latest run
 
-Run: 2026-10-30T11:53:15.708Z · schools: Saraswati Arts and Science College, Saraswati College of Agriculture, Saraswati College of Education, Saraswati College of Pharmacy, Saraswati Institute of Health Sciences, Saraswati Institute of Management, Saraswati Institute of Technology, Saraswati Law College, Saraswati School of Architecture, Saraswati Vidya Mandir, Saraswati Vocational College, Sunrise Public School, ZZ Northgate School · 0 FAIL · 4 WARN · 206 INFO
+Run: 2026-10-30T20:34:29.424Z · schools: Saraswati Arts and Science College, Saraswati College of Agriculture, Saraswati College of Education, Saraswati College of Pharmacy, Saraswati Institute of Health Sciences, Saraswati Institute of Management, Saraswati Institute of Technology, Saraswati Law College, Saraswati School of Architecture, Saraswati Vidya Mandir, Saraswati Vocational College, Sunrise Public School, ZZ Northgate School · 0 FAIL · 4 WARN · 206 INFO
 
 Regenerate with `npm run data:audit` from apps/web. FAIL = a contradiction the code should never produce; WARN = drift a later edit causes by design, or a population gap; INFO = a figure worth reading.
 
@@ -66,19 +66,19 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a contradiction the c
 | cards-api | Saraswati Vocational College | the sampled child has no report card to read |
 | cards-api | Sunrise Public School | the sampled child has no report card to read |
 | cards-api | ZZ Northgate School | the sampled child has no report card to read |
-| board-api | Saraswati Arts and Science College | 2026-10-30: 0 away, 0 lessons, 0 covered |
-| board-api | Saraswati College of Agriculture | 2026-10-30: 0 away, 0 lessons, 0 covered |
-| board-api | Saraswati College of Education | 2026-10-30: 0 away, 0 lessons, 0 covered |
-| board-api | Saraswati College of Pharmacy | 2026-10-30: 0 away, 0 lessons, 0 covered |
-| board-api | Saraswati Institute of Health Sciences | 2026-10-30: 0 away, 0 lessons, 0 covered |
-| board-api | Saraswati Institute of Management | 2026-10-30: 0 away, 0 lessons, 0 covered |
-| board-api | Saraswati Institute of Technology | 2026-10-30: 0 away, 0 lessons, 0 covered |
-| board-api | Saraswati Law College | 2026-10-30: 0 away, 0 lessons, 0 covered |
-| board-api | Saraswati School of Architecture | 2026-10-30: 0 away, 0 lessons, 0 covered |
-| board-api | Saraswati Vidya Mandir | 2026-10-30: 0 away, 0 lessons, 0 covered |
-| board-api | Saraswati Vocational College | 2026-10-30: 0 away, 0 lessons, 0 covered |
-| board-api | Sunrise Public School | 2026-10-30: 0 away, 0 lessons, 0 covered |
-| board-api | ZZ Northgate School | 2026-10-30: 0 away, 0 lessons, 0 covered |
+| board-api | Saraswati Arts and Science College | 2026-10-31: 0 away, 0 lessons, 0 covered |
+| board-api | Saraswati College of Agriculture | 2026-10-31: 0 away, 0 lessons, 0 covered |
+| board-api | Saraswati College of Education | 2026-10-31: 0 away, 0 lessons, 0 covered |
+| board-api | Saraswati College of Pharmacy | 2026-10-31: 0 away, 0 lessons, 0 covered |
+| board-api | Saraswati Institute of Health Sciences | 2026-10-31: 0 away, 0 lessons, 0 covered |
+| board-api | Saraswati Institute of Management | 2026-10-31: 0 away, 0 lessons, 0 covered |
+| board-api | Saraswati Institute of Technology | 2026-10-31: 0 away, 0 lessons, 0 covered |
+| board-api | Saraswati Law College | 2026-10-31: 0 away, 0 lessons, 0 covered |
+| board-api | Saraswati School of Architecture | 2026-10-31: 0 away, 0 lessons, 0 covered |
+| board-api | Saraswati Vidya Mandir | 2026-10-31: 0 away, 0 lessons, 0 covered |
+| board-api | Saraswati Vocational College | 2026-10-31: 0 away, 0 lessons, 0 covered |
+| board-api | Sunrise Public School | 2026-10-31: 0 away, 0 lessons, 0 covered |
+| board-api | ZZ Northgate School | 2026-10-31: 0 away, 0 lessons, 0 covered |
 | overview-api | Saraswati Arts and Science College | principal: attendance null%, registers missing today 3 (holidays and empty classes are not excluded) |
 | overview-api | Saraswati College of Agriculture | principal: attendance null%, registers missing today 3 (holidays and empty classes are not excluded) |
 | overview-api | Saraswati College of Education | principal: attendance null%, registers missing today 3 (holidays and empty classes are not excluded) |
@@ -90,7 +90,7 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a contradiction the c
 | overview-api | Saraswati School of Architecture | principal: attendance null%, registers missing today 3 (holidays and empty classes are not excluded) |
 | overview-api | Saraswati Vidya Mandir | principal: attendance 95%, registers missing today 6 (holidays and empty classes are not excluded) |
 | overview-api | Saraswati Vocational College | principal: attendance null%, registers missing today 3 (holidays and empty classes are not excluded) |
-| overview-api | Sunrise Public School | principal: attendance 96%, registers missing today 6 (holidays and empty classes are not excluded) |
+| overview-api | Sunrise Public School | principal: attendance 95%, registers missing today 6 (holidays and empty classes are not excluded) |
 | overview-api | ZZ Northgate School | principal: attendance null%, registers missing today 8 (holidays and empty classes are not excluded) |
 | usage-sample | Saraswati Arts and Science College | no row for 2026-10 yet (usage:sample has not run) |
 | usage-sample | Saraswati College of Agriculture | no row for 2026-10 yet (usage:sample has not run) |
@@ -106,7 +106,7 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a contradiction the c
 | population | all | school tables with no rows: AdmissionRound, AlumniGift, AlumniMeet, AlumniMeetRegistration, AlumniReferral, AssessmentAllocation, AttendanceCondonation, AttendanceCover, AttendancePunch, CapAllotment, CollegeApplication, CollegeOfficeSettings, Convocation, CourseFile, CourseFileItem, ExamGrace, ExamModerationNote, ExpertInvite, FacultyPublicProfile, GlobalPostHide, HostelExpulsion, Invigilation, IqacFile, IqacScenario, LateRegistration, LibraryVolume, Malpractice, NoDuesClearance, PlacementTalk, PlacementTalkRsvp, Project, Revaluation, SoftSkillsEnrolment, SoftSkillsSession, SoftSkillsTraining |
 | population | all | nullable columns never populated: AcademicsSettings.updatedByUserId, ActionTakenReport.fileId, ActionTakenReport.postId, Activity.theme, Activity.departmentId, Activity.fileId, AdmissionCycle.opensAt, AdmissionCycle.closesAt, AlumniNote.batchYear, AlumniProfile.mutedAt, AlumniProfile.mutedByUserId, AlumniProfile.muteReason, Asset.depreciationRateBp, Asset.lastAuditedAt, Asset.disposedAt, Assignment.rubric, Assignment.subject, AssistantMessage.matchedAssignmentId, AssistantMessage.helpful, AssistantMessage.cachedAnswerId, AssistantMessage.gateReasons, AssistantMessage.scope, AttendanceDevice.disabledAt, AttendanceDevice.lastPunchAt, AttendanceRecord.note, AttendanceSession.note, Backlog.clearedSessionId, Backlog.clearedAt, CertificateRequest.feeDemandId, CertificateRequest.feePaise, ClinicalPosting.labBatchId, ClinicalSite.archivedAt, CollegeFiling.fileId, Comment.parentCommentId, CommitteeMeeting.minutesFileId, Conversation.closedAt, Conversation.closedByUserId, ConversationMessage.clientId, CorpsEnrolment.leftOn, CourseOffering.capacity, CreditPush.apaarId, CreditPush.abcRef, CreditPush.pushedAt, CreditPush.error, DriveApplication.withdrawnAt, EarnedBadge.academicYearId, EntranceSlot.note, ExamDocument.signaturePng, ExamDocument.sealPng, ExamDocument.revokedAt, ExamDocument.revokedReason, ExamForm.feeDemandId, ExamForm.waiverReason, ExamForm.refusalReason, ExamMark.reason, ExamRoom.roomId, FacultyRecord.apaarFacultyId, FacultyRecord.panSealed, FacultyRecord.panLast4, FacultyRecord.publicProfileAt, FacultyRecord.publicPhotoConsentAt, FacultyRecord.publicPhotoFileId, FeeConcession.approvedAt, FeeConcession.approvedByUserId, FeeConcession.authority, FeeDemand.carriedToDemandId, FeeHead.retiredAt, FeeRefund.gatewayRefundId, FeeRefund.cutsJson, FeeRefund.failedReason, GigBooking.cancelledAt, GigBooking.cancelledByUserId, GigBooking.cancelReason, GigBooking.rating, GigBooking.feedback, GigBooking.ratedAt, GigBooking.remindedAt, GigBooking.joinRemindedAt, Grade.submissionId, Grade.letter, Grade.comment, Grievance.fileId, Grievance.escalatedAt, GuardianClaim.declineReason, HostelAllotment.toDate, HostelAllotment.feeDemandId, HostelAllotment.endedByUserId, HostelLeave.decisionNote, Incident.hostelId, Internship.reportFileId, Internship.parentDeclarationFileId, Internship.refusedReason, InventoryItem.archivedAt, InventoryRequest.decidedByUserId, InventoryRequest.decidedAt, InventoryRequest.decisionNote, Invite.classId, Invite.acceptedByUserId, Invite.acceptedAt, Invite.relation, Invite.studentMembershipId, IssuedCertificate.remark, JoinRequest.decidedAt, JoinRequest.decidedByMembershipId, JoinRequest.declineReason, LabBatchMember.untilKey, Lecture.substituteMembershipId, Lecture.cancelledAt, LectureAttendance.clientId, LibraryCopy.seenAt, LibraryFine.demandId, LibraryIssue.remindedOn, LibraryIssue.noticedOn, LibraryReservation.fulfilledAt, LibrarySettings.fineHeadId, LibrarySettings.stockTakeStartedAt, MeetingBooking.cancelledAt, MeetingSlot.cancelledAt, Membership.suspendedAt, Membership.suspendedReason, MentorThread.closedAt, MentorThread.declineReason, Offer.letterFileId, Offer.declinedAt, OperatorAccess.endedAt, OutboundMessage.error, OutboundMessage.deliveredAt, Payslip.lopOverrideHalfDays, PeerTeamVisit.departmentId, PeerVisitItem.url, PenChangeRequest.principalDecidedAt, PenChangeRequest.principalUserId, PenChangeRequest.principalApproved, PenChangeRequest.guardianDecidedAt, PenChangeRequest.guardianUserId, PenChangeRequest.guardianApproved, PenChangeRequest.decisionReason, PenChangeRequest.appliedAt, PlacementProfile.dreamByUserId, Post.rejectionReason, Post.pinnedAt, Post.audienceTarget, Post.consentBy, Post.consentQuestion, Post.authorCommitteeId, PracticeAssignment.archivedAt, PracticeSchool.archivedAt, Programme.archivedAt, ProgrammeEnrolment.roundId, PupilRecord.guardianPhone, PupilRecord.alternatePhone, PupilRecord.freeUniform, PupilRecord.freeTextbook, PupilRecord.extracurricular, PupilRecord.stream, PupilRecord.vocationalCourse, PupilRecord.vocationalTradeId, PupilRecord.vocationalJobRoleId, PupilRecord.vocationalExamAppeared, PupilRecord.abcId, PupilRecord.admissionRoundId, PupilRecord.apaarId, QuestionPaper.moderatedByUserId, QuestionPaper.moderatedAt, QuestionPaper.moderationNote, QuizResponse.gradeLevel, QuizResponse.seconds, RemarkThread.closedAt, Report.resolvedAt, Report.resolutionNote, ReportCard.practice, ReportCardItem.comment, ResearchItem.fileId, ResultRun.reason, RoundResult.feedback, SalaryPayment.voidedAt, SalaryPayment.voidedByMembershipId, SalaryPayment.voidReason, SalaryStructure.archivedAt, ScholarshipClaim.disbursedPaise, ScholarshipClaim.disbursedAt, ScholarshipClaim.disbursementRef, ScholarshipClaim.alumniGiftId, ScholarshipClaim.lapsedAt, SchoolRecord.formerMembershipId, SchoolRecord.supersededAt, SchoolRecord.supersededReason, SchoolSiteDomain.dnsCheckedAt, SchoolSiteDomain.dnsError, SchoolSiteDomain.certCheckedAt, SchoolSiteDomain.certError, SchoolSiteDomain.verifiedAt, SchoolSiteEnquiry.readAt, SchoolSiteEnquiry.readByUserId, SchoolSiteEnquiry.closedAt, SocialConnection.tokenExpiresAt, SocialConnection.error, SocialPost.fileId, SocialPost.pictureToken, StaffAdvance.decisionNote, StaffAppraisal.strengths, StaffAppraisal.targets, StaffAppraisal.rating, StaffRecord.qualification, StaffRecord.appointedSubject, StockMovement.requestId, StudentConsent.revokedAt, StudioSubmission.fileId, StudioSubmission.fileName, StudioSubmission.fileMime, StudioSubmission.fileSize, Substitution.acknowledgedAt, Substitution.declineReason, Substitution.declinedAt, Survey.termId, Survey.offeringId, SurveyResponse.respondentMembershipId, SurveyResponse.source, TimetablePeriod.archivedAt, Trip.startReason, Trip.lowBatteryAt |
 | bank-source | server | in-app questions the importer spares: none |
-| bank-names | server | 633 live school chapters: 371 named as their book, 7 agreeing in part (a slug or a corpus title cut short), 255 the corpus cannot speak for, 11 of 1153 corpus chapters with no known title |
+| bank-names | server | 660 live school chapters: 426 named as their book, 11 agreeing in part (a slug or a corpus title cut short), 223 the corpus cannot speak for, 6 of 1148 corpus chapters with no known title |
 | inventory-stock | Saraswati College of Pharmacy | 2 stock rows checked |
 | inventory-stock | Saraswati Institute of Technology | 3 stock rows checked |
 | inventory-stock | Sunrise Public School | 22 stock rows checked |
@@ -155,9 +155,9 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a contradiction the c
 | academics-internal-lock | Saraswati School of Architecture | 1 locked offerings checked |
 | academics-internal-lock | Saraswati Vocational College | 1 locked offerings checked |
 | academics-internal-lock | ZZ Vidya College | 1 locked offerings checked |
-| college-prn | Saraswati Law College | 8 seats checked against their records |
 | college-prn | ZZ Shastri Autonomous College | 4 seats checked against their records |
 | college-prn | ZZ Vidya College | 3 seats checked against their records |
+| college-prn | Saraswati Law College | 8 seats checked against their records |
 | college-prn | Saraswati Institute of Management | 8 seats checked against their records |
 | college-prn | Saraswati School of Architecture | 8 seats checked against their records |
 | college-prn | Saraswati College of Education | 8 seats checked against their records |

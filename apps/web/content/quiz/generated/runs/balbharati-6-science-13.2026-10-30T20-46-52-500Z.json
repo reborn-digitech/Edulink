@@ -1,0 +1,773 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T20:46:52.500Z",
+  "finishedAt": "2026-10-30T21:03:28.315Z",
+  "seconds": 996,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "603050012",
+    "document": "balbharati/6/science/603050012.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 13 — Gifts of Nature",
+    "edition": "First Edition 2026",
+    "chunks": 11,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2025-26]\n6. B. (ii), (iii), (iv)",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n12. About 100 acres of forest land was declared as Natural reserve park. The 2\nfollowing organisms were predominant in the Natural reserve park:\nrabbit, frog, grass, fish, fox, water insects, zebra, peacock, snake, trees, bird,\nowl, insects, tiger, vulture, duck.\nCreate a food web comprising two separate food chains with different\nproducers by using the above data.",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n20. Assertion: Biodegradable substances result in the formation of compost and natural 1\nreplenishment.\nReason: It is due to breakdown of complex inorganic substances into simple organic\nsubstances.",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n7. C. Use of plastic as packaging material. 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 360256,
+      "in": 40,
+      "out": 40,
+      "rejects": 0,
+      "promptTokens": 33227,
+      "completionTokens": 6982
+    },
+    "critique": {
+      "calls": 55,
+      "ms": 537704,
+      "in": 40,
+      "out": 36,
+      "rejects": 4,
+      "promptTokens": 22865,
+      "completionTokens": 9440
+    },
+    "solver": {
+      "calls": 288,
+      "ms": 262467,
+      "in": 36,
+      "out": 29,
+      "rejects": 7,
+      "promptTokens": 53141,
+      "completionTokens": 3275
+    },
+    "form": {
+      "calls": 11,
+      "ms": 31318,
+      "in": 29,
+      "out": 13,
+      "rejects": 16,
+      "promptTokens": 2601,
+      "completionTokens": 684
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 63,
+      "ms": 12101,
+      "in": 13,
+      "out": 11,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 47,
+      "ms": 417714,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 23411,
+      "completionTokens": 11189
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 1,
+    "5": 3,
+    "6": 1
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which mineral is obtained from the red soil found in regions like Karnataka, Odisha, and Maharashtra?",
+      "ms": {
+        "draft": 3502,
+        "critique": 7336,
+        "solver": 1441,
+        "form": 4224
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the reason that red soil is considered a valuable asset despite being infertile for farming?",
+      "ms": {
+        "draft": 3502,
+        "critique": 7704,
+        "solver": 1800,
+        "form": 3499
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, which of the following is a correct statement about the water-holding capacity of soil?",
+      "ms": {
+        "draft": 3502,
+        "critique": 8067,
+        "solver": 1281,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of a natural resource that is not directly used for farming but is valuable for industry?",
+      "ms": {
+        "draft": 3502,
+        "critique": 8333,
+        "solver": 2218
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for water found below the ground?",
+      "ms": {
+        "draft": 20617,
+        "critique": 6246
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a country has large reserves of iron minerals, what is likely to happen?",
+      "ms": {
+        "draft": 3502,
+        "critique": 7863,
+        "solver": 19512,
+        "form": 3174
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage discusses the importance of water in industrial production. If a factory produces 1000 kg of paper, how much water is likely to be used based on the information given?",
+      "ms": {
+        "draft": 3502,
+        "critique": 9896,
+        "solver": 20384,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why is water called 'Hard water'?",
+      "ms": {
+        "draft": 20617,
+        "critique": 8596,
+        "solver": 15721,
+        "form": 3147
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main use of solar energy according to the passage?",
+      "ms": {
+        "draft": 20617,
+        "critique": 10862,
+        "solver": 1894,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the Chipko Movement significant according to the passage?",
+      "ms": {
+        "draft": 20617,
+        "critique": 10565
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a natural resource that is non-renewable?",
+      "ms": {
+        "draft": 20617,
+        "critique": 11074,
+        "solver": 16075,
+        "form": 3558
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a fossil fuel?",
+      "ms": {
+        "draft": 22345,
+        "critique": 10533,
+        "solver": 15266
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a use of clay according to the passage?",
+      "ms": {
+        "draft": 2978,
+        "critique": 7255,
+        "solver": 1586,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of making seed balls as mentioned in the passage?",
+      "ms": {
+        "draft": 2978,
+        "critique": 7297,
+        "solver": 1573,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of a practical experiment mentioned in the passage?",
+      "ms": {
+        "draft": 2978,
+        "critique": 7504,
+        "solver": 1510,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to make seed balls from seeds collected from home and neighbors?",
+      "ms": {
+        "draft": 2978,
+        "critique": 7462,
+        "solver": 9333
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you collect seeds from your home and make seed balls, when should you throw them in the environment according to the passage?",
+      "ms": {
+        "draft": 19355,
+        "critique": 5870,
+        "solver": 19501,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a way to use clay according to the passage?",
+      "ms": {
+        "draft": 19355,
+        "critique": 5660,
+        "solver": 20757,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of a practical experiment listed in the passage?",
+      "ms": {
+        "draft": 19355,
+        "critique": 7574,
+        "solver": 21928
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements about the passage is true?",
+      "ms": {
+        "draft": 19355,
+        "critique": 7046,
+        "solver": 13361
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a fossil fuel?",
+      "ms": {
+        "draft": 4451,
+        "critique": 37140,
+        "solver": 2297,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which of the following is a way to help create a forest?",
+      "ms": {
+        "draft": 19355,
+        "critique": 20649,
+        "solver": 47004,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a way to help create a forest, as suggested in the passage?",
+      "ms": {
+        "draft": 19355,
+        "critique": 7808,
+        "solver": 66351
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct classification of natural resources?",
+      "ms": {
+        "draft": 4451,
+        "critique": 18557
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the water found below the ground called?",
+      "ms": {
+        "draft": 26237,
+        "critique": 7820
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is an example of a natural resource that is not directly obtained from the sea?",
+      "ms": {
+        "draft": 26237,
+        "critique": 7744,
+        "solver": 15000
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements best explains why red soil, though infertile for farming, is considered a valuable asset?",
+      "ms": {
+        "draft": 8430,
+        "critique": 5994,
+        "solver": 628,
+        "form": 964
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a renewable resource?",
+      "ms": {
+        "draft": 22345,
+        "critique": 9451,
+        "solver": 1591,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a sustainable source of energy?",
+      "ms": {
+        "draft": 4451,
+        "critique": 12046,
+        "solver": 4982,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is more fertile for farming?",
+      "ms": {
+        "draft": 4451,
+        "critique": 23189,
+        "solver": 1298,
+        "form": 0,
+        "translation": 28035
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a sustainable source of energy?",
+      "ms": {
+        "draft": 22345,
+        "critique": 8307,
+        "solver": 1765,
+        "form": 0,
+        "translation": 28670
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about renewable resources?",
+      "ms": {
+        "draft": 4451,
+        "critique": 21103,
+        "solver": 2312,
+        "form": 0,
+        "translation": 35381
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a method of conserving water?",
+      "ms": {
+        "draft": 20617,
+        "critique": 8492,
+        "solver": 19191,
+        "form": 3583,
+        "translation": 57995
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why should fossil fuels be used carefully?",
+      "ms": {
+        "draft": 22345,
+        "critique": 9920,
+        "solver": 2824,
+        "form": 0,
+        "translation": 35378
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student wants to create a forest using seed balls, when should they throw the seed balls?",
+      "ms": {
+        "draft": 2978,
+        "critique": 6956,
+        "solver": 2027,
+        "form": 2998,
+        "translation": 37324
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why is water from some wells considered 'Hard water'?",
+      "ms": {
+        "draft": 26237,
+        "critique": 7621,
+        "solver": 13855,
+        "form": 3065,
+        "translation": 32822
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a reason for the importance of rainwater harvesting?",
+      "ms": {
+        "draft": 26237,
+        "critique": 9231,
+        "solver": 12277,
+        "form": 3242,
+        "translation": 31673
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is the most appropriate way to use natural resources?",
+      "ms": {
+        "draft": 22345,
+        "critique": 8527,
+        "solver": 1516,
+        "form": 1,
+        "translation": 37662
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a student collects seeds from their neighbors and makes a seed ball, what should they do next to help create a forest?",
+      "ms": {
+        "draft": 2978,
+        "critique": 8530,
+        "solver": 839,
+        "form": 2688,
+        "translation": 46008
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If fossil fuels are exhausted, what effect will it have on our daily life?",
+      "ms": {
+        "draft": 22345,
+        "critique": 6713,
+        "solver": 1928,
+        "form": 0,
+        "translation": 42074
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which mineral is obtained from the red soil found in regions like Karnataka, Odisha, and Maharashtra?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Confuses iron with copper, which is not mentioned in the pas…\"); distractor 3's reason is not a one-line misconception (\"Confuses iron with zinc, which is not mentioned in the passa…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the reason that red soil is considered a valuable asset despite being infertile for farming?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Incorrectly assumes that the value comes from other uses not…\"); distractor 2's reason is not a one-line misconception (\"Incorrectly assumes that the value comes from making idols, …\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Based on the passage, which of the following is a correct statement about the water-holding capacity of soil?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Incorrectly assumes that coarse particles hold more water, w…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly assumes that sand-like particles hold no water, …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is an example of a natural resource that is not directly used for farming but is valuable for industry?",
+      "reason": "the solver picked option 2 1 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for water found below the ground?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a country has large reserves of iron minerals, what is likely to happen?",
+      "reason": "options 0 and 2 say the same thing (\"It will not export iron minerals to other countries\" / \"It will export iron minerals to other countries\"); options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage discusses the importance of water in industrial production. If a factory produces 1000 kg of paper, how much water is likely to be used based on the information given?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Chooses a number that is not supported by the passage.…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why is water called 'Hard water'?",
+      "reason": "options 1 and 3 are the same (\"Because it is stored in tanks\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main use of solar energy according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is the Chipko Movement significant according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is an example of a natural resource that is non-renewable?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a fossil fuel?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a use of clay according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the purpose of making seed balls as mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is an example of a practical experiment mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why is it important to make seed balls from seeds collected from home and neighbors?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If you collect seeds from your home and make seed balls, when should you throw them in the environment according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a way to use clay according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 3 are the same (\"To make a chart about the life cycle of a mosquito\"); distractor 0's reason is not a one-line misconception (\"Confuses a listed experiment with a correct use of clay ment…\"); distractor 3's reason is not a one-line misconception (\"Confuses the purpose of clay with the purpose of a chart in …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is an example of a practical experiment listed in the passage?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following statements about the passage is true?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a fossil fuel?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is petrol, not water or others, but this opti…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, which of the following is a way to help create a forest?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following is a way to help create a forest, as suggested in the passage?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct classification of natural resources?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the water found below the ground called?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following is an example of a natural resource that is not directly obtained from the sea?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following statements best explains why red soil, though infertile for farming, is considered a valuable asset?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Misinterprets the passage's focus on mineral content.…\"); distractor 3's reason is not a one-line misconception (\"Refers to a specific crop mentioned in the passage but not t…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Which of the following is a renewable resource?",
+      "reason": "near-duplicate of served question cmveo0lxh00u3god8ll4lx6ld (cosine 0.916 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a sustainable source of energy?",
+      "reason": "near-duplicate of batch item \"Which of the following is a sustainable source of …\" (cosine 1.000 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

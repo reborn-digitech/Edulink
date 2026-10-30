@@ -19,9 +19,9 @@
  * letters or more is the chapter's or the dictionary's.
  */
 import type { PrismaClient } from "@prisma/client";
-import { inDictionary, loadDictionary, titleFragment, vocabularyOf, type Vocabulary } from "./corpus-titles";
-import { chapterNameOf, chapterNumberOf, words } from "./quiz-gen/checks";
-import { bookChapterOf, chapterTitleOf, planBalbharati, subjectCodeOf } from "./quiz-gen/select";
+import { inDictionary, loadDictionary, REVIEWED_TITLES, titleFragment, vocabularyOf, type Vocabulary } from "./corpus-titles";
+import { chapterBookOf, chapterNameOf, chapterNumberOf, words } from "./quiz-gen/checks";
+import { bookChapterOf, chapterTitleOf, planBalbharati, planNcert, subjectCodeOf } from "./quiz-gen/select";
 
 export type CorpusChapter = {
   board: "NCERT" | "BALBHARATI";
@@ -34,6 +34,8 @@ export type CorpusChapter = {
   refusal: string | null;
   book: string;
   bookCode: string | null;
+  /** owner-batch-item8: the book a chapter line names beside its number when the NCERT plan names its books (planNcert). */
+  planBook?: string | null;
   path: string;
   vocab: Vocabulary;
 };
@@ -60,8 +62,10 @@ export function titlesAgree(a: string, b: string): boolean {
 }
 
 /** Why a corpus title cannot name a chapter, or null: titleFragment (corpus-titles' refusal rules for a name), and no word of four letters or more that neither the chapter nor the dictionary knows. Pure but for the word list. */
-export function titleRefusal(title: string, ctx: { vocab: Vocabulary; bookTitle: string; dictionary?: ReadonlySet<string> }): string | null {
+export function titleRefusal(title: string, ctx: { vocab: Vocabulary; bookTitle: string; dictionary?: ReadonlySet<string>; path?: string }): string | null {
   if (!title) return "only the chapter's label";
+  // owner-batch-item8: a title a person read from the book (corpus-titles' REVIEWED_TITLES) is known.
+  if (ctx.path && REVIEWED_TITLES[ctx.path]?.title === title) return null;
   const why = titleFragment(title, ctx);
   if (why) return why;
   const odd = (title.toLowerCase().match(/\p{L}+/gu) ?? []).filter((w) => w.length >= 4 && !(ctx.vocab.get(w) ?? 0) && !(ctx.dictionary ? inDictionary(w, ctx.dictionary) : true));
@@ -83,30 +87,46 @@ export async function corpusChapters(db: PrismaClient): Promise<CorpusChapter[]>
   const out: CorpusChapter[] = [];
   // owner-batch-item7 (30 Oct 2026): a Balbharati class and subject is read the way the generator plans it (one book of
   // each edition, its parts numbered on: scripts/quiz-gen/select.ts planBalbharati), so the bank's "Chapter 12" of class
-  // 9 mathematics finds part 2's chapter 3.
+  // 9 mathematics finds part 2's chapter 3. owner-batch-item8 (31 Oct 2026): an NCERT one likewise (planNcert): parts
+  // numbered on, two books under one number named; a book another replaced is read under its own numbers.
   const balbharati = new Map<string, typeof docs>();
+  const ncert = new Map<string, typeof docs>();
   for (const d of docs) {
     const grade = Number(d.gradeOrProgramme);
     if (!Number.isInteger(grade) || grade < 1 || grade > 12) continue;
-    let subjectCode: string;
     try {
-      subjectCode = subjectCodeOf(d.subject);
+      subjectCodeOf(d.subject);
     } catch {
       continue;
     }
-    const extra = (d.extra ?? {}) as { chapter?: number; bookCode?: string; bookId?: string };
-    const bookCode = extra.bookCode ?? extra.bookId ?? null;
+    const extra = (d.extra ?? {}) as { chapter?: number };
     if (d.source !== "ncert") {
       const key = `${grade}|${d.subject.toLowerCase()}`;
       balbharati.set(key, [...(balbharati.get(key) ?? []), d]);
       continue;
     }
     if (!extra.chapter) continue;
-    const rows: ChunkRow[] = await db.contentChunk.findMany({ where: { documentId: d.id }, orderBy: { ordinal: "asc" }, select: { chapter: true, headingPath: true, text: true } });
-    const label = rows.map(labelOf).find(Boolean) ?? "";
-    const title = chapterTitleOf(label, extra.chapter);
-    const vocab = vocabularyOf([...rows.map((r) => r.text), ...rows.flatMap((r) => r.headingPath.slice(1))]);
-    out.push({ board: "NCERT", grade, subjectCode, number: extra.chapter, title, refusal: titleRefusal(title, { vocab, bookTitle: d.title, dictionary }), book: d.title, bookCode, path: d.path, vocab });
+    const key = `${grade}|${d.subject.toLowerCase()}`;
+    ncert.set(key, [...(ncert.get(key) ?? []), d]);
+  }
+  for (const group of ncert.values()) {
+    const grade = Number(group[0]!.gradeOrProgramme);
+    const subjectCode = subjectCodeOf(group[0]!.subject);
+    const rowsOf = new Map<string, ChunkRow[]>();
+    for (const d of group) rowsOf.set(d.id, await db.contentChunk.findMany({ where: { documentId: d.id }, orderBy: { ordinal: "asc" }, select: { chapter: true, headingPath: true, text: true } }));
+    const firstOf = (d: (typeof group)[number]) => (rowsOf.get(d.id) ?? []).map(labelOf).find(Boolean) ?? "";
+    const plan = planNcert(group, firstOf);
+    const entries = [
+      ...plan.chapters.map((c) => ({ doc: c.doc, number: c.planNumber, own: c.number, planBook: c.book?.title ?? null })),
+      ...plan.superseded.flatMap((s) => s.docs.map((d) => ({ doc: d, number: chapterNumberOf(firstOf(d)) ?? (d.extra as { chapter: number }).chapter, own: chapterNumberOf(firstOf(d)) ?? (d.extra as { chapter: number }).chapter, planBook: null }))),
+    ];
+    for (const e of entries) {
+      const rows = rowsOf.get(e.doc.id) ?? [];
+      const title = chapterTitleOf(firstOf(e.doc), e.own);
+      const vocab = vocabularyOf([...rows.map((r) => r.text), ...rows.flatMap((r) => r.headingPath.slice(1))]);
+      const extra = (e.doc.extra ?? {}) as { bookCode?: string; bookId?: string };
+      out.push({ board: "NCERT", grade, subjectCode, number: e.number, title, refusal: titleRefusal(title, { vocab, bookTitle: e.doc.title, dictionary, path: e.doc.path }), book: e.doc.title, bookCode: extra.bookCode ?? extra.bookId ?? null, planBook: e.planBook, path: e.doc.path, vocab });
+    }
   }
   for (const group of balbharati.values()) {
     const grade = Number(group[0]!.gradeOrProgramme);
@@ -122,7 +142,7 @@ export async function corpusChapters(db: PrismaClient): Promise<CorpusChapter[]>
       const title = chapterTitleOf(c.label, c.number);
       const vocab = vocabularyOf([...mine.map((r) => r.text), ...mine.flatMap((r) => r.headingPath.slice(1))]);
       const extra = (c.doc.extra ?? {}) as { bookCode?: string; bookId?: string };
-      out.push({ board: "BALBHARATI", grade, subjectCode, number: c.planNumber, title, refusal: titleRefusal(title, { vocab, bookTitle: c.doc.title, dictionary }), book: c.doc.title, bookCode: extra.bookCode ?? extra.bookId ?? null, path: c.doc.path, vocab });
+      out.push({ board: "BALBHARATI", grade, subjectCode, number: c.planNumber, title, refusal: titleRefusal(title, { vocab, bookTitle: c.doc.title, dictionary, path: c.doc.path }), book: c.doc.title, bookCode: extra.bookCode ?? extra.bookId ?? null, planBook: null, path: c.doc.path, vocab });
     }
   }
   return out;
@@ -147,7 +167,9 @@ export type TitleVerdict =
 export function titleVerdict(topic: TopicForTitle, corpus: readonly CorpusChapter[], batchBook: string | null = null): TitleVerdict {
   const n = chapterNumberOf(topic.chapter);
   const lineName = chapterNameOf(topic.chapter);
-  const candidates = n === null ? [] : corpus.filter((c) => c.board === topic.board && c.grade === topic.classLevel && c.subjectCode === topic.subject && c.number === n);
+  // owner-batch-item8: a line that names its book ("Chapter 5 (Contemporary World Politics) — …") is that book's chapter.
+  const lineBook = chapterBookOf(topic.chapter);
+  const candidates = n === null ? [] : corpus.filter((c) => c.board === topic.board && c.grade === topic.classLevel && c.subjectCode === topic.subject && c.number === n && (lineBook === null || c.planBook === lineBook));
   const known = candidates.filter((c) => !c.refusal);
   const exact = (c: CorpusChapter) => squash(c.title) === squash(lineName) || squash(c.title) === squash(slugWords(topic.slug)) || squash(c.title) === squash(topic.name);
   const agreeing = known.filter((c) => exact(c) || titlesAgree(c.title, slugWords(topic.slug)) || titlesAgree(c.title, lineName) || titlesAgree(c.title, topic.name));

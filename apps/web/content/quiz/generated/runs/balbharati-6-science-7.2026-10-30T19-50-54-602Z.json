@@ -1,0 +1,544 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T19:50:54.602Z",
+  "finishedAt": "2026-10-30T20:00:28.548Z",
+  "seconds": 574,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "603050012",
+    "document": "balbharati/6/science/603050012.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 7 — A Journey of Light",
+    "edition": "First Edition 2026",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2023-24]\n14. When light enters the atmosphere it strikes on extremely fine particles, which deflect the 1\nrays of light in all possible directions, This is due to -\na) reflection of light\nb) atmospheric refraction\nc) scattering of light\nd) dispersion of light",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n31. A. As sunlight passes through the atmosphere, Rayleigh scattering causes 1\nshorter wavelengths, such as blue and violet, to scatter more than other\ncolors, but our eyes are more sensitive to blue than violet.",
+      "[CBSE Class X Science, marking scheme, 2026-27]\n33. A. The ratio of sine of angle of incidence to the sine of angle of refraction 2\nis a constant, for the light of a given colour and for the given pair of\nmedia. (1)\nB. Consider a ray of light travelling from medium 1 into medium 2.Let v 1 be\nthe speed of light in medium 1 and v 2 be the speed of light in medium 2.\nThe refractive index of medium 2 with respect to medium 1 is given by\n𝑣 1\n(𝑛 ) 21 𝑛 21 = 𝑣 2 (1)",
+      "[INJSO 2015 — question paper]\n6. A beam of yellow light travelling in vacuum (λ = 600 nm) enters an ordinary transparent\nglass (μ = 1.5). Read the following statements.\ni) Its wavelength becomes equal to that of red colour in vacuum.\nii) Its wavelength becomes equal to that of green colour in vacuum.\niii) Energy of the photons corresponding to refracted light is the same as that corresponding\nto the incident light.\niv) Energy of the photons decreases.\na) Only iii is correct. b) Only ii & iii are correct.\nc) Only i & iii are correct. d) Only i & iv are correct."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 104194,
+      "in": 29,
+      "out": 29,
+      "rejects": 0,
+      "promptTokens": 23978,
+      "completionTokens": 4999
+    },
+    "critique": {
+      "calls": 33,
+      "ms": 235814,
+      "in": 29,
+      "out": 24,
+      "rejects": 5,
+      "promptTokens": 13581,
+      "completionTokens": 5587
+    },
+    "solver": {
+      "calls": 146,
+      "ms": 78507,
+      "in": 24,
+      "out": 23,
+      "rejects": 1,
+      "promptTokens": 20392,
+      "completionTokens": 1328
+    },
+    "form": {
+      "calls": 14,
+      "ms": 56234,
+      "in": 23,
+      "out": 20,
+      "rejects": 3,
+      "promptTokens": 5256,
+      "completionTokens": 1246
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 59,
+      "ms": 11212,
+      "in": 20,
+      "out": 18,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 73,
+      "ms": 781055,
+      "in": 36,
+      "out": 36,
+      "rejects": 0,
+      "promptTokens": 39417,
+      "completionTokens": 19355
+    }
+  },
+  "kept": 18,
+  "keptByLevel": {
+    "1": 4,
+    "2": 3,
+    "3": 3,
+    "4": 3,
+    "5": 3,
+    "6": 2
+  },
+  "flagged": 8,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 6,
+      "stem": "Which of the following is a natural source of light?",
+      "ms": {
+        "draft": 13897,
+        "critique": 7605,
+        "solver": 1878,
+        "form": 3388
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram showing the laws of reflection, what is the relationship between the angle of incidence and the angle of reflection?",
+      "ms": {
+        "draft": 5230,
+        "critique": 8151,
+        "solver": 1825,
+        "form": 5284
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why can't sounds produced on the moon be heard on Earth?",
+      "ms": {
+        "draft": 2796,
+        "critique": 9383
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a non-luminous object?",
+      "ms": {
+        "draft": 2796,
+        "critique": 7698
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the purpose of the mirrors placed on the moon by astronauts?",
+      "ms": {
+        "draft": 2796,
+        "critique": 8196,
+        "solver": 1292
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Why can we not hear sounds produced on the moon on Earth?",
+      "ms": {
+        "draft": 2670,
+        "critique": 9647
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which type of reflection allows us to see objects around us from any direction?",
+      "ms": {
+        "draft": 3477,
+        "critique": 9181
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a light ray is reflected from a smooth surface, what can be said about the reflected rays?",
+      "ms": {
+        "draft": 3477,
+        "critique": 10193
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the main reason objects are not visible in a completely dark room?",
+      "ms": {
+        "draft": 5370,
+        "critique": 6675,
+        "solver": 7627,
+        "form": 1276
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If there are ripples on the water, what happens to the image of the moon?",
+      "ms": {
+        "draft": 2670,
+        "critique": 7153,
+        "solver": 2062,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about the image formed in a pinhole camera?",
+      "ms": {
+        "draft": 2670,
+        "critique": 7866,
+        "solver": 2145,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main natural source of light for the Earth?",
+      "ms": {
+        "draft": 5230,
+        "critique": 7506,
+        "solver": 1603,
+        "form": 3651,
+        "translation": 37209
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the turning back of light rays from the surface of an object called?",
+      "ms": {
+        "draft": 3477,
+        "critique": 8106,
+        "solver": 1613,
+        "form": 5272,
+        "translation": 42018
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a true statement about the moon?",
+      "ms": {
+        "draft": 2796,
+        "critique": 8332,
+        "solver": 12607,
+        "form": 0,
+        "translation": 43937
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a self-luminous object?",
+      "ms": {
+        "draft": 2670,
+        "critique": 6887,
+        "solver": 1517,
+        "form": 0,
+        "translation": 25206
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about the propagation of light?",
+      "ms": {
+        "draft": 13897,
+        "critique": 5465,
+        "solver": 1541,
+        "form": 4000,
+        "translation": 48625
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of a pinhole camera?",
+      "ms": {
+        "draft": 13897,
+        "critique": 7112,
+        "solver": 1900,
+        "form": 3477,
+        "translation": 46062
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about the reflection of light?",
+      "ms": {
+        "draft": 5230,
+        "critique": 7203,
+        "solver": 1514,
+        "form": 0,
+        "translation": 57581
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a candle flame is placed in front of a pinhole camera, what kind of image is formed on the screen?",
+      "ms": {
+        "draft": 13897,
+        "critique": 6214,
+        "solver": 2634,
+        "form": 3932,
+        "translation": 55678
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a light ray is incident on a smooth surface and reflects, what can be said about the reflected rays?",
+      "ms": {
+        "draft": 5230,
+        "critique": 7223,
+        "solver": 1906,
+        "form": 0,
+        "translation": 49029
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a light ray is reflected, what is the relationship between the angle of incidence and the angle of reflection?",
+      "ms": {
+        "draft": 3477,
+        "critique": 8259,
+        "solver": 16210,
+        "form": 1787,
+        "translation": 33025
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the experiment with three cardboards and a candle, what conclusion can be drawn about the path of light?",
+      "ms": {
+        "draft": 13897,
+        "critique": 5867,
+        "solver": 2011,
+        "form": 3129,
+        "translation": 50619
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What happens to the image of the moon on calm water if there are ripples?",
+      "ms": {
+        "draft": 2796,
+        "critique": 6301,
+        "solver": 2087,
+        "form": 0,
+        "translation": 34884
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In which of the following situations is the image of the moon visible?",
+      "ms": {
+        "draft": 2670,
+        "critique": 8810,
+        "solver": 1225,
+        "form": 0,
+        "translation": 31669
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a dark room, a person cannot see objects even if they are present. Why is this so?",
+      "ms": {
+        "draft": 13897,
+        "critique": 7312,
+        "solver": 1195,
+        "form": 3667,
+        "translation": 44913
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A light ray is incident on a mirror and the angle of incidence is 45°. What can be said about the angle of reflection?",
+      "ms": {
+        "draft": 5230,
+        "critique": 6911,
+        "solver": 1435,
+        "form": 2529,
+        "translation": 51666
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is true about the image formed in a pinhole camera?",
+      "ms": {
+        "draft": 2796,
+        "critique": 7188,
+        "solver": 7078,
+        "form": 0,
+        "translation": 34059
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why can we see objects around us even if they are not smooth?",
+      "ms": {
+        "draft": 5230,
+        "critique": 7181,
+        "solver": 3378,
+        "form": 2816,
+        "translation": 48739
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the purpose of the mirrors placed on the moon by astronauts?",
+      "ms": {
+        "draft": 2670,
+        "critique": 7611,
+        "solver": 1967,
+        "form": 0,
+        "translation": 42252
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is a natural source of light?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Does not recognize the origin of light in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram showing the laws of reflection, what is the relationship between the angle of incidence and the angle of reflection?",
+      "reason": "options 0 and 1 say the same thing (\"The angle of incidence is always greater than the angle of reflection\" / \"The angle of incidence is always less than the angle of reflection\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why can't sounds produced on the moon be heard on Earth?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is a non-luminous object?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What is the purpose of the mirrors placed on the moon by astronauts?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Why can we not hear sounds produced on the moon on Earth?",
+      "reason": "the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which type of reflection allows us to see objects around us from any direction?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a light ray is reflected from a smooth surface, what can be said about the reflected rays?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the main reason objects are not visible in a completely dark room?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 1's reason is not a one-line misconception (\"Ignores the passage's explanation…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If there are ripples on the water, what happens to the image of the moon?",
+      "reason": "near-duplicate of batch item \"What happens to the image of the moon on calm wate…\" (cosine 0.926 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is true about the image formed in a pinhole camera?",
+      "reason": "near-duplicate of batch item \"Which of the following is true about the image for…\" (cosine 1.000 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

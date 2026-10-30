@@ -1,0 +1,538 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T19:42:48.686Z",
+  "finishedAt": "2026-10-30T19:50:52.379Z",
+  "seconds": 484,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "603050012",
+    "document": "balbharati/6/science/603050012.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 6 — Properties of Substances",
+    "edition": "First Edition 2026",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2022 — question paper]\n2. A student took a sandy soil sample from a desert area, put it in a bucket and poured tap water on it. After\nsome time, the soil settled down in the bucket. She wanted to know if the sample had any soluble\nsubstances in it. Comparison of which of these properties between supernatant bucket water and the\noriginal tap water will most likely answer her question definitively.\nA. pH B. density C. temperature D. light scattering in identical containers",
+      "[INJSO 2012 — question paper]\n65. Sunita was checking chemical properties of some compounds. During her experiments, she\nobserved that when she heated an orange solid 'A', she obtained copious amounts of a green residue\n'B', a colourless gas 'C' and some water vapour. She passed the dry gas 'C' over heated Mg, and\nobtained a white solid 'D'. When she tested the white solid 'D', she found that it reacted with water\nto give a pungent smelling gas 'E', which formed dense fumes with HCl. Can you identify the\nsubstances A, B, C, D, E ? Give chemical reactions in support of your answer.\nTotal: 5 Marks",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n17. to 20 consist of two statements – Assertion (A) and Reason (R). Answer\nthese questions by selecting the appropriate option given below:\nA. Both A and R are true, and R is the correct explanation of A.\nB. Both A and R are true, and R is not the correct explanation of A.\nC. A is true but R is false.\nD. A is false but R is true\n17 Assertion (A): On adding dil. HCl to a test tube containing a substance ‘X’, a 1\ncolourless gas is produced which gives a pop sound when a burning match\nstick is brought near it.\nReason (R): In this reaction metal ‘X’ is displaced by Hydrogen.",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n37. to 39 are case-based/data -based questions.\n37 4\nA. Derive the names of A, Y, Z, M, P & R\nAttempt either subpart B or C.\nB. Improvise an activity to test Z.\nOR\nC. Name the process in which compounds X, Y & Z are formed from A.\nJustify your response.\n- - - - - - - - - - - - - -\nFor visually impaired students\nA. Distinguish between ethanol and ethanoic acid experimentally.\nAttempt either subpart B or C.\nB. Give the IUPAC name of the first member of Alkene which is formed by\naddition of conc. sulphuric acid to it. Illustrate the change with the help\nof a chemical equation.\nOR\nC. “All combustion reactions are oxidation but all oxidation reactions are\nnot combustion.” Justify."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 5,
+      "ms": 99488,
+      "in": 27,
+      "out": 26,
+      "rejects": 2,
+      "promptTokens": 21799,
+      "completionTokens": 4613
+    },
+    "critique": {
+      "calls": 29,
+      "ms": 208197,
+      "in": 26,
+      "out": 17,
+      "rejects": 9,
+      "promptTokens": 12207,
+      "completionTokens": 4955
+    },
+    "solver": {
+      "calls": 104,
+      "ms": 56962,
+      "in": 17,
+      "out": 15,
+      "rejects": 2,
+      "promptTokens": 14821,
+      "completionTokens": 954
+    },
+    "form": {
+      "calls": 9,
+      "ms": 26889,
+      "in": 15,
+      "out": 10,
+      "rejects": 5,
+      "promptTokens": 2355,
+      "completionTokens": 634
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 57,
+      "ms": 11162,
+      "in": 10,
+      "out": 9,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 39,
+      "ms": 423664,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 21627,
+      "completionTokens": 10458
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 2,
+    "4": 2,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a solid is heated enough to melt, what change in the state of matter occurs?",
+      "ms": {
+        "draft": 3910,
+        "critique": 7499
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about the particles in a liquid?",
+      "ms": {
+        "draft": 3910,
+        "critique": 7500
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the reason that a liquid takes the shape of its container?",
+      "ms": {
+        "draft": 3910,
+        "critique": 7984
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following scenarios is most likely to result in the change of state of a substance from a liquid to a gas?",
+      "ms": {
+        "draft": 3910,
+        "critique": 7913
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the state of a substance when its particles are loosely bound and can flow?",
+      "ms": {
+        "draft": 3910,
+        "critique": 8322
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, why is the plasma state considered different from solid, liquid, and gas?",
+      "ms": {
+        "draft": 3910,
+        "critique": 8185,
+        "solver": 1694,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property that can be used to identify a substance?",
+      "ms": {
+        "draft": 3706,
+        "critique": 6319,
+        "solver": 1737
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for calculating density?",
+      "ms": {
+        "draft": 3706,
+        "critique": 7157,
+        "solver": 1843,
+        "form": 1744
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a liquid has a volume of 3 ml and a mass of 7.5 grams, what will be its density?",
+      "ms": {
+        "draft": 2967,
+        "critique": 6886,
+        "solver": 1529,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a transparent material?",
+      "ms": {
+        "draft": 2967,
+        "critique": 7667,
+        "solver": 13472,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following will have a greater volume, 1 kg of cotton or 1 kg of iron?",
+      "ms": {
+        "draft": 2967,
+        "critique": 10436
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of the liquid state?",
+      "ms": {
+        "draft": 3604,
+        "critique": 7676
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of the gaseous state?",
+      "ms": {
+        "draft": 3604,
+        "critique": 7375
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements is true about the states of matter?",
+      "ms": {
+        "draft": 3604,
+        "critique": 8206
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student measures the density of a liquid and finds it to be 0.8 g/cm³. Which of the following statements is true about this liquid?",
+      "ms": {
+        "draft": 4316,
+        "critique": 6965,
+        "solver": 16404,
+        "form": 4696
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of the solid state?",
+      "ms": {
+        "draft": 3604,
+        "critique": 7218,
+        "solver": 9497
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a transparent material?",
+      "ms": {
+        "draft": 2967,
+        "critique": 8469,
+        "solver": 2030,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a translucent material?",
+      "ms": {
+        "draft": 2967,
+        "critique": 7339,
+        "solver": 1875,
+        "form": 0,
+        "translation": 53225
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens if a thin dark film is stuck to car windows?",
+      "ms": {
+        "draft": 2967,
+        "critique": 9245,
+        "solver": 1318,
+        "form": 0,
+        "translation": 38502
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a substance has a density of 1 g/cm³, what can we say about it?",
+      "ms": {
+        "draft": 3706,
+        "critique": 6748,
+        "solver": 2411,
+        "form": 3116,
+        "translation": 41038
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a property of a substance that can be determined using its mass and volume?",
+      "ms": {
+        "draft": 4316,
+        "critique": 6462,
+        "solver": 1713,
+        "form": 3449,
+        "translation": 42415
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student measures the mass and volume of a substance and calculates its density. What can this information tell the student?",
+      "ms": {
+        "draft": 3706,
+        "critique": 5364,
+        "solver": 1656,
+        "form": 3937,
+        "translation": 52569
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "A student measures the mass of a stone as 100 grams and the volume of water displaced as 50 cm³. What is the density of the stone?",
+      "ms": {
+        "draft": 4316,
+        "critique": 6136,
+        "solver": 1863,
+        "form": 2962,
+        "translation": 45550
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student finds that a sample of oil floats on water. What can be concluded about the density of oil?",
+      "ms": {
+        "draft": 3706,
+        "critique": 8886,
+        "solver": 2008,
+        "form": 2118,
+        "translation": 42429
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student wants to determine if a sample of gold is pure. What information should they compare?",
+      "ms": {
+        "draft": 3706,
+        "critique": 7115,
+        "solver": 1427,
+        "form": 2964,
+        "translation": 63715
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A substance is found to have a density of 1.2 g/cm³. Which of the following can be inferred about this substance?",
+      "ms": {
+        "draft": 4316,
+        "critique": 6244,
+        "solver": 2165,
+        "form": 4633,
+        "translation": 40612
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 2, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":2,\"stem\":\"Which of the following is an example of a transparent material?\",\"options\":[\"Butter pa"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a solid is heated enough to melt, what change in the state of matter occurs?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is true about the particles in a liquid?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, what is the reason that a liquid takes the shape of its container?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following scenarios is most likely to result in the change of state of a substance from a liquid to a gas?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used to describe the state of a substance when its particles are loosely bound and can flow?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, why is the plasma state considered different from solid, liquid, and gas?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a property that can be used to identify a substance?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula for calculating density?",
+      "reason": "options 1 and 3 say the same thing (\"Mass divided by volume\" / \"Volume divided by mass\")"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is an example of a translucent substance?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a liquid has a volume of 3 ml and a mass of 7.5 grams, what will be its density?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a transparent material?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following will have a greater volume, 1 kg of cotton or 1 kg of iron?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a characteristic of the liquid state?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a characteristic of the gaseous state?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following statements is true about the states of matter?",
+      "reason": "the solution's working is not sound; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student measures the density of a liquid and finds it to be 0.8 g/cm³. Which of the following statements is true about this liquid?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a characteristic of the solid state?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is an example of a transparent material?",
+      "reason": "near-duplicate of served question cmvfsofk300lvgpfhjzusc4su (cosine 0.904 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -50,7 +50,9 @@ import type { ActiveContext } from "./session";
  * "Served" is the one serving rule (quiz-served.ts). A chapter in the matrix is a book's chapter as the generation run
  * counts one (scripts/quiz-gen/job.ts servedCount): every topic of a board, class and subject whose chapter line starts
  * "Chapter N", summed, so the authored bank's chapter and a generated one of the same number count once and reach the
- * target together; a topic whose line has no number is a chapter of its own.
+ * target together; a topic whose line has no number is a chapter of its own. A line that names its book beside the number
+ * (owner-batch-item8: "Chapter 5 (Contemporary World Politics) — …") is that book's chapter N, counted apart from the
+ * other book's, and the chapter's row carries the book.
  */
 
 /** The school bank's classes, the matrix's rows. */
@@ -62,6 +64,16 @@ const BOARD_ORDER = ["NCERT", "BALBHARATI"];
 export function chapterNumberOfLine(chapter: string): number | null {
   const m = /^\s*(?:chapter|unit|lesson)\s*(\d{1,3})\b/i.exec(chapter);
   return m ? Number(m[1]) : null;
+}
+
+/**
+ * owner-batch-item8 (31 Oct 2026): the book a chapter line names beside its number, "Chapter 5 (Contemporary World
+ * Politics) — …" → "Contemporary World Politics", or null. The generation run names the book where two NCERT books of a
+ * class and subject share chapter numbers (scripts/quiz-gen/select.ts planNcert); each book's chapter 5 is its own. Pure.
+ */
+export function chapterBookOfLine(chapter: string): string | null {
+  const m = /^\s*(?:chapter|unit)\s+\d{1,3}\s+\(([^()]+)\)/i.exec(chapter);
+  return m ? m[1]!.trim() : null;
 }
 
 const subjectRank = (s: string) => {
@@ -120,7 +132,8 @@ export function buildMatrix(topics: readonly MatrixTopic[], served: ReadonlyMap<
     }
     if (!(MATRIX_GRADES as readonly number[]).includes(t.grade) || !(QUIZ_GEN_SUBJECTS as readonly string[]).includes(t.subject)) continue;
     const number = chapterNumberOfLine(t.chapter);
-    add(school, `${t.grade}|${t.subject}`, `${t.board ?? ""}|${number ?? `topic:${t.id}`}`, n);
+    // owner-batch-item8: two books' chapter N are two chapters.
+    add(school, `${t.grade}|${t.subject}`, `${t.board ?? ""}|${chapterBookOfLine(t.chapter) ?? ""}|${number ?? `topic:${t.id}`}`, n);
   }
   const subjects = [...QUIZ_GEN_SUBJECTS] as string[];
   const rows = MATRIX_GRADES.map((grade) => {
@@ -164,6 +177,8 @@ export function groupChapters(topics: readonly ChapterTopic[], counts: ReadonlyM
       subjectRank(a.subject) - subjectRank(b.subject) ||
       a.subject.localeCompare(b.subject) ||
       boardRank(a.board) - boardRank(b.board) ||
+      // owner-batch-item8: a class whose chapter lines name two books lists one book's chapters, then the other's.
+      (chapterBookOfLine(a.chapter) ?? "").localeCompare(chapterBookOfLine(b.chapter) ?? "") ||
       (na ?? Number.MAX_SAFE_INTEGER) - (nb ?? Number.MAX_SAFE_INTEGER) ||
       a.position - b.position ||
       a.name.localeCompare(b.name)
@@ -182,6 +197,7 @@ export function groupChapters(topics: readonly ChapterTopic[], counts: ReadonlyM
       chapter: fixTitleCase(t.chapter),
       name: fixTitleCase(t.name),
       number: chapterNumberOfLine(t.chapter),
+      book: chapterBookOfLine(t.chapter),
       levels: c.levels,
       total: c.served,
       down: c.down,

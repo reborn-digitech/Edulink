@@ -18,7 +18,7 @@ import { quizBankChapterSchema, quizBankChaptersSchema, quizBankMatrixSchema, ty
 import { createSession, type ActiveContext } from "@/lib/session";
 import { __resetCookies } from "../tests/stubs/next-headers";
 import { fixTitleCase, fixWordCase } from "@/lib/chapter-title-case";
-import { bankChapter, bankChapters, bankMatrix, bankTarget, buildMatrix, chapterNumberOfLine, groupChapters, makerOf, wordsIn, type ChapterCounts } from "@/lib/bank-desk";
+import { bankChapter, bankChapters, bankMatrix, bankTarget, buildMatrix, chapterBookOfLine, chapterNumberOfLine, groupChapters, makerOf, wordsIn, type ChapterCounts } from "@/lib/bank-desk";
 import { GET as matrixGet } from "@/app/api/v1/appadmin/quiz-review/matrix/route";
 import { GET as chaptersGet } from "@/app/api/v1/appadmin/quiz-review/chapters/route";
 import { GET as chapterGet } from "@/app/api/v1/appadmin/quiz-review/chapters/[slug]/route";
@@ -177,6 +177,28 @@ describe("the matrix and the grouping, pure", () => {
     expect(maths.chapters[2]!.chapter).toBe("Chapter 2 — Lines and angles");
     expect(maths.served).toBe(10);
     expect(makerOf({ generated: 0, authored: 0 }, { generated: 0, authored: 0 })).toBeNull();
+  });
+
+  it("owner-batch-item8: counts two books' chapter 5 apart and lists one book's chapters, then the other's, each row with its book", () => {
+    const cwp = "Contemporary World Politics";
+    const pii = "Politics in India Since Independence";
+    const civics = [
+      { id: "w5", board: "NCERT", grade: 12, subject: "CIVICS", chapter: `Chapter 5 (${cwp}) — Security in the Contemporary World`, audience: "SCHOOL", streams: [] },
+      { id: "p5", board: "NCERT", grade: 12, subject: "CIVICS", chapter: `Chapter 5 (${pii}) — Challenges to and Restoration of the Congress System`, audience: "SCHOOL", streams: [] },
+      { id: "p1", board: "NCERT", grade: 12, subject: "CIVICS", chapter: `Chapter 1 (${pii}) — Challenges of Nation Building`, audience: "SCHOOL", streams: [] },
+    ];
+    const twelve = buildMatrix(civics, new Map([["w5", 100], ["p5", 40], ["p1", 100]]), 100).rows.find((r) => r.grade === 12)!;
+    expect(twelve.cells.find((c) => c.subject === "CIVICS")).toEqual({ subject: "CIVICS", served: 240, chapters: 3, atTarget: 2 });
+    expect(chapterBookOfLine(civics[0]!.chapter)).toBe(cwp);
+    expect(chapterBookOfLine("Chapter 5 — Rights")).toBeNull();
+    expect(chapterNumberOfLine(civics[0]!.chapter)).toBe(5);
+    const rows = civics.map((t) => ({ ...t, slug: t.id, name: t.chapter.replace(/^Chapter \d+ \([^)]*\) — /, ""), position: 0 }));
+    const g = groupChapters(rows, new Map(), new Map(), 100);
+    expect(g.groups[0]!.chapters.map((c) => [c.topicId, c.number, c.book])).toEqual([
+      ["w5", 5, cwp],
+      ["p1", 1, pii],
+      ["p5", 5, pii],
+    ]);
   });
 });
 
