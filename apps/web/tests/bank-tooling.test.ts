@@ -167,10 +167,15 @@ describe("import, export, duplicates", () => {
       // A near miss the exact rule cannot see: one word added.
       await db.quizQuestion.create({ data: { topicId, difficulty: 2, stem: `ZZ bank tools ${STAMP}: what is the capital city of France?`, choices: JSON.stringify(["Paris", "Madrid"]), answerIndex: 0, solution: "Paris has been the capital city of France for centuries.", source: "ZZ test", licence: "test" } });
       const near = await findDuplicates(curator());
-      const pair = near.pairs.find((p) => p.a.topicId === topicId && [p.a.stem, p.b.stem].some((s) => s.endsWith("city of France?")));
+      // The answer carries the highest pairs first and this one is deliberately weak, so a bank with hundreds of
+      // stronger pairs may leave it out of the answer: the stored report holds every pair, and that is what is checked.
+      const nearRow = await db.quizQuestion.findFirstOrThrow({ where: { topicId, stem: { endsWith: "city of France?" } }, select: { id: true } });
+      const stored = JSON.parse((await db.bankDuplicateReport.findUniqueOrThrow({ where: { mode: "t" } })).pairs) as { aId: string; bId: string; similarity: number }[];
+      const pair = stored.find((p) => p.aId === nearRow.id || p.bId === nearRow.id);
       expect(pair).toBeDefined();
       expect(pair!.similarity).toBeGreaterThanOrEqual(0.8);
       expect(pair!.similarity).toBeLessThan(1);
+      expect(near.pairs.length).toBeGreaterThanOrEqual(1);
       expect((await findDuplicates(curator(), { trigram: false })).pairs.some((p) => [p.a.stem, p.b.stem].some((s) => s.endsWith("city of France?")))).toBe(false);
       // Unchanged bank: the same report, not a second pass.
       expect((await findDuplicates(curator())).computedAt).toBe(near.computedAt);

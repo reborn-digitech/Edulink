@@ -251,7 +251,8 @@ export type DuplicatesReport = {
 };
 
 export const DUPLICATE_THRESHOLD = 0.8;
-const DUPLICATE_LIMIT = 200;
+/** The pairs the answer carries, highest similarity first: 200 was the whole report in October 2026 until the bank passed 15,000 questions and 548 pairs; the stored report keeps them all. */
+const DUPLICATE_LIMIT = 500;
 /** A full trigram pass is one index probe per question (16 s over 15,875 on the dev box); the transaction gets room for a bank several times that size, and the pass runs once. */
 const DUPLICATE_TIMEOUT_MS = 120_000;
 
