@@ -46,6 +46,7 @@
     "corpus:fetch": "tsx --tsconfig scripts/tsconfig.json scripts/corpus-fetch.ts",
     "corpus:ingest": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/corpus-ingest.ts",
     "corpus:titles": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/corpus-titles.ts",
+    "corpus:balbharati-chapters": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/corpus-balbharati-chapters.ts",
     "help:index": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/help-index.ts",
     "assistant:ask": "tsx --tsconfig scripts/tsconfig.json scripts/assistant-ask.ts",
     "assistant:eval": "tsx --tsconfig scripts/tsconfig.json scripts/assistant-eval.ts",

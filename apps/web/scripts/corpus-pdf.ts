@@ -155,6 +155,16 @@ export const tesseractOcr: OcrReader = async (png, langs) => {
   return result.data.text;
 };
 
+/**
+ * owner-batch-item7: OCR on the page made black on white first (grey, stretched, cut at a threshold), for a contents
+ * page printed over coloured bands, where the plain reading takes the dot leaders and the bands for letters. A dark
+ * band needs a low threshold (class 10 mathematics part 2 reads whole at 120, loses a line at 170).
+ */
+export const contrastOcr =
+  (threshold: number): OcrReader =>
+  async (png, langs) =>
+    tesseractOcr(await sharp(png).grayscale().normalise().threshold(threshold).png().toBuffer(), langs);
+
 export async function closeOcr() {
   if (ocrWorker) await ocrWorker.terminate();
   ocrWorker = null;
@@ -236,6 +246,8 @@ export type ExtractOptions = {
    * "! #"%$!& ')(+*-," for words) is read as if it had none (`garbledShare`). Off for the books.
    */
   ocrGarbled?: boolean;
+  /** owner-batch-item7: OCR only the pages this admits (a book's front pages, for a contents page drawn as a picture). */
+  ocrPages?: (page: number) => boolean;
 };
 
 /**
@@ -290,7 +302,7 @@ export async function extractPdf(bytes: Uint8Array, opts: ExtractOptions): Promi
       // A page whose words are drawn as outlines (NCERT's trilingual dictionaries) has neither a text
       // layer nor a picture of the page: it is rendered (pdfjs's own canvas) and read the same way.
       const scan = biggest && biggest.w * biggest.h >= width * height * 0.5 ? biggest : null;
-      if (scanned && opts.ocrLangs) {
+      if (scanned && opts.ocrLangs && (!opts.ocrPages || opts.ocrPages(p))) {
         const read = (png: Buffer | null) => (png ? (opts.ocr ?? tesseractOcr)(png, opts.ocrLangs!).catch(() => "") : Promise.resolve(""));
         let text = "";
         if (scan && opts.ocrHalves) {

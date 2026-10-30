@@ -21,7 +21,7 @@
 import type { PrismaClient } from "@prisma/client";
 import { inDictionary, loadDictionary, titleFragment, vocabularyOf, type Vocabulary } from "./corpus-titles";
 import { chapterNameOf, chapterNumberOf, words } from "./quiz-gen/checks";
-import { chapterTitleOf, subjectCodeOf } from "./quiz-gen/select";
+import { bookChapterOf, chapterTitleOf, planBalbharati, subjectCodeOf } from "./quiz-gen/select";
 
 export type CorpusChapter = {
   board: "NCERT" | "BALBHARATI";
@@ -81,6 +81,10 @@ export async function corpusChapters(db: PrismaClient): Promise<CorpusChapter[]>
     orderBy: { path: "asc" },
   });
   const out: CorpusChapter[] = [];
+  // owner-batch-item7 (30 Oct 2026): a Balbharati class and subject is read the way the generator plans it (one book of
+  // each edition, its parts numbered on: scripts/quiz-gen/select.ts planBalbharati), so the bank's "Chapter 12" of class
+  // 9 mathematics finds part 2's chapter 3.
+  const balbharati = new Map<string, typeof docs>();
   for (const d of docs) {
     const grade = Number(d.gradeOrProgramme);
     if (!Number.isInteger(grade) || grade < 1 || grade > 12) continue;
@@ -92,24 +96,33 @@ export async function corpusChapters(db: PrismaClient): Promise<CorpusChapter[]>
     }
     const extra = (d.extra ?? {}) as { chapter?: number; bookCode?: string; bookId?: string };
     const bookCode = extra.bookCode ?? extra.bookId ?? null;
-    const board = d.source === "ncert" ? "NCERT" : "BALBHARATI";
-    const rows: ChunkRow[] = await db.contentChunk.findMany({ where: { documentId: d.id }, orderBy: { ordinal: "asc" }, select: { chapter: true, headingPath: true, text: true } });
-    const groups = new Map<number, ChunkRow[]>();
-    if (d.source === "ncert") {
-      if (!extra.chapter) continue;
-      groups.set(extra.chapter, rows);
-    } else {
-      for (const r of rows) {
-        const n = chapterNumberOf(labelOf(r));
-        if (n === null) continue;
-        groups.set(n, [...(groups.get(n) ?? []), r]);
-      }
+    if (d.source !== "ncert") {
+      const key = `${grade}|${d.subject.toLowerCase()}`;
+      balbharati.set(key, [...(balbharati.get(key) ?? []), d]);
+      continue;
     }
-    for (const [number, mine] of groups) {
-      const label = mine.map(labelOf).find(Boolean) ?? "";
-      const title = chapterTitleOf(label, number);
+    if (!extra.chapter) continue;
+    const rows: ChunkRow[] = await db.contentChunk.findMany({ where: { documentId: d.id }, orderBy: { ordinal: "asc" }, select: { chapter: true, headingPath: true, text: true } });
+    const label = rows.map(labelOf).find(Boolean) ?? "";
+    const title = chapterTitleOf(label, extra.chapter);
+    const vocab = vocabularyOf([...rows.map((r) => r.text), ...rows.flatMap((r) => r.headingPath.slice(1))]);
+    out.push({ board: "NCERT", grade, subjectCode, number: extra.chapter, title, refusal: titleRefusal(title, { vocab, bookTitle: d.title, dictionary }), book: d.title, bookCode, path: d.path, vocab });
+  }
+  for (const group of balbharati.values()) {
+    const grade = Number(group[0]!.gradeOrProgramme);
+    const subjectCode = subjectCodeOf(group[0]!.subject);
+    const rowsOf = new Map<string, ChunkRow[]>();
+    for (const d of group) rowsOf.set(d.id, await db.contentChunk.findMany({ where: { documentId: d.id }, orderBy: { ordinal: "asc" }, select: { chapter: true, headingPath: true, text: true } }));
+    const { chapters } = planBalbharati(group, (d) => (rowsOf.get(d.id) ?? []).map(labelOf));
+    for (const c of chapters) {
+      const mine = (rowsOf.get(c.doc.id) ?? []).filter((r) => {
+        const b = bookChapterOf(labelOf(r));
+        return b !== null && b.number === c.number && b.part === c.part;
+      });
+      const title = chapterTitleOf(c.label, c.number);
       const vocab = vocabularyOf([...mine.map((r) => r.text), ...mine.flatMap((r) => r.headingPath.slice(1))]);
-      out.push({ board, grade, subjectCode, number, title, refusal: titleRefusal(title, { vocab, bookTitle: d.title, dictionary }), book: d.title, bookCode, path: d.path, vocab });
+      const extra = (c.doc.extra ?? {}) as { bookCode?: string; bookId?: string };
+      out.push({ board: "BALBHARATI", grade, subjectCode, number: c.planNumber, title, refusal: titleRefusal(title, { vocab, bookTitle: c.doc.title, dictionary }), book: c.doc.title, bookCode: extra.bookCode ?? extra.bookId ?? null, path: c.doc.path, vocab });
     }
   }
   return out;

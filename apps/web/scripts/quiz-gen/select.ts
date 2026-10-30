@@ -4,7 +4,9 @@
  * reference, captions read from the ingest's `<base>.captions.json` beside the PNGs.
  *
  * NCERT is one document per chapter (extra.chapter); Balbharati one document per book, cut by the
- * chapter name at the head of each chunk's headingPath ("3. Force and Pressure"). Two NCERT books
+ * chapter name at the head of each chunk's headingPath ("3. Force and Pressure"; scripts/corpus-balbharati-chapters.ts
+ * writes them from the book's contents page). A Balbharati class and subject plans one book of each edition and its
+ * parts in order, a later part's chapters numbered on after the earlier's (planBalbharati, owner-batch-item7). Two NCERT books
  * may cover one class and subject (the 2024 "Science" and the 2026 "Curiosity"): `--book=<code>`
  * picks one, else the most recently modified book is taken and the choice printed.
  *
@@ -20,6 +22,8 @@ import { chapterNameOf, chapterNumberOf } from "./checks";
 // owner-batch-item6 (30 Oct 2026): a chapter's name is its book's title, never a fragment of one (corpus-titles' rules).
 import { loadDictionary, titleCase, titleFragment, vocabularyOf } from "../corpus-titles";
 import { fixTitleCase } from "../../src/lib/chapter-title-case";
+// owner-batch-item7 (30 Oct 2026): which documents of a class and subject are one Balbharati book (editions, parts, misfiled).
+import { chooseBooks, type BookChoice } from "../corpus-contents";
 
 export type SelectedChunk = {
   id: string;
@@ -54,6 +58,11 @@ export type SelectedChapter = {
   chunks: SelectedChunk[];
   figures: Map<string, Figure>;
   headings: string[];
+  /**
+   * owner-batch-item7: where a Balbharati chapter sits when its class and subject plan more than one book or part
+   * ("९ वी गणित भाग-२ इंग्रजी", chapter 3): the plan's number then runs on from the earlier book's chapters.
+   */
+  bookPlace?: string;
   /**
    * college-content (12 Oct 2026): a line the drafting prompt carries for a college unit (the passage is a
    * university syllabus, not a textbook: ask about what it lists, never about the syllabus itself).
@@ -158,6 +167,83 @@ function bookCodeOf(doc: DocRow): string | null {
   return extra?.bookCode ?? extra?.bookId ?? null;
 }
 
+/**
+ * owner-batch-item7: a Balbharati chunk's chapter label read: "3. Triangles" (as class 8 science prints its headings, and
+ * scripts/corpus-balbharati-chapters.ts writes them), or a second numbered sequence of the same book "Political Science ·
+ * 2. India's Foreign Policy" (a History and Political Science book), whose part checks.ts chapterNumberOf never reads, so
+ * an older reader cannot mix its chapter 2 with the history's. Pure.
+ */
+export function bookChapterOf(label: string): { part: string | null; number: number; label: string } | null {
+  const t = label.trim();
+  const sep = t.indexOf(" · ");
+  const part = sep > 0 && sep <= 60 ? t.slice(0, sep).trim() : null;
+  const rest = part ? t.slice(sep + 3).trim() : t;
+  const n = chapterNumberOf(rest);
+  return n === null ? null : { part, number: n, label: rest };
+}
+
+export type PlannedChapter<D> = {
+  /** The number the bank and the generator use: the book's own, run on after an earlier book or part of the same class and subject. */
+  planNumber: number;
+  /** The number the book prints. */
+  number: number;
+  part: string | null;
+  label: string;
+  doc: D;
+};
+
+/**
+ * owner-batch-item7: the chapters a Balbharati class and subject offers, in order, from its books' chunk labels. One book
+ * of each edition (corpus-contents.ts chooseBooks: the edition naming no district, else the newest; a book filed under
+ * the wrong class left out); its parts in the books' order (part 1 before part 2, a stream's books together) and, in a
+ * book, the second numbered sequence after the first. A chapter's plan number is its printed number for the first book
+ * and part, and runs on after the highest number of the ones before it otherwise ("९ वी गणित भाग-२", chapter 1 is 9 when
+ * part 1 ends at 8): the bank, the batch files and a run's progress know a chapter by one number. Pure.
+ */
+export function planBalbharati<D extends { id: string; path: string; title: string; gradeOrProgramme: string; extra: unknown }>(
+  docs: readonly D[],
+  labelsOf: (doc: D) => readonly string[],
+): { chapters: PlannedChapter<D>[]; choice: BookChoice<D> } {
+  const choice = chooseBooks(docs);
+  const chapters: PlannedChapter<D>[] = [];
+  let offset = 0;
+  for (const doc of choice.books) {
+    const parts = new Map<string, Map<number, string>>();
+    for (const label of labelsOf(doc)) {
+      const c = bookChapterOf(label);
+      if (!c) continue;
+      const key = c.part ?? "";
+      const numbers = parts.get(key) ?? new Map<number, string>();
+      if (!numbers.has(c.number)) numbers.set(c.number, c.label);
+      parts.set(key, numbers);
+    }
+    const keys = [...parts.keys()].sort((a, b) => Number(a !== "") - Number(b !== ""));
+    for (const key of keys) {
+      const numbers = parts.get(key)!;
+      const sorted = [...numbers.keys()].sort((a, b) => a - b);
+      for (const n of sorted) chapters.push({ planNumber: offset + n, number: n, part: key || null, label: numbers.get(n)!, doc });
+      offset += sorted[sorted.length - 1] ?? 0;
+    }
+  }
+  return { chapters, choice };
+}
+
+/** owner-batch-item7: what a Balbharati plan leaves out, one line each, for the run log. */
+function choiceNote(choice: BookChoice<DocRow>, args: { grade: number; subject: string }): string | null {
+  const out: string[] = [];
+  if (choice.editions.length) out.push(`${choice.editions.length} edition(s) set aside for ${choice.editions[0]!.of.path} ("${choice.editions[0]!.of.title}")`);
+  for (const m of choice.misfiled) out.push(`${m.doc.path} set aside (${m.reason})`);
+  if (choice.books.length > 1) out.push(`${choice.books.length} books planned in this order: ${choice.books.map((b) => `"${b.title}"`).join(", ")}`);
+  return out.length ? `  Balbharati class ${args.grade} ${args.subject}: ${out.join("; ")}` : null;
+}
+
+async function labelsByDoc(db: PrismaClient, docs: readonly DocRow[]): Promise<Map<string, string[]>> {
+  const rows = await db.contentChunk.findMany({ where: { documentId: { in: docs.map((d) => d.id) } }, orderBy: [{ documentId: "asc" }, { ordinal: "asc" }], select: { documentId: true, chapter: true, headingPath: true } });
+  const out = new Map<string, string[]>();
+  for (const r of rows) out.set(r.documentId, [...(out.get(r.documentId) ?? []), r.chapter ?? r.headingPath[0] ?? ""]);
+  return out;
+}
+
 function lastModifiedOf(doc: DocRow): number {
   const lm = (doc.extra as { lastModified?: string } | null)?.lastModified;
   const t = lm ? Date.parse(lm) : NaN;
@@ -189,20 +275,16 @@ export async function listChapters(
       out.push({ number: n, name, bookCode: code, book: d.title });
     }
   } else {
-    for (const d of docs) {
-      const code = bookCodeOf(d);
-      if (args.book && code !== args.book) continue;
-      const heads = await db.contentChunk.findMany({ where: { documentId: d.id }, orderBy: { ordinal: "asc" }, select: { headingPath: true, chapter: true } });
-      const seen = new Set<number>();
-      for (const h of heads) {
-        const label = h.chapter ?? h.headingPath[0] ?? "";
-        const n = chapterNumberOf(label);
-        if (n === null || seen.has(n)) continue;
-        seen.add(n);
-        const name = chapterTitleOf(label, n);
-        if (!name) log(`  ${args.board} class ${args.grade} ${args.subject}, chapter ${n} ("${d.title}", ${d.path}) has no title in the corpus`);
-        out.push({ number: n, name, bookCode: code, book: d.title });
-      }
+    // owner-batch-item7: one book of each edition, its parts in order, a chapter known by its plan number.
+    const mine = args.book ? docs.filter((d) => bookCodeOf(d) === args.book) : docs;
+    const labels = await labelsByDoc(db, mine);
+    const { chapters, choice } = planBalbharati(mine, (d) => labels.get(d.id) ?? []);
+    const note = choiceNote(choice, args);
+    if (note) log(note);
+    for (const c of chapters) {
+      const name = chapterTitleOf(c.label, c.number);
+      if (!name) log(`  ${args.board} class ${args.grade} ${args.subject}, chapter ${c.planNumber} ("${c.doc.title}", ${c.doc.path}${c.part ? `, ${c.part}` : ""}, chapter ${c.number}) has no title in the corpus`);
+      out.push({ number: c.planNumber, name, bookCode: bookCodeOf(c.doc), book: c.doc.title });
     }
   }
   return out.sort((a, b) => a.number - b.number);
@@ -220,6 +302,9 @@ export async function selectChapter(db: PrismaClient, args: { board: string; gra
   let doc: DocRow;
   let chunks: SelectedChunk[];
   let chapterLabel: string;
+  // owner-batch-item7: the number the book prints (a Balbharati part's own), and where the chapter sits when it is not the plan's.
+  let bookNumber = args.chapter;
+  let bookPlace: string | undefined;
   if (source === "ncert") {
     const candidates = docs.filter((d) => (d.extra as { chapter?: number } | null)?.chapter === args.chapter);
     if (!candidates.length) throw new Error(`NCERT class ${args.grade} ${args.subject} has no chapter ${args.chapter} in the corpus`);
@@ -234,13 +319,22 @@ export async function selectChapter(db: PrismaClient, args: { board: string; gra
     chunks = rows.map((r) => ({ id: r.id, ordinal: r.ordinal, headingPath: r.headingPath, pageStart: r.pageStart, pageEnd: r.pageEnd, text: r.text, tokens: r.tokens, figureKeys: r.figureKeys }));
     chapterLabel = firstLabel(rows) || `Chapter ${args.chapter}`;
   } else {
-    if (docs.length > 1) log(`  ${docs.length} Balbharati books for class ${args.grade} ${args.subject}; taking the first (${docs[0]!.path}); --book=<id> picks another`);
-    doc = docs[0]!;
+    // owner-batch-item7: the plan listChapters gives (editions collapsed, parts in order), the chapter by its plan number.
+    const labels = await labelsByDoc(db, docs);
+    const { chapters, choice } = planBalbharati(docs, (d) => labels.get(d.id) ?? []);
+    const planned = chapters.find((c) => c.planNumber === args.chapter);
+    if (!planned) throw new Error(`Balbharati class ${args.grade} ${args.subject} has no chapter ${args.chapter} in its heading paths (${choice.books.map((b) => b.path).join(", ") || "no book"})`);
+    doc = planned.doc;
     const rows = await db.contentChunk.findMany({ where: { documentId: doc.id }, orderBy: { ordinal: "asc" }, select: { id: true, ordinal: true, headingPath: true, pageStart: true, pageEnd: true, text: true, tokens: true, figureKeys: true, chapter: true } });
-    const mine = rows.filter((r) => chapterNumberOf(r.chapter ?? r.headingPath[0] ?? "") === args.chapter);
-    if (!mine.length) throw new Error(`Balbharati "${doc.title}" has no chapter ${args.chapter} in its heading paths`);
+    const mine = rows.filter((r) => {
+      const c = bookChapterOf(r.chapter ?? r.headingPath[0] ?? "");
+      return c !== null && c.number === planned.number && c.part === planned.part;
+    });
+    if (!mine.length) throw new Error(`Balbharati "${doc.title}" has no chapter ${planned.number} in its heading paths`);
     chunks = mine.map((r) => ({ id: r.id, ordinal: r.ordinal, headingPath: r.headingPath, pageStart: r.pageStart, pageEnd: r.pageEnd, text: r.text, tokens: r.tokens, figureKeys: r.figureKeys }));
-    chapterLabel = mine[0]!.chapter ?? mine[0]!.headingPath[0]!;
+    chapterLabel = planned.label;
+    bookNumber = planned.number;
+    if (chapters.some((c) => c.doc !== planned.doc || c.part !== planned.part)) bookPlace = `"${doc.title}"${planned.part ? `, ${planned.part}` : ""}, chapter ${planned.number}`;
   }
   if (!chunks.length) throw new Error(`${doc.path} has no chunks; run the corpus ingest first`);
 
@@ -250,7 +344,7 @@ export async function selectChapter(db: PrismaClient, args: { board: string; gra
   // owner-batch-item6 (30 Oct 2026): so is a heading that is a fragment of a title by corpus-titles' own rules ("NIT",
   // "Nit of", "Roducts and Their", "In this chapter…"): such a name made a new topic whose slug the next chapter with the
   // same fragment collided with. The model never names a chapter.
-  let chapterName = chapterTitleOf(chapterLabel, args.chapter);
+  let chapterName = chapterTitleOf(chapterLabel, bookNumber);
   const ctx = { vocab: vocabularyOf([...chunks.map((c) => c.text), ...chunks.flatMap((c) => c.headingPath.slice(1))]), bookTitle: doc.title, subject: doc.subject, dictionary: loadDictionary() };
   const fragment = chapterName ? titleFragment(chapterName, ctx) : null;
   if (!chapterName || fragment) {
@@ -287,6 +381,7 @@ export async function selectChapter(db: PrismaClient, args: { board: string; gra
     chunks,
     figures,
     headings,
+    ...(bookPlace ? { bookPlace } : {}),
   };
 }
 

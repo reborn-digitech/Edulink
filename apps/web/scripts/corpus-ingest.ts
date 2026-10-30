@@ -32,8 +32,9 @@ import { mkdirSync, readFileSync, existsSync, writeFileSync } from "node:fs";
 import { basename, join, relative } from "node:path";
 import { config } from "dotenv";
 import { CORPUS_ROOT, SOURCES, walkManifests, type ManifestEntry, type SourceKey } from "./corpus-lib";
-import { closeOcr, extractPdf, toPng } from "./corpus-pdf";
-import { chunk, chunkPlainText, editionIn, chapterNameFromTitle, lettersOfTitle, type Structured } from "./corpus-chunk";
+import { closeOcr, contrastOcr, extractPdf, toPng, type OcrReader } from "./corpus-pdf";
+import { chunk, chunkPlainText, editionIn, chapterNameFromTitle, lettersOfTitle, type Element, type Structured } from "./corpus-chunk";
+import { splitBookWithOcr, withChapterHeadings } from "./corpus-contents";
 import { chunkPaper, type PaperChunk } from "./corpus-papers-chunk";
 import { refuseUnlessLocalDatabase } from "./local-db-guard.mjs";
 import { requireEmbedConfig } from "../src/lib/assistant-env";
@@ -158,12 +159,23 @@ async function ingestOne(dir: string, e: ManifestEntry): Promise<void> {
   }
   const base = basename(e.file).replace(/\.pdf$/i, "");
   const figureDir = join(dir, "figures");
+  // owner-batch-item7 (30 Oct 2026): a Balbharati book is one file whose chapters its contents page gives (the chunker's
+  // largest-face rule took the cover's title for the one chapter of every chunk): each chapter starts a chunk of its own
+  // under "N. Title" (scripts/corpus-contents.ts). A book that cannot be split keeps the chunker's own headings, said so.
+  let transformElements: ((elements: Element[]) => Element[]) | undefined;
+  if (!isPaper && e.source === "balbharati" && e.kind === "textbook") {
+    const front = (ocr?: OcrReader) => async () => (await extractPdf(bytes.slice(), { figures: false, ocrLangs: ocrLangsFor(e.language), ocrRenderAll: true, ocrPages: (p) => p <= 24, ...(ocr ? { ocr } : {}) })).pages;
+    const { split } = await splitBookWithOcr(pages, OCR ? [front(), front(contrastOcr(120)), front(contrastOcr(170))] : null);
+    if (split.refusal) console.log(`  ${path}: chapters not split (${split.refusal}); its chunks keep the chunker's own headings`);
+    else transformElements = (elements) => withChapterHeadings(elements, split.chapters);
+  }
   const structured: Omit<Structured, "chunks"> & { chunks: (Structured["chunks"][number] & { kind?: PaperChunk["kind"] })[] } = paper
     ? { ...paper, figures: [], edition: null, bodySize: 0, chapter: e.title }
     : chunk(pages, {
         perChapterFile: perChapterFile(e),
         chapterLabel: (found) => chapterLabel(e, found),
         figureKey: (page, n) => relative(CORPUS_ROOT, join(figureDir, `${base}-p${page}-${n}.png`)).split("\\").join("/"),
+        transformElements,
       });
   const edition = isPaper ? null : (e.edition ?? structured.edition ?? (await bookEdition(dir, e)));
 

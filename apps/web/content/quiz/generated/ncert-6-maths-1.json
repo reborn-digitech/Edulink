@@ -21,148 +21,47 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-29T09:34:46.184Z",
+  "generatedAt": "2026-10-30T10:44:29.536Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the next term in the sequence 1, 8, 27, 64, 125, …?",
-      "choices": [
-        "196",
-        "216",
-        "225",
-        "256"
-      ],
-      "answerIndex": 1,
-      "solution": "The sequence 1, 8, 27, 64, 125, … represents the cubes of natural numbers. The next term is 6³ = 216. The option '196' is 14², not a cube. The option '225' is 15², not a cube. The option '256' is 2⁸, not a cube.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "अनुक्रम 1, 8, 27, 64, 125, … में अगला पद क्या है?",
-          "choices": [
-            "196",
-            "216",
-            "225",
-            "256"
-          ],
-          "solution": "अनुक्रम 1, 8, 27, 64, 125, … प्राकृत संख्याओं के घनों का प्रतिनिधित्व करता है। अगला पद 6³ = 216 है। विकल्प '196' 14² है, घन नहीं है। विकल्प '225' 15² है, घन नहीं है। विकल्प '256' 2⁸ है, घन नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "अनुक्रम 1, 8, 27, 64, 125, … मध्ये अगला पद काय आहे?",
-          "choices": [
-            "196",
-            "216",
-            "225",
-            "256"
-          ],
-          "solution": "अनुक्रम 1, 8, 27, 64, 125, … स्वाभाविक संख्यांच्या घनांनी दर्शवला जातो. अगला पद 6³ = 216 आहे. विकल्प '196' हा 14² आहे, घन नाही. विकल्प '225' हा 15² आहे, घन नाही. विकल्प '256' हा 2⁸ आहे, घन नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses squares with cubes",
-        null,
-        "Confuses square numbers with cube numbers, thinking the pattern is squares instead of cubes",
-        "Confuses squares with cubes"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The sequence is clearly the cubes of natural numbers (1³, 2³, 3³, 4³, 5³, ...), so the next term is 6³ = 216. The distractors are all squares or other powers, which matches the author's reasoning about common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp101.pdf",
-          "ordinal": 8,
-          "pageStart": 13,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 1: Patterns in Mathematics",
-            "1.6 Relation to Number Sequences",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp101.pdf",
-          "ordinal": 9,
-          "pageStart": 16,
-          "pageEnd": 17,
-          "headingPath": [
-            "Chapter 1: Patterns in Mathematics",
-            "1.6 Relation to Number Sequences",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp101.pdf",
-          "ordinal": 10,
-          "pageStart": 17,
-          "pageEnd": 17,
-          "headingPath": [
-            "Chapter 1: Patterns in Mathematics",
-            "1.6 Relation to Number Sequences",
-            "S u m m a r y"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T09:34:46.184Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a pattern of jars starts with 3 jars and increases by 3 jars in each layer, how many jars will be in the 10th layer?",
+      "stem": "What is the next number in the sequence 1, 4, 9, 16, 25, …?",
       "choices": [
         "30",
-        "33",
         "36",
-        "39"
+        "42",
+        "49"
       ],
-      "answerIndex": 0,
-      "solution": "The sequence is 3, 6, 9, 12, 15, 18, 21, 24, 27, 30. The 10th term is 30. The option '33' is the 11th term. The option '36' is the 12th term. The option '39' is the 13th term.",
+      "answerIndex": 1,
+      "solution": "The sequence is square numbers, where each number is the square of a natural number. The next number is 36, which is 6². 30 is not a perfect square, 42 is not a perfect square, and 49 is 7² but is not the next number in the sequence.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि जार के एक पैटर्न की शुरुआत 3 जार से होती है और प्रत्येक स्तर में 3 जार बढ़ते हैं, तो 10वें स्तर में कितने जार होंगे?",
+          "stem": "अनुक्रम 1, 4, 9, 16, 25, … में अगला संख्या क्या है?",
           "choices": [
             "30",
-            "33",
             "36",
-            "39"
+            "42",
+            "49"
           ],
-          "solution": "अनुक्रम 3, 6, 9, 12, 15, 18, 21, 24, 27, 30 है। 10वां पद 30 है। विकल्प '33' 11वां पद है। विकल्प '36' 12वां पद है। विकल्प '39' 13वां पद है।",
+          "solution": "अनुक्रम वर्ग संख्याएं हैं, जहां प्रत्येक संख्या एक प्राकृत संख्या का वर्ग है। अगली संख्या 36 है, जो 6² है। 30 एक पूर्ण वर्ग नहीं है, 42 एक पूर्ण वर्ग नहीं है और 49 7² है लेकिन अनुक्रम में अगली संख्या नहीं है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The Hindi translation accurately reflects the original English question, with appropriate mathematical terminology and correct answer positioning.",
           "flag": null
         },
         "mr": {
-          "stem": "जर जारच्या एका आकृतीला 3 जार पासून सुरुवात होते आणि प्रत्येक थरात 3 जार वाढतात, तर 10व्या थरात किती जार असतील?",
+          "stem": "अनुक्रम 1, 4, 9, 16, 25, … मध्ये अनुसरणारा अंक काय आहे?",
           "choices": [
             "30",
-            "33",
             "36",
-            "39"
+            "42",
+            "49"
           ],
-          "solution": "अनुक्रम 3, 6, 9, 12, 15, 18, 21, 24, 27, 30 आहे. 10वा पद 30 आहे. पर्याय '33' हा 11वा पद आहे. पर्याय '36' हा 12वा पद आहे. पर्याय '39' हा 13वा पद आहे.",
+          "solution": "अनुक्रम वर्ग संख्या आहेत, जेथे प्रत्येक संख्या प्राकृतिक संख्येच्या वर्गाच्या आहेत. अनुसरणारी संख्या 36 आहे, जी 6² आहे. 30 एक पूर्ण वर्ग नाही, 42 एक पूर्ण वर्ग नाही आणि 49 हा 7² आहे परंतु अनुक्रमात अनुसरणारा अंक नाही.",
           "imageAlt": null,
           "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for mathematical concepts.",
           "flag": null
@@ -173,20 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Adds 6 to the previous number",
         null,
-        "Counts one extra layer",
-        "Counts two extra layers",
-        "Counts three extra layers"
+        "Adds 9 to the previous number",
+        "Adds 13 to the previous number"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": null,
-      "critique": "The solution is correct, and the key is accurate. The pattern is an arithmetic sequence with a common difference of 3, and the 10th term is indeed 30.",
+      "critique": "The sequence is clearly the squares of natural numbers (1², 2², 3², 4², 5², ...), so the next number is 6² = 36. The author's solution and reasoning are correct.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp101.pdf",
@@ -223,47 +122,249 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T09:34:46.184Z",
+      "generatedAt": "2026-10-30T10:44:29.536Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "Which sequence is formed by adding pairs of consecutive triangular numbers, such as 1 + 3, 3 + 6, 6 + 10, 10 + 15, …?",
+      "difficulty": 1,
+      "stem": "What is the next number in the sequence 1, 8, 27, 64, 125, …?",
+      "choices": [
+        "196",
+        "216",
+        "256",
+        "289"
+      ],
+      "answerIndex": 1,
+      "solution": "The sequence is cube numbers, where each number is the cube of a natural number. The next number is 216, which is 6³. 196 is 14², 256 is 16², and 289 is 17², none of which are cube numbers.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अनुक्रम 1, 8, 27, 64, 125, … में अगली संख्या क्या है?",
+          "choices": [
+            "196",
+            "216",
+            "256",
+            "289"
+          ],
+          "solution": "अनुक्रम घन संख्याएँ हैं, जहाँ प्रत्येक संख्या एक प्राकृतिक संख्या का घन है। अगली संख्या 216 है, जो 6³ है। 196 एक 14² है, 256 एक 16² है, और 289 एक 17² है, जो कोई भी घन संख्या नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अनुक्रम 1, 8, 27, 64, 125, … मध्ये अगदी नंतरचा संख्या कोणता असेल?",
+          "choices": [
+            "196",
+            "216",
+            "256",
+            "289"
+          ],
+          "solution": "अनुक्रम हे घन संख्या आहेत, जेथे प्रत्येक संख्या प्राकृतिक संख्येचा घन असतो. अगदी नंतरची संख्या 216 आहे, जो 6³ आहे. 196 हा 14² आहे, 256 हा 16² आहे आणि 289 हा 17² आहे, जे कोणतेही घन संख्या नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Squares the next number",
+        null,
+        "Squares the previous number",
+        "Adds 125 to the previous number"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The sequence is clearly the cubes of natural numbers (1³, 2³, 3³, 4³, 5³, ...), so the next number is 6³ = 216. The distractors are squares of numbers, which is a plausible misconception for students who confuse squares with cubes.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 8,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.6 Relation to Number Sequences",
+            "S u m m a r y"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 9,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.6 Relation to Number Sequences",
+            "S u m m a r y"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 10,
+          "pageStart": 17,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.6 Relation to Number Sequences",
+            "S u m m a r y"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T10:44:29.536Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which sequence represents the number of jars in each layer if the pattern is 3, 6, 9, 12, …?",
+      "choices": [
+        "3, 6, 9, 12, 15",
+        "3, 6, 9, 12, 14",
+        "3, 6, 9, 12, 13",
+        "3, 6, 9, 12, 16"
+      ],
+      "answerIndex": 0,
+      "solution": "The sequence 3, 6, 9, 12, 15 is an arithmetic progression with a common difference of 3. 3, 6, 9, 12, 14 is incorrect because the difference is not consistent. 3, 6, 9, 12, 13 and 3, 6, 9, 12, 16 also have inconsistent differences.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन सा अनुक्रम पैटर्न 3, 6, 9, 12, … के अनुसार प्रत्येक परत में जार की संख्या का प्रतिनिधित्व करता है?",
+          "choices": [
+            "3, 6, 9, 12, 15",
+            "3, 6, 9, 12, 14",
+            "3, 6, 9, 12, 13",
+            "3, 6, 9, 12, 16"
+          ],
+          "solution": "अनुक्रम 3, 6, 9, 12, 15 एक समांतर श्रेढ़ी है जिसका सार्व अंतर 3 है। 3, 6, 9, 12, 14 गलत है क्योंकि अंतर स्थिर नहीं है। 3, 6, 9, 12, 13 और 3, 6, 9, 12, 16 में भी अंतर स्थिर नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणती अनुक्रमाने ताटांची संख्या प्रत्येक थरात दर्शविते जर अनुक्रम 3, 6, 9, 12, … असेल?",
+          "choices": [
+            "3, 6, 9, 12, 15",
+            "3, 6, 9, 12, 14",
+            "3, 6, 9, 12, 13",
+            "3, 6, 9, 12, 16"
+          ],
+          "solution": "अनुक्रम 3, 6, 9, 12, 15 हा सामान्य फरक 3 असलेला अंकगणितीय प्रगती आहे. 3, 6, 9, 12, 14 अयोग्य आहे कारण फरक संगत नाही. 3, 6, 9, 12, 13 आणि 3, 6, 9, 12, 16 देखील संगत फरक नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Adds 1 to the last term",
+        "Adds 2 to the last term",
+        "Adds 4 to the last term"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as the sequence 3, 6, 9, 12, 15 follows the pattern of adding 3 each time. The other options add inconsistent values, which is a common misconception.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 8,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.6 Relation to Number Sequences",
+            "S u m m a r y"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 9,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.6 Relation to Number Sequences",
+            "S u m m a r y"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 10,
+          "pageStart": 17,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.6 Relation to Number Sequences",
+            "S u m m a r y"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T10:44:29.536Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "How many little triangles are there in each shape of the sequence of Stacked Triangles?",
       "choices": [
         "Triangular numbers",
         "Square numbers",
         "Cube numbers",
         "Powers of 2"
       ],
-      "answerIndex": 1,
-      "solution": "Adding consecutive triangular numbers results in square numbers. For example, 1 + 3 = 4, 3 + 6 = 9, 6 + 10 = 16, and so on. The option 'Triangular numbers' is incorrect as the result is not triangular. The option 'Cube numbers' is incorrect as the result is not a cube. The option 'Powers of 2' is incorrect as the result is not a power of 2.",
+      "answerIndex": 0,
+      "solution": "The number of little triangles in each shape of the sequence of Stacked Triangles follows a pattern where each term is the sum of consecutive counting numbers, which defines triangular numbers. Square numbers result from squaring integers, cube numbers from cubing integers, and powers of 2 from repeated multiplication by 2, none of which match the pattern of adding consecutive numbers.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "कौन-सी अनुक्रम बनता है जब क्रमागत त्रिकोणीय संख्याओं के युग्मों को जोड़ा जाता है, जैसे 1 + 3, 3 + 6, 6 + 10, 10 + 15, …?",
+          "stem": "स्टैक्ड त्रिभुज के अनुक्रम के प्रत्येक आकृति में कितने छोटे त्रिभुज होते हैं?",
           "choices": [
             "त्रिकोणीय संख्याएँ",
             "वर्ग संख्याएँ",
             "घन संख्याएँ",
             "2 की घातें"
           ],
-          "solution": "क्रमागत त्रिकोणीय संख्याओं को जोड़ने से वर्ग संख्याएँ प्राप्त होती हैं। उदाहरण के लिए, 1 + 3 = 4, 3 + 6 = 9, 6 + 10 = 16, आदि। विकल्प 'त्रिकोणीय संख्याएँ' गलत है क्योंकि परिणाम त्रिकोणीय नहीं है। विकल्प 'घन संख्याएँ' गलत है क्योंकि परिणाम घन नहीं है। विकल्प '2 की घातें' गलत है क्योंकि परिणाम 2 की घात नहीं है।",
+          "solution": "स्टैक्ड त्रिभुज के अनुक्रम की प्रत्येक आकृति में छोटे त्रिभुजों की संख्या एक पैटर्न का अनुसरण करती है जहाँ प्रत्येक पद लगातार गणना संख्याओं के योग होता है, जो त्रिकोणीय संख्याओं को परिभाषित करता है। वर्ग संख्याएँ पूर्णांकों के वर्ग से प्राप्त होती हैं, घन संख्याएँ पूर्णांकों के घन से प्राप्त होती हैं और 2 की घातें 2 से दोहराए गए गुणन से प्राप्त होती हैं, जो कोई भी लगातार संख्याओं के योग के पैटर्न के साथ मेल नहीं खाती है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard mathematical terminology as taught in Hindi-medium curricula.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "कोणती अनुक्रम तयार होतो, ज्यामध्ये एकामागील त्रिकोणी संख्यांच्या जोड्या जोडल्या जातात, उदाहरणार्थ 1 + 3, 3 + 6, 6 + 10, 10 + 15, …?",
+          "stem": "स्टॅक्ड ट्रायंगल्स च्या अनुक्रमातील प्रत्येक आकृतीमध्ये किती लहान त्रिकोण आहेत?",
           "choices": [
             "त्रिकोणी संख्या",
-            "वर्ग संख्या",
+            "चौरस संख्या",
             "घन संख्या",
             "2 ची घात"
           ],
-          "solution": "एकामागील त्रिकोणी संख्यांची बेरीज वर्ग संख्या तयार करते. उदाहरणार्थ, 1 + 3 = 4, 3 + 6 = 9, 6 + 10 = 16, आणि अशाप्रकारे चालू राहते. विकल्प 'त्रिकोणी संख्या' अयोग्य आहे कारण परिणाम त्रिकोणी नाही. विकल्प 'घन संख्या' अयोग्य आहे कारण परिणाम घन नाही. विकल्प '2 ची घात' अयोग्य आहे कारण परिणाम 2 ची घात नाही.",
+          "solution": "स्टॅक्ड ट्रायंगल्स च्या अनुक्रमातील प्रत्येक आकृतीमध्ये लहान त्रिकोणांची संख्या असा पॅटर्न असतो ज्यामध्ये प्रत्येक पद हे अनुक्रमिक गणन संख्यांच्या बेरजेने असते, जे त्रिकोणी संख्या दर्शवते. चौरस संख्या पूर्णांकांच्या वर्गाने, घन संख्या पूर्णांकांच्या घनाने आणि 2 च्या घाताने बनतात, जे अनुक्रमिक संख्यांच्या बेरजेच्या पॅटर्नशी जुळत नाहीत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -274,222 +375,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the pattern with triangular numbers",
         null,
-        "Confuses the pattern with cube numbers",
-        "Confuses the pattern with powers of 2"
+        "Confuses triangular numbers with square numbers",
+        "Confuses triangular numbers with cube numbers",
+        "Confuses triangular numbers with powers of 2"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that adding consecutive triangular numbers results in square numbers. The reasoning is sound and matches the mathematical pattern.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp101.pdf",
-          "ordinal": 8,
-          "pageStart": 13,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 1: Patterns in Mathematics",
-            "1.6 Relation to Number Sequences",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp101.pdf",
-          "ordinal": 9,
-          "pageStart": 16,
-          "pageEnd": 17,
-          "headingPath": [
-            "Chapter 1: Patterns in Mathematics",
-            "1.6 Relation to Number Sequences",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp101.pdf",
-          "ordinal": 10,
-          "pageStart": 17,
-          "pageEnd": 17,
-          "headingPath": [
-            "Chapter 1: Patterns in Mathematics",
-            "1.6 Relation to Number Sequences",
-            "S u m m a r y"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T09:34:46.184Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "Which of the following sequences can be formed by adding up the first 10 odd numbers in a triangle pattern?",
-      "choices": [
-        "10",
-        "100",
-        "1000",
-        "10000"
-      ],
-      "answerIndex": 1,
-      "solution": "The correct answer is 100. This is because the sum of the first n odd numbers is equal to n squared. So, the sum of the first 10 odd numbers is 10^2 = 100. The other options are incorrect because they do not match the formula for the sum of odd numbers.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित अनुक्रमों में से कौन-सा एक त्रिभुज के पैटर्न में प्रथम 10 विषम संख्याओं के योग से बनाया जा सकता है?",
-          "choices": [
-            "10",
-            "100",
-            "1000",
-            "10000"
-          ],
-          "solution": "सही उत्तर 100 है। इसका कारण यह है कि प्रथम n विषम संख्याओं का योग n वर्ग के बराबर होता है। अतः प्रथम 10 विषम संख्याओं का योग 10^2 = 100 होता है। अन्य विकल्प गलत हैं क्योंकि वे विषम संख्याओं के योग के सूत्र के अनुरूप नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणती अनुक्रम एका त्रिकोणाच्या पॅटर्नमध्ये पहिल्या 10 विषम संख्यांच्या बेरजेने तयार केली जाऊ शकते?",
-          "choices": [
-            "10",
-            "100",
-            "1000",
-            "10000"
-          ],
-          "solution": "बरोबर उत्तर 100 आहे. कारण पहिल्या n विषम संख्यांची बेरीज n च्या वर्गाच्या बरोबर असते. म्हणून, पहिल्या 10 विषम संख्यांची बेरीज 10^2 = 100 आहे. इतर उत्तरे अचूक नाहीत कारण ते विषम संख्यांच्या बेरजेच्या सूत्राशी जुळत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for 'odd numbers' and 'square' as used in standard textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Student thinks the sum of the first 10 odd numbers is simply 10, not realizing it's a cumulative sum",
-        null,
-        "Calculates 10^3 instead of 10^2",
-        "Calculates 10^4 instead of 10^2"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly applies the mathematical principle that the sum of the first n odd numbers is n². The reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp101.pdf",
-          "ordinal": 8,
-          "pageStart": 13,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 1: Patterns in Mathematics",
-            "1.6 Relation to Number Sequences",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp101.pdf",
-          "ordinal": 9,
-          "pageStart": 16,
-          "pageEnd": 17,
-          "headingPath": [
-            "Chapter 1: Patterns in Mathematics",
-            "1.6 Relation to Number Sequences",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp101.pdf",
-          "ordinal": 10,
-          "pageStart": 17,
-          "pageEnd": 17,
-          "headingPath": [
-            "Chapter 1: Patterns in Mathematics",
-            "1.6 Relation to Number Sequences",
-            "S u m m a r y"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T09:34:46.184Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "In the sequence of Stacked Triangles, the first shape has 1 triangle, the second has 3 triangles, the third has 6 triangles, and so on. What is the pattern in the number of triangles?",
-      "choices": [
-        "Counting numbers",
-        "Odd numbers",
-        "Square numbers",
-        "Triangular numbers"
-      ],
-      "answerIndex": 3,
-      "solution": "The pattern in the number of triangles follows triangular numbers because each term is the sum of all previous counting numbers. For example, 1, 1+2=3, 1+2+3=6, and so on. Counting numbers, odd numbers, and square numbers do not match this specific pattern of cumulative sums.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "स्टैक्ड त्रिभुज के अनुक्रम में, पहला आकृति में 1 त्रिभुज है, दूसरा 3 त्रिभुज है, तीसरा 6 त्रिभुज है, आदि। त्रिभुजों की संख्या में कौन-सा पैटर्न है?",
-          "choices": [
-            "गणना संख्याएं",
-            "विषम संख्याएं",
-            "वर्ग संख्याएं",
-            "त्रिभुज संख्याएं"
-          ],
-          "solution": "त्रिभुजों की संख्या में पैटर्न त्रिभुज संख्याएं के अनुसार होता है क्योंकि प्रत्येक पद सभी पिछली गणना संख्याओं के योग के बराबर होता है। उदाहरण के लिए, 1, 1+2=3, 1+2+3=6, आदि। गणना संख्याएं, विषम संख्याएं और वर्ग संख्याएं इस विशिष्ट क्रमिक योग के अनुरूप नहीं होती हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "स्टॅक्ड त्रिकोणांच्या अनुक्रमात, पहिल्या आकृतीत 1 त्रिकोण आहे, दुसऱ्यात 3 त्रिकोण आहेत, तिसर्यात 6 त्रिकोण आहेत, आणि अशाप्रकारे चालू राहते. त्रिकोणांच्या संख्येतील नमुना काय आहे?",
-          "choices": [
-            "गणन संख्या",
-            "अकर अंक",
-            "वर्ग संख्या",
-            "त्रिकोणी संख्या"
-          ],
-          "solution": "त्रिकोणांच्या संख्येतील नमुना त्रिकोणी संख्या असतो कारण प्रत्येक पद हे आधीच्या सर्व गणन संख्यांच्या बेरजेसारखे असते. उदाहरणार्थ, 1, 1+2=3, 1+2+3=6, आणि अशाप्रकारे. गणन संख्या, अकर अंक आणि वर्ग संख्या हे विशिष्ट बेरजेच्या नमुन्याशी जुळत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for mathematical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "incorrectly assumes the pattern is based on counting numbers",
-        "incorrectly assumes the pattern is based on odd numbers",
-        "incorrectly assumes the pattern is based on square numbers",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The sequence 1, 3, 6, ... is the triangular number sequence, where each term is the sum of the first n natural numbers. The correct answer is 3, and the author's reasoning aligns with this.",
+      "levelFlag": null,
+      "critique": "The question is correctly answered with option 0, as triangular numbers match the pattern of little triangles in the sequence. The other options are correctly identified as misconceptions.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp101.pdf",
@@ -534,7 +433,546 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T09:34:46.184Z",
+      "generatedAt": "2026-10-30T10:44:29.536Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the next number in the sequence of triangular numbers: 1, 3, 6, 10, 15, ...?",
+      "choices": [
+        "20",
+        "21",
+        "22",
+        "23"
+      ],
+      "answerIndex": 1,
+      "solution": "Triangular numbers are formed by adding consecutive counting numbers. The next number after 15 is 21, which is 15 + 6. The other options do not follow this pattern. The correct answer is 21.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "त्रिकोणीय संख्याओं के अनुक्रम में अगली संख्या क्या है: 1, 3, 6, 10, 15, ...?",
+          "choices": [
+            "20",
+            "21",
+            "22",
+            "23"
+          ],
+          "solution": "त्रिकोणीय संख्याएँ क्रमागत गणना संख्याओं के योग से बनती हैं। 15 के बाद अगली संख्या 21 है, जो 15 + 6 है। अन्य विकल्प इस पैटर्न के अनुसार नहीं हैं। सही उत्तर 21 है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "त्रिकोणीय संख्यांच्या अनुक्रमात अगोदरची संख्या काय आहे: 1, 3, 6, 10, 15, ...?",
+          "choices": [
+            "20",
+            "21",
+            "22",
+            "23"
+          ],
+          "solution": "त्रिकोणीय संख्या अक्रमाने गणन संख्यांच्या बेरजेने तयार होतात. 15 नंतर अगोदरची संख्या 21 आहे, जी 15 + 6 आहे. इतर विकल्प या पॅटर्ननुसार नाहीत. योग्य उत्तर 21 आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English question and solution, with appropriate terminology and correct answer positioning.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Adds 5 instead of 6 to 15",
+        null,
+        "Adds 4 instead of 6 to 15",
+        "Adds 3 instead of 6 to 15"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies the pattern of triangular numbers, where each term is the sum of the first n natural numbers. The next number after 15 is indeed 21, making option 1 correct.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.2 Patterns in Numbers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.3 Visualising Number Sequences"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.4 Relations among Number Sequences"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T10:44:29.536Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A pattern of numbers is given: 1, 3, 6, 10, 15, 21. Which of the following best describes this pattern?",
+      "choices": [
+        "Even numbers",
+        "Odd numbers",
+        "Triangular numbers",
+        "Square numbers"
+      ],
+      "answerIndex": 2,
+      "solution": "The pattern 1, 3, 6, 10, 15, 21 represents triangular numbers, which are formed by the sum of the first n natural numbers. The other options are incorrect because they do not match the given pattern.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक संख्या का पैटर्न दिया गया है: 1, 3, 6, 10, 15, 21। निम्नलिखित में से कौन-सा इस पैटर्न का सबसे अच्छा वर्णन करता है?",
+          "choices": [
+            "सम संख्याएँ",
+            "विषम संख्याएँ",
+            "त्रिकोणीय संख्याएँ",
+            "वर्ग संख्याएँ"
+          ],
+          "solution": "पैटर्न 1, 3, 6, 10, 15, 21 त्रिकोणीय संख्याओं का प्रतिनिधित्व करता है, जो प्रथम n प्राकृतिक संख्याओं के योग द्वारा बनाई जाती हैं। अन्य विकल्प गलत हैं क्योंकि वे दिए गए पैटर्न के अनुरूप नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question, with appropriate mathematical terminology and correct answer placement.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "संख्यांचा एक अनुक्रम दिला आहे: 1, 3, 6, 10, 15, 21. खालीलपैकी कोणते अनुक्रमाचे सर्वात चांगले वर्णन करते?",
+          "choices": [
+            "सम संख्या",
+            "विषम संख्या",
+            "त्रिकोणी संख्या",
+            "वर्ग संख्या"
+          ],
+          "solution": "अनुक्रम 1, 3, 6, 10, 15, 21 हा त्रिकोणी संख्या दर्शवतो, जे पहिल्या n प्राकृतिक संख्यांच्या बेरजेने तयार होतात. इतर विकल्प अचूक नाहीत कारण ते दिलेल्या अनुक्रमाशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the pattern with even numbers",
+        "Confuses the pattern with odd numbers",
+        null,
+        "Does not recognize the pattern as triangular numbers, but instead thinks it is square numbers or another type of sequence, which is a common misconception for students who are not familiar with triangular numbers."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The pattern 1, 3, 6, 10, 15, 21 is indeed the sequence of triangular numbers, which are formed by summing the first n natural numbers. The other options are clearly incorrect, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.2 Patterns in Numbers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.3 Visualising Number Sequences"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.4 Relations among Number Sequences"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T10:44:29.536Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If the pattern of jars in the glass jars example is continued, what is the total number of jars in 8 layers?",
+      "choices": [
+        "36",
+        "72",
+        "108",
+        "144"
+      ],
+      "answerIndex": 2,
+      "solution": "The sequence of jars in each layer is 3, 6, 9, 12, 15, 18, 21, 24. This is an arithmetic progression with first term 3 and common difference 3. The total number of jars is the sum of the first 8 terms, which is 108. The other options do not match this calculation.",
+      "checkExpr": "(3+24)*8/2",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कांच के जारों के उदाहरण में जारों के पैटर्न को जारी रखा जाए, तो 8 लेयर में जारों की कुल संख्या क्या होगी?",
+          "choices": [
+            "36",
+            "72",
+            "108",
+            "144"
+          ],
+          "solution": "प्रत्येक लेयर में जारों का अनुक्रम 3, 6, 9, 12, 15, 18, 21, 24 है। यह पहला पद 3 और सार्व अंतर 3 वाला समांतर श्रेढ़ी है। जारों की कुल संख्या पहले 8 पदों का योग है, जो 108 है। अन्य विकल्प इस गणना के अनुरूप नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर ग्लास जारच्या उदाहरणातील जारच्या पॅटर्नला चालू ठेवला गेला तर 8 थरांमध्ये जारची एकूण संख्या किती असेल?",
+          "choices": [
+            "36",
+            "72",
+            "108",
+            "144"
+          ],
+          "solution": "प्रत्येक थरामध्ये जारची अनुक्रमणिका 3, 6, 9, 12, 15, 18, 21, 24 आहे. हा 3 च्या पहिल्या पदाने आणि 3 च्या सामान्य फरकाने अंकगणिती अनुक्रम आहे. एकूण जारची संख्या पहिल्या 8 पदांची बेरीज आहे, जी 108 आहे. इतर विकल्प ह्या गणनेशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Finds the sum of the first 6 terms",
+        "Finds the sum of the first 4 terms",
+        null,
+        "Finds the sum of the first 3 terms"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The arithmetic progression is 3, 6, 9, ..., 24, and the sum of the first 8 terms is indeed 108.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.2 Patterns in Numbers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.3 Visualising Number Sequences"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.4 Relations among Number Sequences"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T10:44:29.536Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is the word 'regular' used to describe regular polygons?",
+      "choices": [
+        "Because they have equal-length sides and equal angles",
+        "Because they are used in geometry",
+        "Because they are the most commonly taught polygons",
+        "Because they are used in real life"
+      ],
+      "answerIndex": 0,
+      "solution": "The word 'regular' is used to describe regular polygons because they have equal-length sides and equal angles, which defines their symmetry. The other options do not explain the specific geometric properties that make a polygon 'regular.'",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "आयतन आकृतियों के लिए शब्द 'नियमित' का उपयोग क्यों किया जाता है?",
+          "choices": [
+            "क्योंकि उनकी भुजाएं समान लंबाई की और कोण समान होते हैं",
+            "क्योंकि उनका उपयोग ज्यामिति में किया जाता है",
+            "क्योंकि वे सबसे अधिक सीखाई जाने वाली आकृतियां हैं",
+            "क्योंकि वे वास्तविक जीवन में उपयोग किए जाते हैं"
+          ],
+          "solution": "शब्द 'नियमित' का उपयोग नियमित बहुभुज के लिए इसलिए किया जाता है क्योंकि उनकी भुजाएं समान लंबाई की और कोण समान होते हैं, जो उनकी सममिति को परिभाषित करते हैं। अन्य विकल्प एक बहुभुज के 'नियमित' होने के विशिष्ट ज्यामितीय गुणों की व्याख्या नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately conveys the meaning of the original English question, with appropriate technical terms like 'नियमित बहुभुज' (regular polygon) and 'सममिति' (symmetry) that align with standard Hindi-medium math terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सामान्य बहुभुजांना 'सामान्य' म्हणून वर्णन करण्याचा शब्द का वापरला जातो?",
+          "choices": [
+            "कारण त्यांच्या बरोबर लांबीच्या बाजू आणि बरोबर कोन असतात",
+            "कारण ते ज्यामितीमध्ये वापरले जातात",
+            "कारण ते सर्वात जास्त शिकवले जाणारे बहुभुज आहेत",
+            "कारण ते खर्चामध्ये वापरले जातात"
+          ],
+          "solution": "शब्द 'सामान्य' वापरला जातो कारण त्यांच्या बरोबर लांबीच्या बाजू आणि बरोबर कोन असतात, जे त्यांच्या सममितीचे निर्धारण करतात. इतर विकल्प बहुभुजांना 'सामान्य' म्हणून वर्णन करण्याच्या विशिष्ट ज्यामितीय गुणधर्मांचे विवरण देत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for geometry.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Student assumes 'regular' refers to the field of study rather than the properties of the shape",
+        "students confuse 'regular' with 'familiar' or 'taught often'",
+        "Students often confuse practical application with mathematical definition"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is clearly supported by the definition of regular polygons. The author's reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 4,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.4 Relations among Number Sequences"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.5 Patterns in Shapes"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 6,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.6 Relation to Number Sequences"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 7,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.6 Relation to Number Sequences",
+            "S u m m a r y"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T10:44:29.536Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If the sequence of triangular numbers is 1, 3, 6, 10, 15, ..., and the sequence of square numbers is 1, 4, 9, 16, 25, ..., what is the sum of the first 5 triangular numbers?",
+      "choices": [
+        "25",
+        "35",
+        "45",
+        "55"
+      ],
+      "answerIndex": 1,
+      "solution": "The first 5 triangular numbers are 1, 3, 6, 10, and 15. Their sum is 1 + 3 + 6 + 10 + 15 = 35. The other options are incorrect because 25 is the sum of the first 5 square numbers, 45 is the sum of the first 6 triangular numbers, and 55 is the sum of the first 10 triangular numbers.",
+      "checkExpr": "1+3+6+10+15",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि त्रिकोणीय संख्याओं का अनुक्रम 1, 3, 6, 10, 15, ... है तथा वर्ग संख्याओं का अनुक्रम 1, 4, 9, 16, 25, ... है, तो पहली 5 त्रिकोणीय संख्याओं का योग क्या है?",
+          "choices": [
+            "25",
+            "35",
+            "45",
+            "55"
+          ],
+          "solution": "पहली 5 त्रिकोणीय संख्याएँ 1, 3, 6, 10 और 15 हैं। उनका योग 1 + 3 + 6 + 10 + 15 = 35 है। अन्य विकल्प गलत हैं क्योंकि 25 पहली 5 वर्ग संख्याओं का योग है, 45 पहली 6 त्रिकोणीय संख्याओं का योग है और 55 पहली 10 त्रिकोणीय संख्याओं का योग है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर त्रिकोणीय संख्यांची अनुक्रम 1, 3, 6, 10, 15, ... असेल आणि चौरस संख्यांचा अनुक्रम 1, 4, 9, 16, 25, ... असेल, तर पहिल्या 5 त्रिकोणीय संख्यांची बेरीज किती असेल?",
+          "choices": [
+            "25",
+            "35",
+            "45",
+            "55"
+          ],
+          "solution": "पहिल्या 5 त्रिकोणीय संख्या 1, 3, 6, 10 आणि 15 असतात. त्यांची बेरीज 1 + 3 + 6 + 10 + 15 = 35 असते. इतर विकल्प चूक असतात कारण 25 ही पहिल्या 5 चौरस संख्यांची बेरीज असते, 45 ही पहिल्या 6 त्रिकोणीय संख्यांची बेरीज असते आणि 55 ही पहिल्या 10 त्रिकोणीय संख्यांची बेरीज असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses the sum of square numbers",
+        null,
+        "Chooses the sum of a different number of triangular numbers",
+        "Chooses the sum of a larger sequence of triangular numbers"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly calculates the sum of the first 5 triangular numbers (1 + 3 + 6 + 10 + 15 = 35) and provides valid reasons for the incorrect options.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 4,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.4 Relations among Number Sequences"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.5 Patterns in Shapes"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 6,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.6 Relation to Number Sequences"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 7,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.6 Relation to Number Sequences",
+            "S u m m a r y"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T10:44:29.536Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

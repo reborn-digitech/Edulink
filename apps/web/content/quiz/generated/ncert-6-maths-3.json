@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-29T09:54:45.059Z",
+  "generatedAt": "2026-10-30T11:11:22.934Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 3,
-      "stem": "If a number is a palindrome, what is the relationship between its first and last digits?",
+      "stem": "Which of the following numbers is the largest 5-digit number with a digit sum of 14?",
       "choices": [
-        "They are the same",
-        "They are different",
-        "They add up to 9",
-        "They multiply to 9"
+        "95000",
+        "94010",
+        "93020",
+        "92030"
       ],
       "answerIndex": 0,
-      "solution": "A palindrome reads the same forwards and backwards, so the first and last digits must be the same. The other options are incorrect because they describe relationships that do not necessarily hold for all palindromes.",
+      "solution": "The largest 5-digit number with a digit sum of 14 is 95000 because 9 + 5 + 0 + 0 + 0 = 14. 94100 (9+4+1+0+0=14) is smaller than 95000. 93200 (9+3+2+0+0=14) is also smaller. 92300 (9+2+3+0+0=14) is smaller as well.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि कोई संख्या पैलिंड्रोम है, तो इसके पहले और अंतिम अंकों के बीच क्या संबंध है?",
+          "stem": "निम्नलिखित में से कौन-सी संख्या 14 के अंक योग वाली सबसे बड़ी 5 अंकीय संख्या है?",
           "choices": [
-            "वे एक ही होते हैं",
-            "वे अलग-अलग होते हैं",
-            "वे 9 के योग के रूप में होते हैं",
-            "वे 9 के गुणन के रूप में होते हैं"
+            "95000",
+            "94010",
+            "93020",
+            "92030"
           ],
-          "solution": "एक पैलिंड्रोम आगे और पीछे दोनों ओर समान पढ़ता है, इसलिए पहला और अंतिम अंक एक ही होने चाहिए। अन्य विकल्प गलत हैं क्योंकि वे सभी पैलिंड्रोम के लिए आवश्यक नहीं हैं।",
+          "solution": "14 के अंक योग वाली सबसे बड़ी 5 अंकीय संख्या 95000 है क्योंकि 9 + 5 + 0 + 0 + 0 = 14। 94100 (9+4+1+0+0=14) 95000 से छोटी है। 93200 (9+3+2+0+0=14) भी छोटी है। 92300 (9+2+3+0+0=14) भी छोटी है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and maintains the correct answer and distractors. Technical terms like 'पैलिंड्रोम' are correctly used.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "एका संख्या द्वारे पॅलिंड्रोम असल्यास, तिच्या पहिल्या आणि शेवटच्या अंकांमध्ये काय संबंध असतो?",
+          "stem": "खालीलपैकी कोणता संख्या 14 च्या अंक बेरजेसह सर्वात मोठी 5 अंकी संख्या आहे?",
           "choices": [
-            "ते एकसारखे असतात",
-            "ते वेगळे असतात",
-            "ते 9 च्या बेरजेत असतात",
-            "ते 9 च्या गुणाकारात असतात"
+            "95000",
+            "94010",
+            "93020",
+            "92030"
           ],
-          "solution": "एक पॅलिंड्रोम आगाडीकडे आणि पाठीमागे एकसारखे वाचते, म्हणून पहिल्या आणि शेवटच्या अंकांना एकसारखे असणे आवश्यक असते. इतर विकल्प अयोग्य आहेत कारण ते सर्व पॅलिंड्रोमसाठी आवश्यक नसलेल्या संबंधांचे वर्णन करतात.",
+          "solution": "14 च्या अंक बेरजेसह सर्वात मोठी 5 अंकी संख्या 95000 आहे कारण 9 + 5 + 0 + 0 + 0 = 14. 94100 (9+4+1+0+0=14) 95000 पेक्षा लहान आहे. 93200 (9+3+2+0+0=14) देखील लहान आहे. 92300 (9+2+3+0+0=14) देखील लहान आहे.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The structure and logic of the question and answer are preserved.",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         }
       },
@@ -73,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Students may confuse palindromes with numbers that have distinct digits.",
-        "students might think that digits in a palindrome must complement each other to 9, confusing with digit pairs in addition problems",
-        "A student might think that digits in a palindrome have a special arithmetic relationship, like multiplication, instead of just being the same."
+        "Student incorrectly places the remaining sum in the wrong digit position",
+        "A student might incorrectly place the remaining sum in the wrong digits, thinking that digits can be rearranged freely without considering the largest possible value.",
+        "A student might incorrectly place the larger digits in the wrong positions, thinking that the number should have smaller digits in the higher place values."
       ],
       "solverAnswers": [
         0,
@@ -85,13 +85,13 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed and the solution is logically sound. The correct answer is clearly 0, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "critique": "The correct answer is 95000, as it is the largest 5-digit number with a digit sum of 14. The author's solution is correct, and the reasoning for the distractors reflects common misconceptions about digit placement.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 18,
-          "pageStart": 25,
-          "pageEnd": 27,
+          "ordinal": 15,
+          "pageStart": 19,
+          "pageEnd": 21,
           "headingPath": [
             "Chapter 3: Number Play",
             "S u m m a r y"
@@ -99,9 +99,9 @@
         },
         {
           "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 19,
-          "pageStart": 27,
-          "pageEnd": 29,
+          "ordinal": 16,
+          "pageStart": 22,
+          "pageEnd": 23,
           "headingPath": [
             "Chapter 3: Number Play",
             "S u m m a r y"
@@ -109,9 +109,9 @@
         },
         {
           "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 20,
-          "pageStart": 29,
-          "pageEnd": 30,
+          "ordinal": 17,
+          "pageStart": 23,
+          "pageEnd": 25,
           "headingPath": [
             "Chapter 3: Number Play",
             "S u m m a r y"
@@ -119,49 +119,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T09:54:45.059Z",
+      "generatedAt": "2026-10-30T11:11:22.934Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 4,
-      "stem": "Using the steps of reversing and adding, what is the result after one iteration if the number is 89?",
+      "stem": "A table is filled with 5-digit numbers. A cell is a supercell if it is greater than all its adjacent cells. If the largest number in the table is placed in the middle, what is the minimum number of supercells that can be formed?",
       "choices": [
-        "187",
-        "177",
-        "167",
-        "157"
+        "1",
+        "2",
+        "3",
+        "4"
       ],
       "answerIndex": 0,
-      "solution": "Reversing 89 gives 98. Adding 89 and 98 gives 187. The other options are incorrect results of this operation.",
-      "checkExpr": "89+98",
+      "solution": "The minimum number of supercells that can be formed is 1. If the largest number is placed in the middle, it will be greater than all its adjacent cells, making it a supercell. The other cells cannot be supercells because they are not greater than all their neighbors. The other options are incorrect because they assume more than one supercell can be formed under these conditions.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "अंकों के उल्टाने और जोड़ने के चरणों का उपयोग करके, यदि संख्या 89 है तो एक इटरेशन के बाद परिणाम क्या होगा?",
+          "stem": "एक मेज पर 5 अंकों वाली संख्याएं भरी गई हैं। एक सेल एक सुपरसेल होती है यदि यह अपने सभी पड़ोसी सेलों से बड़ी हो। यदि मेज में सबसे बड़ी संख्या के बीच में रखा जाता है, तो बनने वाले सुपरसेलों की न्यूनतम संख्या क्या होगी?",
           "choices": [
-            "187",
-            "177",
-            "167",
-            "157"
+            "1",
+            "2",
+            "3",
+            "4"
           ],
-          "solution": "89 के उल्टाने से 98 प्राप्त होता है। 89 और 98 को जोड़ने पर 187 प्राप्त होता है। अन्य विकल्प इस संक्रिया के गलत परिणाम हैं।",
+          "solution": "बनने वाले सुपरसेलों की न्यूनतम संख्या 1 है। यदि सबसे बड़ी संख्या बीच में रखी जाती है, तो यह अपने सभी पड़ोसी सेलों से बड़ी होगी, जिससे यह एक सुपरसेल बन जाएगी। अन्य सेल अपने सभी पड़ोसियों से बड़ी नहीं हो सकते हैं। अन्य विकल्प गलत हैं क्योंकि ये इन शर्तों के तहत एक से अधिक सुपरसेल बनने की गलत धारणा पर आधारित हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms.",
           "flag": null
         },
         "mr": {
-          "stem": "उलटवून आणि जोडून चरणांचा वापर करून, जर संख्या 89 असेल तर एका इटरेशननंतर परिणाम काय असेल?",
+          "stem": "एका टेबलमध्ये 5 अंकी संख्या भरल्या आहेत. एका सेलला सुपरसेल म्हणतात जर तो त्याच्या सर्व जवळच्या सेल्सपेक्षा मोठा असेल. जर टेबलमधील सर्वात मोठी संख्या मध्यात ठेवली गेली असेल, तर तयार होऊ शकणारी सुपरसेलची न्यूनतम संख्या किती असेल?",
           "choices": [
-            "187",
-            "177",
-            "167",
-            "157"
+            "1",
+            "2",
+            "3",
+            "4"
           ],
-          "solution": "89 चे उलटवून 98 मिळते. 89 आणि 98 जोडल्यास 187 मिळते. इतर विकल्प ह्या क्रियाकलापाचे अयोग्य परिणाम आहेत.",
+          "solution": "तयार होऊ शकणारी सुपरसेलची न्यूनतम संख्या 1 आहे. जर सर्वात मोठी संख्या मध्यात ठेवली गेली असेल, तर ती तिच्या सर्व जवळच्या सेल्सपेक्षा मोठी असेल, ज्यामुळे ती सुपरसेल बनेल. इतर सेल्स सुपरसेल बनू शकत नाहीत कारण ते त्यांच्या सर्व जवळच्या सेल्सपेक्षा मोठे नाहीत. इतर विकल्प चुकीचे आहेत कारण ते या परिस्थितीत एकापेक्षा जास्त सुपरसेल तयार होऊ शकतात असे गृहीत धरतात.",
           "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the English question and solution, with appropriate terminology used for mathematical operations.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The structure and logic of the question and solution are preserved.",
           "flag": null
         }
       },
@@ -171,9 +171,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Thinking that reversing 89 gives 98 and adding 89 + 98 = 177 instead of 187",
-        "Confuses the reverse of 89 with 98 and subtracts instead of adds",
-        "Confuses the reverse of 89 with 98 and subtracts instead of adds"
+        "Thinks multiple cells can be greater than their neighbors.",
+        "Believes the largest number will not be a supercell.",
+        "Assumes all cells can be supercells."
       ],
       "solverAnswers": [
         0,
@@ -183,277 +183,60 @@
         0
       ],
       "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. Reversing 89 gives 98, and adding 89 + 98 = 187. The other options are based on common errors like incorrect addition or subtraction.",
+      "critique": "The solution is correct. The largest number in the table, when placed in the middle, will be greater than all its adjacent cells, making it a supercell. No other cell can be a supercell because they are not greater than all their neighbors.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 5,
-          "pageStart": 7,
-          "pageEnd": 8,
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
           "headingPath": [
-            "Chapter 3: Number Play",
-            "3.5 Pretty Palindromic Patterns"
+            "Chapter 3: Number Play"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 6,
-          "pageStart": 8,
-          "pageEnd": 9,
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 4,
           "headingPath": [
             "Chapter 3: Number Play",
-            "3.6 The Magic Number of Kaprekar"
+            "3.2 Supercells"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 7,
-          "pageStart": 10,
-          "pageEnd": 11,
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
           "headingPath": [
             "Chapter 3: Number Play",
-            "3.7 Clock and Calendar Numbers"
+            "3.2 Supercells"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 8,
-          "pageStart": 11,
-          "pageEnd": 13,
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 5,
           "headingPath": [
             "Chapter 3: Number Play",
-            "3.8 Mental Math"
+            "3.3 Patterns of Numbers on the Number Line"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 9,
-          "pageStart": 13,
-          "pageEnd": 13,
+          "ordinal": 4,
+          "pageStart": 6,
+          "pageEnd": 7,
           "headingPath": [
             "Chapter 3: Number Play",
-            "3.9 Playing with Number Patterns"
+            "3.4 Playing with Digits"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T09:54:45.059Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "What is the next palindromic time after 10:01?",
-      "choices": [
-        "10:01",
-        "11:11",
-        "12:12",
-        "12:21"
-      ],
-      "answerIndex": 1,
-      "solution": "The next palindromic time after 10:01 is 11:11, as it reads the same forwards and backwards. 10:10, 12:21, and 12:12 do not satisfy this condition.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "10:01 के बाद अगला पैलिंड्रोमिक समय क्या है?",
-          "choices": [
-            "10:01",
-            "11:11",
-            "12:12",
-            "12:21"
-          ],
-          "solution": "10:01 के बाद अगला पैलिंड्रोमिक समय 11:11 है, क्योंकि यह आगे और पीछे से एक ही तरह पढ़ता है। 10:10, 12:21 और 12:12 इस शर्त को पूरा नहीं करते।",
-          "imageAlt": null,
-          "critique": "Hindi translation accurately preserves meaning, options, and solution. 'पैलिंड्रोमिक' is the correct technical term used in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "10:01 नंतरचा अगला पैलंड्रोमिक वेळ कोणता असेल?",
-          "choices": [
-            "10:01",
-            "11:11",
-            "12:12",
-            "12:21"
-          ],
-          "solution": "10:01 नंतरचा अगला पैलंड्रोमिक वेळ 11:11 असेल, कारण तो आगली-मागली बरोबर वाचतो. 10:10, 12:21 आणि 12:12 हे या अटीला अनुरूप नाहीत.",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains all meaning, structure, and technical terms. 'पैलंड्रोमिक' is the correct Marathi term for 'palindromic'.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the current time with the next palindromic time",
-        null,
-        "Confuses the order of digits in a palindrome, thinking the middle digits don't need to match",
-        "Confuses palindromic time with a time that has mirrored digits but not in the correct order"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 11:11, which is a palindrome. The other options are not palindromic times. The author's reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 18,
-          "pageStart": 25,
-          "pageEnd": 27,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 19,
-          "pageStart": 27,
-          "pageEnd": 29,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 20,
-          "pageStart": 29,
-          "pageEnd": 30,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "S u m m a r y"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T09:54:45.059Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Which of the following statements about palindromes is always true?",
-      "choices": [
-        "A palindrome must have an odd number of digits.",
-        "A palindrome reads the same forward and backward.",
-        "A palindrome cannot have repeating digits.",
-        "A palindrome must be an even number."
-      ],
-      "answerIndex": 1,
-      "solution": "A palindrome reads the same forward and backward by definition. The other options are not always true as palindromes can have even or odd digits and can have repeating digits.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा कथन पैलिंड्रोम के बारे में हमेशा सत्य है?",
-          "choices": [
-            "एक पैलिंड्रोम के पास विषम संख्या में अंक होने चाहिए।",
-            "एक पैलिंड्रोम आगे और पीछे से एक ही तरह पढ़ा जाता है।",
-            "एक पैलिंड्रोम में दोहराए गए अंक नहीं हो सकते हैं।",
-            "एक पैलिंड्रोम एक सम संख्या होनी चाहिए।"
-          ],
-          "solution": "परिभाषा के अनुसार, एक पैलिंड्रोम आगे और पीछे से एक ही तरह पढ़ा जाता है। अन्य विकल्प हमेशा सत्य नहीं होते क्योंकि पैलिंड्रोम के एक सम या विषम संख्या में अंक हो सकते हैं और दोहराए गए अंक भी हो सकते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question, with appropriate terminology and logical structure.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता विधान पॅलिंड्रोमबद्दल नेहमी खरा असतो?",
-          "choices": [
-            "एक पॅलिंड्रोमला विषम संख्येचे अंक असावे लागतात.",
-            "एक पॅलिंड्रोम समोरून आणि मागून एकसारखे वाचते.",
-            "एक पॅलिंड्रोममध्ये दुहेरी अंक असू शकत नाहीत.",
-            "एक पॅलिंड्रोम जोड संख्या असावा लागते."
-          ],
-          "solution": "पॅलिंड्रोम व्याख्येनुसार समोरून आणि मागून एकसारखे वाचते. इतर विधाने नेहमी खरी नसतात कारण पॅलिंड्रोममध्ये सम आणि विषम अंक असू शकतात आणि दुहेरी अंक असू शकतात.",
-          "imageAlt": null,
-          "critique": "Translation is accurate and natural for a Marathi-medium student. Technical terms like 'पॅलिंड्रोम' are correctly used.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Misunderstands the definition of a palindrome",
-        null,
-        "Misunderstands the definition of a palindrome",
-        "Misunderstands the definition of a palindrome"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as a palindrome is defined as a number that reads the same forward and backward. The other options are incorrect because palindromes can have even or odd numbers of digits and can have repeating digits.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 5,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.5 Pretty Palindromic Patterns"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 6,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.6 The Magic Number of Kaprekar"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 7,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.7 Clock and Calendar Numbers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 8,
-          "pageStart": 11,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.8 Mental Math"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 9,
-          "pageStart": 13,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.9 Playing with Number Patterns"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T09:54:45.059Z",
+      "generatedAt": "2026-10-30T11:11:22.934Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

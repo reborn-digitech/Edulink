@@ -46,8 +46,9 @@ export const OUT_DIR = join(process.cwd(), "content", "quiz", "generated");
 /** "Original questions written for Shalaghar · CC BY-SA 4.0": the README's line for authored items, the product's name as it is today. */
 export const LICENCE = "Original questions written for Shalaghar · CC BY-SA 4.0";
 
-export function sourceLine(chapter: Pick<SelectedChapter, "board" | "subject" | "classLevel" | "chapterNumber" | "edition">): string {
-  return `generated against ${chapter.board} ${chapter.subject}, Class ${chapter.classLevel}, chapter ${chapter.chapterNumber}${chapter.edition ? ` (${chapter.edition})` : ""}`;
+export function sourceLine(chapter: Pick<SelectedChapter, "board" | "subject" | "classLevel" | "chapterNumber" | "edition"> & { bookPlace?: string }): string {
+  // owner-batch-item7: a Balbharati chapter of a second book or part says where the book prints it.
+  return `generated against ${chapter.board} ${chapter.subject}, Class ${chapter.classLevel}, chapter ${chapter.chapterNumber}${chapter.bookPlace ? ` (${chapter.bookPlace})` : ""}${chapter.edition ? ` (${chapter.edition})` : ""}`;
 }
 
 export function fileNameFor(chapter: Pick<SelectedChapter, "board" | "classLevel" | "subjectCode" | "chapterNumber">): string {

@@ -22,7 +22,8 @@ export const MAX_CHARS = 2600;
 export const MIN_CHARS = 350;
 
 export type Element =
-  | { type: "heading"; level: number; text: string; page: number }
+  /** `hard`: a chapter's own start, set by the book's contents (owner-batch-item7): the chunk ends there whatever its size. */
+  | { type: "heading"; level: number; text: string; page: number; hard?: boolean }
   | { type: "para"; text: string; page: number; aside: boolean };
 
 export type FigureRef = { key: string; page: number; index: number; caption: string | null; image: PageImage };
@@ -432,8 +433,22 @@ export function figuresOf(pages: PageContent[], keyFor: (page: number, index: nu
  * `chapterLabel` turns the chapter title the pages carry (or null) into the name every chunk's
  * heading path starts with: "Chapter 9: Atomic Foundations of Matter" when the caller knows the number.
  */
-export function chunk(pages: PageContent[], opts: { perChapterFile: boolean; chapterLabel?: (found: string | null) => string | null; figureKey: (page: number, index: number) => string }): Structured {
-  const { elements, edition, bodySize, chapter: found } = elementsOf(pages, { perChapterFile: opts.perChapterFile });
+export function chunk(
+  pages: PageContent[],
+  opts: {
+    perChapterFile: boolean;
+    chapterLabel?: (found: string | null) => string | null;
+    figureKey: (page: number, index: number) => string;
+    /**
+     * owner-batch-item7: the elements reworked before they are cut, for a whole book whose chapters its contents page
+     * gives (scripts/corpus-contents.ts withChapterHeadings): a hard level-0 heading at each chapter's opening page.
+     */
+    transformElements?: (elements: Element[]) => Element[];
+  },
+): Structured {
+  const read = elementsOf(pages, { perChapterFile: opts.perChapterFile });
+  const { edition, bodySize, chapter: found } = read;
+  const elements = opts.transformElements ? opts.transformElements(read.elements) : read.elements;
   const figures = figuresOf(pages, opts.figureKey);
   const chapterName = opts.chapterLabel ? opts.chapterLabel(found) : found;
   const chunks = cutChunks(elements, chapterName);
@@ -482,8 +497,8 @@ function cutChunks(elements: Element[], chapterName: string | null): Chunk[] {
       // "12.6 F": a numbered section whose words the extractor lost keeps its number alone, never a stray letter.
       const cut = /^(\d{1,2}(?:\.\d{1,2}){1,3})\.?\s+\p{L}{1,2}$/u.exec(el.text);
       if (cut) el.text = cut[1]!;
-      // A chapter or section boundary ends the chunk unless it holds almost nothing yet.
-      if (el.level <= 2 && size() >= MIN_CHARS) flush();
+      // A chapter or section boundary ends the chunk unless it holds almost nothing yet; a chapter's own start always.
+      if ((el.level <= 2 && size() >= MIN_CHARS) || el.hard) flush();
       if (el.level === 0) levels.splice(0, 4, el.text, null, null, null);
       else {
         levels[el.level] = el.text;
