@@ -58,6 +58,7 @@ import { seasonBatchFor } from "../src/lib/placement-rules";
 import { iqacHash, recomputeAsSystem, respondentHash, scoreQualitativeAs } from "../src/lib/iqac";
 import { buildFiling } from "../src/lib/iqac-filings";
 import { addWorkingDays } from "../src/lib/iqac-rules";
+import { giveHeadPages, HEAD_PAGES_NOTE } from "./head-pages"; // owner-batch-item9
 import { db, link, refuseUnlessLocal, switchModulesOn, upsertMembership, upsertUser, type Ctx } from "./zz-fixtures";
 import { PASSWORD } from "./demo-schools";
 import { demoCalendar, describeCalendar, refuseAnotherYear, registerDays } from "./demo-calendar";
@@ -807,7 +808,7 @@ What is in it: Physics (head Dr Vasudha Paranjpe) and Commerce (head Dr Sanjay B
 
 | Account | Name | Role | Home | What to look at |
 |---|---|---|---|---|
-${STAFF.map((p) => `| ${p.email} | ${p.name} | ${p.role === "ADMIN" ? "Admin (registrar)" : p.role} | ${p.home} | ${p.look} |`).join("\n")}
+${STAFF.map((p) => `| ${p.email} | ${p.name} | ${p.role === "ADMIN" ? "Admin (registrar)" : p.role} | ${p.home} | ${p.look}${p.role === "ADMIN" ? HEAD_PAGES_NOTE : ""} |`).join("\n")}
 ${STUDENTS.map(studentLine).join("\n")}
 | ${GUARDIAN.email} | ${GUARDIAN.name} | Parent of Pooja Bhosale (a minor) | /parent | /parent/academics, /parent/results, /parent/fees |
 | ${ALUMNA.email} | ${ALUMNA.name} | Alumna (BCom, left May ${Y(2025)}) | /alumni | /alumni/college (placed through last season's drive, a mentor), the directory |
@@ -841,6 +842,9 @@ async function main() {
   const exams = await buildExams(college, people, academics, office.examHeadId);
   const placement = await buildPlacement(college, people, academics, exams.sgpa);
   const iqac = await buildIqac(college, people, academics);
+  // owner-batch-item9 (decision 7): the principal gives the registrar the head's pages, audited once.
+  const headPages = await giveHeadPages(db, college.id);
+  console.log(`  The head's pages: ${headPages.given} given this run, ${headPages.already} already held`);
 
   const emails = [...STAFF.map((p) => p.email), ...STUDENTS.map((st) => studentEmail(st.n)), GUARDIAN.email, ALUMNA.email, RECRUITER.email];
   const counts = await countBlock(college.id, emails, placement.companyId, iqac.cycleId);

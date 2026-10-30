@@ -2,6 +2,7 @@ import "server-only";
 import { db } from "./db";
 import { audit } from "./audit";
 import { notify } from "./notify";
+import { headPageHolders } from "./duties";
 import { AccessError } from "./tenancy";
 import { arrangeCover } from "./register-duty";
 import { dateKeyRange, weekdayOfKey } from "./dates";
@@ -156,21 +157,13 @@ export async function applyForLeave(
     meta: { from: input.fromDateKey, to: input.toDateKey, kind: input.kind },
   });
 
-  // Everyone who can decide it. A school with no principal falls back to its
-  // admins, so a request cannot sit unread because a post is vacant.
-  const deciders = await db.membership.findMany({
-    where: {
-      schoolId: ctx.schoolId,
-      role: { in: ["PRINCIPAL", "ADMIN"] },
-      status: "ACTIVE",
-      leftAt: null,
-    },
-    select: { userId: true },
-  });
+  // Everyone who can decide it: the head, and each admin the head has given the head's pages (owner-batch-item9). A
+  // school with no principal falls back to its admins, so a request cannot sit unread because a post is vacant.
+  const deciders = await headPageHolders(ctx.schoolId);
   const applicantName = ctx.user.preferredName ?? ctx.user.name;
-  for (const decider of deciders) {
+  for (const userId of deciders) {
     await notify({
-      userId: decider.userId,
+      userId,
       schoolId: ctx.schoolId,
       kind: "SYSTEM",
       titleKey: "notifTitle.leaveWaiting",

@@ -13,7 +13,8 @@
  *   module or none) may answer 403 MODULE_OFF to an actor who is not at a
  *   college ("may");
  * - a door naming duties (x-duties, 5 Oct 2026) opens to a FACULTY or HOD
- *   only holding one of them — the actor's own /me `duties`;
+ *   only holding one of them — the actor's own /me `duties`; an office duty
+ *   (owner-batch-item9, HEAD_PAGES) to an ADMIN only holding it (/me `adminDuties`);
  * - a door naming the kinds of institution it is for (x-kinds, owner-batch-item5,
  *   27 Oct 2026) must answer 404 NOT_FOUND at an actor's school of another kind,
  *   for every role ("gone"): the gate's answer before the role is asked.
@@ -22,7 +23,7 @@
  * hold these rules against the committed document without a server
  * (test/lib/role-matrix.test.ts).
  */
-import { isCollegeKind, type Me } from "@edulink/contracts";
+import { dutyHolderRoles, isCollegeKind, type Me } from "@edulink/contracts";
 
 export type Access = "anyone" | "signed-in" | "account" | "operator" | "app-admin" | string[];
 export type Op = { "x-access": Access; "x-limited-roles"?: string[]; "x-module"?: string; "x-college"?: boolean; "x-duties"?: string[]; "x-kinds"?: string[] };
@@ -51,8 +52,10 @@ export function allowed(op: Op, role: string | null, limitedRoles: readonly stri
   // "signed-in" is every role but a limited role's (module, college staff, recruiter), which passes only where x-limited-roles names it.
   const byRole = access === "signed-in" ? !limitedRoles.includes(role) || (op["x-limited-roles"] ?? []).includes(role) : access.includes(role);
   if (!byRole) return 403;
-  // A door naming duties (x-duties, 5 Oct 2026) opens to a FACULTY or HOD only holding one: the actor's /me `duties`.
-  if (op["x-duties"]?.length && (role === "FACULTY" || role === "HOD") && !op["x-duties"].some((d) => duties.includes(d))) return 403;
+  // A door naming duties (x-duties, 5 Oct 2026) opens to a FACULTY or HOD only holding one: the actor's /me `duties`;
+  // an office duty (owner-batch-item9, HEAD_PAGES) to an ADMIN only holding it: the actor's /me `adminDuties`.
+  const binding = (op["x-duties"] ?? []).filter((d) => dutyHolderRoles(d).includes(role));
+  if (binding.length && !binding.some((d) => duties.includes(d))) return 403;
   return "2xx";
 }
 

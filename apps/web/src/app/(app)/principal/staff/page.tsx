@@ -15,6 +15,10 @@ import { PersonLink } from "@/components/person-link";
 import { DataToolbar } from "@/components/ui/data-toolbar";
 import { ROLE_META } from "@/lib/constants";
 import { PageHeader } from "@/components/ui/page-header";
+import { Button } from "@/components/ui/button";
+import { ActionForm } from "@/components/ui/action-form";
+import { adminDutiesHeld } from "@edulink/contracts";
+import { headDutyAction } from "./actions";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -52,6 +56,8 @@ export default async function PrincipalStaffPage({
       id: true,
       role: true,
       subjects: true,
+      // The office's duties (owner-batch-item9): whether the head has given an admin the head's pages.
+      dutiesJson: true,
       staffRecord: true,
       user: { select: { name: true, preferredName: true, avatarKey: true } },
       classTeachers: { where: { role: "LEAD" }, select: { class: { select: { name: true } } } },
@@ -80,6 +86,9 @@ export default async function PrincipalStaffPage({
   const narrowed = Boolean(roleFilter || subjectFilter || needle);
 
   const balances = await leaveBalancesFor(ctx.schoolId!, staff.map((m) => m.id));
+  // The head's pages on an admin (owner-batch-item9): the head gives and takes them back here; the office reads who holds them.
+  const headHere = allStaff.some((m) => m.role === "PRINCIPAL");
+  const holdsHeadPages = (member: { role: string; dutiesJson: string }) => member.role === "ADMIN" && adminDutiesHeld(member.dutiesJson, headHere).includes("HEAD_PAGES");
 
   return (
     <div className="space-y-5">
@@ -152,6 +161,23 @@ export default async function PrincipalStaffPage({
                           .filter(Boolean)
                           .join(" · ")}
                       </p>
+                      {member.role === "ADMIN" ? (
+                        <div className="mt-2 flex flex-wrap items-center gap-2" data-testid="head-duty">
+                          <Badge tone={holdsHeadPages(member) ? "ok" : "neutral"} size="sm">
+                            {holdsHeadPages(member) ? t("headDuty.holds") : t("headDuty.holdsNot")}
+                          </Badge>
+                          {ctx.role === "PRINCIPAL" ? (
+                            <ActionForm action={headDutyAction} className="flex flex-wrap items-center gap-2">
+                              <input type="hidden" name="membershipId" value={member.id} />
+                              <input type="hidden" name="held" value={holdsHeadPages(member) ? "false" : "true"} />
+                              <Button type="submit" size="sm" variant={holdsHeadPages(member) ? "ghost" : "secondary"}>
+                                {holdsHeadPages(member) ? t("headDuty.takeBack") : t("headDuty.give")}
+                                <span className="sr-only">: {name}</span>
+                              </Button>
+                            </ActionForm>
+                          ) : null}
+                        </div>
+                      ) : null}
                       {facts.length > 0 ? (
                         <dl className="mt-2 grid gap-x-6 gap-y-0.5 text-sm sm:grid-cols-2">
                           {facts.map(([label, value]) => (
@@ -183,6 +209,8 @@ export default async function PrincipalStaffPage({
           })}
         </ul>
       )}
+
+      {allStaff.some((m) => m.role === "ADMIN") ? <p className="text-sm text-fg-muted">{t("headDuty.explain")}</p> : null}
 
       <p className="flex items-center gap-2 rounded-[var(--radius-md)] bg-surface-muted p-3.5 text-xs leading-relaxed text-fg-muted">
         <IdentificationCardIcon className="size-4 shrink-0" aria-hidden="true" />

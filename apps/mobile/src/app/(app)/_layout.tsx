@@ -6,7 +6,7 @@ import { inboxSchema, notificationsSchema } from "@edulink/contracts";
 import { Icon, Loading, TabLabel } from "@/components";
 import { useRole, useSession } from "@/lib/session";
 import { ChooseContext } from "@/components/choose-context";
-import { ALL_TAB_SCREENS, HIDDEN_SCREENS, TABS, featuresOf, tabShown } from "@/lib/nav";
+import { ALL_TAB_SCREENS, HIDDEN_SCREENS, TABS, dutiesOfMe, featuresOf, tabShown } from "@/lib/nav";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
@@ -64,7 +64,7 @@ export default function AppLayout() {
   const modules = session.status === "signed-in" ? (session.me.modules ?? []) : [];
   // …and a duty's tab only for whoever holds it (5 Oct 2026).
   // …and a platform feature's tab only while the operator has it on (15 Oct 2026; /me's `features`).
-  const tabs = TABS[role].filter((tab) => tabShown(tab, modules, session.status === "signed-in" ? (session.me.duties ?? []) : [], featuresOf(session.status === "signed-in" ? session.me : null)));
+  const tabs = TABS[role].filter((tab) => tabShown(tab, modules, session.status === "signed-in" ? dutiesOfMe(session.me) : [], featuresOf(session.status === "signed-in" ? session.me : null)));
   // Vidura's round button and sheet over every screen (pass 1, 17 Oct 2026), where the web draws its button.
   return (
     <ViduraHost access={viduraAccess(session.status === "signed-in" ? session.me : null)} home={WEB_HOME[role] ?? "/"}>

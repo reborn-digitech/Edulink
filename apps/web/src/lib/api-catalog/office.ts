@@ -22,8 +22,8 @@ export const OFFICE: Endpoint[] = [
   { method: "POST", path: "/api/v1/office/directory/publish", summary: "Put the school in the public directory, or take it out", access: ["ADMIN"], request: c.officeDirectoryPublishBodySchema, response: c.okSchema, emptyBodyStatus: 422 },
   { method: "POST", path: "/api/v1/office/logo", summary: "Make an uploaded image the school's logo, or take the logo off", access: ["ADMIN"], request: c.officeLogoBodySchema, response: c.officeLogoSchema, emptyBodyStatus: 422 },
   // ---- safety ----------------------------------------------------------------
-  { method: "POST", path: "/api/v1/office/safety/take-down", summary: "Take reported content down, telling the author why", access: ["ADMIN"], request: c.officeTakeDownBodySchema, response: c.okSchema, emptyBodyStatus: 422 },
-  { method: "POST", path: "/api/v1/office/safety/dismiss", summary: "Close the reports against something: nothing wrong", access: ["ADMIN"], request: c.officeDismissBodySchema, response: c.okSchema, emptyBodyStatus: 422 },
+  { method: "POST", path: "/api/v1/office/safety/take-down", summary: "Take reported content down, telling the author why", access: ["ADMIN", "PRINCIPAL"], duties: ["HEAD_PAGES"], request: c.officeTakeDownBodySchema, response: c.okSchema, emptyBodyStatus: 422 },
+  { method: "POST", path: "/api/v1/office/safety/dismiss", summary: "Close the reports against something: nothing wrong", access: ["ADMIN", "PRINCIPAL"], duties: ["HEAD_PAGES"], request: c.officeDismissBodySchema, response: c.okSchema, emptyBodyStatus: 422 },
   // ---- attendance -------------------------------------------------------------
   { method: "POST", path: "/api/v1/office/attendance/alert", summary: "Tell one child's family they have been missing school", access: ["ADMIN"], request: c.officeAbsenceAlertBodySchema, response: c.officeAbsenceAlertSchema, emptyBodyStatus: 422 },
   {

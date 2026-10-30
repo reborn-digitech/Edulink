@@ -7,6 +7,13 @@ import { AccessError } from "./tenancy";
 import type { ActiveContext } from "./session";
 import { URGENT_REASONS, type AuditEntry, type ReportGroup, type ReportTarget } from "./safety-labels";
 
+/**
+ * Who works the safety centre: the office and the head (owner-batch-item9, 27 Oct 2026: it is one of the head's
+ * pages, which the head always holds; an ADMIN reaches it holding the head's pages, which the session's gate decides
+ * before any of this runs — role-gate.ts and the catalog's `duties`).
+ */
+const SAFETY_ROLES: readonly string[] = ["ADMIN", "PRINCIPAL"];
+
 // Re-exported so server code has one import site; client components must import
 // from ./safety-labels directly (this module is server-only).
 export type { AuditEntry, ReportGroup, ReportTarget };
@@ -32,7 +39,7 @@ export async function listReports(
   session: ActiveContext,
   status: "OPEN" | "ACTIONED" | "DISMISSED" = "OPEN",
 ): Promise<ReportGroup[]> {
-  if (session.role !== "ADMIN" || !session.schoolId) {
+  if (!SAFETY_ROLES.includes(session.role ?? "") || !session.schoolId) {
     throw new AccessError("access.onlyAnAdminCanSeeTheSafety");
   }
 
@@ -178,7 +185,7 @@ async function resolveTarget(
 }
 
 export async function openReportCount(session: ActiveContext): Promise<number> {
-  if (session.role !== "ADMIN" || !session.schoolId) return 0;
+  if (!SAFETY_ROLES.includes(session.role ?? "") || !session.schoolId) return 0;
   const rows = await db.report.findMany({
     where: { schoolId: session.schoolId, status: "OPEN" },
     select: { targetType: true, targetId: true },
@@ -202,7 +209,7 @@ export async function removeContent(
   session: ActiveContext,
   input: { targetType: "POST" | "COMMENT"; targetId: string; note: string },
 ): Promise<void> {
-  if (session.role !== "ADMIN" || !session.schoolId || !session.membershipId) {
+  if (!SAFETY_ROLES.includes(session.role ?? "") || !session.schoolId || !session.membershipId) {
     throw new AccessError("access.onlyAnAdminCanRemoveContent");
   }
   const note = input.note.trim();
@@ -260,7 +267,7 @@ export async function dismissReports(
   session: ActiveContext,
   input: { targetType: "POST" | "COMMENT" | "USER"; targetId: string; note: string },
 ): Promise<void> {
-  if (session.role !== "ADMIN" || !session.schoolId) {
+  if (!SAFETY_ROLES.includes(session.role ?? "") || !session.schoolId) {
     throw new AccessError("access.onlyAnAdminCanResolveReports");
   }
   const note = input.note.trim();
@@ -308,7 +315,7 @@ export async function listAudit(
   session: ActiveContext,
   opts: { action?: string; take?: number } = {},
 ): Promise<AuditEntry[]> {
-  if (session.role !== "ADMIN" || !session.schoolId) {
+  if (!SAFETY_ROLES.includes(session.role ?? "") || !session.schoolId) {
     throw new AccessError("access.onlyAnAdminCanSeeTheAudit");
   }
 

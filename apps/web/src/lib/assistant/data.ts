@@ -2,6 +2,7 @@ import "server-only";
 import { parseDuties } from "@edulink/contracts";
 import { db } from "../db";
 import { enabledModules } from "../modules";
+import { myAdminDuties } from "../duties";
 import type { Role } from "../constants";
 import type { DataContext } from "./doors";
 import { childNamed } from "./data-privacy";
@@ -42,6 +43,8 @@ export async function dataContextFor(input: { role: Role; userId: string; member
     const m = await db.membership.findUnique({ where: { id: input.membershipId }, select: { dutiesJson: true } });
     duties = parseDuties(m?.dutiesJson ?? null);
   }
+  // The office's duties (owner-batch-item9): an admin reads the head's doors only holding the head's pages, as the gate decides.
+  if (input.membershipId && input.role === "ADMIN") duties = await myAdminDuties({ role: input.role, membershipId: input.membershipId, schoolId: input.schoolId });
   const modules = new Set<string>(await enabledModules(input.schoolId));
   let children: { id: string; className: string | null; names: string[] }[] = [];
   if (input.role === "PARENT") {

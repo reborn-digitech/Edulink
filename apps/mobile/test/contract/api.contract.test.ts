@@ -118,7 +118,7 @@ describeIf("the role matrix, from the app's client", () => {
       for (const path of gets) {
         const op = doc.paths[path]!.get!;
         const res = await client(token).get(path);
-        const want = allowed(op, role, MODULE_ROLES, parsedMe?.duties ?? []);
+        const want = allowed(op, role, MODULE_ROLES, [...(parsedMe?.duties ?? []), ...(parsedMe?.adminDuties ?? [])]);
         const verdict = judge(want, moduleOff(op, want, tenant), res);
         if (verdict) wrong.push(`${path}: ${verdict}`);
       }

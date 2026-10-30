@@ -71,6 +71,16 @@ import { assertAnyFeatureOn, assertFeatureSwitchOn } from "./platform-features";
  * `duty` opens its page only to the holder. Both roles are limited roles, so
  * the rule sits beside rule 1.
  *
+ * THE HEAD'S PAGES ON AN ADMIN (owner-batch-item9, 27 October 2026): an ADMIN
+ * is not a limited role, but the head's four pages — leave approval, trends,
+ * review rounds, the safety centre — are NAV.ADMIN entries carrying `duty:
+ * "HEAD_PAGES"`, and the doors behind them name it in `duties`. Without the duty
+ * (getSession passes the admin's office duties as `duties`) such a page is
+ * answered as not here (404, the "not-found" verdict) — a server action posted
+ * to it too — and such a door 403 `headDuty.refuseNoDuty`. The head always
+ * holds them; an admin holds them while the head has given them, or while the
+ * school has no head (lib/duties.ts).
+ *
  * The four roles that existed before are not checked against `access` here:
  * their handlers do that and the API sweep proves it, and this file is not
  * the place to change what they are answered.
@@ -206,6 +216,15 @@ async function assertDoorFeature(e: Endpoint | null, ctx: { userId?: string | nu
   await assertAnyFeatureOn(featuresOf(e), { userId: ctx.userId ?? null, schoolId: ctx.schoolId, role: ctx.role ?? null });
 }
 
+/**
+ * Whether an ADMIN may open this page by the office's duties (owner-batch-item9): a page under a NAV.ADMIN entry that
+ * names a `duty` is the holder's alone. Matched by the entry's own href (and its children), not its `also` — the
+ * leave entry's `also` is the head's staff roster, which every admin reads.
+ */
+export function adminDutyPagePermitted(path: string, duties: readonly string[] = []): boolean {
+  return !NAV.ADMIN.some((item) => item.duty && !duties.includes(item.duty) && (path === item.href || path.startsWith(`${item.href}/`)));
+}
+
 export async function gateRequest(route: string | null, ctx: { role: Role | null; schoolId: string | null; duties?: readonly string[]; userId?: string | null }, catalog: readonly Endpoint[] = ENDPOINTS): Promise<"pass" | "no-context" | "not-found"> {
   // FAIL CLOSED (campaign S-11). No stamp means the middleware did not run — a path its matcher
   // skips, such as one ending in ".ab", still reaches a page — and a stamp whose path does not
@@ -219,7 +238,7 @@ export async function gateRequest(route: string | null, ctx: { role: Role | null
   if (path === null) return isLimitedRole(ctx.role) ? "no-context" : "pass";
   if (path.startsWith("/api/v1/")) {
     // Nothing to look up for the older roles while no door names a module or a feature.
-    if (!isLimitedRole(ctx.role) && !routesOf(catalog).some((r) => r.e.module || r.e.feature || r.e.kinds)) return "pass";
+    if (!isLimitedRole(ctx.role) && !routesOf(catalog).some((r) => r.e.module || r.e.feature || r.e.kinds || r.e.duties)) return "pass";
     const e = endpointFor(method, path, catalog);
     // A feature the operator has off is "not here" for everybody, whatever else the door would say.
     await assertDoorFeature(e, ctx);
@@ -232,6 +251,8 @@ export async function gateRequest(route: string | null, ctx: { role: Role | null
       const own = MODULE_OF_ROLE[ctx.role];
       if (own && !isPersonDoor(path) && !(await ownModuleOn(ctx.role, ctx.schoolId))) throw new ModuleOffError(own);
     }
+    // The head's doors (owner-batch-item9): an ADMIN the catalog lets through by role passes a door naming an office duty only holding it.
+    if (ctx.role === "ADMIN" && e && permits({ access: e.access, limitedRoles: e.limitedRoles }, "ADMIN") && !permits(e, "ADMIN", ctx.duties ?? [])) throw new AccessError("headDuty.refuseNoDuty");
     if (e?.module && ctx.schoolId) await assertModuleOn(ctx.schoolId, e.module);
     return "pass";
   }
@@ -241,6 +262,8 @@ export async function gateRequest(route: string | null, ctx: { role: Role | null
     return "pass";
   }
   if (ctx.role === "SUPPORT" && !supportPagePermitted(path)) return "no-context";
+  // The head's pages (owner-batch-item9): an admin without the duty is answered as if the page were not here.
+  if (ctx.role === "ADMIN" && !adminDutyPagePermitted(path, ctx.duties ?? [])) return "not-found";
   if (isLimitedRole(ctx.role)) {
     const on = await enabledModules(ctx.schoolId);
     if (!modulePagePermitted(ctx.role, path, on, ctx.duties ?? [])) return ownPageModuleOff(ctx.role, path, on) ? "not-found" : "no-context";

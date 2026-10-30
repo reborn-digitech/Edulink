@@ -25,7 +25,7 @@
  * by the sweep; without one the sweep skips the endpoint and says so.
  */
 import type { ZodTypeAny } from "zod";
-import { LIMITED_ROLES, type DutyCode, type FeatureCode, type InstitutionKind, type LimitedRoleCode, type RoleCode, type SchoolModuleCode } from "@edulink/contracts";
+import { dutyHolderRoles, LIMITED_ROLES, type AnyDutyCode, type FeatureCode, type InstitutionKind, type LimitedRoleCode, type RoleCode, type SchoolModuleCode } from "@edulink/contracts";
 
 /** The /api doors outside /api/v1 that the catalog lists (api-catalog/unversioned.ts). */
 export type UnversionedPath = "/api/attendance" | "/api/practice/answer";
@@ -102,8 +102,14 @@ export type Endpoint = {
    * is decided by `access` as before. The session's gate (role-gate.ts) reads
    * it before the handler runs, `permits` and the API sweep's expected()
    * read it with the actor's duties, and the docs publish it as `x-duties`.
+   *
+   * (owner-batch-item9, 27 Oct 2026) An office duty (ADMIN_DUTIES: HEAD_PAGES)
+   * named here asks it of an ADMIN in the same way: the head's own doors —
+   * leave decisions, trends, review rounds, the safety centre — let an admin
+   * through only while the head has given them the head's pages. Each duty
+   * binds only the roles it is given to (`dutyHolderRoles`).
    */
-  duties?: DutyCode[];
+  duties?: AnyDutyCode[];
   request?: ZodTypeAny;
   response: ZodTypeAny;
   /**
@@ -339,7 +345,9 @@ export function permits(e: Pick<Endpoint, "access" | "limitedRoles" | "duties">,
   if (e.access === "anyone" || e.access === "account" || e.access === "operator" || e.access === "app-admin") return true;
   const byRole = e.access === "signed-in" ? !(LIMITED_ROLES as readonly string[]).includes(role) || (e.limitedRoles ?? []).includes(role as LimitedRoleCode) : e.access.includes(role);
   if (!byRole) return false;
-  if (e.duties?.length && (role === "FACULTY" || role === "HOD")) return e.duties.some((d) => duties.includes(d));
+  // A duty binds only the roles it is given to: a college teacher's FACULTY and HOD, the office's ADMIN (owner-batch-item9).
+  const binding = (e.duties ?? []).filter((d) => dutyHolderRoles(d).includes(role));
+  if (binding.length) return binding.some((d) => duties.includes(d));
   return true;
 }
 

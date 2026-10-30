@@ -59,7 +59,11 @@ const STREAM_PAGES: Record<string, string[]> = {
  * /student/transport, is walked through its STUDENT menu entry; the mess bill is on /hostel, the admin's `also`.)
  */
 const OFFICE_FORM_PAGES: Record<string, string[]> = {
-  ADMIN: ["/admin/transport?tab=routes", "/hostel/rooms"],
+  // owner-batch-item9 (27 Oct 2026): the desk's e-resources (list, add, correct, open), the ISBN list on the
+  // catalogue, the move to another bed on the rooms page, and the head's staff roster with who holds the head's pages.
+  ADMIN: ["/admin/transport?tab=routes", "/hostel/rooms", "/library/e-resources", "/library/catalogue", "/principal/staff"],
+  PRINCIPAL: ["/principal/staff", "/library/e-resources"],
+  LIBRARIAN: ["/library/e-resources"],
 };
 
 /**

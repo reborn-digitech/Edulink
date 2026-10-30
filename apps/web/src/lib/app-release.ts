@@ -2,9 +2,9 @@ import "server-only";
 import { randomBytes } from "node:crypto";
 import type { z } from "zod";
 import type { appReportBodySchema, appVersionSchema } from "@edulink/contracts";
-import { db } from "./db";
 import { audit } from "./audit";
 import { notify } from "./notify";
+import { headPageHolders } from "./duties";
 import { readAppReleaseConfig } from "./env";
 import { APP_REPORTS, consume } from "./rate-limit";
 import type { ActiveContext } from "./session";
@@ -118,15 +118,13 @@ export async function recordAppReport(ctx: ActiveContext, body: AppReportBody): 
   if (!reportId) throw new Error("The app report could not be recorded");
 
   if (body.kind === "PROBLEM" && ctx.schoolId) {
-    const admins = await db.membership.findMany({
-      where: { schoolId: ctx.schoolId, role: "ADMIN", status: "ACTIVE" },
-      select: { userId: true },
-    });
+    // Who reads the safety centre's audit tab: the head and the admins holding the head's pages (owner-batch-item9).
+    const readers = await headPageHolders(ctx.schoolId);
     const name = ctx.user.preferredName ?? ctx.user.name;
     await Promise.all(
-      admins.map((admin) =>
+      readers.map((userId) =>
         notify({
-          userId: admin.userId,
+          userId,
           schoolId: ctx.schoolId,
           kind: "SYSTEM",
           titleKey: "notifTitle.appProblem",

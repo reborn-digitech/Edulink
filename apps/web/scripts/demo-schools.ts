@@ -44,6 +44,7 @@ import { addDaysToKey, todayKey, weekdayOfKey, zonedStartOfDay } from "../src/li
 // owner-batch-item5: Sunrise's route fees and mess bill through the office's own functions, as a script actor of the admin
 import { randomBytes } from "node:crypto";
 import { billMess, raiseRouteFees } from "../src/lib/college-fees";
+import { giveHeadPages, HEAD_PAGES_NOTE } from "./head-pages"; // owner-batch-item9
 import type { ActiveContext } from "../src/lib/session";
 // owner-batch-item5 end
 // owner-batch-item4b: Sunrise's inventory, payroll, website, alumni, review rounds and online fees (scripts/demo-schools-item4b.ts)
@@ -960,7 +961,7 @@ function rosterMarkdown(input: { sunrise: Built; saraswati: Built; sunita: { id:
   const { sunrise, saraswati } = input;
   const staffRows = (b: Built) => {
     const rows = [
-      [b.admin.user.email, b.admin.user.name, "Admin", `/admin, /admin/people, /admin/fees, /admin/admissions, /admin/certificates, /admin/filings, /admin/messaging, /admin/vacancies, /enquiries`],
+      [b.admin.user.email, b.admin.user.name, "Admin", `/admin, /admin/people, /admin/fees, /admin/admissions, /admin/certificates, /admin/filings, /admin/messaging, /admin/vacancies, /enquiries${HEAD_PAGES_NOTE}`],
       [b.principal.user.email, b.principal.user.name, "Principal", `/principal, /principal/staff, /principal/leave (one pending ask), /enquiries (the vacancy applicant)`],
       ...b.formTeachers.map((t, i) => [t.user.email, t.user.name, `Teacher · form, Grade ${GRADES[i]}`, `/teacher, /teacher/classes/${b.classes[i]!.id}, /teacher/attendance?classId=${b.classes[i]!.id}, /bulletin`]),
       ...b.subjectTeachers.map((t) => [t.user.email, t.user.name, "Teacher · subject only", `/teacher (timetable, no form class)`]),
@@ -1218,6 +1219,11 @@ async function main() {
   sunrise.moduleStaff?.push(...item4b.accounts);
   // owner-batch-item4b end
 
+  // owner-batch-item9 (27 Oct 2026; decision 7): the head gives each school's admin the head's pages (leave approval,
+  // trends, reviews, safety) through setHeadDuty, audited once; a second run finds them held and writes nothing.
+  const headPages = { sunrise: await giveHeadPages(db, sunrise.school.id), svm: await giveHeadPages(db, saraswati.school.id) };
+  // owner-batch-item9 end
+
   const counts = await countBlock([sunrise.school.id, saraswati.school.id], sunita.id);
 
   const doc = rosterMarkdown({ sunrise, saraswati, sunita, expert: { threadId: experts.threadId, bookings: experts.bookings, mentee: { name: experts.mentee.name, grade: experts.mentee.grade }, anjali: experts.anjali }, vacancies, admissionEnquiries, circulars: { sunrise: String(sunrise.counts.circular), saraswati: String(saraswati.counts.circular) }, globalPostId: globalPost.postId });
@@ -1234,7 +1240,7 @@ async function main() {
   const line = (b: Built) => `
   ── ${b.school.name} ──────────────────────────────────────────
      school id   ${b.school.id}   join code ${b.school.code}   slug ${b.school.slug}
-     admin       ${b.admin.user.email}   (${b.admin.user.name})
+     admin       ${b.admin.user.email}   (${b.admin.user.name}); the head's pages: ${headPages[b.spec.key].given} given this run, ${headPages[b.spec.key].already} already held
      principal   ${b.principal.user.email}   (${b.principal.user.name})
      teachers    ${b.spec.key}.teacher1..6@${DOMAIN}  form teachers of grades 5–10; ${b.spec.key}.subject1..2 subject only; ${b.spec.key}.spare1 unattached
      pupils      ${b.pupils.length} in ${b.classes.length} classes (${b.spec.key}.pupil01..48@${DOMAIN}; ${b.spec.deshmukh.email} in grade ${b.spec.deshmukh.grade})

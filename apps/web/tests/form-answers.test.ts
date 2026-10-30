@@ -112,6 +112,11 @@ describe("the panels answer in place (A3-journeys-27)", () => {
     ["app/(app)/admin/transport/page.tsx", ["routeFeesAction"]],
     ["app/(app)/hostel/page.tsx", ["messBillAction"]],
     ["app/(app)/hostel/rooms/page.tsx", ["saveHostelAction"]],
+    // owner-batch-item9 (27 Oct 2026): a school's e-resources, ISBN list and room change, and the head's pages given from the roster.
+    ["app/(app)/library/e-resources/page.tsx", ["eResourceSaveAction"]],
+    ["app/(app)/library/catalogue/page.tsx", ["isbnListAction"]],
+    ["app/(app)/hostel/rooms/page.tsx", ["moveBoarderAction"]],
+    ["app/(app)/principal/staff/page.tsx", ["headDutyAction"]],
   ];
   it.each(PANELS)("%s posts through <ActionForm>, which keeps the values and puts the refusal by its box", (file, actions) => {
     const text = read(file);
@@ -131,6 +136,8 @@ describe("the panels answer in place (A3-journeys-27)", () => {
     // The hostel's new mess bill (owner-batch-item5) goes through the file's own run() over answerForm, held by the sixteen's rule below.
     ["app/(app)/hostel/actions.ts", ["requestLeaveAction"]],
     ["app/(app)/admin/transport/actions.ts", ["routeFeesAction"]],
+    // owner-batch-item9: the library's and the hostel's new actions are held by the sixteen's rule below; the head's here.
+    ["app/(app)/principal/staff/actions.ts", ["headDutyAction"]],
   ];
   it.each(ACTIONS)("%s answers a FormState instead of redirecting", (file, actions) => {
     const text = read(file);

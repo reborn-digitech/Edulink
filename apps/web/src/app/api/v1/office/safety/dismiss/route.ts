@@ -6,7 +6,7 @@ import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
 /** POST /api/v1/office/safety/dismiss — "nothing wrong": close the open reports against something without touching it. The note is for staff only. */
 export async function POST(request: Request) {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
     const parsed = officeDismissBodySchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
     await dismissReports(ctx, parsed.data);

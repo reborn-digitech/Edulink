@@ -52,6 +52,8 @@ const PRINCIPAL_BEFORE = [
   "/competitions", "/admin/sessions", "/archive", "/account", "/admin/payroll", "/admin/inventory", "/account/payslips", "/account/letters", "/account/items",
   "/library", "/admin/hostel", "/admin/academics", "/accounts", "/admin/college-admissions", "/exam-cell", "/placement", "/principal/accreditation",
   "/admin/committees", "/admin/faculty-records", "/admin/stream-records",
+  // owner-batch-item9 (27 Oct 2026): the safety centre is one of the head's pages, which the head always holds.
+  "/admin/safety",
 ];
 
 /** The personal pages: under the account menu for every role that has them, never in the rail. */
@@ -148,6 +150,40 @@ describe("no page lost", () => {
       // A primary past the fifth was never drawn on the rail; none exists, so every entry is reached.
       expect(NAV[role].filter((i) => !desk.has(i.href)).map((i) => i.href), role).toEqual([]);
     }
+  });
+});
+
+// owner-batch-item9 (27 Oct 2026): the head's pages are an admin's only by the head's duty.
+describe("the head's pages by duty: every admin page still reachable by someone", () => {
+  const HEAD = NAV.ADMIN.filter((i) => i.duty === "HEAD_PAGES").map((i) => i.href);
+  const shownTo = (duties: readonly string[]) => NAV.ADMIN.filter((i) => !i.duty || duties.includes(i.duty));
+
+  it("the four the duty hides are leave approval, trends, reviews and safety", () => {
+    expect([...HEAD].sort()).toEqual(["/admin/reviews", "/admin/safety", "/principal/leave", "/principal/trends"]);
+    expect(NAV.ADMIN.filter((i) => i.duty && i.duty !== "HEAD_PAGES")).toEqual([]);
+  });
+
+  it("the head reaches all four on a desk and at a phone's width, whatever any admin holds", () => {
+    const desk = deskReach("PRINCIPAL", NAV.PRINCIPAL);
+    const bar = new Set(PHONE_BAR.PRINCIPAL.map((i) => i.href));
+    const phone = new Set([...bar, ...sheetFor("PRINCIPAL", NAV.PRINCIPAL, (item) => bar.has(item.href)).flatMap((g) => g.items.map((i) => i.href))]);
+    for (const href of HEAD) {
+      expect(desk.has(href), `head on a desk: ${href}`).toBe(true);
+      expect(phone.has(href), `head at a phone's width: ${href}`).toBe(true);
+    }
+  });
+
+  it("an admin holding the duty reaches every office page; one without it reaches every page but those four", () => {
+    const all = NAV.ADMIN.map((i) => i.href);
+    const holder = deskReach("ADMIN", shownTo(["HEAD_PAGES"]));
+    expect(all.filter((href) => !holder.has(href))).toEqual([]);
+    const without = deskReach("ADMIN", shownTo([]));
+    expect(all.filter((href) => !without.has(href)).sort()).toEqual([...HEAD].sort());
+    // …and at a phone's width: the leave tab goes with its entry.
+    const bar = PHONE_BAR.ADMIN.filter((i) => !i.duty).map((i) => i.href);
+    expect(bar).not.toContain("/principal/leave");
+    const sheet = sheetFor("ADMIN", shownTo([]), (item) => bar.includes(item.href)).flatMap((g) => g.items.map((i) => i.href));
+    expect(sheet.filter((href) => HEAD.includes(href))).toEqual([]);
   });
 });
 

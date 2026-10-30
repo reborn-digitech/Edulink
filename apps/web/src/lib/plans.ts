@@ -1,6 +1,6 @@
 import "server-only";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
-import { collegeTierOf, isCollegeKind } from "@edulink/contracts";
+import { adminDutiesHeld, collegeTierOf, isCollegeKind } from "@edulink/contracts";
 import { db } from "./db";
 import { audit } from "./audit";
 import { forTenant } from "./tenant-context";
@@ -177,10 +177,12 @@ export async function assignPlan(session: ActiveContext, schoolId: string, planI
     await forTenant({ schoolIds: [schoolId], userId: session.user.id, joinCode: null, isSuperuser: true }, async () => {
       const office = await client.membership.findMany({
         where: { schoolId, role: { in: ["ADMIN", "PRINCIPAL"] }, status: "ACTIVE", leftAt: null },
-        select: { userId: true },
-        distinct: ["userId"],
+        select: { userId: true, role: true, dutiesJson: true },
       });
-      for (const member of office) {
+      // The safety centre is one of the head's pages (owner-batch-item9): an admin without them is sent to the office's home instead.
+      const head = office.some((m) => m.role === "PRINCIPAL");
+      const reads = new Set(office.filter((m) => m.role === "PRINCIPAL" || adminDutiesHeld(m.dutiesJson, head).includes("HEAD_PAGES")).map((m) => m.userId));
+      for (const member of [...new Map(office.map((m) => [m.userId, m])).values()]) {
         await notify({
           userId: member.userId,
           schoolId,
@@ -189,7 +191,7 @@ export async function assignPlan(session: ActiveContext, schoolId: string, planI
           titleVars: { school: school.name, plan: plan?.name ?? "" },
           bodyKey: plan ? "notifBody.schoolPlanSet" : "notifBody.schoolPlanCleared",
           bodyVars: { school: school.name, plan: plan?.name ?? "" },
-          url: "/admin/safety",
+          url: reads.has(member.userId) ? "/admin/safety" : "/admin",
           meta: { event: "school.plan" },
         });
       }

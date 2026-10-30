@@ -10,7 +10,7 @@ import { readJson } from "./json";
 import { bearerToken } from "./bearer";
 import { gateRequest } from "./role-gate";
 import { ROUTE_HEADER } from "./route-header";
-import { isDutyRole, parseDuties, type DutyCode } from "@edulink/contracts";
+import { ADMIN_DUTIES, adminDutiesHeld, isDutyRole, parseAdminDuties, parseDuties, type AnyDutyCode } from "@edulink/contracts";
 export { bearerToken };
 
 /**
@@ -310,7 +310,7 @@ const readSession = cache(async (): Promise<ActiveContext | null> => {
   // the channel the events stream subscribes it to.
   // …nor an expert or a recruiter (4 Oct 2026), who belong to no school at all.
   let schoolId: string | null = role && role !== "PARENT" && !isOutsideRole(role) ? session.activeSchoolId : null;
-  let duties: DutyCode[] = [];
+  let duties: AnyDutyCode[] = [];
 
   // Nothing is bound here, deliberately. This function used to push the schools
   // it had just resolved into a store its callers would read, and in a route
@@ -339,6 +339,14 @@ const readSession = cache(async (): Promise<ActiveContext | null> => {
       membershipId = membership.id;
       // A college teacher's duties (5 Oct 2026): the gate opens a duty's doors and pages by them (role-gate.ts).
       if (isDutyRole(role)) duties = parseDuties(membership.dutiesJson);
+      // The head's pages on an admin (owner-batch-item9): given by the head, or every admin's while the school has no head.
+      if (role === "ADMIN") {
+        const stored = parseAdminDuties(membership.dutiesJson);
+        duties =
+          stored.length === ADMIN_DUTIES.length
+            ? stored
+            : adminDutiesHeld(membership.dutiesJson, (await db.membership.count({ where: { schoolId, role: "PRINCIPAL", status: "ACTIVE", leftAt: null } })) > 0);
+      }
     } else {
       schoolId = null;
       role = null;

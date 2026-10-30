@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PlusIcon, UploadSimpleIcon } from "@phosphor-icons/react/ssr";
+import { BarcodeIcon, PlusIcon, UploadSimpleIcon } from "@phosphor-icons/react/ssr";
 import { LIBRARY_CATEGORIES, LIBRARY_LANGUAGES } from "@edulink/contracts";
 import { getT } from "@/lib/i18n/server";
 import { searchCatalogue } from "@/lib/library";
@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { SelectField, TextAreaField, TextField } from "@/components/ui/field";
 import { DeskFrame, deskContext } from "@/components/library/desk";
 import { CATEGORY_KEY, CatalogueSearch, LANGUAGE_KEY } from "@/components/library/parts";
-import { createTitleAction, importAction } from "../actions";
+import { createTitleAction, importAction, isbnListAction } from "../actions";
 import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -70,6 +70,19 @@ export default async function LibraryCataloguePage({ searchParams }: { searchPar
                 <TextAreaField name="text" label={t("library.importLabel")} required rows={8} maxLength={500000} />
                 <Button type="submit" variant="secondary">
                   {t("library.importButton")}
+                </Button>
+              </ActionForm>
+            </CardBody>
+          </Card>
+          {/* owner-batch-item9 (27 Oct 2026): a publisher's ISBN list, titles added once by ISBN, a failing check digit named back. */}
+          <Card id="isbn-list" className="scroll-mt-20">
+            <CardHeader icon={<BarcodeIcon weight="duotone" className="size-5" />} title={t("collegeOffice.isbnTitle")} description={t("collegeOffice.isbnIntro")} />
+            <CardBody>
+              <ActionForm action={isbnListAction} className="space-y-3" data-testid="isbn-import">
+                <input type="hidden" name="back" value="/library/catalogue" />
+                <TextAreaField name="text" label={t("collegeOffice.isbnLabel")} hint={t("schoolForms.isbnHint")} required rows={6} maxLength={200000} />
+                <Button type="submit" variant="secondary">
+                  {t("schoolForms.isbnButton")}
                 </Button>
               </ActionForm>
             </CardBody>

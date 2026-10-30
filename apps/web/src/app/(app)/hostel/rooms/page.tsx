@@ -8,10 +8,10 @@ import { todayKey } from "@/lib/dates";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { HOSTEL_KIND_KEY, ROOM_KIND_KEY, WardenFrame, wardenContext } from "@/components/hostel/parts";
-import { allotAction, endAllotmentAction, saveHostelAction, saveRoomAction } from "../actions";
+import { allotAction, endAllotmentAction, moveBoarderAction, saveHostelAction, saveRoomAction } from "../actions";
 import { fieldClass } from "@/components/ui/field-class";
 import { ActionForm } from "@/components/ui/action-form";
-import { TextField } from "@/components/ui/field";
+import { SelectField, TextField } from "@/components/ui/field";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -20,8 +20,9 @@ export async function generateMetadata(): Promise<Metadata> {
 
 /**
  * Houses, rooms and beds: who sleeps where, a free bed for a pupil, a bed
- * given up. The office makes the houses and puts a warden in charge; the
- * office and the warden make rooms and allot.
+ * given up, a boarder moved to another bed (owner-batch-item9). The office
+ * makes the houses and puts a warden in charge; the office and the warden make
+ * rooms, allot and move.
  */
 export default async function HostelRoomsPage({ searchParams }: { searchParams: Promise<{ ok?: string; error?: string }> }) {
   const { ctx, t, on, canWrite, timeZone } = await wardenContext();
@@ -126,6 +127,30 @@ export default async function HostelRoomsPage({ searchParams }: { searchParams: 
                             </ActionForm>
                           ) : null}
                         </span>
+                        {/* owner-batch-item9 (27 Oct 2026): another bed, the old place ending today and the new one starting today. */}
+                        {canWrite && freeBeds.length > 0 ? (
+                          <details className="basis-full" data-testid="move-boarder">
+                            <summary className="inline-flex min-h-11 cursor-pointer items-center text-xs font-medium text-accent-strong hover:underline">
+                              {t("schoolForms.moveSummary")}
+                              <span className="sr-only">: {b.name}</span>
+                            </summary>
+                            <ActionForm action={moveBoarderAction} className="mt-1 flex flex-wrap items-end gap-2">
+                              <input type="hidden" name="back" value={back} />
+                              <input type="hidden" name="allotmentId" value={b.allotmentId} />
+                              <SelectField name="bed" required label={t("schoolForms.moveBed")} hint={t("schoolForms.moveHint")} className="min-w-0 flex-1 basis-56">
+                                {freeBeds.map((f) => (
+                                  <option key={f.value} value={f.value}>
+                                    {f.label}
+                                  </option>
+                                ))}
+                              </SelectField>
+                              <Button type="submit" size="sm" variant="secondary">
+                                {t("schoolForms.moveButton")}
+                                <span className="sr-only">: {b.name}</span>
+                              </Button>
+                            </ActionForm>
+                          </details>
+                        ) : null}
                       </li>
                     ))}
                   </ul>

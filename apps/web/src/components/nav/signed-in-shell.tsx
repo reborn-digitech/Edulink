@@ -13,7 +13,7 @@ import { listThreads } from "@/lib/remarks";
 import type { Role } from "@/lib/constants";
 import { NAV } from "@/lib/nav";
 import { enabledModules, enabledModulesForFamily } from "@/lib/modules";
-import { myDuties } from "@/lib/duties";
+import { myAdminDuties, myDuties } from "@/lib/duties";
 import { streamsOf } from "@/lib/streams";
 import { hiddenByFeature, hiddenByKind, PHONE_BAR } from "@/lib/nav";
 import { accessTo, featuresFor } from "@/lib/platform-features";
@@ -117,9 +117,10 @@ export async function SignedInShell({
     const features = await featuresFor(session);
     for (const href of hiddenByFeature(NAV[role], features)) if (!hiddenHrefs.includes(href)) hiddenHrefs.push(href);
   }
-  // A duty's entries (5 Oct 2026) exist only for a FACULTY or HOD who holds the duty (lib/duties.ts).
+  // A duty's entries (5 Oct 2026) exist only for a FACULTY or HOD who holds the duty (lib/duties.ts); the head's pages
+  // only for an ADMIN the head has given them, or at a school with no head (owner-batch-item9).
   if (NAV[role].some((item) => item.duty)) {
-    const mine = await myDuties(session);
+    const mine: string[] = [...(await myDuties(session)), ...(await myAdminDuties(session))];
     for (const item of NAV[role]) if (item.duty && !mine.includes(item.duty) && !hiddenHrefs.includes(item.href)) hiddenHrefs.push(item.href);
   }
   // A stream's entries (5 Oct 2026) at a college whose recorded streams include none of the entry's (none recorded: kept).

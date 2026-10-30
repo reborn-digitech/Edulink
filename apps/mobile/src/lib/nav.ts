@@ -1,4 +1,4 @@
-import { DUTY_STREAMS, PLATFORM_FEATURES, type DutyCode, type FeatureCode, type RoleCode, type SchoolModuleCode, type StreamCode } from "@edulink/contracts";
+import { DUTY_STREAMS, PLATFORM_FEATURES, type AnyDutyCode, type FeatureCode, type RoleCode, type SchoolModuleCode, type StreamCode } from "@edulink/contracts";
 import type { TranslationKey } from "@edulink/i18n";
 
 /** The streams that keep labs and a practical record (those that offer a lab in-charge, 5 Oct 2026). */
@@ -20,6 +20,9 @@ const CLINICAL_STREAMS: readonly StreamCode[] = DUTY_STREAMS.CLINICAL_COORDINATO
 /**
  * `duty` (5 Oct 2026): the tab or entry exists only for a FACULTY or HOD who
  * holds that duty (/api/v1/me's `duties`), as the web's NAV entries with `duty`.
+ * (owner-batch-item9, 27 Oct 2026) An office duty — HEAD_PAGES, the head's pages
+ * the PRINCIPAL gives an ADMIN — hides an ADMIN's tab or entry the same way, read
+ * from /api/v1/me's `adminDuties` (`dutiesOfMe`).
  */
 /**
  * `feature` (15 Oct 2026): the tab or entry exists only while the platform feature is on for this person
@@ -27,7 +30,7 @@ const CLINICAL_STREAMS: readonly StreamCode[] = DUTY_STREAMS.CLINICAL_COORDINATO
  * expert and teacher sessions). The operator switches them at /root/features on the web.
  */
 type FeatureField = FeatureCode | readonly FeatureCode[];
-export type Tab = { name: string; labelKey: TranslationKey; icon: string; module?: SchoolModuleCode; duty?: DutyCode; feature?: FeatureField };
+export type Tab = { name: string; labelKey: TranslationKey; icon: string; module?: SchoolModuleCode; duty?: AnyDutyCode; feature?: FeatureField };
 
 /** Both kinds of sessions: the sessions screen stays while either is on. */
 export const SESSION_FEATURES: readonly FeatureCode[] = ["EXPERT_SESSIONS", "TEACHER_SESSIONS"];
@@ -72,7 +75,8 @@ export const TABS: Record<RoleCode, Tab[]> = {
   ADMIN: [
     { name: "index", labelKey: "nav.overview", icon: "house" },
     { name: "people", labelKey: "nav.people", icon: "users" },
-    { name: "leave", labelKey: "nav.leave", icon: "calendar" },
+    // The leave queue, for an admin the head has given the head's pages (owner-batch-item9).
+    { name: "leave", labelKey: "nav.leave", icon: "calendar", duty: "HEAD_PAGES" },
     { name: "messages", labelKey: "nav.messages", icon: "chat" },
   ],
   PRINCIPAL: [
@@ -162,7 +166,7 @@ export const ALL_TAB_SCREENS = ["index", "attendance", "classes", "messages", "a
  */
 export type MenuGroup = "daily" | "school" | "running" | "teaching" | "people" | "attendance" | "money" | "communication" | "modules" | "setup" | "me";
 /** `streams` (5 Oct 2026): hidden at a college whose recorded streams include none of them (the practical record at a law college); none recorded keeps it. */
-export type MenuItem = { labelKey: TranslationKey; icon: string; group: MenuGroup; module?: SchoolModuleCode; duty?: DutyCode; streams?: readonly StreamCode[]; feature?: FeatureField } & ({ screen: string; web?: undefined } | { web: string; screen?: undefined });
+export type MenuItem = { labelKey: TranslationKey; icon: string; group: MenuGroup; module?: SchoolModuleCode; duty?: AnyDutyCode; streams?: readonly StreamCode[]; feature?: FeatureField } & ({ screen: string; web?: undefined } | { web: string; screen?: undefined });
 
 /**
  * What every college staff role's More carries (4 Oct 2026): the account, and my own leave (GET/POST
@@ -379,7 +383,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.messaging", icon: "chats", group: "communication", screen: "/(app)/messaging" },
     { ...COUNCIL_NOTICES, group: "communication" },
     { labelKey: "nav.incidents", icon: "firstAid", group: "communication", screen: "/(app)/incidents" },
-    { labelKey: "nav.safety", icon: "shield", group: "communication", screen: "/(app)/safety" },
+    { labelKey: "nav.safety", icon: "shield", group: "communication", screen: "/(app)/safety", duty: "HEAD_PAGES" },
     { labelKey: "nav.experts", icon: "briefcase", group: "communication", screen: "/(app)/experts", feature: "EXPERT_SESSIONS" },
     { labelKey: "nav.vacancies", icon: "briefcase", group: "communication", screen: "/(app)/vacancies", feature: "JOB_BOARD" },
     { labelKey: "nav.mentoring", icon: "chat", group: "communication", screen: "/(app)/mentoring", feature: "EXPERT_SESSIONS" },
@@ -403,9 +407,9 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "iqac.navCommittees", icon: "users", group: "modules", web: "/admin/committees", module: "IQAC" },
     { labelKey: "nav.signatures", icon: "pencil", group: "setup", screen: "/(app)/signatures" },
     { labelKey: "nav.filings", icon: "fileText", group: "setup", screen: "/(app)/filings" },
-    { labelKey: "nav.reviews", icon: "star", group: "setup", screen: "/(app)/reviews" },
-    // The school across terms and years: the office reads what the head reads (the web's /principal/trends).
-    { labelKey: "trends.title", icon: "chartLine", group: "setup", screen: "/(app)/trends" },
+    { labelKey: "nav.reviews", icon: "star", group: "setup", screen: "/(app)/reviews", duty: "HEAD_PAGES" },
+    // The school across terms and years: the office reads what the head reads (the web's /principal/trends), holding the head's pages.
+    { labelKey: "trends.title", icon: "chartLine", group: "setup", screen: "/(app)/trends", duty: "HEAD_PAGES" },
     { labelKey: "nav.directory", icon: "buildings", group: "setup", screen: "/(app)/directory-profile" },
     { labelKey: "nav.settings", icon: "gear", group: "setup", screen: "/(app)/settings" },
     { labelKey: "nav.account", icon: "user", group: "me", screen: "/(app)/account" },
@@ -446,6 +450,8 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.messaging", icon: "chats", group: "communication", screen: "/(app)/messaging" },
     { ...COUNCIL_NOTICES, group: "communication" },
     { labelKey: "nav.incidents", icon: "firstAid", group: "communication", screen: "/(app)/incidents" },
+    // The safety centre (owner-batch-item9): one of the head's pages, which the head always holds.
+    { labelKey: "nav.safety", icon: "shield", group: "communication", screen: "/(app)/safety" },
     { labelKey: "nav.vacancies", icon: "briefcase", group: "communication", screen: "/(app)/vacancies", feature: "JOB_BOARD" },
     { labelKey: "nav.sessions", icon: "calendar", group: "communication", screen: "/(app)/sessions", feature: SESSION_FEATURES },
     // Transport (3 Oct 2026): the head reads the day's trips on the web.
@@ -888,6 +894,11 @@ export const HIDDEN_SCREENS = [
 export function menuFor(role: RoleCode, modules?: readonly string[], duties: readonly string[] = [], streams: readonly string[] = [], features: readonly string[] = FEATURES_BEFORE_SWITCHES): { group: MenuGroup; items: MenuItem[] }[] {
   const shown = MENU[role].filter((item) => (!item.module || !modules || modules.includes(item.module)) && (!item.duty || duties.includes(item.duty)) && (!item.streams || streams.length === 0 || item.streams.some((s) => streams.includes(s))) && featureShown(item, features));
   return [ME_MENU_GROUP, ...menuGroupsFor(role)].map((group) => ({ group, items: shown.filter((item) => item.group === group) })).filter((g) => g.items.length > 0);
+}
+
+/** Every duty the person holds on the active membership: a college teacher's (`duties`) and the office's (`adminDuties`, owner-batch-item9). */
+export function dutiesOfMe(me: { duties?: readonly string[]; adminDuties?: readonly string[] } | null | undefined): string[] {
+  return [...(me?.duties ?? []), ...(me?.adminDuties ?? [])];
 }
 
 /** Whether a tab is drawn: always, unless it belongs to a module the school has off, a duty the person does not hold, or a platform feature that is off (15 Oct 2026). */

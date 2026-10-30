@@ -203,7 +203,7 @@ afterAll(async () => {
 /* -------------------------------------------------------------------------- */
 
 /** Every handler with a request that would pass parsing, so a refusal is the gate's and not the parser's. */
-function everyHandler(): { name: string; call: () => Promise<Response> }[] {
+function everyHandler(): { name: string; call: () => Promise<Response>; head?: true }[] {
   return [
     { name: "invites preview", call: () => invitePreviewPost(json({ csv: "x@test.invalid" })) },
     { name: "invite resend", call: () => inviteResendPost(json({}), params({ inviteId })) },
@@ -211,8 +211,9 @@ function everyHandler(): { name: string; call: () => Promise<Response> }[] {
     { name: "directory", call: () => directoryPost(json({ about: "ZZ", admissionsContactMembershipId: null })) },
     { name: "directory publish", call: () => publishPost(json({ published: false })) },
     { name: "logo", call: () => logoPost(json({ fileId: null })) },
-    { name: "take down", call: () => takeDownPost(json({ targetType: "POST", targetId: postId, note: "ZZ gate" })) },
-    { name: "dismiss", call: () => dismissPost(json({ targetType: "COMMENT", targetId: commentId, note: "ZZ gate" })) },
+    // The safety centre is one of the head's pages since owner-batch-item9 (27 Oct 2026): the head decides reports too.
+    { name: "take down", call: () => takeDownPost(json({ targetType: "POST", targetId: postId, note: "ZZ gate" })), head: true },
+    { name: "dismiss", call: () => dismissPost(json({ targetType: "COMMENT", targetId: commentId, note: "ZZ gate" })), head: true },
     { name: "alert", call: () => alertPost(json({ studentMembershipId: pupilMembershipId })) },
     { name: "register export", call: () => registerGet(get(`${E}/register?classId=${classId}&month=2026-09`)) },
     { name: "enrolment export", call: () => enrolmentGet() },
@@ -234,14 +235,14 @@ describe("the gates", () => {
     }
   });
 
-  it("the office's alone: a pupil, a teacher and the head are refused everywhere, and nothing changed", async () => {
+  it("the office's alone: a pupil, a teacher and the head are refused everywhere (the head's safety centre aside), and nothing changed", async () => {
     for (const [userId, role] of [
       [pupilUserId, "STUDENT"],
       [teacherUserId, "TEACHER"],
       [principalUserId, "PRINCIPAL"],
     ] as const) {
       await as(userId, role);
-      for (const h of everyHandler()) {
+      for (const h of everyHandler().filter((h) => !(role === "PRINCIPAL" && h.head))) {
         const res = await h.call();
         expect(res.status, `${role} ${h.name}`).toBe(403);
       }

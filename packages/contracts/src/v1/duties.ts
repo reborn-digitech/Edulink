@@ -149,3 +149,63 @@ export const antiRaggingRegisterSchema = z.object({
   summary: z.object({ rounds30: z.number().int().min(0), flagged30: z.number().int().min(0), open: z.number().int().min(0), overdue: z.number().int().min(0) }),
 });
 export type AntiRaggingRegister = z.infer<typeof antiRaggingRegisterSchema>;
+
+// owner-batch-item9 (27 Oct 2026) ─────────────────────────────────────────────────────────────────────────────────
+/**
+ * THE HEAD'S PAGES ON AN OFFICE MEMBERSHIP (the owner's ask of 27 October 2026, item 9). Leave approval, the
+ * trends, the review rounds and the safety centre are the head's work; an ADMIN reaches them only while the
+ * PRINCIPAL has given that admin this duty, from the head's staff page (/principal/staff). The PRINCIPAL always
+ * holds them. While the school has no active PRINCIPAL (the post vacant), every admin holds them, so a request for
+ * leave never waits on nobody.
+ *
+ * Kept apart from DUTIES on purpose: those are a college teacher's, offered by the college's streams, and set by
+ * the registrar; this one is any school's or college's, and set by the head. It is stored where they are
+ * (Membership.dutiesJson, on the ADMIN's membership) and read by the same `duty` field on a NAV entry, a phone tab
+ * or menu entry and a catalog door (`duties`), each of which lets an ADMIN through only holding it.
+ */
+export const ADMIN_DUTIES = ["HEAD_PAGES"] as const;
+export const adminDutySchema = z.enum(ADMIN_DUTIES);
+export type AdminDutyCode = z.infer<typeof adminDutySchema>;
+/** A duty a NAV entry, a phone tab or a catalog door may name: a college teacher's or the office's. */
+export type AnyDutyCode = DutyCode | AdminDutyCode;
+/** The roles each kind of duty is given to: a college teacher's to FACULTY and HOD, the office's to ADMIN. */
+export function dutyHolderRoles(duty: string): readonly string[] {
+  return (ADMIN_DUTIES as readonly string[]).includes(duty) ? ["ADMIN"] : (DUTIES as readonly string[]).includes(duty) ? DUTY_ROLES : [];
+}
+export function isAdminDuty(duty: string): duty is AdminDutyCode {
+  return (ADMIN_DUTIES as readonly string[]).includes(duty);
+}
+
+/** The office's duties a stored Membership.dutiesJson holds: unknown words dropped, ADMIN_DUTIES order. */
+export function parseAdminDuties(raw: string | null | undefined): AdminDutyCode[] {
+  let list: unknown = [];
+  try {
+    list = JSON.parse(raw ?? "[]");
+  } catch {
+    list = [];
+  }
+  const set = new Set(Array.isArray(list) ? list : []);
+  return ADMIN_DUTIES.filter((d) => set.has(d));
+}
+
+/**
+ * The office's duties an ADMIN holds: those stored on the membership, and every one while the school has no active
+ * PRINCIPAL (`principalPresent` false). Pure, so the session, the sweeps and the e2e harness agree.
+ */
+export function adminDutiesHeld(raw: string | null | undefined, principalPresent: boolean): AdminDutyCode[] {
+  return principalPresent ? parseAdminDuties(raw) : [...ADMIN_DUTIES];
+}
+
+/** Every duty a membership holds by its role: a FACULTY's or HOD's college duties, an ADMIN's office duties, else none. */
+export function dutiesForRole(role: string | null | undefined, raw: string | null | undefined, principalPresent = true): AnyDutyCode[] {
+  if (isDutyRole(role)) return parseDuties(raw);
+  if (role === "ADMIN") return adminDutiesHeld(raw, principalPresent);
+  return [];
+}
+
+/** The head gives an admin the head's pages, or takes them back (the head's staff page). */
+export const headDutySetSchema = z.object({ held: z.boolean() });
+export type HeadDutySet = z.infer<typeof headDutySetSchema>;
+export const headDutySchema = z.object({ membershipId: z.string(), held: z.boolean() });
+export type HeadDuty = z.infer<typeof headDutySchema>;
+// end owner-batch-item9

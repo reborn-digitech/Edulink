@@ -93,6 +93,7 @@ import { setDuties } from "../src/lib/duties";
 import { setStudentConsent } from "../src/lib/student-consent";
 import { addVisitItem, createVisit } from "../src/lib/peer-visits";
 import { sendAlumniNote } from "../src/lib/alumni";
+import { giveHeadPages, HEAD_PAGES_NOTE } from "./head-pages"; // owner-batch-item9
 import { db, link, refuseUnlessLocal, switchModulesOn, upsertMembership, upsertUser, type Ctx } from "./zz-fixtures";
 import { PASSWORD } from "./demo-schools";
 import { demoCalendar, describeCalendar, refuseAnotherYear, registerDays } from "./demo-calendar";
@@ -1386,7 +1387,7 @@ function rosterSection(spec: StreamSpec, college: { code: string; twinId: string
   const staffRows = staffOf(spec).map((p) => {
     const duties = p.key === "f1" || p.key === "f2" || p.key === "f3" || p.key === "f4" ? plan[p.key] : [];
     const look = [staffLook[p.key], ...duties.map((d) => dutyPage(d))].join("; ");
-    return `| ${p.email} | ${p.name} | ${p.role === "ADMIN" ? "ADMIN (registrar)" : p.role}${duties.length ? ` · ${duties.join(", ")}` : ""} | ${homeOf(p.role)} | ${look} |`;
+    return `| ${p.email} | ${p.name} | ${p.role === "ADMIN" ? "ADMIN (registrar)" : p.role}${duties.length ? ` · ${duties.join(", ")}` : ""} | ${homeOf(p.role)} | ${look}${p.role === "ADMIN" ? HEAD_PAGES_NOTE : ""} |`;
   });
   const studentRows = studentsOf(spec).map((st) => {
     const notes: string[] = [`${names[st.div]}`];
@@ -1454,6 +1455,9 @@ async function buildOne(ctx: Ctx, spec: StreamSpec) {
   const people = await buildPeople(ctx, spec, college);
   await switchModulesOn(college, CAMPUS_MODULES, people.staff.registrar.userId);
   await giveDuties(spec, college, people);
+  // owner-batch-item9 (decision 7): the principal gives the registrar the head's pages, audited once.
+  const headPages = await giveHeadPages(db, college.id);
+  console.log(`  ${spec.slug}: the head's pages ${headPages.given} given this run, ${headPages.already} already held`);
   await giveConsent(college, people);
   const academics = await buildAcademics(spec, college, people);
   const office = await buildOffice(spec, college, people, academics);

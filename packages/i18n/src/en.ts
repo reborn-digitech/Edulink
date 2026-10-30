@@ -6842,6 +6842,7 @@ export const en = {
     staffSupportAdd: "Added a support worker with no sign-in", // owner-batch-item2a
     feesMessBill: "Billed a month's mess", // owner-batch-item5
     feesRouteFees: "Raised a term's route fees", // owner-batch-item5
+    peopleHeadDutySet: "Gave or took back the head's pages", // owner-batch-item9
     termCreate: "Added a term to the year",
     termDelete: "Removed a term",
     authFirstSigninIssue: "Issued a pupil a first sign-in code",
@@ -20128,4 +20129,43 @@ export const en = {
     setAsideFAILING: "{label}: failing, {tries} tries in a row (pass {pass}): {reason}",
   },
   // end owner-batch-item6
+  // owner-batch-item9 (27 Oct 2026): the head's pages given to an admin; a school's e-resources, ISBN list and room change.
+  headDuty: {
+    name: "The head's pages",
+    holds: "Holds the head's pages",
+    holdsNot: "Not given the head's pages",
+    give: "Give the head's pages",
+    takeBack: "Take them back",
+    given: "Given. They now approve leave and read the trends, the teacher reviews and the safety centre.",
+    takenBack: "Taken back. Leave approval, the trends, the teacher reviews and the safety centre are the head's again.",
+    explain: "The head's pages are leave approval, the trends, the teacher reviews and the safety centre. Someone in the office reaches them only once the head gives them on this page; while the school has no head, everyone in the office does.",
+    refuseNoDuty: "This is one of the head's pages. The head can give them to you from the staff page.",
+    refuseNotHead: "Only the head gives the head's pages.",
+    refuseNotAdmin: "The head's pages are given to someone in the office only.",
+    notifyGivenTitle: "You now have the head's pages",
+    notifyGivenBody: "The head gave you leave approval, the trends, the teacher reviews and the safety centre.",
+  },
+  schoolForms: {
+    eresDeskIntro: "The journals, e-books and databases the library offers its readers. Each is opened through the app, which counts the opens. Add one, or correct a link that has moved.",
+    eresEmptyDesk: "No e-resources yet",
+    eresEmptyDeskBody: "Add the first one below: DIKSHA, a publisher's e-books or a journal the school subscribes to.",
+    eresInactive: "Not shown to readers",
+    eresOpenedTimes: "Opened {n} times",
+    eresCorrect: "Correct the link",
+    eresUrlHint: "It must start with https://.",
+    eresSave: "Save",
+    eresAddTitle: "Add an e-resource",
+    eresAddHint: "A name already listed is corrected rather than added twice.",
+    eresAddButton: "Add",
+    eresSaved: "{name} is saved.",
+    isbnHint: "One book a line: the ISBN, then the title, author, publisher and year, by commas or tabs. A title already in the catalogue under its ISBN is left as it is.",
+    isbnButton: "Add the titles",
+    isbnImported: "{added} titles added, {already} already in the catalogue.",
+    isbnImportedNamed: "{added} titles added, {already} already in the catalogue. These ISBNs fail their check digit: {list}.",
+    moveSummary: "Move to another bed",
+    moveBed: "New bed",
+    moveHint: "The bed they have now ends today and the new one starts today.",
+    moveButton: "Move",
+  },
+  // end owner-batch-item9
 } as const;

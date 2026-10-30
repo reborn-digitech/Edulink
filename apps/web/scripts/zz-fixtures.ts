@@ -39,6 +39,7 @@
  * Runs on the ADMIN connection: it creates schools, and a row that belongs to no
  * tenant yet cannot be written through the app's row-level-security role.
  */
+import { giveHeadPages } from "./head-pages"; // owner-batch-item9
 import { PrismaClient } from "@prisma/client";
 import { removeEmptyRegisters, removeSweepRegister } from "./zz-cleanup";
 import { fixturePng } from "./png";
@@ -2701,6 +2702,15 @@ async function main() {
   const support = await buildSupportStaff(northgate.school);
   console.log(`  Support staff: ${support.name} (${support.designation}) at Northgate, no sign-in, ${support.made ? "added" : "already there"}; salary from ${SUPPORT_SALARY_FROM}`);
   // end owner-batch-item2a
+  // owner-batch-item9 (27 Oct 2026; decision 7): Northgate's head gives zz.admin the head's pages (leave approval, trends,
+  // reviews, safety) through setHeadDuty, audited once, as the demo schools' heads do (scripts/head-pages.ts), so the
+  // sweeps, the axe walk and the suites still reach those pages as the office; Vidya's registrar is not given them, so
+  // the menu without them is walked too.
+  {
+    const headPages = await giveHeadPages(db, northgate.school.id);
+    console.log(`  The head's pages: zz.admin at Northgate ${headPages.given ? "given HEAD_PAGES" : "holds HEAD_PAGES (already)"} — /principal/leave, /principal/trends, /admin/reviews, /admin/safety; the head gives them at /principal/staff`);
+  }
+  // end owner-batch-item9
   // The college foundation (4 Oct 2026): ZZ Vidya College with every module and a person in every college role, ZZ Shastri Autonomous College, and a recruiter.
   const colleges = await buildColleges(db, ctx.passwordHash);
   // The same locked payroll month at ZZ Vidya College (6 Oct 2026): the ACCOUNTS actor lives there, and the API sweep's

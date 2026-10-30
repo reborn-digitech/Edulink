@@ -1,6 +1,8 @@
 "use server";
 
 import {
+  eResourceSaveSchema,
+  isbnImportBodySchema,
   libraryCopySaveSchema,
   libraryCopyUpdateSchema,
   libraryFineCreateSchema,
@@ -15,7 +17,7 @@ import {
   periodicalSubscriptionSaveSchema,
 } from "@edulink/contracts";
 import { parseRupees } from "@edulink/i18n";
-import { requireApiUser } from "@/lib/tenancy";
+import { AccessError, requireApiUser } from "@/lib/tenancy";
 import { answerForm } from "@/lib/form-action";
 import type { FieldMap, FormState } from "@/lib/form-state";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
@@ -40,6 +42,7 @@ import {
   waiveFine,
 } from "@/lib/library";
 import { addVolume, removeVolume, savePeriodicalSubscription } from "@/lib/library-periodicals";
+import { importIsbnList, saveEResource } from "@/lib/college-campus";
 
 /**
  * The library's forms (module LIBRARY, 3 Oct 2026): every one posts here with
@@ -285,4 +288,41 @@ export async function removeVolumeAction(previous: FormState, formData: FormData
     await removeVolume(ctx, str(formData, "titleId"), str(formData, "volumeId"));
     return "risksWeb.volumeRemoved";
   });
+}
+
+/* ---- owner-batch-item9 (27 Oct 2026): the e-resources and a publisher's ISBN list at a school's desk ---- */
+// The doors item 5 opened to a school (college-campus.ts, through campusDesk: the librarian and the office, LIBRARY on)
+// get the desk's own forms; the rules stay the library functions'.
+
+/** Add an e-resource, or correct one's link and kind: the name is the key, so a name already listed is corrected. */
+export async function eResourceSaveAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(
+    previous,
+    formData,
+    async (ctx): Promise<Done> => {
+      const url = str(formData, "url");
+      // Said in words beside the box, rather than as the schema's bare "not valid".
+      if (url && !url.startsWith("https://")) throw new AccessError("collegeOffice.refuseUrl");
+      const input = parsed(eResourceSaveSchema.safeParse({ name: str(formData, "name"), url, kind: str(formData, "kind") }));
+      const saved = await saveEResource(ctx, input);
+      return { key: "schoolForms.eresSaved", vars: { name: saved.name } };
+    },
+    { "collegeOffice.refuseUrl": "url" },
+  );
+}
+
+/** A publisher's ISBN list pasted: titles added once by ISBN; an ISBN whose check digit fails is named back. */
+export async function isbnListAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(
+    previous,
+    formData,
+    async (ctx): Promise<Done> => {
+      const text = String(formData.get("text") ?? "");
+      if (!text.trim()) throw Object.assign(new FormError(), { formField: "text" });
+      const r = await importIsbnList(ctx, parsed(isbnImportBodySchema.safeParse({ text })).text);
+      if (r.invalid.length) return { key: "schoolForms.isbnImportedNamed", vars: { added: r.added, already: r.already, list: r.invalid.slice(0, 20).join(", ") } };
+      return { key: "schoolForms.isbnImported", vars: { added: r.added, already: r.already } };
+    },
+    { text: "text" },
+  );
 }

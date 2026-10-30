@@ -13,7 +13,7 @@ import { resolve } from "node:path";
 import { zodToJsonSchema } from "zod-to-json-schema";
 import { ENDPOINTS, type Endpoint } from "../src/lib/api-catalog";
 import { COLLEGE_DOORS } from "./college-doors";
-import { PERSON_PLANS, PLAN_FEATURES } from "@edulink/contracts";
+import { isAdminDuty, PERSON_PLANS, PLAN_FEATURES } from "@edulink/contracts";
 import { featuresOf } from "../src/lib/api-catalog/types";
 
 /** The plans a door's feature may ask for (16 Oct 2026): a door of such a feature may answer 402 PLAN_REQUIRED, unless planFree or left to its handler. */
@@ -25,13 +25,21 @@ function plansOf(e: Endpoint): string[] {
 
 const OUT = resolve(process.cwd(), "../../docs/api/openapi.json");
 
+
+/** What a door's duties ask, in words (owner-batch-item9: an office duty binds an ADMIN, a college duty a FACULTY or HOD). */
+function dutyWords(duties: readonly string[]): string {
+  const college = duties.filter((d) => !isAdminDuty(d));
+  const office = duties.filter((d) => isAdminDuty(d));
+  return `${college.length ? ` A FACULTY or HOD only holding ${college.join(" or ")}.` : ""}${office.length ? ` An ADMIN only holding ${office.join(" or ")}, which the PRINCIPAL gives (every admin holds it while the school has no PRINCIPAL).` : ""}`;
+}
+
 function describeAccess(e: Endpoint): string {
   if (e.access === "anyone") return "No session needed.";
   if (e.access === "signed-in") return e.limitedRoles?.length ? `Any signed-in session but a limited role's; of those, ${e.limitedRoles.join(", ")}.` : "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; RECRUITER; and SUPPORT, the support staff).";
   if (e.access === "account") return "Decided by the person's memberships, not the session's role; the handler answers 403 otherwise.";
   if (e.access === "operator") return "The server operator.";
   if (e.access === "app-admin") return "The content team.";
-  return `Roles: ${e.access.join(", ")}.${e.duties?.length ? ` A FACULTY or HOD only holding ${e.duties.join(" or ")}.` : ""}${e.module ? ` Only while the school has ${e.module} switched on.` : ""}${e.kinds ? ` Only at an institution of kind ${e.kinds.join(" or ")}; elsewhere 404.` : ""}`;
+  return `Roles: ${e.access.join(", ")}.${dutyWords(e.duties ?? [])}${e.module ? ` Only while the school has ${e.module} switched on.` : ""}${e.kinds ? ` Only at an institution of kind ${e.kinds.join(" or ")}; elsewhere 404.` : ""}`;
 }
 
 function build() {

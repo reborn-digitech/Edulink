@@ -210,7 +210,8 @@ function everyHandler(): { name: string; call: () => Promise<Response>; principa
     { name: "POST closures", call: () => closuresPost(json(`${P}/calendar/closures`, { name: "ZZ Gate", startDateKey: "2030-01-06", endDateKey: "2030-01-06", kind: "HOLIDAY" })), principal: false },
     { name: "GET reviews", call: () => reviewsGet(get(`${P}/reviews`)), principal: true },
     { name: "POST reviews", call: () => reviewsPost(json(`${P}/reviews`, { teacherMembershipIds: [teacherMembershipId], audience: "BOTH", closesDateKey: "2030-01-06" })), principal: true },
-    { name: "GET safety", call: () => safetyGet(get(`${P}/safety`)), principal: false },
+    // The safety centre is one of the head's pages since owner-batch-item9 (27 Oct 2026): the head reads it too.
+    { name: "GET safety", call: () => safetyGet(get(`${P}/safety`)), principal: true },
     { name: "GET settings", call: () => settingsGet(), principal: false },
     { name: "POST settings", call: () => settingsPost(json(`${P}/settings`, { name: "ZZ Gate School", contactEmail: "x@test.invalid" })), principal: false },
     { name: "GET vacancies", call: () => vacanciesGet(get(`${P}/vacancies`)), principal: true },

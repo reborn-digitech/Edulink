@@ -66,6 +66,7 @@ import { seasonBatchFor } from "../src/lib/placement-rules";
 import { iqacHash, recomputeAsSystem } from "../src/lib/iqac";
 import { buildFiling, disclosureDocument } from "../src/lib/iqac-filings";
 import { computeSlip, daysInMonthOf, slipDigest } from "../src/lib/payroll-rules";
+import { giveHeadPages, HEAD_PAGES_NOTE } from "./head-pages"; // owner-batch-item9
 import { db, link, refuseUnlessLocal, switchModulesOn, upsertMembership, upsertUser, type Ctx } from "./zz-fixtures";
 import { PASSWORD } from "./demo-schools";
 import { demoCalendar, describeCalendar, refuseAnotherYear, registerDays } from "./demo-calendar";
@@ -1105,7 +1106,7 @@ What is in it: Computer Engineering (head Dr Anagha Kelkar) and Mechanical Engin
 
 | Account | Name | Role | Home | What to look at |
 |---|---|---|---|---|
-${STAFF.map((p) => `| ${p.email} | ${p.name} | ${p.role === "ADMIN" ? "Admin (registrar)" : p.role}${p.duties?.length ? ` · ${p.duties.join(", ")}` : ""} | ${p.home} | ${p.look} |`).join("\n")}
+${STAFF.map((p) => `| ${p.email} | ${p.name} | ${p.role === "ADMIN" ? "Admin (registrar)" : p.role}${p.duties?.length ? ` · ${p.duties.join(", ")}` : ""} | ${p.home} | ${p.look}${p.role === "ADMIN" ? HEAD_PAGES_NOTE : ""} |`).join("\n")}
 ${STUDENTS.map(studentLine).join("\n")}
 | ${GUARDIAN.email} | ${GUARDIAN.name} | Parent of Anushka Kale (a minor) | /parent | /parent/academics, /parent/results, /parent/fees, the bus (Route 1) |
 | ${ALUMNUS.email} | ${ALUMNUS.name} | Alumnus (BE Computer, left May ${Y(2025)}) | /alumni | /alumni/college (placed through last season's drive, a mentor) |
@@ -1140,6 +1141,9 @@ async function main() {
   const placement = await buildPlacement(college, people, academics, exams.sgpa);
   const iqac = await buildIqac(college, people, academics);
   await buildCampus(college, people);
+  // owner-batch-item9 (decision 7): the principal gives the registrar the head's pages, audited once.
+  const headPages = await giveHeadPages(db, college.id);
+  console.log(`  The head's pages: ${headPages.given} given this run, ${headPages.already} already held`);
 
   const emails = [...STAFF.map((p) => p.email), ...STUDENTS.map((st) => studentEmail(st.n)), GUARDIAN.email, ALUMNUS.email, RECRUITER.email];
   const counts = await countBlock(college.id, emails, placement.companyId, iqac.cycleId);

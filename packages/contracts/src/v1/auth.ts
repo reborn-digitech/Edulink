@@ -2,7 +2,7 @@ import { z } from "zod";
 import { localeSchema } from "../locale";
 import { institutionKindSchema, schoolModuleSchema } from "./modules";
 import { streamSchema } from "./streams";
-import { dutySchema } from "./duties";
+import { adminDutySchema, dutySchema } from "./duties";
 import { platformFeatureSchema } from "./platform-features";
 
 /**
@@ -114,6 +114,13 @@ export const meSchema = z.object({
    * hides a duty's tabs and cards without it.
    */
   duties: z.array(dutySchema).default([]),
+  /**
+   * The office's duties on the ACTIVE membership (owner-batch-item9, 27 Oct 2026): HEAD_PAGES while the head has
+   * given this ADMIN the head's pages (leave approval, trends, reviews, safety), or while the school has no head;
+   * empty for every other role. Apart from `duties` so a phone built before it, whose `duties` knows only the
+   * college's codes, still reads the answer; it ignores this field and shows the entries as before.
+   */
+  adminDuties: z.array(adminDutySchema).default([]),
   /**
    * The platform features the operator has switched on (15 Oct 2026; v1/platform-features.ts), for this
    * person: the phone hides a feature's tabs, menu entries and screens by it. Optional: an answer from a

@@ -3,6 +3,7 @@ import { writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { PrismaClient } from "@prisma/client";
 import { config } from "dotenv";
+import { dutiesForRole } from "@edulink/contracts";
 import { HARNESS_EXAM_NAME } from "./harness-exam";
 
 /**
@@ -151,7 +152,10 @@ export default async function globalSetup() {
     actor.streams = JSON.parse(school?.streamsJson ?? "[]") as string[];
     if (session.activeRole) {
       const membership = await db.membership.findFirst({ where: { userId: session.userId, schoolId, role: session.activeRole, status: "ACTIVE", leftAt: null }, select: { dutiesJson: true } });
-      actor.duties = JSON.parse(membership?.dutiesJson ?? "[]") as string[];
+      // As the session reads them (owner-batch-item9): a college teacher's duties, an admin's office duties (the head's
+      // pages, or every admin's while the school has no head).
+      const head = (await db.membership.count({ where: { schoolId, role: "PRINCIPAL", status: "ACTIVE", leftAt: null } })) > 0;
+      actor.duties = dutiesForRole(session.activeRole, membership?.dutiesJson, head);
     }
   }
 

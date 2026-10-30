@@ -1,6 +1,6 @@
 import type { Role } from "./constants";
 import type { TranslationKey } from "./i18n/dictionary";
-import { DUTY_STREAMS, type DutyCode, type FeatureCode, type InstitutionKind, type SchoolModuleCode, type StreamCode } from "@edulink/contracts";
+import { DUTY_STREAMS, type AnyDutyCode, type FeatureCode, type InstitutionKind, type SchoolModuleCode, type StreamCode } from "@edulink/contracts";
 
 /**
  * Navigation model.
@@ -76,8 +76,12 @@ export type NavItem = {
    * in-charge, squad, NSS… (packages/contracts v1/duties.ts). The shell hides
    * it from a member without the duty, and the session's gate stops granting
    * the page through it (role-gate.ts `modulePagePermitted`).
+   *
+   * (owner-batch-item9, 27 Oct 2026) An office duty — HEAD_PAGES, the head's
+   * pages the PRINCIPAL gives an ADMIN — hides an ADMIN's entry the same way,
+   * and the gate answers its page 404 without it (`adminDutyPagePermitted`).
    */
-  duty?: DutyCode;
+  duty?: AnyDutyCode;
   /**
    * The streams this entry is for (5 Oct 2026): the shell hides it at a
    * college whose recorded streams include none of them — the practical
@@ -218,8 +222,10 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/attendance", labelKey: "nav.attendance", icon: "checks", prefix: true, group: "attendance", also: ["/attendance/history"] },
     { href: "/admin/staff-attendance", labelKey: "nav.staffAttendance", icon: "checks", prefix: true, group: "attendance" },
     // The leave queue is genuinely an admin's to work — a school whose
-    // principal is the one on leave still has to approve somebody's.
-    { href: "/principal/leave", labelKey: "nav.leave", icon: "calendar", prefix: true, group: "attendance", also: ["/principal/staff"] },
+    // principal is the one on leave still has to approve somebody's — once the
+    // head has given that admin the head's pages (owner-batch-item9), or while
+    // the school has no head.
+    { href: "/principal/leave", labelKey: "nav.leave", icon: "calendar", prefix: true, group: "attendance", also: ["/principal/staff"], duty: "HEAD_PAGES" },
     { href: "/admin/calendar", labelKey: "nav.calendar", icon: "calendar", prefix: true, group: "attendance" },
     // Fees: what the school asked its families for and what arrived. The
     // office writes; the principal reads the same pages (see fees.ts officeOrHead).
@@ -241,7 +247,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/bulletin/council", labelKey: "councilNotices.navTitle", icon: "megaphone", group: "communication" },
     // The sick-room and incident log: the whole school's, and the record pages under /incidents.
     { href: "/admin/incidents", labelKey: "nav.incidents", icon: "firstAidKit", prefix: true, group: "communication", also: ["/incidents"] },
-    { href: "/admin/safety", labelKey: "nav.safety", icon: "shield", prefix: true, group: "communication" },
+    { href: "/admin/safety", labelKey: "nav.safety", icon: "shield", prefix: true, group: "communication", duty: "HEAD_PAGES" },
     { href: "/experts", labelKey: "nav.experts", icon: "briefcase", prefix: true, group: "communication", feature: "EXPERT_SESSIONS" },
     { href: "/admin/vacancies", labelKey: "nav.vacancies", icon: "briefcase", prefix: true, group: "communication", also: ["/vacancies"], feature: "JOB_BOARD" },
     { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true, group: "communication", feature: "EXPERT_SESSIONS" },
@@ -267,9 +273,9 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/attendance-devices", labelKey: "punch.navTitle", icon: "checks", prefix: true, group: "setup" },
     // The UDISE+ and board sheets cut from the records: the office cuts, the head reads.
     { href: "/admin/filings", labelKey: "nav.filings", icon: "clipboard", prefix: true, group: "setup" },
-    { href: "/admin/reviews", labelKey: "nav.reviews", icon: "star", prefix: true, group: "setup" },
-    // The school across terms and years: the office reads what the head reads (lib/analytics-longitudinal.ts).
-    { href: "/principal/trends", labelKey: "trends.title", icon: "chartLine", prefix: true, group: "setup" },
+    { href: "/admin/reviews", labelKey: "nav.reviews", icon: "star", prefix: true, group: "setup", duty: "HEAD_PAGES" },
+    // The school across terms and years: the office reads what the head reads (lib/analytics-longitudinal.ts), holding the head's pages.
+    { href: "/principal/trends", labelKey: "trends.title", icon: "chartLine", prefix: true, group: "setup", duty: "HEAD_PAGES" },
     { href: "/admin/settings", labelKey: "nav.settings", icon: "gear", prefix: true, group: "setup" },
     { href: "/account/payslips", labelKey: "payroll.myTitle", icon: "receipt", prefix: true, group: "me", module: "PAYROLL" },
     // My appointment letters (risks batch 5A, 5 Oct 2026).
@@ -327,6 +333,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/bulletin/council", labelKey: "councilNotices.navTitle", icon: "megaphone", group: "communication" },
     // The sick-room and incident log: the whole school's, and the record pages under /incidents.
     { href: "/admin/incidents", labelKey: "nav.incidents", icon: "firstAidKit", prefix: true, group: "communication", also: ["/incidents"] },
+    // The safety centre (owner-batch-item9): one of the head's pages, which the head always holds.
+    { href: "/admin/safety", labelKey: "nav.safety", icon: "shield", prefix: true, group: "communication" },
     { href: "/admin/vacancies", labelKey: "nav.vacancies", icon: "briefcase", prefix: true, group: "communication", also: ["/vacancies"], feature: "JOB_BOARD" },
     { href: "/admin/sessions", labelKey: "nav.sessions", icon: "calendar", prefix: true, group: "communication", feature: SESSION_FEATURES },
     // Transport (3 Oct 2026): routes, buses, drivers, seats and today's trips on a map; the head reads.
@@ -771,7 +779,7 @@ export const PHONE_BAR: Record<Role, NavItem[]> = {
   ADMIN: [
     { href: "/admin", labelKey: "nav.overview", icon: "house" },
     { href: "/admin/people", labelKey: "nav.people", icon: "users", prefix: true, also: ["/admin/invites", "/admin/intake"] },
-    { href: "/principal/leave", labelKey: "nav.leave", icon: "calendar", prefix: true, also: ["/principal/staff"] },
+    { href: "/principal/leave", labelKey: "nav.leave", icon: "calendar", prefix: true, also: ["/principal/staff"], duty: "HEAD_PAGES" },
     MESSAGES_TAB,
   ],
   PRINCIPAL: [

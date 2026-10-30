@@ -1,6 +1,6 @@
 import "server-only";
 import { cache } from "react";
-import { DUTIES, isCollegeKind, isDutyRole, parseDuties, type DutyCode, type MemberDuties } from "@edulink/contracts";
+import { ADMIN_DUTIES, adminDutiesHeld, DUTIES, isCollegeKind, isDutyRole, parseAdminDuties, parseDuties, type AdminDutyCode, type DutyCode, type HeadDuty, type MemberDuties } from "@edulink/contracts";
 import { db } from "./db";
 import { audit } from "./audit";
 import { notify } from "./notify";
@@ -89,3 +89,71 @@ export async function setDuties(ctx: ActiveContext, membershipId: string, duties
   await Promise.all(given.map((d) => notify({ userId: member.userId, schoolId: ctx.schoolId, kind: "SYSTEM", titleKey: `duties.${d}.name`, bodyKey: "duties.notifyGivenBody", url: home })));
   return answer;
 }
+
+// owner-batch-item9 (27 Oct 2026) ─────────────────────────────────────────────────────────────────────────────────
+/**
+ * THE HEAD'S PAGES ON AN ADMIN (packages/contracts v1/duties.ts ADMIN_DUTIES). Leave approval, the trends, the review
+ * rounds and the safety centre are the head's; an ADMIN holds them while the PRINCIPAL has given that admin the duty
+ * (`setHeadDuty`, the head's staff page, audited `people.headDuty.set`), and every admin holds them while the school
+ * has no active PRINCIPAL. The gate (role-gate.ts) reads them from the session; the shell hides the four entries.
+ */
+
+/** Whether the school has an active head; read once per request. */
+export const schoolHasPrincipal = cache(async (schoolId: string | null | undefined): Promise<boolean> => {
+  if (!schoolId) return false;
+  return (await db.membership.count({ where: { schoolId, role: "PRINCIPAL", status: "ACTIVE", leftAt: null } })) > 0;
+});
+
+/** The office's duties the session holds: an ADMIN's, with the vacancy rule; [] for every other role. */
+export async function myAdminDuties(ctx: Pick<ActiveContext, "role" | "membershipId" | "schoolId">): Promise<AdminDutyCode[]> {
+  if (ctx.role !== "ADMIN" || !ctx.membershipId) return [];
+  const row = await db.membership.findUnique({ where: { id: ctx.membershipId }, select: { dutiesJson: true } });
+  const stored = parseAdminDuties(row?.dutiesJson);
+  if (stored.length === ADMIN_DUTIES.length) return stored;
+  return adminDutiesHeld(row?.dutiesJson, await schoolHasPrincipal(ctx.schoolId));
+}
+
+/** Whether the session reaches the head's pages: the head always, an admin holding HEAD_PAGES (or with no head), nobody else. */
+export async function holdsHeadPages(ctx: Pick<ActiveContext, "role" | "membershipId" | "schoolId">): Promise<boolean> {
+  if (ctx.role === "PRINCIPAL") return true;
+  return (await myAdminDuties(ctx)).includes("HEAD_PAGES");
+}
+
+/**
+ * Who reaches the head's pages at a school, as user ids: every active head, and each active admin holding the duty —
+ * or every admin while there is no head. Who is told of a leave request waiting, of a problem reported from the app.
+ */
+export async function headPageHolders(schoolId: string): Promise<string[]> {
+  const rows = await db.membership.findMany({ where: { schoolId, role: { in: ["PRINCIPAL", "ADMIN"] }, status: "ACTIVE", leftAt: null }, select: { userId: true, role: true, dutiesJson: true } });
+  const head = rows.some((r) => r.role === "PRINCIPAL");
+  return [...new Set(rows.filter((r) => r.role === "PRINCIPAL" || adminDutiesHeld(r.dutiesJson, head).includes("HEAD_PAGES")).map((r) => r.userId))];
+}
+
+/**
+ * THE HEAD GIVES AN ADMIN THE HEAD'S PAGES, or takes them back. The PRINCIPAL's alone, at their own school, on an active
+ * ADMIN of it. Idempotent: the same answer changes nothing and writes no audit row. Given, the admin is told; taken
+ * back, nobody is. Other words in the membership's dutiesJson are kept as they are.
+ */
+export async function setHeadDuty(ctx: ActiveContext, membershipId: string, held: boolean): Promise<HeadDuty> {
+  if (!ctx.schoolId) throw new AccessError("access.noActiveSchoolSelected");
+  if (ctx.role !== "PRINCIPAL") throw new AccessError("headDuty.refuseNotHead");
+  const member = await db.membership.findFirst({ where: { id: membershipId, schoolId: ctx.schoolId, status: "ACTIVE", leftAt: null }, select: { id: true, userId: true, role: true, dutiesJson: true } });
+  if (!member) throw new AccessError("access.entryNotFound", "NOT_FOUND");
+  if (member.role !== "ADMIN") throw new RuleRefusal("headDuty.refuseNotAdmin", 422);
+  const before = parseAdminDuties(member.dutiesJson);
+  const had = before.includes("HEAD_PAGES");
+  if (had === held) return { membershipId: member.id, held };
+  let raw: unknown = [];
+  try {
+    raw = JSON.parse(member.dutiesJson ?? "[]");
+  } catch {
+    raw = [];
+  }
+  const others = (Array.isArray(raw) ? raw : []).filter((d): d is string => typeof d === "string" && d !== "HEAD_PAGES");
+  const next = held ? [...others, "HEAD_PAGES"] : others;
+  await db.membership.update({ where: { id: member.id }, data: { dutiesJson: JSON.stringify(next) } });
+  await audit({ schoolId: ctx.schoolId, actorUserId: ctx.user.id, action: "people.headDuty.set", targetType: "Membership", targetId: member.id, meta: { duty: "HEAD_PAGES", held } });
+  if (held) await notify({ userId: member.userId, schoolId: ctx.schoolId, kind: "SYSTEM", titleKey: "headDuty.notifyGivenTitle", bodyKey: "headDuty.notifyGivenBody", url: "/principal/leave" });
+  return { membershipId: member.id, held };
+}
+// end owner-batch-item9

@@ -193,13 +193,15 @@ WALKS.push({
       ...(trip ? [`/admin/transport/trips/${trip.id}`] : []), "/admin/incidents",
       "/hostel", "/hostel/rollcall", "/hostel/leave", "/hostel/night", "/hostel/expulsions", "/hostel/rooms", "/hostel/visitors", "/hostel/menu", "/hostel/incidents",
       "/library/catalogue", "/library/overdue", "/library/reservations", "/library/fines", "/library/stocktake", "/library/reports", "/library/reading-room",
+      // owner-batch-item9 (27 Oct 2026): the desk's e-resources tab (list, add, correct, open); the ISBN list is on the catalogue, the room change on /hostel/rooms.
+      "/library/e-resources",
       ...(godaan ? [`/library/titles/${godaan.id}`] : []), ...(outMember ? [`/library/members/${outMember}`] : []),
     ];
     add("ADMIN", a4mail("admin"), office);
     add("PRINCIPAL", a4mail("principal"), office);
     // The module roles, every one at the school.
     const staff = await db.membership.findMany({ where: { schoolId: s, role: { in: ["DRIVER", "WARDEN", "LIBRARIAN"] }, status: "ACTIVE", leftAt: null }, select: { role: true, user: { select: { email: true } } }, orderBy: { user: { email: "asc" } } });
-    for (const m of staff) add(m.role, m.user.email, m.role === "WARDEN" && places[0] ? [`/hostel/health/${places[0].id}`] : m.role === "LIBRARIAN" ? [...(godaan ? [`/library/titles/${godaan.id}`] : []), ...(outMember ? [`/library/members/${outMember}`] : [])] : []);
+    for (const m of staff) add(m.role, m.user.email, m.role === "WARDEN" && places[0] ? [`/hostel/health/${places[0].id}`] : m.role === "LIBRARIAN" ? ["/library/e-resources", ...(godaan ? [`/library/titles/${godaan.id}`] : []), ...(outMember ? [`/library/members/${outMember}`] : [])] : []);
     // The families: riders, boarders, borrowers; a member of staff who borrows.
     for (const seat of [...new Set((await a4Seats(school)).map((x) => x.studentMembershipId))]) await family(seat, "transport", (c) => [`/parent/fees?child=${c}`]);
     for (const p of places) await family(p.membershipId, "hostel", (c) => [`/parent/fees?child=${c}`]);
@@ -399,6 +401,15 @@ WALKS.push({
     const reviewerEmail = reviewer ? (await db.user.findUnique({ where: { id: reviewer.respondentUserId }, select: { email: true } }))?.email ?? null : null;
     const live = await db.schoolSiteVersion.findFirst({ where: { schoolId: s, liveAt: { not: null } }, select: { pagesHtml: true } });
     const sitePaths = live ? Object.keys(JSON.parse(live.pagesHtml) as Record<string, unknown>) : [];
+    // The review rounds are one of the head's pages (owner-batch-item9): Sunrise's admin walks them only holding them.
+    const officeHeadPages = await (async () => {
+      const { dutiesForRole } = await import("@edulink/contracts");
+      const m = await db.membership.findFirst({ where: { schoolId: s, role: "ADMIN", status: "ACTIVE", leftAt: null, user: { email: sp("admin") } }, select: { dutiesJson: true } });
+      const head = (await db.membership.count({ where: { schoolId: s, role: "PRINCIPAL", status: "ACTIVE", leftAt: null } })) > 0;
+      const holds = dutiesForRole("ADMIN", m?.dutiesJson, head).includes("HEAD_PAGES");
+      if (!holds) console.log("  SKIP  [item4b] ADMIN /admin/reviews and /api/v1/admin/reviews: the head has not given Sunrise's admin the head's pages (the head's walk reads them)");
+      return holds;
+    })();
     const W = (label: string, role: string, email: string, pages: (string | null)[], doors: (string | null)[]): Walk => ({ part: "item4b", label, role, email, pages: pages.filter((x): x is string => Boolean(x)), doors: doors.filter((x): x is string => Boolean(x)) });
     const walks: Walk[] = [
       W("ADMIN", "ADMIN", sp("admin"), [
@@ -406,14 +417,14 @@ WALKS.push({
         "/admin/payroll", "/admin/payroll/salaries", "/admin/payroll/structures", "/admin/payroll/settings", "/admin/payroll/advances", `/admin/payroll/runs/${last}`, `/admin/payroll/runs/${now}`, worker ? `/admin/payroll/statement/${worker}` : null,
         "/admin/people", "/admin/people/support",
         "/admin/website", "/admin/website?s=about", "/admin/website?s=look", "/admin/website?s=home", "/admin/website?s=publish", "/admin/website/domain", `/sites/${SLUG}`, ...sitePaths.map((p) => `/sites/${SLUG}/${p.replace(/^\//, "")}`),
-        "/admin/alumni", "/admin/reviews",
+        "/admin/alumni", officeHeadPages ? "/admin/reviews" : null,
         "/admin/fees", "/admin/fees/settings", "/admin/fees/claims", "/admin/fees/dues", paid ? `/admin/fees/pupils/${paid.studentMembershipId}` : null, paid?.receipt ? `/fees/receipts/${paid.receipt.id}` : null,
         "/account/items", "/account/payslips",
       ], [
         "/api/v1/admin/inventory", "/api/v1/admin/inventory/setup", "/api/v1/admin/inventory/items", "/api/v1/admin/inventory/movements", "/api/v1/admin/inventory/purchases", "/api/v1/admin/inventory/assets", "/api/v1/admin/inventory/assets/SPS-A-0001", "/api/v1/admin/inventory/requests", "/api/v1/admin/inventory/reports",
         "/api/v1/admin/payroll", "/api/v1/admin/payroll/structures", "/api/v1/admin/payroll/salaries", `/api/v1/admin/payroll/runs/${last}`, `/api/v1/admin/payroll/runs/${now}`, "/api/v1/admin/payroll/advances", worker ? `/api/v1/admin/payroll/statement/${worker}` : null, worker ? `/api/v1/admin/payroll/runs/${last}/slips/${worker}/pdf` : null, driver ? `/api/v1/admin/payroll/runs/${last}/slips/${driver}/pdf` : null,
         "/api/v1/admin/site", "/api/v1/admin/site/versions", "/api/v1/admin/site/shares", "/api/v1/admin/site/enquiries", "/api/v1/admin/site/visits", "/api/v1/admin/site/files", "/api/v1/admin/site/summary", "/api/v1/admin/site/domain",
-        "/api/v1/admin/alumni", "/api/v1/admin/reviews",
+        "/api/v1/admin/alumni", officeHeadPages ? "/api/v1/admin/reviews" : null,
         "/api/v1/fees/overview", "/api/v1/fees/settings", "/api/v1/fees/claims", "/api/v1/fees/dues", paid ? `/api/v1/fees/pupils/${paid.studentMembershipId}` : null, paid?.receipt ? `/api/v1/fees/receipts/${paid.receipt.id}` : null,
         "/api/v1/account/inventory", "/api/v1/account/payslips",
       ]),

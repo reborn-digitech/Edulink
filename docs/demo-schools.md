@@ -20,7 +20,7 @@ Re-running the script is safe; it adds nothing the second time and resets every 
 
 | Email | Name | Role | Look at |
 |---|---|---|---|
-| sunrise.admin@demo.relay.test | Meenal Joshi | Admin | /admin, /admin/people, /admin/fees, /admin/admissions, /admin/certificates, /admin/filings, /admin/messaging, /admin/vacancies, /enquiries |
+| sunrise.admin@demo.relay.test | Meenal Joshi | Admin | /admin, /admin/people, /admin/fees, /admin/admissions, /admin/certificates, /admin/filings, /admin/messaging, /admin/vacancies, /enquiries; holds the head's pages, given by the principal at /principal/staff: /principal/leave, /principal/trends, /admin/reviews, /admin/safety |
 | sunrise.principal@demo.relay.test | Dr Rajesh Kulkarni | Principal | /principal, /principal/staff, /principal/leave (one pending ask), /enquiries (the vacancy applicant) |
 | sunrise.teacher1@demo.relay.test | Priya Nair | Teacher · form, Grade 5 | /teacher, /teacher/classes/cmubsk1fn001agnndv57hga2a, /teacher/attendance?classId=cmubsk1fn001agnndv57hga2a, /bulletin |
 | sunrise.teacher2@demo.relay.test | Sameer Deshpande | Teacher · form, Grade 6 | /teacher, /teacher/classes/cmubsk1ha002xgnnddzyxcbe7, /teacher/attendance?classId=cmubsk1ha002xgnnddzyxcbe7, /bulletin |
@@ -48,7 +48,7 @@ Re-running the script is safe; it adds nothing the second time and resets every 
 
 | Email | Name | Role | Look at |
 |---|---|---|---|
-| svm.admin@demo.relay.test | Sunil Wagh | Admin | /admin, /admin/people, /admin/fees, /admin/admissions, /admin/certificates, /admin/filings, /admin/messaging, /admin/vacancies, /enquiries |
+| svm.admin@demo.relay.test | Sunil Wagh | Admin | /admin, /admin/people, /admin/fees, /admin/admissions, /admin/certificates, /admin/filings, /admin/messaging, /admin/vacancies, /enquiries; holds the head's pages, given by the principal at /principal/staff: /principal/leave, /principal/trends, /admin/reviews, /admin/safety |
 | svm.principal@demo.relay.test | Vandana Pathak | Principal | /principal, /principal/staff, /principal/leave (one pending ask), /enquiries (the vacancy applicant) |
 | svm.teacher1@demo.relay.test | Manisha Kale | Teacher · form, Grade 5 | /teacher, /teacher/classes/cmubsk3rt05sbgnndixs2zmlc, /teacher/attendance?classId=cmubsk3rt05sbgnndixs2zmlc, /bulletin |
 | svm.teacher2@demo.relay.test | Prashant Gaikwad | Teacher · form, Grade 6 | /teacher, /teacher/classes/cmubsk3sj05tygnndpd9m9j8m, /teacher/attendance?classId=cmubsk3sj05tygnndpd9m9j8m, /bulletin |
@@ -162,11 +162,11 @@ Built by `npm run demo:college` (from `apps/web`; idempotent, run it again to pu
 
 Dates (G4-29): the college is dated from the day the script runs (`scripts/demo-calendar.ts`). The academic year is the one whose odd term began most recently; its odd term (1 July to 30 November) is current and the even term before it past; every other date moves with them by whole years; the registers are the four Monday-to-Saturday weeks before the run's week, inside the odd term. From December to June the college shows the odd term just ended, since its offerings are odd-semester ones. A run over a college built for another academic year is refused (the script promotes nobody); `--calendar` prints the dates and writes nothing; `DEMO_TODAY=YYYY-MM-DD` pins the day.
 
-What is in it: Physics (head Dr Vasudha Paranjpe) and Commerce (head Dr Sanjay Bhide); BSc Physics and BCom on the SPPU NEP 2024 scheme with programme and course outcomes; the odd term 2026–27 (current) and the even term 2025–26; divisions SY BSc Physics A, SY BCom A and FY BCom A; seven offerings on a Mon–Sat grid with lecture registers from 2026-09-07 to 2026-10-03 (dated from the run's day, demo-calendar.ts); internal marks countersigned and locked on PHY301 and COM301, PHY302's unit test waiting for a countersign; the Summer 2026 sitting with the university's result file imported and run 1 published (SGPA for every second-year student, one ATKT and its backlog); Sahyadri Data Labs Pvt Ltd (GSTIN checked by the TPO) with an OPEN drive and two applicants, last season's closed drive with the alumna's accepted offer and the 2025 season; a NAAC cycle (affiliated UG, 2022–27) computed by the IQAC desk, with faculty records, research, activities and three committees; the IQAC's own rows: the Student Satisfaction Survey 2025–26 closed with ten responses (the salt wiped, as the desk closes one) and its action-taken report, two RESOLVED grievances (a timetable clash and a scholarship not shown on a demand, both closed within fifteen working days, as the grievance committee's minutes say), and the 2025 AQAR built by the filings library, sent, signed off by the principal and FILED; fee structures by programme, year and category, a demand per semester for every student, four odd semesters paid by bank and one scholarship claim sanctioned.
+What is in it: Physics (head Dr Vasudha Paranjpe) and Commerce (head Dr Sanjay Bhide); BSc Physics and BCom on the SPPU NEP 2024 scheme with programme and course outcomes; the odd term 2026–27 (current) and the even term 2025–26; divisions SY BSc Physics A, SY BCom A and FY BCom A; seven offerings on a Mon–Sat grid with lecture registers from 2026-09-28 to 2026-10-24 (dated from the run's day, demo-calendar.ts); internal marks countersigned and locked on PHY301 and COM301, PHY302's unit test waiting for a countersign; the Summer 2026 sitting with the university's result file imported and run 1 published (SGPA for every second-year student, one ATKT and its backlog); Sahyadri Data Labs Pvt Ltd (GSTIN checked by the TPO) with an OPEN drive and two applicants, last season's closed drive with the alumna's accepted offer and the 2025 season; a NAAC cycle (affiliated UG, 2022–27) computed by the IQAC desk, with faculty records, research, activities and three committees; the IQAC's own rows: the Student Satisfaction Survey 2025–26 closed with ten responses (the salt wiped, as the desk closes one) and its action-taken report, two RESOLVED grievances (a timetable clash and a scholarship not shown on a demand, both closed within fifteen working days, as the grievance committee's minutes say), and the 2025 AQAR built by the filings library, sent, signed off by the principal and FILED; fee structures by programme, year and category, a demand per semester for every student, four odd semesters paid by bank and one scholarship claim sanctioned.
 
 | Account | Name | Role | Home | What to look at |
 |---|---|---|---|---|
-| sac.registrar@demo.relay.test | Smita Kulkarni | Admin (registrar) | /admin | /admin/academics (programmes, terms, divisions, timetable), /admin/college-admissions, /accounts, /exam-cell, /placement |
+| sac.registrar@demo.relay.test | Smita Kulkarni | Admin (registrar) | /admin | /admin/academics (programmes, terms, divisions, timetable), /admin/college-admissions, /accounts, /exam-cell, /placement; holds the head's pages, given by the principal at /principal/staff: /principal/leave, /principal/trends, /admin/reviews, /admin/safety |
 | sac.principal@demo.relay.test | Dr Anil Deshpande | PRINCIPAL | /principal | /principal/accreditation (the NAAC cycle), /exam-cell (results), /accounts/concessions |
 | sac.hod.physics@demo.relay.test | Dr Vasudha Paranjpe | HOD | /hod | /hod/defaulters (Rutuja under 75 % in PHY301), /faculty (teaches PHY302, marks waiting for a countersign) |
 | sac.hod.commerce@demo.relay.test | Dr Sanjay Bhide | HOD | /hod | /hod (Commerce: COM301 locked), /faculty (teaches COM302 and COM102) |
@@ -205,7 +205,7 @@ Slug `saraswati-management`, join code `SARAS-XRNT-WCD4`, kind COLLEGE, stream M
 
 | Account | Name | Role | Home | Where to look |
 |---|---|---|---|---|
-| sim.registrar@demo.relay.test | Sunil Bhagwat | ADMIN (registrar) | /admin | /admin (the stream's home tiles), /admin/people (duties on the row menu), /admin/academics, /admin/stream-records, /accounts |
+| sim.registrar@demo.relay.test | Sunil Bhagwat | ADMIN (registrar) | /admin | /admin (the stream's home tiles), /admin/people (duties on the row menu), /admin/academics, /admin/stream-records, /accounts; holds the head's pages, given by the principal at /principal/staff: /principal/leave, /principal/trends, /admin/reviews, /admin/safety |
 | sim.principal@demo.relay.test | Dr Rekha Vaidya | PRINCIPAL | /principal | /principal/college, /principal/accreditation, /iqac/documents |
 | sim.hod.dba@demo.relay.test | Dr Shubhangi Natu | HOD | /hod | /hod (Business Administration), the locked internal marks of BBA301, teaches BBA302 |
 | sim.hod.dms@demo.relay.test | Dr Ajit Paranjape | HOD | /hod | /hod (Management Studies), MBA301's unit test waiting for the countersign, teaches MBA302 |
@@ -238,7 +238,7 @@ Slug `saraswati-law`, join code `SARAS-CJHD-6F6G`, kind COLLEGE, stream LAW, Pun
 
 | Account | Name | Role | Home | Where to look |
 |---|---|---|---|---|
-| slc.registrar@demo.relay.test | Anand Gadgil | ADMIN (registrar) | /admin | /admin (the stream's home tiles), /admin/people (duties on the row menu), /admin/academics, /admin/stream-records, /accounts |
+| slc.registrar@demo.relay.test | Anand Gadgil | ADMIN (registrar) | /admin | /admin (the stream's home tiles), /admin/people (duties on the row menu), /admin/academics, /admin/stream-records, /accounts; holds the head's pages, given by the principal at /principal/staff: /principal/leave, /principal/trends, /admin/reviews, /admin/safety |
 | slc.principal@demo.relay.test | Dr Jayashree Bapat | PRINCIPAL | /principal | /principal/college, /principal/accreditation, /iqac/documents |
 | slc.hod.lawi@demo.relay.test | Dr Medha Kulkarni | HOD | /hod | /hod (Integrated Law), the locked internal marks of LAW301, teaches LAW302 |
 | slc.hod.llb@demo.relay.test | Dr Rajendra Patwardhan | HOD | /hod | /hod (Legal Studies), LLB301's unit test waiting for the countersign, teaches LLB302 |
@@ -271,7 +271,7 @@ Slug `saraswati-education`, join code `SARAS-MK3C-QGTC`, kind COLLEGE, stream ED
 
 | Account | Name | Role | Home | Where to look |
 |---|---|---|---|---|
-| sce.registrar@demo.relay.test | Shailaja Dixit | ADMIN (registrar) | /admin | /admin (the stream's home tiles), /admin/people (duties on the row menu), /admin/academics, /admin/stream-records, /accounts |
+| sce.registrar@demo.relay.test | Shailaja Dixit | ADMIN (registrar) | /admin | /admin (the stream's home tiles), /admin/people (duties on the row menu), /admin/academics, /admin/stream-records, /accounts; holds the head's pages, given by the principal at /principal/staff: /principal/leave, /principal/trends, /admin/reviews, /admin/safety |
 | sce.principal@demo.relay.test | Dr Arvind Phadke | PRINCIPAL | /principal | /principal/college, /principal/accreditation, /iqac/documents |
 | sce.hod.ite@demo.relay.test | Dr Vandana Kher | HOD | /hod | /hod (Integrated Teacher Education), the locked internal marks of ITE301, teaches ITE302 |
 | sce.hod.edu@demo.relay.test | Dr Prakash Shinde | HOD | /hod | /hod (Education), BED301's unit test waiting for the countersign, teaches BED302 |
@@ -304,7 +304,7 @@ Slug `saraswati-pharmacy`, join code `SARAS-CJPC-4YR6`, kind COLLEGE, stream PHA
 
 | Account | Name | Role | Home | Where to look |
 |---|---|---|---|---|
-| scp.registrar@demo.relay.test | Prashant Oak | ADMIN (registrar) | /admin | /admin (the stream's home tiles), /admin/people (duties on the row menu), /admin/academics, /admin/stream-records, /accounts |
+| scp.registrar@demo.relay.test | Prashant Oak | ADMIN (registrar) | /admin | /admin (the stream's home tiles), /admin/people (duties on the row menu), /admin/academics, /admin/stream-records, /accounts; holds the head's pages, given by the principal at /principal/staff: /principal/leave, /principal/trends, /admin/reviews, /admin/safety |
 | scp.principal@demo.relay.test | Dr Madhuri Kulkarni | PRINCIPAL | /principal | /principal/college, /principal/accreditation, /iqac/documents |
 | scp.hod.pceu@demo.relay.test | Dr Shilpa Gadre | HOD | /hod | /hod (Pharmaceutics), the locked internal marks of BP301, teaches BP302 |
 | scp.hod.pchem@demo.relay.test | Dr Ravindra Ingle | HOD | /hod | /hod (Pharmaceutical Chemistry), DP301's unit test waiting for the countersign, teaches DP302 |
@@ -337,7 +337,7 @@ Slug `saraswati-architecture`, join code `SARAS-YM6P-P4XC`, kind AUTONOMOUS_COLL
 
 | Account | Name | Role | Home | Where to look |
 |---|---|---|---|---|
-| ssa.registrar@demo.relay.test | Kishor Vaze | ADMIN (registrar) | /admin | /admin (the stream's home tiles), /admin/people (duties on the row menu), /admin/academics, /admin/stream-records, /accounts |
+| ssa.registrar@demo.relay.test | Kishor Vaze | ADMIN (registrar) | /admin | /admin (the stream's home tiles), /admin/people (duties on the row menu), /admin/academics, /admin/stream-records, /accounts; holds the head's pages, given by the principal at /principal/staff: /principal/leave, /principal/trends, /admin/reviews, /admin/safety |
 | ssa.principal@demo.relay.test | Dr Anuradha Naik | PRINCIPAL | /principal | /principal/college, /principal/accreditation, /iqac/documents |
 | ssa.hod.arch@demo.relay.test | Dr Sunanda Mhatre | HOD | /hod | /hod (Architecture), the locked internal marks of AR301, teaches AR302 |
 | ssa.hod.ud@demo.relay.test | Dr Abhay Karandikar | HOD | /hod | /hod (Urban Design), MA301's unit test waiting for the countersign, teaches MA302 |
@@ -370,7 +370,7 @@ Slug `saraswati-agriculture`, join code `SARAS-TVWM-NVGQ`, kind COLLEGE, stream 
 
 | Account | Name | Role | Home | Where to look |
 |---|---|---|---|---|
-| sca.registrar@demo.relay.test | Dattatray Jagtap | ADMIN (registrar) | /admin | /admin (the stream's home tiles), /admin/people (duties on the row menu), /admin/academics, /admin/stream-records, /accounts |
+| sca.registrar@demo.relay.test | Dattatray Jagtap | ADMIN (registrar) | /admin | /admin (the stream's home tiles), /admin/people (duties on the row menu), /admin/academics, /admin/stream-records, /accounts; holds the head's pages, given by the principal at /principal/staff: /principal/leave, /principal/trends, /admin/reviews, /admin/safety |
 | sca.principal@demo.relay.test | Dr Shivaji Pawar | PRINCIPAL | /principal | /principal/college, /principal/accreditation, /iqac/documents |
 | sca.hod.agro@demo.relay.test | Dr Bhaskar Thorat | HOD | /hod | /hod (Agronomy), the locked internal marks of AGR301, teaches AGR302 |
 | sca.hod.hort@demo.relay.test | Dr Sunita Kharade | HOD | /hod | /hod (Horticulture), HOR301's unit test waiting for the countersign, teaches HOR302 |
@@ -403,7 +403,7 @@ Slug `saraswati-vocational`, join code `SARAS-WFCD-MPKR`, kind COLLEGE, stream V
 
 | Account | Name | Role | Home | Where to look |
 |---|---|---|---|---|
-| svc.registrar@demo.relay.test | Ravindra Lad | ADMIN (registrar) | /admin | /admin (the stream's home tiles), /admin/people (duties on the row menu), /admin/academics, /admin/stream-records, /accounts |
+| svc.registrar@demo.relay.test | Ravindra Lad | ADMIN (registrar) | /admin | /admin (the stream's home tiles), /admin/people (duties on the row menu), /admin/academics, /admin/stream-records, /accounts; holds the head's pages, given by the principal at /principal/staff: /principal/leave, /principal/trends, /admin/reviews, /admin/safety |
 | svc.principal@demo.relay.test | Dr Shubhada Joshi | PRINCIPAL | /principal | /principal/college, /principal/accreditation, /iqac/documents |
 | svc.hod.vsd@demo.relay.test | Dr Smita Bendre | HOD | /hod | /hod (Software Development), the locked internal marks of VSD301, teaches VSD302 |
 | svc.hod.vfp@demo.relay.test | Dr Ajay Mahajan | HOD | /hod | /hod (Food Processing), VFP301's unit test waiting for the countersign, teaches VFP302 |
@@ -434,7 +434,7 @@ Slug `saraswati-health`, join code `SARAS-WNHW-4R4J`, kind COLLEGE, stream HEALT
 
 | Account | Name | Role | Home | Where to look |
 |---|---|---|---|---|
-| sih.registrar@demo.relay.test | Mahendra Ahire | ADMIN (registrar) | /admin | /admin (the stream's home tiles), /admin/people (duties on the row menu), /admin/academics, /admin/stream-records, /accounts |
+| sih.registrar@demo.relay.test | Mahendra Ahire | ADMIN (registrar) | /admin | /admin (the stream's home tiles), /admin/people (duties on the row menu), /admin/academics, /admin/stream-records, /accounts; holds the head's pages, given by the principal at /principal/staff: /principal/leave, /principal/trends, /admin/reviews, /admin/safety |
 | sih.principal@demo.relay.test | Dr Varsha Nikam | PRINCIPAL | /principal | /principal/college, /principal/accreditation, /iqac/documents |
 | sih.hod.msn@demo.relay.test | Dr Shobha Wagh | HOD | /hod | /hod (Medical-Surgical Nursing), the locked internal marks of NUR301, teaches NUR302 |
 | sih.hod.chn@demo.relay.test | Dr Rekha Deore | HOD | /hod | /hod (Community Health Nursing), PBN301's unit test waiting for the countersign, teaches PBN302 |
@@ -488,3 +488,46 @@ Built by `npm run demo:accounts` (from `apps/web`; idempotent; after `demo:schoo
 | demo.recruiter01@demo.relay.test | Rhea Fernandes | RECRUITER, Sahyadri Data Labs Pvt Ltd (invited by recruiter.sahyadri@demo.relay.test and accepted; no membership) | /recruiter | Saraswati Arts and Science College: OPEN; Saraswati Arts and Science College: CLOSED |
 | demo.parent.two@demo.relay.test | Rohini Jadhav | PARENT of Nakul Jadhav (Sunrise Public School, grade 6) and Hrishikesh Pawar (Saraswati Vidya Mandir, grade 5) | /parent | the child switcher across two schools: `?child=cmubsk1i70045gnnd0cbs2cpb` and `?child=cmubsk3sf05tpgnndty15cuso`; /parent/fees at each school |
 <!-- demo-accounts:end -->
+
+<!-- demo-college-engineering:begin -->
+## Saraswati Institute of Technology (the demo engineering college)
+
+Built by `npm run demo:college-engineering` (from `apps/web`; `scripts/demo-college-engineering.ts`, a second script beside the arts college's; idempotent, run it again to put things back). Slug `saraswati-tech`, join code `SARAS-4MDF-N7W6`, kind AUTONOMOUS_COLLEGE, streams ENGINEERING, Pune, affiliated to Savitribai Phule Pune University for the degree and autonomous in conduct, AISHE C-41902 and an AICTE extension-of-approval reference (both made up), NAAC A until 31 March 2029. Every module a college is offered is on: the eight the ENGINEERING preset turns on and the four the roster's librarian, warden, driver and payroll need. The password is the demo schools' shared one, `Relay-Demo-2026`. For a browser check mint a session: `npm run zz:token -- ROLE email@demo.relay.test` (then `--purge`).
+
+Dates (G4-29): the college is dated from the day the script runs (`scripts/demo-calendar.ts`). The academic year is the one whose odd term began most recently; its odd term (1 July to 30 November) is current and the even term before it past; every other date moves with them by whole years; the registers are the four Monday-to-Saturday weeks before the run's week, inside the odd term. From December to June the college shows the odd term just ended, since its offerings are odd-semester ones. A run over a college built for another academic year is refused (the script promotes nobody); `--calendar` prints the dates and writes nothing; `DEMO_TODAY=YYYY-MM-DD` pins the day.
+
+What is in it: Computer Engineering (head Dr Anagha Kelkar) and Mechanical Engineering (head Dr Vikas Phadnis); BE programmes (AICTE, four years) on the institute's autonomous scheme "SIT Autonomous 2024" with programme and course outcomes; the odd term 2026–27 (current) and the even term 2025–26; divisions SE Computer A and B, SE Mechanical A and B and FE Computer A; lab batches A and B (capacity 20) in every second-year division and A in the first year's; ten offerings on a Mon–Sat grid, each lab course with one LAB hour per batch in Computer Lab 1 or the Strength of Materials Lab; registers from 2026-09-28 to 2026-10-24 (dated from the run's day, demo-calendar.ts), the LAB hours registered for their batch only; a practical record for every lab student (experiment 1 signed by the department's lab in-charge, CE301 experiment 2 in SE Computer A waiting for a signature); internal marks locked on CE301 in SE Computer A, ME302's unit test in SE Mechanical A waiting for a countersign; Winter 2026 in CONDUCT with hall tickets, the CE301 paper set by Prof Rasika Dixit and sealed, ME302's assigned to Prof Sameer Kulkarni; Summer 2026 published from marks the cell entered by double entry, a grade card for each of the ten who sat, one ATKT; Deccan Robotics Pvt Ltd (verified by the TPO) with an OPEN drive and two applicants, last season's closed drive with the alumnus's offer and the 2025 season, a SUMMER internship credited; NAAC's autonomous cycle (2023–28) computed; the NBA SAR for Computer Engineering for 2026–27 as a draft (75 marks from the records and 152 self-assessed by the HOD on three criteria, of 1,000); the AICTE mandatory disclosure published at /public/disclosure/saraswati-tech; fee structures under the FRA, a demand per semester, six odd semesters paid by bank, one scholarship claim sanctioned; Visvesvaraya Hostel (boys) with four boarders and the squad's night round; Route 1 with three riders; lab stock, three assets and one breadboard written off as a breakage; a salary for each of the fifteen staff and September's payroll locked; duties: a LAB_INCHARGE per department (Prof Nikhil Bapat, Prof Sameer Kulkarni), ANTI_RAGGING_SQUAD and NSS_OFFICER (Prof Rasika Dixit, three students enrolled, one activity), RESEARCH_DEAN (Dr Anagha Kelkar), EXAM_SQUAD (Prof Pallavi Sathe).
+
+| Account | Name | Role | Home | What to look at |
+|---|---|---|---|---|
+| sit.registrar@demo.relay.test | Madhavi Ranade | Admin (registrar) | /admin | /admin (the engineering home), /admin/academics, /admin/stream-records (lab batches, practicals), /admin/people (duties on the row menu), /accounts, /admin/inventory; holds the head's pages, given by the principal at /principal/staff: /principal/leave, /principal/trends, /admin/reviews, /admin/safety |
+| sit.principal@demo.relay.test | Dr Shrikant Gokhale | PRINCIPAL | /principal | /principal/college, /principal/accreditation (the autonomous NAAC cycle), /exam-cell, /iqac/documents (the NBA SAR to sign off once sent) |
+| sit.hod.comp@demo.relay.test | Dr Anagha Kelkar | HOD · RESEARCH_DEAN | /hod | /hod/nba?year=2026 (this year's SAR draft, three criteria written; the page opens on last year's, empty), /hod/practicals, /duties/research (holds RESEARCH_DEAN), /faculty (teaches CE302) |
+| sit.hod.mech@demo.relay.test | Dr Vikas Phadnis | HOD | /hod | /hod (Mechanical), /hod/practicals, /faculty (teaches ME301 in SE Mechanical A) |
+| sit.faculty1@demo.relay.test | Prof Nikhil Bapat | FACULTY · LAB_INCHARGE | /faculty | CE301 in SE Computer A (internal marks locked) and CE102; /duties/lab (LAB_INCHARGE, Computer Lab 1: stock, the breakage, rows to sign), /faculty/practicals |
+| sit.faculty2@demo.relay.test | Prof Rasika Dixit | FACULTY · ANTI_RAGGING_SQUAD, NSS_OFFICER | /faculty | CE301 in SE Computer B and CE101; the CE301 paper set and sealed (/faculty/exams); /duties/anti-ragging and /duties/nss (ANTI_RAGGING_SQUAD, NSS_OFFICER) |
+| sit.faculty3@demo.relay.test | Prof Sameer Kulkarni | FACULTY · LAB_INCHARGE | /faculty | ME302 in both SE Mechanical divisions (A's unit test waiting for a countersign), the ME302 paper assigned; /duties/lab (LAB_INCHARGE, Strength of Materials Lab) |
+| sit.faculty4@demo.relay.test | Prof Pallavi Sathe | FACULTY · EXAM_SQUAD | /faculty | ME301 in SE Mechanical B; /duties/exam-squad (EXAM_SQUAD: the Winter 2026 papers ahead) |
+| sit.exams@demo.relay.test | Dr Hemant Joshi | EXAM_CONTROLLER | /exam-cell | Winter 2026 in CONDUCT (the sealed CE301 paper, the ME302 paper assigned, hall tickets); Summer 2026 published (marks by double entry, grade cards, one ATKT) |
+| sit.iqac@demo.relay.test | Dr Swati Marathe | IQAC | /iqac | /iqac/predictor (the autonomous cycle), /iqac/documents (the engineering filings, the NBA SAR draft, the AICTE disclosure published), /iqac/documents/nba?year=2026 (the SAR draft with its figures) |
+| sit.tpo@demo.relay.test | Rahul Wagh | TPO | /placement | /placement/drives (Deccan Robotics' OPEN drive, two applicants), /placement/internships (the SUMMER internship), /placement/analytics (2025 season) |
+| sit.accounts@demo.relay.test | Kavita Deshmukh | ACCOUNTS | /accounts | /accounts (collection, defaulters), /accounts/structures (FRA approvals), /accounts/scholarships, /admin/payroll (September locked) |
+| sit.librarian@demo.relay.test | Sunanda Apte | LIBRARIAN | /library | the catalogue (engineering titles), one book out with Rohan |
+| sit.warden@demo.relay.test | Ganesh Pawar | WARDEN | /hostel | four boarders (one a minor), the anti-ragging squad's round |
+| sit.driver@demo.relay.test | Dattatray Kale | DRIVER | /driver | Route 1 — Hadapsar to campus, three riders |
+| sit.student01@demo.relay.test | Aarya Kulkarni | Student, SE Computer A (OPEN) | /student | /student/academics (lab batch, practicals), /student/exams (hall ticket for Winter 2026); last term's SGPA 6.50 (grade card); applied to the open drive; rides Route 1; NSS volunteer; odd semester paid |
+| sit.student02@demo.relay.test | Rohan Deshpande | Student, SE Computer A (OBC) | /student | /student/academics (lab batch, practicals), /student/exams (hall ticket for Winter 2026); last term's SGPA 7.50 (grade card); OBC post-matric scholarship sanctioned; a library book out |
+| sit.student03@demo.relay.test | Ishita Patil | Student, SE Computer A (OPEN) | /student | /student/academics (lab batch, practicals), /student/exams (hall ticket for Winter 2026); last term's SGPA 9.00 (grade card); summer internship at Deccan Robotics, credited (/student/placement); rides Route 1; odd semester paid |
+| sit.student04@demo.relay.test | Siddharth Joshi | Student, SE Computer B (OPEN) | /student | /student/academics (lab batch, practicals), /student/exams (hall ticket for Winter 2026); last term's SGPA 7.50 (grade card); boards at Visvesvaraya Hostel; odd semester paid |
+| sit.student05@demo.relay.test | Neha Gaikwad | Student, SE Computer B (OPEN) | /student | /student/academics (lab batch, practicals), /student/exams (hall ticket for Winter 2026); last term's SGPA 7.50 (grade card) |
+| sit.student06@demo.relay.test | Varun Shinde | Student, SE Computer B (OBC) | /student | /student/academics (lab batch, practicals), /student/exams (hall ticket for Winter 2026); last term's SGPA 8.00 (grade card); NSS volunteer |
+| sit.student07@demo.relay.test | Aditya Pawar | Student, SE Mechanical A (OPEN) | /student | /student/academics (lab batch, practicals), /student/exams (hall ticket for Winter 2026); last term's SGPA 8.50 (grade card); applied to the open drive; boards at Visvesvaraya Hostel; odd semester paid |
+| sit.student08@demo.relay.test | Shruti More | Student, SE Mechanical A (OBC) | /student | /student/academics (lab batch, practicals), /student/exams (hall ticket for Winter 2026); last term's SGPA 8.00 (grade card); NSS volunteer |
+| sit.student09@demo.relay.test | Omkar Jadhav | Student, SE Mechanical B (OPEN) | /student | /student/academics (lab batch, practicals), /student/exams (hall ticket for Winter 2026); last term's SGPA 3.50 (grade card); ATKT in ME201 with a backlog; boards at Visvesvaraya Hostel |
+| sit.student10@demo.relay.test | Pratik Bhosale | Student, SE Mechanical B (OPEN) | /student | /student/academics (lab batch, practicals), /student/exams (hall ticket for Winter 2026); last term's SGPA 8.00 (grade card); under 75 % in ME302; odd semester paid |
+| sit.student11@demo.relay.test | Anushka Kale | Student, FE Computer A (OPEN) | /student | /student/academics (lab batch, practicals), /student/exams (hall ticket for Winter 2026); rides Route 1; a minor of 17; her guardian sees everything; odd semester paid |
+| sit.student12@demo.relay.test | Yash Thorat | Student, FE Computer A (OPEN) | /student | /student/academics (lab batch, practicals), /student/exams (hall ticket for Winter 2026); boards at Visvesvaraya Hostel; a minor of 17 |
+| sit.parent11@demo.relay.test | Suresh Kale | Parent of Anushka Kale (a minor) | /parent | /parent/academics, /parent/results, /parent/fees, the bus (Route 1) |
+| sit.alumni01@demo.relay.test | Kedar Limaye | Alumnus (BE Computer, left May 2025) | /alumni | /alumni/college (placed through last season's drive, a mentor) |
+| sit.recruiter@demo.relay.test | Meera Iyer | Recruiter, Deccan Robotics Pvt Ltd (no membership) | /recruiter | the OPEN drive and its two consented applicants |
+<!-- demo-college-engineering:end -->

@@ -54,7 +54,7 @@ import { Prisma, PrismaClient } from "@prisma/client";
 import { ENDPOINTS, type Endpoint, type SweepFixture } from "../src/lib/api-catalog";
 import { declaredStatus, doorForKind, featuresOf, permits } from "../src/lib/api-catalog/types";
 import { COLLEGE_DOORS } from "./college-doors";
-import { isCollegeKind, isDutyRole, parseDuties } from "@edulink/contracts";
+import { dutiesForRole, isCollegeKind, isDutyRole, parseDuties } from "@edulink/contracts";
 import { ROLES, type Role } from "../src/lib/constants";
 import { parseTeachingDays } from "../src/lib/dates";
 import { HOLIDAY_KIND_META, type HolidayKind } from "../src/lib/holiday-kinds";
@@ -102,7 +102,7 @@ function featureAnswer(e: Endpoint, role: Role | null): { status: 404 | 402; cod
 /** Where each actor stands: its school's modules and whether that school is a college (a guardian: the children's schools). Filled by `actors()`. */
 type Tenant = { schoolId: string | null; modules: Set<string>; college: boolean; kind: string | null };
 const tenantOf: Partial<Record<Role, Tenant>> = {};
-/** Each actor's duties (5 Oct 2026): a FACULTY's or HOD's from their membership, [] for the rest — a door naming `duties` expects 403 without one. */
+/** Each actor's duties (5 Oct 2026): a FACULTY's or HOD's from their membership, the ADMIN's office duties (owner-batch-item9), [] for the rest — a door naming `duties` expects 403 without one. */
 const dutiesOf: Partial<Record<Role, string[]>> = {};
 /** permits() as this actor: the role, and the duties the sweep's actor of that role holds. */
 const actorPermits = (e: Endpoint, role: Role): boolean => permits(e, role, dutiesOf[role] ?? []);
@@ -470,6 +470,12 @@ async function actors(): Promise<Record<Role, string>> {
     PARENT: await mint(guardian.parentUserId, "PARENT", null),
   };
   if (expert) out.EXPERT = await mint(expert.userId, "EXPERT", null);
+  // The office's duties (owner-batch-item9): Northgate's admin holds the head's pages (zz-fixtures), so the head's doors expect 200.
+  {
+    const office = await db.membership.findFirst({ where: { schoolId: school.id, role: "ADMIN", status: "ACTIVE", leftAt: null, user: { email: "zz.admin@zz.test" } }, select: { dutiesJson: true } });
+    const head = (await db.membership.count({ where: { schoolId: school.id, role: "PRINCIPAL", status: "ACTIVE", leftAt: null } })) > 0;
+    dutiesOf.ADMIN = dutiesForRole("ADMIN", office?.dutiesJson, head);
+  }
   // The module roles (3 Oct 2026), each at Northgate, which zz-fixtures gives every module: a driver, the library's desk, a warden and an alumnus.
   const moduleActors: [Role, string][] = [["DRIVER", "zz.driver01@zz.test"], ["LIBRARIAN", "zz.librarian@zz.test"], ["WARDEN", "zz.warden@zz.test"], ["ALUMNUS", "zz.alumni01@zz.test"]];
   for (const [role, email] of moduleActors) {

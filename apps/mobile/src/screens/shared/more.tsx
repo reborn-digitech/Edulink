@@ -8,7 +8,7 @@ import { Avatar } from "@/components/avatar";
 import { useSession } from "@/lib/session";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { menuFor, MENU_GROUP_KEY, MENU_GROUPS_CLOSED_BY_DEFAULT, ME_MENU_GROUP, menuOpenKey, type MenuGroup, type MenuItem, featuresOf } from "@/lib/nav";
+import { dutiesOfMe, menuFor, MENU_GROUP_KEY, MENU_GROUPS_CLOSED_BY_DEFAULT, ME_MENU_GROUP, menuOpenKey, type MenuGroup, type MenuItem, featuresOf } from "@/lib/nav";
 import { keyStore } from "@/lib/storage";
 import { contextPlace } from "@/lib/institution";
 import { LanguageRow } from "@/components/language-row";
@@ -70,7 +70,7 @@ export function More() {
         <Icon name="caretRight" size={18} color={th.fgSubtle} weight="bold" />
       </Pressable>
       {role
-        ? menuFor(role, me.modules ?? [], me.duties ?? [], me.streams ?? [], featuresOf(me)).map(({ group, items }) =>
+        ? menuFor(role, me.modules ?? [], dutiesOfMe(me), me.streams ?? [], featuresOf(me)).map(({ group, items }) =>
             group === ME_MENU_GROUP ? (
               <Card key={group} title={t(MENU_GROUP_KEY[group])}>
                 {items.map((item) => (

@@ -26,7 +26,7 @@ import { join, resolve } from "node:path";
 import { config } from "dotenv";
 import { NAV, PRIMARY_ACTION, QUICK_ACTIONS, hiddenByFeature } from "@/lib/nav";
 import { isLimitedRole, ROLE_HOME, type Role } from "@/lib/constants";
-import { isDutyRole, MODULE_OF_ROLE, parseDuties } from "@edulink/contracts";
+import { dutiesForRole, MODULE_OF_ROLE } from "@edulink/contracts";
 import { warmPlan, warmUp } from "./sweep-warm";
 import { describeGateState, gateFlags, pageGate, readGateState, runSwitches, type GateState } from "./sweep-features";
 import { request as httpRequest } from "node:http";
@@ -1118,9 +1118,12 @@ async function everyNavLink(walkers: NavWalker[]) {
     // its page is the app's 404 — asked below, so a hidden entry whose page still opens is caught (16 Oct 2026).
     const hidden = new Set(hiddenByFeature(inScope, [...gate.on]));
     const shown = inScope.filter((item) => !hidden.has(item.href));
+    // The head's pages an admin does not hold (owner-batch-item9): hidden from the menu and the palette, and typed in, the app's 404.
+    const headless = role === "ADMIN" ? NAV.ADMIN.filter((item) => item.duty && !(w.duties ?? []).includes(item.duty) && (!item.module || w.modulesOn.includes(item.module))).map((item) => item.href) : [];
+    for (const href of headless) await check(w.actor, href, 404, `${role} at ${w.where} does not hold the head's pages: the menu hides this, and typed in it is the app's 404`);
     const hrefs = [
       ...shown.map((item) => item.href),
-      ...QUICK_ACTIONS[role].map((action) => action.href),
+      ...QUICK_ACTIONS[role].map((action) => action.href).filter((href) => !headless.includes(href)),
       ...(PRIMARY_ACTION[role] ? [PRIMARY_ACTION[role]!.href] : []),
       ...(w.also ?? []),
     ].filter((href) => !href.includes("["));
@@ -1148,6 +1151,17 @@ async function everyNavLink(walkers: NavWalker[]) {
 /** The modules a school has on, as the shell reads them. */
 async function modulesAt(schoolId: string): Promise<string[]> {
   return (await db.schoolModule.findMany({ where: { schoolId }, select: { module: true } })).map((r) => r.module);
+}
+
+/** Whether a school has an active head: an admin holds the head's pages while it has none (owner-batch-item9). */
+async function hasHead(schoolId: string): Promise<boolean> {
+  return (await db.membership.count({ where: { schoolId, role: "PRINCIPAL", status: "ACTIVE", leftAt: null } })) > 0;
+}
+
+/** An admin's office duties at a school, as the session reads them (owner-batch-item9: given by the head, or every admin's with no head). */
+async function officeDutiesAt(schoolId: string, email: string): Promise<string[]> {
+  const m = await db.membership.findFirst({ where: { schoolId, role: "ADMIN", status: "ACTIVE", leftAt: null, user: { email } }, select: { dutiesJson: true } });
+  return dutiesForRole("ADMIN", m?.dutiesJson, await hasHead(schoolId));
 }
 
 /** A guardian's menu follows the children's schools (enabledModulesForFamily). */
@@ -2385,7 +2399,7 @@ async function main() {
   /* ---- admin ---- */
   for (const p of [
     "/admin", "/admin/classes", "/admin/classes/new", "/admin/invites", "/admin/invites/new",
-    "/admin/people", "/admin/people?q=a", "/admin/people?role=STUDENT", "/admin/safety",
+    "/admin/people", "/admin/people?q=a", "/admin/people?role=STUDENT",
     "/admin/settings", "/admin/calendar", "/bulletin", "/bulletin/global", "/experts", "/mentoring", "/bulletin?filter=mine", "/bulletin?filter=pending",
     "/bulletin/new", "/notifications", "/notifications?tab=unread", "/account", "/account/merge", "/switch",
     "/remarks", "/admin/people/export",
@@ -2395,6 +2409,12 @@ async function main() {
     "/joins",
   ]) {
     await check(admin, p);
+  }
+  // The safety centre is one of the head's pages (owner-batch-item9): Riverside's admin opens it only holding them (or
+  // while the school has no head); without them, typed in, it is the app's 404.
+  {
+    const holds = (await officeDutiesAt(riverside.id, "priya@riverside.school")).includes("HEAD_PAGES");
+    await check(admin, "/admin/safety", holds ? 200 : 404, holds ? "the safety centre, for an admin holding the head's pages" : "the safety centre is the head's: an admin without the head's pages is answered 404");
   }
   // The queue is the deciders': a pupil and a guardian are sent home, and
   // somebody signed out to the login page.
@@ -3047,7 +3067,7 @@ async function main() {
     // suite running at the time, so the run's clean-up of "the notices it caused" leaves theirs alone.
     const person = await db.user.findUnique({ where: { email }, select: { id: true } });
     if (person) touched.delete(person.id);
-    return { role, actor, modulesOn: await modulesAt(at.id), where, duties: isDutyRole(role) ? parseDuties(member.dutiesJson) : [], ...extra };
+    return { role, actor, modulesOn: await modulesAt(at.id), where, duties: dutiesForRole(role, member.dutiesJson, await hasHead(at.id)), ...extra };
   };
 
   // The recruiter (4 Oct 2026): an outside account like the expert's, made for the walk and taken away again.
@@ -3058,7 +3078,7 @@ async function main() {
   try {
     const riversideModules = await modulesAt(riverside.id);
     const walkers: (NavWalker | null)[] = [
-      { role: "ADMIN", actor: admin, modulesOn: riversideModules, where: "riverside" },
+      { role: "ADMIN", actor: admin, modulesOn: riversideModules, where: "riverside", duties: await officeDutiesAt(riverside.id, "priya@riverside.school") },
       { role: "TEACHER", actor: teacher, modulesOn: riversideModules, where: "riverside" },
       { role: "STUDENT", actor: student, modulesOn: riversideModules, where: "riverside" },
       { role: "PARENT", actor: parent, modulesOn: await modulesForFamily("parent@example.com"), where: "riverside" },

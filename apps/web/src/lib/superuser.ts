@@ -2,7 +2,7 @@ import "server-only";
 import { writeDefaultModules } from "./modules";
 import { selfReadAgeDefault } from "./self-read";
 import { checkStreams, streamsToStore } from "./streams";
-import { INSTITUTION_KINDS, type InstitutionKind } from "@edulink/contracts";
+import { adminDutiesHeld, INSTITUTION_KINDS, type InstitutionKind } from "@edulink/contracts";
 import { cache } from "react";
 import type { Prisma } from "@prisma/client";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
@@ -1760,10 +1760,12 @@ async function tellSchoolOffice(
     await asOperatorIn(session, schoolId, async () => {
       const office = await db.membership.findMany({
         where: { schoolId, role: { in: ["ADMIN", "PRINCIPAL"] }, status: "ACTIVE", leftAt: null },
-        select: { userId: true },
-        distinct: ["userId"],
+        select: { userId: true, role: true, dutiesJson: true },
       });
-      for (const member of office) {
+      // The safety centre is one of the head's pages (owner-batch-item9): an admin without them is sent to the office's home instead.
+      const head = office.some((m) => m.role === "PRINCIPAL");
+      const reads = new Set(office.filter((m) => m.role === "PRINCIPAL" || adminDutiesHeld(m.dutiesJson, head).includes("HEAD_PAGES")).map((m) => m.userId));
+      for (const member of [...new Map(office.map((m) => [m.userId, m])).values()]) {
         await notify({
           userId: member.userId,
           schoolId,
@@ -1772,7 +1774,7 @@ async function tellSchoolOffice(
           titleVars: text.vars,
           bodyKey: text.bodyKey,
           bodyVars: text.vars,
-          url: "/admin/safety",
+          url: reads.has(member.userId) ? "/admin/safety" : "/admin",
           meta: { event: text.event },
         });
       }

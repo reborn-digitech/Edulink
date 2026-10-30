@@ -10,7 +10,7 @@ import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
  */
 export async function POST(request: Request) {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
     const parsed = officeTakeDownBodySchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
     await removeContent(ctx, parsed.data);

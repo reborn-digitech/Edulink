@@ -792,6 +792,7 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   // Streams and duties (5 Oct 2026).
   "college.streams.set": "audit.collegeStreamsSet",
   "people.duties.set": "audit.peopleDutiesSet",
+  "people.headDuty.set": "audit.peopleHeadDutySet", // owner-batch-item9
   // Stream records and the duties' desks (S2, 5 Oct 2026).
   "streamRecords.labBatches.split": "audit.streamRecordsLabBatchesSplit",
   "streamRecords.labBatches.move": "audit.streamRecordsLabBatchesMove",

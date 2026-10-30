@@ -7,7 +7,7 @@ import { FeatureOffError, ModuleOffError, PlanRequiredError } from "@/lib/access
 import { MODULE_META } from "@/lib/module-meta";
 import { enabledModules, enabledModulesForFamily, institutionKindOf } from "@/lib/modules";
 import { streamsOf } from "@/lib/streams";
-import { myDuties } from "@/lib/duties";
+import { myAdminDuties, myDuties } from "@/lib/duties";
 import { featuresFor, lockedFor } from "@/lib/platform-features";
 import type { ActiveContext } from "@/lib/session";
 import { createApiSession, listContexts, bearerToken, getSession } from "@/lib/session";
@@ -255,6 +255,8 @@ export async function meBody(ctx: ActiveContext) {
     // The active college's streams and the active membership's duties (5 Oct 2026); empty at a school and for every role but FACULTY and HOD.
     streams: await streamsOf(ctx.schoolId),
     duties: await myDuties(ctx),
+    // The office's duties (owner-batch-item9): HEAD_PAGES while the head has given this admin the head's pages, or the school has no head.
+    adminDuties: await myAdminDuties(ctx),
     // The platform features this person may use (15 Oct 2026); the phone hides a feature's tabs and screens by them.
     features: await featuresFor(ctx),
     // Of those, the ones this person reaches only with a plan they do not hold (16 Oct 2026): their doors answer 402 PLAN_REQUIRED.

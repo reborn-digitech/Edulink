@@ -33,7 +33,7 @@ export default async function SafetyPage({
   // The reader's language, not English under a Hindi or Marathi page (QA-20).
   const relativeTime = await getRelativeTime();
   const tr = await getT();
-  await requireRole("ADMIN");
+  await requireRole("ADMIN", "PRINCIPAL");
   const session = (await getSession())!;
   const { tab } = await searchParams;
   const active = TABS.find((t) => t.id === tab)?.id ?? "open";

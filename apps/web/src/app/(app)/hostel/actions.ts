@@ -10,10 +10,12 @@ import {
   hostelSaveSchema,
   hostelVisitorCreateSchema,
   MESS_MEALS,
+  roomChangeBodySchema,
 } from "@edulink/contracts";
 import { parseRupees } from "@edulink/i18n";
 import { requireApiUser } from "@/lib/tenancy";
 import { billMess } from "@/lib/college-fees";
+import { changeRoom } from "@/lib/college-campus";
 import { answerForm } from "@/lib/form-action";
 import type { FieldMap, FormState } from "@/lib/form-state";
 import { db } from "@/lib/db";
@@ -286,4 +288,25 @@ export async function messAttendanceAction(previous: FormState, formData: FormDa
     const r = await saveMessAttendance(ctx, { hostelId: str(formData, "hostelId"), dateKey: str(formData, "dateKey"), meal: meal as (typeof MESS_MEALS)[number], entries });
     return { key: "hostel.messSaved", vars: { count: r.saved } };
   });
+}
+
+/* ---- owner-batch-item9 (27 Oct 2026): a boarder moved to another bed at a school's hostel ---- */
+
+/**
+ * Move a boarder to another bed: the old place ends today and the new one starts today, in one transaction
+ * (college-campus.ts `changeRoom`, through campusDesk: the warden and the office, HOSTEL on). The bed is chosen as
+ * "room:bed" from the free beds the page lists; a bed that went to someone else meanwhile is refused beside the box.
+ */
+export async function moveBoarderAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(
+    previous,
+    formData,
+    async (ctx): Promise<Done> => {
+      const [roomId = "", bed = ""] = str(formData, "bed").split(":");
+      const input = parsed(roomChangeBodySchema.safeParse({ allotmentId: str(formData, "allotmentId"), roomId, bed: Number(bed) }));
+      await changeRoom(ctx, input);
+      return "collegeOffice.roomChanged";
+    },
+    { roomId: "bed", "hostel.refuseNoRoom": "bed", "hostel.refuseNoSuchBed": "bed", "hostel.refuseBedTaken": "bed" },
+  );
 }
