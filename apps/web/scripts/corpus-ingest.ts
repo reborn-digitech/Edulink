@@ -4,6 +4,7 @@
  *
  *   npm run corpus:ingest -- [--source=ncert,…] [--prefix=ncert/8] [--reembed] [--reextract]
  *                            [--extract-only | --embed-only] [--shard=1/6] [--limit=20] [--no-figures]
+ *                            [--paths-file=<file>] [--to-staging=<folder>]
  *
  * TWO PASSES, EACH RESUMABLE.
  *   Extract: every fetched PDF in storage/corpus (by its folder's manifest.json) is read page by
@@ -23,18 +24,26 @@
  * embeddings servers side by side were tried on 8 Oct 2026: no faster, the GPU is the limit, and
  * beside the chat model they failed with Metal compute errors.)
  *
+ * STAGING (owner-batch-item11, 31 Oct 2026). --to-staging=<folder> runs the extract pass exactly as it is (every file read
+ * again, checksum or not) but replaces nothing: each document is written to <folder>/books/<path with / as __>.json (the
+ * document row it would become, its live id, the chapter split, the chunks with their language), and a figure or a
+ * captions file the corpus does not already hold to <folder>/files/<corpus-relative path>. No database write, no
+ * embedding, no ANALYZE: the live chunks stay as they are until the staged ones are applied (scripts/corpus-reextract.ts).
+ * --paths-file=<file> takes the documents named in it (corpus-relative paths, one a line) instead of every manifest's, in
+ * the extract pass and the embed pass alike (corpus:reextract --apply embeds the books it replaced that way).
+ *
  * Runs as the OWNER (npm run corpus:ingest wraps it in with-admin-db.mjs): the content tables are
  * written by the owner only. Refuses a database that is not on this machine, and refuses to start
  * without the embedding endpoint configured.
  */
 import { PrismaClient, Prisma } from "@prisma/client";
 import { mkdirSync, readFileSync, existsSync, writeFileSync } from "node:fs";
-import { basename, join, relative } from "node:path";
+import { basename, dirname, join, relative } from "node:path";
 import { config } from "dotenv";
 import { CORPUS_ROOT, SOURCES, walkManifests, type ManifestEntry, type SourceKey } from "./corpus-lib";
 import { closeOcr, contrastOcr, extractPdf, toPng, type OcrReader } from "./corpus-pdf";
 import { chunk, chunkPlainText, editionIn, chapterNameFromTitle, lettersOfTitle, type Element, type Structured } from "./corpus-chunk";
-import { splitBookWithOcr, withChapterHeadings } from "./corpus-contents";
+import { splitBookWithOcr, withChapterHeadings, type BookSplit } from "./corpus-contents";
 import { chunkPaper, type PaperChunk } from "./corpus-papers-chunk";
 import { refuseUnlessLocalDatabase } from "./local-db-guard.mjs";
 import { requireEmbedConfig } from "../src/lib/assistant-env";
@@ -57,6 +66,17 @@ const EMBED_ONLY = arg("embed-only") === "true";
 const FIGURES = arg("no-figures") !== "true";
 const OCR = process.env.CORPUS_OCR !== "0";
 const LIMIT = arg("limit") ? Number(arg("limit")) : Infinity;
+/** owner-batch-item11: the folder the extract pass writes to instead of the tables (nothing live replaced, nothing embedded). */
+const STAGING = (() => {
+  const s = arg("to-staging");
+  if (s === undefined) return null;
+  if (s === "true") throw new Error("--to-staging takes a folder: --to-staging=storage/corpus/reextract-<date>");
+  return s;
+})();
+const PATHS = (() => {
+  const f = arg("paths-file");
+  return f ? new Set(readFileSync(f, "utf8").split("\n").map((l) => l.trim()).filter(Boolean)) : null;
+})();
 const [SHARD_K = 1, SHARD_N = 1] = (arg("shard") ?? "1/1").split("/").map(Number);
 const BATCH = Number(process.env.CORPUS_EMBED_BATCH ?? 32) || 32;
 const IN_FLIGHT = Number(process.env.CORPUS_EMBED_PARALLEL ?? 2) || 2;
@@ -125,7 +145,7 @@ async function ingestOne(dir: string, e: ManifestEntry): Promise<void> {
   const file = join(dir, e.file);
   const path = relative(CORPUS_ROOT, file).split("\\").join("/");
   const existing = await db.contentDocument.findUnique({ where: { path }, select: { id: true, sha256: true } });
-  if (existing && existing.sha256 === e.sha256 && !REEXTRACT) {
+  if (existing && existing.sha256 === e.sha256 && !REEXTRACT && !STAGING) {
     totals.skipped++;
     return;
   }
@@ -163,11 +183,19 @@ async function ingestOne(dir: string, e: ManifestEntry): Promise<void> {
   // largest-face rule took the cover's title for the one chapter of every chunk): each chapter starts a chunk of its own
   // under "N. Title" (scripts/corpus-contents.ts). A book that cannot be split keeps the chunker's own headings, said so.
   let transformElements: ((elements: Element[]) => Element[]) | undefined;
+  let bookSplit: BookSplit | null = null;
   if (!isPaper && e.source === "balbharati" && e.kind === "textbook") {
     const front = (ocr?: OcrReader) => async () => (await extractPdf(bytes.slice(), { figures: false, ocrLangs: ocrLangsFor(e.language), ocrRenderAll: true, ocrPages: (p) => p <= 24, ...(ocr ? { ocr } : {}) })).pages;
-    const { split } = await splitBookWithOcr(pages, OCR ? [front(), front(contrastOcr(120)), front(contrastOcr(170))] : null);
+    // owner-batch-item11: the split reads the text layer alone first, as corpus:balbharati-chapters did (item 7). The pages
+    // above have their pictures OCR'd plainly, and a contents page found that way stopped the black-on-white readings
+    // below from being tried (class 10 mathematics part 2 refused) or beat the body's numbered lines (class 5 mathematics).
+    const textLayer = OCR ? (await extractPdf(bytes.slice(), { figures: false, ocrLangs: null })).pages : pages;
+    const { split } = await splitBookWithOcr(textLayer, OCR ? [front(), front(contrastOcr(120)), front(contrastOcr(170))] : null);
+    bookSplit = split;
     if (split.refusal) console.log(`  ${path}: chapters not split (${split.refusal}); its chunks keep the chunker's own headings`);
-    else transformElements = (elements) => withChapterHeadings(elements, split.chapters);
+    // owner-batch-item11: the pages after a chapter's last that no chapter holds (answers, an appendix, the cover of a
+    // second part) end it under the book's title, as item 7's relabelling gave them.
+    else transformElements = (elements) => withChapterHeadings(elements, split.chapters, { outside: e.title });
   }
   const structured: Omit<Structured, "chunks"> & { chunks: (Structured["chunks"][number] & { kind?: PaperChunk["kind"] })[] } = paper
     ? { ...paper, figures: [], edition: null, bodySize: 0, chapter: e.title }
@@ -178,6 +206,11 @@ async function ingestOne(dir: string, e: ManifestEntry): Promise<void> {
         transformElements,
       });
   const edition = isPaper ? null : (e.edition ?? structured.edition ?? (await bookEdition(dir, e)));
+
+  if (STAGING) {
+    await stageOne({ path, existingId: existing?.id ?? null, e, dir, base, figureDir, pages, structured, edition, bookSplit, bytes: bytes.length });
+    return;
+  }
 
   if (FIGURES && structured.figures.length) {
     mkdirSync(figureDir, { recursive: true });
@@ -242,6 +275,108 @@ async function ingestOne(dir: string, e: ManifestEntry): Promise<void> {
   totals.ocrPages += pages.filter((p) => p.ocr).length;
   totals.chunks += structured.chunks.length;
   totals.figures += structured.figures.length;
+}
+
+/**
+ * owner-batch-item11: one document into the staging folder instead of the tables. The document row as the ingest would
+ * write it, the split the chunks were cut by, and the chunks as createMany would take them; a figure the corpus already
+ * holds is not written again (its key is the same: the page and the picture's place on it), one it lacks goes to
+ * <staging>/files/ beside the captions file, for the apply to copy.
+ */
+async function stageOne(a: {
+  path: string;
+  existingId: string | null;
+  e: ManifestEntry;
+  dir: string;
+  base: string;
+  figureDir: string;
+  pages: Awaited<ReturnType<typeof extractPdf>>["pages"];
+  structured: Omit<Structured, "chunks"> & { chunks: (Structured["chunks"][number] & { kind?: PaperChunk["kind"] })[] };
+  edition: string | null;
+  bookSplit: BookSplit | null;
+  bytes: number;
+}): Promise<void> {
+  const { e, structured, edition } = a;
+  const staging = STAGING!;
+  const missingLive: string[] = [];
+  if (FIGURES && structured.figures.length) {
+    const captions: Record<string, { page: number; caption: string | null }> = {};
+    for (const f of structured.figures) {
+      captions[basename(f.key)] = { page: f.page, caption: f.caption };
+      if (existsSync(join(CORPUS_ROOT, f.key))) continue;
+      missingLive.push(f.key);
+      const out = join(staging, "files", f.key);
+      mkdirSync(dirname(out), { recursive: true });
+      writeFileSync(out, await toPng(f.image));
+    }
+    const captionKey = relative(CORPUS_ROOT, join(a.figureDir, `${a.base}.captions.json`)).split("\\").join("/");
+    const text = JSON.stringify(captions, null, 2) + "\n";
+    const liveCaptions = join(CORPUS_ROOT, captionKey);
+    if (!existsSync(liveCaptions) || readFileSync(liveCaptions, "utf8") !== text) {
+      const out = join(staging, "files", captionKey);
+      mkdirSync(dirname(out), { recursive: true });
+      writeFileSync(out, text);
+    }
+  }
+  const document = {
+    source: e.source,
+    kind: e.kind,
+    board: e.board,
+    gradeOrProgramme: e.gradeOrProgramme,
+    subject: e.subject,
+    title: e.title,
+    language: e.language,
+    edition,
+    year: e.year,
+    sourceUrl: e.sourceUrl,
+    licenceUrl: e.licence.url,
+    licenceText: e.licence.text ?? null,
+    retrievedAt: new Date(e.retrievedAt).toISOString(),
+    sha256: e.sha256 ?? "",
+    bytes: e.bytes ?? a.bytes,
+    pageCount: a.pages.length,
+    extra: e.paper ? { ...(e.extra ?? {}), paper: e.paper } : (e.extra ?? {}),
+    styleOnly: e.source === "papers",
+    audience: e.audience ?? null,
+    streams: e.streams ?? [],
+    licenceName: e.licence.name ?? null,
+    attribution: e.attribution ?? null,
+  };
+  const staged = {
+    at: new Date().toISOString(),
+    via: "scripts/corpus-ingest.ts --to-staging",
+    path: a.path,
+    documentId: a.existingId,
+    sha256: e.sha256 ?? "",
+    pages: a.pages.length,
+    ocrPages: a.pages.filter((p) => p.ocr).length,
+    document,
+    split: a.bookSplit ? { method: a.bookSplit.method, contentsPage: a.bookSplit.contentsPage, refusal: a.bookSplit.refusal, notes: a.bookSplit.notes, chapters: a.bookSplit.chapters } : null,
+    chunks: structured.chunks.map((c) => ({
+      ordinal: c.ordinal,
+      chapter: c.chapter,
+      section: c.section,
+      headingPath: c.headingPath,
+      pageStart: c.pageStart,
+      pageEnd: c.pageEnd,
+      text: c.text,
+      language: chunkLanguage(e.language, c.text),
+      tokens: c.tokens,
+      figureKeys: c.figureKeys,
+      edition,
+      kind: c.kind ?? null,
+    })),
+    figures: { total: structured.figures.length, missingLive },
+  };
+  const out = join(staging, "books", `${a.path.replace(/\//g, "__")}.json`);
+  mkdirSync(dirname(out), { recursive: true });
+  writeFileSync(out, JSON.stringify(staged) + "\n");
+  totals.documents++;
+  totals.pages += a.pages.length;
+  totals.ocrPages += a.pages.filter((p) => p.ocr).length;
+  totals.chunks += structured.chunks.length;
+  totals.figures += structured.figures.length;
+  console.log(`  staged ${a.path}: ${structured.chunks.length} chunks${a.bookSplit ? `, ${a.bookSplit.refusal ? "not split" : `${a.bookSplit.chapters.length} chapters`}` : ""}, ${structured.figures.length} figures (${missingLive.length} not in the corpus)`);
 }
 
 /** Vidura pass 4: who a document is searched for, its streams, its licence's name and the attribution its passages carry. */
@@ -313,10 +448,12 @@ async function extractPass() {
     // A book's prelims carry its edition and contents, not teaching text: read for the edition only.
     .filter(({ entry }) => entry.extra?.part !== "prelims")
     .filter(({ dir, entry }) => !PREFIX || relative(CORPUS_ROOT, join(dir, entry.file)).startsWith(PREFIX))
+    .filter(({ dir, entry }) => !PATHS || PATHS.has(relative(CORPUS_ROOT, join(dir, entry.file)).split("\\").join("/")))
     .sort((a, b) => join(a.dir, a.entry.file).localeCompare(join(b.dir, b.entry.file)))
     .filter((_, i) => i % SHARD_N === SHARD_K - 1)
     .slice(0, LIMIT);
-  console.log(`Extract: ${entries.length} documents${SHARD_N > 1 ? ` (shard ${SHARD_K}/${SHARD_N})` : ""}`);
+  console.log(`Extract: ${entries.length} documents${SHARD_N > 1 ? ` (shard ${SHARD_K}/${SHARD_N})` : ""}${STAGING ? ` into the staging folder ${STAGING} (nothing live replaced)` : ""}`);
+  if (PATHS && entries.length < PATHS.size / SHARD_N - 1) console.log(`  ${PATHS.size} paths named, ${entries.length} found in the manifests${SHARD_N > 1 ? " for this shard" : ""}`);
   const started = Date.now();
   let n = 0;
   for (const { dir, entry } of entries) {
@@ -350,7 +487,7 @@ function embeddingInput(r: { title: string; headingPath: string[]; text: string 
 
 async function embedPass() {
   const ep = requireEmbedConfig("corpus:ingest");
-  const scope = Prisma.sql`${sources ? Prisma.sql`AND d."source" IN (${Prisma.join(sources)})` : Prisma.empty} ${PREFIX ? Prisma.sql`AND d."path" LIKE ${PREFIX + "%"}` : Prisma.empty}`;
+  const scope = Prisma.sql`${sources ? Prisma.sql`AND d."source" IN (${Prisma.join(sources)})` : Prisma.empty} ${PREFIX ? Prisma.sql`AND d."path" LIKE ${PREFIX + "%"}` : Prisma.empty} ${PATHS?.size ? Prisma.sql`AND d."path" IN (${Prisma.join([...PATHS])})` : Prisma.empty}`;
   if (REEMBED) {
     const cleared = await db.$executeRaw`UPDATE "ContentChunk" c SET "embedding" = NULL, "embeddedAt" = NULL FROM "ContentDocument" d WHERE d."id" = c."documentId" AND c."embedding" IS NOT NULL ${scope}`;
     console.log(`Re-embed: cleared ${cleared} vectors`);
@@ -441,6 +578,12 @@ async function main() {
   await refuseUnlessLocalDatabase(db, "corpus:ingest");
   // Checked before any work: the extract pass is long, and an ingest that cannot embed is half a run.
   requireEmbedConfig("corpus:ingest");
+  if (STAGING) {
+    if (EMBED_ONLY || REEMBED) throw new Error("--to-staging extracts only: it never embeds");
+    await extractPass();
+    console.log(`\nStaged: ${totals.documents} documents, ${totals.failed} failed; ${totals.pages} pages (${totals.ocrPages} by OCR); ${totals.chunks} chunks; ${totals.figures} figures. Nothing in the tables was changed.`);
+    return;
+  }
   if (!EMBED_ONLY) {
     await extractPass();
     // Vidura pass 4 (18 Oct 2026): fresh statistics after the documents changed, so the planner reads the books and the

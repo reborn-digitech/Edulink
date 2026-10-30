@@ -796,18 +796,31 @@ export async function splitBookWithOcr(pages: PageContent[], readOcr: (() => Pro
  * The chunker's elements with each chapter's start made a hard level-0 heading, "N. Title", before the first element of
  * its opening page; the title's own heading on that page dropped; a level-0 heading the book's largest face made inside
  * the chapters (the cover's face reused) demoted to a section. Pure.
+ *
+ * `outside` (owner-batch-item11): the label of the pages after a chapter's last page that no chapter holds (answers, an
+ * appendix, a second part's cover). Without it they ran on under the last chapter's label, so a re-extract would hand the
+ * generator the answers as the last chapter's text; with it a hard level-0 heading ends the chapter there, as item 7's
+ * relabelling gave such chunks the book's title. The front matter's first pages, before any heading of their own, take it
+ * too (item 7 gave a chunk with no label the book's title); the cover's own heading replaces it where it stands.
  */
-export function withChapterHeadings(elements: Element[], chapters: readonly BookChapter[]): Element[] {
+export function withChapterHeadings(elements: Element[], chapters: readonly BookChapter[], opts: { outside?: string } = {}): Element[] {
   if (!chapters.length) return elements;
   const sorted = [...chapters].sort((a, b) => a.startPage - b.startPage);
   const first = sorted[0]!.startPage;
   const out: Element[] = [];
   let next = 0;
+  let open: BookChapter | null = null;
+  if (opts.outside && elements[0]) out.push({ type: "heading", level: 0, text: opts.outside, page: elements[0].page });
   for (const el of elements) {
     while (next < sorted.length && el.page >= sorted[next]!.startPage) {
       const c = sorted[next]!;
       out.push({ type: "heading", level: 0, text: chapterLabel(c), page: c.startPage, hard: true });
+      open = c;
       next++;
+    }
+    if (opts.outside && open && el.page > open.endPage) {
+      out.push({ type: "heading", level: 0, text: opts.outside, page: el.page, hard: true });
+      open = null;
     }
     if (el.type === "heading") {
       const c = chapterOfPage(sorted, el.page);

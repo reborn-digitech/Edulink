@@ -49,6 +49,7 @@
     "corpus:titles": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/corpus-titles.ts",
     "corpus:balbharati-chapters": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/corpus-balbharati-chapters.ts",
     "corpus:refile": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/corpus-refile.ts",
+    "corpus:reextract": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/corpus-reextract.ts",
     "quiz:book-lines": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/quiz-book-lines.ts",
     "help:index": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/help-index.ts",
     "assistant:ask": "tsx --tsconfig scripts/tsconfig.json scripts/assistant-ask.ts",
