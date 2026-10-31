@@ -1,0 +1,518 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T04:15:02.733Z",
+  "finishedAt": "2026-10-31T04:29:34.012Z",
+  "seconds": 871,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "603050012",
+    "document": "balbharati/6/science/603050012.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 4 — Diversity in Living Organisms",
+    "edition": "First Edition 2026",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2022-23]\n35. (a) Why is it not possible to reconstruct the whole organism from a fragment in 5\ncomplex multicellular organisms?\n(b) Sexual maturation of reproductive tissues and organs are necessary link for\nreproduction. Elucidate.\nOR\n(a) How are variations useful for species if there is drastic alteration in the niches?\n(b) Explain how the uterus and placenta provide necessary conditions for proper\ngrowth and development of the embryo after implantation?",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n35. (a) The reason is that many multi-cellular organisms are not simply a random 5\ncollection of cells. Specialised cells are organised as tissues, and tissues are\norganised into organs, which then have to be placed at definite positions in the\nbody. Therefore, cell-by-cell division would be impractical. (2 marks)\n(b) Sexual maturation of reproductive tissues is a necessary link for reproduction\nbecause of the need for specialised cell called germ-cells to participate in\nsexual reproduction. The body of the individual organism has to grow to its\nadult size, the rate of general body growth begins to slow down, reproductive\ntissues begin to mature. (1½ marks)\nA whole new set of changes in the ",
+      "[INJSO 2022 — question paper]\n11. The following observations were recorded after studying some organisms:\nCharacter Organism W Organism X Organism Y Organism Z\nWater essential for fertilization -\nFormation of filament from -\ngerminating spore\nPlant body sporophytic, differentiated +\nin root, stem and leaves\nMale and female sex organs arranged +\ncompactly in cone\nFemale gametophyte enveloped by +\nsingle layered covering\nTriploid tissue observed in zygote -\n+ - +\n- - +\n+ + -\n+ - -\n- - -\n- + -\nOn the basis of the data, identify the group of organisms:\nA. W- pteridophytes, X- bryophytes, Y- angiosperms, Z- gymnosperms\nB. W- angiosperms, X- gymnosperms, Y-pteridophytes, Z- bryophytes\nC. W- angiosperms, X- bryophytes, Y-gymnos",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n1. Select the group in which all organisms have the same mode of nutrition. 1\nA. Cuscuta, yeast, legumes, leeches and tapeworm\nB. Cactus, ticks, lice, leeches and cow\nC. Cuscuta, ticks, lice, leeches and tapeworm\nD. Cactus, grass, lice, lion and tapeworm"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 5,
+      "ms": 218639,
+      "in": 26,
+      "out": 25,
+      "rejects": 2,
+      "promptTokens": 22393,
+      "completionTokens": 4264
+    },
+    "critique": {
+      "calls": 27,
+      "ms": 412826,
+      "in": 25,
+      "out": 24,
+      "rejects": 1,
+      "promptTokens": 11136,
+      "completionTokens": 4543
+    },
+    "solver": {
+      "calls": 132,
+      "ms": 165290,
+      "in": 24,
+      "out": 19,
+      "rejects": 5,
+      "promptTokens": 15713,
+      "completionTokens": 1108
+    },
+    "form": {
+      "calls": 7,
+      "ms": 37943,
+      "in": 19,
+      "out": 13,
+      "rejects": 6,
+      "promptTokens": 1645,
+      "completionTokens": 495
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 12,
+      "ms": 4530,
+      "in": 13,
+      "out": 12,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 53,
+      "ms": 552739,
+      "in": 24,
+      "out": 24,
+      "rejects": 2,
+      "promptTokens": 26254,
+      "completionTokens": 12340
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 2,
+    "2": 4,
+    "3": 3,
+    "4": 1,
+    "5": 2,
+    "6": 0
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a monocot plant?",
+      "ms": {
+        "draft": 7791,
+        "critique": 15675,
+        "solver": 6549,
+        "form": 9701
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why do trees like tamarind, mango, and jamun not collapse easily in strong winds?",
+      "ms": {
+        "draft": 7791,
+        "critique": 18563,
+        "solver": 3746
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used for the habitat of a plant or animal?",
+      "ms": {
+        "draft": 7791,
+        "critique": 17422,
+        "solver": 5395
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of an animal that lives in muddy wetlands?",
+      "ms": {
+        "draft": 10930,
+        "critique": 22998,
+        "solver": 3183
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about amphibians?",
+      "ms": {
+        "draft": 10930,
+        "critique": 21297,
+        "solver": 4931,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of an aquatic animal?",
+      "ms": {
+        "draft": 10930,
+        "critique": 19533,
+        "solver": 32500,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following is true about the classification of animals?",
+      "ms": {
+        "draft": 10930,
+        "critique": 14489,
+        "solver": 3011
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic feature of dicot plants?",
+      "ms": {
+        "draft": 5757,
+        "critique": 7227
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, which of these plants would most likely be found in a desert habitat?",
+      "ms": {
+        "draft": 5757,
+        "critique": 7835,
+        "solver": 2026,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do some plants have fibrous roots while others have taproots?",
+      "ms": {
+        "draft": 5757,
+        "critique": 11240,
+        "solver": 3988
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following is a key difference between dicotyledonous and monocotyledonous seeds?",
+      "ms": {
+        "draft": 10985,
+        "critique": 26064,
+        "solver": 3778,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a characteristic of a shrub?",
+      "ms": {
+        "draft": 10985,
+        "critique": 26858,
+        "solver": 32300,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of an amphibian?",
+      "ms": {
+        "draft": 7420,
+        "critique": 12139,
+        "solver": 6543,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a terrestrial animal?",
+      "ms": {
+        "draft": 7420,
+        "critique": 15126,
+        "solver": 11811,
+        "form": 0,
+        "translation": 23864
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of an aquatic animal?",
+      "ms": {
+        "draft": 7420,
+        "critique": 13531,
+        "solver": 9152,
+        "form": 0,
+        "translation": 23545
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of roots in plants?",
+      "ms": {
+        "draft": 7791,
+        "critique": 15032,
+        "solver": 3370,
+        "form": 11819,
+        "translation": 78883
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which type of venation is found in monocot plants?",
+      "ms": {
+        "draft": 7791,
+        "critique": 15675,
+        "solver": 4634,
+        "form": 7347,
+        "translation": 66018
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of a plant with parallel leaf venation?",
+      "ms": {
+        "draft": 7420,
+        "critique": 21195,
+        "solver": 2274,
+        "form": 0,
+        "translation": 40816
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for classifying plants into monocots and dicots?",
+      "ms": {
+        "draft": 7420,
+        "critique": 16365,
+        "solver": 1975,
+        "form": 0,
+        "translation": 58498
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a plant that has a weak stem and grows by wrapping around a support?",
+      "ms": {
+        "draft": 10985,
+        "critique": 12199,
+        "solver": 5718,
+        "form": 0,
+        "translation": 39702
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of these plants is most likely to have a taproot system?",
+      "ms": {
+        "draft": 5757,
+        "critique": 6569,
+        "solver": 1220,
+        "form": 3015,
+        "translation": 35605
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following animals is likely to be found in a cave?",
+      "ms": {
+        "draft": 7420,
+        "critique": 12082,
+        "solver": 1378,
+        "form": 0,
+        "translation": 43605
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main function of root hairs?",
+      "ms": {
+        "draft": 5757,
+        "critique": 5946,
+        "solver": 1839,
+        "form": 2460,
+        "translation": 45884
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following plants would have leaves with parallel venation?",
+      "ms": {
+        "draft": 10985,
+        "critique": 29845,
+        "solver": 5480,
+        "form": 5228,
+        "translation": 26225
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of an animal that lives in the sky?",
+      "ms": {
+        "draft": 10930,
+        "critique": 16291,
+        "solver": 2451,
+        "form": 5096,
+        "translation": 66391
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is NOT an example of an animal?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a monocot plant?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Does not recall the examples of monocots given in the passag…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Why do trees like tamarind, mango, and jamun not collapse easily in strong winds?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the term used for the habitat of a plant or animal?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is an example of an animal that lives in muddy wetlands?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about amphibians?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of an aquatic animal?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "According to the passage, which of the following is true about the classification of animals?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a characteristic feature of dicot plants?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Based on the passage, which of these plants would most likely be found in a desert habitat?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why do some plants have fibrous roots while others have taproots?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, which of the following is a key difference between dicotyledonous and monocotyledonous seeds?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a characteristic of a shrub?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 are the same (\"It has a strong trunk\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is an example of an amphibian?",
+      "reason": "near-duplicate of served question cmvvdftiw00ul0rgn5no2f17c (cosine 0.965 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

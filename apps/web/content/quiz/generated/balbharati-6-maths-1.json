@@ -21,47 +21,47 @@
   "board": "BALBHARATI",
   "book": "६ वी गणित इंग्रजी",
   "edition": "First Edition 2026",
-  "generatedAt": "2026-10-30T22:05:46.520Z",
+  "generatedAt": "2026-10-30T23:35:41.493Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 2,
-      "stem": "Which of the following is a three-dimensional shape?",
+      "stem": "What is the name of a three-dimensional shape that has two triangular faces and three rectangular faces?",
       "choices": [
-        "Square",
-        "Triangle",
-        "Circle",
-        "Cuboid"
+        "Cuboid",
+        "Cone",
+        "Triangular Prism",
+        "Cube"
       ],
-      "answerIndex": 3,
-      "solution": "A cuboid is a three-dimensional shape because it has length, width, and height. Square, triangle, and circle are two-dimensional shapes as they only have length and width.",
+      "answerIndex": 2,
+      "solution": "A triangular prism is a three-dimensional shape that has two triangular faces and three rectangular faces. This matches the description given in the question. A cuboid and a cube have only rectangular faces, while a cone has a circular base and a curved surface, which do not fit the description.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन एक त्रिआयामी आकृति है?",
+          "stem": "एक त्रि-आयामी आकृति का नाम क्या है जिसमें दो त्रिभुजाकार फलक और तीन आयताकार फलक होते हैं?",
           "choices": [
-            "वर्ग",
-            "त्रिभुज",
-            "वृत्त",
-            "घनाभ"
+            "घनाभ",
+            "शंकु",
+            "त्रिभुजाकार प्रिज्म",
+            "घन"
           ],
-          "solution": "एक घनाभ एक त्रिआयामी आकृति है क्योंकि इसमें लंबाई, चौड़ाई और ऊंचाई होती है। वर्ग, त्रिभुज और वृत्त द्वि-आयामी आकृतियां हैं क्योंकि इनमें केवल लंबाई और चौड़ाई होती है।",
+          "solution": "एक त्रिभुजाकार प्रिज्म एक त्रि-आयामी आकृति है जिसमें दो त्रिभुजाकार फलक और तीन आयताकार फलक होते हैं। यह प्रश्न में दिए गए वर्णन के अनुरूप है। एक घनाभ और एक घन के केवल आयताकार फलक होते हैं, जबकि एक शंकु के एक वृत्ताकार आधार और वक्र सतह होती है, जो वर्णन के अनुरूप नहीं है।",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi technical terms used for shapes.",
+          "critique": "The translation accurately preserves the meaning, technical terms, and logical structure of the original question.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते तीन आयामी आकृती आहे?",
+          "stem": "तीन आकृतीच्या आकृतीचे नाव काय आहे ज्यामध्ये दोन त्रिकोणी चेंडू आणि तीन आयताकृती चेंडू आहेत?",
           "choices": [
-            "चौरस",
-            "त्रिकोण",
-            "वर्तुळ",
-            "घनास्तर"
+            "क्यूबॉइड",
+            "शंकू",
+            "त्रिकोणी घन",
+            "क्यूब"
           ],
-          "solution": "घनास्तर ही तीन आयामी आकृती आहे कारण तिला लांबी, रुंदी आणि उंची असते. चौरस, त्रिकोण आणि वर्तुळ ह्या द्विमितीय आकृती आहेत कारण त्यांना केवळ लांबी आणि रुंदी असते.",
+          "solution": "त्रिकोणी घन ही तीन आकृतीच्या आकृतीची आहे ज्यामध्ये दोन त्रिकोणी चेंडू आणि तीन आयताकृती चेंडू आहेत. हे प्रश्नात दिलेल्या वर्णनाशी जुळते. क्यूबॉइड आणि क्यूब मात्र आयताकृती चेंडू असतात, तर शंकूला वर्तुळाकृती आधार आणि वक्र सतह असते, जे वर्णनाशी जुळत नाही.",
           "imageAlt": null,
           "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for geometric shapes.",
           "flag": null
@@ -72,530 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses two-dimensional shapes with three-dimensional shapes",
-        "Confuses two-dimensional shapes with three-dimensional shapes",
-        "Confuses two-dimensional shapes with three-dimensional shapes",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The question is clear and the solution correctly identifies the cuboid as the only three-dimensional shape among the options. The reasoning for the distractors is accurate and reflects a common misconception.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 14,
-          "pageStart": 15,
-          "pageEnd": 17,
-          "headingPath": [
-            "1. Three-Dimensional Shapes"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 15,
-          "pageStart": 17,
-          "pageEnd": 19,
-          "headingPath": [
-            "1. Three-Dimensional Shapes"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 16,
-          "pageStart": 19,
-          "pageEnd": 21,
-          "headingPath": [
-            "1. Three-Dimensional Shapes"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 17,
-          "pageStart": 22,
-          "pageEnd": 22,
-          "headingPath": [
-            "1. Three-Dimensional Shapes"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T22:05:46.520Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is a two-dimensional shape?",
-      "choices": [
-        "Cube",
-        "Sphere",
-        "Cone",
-        "Square"
-      ],
-      "answerIndex": 3,
-      "solution": "A square is a two-dimensional shape because it has only length and width. A cube, sphere, and cone are three-dimensional shapes as they have length, width, and height.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन एक द्वि-आयामी आकृति है?",
-          "choices": [
-            "घन",
-            "गोला",
-            "शंकु",
-            "वर्ग"
-          ],
-          "solution": "एक वर्ग एक द्वि-आयामी आकृति है क्योंकि इसके केवल लंबाई और चौड़ाई होती है। घन, गोला और शंकु त्रि-आयामी आकृतियाँ हैं क्योंकि इनमें लंबाई, चौड़ाई और ऊँचाई होती है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are standard in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता द्विमितीय आकृती आहे?",
-          "choices": [
-            "घन",
-            "गोल",
-            "शंकू",
-            "चौरस"
-          ],
-          "solution": "चौरस ही द्विमितीय आकृती आहे कारण तिला केवळ लांबी आणि रुंदी आहे. घन, गोल आणि शंकू ही त्रिमितीय आकृती आहेत कारण त्यांना लांबी, रुंदी आणि उंची आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, with appropriate Marathi terms for geometric shapes. The structure and meaning match the original English question.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses three-dimensional shapes with two-dimensional shapes",
-        "Confuses three-dimensional shapes with two-dimensional shapes",
-        "Confuses three-dimensional shapes with two-dimensional shapes",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed, with a clear distinction between 2D and 3D shapes. The correct answer is 'Square' (option 3), and the reasoning provided by the author is accurate.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 14,
-          "pageStart": 15,
-          "pageEnd": 17,
-          "headingPath": [
-            "1. Three-Dimensional Shapes"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 15,
-          "pageStart": 17,
-          "pageEnd": 19,
-          "headingPath": [
-            "1. Three-Dimensional Shapes"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 16,
-          "pageStart": 19,
-          "pageEnd": 21,
-          "headingPath": [
-            "1. Three-Dimensional Shapes"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 17,
-          "pageStart": 22,
-          "pageEnd": 22,
-          "headingPath": [
-            "1. Three-Dimensional Shapes"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T22:05:46.520Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If we stack 10 rectangles of equal size on top of each other, what three-dimensional shape is formed?",
-      "choices": [
-        "Cone",
-        "Cylinder",
-        "Triangular Prism",
-        "Cuboid"
-      ],
-      "answerIndex": 3,
-      "solution": "A cuboid is formed when rectangles are stacked on top of each other. A cone is formed by stacking triangles, a cylinder by stacking circles, and a triangular prism by stacking triangles in a specific way.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि हम समान आकार के 10 आयतों को एक दूसरे के ऊपर रखते हैं, तो कौन-सा त्रिआयामी आकार बनता है?",
-          "choices": [
-            "शंकु",
-            "बेलन",
-            "त्रिभुजाकार प्रिज्म",
-            "घनाभ"
-          ],
-          "solution": "आयतों के ढेर लगाने से घनाभ बनता है। शंकु त्रिभुजों के ढेर लगाने से बनता है, बेलन वृत्तों के ढेर लगाने से बनता है और त्रिभुजाकार प्रिज्म विशेष ढंग से ढेर लगाए गए त्रिभुजों से बनता है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर आम्ही समान आकाराच्या 10 आयतांना एकावर एक ठेवले, तर कोणता त्रिविमीय आकृती तयार होईल?",
-          "choices": [
-            "शंकू",
-            "बेलेन",
-            "त्रिकोणीय प्रिझम",
-            "घनाकृती"
-          ],
-          "solution": "आयत एकावर एक ठेवल्यास घनाकृती तयार होते. शंकू त्रिकोणांच्या एकावर एक ठेवून तयार केला जातो, बेलेन वर्तुळांच्या एकावर एक ठेवून तयार केला जातो आणि त्रिकोणीय प्रिझम विशिष्ट पद्धतीने एकावर एक ठेवलेल्या त्रिकोणांमुळे तयार होतो.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses cone with cuboid",
-        "Confuses cylinder with cuboid",
-        "Confuses triangular prism with cuboid",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct. Stacking rectangles forms a cuboid, and the author's reasoning for the distractors reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 14,
-          "pageStart": 15,
-          "pageEnd": 17,
-          "headingPath": [
-            "1. Three-Dimensional Shapes"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 15,
-          "pageStart": 17,
-          "pageEnd": 19,
-          "headingPath": [
-            "1. Three-Dimensional Shapes"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 16,
-          "pageStart": 19,
-          "pageEnd": 21,
-          "headingPath": [
-            "1. Three-Dimensional Shapes"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 17,
-          "pageStart": 22,
-          "pageEnd": 22,
-          "headingPath": [
-            "1. Three-Dimensional Shapes"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T22:05:46.520Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Which 3D shape is formed when carrom pieces are placed one on top of the other?",
-      "choices": [
-        "Cuboid",
-        "Cylinder",
-        "Cone",
-        "Cube"
-      ],
-      "answerIndex": 0,
-      "solution": "When carrom pieces are stacked one on top of the other, they form a cuboid because each piece is a flat, rectangular shape, and stacking them creates a shape with six rectangular faces. A cylinder has circular ends, a cone has a circular base and a point, and a cube has all square faces, which does not match the shape of carrom pieces.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "जब करम के टुकड़े एक दूसरे के ऊपर रखे जाते हैं तो कौन-सा 3D आकृति बनती है?",
-          "choices": [
-            "घनाभ",
-            "बेलन",
-            "शंकु",
-            "घन"
-          ],
-          "solution": "जब करम के टुकड़े एक दूसरे के ऊपर रखे जाते हैं तो वे एक घनाभ बनाते हैं क्योंकि प्रत्येक टुकड़ा एक चपटा, आयताकार आकृति होता है, और इनके ढेर लगाने से छह आयताकार फलक वाली आकृति बनती है। एक बेलन के दोनों सिरे वृत्ताकार होते हैं, शंकु के एक सिरे पर वृत्ताकार आधार होता है और एक बिंदु होता है, और घन के सभी फलक वर्गाकार होते हैं, जो करम के टुकड़ों के आकार के अनुरूप नहीं होते।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi geometry terms.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "कारम चौकटींच्या तीन आकृती एकावर एक ठेवल्यास कोणती 3D आकृती बनते?",
-          "choices": [
-            "क्यूबॉइड",
-            "सिलिंडर",
-            "शंकू",
-            "क्यूब"
-          ],
-          "solution": "जेव्हा कारम चौकटींच्या एकावर एक ठेवल्या जातात तेव्हा त्या क्यूबॉइड बनतात कारण प्रत्येक चौकटी एक तलक आणि चौकोनाकार आकृती असते आणि त्यांच्या एकावर एक ठेवल्याने छ: चौकोनाकार बाजू असलेली आकृती बनते. सिलिंडर चरंड आकृती असते, शंकू एक वर्तुळाकार आधार आणि एक शिकर असतो आणि क्यूब सर्व बाजू चौरस असतात, जे कारम चौकटींच्या आकृतीशी जुळत नाही.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms. The correct answer remains option (1) and the explanation is consistent.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
+        "Confuses a triangular prism with a cuboid, thinking all prisms are rectangular.",
+        "Student confuses cone with a prism due to similar 3D appearance",
         null,
-        "Confuses the shape of stacked circular objects with a cylinder instead of a cuboid",
-        "Confuses the shape formed by stacking circular objects with a cone's shape",
-        "Student thinks all stacked identical shapes form a cube, not considering the base shape or orientation"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed. The correct answer is 'Cuboid' as carrom pieces are typically circular, and stacking them forms a shape with rectangular faces. The author's reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 14,
-          "pageStart": 15,
-          "pageEnd": 17,
-          "headingPath": [
-            "1. Three-Dimensional Shapes"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 15,
-          "pageStart": 17,
-          "pageEnd": 19,
-          "headingPath": [
-            "1. Three-Dimensional Shapes"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 16,
-          "pageStart": 19,
-          "pageEnd": 21,
-          "headingPath": [
-            "1. Three-Dimensional Shapes"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 17,
-          "pageStart": 22,
-          "pageEnd": 22,
-          "headingPath": [
-            "1. Three-Dimensional Shapes"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T22:05:46.520Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Which two similar shapes form an hourglass?",
-      "choices": [
-        "Cylinder",
-        "Triangular pyramid",
-        "Cuboid",
-        "Cone"
-      ],
-      "answerIndex": 3,
-      "solution": "The correct answer is Cone. A cone is a three-dimensional shape with a circular base and a single vertex, and two identical cones placed base to base form the shape of an hourglass. A cylinder has two circular bases but no pointed top, a triangular pyramid has a triangular base and triangular sides, and a cuboid has six rectangular faces, none of which form the necessary shape of an hourglass.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "कौन से दो समान आकृतियाँ एक घड़ी के रेत के घड़े के आकार को बनाती हैं?",
-          "choices": [
-            "बेलन",
-            "त्रिभुजाकार पिरामिड",
-            "घनाभ",
-            "शंकु"
-          ],
-          "solution": "सही उत्तर शंकु है। एक शंकु एक त्रिआयामी आकृति है जिसका एक वृत्ताकार आधार होता है और एक शीर्ष होता है, और दो समान शंकु आधार से आधार तक रखे जाने पर एक घड़ी के रेत के घड़े के आकार को बनाते हैं। एक बेलन के दो वृत्ताकार आधार होते हैं लेकिन कोई तीक्ष्ण शीर्ष नहीं होता है, एक त्रिभुजाकार पिरामिड का एक त्रिभुजाकार आधार और त्रिभुजाकार पक्ष होते हैं, और एक घनाभ के छह आयताकार फलक होते हैं, जिनमें से कोई भी घड़ी के रेत के घड़े के आकार के लिए आवश्यक आकृति नहीं बनाते हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi technical terms for geometric shapes.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "कोणती दोन समान आकृती एका घड्याळाच्या आकारात बनतात?",
-          "choices": [
-            "बेलेन",
-            "त्रिकोणी पिरामिड",
-            "घनाकृती",
-            "शंकू"
-          ],
-          "solution": "बरोबर उत्तर शंकू आहे. शंकू ही तीन आयामी आकृती आहे जी वृत्ताकार आधार आणि एक शिरोबिंदू असतो, आणि दोन समान शंकू आधारापासून आधारापर्यंत ठेवल्यास घड्याळाच्या आकारात बनतात. बेलेन दोन वृत्ताकार आधार असतात पण एखादा शिरोबिंदू नसतो, त्रिकोणी पिरामिड एक त्रिकोणी आधार आणि त्रिकोणी बाजू असतात, आणि घनाकृती छह आयताकृती पृष्ठ असतात, जे घड्याळाच्या आकारात बनत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "A student might confuse a cylinder with a cone, thinking both have a circular base and a pointed top.",
-        "Student confuses prism with pyramid, thinking both have triangular bases",
-        "Confuses 3D shapes with similar forms, thinking a cuboid could make an hourglass shape",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 3 (Cone), as an hourglass is formed by two cones joined at their bases. The author's reasoning is sound, and the misconceptions listed for the distractors are plausible for students.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 14,
-          "pageStart": 15,
-          "pageEnd": 17,
-          "headingPath": [
-            "1. Three-Dimensional Shapes"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 15,
-          "pageStart": 17,
-          "pageEnd": 19,
-          "headingPath": [
-            "1. Three-Dimensional Shapes"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 16,
-          "pageStart": 19,
-          "pageEnd": 21,
-          "headingPath": [
-            "1. Three-Dimensional Shapes"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 17,
-          "pageStart": 22,
-          "pageEnd": 22,
-          "headingPath": [
-            "1. Three-Dimensional Shapes"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T22:05:46.520Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "Which of the following shapes has 6 faces, 12 edges, and 8 vertices?",
-      "choices": [
-        "Cone",
-        "Sphere",
-        "Cuboid",
-        "Cylinder"
-      ],
-      "answerIndex": 2,
-      "solution": "A cuboid has 6 faces, 12 edges, and 8 vertices. A cone has 2 faces, 1 edge, and 1 vertex. A sphere has no faces, edges, or vertices. A cylinder has 3 faces, 2 edges, and no vertices.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सी आकृति में 6 फलक, 12 किनारे और 8 शीर्ष होते हैं?",
-          "choices": [
-            "शंकु",
-            "गोला",
-            "घनाभ",
-            "बेलन"
-          ],
-          "solution": "एक घनाभ में 6 फलक, 12 किनारे और 8 शीर्ष होते हैं। एक शंकु में 2 फलक, 1 किनारा और 1 शीर्ष होता है। एक गोला में कोई फलक, किनारा या शीर्ष नहीं होता है। एक बेलन में 3 फलक, 2 किनारे और कोई शीर्ष नहीं होता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate and uses standard geometric terminology. The correct answer (3) is in the same position as in the English version. All distractors remain incorrect in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणत्या आकृतीला 6 फॅस, 12 किनार आणि 8 शिरोबिंदू आहेत?",
-          "choices": [
-            "शंकू",
-            "गोल",
-            "चौकोनी ठोकर",
-            "बेलेन"
-          ],
-          "solution": "चौकोनी ठोकरला 6 फॅस, 12 किनार आणि 8 शिरोबिंदू आहेत. शंकूला 2 फॅस, 1 किनार आणि 1 शिरोबिंदू आहे. गोलाला कोणतेही फॅस, किनार किंवा शिरोबिंदू नाहीत. बेलेनला 3 फॅस, 2 किनार आणि कोणतेही शिरोबिंदू नाहीत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the English question and solution, with appropriate terminology used for geometric shapes.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses cone with cuboid",
-        "Confuses sphere with cuboid",
-        null,
-        "Confuses cylinder with cuboid"
+        "Confuses the shape with a cube"
       ],
       "solverAnswers": [
         2,
@@ -604,8 +84,8 @@
         2,
         2
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. A cuboid has 6 faces, 12 edges, and 8 vertices, which matches the question. The other options are correctly identified as having different numbers of faces, edges, and vertices.",
+      "levelFlag": null,
+      "critique": "The question is well-constructed. The correct answer is 'Triangular Prism' with a clear and accurate explanation. The distractors are plausible misconceptions for students at this level.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
@@ -645,49 +125,49 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T22:05:46.520Z",
+      "generatedAt": "2026-10-30T23:35:41.493Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "If two cubes each of volume 64 cm³ are joined end to end, what is the surface area of the resulting cuboid?",
+      "stem": "If we stack 10 circular cards on top of each other, what three-dimensional shape is formed?",
       "choices": [
-        "128 cm²",
-        "160 cm²",
-        "192 cm²",
-        "256 cm²"
+        "Cuboid",
+        "Cylinder",
+        "Sphere",
+        "Cone"
       ],
       "answerIndex": 1,
-      "solution": "Each cube has a side length of 4 cm (since 4³ = 64). When joined end to end, the dimensions of the cuboid become 8 cm (length), 4 cm (width), and 4 cm (height). The surface area is calculated as 2(lw + lh + wh) = 2(32 + 32 + 16) = 2(80) = 160 cm².",
-      "checkExpr": "2*(8*4+4*4+4*8)",
+      "solution": "Stacking circular cards on top of each other results in a shape with two circular ends and a curved surface in between. This matches the definition of a cylinder. A cuboid has rectangular faces, a sphere is perfectly round in all directions, and a cone has a single circular base and a pointed top, none of which fit the description of stacked circles.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि दो घन जिनमें प्रत्येक का आयतन 64 सेमी³ है, एक दूसरे के साथ सिरे से सिरा जोड़ दिए जाएं, तो परिणामी घनाभ का पृष्ठीय क्षेत्रफल क्या होगा?",
+          "stem": "यदि हम 10 वृत्ताकार कार्ड एक दूसरे के ऊपर रखते हैं, तो कौन-सा त्रिआयामी आकृति बनती है?",
           "choices": [
-            "128 सेमी²",
-            "160 सेमी²",
-            "192 सेमी²",
-            "256 सेमी²"
+            "घनाभ",
+            "बेलन",
+            "गोला",
+            "शंकु"
           ],
-          "solution": "प्रत्येक घन की भुजा की लंबाई 4 सेमी है (क्योंकि 4³ = 64)। जब एक दूसरे के साथ सिरे से सिरा जोड़ दिया जाता है, तो घनाभ के आयाम 8 सेमी (लंबाई), 4 सेमी (चौड़ाई), और 4 सेमी (ऊंचाई) हो जाते हैं। पृष्ठीय क्षेत्रफल 2(lw + lh + wh) = 2(32 + 32 + 16) = 2(80) = 160 सेमी² के रूप में गणना की जाती है।",
+          "solution": "वृत्ताकार कार्ड एक दूसरे के ऊपर रखने से एक आकृति बनती है जिसके दो वृत्ताकार सिरे होते हैं और बीच में वक्र सतह होती है। यह बेलन के परिभाषा के अनुरूप होता है। घनाभ के आयताकार फलक होते हैं, गोला सभी दिशाओं में पूरी तरह से गोल होता है, और शंकु के एक वृत्ताकार आधार और एक नुकीला शीर्ष होता है, जो कि वृत्तों के ढेर के विवरण के अनुरूप नहीं होता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as found in Hindi textbooks.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi geometry terms.",
           "flag": null
         },
         "mr": {
-          "stem": "जर दोन घन जास्तीत जास्त 64 सेमी³ आकाराचे असतील आणि ते एकमेकांशी एका बाजूला जोडले जातील, तर निर्माण झालेल्या घनाच्या सतही विस्ताराचे माप किती असेल?",
+          "stem": "10 वर्तुळाकार कार्ड एकमेकांवर ठेवल्यास कोणता त्रिविमीय आकृती तयार होते?",
           "choices": [
-            "128 सेमी²",
-            "160 सेमी²",
-            "192 सेमी²",
-            "256 सेमी²"
+            "क्यूबॉइड",
+            "सिलिंडर",
+            "गोला",
+            "शंकू"
           ],
-          "solution": "प्रत्येक घनाची बाजू 4 सेमी असते (कारण 4³ = 64). जेव्हा ते एकमेकांशी एका बाजूला जोडले जातात तेव्हा घनाच्या आकाराचे माप 8 सेमी (लांबी), 4 सेमी (रुंदी) आणि 4 सेमी (उंची) असते. सतही विस्तार 2(lw + lh + wh) = 2(32 + 32 + 16) = 2(80) = 160 सेमी² असतो.",
+          "solution": "वर्तुळाकार कार्ड एकमेकांवर ठेवल्यास दोन वर्तुळाकार अंत आणि त्यांच्यात वक्र पृष्ठ असलेली आकृती तयार होते. हे सिलिंडर च्या व्याख्येस अनुरूप आहे. क्यूबॉइड च्या चौरस फलक असतात, गोला सर्व दिशांमध्ये पूर्णपणे गोल असतो आणि शंकू च्या एका वर्तुळाकार तळावर एक शिकार असते, जे वर्तुळांच्या ठेवलेल्या वर्णनास अनुरूप नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terminology for geometric terms like 'घन' (cube), 'घनाच्या आकाराचे माप' (dimensions of the cuboid), and 'सतही विस्तार' (surface area).",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
           "flag": null
         }
       },
@@ -696,10 +176,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Adds the surface areas of the two cubes instead of calculating the new surface area",
+        "Student mistakes stacking cards as forming a cuboid instead of a cylinder due to confusion between stacked flat shapes and rectangular prisms.",
         null,
-        "Fails to account for the combined surface area correctly",
-        "Multiplies the volume of one cube by 2 instead of calculating the surface area"
+        "Confuses the shape with a sphere",
+        "Confuses stacking circles with a shape that tapers to a point"
       ],
       "solverAnswers": [
         1,
@@ -709,7 +189,7 @@
         1
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. Each cube has a side length of 4 cm, and when joined, the resulting cuboid has dimensions 8×4×4. The surface area calculation is accurate.",
+      "critique": "The question is well-posed and the solution is correct. Stacking circular cards forms a cylinder, and the reasons for the distractors are plausible misconceptions.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
@@ -749,7 +229,111 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T22:05:46.520Z",
+      "generatedAt": "2026-10-30T23:35:41.493Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a three-dimensional shape has a curved surface and no vertices, what is the shape?",
+      "choices": [
+        "Cuboid",
+        "Cylinder",
+        "Sphere",
+        "Cone"
+      ],
+      "answerIndex": 2,
+      "solution": "A sphere is a three-dimensional shape that has a completely curved surface and no sharp corners or vertices. Unlike a cuboid, cylinder, or cone, which all have flat faces or pointed ends, a sphere is smooth and round in all directions. Therefore, the correct answer is 'Sphere'.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक त्रि-आयामी आकृति में वक्र सतह हो और कोई शीर्ष न हो, तो आकृति क्या है?",
+          "choices": [
+            "घनाभ",
+            "बेलन",
+            "गोला",
+            "शंकु"
+          ],
+          "solution": "एक गोला एक त्रि-आयामी आकृति है जिसमें पूरी तरह से वक्र सतह होती है और कोई तीखे कोने या शीर्ष नहीं होते। घनाभ, बेलन या शंकु के विपरीत, जिनमें सभी में समतल सतह या नुकीले सिरे होते हैं, गोला सभी दिशाओं में चिकना और गोल होता है। इसलिए, सही उत्तर 'गोला' है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are standard in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "त्रिविमीय आकृतीच्या वक्र पृष्ठभाग आणि शिरोबिंदू नसल्यास, आकृती कोणती असते?",
+          "choices": [
+            "चौरसाचे बेल्ले",
+            "बेलून",
+            "गोल",
+            "शंकू"
+          ],
+          "solution": "गोल ही त्रिविमीय आकृती आहे जी पूर्णपणे वक्र पृष्ठभाग असतो आणि तिच्याकडे तीक्ष्ण कोन किंवा शिरोबिंदू नसतात. चौरसाचे बेल्ले, बेलून किंवा शंकू सारख्या आकृतींच्या तलावर तले असतात किंवा शिरोबिंदू असतात, परंतु गोल ही सर्व दिशांमध्ये चक्रीय आणि चक्कर घालणारी असते. म्हणूनच योग्य उत्तर 'गोल' आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate and maintains the original meaning, with appropriate terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses a cuboid with a curved surface shape due to its box-like appearance",
+        "Student thinks a cylinder has no vertices because it has a curved surface, ignoring that it has circular bases with edges",
+        null,
+        "Confuses the shape with a cone"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is Sphere (option 2), as it has a curved surface and no vertices. The other options all have vertices or are not fully curved. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "1. Three-Dimensional Shapes"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 15,
+          "pageStart": 17,
+          "pageEnd": 19,
+          "headingPath": [
+            "1. Three-Dimensional Shapes"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 16,
+          "pageStart": 19,
+          "pageEnd": 21,
+          "headingPath": [
+            "1. Three-Dimensional Shapes"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 17,
+          "pageStart": 22,
+          "pageEnd": 22,
+          "headingPath": [
+            "1. Three-Dimensional Shapes"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T23:35:41.493Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

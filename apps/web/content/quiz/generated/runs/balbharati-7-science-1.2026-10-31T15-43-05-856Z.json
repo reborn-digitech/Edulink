@@ -1,0 +1,671 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T15:43:05.856Z",
+  "finishedAt": "2026-10-31T15:49:47.507Z",
+  "seconds": 402,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "703020012",
+    "document": "balbharati/7/science/703020012.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 1 — The Living World : Adaptations and Classification",
+    "edition": "First Edition 2017",
+    "chunks": 8,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2022-23]\n35. (a) The reason is that many multi-cellular organisms are not simply a random 5\ncollection of cells. Specialised cells are organised as tissues, and tissues are\norganised into organs, which then have to be placed at definite positions in the\nbody. Therefore, cell-by-cell division would be impractical. (2 marks)\n(b) Sexual maturation of reproductive tissues is a necessary link for reproduction\nbecause of the need for specialised cell called germ-cells to participate in\nsexual reproduction. The body of the individual organism has to grow to its\nadult size, the rate of general body growth begins to slow down, reproductive\ntissues begin to mature. (1½ marks)\nA whole new set of changes in the ",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n10. Which of the following adaptations in herbivores helps in digestions of 1\ncellulose?\nA. Longer large intestine\nB. Smaller large intestine\nC. Smaller small intestine\nD. Longer small intestine",
+      "[INJSO 2022 — question paper]\n11. The following observations were recorded after studying some organisms:\nCharacter Organism W Organism X Organism Y Organism Z\nWater essential for fertilization -\nFormation of filament from -\ngerminating spore\nPlant body sporophytic, differentiated +\nin root, stem and leaves\nMale and female sex organs arranged +\ncompactly in cone\nFemale gametophyte enveloped by +\nsingle layered covering\nTriploid tissue observed in zygote -\n+ - +\n- - +\n+ + -\n+ - -\n- - -\n- + -\nOn the basis of the data, identify the group of organisms:\nA. W- pteridophytes, X- bryophytes, Y- angiosperms, Z- gymnosperms\nB. W- angiosperms, X- gymnosperms, Y-pteridophytes, Z- bryophytes\nC. W- angiosperms, X- bryophytes, Y-gymnos",
+      "[CBSE Class X Science, sample question paper, 2022-23]\n35. (a) Why is it not possible to reconstruct the whole organism from a fragment in 5\ncomplex multicellular organisms?\n(b) Sexual maturation of reproductive tissues and organs are necessary link for\nreproduction. Elucidate.\nOR\n(a) How are variations useful for species if there is drastic alteration in the niches?\n(b) Explain how the uterus and placenta provide necessary conditions for proper\ngrowth and development of the embryo after implantation?"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 165065,
+      "in": 34,
+      "out": 33,
+      "rejects": 1,
+      "promptTokens": 26375,
+      "completionTokens": 8172
+    },
+    "critique": {
+      "calls": 37,
+      "ms": 265980,
+      "in": 33,
+      "out": 26,
+      "rejects": 7,
+      "promptTokens": 17763,
+      "completionTokens": 6358
+    },
+    "solver": {
+      "calls": 155,
+      "ms": 77827,
+      "in": 26,
+      "out": 23,
+      "rejects": 3,
+      "promptTokens": 22659,
+      "completionTokens": 1381
+    },
+    "form": {
+      "calls": 1,
+      "ms": 3427,
+      "in": 23,
+      "out": 7,
+      "rejects": 16,
+      "promptTokens": 249,
+      "completionTokens": 70
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 1,
+      "ms": 216,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 318713,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 15384,
+      "completionTokens": 7824
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "The passage describes how the conical shape of trees in snowy regions helps them. What is the main advantage of this shape?",
+      "ms": {
+        "draft": 4353,
+        "critique": 5606,
+        "solver": 1473,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an adaptation in desert plants?",
+      "ms": {
+        "draft": 4353,
+        "critique": 7404,
+        "solver": 2326,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of aquatic plants?",
+      "ms": {
+        "draft": 4353,
+        "critique": 8243
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of an adaptation that helps an animal blend with its surroundings?",
+      "ms": {
+        "draft": 3381,
+        "critique": 8817,
+        "solver": 1554,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student compared two plants, one from a desert and one from a forest. The desert plant had thick, waxy stems and small leaves, while the forest plant had broad leaves and shallow roots. Which of the following best explains these differences?",
+      "ms": {
+        "draft": 4353,
+        "critique": 9158,
+        "solver": 15156,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage explains that desert plants have modified leaves to reduce water loss. Which of the following is a similar adaptation seen in animals?",
+      "ms": {
+        "draft": 4353,
+        "critique": 9057,
+        "solver": 16670
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a feature of animals living in snowy regions?",
+      "ms": {
+        "draft": 3381,
+        "critique": 7066,
+        "solver": 1521,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a reason why frogs can breathe underwater?",
+      "ms": {
+        "draft": 3381,
+        "critique": 6945,
+        "solver": 1693,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following best explains the importance of adaptation in animals?",
+      "ms": {
+        "draft": 3381,
+        "critique": 6373,
+        "solver": 1987,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of binomial nomenclature?",
+      "ms": {
+        "draft": 4514,
+        "critique": 7629,
+        "solver": 1560,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements about classification is true?",
+      "ms": {
+        "draft": 4514,
+        "critique": 5945,
+        "solver": 1473,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of an adaptation that helps an organism survive in a desert?",
+      "ms": {
+        "draft": 4514,
+        "critique": 6692,
+        "solver": 2378,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following adaptations would be most useful for an organism living in a polar region?",
+      "ms": {
+        "draft": 4514,
+        "critique": 6861,
+        "solver": 979,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why organisms of the same species can reproduce among themselves?",
+      "ms": {
+        "draft": 4514,
+        "critique": 4690,
+        "solver": 804,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage mentions that all organisms of a species can reproduce among themselves and form new individuals like themselves. Which of the following best explains this concept?",
+      "ms": {
+        "draft": 9180,
+        "critique": 8380,
+        "solver": 2627,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student found an animal in a forest that is covered with thick fur, has webbed toes, and lives in a cold region. Which of the following is the most likely classification for this animal?",
+      "ms": {
+        "draft": 9180,
+        "critique": 8195,
+        "solver": 12394,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a list of organisms and their characteristics. One of the organisms has the following traits: it has a thick layer of fat, lives in a cold region, and has webbed toes. Based on the passage, what is the most likely reason for its webbed toes?",
+      "ms": {
+        "draft": 9180,
+        "critique": 8561,
+        "solver": 2505
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of binomial nomenclature?",
+      "ms": {
+        "draft": 9180,
+        "critique": 10290,
+        "solver": 13112,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage mentions that binomial nomenclature helps avoid confusion when identifying organisms. Which of the following scenarios best illustrates this concept?",
+      "ms": {
+        "draft": 9180,
+        "critique": 9350,
+        "solver": 1275
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student reads that the penguin described in the passage lives in a polar region and has a thick layer of fat. Which of the following is the most likely reason for this adaptation?",
+      "ms": {
+        "draft": 9180,
+        "critique": 8139,
+        "solver": 2146,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of an adaptation that helps animals blend with their surroundings?",
+      "ms": {
+        "draft": 3746,
+        "critique": 9168
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the function of the waxy feathers of a duck?",
+      "ms": {
+        "draft": 3746,
+        "critique": 6633
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following adaptations helps a frog breathe underwater?",
+      "ms": {
+        "draft": 3746,
+        "critique": 6070
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an adaptation that helps a herbivore defend against predators?",
+      "ms": {
+        "draft": 3746,
+        "critique": 6292
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best explains why a desert animal might have long legs with flat soles?",
+      "ms": {
+        "draft": 3746,
+        "critique": 6356
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements best explains why adaptation is not a sudden process?",
+      "ms": {
+        "draft": 3746,
+        "critique": 6697
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of desert plants?",
+      "ms": {
+        "draft": 3506,
+        "critique": 5794,
+        "solver": 1344,
+        "form": 1,
+        "translation": 51910
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an adaptation in aquatic plants?",
+      "ms": {
+        "draft": 3506,
+        "critique": 7986,
+        "solver": 1678,
+        "form": 0,
+        "translation": 51302
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student observed that a cactus has small, needle-like leaves and a fleshy stem. What is the most likely reason for this adaptation?",
+      "ms": {
+        "draft": 4353,
+        "critique": 5792,
+        "solver": 2619,
+        "form": 0,
+        "translation": 53317
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following adaptations helps a bird fly efficiently?",
+      "ms": {
+        "draft": 3381,
+        "critique": 7305,
+        "solver": 1951,
+        "form": 0,
+        "translation": 35994
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the purpose of the conical shape of trees in snowy regions?",
+      "ms": {
+        "draft": 3506,
+        "critique": 7720,
+        "solver": 1632,
+        "form": 0,
+        "translation": 45638
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student observes that an animal has a white body and long, thick hair. Which environment is this animal most likely adapted to?",
+      "ms": {
+        "draft": 3381,
+        "critique": 7641,
+        "solver": 1521,
+        "form": 3427,
+        "translation": 49527
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do desert plants like cactus have modified leaves?",
+      "ms": {
+        "draft": 3506,
+        "critique": 7575,
+        "solver": 1424,
+        "form": 0,
+        "translation": 26500
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a correct example of binomial nomenclature?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The passage describes how the conical shape of trees in snowy regions helps them. What is the main advantage of this shape?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Incorrectly assumes that the shape helps with water storage,…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of an adaptation in desert plants?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, but a specific ada…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of aquatic plants?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of an adaptation that helps an animal blend with its surroundings?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, but the one that f…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student compared two plants, one from a desert and one from a forest. The desert plant had thick, waxy stems and small leaves, while the forest plant had broad leaves and shallow roots. Which of the following best explains these differences?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The passage explains that desert plants have modified leaves to reduce water loss. Which of the following is a similar adaptation seen in animals?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a feature of animals living in snowy regions?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, but the one that f…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a reason why frogs can breathe underwater?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, which of the following best explains the importance of adaptation in animals?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (56 vs 34 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of binomial nomenclature?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, but the one that f…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements about classification is true?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, but the one that a…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of an adaptation that helps an organism survive in a desert?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer is not the longest option, but the one that r…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following adaptations would be most useful for an organism living in a polar region?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses adaptation for heat dissipation with polar adaptati…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why organisms of the same species can reproduce among themselves?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Confuses habitat with genetic similarity. The correct answer…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The passage mentions that all organisms of a species can reproduce among themselves and form new individuals like themselves. Which of the following best explains this concept?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct option, no misconception here, it is the correct exp…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A student found an animal in a forest that is covered with thick fur, has webbed toes, and lives in a cold region. Which of the following is the most likely classification for this animal?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student is given a list of organisms and their characteristics. One of the organisms has the following traits: it has a thick layer of fat, lives in a cold region, and has webbed toes. Based on the passage, what is the most likely reason for its webbed toes?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of binomial nomenclature?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The passage mentions that binomial nomenclature helps avoid confusion when identifying organisms. Which of the following scenarios best illustrates this concept?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student reads that the penguin described in the passage lives in a polar region and has a thick layer of fat. Which of the following is the most likely reason for this adaptation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct option, no misconception here, it is the correct ans…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is an example of an adaptation that helps animals blend with their surroundings?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best describes the function of the waxy feathers of a duck?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following adaptations helps a frog breathe underwater?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an adaptation that helps a herbivore defend against predators?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following best explains why a desert animal might have long legs with flat soles?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following statements best explains why adaptation is not a sudden process?",
+      "reason": "option 2 is not wrong"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

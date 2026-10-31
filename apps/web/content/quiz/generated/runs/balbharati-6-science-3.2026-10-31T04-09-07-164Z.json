@@ -1,0 +1,478 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T04:09:07.164Z",
+  "finishedAt": "2026-10-31T04:15:01.168Z",
+  "seconds": 354,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "603050012",
+    "document": "balbharati/6/science/603050012.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 3 — Let’s Separate the Components",
+    "edition": "First Edition 2026",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2024-25]\n6. Section E would have 3 source based/case based/passage based/integrated units of\nassessment (04 marks each) with sub-parts of the values of 1/2/3 marks.",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n20. Assertion: Biodegradable substances result in the formation of compost and natural 1\nreplenishment.\nReason: It is due to breakdown of complex inorganic substances into simple organic\nsubstances.",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n6. B. (ii), (iii), (iv)",
+      "[CBSE Class X Science, sample question paper, 2026-27]\nthe inference he draws on the basis of his experiment be correct? Justify\nyour answer."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 97251,
+      "in": 23,
+      "out": 21,
+      "rejects": 2,
+      "promptTokens": 16980,
+      "completionTokens": 4951
+    },
+    "critique": {
+      "calls": 28,
+      "ms": 201159,
+      "in": 21,
+      "out": 18,
+      "rejects": 3,
+      "promptTokens": 13018,
+      "completionTokens": 4803
+    },
+    "solver": {
+      "calls": 134,
+      "ms": 70647,
+      "in": 18,
+      "out": 14,
+      "rejects": 4,
+      "promptTokens": 20133,
+      "completionTokens": 1310
+    },
+    "form": {
+      "calls": 12,
+      "ms": 36272,
+      "in": 14,
+      "out": 7,
+      "rejects": 7,
+      "promptTokens": 4587,
+      "completionTokens": 962
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 12,
+      "ms": 2050,
+      "in": 7,
+      "out": 5,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 23,
+      "ms": 211132,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 11964,
+      "completionTokens": 6076
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 2,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which method is used to separate oil and water based on their layering?",
+      "ms": {
+        "draft": 7535,
+        "critique": 9014
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a mixture of sand and gravel, which method is most suitable for separation?",
+      "ms": {
+        "draft": 7535,
+        "critique": 7919,
+        "solver": 1602,
+        "form": 4779
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is used to separate the components of a mixture that differ in size?",
+      "ms": {
+        "draft": 7535,
+        "critique": 8164,
+        "solver": 2032,
+        "form": 3621
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which method is used to separate small stones from grains?",
+      "ms": {
+        "draft": 7535,
+        "critique": 8583,
+        "solver": 13039,
+        "form": 4732
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which method is used to separate magnetic substances from a mixture?",
+      "ms": {
+        "draft": 12969,
+        "critique": 6837
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the method of decantation used to separate oil and water?",
+      "ms": {
+        "draft": 7535,
+        "critique": 8106,
+        "solver": 2014,
+        "form": 3118
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a mixture of oil and water is left undisturbed, what happens to the oil?",
+      "ms": {
+        "draft": 7535,
+        "critique": 7981,
+        "solver": 13405,
+        "form": 3350
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which method is useful to separate small stones from wheat?",
+      "ms": {
+        "draft": 12969,
+        "critique": 8993
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which method can be used to separate water mixed with milk?",
+      "ms": {
+        "draft": 12969,
+        "critique": 7712,
+        "solver": 1954
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which method is useful to separate small stones from wheat?",
+      "ms": {
+        "draft": 3017,
+        "critique": 6389,
+        "solver": 3528
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which method can be used to separate milk and water if they are mixed?",
+      "ms": {
+        "draft": 3017,
+        "critique": 8133,
+        "solver": 1253
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a method of separation mentioned in the passage?",
+      "ms": {
+        "draft": 3266,
+        "critique": 6917,
+        "solver": 1214,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which method is useful to separate sawdust mixed in a container of water?",
+      "ms": {
+        "draft": 3017,
+        "critique": 7458,
+        "solver": 13406
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which method is easiest for a carpenter to separate iron nails from sawdust?",
+      "ms": {
+        "draft": 3017,
+        "critique": 7997,
+        "solver": 12341,
+        "form": 3184
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which method is used to separate magnetic substances from a mixture?",
+      "ms": {
+        "draft": 3017,
+        "critique": 5966,
+        "solver": 14186,
+        "form": 2728
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which method can be used to separate alum dissolved in water?",
+      "ms": {
+        "draft": 3017,
+        "critique": 5939,
+        "solver": 14561,
+        "form": 3228
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the process called when heavy solid particles settle at the bottom of a liquid?",
+      "ms": {
+        "draft": 3266,
+        "critique": 8336,
+        "solver": 1989,
+        "form": 3286,
+        "translation": 37381
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which method is used to separate alum dissolved in water?",
+      "ms": {
+        "draft": 12969,
+        "critique": 7677,
+        "solver": 1704,
+        "form": 0,
+        "translation": 32122
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which statement is true about filtration?",
+      "ms": {
+        "draft": 12969,
+        "critique": 7448,
+        "solver": 7874,
+        "form": 1180,
+        "translation": 48932
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How can sawdust mixed in a container of water be separated?",
+      "ms": {
+        "draft": 12969,
+        "critique": 6557,
+        "solver": 1290,
+        "form": 0,
+        "translation": 57531
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the experiment described, after mixing oil and water, what happened when the mixture was left undisturbed?",
+      "ms": {
+        "draft": 3266,
+        "critique": 6270,
+        "solver": 660,
+        "form": 1110,
+        "translation": 30815
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which method is used to separate oil and water based on their layering?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In a mixture of sand and gravel, which method is most suitable for separation?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Confuses filtration with sieving, not understanding that fil…\"); distractor 1's reason is not a one-line misconception (\"Confuses winnowing with sieving, not understanding that winn…\"); distractor 2's reason is not a one-line misconception (\"Confuses handpicking with sieving, not understanding that ha…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is used to separate the components of a mixture that differ in size?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Confuses decantation with sieving, not understanding that de…\"); distractor 1's reason is not a one-line misconception (\"Confuses filtration with sieving, not understanding that fil…\"); distractor 3's reason is not a one-line misconception (\"Confuses handpicking with sieving, not understanding that ha…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which method is used to separate small stones from grains?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Confuses winnowing with handpicking, not understanding that …\"); distractor 3's reason is not a one-line misconception (\"Confuses sieving with handpicking, not understanding that si…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which method is used to separate magnetic substances from a mixture?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is the method of decantation used to separate oil and water?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Confuses density with weight, not understanding that oil flo…\"); distractor 2's reason is not a one-line misconception (\"Confuses the reason for oil floating with the reason for dec…\"); distractor 3's reason is not a one-line misconception (\"Confuses mixing with separation, not understanding that oil …\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a mixture of oil and water is left undisturbed, what happens to the oil?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses sinking with floating, not understanding that oil i…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which method is useful to separate small stones from wheat?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which method can be used to separate water mixed with milk?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the name of the method used to separate components of a mixture by using a sieve?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which method is used to separate solid particles from a liquid by passing the mixture through a fine mesh?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which method is useful to separate small stones from wheat?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which method can be used to separate milk and water if they are mixed?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a method of separation mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misunderstands the content of the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which method is useful to separate sawdust mixed in a container of water?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which method is easiest for a carpenter to separate iron nails from sawdust?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which method is used to separate magnetic substances from a mixture?",
+      "reason": "near-duplicate of served question cmvvd52pb00sa0rgnulp7q2d3 (cosine 0.943 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which method can be used to separate alum dissolved in water?",
+      "reason": "near-duplicate of batch item \"Which method is used to separate alum dissolved in…\" (cosine 0.993 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

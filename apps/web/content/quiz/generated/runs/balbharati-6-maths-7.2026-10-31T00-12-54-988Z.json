@@ -1,0 +1,510 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T00:12:54.988Z",
+  "finishedAt": "2026-10-31T00:17:28.914Z",
+  "seconds": 274,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 7 — Ratio and Proportion",
+    "edition": "First Edition 2026",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n8. In which ratio the y-axis divides the line segment joining the points (5, – 6) and (–1, – 4)?. 1\n(a) 1 : 5 (b) 5 : 1 (c) 1 : 1 (d) 1 : 2",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2025-26]\n1. In what ratio must a grocer mix two varieties of tea worth ₹ 60 per kg and ₹ 65 1\nper kg so that by selling the mixture at ₹ 68.20 per kg the gain is 10%?\n(A) 3 : 2 (B) 2 : 3 (C) 2 : 5 (D) 3 : 5",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n8. 1\nratio 3 : 1, then the value of 𝒚 is\n(A) 4 (B) 3 (C) 2 (D) 1\nA letter from the word INDEPENDENCE is selected at random. What is the"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 96169,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 16958,
+      "completionTokens": 5537
+    },
+    "critique": {
+      "calls": 32,
+      "ms": 209970,
+      "in": 24,
+      "out": 18,
+      "rejects": 6,
+      "promptTokens": 15055,
+      "completionTokens": 5800
+    },
+    "solver": {
+      "calls": 146,
+      "ms": 77616,
+      "in": 18,
+      "out": 10,
+      "rejects": 8,
+      "promptTokens": 30717,
+      "completionTokens": 1628
+    },
+    "form": {
+      "calls": 1,
+      "ms": 2757,
+      "in": 10,
+      "out": 6,
+      "rejects": 4,
+      "promptTokens": 236,
+      "completionTokens": 67
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 13,
+      "ms": 2328,
+      "in": 6,
+      "out": 5,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 154157,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 10778,
+      "completionTokens": 4967
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the ratio of length to width in picture A, as given in the passage?",
+      "ms": {
+        "draft": 3701,
+        "critique": 5152,
+        "solver": 2438,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the length and width of picture C are 30 mm and 20 mm, what is the simplest form of the ratio of length to width?",
+      "ms": {
+        "draft": 3701,
+        "critique": 4869,
+        "solver": 12897,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the example of the protective walls, the ratio of the number of cement bags used by Anil to the number of cement bags used by Sandeep is 10:5. What is the simplified form of this ratio?",
+      "ms": {
+        "draft": 3701,
+        "critique": 10006,
+        "solver": 17705
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the example of the flowers, 20 yellow flowers and 12 orange flowers are used. What is the ratio of yellow flowers to orange flowers in its simplest form?",
+      "ms": {
+        "draft": 3701,
+        "critique": 10548,
+        "solver": 14405,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the length of a rectangular sheet is 1.20 m and the width is 48 cm, what is the ratio of the width to the length?",
+      "ms": {
+        "draft": 3889,
+        "critique": 5633,
+        "solver": 1380
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a class of 45 students, 15 play hockey, 20 play kabaddi, and the rest play kho-kho. What is the ratio of the number of students playing hockey to the number of students playing kho-kho?",
+      "ms": {
+        "draft": 3889,
+        "critique": 7414
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a grocer mixes two varieties of tea worth ₹60 per kg and ₹65 per kg and sells the mixture at ₹68.20 per kg with a 10% gain, what is the ratio of the two varieties?",
+      "ms": {
+        "draft": 3889,
+        "critique": 6489,
+        "solver": 917
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a class of 45 students, 15 students play hockey, 20 students play kabaddi, and the remaining play kho-kho. What is the ratio of students who play hockey to those who play kho-kho?",
+      "ms": {
+        "draft": 5148,
+        "critique": 5143
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A rectangular sheet has a length of 1.20 m and a width of 48 cm. What is the ratio of the width to the length?",
+      "ms": {
+        "draft": 5148,
+        "critique": 5175,
+        "solver": 1789
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the ratio of 2 kg to 800 grams?",
+      "ms": {
+        "draft": 5148,
+        "critique": 6183,
+        "solver": 1548
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Michael's monthly income is ₹52,000, and he saves ₹13,000. What is the ratio of his income to his expenditure?",
+      "ms": {
+        "draft": 5148,
+        "critique": 6313
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A school purchased 35 saplings from 'Yashoda' nursery for ₹455 and 15 saplings from 'Amol' nursery for ₹240. From which nursery will the school get saplings at a lower price?",
+      "ms": {
+        "draft": 5148,
+        "critique": 6410,
+        "solver": 1973
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the simplest form of the ratio 60:40?",
+      "ms": {
+        "draft": 3290,
+        "critique": 8049
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a factory, 320 workers are employed, out of which 200 are male. What is the ratio of male workers to female workers?",
+      "ms": {
+        "draft": 3290,
+        "critique": 6692,
+        "solver": 1482
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A cook prepares 10 kilograms of rice for 100 students. How many kilograms of rice should be cooked for 80 students?",
+      "ms": {
+        "draft": 5148,
+        "critique": 5610,
+        "solver": 15991,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A florist uses 20 yellow flowers and 12 orange flowers to make a garland. What is the ratio of orange flowers to yellow flowers?",
+      "ms": {
+        "draft": 3290,
+        "critique": 7912
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A grocer mixes two varieties of tea worth ₹60 per kg and ₹65 per kg. If the mixture is sold at ₹68.20 per kg with a gain of 10%, what is the ratio of the two varieties of tea?",
+      "ms": {
+        "draft": 3290,
+        "critique": 7588,
+        "solver": 1227
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the ratio of 5 rupees to 80 paise?",
+      "ms": {
+        "draft": 3290,
+        "critique": 4511
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the ratio of 2 kg to 800 grams?",
+      "ms": {
+        "draft": 3889,
+        "critique": 6683,
+        "solver": 1388,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the method called where the price of one item is found from the price of many items using division?",
+      "ms": {
+        "draft": 3889,
+        "critique": 5496,
+        "solver": 1706,
+        "form": 3554,
+        "translation": 38229
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the length and width of a photograph are 30 mm and 20 mm, what is the ratio of length to width?",
+      "ms": {
+        "draft": 3290,
+        "critique": 9140,
+        "solver": 12933,
+        "form": 0,
+        "translation": 24759
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the example of the protective walls, the ratio of the length of the wall built by Anil to the length of the wall built by Sandeep is 50:25. What is the simplified form of this ratio?",
+      "ms": {
+        "draft": 3701,
+        "critique": 6524,
+        "solver": 12187,
+        "form": 0,
+        "translation": 31090
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A cook prepares 10 kg of rice for 100 students. If only 80 students come, how much rice should be cooked?",
+      "ms": {
+        "draft": 3889,
+        "critique": 5326,
+        "solver": 8373,
+        "form": 0,
+        "translation": 28968
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In the example of Suresh and Ramesh, Suresh walks 1700 meters and Ramesh walks 2 kilometers. What is the ratio of the distance covered by Suresh to the distance covered by Ramesh in its simplest form?",
+      "ms": {
+        "draft": 3701,
+        "critique": 8847,
+        "solver": 12309,
+        "form": 0,
+        "translation": 70763
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the ratio of length to width in picture A, as given in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the length and width of picture C are 30 mm and 20 mm, what is the simplest form of the ratio of length to width?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"incorrect simplification of the ratio 30:20 into 1:1, which …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In the example of the protective walls, the ratio of the number of cement bags used by Anil to the number of cement bags used by Sandeep is 10:5. What is the simplified form of this ratio?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In the example of the flowers, 20 yellow flowers and 12 orange flowers are used. What is the ratio of yellow flowers to orange flowers in its simplest form?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Confuses the order of the ratio, using the numbers from a di…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the length of a rectangular sheet is 1.20 m and the width is 48 cm, what is the ratio of the width to the length?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a class of 45 students, 15 play hockey, 20 play kabaddi, and the rest play kho-kho. What is the ratio of the number of students playing hockey to the number of students playing kho-kho?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a grocer mixes two varieties of tea worth ₹60 per kg and ₹65 per kg and sells the mixture at ₹68.20 per kg with a 10% gain, what is the ratio of the two varieties?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In a class of 45 students, 15 students play hockey, 20 students play kabaddi, and the remaining play kho-kho. What is the ratio of students who play hockey to those who play kho-kho?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A rectangular sheet has a length of 1.20 m and a width of 48 cm. What is the ratio of the width to the length?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the ratio of 2 kg to 800 grams?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Michael's monthly income is ₹52,000, and he saves ₹13,000. What is the ratio of his income to his expenditure?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A school purchased 35 saplings from 'Yashoda' nursery for ₹455 and 15 saplings from 'Amol' nursery for ₹240. From which nursery will the school get saplings at a lower price?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is the simplest form of the ratio 60:40?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In a factory, 320 workers are employed, out of which 200 are male. What is the ratio of male workers to female workers?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A cook prepares 10 kilograms of rice for 100 students. How many kilograms of rice should be cooked for 80 students?",
+      "reason": "options 0 and 2 are the same (\"8 kg\"); options 0 and 2 are the same number"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A florist uses 20 yellow flowers and 12 orange flowers to make a garland. What is the ratio of orange flowers to yellow flowers?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A grocer mixes two varieties of tea worth ₹60 per kg and ₹65 per kg. If the mixture is sold at ₹68.20 per kg with a gain of 10%, what is the ratio of the two varieties of tea?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the ratio of 5 rupees to 80 paise?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the ratio of 2 kg to 800 grams?",
+      "reason": "near-duplicate of served question cmvvkg29n00500rndmt8stqwg (cosine 0.931 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,630 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T17:26:17.926Z",
+  "finishedAt": "2026-10-31T17:43:17.061Z",
+  "seconds": 1019,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "703020012",
+    "document": "balbharati/7/science/703020012.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 14 — Elements, Compounds and Mixtures",
+    "edition": "First Edition 2017",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2026-27]\n25. Carbon forms millions of compounds whereas silicon, which is just below it in 2\nthe Periodic Table, forms a few compounds. Explain the reason for the\ndifference in their ability to form compounds.",
+      "[NSEJS 2016 — question paper]\n28. Choose that element which is most different from the other three:\na) Carbon\nb) Nitrogen\nc) Silicon\nd) Phosphorous",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n37. to 39 are case-based/data -based questions.\n37 4\nA. Derive the names of A, Y, Z, M, P & R\nAttempt either subpart B or C.\nB. Improvise an activity to test Z.\nOR\nC. Name the process in which compounds X, Y & Z are formed from A.\nJustify your response.\n- - - - - - - - - - - - - -\nFor visually impaired students\nA. Distinguish between ethanol and ethanoic acid experimentally.\nAttempt either subpart B or C.\nB. Give the IUPAC name of the first member of Alkene which is formed by\naddition of conc. sulphuric acid to it. Illustrate the change with the help\nof a chemical equation.\nOR\nC. “All combustion reactions are oxidation but all oxidation reactions are\nnot combustion.” Justify.",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n28. An element ‘M’ with electronic configuration 2 8 3 combines separately with Cl , SO4 - -2 3\nanions. Write the chemical formulae of the compounds formed. Predict with the suitable\nreason the nature of the bond formed by element ‘M’ in general. How will the electrical\nconductivity of the compounds formed vary with respect to ‘M’?\nOR\nA reddish-brown metal ‘X’, when heated in air, gives a black compound ‘Y’, which when\nheated in presence of H₂ gas gives ‘X’ back. ‘X’ is refined by the process of electrolysis;\nthis refined form of ‘X’ is used in electrical wiring.\nIdentify ‘X’ and ‘Y’. Draw a well-labeled diagram to represent the process of refining ‘X’."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 265369,
+      "in": 33,
+      "out": 31,
+      "rejects": 2,
+      "promptTokens": 26322,
+      "completionTokens": 6829
+    },
+    "critique": {
+      "calls": 40,
+      "ms": 623236,
+      "in": 31,
+      "out": 24,
+      "rejects": 7,
+      "promptTokens": 16481,
+      "completionTokens": 6976
+    },
+    "solver": {
+      "calls": 176,
+      "ms": 193430,
+      "in": 24,
+      "out": 20,
+      "rejects": 4,
+      "promptTokens": 29533,
+      "completionTokens": 1820
+    },
+    "form": {
+      "calls": 18,
+      "ms": 259685,
+      "in": 20,
+      "out": 9,
+      "rejects": 11,
+      "promptTokens": 15220,
+      "completionTokens": 2395
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 9,
+      "ms": 4927,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 824874,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 17649,
+      "completionTokens": 8191
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 3,
+    "2": 0,
+    "3": 2,
+    "4": 2,
+    "5": 0,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a pure substance?",
+      "ms": {
+        "draft": 4155,
+        "critique": 12971,
+        "solver": 19778,
+        "form": 5484
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a mixture of different substances?",
+      "ms": {
+        "draft": 4155,
+        "critique": 11281,
+        "solver": 21593,
+        "form": 5132
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is not a property of non-metals?",
+      "ms": {
+        "draft": 14590,
+        "critique": 14316,
+        "solver": 3449
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is not a property of metals?",
+      "ms": {
+        "draft": 14590,
+        "critique": 11265,
+        "solver": 23698
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which method is used to separate salt from a salt water mixture?",
+      "ms": {
+        "draft": 14590,
+        "critique": 8499
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which method is used to separate a mixture of two immiscible liquids?",
+      "ms": {
+        "draft": 6737,
+        "critique": 7187,
+        "solver": 1381,
+        "form": 3348
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which method would be most suitable for separating the components of a mixture of ink in water?",
+      "ms": {
+        "draft": 6737,
+        "critique": 11220,
+        "solver": 4153,
+        "form": 7970
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main principle behind the method of centrifugation?",
+      "ms": {
+        "draft": 6737,
+        "critique": 16142,
+        "solver": 4583,
+        "form": 9086
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a mixture of two liquids that do not mix. Which method will they use to separate them?",
+      "ms": {
+        "draft": 6737,
+        "critique": 16635,
+        "solver": 1937,
+        "form": 3408
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which method is used to separate solid particles from a liquid when the solid particles are very small and do not settle on their own?",
+      "ms": {
+        "draft": 16580,
+        "critique": 11209
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a mixture of two immiscible liquids that can be separated using a separating funnel?",
+      "ms": {
+        "draft": 16580,
+        "critique": 12289
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Why is it not possible to separate ink into its components by simple filtration?",
+      "ms": {
+        "draft": 16580,
+        "critique": 22963
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In chromatography, which property of substances helps in their separation?",
+      "ms": {
+        "draft": 16580,
+        "critique": 11780,
+        "solver": 33030,
+        "form": 6527
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a method of separating immiscible liquids?",
+      "ms": {
+        "draft": 16580,
+        "critique": 24149
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is chromatography useful for separating the components of a mixture of colored substances?",
+      "ms": {
+        "draft": 16580,
+        "critique": 25342,
+        "solver": 36015,
+        "form": 9378
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a compound?",
+      "ms": {
+        "draft": 10177,
+        "critique": 21168,
+        "solver": 46817
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is NOT a property of metals?",
+      "ms": {
+        "draft": 10177,
+        "critique": 22719
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which method is used to separate a mixture of salt and water?",
+      "ms": {
+        "draft": 10177,
+        "critique": 21763,
+        "solver": 4409,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of matter?",
+      "ms": {
+        "draft": 8765,
+        "critique": 20419,
+        "solver": 3060,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following elements is most different from the others?",
+      "ms": {
+        "draft": 8765,
+        "critique": 23413
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of a mixture?",
+      "ms": {
+        "draft": 8765,
+        "critique": 21706,
+        "solver": 33263,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is NOT an element?",
+      "ms": {
+        "draft": 8765,
+        "critique": 23605,
+        "solver": 20289
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for a single kind of matter in scientific language?",
+      "ms": {
+        "draft": 4155,
+        "critique": 12576,
+        "solver": 1632,
+        "form": 9080,
+        "translation": 131877
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a compound?",
+      "ms": {
+        "draft": 14590,
+        "critique": 11883,
+        "solver": 1852,
+        "form": 0,
+        "translation": 86001
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a mixture?",
+      "ms": {
+        "draft": 14590,
+        "critique": 10902,
+        "solver": 2094,
+        "form": 0,
+        "translation": 99516
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is made of only one type of atom?",
+      "ms": {
+        "draft": 4155,
+        "critique": 13243,
+        "solver": 3424,
+        "form": 3796,
+        "translation": 82993
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens when a magnesium ribbon is burned in a flame?",
+      "ms": {
+        "draft": 14590,
+        "critique": 12536,
+        "solver": 2821,
+        "form": 0,
+        "translation": 59989
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the term used to describe the smallest particles of substances?",
+      "ms": {
+        "draft": 4155,
+        "critique": 12310,
+        "solver": 21296,
+        "form": 6202,
+        "translation": 147647
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a metalloid?",
+      "ms": {
+        "draft": 10177,
+        "critique": 23085,
+        "solver": 4499,
+        "form": 0,
+        "translation": 33729
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements about elements is correct?",
+      "ms": {
+        "draft": 4155,
+        "critique": 12109,
+        "solver": 2190,
+        "form": 5535,
+        "translation": 119303
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What happens when a compound is formed from its constituent elements?",
+      "ms": {
+        "draft": 10177,
+        "critique": 22065,
+        "solver": 3860,
+        "form": 0,
+        "translation": 46958
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is an example of a mixture?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a compound?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a pure substance?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is a mixture of different substances?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is not a property of non-metals?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is not a property of metals?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which method is used to separate salt from a salt water mixture?",
+      "reason": "the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which method is used to separate a mixture of two immiscible liquids?",
+      "reason": "figure: figure spec refused: spec.arrows.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which method would be most suitable for separating the components of a mixture of ink in water?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'filterPaper'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main principle behind the method of centrifugation?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'test tube'"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student is given a mixture of two liquids that do not mix. Which method will they use to separate them?",
+      "reason": "figure: figure spec refused: spec: Unrecognized key(s) in object: 'labels'"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which method is used to separate solid particles from a liquid when the solid particles are very small and do not settle on their own?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a mixture of two immiscible liquids that can be separated using a separating funnel?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Why is it not possible to separate ink into its components by simple filtration?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In chromatography, which property of substances helps in their separation?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a method of separating immiscible liquids?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is chromatography useful for separating the components of a mixture of colored substances?",
+      "reason": "figure: figure cannot be drawn in en: no en text for label chromatography"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a compound?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is NOT a property of metals?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which method is used to separate a mixture of salt and water?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.liquid: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a property of matter?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed (not a distractor)…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following elements is most different from the others?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is an example of a mixture?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following is NOT an element?",
+      "reason": "after redrafting distractors 0, 2, 3: the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

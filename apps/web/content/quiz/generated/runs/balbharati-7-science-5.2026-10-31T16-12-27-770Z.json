@@ -1,0 +1,487 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T16:12:27.770Z",
+  "finishedAt": "2026-10-31T16:18:29.241Z",
+  "seconds": 361,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "703020012",
+    "document": "balbharati/7/science/703020012.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 5 — Food Safety",
+    "edition": "First Edition 2017",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2024-25]\n7. B. Cooking of food",
+      "[CBSE Class X Science, sample question paper, 2026-27]\n22. A food label is given below. E304 and E307b are added to the flavoured\nbiscuits. 1\nWhich of the following is added to food packets for the same reason?\nA. salt\nB. vinegar\nC. nitrogen\nD. vanilla\n- - - - - - - - - - - - - -\nFor visually impaired students\nIn the food industry nitrogen is used as a/an\nA. preservative.\nB. oxidising agent.\nC. antioxidant.\nD. colouring agent.",
+      "[CBSE Class X Science, marking scheme, 2026-27]\n7. C. Secondary Consumer",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n8. Generally food is broken and absorbed within the body of organisms. In which of the 1\nfollowing organisms is it done outside the body?\na) Amoeba\nb) Mushroom\nc) Paramoecium\nd) Lice"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 92561,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 17162,
+      "completionTokens": 4857
+    },
+    "critique": {
+      "calls": 24,
+      "ms": 165430,
+      "in": 24,
+      "out": 20,
+      "rejects": 4,
+      "promptTokens": 9673,
+      "completionTokens": 4006
+    },
+    "solver": {
+      "calls": 100,
+      "ms": 40196,
+      "in": 20,
+      "out": 15,
+      "rejects": 5,
+      "promptTokens": 11395,
+      "completionTokens": 800
+    },
+    "form": {
+      "calls": 13,
+      "ms": 36195,
+      "in": 15,
+      "out": 13,
+      "rejects": 2,
+      "promptTokens": 3199,
+      "completionTokens": 917
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 4,
+      "ms": 773,
+      "in": 13,
+      "out": 11,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 520518,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 26287,
+      "completionTokens": 13695
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 3,
+    "4": 3,
+    "5": 3,
+    "6": 1
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the main purpose of food preservation according to the passage?",
+      "ms": {
+        "draft": 3776,
+        "critique": 5078,
+        "solver": 1480,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a natural preservative mentioned in the passage?",
+      "ms": {
+        "draft": 3776,
+        "critique": 6770,
+        "solver": 2012
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which method involves heating milk up to 80 C for 15 minutes and cooling it quickly?",
+      "ms": {
+        "draft": 3827,
+        "critique": 7972
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of adding urea to milk according to the passage?",
+      "ms": {
+        "draft": 3827,
+        "critique": 7768,
+        "solver": 1597
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a method of food preservation that uses heat?",
+      "ms": {
+        "draft": 3827,
+        "critique": 6801
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to store food in airtight containers according to the passage?",
+      "ms": {
+        "draft": 3827,
+        "critique": 7025,
+        "solver": 1310
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which method involves heating milk to 80 C for 15 minutes and cooling it quickly?",
+      "ms": {
+        "draft": 3559,
+        "critique": 7151
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for food adulteration according to the passage?",
+      "ms": {
+        "draft": 3559,
+        "critique": 6603,
+        "solver": 1393
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a preservative that works by removing moisture from food?",
+      "ms": {
+        "draft": 3559,
+        "critique": 7970
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a cause of qualitative food wastage?",
+      "ms": {
+        "draft": 4266,
+        "critique": 6510,
+        "solver": 2043
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a natural preservative mentioned in the passage?",
+      "ms": {
+        "draft": 4266,
+        "critique": 6670,
+        "solver": 1915,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to know the expiry date of food packets?",
+      "ms": {
+        "draft": 3559,
+        "critique": 7224,
+        "solver": 1887,
+        "form": 3346
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to check the expiry date of packaged food?",
+      "ms": {
+        "draft": 4266,
+        "critique": 6798,
+        "solver": 1106,
+        "form": 2408
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of food spoilage due to changes in the food's texture?",
+      "ms": {
+        "draft": 4266,
+        "critique": 7818,
+        "solver": 1558,
+        "form": 3691,
+        "translation": 47019
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a food item is stored in a refrigerator, which factor is reduced?",
+      "ms": {
+        "draft": 3776,
+        "critique": 5714,
+        "solver": 1943,
+        "form": 3438,
+        "translation": 38864
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student wants to prevent food spoilage due to microbial growth, which method should they use?",
+      "ms": {
+        "draft": 4266,
+        "critique": 6353,
+        "solver": 1905,
+        "form": 3084,
+        "translation": 49740
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a milk vendor adds urea to milk, what is the likely effect on the milk?",
+      "ms": {
+        "draft": 3559,
+        "critique": 6849,
+        "solver": 1917,
+        "form": 2312,
+        "translation": 38000
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which method of food preservation involves the use of gas to prevent spoilage?",
+      "ms": {
+        "draft": 3776,
+        "critique": 8110,
+        "solver": 1609,
+        "form": 3213,
+        "translation": 45503
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which test would indicate that red chilly powder is adulterated with brick dust?",
+      "ms": {
+        "draft": 3827,
+        "critique": 7036,
+        "solver": 1561,
+        "form": 2867,
+        "translation": 46073
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a test for detecting brick dust in red chilly powder?",
+      "ms": {
+        "draft": 3559,
+        "critique": 8650,
+        "solver": 1258,
+        "form": 3130,
+        "translation": 49065
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a food item is exposed to high energy electrons, what is the most likely effect?",
+      "ms": {
+        "draft": 3776,
+        "critique": 6575,
+        "solver": 1747,
+        "form": 3224,
+        "translation": 51750
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A food packet contains nitrogen gas to prevent spoilage. Which of the following is the correct reason for this?",
+      "ms": {
+        "draft": 4266,
+        "critique": 7129,
+        "solver": 1532,
+        "form": 3658,
+        "translation": 41477
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A shopkeeper changes the expiry date on food packets to avoid financial loss. What does this indicate?",
+      "ms": {
+        "draft": 3827,
+        "critique": 7239,
+        "solver": 1994,
+        "form": 1243,
+        "translation": 58864
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to check the expiry date of packaged food?",
+      "ms": {
+        "draft": 3776,
+        "critique": 7105,
+        "solver": 1733,
+        "form": 2993,
+        "translation": 50158
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of food preservation according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a natural preservative mentioned in the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which method involves heating milk up to 80 C for 15 minutes and cooling it quickly?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the purpose of adding urea to milk according to the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is a method of food preservation that uses heat?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why is it important to store food in airtight containers according to the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which method involves heating milk to 80 C for 15 minutes and cooling it quickly?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main reason for food adulteration according to the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is a preservative that works by removing moisture from food?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a cause of qualitative food wastage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a natural preservative mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Why is it important to know the expiry date of food packets?",
+      "reason": "near-duplicate of batch item \"Why is it important to check the expiry date of pa…\" (cosine 0.908 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Why is it important to check the expiry date of packaged food?",
+      "reason": "near-duplicate of batch item \"Why is it important to check the expiry date of pa…\" (cosine 0.966 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

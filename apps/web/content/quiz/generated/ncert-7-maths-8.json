@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-29T15:24:04.209Z",
+  "generatedAt": "2026-10-31T13:56:45.803Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "What is the value of 1 cowrie shell in terms of copper panas, given that 1 pana = 30 cowrie shells?",
+      "difficulty": 2,
+      "stem": "If a tap fills a tank in 1 hour, how much of the tank is filled in 1/3 hour?",
       "choices": [
-        "1/30 copper pana",
-        "1/15 copper pana",
-        "1/10 copper pana",
-        "1/5 copper pana"
+        "1/3",
+        "1/6",
+        "2/3",
+        "3/4"
       ],
       "answerIndex": 0,
-      "solution": "Since 1 pana is equal to 30 cowrie shells, 1 cowrie shell represents 1/30 of a pana. The other options suggest different fractions that do not match the given relationship between cowrie shells and pana.",
+      "solution": "If the tap fills the tank in 1 hour, then in 1/3 hour, it fills 1/3 of the tank. The option '1/2' incorrectly assumes that the fill rate is 1/2 per hour. '2/3' and '3/4' are incorrect results of different calculations. The correct answer is '1/3'.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "1 पाना में कौन-सी कौड़ी के मूल्य का मान क्या है, यदि 1 पाना = 30 कौड़ी है?",
+          "stem": "यदि एक नल एक टैंक को 1 घंटे में भर दे, तो 1/3 घंटे में टैंक का कितना भाग भर जाएगा?",
           "choices": [
-            "1/30 कांस्य पाना",
-            "1/15 कांस्य पाना",
-            "1/10 कांस्य पाना",
-            "1/5 कांस्य पाना"
+            "1/3",
+            "1/6",
+            "2/3",
+            "3/4"
           ],
-          "solution": "चूंकि 1 पाना 30 कौड़ी के बराबर है, इसलिए 1 कौड़ी एक पाना के 1/30 के बराबर है। अन्य विकल्प विभिन्न अंश दर्शाते हैं जो कौड़ी और पाना के दिए गए संबंध के अनुरूप नहीं हैं।",
+          "solution": "यदि नल टैंक को 1 घंटे में भर दे, तो 1/3 घंटे में यह 1/3 टैंक भरता है। '1/2' गलत रूप से अनुमान लगाता है कि भराव दर 1/2 प्रति घंटा है। '2/3' और '3/4' अलग-अलग गणनाओं के गलत परिणाम हैं। सही उत्तर '1/3' है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate terminology as would be found in a Hindi-medium textbook.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains in the same position, and the distractors are still incorrect.",
           "flag": null
         },
         "mr": {
-          "stem": "1 कॉवरी शेलची किंमत काय असेल, जर 1 पाणा = 30 कॉवरी शेल असेल?",
+          "stem": "जर एक नळ 1 तासात टॅंक भरत असेल, तर 1/3 तासात टॅंकच्या किती भाग भरल्या जातील?",
           "choices": [
-            "1/30 कांस्य पाणा",
-            "1/15 कांस्य पाणा",
-            "1/10 कांस्य पाणा",
-            "1/5 कांस्य पाणा"
+            "1/3",
+            "1/6",
+            "2/3",
+            "3/4"
           ],
-          "solution": "कारण 1 पाणा 30 कॉवरी शेलच्या बरोबरीचा असतो, तर 1 कॉवरी शेल 1/30 पाण्याचे प्रतिनिधित्व करतो. इतर विकल्पांमध्ये वेगळ्या अपूर्णांकांचा समावेश असतो जे दिलेल्या कॉवरी शेल आणि पाण्याच्या संबंधाशी जुळत नाहीत.",
+          "solution": "जर नळ 1 तासात टॅंक भरत असेल, तर 1/3 तासात तो टॅंकच्या 1/3 भाग भरतो. '1/2' हा अपुरा अंदाज असतो की भरण्याचा दर 1/2 प्रति तास आहे. '2/3' आणि '3/4' हे वेगवेगळ्या गणनांचे चुकीचे निकाल आहेत. योग्य उत्तर '1/3' आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for currency units.",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology common in Marathi textbooks.",
           "flag": null
         }
       },
@@ -73,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses the value of 1 pana with 15 or 10 cowrie shells.",
-        "Confuses the value of 1 pana with 15 or 10 cowrie shells.",
-        "Confuses the value of 1 pana with 15 or 10 cowrie shells."
+        "Believes the time and fraction are inversely related, so divides 1 by 3 instead of multiplying.",
+        "Believes that time and work are inversely proportional, so 1/3 hour fills 2/3 of the tank.",
+        "A student might think that the time and the fraction filled are inversely related, so 1/3 hour would fill 3/4 of the tank."
       ],
       "solverAnswers": [
         0,
@@ -85,391 +85,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The solution is correct and straightforward. The question tests basic understanding of unit conversion, and the correct answer is clearly 1/30. The distractors are plausible errors, such as confusing the conversion factor with 15 or 10 instead of 30.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 11,
-          "pageStart": 22,
-          "pageEnd": 22,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.3 Some Problems Involving Fractions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 12,
-          "pageStart": 23,
-          "pageEnd": 24,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.3 Some Problems Involving Fractions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 13,
-          "pageStart": 24,
-          "pageEnd": 26,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.3 Some Problems Involving Fractions"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T15:24:04.209Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If 8 m of lace is used to decorate bags and 1/4 m of lace is used for each bag, how many bags were decorated?",
-      "choices": [
-        "2",
-        "4",
-        "8",
-        "32"
-      ],
-      "answerIndex": 3,
-      "solution": "To find the number of bags, divide the total length of lace by the length used per bag: 8 ÷ (1/4) = 32. So, 32 bags were decorated. The other options incorrectly perform the division or multiplication.",
-      "checkExpr": "8/(1/4)",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि 8 मीटर लेस के बैगों को सजाने के लिए उपयोग किया जाता है और प्रत्येक बैग के लिए 1/4 मीटर लेस का उपयोग किया जाता है, तो कितने बैग सजाए गए?",
-          "choices": [
-            "2",
-            "4",
-            "8",
-            "32"
-          ],
-          "solution": "बैगों की संख्या ज्ञात करने के लिए, कुल लेस की लंबाई को प्रत्येक बैग के लिए उपयोग की गई लंबाई से विभाजित करें: 8 ÷ (1/4) = 32। अतः 32 बैग सजाए गए। अन्य विकल्प गलत विभाजन या गुणन करते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "8 मी लेस बॅग्स डिझाइन करण्यासाठी वापरला गेला आहे आणि प्रत्येक बॅगसाठी 1/4 मी लेस वापरला गेला आहे, तर किती बॅग्स डिझाइन करण्यात आल्या?",
-          "choices": [
-            "2",
-            "4",
-            "8",
-            "32"
-          ],
-          "solution": "बॅग्सची संख्या शोधण्यासाठी, लेसच्या एकूण लांबीला प्रत्येक बॅगसाठी वापरलेल्या लेसच्या लांबीने भागा: 8 ÷ (1/4) = 32. म्हणून, 32 बॅग्स डिझाइन करण्यात आल्या. इतर विकल्प चुकीच्या प्रकारे भागाकार किंवा गुणाकार करतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical operations and measurements.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Multiplies 8 by 1/4 instead of dividing",
-        "Adds 8 and 1/4 instead of dividing",
-        "Subtracts 1/4 from 8 instead of dividing",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly divides 8 by 1/4, resulting in 32. The distractors represent common misconceptions such as multiplying, adding, or subtracting instead of dividing.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 11,
-          "pageStart": 22,
-          "pageEnd": 22,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.3 Some Problems Involving Fractions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 12,
-          "pageStart": 23,
-          "pageEnd": 24,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.3 Some Problems Involving Fractions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 13,
-          "pageStart": 24,
-          "pageEnd": 26,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.3 Some Problems Involving Fractions"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T15:24:04.209Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If 1/2 m of ribbon is used to make 8 badges, what is the length of ribbon used for each badge?",
-      "choices": [
-        "1/16 m",
-        "1/8 m",
-        "1/4 m",
-        "1/2 m"
-      ],
-      "answerIndex": 0,
-      "solution": "To find the length of ribbon used for each badge, divide the total length by the number of badges: (1/2) ÷ 8 = 1/16. The other options incorrectly perform the division or multiplication.",
-      "checkExpr": "(1/2)/8",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि 8 बैज बनाने में 1/2 मीटर रिबन का उपयोग किया जाता है, तो प्रत्येक बैज के लिए रिबन की लंबाई क्या है?",
-          "choices": [
-            "1/16 मीटर",
-            "1/8 मीटर",
-            "1/4 मीटर",
-            "1/2 मीटर"
-          ],
-          "solution": "प्रत्येक बैज के लिए रिबन की लंबाई ज्ञात करने के लिए कुल लंबाई को बैजों की संख्या से विभाजित करें: (1/2) ÷ 8 = 1/16। अन्य विकल्प गलत तरीके से विभाजन या गुणन करते हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Hindi terms for fractions and measurements.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "1/2 मीटर रिबन वापरून 8 बॅडज तयार केले जातात, तर प्रत्येक बॅडजसाठी रिबनची लांबी किती असेल?",
-          "choices": [
-            "1/16 मीटर",
-            "1/8 मीटर",
-            "1/4 मीटर",
-            "1/2 मीटर"
-          ],
-          "solution": "प्रत्येक बॅडजसाठी रिबनची लांबी शोधण्यासाठी, एकूण लांबीला बॅडजच्या संख्येने भागा: (1/2) ÷ 8 = 1/16. इतर विकल्प चुकीच्या प्रकारे भागाकार किंवा गुणाकार करतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses standard Marathi terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Multiplies 1/2 by 8 instead of dividing",
-        "Divides 1/2 by 4 instead of 8",
-        "Divides 1/2 by 2 instead of 8"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1/16 m, as dividing 1/2 by 8 gives 1/16. The author's solution and reasoning are accurate.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 11,
-          "pageStart": 22,
-          "pageEnd": 22,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.3 Some Problems Involving Fractions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 12,
-          "pageStart": 23,
-          "pageEnd": 24,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.3 Some Problems Involving Fractions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 13,
-          "pageStart": 24,
-          "pageEnd": 26,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.3 Some Problems Involving Fractions"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T15:24:04.209Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If 1/4 of a cake is eaten, what fraction of the cake is left?",
-      "choices": [
-        "3/4",
-        "1/2",
-        "1/4",
-        "1/8"
-      ],
-      "answerIndex": 0,
-      "solution": "If 1/4 of the cake is eaten, then 3/4 of the cake is left. The option '1/4' is incorrect because it represents the portion eaten. The option '2/4' is incorrect because it simplifies to 1/2, which is not the correct remaining fraction. The option '1/2' is incorrect because it is not the remaining portion after 1/4 is eaten.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि केक के 1/4 भाग को खाया जाता है, तो केक का कौन-सा भाग बचा रहता है?",
-          "choices": [
-            "3/4",
-            "1/2",
-            "1/4",
-            "1/8"
-          ],
-          "solution": "यदि केक के 1/4 भाग को खाया जाता है, तो केक के 3/4 भाग बच जाते हैं। विकल्प '1/4' गलत है क्योंकि यह खाए गए भाग का प्रतिनिधित्व करता है। विकल्प '2/4' गलत है क्योंकि यह 1/2 में सरलीकृत हो जाता है, जो खाए जाने के बाद सही बचे भाग के बराबर नहीं है। विकल्प '1/2' गलत है क्योंकि यह खाए जाने के बाद बचे भाग के बराबर नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "1/4 भाग केक खाल्ला गेला असता, केकाचा किती भाग उरला असतो?",
-          "choices": [
-            "3/4",
-            "1/2",
-            "1/4",
-            "1/8"
-          ],
-          "solution": "जर 1/4 भाग केक खाल्ला गेला असेल, तर 3/4 भाग केक उरला असतो. विकल्प '1/4' अयोग्य आहे कारण तो खाल्लेला भाग दर्शवतो. विकल्प '2/4' अयोग्य आहे कारण तो 1/2 मध्ये सोपा केला जातो, जो खाल्ल्यानंतर उरलेला भाग नाही. विकल्प '1/2' अयोग्य आहे कारण तो 1/4 खाल्ल्यानंतर उरलेला भाग नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the remaining fraction with half of the original cake",
-        "Student subtracts the wrong fraction from the whole instead of subtracting from 1",
-        "Confuses the fraction eaten with the fraction left, thinking 1/4 is split into 8 parts"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is straightforward and the solution is correct. The correct answer is 3/4, and the reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 17,
-          "pageStart": 37,
-          "pageEnd": 39,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.3 Some Problems Involving Fractions",
-            "Learning Material Sheets"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 18,
-          "pageStart": 39,
-          "pageEnd": 39,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.3 Some Problems Involving Fractions",
-            "Learning Material Sheets"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T15:24:04.209Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "If the product of two fractions is less than both of them, what can you infer about the fractions?",
-      "choices": [
-        "Both fractions are greater than 1",
-        "Both fractions are between 0 and 1",
-        "One fraction is greater than 1 and the other is between 0 and 1",
-        "One fraction is 0 and the other is 1"
-      ],
-      "answerIndex": 1,
-      "solution": "If the product of two fractions is less than both of them, it means that both fractions are between 0 and 1. This is because multiplying two numbers between 0 and 1 results in a number that is smaller than both. The option 'Both fractions are greater than 1' is incorrect because multiplying two numbers greater than 1 results in a product greater than both. The option 'One fraction is greater than 1 and the other is between 0 and 1' is incorrect because the product in this case would be between the two numbers. The option 'One fraction is 0 and the other is 1' is incorrect because the product would be 0, not less than both.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि दो भिन्नों का गुणनफल दोनों से कम है, तो आप भिन्नों के बारे में क्या निष्कर्ष निकाल सकते हैं?",
-          "choices": [
-            "दोनों भिन्न 1 से बड़े हैं",
-            "दोनों भिन्न 0 और 1 के बीच हैं",
-            "एक भिन्न 1 से बड़ा है और दूसरा 0 और 1 के बीच है",
-            "एक भिन्न 0 है और दूसरा 1 है"
-          ],
-          "solution": "यदि दो भिन्नों का गुणनफल दोनों से कम है, तो इसका अर्थ है कि दोनों भिन्न 0 और 1 के बीच हैं। इसका कारण यह है कि 0 और 1 के बीच की दो संख्याओं का गुणनफल दोनों से छोटा होता है। 'दोनों भिन्न 1 से बड़े हैं' विकल्प गलत है क्योंकि 1 से बड़ी दो संख्याओं का गुणनफल दोनों से बड़ा होता है। 'एक भिन्न 1 से बड़ा है और दूसरा 0 और 1 के बीच है' विकल्प गलत है क्योंकि इस मामले में गुणनफल दोनों संख्याओं के बीच होता है। 'एक भिन्न 0 है और दूसरा 1 है' विकल्प गलत है क्योंकि गुणनफल 0 होगा, न कि दोनों से कम।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology commonly found in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर दोन अपूर्णांकांचा गुणाकार दोन्हीपेक्षा कमी असेल, तर तुम्हाला अपूर्णांकांबद्दल काय निष्कर्ष काढता येईल?",
-          "choices": [
-            "दोन्ही अपूर्णांक 1 पेक्षा मोठे आहेत",
-            "दोन्ही अपूर्णांक 0 आणि 1 दरम्यान आहेत",
-            "एक अपूर्णांक 1 पेक्षा मोठा आहे आणि दुसरा 0 आणि 1 दरम्यान आहे",
-            "एक अपूर्णांक 0 आहे आणि दुसरा 1 आहे"
-          ],
-          "solution": "जर दोन अपूर्णांकांचा गुणाकार दोन्हीपेक्षा कमी असेल, तर ते दोन्ही अपूर्णांक 0 आणि 1 दरम्यान असल्याचे निष्कर्ष काढता येते. हे कारण असे आहे की 0 आणि 1 दरम्यानच्या दोन संख्यांचा गुणाकार दोन्हीपेक्षा लहान असतो. 'दोन्ही अपूर्णांक 1 पेक्षा मोठे आहेत' हा विकल्प चुकीचा आहे कारण 1 पेक्षा मोठ्या दोन संख्यांचा गुणाकार दोन्हीपेक्षा मोठा असतो. 'एक अपूर्णांक 1 पेक्षा मोठा आहे आणि दुसरा 0 आणि 1 दरम्यान आहे' हा विकल्प चुकीचा आहे कारण अशा स्थितीत गुणाकार दोन्ही संख्यांमध्ये असतो. 'एक अपूर्णांक 0 आहे आणि दुसरा 1 आहे' हा विकल्प चुकीचा आहे कारण गुणाकार 0 असेल, जो दोन्हीपेक्षा कमी नसेल.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "assumes that multiplying numbers greater than 1 results in a smaller product",
-        null,
-        "assumes that multiplying one number greater than 1 and one between 0 and 1 results in a smaller product",
-        "assumes that multiplying 0 and 1 results in a smaller product"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and logically explains why only fractions between 0 and 1 will produce a product smaller than both. The reasoning for the distractors aligns with common misconceptions.",
+      "critique": "The question is straightforward. If a tap fills a tank in 1 hour, then in 1/3 of an hour, it fills 1/3 of the tank. The solution is correct, and the reasoning for the distractors reflects plausible misconceptions.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp108.pdf",
@@ -513,7 +129,115 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T15:24:04.209Z",
+      "generatedAt": "2026-10-31T13:56:45.803Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If the reciprocal of a fraction is 3/4, what is the original fraction?",
+      "choices": [
+        "4/3",
+        "3/4",
+        "2/3",
+        "1/2"
+      ],
+      "answerIndex": 0,
+      "solution": "The reciprocal of a fraction is obtained by swapping the numerator and denominator. So, if the reciprocal is 3/4, the original fraction must be 4/3. The other options are either the reciprocal itself or incorrect fractions.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक भिन्न का व्युत्क्रम 3/4 है, तो मूल भिन्न क्या है?",
+          "choices": [
+            "4/3",
+            "3/4",
+            "2/3",
+            "1/2"
+          ],
+          "solution": "एक भिन्न का व्युत्क्रम अंश और हर को बदलकर प्राप्त किया जाता है। इसलिए, यदि व्युत्क्रम 3/4 है, तो मूल भिन्न 4/3 होना चाहिए। अन्य विकल्प या तो व्युत्क्रम स्वयं हैं या गलत भिन्न हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका अपूर्णांकाचा व्युत्क्रम 3/4 आहे, तर मूळ अपूर्णांक काय आहे?",
+          "choices": [
+            "4/3",
+            "3/4",
+            "2/3",
+            "1/2"
+          ],
+          "solution": "अपूर्णांकाचा व्युत्क्रम अंश आणि छेद बदलून मिळतो. म्हणून, जर व्युत्क्रम 3/4 असेल, तर मूळ अपूर्णांक 4/3 असेल. इतर विकल्प व्युत्क्रमाच असतात किंवा चुकीचे अपूर्णांक असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Chooses the reciprocal instead of the original fraction",
+        "Chooses the reciprocal instead of the original fraction",
+        "Chooses a different fraction that is not the reciprocal of 3/4"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the solution correctly identifies the original fraction as the reciprocal of 3/4, which is 4/3. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 7,
+          "pageStart": 14,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.2 Division of Fractions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 8,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.2 Division of Fractions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 9,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.3 Some Problems Involving Fractions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 10,
+          "pageStart": 19,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.3 Some Problems Involving Fractions"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T13:56:45.803Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

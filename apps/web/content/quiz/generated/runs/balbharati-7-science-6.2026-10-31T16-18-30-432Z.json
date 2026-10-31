@@ -1,0 +1,487 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T16:18:30.432Z",
+  "finishedAt": "2026-10-31T16:23:01.930Z",
+  "seconds": 271,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "703020012",
+    "document": "balbharati/7/science/703020012.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 6 — Measurement of Physical Quantities",
+    "edition": "First Edition 2017",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2015 — question paper]\n2. Units of length, velocity and force in a certain system of units are double of those in SI\n(i.e. unit length in this system is 2 m, and so on for force and velocity). Read the following\nstatements.\ni) Unit of mass is unchanged.\niii) Unit of linear momentum is doubled.\nAmong the above statements\na) All four are correct.\nc) Only i and ii are correct.\nii) Unit of time is unchanged.\niv) Unit of energy is doubled.\n.\nb) Only i, ii and iii are correct.\nd) Only ii and iii are correct.",
+      "[INJSO 2016 — question paper]\nIndian National Junior Science Olympiad 2016\nRoll Number:\nQUESTION PAPER\nINJSO 2016 Date: 30 January 2016 th\nPlease write your roll number on top of this page in the space provided.\n• Before starting, please ensure that you have received a copy of this Question paper containing\na total of 22 pages (22 sides on 11 sheets including the first 2 cover pages for instructions\nand values of physical constants).\n• In section A, there are 30 multiple choice questions with 4 alternatives, out of which only 1 is\ncorrect. You get 1 mark for every correct answer and – 0.25 mark for every wrong answer.\n• In Section B there are 12 questions of total 60 marks.\n• For Section A, you have to indicate the answe",
+      "[INJSO 2011 — question paper]\n33. Force (F), velocity (v), time (T) and temperature (θ) are chosen as fundamental quantities.\nObtain dimensions of specific latent heat.\na) [v θ ] 2 1\nb) [v ] 2\nc) [FvT θ ] 1 1\nd) [FvT ] 1",
+      "[INJSO 2014 — question paper]\n33. Of the four figures given below, x 0 is known value of the outcome in an\nexperiment. Which of the following data plot a precise but not an accurate\nmeasurement?"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 82812,
+      "in": 24,
+      "out": 23,
+      "rejects": 1,
+      "promptTokens": 17270,
+      "completionTokens": 4377
+    },
+    "critique": {
+      "calls": 29,
+      "ms": 190869,
+      "in": 23,
+      "out": 14,
+      "rejects": 9,
+      "promptTokens": 12206,
+      "completionTokens": 5145
+    },
+    "solver": {
+      "calls": 111,
+      "ms": 57421,
+      "in": 14,
+      "out": 11,
+      "rejects": 3,
+      "promptTokens": 18692,
+      "completionTokens": 1153
+    },
+    "form": {
+      "calls": 4,
+      "ms": 7376,
+      "in": 11,
+      "out": 8,
+      "rejects": 3,
+      "promptTokens": 920,
+      "completionTokens": 227
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 5,
+      "ms": 806,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 237886,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 14127,
+      "completionTokens": 6638
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 2,
+    "4": 2,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "If a student measures the length of a room using their footstep and another student measures the same room using their hand span, what can be said about their measurements?",
+      "ms": {
+        "draft": 3536,
+        "critique": 5339
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student measures the length of a table using their hand span. Another student measures the same table using their hand span. What is likely to happen?",
+      "ms": {
+        "draft": 3536,
+        "critique": 5889
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main reason for having standardized units of measurement?",
+      "ms": {
+        "draft": 3536,
+        "critique": 6242
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student measures the mass of an object using a common balance in a shop, what is being compared?",
+      "ms": {
+        "draft": 3536,
+        "critique": 6483
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a new system of units is created where the unit of length is 2 meters, the unit of velocity is 2 m/s, and the unit of force is 2 Newtons, what will happen to the unit of mass in this system?",
+      "ms": {
+        "draft": 3536,
+        "critique": 10357
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a shopkeeper uses a balance that is not properly calibrated, what kind of error is this?",
+      "ms": {
+        "draft": 4099,
+        "critique": 7782
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the unit of length in a system is 2 meters, and the unit of time is 2 seconds, what will be the unit of velocity in this system?",
+      "ms": {
+        "draft": 4099,
+        "critique": 7695
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a fundamental unit according to the chapter?",
+      "ms": {
+        "draft": 4099,
+        "critique": 8058,
+        "solver": 13382,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The chapter states that standardization of weights and measures is important. Which of the following best explains why?",
+      "ms": {
+        "draft": 4099,
+        "critique": 8506,
+        "solver": 10580,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the unit of force in a system is double the SI unit, what will be the unit of acceleration in this system, assuming the unit of mass remains the same?",
+      "ms": {
+        "draft": 4099,
+        "critique": 6461,
+        "solver": 1100
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the standard unit of mass in the SI system?",
+      "ms": {
+        "draft": 4099,
+        "critique": 6094,
+        "solver": 5437,
+        "form": 1071
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a certain system of units, the unit of length is 2 m, the unit of velocity is 2 m/s, and the unit of force is 2 N. What can be said about the unit of mass in this system?",
+      "ms": {
+        "draft": 3021,
+        "critique": 6698,
+        "solver": 2098
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student measures the length of a table using their hand-span. Another student measures the same table using their hand-span. What is likely to be the result?",
+      "ms": {
+        "draft": 3146,
+        "critique": 9570
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The weight of an object is different at different places on Earth. Why?",
+      "ms": {
+        "draft": 3146,
+        "critique": 7090
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a vector quantity?",
+      "ms": {
+        "draft": 3146,
+        "critique": 7048,
+        "solver": 8140
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a scalar quantity?",
+      "ms": {
+        "draft": 3146,
+        "critique": 6633,
+        "solver": 1629,
+        "form": 2321
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a fundamental physical quantity?",
+      "ms": {
+        "draft": 3021,
+        "critique": 6597,
+        "solver": 1946,
+        "form": 0,
+        "translation": 38284
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the SI unit of mass?",
+      "ms": {
+        "draft": 3021,
+        "critique": 6437,
+        "solver": 1314,
+        "form": 0,
+        "translation": 27049
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a scalar quantity?",
+      "ms": {
+        "draft": 3536,
+        "critique": 5129,
+        "solver": 1737,
+        "form": 2044,
+        "translation": 33546
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a car travels 150 km in 3 hours, what is its average speed?",
+      "ms": {
+        "draft": 3021,
+        "critique": 7529,
+        "solver": 2053,
+        "form": 0,
+        "translation": 30366
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student measures the length of a room using a measuring tape. Another student measures the same room using a different measuring tape. What is the most likely outcome?",
+      "ms": {
+        "draft": 3146,
+        "critique": 9208,
+        "solver": 11906,
+        "form": 1940,
+        "translation": 31285
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a derived physical quantity?",
+      "ms": {
+        "draft": 3021,
+        "critique": 6760,
+        "solver": 1584,
+        "form": 0,
+        "translation": 29173
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the unit of length is halved and the unit of time is doubled, what happens to the unit of velocity?",
+      "ms": {
+        "draft": 3021,
+        "critique": 6866,
+        "solver": 16270,
+        "form": 0,
+        "translation": 43327
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If a student measures the length of a room using their footstep and another student measures the same room using their hand span, what can be said about their measurements?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A student measures the length of a table using their hand span. Another student measures the same table using their hand span. What is likely to happen?",
+      "reason": "option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the main reason for having standardized units of measurement?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a student measures the mass of an object using a common balance in a shop, what is being compared?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a new system of units is created where the unit of length is 2 meters, the unit of velocity is 2 m/s, and the unit of force is 2 Newtons, what will happen to the unit of mass in this system?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a shopkeeper uses a balance that is not properly calibrated, what kind of error is this?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the unit of length in a system is 2 meters, and the unit of time is 2 seconds, what will be the unit of velocity in this system?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a fundamental unit according to the chapter?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The chapter states that standardization of weights and measures is important. Which of the following best explains why?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the unit of force in a system is double the SI unit, what will be the unit of acceleration in this system, assuming the unit of mass remains the same?",
+      "reason": "the solver picked option 0 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the standard unit of mass in the SI system?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is a standard unit of mass?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a certain system of units, the unit of length is 2 m, the unit of velocity is 2 m/s, and the unit of force is 2 N. What can be said about the unit of mass in this system?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A student measures the length of a table using their hand-span. Another student measures the same table using their hand-span. What is likely to be the result?",
+      "reason": "option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "The weight of an object is different at different places on Earth. Why?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a vector quantity?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a scalar quantity?",
+      "reason": "near-duplicate of batch item \"Which of the following is a scalar quantity?…\" (cosine 1.000 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

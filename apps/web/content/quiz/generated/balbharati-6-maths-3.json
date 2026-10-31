@@ -21,427 +21,47 @@
   "board": "BALBHARATI",
   "book": "६ वी गणित इंग्रजी",
   "edition": "First Edition 2026",
-  "generatedAt": "2026-10-30T22:14:44.378Z",
+  "generatedAt": "2026-10-31T00:00:40.056Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "Which of the following is the set of whole numbers?",
-      "choices": [
-        "0, 1, 2, 3, ...",
-        "-25 to +25",
-        "All positive numbers",
-        "All positive and negative numbers"
-      ],
-      "answerIndex": 0,
-      "solution": "The set of whole numbers includes zero and all positive integers starting from zero, represented as 0, 1, 2, 3, ... The option '-25 to +25' describes a range of integers, not the entire set of whole numbers. 'All positive numbers' excludes zero, and 'all positive and negative numbers' refers to integers, not whole numbers.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा पूर्ण संख्याओं का समुच्चय है?",
-          "choices": [
-            "0, 1, 2, 3, ...",
-            "-25 से +25 तक",
-            "सभी धनात्मक संख्याएँ",
-            "सभी धनात्मक और ऋणात्मक संख्याएँ"
-          ],
-          "solution": "पूर्ण संख्याओं का समुच्चय शून्य और शून्य से शुरू होने वाली सभी धनात्मक पूर्णांकों को सम्मिलित करता है, जिसे 0, 1, 2, 3, ... के रूप में दर्शाया जाता है। विकल्प '-25 से +25 तक' पूर्ण संख्याओं के पूरे समुच्चय का वर्णन नहीं करता है। 'सभी धनात्मक संख्याएँ' शून्य को छोड़ देती है, और 'सभी धनात्मक और ऋणात्मक संख्याएँ' पूर्ण संख्याओं के बजाय पूर्णांकों को संदर्भित करती है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते पूर्ण संख्यांचे समुच्चय आहे?",
-          "choices": [
-            "0, 1, 2, 3, ...",
-            "-25 ते +25",
-            "सर्व धनात्मक संख्या",
-            "सर्व धनात्मक आणि ऋणात्मक संख्या"
-          ],
-          "solution": "पूर्ण संख्यांचा समुच्चय शून्य आणि शून्यपासून सुरू होणाऱ्या सर्व धनात्मक पूर्णांकांचा असतो, जे 0, 1, 2, 3, ... अशा प्रकारे दर्शविले जाते. ऑप्शन '-25 ते +25' असे पूर्णांकांचे परिसर दर्शवते, पूर्ण संख्यांचा पूर्ण समुच्चय नाही. 'सर्व धनात्मक संख्या' शून्यला बाजूला ठेवते, आणि 'सर्व धनात्मक आणि ऋणात्मक संख्या' पूर्णांकांचे वर्णन करते, पूर्ण संख्यांचे नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses whole numbers with a range of numbers like -25 to +25",
-        "Thinks whole numbers include negative numbers",
-        "Misunderstands whole numbers as only positive numbers"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed and the solution aligns with the definition of whole numbers. The distractors reflect common misconceptions about the set of whole numbers.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 27,
-          "pageStart": 36,
-          "pageEnd": 38,
-          "headingPath": [
-            "3. In the World of Numbers"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 28,
-          "pageStart": 39,
-          "pageEnd": 40,
-          "headingPath": [
-            "3. In the World of Numbers"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 29,
-          "pageStart": 40,
-          "pageEnd": 40,
-          "headingPath": [
-            "3. In the World of Numbers"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T22:14:44.378Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "What is the sum of two opposite numbers?",
+      "difficulty": 2,
+      "stem": "Which of the following is a natural number?",
       "choices": [
         "0",
-        "1",
-        "2",
-        "-2"
-      ],
-      "answerIndex": 0,
-      "solution": "The sum of two opposite numbers is always zero because they cancel each other out when added. For example, 5 and -5 add up to 0. The other options do not represent the result of adding a number and its opposite.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "दो विपरीत संख्याओं का योग क्या है?",
-          "choices": [
-            "0",
-            "1",
-            "-1",
-            "2"
-          ],
-          "solution": "दो विपरीत संख्याओं का योग हमेशा शून्य होता है क्योंकि जब उन्हें जोड़ा जाता है तो वे एक दूसरे को रद्द कर देते हैं। उदाहरण के लिए, 5 और -5 का योग 0 होता है। अन्य विकल्प एक संख्या और उसके विपरीत के योग के परिणाम का प्रतिनिधित्व नहीं करते हैं।",
-          "imageAlt": null,
-          "critique": "Option (3) in Hindi is -1 instead of 2, so the correct answer is not in the same position as in English.",
-          "flag": "translation critique: not one answer at the same position"
-        },
-        "mr": {
-          "stem": "दोन विरुद्ध संख्यांची बेरीज किती असते?",
-          "choices": [
-            "0",
-            "1",
-            "2",
-            "-2"
-          ],
-          "solution": "दोन विरुद्ध संख्यांची बेरीज नेहमी शून्य असते कारण ते एकमेकांना रद्द करतात जेव्हा त्यांची बेरीज केली जाते. उदाहरणार्थ, 5 आणि -5 ची बेरीज 0 असते. इतर विकल्प संख्या आणि तिच्या विरुद्धाच्या बेरजेचे परिणाम प्रतिनिधित्व करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and natural, with appropriate Marathi mathematical terminology used.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Believes that the sum of opposite numbers is 1 because they think opposites cancel each other partially",
-        "Confuses the sum of two opposite numbers with the absolute value of one of the numbers",
-        "Pupil thinks opposite numbers cancel each other but subtracts instead of adding"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is straightforward and the correct answer is clearly 0. The author's reasoning for the distractors reflects common misconceptions about opposite numbers.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 27,
-          "pageStart": 36,
-          "pageEnd": 38,
-          "headingPath": [
-            "3. In the World of Numbers"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 28,
-          "pageStart": 39,
-          "pageEnd": 40,
-          "headingPath": [
-            "3. In the World of Numbers"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 29,
-          "pageStart": 40,
-          "pageEnd": 40,
-          "headingPath": [
-            "3. In the World of Numbers"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T22:14:44.378Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "What is the result of (-3) + (-2)?",
-      "choices": [
         "-5",
-        "-1",
-        "5",
-        "1"
+        "1",
+        "-10"
       ],
-      "answerIndex": 0,
-      "solution": "When adding two negative numbers, you add their absolute values and keep the negative sign. Here, 3 + 2 equals 5, so the result is -5. The other options either incorrectly use rules for different signs or fail to account for the negative signs.",
+      "answerIndex": 2,
+      "solution": "Natural numbers are the set of positive integers starting from 1. Therefore, 1 is a natural number. 0 is not considered a natural number because it is neither positive nor negative. -5 and -10 are negative numbers, which are not included in the set of natural numbers.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "(-3) + (-2) का परिणाम क्या है?",
-          "choices": [
-            "-5",
-            "-1",
-            "5",
-            "1"
-          ],
-          "solution": "दो ऋणात्मक संख्याओं को जोड़ते समय, आप उनके परम मानों को जोड़ते हैं और ऋणात्मक चिह्न बनाए रखते हैं। यहां, 3 + 2 बराबर 5 है, इसलिए परिणाम -5 है। अन्य विकल्प या तो अलग-अलग चिह्नों के नियमों का गलत उपयोग करते हैं या ऋणात्मक चिह्नों की गणना नहीं करते।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains mathematical meaning, and uses standard Hindi terminology for arithmetic operations.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "(-3) + (-2) चा निकाल काय आहे?",
-          "choices": [
-            "-5",
-            "-1",
-            "5",
-            "1"
-          ],
-          "solution": "दोन ऋण संख्यांची बेरीज करताना त्यांच्या निरपेक्ष मूल्यांची बेरीज करून ऋण चिन्ह ठेवले जाते. येथे 3 + 2 ची बेरीज 5 असते, म्हणून निकाल -5 असतो. इतर विकल्प विविध चिन्हांच्या नियमांचा चुकीचा वापर करतात किंवा ऋण चिन्हांचा विचार करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Believes that adding two negative numbers results in a smaller negative number but subtracts instead of adding the absolute values.",
-        "Adding the absolute values of the numbers and forgetting to apply the negative sign",
-        "Confuses the sum of two negative numbers with the difference of their absolute values"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is straightforward and the correct answer is clearly -5. The author's solution and reasoning for the distractors are accurate and reflect common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 27,
-          "pageStart": 36,
-          "pageEnd": 38,
-          "headingPath": [
-            "3. In the World of Numbers"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 28,
-          "pageStart": 39,
-          "pageEnd": 40,
-          "headingPath": [
-            "3. In the World of Numbers"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 29,
-          "pageStart": 40,
-          "pageEnd": 40,
-          "headingPath": [
-            "3. In the World of Numbers"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T22:14:44.378Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If a player's score reaches -25 on a number strip, what happens to the player?",
-      "choices": [
-        "The player wins",
-        "The player is eliminated",
-        "The player continues playing",
-        "The player gets a bonus"
-      ],
-      "answerIndex": 1,
-      "solution": "If a player's score reaches -25, they are eliminated because this is the rule that determines when a player is removed from the game. The other options do not align with this specific rule. There is no indication that reaching -25 results in a win, continuation, or bonus.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि खिलाड़ी के स्कोर में -25 आ जाता है, तो खिलाड़ी के साथ क्या होता है?",
-          "choices": [
-            "खिलाड़ी जीत जाता है",
-            "खिलाड़ी खेल से बाहर हो जाता है",
-            "खिलाड़ी खेल जारी रखता है",
-            "खिलाड़ी को बोनस मिलता है"
-          ],
-          "solution": "यदि खिलाड़ी के स्कोर में -25 आ जाता है, तो वह खेल से बाहर हो जाता है क्योंकि यह खेल से बाहर करने का नियम है। अन्य विकल्प इस विशिष्ट नियम के साथ मेल नहीं खाते। -25 तक पहुंचने पर जीत, खेल जारी रखना या बोनस मिलने का कोई संकेत नहीं है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for game terms.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर खेळाडूचा गुणसंख्या संख्या पट्टीवर -25 पर्यंत पोहोचत असेल, तर खेळाडूला काय होते?",
-          "choices": [
-            "खेळाडू विजयी होतो",
-            "खेळाडू बाहेर काढला जातो",
-            "खेळाडू खेळत राहतो",
-            "खेळाडूला बोनस मिळतो"
-          ],
-          "solution": "जर खेळाडूचा गुणसंख्या -25 पर्यंत पोहोचत असेल तर तो बाहेर काढला जातो, कारण हे खेळाडूला खेळाबाहेर काढण्याचा नियम आहे. इतर विकल्प ह्या विशिष्ट नियमाशी जुळत नाहीत. -25 पर्यंत पोहोचणे विजय, खेळत राहणे किंवा बोनस मिळण्याचा इशारा नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for game mechanics.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses elimination with winning",
-        null,
-        "Thinks the game allows continued play beyond -25",
-        "Imagines additional game rules not mentioned"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as the question directly states that reaching -25 results in elimination. The other options reflect common misconceptions about game rules.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 27,
-          "pageStart": 36,
-          "pageEnd": 38,
-          "headingPath": [
-            "3. In the World of Numbers"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 28,
-          "pageStart": 39,
-          "pageEnd": 40,
-          "headingPath": [
-            "3. In the World of Numbers"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 29,
-          "pageStart": 40,
-          "pageEnd": 40,
-          "headingPath": [
-            "3. In the World of Numbers"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T22:14:44.378Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "If a rabbit jumps 4 units to the right and then 4 units to the left from 0 on a number line, where will it end up?",
-      "choices": [
-        "0",
-        "4",
-        "-8",
-        "-4"
-      ],
-      "answerIndex": 0,
-      "solution": "The rabbit's first jump of 4 units to the right takes it to +4. The second jump of 4 units to the left brings it back to 0. The other options are incorrect because 4 and -4 are the positions after only one jump, and 8 is not possible with these jumps.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक खरगोश संख्या रेखा पर 0 से 4 इकाई दाएं जाकर फिर 4 इकाई बाएं जाता है, तो वह कहां खड़ा हो जाएगा?",
+          "stem": "निम्नलिखित में से कौन एक प्राकृतिक संख्या है?",
           "choices": [
             "0",
-            "4",
-            "-8",
-            "-4"
+            "-5",
+            "1",
+            "-10"
           ],
-          "solution": "खरगोश का पहला छलांग 4 इकाई दाएं ले जाता है +4 पर। दूसरा छलांग 4 इकाई बाएं ले जाता है 0 पर। अन्य विकल्प गलत हैं क्योंकि 4 और -4 केवल एक छलांग के बाद की स्थिति हैं, और -8 इन छलांगों के साथ संभव नहीं है।",
+          "solution": "प्राकृतिक संख्याएँ 1 से शुरू होने वाली धनात्मक पूर्णांकों के सेट होती हैं। इसलिए, 1 एक प्राकृतिक संख्या है। 0 को प्राकृतिक संख्या नहीं माना जाता है क्योंकि यह न तो धनात्मक है और न ही ऋणात्मक। -5 और -10 ऋणात्मक संख्याएँ हैं, जो प्राकृतिक संख्याओं के सेट में शामिल नहीं हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
+          "critique": "Translation accurately reflects the original meaning, technical terms are standard in Hindi textbooks, and the correct answer remains in the same position.",
           "flag": null
         },
         "mr": {
-          "stem": "जर एक खरगोश 0 वरून उजवीकडे 4 एकक उडी मारतो आणि नंतर डावीकडे 4 एकक उडी मारतो, तर तो कोठे जाईल?",
+          "stem": "खालीलपैकी कोणता एक प्राकृतिक संख्या आहे?",
           "choices": [
             "0",
-            "4",
-            "-8",
-            "-4"
+            "-5",
+            "1",
+            "-10"
           ],
-          "solution": "खरगोशची पहिली उडी उजवीकडे 4 एकक घेऊन तो +4 वर जातो. दुसरी उडी डावीकडे 4 एकक घेऊन तो परत 0 वर येतो. इतर विकल्प चुकीचे आहेत कारण 4 आणि -4 हे एकच उडीनंतरचे स्थान आहे, आणि 8 हे या उड्यांनी शक्य नाही.",
+          "solution": "प्राकृतिक संख्या ही 1 या धनात्मक पूर्णांकापासून सुरू होणारी संख्या आहे. म्हणूनच 1 ही एक प्राकृतिक संख्या आहे. 0 ही प्राकृतिक संख्या मानली जात नाही कारण ती धनात्मक किंवा ऋणात्मक नाही. -5 आणि -10 ही ऋणात्मक संख्या आहेत, ज्या प्राकृतिक संख्यांच्या संचात समाविष्ट नाहीत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -452,20 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Confuses whole numbers with natural numbers",
+        "Confuses negative numbers with natural numbers",
         null,
-        "Student adds the distances jumped in both directions instead of canceling them out",
-        "Student subtracts 4 - 4 but incorrectly applies the sign, thinking the result is negative",
-        "Confuses the direction of the second jump as subtracting 4 instead of adding -4"
+        "Confuses natural numbers with integers, believing negative numbers can be natural"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and clearly explains the movement on the number line. The reasoning for the distractors aligns with common misconceptions.",
+      "levelFlag": null,
+      "critique": "The solution correctly identifies 1 as the natural number, and the reasoning aligns with common misconceptions about natural numbers versus whole numbers and integers.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
@@ -496,102 +116,110 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T22:14:44.378Z",
+      "generatedAt": "2026-10-31T00:00:40.056Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "Which of the following is an example of a zero pair?",
+      "difficulty": 4,
+      "stem": "Which of the following numbers is greater than -2 but less than 0?",
       "choices": [
-        "(+1) + (-1)",
-        "(+2) + (+3)",
-        "(-4) + (+2)",
-        "(-5) + (-3)"
+        "-3",
+        "-1",
+        "1",
+        "2"
       ],
-      "answerIndex": 0,
-      "solution": "A zero pair consists of two numbers that add up to zero. (+1) + (-1) equals 0, so it is a zero pair. The other options do not sum to zero because either their signs are the same or their absolute values differ.",
+      "answerIndex": 1,
+      "solution": "The number -1 is greater than -2 because it is closer to zero on the number line, and it is less than 0 because it is still negative. -3 is less than -2, and 1 and 2 are positive numbers, which are greater than 0.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन एक शून्य युग्म का उदाहरण है?",
+          "stem": "निम्नलिखित में से कौन-सी संख्या -2 से अधिक परन्तु 0 से कम है?",
           "choices": [
-            "(+1) + (-1)",
-            "(+2) + (+3)",
-            "(-4) + (+2)",
-            "(-5) + (-3)"
+            "-3",
+            "-1",
+            "1",
+            "2"
           ],
-          "solution": "एक शून्य युग्म दो संख्याओं का एक युग्म होता है जो शून्य के बराबर होता है। (+1) + (-1) शून्य के बराबर होता है इसलिए यह एक शून्य युग्म है। अन्य विकल्प शून्य के बराबर नहीं होते क्योंकि उनके चिह्न एक जैसे होते हैं या उनके परम मान भिन्न होते हैं।",
-          "imageAlt": null,
+          "solution": "संख्या -1, -2 से अधिक है क्योंकि यह संख्या रेखा पर शून्य के निकट है, और यह 0 से कम है क्योंकि यह अभी भी ऋणात्मक है। -3, -2 से कम है, और 1 और 2 धनात्मक संख्याएँ हैं, जो 0 से अधिक हैं।",
+          "imageAlt": "संख्या रेखा जिस पर -5 से 5 तक पूर्णांक दर्शाए गए हैं",
           "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते शून्य जोडीचे उदाहरण आहे?",
+          "stem": "खालील पैकी कोणता संख्या -2 पेक्षा मोठा आहे पण 0 पेक्षा लहान आहे?",
           "choices": [
-            "(+1) + (-1)",
-            "(+2) + (+3)",
-            "(-4) + (+2)",
-            "(-5) + (-3)"
+            "-3",
+            "-1",
+            "1",
+            "2"
           ],
-          "solution": "शून्य जोडी ही अशा दोन संख्यांची जोडी आहे ज्यांची बेरीज शून्य असते. (+1) + (-1) ची बेरीज 0 असते, म्हणून ती शून्य जोडी आहे. इतर विकल्प शून्य बेरीज नसतात कारण त्यांचे चिन्ह समान असतात किंवा त्यांच्या निरपेक्ष मूल्यांमध्ये फरक असतो.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for mathematical concepts.",
+          "solution": "संख्या -1 ही -2 पेक्षा मोठी आहे कारण ती संख्या रेषेवर शून्याच्या जवळ आहे, आणि ती 0 पेक्षा लहान आहे कारण ती अजूनही ऋण आहे. -3 ही -2 पेक्षा लहान आहे, आणि 1 आणि 2 ही धन संख्या आहेत, ज्या 0 पेक्षा मोठ्या आहेत.",
+          "imageAlt": "एका संख्या रेषेवर -5 ते 5 पर्यंत पूर्णांक दर्शविले आहेत",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
+      "imageAlt": "A number line showing integers from -5 to 5",
+      "figure": {
+        "kind": "numberline",
+        "spec": {
+          "min": -5,
+          "max": 5,
+          "step": 1
+        },
+        "labels": {}
+      },
+      "needsFigure": true,
       "distractorReason": [
+        "chooses a number less than -2",
         null,
-        "Chooses two positive numbers",
-        "Selects numbers with different absolute values",
-        "Chooses two negative numbers"
+        "Confuses negative numbers with positive numbers, thinking that -1 is greater than 0",
+        "chooses a positive number greater than 0', "
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is well-constructed and the solution correctly identifies the zero pair. The reasoning for the distractors aligns with common misconceptions.",
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. The correct answer is -1, which is greater than -2 and less than 0. The distractors reflect common misconceptions about the ordering of negative numbers and the difference between positive and negative numbers.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 27,
-          "pageStart": 36,
-          "pageEnd": 38,
+          "ordinal": 24,
+          "pageStart": 32,
+          "pageEnd": 33,
           "headingPath": [
             "3. In the World of Numbers"
           ]
         },
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 28,
-          "pageStart": 39,
-          "pageEnd": 40,
+          "ordinal": 25,
+          "pageStart": 33,
+          "pageEnd": 34,
           "headingPath": [
             "3. In the World of Numbers"
           ]
         },
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 29,
-          "pageStart": 40,
-          "pageEnd": 40,
+          "ordinal": 26,
+          "pageStart": 35,
+          "pageEnd": 36,
           "headingPath": [
             "3. In the World of Numbers"
           ]
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T22:14:44.378Z",
+      "generatedAt": "2026-10-31T00:00:40.056Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

@@ -1,0 +1,445 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T15:49:49.434Z",
+  "finishedAt": "2026-10-31T15:57:00.241Z",
+  "seconds": 431,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "703020012",
+    "document": "balbharati/7/science/703020012.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 2 — Plants : Structure and Function",
+    "edition": "First Edition 2017",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2024-25]\nC. Growth of pollen tubes towards the ovule is an example of\nchemotropism whereas bending of shoots towards sunlight is an\nexample of phototropism. (1)\nD.\ni) Although both plants and animals show electrical–chemical means to\nconvey the information from cell to cell but unlike nerve cells in\nanimals there is no specialized tissue in plants for conduction of\ninformation. (0.5)\nii) In animal cells, change in shape occurs because of the specialized\nproteins found in muscle cells; plant cells change shape by changing\nthe amount of water in them. (0.5)",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n38. Mohan and Rohit observed that shoots of a plant growing in shade bend 4\ntowards the sunlight. Whereas, leaves of ‘Touch me not’ plant fold and droop\nsoon after touching. They were curious to know how these movements occur\nin plants.\nA. Shoots of a plant bending towards light\nB. Folding of leaves Touch me not plant\nIn order to help them understand the movements in the plants, answer the\nfollowing questions:\nAttempt either subpart A or B.\nA. What causes the bending of shoots in the plants as shown in figure A?\nOR\nB. What causes the folding of the leaves in ‘Touch me not’ plant as shown\nin figure B? (2)\nC. Compare the movement of growth of the pollen tube towards ovule with\nthe movements sh",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n10. It is completely wrong to say that plants do not produce any excretory 2\nproducts.\nHowever, plants use completely different strategies for excretion than those\nof the animals.They get rid of these wastes in different manner (any two):\ni. Oxygen, a photosynthetic waste, is removed through stomata.\nii. Excess water is removed by transpiration through stomata.\niii. Other metabolic wastes are either stored in dead cells, resins and\ngums or are removed through falling of old leaves.\niv. Many waste products are stored in cellular vacuoles",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n38. Students to attempt either subpart A or B. 4\nA.\n● Bending of shoots of plants is a response to the stimulus and a\ndirectional, growth-related movement.\n● When growing plants detect sunlight, a hormone called auxin,\nsynthesized at shoot tip helps the cells to grow longer.\n● When light is coming from one side of the plant, auxin diffuses to the\nshady side of the shoot.\n● This concentration of auxin stimulates the cells of the shoot to grow\nlonger on the side of the shoot which is away from the light. Thus, plant\nappears to bend towards light. (0.5 x 4 =2)\nOR\nB.\n● Leaves of ‘Touch me not’ plant respond to the stimulus by showing\ngrowth independent movement.\n● These plants use electrical–che"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 85442,
+      "in": 23,
+      "out": 22,
+      "rejects": 1,
+      "promptTokens": 18466,
+      "completionTokens": 4178
+    },
+    "critique": {
+      "calls": 26,
+      "ms": 174566,
+      "in": 22,
+      "out": 21,
+      "rejects": 1,
+      "promptTokens": 11219,
+      "completionTokens": 4227
+    },
+    "solver": {
+      "calls": 131,
+      "ms": 72881,
+      "in": 21,
+      "out": 18,
+      "rejects": 3,
+      "promptTokens": 19003,
+      "completionTokens": 1198
+    },
+    "form": {
+      "calls": 9,
+      "ms": 30924,
+      "in": 18,
+      "out": 15,
+      "rejects": 3,
+      "promptTokens": 2187,
+      "completionTokens": 646
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 2,
+      "ms": 385,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 61,
+      "ms": 655494,
+      "in": 30,
+      "out": 30,
+      "rejects": 0,
+      "promptTokens": 34147,
+      "completionTokens": 16703
+    }
+  },
+  "kept": 15,
+  "keptByLevel": {
+    "1": 0,
+    "2": 4,
+    "3": 3,
+    "4": 2,
+    "5": 3,
+    "6": 3
+  },
+  "flagged": 8,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 5,
+      "stem": "If a plant's root tip is injured, what would most likely happen?",
+      "ms": {
+        "draft": 3881,
+        "critique": 7225,
+        "solver": 2291
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the water level in a jar if a plant is kept in it with its roots submerged and oil is added on top?",
+      "ms": {
+        "draft": 3881,
+        "critique": 5309,
+        "solver": 18790
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the type of venation in a peepal leaf?",
+      "ms": {
+        "draft": 3937,
+        "critique": 6968,
+        "solver": 1549,
+        "form": 3657
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct statement about the venation in leaves?",
+      "ms": {
+        "draft": 3937,
+        "critique": 7447,
+        "solver": 1766,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student observes that the leaves of a plant close at night. Which of the following is the most likely reason for this?",
+      "ms": {
+        "draft": 3158,
+        "critique": 6054,
+        "solver": 2210
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a function of the root tip?",
+      "ms": {
+        "draft": 3918,
+        "critique": 8663
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which part of the plant helps in the absorption of water and minerals from the soil?",
+      "ms": {
+        "draft": 3918,
+        "critique": 9221,
+        "solver": 13521,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which part of the plant grows from the seed towards the soil?",
+      "ms": {
+        "draft": 3881,
+        "critique": 4958,
+        "solver": 1280,
+        "form": 6484,
+        "translation": 35816
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which part of the stem is responsible for the growth of the plant?",
+      "ms": {
+        "draft": 3881,
+        "critique": 7360,
+        "solver": 1964,
+        "form": 4068,
+        "translation": 88300
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following describes the function of the receptacle in a flower?",
+      "ms": {
+        "draft": 3937,
+        "critique": 7198,
+        "solver": 1659,
+        "form": 2977,
+        "translation": 42567
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which part of the flower is responsible for attracting insects?",
+      "ms": {
+        "draft": 3158,
+        "critique": 7022,
+        "solver": 1347,
+        "form": 1,
+        "translation": 33604
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plant has leaves with a rough surface, which of the following could be the reason?",
+      "ms": {
+        "draft": 3937,
+        "critique": 7151,
+        "solver": 1829,
+        "form": 5301,
+        "translation": 49692
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student observes a leaf and finds that its veins form a network. Which type of venation does this leaf have?",
+      "ms": {
+        "draft": 3158,
+        "critique": 7242,
+        "solver": 2778,
+        "form": 0,
+        "translation": 53891
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student observes that a seed divides into two equal parts when pressed. What type of seed is this?",
+      "ms": {
+        "draft": 3158,
+        "critique": 7078,
+        "solver": 916,
+        "form": 0,
+        "translation": 44138
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which type of root is found in monocot plants?",
+      "ms": {
+        "draft": 3881,
+        "critique": 5277,
+        "solver": 1774,
+        "form": 5942,
+        "translation": 41055
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "A student observes a vertical section of a hibiscus flower and notices that the anthers burst and release pollen grains. What process is this an example of?",
+      "ms": {
+        "draft": 3158,
+        "critique": 7242,
+        "solver": 1991,
+        "form": 0,
+        "translation": 43885
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What would happen if a plant like banyan had fibrous roots instead of tap roots?",
+      "ms": {
+        "draft": 3918,
+        "critique": 7335,
+        "solver": 14429,
+        "form": 0,
+        "translation": 44597
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student observes a plant with leaves that close when touched. Which of the following is most likely to be the reason for this movement?",
+      "ms": {
+        "draft": 3937,
+        "critique": 7660,
+        "solver": 2021,
+        "form": 2957,
+        "translation": 47400
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student observes a leaf with spines on its surface. Which function of leaves is this adaptation best suited for?",
+      "ms": {
+        "draft": 3158,
+        "critique": 6250,
+        "solver": 1752,
+        "form": 0,
+        "translation": 41535
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do roots of plants like radish and carrot become thick and fleshy?",
+      "ms": {
+        "draft": 3881,
+        "critique": 6763,
+        "solver": 1387,
+        "form": 3743,
+        "translation": 48142
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the main reason for the swelling of the underground parts of plants like radish and carrot?",
+      "ms": {
+        "draft": 3918,
+        "critique": 9833,
+        "solver": 7736,
+        "form": 0,
+        "translation": 42820
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A plant has a leaf with a fleshy texture. Which of the following could be a possible function of this adaptation?",
+      "ms": {
+        "draft": 3937,
+        "critique": 5715,
+        "solver": 647,
+        "form": 1363,
+        "translation": 47417
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a plant's root tip is injured, what would most likely happen?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What happens to the water level in a jar if a plant is kept in it with its roots submerged and oil is added on top?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the type of venation in a peepal leaf?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Does not understand the term reticulate venation and thinks …\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct statement about the venation in leaves?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which part of the stem is responsible for the growth of the plant upwards?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A student observes that the leaves of a plant close at night. Which of the following is the most likely reason for this?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is a function of the root tip?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which part of the plant helps in the absorption of water and minerals from the soil?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

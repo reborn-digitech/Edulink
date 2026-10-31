@@ -1,0 +1,412 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T01:56:23.683Z",
+  "finishedAt": "2026-10-31T02:08:38.882Z",
+  "seconds": 735,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 18 — Data Representation",
+    "edition": "First Edition 2026",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n10. B 𝑁 66\n= = 33, which lies in the interval 10-15\n2 2\n⇒ Median Class is 10-15\nLower limit of median class =10\n(B) 𝟏𝟎",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n6. A) 11 9",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n31. The length of 40 leaves of a plant are measured correct to nearest millimetre, and the data 3\nobtained is represented in the following table.\nLength [in mm]\n118 – 126\n127 – 135\nNumber of leaves\n172 – 180\nFind the mean length of the leaves."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 69696,
+      "in": 18,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 12642,
+      "completionTokens": 3939
+    },
+    "critique": {
+      "calls": 22,
+      "ms": 173568,
+      "in": 18,
+      "out": 12,
+      "rejects": 6,
+      "promptTokens": 9368,
+      "completionTokens": 3884
+    },
+    "solver": {
+      "calls": 78,
+      "ms": 50426,
+      "in": 12,
+      "out": 8,
+      "rejects": 4,
+      "promptTokens": 15367,
+      "completionTokens": 823
+    },
+    "form": {
+      "calls": 1,
+      "ms": 4674,
+      "in": 8,
+      "out": 5,
+      "rejects": 3,
+      "promptTokens": 263,
+      "completionTokens": 93
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 16,
+      "ms": 22373,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 1146307,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 11012,
+      "completionTokens": 5223
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 2,
+    "6": 0
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the term used for the numbers that represent the marks obtained by students in an examination?",
+      "ms": {
+        "draft": 4384,
+        "critique": 7368
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 10 students scored 5 marks and 5 students scored 7 marks, what is the total number of students?",
+      "ms": {
+        "draft": 4384,
+        "critique": 7621
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the pictograph of books read by students, which student read the most books?",
+      "ms": {
+        "draft": 4384,
+        "critique": 8261,
+        "solver": 2527
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the number of people in an occupation is 50, and the scale is 1 cm = 5 people, how many centimeters should the bar be drawn?",
+      "ms": {
+        "draft": 4384,
+        "critique": 9014
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of using infographics?",
+      "ms": {
+        "draft": 12402,
+        "critique": 5082,
+        "solver": 1541,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the scale of a bar graph is 1 cm = 10 books, and a student read 50 books, how many centimeters should the bar be drawn?",
+      "ms": {
+        "draft": 4384,
+        "critique": 7629,
+        "solver": 16008
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the passage, it is mentioned that infographics use text, images, diagrams, graphs, symbols, and colors to present information. Which of the following is the most important feature of infographics?",
+      "ms": {
+        "draft": 12402,
+        "critique": 5740,
+        "solver": 1119,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the meaning of the term 'frequency' as described in the passage?",
+      "ms": {
+        "draft": 12402,
+        "critique": 4285,
+        "solver": 826,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a bar graph?",
+      "ms": {
+        "draft": 3886,
+        "critique": 7263
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the purpose of a bar graph?",
+      "ms": {
+        "draft": 3886,
+        "critique": 7283
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a bar graph uses a scale of 1 cm = ₹500, how many centimeters would represent ₹2000?",
+      "ms": {
+        "draft": 3886,
+        "critique": 9602,
+        "solver": 22282
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a bar graph is drawn to compare the number of students in different activities, and the scale is 1 cm = 5 students, what is the main reason for using a scale?",
+      "ms": {
+        "draft": 3886,
+        "critique": 15972
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a feature of infographics?",
+      "ms": {
+        "draft": 3886,
+        "critique": 9301,
+        "solver": 19395
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of a frequency table?",
+      "ms": {
+        "draft": 4384,
+        "critique": 6518,
+        "solver": 12689,
+        "form": 4674,
+        "translation": 365662
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 1 cm represents 5 plants in a bar graph, how many plants are represented by a bar of 3 cm?",
+      "ms": {
+        "draft": 12402,
+        "critique": 5639,
+        "solver": 1688,
+        "form": 0,
+        "translation": 214457
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a bar graph, the vertical columns are used to show the height of mountains. What is the main reason for keeping the columns of uniform width?",
+      "ms": {
+        "draft": 12402,
+        "critique": 6333,
+        "solver": 1566,
+        "form": 0,
+        "translation": 292993
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "The table below shows the monthly expenditure of John's family on various items. If the scale is 1 cm = ₹500, and the expenditure on 'Electricity' is ₹1000, how long should the bar be for 'Electricity'?",
+      "ms": {
+        "draft": 12402,
+        "critique": 6236,
+        "solver": 1673,
+        "form": 0,
+        "translation": 170269
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a bar graph shows the number of students in different activities, and the scale is 1 cm = 5 students, how many centimeters would represent 25 students?",
+      "ms": {
+        "draft": 3886,
+        "critique": 9253,
+        "solver": 2009,
+        "form": 0,
+        "translation": 96321
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for the numbers that represent the marks obtained by students in an examination?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If 10 students scored 5 marks and 5 students scored 7 marks, what is the total number of students?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the pictograph of books read by students, which student read the most books?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the number of people in an occupation is 50, and the scale is 1 cm = 5 people, how many centimeters should the bar be drawn?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the purpose of using infographics?",
+      "reason": "the key is far longer than every distractor (72 vs 39 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the scale of a bar graph is 1 cm = 10 books, and a student read 50 books, how many centimeters should the bar be drawn?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In the passage, it is mentioned that infographics use text, images, diagrams, graphs, symbols, and colors to present information. Which of the following is the most important feature of infographics?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the meaning of the term 'frequency' as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"What is the term used for the numbers that represent the mark"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a bar graph?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the purpose of a bar graph?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a bar graph uses a scale of 1 cm = ₹500, how many centimeters would represent ₹2000?",
+      "reason": "after redrafting distractors 0, 3: the critic finds option 0 correct, the key is 2"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a bar graph is drawn to compare the number of students in different activities, and the scale is 1 cm = 5 students, what is the main reason for using a scale?",
+      "reason": "the critic finds option 1 correct, the key is 2; more than one defensible answer, or none; the solution's working is not sound; option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a feature of infographics?",
+      "reason": "after redrafting distractors 0, 1: the critic finds option 0 correct, the key is 3; more than one defensible answer, or none; the solution's working is not sound"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

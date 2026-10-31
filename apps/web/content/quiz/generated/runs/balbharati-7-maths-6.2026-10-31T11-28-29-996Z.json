@@ -1,0 +1,499 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T11:28:29.996Z",
+  "finishedAt": "2026-10-31T11:43:10.856Z",
+  "seconds": 881,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी गणित इंग्रजी",
+    "bookCode": "703020004",
+    "document": "balbharati/7/mathematics/703020004.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 6 — Indices",
+    "edition": "2026 edition",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Mathematics, marking scheme, 2022-23]\n9. (c) ଷ ௫ ଵ ଶ\n଻\n= √ଵସ\nଷ ଵ ଵ ଵ଴\n∫ ଶ ௫ ାଵ మ = [𝑙𝑜𝑔(𝑥 + 1)] ଶ ଶ = (𝑙𝑜𝑔10 − 𝑙𝑜𝑔5) = 𝑙𝑜𝑔 ቀ ቁ\n= 𝑙𝑜𝑔2 ଵ ଶ",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n7. B 210 = 21 + (𝑛 − 1)21 ⇒ 𝑛 = 10\n(B) 𝟏𝟎 𝒕𝒉",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 22 7 wherever required if not stated."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 292110,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 18690,
+      "completionTokens": 5436
+    },
+    "critique": {
+      "calls": 34,
+      "ms": 957584,
+      "in": 24,
+      "out": 16,
+      "rejects": 8,
+      "promptTokens": 14598,
+      "completionTokens": 6073
+    },
+    "solver": {
+      "calls": 150,
+      "ms": 327402,
+      "in": 16,
+      "out": 11,
+      "rejects": 5,
+      "promptTokens": 33126,
+      "completionTokens": 1770
+    },
+    "form": {
+      "calls": 4,
+      "ms": 58042,
+      "in": 11,
+      "out": 7,
+      "rejects": 4,
+      "promptTokens": 993,
+      "completionTokens": 333
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 3,
+      "ms": 571,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 386165,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 13480,
+      "completionTokens": 5373
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 2,
+    "5": 0,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a number raised to the power of 2?",
+      "ms": {
+        "draft": 5860,
+        "critique": 30505
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the number that is multiplied by itself multiple times in index form?",
+      "ms": {
+        "draft": 5860,
+        "critique": 33446
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the value of 5^4?",
+      "ms": {
+        "draft": 5860,
+        "critique": 34905
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a^3 × a^5 = a^m, what is the value of m?",
+      "ms": {
+        "draft": 5860,
+        "critique": 32114
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Simplify (2^3 × 2^2) ÷ 2^4.",
+      "ms": {
+        "draft": 5860,
+        "critique": 38344,
+        "solver": 81927,
+        "form": 27093
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following numbers has a square root that is not a whole number?",
+      "ms": {
+        "draft": 20068,
+        "critique": 46644
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the square of a number is 11.7, which of the following is the closest approximation of the square root of 11.7?",
+      "ms": {
+        "draft": 20068,
+        "critique": 63500,
+        "solver": 12117
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the square root of 324?",
+      "ms": {
+        "draft": 15252,
+        "critique": 7882,
+        "solver": 1719,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following represents the square root of 144?",
+      "ms": {
+        "draft": 15252,
+        "critique": 8183,
+        "solver": 2483,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the square root of 64?",
+      "ms": {
+        "draft": 15252,
+        "critique": 8184,
+        "solver": 29224
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the number that is multiplied by itself multiple times in an index form?",
+      "ms": {
+        "draft": 7505,
+        "critique": 10432
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is the square of 11.7?",
+      "ms": {
+        "draft": 15252,
+        "critique": 14680,
+        "solver": 28683
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the value of 5 raised to the power 4?",
+      "ms": {
+        "draft": 7505,
+        "critique": 9300
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the square of 11.7 is less than the square of 11.8, which of the following is the correct approximate value for the square root of 139.24?",
+      "ms": {
+        "draft": 15252,
+        "critique": 14231,
+        "solver": 17446
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is equal to (2 × 3)^2?",
+      "ms": {
+        "draft": 7505,
+        "critique": 25094
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 3^2 is 9, what is the value of 3^3?",
+      "ms": {
+        "draft": 7505,
+        "critique": 23888,
+        "solver": 52670
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the value of 2^5?",
+      "ms": {
+        "draft": 7505,
+        "critique": 19143,
+        "solver": 51375,
+        "form": 11506
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the square root of 81?",
+      "ms": {
+        "draft": 20068,
+        "critique": 54392,
+        "solver": 85197,
+        "form": 0,
+        "translation": 33458
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct method to find the square root of a number?",
+      "ms": {
+        "draft": 20068,
+        "critique": 46883,
+        "solver": 10640,
+        "form": 0,
+        "translation": 91901
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Find the square root of 144 using the factorisation method.",
+      "ms": {
+        "draft": 20068,
+        "critique": 48247,
+        "solver": 77366,
+        "form": 0,
+        "translation": 71577
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 2^3 × 2^4 = 2^m, what is the value of m?",
+      "ms": {
+        "draft": 5860,
+        "critique": 38433,
+        "solver": 78065,
+        "form": 21493,
+        "translation": 52614
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "If the square root of 9801 is 99, what is the square of 99?",
+      "ms": {
+        "draft": 15252,
+        "critique": 13877,
+        "solver": 2480,
+        "form": 1,
+        "translation": 34779
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the value of (-1)^10?",
+      "ms": {
+        "draft": 7505,
+        "critique": 29271,
+        "solver": 28229,
+        "form": 1425,
+        "translation": 25987
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the square of a number is between 11.7 and 11.8, what is the possible value of the square root?",
+      "ms": {
+        "draft": 20068,
+        "critique": 49964,
+        "solver": 8063,
+        "form": 0,
+        "translation": 71637
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a number raised to the power of 2?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for the number that is multiplied by itself multiple times in index form?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the value of 5^4?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a^3 × a^5 = a^m, what is the value of m?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Simplify (2^3 × 2^2) ÷ 2^4.",
+      "reason": "options 0 and 1 are the same (\"2\"); options 0 and 1 are the same number"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following numbers has a square root that is not a whole number?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound; option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the square of a number is 11.7, which of the following is the closest approximation of the square root of 11.7?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the square root of 324?",
+      "reason": "checkExpr \"18\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following represents the square root of 144?",
+      "reason": "checkExpr \"12\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the square root of 64?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for the number that is multiplied by itself multiple times in an index form?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following is the square of 11.7?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the value of 5 raised to the power 4?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the square of 11.7 is less than the square of 11.8, which of the following is the correct approximate value for the square root of 139.24?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is equal to (2 × 3)^2?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If 3^2 is 9, what is the value of 3^3?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the value of 2^5?",
+      "reason": "options 0 and 2 are the same (\"10\"); options 0 and 2 are the same number"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,411 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T17:43:18.933Z",
+  "finishedAt": "2026-10-31T17:59:11.047Z",
+  "seconds": 952,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "703020012",
+    "document": "balbharati/7/science/703020012.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 15 — Materials we Use",
+    "edition": "First Edition 2017",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2025-26]\n7. C. Use of plastic as packaging material. 1",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n7. B. Cooking of food",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n25. The following activity is set-up in the science lab by the teacher. 2\nHe clamped an aluminium wire on a stand and fixed a pin to the free end of\nthe wire using wax. Then he heated the wire with a burner from the end where\nthe wire is clamped. Students observed the pin fall off.\nA. If the teacher replaces aluminium wire by silver wire, will the students’\nobservation change? Justify your answer.\nB. Will the aluminium wire melt? Give reason for your answer.",
+      "[INJSO 2021 — solutions or answer key]\n4. C. Paper is made of cellulose and hence is a good source of carbon while buttermilk contain lactobacilli\nwhich help in aerobic decomposition."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 148884,
+      "in": 18,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 12148,
+      "completionTokens": 3195
+    },
+    "critique": {
+      "calls": 23,
+      "ms": 427437,
+      "in": 18,
+      "out": 15,
+      "rejects": 3,
+      "promptTokens": 9589,
+      "completionTokens": 3815
+    },
+    "solver": {
+      "calls": 108,
+      "ms": 145651,
+      "in": 15,
+      "out": 14,
+      "rejects": 1,
+      "promptTokens": 18469,
+      "completionTokens": 1107
+    },
+    "form": {
+      "calls": 12,
+      "ms": 81033,
+      "in": 14,
+      "out": 8,
+      "rejects": 6,
+      "promptTokens": 2908,
+      "completionTokens": 824
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 10,
+      "ms": 1616,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 499559,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 18707,
+      "completionTokens": 9499
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 2,
+    "4": 0,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the source of fluoride in toothpaste or tooth powder?",
+      "ms": {
+        "draft": 5491,
+        "critique": 14735,
+        "solver": 4461,
+        "form": 10573
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the purpose of adding salt during the preparation of soap?",
+      "ms": {
+        "draft": 5491,
+        "critique": 16932,
+        "solver": 5358
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is soap considered a surfactant?",
+      "ms": {
+        "draft": 5491,
+        "critique": 16832,
+        "solver": 4159,
+        "form": 7089
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main use of cement mentioned in the passage?",
+      "ms": {
+        "draft": 35984,
+        "critique": 20901
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT an ingredient of cement as mentioned in the passage?",
+      "ms": {
+        "draft": 35984,
+        "critique": 21560
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, why is Portland cement the most commonly used cement?",
+      "ms": {
+        "draft": 35984,
+        "critique": 22145
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student wants to make a durable cement similar to the one used by the Romans. What should they do based on the passage?",
+      "ms": {
+        "draft": 35984,
+        "critique": 19210,
+        "solver": 30681,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student uses a small amount of cement to make concrete, what is the most likely outcome?",
+      "ms": {
+        "draft": 35984,
+        "critique": 22851,
+        "solver": 40315,
+        "form": 9094
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage mentions that synthetic detergents are superior to soap. What could be the reason for this, based on the passage?",
+      "ms": {
+        "draft": 35984,
+        "critique": 20190,
+        "solver": 44815,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why does the oil mix with water after adding detergent?",
+      "ms": {
+        "draft": 9811,
+        "critique": 21072,
+        "solver": 30381,
+        "form": 3328
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a natural detergent?",
+      "ms": {
+        "draft": 9811,
+        "critique": 21405,
+        "solver": 4491,
+        "form": 6660
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a natural detergent?",
+      "ms": {
+        "draft": 5491,
+        "critique": 14665,
+        "solver": 3445,
+        "form": 8803,
+        "translation": 31903
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of adding fluoride to toothpaste?",
+      "ms": {
+        "draft": 9811,
+        "critique": 20524,
+        "solver": 2850,
+        "form": 9710,
+        "translation": 145595
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens when a detergent is added to a mixture of oil and water?",
+      "ms": {
+        "draft": 5491,
+        "critique": 17024,
+        "solver": 4369,
+        "form": 10307,
+        "translation": 42849
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student uses a synthetic detergent instead of soap, what is likely to happen?",
+      "ms": {
+        "draft": 9811,
+        "critique": 19726,
+        "solver": 4540,
+        "form": 12504,
+        "translation": 50915
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Why is soap not effective in hard water?",
+      "ms": {
+        "draft": 5491,
+        "critique": 18008,
+        "solver": 2870,
+        "form": 8947,
+        "translation": 41052
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student uses a natural detergent to wash clothes. What is the most likely benefit?",
+      "ms": {
+        "draft": 9811,
+        "critique": 19474,
+        "solver": 30329,
+        "form": 3101,
+        "translation": 51315
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a student uses a detergent that does not form lather, what can be inferred?",
+      "ms": {
+        "draft": 9811,
+        "critique": 16510,
+        "solver": 1878,
+        "form": 2178,
+        "translation": 128239
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"Which type of cement is most commonly used for construction w"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the source of fluoride in toothpaste or tooth powder?",
+      "reason": "option lengths are unalike (4 to 42 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the purpose of adding salt during the preparation of soap?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is soap considered a surfactant?",
+      "reason": "the key is far longer than every distractor (87 vs 39 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main use of cement mentioned in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is NOT an ingredient of cement as mentioned in the passage?",
+      "reason": "option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, why is Portland cement the most commonly used cement?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student wants to make a durable cement similar to the one used by the Romans. What should they do based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student uses a small amount of cement to make concrete, what is the most likely outcome?",
+      "reason": "options 1 and 2 are the same (\"The concrete will be weak and not leak proof\"); options 1 and 3 are the same (\"The concrete will be weak and not leak proof\"); options 2 and 3 are the same (\"The concrete will be weak and not leak proof\"); distractor 0's reason is not a one-line misconception (\"Believes that a small amount of cement would make concrete s…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage mentions that synthetic detergents are superior to soap. What could be the reason for this, based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Why does the oil mix with water after adding detergent?",
+      "reason": "the key is far longer than every distractor (78 vs 47 characters)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a natural detergent?",
+      "reason": "near-duplicate of batch item \"Which of the following is a natural detergent?…\" (cosine 1.000 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

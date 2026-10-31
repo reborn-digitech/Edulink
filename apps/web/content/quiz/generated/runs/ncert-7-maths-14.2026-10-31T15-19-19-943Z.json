@@ -1,0 +1,732 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T15:19:19.943Z",
+  "finishedAt": "2026-10-31T15:30:39.105Z",
+  "seconds": 679,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash-II",
+    "bookCode": "gegp2",
+    "document": "ncert/7/mathematics/gegp206.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 14 — Constructions and Tilings",
+    "edition": "2025 edition (the site's Last-Modified)",
+    "chunks": 13,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2022-23]\n36. A tiling or tessellation of a flat surface is the covering of a plane using one or more geometric\nshapes, called tiles, with no overlaps and no gaps. Historically, tessellations were used in\nancient Rome and in Islamic art. You may find tessellation patterns on floors, walls, paintings\netc. Shown below is a tiled floor in the archaeological Museum of Seville, made using\nsquares, triangles and hexagons.\nA craftsman thought of making a floor pattern after being inspired by the above design. To\nensure accuracy in his work, he made the pattern on the Cartesian plane. He used regular\noctagons, squares and triangles for his floor tessellation pattern\nUse the above figure to answer the question",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated.\n______________________________________________________________________________________________________________",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 22 7 wherever required if not stated."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 187050,
+      "in": 38,
+      "out": 37,
+      "rejects": 1,
+      "promptTokens": 34684,
+      "completionTokens": 9145
+    },
+    "critique": {
+      "calls": 46,
+      "ms": 372890,
+      "in": 37,
+      "out": 32,
+      "rejects": 5,
+      "promptTokens": 21920,
+      "completionTokens": 8103
+    },
+    "solver": {
+      "calls": 227,
+      "ms": 159506,
+      "in": 32,
+      "out": 24,
+      "rejects": 8,
+      "promptTokens": 47766,
+      "completionTokens": 2595
+    },
+    "form": {
+      "calls": 10,
+      "ms": 72501,
+      "in": 24,
+      "out": 10,
+      "rejects": 14,
+      "promptTokens": 9775,
+      "completionTokens": 1643
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 43,
+      "ms": 9715,
+      "in": 10,
+      "out": 9,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 39,
+      "ms": 430247,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 21865,
+      "completionTokens": 10829
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "If a point lies on the perpendicular bisector of a line segment XY, what can be said about its distance from X and Y?",
+      "ms": {
+        "draft": 5083,
+        "critique": 6977,
+        "solver": 2014,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "To construct a perpendicular bisector of a line segment XY, which of the following steps is necessary?",
+      "ms": {
+        "draft": 5083,
+        "critique": 8158,
+        "solver": 1836,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A craftsman is creating a floor pattern using regular octagons, squares, and triangles. He wants to ensure that the design is symmetrical. Which of the following constructions would help him achieve this?",
+      "ms": {
+        "draft": 5083,
+        "critique": 8518,
+        "solver": 2537
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If two points C and D lie on the perpendicular bisector of a line segment XY, what can be concluded about the distances CX, CY, DX, and DY?",
+      "ms": {
+        "draft": 5083,
+        "critique": 9867
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In the construction of an eye, what is the role of the line XY?",
+      "ms": {
+        "draft": 5083,
+        "critique": 6366,
+        "solver": 1931,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A perpendicular bisector of a line segment is constructed using a rope as described in the passage. What is the property of the line AB in the figure that makes it a perpendicular bisector?",
+      "ms": {
+        "draft": 16856,
+        "critique": 10181,
+        "solver": 1753,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many pairs of intersecting arcs are needed to construct the perpendicular bisector of a line segment XY?",
+      "ms": {
+        "draft": 5083,
+        "critique": 6288,
+        "solver": 3257,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "To construct a 45° angle, a 90° angle is first constructed and then bisected. Why is this method effective?",
+      "ms": {
+        "draft": 16856,
+        "critique": 7118,
+        "solver": 1459,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the construction of a parallel line, an angle is copied to ensure that corresponding angles are equal. What is the role of the compass in this process?",
+      "ms": {
+        "draft": 16856,
+        "critique": 7457,
+        "solver": 2652,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A craftsman is trying to create a tessellation pattern using regular octagons, squares, and triangles. He noticed that each octagon is surrounded by squares and triangles. If one of the angles of the octagon is 135°, what is the measure of the angle formed at the vertex where a square and triangle meet?",
+      "ms": {
+        "draft": 16856,
+        "critique": 9219,
+        "solver": 17517
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is attempting to construct a 45° angle by bisecting a 90° angle. If the student measures the angle using a protractor and finds it to be 85°, what could be the reason for the discrepancy?",
+      "ms": {
+        "draft": 16856,
+        "critique": 7334,
+        "solver": 19429
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the construction of a 45° angle, the passage suggests that angle bisection is used. However, if a student uses a rope to bisect a 90° angle, what is the main challenge they might face?",
+      "ms": {
+        "draft": 16856,
+        "critique": 7990,
+        "solver": 21985,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a 4 × 7 grid, can it be tiled using 2 × 1 tiles? Why or why not?",
+      "ms": {
+        "draft": 5110,
+        "critique": 10230
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the definition of tiling according to the passage?",
+      "ms": {
+        "draft": 4369,
+        "critique": 5612,
+        "solver": 1218,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a 5 × 3 grid has one unit square removed, making it have 14 unit squares, can it be tiled with 2 × 1 tiles?",
+      "ms": {
+        "draft": 4369,
+        "critique": 13729,
+        "solver": 1757
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why is a 5 × 7 grid not tileable with 2 × 1 tiles?",
+      "ms": {
+        "draft": 4369,
+        "critique": 6245,
+        "solver": 17306,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a 4 × 6 grid is to be tiled using 2 × 1 tiles, how many tiles are needed?",
+      "ms": {
+        "draft": 4369,
+        "critique": 5888,
+        "solver": 20104,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Using the black-and-white grid method, why is it impossible to tile the region shown in Fig. 6.14?",
+      "ms": {
+        "draft": 4369,
+        "critique": 8923,
+        "solver": 1760
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is one general strategy to tile an m × n grid if both m and n are even?",
+      "ms": {
+        "draft": 4369,
+        "critique": 8731,
+        "solver": 2123
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A craftsman wants to create a tessellation using regular hexagons and equilateral triangles. If he uses six equilateral triangles to form a regular hexagon, how many triangles will he need to make a tessellation covering 10 hexagons?",
+      "ms": {
+        "draft": 15285,
+        "critique": 8689,
+        "solver": 2162
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a correct method to construct a 60° angle?",
+      "ms": {
+        "draft": 15285,
+        "critique": 9263,
+        "solver": 17246
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, if the angle at the center of a regular hexagon is 360°, and each of the six triangles around the center has an angle of 60°, what is the total sum of the angles at the center of the hexagon?",
+      "ms": {
+        "draft": 15285,
+        "critique": 8072
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following explains why six equilateral triangles can form a regular hexagon?",
+      "ms": {
+        "draft": 15285,
+        "critique": 10062,
+        "solver": 15046,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many equilateral triangles are needed to form a regular hexagon?",
+      "ms": {
+        "draft": 15285,
+        "critique": 6926
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what was the primary purpose of the Śulba-Sūtras?",
+      "ms": {
+        "draft": 3540,
+        "critique": 10113,
+        "solver": 1828,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following must be true if a point lies on the perpendicular bisector of a line segment XY?",
+      "ms": {
+        "draft": 4428,
+        "critique": 7928,
+        "solver": 1462,
+        "form": 3532
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the construction of a perpendicular bisector of a line segment XY, which of the following is NOT necessary?",
+      "ms": {
+        "draft": 4428,
+        "critique": 5000
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the covering of a plane using geometric shapes with no overlaps and no gaps?",
+      "ms": {
+        "draft": 3540,
+        "critique": 8598,
+        "solver": 2276,
+        "form": 2741
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the primary tool used in the construction methods described in the Śulba-Sūtras?",
+      "ms": {
+        "draft": 3540,
+        "critique": 8681,
+        "solver": 2055,
+        "form": 2821,
+        "translation": 24702
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of a regular hexagon?",
+      "ms": {
+        "draft": 3759,
+        "critique": 8309,
+        "solver": 1750,
+        "form": 0,
+        "translation": 66107
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct method to construct a 60° angle?",
+      "ms": {
+        "draft": 3759,
+        "critique": 9803,
+        "solver": 1649,
+        "form": 0,
+        "translation": 34121
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe covering a region using a set of shapes, without gaps or overlaps?",
+      "ms": {
+        "draft": 5110,
+        "critique": 12831,
+        "solver": 2270,
+        "form": 3209,
+        "translation": 59668
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a method to construct a regular hexagon?",
+      "ms": {
+        "draft": 15285,
+        "critique": 6797,
+        "solver": 19302,
+        "form": 3683,
+        "translation": 57733
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the figure, if ∠CAX is 60°, what type of triangle is triangle ACX?",
+      "ms": {
+        "draft": 3759,
+        "critique": 10953,
+        "solver": 21628,
+        "form": 0,
+        "translation": 40542
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A craftsman is creating a floor pattern using regular octagons, squares, and triangles. If the side length of each octagon is 2 cm, what is the total perimeter of one octagon?",
+      "ms": {
+        "draft": 3759,
+        "critique": 9083,
+        "solver": 3424,
+        "form": 0,
+        "translation": 38656
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If six congruent equilateral triangles are placed together with a common vertex, what is the total angle around that vertex?",
+      "ms": {
+        "draft": 3759,
+        "critique": 9359,
+        "solver": 3588,
+        "form": 0,
+        "translation": 39562
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a 5 × 3 grid has one unit square removed, making it have an even number of squares, can it still be tileable with 2 × 1 tiles?",
+      "ms": {
+        "draft": 5110,
+        "critique": 6890,
+        "solver": 661,
+        "form": 1828,
+        "translation": 63246
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "According to the passage, what is the main reason why a 5 × 7 grid cannot be tiled with 2 × 1 tiles?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If a point lies on the perpendicular bisector of a line segment XY, what can be said about its distance from X and Y?",
+      "reason": "options 0 and 1 say the same thing (\"It is closer to X than to Y\" / \"It is closer to Y than to X\"); options 2 and 3 say the same thing (\"It is at equal distances from X and Y\" / \"It is at varying distances from X and Y\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "To construct a perpendicular bisector of a line segment XY, which of the following steps is necessary?",
+      "reason": "options 1 and 3 say the same thing (\"Draw arcs below XY with the same radius from X and Y\" / \"Draw arcs above and below XY with the same radius from X and Y\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A craftsman is creating a floor pattern using regular octagons, squares, and triangles. He wants to ensure that the design is symmetrical. Which of the following constructions would help him achieve this?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If two points C and D lie on the perpendicular bisector of a line segment XY, what can be concluded about the distances CX, CY, DX, and DY?",
+      "reason": "the critic finds option 0 correct, the key is 1"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "In the construction of an eye, what is the role of the line XY?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.lineXY: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A perpendicular bisector of a line segment is constructed using a rope as described in the passage. What is the property of the line AB in the figure that makes it a perpendicular bisector?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (76 vs 47 characters); distractor 3's reason is not a one-line misconception (\"Correct option, not a distractor, so no reason needed for th…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "How many pairs of intersecting arcs are needed to construct the perpendicular bisector of a line segment XY?",
+      "reason": "figure: figure cannot be drawn in en: no en text for label XY"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "To construct a 45° angle, a 90° angle is first constructed and then bisected. Why is this method effective?",
+      "reason": "figure: figure spec refused: spec.angles.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the construction of a parallel line, an angle is copied to ensure that corresponding angles are equal. What is the role of the compass in this process?",
+      "reason": "figure: figure spec refused: spec.segments: segments names point A, which is not defined"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A craftsman is trying to create a tessellation pattern using regular octagons, squares, and triangles. He noticed that each octagon is surrounded by squares and triangles. If one of the angles of the octagon is 135°, what is the measure of the angle formed at the vertex where a square and triangle meet?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student is attempting to construct a 45° angle by bisecting a 90° angle. If the student measures the angle using a protractor and finds it to be 85°, what could be the reason for the discrepancy?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In the construction of a 45° angle, the passage suggests that angle bisection is used. However, if a student uses a rope to bisect a 90° angle, what is the main challenge they might face?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a 4 × 7 grid, can it be tiled using 2 × 1 tiles? Why or why not?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the definition of tiling according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a 5 × 3 grid has one unit square removed, making it have 14 unit squares, can it be tiled with 2 × 1 tiles?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Why is a 5 × 7 grid not tileable with 2 × 1 tiles?",
+      "reason": "options 2 and 3 say the same thing (\"It has more rows than columns.\" / \"It has more columns than rows.\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a 4 × 6 grid is to be tiled using 2 × 1 tiles, how many tiles are needed?",
+      "reason": "options 1 and 3 are the same (\"24\"); options 1 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Using the black-and-white grid method, why is it impossible to tile the region shown in Fig. 6.14?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is one general strategy to tile an m × n grid if both m and n are even?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A craftsman wants to create a tessellation using regular hexagons and equilateral triangles. If he uses six equilateral triangles to form a regular hexagon, how many triangles will he need to make a tessellation covering 10 hexagons?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is a correct method to construct a 60° angle?",
+      "reason": "after redraft: the solver picked option 0 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "According to the passage, if the angle at the center of a regular hexagon is 360°, and each of the six triangles around the center has an angle of 60°, what is the total sum of the angles at the center of the hexagon?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following explains why six equilateral triangles can form a regular hexagon?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"Each triangle has a 60° angle, and six such angles sum to 360°\" / \"Each triangle has a 90° angle, and six such angles sum to 360°\"); options 0 and 2 say the same thing (\"Each triangle has a 60° angle, and six such angles sum to 360°\" / \"Each triangle has a 120° angle, and six such angles sum to 360°\"); options 0 and 3 say the same thing (\"Each triangle has a 60° angle, and six such angles sum to 360°\" / \"Each triangle has a 180° angle, and six such angles sum to 360°\"); options 1 and 2 say the same thing (\"Each triangle has a 90° angle, and six such angles sum to 360°\" / \"Each triangle has a 120° angle, and six such angles sum to 360°\"); options 1 and 3 say the same thing (\"Each triangle has a 90° angle, and six such angles sum to 360°\" / \"Each triangle has a 180° angle, and six such angles sum to 360°\"); options 2 and 3 say the same thing (\"Each triangle has a 120° angle, and six such angles sum to 360°\" / \"Each triangle has a 180° angle, and six such angles sum to 360°\"); distractor 3's reason is not a one-line misconception (\"This is incorrect because equilateral triangles do not have …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "How many equilateral triangles are needed to form a regular hexagon?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what was the primary purpose of the Śulba-Sūtras?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misinterprets the text as related to architecture…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following must be true if a point lies on the perpendicular bisector of a line segment XY?",
+      "reason": "options 1 and 2 say the same thing (\"It is at a greater distance from X than from Y\" / \"It is at a greater distance from Y than from X\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In the construction of a perpendicular bisector of a line segment XY, which of the following is NOT necessary?",
+      "reason": "the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the term used for the covering of a plane using geometric shapes with no overlaps and no gaps?",
+      "reason": "near-duplicate of batch item \"What is the term used to describe covering a regio…\" (cosine 0.938 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,418 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T19:41:14.257Z",
+  "finishedAt": "2026-10-31T19:53:19.630Z",
+  "seconds": 725,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "703020012",
+    "document": "balbharati/7/science/703020012.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 19 — Properties of a Magnetic Field",
+    "edition": "First Edition 2017",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2022-23]\n32. (a) When iron filings are placed in a magnetic field around a bar magnet, they 3\nbehave like tiny magnets. The magnetic force experienced by these tiny magnets\nmake them rotate and align themselves along the direction of field lines. (1 mark)\n(b)The physical property indicated by this arrangement is the magnetic field\nproduced by the bar magnet. (1 mark)\n(c) Magnetic field lines never intersect, magnetic field lines are closed curves.\n(1mark)\nOR\n(a) The deflection in the compass needle increases as Magnetic field of the current\ncarrying conductor is directly proportional to current flowing through it.\n(1.5marks)\n(b) The deflection in the needle decreases as the magnetic field is inversel",
+      "[CBSE Class X Science, sample question paper, 2022-23]\n32. A student fixes a white sheet of paper on a drawing board. He places a bar magnet 3\nin the centre and sprinkles some iron filings uniformly around the bar magnet. Then\nhe taps gently and observes that iron filings arrange themselves in a certain pattern.\n(a) Why do iron filings arrange themselves in a particular pattern?\n(b) Which physical quantity is indicated by the pattern of field lines around the\nbar magnet?\n(c) State any two properties of magnetic field lines.\nOR\nA compass needle is placed near a current carrying wire. State your observations for\nthe following cases and give reasons for the same in each case-\n(a) Magnitude of electric current in wire is increased.\n(b) The compass n",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n37. Magnetic field lines are shown in the given diagram. A student makes a 3\nstatement that the magnetic field at X is stronger than at Y.\n(i) Explain with reason if the student’s claim is correct.\n(ii) Also redraw the diagram and mark the direction of magnetic field lines.",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n19. Assertion : A compass needle is placed near a current carrying wire. The deflection of the 1\ncompass needle decreases when the magnitude of the current in the wire is increased.\nReason : The strength of a magnetic field at a point near the conductor increases on\nincreasing the current."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 253124,
+      "in": 18,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 12360,
+      "completionTokens": 3933
+    },
+    "critique": {
+      "calls": 20,
+      "ms": 345041,
+      "in": 18,
+      "out": 9,
+      "rejects": 9,
+      "promptTokens": 8828,
+      "completionTokens": 3461
+    },
+    "solver": {
+      "calls": 59,
+      "ms": 66899,
+      "in": 9,
+      "out": 7,
+      "rejects": 2,
+      "promptTokens": 10255,
+      "completionTokens": 601
+    },
+    "form": {
+      "calls": 3,
+      "ms": 13594,
+      "in": 7,
+      "out": 3,
+      "rejects": 4,
+      "promptTokens": 798,
+      "completionTokens": 223
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 12,
+      "ms": 3085,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 195703,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 7364,
+      "completionTokens": 3858
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a student places a bar magnet under a piece of cardboard and sprinkles iron filings, what will the iron filings most likely do?",
+      "ms": {
+        "draft": 22766,
+        "critique": 27114
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements correctly describes the direction of magnetic lines of force?",
+      "ms": {
+        "draft": 22766,
+        "critique": 33351
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the properties of magnetic field lines mentioned in the passage, which of the following is true?",
+      "ms": {
+        "draft": 22766,
+        "critique": 34419,
+        "solver": 9957
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the number of magnetic field lines at a point indicate?",
+      "ms": {
+        "draft": 22766,
+        "critique": 30191
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary function of a compass needle?",
+      "ms": {
+        "draft": 22766,
+        "critique": 33454
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observes that the magnetic field strength is higher at point X than at point Y. Based on the passage, what could explain this observation?",
+      "ms": {
+        "draft": 22766,
+        "critique": 29526,
+        "solver": 26305,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a bar magnet is placed near a compass, what is the most likely observation?",
+      "ms": {
+        "draft": 14706,
+        "critique": 11333
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the direction of magnetic lines of force?",
+      "ms": {
+        "draft": 14706,
+        "critique": 11368
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which physical quantity is indicated by the number of magnetic lines of force at a point?",
+      "ms": {
+        "draft": 14706,
+        "critique": 12528
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a bar magnet is placed between two other magnets, what would be the expected behavior of the magnetic lines of force?",
+      "ms": {
+        "draft": 14706,
+        "critique": 11590
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the reason that magnetic lines of force do not intersect?",
+      "ms": {
+        "draft": 14706,
+        "critique": 13285
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of magnetic lines of force according to the passage?",
+      "ms": {
+        "draft": 4715,
+        "critique": 11275,
+        "solver": 1815,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student claims that the magnetic field at point X is stronger than at point Y. Which of the following observations would support this claim?",
+      "ms": {
+        "draft": 14706,
+        "critique": 11085,
+        "solver": 28129
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage mentions that the intensity of a magnetic field can be gauged by the number of lines of force passing through a unit area. What does this imply about the magnetic field?",
+      "ms": {
+        "draft": 4715,
+        "critique": 10388,
+        "solver": 3049,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what does the pattern of iron filings around a magnet indicate?",
+      "ms": {
+        "draft": 4715,
+        "critique": 9183,
+        "solver": 1366,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name given to the region around a magnet where the magnetic force acts on an object?",
+      "ms": {
+        "draft": 4715,
+        "critique": 12515,
+        "solver": 3064,
+        "form": 6332,
+        "translation": 60399
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student observes that iron filings arrange themselves in a pattern around a bar magnet. What does this pattern indicate?",
+      "ms": {
+        "draft": 4715,
+        "critique": 12049,
+        "solver": 2542,
+        "form": 3701,
+        "translation": 61885
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student claims that the magnetic field at point X is stronger than at point Y based on a diagram. What should the student consider to verify this claim?",
+      "ms": {
+        "draft": 4715,
+        "critique": 10246,
+        "solver": 1965,
+        "form": 3562,
+        "translation": 66703
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a student places a bar magnet under a piece of cardboard and sprinkles iron filings, what will the iron filings most likely do?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following statements correctly describes the direction of magnetic lines of force?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the properties of magnetic field lines mentioned in the passage, which of the following is true?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the number of magnetic field lines at a point indicate?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the primary function of a compass needle?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student observes that the magnetic field strength is higher at point X than at point Y. Based on the passage, what could explain this observation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 2 and 3 say the same thing (\"The magnetic field lines are more spread out at point X.\" / \"The magnetic field lines are more spread out at point Y.\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a bar magnet is placed near a compass, what is the most likely observation?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "According to the passage, what is the direction of magnetic lines of force?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which physical quantity is indicated by the number of magnetic lines of force at a point?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a bar magnet is placed between two other magnets, what would be the expected behavior of the magnetic lines of force?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, what is the reason that magnetic lines of force do not intersect?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a property of magnetic lines of force according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student claims that the magnetic field at point X is stronger than at point Y. Which of the following observations would support this claim?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The passage mentions that the intensity of a magnetic field can be gauged by the number of lines of force passing through a unit area. What does this imply about the magnetic field?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what does the pattern of iron filings around a magnet indicate?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

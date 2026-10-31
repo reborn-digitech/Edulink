@@ -21,13 +21,108 @@
   "board": "BALBHARATI",
   "book": "६ वी गणित इंग्रजी",
   "edition": "First Edition 2026",
-  "generatedAt": "2026-10-30T22:22:54.633Z",
+  "generatedAt": "2026-10-31T00:06:25.758Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the LCM of 6 and 8?",
+      "stem": "What is the term used for a number that divides another number and leaves no remainder?",
+      "choices": [
+        "Factor",
+        "Multiple",
+        "Dividend",
+        "Remainder"
+      ],
+      "answerIndex": 0,
+      "solution": "A number that divides another number and leaves no remainder is called a factor. The term 'Factor' is correct because it refers to a number that can divide another number evenly. 'Multiple' is the result of multiplying a number by an integer, 'Dividend' is the number being divided, and 'Remainder' is what is left after division.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किस संख्या के लिए शब्द प्रयोग किया जाता है जो एक अन्य संख्या को विभाजित करता है और कोई शेष नहीं छोड़ता है?",
+          "choices": [
+            "गुणनखंड",
+            "गुणज",
+            "भाज्य",
+            "शेष"
+          ],
+          "solution": "एक संख्या जो एक अन्य संख्या को विभाजित करती है और कोई शेष नहीं छोड़ती है, इसे गुणनखंड कहा जाता है। शब्द 'गुणनखंड' सही है क्योंकि यह एक संख्या को संकेत देता है जो एक अन्य संख्या को बराबर रूप से विभाजित कर सकता है। 'गुणज' एक संख्या के एक पूर्णांक द्वारा गुणा करने पर परिणाम होता है, 'भाज्य' वह संख्या होती है जिसे विभाजित किया जाता है, और 'शेष' विभाजन के बाद बचा हुआ होता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard mathematical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक संख्या जी दुसरी संख्या भागल्यास कोणत्याही शिल्लक न ठेवता भाग जाते अशा संख्येला काय म्हणतात?",
+          "choices": [
+            "अपवर्तक",
+            "गुणितक",
+            "भाज्य",
+            "शिल्लक"
+          ],
+          "solution": "एक संख्या जी दुसरी संख्या भागल्यास कोणत्याही शिल्लक न ठेवता भाग जाते अशा संख्येला अपवर्तक म्हणतात. 'अपवर्तक' हा शब्द योग्य आहे कारण तो एका संख्येला जास्तीत जास्त भाग जाण्याच्या शक्तीचा संदर्भ देतो. 'गुणितक' हा एका संख्येचा पूर्णांकाने गुणाकार केल्याने मिळणारी संख्या आहे, 'भाज्य' ही भागाकार केली जाणारी संख्या आहे आणि 'शिल्लक' ही भागाकार केल्यानंतर उरलेली संख्या आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, with appropriate mathematical terminology and logical structure matching the English original.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses divisor with multiple",
+        "Confuses dividend with divisor",
+        "Confuses dividend with remainder"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the correct answer is 'Factor'. The explanations for the distractors are valid and reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 33,
+          "pageStart": 47,
+          "pageEnd": 49,
+          "headingPath": [
+            "5. GCD and LCM"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 34,
+          "pageStart": 49,
+          "pageEnd": 51,
+          "headingPath": [
+            "5. GCD and LCM"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 35,
+          "pageStart": 51,
+          "pageEnd": 52,
+          "headingPath": [
+            "5. GCD and LCM"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T00:06:25.758Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the least common multiple (LCM) of 6 and 8?",
       "choices": [
         "12",
         "18",
@@ -35,33 +130,33 @@
         "36"
       ],
       "answerIndex": 2,
-      "solution": "The least common multiple of 6 and 8 is 24 because it is the smallest number that both 6 and 8 divide into without a remainder. 12 is a common multiple but not the least, 18 is not divisible by 8, and 36 is a larger common multiple than 24.",
+      "solution": "The least common multiple of 6 and 8 is 24 because it is the smallest number that both 6 and 8 can divide into without leaving a remainder. 12 is a common multiple but not the least, and 18 and 36 are not divisible by both 6 and 8.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "6 और 8 का ल.स.प. क्या है?",
+          "stem": "6 और 8 का लघुत्तम समापवर्तक (LCM) क्या है?",
           "choices": [
             "12",
             "18",
             "24",
             "36"
           ],
-          "solution": "6 और 8 का लघुत्तम समापवर्त्य 24 है क्योंकि यह वह सबसे छोटी संख्या है जिसमें 6 और 8 शेष रहित विभाजित हो जाते हैं। 12 एक सामान्य समापवर्त्य है लेकिन सबसे कम नहीं है, 18 आठ से विभाजित नहीं होता है और 36, 24 की तुलना में बड़ा सामान्य समापवर्त्य है।",
+          "solution": "6 और 8 का लघुत्तम समापवर्तक 24 है क्योंकि यह वह सबसे छोटी संख्या है जिसमें 6 और 8 दोनों बिना शेष के विभाजित हो जाते हैं। 12 एक सामान्य समापवर्तक है लेकिन सबसे कम नहीं है, और 18 और 36 दोनों 6 और 8 दोनों द्वारा विभाजित नहीं होते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate mathematical terminology used.",
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "6 आणि 8 चा एलसीएम किती आहे?",
+          "stem": "6 आणि 8 चा लघुतम सामान्य अपवर्तक (LCM) किती आहे?",
           "choices": [
             "12",
             "18",
             "24",
             "36"
           ],
-          "solution": "6 आणि 8 चा लहानतम सामाईक गुणिज 24 आहे कारण हा संख्या 6 आणि 8 दोन्ही ने भाग जाते. 12 हा सामाईक गुणिज आहे पण लहानतम नाही, 18 ही 8 ने भाग जात नाही, आणि 36 हा 24 पेक्षा मोठा सामाईक गुणिज आहे.",
+          "solution": "6 आणि 8 चा लघुतम सामान्य अपवर्तक 24 आहे कारण हे सर्वात लहान संख्या आहे ज्याने 6 आणि 8 दोन्ही विना शिल्लक भाग जाऊ शकते. 12 हा सामान्य अपवर्तक आहे परंतु लघुतम नाही, आणि 18 आणि 36 हे 6 आणि 8 दोन्ही ने भाग जात नाहीत.",
           "imageAlt": null,
           "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Marathi textbooks.",
           "flag": null
@@ -72,10 +167,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses LCM with a smaller multiple",
-        "Confuses LCM with a number not divisible by both",
+        "Chooses a common multiple but not the least",
+        "Chooses a number that is not a common multiple",
         null,
-        "Confuses LCM with a larger multiple"
+        "Chooses a number that is not a common multiple"
       ],
       "solverAnswers": [
         2,
@@ -85,7 +180,7 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 24, as it is the least common multiple of 6 and 8. The author's reasoning is sound and aligns with the correct solution.",
+      "critique": "The correct answer is 24, which is the least common multiple of 6 and 8. The author's reasoning is sound, and the misconceptions described for the wrong options are plausible for students.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
@@ -116,203 +211,13 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T22:22:54.633Z",
+      "generatedAt": "2026-10-31T00:06:25.758Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 2,
-      "stem": "Which of the following is a common divisor of 12 and 16?",
-      "choices": [
-        "3",
-        "5",
-        "4",
-        "7"
-      ],
-      "answerIndex": 2,
-      "solution": "The number 4 divides both 12 and 16 evenly, making it a common divisor. 3 does not divide 16 evenly, 5 does not divide either number evenly, and 7 also does not divide either number evenly.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन 12 और 16 का एक सामान्य भाजक है?",
-          "choices": [
-            "3",
-            "5",
-            "4",
-            "7"
-          ],
-          "solution": "संख्या 4 दोनों 12 और 16 को समान रूप से विभाजित करती है, जिससे यह एक सामान्य भाजक बन जाती है। 3, 16 को समान रूप से विभाजित नहीं करता, 5 किसी भी संख्या को समान रूप से विभाजित नहीं करता और 7 भी किसी भी संख्या को समान रूप से विभाजित नहीं करता।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता 12 आणि 16 चा सामाईक भाजक आहे?",
-          "choices": [
-            "3",
-            "5",
-            "4",
-            "7"
-          ],
-          "solution": "संख्या 4 ही 12 आणि 16 ला एकसारख्या पद्धतीने भागते, ज्यामुळे ती सामाईक भाजक बनते. 3 ही 16 ला एकसारख्या पद्धतीने भागत नाही, 5 ही कोणत्याही संख्येला एकसारख्या पद्धतीने भागत नाही आणि 7 देखील कोणत्याही संख्येला एकसारख्या पद्धतीने भागत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses a divisor with a number that does not divide both",
-        "Confuses a divisor with a number that does not divide both",
-        null,
-        "Confuses a divisor with a number that does not divide both"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 4, as it divides both 12 and 16. The other options do not divide both numbers, and the author's reasoning correctly identifies this. The misconceptions described are valid for students who confuse divisors with numbers that do not divide both.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 33,
-          "pageStart": 47,
-          "pageEnd": 49,
-          "headingPath": [
-            "5. GCD and LCM"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 34,
-          "pageStart": 49,
-          "pageEnd": 51,
-          "headingPath": [
-            "5. GCD and LCM"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 35,
-          "pageStart": 51,
-          "pageEnd": 52,
-          "headingPath": [
-            "5. GCD and LCM"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T22:22:54.633Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Find the GCD of 12 and 16 using the divisor method.",
-      "choices": [
-        "4",
-        "6",
-        "8",
-        "12"
-      ],
-      "answerIndex": 0,
-      "solution": "The divisors of 12 are 1, 2, 3, 4, 6, and 12, while the divisors of 16 are 1, 2, 4, 8, and 16. The common divisors between them are 1, 2, and 4, with 4 being the largest. Therefore, 4 is the greatest common divisor. 6, 8, and 12 are not divisors of both numbers, so they cannot be the GCD.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "12 और 16 के GCD की गणना भाजक विधि से कीजिए।",
-          "choices": [
-            "4",
-            "6",
-            "8",
-            "12"
-          ],
-          "solution": "12 के भाजक 1, 2, 3, 4, 6 और 12 हैं, जबकि 16 के भाजक 1, 2, 4, 8 और 16 हैं। इनके बीच सामान्य भाजक 1, 2 और 4 हैं, जिनमें 4 सबसे बड़ा है। अतः 4 सबसे बड़ा सामान्य भाजक है। 6, 8 और 12 दोनों संख्याओं के भाजक नहीं हैं, इसलिए वे GCD नहीं हो सकते।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "12 आणि 16 चा GCD भाजक पद्धतीने शोधा.",
-          "choices": [
-            "4",
-            "6",
-            "8",
-            "12"
-          ],
-          "solution": "12 चे भाजक 1, 2, 3, 4, 6 आणि 12 आहेत, तर 16 चे भाजक 1, 2, 4, 8 आणि 16 आहेत. त्यांचे सामायिक भाजक 1, 2 आणि 4 आहेत, ज्यापैकी 4 सर्वात मोठा आहे. म्हणून, 4 हा मोठाच सामायिक भाजक आहे. 6, 8 आणि 12 दोन्ही संख्यांचे भाजक नाहीत, म्हणून ते GCD असू शकत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation accurately preserves the mathematical meaning, options, and solution. Technical terms like 'GCD' and 'divisors' are correctly translated and used in the Marathi context.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the GCD with the largest divisor of one number",
-        "Confuses the GCD with a non-common divisor",
-        "Confuses the GCD with a larger number than the actual GCD"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct and clearly explains the divisor method for finding the GCD. The reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 33,
-          "pageStart": 47,
-          "pageEnd": 49,
-          "headingPath": [
-            "5. GCD and LCM"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 34,
-          "pageStart": 49,
-          "pageEnd": 51,
-          "headingPath": [
-            "5. GCD and LCM"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 35,
-          "pageStart": 51,
-          "pageEnd": 52,
-          "headingPath": [
-            "5. GCD and LCM"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T22:22:54.633Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "What is the LCM of 8, 12 and 16?",
+      "stem": "What is the smallest number that is divisible by 8, 12 and 16?",
       "choices": [
         "24",
         "48",
@@ -320,128 +225,33 @@
         "96"
       ],
       "answerIndex": 1,
-      "solution": "The LCM is the product of common and uncommon prime factors. The prime factors of 8 are 2×2×2, of 12 are 2×2×3, and of 16 are 2×2×2×2. Common factors are 2×2, and uncommon factors are 2×3. So LCM = 2×2×2×2×3 = 48. Option 24 is only the common factors, 72 is incorrect as it doesn't include all factors, and 96 is too large.",
+      "solution": "The correct answer is 48. The LCM of 8, 12, and 16 is calculated by taking the product of the common and uncommon prime factors. The prime factors of 8 are 2×2×2, of 12 are 2×2×3, and of 16 are 2×2×2×2. The common factors are 2×2, and the uncommon factors are 2×3. So, LCM = 2×2×2×2×3 = 48. Option 24 is too small, option 72 and 96 are larger than the LCM.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "8, 12 और 16 का ल.स.प. क्या है?",
+          "stem": "8, 12 और 16 से विभाज्य सबसे छोटी संख्या क्या है?",
           "choices": [
             "24",
             "48",
             "72",
             "96"
           ],
-          "solution": "ल.स.प. सामान्य और असामान्य अभाज्य गुणनखंडों का गुणनफल होता है। 8 के अभाज्य गुणनखंड 2×2×2 हैं, 12 के 2×2×3 हैं, और 16 के 2×2×2×2 हैं। सामान्य गुणनखंड 2×2 हैं, और असामान्य गुणनखंड 2×3 हैं। इसलिए ल.स.प. = 2×2×2×2×3 = 48। विकल्प 24 केवल सामान्य गुणनखंड है, 72 गलत है क्योंकि यह सभी गुणनखंड शामिल नहीं करता है, और 96 बहुत बड़ा है।",
+          "solution": "सही उत्तर 48 है। 8, 12 और 16 का ल.स.प. हम उभयनिष्ठ और अनुभयनिष्ठ अभाज्य गुणनखंडों के गुणनफल लेकर निकालते हैं। 8 के अभाज्य गुणनखंड 2×2×2 हैं, 12 के अभाज्य गुणनखंड 2×2×3 हैं, और 16 के अभाज्य गुणनखंड 2×2×2×2 हैं। उभयनिष्ठ गुणनखंड 2×2 हैं, और अनुभयनिष्ठ गुणनखंड 2×3 हैं। अतः ल.स.प. = 2×2×2×2×3 = 48। विकल्प 24 बहुत छोटा है, विकल्प 72 और 96 ल.स.प. से बड़े हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are standard in Hindi math curriculum, and the correct answer remains option 2.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "8, 12 आणि 16 चा LCM किती आहे?",
+          "stem": "8, 12 आणि 16 ने भागल्यास लहानतम संख्या कोणती असेल?",
           "choices": [
             "24",
             "48",
             "72",
             "96"
           ],
-          "solution": "LCM हा सामान्य आणि असामान्य अविभाज्य घटकांचा गुणाकार असतो. 8 चे अविभाज्य घटक 2×2×2 आहेत, 12 चे अविभाज्य घटक 2×2×3 आहेत, आणि 16 चे अविभाज्य घटक 2×2×2×2 आहेत. सामान्य घटक 2×2 आहेत, आणि असामान्य घटक 2×3 आहेत. म्हणून LCM = 2×2×2×2×3 = 48. निवड 24 हे केवळ सामान्य घटक आहेत, 72 असे नाही कारण ते सर्व घटकांचा समावेश करत नाही, आणि 96 जास्त आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for LCM and prime factors.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses common factors with LCM",
-        null,
-        "Fails to consider all prime factors",
-        "Adds extra factors unnecessarily"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies the LCM by taking the highest powers of all prime factors. The reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 36,
-          "pageStart": 52,
-          "pageEnd": 53,
-          "headingPath": [
-            "5. GCD and LCM"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 37,
-          "pageStart": 54,
-          "pageEnd": 55,
-          "headingPath": [
-            "5. GCD and LCM"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 38,
-          "pageStart": 55,
-          "pageEnd": 56,
-          "headingPath": [
-            "5. GCD and LCM"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T22:22:54.633Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "What is the LCM of 18 and 30?",
-      "choices": [
-        "60",
-        "90",
-        "120",
-        "180"
-      ],
-      "answerIndex": 1,
-      "solution": "The LCM is the smallest number that is divisible by both 18 and 30. The multiples of 18 are 18, 36, 54, 72, 90, and the multiples of 30 are 30, 60, 90. The LCM is 90. Option 60 is not divisible by 18, 120 is not divisible by 30, and 180 is too large.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "18 और 30 का ल.स.प. क्या है?",
-          "choices": [
-            "60",
-            "90",
-            "120",
-            "180"
-          ],
-          "solution": "ल.स.प. वह सबसे छोटी संख्या होती है जो 18 और 30 दोनों से विभाज्य होती है। 18 के गुणज 18, 36, 54, 72, 90 हैं और 30 के गुणज 30, 60, 90 हैं। ल.स.प. 90 है। विकल्प 60, 18 से विभाज्य नहीं है, 120, 30 से विभाज्य नहीं है और 180 बहुत बड़ा है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "18 आणि 30 चा ल.सा.म. किती आहे?",
-          "choices": [
-            "60",
-            "90",
-            "120",
-            "180"
-          ],
-          "solution": "ल.सा.म. हा एक छोटा नंबर असतो जो 18 आणि 30 दोन्ही नंबरांनी भागला जातो. 18 चे गुणक 18, 36, 54, 72, 90 आहेत आणि 30 चे गुणक 30, 60, 90 आहेत. ल.सा.म. हा 90 आहे. विकल्प 60 18 ने भागला जात नाही, 120 30 ने भागला जात नाही आणि 180 खूप मोठा आहे.",
+          "solution": "बरोबर उत्तर 48 आहे. 8, 12 आणि 16 चा LCM सामान्य आणि असामान्य अभाज्य घटकांच्या गुणाकाराने गणला जातो. 8 चे अभाज्य घटक 2×2×2 आहेत, 12 चे 2×2×3 आहेत आणि 16 चे 2×2×2×2 आहेत. सामान्य घटक 2×2 आहेत आणि असामान्य घटक 2×3 आहेत. म्हणून, LCM = 2×2×2×2×3 = 48. विकल्प 24 लहान आहे, विकल्प 72 आणि 96 LCM पेक्षा मोठे आहेत.",
           "imageAlt": null,
           "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
@@ -452,10 +262,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses LCM with a multiple of one of the numbers but not the smallest common multiple",
+        "Believes LCM is the product of the smallest factors rather than the highest powers of primes",
         null,
-        "Chooses a number not divisible by both",
-        "Chooses a larger number unnecessarily"
+        "Finds the LCM of 8 and 12 but not 16",
+        "Finds the LCM of 12 and 16 but not 8"
       ],
       "solverAnswers": [
         1,
@@ -465,7 +275,7 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The solution correctly identifies 90 as the LCM of 18 and 30 by listing multiples and finding the smallest common one. The reasoning for the distractors is valid and reflects common student misconceptions.",
+      "critique": "The solution correctly calculates the LCM of 8, 12, and 16 as 48. The reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
@@ -496,144 +306,49 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T22:22:54.633Z",
+      "generatedAt": "2026-10-31T00:06:25.758Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "Three friends complete laps on a circular track in 2, 3, and 4 minutes. After how many minutes will they meet again at the starting point?",
+      "difficulty": 3,
+      "stem": "The LCM of two numbers is 200 and the GCD is 10. If one of the numbers is 40, what is the other number?",
       "choices": [
-        "6",
-        "12",
-        "24",
-        "36"
-      ],
-      "answerIndex": 1,
-      "solution": "To find when they meet again, we need to calculate the LCM of 2, 3, and 4. The prime factors are 2, 3, and 2×2. The LCM is 2×2×3 = 12. The option '6' is incorrect because it misses one 2. The option '24' is incorrect because it is too high. The option '36' is incorrect because it is too high.",
-      "checkExpr": "2*2*3",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "तीन दोस्त एक वृत्ताकार पथ पर क्रमशः 2, 3 और 4 मिनट में चक्कर पूरा करते हैं। कितने मिनट बाद वे आरंभिक बिंदु पर फिर से मिलेंगे?",
-          "choices": [
-            "6",
-            "12",
-            "24",
-            "36"
-          ],
-          "solution": "उन्हें फिर से मिलने के लिए हमें 2, 3 और 4 का ल.स. ज्ञात करना होगा। अभाज्य गुणनखंड 2, 3 और 2×2 हैं। ल.स. 2×2×3 = 12 है। विकल्प '6' गलत है क्योंकि इसमें एक 2 की कमी है। विकल्प '24' गलत है क्योंकि यह बहुत अधिक है। विकल्प '36' गलत है क्योंकि यह बहुत अधिक है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "तीन मित्र वर्तुळाकार मार्गावर लॅप पूर्ण करतात जे क्रमाने 2, 3 आणि 4 मिनिटे घेतात. किती मिनिटांनी ते पुन्हा सुरुवातीच्या बिंदूवर भेटतील?",
-          "choices": [
-            "6",
-            "12",
-            "24",
-            "36"
-          ],
-          "solution": "त्यांना पुन्हा एकत्र भेटण्यासाठी आम्हाला 2, 3 आणि 4 चा ल.सा.म. काढावा लागेल. अविभाज्य घटक 2, 3 आणि 2×2 आहेत. ल.सा.म. 2×2×3 = 12 आहे. विकल्प '6' अयोग्य आहे कारण तो एक 2 चा अभाव असतो. विकल्प '24' अयोग्य आहे कारण तो खूप जास्त आहे. विकल्प '36' अयोग्य आहे कारण तो खूप जास्त आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terminology for LCM (ल.सा.म.).",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "misses one 2",
-        null,
-        "too high",
-        "too high"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is correctly solved by finding the LCM of 2, 3, and 4, which is 12. The explanation for the incorrect options is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 36,
-          "pageStart": 52,
-          "pageEnd": 53,
-          "headingPath": [
-            "5. GCD and LCM"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 37,
-          "pageStart": 54,
-          "pageEnd": 55,
-          "headingPath": [
-            "5. GCD and LCM"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 38,
-          "pageStart": 55,
-          "pageEnd": 56,
-          "headingPath": [
-            "5. GCD and LCM"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T22:22:54.633Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "A shopkeeper has two rolls of cloth of lengths 90 m and 120 m. He wants to cut both into pieces of equal maximum length. What is the maximum length of each piece?",
-      "choices": [
-        "10",
-        "15",
+        "20",
         "30",
+        "50",
         "60"
       ],
       "answerIndex": 2,
-      "solution": "To find the maximum length of each piece, we need to find the GCD of 90 and 120. The divisors of 90 are 1, 2, 3, 5, 6, 9, 10, 15, 18, 30, 45, 90. The divisors of 120 are 1, 2, 3, 4, 5, 6, 8, 10, 12, 15, 20, 24, 30, 40, 60, 120. The common divisors are 1, 2, 3, 5, 6, 10, 15, 30. The greatest common divisor is 30. Therefore, the maximum length of each piece is 30 meters. 10, 15, and 60 are not the greatest common divisors of 90 and 120, so they are incorrect.",
-      "checkExpr": null,
+      "solution": "The correct answer is 50. Using the formula: product of numbers = GCD × LCM, the product is 10 × 200 = 2000. If one number is 40, then the other number = 2000 ÷ 40 = 50. Option 20 is too small, option 30 is incorrect because 40 × 30 = 1200, not 2000, and option 60 is also incorrect because 40 × 60 = 2400, not 2000.",
+      "checkExpr": "(10*200)/40",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक दुकानदार के पास 90 मीटर और 120 मीटर लंबाई के दो कपड़े के रोल हैं। वह दोनों को समान अधिकतम लंबाई के टुकड़ों में काटना चाहता है। प्रत्येक टुकड़े की अधिकतम लंबाई क्या है?",
+          "stem": "दो संख्याओं का ल.स. 200 है और म.स. 10 है। यदि एक संख्या 40 है, तो दूसरी संख्या क्या है?",
           "choices": [
-            "10",
-            "15",
+            "20",
             "30",
+            "50",
             "60"
           ],
-          "solution": "प्रत्येक टुकड़े की अधिकतम लंबाई ज्ञात करने के लिए, हमें 90 और 120 का ल.स.प. ज्ञात करना होता है। 90 के भाजक 1, 2, 3, 5, 6, 9, 10, 15, 18, 30, 45, 90 हैं। 120 के भाजक 1, 2, 3, 4, 5, 6, 8, 10, 12, 15, 20, 24, 30, 40, 60, 120 हैं। सामान्य भाजक 1, 2, 3, 5, 6, 10, 15, 30 हैं। सबसे बड़ा सामान्य भाजक 30 है। अतः प्रत्येक टुकड़े की अधिकतम लंबाई 30 मीटर है। 10, 15 और 60, 90 और 120 के सबसे बड़ा सामान्य भाजक नहीं हैं, इसलिए वे गलत हैं।",
+          "solution": "सही उत्तर 50 है। सूत्र: संख्याओं का गुणनफल = म.स. × ल.स. का उपयोग करके, गुणनफल 10 × 200 = 2000 है। यदि एक संख्या 40 है, तो दूसरी संख्या = 2000 ÷ 40 = 50। विकल्प 20 बहुत छोटा है, विकल्प 30 गलत है क्योंकि 40 × 30 = 1200, 2000 नहीं है, और विकल्प 60 भी गलत है क्योंकि 40 × 60 = 2400, 2000 नहीं है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. The solution correctly identifies 30 as the GCD, and the distractors remain incorrect. Technical terms like 'ल.स.प.' (LCM) and 'भाजक' (divisors) are appropriate for Hindi-medium textbooks.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology used in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "एका दुकानदाराकडे 90 मी आणि 120 मी लांबीचे दोन कापडाचे रोल आहेत. तो दोन्ही रोल एकसारख्या लांबीच्या तुकड्यांमध्ये कापू इच्छितो. प्रत्येक तुकड्याची अधिकतम लांबी किती असेल?",
+          "stem": "दोन संख्यांचा ल.सा.अ. 200 आहे आणि म.सा.अ. 10 आहे. जर एका संख्येचे मूल्य 40 असेल, तर दुसरी संख्या किती असेल?",
           "choices": [
-            "10",
-            "15",
+            "20",
             "30",
+            "50",
             "60"
           ],
-          "solution": "प्रत्येक तुकड्याची अधिकतम लांबी शोधण्यासाठी, आम्हाला 90 आणि 120 चा ग्रेटेस्ट कॉमन डिव्हायझर (GCD) शोधणे आवश्यक आहे. 90 चे भाजक 1, 2, 3, 5, 6, 9, 10, 15, 18, 30, 45, 90 आहेत. 120 चे भाजक 1, 2, 3, 4, 5, 6, 8, 10, 12, 15, 20, 24, 30, 40, 60, 120 आहेत. सामायिक भाजक 1, 2, 3, 5, 6, 10, 15, 30 आहेत. ग्रेटेस्ट कॉमन डिव्हायझर 30 आहे. म्हणून, प्रत्येक तुकड्याची अधिकतम लांबी 30 मीटर आहे. 10, 15 आणि 60 90 आणि 120 चे ग्रेटेस्ट कॉमन डिव्हायझर नाहीत, म्हणून ते चुकीचे आहेत.",
+          "solution": "योग्य उत्तर 50 आहे. सूत्र वापरून: संख्यांचा गुणाकार = म.सा.अ. × ल.सा.अ., गुणाकार 10 × 200 = 2000 आहे. जर एका संख्येचे मूल्य 40 असेल, तर दुसरी संख्या = 2000 ÷ 40 = 50. विकल्प 20 खूप लहान आहे, विकल्प 30 अयोग्य आहे कारण 40 × 30 = 1200, 2000 नाही, आणि विकल्प 60 देखील अयोग्य आहे कारण 40 × 60 = 2400, 2000 नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for mathematical concepts.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -642,10 +357,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses GCD with a non-greatest common divisor",
-        "Confuses GCD with a non-greatest common divisor",
+        "Confuses LCM with GCD and divides LCM by GCD instead of multiplying",
+        "Confuses LCM and GCD values in the formula",
         null,
-        "Confuses GCD with a larger number than the actual GCD"
+        "Divides the product by a wrong number"
       ],
       "solverAnswers": [
         2,
@@ -654,8 +369,103 @@
         2,
         2
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is correctly framed and the solution is accurate. The correct answer is 30, which is the GCD of 90 and 120. The distractors are reasonable and reflect common misconceptions about GCD.",
+      "levelFlag": null,
+      "critique": "The solution is correct and follows the standard formula: product of numbers = GCD × LCM. The reasoning for the distractors is plausible and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 36,
+          "pageStart": 52,
+          "pageEnd": 53,
+          "headingPath": [
+            "5. GCD and LCM"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 37,
+          "pageStart": 54,
+          "pageEnd": 55,
+          "headingPath": [
+            "5. GCD and LCM"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 38,
+          "pageStart": 55,
+          "pageEnd": 56,
+          "headingPath": [
+            "5. GCD and LCM"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T00:06:25.758Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A garland seller has 48 red roses and 60 white roses. He wants to make garlands with the same number of flowers in each. What is the maximum number of flowers in each garland?",
+      "choices": [
+        "12",
+        "6",
+        "24",
+        "30"
+      ],
+      "answerIndex": 0,
+      "solution": "The maximum number of flowers in each garland is the GCD of 48 and 60. The GCD of 48 and 60 is 12. 6, 24, and 30 are not the greatest common divisors of 48 and 60 because they do not divide both numbers evenly.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक गुलदस्ता विक्रेता के पास 48 लाल गुलाब और 60 सफेद गुलाब हैं। वह प्रत्येक गुलदस्ते में समान संख्या में फूल बनाना चाहता है। प्रत्येक गुलदस्ते में फूलों की अधिकतम संख्या क्या है?",
+          "choices": [
+            "12",
+            "6",
+            "24",
+            "30"
+          ],
+          "solution": "प्रत्येक गुलदस्ते में फूलों की अधिकतम संख्या 48 और 60 के महत्तम समापवर्तक है। 48 और 60 का महत्तम समापवर्तक 12 है। 6, 24 और 30 48 और 60 के महत्तम समापवर्तक नहीं हैं क्योंकि वे दोनों संख्याओं को समान रूप से विभाजित नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate mathematical terminology and correct answer positioning.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक गुलाबाचा विक्रेता लाल गुलाबांच्या 48 आणि श्वेत गुलाबांच्या 60 असतात. तो प्रत्येक गुलाबात समान संख्येने फुले ठेवू इच्छितो. प्रत्येक गुलाबात फुलांची अधिकतम संख्या किती असेल?",
+          "choices": [
+            "12",
+            "6",
+            "24",
+            "30"
+          ],
+          "solution": "प्रत्येक गुलाबात फुलांची अधिकतम संख्या 48 आणि 60 चा महत्तम सामाईक भाजक आहे. 48 आणि 60 चा महत्तम सामाईक भाजक 12 आहे. 6, 24 आणि 30 हे 48 आणि 60 चे महत्तम सामाईक भाजक नाहीत कारण ते दोन्ही संख्यांना समान भाग नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Chooses a smaller common factor",
+        "Chooses a larger multiple",
+        "Chooses a larger number that is not a common factor"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies the GCD of 48 and 60 as 12, which is the maximum number of flowers that can be evenly distributed in each garland. The reasoning for the wrong options aligns with common misconceptions.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
@@ -686,102 +496,7 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T22:22:54.633Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "If the GCD of two numbers is 8 and their LCM is 48, which of the following could be the pair of numbers?",
-      "choices": [
-        "12 and 32",
-        "16 and 24",
-        "24 and 32",
-        "32 and 48"
-      ],
-      "answerIndex": 1,
-      "solution": "Using the formula: product of numbers = GCD × LCM. So the product of the numbers must be 8 × 48 = 384. The pair 16 and 24 gives 16 × 24 = 384. Option 12 and 32 gives 384 but their GCD is 4, not 8. 24 and 32 gives 768, which is not 384. 32 and 48 gives 1536, which is too large.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि दो संख्याओं का महत्तम समापवर्तक 8 है और उनका लघुत्तम समापवर्तक 48 है, तो निम्नलिखित में से कौन-सी संख्या का युग्म हो सकता है?",
-          "choices": [
-            "12 और 32",
-            "16 और 24",
-            "24 और 32",
-            "32 और 48"
-          ],
-          "solution": "सूत्र का उपयोग करके: संख्याओं का गुणनफल = महत्तम समापवर्तक × लघुत्तम समापवर्तक। इसलिए संख्याओं का गुणनफल 8 × 48 = 384 होना चाहिए। युग्म 16 और 24 द्वारा 16 × 24 = 384 प्राप्त होता है। विकल्प 12 और 32 द्वारा 384 प्राप्त होता है लेकिन उनका महत्तम समापवर्तक 4 है, न कि 8। 24 और 32 द्वारा 768 प्राप्त होता है, जो 384 नहीं है। 32 और 48 द्वारा 1536 प्राप्त होता है, जो बहुत बड़ा है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर दोन संख्यांचा महत्तम सामायिक अपवर्तक 8 आहे आणि त्यांचा लघुत्तम सामायिक अपवर्त्य 48 आहे, तर खालीलपैकी कोणती संख्यांची जोडी असू शकते?",
-          "choices": [
-            "12 आणि 32",
-            "16 आणि 24",
-            "24 आणि 32",
-            "32 आणि 48"
-          ],
-          "solution": "सूत्र वापरून: संख्यांचा गुणाकार = महत्तम सामायिक अपवर्तक × लघुत्तम सामायिक अपवर्त्य. म्हणून संख्यांचा गुणाकार 8 × 48 = 384 असणे आवश्यक आहे. 16 आणि 24 चा गुणाकार 16 × 24 = 384 आहे. 12 आणि 32 चा गुणाकार 384 आहे परंतु त्यांचा महत्तम सामायिक अपवर्तक 4 आहे, 8 नाही. 24 आणि 32 चा गुणाकार 768 आहे, जो 384 नाही. 32 आणि 48 चा गुणाकार 1536 आहे, जो खूप मोठा आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Chooses numbers with correct product but wrong GCD",
-        null,
-        "Chooses numbers with correct GCD but wrong product",
-        "Chooses numbers with correct LCM but wrong GCD"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and aligns with the key. The correct pair is 16 and 24, which satisfies both the GCD and LCM conditions.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 36,
-          "pageStart": 52,
-          "pageEnd": 53,
-          "headingPath": [
-            "5. GCD and LCM"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 37,
-          "pageStart": 54,
-          "pageEnd": 55,
-          "headingPath": [
-            "5. GCD and LCM"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 38,
-          "pageStart": 55,
-          "pageEnd": 56,
-          "headingPath": [
-            "5. GCD and LCM"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T22:22:54.633Z",
+      "generatedAt": "2026-10-31T00:06:25.758Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

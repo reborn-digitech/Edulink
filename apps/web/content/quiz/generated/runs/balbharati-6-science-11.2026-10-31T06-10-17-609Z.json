@@ -1,0 +1,736 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T06:10:17.609Z",
+  "finishedAt": "2026-10-31T06:42:08.321Z",
+  "seconds": 1911,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "603050012",
+    "document": "balbharati/6/science/603050012.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 11 — Force and Pressure",
+    "edition": "First Edition 2026",
+    "chunks": 8,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2013 — question paper]\n62. The atmospheric pressure on the earth’s surface is P N/m . A table of area 2 m is a 2 2\ntilted at 45 to the horizontal. The force on the top surface of the table due to the 0\natmosphere is (in newtons):\nA. 2 P √ a\nB. √ 2P a\nC. 2 2P √ a\nD. P / 2 a",
+      "[NSEJS 2020 — answer key]\n2. External pressure will increase with depth:\nF = PA = hρg A\nHence, h = F/ρ g A = 2.5 / (9.8 X 1.05 X10 X 3.14 X (0.5 X 10 ) ) = 3.09 m ~ 3m 3 -2 2",
+      "[INJSO 2013 — solutions or answer key]\n62. The atmospheric pressure on the earth’s surface is P N/m . A table of area 2 m is a 2 2\ntilted at 45 to the horizontal. The force on the top surface of the table due to the 0\natmosphere is (in newtons):\nA. 2 P √ a\nB. √ 2P a\nC. 2 2P √ a\nD. P / 2 a",
+      "[INJSO 2010 — question paper]\n59. A man of mass 100 kg stands on a wood plank of area 4 m . What is the pressure 2\nexerted on the floor? Assume the area of a human foot to be 200 cm . 2\na) 500 N b) 25 N c) 50000 N d) 250 N"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 495838,
+      "in": 36,
+      "out": 36,
+      "rejects": 0,
+      "promptTokens": 24254,
+      "completionTokens": 8134
+    },
+    "critique": {
+      "calls": 44,
+      "ms": 669521,
+      "in": 36,
+      "out": 20,
+      "rejects": 16,
+      "promptTokens": 19727,
+      "completionTokens": 7580
+    },
+    "solver": {
+      "calls": 147,
+      "ms": 183157,
+      "in": 20,
+      "out": 16,
+      "rejects": 4,
+      "promptTokens": 24866,
+      "completionTokens": 1573
+    },
+    "form": {
+      "calls": 8,
+      "ms": 86309,
+      "in": 16,
+      "out": 12,
+      "rejects": 4,
+      "promptTokens": 3734,
+      "completionTokens": 822
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 16,
+      "ms": 39323,
+      "in": 12,
+      "out": 7,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 666771,
+      "in": 14,
+      "out": 8,
+      "rejects": 6,
+      "promptTokens": 8728,
+      "completionTokens": 4455
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 3
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of muscular force?",
+      "ms": {
+        "draft": 26838,
+        "critique": 6722
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What causes objects to fall to the ground when thrown upwards?",
+      "ms": {
+        "draft": 26838,
+        "critique": 7141
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What happens when the surface of a carrom board is rough?",
+      "ms": {
+        "draft": 26838,
+        "critique": 10047
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the same force is applied to push a marble on a smooth surface and a rough surface, which surface will result in the marble moving a shorter distance?",
+      "ms": {
+        "draft": 26838,
+        "critique": 9668
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is true about friction?",
+      "ms": {
+        "draft": 26838,
+        "critique": 6328,
+        "solver": 14580,
+        "form": 3063
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the force produced due to static electric charges called?",
+      "ms": {
+        "draft": 34304,
+        "critique": 8142
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a force is applied on a small area, what happens to the pressure?",
+      "ms": {
+        "draft": 34304,
+        "critique": 7838
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of unbalanced forces?",
+      "ms": {
+        "draft": 34304,
+        "critique": 9913
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In which of the following situations is atmospheric pressure responsible for the movement of water?",
+      "ms": {
+        "draft": 34304,
+        "critique": 44833
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the area of contact is doubled while the force remains the same, how does the pressure change?",
+      "ms": {
+        "draft": 34304,
+        "critique": 64547
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of atmospheric pressure?",
+      "ms": {
+        "draft": 47069,
+        "critique": 52865,
+        "solver": 35259,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the atmospheric pressure on the earth’s surface is P N/m² and a table of area 2 m² is tilted at 45 degrees to the horizontal, what is the force on the top surface of the table due to the atmosphere?",
+      "ms": {
+        "draft": 47069,
+        "critique": 25617,
+        "solver": 2492
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given diagram, a force is applied to a block on a horizontal surface. What is the net force acting on the block if there is friction?",
+      "ms": {
+        "draft": 47069,
+        "critique": 26621,
+        "solver": 2936,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A man of mass 100 kg stands on a wood plank of area 4 m². What is the pressure exerted on the floor? Assume the area of a human foot to be 200 cm².",
+      "ms": {
+        "draft": 47069,
+        "critique": 32774,
+        "solver": 29411
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A man of mass 100 kg stands on a wooden plank of area 4 m². What is the pressure exerted on the floor if the area of a human foot is 200 cm²?",
+      "ms": {
+        "draft": 13039,
+        "critique": 7439,
+        "solver": 1505
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the pressure when the area of contact increases?",
+      "ms": {
+        "draft": 3664,
+        "critique": 8201
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In which direction does air flow due to pressure differences?",
+      "ms": {
+        "draft": 3664,
+        "critique": 8718
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a force of 50 N is applied over an area of 10 m², what is the pressure?",
+      "ms": {
+        "draft": 3664,
+        "critique": 6665,
+        "solver": 12733,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "When a brick is dropped into wet soil, in which position does it sink deeper?",
+      "ms": {
+        "draft": 3664,
+        "critique": 7659,
+        "solver": 1790
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the effort applied to push, pull, or give pressure on an object?",
+      "ms": {
+        "draft": 4985,
+        "critique": 7458
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of gravitational force?",
+      "ms": {
+        "draft": 4985,
+        "critique": 8583
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A car is moving on a rough surface. What happens to its speed due to friction?",
+      "ms": {
+        "draft": 4985,
+        "critique": 8556
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In which of the following situations is electrostatic force observed?",
+      "ms": {
+        "draft": 4985,
+        "critique": 8545
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A man of mass 100 kg stands on a wood plank of area 4 m². What is the pressure exerted on the floor? (Take g = 10 m/s²)",
+      "ms": {
+        "draft": 4985,
+        "critique": 13071
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the unit of pressure?",
+      "ms": {
+        "draft": 47069,
+        "critique": 6180,
+        "solver": 1051,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the pressure if the area of contact increases?",
+      "ms": {
+        "draft": 13039,
+        "critique": 5397,
+        "solver": 1530,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the unit of pressure?",
+      "ms": {
+        "draft": 13039,
+        "critique": 6585,
+        "solver": 2035,
+        "form": 3037
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which force is produced due to static electric charges?",
+      "ms": {
+        "draft": 3664,
+        "critique": 7415,
+        "solver": 1766,
+        "form": 2620
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A performer stands on many sharp nails. Why do the nails not pierce his feet?",
+      "ms": {
+        "draft": 3664,
+        "critique": 8370,
+        "solver": 17349,
+        "form": 4465
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a force is applied to an object and the object moves in the direction of the force, what is the work done?",
+      "ms": {
+        "draft": 47069,
+        "critique": 13079,
+        "solver": 1437,
+        "form": 0,
+        "translation": 480010
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A force that acts on an object without touching it is most likely to be:",
+      "ms": {
+        "draft": 13039,
+        "critique": 5790,
+        "solver": 2007,
+        "form": 0,
+        "translation": 200741
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A person is standing on a wooden plank. What will happen to the pressure if the person stands on one foot instead of both?",
+      "ms": {
+        "draft": 13039,
+        "critique": 6077,
+        "solver": 2605,
+        "form": 0,
+        "translation": 198309
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A person stands on a board with many sharp nails. Why do the nails not pierce his feet?",
+      "ms": {
+        "draft": 34304,
+        "critique": 54452,
+        "solver": 65387,
+        "form": 4390,
+        "translation": 480011
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A sharp knife cuts a fruit easily, while a blunt knife does not. What is the reason for this?",
+      "ms": {
+        "draft": 13039,
+        "critique": 6766,
+        "solver": 1673,
+        "form": 0,
+        "translation": 204986
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to reduce friction in machines?",
+      "ms": {
+        "draft": 26838,
+        "critique": 9348,
+        "solver": 45163,
+        "form": 25178,
+        "translation": 480010
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why does the spacecraft Columbia burn up during re-entry into the Earth's atmosphere?",
+      "ms": {
+        "draft": 4985,
+        "critique": 6951,
+        "solver": 53497,
+        "form": 12330,
+        "translation": 23653
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is an example of muscular force?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What causes objects to fall to the ground when thrown upwards?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What happens when the surface of a carrom board is rough?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the same force is applied to push a marble on a smooth surface and a rough surface, which surface will result in the marble moving a shorter distance?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is true about friction?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the force produced due to static electric charges called?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a force is applied on a small area, what happens to the pressure?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of unbalanced forces?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In which of the following situations is atmospheric pressure responsible for the movement of water?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the area of contact is doubled while the force remains the same, how does the pressure change?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of atmospheric pressure?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the atmospheric pressure on the earth’s surface is P N/m² and a table of area 2 m² is tilted at 45 degrees to the horizontal, what is the force on the top surface of the table due to the atmosphere?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given diagram, a force is applied to a block on a horizontal surface. What is the net force acting on the block if there is friction?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.incidentRay: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A man of mass 100 kg stands on a wood plank of area 4 m². What is the pressure exerted on the floor? Assume the area of a human foot to be 200 cm².",
+      "reason": "after redrafting distractors 0, 3: the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A man of mass 100 kg stands on a wooden plank of area 4 m². What is the pressure exerted on the floor if the area of a human foot is 200 cm²?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What happens to the pressure when the area of contact increases?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In which direction does air flow due to pressure differences?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a force of 50 N is applied over an area of 10 m², what is the pressure?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "When a brick is dropped into wet soil, in which position does it sink deeper?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for the effort applied to push, pull, or give pressure on an object?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of gravitational force?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A car is moving on a rough surface. What happens to its speed due to friction?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In which of the following situations is electrostatic force observed?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A man of mass 100 kg stands on a wood plank of area 4 m². What is the pressure exerted on the floor? (Take g = 10 m/s²)",
+      "reason": "the critic finds option 1 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the unit of pressure?",
+      "reason": "near-duplicate of served question cmvvftphe01a20rgnufk2n2wv (cosine 0.922 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What happens to the pressure if the area of contact increases?",
+      "reason": "near-duplicate of served question cmvvftpi301b80rgn7frppdzz (cosine 0.911 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the unit of pressure?",
+      "reason": "near-duplicate of served question cmvvftphe01a20rgnufk2n2wv (cosine 0.922 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which force is produced due to static electric charges?",
+      "reason": "near-duplicate of served question cmvvftphn01ak0rgnc673gv0s (cosine 0.914 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A performer stands on many sharp nails. Why do the nails not pierce his feet?",
+      "reason": "near-duplicate of batch item \"A person stands on a board with many sharp nails. …\" (cosine 0.921 ≥ 0.9)"
+    },
+    {
+      "stage": "translation",
+      "level": 6,
+      "stem": "Why is it important to reduce friction in machines?",
+      "reason": "hi: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "translation",
+      "level": 3,
+      "stem": "If a force is applied to an object and the object moves in the direction of the force, what is the work done?",
+      "reason": "hi: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "translation",
+      "level": 5,
+      "stem": "A person stands on a board with many sharp nails. Why do the nails not pierce his feet?",
+      "reason": "hi: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "translation",
+      "level": 6,
+      "stem": "Why is it important to reduce friction in machines?",
+      "reason": "mr: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "translation",
+      "level": 3,
+      "stem": "If a force is applied to an object and the object moves in the direction of the force, what is the work done?",
+      "reason": "mr: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "translation",
+      "level": 5,
+      "stem": "A person stands on a board with many sharp nails. Why do the nails not pierce his feet?",
+      "reason": "mr: The operation was aborted due to timeout"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

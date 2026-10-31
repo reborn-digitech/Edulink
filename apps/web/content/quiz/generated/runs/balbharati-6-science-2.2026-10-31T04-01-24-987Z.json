@@ -1,0 +1,677 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T04:01:24.987Z",
+  "finishedAt": "2026-10-31T04:09:05.683Z",
+  "seconds": 461,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "603050012",
+    "document": "balbharati/6/science/603050012.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 2 — Measurement",
+    "edition": "First Edition 2026",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2022-23]\n6. (a) Only i 1",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n6. B. (ii), (iii), (iv)",
+      "[CBSE Class X Science, marking scheme, 2026-27]\n6. B. 17, 34",
+      "[CBSE Class X Science, sample question paper, 2026-27]\nthe inference he draws on the basis of his experiment be correct? Justify\nyour answer."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 114577,
+      "in": 34,
+      "out": 34,
+      "rejects": 0,
+      "promptTokens": 24226,
+      "completionTokens": 6259
+    },
+    "critique": {
+      "calls": 42,
+      "ms": 286017,
+      "in": 34,
+      "out": 26,
+      "rejects": 8,
+      "promptTokens": 17657,
+      "completionTokens": 7197
+    },
+    "solver": {
+      "calls": 183,
+      "ms": 92003,
+      "in": 26,
+      "out": 23,
+      "rejects": 3,
+      "promptTokens": 29849,
+      "completionTokens": 1841
+    },
+    "form": {
+      "calls": 17,
+      "ms": 48397,
+      "in": 23,
+      "out": 9,
+      "rejects": 14,
+      "promptTokens": 3992,
+      "completionTokens": 1164
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 11,
+      "ms": 1908,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 39,
+      "ms": 433692,
+      "in": 18,
+      "out": 17,
+      "rejects": 1,
+      "promptTokens": 23591,
+      "completionTokens": 11913
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 0,
+    "4": 1,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What does the passage say is the meaning of measurement?",
+      "ms": {
+        "draft": 2910,
+        "critique": 6117,
+        "solver": 1770,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for using standard units of measurement?",
+      "ms": {
+        "draft": 2910,
+        "critique": 6097,
+        "solver": 979,
+        "form": 3689
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student measures the length of a table using a ruler that starts at 1 cm instead of 0 cm, what should they do to get the correct measurement?",
+      "ms": {
+        "draft": 2910,
+        "critique": 6569,
+        "solver": 2362,
+        "form": 2556
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of a non-standard unit of measurement?",
+      "ms": {
+        "draft": 2910,
+        "critique": 7076,
+        "solver": 1771,
+        "form": 3018
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student measures the length of a curved surface with a ruler, what should they do instead?",
+      "ms": {
+        "draft": 2910,
+        "critique": 6526,
+        "solver": 1365,
+        "form": 2810
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a cricket match, if the distance from the stumps to the bowling point is measured as fifteen steps, why might the results differ?",
+      "ms": {
+        "draft": 2910,
+        "critique": 6636,
+        "solver": 1362,
+        "form": 3841
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the temperature of a liquid is 37°C, what is the likely condition of the person?",
+      "ms": {
+        "draft": 3371,
+        "critique": 5343,
+        "solver": 1789
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the temperature range of a clinical thermometer?",
+      "ms": {
+        "draft": 3371,
+        "critique": 5741,
+        "solver": 1392,
+        "form": 3604
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the instrument used to measure temperature?",
+      "ms": {
+        "draft": 2416,
+        "critique": 6096
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a laboratory thermometer has 10 small divisions between two big marks that are 10°C apart, what is the temperature difference between each small division?",
+      "ms": {
+        "draft": 3371,
+        "critique": 6359,
+        "solver": 13998,
+        "form": 3406
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which unit is used to measure temperature in research experiments?",
+      "ms": {
+        "draft": 2416,
+        "critique": 6643,
+        "solver": 1442,
+        "form": 2780
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the normal temperature of the human body?",
+      "ms": {
+        "draft": 2416,
+        "critique": 7260,
+        "solver": 12820
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the smallest length that can be measured using a ruler from a compass box?",
+      "ms": {
+        "draft": 2416,
+        "critique": 5767,
+        "solver": 1424,
+        "form": 2412
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the correct order of the following units from biggest to smallest?",
+      "ms": {
+        "draft": 2416,
+        "critique": 6686,
+        "solver": 8007
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the normal temperature of the human body?",
+      "ms": {
+        "draft": 2454,
+        "critique": 5270
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a non-standard method of length measurement?",
+      "ms": {
+        "draft": 2454,
+        "critique": 9818
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the instrument used to measure temperature?",
+      "ms": {
+        "draft": 2454,
+        "critique": 5742,
+        "solver": 13154,
+        "form": 2800
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student uses a ruler and a measuring tape to measure the length of a table, what will be the result?",
+      "ms": {
+        "draft": 2454,
+        "critique": 8048
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a reason to use a thermometer instead of touching an object to check its temperature?",
+      "ms": {
+        "draft": 4765,
+        "critique": 7313
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a thermometer reads 37°C, what is the likely condition of the person?",
+      "ms": {
+        "draft": 4765,
+        "critique": 9379
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person has a temperature of 39°C, what can be inferred from the passage?",
+      "ms": {
+        "draft": 4765,
+        "critique": 8165
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main function of a thermometer as described in the passage?",
+      "ms": {
+        "draft": 4765,
+        "critique": 11100
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is the correct order of units from biggest to smallest?",
+      "ms": {
+        "draft": 2454,
+        "critique": 8271,
+        "solver": 18197,
+        "form": 4248
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is a laboratory thermometer different from a clinical thermometer?",
+      "ms": {
+        "draft": 4765,
+        "critique": 8388,
+        "solver": 16026,
+        "form": 3894
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which instrument is best suited to measure the length of a curved surface?",
+      "ms": {
+        "draft": 4770,
+        "critique": 8119,
+        "solver": 13202,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which instrument is used to measure body temperature accurately?",
+      "ms": {
+        "draft": 3371,
+        "critique": 5836,
+        "solver": 1734,
+        "form": 2383,
+        "translation": 36035
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of temperature?",
+      "ms": {
+        "draft": 2454,
+        "critique": 5548,
+        "solver": 14036,
+        "form": 3071,
+        "translation": 54657
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a non-standard unit of measurement?",
+      "ms": {
+        "draft": 4770,
+        "critique": 7458,
+        "solver": 1379,
+        "form": 0,
+        "translation": 66126
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for using a thermometer to measure temperature?",
+      "ms": {
+        "draft": 3371,
+        "critique": 5413,
+        "solver": 1158,
+        "form": 3145,
+        "translation": 46987
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a student measures the length of a table using a broken ruler, which step should they take to get the correct measurement?",
+      "ms": {
+        "draft": 4770,
+        "critique": 7121,
+        "solver": 1749,
+        "form": 0,
+        "translation": 75711
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a science fair, a student uses a measuring tape to measure the length of a table. The tape has markings that are not evenly spaced. What will be the effect of this on the measurement?",
+      "ms": {
+        "draft": 4770,
+        "critique": 7239,
+        "solver": 1643,
+        "form": 0,
+        "translation": 58512
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which type of thermometer is used to measure body temperature quickly without touching the person?",
+      "ms": {
+        "draft": 3371,
+        "critique": 5994,
+        "solver": 2192,
+        "form": 2553,
+        "translation": 41243
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student measures the length of a thread using a ruler. They start measuring from the 2 cm mark instead of the 0 cm mark. If the reading at the end of the thread is 15 cm, what is the actual length of the thread?",
+      "ms": {
+        "draft": 4770,
+        "critique": 4238,
+        "solver": 668,
+        "form": 0,
+        "translation": 82096
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which unit would you use to measure the thickness of a key?",
+      "ms": {
+        "draft": 2416,
+        "critique": 5827,
+        "solver": 1007,
+        "form": 2208,
+        "translation": 36251
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What does the passage say is the meaning of measurement?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Misinterprets the passage's wording…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main reason for using standard units of measurement?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Misinterprets the passage's explanation…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student measures the length of a table using a ruler that starts at 1 cm instead of 0 cm, what should they do to get the correct measurement?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Does not understand the passage's guidance…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is an example of a non-standard unit of measurement?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Misunderstands the example given in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a student measures the length of a curved surface with a ruler, what should they do instead?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Does not recall the specific advice given in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a cricket match, if the distance from the stumps to the bowling point is measured as fifteen steps, why might the results differ?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Misinterprets the passage's explanation…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the temperature of a liquid is 37°C, what is the likely condition of the person?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the temperature range of a clinical thermometer?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Chooses a range not mentioned in the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the instrument used to measure temperature?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a laboratory thermometer has 10 small divisions between two big marks that are 10°C apart, what is the temperature difference between each small division?",
+      "reason": "options 1 and 2 are the same (\"2°C\"); options 1 and 2 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which unit is used to measure temperature in research experiments?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the normal temperature of the human body?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the smallest length that can be measured using a ruler from a compass box?",
+      "reason": "options are in more than one unit (mm, cm, m, km); options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What is the correct order of the following units from biggest to smallest?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the normal temperature of the human body?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a non-standard method of length measurement?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the instrument used to measure temperature?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a student uses a ruler and a measuring tape to measure the length of a table, what will be the result?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a reason to use a thermometer instead of touching an object to check its temperature?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a thermometer reads 37°C, what is the likely condition of the person?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a person has a temperature of 39°C, what can be inferred from the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the main function of a thermometer as described in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is the correct order of units from biggest to smallest?",
+      "reason": "options 0 and 1 say the same thing (\"1 km, 1 m, 1 cm, 1 mm\" / \"1 m, 1 cm, 1 km, 1 mm\"); options 0 and 2 say the same thing (\"1 km, 1 m, 1 cm, 1 mm\" / \"1 km, 1 mm, 1 m, 1 cm\"); options 0 and 3 say the same thing (\"1 km, 1 m, 1 cm, 1 mm\" / \"1 mm, 1 cm, 1 m, 1 km\"); options 1 and 2 say the same thing (\"1 m, 1 cm, 1 km, 1 mm\" / \"1 km, 1 mm, 1 m, 1 cm\"); options 1 and 3 say the same thing (\"1 m, 1 cm, 1 km, 1 mm\" / \"1 mm, 1 cm, 1 m, 1 km\"); options 2 and 3 say the same thing (\"1 km, 1 mm, 1 m, 1 cm\" / \"1 mm, 1 cm, 1 m, 1 km\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is a laboratory thermometer different from a clinical thermometer?",
+      "reason": "options 0 and 1 say the same thing (\"It is used to measure the temperature of the air\" / \"It is used to measure the temperature of the body\"); options 0 and 3 say the same thing (\"It is used to measure the temperature of the air\" / \"It is used to measure the temperature of the body\"); options 1 and 3 are the same (\"It is used to measure the temperature of the body\"); distractor 0's reason is not a one-line misconception (\"Misunderstands the function of a laboratory thermometer as m…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which instrument is best suited to measure the length of a curved surface?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "translation",
+      "level": 6,
+      "stem": "A student measures the length of a thread using a ruler. They start measuring from the 2 cm mark instead of the 0 cm mark. If the reading at the end of the thread is 15 cm, what is the actual length of the thread?",
+      "reason": "hi: the model's answer was not JSON (finish: length): {\n  \"stem\": \"एक छात्र एक धागे की लंबाई एक छात्र एक धागे की लंबाई एक छात्र एक धागे की लंबाई एक छात्र एक धागे की लंबाई एक "
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

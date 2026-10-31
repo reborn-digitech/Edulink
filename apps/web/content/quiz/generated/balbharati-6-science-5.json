@@ -21,526 +21,49 @@
   "board": "BALBHARATI",
   "book": "६ वी सामान्य विज्ञान इंग्रजी",
   "edition": "First Edition 2026",
-  "generatedAt": "2026-10-30T19:34:47.174Z",
+  "generatedAt": "2026-10-31T04:29:35.930Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is a storm caused by?",
+      "stem": "Which of the following is a man-made disaster?",
       "choices": [
-        "Decrease in air pressure",
-        "Increase in air pressure",
-        "Decrease in temperature",
-        "Increase in humidity"
-      ],
-      "answerIndex": 0,
-      "solution": "A storm is caused by a decrease in air pressure, which leads to rapid wind movement. The other options are incorrect as they do not explain the cause of a storm.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक तूफान किसके कारण होता है?",
-          "choices": [
-            "हवा के दबाव में कमी",
-            "हवा के दबाव में वृद्धि",
-            "तापमान में कमी",
-            "आर्द्रता में वृद्धि"
-          ],
-          "solution": "एक तूफान हवा के दबाव में कमी के कारण होता है, जिसके कारण तेज हवाओं की गति होती है। अन्य विकल्प गलत हैं क्योंकि वे तूफान के कारण की व्याख्या नहीं करते।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "कोणत्या कारणामुळे वादळ होते?",
-          "choices": [
-            "हवेच्या दाबात घट",
-            "हवेच्या दाबात वाढ",
-            "तापमानात घट",
-            "आर्द्रतेत वाढ"
-          ],
-          "solution": "वादळ हवेच्या दाबात घट मुळे होते, ज्यामुळे वेगवान हवास्त्र घडतो. इतर विकल्प चुकीचे आहेत कारण ते वादळाच्या कारणाचे विवरण देत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for meteorological concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the cause of a storm with an increase in air pressure",
-        "Incorrectly relates storm formation to an increase in air pressure",
-        "Mistakenly thinks temperature changes cause storms\",\"Confuses humidity with the cause of a storm\"]},{"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0, as a decrease in air pressure is a known cause of storms. The other options are incorrect, and the author's reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 42,
-          "pageStart": 57,
-          "pageEnd": 58,
-          "headingPath": [
-            "5. Disaster Management"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 43,
-          "pageStart": 58,
-          "pageEnd": 58,
-          "headingPath": [
-            "5. Disaster Management"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 44,
-          "pageStart": 58,
-          "pageEnd": 59,
-          "headingPath": [
-            "5. Disaster Management"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T19:34:47.174Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "What is a cyclone?",
-      "choices": [
-        "A type of storm that originates over the ocean",
-        "A type of storm that originates over land",
-        "A type of storm that originates in mountains",
-        "A type of storm that originates in deserts"
-      ],
-      "answerIndex": 0,
-      "solution": "A cyclone is a type of storm that originates over the ocean and is extremely destructive. The other options are incorrect as they do not describe the origin of a cyclone.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक चक्रवात क्या है?",
-          "choices": [
-            "समुद्र पर उत्पन्न होने वाला एक प्रकार का तूफान",
-            "भूमि पर उत्पन्न होने वाला एक प्रकार का तूफान",
-            "पहाड़ों में उत्पन्न होने वाला एक प्रकार का तूफान",
-            "मरुस्थल में उत्पन्न होने वाला एक प्रकार का तूफान"
-          ],
-          "solution": "एक चक्रवात समुद्र पर उत्पन्न होने वाला एक प्रकार का तूफान होता है जो बहुत विनाशकारी होता है। अन्य विकल्प गलत हैं क्योंकि वे चक्रवात के उत्पत्ति स्थान का वर्णन नहीं करते।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi terminology for meteorological terms.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "कोंडी काय आहे?",
-          "choices": [
-            "समुद्रावरून उद्भवणारा एक प्रकारचा वादळ",
-            "भूमीवरून उद्भवणारा एक प्रकारचा वादळ",
-            "पर्वतांमध्ये उद्भवणारा एक प्रकारचा वादळ",
-            "रेगिस्तानामध्ये उद्भवणारा एक प्रकारचा वादळ"
-          ],
-          "solution": "एक कोंडी समुद्रावरून उद्भवणारा एक प्रकारचा वादळ आहे आणि तो अत्यंत नाशकारक असतो. इतर विकल्प चुकीचे आहेत कारण ते कोंडीच्या उत्पत्तीचे वर्णन करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for 'cyclone' and 'storm'.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses cyclones with thunderstorms or other land-based storms",
-        "Incorrectly thinks cyclones form over land",
-        "Mistakenly believes cyclones form in mountains\",\"Confuses the origin of cyclones with deserts\"]},{"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed and the key is correct. The solution is accurate and the distractors reflect plausible misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 42,
-          "pageStart": 57,
-          "pageEnd": 58,
-          "headingPath": [
-            "5. Disaster Management"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 43,
-          "pageStart": 58,
-          "pageEnd": 58,
-          "headingPath": [
-            "5. Disaster Management"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 44,
-          "pageStart": 58,
-          "pageEnd": 59,
-          "headingPath": [
-            "5. Disaster Management"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T19:34:47.174Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is a correct first aid practice for a person suffering from sunstroke?",
-      "choices": [
-        "Give them water to drink",
-        "Wipe their body with a wet cloth",
-        "Make them run in the sun",
-        "Cover them with a thick blanket"
-      ],
-      "answerIndex": 1,
-      "solution": "Wiping the body with a wet cloth helps lower body temperature by promoting evaporative cooling, which is essential for someone with sunstroke. Giving water to a semi-conscious person can be dangerous, as they may choke or aspirate. Running in the sun or covering with a thick blanket would trap heat and increase body temperature, worsening the condition.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सी सूर्यदग्धि के शिकार व्यक्ति के लिए सही प्रथम आवश्यकता की व्यवस्था है?",
-          "choices": [
-            "उन्हें पीने के लिए पानी दें",
-            "उनके शरीर को गीले कपड़े से लगाएं",
-            "उन्हें सूरज में दौड़ाएं",
-            "उन्हें एक मोटे बिस्तर से ढक दें"
-          ],
-          "solution": "गीले कपड़े से शरीर को लगाना वाष्पीकरण शीतलन को बढ़ाकर शरीर के तापमान को कम करने में सहायता करता है, जो सूर्यदग्धि के लिए आवश्यक है। अर्ध-चेतन व्यक्ति को पानी देना खतरनाक हो सकता है, क्योंकि वे गले में फंस सकते हैं या अपने श्वास में ले सकते हैं। सूरज में दौड़ना या मोटे बिस्तर से ढकना गर्मी को बंद कर देता है और शरीर के तापमान को बढ़ा देता है, जो अवस्था को बर्बाद कर सकता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, technical terms, and correct answer position. All distractors remain incorrect, and the solution aligns with the original.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते एक उन्हातून झालेल्या तापाच्या रुग्णासाठी योग्य प्रथम उपाय आहे?",
-          "choices": [
-            "त्यांना पाणी पिण्यास द्या",
-            "त्यांचे शरीर एका भिजलेल्या कापडाने लावा",
-            "त्यांना उन्हात धावायला सांगा",
-            "त्यांना एका मोठ्या शालेला ढकला"
-          ],
-          "solution": "भिजलेल्या कापडाने त्यांचे शरीर लावणे उष्णता घटवण्यास मदत करते, ज्यामुळे उन्हातून झालेल्या तापासाठी आवश्यक असते. अर्धा जागृत व्यक्तीला पाणी देणे धोकादायक असू शकते, कारण ते गिळू शकतात किंवा त्यांच्या श्वासामध्ये जाऊ शकतात. उन्हात धावणे किंवा मोठ्या शालेला ढकलणे उष्णता बंद करते आणि शरीराची तापमान वाढवते, जे स्थिती खालावून जाते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Incorrect first aid practice for sunstroke",
-        null,
-        "Confuses a correct practice with a wrong one",
-        "Worsens the condition of sunstroke"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as wiping the body with a wet cloth helps cool the person. The other options are incorrect: giving water to a semi-conscious person can be dangerous, making them run worsens the condition, and covering with a thick blanket traps heat.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 45,
-          "pageStart": 59,
-          "pageEnd": 60,
-          "headingPath": [
-            "5. Disaster Management"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 46,
-          "pageStart": 60,
-          "pageEnd": 62,
-          "headingPath": [
-            "5. Disaster Management"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 47,
-          "pageStart": 62,
-          "pageEnd": 63,
-          "headingPath": [
-            "5. Disaster Management",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T19:34:47.174Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "What should farmers do when they receive weather department alerts about storms?",
-      "choices": [
-        "Ignore the alerts and continue with their work",
-        "Take shelter in a safe place and close doors and windows",
-        "Spread rumors about the storm",
-        "Step out of the house during the storm"
-      ],
-      "answerIndex": 1,
-      "solution": "Taking shelter in a safe place and closing doors and windows helps protect against the dangers of storms, such as strong winds and flying debris. Ignoring alerts puts lives at risk, spreading rumors is unhelpful and misleading, and stepping out during a storm increases the likelihood of injury.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "कृषक क्या करें जब वे मौसम विभाग के तूफान के अलर्ट प्राप्त करते हैं?",
-          "choices": [
-            "अलर्ट को अमान्य करें और अपना काम जारी रखें",
-            "सुरक्षित स्थान में छिप जाएं और दरवाजे और खिड़कियां बंद कर दें",
-            "तूफान के बारे में झूठी बातें फैलाएं",
-            "तूफान के दौरान घर से बाहर निकलें"
-          ],
-          "solution": "सुरक्षित स्थान में छिप जाना और दरवाजे और खिड़कियां बंद कर देना तूफान के खतरों, जैसे कि मजबूत हवाओं और उड़ते हुए टुकड़ों के खिलाफ सुरक्षा प्रदान करता है। अलर्ट को अमान्य करना जीवन के खतरे में डालता है, झूठी बातें फैलाना अनुपयोगी और भ्रामक होता है और तूफान के दौरान बाहर निकलना चोट लगने की संभावना बढ़ाता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English version in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains in the same position. The distractors remain incorrect and distinct.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "शेतकरींनी वादळाबाबतच्या हवामान विभागाच्या चेतावणी घेतल्यास काय करावे?",
-          "choices": [
-            "चेतावणी नजरअंदाज करून आपले काम चालू ठेवावे",
-            "सुरक्षित जागेत छावणी घेऊन दारे आणि खिडक्या बंद करावी",
-            "वादळाबद्दल चुकीची बातमी पसरवावी",
-            "वादळादरम्यान घराबाहेर पडावे"
-          ],
-          "solution": "सुरक्षित जागेत छावणी घेणे आणि दारे आणि खिडक्या बंद करणे हे वादळाच्या धोक्यांपासून बचाव करते, जसे की जोरदार हवा आणि उडता वस्तू. चेतावणी नजरअंदाज करणे जीवाला धोका देते, चुकीची बातमी पसरवणे अनुकूल नाही आणि वादळादरम्यान घराबाहेर पडणे जखमी होण्याची शक्यता वाढवते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses actions to take during a storm",
-        null,
-        "Believes spreading rumors is a valid action",
-        "Believes stepping out is safe during a storm"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as it aligns with safety protocols during storms. The other options represent common misconceptions or unsafe behaviors.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 42,
-          "pageStart": 57,
-          "pageEnd": 58,
-          "headingPath": [
-            "5. Disaster Management"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 43,
-          "pageStart": 58,
-          "pageEnd": 58,
-          "headingPath": [
-            "5. Disaster Management"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 44,
-          "pageStart": 58,
-          "pageEnd": 59,
-          "headingPath": [
-            "5. Disaster Management"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T19:34:47.174Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a person's clothes catch fire, what should be done immediately?",
-      "choices": [
-        "Run to the nearest water source",
-        "Use a fire extinguisher",
-        "Roll on the ground to put out the fire",
-        "Use a fan to blow out the flames"
-      ],
-      "answerIndex": 2,
-      "solution": "Rolling on the ground suffocates the fire by cutting off its oxygen supply, which is the most effective immediate action. Using a fan or running can increase the fire's intensity by providing more oxygen. A fire extinguisher is not typically accessible in such situations and is not the first step to take.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "अगर किसी व्यक्ति के कपड़े आग लग जाएं, तो तुरंत क्या करना चाहिए?",
-          "choices": [
-            "सबसे करीबी पानी के स्रोत पर दौड़ जाएं",
-            "अग्निशामक का उपयोग करें",
-            "जमीन पर लेटकर आग बुझाएं",
-            "ले बल्ले से आग के लपटों को बुझाएं"
-          ],
-          "solution": "जमीन पर लेटकर आग बुझाने से आग के ऑक्सीजन का आपूर्ति काट दी जाती है, जो सबसे प्रभावी तुरंत कार्रवाई है। बल्ले का उपयोग या दौड़ना आग की तीव्रता को बढ़ा सकता है क्योंकि यह अधिक ऑक्सीजन प्रदान करता है। अग्निशामक ऐसी स्थिति में आमतौर पर उपलब्ध नहीं होता है और इसका उपयोग पहले कदम के रूप में नहीं किया जाता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms like 'अग्निशामक' for fire extinguisher and 'जमीन पर लेटकर' for rolling on the ground. The solution correctly explains why the other options are wrong.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एखाद्या व्यक्तीच्या कपड्यांना आग लागली, तर ताबडतोब काय करावे?",
-          "choices": [
-            "सर्वात जवळच्या पाण्याच्या स्रोताकडे धावा",
-            "आग विस्फोटक वापरा",
-            "आग बुजवण्यासाठी जमिनीवर लुलबुल करा",
-            "ज्वाला बुजवण्यासाठी पंखा वापरा"
-          ],
-          "solution": "जमिनीवर लुलबुल करणे आगला ऑक्सिजनचा पुरवठा खंडित करून ती बुजवते, जे ताबडतोब कार्यक्षम कृती आहे. पंखा किंवा धावणे आगला ऑक्सिजनचा पुरवठा वाढवून तिची तीव्रता वाढवू शकते. आग विस्फोटक सामान्यतः अशा परिस्थितीत उपलब्ध नसते आणि ते प्रथम कृती नसते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for fire safety.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Incorrect method to put out fire",
-        "Not mentioned as a first aid action",
-        null,
-        "Worsens the fire"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 2, as rolling on the ground is a standard first-aid technique for putting out clothing fires. The other options are either incorrect or dangerous, and the author's reasoning aligns with standard safety guidelines.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 45,
-          "pageStart": 59,
-          "pageEnd": 60,
-          "headingPath": [
-            "5. Disaster Management"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 46,
-          "pageStart": 60,
-          "pageEnd": 62,
-          "headingPath": [
-            "5. Disaster Management"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 47,
-          "pageStart": 62,
-          "pageEnd": 63,
-          "headingPath": [
-            "5. Disaster Management",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T19:34:47.174Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "A student observes that the particles of a substance are very close and hold on to each other tightly. What will be the state of the substance?",
-      "choices": [
-        "Liquid",
-        "Gas",
-        "Plasma",
-        "Solid"
+        "Earthquake",
+        "River Flood",
+        "Storm",
+        "Cyber Crime"
       ],
       "answerIndex": 3,
-      "solution": "When particles are very close and hold on to each other tightly, the substance is in the solid state because the strong forces between particles keep them in a fixed position. Liquids have particles that are close but can slide past each other, gases have particles that are far apart and move freely, and plasma consists of ionized particles that are not bound together.",
+      "solution": "Cyber crime is a man-made disaster because it results from human actions such as hacking or fraud. Earthquakes, river floods, and storms occur naturally without human intervention. These natural events are not caused by people, unlike cyber crime, which is intentionally carried out by individuals or groups.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक छात्र देखता है कि किसी पदार्थ के कण बहुत करीब हैं और एक दूसरे को तान कर रखते हैं। पदार्थ की स्थिति क्या होगी?",
+          "stem": "निम्नलिखित में से कौन एक मानव निर्मित आपदा है?",
           "choices": [
-            "तरल",
-            "गैस",
-            "प्लाज्मा",
-            "ठोस"
+            "भूकंप",
+            "नदी के बाढ़",
+            "तूफान",
+            "साइबर अपराध"
           ],
-          "solution": "जब कण बहुत करीब होते हैं और एक दूसरे को तान कर रखते हैं, तो पदार्थ ठोस अवस्था में होता है क्योंकि कणों के बीच की मजबूत बल उन्हें निश्चित स्थिति में रखते हैं। तरल में कण निकट होते हैं लेकिन एक दूसरे के पास सरक सकते हैं, गैस में कण दूर होते हैं और मुक्त रूप से गति करते हैं, और प्लाज्मा में आयनित कण होते हैं जो एक दूसरे से बंधे नहीं रहते।",
+          "solution": "साइबर अपराध एक मानव निर्मित आपदा है क्योंकि यह मनुष्य के कार्यों जैसे हैकिंग या धोखाधड़ी से होता है। भूकंप, नदी के बाढ़ और तूफान मनुष्य के हस्तक्षेप के बिना प्राकृतिक रूप से होते हैं। ये प्राकृतिक घटनाएं मनुष्य द्वारा उत्पन्न नहीं होती हैं, जबकि साइबर अपराध व्यक्तियों या समूहों द्वारा इरादतन किया जाता है।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, with 'Cyber Crime' as the correct answer in the same position. The distractors remain incorrect in the Hindi version, and the technical terms used are standard in Hindi educational materials.",
           "flag": null
         },
         "mr": {
-          "stem": "एका विद्यार्थ्याला असे निरीक्षण होते की एका पदार्थाचे कण खूप जवळ असून एकमेकांस खूप काठीत धरून ठेवतात. पदार्थाची अवस्था काय असेल?",
+          "stem": "खालीलपैकी कोणते एक मानवनिर्मित आपत्ती आहे?",
           "choices": [
-            "द्रव",
-            "वायू",
-            "प्लाज्मा",
-            "कठिण"
+            "भूकंप",
+            "नदीचा बाढीचा पाणी",
+            "वादळ",
+            "सायबर गुन्हा"
           ],
-          "solution": "जेव्हा कण खूप जवळ असतात आणि एकमेकांस खूप काठीत धरून ठेवतात, तेव्हा पदार्थ कठिण अवस्थेत असतो कारण कणांमधील शक्ती त्यांना निश्चित स्थानावर ठेवतात. द्रवांमध्ये कण जवळ असतात परंतु एकमेकांच्या बरोबर फिसके जाऊ शकतात, वायूमध्ये कण दूर असतात आणि स्वतंत्रपणे चालू शकतात, आणि प्लाज्मामध्ये आयनीकृत कण असतात जे एकमेकांस बांधलेले नसतात.",
+          "solution": "सायबर गुन्हा ही मानवनिर्मित आपत्ती आहे कारण ती मानवी कृतींमुळे घडते जसे की हॅकिंग किंवा फ्रॉड. भूकंप, नदीचा बाढीचा पाणी आणि वादळ ही प्राकृतिक परिस्थितींमुळे घडतात ज्यामध्ये मानवाचा हस्तक्षेप नसतो. ही प्राकृतिक घटना मानवांमुळे घडत नाहीत, जेव्हा सायबर गुन्हा हा व्यक्ती किंवा समूहांद्वारे जाणीवपूर्वक केला जातो.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology consistent with Marathi educational materials.",
           "flag": null
         }
       },
@@ -549,9 +72,9 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the characteristics of liquid with solid",
-        "Confuses the characteristics of gas with solid",
-        "Misunderstands the concept of plasma",
+        "Confuses natural disasters with man-made ones",
+        "Confuses natural disasters with man-made ones",
+        "Confuses natural disasters with man-made ones",
         null
       ],
       "solverAnswers": [
@@ -562,60 +85,714 @@
         3
       ],
       "levelFlag": null,
-      "critique": "The solution correctly identifies that tightly held, closely packed particles indicate a solid state. The reasoning for the distractors aligns with common misconceptions about the states of matter.",
+      "critique": "The solution is correct. Cyber crime is indeed a man-made disaster, while earthquakes, river floods, and storms are natural disasters. The reasoning for the distractors is valid as students may confuse natural and man-made disasters.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 48,
+          "ordinal": 49,
+          "pageStart": 59,
+          "pageEnd": 60,
+          "headingPath": [
+            "5. Disaster Management"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 50,
+          "pageStart": 60,
+          "pageEnd": 62,
+          "headingPath": [
+            "5. Disaster Management"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 51,
+          "pageStart": 62,
+          "pageEnd": 63,
+          "headingPath": [
+            "5. Disaster Management",
+            "Exercises"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 52,
           "pageStart": 63,
-          "pageEnd": 65,
+          "pageEnd": 63,
+          "headingPath": [
+            "5. Disaster Management",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T04:29:35.930Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What should be done if someone is suffering from sunstroke?",
+      "choices": [
+        "Give them water to drink",
+        "Move them to a cool shaded place",
+        "Wipe their body with hot water",
+        "Make them run around"
+      ],
+      "answerIndex": 1,
+      "solution": "Moving someone to a cool shaded place helps lower their body temperature, which is critical during sunstroke. Giving water may not be effective if the person is dehydrated or unconscious, wiping with hot water would increase body temperature, and making them run would further elevate their temperature and worsen the condition.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई व्यक्ति सूर्यदाह से पीड़ित हो तो क्या करना चाहिए?",
+          "choices": [
+            "उन्हें पीने के लिए पानी दें",
+            "उन्हें ठंडे छायादार स्थान पर ले जाएं",
+            "उनके शरीर को गर्म पानी से लगाएं",
+            "उन्हें घूमने के लिए मजबूर करें"
+          ],
+          "solution": "किसी व्यक्ति को ठंडे छायादार स्थान पर ले जाना उनके शरीर के तापमान को कम करने में मदद करता है, जो सूर्यदाह के दौरान आवश्यक है। यदि व्यक्ति नींद में हो या नींद में हो तो पानी पीना प्रभावी नहीं हो सकता है, गर्म पानी से शरीर को लगाना शरीर के तापमान को बढ़ा देगा, और उन्हें घूमने के लिए मजबूर करना उनके तापमान को और बढ़ा देगा और स्थिति को बर्बाद कर देगा।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are appropriate for Hindi-medium curriculum, and the logic of the solution matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सूर्याच्या तापामुळे त्रस्त असलेल्या व्यक्तीबद्दल काय केले पाहिजे?",
+          "choices": [
+            "त्यांना पाणी पिण्यास द्या",
+            "त्यांना थंड छायेत नेऊन ठेवा",
+            "त्यांचे शरीर उबदार पाण्याने लावा",
+            "त्यांना फिरायला लावा"
+          ],
+          "solution": "थंड छायेत नेणे व्यक्तीचे शरीराचे तापमान कमी करण्यास मदत करते, जे सूर्याच्या तापामुळे महत्वपूर्ण आहे. जर व्यक्ती निर्जलीत असेल किंवा अचेत असेल तर पाणी पिण्यास देणे उपयुक्त ठरू शकत नाही, उबदार पाण्याने शरीर लावणे शरीराचे तापमान वाढवेल आणि त्यांना फिरायला लावणे त्यांचे तापमान अधिक वाढवेल आणि स्थिती वाईट करेल.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes that drinking water helps in sunstroke",
+        null,
+        "Incorrect first aid method",
+        "Incorrect first aid method"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as moving the person to a cool shaded place is the appropriate first aid for sunstroke. The other options are indeed incorrect, and the reasons provided by the author align with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 49,
+          "pageStart": 59,
+          "pageEnd": 60,
+          "headingPath": [
+            "5. Disaster Management"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 50,
+          "pageStart": 60,
+          "pageEnd": 62,
+          "headingPath": [
+            "5. Disaster Management"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 51,
+          "pageStart": 62,
+          "pageEnd": 63,
+          "headingPath": [
+            "5. Disaster Management",
+            "Exercises"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 52,
+          "pageStart": 63,
+          "pageEnd": 63,
+          "headingPath": [
+            "5. Disaster Management",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T04:29:35.930Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the first aid for sunstroke?",
+      "choices": [
+        "Give the person water to drink",
+        "Wipe the body with a wet cloth",
+        "Make the person run",
+        "Cover the person with a blanket"
+      ],
+      "answerIndex": 1,
+      "solution": "Wiping the body with a wet cloth helps lower body temperature, which is critical in sunstroke. Giving water to a semi-conscious person can be dangerous, and running or covering with a blanket may increase body temperature, making the condition worse.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "सूर्याघात के लिए प्रथम आपातकालीन देखभाल क्या है?",
+          "choices": [
+            "पीने के लिए व्यक्ति को पानी दें",
+            "गीले कपड़े से शरीर को लुगाएं",
+            "व्यक्ति को दौड़ाएं",
+            "व्यक्ति को एक बिस्तर से ढक दें"
+          ],
+          "solution": "गीले कपड़े से शरीर को लुगाना शरीर के तापमान को कम करने में मदद करता है, जो सूर्याघात में आवश्यक है। अर्ध-चेतना वाले व्यक्ति को पानी देना खतरनाक हो सकता है, और दौड़ना या बिस्तर से ढकना शरीर के तापमान को बढ़ा सकता है, जिससे स्थिति बिगड़ सकती है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi medical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सूर्याच्या तापामुळे काय प्रथम उपचार करायचा?",
+          "choices": [
+            "त्या व्यक्तीला पाणी पिण्यास द्या",
+            "त्या व्यक्तीच्या शरीराला नम तौलीने लावा",
+            "त्या व्यक्तीला धावायला सांगा",
+            "त्या व्यक्तीला एका वस्त्राने झाका"
+          ],
+          "solution": "त्या व्यक्तीच्या शरीराला नम तौलीने लावणे हे शरीराच्या तापमानाला घटवण्यास मदत करते, जे सूर्याच्या तापामुळे आवश्यक आहे. अर्धा बेशुद्ध व्यक्तीला पाणी देणे धोकादायक असू शकते, आणि धावणे किंवा वस्त्राने झाकणे हे शरीराच्या तापमानाला वाढवू शकते, जे अवस्था खालावून टाकू शकते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "incorrect first aid for sunstroke",
+        null,
+        "Believes that movement helps cool the body down during heat-related illness",
+        "harmful action in sunstroke situation"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as wiping the body with a wet cloth helps lower body temperature. The other options are incorrect: giving water to a semi-conscious person can be dangerous, running can increase body temperature, and covering with a blanket traps heat.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 49,
+          "pageStart": 59,
+          "pageEnd": 60,
+          "headingPath": [
+            "5. Disaster Management"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 50,
+          "pageStart": 60,
+          "pageEnd": 62,
+          "headingPath": [
+            "5. Disaster Management"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 51,
+          "pageStart": 62,
+          "pageEnd": 63,
+          "headingPath": [
+            "5. Disaster Management",
+            "Exercises"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 52,
+          "pageStart": 63,
+          "pageEnd": 63,
+          "headingPath": [
+            "5. Disaster Management",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T04:29:35.930Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What should you do if you are outdoors during an earthquake?",
+      "choices": [
+        "Take shelter under a heavy table",
+        "Run in panic",
+        "Stand near windows",
+        "Take shelter at a safe place away from buildings"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct option is to take shelter at a safe place away from buildings because this minimizes the risk of injury from falling debris or collapsing structures. Running in panic can lead to accidents, standing near windows increases the chance of being hit by broken glass, and taking shelter under a heavy table is unsafe outdoors where such structures may not be available.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अगर आप भूकंप के समय बाहर हों तो आप क्या करना चाहिए?",
+          "choices": [
+            "भारी मेज के नीचे छिप जाएं",
+            "डर के मारे भाग जाएं",
+            "खिड़कियों के पास खड़े रहें",
+            "भवनों से दूर सुरक्षित स्थान पर छिप जाएं"
+          ],
+          "solution": "सही विकल्प भवनों से दूर सुरक्षित स्थान पर छिप जाना है क्योंकि यह गिरते हुए टूटे हुए टुकड़ों या ध्वस्त हो जाने वाली संरचनाओं से चोट लगने के जोखिम को कम करता है। डर के मारे भागना दुर्घटनाओं का कारण बन सकता है, खिड़कियों के पास खड़े रहना टूटे कांच से टकराने की संभावना बढ़ाता है, और बाहर में भारी मेज के नीचे छिप जाना असुरक्षित होता है क्योंकि ऐसी संरचनाएं उपलब्ध नहीं हो सकतीं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for safety instructions during an earthquake.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "भूकंपादरम्यान बाहेर असताना तुम्हाला काय करायला हवे?",
+          "choices": [
+            "भारी मेजाखाली आश्रय घ्या",
+            "भयानक धावा",
+            "खिडक्यांजवळ उभे रहा",
+            "इमारतींपासून दूर एका सुरक्षित जागेवर आश्रय घ्या"
+          ],
+          "solution": "सही विकल्प इमारतींपासून दूर एका सुरक्षित जागेवर आश्रय घ्या कारण हे जमीनदोस्त वस्तूंच्या जोखमीमुळे जखमी होण्याची शक्यता कमी करते. भयानक धावा अपघातांमध्ये वाढ करू शकते, खिडक्यांजवळ उभे रहणे फोडलेल्या काचेने मारल्याची शक्यता वाढवते आणि भारी मेजाखाली आश्रय घेणे बाहेर असताना असं वस्तू उपलब्ध नसल्याने असुरक्षित आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for disaster safety.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Taking shelter under a heavy table is advised if you are indoors",
+        "Running in panic is explicitly mentioned as something to avoid",
+        "Standing near windows is a dangerous action during an earthquake",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 3, as it aligns with standard earthquake safety guidelines for being outdoors. The other options are clearly unsafe or incorrect.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 43,
+          "pageStart": 54,
+          "pageEnd": 54,
+          "headingPath": [
+            "5. Disaster Management"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 44,
+          "pageStart": 55,
+          "pageEnd": 55,
+          "headingPath": [
+            "5. Disaster Management"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 45,
+          "pageStart": 55,
+          "pageEnd": 56,
           "headingPath": [
             "5. Disaster Management"
           ]
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T19:34:47.174Z",
+      "generatedAt": "2026-10-31T04:29:35.930Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "What happens when the epicenter of an earthquake is on the ocean floor?",
+      "difficulty": 3,
+      "stem": "If a person's clothes catch fire, what is the best first aid measure?",
       "choices": [
-        "Massive waves called tsunamis are created",
-        "The water in the ocean boils violently",
-        "The ocean becomes completely still",
-        "The earthquake is felt only in the ocean"
+        "Run around to put out the fire",
+        "Roll on the ground to extinguish the fire",
+        "Use a fan to blow the fire out",
+        "Throw water on the fire immediately"
       ],
-      "answerIndex": 0,
-      "solution": "When an earthquake occurs with its epicenter on the ocean floor, the movement of the seafloor displaces a large volume of water, creating massive waves known as tsunamis. The other options are incorrect because water does not boil due to an earthquake, the ocean does not become still, and the earthquake's effects are felt on land as well as in the ocean.",
+      "answerIndex": 1,
+      "solution": "Rolling on the ground deprives the fire of oxygen, which helps extinguish it quickly and safely. Running around can fan the flames and make the situation worse. Using a fan may spread the fire, and throwing water can be dangerous if the person is not properly trained or if the water source is not accessible.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "जब भूकंप का अपकेंद्र समुद्र के तल पर होता है तो क्या होता है?",
+          "stem": "यदि किसी व्यक्ति के कपड़े आग लग जाएं, तो सबसे अच्छा प्राथमिक उपचार क्या है?",
           "choices": [
-            "बड़े लहरें जिन्हें ज्वारमुखी कहा जाता है बनती हैं",
-            "समुद्र में पानी तीव्र रूप से उबल जाता है",
-            "समुद्र पूरी तरह से शांत हो जाता है",
-            "भूकंप केवल समुद्र में महसूस किया जाता है"
+            "आग बुझाने के लिए घूमते रहें",
+            "आग बुझाने के लिए जमीन पर लेट जाएं",
+            "आग बुझाने के लिए पंखा चलाएं",
+            "आग बुझाने के लिए तुरंत पानी फेंक दें"
           ],
-          "solution": "जब भूकंप का अपकेंद्र समुद्र के तल पर होता है तो समुद्रतल के गति के कारण बड़ी मात्रा में पानी के विस्थापन के कारण ज्वारमुखी के रूप में जानी जाने वाली बड़ी लहरें बनती हैं। अन्य विकल्प गलत हैं क्योंकि भूकंप के कारण पानी नहीं उबलता है, समुद्र शांत नहीं होता है और भूकंप के प्रभाव भूमि पर भी महसूस किए जाते हैं।",
+          "solution": "जमीन पर लेट जाने से आग को ऑक्सीजन नहीं मिल पाती है, जो आग बुझाने में तेज और सुरक्षित तरीका है। घूमते रहना आग को बढ़ा सकता है और स्थिति बिगड़ सकती है। पंखा चलाना आग को फैला सकता है, और तुरंत पानी फेंकना खतरनाक हो सकता है यदि व्यक्ति को ठीक से प्रशिक्षित नहीं किया गया हो या पानी के स्रोत की पहुंच न हो।",
           "imageAlt": null,
-          "critique": "Translation is accurate, technical terms like 'ज्वारमुखी' (tsunami) are standard in Hindi textbooks.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for first aid procedures.",
           "flag": null
         },
         "mr": {
-          "stem": "जेव्हा भूकंपाचा अक्षांश समुद्राच्या तळावर असतो तेव्हा काय होते?",
+          "stem": "जर कोणाच्या कपड्यांना आग लागली, तर उत्तम प्रथम उपचार मार्गदर्शक तत्त्व काय आहे?",
           "choices": [
-            "मोठ्या लाटा ज्यांना ट्सुनामी म्हणतात तयार होतात",
-            "समुद्रातील पाणी तीव्र उकळते",
-            "समुद्र पूर्णपणे शांत होतो",
-            "भूकंप फक्त समुद्रात जाणवतो"
+            "आग बुझवण्यासाठी दौडत रहा",
+            "आग बुझवण्यासाठी जमिनीवर लुलबाट करा",
+            "आग बुझवण्यासाठी वाफा वापरा",
+            "तात्काळ जल फवारा करा"
           ],
-          "solution": "जेव्हा भूकंप समुद्राच्या तळावर असतो तेव्हा समुद्राच्या तळाच्या गतीमुळे मोठ्या प्रमाणात पाणी विस्थापित होते आणि ट्सुनामी म्हणून ओळखल्या जाणाऱ्या मोठ्या लाटा तयार होतात. इतर विकल्प अयोग्य आहेत कारण भूकंपमुळे पाणी उकळत नाही, समुद्र शांत होत नाही आणि भूकंपच्या परिणामांची जाणीव जमिनीवर आणि समुद्रात दोन्ही ठिकाणी होते.",
+          "solution": "जमिनीवर लुलबाट करणे आगला ऑक्सिजन नकारते, जे त्वरित आणि सुरक्षितपणे आग बुझवण्यास मदत करते. दौडत रहणे आगला वाढवू शकते आणि स्थिती खराब करू शकते. वाफा वापरणे आग विस्तारू शकते आणि जल फवारा करणे खात्री नसल्यास धोकादायक असू शकते किंवा पाण्याचा स्रोत उपलब्ध नसल्यास अडचण निर्माण करू शकते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for first aid procedures.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes that running helps in putting out fire",
+        null,
+        "Incorrect method of fire extinguishing",
+        "Incorrect method of fire extinguishing"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as rolling on the ground suffocates the fire by cutting off oxygen. The other options are incorrect: running can fan the flames, using a fan may spread the fire, and throwing water can be dangerous if the person is not near a safe water source.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 49,
+          "pageStart": 59,
+          "pageEnd": 60,
+          "headingPath": [
+            "5. Disaster Management"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 50,
+          "pageStart": 60,
+          "pageEnd": 62,
+          "headingPath": [
+            "5. Disaster Management"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 51,
+          "pageStart": 62,
+          "pageEnd": 63,
+          "headingPath": [
+            "5. Disaster Management",
+            "Exercises"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 52,
+          "pageStart": 63,
+          "pageEnd": 63,
+          "headingPath": [
+            "5. Disaster Management",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T04:29:35.930Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What should you do if your friend is bitten by a snake?",
+      "choices": [
+        "Make the person run quickly",
+        "Give home remedies",
+        "Suck out the infected blood",
+        "Seek medical help immediately"
+      ],
+      "answerIndex": 3,
+      "solution": "Seeking medical help immediately is the correct action because professional treatment is necessary to counteract the venom. Making the person run can increase the spread of venom in the body, and home remedies or sucking out blood are ineffective and potentially dangerous.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अगर आपके मित्र के काट लिए जाए तो आप क्या करना चाहिए?",
+          "choices": [
+            "व्यक्ति को तेजी से दौड़ाएं",
+            "गृह उपचार दें",
+            "संक्रमित रक्त को चूस लें",
+            "तुरंत चिकित्सीय सहायता प्राप्त करें"
+          ],
+          "solution": "तुरंत चिकित्सीय सहायता प्राप्त करना सही कार्य है क्योंकि विष के विरुद्ध विशेषज्ञ उपचार आवश्यक है। व्यक्ति को दौड़ाना विष के शरीर में फैलाव को बढ़ा सकता है, और गृह उपचार या रक्त को चूसना अकार्यक्षम और खतरनाक हो सकता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate medical terminology common in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तुमच्या मित्राला सापाने काणी बारा झाला असेल तर तुम्हाला काय करावे लागेल?",
+          "choices": [
+            "व्यक्तीला जलद धावावे",
+            "घरेलू उपाय करावे",
+            "आजारी रक्त शोषून काढावे",
+            "ताबडतोब डॉक्टरांची मदत घ्यावी"
+          ],
+          "solution": "ताबडतोब डॉक्टरांची मदत घेणे ही योग्य कृत्य आहे कारण विषाचा विरोध करण्यासाठी विशेषज्ञ उपचार आवश्यक आहेत. व्यक्तीला धाववणे हे विषाच्या पसरण्याला वेग देऊ शकते आणि घरेलू उपाय किंवा रक्त शोषून काढणे अपयशस्वी आणि धोकादायक असू शकते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "harmful action in a snake bite situation",
+        "incorrect first aid for snake bites",
+        "incorrect first aid for snake bites",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 3, as seeking immediate medical help is the only appropriate action in a snake bite. The other options are all incorrect first aid practices and represent common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 49,
+          "pageStart": 59,
+          "pageEnd": 60,
+          "headingPath": [
+            "5. Disaster Management"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 50,
+          "pageStart": 60,
+          "pageEnd": 62,
+          "headingPath": [
+            "5. Disaster Management"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 51,
+          "pageStart": 62,
+          "pageEnd": 63,
+          "headingPath": [
+            "5. Disaster Management",
+            "Exercises"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 52,
+          "pageStart": 63,
+          "pageEnd": 63,
+          "headingPath": [
+            "5. Disaster Management",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T04:29:35.930Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the correct first aid for a burn caused by boiling water?",
+      "choices": [
+        "Burst the blisters formed on the skin",
+        "Apply ice directly to the burn",
+        "Wash the wound repeatedly with clean water",
+        "Use home remedies to treat the burn"
+      ],
+      "answerIndex": 2,
+      "solution": "Washing the wound repeatedly with clean water helps reduce pain and prevent infection by removing harmful substances. Bursting blisters can lead to infection, applying ice may cause further tissue damage, and home remedies are not scientifically proven to be effective or safe.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "बर्फ के पानी से हुए जलने के लिए सही प्रथम आवश्यकता क्या है?",
+          "choices": [
+            "त्वचा पर बने फुंसियों को फोड़ देना",
+            "जलन पर सीधे बर्फ लगाना",
+            "किसी घाव को साफ पानी से बार-बार धोना",
+            "जलन के उपचार के लिए घरेलू उपाय का उपयोग करना"
+          ],
+          "solution": "किसी घाव को साफ पानी से बार-बार धोना दर्द कम करने और हानिकारक पदार्थों को हटाकर संक्रमण को रोकने में मदद करता है। फुंसियों को फोड़ना संक्रमण का कारण बन सकता है, बर्फ लगाने से अतिरिक्त ऊतक क्षति हो सकती है और घरेलू उपाय वैज्ञानिक रूप से साबित नहीं होते हैं या सुरक्षित होते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "उबलेल्या पाण्यामुळे होणाऱ्या जळालेल्या जखमेसाठी योग्य प्रथम उपाय काय आहे?",
+          "choices": [
+            "त्वचेवर झालेल्या फुफ्फुसांना फुटवा",
+            "जखमेवर थेट बर्फ लावा",
+            "चिकित्सक जखम शुद्ध पाण्याने वारंवार धुवा",
+            "जखमेच्या उपचारासाठी घरगुती उपाय वापरा"
+          ],
+          "solution": "शुद्ध पाण्याने जखम वारंवार धुणे दुखापत आणि संसर्ग रोखण्यास मदत करते. फुफ्फुसांना फुटवणे संसर्गाचे कारण होऊ शकते, बर्फ लावणे अधिक ऊती नुकसान करू शकते आणि घरगुती उपाय वैज्ञानिकरित्या पुष्टीकृत नसलेले असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes that bursting blisters is helpful",
+        "Incorrect first aid method",
+        null,
+        "Incorrect first aid method"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as washing the wound with clean water is the recommended first aid for burns. The other options are all incorrect and reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 49,
+          "pageStart": 59,
+          "pageEnd": 60,
+          "headingPath": [
+            "5. Disaster Management"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 50,
+          "pageStart": 60,
+          "pageEnd": 62,
+          "headingPath": [
+            "5. Disaster Management"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 51,
+          "pageStart": 62,
+          "pageEnd": 63,
+          "headingPath": [
+            "5. Disaster Management",
+            "Exercises"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 52,
+          "pageStart": 63,
+          "pageEnd": 63,
+          "headingPath": [
+            "5. Disaster Management",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T04:29:35.930Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "What would happen to the flow of a river after a major earthquake?",
+      "choices": [
+        "It would increase",
+        "It would become more turbulent",
+        "It would stop completely",
+        "It might change, leading to floods or droughts"
+      ],
+      "answerIndex": 3,
+      "solution": "An earthquake can alter the landscape, which may change the river's path. This change can result in flooding in some areas and droughts in others. The other options do not directly follow from the physical effects of an earthquake on a river's course.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक महाभूकंप के बाद एक नदी के प्रवाह पर क्या प्रभाव पड़ेगा?",
+          "choices": [
+            "इसका प्रवाह बढ़ जाएगा",
+            "इसका प्रवाह अधिक अस्थिर हो जाएगा",
+            "इसका प्रवाह पूरी तरह रुक जाएगा",
+            "इसका प्रवाह बदल सकता है, जिसके कारण बाढ़ या शुष्कता हो सकती है"
+          ],
+          "solution": "भूकंप भू-आकृति को बदल सकता है, जो नदी के मार्ग को बदल सकता है। इस बदलाव के कारण कुछ क्षेत्रों में बाढ़ और अन्य क्षेत्रों में शुष्कता हो सकती है। अन्य विकल्प भूकंप के कारण नदी के मार्ग पर भौतिक प्रभावों से सीधे नहीं उत्पन्न होते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms common in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका मोठ्या भूकंपानंतर नदीचा प्रवाह काय होईल?",
+          "choices": [
+            "तो वाढेल",
+            "तो अधिक अस्थिर होईल",
+            "तो पूर्णपणे थांबेल",
+            "तो बदलू शकेल, जेणेकरून बाढी किंवा दुष्काळाची शक्यता असेल"
+          ],
+          "solution": "भूकंप भूपटलाच्या आकारामध्ये बदल करू शकतो, जो नदीच्या मार्गामध्ये बदल करू शकतो. हा बदल अनेक ठिकाणी बाढी आणि दुष्काळाच्या ठिकाणी निर्माण करू शकतो. इतर विकल्प भूकंपामुळे नदीच्या मार्गावरील भौतिक परिणामांमुळे सीधा निर्माण होत नाहीत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for geological concepts.",
           "flag": null
@@ -626,24 +803,24 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        null,
-        "Confuses earthquake energy with heat-related effects",
-        "assumes a completely incorrect outcome",
-        "misunderstands the location of the effect"
+        "Students might think earthquakes add water to rivers, not realizing they can block or alter river paths",
+        "students may think earthquakes cause rivers to flow more violently without considering long-term changes",
+        "belief that earthquakes can completely halt water flow without any other effects",
+        null
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        3,
+        3,
+        3,
+        3,
+        3
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0, as earthquakes on the ocean floor can generate tsunamis. The other options represent common misconceptions or incorrect assumptions about the effects of underwater earthquakes.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3, as it aligns with the passage's statement about rivers changing course after an earthquake, leading to floods or droughts. The other options represent common misconceptions about the effects of earthquakes on river flow.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 39,
+          "ordinal": 43,
           "pageStart": 54,
           "pageEnd": 54,
           "headingPath": [
@@ -652,7 +829,7 @@
         },
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 40,
+          "ordinal": 44,
           "pageStart": 55,
           "pageEnd": 55,
           "headingPath": [
@@ -661,7 +838,7 @@
         },
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 41,
+          "ordinal": 45,
           "pageStart": 55,
           "pageEnd": 56,
           "headingPath": [
@@ -670,49 +847,49 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T19:34:47.174Z",
+      "generatedAt": "2026-10-31T04:29:35.930Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "What is the main reason for avoiding crowding at the site of a major accident?",
+      "difficulty": 5,
+      "stem": "If a person is bitten by a snake, which of the following actions is correct?",
       "choices": [
-        "To avoid taking photos",
-        "To prevent further accidents",
-        "To make space for emergency vehicles",
-        "To avoid disturbing the victims"
+        "Make the person run quickly to the hospital",
+        "Suck out the infected blood by mouth",
+        "Take a photo of the snake to show the doctor",
+        "Use home remedies to treat the bite"
       ],
-      "answerIndex": 1,
-      "solution": "The main reason for avoiding crowding at the site of a major accident is to prevent further accidents. Crowds can obstruct emergency responders and increase the risk of additional injuries. Making space for emergency vehicles is important but not the primary concern, and taking photos or disturbing victims are not the main scientific reasons for avoiding crowding.",
+      "answerIndex": 2,
+      "solution": "Taking a photo of the snake helps doctors identify the species and provide the correct treatment. Running quickly can increase blood flow and spread venom faster. Sucking out blood is ineffective and can cause further harm. Home remedies may not be safe or effective and can delay proper medical care.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक गंभीर दुर्घटना के स्थल पर भीड़ बनाने से बचने का मुख्य कारण क्या है?",
+          "stem": "यदि कोई व्यक्ति सांप के काटे से पीड़ित हो जाए, तो निम्नलिखित में से कौन-सी क्रिया सही है?",
           "choices": [
-            "फोटो खींचने से बचने के लिए",
-            "अतिरिक्त दुर्घटनाओं को रोकने के लिए",
-            "आपातकालीन वाहनों के लिए जगह बनाने के लिए",
-            "भीड़ के कारण घायलों को बर्बाद करने से बचने के लिए"
+            "व्यक्ति को तेजी से अस्पताल ले जाए",
+            "मुँह से संक्रमित रक्त को खींच ले",
+            "सांप की तस्वीर ले ले ताकि डॉक्टर को दिखाई जा सके",
+            "काटे के उपचार के लिए घरेलू उपाय करें"
           ],
-          "solution": "एक गंभीर दुर्घटना के स्थल पर भीड़ बनाने से बचने का मुख्य कारण अतिरिक्त दुर्घटनाओं को रोकना है। भीड़ आपातकालीन प्रतिक्रिया कर्मियों को अवरुद्ध कर सकती है और अतिरिक्त चोटों के जोखिम को बढ़ा सकती है। आपातकालीन वाहनों के लिए जगह बनाना महत्वपूर्ण है लेकिन मुख्य चिंता नहीं है, और फोटो खींचने या घायलों को बर्बाद करना भीड़ बनाने से बचने के मुख्य वैज्ञानिक कारण नहीं हैं।",
+          "solution": "सांप की तस्वीर लेना डॉक्टरों के लिए जाति की पहचान करने और सही उपचार प्रदान करने में सहायता करता है। तेजी से चलाना रक्त प्रवाह को बढ़ा सकता है और विष के फैलाव को तेज कर सकता है। मुँह से रक्त खींचना असफल हो सकता है और आगे के नुकसान का कारण बन सकता है। घरेलू उपाय सुरक्षित या प्रभावी नहीं हो सकते और उचित चिकित्सा देखभाल में देरी कर सकते हैं।",
           "imageAlt": null,
-          "critique": "Translation accurately reflects the original meaning with appropriate Hindi terminology used for safety concepts.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated and maintain the intended logic and medical accuracy.",
           "flag": null
         },
         "mr": {
-          "stem": "महत्वाच्या अपघाताच्या ठिकाणी गर्दी टाळण्याचा मुख्य कारण काय आहे?",
+          "stem": "जर एखाद्या माणसाला सापाने कावले गेले तर खालीलपैकी कोणती कृती बरोबर आहे?",
           "choices": [
-            "फोटो काढणे टाळण्यासाठी",
-            "अधिक अपघात रोखण्यासाठी",
-            "उत्तरदायी वाहनांसाठी जागा तयार करण्यासाठी",
-            "भूमिगत व्यक्तींना अडवू नये म्हणून"
+            "माणसाला ताबडतोब रुग्णालयात धावायला सांगा",
+            "मुखाने गुरुतर रक्त बाहेर काढा",
+            "सापाचे फोटो डॉक्टरला दाखवण्यासाठी घ्या",
+            "कावल्याचा उपचार करण्यासाठी घरगुती उपाय वापरा"
           ],
-          "solution": "महत्वाच्या अपघाताच्या ठिकाणी गर्दी टाळण्याचा मुख्य कारण अधिक अपघात रोखणे आहे. गर्दी उत्तरदायी लोकांना अडवू शकते आणि अतिरिक्त जखमी होण्याचा धोका वाढवू शकते. उत्तरदायी वाहनांसाठी जागा तयार करणे महत्वाचे आहे, परंतु हे प्राथमिक विचार नाही, आणि फोटो काढणे किंवा भूमिगत व्यक्तींना अडवणे हे मुख्य वैज्ञानिक कारण नाहीत.",
+          "solution": "सापाचे फोटो डॉक्टरांना प्रजाती ओळखण्यास मदत करतात आणि योग्य उपचार पुरवतात. ताबडतोब धावणे रक्त प्रवाह वाढवू शकते आणि विषाचा प्रसार जलद करू शकतो. रक्त बाहेर काढणे अप्रभावी आहे आणि अधिक नुकसान होऊ शकतो. घरगुती उपाय सुरक्षित किंवा प्रभावी नसू शकतात आणि योग्य चिकित्सेच्या विलंबास कारणीभूत ठरू शकतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for emergency situations.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
           "flag": null
         }
       },
@@ -721,24 +898,24 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Believing that taking photos is the main concern at an accident site",
+        "Believes that running helps in snake bite treatment",
+        "Believes in unsafe methods of treating snake bites",
         null,
-        "Confuses a secondary issue with the main reason",
-        "Believing that victims should be left alone to deal with their emotions without any assistance"
+        "Incorrect first aid method"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        2,
+        2,
+        2,
+        2,
+        2
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as preventing further accidents is the primary concern at an accident site. The other options reflect common misconceptions or secondary concerns.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as taking a photo of the snake helps identify the species for proper treatment. The other options are indeed incorrect, and the reasons provided by the author align with common misconceptions about snake bite treatment.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 45,
+          "ordinal": 49,
           "pageStart": 59,
           "pageEnd": 60,
           "headingPath": [
@@ -747,7 +924,7 @@
         },
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 46,
+          "ordinal": 50,
           "pageStart": 60,
           "pageEnd": 62,
           "headingPath": [
@@ -756,8 +933,18 @@
         },
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 47,
+          "ordinal": 51,
           "pageStart": 62,
+          "pageEnd": 63,
+          "headingPath": [
+            "5. Disaster Management",
+            "Exercises"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 52,
+          "pageStart": 63,
           "pageEnd": 63,
           "headingPath": [
             "5. Disaster Management",
@@ -766,49 +953,49 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T19:34:47.174Z",
+      "generatedAt": "2026-10-31T04:29:35.930Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "What can happen if a river's course changes after an earthquake?",
+      "stem": "If a person's clothes catch fire in a public place, what should you do?",
       "choices": [
-        "It will always lead to a drought",
-        "It can cause floods in some areas and droughts in others",
-        "It can cause landslides in nearby hills",
-        "It will always lead to a flood"
+        "Encourage the person to run",
+        "Use water to put out the fire",
+        "Make the person roll on the ground",
+        "Use a fan to blow out the fire"
       ],
-      "answerIndex": 1,
-      "solution": "When a river's course changes due to an earthquake, it can disrupt the natural flow of water, leading to areas receiving too much water (floods) and others receiving too little (droughts). Landslides may occur due to the shaking, but they are not a direct result of the river's new course. Droughts and floods are not guaranteed in all cases, so the idea that it will 'always' lead to either is incorrect.",
+      "answerIndex": 2,
+      "solution": "Making the person roll on the ground helps smother the fire by cutting off its oxygen supply. Running can increase the fire's intensity by providing more oxygen. Using water may not always be safe or effective, and a fan could spread the flames further.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक भूकंप के बाद एक नदी के मार्ग में परिवर्तन हो सकता है तो क्या हो सकता है?",
+          "stem": "अगर किसी व्यक्ति के कपड़े जनता के स्थान पर आग लग जाए, तो आप क्या करेंगे?",
           "choices": [
-            "इसके परिणामस्वरूप हमेशा एक सूखा होगा",
-            "इसके परिणामस्वरूप कुछ क्षेत्रों में बाढ़ हो सकती है और अन्य में सूखा हो सकता है",
-            "इसके परिणामस्वरूप आसपास के पहाड़ों में भूस्खलन हो सकता है",
-            "इसके परिणामस्वरूप हमेशा एक बाढ़ होगी"
+            "व्यक्ति को दौड़ने के लिए प्रेरित करें",
+            "आग बुझाने के लिए पानी का उपयोग करें",
+            "व्यक्ति को जमीन पर लोटने के लिए कहें",
+            "आग बुझाने के लिए पंखे का उपयोग करें"
           ],
-          "solution": "जब एक भूकंप के कारण एक नदी के मार्ग में परिवर्तन होता है, तो यह पानी के प्राकृतिक प्रवाह को बाधित कर सकता है, जिसके परिणामस्वरूप कुछ क्षेत्रों में पानी की अधिक मात्रा (बाढ़) और अन्य क्षेत्रों में कम मात्रा (सूखा) हो सकती है। भूकंप के कारण भूस्खलन हो सकता है, लेकिन यह नदी के नए मार्ग का सीधा परिणाम नहीं है। सूखा और बाढ़ हमेशा निश्चित नहीं होते हैं, इसलिए 'हमेशा' के रूप में किसी एक के लिए निश्चित होने का विचार गलत है।",
+          "solution": "जमीन पर लोटने से आग को बुझाने में मदद मिलती है क्योंकि यह आग के ऑक्सीजन प्रवाह को काट देता है। दौड़ना आग की तीव्रता को बढ़ा सकता है क्योंकि यह अधिक ऑक्सीजन प्रदान करता है। पानी का उपयोग हमेशा सुरक्षित या प्रभावी नहीं हो सकता है, और एक पंखा आग के लपटों को और फैला सकता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology and logical structure.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "एका भूकंपानंतर नदीचा मार्ग बदलल्यास काय होऊ शकते?",
+          "stem": "जर कोणत्याही व्यक्तीच्या कपड्यांना जुन्या ठिकाणी आग लागली, तर तुम्हाला काय करावे लागेल?",
           "choices": [
-            "त्यामुळे नेहमी शुष्कता होईल",
-            "त्यामुळे काही भागांमध्ये बाढी आणि इतर भागांमध्ये शुष्कता होऊ शकते",
-            "त्यामुळे जवळच्या डोंगरांमध्ये भूस्खलन होऊ शकते",
-            "त्यामुळे नेहमी बाढी होईल"
+            "व्यक्तीला धावायला सांगा",
+            "आग बुझवण्यासाठी पाणी वापरा",
+            "व्यक्तीला जमिनीवर फिरवा",
+            "आग बुझवण्यासाठी वातानुकूलन वापरा"
           ],
-          "solution": "एका भूकंपामुळे नदीचा मार्ग बदलल्यास, पाण्याचा प्राकृतिक प्रवाह बिघडू शकतो, ज्यामुळे काही भागांमध्ये जास्त पाणी आणि इतर भागांमध्ये कमी पाणी मिळू शकते. भूकंपाच्या झटक्यामुळे भूस्खलन होऊ शकते, परंतु ते नदीच्या नवीन मार्गाचे एक सीधा परिणाम नाही. शुष्कता आणि बाढी नेहमी घडू शकत नाहीत, त्यामुळे ते 'नेहमी' होणार असल्याचा विचार अयोग्य आहे.",
+          "solution": "जमिनीवर फिरवणे आग बुझवण्यासाठी उपयुक्त आहे कारण ते आगला ऑक्सिजनचा पुरवठा खंडित करते. धावणे आगच्या तीव्रतेला वाढवू शकते. पाणी वापरणे नेहमी सुरक्षित किंवा प्रभावी असू शकत नाही आणि वातानुकूलन आग वाढवू शकते.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for geological and hydrological concepts.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for fire safety concepts.",
           "flag": null
         }
       },
@@ -817,10 +1004,116 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "overgeneralizes the effect",
+        "harmful action in a fire situation",
+        "incorrect method to extinguish fire",
         null,
-        "Students may confuse the effects of earthquakes with those of heavy rainfall or mountainous terrain",
-        "incorrect assumption about the effect"
+        "Believes that moving air can help extinguish fires without knowing it can spread them"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as rolling on the ground suffocates the fire. The author's reasoning for the wrong options aligns with common misconceptions about fire safety.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 49,
+          "pageStart": 59,
+          "pageEnd": 60,
+          "headingPath": [
+            "5. Disaster Management"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 50,
+          "pageStart": 60,
+          "pageEnd": 62,
+          "headingPath": [
+            "5. Disaster Management"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 51,
+          "pageStart": 62,
+          "pageEnd": 63,
+          "headingPath": [
+            "5. Disaster Management",
+            "Exercises"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 52,
+          "pageStart": 63,
+          "pageEnd": 63,
+          "headingPath": [
+            "5. Disaster Management",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T04:29:35.930Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is it important to prepare for disasters in advance?",
+      "choices": [
+        "To avoid all damage",
+        "To ensure that help reaches the affected areas on time",
+        "To reduce the number of emergency services needed",
+        "To stop the occurrence of disasters"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is to ensure that help reaches the affected areas on time because preparedness allows for quicker response and efficient distribution of resources during a disaster. Avoiding all damage is unrealistic, reducing emergency services is not the main goal, and stopping disasters entirely is not possible through preparation alone.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "आपदा के लिए आगे से तैयारी क्यों महत्वपूर्ण है?",
+          "choices": [
+            "सभी क्षति को रोकने के लिए",
+            "आपदा से प्रभावित क्षेत्रों में सहायता के समय पर पहुंचने की गारंटी देने के लिए",
+            "आपातकालीन सेवाओं की संख्या कम करने के लिए",
+            "आपदा के होने को रोकने के लिए"
+          ],
+          "solution": "सही उत्तर आपदा से प्रभावित क्षेत्रों में सहायता के समय पर पहुंचने की गारंटी देने के लिए है क्योंकि तैयारी आपदा के दौरान तेज जवाब और संसाधनों के कुशल वितरण की अनुमति देती है। सभी क्षति को रोकना असंभव है, आपातकालीन सेवाओं की संख्या कम करना मुख्य उद्देश्य नहीं है, और आपदा के पूरी तरह से रोकना तैयारी से अकेले संभव नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a Hindi-medium educational context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आपत्कालाची वेळ येण्यापूर्वी तयारी करणे का महत्वाचे आहे?",
+          "choices": [
+            "सर्व नुकसान टाळण्यासाठी",
+            "अस्तित्वात असलेल्या ठिकाणी मदत पोहोचवण्यासाठी",
+            "आपत्कालीन सेवा आवश्यकता कमी करण्यासाठी",
+            "आपत्कालाच्या घटनेचे रोखण्यासाठी"
+          ],
+          "solution": "योग्य उत्तर अस्तित्वात असलेल्या ठिकाणी मदत पोहोचवण्यासाठी आहे कारण तयारी आपत्कालात वेगाने प्रतिसाद देण्यास आणि संसाधनांच्या प्रभावी वितरणास मदत करते. सर्व नुकसान टाळणे अयोग्य आहे, आपत्कालीन सेवा आवश्यकता कमी करणे मुख्य उद्देश नाही आणि आपत्कालाच्या घटनेचे रोखणे तयारीच्या माध्यमातून शक्य नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for disaster management concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Students may believe that preparation can completely eliminate all negative outcomes of a disaster.",
+        null,
+        "Believes preparation reduces the need for help rather than ensuring it arrives on time",
+        "Preventing the occurrence of disasters is not the goal of disaster management"
       ],
       "solverAnswers": [
         1,
@@ -829,12 +1122,12 @@
         1,
         1
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as a river's course change after an earthquake can lead to both floods and droughts depending on the new flow. The other options are incorrect because they either overgeneralize (0 and 3) or confuse earthquake effects with other phenomena (2).",
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as preparation ensures help arrives on time. The other options are either unrealistic (like stopping disasters) or misinterpret the purpose of disaster management.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 39,
+          "ordinal": 43,
           "pageStart": 54,
           "pageEnd": 54,
           "headingPath": [
@@ -843,7 +1136,7 @@
         },
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 40,
+          "ordinal": 44,
           "pageStart": 55,
           "pageEnd": 55,
           "headingPath": [
@@ -852,7 +1145,7 @@
         },
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 41,
+          "ordinal": 45,
           "pageStart": 55,
           "pageEnd": 56,
           "headingPath": [
@@ -861,49 +1154,49 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T19:34:47.174Z",
+      "generatedAt": "2026-10-31T04:29:35.930Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "If a factory experiences an accident due to improper handling of chemicals, what is the most appropriate action to prevent such incidents in the future?",
+      "difficulty": 6,
+      "stem": "Why is it important to memorize important phone numbers before a disaster?",
       "choices": [
-        "Ignore safety regulations to save costs",
-        "Provide regular training to workers",
-        "Use faulty machinery for efficiency",
-        "Avoid storing chemicals altogether"
+        "To call for help during emergencies",
+        "To spread information to others",
+        "To keep track of the weather",
+        "To prevent cyber crimes"
       ],
-      "answerIndex": 1,
-      "solution": "Providing regular training to workers ensures they understand how to handle chemicals safely, reducing the risk of accidents. Ignoring safety regulations and using faulty machinery increase dangers, while avoiding chemical storage is not always feasible or practical.",
+      "answerIndex": 0,
+      "solution": "Memorizing important phone numbers allows individuals to quickly contact emergency services when needed, which is crucial during a disaster. Spreading information, tracking the weather, and preventing cyber crimes are not directly related to the purpose of memorizing phone numbers. Therefore, the correct answer is To call for help during emergencies.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि कोई फैक्टरी रासायनिक पदार्थों के अनुचित निपटान के कारण दुर्घटना का शिकार हो जाती है, तो भविष्य में ऐसी घटनाओं से बचने के लिए सबसे उपयुक्त कार्रवाई क्या है?",
+          "stem": "एक आपदा के पहले महत्वपूर्ण फोन नंबर याद रखना क्यों महत्वपूर्ण है?",
           "choices": [
-            "लागत बचाने के लिए सुरक्षा नियमों की अवहेलना करें",
-            "कर्मचारियों को नियमित प्रशिक्षण प्रदान करें",
-            "कार्यकुशलता के लिए खराब मशीनरी का उपयोग करें",
-            "रासायनिक पदार्थों के भंडारण से बचें"
+            "आपातकाल में मदद के लिए कॉल करने के लिए",
+            "अन्य लोगों को जानकारी फैलाने के लिए",
+            "मौसम की निगरानी करने के लिए",
+            "साइबर अपराधों को रोकने के लिए"
           ],
-          "solution": "कर्मचारियों को नियमित प्रशिक्षण प्रदान करने से उन्हें रासायनिक पदार्थों के सुरक्षित निपटान के बारे में जागरूकता होती है, जिससे दुर्घटनाओं के जोखिम में कमी आती है। सुरक्षा नियमों की अवहेलना और खराब मशीनरी का उपयोग खतरों को बढ़ाता है, जबकि रासायनिक पदार्थों के भंडारण से बचना हमेशा संभव या व्यावहारिक नहीं होता।",
+          "solution": "महत्वपूर्ण फोन नंबर याद रखने से व्यक्ति को आवश्यकता पड़ने पर तत्काल आपातकालीन सेवाओं से संपर्क करने में सक्षम होता है, जो आपदा के समय आवश्यक होता है। जानकारी फैलाना, मौसम की निगरानी करना और साइबर अपराधों को रोकना फोन नंबर याद रखने के उद्देश्य से सीधे संबंधित नहीं हैं। इसलिए, सही उत्तर है आपातकाल में मदद के लिए।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, but the key is incorrect (should be option 2, not 1).",
-          "flag": "translation critique: not one answer at the same position"
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi terminology.",
+          "flag": null
         },
         "mr": {
-          "stem": "जर रासायनिक पदार्थांच्या चुकीच्या व्यवस्थापनामुळे एखाद्या कारखान्यात अपघात घडला, तर भविष्यात अशा घटना टाळण्यासाठी उपयुक्त कार्यवाही काय आहे?",
+          "stem": "आपत्कालात अहम फोन क्रमांक आठवून ठेवणे का महत्वाचे आहे?",
           "choices": [
-            "सुरक्षा नियम नजरअंदाज करा आणि खर्च वाचवा",
-            "कर्मचाऱ्यांना नियमित प्रशिक्षण द्या",
-            "कार्यक्षमतेसाठी खराब मशीन वापरा",
-            "रासायनिक पदार्थ एकत्रित ठेवणे टाळा"
+            "आपत्कालात मदत मागण्यासाठी",
+            "इतरांना माहिती पसरवण्यासाठी",
+            "हवामानाची नोंद ठेवण्यासाठी",
+            "सायबर गुन्हे रोखण्यासाठी"
           ],
-          "solution": "कर्मचाऱ्यांना नियमित प्रशिक्षण देणे त्यांना रासायनिक पदार्थ योग्यरित्या व्यवस्थापित करण्याची समज देते, ज्यामुळे अपघाताचा धोका कमी होतो. सुरक्षा नियम नजरअंदाज करणे आणि खराब मशीन वापरणे धोकादायक असतात, तर रासायनिक पदार्थ एकत्रित ठेवणे नेहमी शक्य असे नसते किंवा व्यावहारिक नसते.",
+          "solution": "महत्वपूर्ण फोन क्रमांक आठवून ठेवणे आपल्याला आवश्यकता असल्यास तत्काळ आपत्कालीन सेवांशी संपर्क साधण्यास अनुमती देते, जे आपत्कालात महत्वाचे आहे. माहिती पसरवणे, हवामानाची नोंद ठेवणे आणि सायबर गुन्हे रोखणे हे फोन क्रमांक आठवून ठेवण्याच्या उद्देशाशी सीधा संबंध नाहीत. म्हणूनच योग्य उत्तर आहे - आपत्कालात मदत मागण्यासाठी.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for technical concepts.",
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for disaster management concepts.",
           "flag": null
         }
       },
@@ -912,24 +1205,24 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Believes cost-saving is more important than safety",
         null,
-        "Overlooks the importance of training",
-        "Avoids a necessary part of operations"
+        "Believes memorizing phone numbers helps in spreading news during disasters",
+        "Mentions a different precaution",
+        "Refers to a different aspect of disaster management', "
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as regular training is a practical and effective way to prevent accidents. The other options are either dangerous (0, 2) or impractical (3). The author's reasoning aligns with the correct solution.",
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors that reflect common misconceptions about disaster preparedness.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 42,
+          "ordinal": 46,
           "pageStart": 57,
           "pageEnd": 58,
           "headingPath": [
@@ -938,7 +1231,7 @@
         },
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 43,
+          "ordinal": 47,
           "pageStart": 58,
           "pageEnd": 58,
           "headingPath": [
@@ -947,7 +1240,7 @@
         },
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 44,
+          "ordinal": 48,
           "pageStart": 58,
           "pageEnd": 59,
           "headingPath": [
@@ -956,7 +1249,7 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T19:34:47.174Z",
+      "generatedAt": "2026-10-31T04:29:35.930Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

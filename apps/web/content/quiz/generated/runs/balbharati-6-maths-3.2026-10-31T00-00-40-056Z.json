@@ -1,0 +1,498 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T00:00:40.056Z",
+  "finishedAt": "2026-10-31T00:05:03.345Z",
+  "seconds": 263,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 3 — In the World of Numbers",
+    "edition": "First Edition 2026",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n6. A) 11 9",
+      "[INMO 2005 — question paper]\nso obtained. Observe that the numbers themselves are written in ascending order. So we exhaust\nnumbers beginning with 1, then beginning with 2 and so on.\nNumbers Digits used other | n |r] (\"77 ') | Cumulative\nthan the fixed part sum\nbeginning with 1 1,0 25 — 6 6\n2 2,1,0 35 q) = 21 27\n3 3,2,1,0 45) (6) = 56 83\n4 4,32,1,0 505] (3) = 126 209\n5 54,32,1,0 6 [5 (y)= 252 461\n6 6,5,4,3,2,1,0 75 (4) = 462 923\n7 7,6,5,4,32,1,0 85 (2) = 792 1715\nfrom 800000 to 855555 | 5,4,3,2,1,0 65 (3) = 252 1967\nfrom 860000 to 863333 | 3,2,1,0 44] (H= 35 2002\nThe next three 6-digit numbers are 864000, 864100, 864110.\nHence the 2005th number in the sequence is 864110.",
+      "[RMO 2016 — question paper]\n4. How many 6-digit natural numbers containing only the digits 1,2,3 are there\nin which 3 occurs exactly twice and the number is divisible by 9?",
+      "[PRMO 2018 — question paper]\n3. Consider all 6-digit numbers of the form abccba where b is odd. Determine the number of all\nsuch 6-digit numbers that are divisible by 7.\n4, The equation 166⇥56 = 8590 is valid in some base b 10 (that is, 1, 6, 5, 8, 9, 0 are digits in base\nb in the above equation). Find the sum of all possible values of b 10 satisfying the equation."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 84690,
+      "in": 23,
+      "out": 23,
+      "rejects": 0,
+      "promptTokens": 19116,
+      "completionTokens": 4433
+    },
+    "critique": {
+      "calls": 29,
+      "ms": 179533,
+      "in": 23,
+      "out": 9,
+      "rejects": 14,
+      "promptTokens": 12366,
+      "completionTokens": 4929
+    },
+    "solver": {
+      "calls": 83,
+      "ms": 45464,
+      "in": 9,
+      "out": 8,
+      "rejects": 1,
+      "promptTokens": 15163,
+      "completionTokens": 857
+    },
+    "form": {
+      "calls": 5,
+      "ms": 12223,
+      "in": 8,
+      "out": 3,
+      "rejects": 5,
+      "promptTokens": 1160,
+      "completionTokens": 332
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 13,
+      "ms": 2252,
+      "in": 3,
+      "out": 2,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 11,
+      "ms": 61701,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4905,
+      "completionTokens": 2275
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the smallest whole number?",
+      "ms": {
+        "draft": 12932,
+        "critique": 5351
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the temperature is -40°C, what does this indicate?",
+      "ms": {
+        "draft": 12932,
+        "critique": 5905
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number is at the same distance from zero but in the opposite direction, what is it called?",
+      "ms": {
+        "draft": 12932,
+        "critique": 8211
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a number is added to its opposite number, what is the sum?",
+      "ms": {
+        "draft": 12932,
+        "critique": 8169
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a whole number?",
+      "ms": {
+        "draft": 4479,
+        "critique": 6410,
+        "solver": 1506,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the number line, which number is greater, -2 or 0?",
+      "ms": {
+        "draft": 12932,
+        "critique": 8195,
+        "solver": 12091,
+        "form": 2727
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the result of (+4) - (-2)?",
+      "ms": {
+        "draft": 4479,
+        "critique": 10253
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the result of (-4) + (+2)?",
+      "ms": {
+        "draft": 4479,
+        "critique": 8574,
+        "solver": 12414
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a player starts at 0, moves 7 units to the left, and then 4 units to the right, what is their final position?",
+      "ms": {
+        "draft": 4479,
+        "critique": 4192,
+        "solver": 1054,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a game, if a player moves 5 units to the left of zero, and then 3 units to the right of zero, where does the player end up?",
+      "ms": {
+        "draft": 4479,
+        "critique": 6269,
+        "solver": 9610,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a whole number?",
+      "ms": {
+        "draft": 2576,
+        "critique": 5135
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of an integer?",
+      "ms": {
+        "draft": 2576,
+        "critique": 5135
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which rule is used to add two integers with different signs?",
+      "ms": {
+        "draft": 2576,
+        "critique": 6471
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the result of (-3) + 5?",
+      "ms": {
+        "draft": 2576,
+        "critique": 5182
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a player moves 4 units to the left on a number strip, what is the corresponding integer?",
+      "ms": {
+        "draft": 2576,
+        "critique": 5488
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following numbers is the smallest?",
+      "ms": {
+        "draft": 2576,
+        "critique": 5839
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the smallest natural number?",
+      "ms": {
+        "draft": 4334,
+        "critique": 5606
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a number is 5 more than 7, what is the result?",
+      "ms": {
+        "draft": 4334,
+        "critique": 7213
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the smallest whole number?",
+      "ms": {
+        "draft": 4334,
+        "critique": 5985,
+        "solver": 1482,
+        "form": 2136
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a sequence of numbers, if the numbers are arranged in ascending order, which number comes after 99999?",
+      "ms": {
+        "draft": 4334,
+        "critique": 6247
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the sum of two opposite numbers?",
+      "ms": {
+        "draft": 4479,
+        "critique": 6814,
+        "solver": 16804,
+        "form": 4404
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a natural number?",
+      "ms": {
+        "draft": 12932,
+        "critique": 5350,
+        "solver": 11912,
+        "form": 2497,
+        "translation": 32644
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following numbers is greater than -2 but less than 0?",
+      "ms": {
+        "draft": 4334,
+        "critique": 5711,
+        "solver": 6286,
+        "form": 1058,
+        "translation": 25744
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the smallest whole number?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the temperature is -40°C, what does this indicate?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a number is at the same distance from zero but in the opposite direction, what is it called?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a number is added to its opposite number, what is the sum?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of a whole number?",
+      "reason": "options mix numbers and words (3 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"Correct option is not the longest and is not the only valid …\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the number line, which number is greater, -2 or 0?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the result of (+4) - (-2)?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the result of (-4) + (+2)?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a player starts at 0, moves 7 units to the left, and then 4 units to the right, what is their final position?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct option is not the longest and is not the only valid …\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a game, if a player moves 5 units to the left of zero, and then 3 units to the right of zero, where does the player end up?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is an example of a whole number?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is an example of an integer?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which rule is used to add two integers with different signs?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the result of (-3) + 5?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a player moves 4 units to the left on a number strip, what is the corresponding integer?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following numbers is the smallest?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is the smallest natural number?",
+      "reason": "option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a number is 5 more than 7, what is the result?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is the smallest whole number?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"correct answer…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a sequence of numbers, if the numbers are arranged in ascending order, which number comes after 99999?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the sum of two opposite numbers?",
+      "reason": "near-duplicate of served question cmvvje6lj001v0rndy61wmlsv (cosine 0.937 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

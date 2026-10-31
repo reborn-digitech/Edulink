@@ -1,0 +1,498 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T11:58:24.066Z",
+  "finishedAt": "2026-10-31T12:05:31.576Z",
+  "seconds": 428,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी गणित इंग्रजी",
+    "bookCode": "703020004",
+    "document": "balbharati/7/mathematics/703020004.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 9 — Direct Proportion and Inverse Proportion",
+    "edition": "2026 edition",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2022-23]\n9. In the given figure, DE ∥ BC, AE = a units, EC =b units, DE =x units and BC = y 1\nunits. Which of the following is true?\n(a) x= 𝑎+𝑏 𝑎𝑦 (b) y= 𝑎+𝑏 𝑎𝑥 (c) x= 𝑎+𝑏 𝑎𝑦 (d) 𝑦 𝑥 = 𝑎 𝑏",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n8. 1\nratio 3 : 1, then the value of 𝒚 is\n(A) 4 (B) 3 (C) 2 (D) 1\nA letter from the word INDEPENDENCE is selected at random. What is the",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n7. (a) ∆𝑃𝑄𝑅~ ∆ 𝐶𝐴𝐵"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 112764,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 18184,
+      "completionTokens": 5392
+    },
+    "critique": {
+      "calls": 33,
+      "ms": 272102,
+      "in": 24,
+      "out": 13,
+      "rejects": 11,
+      "promptTokens": 15494,
+      "completionTokens": 6131
+    },
+    "solver": {
+      "calls": 128,
+      "ms": 121034,
+      "in": 13,
+      "out": 8,
+      "rejects": 5,
+      "promptTokens": 35561,
+      "completionTokens": 1791
+    },
+    "form": {
+      "calls": 3,
+      "ms": 12721,
+      "in": 8,
+      "out": 6,
+      "rejects": 2,
+      "promptTokens": 752,
+      "completionTokens": 278
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 4,
+      "ms": 820,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 297344,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 14593,
+      "completionTokens": 6597
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 2,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If 10 pens cost 60 rupees, how much will 13 pens cost?",
+      "ms": {
+        "draft": 14724,
+        "critique": 8898
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In the examples given in the chapter, what remains constant when two quantities are in direct proportion?",
+      "ms": {
+        "draft": 14724,
+        "critique": 9181
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 15 workers take 8 hours to build a wall, how many hours will 12 workers take?",
+      "ms": {
+        "draft": 14724,
+        "critique": 8658,
+        "solver": 21180
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 7 kg of onions cost 140 rupees, how much must we pay for 12 kg onions?",
+      "ms": {
+        "draft": 14724,
+        "critique": 11878,
+        "solver": 22993
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Abdul, Sejal and Soham gave 30, 70 and 50 rupees respectively to Sayali, who invested 150 rupees. They made a profit of 420 rupees. If Sayali’s share is half of the profit, what is Abdul’s share?",
+      "ms": {
+        "draft": 6169,
+        "critique": 12154,
+        "solver": 2103
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the profit is shared in the same proportion as the investment, what is the correct way to calculate the shares of profit?",
+      "ms": {
+        "draft": 6169,
+        "critique": 8535,
+        "solver": 21760,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A and B shared a profit of 24500 rupees in the proportion 3:7. If each gave 2% of their share to the Soldiers’ Welfare Fund, what is the total amount given to the Fund?",
+      "ms": {
+        "draft": 6169,
+        "critique": 7452
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Jaya, Seema, Nikhil and Neelesh invested 360000 rupees in the proportion 3:4:7:6. What was Jaya’s share in the capital?",
+      "ms": {
+        "draft": 6169,
+        "critique": 7490
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In the example where Chinmaya and Sam invested in the proportion 3:2, what is the total investment if their profit was 36000 rupees?",
+      "ms": {
+        "draft": 4521,
+        "critique": 6707
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main idea of direct proportion according to the passage?",
+      "ms": {
+        "draft": 4521,
+        "critique": 5731,
+        "solver": 2170,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Abdul, Sejal and Soham invested 30, 70 and 50 rupees respectively and the total profit was 420 rupees, what is Soham’s share of the profit?",
+      "ms": {
+        "draft": 4521,
+        "critique": 8648
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If Suresh and Ramesh invested 144000 rupees in the ratio 4:5 and sold the plot at a profit of 20%, what is Ramesh’s share of the profit?",
+      "ms": {
+        "draft": 4521,
+        "critique": 8704
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If Jaya, Seema, Nikhil and Neelesh invested in the proportion 3:4:7:6 and made a profit of 12%, what is Jaya’s share of the profit if the total capital was 360000 rupees?",
+      "ms": {
+        "draft": 4521,
+        "critique": 7994
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If Saritaben, Ayesha and Meenakshi invested 2400, 5200 and 3400 rupees respectively and made a profit of 50%, what is Ayesha’s profit?",
+      "ms": {
+        "draft": 4521,
+        "critique": 11867
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In the examples given, what happens to the number of notebooks when the number of children decreases?",
+      "ms": {
+        "draft": 4040,
+        "critique": 7327
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the relationship between the number of diameters and the number of divisions in a circle?",
+      "ms": {
+        "draft": 4040,
+        "critique": 6627,
+        "solver": 1708
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 10 pens cost 60 rupees, how much will 13 pens cost?",
+      "ms": {
+        "draft": 4040,
+        "critique": 8673
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 600 rupees buy 15 bunches of feed, how many bunches can be bought with 1280 rupees?",
+      "ms": {
+        "draft": 4040,
+        "critique": 7896,
+        "solver": 20724
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Chinmaya and Sam invested a total of 130000 rupees in the proportion 3:2. If their total profit was 36000 rupees, what is Chinmaya’s share of the profit?",
+      "ms": {
+        "draft": 6169,
+        "critique": 6634,
+        "solver": 16394,
+        "form": 1,
+        "translation": 52245
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The number of students and the amount of money collected are in what kind of proportion?",
+      "ms": {
+        "draft": 14724,
+        "critique": 10817,
+        "solver": 21913,
+        "form": 4541,
+        "translation": 56157
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "If 15 workers take 8 hours to build a wall, how many hours will 12 workers take?",
+      "ms": {
+        "draft": 4040,
+        "critique": 8868,
+        "solver": 19957,
+        "form": 2496,
+        "translation": 44362
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If 600 rupees buy 15 bunches of feed, how many bunches will 1280 rupees buy?",
+      "ms": {
+        "draft": 14724,
+        "critique": 7995,
+        "solver": 15699,
+        "form": 1,
+        "translation": 34298
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Saritaben, Ayesha and Meenakshi invested 2400, 5200 and 3400 rupees respectively. They made a profit of 50%. If they reinvest all their profit, what will be Saritaben’s new capital?",
+      "ms": {
+        "draft": 6169,
+        "critique": 9304,
+        "solver": 11152,
+        "form": 0,
+        "translation": 60206
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "The cost of 12 quintals of soyabean is 36,000 rupees. How much will 8 quintals cost?",
+      "ms": {
+        "draft": 4040,
+        "critique": 9877,
+        "solver": 2714,
+        "form": 6126,
+        "translation": 44170
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If 10 pens cost 60 rupees, how much will 13 pens cost?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "In the examples given in the chapter, what remains constant when two quantities are in direct proportion?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 15 workers take 8 hours to build a wall, how many hours will 12 workers take?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If 7 kg of onions cost 140 rupees, how much must we pay for 12 kg onions?",
+      "reason": "after redrafting distractors 1, 2, 3: the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Abdul, Sejal and Soham gave 30, 70 and 50 rupees respectively to Sayali, who invested 150 rupees. They made a profit of 420 rupees. If Sayali’s share is half of the profit, what is Abdul’s share?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If the profit is shared in the same proportion as the investment, what is the correct way to calculate the shares of profit?",
+      "reason": "options 0 and 1 say the same thing (\"Calculate the total investment and multiply it by the total profit\" / \"Calculate the total profit and divide it by the total investment\"); options 0 and 2 say the same thing (\"Calculate the total investment and multiply it by the total profit\" / \"Calculate the total investment and divide it by the total profit\"); options 0 and 3 say the same thing (\"Calculate the total investment and multiply it by the total profit\" / \"Calculate the total profit and multiply it by the total investment\"); options 1 and 2 say the same thing (\"Calculate the total profit and divide it by the total investment\" / \"Calculate the total investment and divide it by the total profit\"); options 1 and 3 say the same thing (\"Calculate the total profit and divide it by the total investment\" / \"Calculate the total profit and multiply it by the total investment\"); options 2 and 3 say the same thing (\"Calculate the total investment and divide it by the total profit\" / \"Calculate the total profit and multiply it by the total investment\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A and B shared a profit of 24500 rupees in the proportion 3:7. If each gave 2% of their share to the Soldiers’ Welfare Fund, what is the total amount given to the Fund?",
+      "reason": "the critic finds option 1 correct, the key is 0"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Jaya, Seema, Nikhil and Neelesh invested 360000 rupees in the proportion 3:4:7:6. What was Jaya’s share in the capital?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "In the example where Chinmaya and Sam invested in the proportion 3:2, what is the total investment if their profit was 36000 rupees?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main idea of direct proportion according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If Abdul, Sejal and Soham invested 30, 70 and 50 rupees respectively and the total profit was 420 rupees, what is Soham’s share of the profit?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If Suresh and Ramesh invested 144000 rupees in the ratio 4:5 and sold the plot at a profit of 20%, what is Ramesh’s share of the profit?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If Jaya, Seema, Nikhil and Neelesh invested in the proportion 3:4:7:6 and made a profit of 12%, what is Jaya’s share of the profit if the total capital was 360000 rupees?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If Saritaben, Ayesha and Meenakshi invested 2400, 5200 and 3400 rupees respectively and made a profit of 50%, what is Ayesha’s profit?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "In the examples given, what happens to the number of notebooks when the number of children decreases?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the relationship between the number of diameters and the number of divisions in a circle?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If 10 pens cost 60 rupees, how much will 13 pens cost?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If 600 rupees buy 15 bunches of feed, how many bunches can be bought with 1280 rupees?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

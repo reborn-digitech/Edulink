@@ -1,0 +1,493 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T10:18:02.875Z",
+  "finishedAt": "2026-10-31T10:29:38.721Z",
+  "seconds": 696,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी गणित इंग्रजी",
+    "bookCode": "703020004",
+    "document": "balbharati/7/mathematics/703020004.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — Geometrical Constructions",
+    "edition": "2026 edition",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[RMO 2017 — question paper]\n1. Let AOB be a given angle less than 180° and let P be an interior point of the\nangular region determined by ZAOB. Show, with proof, how to construct,\nusing only ruler and compasses, a line segment CD passing through P such\nthat C' lies on the ray OA and D lies on the ray OB, and CP: PD =1:2.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n33. Correct given, to prove, construction, figure 1\nCorrect proof 2\nAR = AQ = 7cm ½\nBP = BR = AB-AR = 3cm ½\nCP =CQ = 5cm ½\nBC = BP+PC = 3+5 = 8 cm ½",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 22 7 wherever required if not stated."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 154404,
+      "in": 23,
+      "out": 23,
+      "rejects": 0,
+      "promptTokens": 19060,
+      "completionTokens": 7043
+    },
+    "critique": {
+      "calls": 29,
+      "ms": 262113,
+      "in": 23,
+      "out": 15,
+      "rejects": 8,
+      "promptTokens": 13204,
+      "completionTokens": 5144
+    },
+    "solver": {
+      "calls": 119,
+      "ms": 95884,
+      "in": 15,
+      "out": 12,
+      "rejects": 3,
+      "promptTokens": 28403,
+      "completionTokens": 1453
+    },
+    "form": {
+      "calls": 3,
+      "ms": 84389,
+      "in": 12,
+      "out": 5,
+      "rejects": 7,
+      "promptTokens": 4375,
+      "completionTokens": 1411
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 1,
+      "ms": 193,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 730693,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 9991,
+      "completionTokens": 4555
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 1,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "In a triangle, the point of concurrence of the perpendicular bisectors of the sides is called the",
+      "ms": {
+        "draft": 15497,
+        "critique": 8891
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about the angle bisector of a triangle?",
+      "ms": {
+        "draft": 15497,
+        "critique": 10837
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In an obtuse-angled triangle, the point of concurrence of the perpendicular bisectors lies",
+      "ms": {
+        "draft": 15497,
+        "critique": 10144
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about the perpendicular bisector of a line segment?",
+      "ms": {
+        "draft": 15497,
+        "critique": 11590
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a line segment of length 5.3 cm is drawn and its perpendicular bisector is constructed, which of the following will be true?",
+      "ms": {
+        "draft": 15497,
+        "critique": 9217,
+        "solver": 24588,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a triangle, if the point of concurrence of the angle bisectors is at the same location as the point of concurrence of the perpendicular bisectors, the triangle must be",
+      "ms": {
+        "draft": 15497,
+        "critique": 10886,
+        "solver": 19432,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the construction of a triangle, which of the following is not required to determine its shape?",
+      "ms": {
+        "draft": 4217,
+        "critique": 10355,
+        "solver": 14562
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a triangle has two angles of 40° and 80°, and one side of 6 cm, which of the following is not needed to draw the triangle?",
+      "ms": {
+        "draft": 4217,
+        "critique": 8767,
+        "solver": 15709
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In a triangle, if two angles are 60° and 40°, what is the measure of the third angle?",
+      "ms": {
+        "draft": 6255,
+        "critique": 7123
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a triangle, if two sides are 6 cm and 8 cm and the included angle is 90°, which property is used to determine if the triangle can be drawn?",
+      "ms": {
+        "draft": 6255,
+        "critique": 6173,
+        "solver": 1650
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A triangle is to be constructed with a base of 3 cm, a right angle at one end of the base, and a hypotenuse of 5 cm. Which step should be performed next after drawing the base?",
+      "ms": {
+        "draft": 6255,
+        "critique": 6476,
+        "solver": 2466,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A triangle is to be constructed with a base of 5 cm, a right angle at one end of the base, and a hypotenuse of 13 cm. Which step should be performed next after drawing the base?",
+      "ms": {
+        "draft": 6255,
+        "critique": 7689,
+        "solver": 2366,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about the angle bisector of an angle?",
+      "ms": {
+        "draft": 12940,
+        "critique": 13271
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A triangle has angles of 30°, 60°, and 90°, and the side opposite the 30° angle is 4 cm. What is the length of the hypotenuse?",
+      "ms": {
+        "draft": 6255,
+        "critique": 9642,
+        "solver": 3691,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a point is equidistant from all three vertices of a triangle, where does it lie?",
+      "ms": {
+        "draft": 12940,
+        "critique": 12057
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a triangle, if the angle bisectors of all three angles meet at a point, what is the significance of that point?",
+      "ms": {
+        "draft": 12940,
+        "critique": 13602
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the condition for drawing a unique triangle when given the lengths of its three sides?",
+      "ms": {
+        "draft": 12940,
+        "critique": 12669,
+        "solver": 10977,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Two triangles have congruent angles and congruent sides. Which statement is always true about the triangles?",
+      "ms": {
+        "draft": 6255,
+        "critique": 8767,
+        "solver": 22795,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which property is used to find the third angle of a triangle when two angles are known?",
+      "ms": {
+        "draft": 4217,
+        "critique": 9695,
+        "solver": 2021,
+        "form": 0,
+        "translation": 147272
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a right-angled triangle, what is the name of the side opposite the right angle?",
+      "ms": {
+        "draft": 4217,
+        "critique": 7928,
+        "solver": 1443,
+        "form": 0,
+        "translation": 98424
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a triangle has angles of 60°, 40°, and 80°, what is the measure of the third angle?",
+      "ms": {
+        "draft": 4217,
+        "critique": 10470,
+        "solver": 2319,
+        "form": 0,
+        "translation": 93347
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a triangle, if the perpendicular bisectors of the sides meet at a single point, what is the name of that point?",
+      "ms": {
+        "draft": 12940,
+        "critique": 6771,
+        "solver": 3309,
+        "form": 5896,
+        "translation": 200999
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a triangle, if two angles are equal, what can be said about the sides opposite those angles?",
+      "ms": {
+        "draft": 4217,
+        "critique": 10201,
+        "solver": 2163,
+        "form": 0,
+        "translation": 168251
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a triangle, the point of concurrence of the perpendicular bisectors of the sides is called the",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is true about the angle bisector of a triangle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In an obtuse-angled triangle, the point of concurrence of the perpendicular bisectors lies",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is true about the perpendicular bisector of a line segment?",
+      "reason": "the critic finds option 0 correct, the key is 3; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a line segment of length 5.3 cm is drawn and its perpendicular bisector is constructed, which of the following will be true?",
+      "reason": "options 0 and 1 say the same thing (\"The perpendicular bisector will divide the line segment into two parts of 2.65 cm each\" / \"1: The perpendicular bisector will divide the line segment into two parts of 2 cm each\"); options 0 and 2 say the same thing (\"The perpendicular bisector will divide the line segment into two parts of 2.65 cm each\" / \"The perpendicular bisector will divide the line segment into two parts of 2.6 cm each\"); options 0 and 3 say the same thing (\"The perpendicular bisector will divide the line segment into two parts of 2.65 cm each\" / \"The perpendicular bisector will divide the line segment into two parts of 3.3 cm each\"); options 1 and 2 say the same thing (\"1: The perpendicular bisector will divide the line segment into two parts of 2 cm each\" / \"The perpendicular bisector will divide the line segment into two parts of 2.6 cm each\"); options 1 and 3 say the same thing (\"1: The perpendicular bisector will divide the line segment into two parts of 2 cm each\" / \"The perpendicular bisector will divide the line segment into two parts of 3.3 cm each\"); options 2 and 3 say the same thing (\"The perpendicular bisector will divide the line segment into two parts of 2.6 cm each\" / \"The perpendicular bisector will divide the line segment into two parts of 3.3 cm each\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a triangle, if the point of concurrence of the angle bisectors is at the same location as the point of concurrence of the perpendicular bisectors, the triangle must be",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the construction of a triangle, which of the following is not required to determine its shape?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a triangle has two angles of 40° and 80°, and one side of 6 cm, which of the following is not needed to draw the triangle?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "In a triangle, if two angles are 60° and 40°, what is the measure of the third angle?",
+      "reason": "the critic finds option 1 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In a triangle, if two sides are 6 cm and 8 cm and the included angle is 90°, which property is used to determine if the triangle can be drawn?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A triangle is to be constructed with a base of 3 cm, a right angle at one end of the base, and a hypotenuse of 5 cm. Which step should be performed next after drawing the base?",
+      "reason": "options 0 and 3 say the same thing (\"Draw a line segment of 5 cm from one end of the base.\" / \"Draw a line segment of 5 cm from the other end of the base.\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A triangle is to be constructed with a base of 5 cm, a right angle at one end of the base, and a hypotenuse of 13 cm. Which step should be performed next after drawing the base?",
+      "reason": "options 0 and 3 say the same thing (\"Draw a line segment of 13 cm from one end of the base.\" / \"Draw a line segment of 13 cm from the other end of the base.\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is true about the angle bisector of an angle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A triangle has angles of 30°, 60°, and 90°, and the side opposite the 30° angle is 4 cm. What is the length of the hypotenuse?",
+      "reason": "figure: figure spec refused: spec.angles.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a point is equidistant from all three vertices of a triangle, where does it lie?",
+      "reason": "option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In a triangle, if the angle bisectors of all three angles meet at a point, what is the significance of that point?",
+      "reason": "option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the condition for drawing a unique triangle when given the lengths of its three sides?",
+      "reason": "options 0 and 2 say the same thing (\"The sum of any two sides is greater than the third side\" / \"The sum of any two sides is less than the third side\"); options 1 and 3 say the same thing (\"The sum of any two sides is equal to the third side\" / \"The sum of any two sides is not equal to the third side\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Two triangles have congruent angles and congruent sides. Which statement is always true about the triangles?",
+      "reason": "figure: figure spec refused: spec.angles.0.label: label key: letters, digits, _ and ', or a number"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

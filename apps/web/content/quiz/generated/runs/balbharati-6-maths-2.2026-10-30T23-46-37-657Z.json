@@ -1,0 +1,397 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T23:46:37.657Z",
+  "finishedAt": "2026-10-31T00:00:38.592Z",
+  "seconds": 841,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 2 — Lines and Angles",
+    "edition": "First Edition 2026",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2022-23]\n11. If two tangents inclined at an angle of 60ᵒ are drawn to a circle of radius 3cm, then the 1\nlength of each tangent is equal to\n3√3 (b) 3cm (c) 6cm (d) 3√3cm\n(a) 2 cm",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n22. Given:-AB II CD II EF\nTo prove:- ா஽ ஺ா = ஻ி ி஼\nConstruction:- Join BD to\nintersect EF at G.\nProof:- in ∆ ABD\nEG II AB ( EF II AB )\nா஽ ஺ா = ஻ீீ ஽ ( by BPT )___________(1)\nIn ∆𝐷𝐵𝐶\nGF II CD ( EF II CD )\n஻ி ி஼ = ஻ீீ ஽ ( by BPT )___________(2)\n𝑓𝑟𝑜𝑚 (1) & (2)\nா஽ ஺ா = ஻ி ி஼\nGiven AD=6cm, DB=9cm\nAE=8cm, EC=12cm, ∠ADE=48\nTo find:- ∠ABC=?\nProof:\nIn ∆𝐴𝐵𝐶\n஽஻ ஺஽ = = ଺ ଽ ଶ ଷ ……(1)\n஺ா ா஼ = ଵଶ ଼ = ଶ ଷ ……..(2)\nFrom (1) & (2)\n஽஻ ஺஽ = ஺ா ா஼\nDE II BC (Converse of BPT)\n∠ADE=∠ABC (Corresponding angles)\n⇒ ∠ABC=48˚\nOR",
+      "[RMO 2017 — question paper]\n1. Let AOB be a given angle less than 180° and let P be an interior point of the\nangular region determined by ZAOB. Show, with proof, how to construct,\nusing only ruler and compasses, a line segment CD passing through P such\nthat C' lies on the ray OA and D lies on the ray OB, and CP: PD =1:2.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n26. In Figure, XY and X′Y′ are two parallel tangents to a 3\ncircle with centre O and another tangent AB with\npoint of contact C intersecting XY at A and X′Y′ at B.\nProve that ∠ AOB = 90°\nFor Visually Impaired candidates:\nTwo tangents PA and PB are drawn to a circle with centre O from an external point\nP. Prove that ∠APB= 2(∠OAB)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 221578,
+      "in": 18,
+      "out": 17,
+      "rejects": 2,
+      "promptTokens": 13663,
+      "completionTokens": 2470
+    },
+    "critique": {
+      "calls": 18,
+      "ms": 536267,
+      "in": 17,
+      "out": 10,
+      "rejects": 7,
+      "promptTokens": 6959,
+      "completionTokens": 3110
+    },
+    "solver": {
+      "calls": 56,
+      "ms": 95014,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 6889,
+      "completionTokens": 462
+    },
+    "form": {
+      "calls": 2,
+      "ms": 13716,
+      "in": 10,
+      "out": 6,
+      "rejects": 4,
+      "promptTokens": 441,
+      "completionTokens": 148
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 12,
+      "ms": 7450,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 439853,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 11959,
+      "completionTokens": 5223
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a straight angle is divided into three equal parts, what type of angle is each part?",
+      "ms": {
+        "draft": 16398,
+        "critique": 32196
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the measure of a right angle?",
+      "ms": {
+        "draft": 16398,
+        "critique": 34626
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the measure of an angle that is exactly twice a right angle?",
+      "ms": {
+        "draft": 16398,
+        "critique": 43099
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct statement about a complete angle?",
+      "ms": {
+        "draft": 16398,
+        "critique": 44617,
+        "solver": 1472,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of angle mentioned in the passage?",
+      "ms": {
+        "draft": 11538,
+        "critique": 27998,
+        "solver": 3592,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the measure of a complete angle according to the passage?",
+      "ms": {
+        "draft": 11538,
+        "critique": 29262,
+        "solver": 8655,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the starting point of ray OP and ray OQ according to the passage?",
+      "ms": {
+        "draft": 11538,
+        "critique": 33190,
+        "solver": 5704,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is used to denote a point?",
+      "ms": {
+        "draft": 8993,
+        "critique": 33159
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If three points lie on the same line, what are they called?",
+      "ms": {
+        "draft": 8993,
+        "critique": 27282
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two rays originate from the same point, what do they form?",
+      "ms": {
+        "draft": 8993,
+        "critique": 22757
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following represents a ray?",
+      "ms": {
+        "draft": 8993,
+        "critique": 23537
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of a line that is written using any two points on the line?",
+      "ms": {
+        "draft": 8993,
+        "critique": 26854,
+        "solver": 36117,
+        "form": 3684,
+        "translation": 32488
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a reflex angle?",
+      "ms": {
+        "draft": 16398,
+        "critique": 31928,
+        "solver": 8131,
+        "form": 0,
+        "translation": 93811
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a straight angle is divided into three equal parts, what type of angle is each part?",
+      "ms": {
+        "draft": 11538,
+        "critique": 28914,
+        "solver": 6086,
+        "form": 0,
+        "translation": 96892
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a paper fan is closed, what type of angle is formed between the two edges of the fan?",
+      "ms": {
+        "draft": 11538,
+        "critique": 35425,
+        "solver": 5963,
+        "form": 10032,
+        "translation": 49836
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What type of angle is formed between the hour hand and the minute hand of a clock when it is 04:00?",
+      "ms": {
+        "draft": 11538,
+        "critique": 31344,
+        "solver": 3887,
+        "form": 0,
+        "translation": 46474
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If an angle is formed by rotating a ray from one position to another, and the rotation is more than 180° but less than 360°, what type of angle is it?",
+      "ms": {
+        "draft": 16398,
+        "critique": 37002,
+        "solver": 2191,
+        "form": 0,
+        "translation": 116667
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a straight angle is divided into three equal parts, what type of angle is each part?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the measure of a right angle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "What is the measure of an angle that is exactly twice a right angle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct statement about a complete angle?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the shortest path between two points?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a type of angle mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the measure of a complete angle according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the starting point of ray OP and ray OQ according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is used to denote a point?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If three points lie on the same line, what are they called?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If two rays originate from the same point, what do they form?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following represents a ray?",
+      "reason": "option 3 is not wrong"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

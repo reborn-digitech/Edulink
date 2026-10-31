@@ -1,0 +1,846 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T12:33:47.073Z",
+  "finishedAt": "2026-10-31T12:43:35.674Z",
+  "seconds": 589,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "gegp1",
+    "document": "ncert/7/mathematics/gegp101.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — Large Numbers Around Us",
+    "edition": "Reprint 2026-27",
+    "chunks": 23,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 22 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n9. Draw neat and clean figures wherever required. Take 𝜋 = 22 7 wherever required if not stated.",
+      "[PRMO 2018 — question paper]\n19. Let N = 6 + 66 + 666 + · · · + 666 · · · 66, where there are hundred 6’s in the last term in the\nsum. How many times does the digit 7 occur in the number N?"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 288396,
+      "in": 45,
+      "out": 42,
+      "rejects": 3,
+      "promptTokens": 51676,
+      "completionTokens": 12264
+    },
+    "critique": {
+      "calls": 54,
+      "ms": 455196,
+      "in": 42,
+      "out": 35,
+      "rejects": 7,
+      "promptTokens": 26893,
+      "completionTokens": 9946
+    },
+    "solver": {
+      "calls": 258,
+      "ms": 173248,
+      "in": 35,
+      "out": 18,
+      "rejects": 17,
+      "promptTokens": 54157,
+      "completionTokens": 2867
+    },
+    "form": {
+      "calls": 5,
+      "ms": 19188,
+      "in": 18,
+      "out": 7,
+      "rejects": 11,
+      "promptTokens": 1317,
+      "completionTokens": 457
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 37,
+      "ms": 7980,
+      "in": 7,
+      "out": 4,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 174490,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 9902,
+      "completionTokens": 4865
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 0,
+    "4": 0,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a person eats 3 varieties of rice every day, how many days would it take them to eat 1 lakh varieties?",
+      "ms": {
+        "draft": 5253,
+        "critique": 7923
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, how many days would a person live in 100 years if they ignore leap years?",
+      "ms": {
+        "draft": 5253,
+        "critique": 6496,
+        "solver": 1454,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the population of Chintamani in 2024 is 1,06,000, how many more people are needed to reach 2 lakhs?",
+      "ms": {
+        "draft": 5253,
+        "critique": 9039
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, how many more people are there in Chintamani in 2024 compared to 2011?",
+      "ms": {
+        "draft": 5253,
+        "critique": 10119,
+        "solver": 1764,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the population of Chintamani in 2024 is 1,06,000, and 10,000 more people move in, how many times does the number 1 appear in the new population count?",
+      "ms": {
+        "draft": 5253,
+        "critique": 9603,
+        "solver": 1614
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many button clicks are needed to make the number 5072 using the Systematic Sippy calculator, which has buttons +1, +10, +100, +1000, +10000, +100000?",
+      "ms": {
+        "draft": 6450,
+        "critique": 10176
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is the correct way to write the number 9876501234 in Indian place value notation?",
+      "ms": {
+        "draft": 6450,
+        "critique": 10271,
+        "solver": 18652
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Approximately, by how much has the population of Pune increased between 2001 and 2011?",
+      "ms": {
+        "draft": 4999,
+        "critique": 6351,
+        "solver": 2823
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Roxie says that the product of two 2-digit numbers can only be a 3- or a 4-digit number. Is she correct?",
+      "ms": {
+        "draft": 4999,
+        "critique": 11632,
+        "solver": 1650
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the exact value of 14,63,128 – 4,90,020?",
+      "ms": {
+        "draft": 4999,
+        "critique": 7489,
+        "solver": 20217,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the exact value of 4,63,128 + 4,19,682?",
+      "ms": {
+        "draft": 4999,
+        "critique": 7844,
+        "solver": 22621
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a 3-digit number is multiplied by another 3-digit number, can the product be a 4-digit number?",
+      "ms": {
+        "draft": 4999,
+        "critique": 7573,
+        "solver": 1608
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total number of people that can be accommodated in 1 lakh buses if each bus can carry 50 people?",
+      "ms": {
+        "draft": 4647,
+        "critique": 10085,
+        "solver": 2129
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the weight of the entire population of Mumbai, if the population is more than 1 crore 24 lakhs?",
+      "ms": {
+        "draft": 4647,
+        "critique": 6414,
+        "solver": 2055,
+        "form": 3215
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "How many sticks are required to make the number 5108 using the toothpick digit method?",
+      "ms": {
+        "draft": 8261,
+        "critique": 10973
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a single sheet of paper weighs 5 grams, what is the total weight of one lakh sheets of paper?",
+      "ms": {
+        "draft": 4647,
+        "critique": 8837,
+        "solver": 1120,
+        "form": 5443
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the maximum number that can be made using exactly 24 sticks or lines, following the toothpick digit method?",
+      "ms": {
+        "draft": 8261,
+        "critique": 8320,
+        "solver": 1801
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A number is formed by writing the digits of a number in the Indian system. How many digits does the number have if it is expressed as 3,00,00,000?",
+      "ms": {
+        "draft": 11599,
+        "critique": 6790
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the number 10,30,285 written in words?",
+      "ms": {
+        "draft": 5286,
+        "critique": 8589
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the 1000th digit when writing all numbers from 1 onwards?",
+      "ms": {
+        "draft": 5286,
+        "critique": 10749,
+        "solver": 1654
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you count 1 coin every second, how many coins can you count in a day?",
+      "ms": {
+        "draft": 5286,
+        "critique": 7078,
+        "solver": 17332,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a calculator has only '+10,000' and '+100' buttons, how many button clicks are required to reach 65,30,000?",
+      "ms": {
+        "draft": 5286,
+        "critique": 9340,
+        "solver": 1569
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the smallest number of button clicks required to form the number 40629?",
+      "ms": {
+        "draft": 3942,
+        "critique": 9837
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the maximum number of letters in the name of a 7-digit number?",
+      "ms": {
+        "draft": 5286,
+        "critique": 8830,
+        "solver": 2022
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the connection between a number and the smallest number of button clicks?",
+      "ms": {
+        "draft": 3942,
+        "critique": 7704,
+        "solver": 1521,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a number has digits that add up to 28, what is the smallest number of button clicks required to form the number?",
+      "ms": {
+        "draft": 3942,
+        "critique": 8046,
+        "solver": 2517
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the approximate population increase of Pune between 2001 and 2011 according to the passage?",
+      "ms": {
+        "draft": 3942,
+        "critique": 9005,
+        "solver": 1664
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many sticks are required to make the number 5108 using the toothpick digit method?",
+      "ms": {
+        "draft": 6606,
+        "critique": 9791,
+        "solver": 2029
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the difference between the populations of Chintamani in 2024 and 2011, according to the passage?",
+      "ms": {
+        "draft": 6606,
+        "critique": 7172,
+        "solver": 1408,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the correct number name of 4050678 in the American system?",
+      "ms": {
+        "draft": 3942,
+        "critique": 7555,
+        "solver": 19815,
+        "form": 3091
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct way to write 'Three lakh six hundred' in numerical form?",
+      "ms": {
+        "draft": 6606,
+        "critique": 10104,
+        "solver": 1801,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number is made using exactly 24 sticks in the toothpick digit method, what is the smallest possible number that can be formed?",
+      "ms": {
+        "draft": 6606,
+        "critique": 7722,
+        "solver": 15732
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a number is made using exactly 24 sticks in the toothpick digit method, what is the largest possible number that can be formed?",
+      "ms": {
+        "draft": 6606,
+        "critique": 10062,
+        "solver": 23576
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 1 lakh buses can carry 50 lakh people, how many people can 100 buses carry?",
+      "ms": {
+        "draft": 23060,
+        "critique": 10213,
+        "solver": 11905,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Roxie says that the product of two 2-digit numbers can only be a 3- or a 4-digit number. Is she correct?",
+      "ms": {
+        "draft": 6968,
+        "critique": 9327,
+        "solver": 10952
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the number name of 1,00,000?",
+      "ms": {
+        "draft": 5253,
+        "critique": 6497,
+        "solver": 14516,
+        "form": 5802
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many zeroes does the number 1 lakh have?",
+      "ms": {
+        "draft": 6450,
+        "critique": 9327,
+        "solver": 1903,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the smallest even 10-digit number formed using all digits from 0 – 9 exactly once?",
+      "ms": {
+        "draft": 5286,
+        "critique": 9076,
+        "solver": 14320,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many days would it take for an albatross to cover 12,000 km if it can cover 900–1000 km in a day?",
+      "ms": {
+        "draft": 4647,
+        "critique": 9387,
+        "solver": 20182,
+        "form": 1638,
+        "translation": 27058
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the Indian name for the number 1,000,000?",
+      "ms": {
+        "draft": 6450,
+        "critique": 12399,
+        "solver": 1729,
+        "form": 0,
+        "translation": 44831
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a school has 732 people and the principal orders 750 sweets, what is the reason for this action?",
+      "ms": {
+        "draft": 6450,
+        "critique": 8002,
+        "solver": 2490,
+        "form": 0,
+        "translation": 56388
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the total number of zeroes in 1 crore?",
+      "ms": {
+        "draft": 6450,
+        "critique": 10116,
+        "solver": 2856,
+        "form": 0,
+        "translation": 40458
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "By what number should we multiply Patna’s population to get a number close to that of Mumbai?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person eats 3 varieties of rice every day, how many days would it take them to eat 1 lakh varieties?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, how many days would a person live in 100 years if they ignore leap years?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the population of Chintamani in 2024 is 1,06,000, how many more people are needed to reach 2 lakhs?",
+      "reason": "the critic finds option 0 correct, the key is 1"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, how many more people are there in Chintamani in 2024 compared to 2011?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; ARITHMETIC MISMATCH — checkExpr \"106000-75000\" = 31000, but the key says 16000"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the population of Chintamani in 2024 is 1,06,000, and 10,000 more people move in, how many times does the number 1 appear in the new population count?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "How many button clicks are needed to make the number 5072 using the Systematic Sippy calculator, which has buttons +1, +10, +100, +1000, +10000, +100000?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is the correct way to write the number 9876501234 in Indian place value notation?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Approximately, by how much has the population of Pune increased between 2001 and 2011?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Roxie says that the product of two 2-digit numbers can only be a 3- or a 4-digit number. Is she correct?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the exact value of 14,63,128 – 4,90,020?",
+      "reason": "options 0 and 3 are the same (\"9,73,108\"); options 0 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the exact value of 4,63,128 + 4,19,682?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a 3-digit number is multiplied by another 3-digit number, can the product be a 4-digit number?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the total number of people that can be accommodated in 1 lakh buses if each bus can carry 50 people?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the weight of the entire population of Mumbai, if the population is more than 1 crore 24 lakhs?",
+      "reason": "options 0 and 3 say the same thing (\"1,24,00,000\" / \"1,24,00,000,000\"); options 0 and 2 are the same number"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "How many sticks are required to make the number 5108 using the toothpick digit method?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If a single sheet of paper weighs 5 grams, what is the total weight of one lakh sheets of paper?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"100000*5\" = 500000, but the key says 500"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What is the maximum number that can be made using exactly 24 sticks or lines, following the toothpick digit method?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A number is formed by writing the digits of a number in the Indian system. How many digits does the number have if it is expressed as 3,00,00,000?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is the correct number of zeros in a thousand lakh?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "If a newborn blue whale weighs 2,700 kg, how many such whales would weigh 1 crore kg?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the number 10,30,285 written in words?",
+      "reason": "the critic finds option 1 correct, the key is 0"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the 1000th digit when writing all numbers from 1 onwards?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If you count 1 coin every second, how many coins can you count in a day?",
+      "reason": "options 0 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a calculator has only '+10,000' and '+100' buttons, how many button clicks are required to reach 65,30,000?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is the smallest number of button clicks required to form the number 40629?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What is the maximum number of letters in the name of a 7-digit number?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the connection between a number and the smallest number of button clicks?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a number has digits that add up to 28, what is the smallest number of button clicks required to form the number?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What is the approximate population increase of Pune between 2001 and 2011 according to the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How many sticks are required to make the number 5108 using the toothpick digit method?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the difference between the populations of Chintamani in 2024 and 2011, according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the correct number name of 4050678 in the American system?",
+      "reason": "options 2 and 3 are the same (\"Four million five hundred six thousand seven hundred eighty\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the correct way to write 'Three lakh six hundred' in numerical form?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"300000+600\" = 300600, but the key says 30600"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a number is made using exactly 24 sticks in the toothpick digit method, what is the smallest possible number that can be formed?",
+      "reason": "after redraft: the solver picked option 3 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a number is made using exactly 24 sticks in the toothpick digit method, what is the largest possible number that can be formed?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If 1 lakh buses can carry 50 lakh people, how many people can 100 buses carry?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"100*50\" = 5000, but the key says 500000"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Roxie says that the product of two 2-digit numbers can only be a 3- or a 4-digit number. Is she correct?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the number name of 1,00,000?",
+      "reason": "near-duplicate of served question cmvfv5j4k00wtgpfh0fyd7hnr (cosine 0.934 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "How many zeroes does the number 1 lakh have?",
+      "reason": "near-duplicate of served question cmvqd5vh00au5gp21ytr0hrm8 (cosine 0.949 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the smallest even 10-digit number formed using all digits from 0 – 9 exactly once?",
+      "reason": "near-duplicate of served question cmvfv5j4t00xhgpfhbcwsyi0v (cosine 0.947 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

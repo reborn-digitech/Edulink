@@ -1,0 +1,227 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T12:13:56.869Z",
+  "finishedAt": "2026-10-31T12:18:43.345Z",
+  "seconds": 286,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी गणित इंग्रजी",
+    "bookCode": "703020004",
+    "document": "balbharati/7/mathematics/703020004.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 11 — Circle",
+    "edition": "2026 edition",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated.\n______________________________________________________________________________________________________________",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n9. Draw neat and clean figures wherever required. Take 𝜋 = 22 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not\nstated."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 1,
+      "ms": 32501,
+      "in": 6,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 4510,
+      "completionTokens": 1400
+    },
+    "critique": {
+      "calls": 9,
+      "ms": 81899,
+      "in": 6,
+      "out": 5,
+      "rejects": 1,
+      "promptTokens": 4009,
+      "completionTokens": 1688
+    },
+    "solver": {
+      "calls": 49,
+      "ms": 49932,
+      "in": 5,
+      "out": 2,
+      "rejects": 3,
+      "promptTokens": 13401,
+      "completionTokens": 613
+    },
+    "form": {
+      "calls": 1,
+      "ms": 6532,
+      "in": 2,
+      "out": 1,
+      "rejects": 1,
+      "promptTokens": 263,
+      "completionTokens": 88
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 5,
+      "ms": 1173,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 26410,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2274,
+      "completionTokens": 1118
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the constant ratio of the circumference of a circle to its diameter?",
+      "ms": {
+        "draft": 5417,
+        "critique": 8265
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If arc AXB and arc AYB are corresponding arcs and m(arc AXB) = 120°, what is m(arc AYB)?",
+      "ms": {
+        "draft": 5417,
+        "critique": 11169,
+        "solver": 1959
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the circumference of a circle is 198 cm, what is its diameter?",
+      "ms": {
+        "draft": 5417,
+        "critique": 11182,
+        "solver": 21990
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A wheel of a bus has a diameter of 0.7 m. How many rotations will the wheel make while traveling 22 km? (Take π = 22/7)",
+      "ms": {
+        "draft": 5417,
+        "critique": 9530,
+        "solver": 21202
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the circumference of a circle is 62.80 cm and π is taken as 3.14, what is the radius of the circle?",
+      "ms": {
+        "draft": 5417,
+        "critique": 9948,
+        "solver": 19526,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the radius of a circle is 35 cm, what is its circumference?",
+      "ms": {
+        "draft": 5417,
+        "critique": 9610,
+        "solver": 2097,
+        "form": 7374,
+        "translation": 21774
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"Which of the following is a correct statement about the circu"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the constant ratio of the circumference of a circle to its diameter?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If arc AXB and arc AYB are corresponding arcs and m(arc AXB) = 120°, what is m(arc AYB)?",
+      "reason": "the solver picked option 1 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the circumference of a circle is 198 cm, what is its diameter?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A wheel of a bus has a diameter of 0.7 m. How many rotations will the wheel make while traveling 22 km? (Take π = 22/7)",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the circumference of a circle is 62.80 cm and π is taken as 3.14, what is the radius of the circle?",
+      "reason": "options 0 and 2 are the same (\"10 cm\"); options are written to different precisions (0 and 2 decimals); options 0 and 2 are the same number"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

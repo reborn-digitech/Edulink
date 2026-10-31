@@ -21,49 +21,49 @@
   "board": "BALBHARATI",
   "book": "६ वी गणित इंग्रजी",
   "edition": "First Edition 2026",
-  "generatedAt": "2026-10-30T14:40:44.409Z",
+  "generatedAt": "2026-10-31T00:29:04.382Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 2,
-      "stem": "What is a decimal fraction?",
+      "stem": "What is the sum of the measures of all the angles of a pentagon?",
       "choices": [
-        "A fraction with a denominator of 10, 100, 1000, etc.",
-        "A fraction with a numerator greater than the denominator",
-        "A fraction with a denominator of 1",
-        "A fraction with a numerator and denominator that are both zero"
+        "540°",
+        "720°",
+        "360°",
+        "180°"
       ],
       "answerIndex": 0,
-      "solution": "A decimal fraction is a fraction with a denominator of 10, 100, 1000, etc., because these denominators correspond to the base-10 system used in decimal notation. A fraction with a numerator greater than the denominator is an improper fraction, not specifically a decimal fraction. A fraction with a denominator of 1 is a whole number, not a decimal fraction. A fraction with both numerator and denominator as zero is undefined and not a valid fraction.",
+      "solution": "The sum of the measures of all the angles of a pentagon can be calculated by the formula (n-2) × 180°, where n is the number of sides. For a pentagon, n = 5. So, (5-2) × 180° = 3 × 180° = 540°. The other options are incorrect because they do not follow the formula correctly.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक दशमलव भिन्न क्या है?",
+          "stem": "एक पंचभुज के सभी कोणों के मापों का योग क्या है?",
           "choices": [
-            "10, 100, 1000 आदि के हर वाला भिन्न",
-            "अंश वाला भिन्न जिसका हर अंश से बड़ा होता है",
-            "1 के हर वाला भिन्न",
-            "अंश और हर दोनों शून्य होते हैं वाला भिन्न"
+            "540°",
+            "720°",
+            "360°",
+            "180°"
           ],
-          "solution": "एक दशमलव भिन्न वह भिन्न होती है जिसका हर 10, 100, 1000 आदि होता है, क्योंकि इन हरों का अर्थ दशमलव प्रणाली में आधार-10 के संगत होता है। अंश वाला भिन्न जिसका हर अंश से बड़ा होता है, असंयुक्त भिन्न होता है, जो विशेष रूप से दशमलव भिन्न नहीं होता है। 1 के हर वाला भिन्न पूर्ण संख्या होती है, जो दशमलव भिन्न नहीं होती है। अंश और हर दोनों शून्य होते हैं वाला भिन्न अपरिभाषित होता है और वैध भिन्न नहीं होता है।",
+          "solution": "एक पंचभुज के सभी कोणों के मापों का योग सूत्र (n-2) × 180° द्वारा गणना की जा सकती है, जहां n भुजाओं की संख्या है। पंचभुज के लिए, n = 5। इसलिए, (5-2) × 180° = 3 × 180° = 540°। अन्य विकल्प गलत हैं क्योंकि वे सूत्र का सही तरीके से अनुसरण नहीं करते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. Technical terms like 'भिन्न' (fraction), 'अंश' (numerator), 'हर' (denominator) are standard in Hindi mathematics textbooks.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "अशी अपूर्णांक काय आहे?",
+          "stem": "एका पेंटागॉनच्या सर्व कोनांच्या मापांची बेरीज किती आहे?",
           "choices": [
-            "10, 100, 1000, इत्यादी असलेला छेद असलेला अपूर्णांक",
-            "छेदापेक्षा मोठा अंश असलेला अपूर्णांक",
-            "1 असलेला छेद असलेला अपूर्णांक",
-            "अंश आणि छेद दोन्ही शून्य असलेला अपूर्णांक"
+            "540°",
+            "720°",
+            "360°",
+            "180°"
           ],
-          "solution": "अपूर्णांकाचा छेद 10, 100, 1000, इत्यादी असल्यास तो दशांश अपूर्णांक असतो, कारण या छेदांचा उपयोग दशांश नोटेशनमध्ये बेस-10 प्रणालीसाठी केला जातो. अंश छेदापेक्षा मोठा असलेला अपूर्णांक अयोग्य अपूर्णांक असतो, जो विशिष्टपणे दशांश अपूर्णांक नसतो. छेद 1 असलेला अपूर्णांक पूर्ण संख्या असते, जो दशांश अपूर्णांक नसतो. अंश आणि छेद दोन्ही शून्य असलेला अपूर्णांक अअस्तित्वात नसलेला आहे आणि वैध अपूर्णांक नाही.",
+          "solution": "एका पेंटागॉनच्या सर्व कोनांच्या मापांची बेरीज सूत्र (n-2) × 180° वापरून काढता येते, जेथे n बाजूंची संख्या आहे. पेंटागॉनसाठी, n = 5. म्हणून, (5-2) × 180° = 3 × 180° = 540°. इतर विकल्प चूक आहेत कारण ते सूत्राच्या योग्य पद्धतीने अनुसरण करत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for mathematical concepts.",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains option (1) and the distractors are still incorrect.",
           "flag": null
         }
       },
@@ -73,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "confuses the definition of a decimal fraction",
-        "mistakenly defines improper fractions",
-        "incorrectly refers to a unit fraction"
+        "Confuses the formula for the sum of angles in a polygon",
+        "Adds 180° for each side instead of subtracting 2",
+        "Assumes the sum is the same as for a triangle"
       ],
       "solverAnswers": [
         0,
@@ -85,11 +85,11 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is clearly defined as a fraction with a denominator of 10, 100, 1000, etc. The other options represent common misconceptions or incorrect definitions.",
+      "critique": "The solution is correct and matches the formula for the sum of interior angles of a polygon. The reasoning for the distractors is valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 54,
+          "ordinal": 59,
           "pageStart": 89,
           "pageEnd": 91,
           "headingPath": [
@@ -98,56 +98,314 @@
         },
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 55,
+          "ordinal": 60,
           "pageStart": 91,
-          "pageEnd": 93,
+          "pageEnd": 91,
           "headingPath": [
             "10. Magical Mathematics-1"
           ]
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T14:40:44.409Z",
+      "generatedAt": "2026-10-31T00:29:04.382Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 2,
-      "stem": "How are decimal fractions compared when the integer parts are equal?",
+      "stem": "What is the sum of the measures of all the angles of a triangle?",
       "choices": [
-        "By comparing the digits in the first decimal place",
-        "By comparing the digits in the second decimal place",
-        "By comparing the digits in the third decimal place",
-        "By comparing the digits in the fourth decimal place"
+        "120°",
+        "180°",
+        "270°",
+        "360°"
       ],
-      "answerIndex": 0,
-      "solution": "When the integer parts of decimal fractions are equal, the digits in the first decimal place are compared to determine which fraction is larger. This is because the first decimal place represents the highest value after the decimal point. Comparing later decimal places without first checking the first one would lead to incorrect conclusions.",
+      "answerIndex": 1,
+      "solution": "The sum of the measures of all the angles of a triangle is always 180°, which is a fundamental property of triangles in Euclidean geometry. 120° is too small, as it does not account for all three angles. 270° and 360° are too large, as they exceed the total angle sum for any triangle.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "दशमलव भिन्नों की तुलना कैसे की जाती है जब पूर्णांक भाग बराबर होते हैं?",
+          "stem": "एक त्रिभुज के सभी कोणों के मापों का योग क्या है?",
           "choices": [
-            "पहले दशमलव स्थान के अंकों की तुलना द्वारा",
-            "दूसरे दशमलव स्थान के अंकों की तुलना द्वारा",
-            "तीसरे दशमलव स्थान के अंकों की तुलना द्वारा",
-            "चौथे दशमलव स्थान के अंकों की तुलना द्वारा"
+            "120°",
+            "180°",
+            "270°",
+            "360°"
           ],
-          "solution": "जब दशमलव भिन्नों के पूर्णांक भाग बराबर होते हैं तो पहले दशमलव स्थान के अंकों की तुलना द्वारा यह निर्धारित किया जाता है कि कौन-सी भिन्न बड़ी है। इसका कारण यह है कि पहला दशमलव स्थान दशमलव बिंदु के बाद सबसे अधिक मूल्य प्रतिनिधित्व करता है। पहले दशमलव स्थान की जांच किए बिना बाद के दशमलव स्थानों की तुलना करना गलत निष्कर्ष पर ले जाएगा।",
+          "solution": "एक त्रिभुज के सभी कोणों के मापों का योग हमेशा 180° होता है, जो यूक्लिडियन ज्यामिति में त्रिभुजों का एक मूलभूत गुण है। 120° बहुत कम है, क्योंकि यह सभी तीन कोणों को ध्यान में नहीं रखता है। 270° और 360° बहुत अधिक हैं, क्योंकि ये किसी भी त्रिभुज के कुल कोण योग के अतिरिक्त हैं।",
           "imageAlt": null,
-          "critique": "Translation accurately preserves meaning, technical terms, and structure of the original question.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "दशांश अपूर्णांक कशा तुलना केल्या जातात जेव्हा पूर्णांक भाग समान असतात?",
+          "stem": "त्रिकोणाच्या सर्व कोनांच्या मापांची बेरीज किती आहे?",
           "choices": [
-            "पहिल्या दशांश स्थानातील अंकांची तुलना करून",
-            "दुसऱ्या दशांश स्थानातील अंकांची तुलना करून",
-            "तिसऱ्या दशांश स्थानातील अंकांची तुलना करून",
-            "चौथ्या दशांश स्थानातील अंकांची तुलना करून"
+            "120°",
+            "180°",
+            "270°",
+            "360°"
           ],
-          "solution": "जेव्हा दशांश अपूर्णांकांचे पूर्णांक भाग समान असतात तेव्हा तुलना करण्यासाठी पहिल्या दशांश स्थानातील अंकांची तुलना केली जाते. हे कारण असे आहे की पहिला दशांश स्थान दशांश बिंदूनंतर सर्वात मोठा मूल्य दर्शवते. पहिल्या दशांश स्थानाची तपासणी न करता नंतरच्या दशांश स्थानांची तुलना केल्यास चुकीचे निष्कर्ष मिळतात.",
+          "solution": "त्रिकोणाच्या सर्व कोनांच्या मापांची बेरीज नेहमी 180° असते, हे युक्लिडियन ज्यामितीतील त्रिकोणांचे एक मूलभूत गुणधर्म आहे. 120° खूप लहान आहे, कारण ते सर्व तीन कोनांचा विचार करत नाही. 270° आणि 360° खूप मोठे आहेत, कारण ते कोणत्याही त्रिकोणाच्या एकूण कोनांच्या बेरजेच्या जास्तीत जास्त असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "uses the angle measure of a quadrilateral",
+        null,
+        "uses the angle measure of a pentagon",
+        "uses the angle measure of a full circle"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 180°, which is a well-established geometric fact. The author's reasoning for the distractors is based on common misconceptions, such as confusing triangle angles with those of quadrilaterals, pentagons, and full circles.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 59,
+          "pageStart": 89,
+          "pageEnd": 91,
+          "headingPath": [
+            "10. Magical Mathematics-1"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 60,
+          "pageStart": 91,
+          "pageEnd": 91,
+          "headingPath": [
+            "10. Magical Mathematics-1"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T00:29:04.382Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a five-pointed star has a regular pentagon inside it, and one angle of the star is 36°, what is the measure of each angle in the pentagon?",
+      "choices": [
+        "108°",
+        "72°",
+        "120°",
+        "90°"
+      ],
+      "answerIndex": 0,
+      "solution": "In a regular pentagon, each interior angle is 108°. This is calculated using the formula (n-2) × 180° / n, where n = 5. For a pentagon, (5-2) × 180° / 5 = 540° / 5 = 108°. The other options do not match the correct calculation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक पांच कोने वाला तारा उसके अंदर एक नियमित पंचभुज हो, और तारे का एक कोण 36° हो, तो पंचभुज के प्रत्येक कोण का माप क्या होगा?",
+          "choices": [
+            "108°",
+            "72°",
+            "120°",
+            "90°"
+          ],
+          "solution": "एक नियमित पंचभुज में, प्रत्येक आंतरिक कोण 108° होता है। इसकी गणना सूत्र (n-2) × 180° / n के प्रयोग से की जाती है, जहां n = 5। पंचभुज के लिए, (5-2) × 180° / 5 = 540° / 5 = 108°। अन्य विकल्प सही गणना के अनुरूप नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi technical terms for geometry.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक पाच-कोनी तारा तिच्या आत नियमित पंचभुज असेल आणि ताराचा एक कोन 36° असेल, तर पंचभुजाच्या प्रत्येक कोनाचे माप किती असेल?",
+          "choices": [
+            "108°",
+            "72°",
+            "120°",
+            "90°"
+          ],
+          "solution": "नियमित पंचभुजात प्रत्येक आंतरिक कोन 108° असतो. हे सूत्र (n-2) × 180° / n वापरून गणित केले जाते, जेथे n = 5. पंचभुजासाठी, (5-2) × 180° / 5 = 540° / 5 = 108°. इतर विकल्प योग्य गणनेशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi technical terms for geometric shapes and angles.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Uses the angle of the star instead of the pentagon",
+        "Assumes the pentagon is a different type of polygon",
+        "Calculates the exterior angle instead of the interior angle"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is somewhat ambiguous. The 36° angle mentioned is likely the tip of the star's point, not an interior angle of the pentagon. The correct answer is 108°, which is the interior angle of a regular pentagon. The author's solution is correct, but the question could be clearer about which angle is being referred to.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 59,
+          "pageStart": 89,
+          "pageEnd": 91,
+          "headingPath": [
+            "10. Magical Mathematics-1"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 60,
+          "pageStart": 91,
+          "pageEnd": 91,
+          "headingPath": [
+            "10. Magical Mathematics-1"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T00:29:04.382Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "If a star has six points and a regular hexagon is formed inside it, what will be the measure of each angle in the hexagon?",
+      "choices": [
+        "120°",
+        "90°",
+        "60°",
+        "150°"
+      ],
+      "answerIndex": 0,
+      "solution": "In a regular hexagon, each interior angle is 120°. This is calculated using the formula (n-2) × 180° / n, where n = 6. For a hexagon, (6-2) × 180° / 6 = 720° / 6 = 120°. The other options do not match the correct calculation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक तारा में छह कोने हैं और इसके अंदर एक नियमित षट्भुज बनाया जाता है, तो षट्भुज के प्रत्येक कोण का माप क्या होगा?",
+          "choices": [
+            "120°",
+            "90°",
+            "60°",
+            "150°"
+          ],
+          "solution": "एक नियमित षट्भुज में प्रत्येक आंतरिक कोण 120° होता है। इसे सूत्र (n-2) × 180° / n, जहां n = 6 का उपयोग करके गणना की जाती है। षट्भुज के लिए, (6-2) × 180° / 6 = 720° / 6 = 120°। अन्य विकल्प सही गणना के अनुरूप नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका ताराच्या छह टोका असून त्यामध्ये एक सामान्य षट्कोन तयार होतो, तर षट्कोनाच्या प्रत्येक कोनाचे माप किती असेल?",
+          "choices": [
+            "120°",
+            "90°",
+            "60°",
+            "150°"
+          ],
+          "solution": "सामान्य षट्कोनामध्ये प्रत्येक आंतरिक कोन 120° असतो. हे सूत्र (n-2) × 180° / n वापरून गणले जाते, जेथे n = 6. षट्कोनासाठी, (6-2) × 180° / 6 = 720° / 6 = 120°. इतर विकल्प योग्य गणनेशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the formula for the sum of angles in a polygon",
+        "Assumes the hexagon is a different type of polygon",
+        "Calculates the exterior angle instead of the interior angle"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly calculates the interior angle of a regular hexagon using the standard formula. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 59,
+          "pageStart": 89,
+          "pageEnd": 91,
+          "headingPath": [
+            "10. Magical Mathematics-1"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 60,
+          "pageStart": 91,
+          "pageEnd": 91,
+          "headingPath": [
+            "10. Magical Mathematics-1"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T00:29:04.382Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a star has 10 points and a regular decagon is formed inside it, what will be the measure of each angle in the decagon?",
+      "choices": [
+        "144°",
+        "120°",
+        "108°",
+        "150°"
+      ],
+      "answerIndex": 0,
+      "solution": "In a regular decagon, each interior angle is 144°. This is calculated using the formula (n-2) × 180° / n, where n = 10. For a decagon, (10-2) × 180° / 10 = 1440° / 10 = 144°. The other options do not match the correct calculation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक तारा में 10 बिंदु हैं और इसके अंदर एक नियमित दशभुज बनाया जाता है, तो दशभुज में प्रत्येक कोण का माप क्या होगा?",
+          "choices": [
+            "144°",
+            "120°",
+            "108°",
+            "150°"
+          ],
+          "solution": "एक नियमित दशभुज में प्रत्येक आंतरिक कोण 144° होता है। इसे सूत्र (n-2) × 180° / n, जहां n = 10 के उपयोग से गणना की जाती है। दशभुज के लिए, (10-2) × 180° / 10 = 1440° / 10 = 144°। अन्य विकल्प सही गणना के अनुरूप नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका तारामध्ये 10 बिंदू असतील आणि त्यामध्ये एक सामान्य दशभुज तयार होत असेल, तर दशभुजातील प्रत्येक कोनाचे माप किती असेल?",
+          "choices": [
+            "144°",
+            "120°",
+            "108°",
+            "150°"
+          ],
+          "solution": "सामान्य दशभुजामध्ये प्रत्येक आंतरिक कोन 144° असतो. हे सूत्र (n-2) × 180° / n वापरून गणले जाते, जेथे n = 10. दशभुजासाठी, (10-2) × 180° / 10 = 1440° / 10 = 144°. इतर विकल्प योग्य गणनेशी जुळत नाहीत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -159,9 +417,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "fails to understand the correct order of comparison",
-        "assumes the second decimal place is the first to compare",
-        "incorrectly assumes the third decimal place is the first to compare"
+        "Confuses the formula for the sum of angles in a polygon",
+        "Assumes the decagon is a different type of polygon",
+        "Calculates the exterior angle instead of the interior angle"
       ],
       "solverAnswers": [
         0,
@@ -170,12 +428,12 @@
         0,
         0
       ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0, as decimal fractions with equal integer parts are compared by their first decimal digit. The author's reasoning is sound and aligns with standard mathematical practice.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly applies the formula for the interior angle of a regular polygon. The correct answer is 144°, and the author's reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 54,
+          "ordinal": 59,
           "pageStart": 89,
           "pageEnd": 91,
           "headingPath": [
@@ -184,58 +442,58 @@
         },
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 55,
+          "ordinal": 60,
           "pageStart": 91,
-          "pageEnd": 93,
+          "pageEnd": 91,
           "headingPath": [
             "10. Magical Mathematics-1"
           ]
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T14:40:44.409Z",
+      "generatedAt": "2026-10-31T00:29:04.382Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "A decimal fraction is written as 0.007. What is the place value of the digit 7?",
+      "stem": "In a 6×10 grid, 12 pentominoes are used to complete the rectangle. What will be the number of pentominoes required to complete a 5×12 grid?",
       "choices": [
-        "Tenths",
-        "Hundredths",
-        "Thousandths",
-        "Ten thousandths"
+        "10",
+        "12",
+        "15",
+        "20"
       ],
-      "answerIndex": 2,
-      "solution": "In the decimal fraction 0.007, the digit 7 is in the thousandths place. The correct option states that the place value of the digit 7 is thousandths. The other options are incorrect because they describe the place values of the digits in different positions, not the position of the digit 7 in 0.007.",
-      "checkExpr": null,
+      "answerIndex": 1,
+      "solution": "Each pentomino covers 5 squares. A 6×10 grid has 60 squares, and 60 ÷ 5 = 12 pentominoes. A 5×12 grid also has 60 squares, so 60 ÷ 5 = 12 pentominoes. The option '10' is incorrect because it assumes a different number of squares. '15' and '20' are incorrect as they suggest more pentominoes than needed.",
+      "checkExpr": "60/5",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक दशमलव भिन्न 0.007 लिखा गया है। अंक 7 का स्थानीय मान क्या है?",
+          "stem": "6×10 ग्रिड में आयत को पूरा करने के लिए 12 पेंटोमिनो का उपयोग किया जाता है। 5×12 ग्रिड को पूरा करने के लिए आवश्यक पेंटोमिनो की संख्या क्या होगी?",
           "choices": [
-            "दसवें",
-            "शतवें",
-            "हजारवें",
-            "दस हजारवें"
+            "10",
+            "12",
+            "15",
+            "20"
           ],
-          "solution": "दशमलव भिन्न 0.007 में, अंक 7 हजारवें स्थान पर है। सही विकल्प बताता है कि अंक 7 का स्थानीय मान हजारवें है। अन्य विकल्प गलत हैं क्योंकि वे अंक 7 के अलग-अलग स्थान पर अंकों के स्थानीय मानों का वर्णन करते हैं।",
+          "solution": "प्रत्येक पेंटोमिनो 5 वर्गों को कवर करता है। एक 6×10 ग्रिड में 60 वर्ग होते हैं और 60 ÷ 5 = 12 पेंटोमिनो की आवश्यकता होती है। एक 5×12 ग्रिड में भी 60 वर्ग होते हैं, इसलिए 60 ÷ 5 = 12 पेंटोमिनो की आवश्यकता होती है। विकल्प '10' गलत है क्योंकि यह विभिन्न संख्या के वर्गों की धारणा करता है। '15' और '20' गलत हैं क्योंकि यह आवश्यकता से अधिक पेंटोमिनो के सुझाव देते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English question, with appropriate mathematical terminology and correct placement of the correct answer.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "एक दशांश अपूर्णांक 0.007 लिहिला आहे. अंक 7 ची स्थानिक किंमत काय आहे?",
+          "stem": "6×10 चौकोनी जाळ्यामध्ये 12 पेंटोमिनो वापरून आयत पूर्ण केला जातो. 5×12 चौकोनी जाळ्यामध्ये पूर्ण करण्यासाठी किती पेंटोमिनो आवश्यक असतील?",
           "choices": [
-            "दशांश",
-            "शेकडाश",
-            "हजारांश",
-            "दहा हजारांश"
+            "10",
+            "12",
+            "15",
+            "20"
           ],
-          "solution": "दशांश अपूर्णांक 0.007 मध्ये, अंक 7 हजारांश स्थानात आहे. अंक 7 ची स्थानिक किंमत हजारांश असल्याचे योग्य विकल्प सांगतो. इतर विकल्प अंक 7 च्या स्थानाबद्दल चुकीचे वर्णन करतात.",
+          "solution": "प्रत्येक पेंटोमिनो 5 चौरस व्हायला जातो. 6×10 जाळ्यामध्ये 60 चौरस असतात आणि 60 ÷ 5 = 12 पेंटोमिनो. 5×12 जाळ्यामध्ये देखील 60 चौरस असतात, म्हणून 60 ÷ 5 = 12 पेंटोमिनो. '10' अपयश आहे कारण ते वेगळ्या चौरसांची संख्या असल्याचा अंदाज घेते. '15' आणि '20' अपयश आहेत कारण ते आवश्यक पेंटोमिनोंच्या संख्येपेक्षा जास्त दर्शवतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
           "flag": null
         }
       },
@@ -244,24 +502,24 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the position of the first decimal digit as tenths instead of thousandths",
-        "Confuses the position of the 7 with the second decimal place instead of the third",
+        "uses the number of rows instead of the area",
         null,
-        "Confuses the place value of the third decimal digit with the fourth due to miscounting positions"
+        "uses the number of columns instead of the area",
+        "multiplies the dimensions instead of dividing by 5"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. The digit 7 is in the third decimal place, which is the thousandths place.",
+      "critique": "The question is well-constructed. The correct answer is 12, as both grids have the same area (60 squares) and each pentomino covers 5 squares. The author's reasoning for the distractors is valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 54,
+          "ordinal": 59,
           "pageStart": 89,
           "pageEnd": 91,
           "headingPath": [
@@ -270,16 +528,102 @@
         },
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 55,
+          "ordinal": 60,
           "pageStart": 91,
-          "pageEnd": 93,
+          "pageEnd": 91,
           "headingPath": [
             "10. Magical Mathematics-1"
           ]
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T14:40:44.409Z",
+      "generatedAt": "2026-10-31T00:29:04.382Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A pentomino is formed by connecting 5 squares side-by-side. If each square has an area of 1 unit, what is the total area of a pentomino?",
+      "choices": [
+        "2 units",
+        "3 units",
+        "4 units",
+        "5 units"
+      ],
+      "answerIndex": 3,
+      "solution": "Since a pentomino is made of 5 squares, and each square has an area of 1 unit, the total area is 5 × 1 = 5 units. The option '2 units' is incorrect as it assumes fewer squares. '3 units' and '4 units' are also incorrect because they do not account for all 5 squares in a pentomino.",
+      "checkExpr": "5*1",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पेंटोमिनो 5 वर्गों के साथ-साथ जुड़ा हुआ है। यदि प्रत्येक वर्ग का क्षेत्रफल 1 इकाई है, तो एक पेंटोमिनो का कुल क्षेत्रफल क्या है?",
+          "choices": [
+            "2 इकाई",
+            "3 इकाई",
+            "4 इकाई",
+            "5 इकाई"
+          ],
+          "solution": "क्योंकि एक पेंटोमिनो 5 वर्गों से बना हुआ है, और प्रत्येक वर्ग का क्षेत्रफल 1 इकाई है, तो कुल क्षेत्रफल 5 × 1 = 5 इकाई है। विकल्प '2 इकाई' गलत है क्योंकि यह कम वर्गों के अनुमान के आधार पर है। '3 इकाई' और '4 इकाई' भी गलत हैं क्योंकि ये पेंटोमिनो में 5 वर्गों की गणना नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for mathematical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पेंटोमिनो हा 5 चौरसांच्या बाजूला जोडून बनवला जातो. जर प्रत्येक चौरसाचे क्षेत्रफळ 1 एकक असेल, तर पेंटोमिनोचे एकूण क्षेत्रफळ किती असेल?",
+          "choices": [
+            "2 एकक",
+            "3 एकक",
+            "4 एकक",
+            "5 एकक"
+          ],
+          "solution": "पेंटोमिनो 5 चौरसांपासून बनलेला असतो, आणि प्रत्येक चौरसाचे क्षेत्रफळ 1 एकक असते, म्हणून एकूण क्षेत्रफळ 5 × 1 = 5 एकक असते. '2 एकक' अपयशी असतो कारण ते कमी चौरसांचा अंदाज घेते. '3 एकक' आणि '4 एकक' देखील अपयशी असतात कारण ते पेंटोमिनोमधील 5 चौरसांचा विचार करत नाहीत.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are correctly used in Marathi.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "counts only 2 squares",
+        "counts only 3 squares",
+        "counts only 4 squares",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is straightforward, and the correct answer is clearly 5 units. The author's solution is correct, and the reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 59,
+          "pageStart": 89,
+          "pageEnd": 91,
+          "headingPath": [
+            "10. Magical Mathematics-1"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 60,
+          "pageStart": 91,
+          "pageEnd": 91,
+          "headingPath": [
+            "10. Magical Mathematics-1"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T00:29:04.382Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

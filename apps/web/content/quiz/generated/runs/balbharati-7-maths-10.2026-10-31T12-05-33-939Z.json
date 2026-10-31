@@ -1,0 +1,481 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T12:05:33.939Z",
+  "finishedAt": "2026-10-31T12:13:52.590Z",
+  "seconds": 499,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी गणित इंग्रजी",
+    "bookCode": "703020004",
+    "document": "balbharati/7/mathematics/703020004.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 10 — Banks and Simple Interest",
+    "edition": "2026 edition",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2022-23]\n21. P = 250000, R = 7500, 𝑖 = 𝑟/400\n7500 × 400 1\n⇒ 250000 = ⇒ 𝑟 = 12\n𝑟\n⇒ 𝑟 = 12",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2023-24]\n30. Mr Surya borrowed a sum of 5,00,000 with total interest to be paid 2,00,000(flat) and he is\npaying an EMI of 12,500. Calculate loan tenure.",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2022-23]\n25. Mitul invested ₹ 3,50,000 in a fund. At the end of the year the value of the fund is ₹ 4,37,500.\nWhat is the nominal rate of interest, if the market price is same at the end of the year? 2",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2022-23]\n30. Surjeet purchased a new house, costing ₹ 40,00,000 and made a certain amount of down payment\nso that he can pay the balance by taking a home loan from XYZ Bank. If his equated monthly\ninstalment is ₹ 30,000, at 9% interest compounded monthly (reducing balance method) and\npayable for 25 years, then what is the initial down payment made by him? 3\n[Use (1.0075) −300 = 0.1062]"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 134521,
+      "in": 23,
+      "out": 23,
+      "rejects": 0,
+      "promptTokens": 17543,
+      "completionTokens": 5829
+    },
+    "critique": {
+      "calls": 30,
+      "ms": 275268,
+      "in": 23,
+      "out": 22,
+      "rejects": 1,
+      "promptTokens": 13551,
+      "completionTokens": 5120
+    },
+    "solver": {
+      "calls": 157,
+      "ms": 122015,
+      "in": 22,
+      "out": 18,
+      "rejects": 4,
+      "promptTokens": 30369,
+      "completionTokens": 1671
+    },
+    "form": {
+      "calls": 3,
+      "ms": 12336,
+      "in": 18,
+      "out": 12,
+      "rejects": 6,
+      "promptTokens": 700,
+      "completionTokens": 250
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 4,
+      "ms": 1588,
+      "in": 12,
+      "out": 10,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 41,
+      "ms": 594056,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 22476,
+      "completionTokens": 9319
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 2,
+    "4": 0,
+    "5": 3,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "If the interest for one year on 120000 rupees is 10200 rupees, what is the rate of interest?",
+      "ms": {
+        "draft": 7273,
+        "critique": 8072,
+        "solver": 1465,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the interest on 120000 rupees for 4 years is 40800 rupees, what is the rate of interest?",
+      "ms": {
+        "draft": 7273,
+        "critique": 7381,
+        "solver": 2405,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula to calculate simple interest?",
+      "ms": {
+        "draft": 4822,
+        "critique": 8061,
+        "solver": 17351,
+        "form": 3215
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the principal is 15000 rupees and the rate is 10 p.c.p.a., what is the interest for 3 years?",
+      "ms": {
+        "draft": 4822,
+        "critique": 9500,
+        "solver": 20448,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the total amount returned by Unmesh after 5 years is 17400 rupees and the rate is 9 p.c.p.a., what is the principal amount he borrowed?",
+      "ms": {
+        "draft": 4822,
+        "critique": 7837
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the interest on 1700 rupees is 340 rupees for 2 years, what is the rate of interest?",
+      "ms": {
+        "draft": 4822,
+        "critique": 6834,
+        "solver": 1098
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Unmesh borrowed some money for 5 years at 9% p.c.p.a. and returned 17400 rupees. How much did he borrow?",
+      "ms": {
+        "draft": 4839,
+        "critique": 9097,
+        "solver": 3666
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula to calculate simple interest?",
+      "ms": {
+        "draft": 4839,
+        "critique": 8843,
+        "solver": 14112,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula to calculate simple interest?",
+      "ms": {
+        "draft": 6584,
+        "critique": 6158,
+        "solver": 2673,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If Sandeepbhau borrowed 120000 rupees at 8.5 p.c.p.a. for 4 years, what is the total amount he returned to the bank?",
+      "ms": {
+        "draft": 6584,
+        "critique": 17677,
+        "solver": 27765
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If Rihanna deposits 1500 rupees at 9 p.c.p.a. for 2 years, what is the total amount she will get at the end of the period?",
+      "ms": {
+        "draft": 6584,
+        "critique": 17369,
+        "solver": 22494
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the principal is 25000 rupees, time is 4 years, and the interest is 6000 rupees, what is the rate of interest?",
+      "ms": {
+        "draft": 4839,
+        "critique": 8103,
+        "solver": 1870,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the interest on 3000 rupees is 600 rupees at a certain rate for a certain number of years, what would be the interest on 1500 rupees under the same conditions?",
+      "ms": {
+        "draft": 4839,
+        "critique": 8929,
+        "solver": 2134,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for the total money owed to the bank at the end of the time period?",
+      "ms": {
+        "draft": 7273,
+        "critique": 8244,
+        "solver": 1583,
+        "form": 5947,
+        "translation": 78976
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total amount that Suvidya returned to the bank if she borrowed 30000 rupees at 8 p.c.p.a. for a year and had to pay back 2400 rupees over and above what she had borrowed?",
+      "ms": {
+        "draft": 6584,
+        "critique": 6967,
+        "solver": 1449,
+        "form": 0,
+        "translation": 58683
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the principal is 50000 rupees and the rate of interest is 12 p.c.p.a., what is the interest for one year?",
+      "ms": {
+        "draft": 7273,
+        "critique": 8732,
+        "solver": 1945,
+        "form": 0,
+        "translation": 72503
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the principal is 25000 rupees, time is 4 years, and the interest is 6000 rupees, what is the rate of interest?",
+      "ms": {
+        "draft": 4822,
+        "critique": 8301,
+        "solver": 18073,
+        "form": 4477,
+        "translation": 60865
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A person deposits 25000 rupees for 3 years at a rate of 8 p.c.p.a. What is the total interest earned?",
+      "ms": {
+        "draft": 7273,
+        "critique": 8964,
+        "solver": 2563,
+        "form": 0,
+        "translation": 80449
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Aakash deposited 25000 rupees at 8 p.c.p.a. for 3 years, how much interest will he get?",
+      "ms": {
+        "draft": 6584,
+        "critique": 15419,
+        "solver": 2117,
+        "form": 0,
+        "translation": 44803
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Rihanna deposits 1500 rupees in the school fund at 9 p.c.p.a. for 2 years. What is the total amount she will get?",
+      "ms": {
+        "draft": 7273,
+        "critique": 7665,
+        "solver": 2485,
+        "form": 1,
+        "translation": 66619
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the interest on 1700 rupees is 340 rupees for 2 years, what is the rate of interest?",
+      "ms": {
+        "draft": 4839,
+        "critique": 10026,
+        "solver": 2165,
+        "form": 1,
+        "translation": 34255
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Javed deposited 12000 rupees at 9% p.c.p.a. and received 17400 rupees in total. For how many years did he deposit the money?",
+      "ms": {
+        "draft": 4839,
+        "critique": 8366,
+        "solver": 24228,
+        "form": 0,
+        "translation": 35361
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the interest on 3000 rupees is 600 rupees for a certain number of years, what would be the interest on 1500 rupees under the same conditions?",
+      "ms": {
+        "draft": 4822,
+        "critique": 5657,
+        "solver": 988,
+        "form": 0,
+        "translation": 54329
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If the interest for one year on 120000 rupees is 10200 rupees, what is the rate of interest?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the interest on 120000 rupees for 4 years is 40800 rupees, what is the rate of interest?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula to calculate simple interest?",
+      "reason": "options 0 and 1 are the same (\"Principal + Rate + Time\"); options 0 and 2 are the same (\"Principal + Rate + Time\"); options 1 and 2 are the same (\"Principal × Rate + Time\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the principal is 15000 rupees and the rate is 10 p.c.p.a., what is the interest for 3 years?",
+      "reason": "options 1 and 3 are the same (\"3000 rupees\"); options 1 and 3 are the same number"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If the total amount returned by Unmesh after 5 years is 17400 rupees and the rate is 9 p.c.p.a., what is the principal amount he borrowed?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the interest on 1700 rupees is 340 rupees for 2 years, what is the rate of interest?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Unmesh borrowed some money for 5 years at 9% p.c.p.a. and returned 17400 rupees. How much did he borrow?",
+      "reason": "the solver picked option 2 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the formula to calculate simple interest?",
+      "reason": "options 0 and 1 are the same (\"Principal + Rate + Time\"); options 0 and 2 say the same thing (\"Principal + Rate + Time\" / \"Principal × Time ÷ Rate\"); options 0 and 3 are the same (\"Principal + Rate + Time\"); options 1 and 2 say the same thing (\"Principal × Rate × Time\" / \"Principal × Time ÷ Rate\"); options 1 and 3 are the same (\"Principal × Rate × Time\"); options 2 and 3 say the same thing (\"Principal × Time ÷ Rate\" / \"Principal × Rate ÷ Time\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the formula to calculate simple interest?",
+      "reason": "options 0 and 1 are the same (\"I = P × T × R\"); options 0 and 2 say the same thing (\"I = P × T × R\" / \"I = P × R / T\"); options 0 and 3 say the same thing (\"I = P × T × R\" / \"I = P / (R × T)\"); options 1 and 2 say the same thing (\"I = P + T + R\" / \"I = P × R / T\"); options 1 and 3 say the same thing (\"I = P + T + R\" / \"I = P / (R × T)\"); options 2 and 3 say the same thing (\"I = P × R / T\" / \"I = P / (R × T)\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If Sandeepbhau borrowed 120000 rupees at 8.5 p.c.p.a. for 4 years, what is the total amount he returned to the bank?",
+      "reason": "distractors 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If Rihanna deposits 1500 rupees at 9 p.c.p.a. for 2 years, what is the total amount she will get at the end of the period?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If the principal is 25000 rupees, time is 4 years, and the interest is 6000 rupees, what is the rate of interest?",
+      "reason": "near-duplicate of batch item \"If the principal is 25000 rupees, time is 4 years,…\" (cosine 1.000 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If the interest on 3000 rupees is 600 rupees at a certain rate for a certain number of years, what would be the interest on 1500 rupees under the same conditions?",
+      "reason": "near-duplicate of batch item \"If the interest on 3000 rupees is 600 rupees for a…\" (cosine 0.993 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

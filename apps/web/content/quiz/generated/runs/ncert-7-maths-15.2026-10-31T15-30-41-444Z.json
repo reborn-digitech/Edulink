@@ -1,0 +1,791 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T15:30:41.444Z",
+  "finishedAt": "2026-10-31T15:43:03.804Z",
+  "seconds": 742,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash-II",
+    "bookCode": "gegp2",
+    "document": "ncert/7/mathematics/gegp207.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 15 — Finding the Unknown",
+    "edition": "2025 edition (the site's Last-Modified)",
+    "chunks": 17,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 22 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n9. Draw neat and clean figures wherever required. Take 𝜋 = 22 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n7. B 210 = 21 + (𝑛 − 1)21 ⇒ 𝑛 = 10\n(B) 𝟏𝟎 𝒕𝒉"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 255222,
+      "in": 44,
+      "out": 42,
+      "rejects": 2,
+      "promptTokens": 44090,
+      "completionTokens": 11464
+    },
+    "critique": {
+      "calls": 55,
+      "ms": 458884,
+      "in": 42,
+      "out": 33,
+      "rejects": 9,
+      "promptTokens": 24615,
+      "completionTokens": 9534
+    },
+    "solver": {
+      "calls": 258,
+      "ms": 175727,
+      "in": 33,
+      "out": 16,
+      "rejects": 17,
+      "promptTokens": 53726,
+      "completionTokens": 2932
+    },
+    "form": {
+      "calls": 2,
+      "ms": 10626,
+      "in": 16,
+      "out": 13,
+      "rejects": 3,
+      "promptTokens": 585,
+      "completionTokens": 203
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 43,
+      "ms": 10158,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 53,
+      "ms": 513223,
+      "in": 26,
+      "out": 26,
+      "rejects": 0,
+      "promptTokens": 27839,
+      "completionTokens": 12554
+    }
+  },
+  "kept": 13,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 4,
+    "4": 2,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 5,
+  "needsFigure": 3,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If the equation 2e = 6 represents the weight of two fried eggs equal to six units, what is the weight of one fried egg?",
+      "ms": {
+        "draft": 5955,
+        "critique": 9768
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the equation 4 + 2y = 16 represents the weight of a plate with four units and two unknown weights, what is the weight of one unknown?",
+      "ms": {
+        "draft": 5955,
+        "critique": 13135
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the equation 2n + 1 = 99 represents the number of matchsticks in a pattern, what is the position number of the arrangement that uses 99 matchsticks?",
+      "ms": {
+        "draft": 5955,
+        "critique": 11780,
+        "solver": 1997
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a weighing scale, if one side has 3 units and the other side has 2 units plus an unknown weight w, what equation represents the balance?",
+      "ms": {
+        "draft": 5955,
+        "critique": 8530,
+        "solver": 22585
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a weighing scale has 5 units on one side and 3 units plus two unknown weights x on the other side, what equation represents the balance?",
+      "ms": {
+        "draft": 5955,
+        "critique": 9402,
+        "solver": 23463
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a matchstick pattern, if the nth arrangement has 2n + 1 matchsticks, how many matchsticks are there in the 10th arrangement?",
+      "ms": {
+        "draft": 5955,
+        "critique": 8796,
+        "solver": 24894
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the method to solve an equation when a term is added or subtracted on one side?",
+      "ms": {
+        "draft": 4873,
+        "critique": 10327
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of these is the correct way to isolate an unknown variable in an equation?",
+      "ms": {
+        "draft": 4873,
+        "critique": 10842,
+        "solver": 2372
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Solve the equation 7y – (–3) = 24. What is the value of y?",
+      "ms": {
+        "draft": 4873,
+        "critique": 13009
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the expression that gives the number of tiles needed to make an arrangement in Step k?",
+      "ms": {
+        "draft": 5277,
+        "critique": 9570,
+        "solver": 2440
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following equations correctly models the cost of snacks for Madhubanti's party?",
+      "ms": {
+        "draft": 5277,
+        "critique": 10167,
+        "solver": 2043
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Madhubanti has ₹500 and the delivery cost is ₹50, how many friends can she invite to the party if each plate costs ₹25 and there are 5 family members?",
+      "ms": {
+        "draft": 5277,
+        "critique": 9112,
+        "solver": 2111
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If Akash's final answer was 24 after performing the steps of the math trick, what was the starting number he thought of?",
+      "ms": {
+        "draft": 5277,
+        "critique": 8271,
+        "solver": 1560
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "After how many months will Jahnavi and Sunita have the same amount of money if Jahnavi starts with ₹4000 and saves ₹650 per month, and Sunita starts with ₹5050 and saves ₹500 per month?",
+      "ms": {
+        "draft": 5277,
+        "critique": 11545,
+        "solver": 2372
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the price of one horse in the problem mentioned in the passage?",
+      "ms": {
+        "draft": 6231,
+        "critique": 8445
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Using Brahmagupta's formula, what is the value of m in the equation 650m + 4000 = 500m + 5050?",
+      "ms": {
+        "draft": 6231,
+        "critique": 7576
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the solution to the equation 2y = 60?",
+      "ms": {
+        "draft": 4770,
+        "critique": 8127,
+        "solver": 15488
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the result of 7 multiplied by 8?",
+      "ms": {
+        "draft": 42735,
+        "critique": 7036,
+        "solver": 8280
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the symbol : represent in the given figure?",
+      "ms": {
+        "draft": 8007,
+        "critique": 7803,
+        "solver": 1933
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which symbol is used to represent a point in the given figure?",
+      "ms": {
+        "draft": 8007,
+        "critique": 8146,
+        "solver": 2689
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which symbol represents a line segment in the given figure?",
+      "ms": {
+        "draft": 8007,
+        "critique": 7495,
+        "solver": 14824,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The price of a horse is ₹100. If one man has ₹300 and 6 horses, and another has 10 horses and a debt of ₹100, what is the total value of the first man's assets?",
+      "ms": {
+        "draft": 6259,
+        "critique": 9186
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A taxi driver charges a fixed fee of ₹800 per day plus ₹20 for each kilometer traveled. If the total cost for a taxi ride is ₹2200, how many kilometers were traveled?",
+      "ms": {
+        "draft": 6259,
+        "critique": 9155
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The sum of two numbers is 76. One number is three times the other. What is the difference between the two numbers?",
+      "ms": {
+        "draft": 6259,
+        "critique": 10037
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following equations has a solution y = 5?",
+      "ms": {
+        "draft": 4439,
+        "critique": 7280,
+        "solver": 21429
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the value of x in the equation 2x + 6 = 10?",
+      "ms": {
+        "draft": 4439,
+        "critique": 6621,
+        "solver": 18911
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a real-life situation, if 100x + 75 = 250, what does x represent?",
+      "ms": {
+        "draft": 4439,
+        "critique": 7753,
+        "solver": 1941
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the general expression for the number of tiles needed to make an arrangement in Step k?",
+      "ms": {
+        "draft": 5249,
+        "critique": 7668,
+        "solver": 1907,
+        "form": 4250
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 4x + 6 = 10, what is the value of x?",
+      "ms": {
+        "draft": 4439,
+        "critique": 6665,
+        "solver": 14430,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following operations can be performed on both sides of an equation without changing its solution?",
+      "ms": {
+        "draft": 4770,
+        "critique": 6967,
+        "solver": 3098,
+        "form": 0,
+        "translation": 50988
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In the given figure, which symbol is used to denote the normal to a plane mirror?",
+      "ms": {
+        "draft": 8007,
+        "critique": 7747,
+        "solver": 2039,
+        "form": 0,
+        "translation": 42179
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In the given figure, which symbol represents the incident ray?",
+      "ms": {
+        "draft": 8007,
+        "critique": 6444,
+        "solver": 1239,
+        "form": 0,
+        "translation": 36154
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 5x + 4 = 3x + 8, what is the value of x?",
+      "ms": {
+        "draft": 6259,
+        "critique": 8473,
+        "solver": 15368,
+        "form": 1,
+        "translation": 40982
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 3x – 6 = 2x + 4, what is the value of x?",
+      "ms": {
+        "draft": 6259,
+        "critique": 7166,
+        "solver": 1217,
+        "form": 0,
+        "translation": 34781
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an equation has the form 5x + 3 = 18, which step should be taken first to isolate x?",
+      "ms": {
+        "draft": 4873,
+        "critique": 9283,
+        "solver": 1600,
+        "form": 0,
+        "translation": 38272
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the equation 3y = 15 is given, what is the value of y?",
+      "ms": {
+        "draft": 4439,
+        "critique": 7769,
+        "solver": 13942,
+        "form": 0,
+        "translation": 26910
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the equation 3y – 4 = 11, what should be done to isolate the term 3y?",
+      "ms": {
+        "draft": 4873,
+        "critique": 10126,
+        "solver": 20542,
+        "form": 0,
+        "translation": 39301
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "If Madhubanti has ₹500 and spends ₹50 on delivery, how many plates of snacks can she buy at ₹25 per plate?",
+      "ms": {
+        "draft": 5249,
+        "critique": 9900,
+        "solver": 1544,
+        "form": 0,
+        "translation": 45358
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Solve the equation 12x + 15 = 39. What is the value of x?",
+      "ms": {
+        "draft": 4873,
+        "critique": 10835,
+        "solver": 1826,
+        "form": 0,
+        "translation": 30444
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "After how many months will Jahnavi and Sunita have the same amount of money if Jahnavi starts with ₹4000 and saves ₹650 per month, and Sunita starts with ₹5050 and saves ₹500 per month?",
+      "ms": {
+        "draft": 5249,
+        "critique": 5301,
+        "solver": 6536,
+        "form": 0,
+        "translation": 28666
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a line is drawn from the center of a circle to its circumference, what is the name of this line segment?",
+      "ms": {
+        "draft": 42735,
+        "critique": 6243,
+        "solver": 1360,
+        "form": 0,
+        "translation": 50879
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If Ramesh has 30 more marbles than Suresh and together they have 60 marbles, how many marbles does Ramesh have?",
+      "ms": {
+        "draft": 5277,
+        "critique": 7596,
+        "solver": 2122,
+        "form": 7482,
+        "translation": 44479
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the solution to the equation – 8 = 5x – 3?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the equation 2e = 6 represents the weight of two fried eggs equal to six units, what is the weight of one fried egg?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the equation 4 + 2y = 16 represents the weight of a plate with four units and two unknown weights, what is the weight of one unknown?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the equation 2n + 1 = 99 represents the number of matchsticks in a pattern, what is the position number of the arrangement that uses 99 matchsticks?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In a weighing scale, if one side has 3 units and the other side has 2 units plus an unknown weight w, what equation represents the balance?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a weighing scale has 5 units on one side and 3 units plus two unknown weights x on the other side, what equation represents the balance?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In a matchstick pattern, if the nth arrangement has 2n + 1 matchsticks, how many matchsticks are there in the 10th arrangement?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the method to solve an equation when a term is added or subtracted on one side?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of these is the correct way to isolate an unknown variable in an equation?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Solve the equation 7y – (–3) = 24. What is the value of y?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the expression that gives the number of tiles needed to make an arrangement in Step k?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following equations correctly models the cost of snacks for Madhubanti's party?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If Madhubanti has ₹500 and the delivery cost is ₹50, how many friends can she invite to the party if each plate costs ₹25 and there are 5 family members?",
+      "reason": "the solver picked option 1 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If Akash's final answer was 24 after performing the steps of the math trick, what was the starting number he thought of?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "After how many months will Jahnavi and Sunita have the same amount of money if Jahnavi starts with ₹4000 and saves ₹650 per month, and Sunita starts with ₹5050 and saves ₹500 per month?",
+      "reason": "the solver picked option 2 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the price of one horse in the problem mentioned in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Using Brahmagupta's formula, what is the value of m in the equation 650m + 4000 = 500m + 5050?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the solution to the equation 2y = 60?",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the result of 7 multiplied by 8?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What does the symbol © represent in the given figure?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What does the symbol : represent in the given figure?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which symbol is used to represent a point in the given figure?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which symbol represents a line segment in the given figure?",
+      "reason": "options 0 and 1 are the same (\"|\"); options 0 and 3 are the same (\"|\"); options 1 and 3 are the same (\":\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "The price of a horse is ₹100. If one man has ₹300 and 6 horses, and another has 10 horses and a debt of ₹100, what is the total value of the first man's assets?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A taxi driver charges a fixed fee of ₹800 per day plus ₹20 for each kilometer traveled. If the total cost for a taxi ride is ₹2200, how many kilometers were traveled?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "The sum of two numbers is 76. One number is three times the other. What is the difference between the two numbers?",
+      "reason": "the critic finds option 0 correct, the key is 1"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following equations has a solution y = 5?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the value of x in the equation 2x + 6 = 10?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a real-life situation, if 100x + 75 = 250, what does x represent?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the general expression for the number of tiles needed to make an arrangement in Step k?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If 4x + 6 = 10, what is the value of x?",
+      "reason": "options 1 and 2 are the same (\"2\"); options 1 and 3 are the same (\"2\"); options 2 and 3 are the same (\"2\"); options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

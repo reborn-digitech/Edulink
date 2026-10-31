@@ -1,0 +1,801 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T03:14:21.103Z",
+  "finishedAt": "2026-10-31T03:30:10.237Z",
+  "seconds": 949,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "fegp1",
+    "document": "ncert/6/mathematics/fegp108.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 8 — Playing with Constructions",
+    "edition": "Reprint 2026-27",
+    "chunks": 16,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n33. Correct given, to prove, construction, figure 1\nCorrect proof 2\nAR = AQ = 7cm ½\nBP = BR = AB-AR = 3cm ½\nCP =CQ = 5cm ½\nBC = BP+PC = 3+5 = 8 cm ½",
+      "[RMO 2017 — question paper]\n1. Let AOB be a given angle less than 180° and let P be an interior point of the\nangular region determined by ZAOB. Show, with proof, how to construct,\nusing only ruler and compasses, a line segment CD passing through P such\nthat C' lies on the ray OA and D lies on the ray OB, and CP: PD =1:2.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2025-26]\n33. Correct given, figure and construction\nCorrect Proof\nsince LM is parallel to QR\nLet PM= 𝑥\n௉௅ ௉ெ\n௉ொ = ௉ோ\nହ.଻ ௫\nଵହ.ଶ = ௫ାହ.ହ\n𝑥 =PM=3.3cm\n½\n½"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 341031,
+      "in": 43,
+      "out": 40,
+      "rejects": 3,
+      "promptTokens": 36251,
+      "completionTokens": 14810
+    },
+    "critique": {
+      "calls": 56,
+      "ms": 425349,
+      "in": 40,
+      "out": 32,
+      "rejects": 8,
+      "promptTokens": 26076,
+      "completionTokens": 9912
+    },
+    "solver": {
+      "calls": 274,
+      "ms": 182020,
+      "in": 32,
+      "out": 23,
+      "rejects": 9,
+      "promptTokens": 60832,
+      "completionTokens": 3083
+    },
+    "form": {
+      "calls": 20,
+      "ms": 177837,
+      "in": 23,
+      "out": 9,
+      "rejects": 14,
+      "promptTokens": 16553,
+      "completionTokens": 3845
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 53,
+      "ms": 11712,
+      "in": 9,
+      "out": 7,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 279867,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 16400,
+      "completionTokens": 7934
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 2,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 2,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the shape formed when all points at a fixed distance from a given point are joined?",
+      "ms": {
+        "draft": 16704,
+        "critique": 6297
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a compass is set to a radius of 5 cm, what is the length of the line segment from the center to a point on the circle?",
+      "ms": {
+        "draft": 16704,
+        "critique": 7361
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term for the fixed distance from the center to any point on a circle?",
+      "ms": {
+        "draft": 16704,
+        "critique": 6535,
+        "solver": 11782
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is not a valid way to name a rectangle?",
+      "ms": {
+        "draft": 16704,
+        "critique": 8323,
+        "solver": 15153
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the length of AB is 8 cm, what is the radius of the half circle drawn on AB?",
+      "ms": {
+        "draft": 16704,
+        "critique": 6344,
+        "solver": 11857,
+        "form": 4818
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A rectangle ABCD is constructed with AB = 7 cm and BC = 4 cm. If point X is 5 mm away from A on AD and point Y is 3 cm away from B on BC, what is the length of XY?",
+      "ms": {
+        "draft": 8005,
+        "critique": 8898
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a square is rotated, what property remains the same?",
+      "ms": {
+        "draft": 16704,
+        "critique": 6784,
+        "solver": 16833
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A square is inscribed in a rectangle of sides 8 cm and 4 cm such that the center of the square coincides with the center of the rectangle. What is the side length of the square?",
+      "ms": {
+        "draft": 8005,
+        "critique": 6294,
+        "solver": 3785
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A rectangle is divided into three identical squares. If the length of the side of each square is 4 cm, what is the length of the shorter side of the rectangle?",
+      "ms": {
+        "draft": 8005,
+        "critique": 8478,
+        "solver": 19654
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a rectangle, the diagonals PR and QS intersect at point O. If angle P is divided by diagonal PR into angles c and d, what is the measure of angle c if angle d is 45°?",
+      "ms": {
+        "draft": 8005,
+        "critique": 7130,
+        "solver": 11702,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a rectangle, the diagonals PR and QS intersect at point O. If the length of the diagonal PR is 10 cm, what is the length of the segment OP?",
+      "ms": {
+        "draft": 8005,
+        "critique": 6423,
+        "solver": 16139
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a rectangle, the diagonals PR and QS intersect at point O. What is the measure of the angle between the diagonals if the rectangle is a square?",
+      "ms": {
+        "draft": 8005,
+        "critique": 7565,
+        "solver": 11356,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "To construct a rectangle with one side of 5 cm and a diagonal of 7 cm, what is the first step?",
+      "ms": {
+        "draft": 3765,
+        "critique": 7609,
+        "solver": 11986
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a rectangle has a diagonal of 7 cm and one side of 5 cm, what is the length of the other side?",
+      "ms": {
+        "draft": 3765,
+        "critique": 6384
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "To locate point B in a rectangle with base DC of 5 cm and a diagonal of 7 cm, what method is used?",
+      "ms": {
+        "draft": 3765,
+        "critique": 7964,
+        "solver": 1273
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct way to construct a rectangle?",
+      "ms": {
+        "draft": 3782,
+        "critique": 7761,
+        "solver": 1673,
+        "form": 3845
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a house construction where all sides are 5 cm, what is the significance of using a compass to draw arcs from points B and C?",
+      "ms": {
+        "draft": 3765,
+        "critique": 6991,
+        "solver": 15545,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the line segment that connects the centre of a circle to any point on its circumference?",
+      "ms": {
+        "draft": 3782,
+        "critique": 8045,
+        "solver": 16126,
+        "form": 7018
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a rectangle is divided into 3 identical squares, what could be the ratio of its length to its breadth?",
+      "ms": {
+        "draft": 3782,
+        "critique": 15172,
+        "solver": 23039,
+        "form": 4088
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A rectangle is drawn with sides 5 cm and 8 cm. What should be the length of the diagonal?",
+      "ms": {
+        "draft": 8973,
+        "critique": 8745,
+        "solver": 16738
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A square is drawn on a dot grid. The sides of the square are not aligned with the grid lines. How can we verify if the figure is a square without using measuring instruments?",
+      "ms": {
+        "draft": 8973,
+        "critique": 10954
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the construction of a house with all sides of length 5 cm, a point A is located such that it is 5 cm from points B and C. Which method is described in the passage to find point A efficiently?",
+      "ms": {
+        "draft": 12372,
+        "critique": 10339,
+        "solver": 1158,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In the construction of a house with all sides of length 5 cm, what is the shape of the figure formed by the sides?",
+      "ms": {
+        "draft": 12372,
+        "critique": 7260,
+        "solver": 2750,
+        "form": 2645
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the construction of a rectangle where one side is 5 cm and the diagonal is 7 cm, what is the purpose of drawing a circle with radius 7 cm centered at point D?",
+      "ms": {
+        "draft": 12372,
+        "critique": 8660,
+        "solver": 1708,
+        "form": 3677
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "When constructing a rectangle with a diagonal dividing an angle into 50° and 40°, what can be concluded about the shape of the rectangle?",
+      "ms": {
+        "draft": 12372,
+        "critique": 8962,
+        "solver": 1756,
+        "form": 3019
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a rectangle, the diagonals are equal in length. If the diagonals of a rectangle measure 10 cm, what is the length of each side of a square that can be inscribed in the rectangle with its center at the same point as the rectangle's center?",
+      "ms": {
+        "draft": 25073,
+        "critique": 9468
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A rectangle is divided into 3 identical squares. If the side of each square is 4 cm, what is the length of the rectangle?",
+      "ms": {
+        "draft": 25073,
+        "critique": 9014,
+        "solver": 14239,
+        "form": 3265
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the point that is at the centre of a circle?",
+      "ms": {
+        "draft": 26932,
+        "critique": 7579
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student draws a square with each side of 6 cm. What is the length of the side RS if the square is constructed using a compass?",
+      "ms": {
+        "draft": 26932,
+        "critique": 9162
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A rectangle is constructed with a square inside it, such that the center of the square is the same as the center of the rectangle. If the rectangle is 8 cm by 4 cm, what is the side length of the square?",
+      "ms": {
+        "draft": 25073,
+        "critique": 5926,
+        "solver": 2028,
+        "form": 2880
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the name of the line that connects the centre of a circle to any point on the circle?",
+      "ms": {
+        "draft": 26932,
+        "critique": 8198,
+        "solver": 10172,
+        "form": 1143
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "When constructing a rectangle where one of the diagonals divides the opposite angles into 50° and 40°, what can be inferred about the sides of the rectangle?",
+      "ms": {
+        "draft": 12372,
+        "critique": 9635,
+        "solver": 1916,
+        "form": 4903
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a rectangle, the diagonals PR and QS intersect. What do you observe about the angles formed at the intersection?",
+      "ms": {
+        "draft": 25073,
+        "critique": 7329,
+        "solver": 1917,
+        "form": 3214
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the line that connects the centre of a circle to any point on the circle?",
+      "ms": {
+        "draft": 8973,
+        "critique": 4875,
+        "solver": 1198,
+        "form": 0,
+        "translation": 45208
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the name of the figure that has all its sides equal and all its angles equal to 90°?",
+      "ms": {
+        "draft": 8973,
+        "critique": 5144,
+        "solver": 1907,
+        "form": 0,
+        "translation": 44178
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A rectangle ABCD has AB = 7 cm and BC = 4 cm. Point X is on AD and point Y is on BC. If X is 5 mm from A and Y is 3 cm from B, what is the length of XY?",
+      "ms": {
+        "draft": 25073,
+        "critique": 6888,
+        "solver": 1568,
+        "form": 7944,
+        "translation": 30078
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a figure, the points of a circle are all at the same distance from the centre. What is this distance called?",
+      "ms": {
+        "draft": 8973,
+        "critique": 8108,
+        "solver": 1053,
+        "form": 0,
+        "translation": 35519
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In the construction of a rectangle with one side 5 cm and diagonal 7 cm, what is the shape of the set of all points that are 7 cm from point D?",
+      "ms": {
+        "draft": 12372,
+        "critique": 8443,
+        "solver": 18512,
+        "form": 0,
+        "translation": 36875
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a rectangle, the diagonals are equal in length and bisect each other. If one diagonal is 10 cm long, what is the length of the other diagonal?",
+      "ms": {
+        "draft": 8973,
+        "critique": 7162,
+        "solver": 2056,
+        "form": 0,
+        "translation": 34831
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a rectangle, if one of the diagonals divides an angle into two equal parts, what can be said about the rectangle?",
+      "ms": {
+        "draft": 3782,
+        "critique": 14447,
+        "solver": 4527,
+        "form": 8263,
+        "translation": 47960
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "When constructing a rectangle with a diagonal of 7 cm and a side of 5 cm, what is the purpose of drawing a perpendicular line at point C?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "If a rectangle is to be constructed where one side is 5 cm and the diagonal is 7 cm, what is the significance of the circle drawn with a radius of 7 cm?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the shape formed when all points at a fixed distance from a given point are joined?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a compass is set to a radius of 5 cm, what is the length of the line segment from the center to a point on the circle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the term for the fixed distance from the center to any point on a circle?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is not a valid way to name a rectangle?",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the length of AB is 8 cm, what is the radius of the half circle drawn on AB?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Adds the diameter to itself, which is not mentioned in the p…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A rectangle ABCD is constructed with AB = 7 cm and BC = 4 cm. If point X is 5 mm away from A on AD and point Y is 3 cm away from B on BC, what is the length of XY?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a square is rotated, what property remains the same?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A square is inscribed in a rectangle of sides 8 cm and 4 cm such that the center of the square coincides with the center of the rectangle. What is the side length of the square?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A rectangle is divided into three identical squares. If the length of the side of each square is 4 cm, what is the length of the shorter side of the rectangle?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a rectangle, the diagonals PR and QS intersect at point O. If angle P is divided by diagonal PR into angles c and d, what is the measure of angle c if angle d is 45°?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels PR, QS"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a rectangle, the diagonals PR and QS intersect at point O. If the length of the diagonal PR is 10 cm, what is the length of the segment OP?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a rectangle, the diagonals PR and QS intersect at point O. What is the measure of the angle between the diagonals if the rectangle is a square?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels PR, QS"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "To construct a rectangle with one side of 5 cm and a diagonal of 7 cm, what is the first step?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a rectangle has a diagonal of 7 cm and one side of 5 cm, what is the length of the other side?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "To locate point B in a rectangle with base DC of 5 cm and a diagonal of 7 cm, what method is used?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct way to construct a rectangle?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no reason to explain here (but included for …\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a house construction where all sides are 5 cm, what is the significance of using a compass to draw arcs from points B and C?",
+      "reason": "option 1 is a catch-all (\"To find the point A that is 5 cm from both B and C\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the line segment that connects the centre of a circle to any point on its circumference?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a rectangle is divided into 3 identical squares, what could be the ratio of its length to its breadth?",
+      "reason": "options 0 and 3 are the same (\"3:1\")"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "A rectangle is divided into 3 identical squares. If the length of the rectangle is 12 cm, what is the side length of each square?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A rectangle is drawn with sides 5 cm and 8 cm. What should be the length of the diagonal?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A square is drawn on a dot grid. The sides of the square are not aligned with the grid lines. How can we verify if the figure is a square without using measuring instruments?",
+      "reason": "the critic finds option 3 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the construction of a house with all sides of length 5 cm, a point A is located such that it is 5 cm from points B and C. Which method is described in the passage to find point A efficiently?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Does not understand the geometric construction described in …\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "In the construction of a house with all sides of length 5 cm, what is the shape of the figure formed by the sides?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Does not recognize the definition of a square from the passa…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In the construction of a rectangle where one side is 5 cm and the diagonal is 7 cm, what is the purpose of drawing a circle with radius 7 cm centered at point D?",
+      "reason": "figure: figure cannot be drawn in en: no en text for label DC"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "When constructing a rectangle with a diagonal dividing an angle into 50° and 40°, what can be concluded about the shape of the rectangle?",
+      "reason": "options 0 and 2 say the same thing (\"It is a square\" / \"It is not a square\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In a rectangle, the diagonals are equal in length. If the diagonals of a rectangle measure 10 cm, what is the length of each side of a square that can be inscribed in the rectangle with its center at the same point as the rectangle's center?",
+      "reason": "the critic finds option 3 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A rectangle is divided into 3 identical squares. If the side of each square is 4 cm, what is the length of the rectangle?",
+      "reason": "options 0 and 2 are the same (\"12 cm\"); options 0 and 3 are the same (\"12 cm\"); options 2 and 3 are the same (\"12 cm\"); options 0 and 2 are the same number; options 0 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the name of the point that is at the centre of a circle?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student draws a square with each side of 6 cm. What is the length of the side RS if the square is constructed using a compass?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A rectangle is constructed with a square inside it, such that the center of the square is the same as the center of the rectangle. If the rectangle is 8 cm by 4 cm, what is the side length of the square?",
+      "reason": "figure: figure spec refused: spec.segments: segments names point A, which is not defined"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the name of the line that connects the centre of a circle to any point on the circle?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "When constructing a rectangle where one of the diagonals divides the opposite angles into 50° and 40°, what can be inferred about the sides of the rectangle?",
+      "reason": "near-duplicate of served question cmvuse37e00iv0rvrm998noit (cosine 0.939 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "In a rectangle, the diagonals PR and QS intersect. What do you observe about the angles formed at the intersection?",
+      "reason": "near-duplicate of served question cmvuse37400ip0rvrlwsihbbb (cosine 0.916 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,909 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T03:39:49.183Z",
+  "finishedAt": "2026-10-31T03:54:45.151Z",
+  "seconds": 896,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "fegp1",
+    "document": "ncert/6/mathematics/fegp110.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 10 — The Other Side of Zero",
+    "edition": "Reprint 2026-27",
+    "chunks": 25,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n1. D) -6,6 1",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n23. Since, 3 is a zero of 𝑝(𝑥) = 2𝑥 − 3𝑥 + 𝑝 ⇒ p(3) = 0 ⇒ 2(3) – 3(3) + 𝑝 = 0 2 2 ½\n⇒ 𝑝 = – 9 ½\n− (−𝟑)\nLet another zero be β, 3 + β = 𝟐 ( sum of zeroes) ½\n⇒ β = − 𝟐 𝟑 ½",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n27. Find the zeroes of the quadratic polynomial 6x – 3 – 7x and verify the relationship 2 3\nbetween the zeroes and the coefficients.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n6. A) 11 9"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 13,
+      "ms": 292478,
+      "in": 51,
+      "out": 45,
+      "rejects": 6,
+      "promptTokens": 60347,
+      "completionTokens": 11027
+    },
+    "critique": {
+      "calls": 58,
+      "ms": 887825,
+      "in": 45,
+      "out": 37,
+      "rejects": 8,
+      "promptTokens": 27037,
+      "completionTokens": 9947
+    },
+    "solver": {
+      "calls": 274,
+      "ms": 300935,
+      "in": 37,
+      "out": 23,
+      "rejects": 14,
+      "promptTokens": 53509,
+      "completionTokens": 2877
+    },
+    "form": {
+      "calls": 2,
+      "ms": 32729,
+      "in": 23,
+      "out": 7,
+      "rejects": 16,
+      "promptTokens": 436,
+      "completionTokens": 106
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 53,
+      "ms": 34772,
+      "in": 7,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 228938,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 12871,
+      "completionTokens": 5926
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 2,
+    "2": 1,
+    "3": 0,
+    "4": 0,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a person is on Floor +2 and presses the ‘–’ button 3 times, which floor will they reach?",
+      "ms": {
+        "draft": 8746,
+        "critique": 6065,
+        "solver": 15616
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following describes the floor numbering in the 'Building of Fun' as explained in the passage?",
+      "ms": {
+        "draft": 8746,
+        "critique": 6961,
+        "solver": 15699,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the number 0 represent in the context of the 'Building of Fun' as explained in the passage?",
+      "ms": {
+        "draft": 8746,
+        "critique": 6282,
+        "solver": 19493
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If you start at the Food Court (Floor +1) and press the ‘+’ button 4 times, what floor will you reach?",
+      "ms": {
+        "draft": 8746,
+        "critique": 10209,
+        "solver": 1796
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the inverse of +4?",
+      "ms": {
+        "draft": 3652,
+        "critique": 11638
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the expression (+2) + (–7) = –5 represents the movement to reach Floor –5, which of the following could be a different starting point and movement to reach Floor –5?",
+      "ms": {
+        "draft": 8746,
+        "critique": 9808,
+        "solver": 19516
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following numbers is less than 0?",
+      "ms": {
+        "draft": 3652,
+        "critique": 8600,
+        "solver": 2146,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the result of (–1) – (+2)?",
+      "ms": {
+        "draft": 3652,
+        "critique": 8917,
+        "solver": 1846,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the Starting Floor is +5 and the Target Floor is –3, what is the movement needed?",
+      "ms": {
+        "draft": 3652,
+        "critique": 8111,
+        "solver": 1401,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the result of (–200)–(–40)?",
+      "ms": {
+        "draft": 4983,
+        "critique": 8907,
+        "solver": 1487
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the Starting Floor is +2 and the Target Floor is –1, what button should you press?",
+      "ms": {
+        "draft": 3652,
+        "critique": 9518,
+        "solver": 14958
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the starting number is +105 and the movement is –55, what is the target number?",
+      "ms": {
+        "draft": 4983,
+        "critique": 8659,
+        "solver": 2337,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the starting number is –99 and the movement is +200, what is the target number?",
+      "ms": {
+        "draft": 4983,
+        "critique": 9802,
+        "solver": 1758,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the result of (+5) + (–3) using tokens?",
+      "ms": {
+        "draft": 21930,
+        "critique": 6769,
+        "solver": 2098,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the result of (+200)–(+40)?",
+      "ms": {
+        "draft": 4983,
+        "critique": 9275,
+        "solver": 16795,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the result of (+5) – (+6) using tokens?",
+      "ms": {
+        "draft": 21930,
+        "critique": 8700,
+        "solver": 1927,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the highest point above sea level on Earth according to the passage?",
+      "ms": {
+        "draft": 4361,
+        "critique": 7873,
+        "solver": 1978,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the lift attendant starts at Floor 0, and ends up with 4 positive and 7 negative tokens, which floor is he on?",
+      "ms": {
+        "draft": 21930,
+        "critique": 10095,
+        "solver": 2227,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the hollow integer grid, what is the border sum of the second grid given in the passage?",
+      "ms": {
+        "draft": 4361,
+        "critique": 7215,
+        "solver": 1431
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to Brahmagupta’s rules, what is the result of subtracting (–5) from (–2)?",
+      "ms": {
+        "draft": 5748,
+        "critique": 6295
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a player starts at Floor +2 and presses -3 in the lift, where will they reach? Which expression represents this movement?",
+      "ms": {
+        "draft": 9446,
+        "critique": 5331,
+        "solver": 5354
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following sequences represents decreasing order of heights in the geographical cross-section?",
+      "ms": {
+        "draft": 3482,
+        "critique": 15167
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has a bank balance of ₹130 and then withdraws ₹150, what is their new balance?",
+      "ms": {
+        "draft": 3482,
+        "critique": 13026,
+        "solver": 2758,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following represents the addition statement for the lift attendant being on floor (+3)?",
+      "ms": {
+        "draft": 3482,
+        "critique": 14039,
+        "solver": 4002
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the sum of the integers between -7 and 0 in increasing order?",
+      "ms": {
+        "draft": 3482,
+        "critique": 21832,
+        "solver": 1642
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the inverse of -4 according to the passage?",
+      "ms": {
+        "draft": 3689,
+        "critique": 9887,
+        "solver": 11971,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person starts with 0 rupees in their bank account and has credits of ₹30, ₹40, ₹50 and debits of ₹40, ₹50, ₹60, what is their final balance?",
+      "ms": {
+        "draft": 3482,
+        "critique": 22712,
+        "solver": 49819
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If you start at Floor +2 and press -3 in the lift, where will you reach?",
+      "ms": {
+        "draft": 3689,
+        "critique": 57184,
+        "solver": 12489,
+        "form": 13544
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you start at Floor -2 and press -3, what will be your final floor?",
+      "ms": {
+        "draft": 3689,
+        "critique": 63030,
+        "solver": 94404
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the result of the expression (– 1) – (+ 2)?",
+      "ms": {
+        "draft": 3689,
+        "critique": 56636,
+        "solver": 101433
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the additive inverse of a number is -7, what is the number?",
+      "ms": {
+        "draft": 5820,
+        "critique": 12877
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the result of -4 + (-5)?",
+      "ms": {
+        "draft": 5820,
+        "critique": 20207,
+        "solver": 1486,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements is true about the sum of a number and its additive inverse?",
+      "ms": {
+        "draft": 5820,
+        "critique": 8378
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the highest point above sea level on Earth according to the passage?",
+      "ms": {
+        "draft": 8064,
+        "critique": 7617,
+        "solver": 1466,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the border sum of the second grid in the passage?",
+      "ms": {
+        "draft": 8064,
+        "critique": 7309
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the total sum of the numbers in the grid if the border sum is -2?",
+      "ms": {
+        "draft": 8064,
+        "critique": 7271
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A lift attendant starts with an empty pocket and ends with 3 positive and 4 negative tokens. What floor is he on?",
+      "ms": {
+        "draft": 11768,
+        "critique": 13920,
+        "solver": 3022
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following expressions is equivalent to (+2000) – (–200)?",
+      "ms": {
+        "draft": 14569,
+        "critique": 17807
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following represents the subtraction of -8 - (-4) using tokens?",
+      "ms": {
+        "draft": 3482,
+        "critique": 17269,
+        "solver": 3029,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a rule given by Brahmagupta for adding two negative numbers?",
+      "ms": {
+        "draft": 5820,
+        "critique": 42986,
+        "solver": 68844,
+        "form": 1,
+        "translation": 34319
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following represents moving four floors up in the Building of Fun?",
+      "ms": {
+        "draft": 3689,
+        "critique": 10806,
+        "solver": 5562,
+        "form": 25594,
+        "translation": 30444
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is equal to 9–(–6)?",
+      "ms": {
+        "draft": 4983,
+        "critique": 7483,
+        "solver": 1809,
+        "form": 0,
+        "translation": 44249
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Gurmit was in the Toy Store (Floor –1) and pressed the ‘+’ button 2 times by mistake. He then pressed the ‘–’ button 3 times. Where will he end up?",
+      "ms": {
+        "draft": 8746,
+        "critique": 10143,
+        "solver": 20013,
+        "form": 0,
+        "translation": 44840
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is equivalent to 5 - (-3)?",
+      "ms": {
+        "draft": 5820,
+        "critique": 7155,
+        "solver": 13227,
+        "form": 0,
+        "translation": 27999
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a number and its inverse are added together, what is the result?",
+      "ms": {
+        "draft": 3652,
+        "critique": 9187,
+        "solver": 1951,
+        "form": 0,
+        "translation": 43270
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is equal to –9–(–200)?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the result of (–3) + (–2) using tokens?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the lowest point with respect to sea level on land or on the ocean floor according to the passage?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a person is on Floor +2 and presses the ‘–’ button 3 times, which floor will they reach?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following describes the floor numbering in the 'Building of Fun' as explained in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"Floors above ground are numbered with negative numbers and floors below ground with positive numbers\" / \"Floors above ground are numbered with positive numbers and floors below ground with negative numbers\"); options 0 and 2 say the same thing (\"Floors above ground are numbered with negative numbers and floors below ground with positive numbers\" / \"Floors above ground are numbered with positive numbers and floors below ground with positive numbers\"); options 0 and 3 say the same thing (\"Floors above ground are numbered with negative numbers and floors below ground with positive numbers\" / \"Floors above and below ground are numbered with negative numbers\"); options 1 and 2 say the same thing (\"Floors above ground are numbered with positive numbers and floors below ground with negative numbers\" / \"Floors above ground are numbered with positive numbers and floors below ground with positive numbers\"); options 1 and 3 say the same thing (\"Floors above ground are numbered with positive numbers and floors below ground with negative numbers\" / \"Floors above and below ground are numbered with negative numbers\"); options 2 and 3 say the same thing (\"Floors above ground are numbered with positive numbers and floors below ground with positive numbers\" / \"Floors above and below ground are numbered with negative numbers\"); distractor 3's reason is not a one-line misconception (\"Thinks all floors are positive, ignoring the negative number…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What does the number 0 represent in the context of the 'Building of Fun' as explained in the passage?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If you start at the Food Court (Floor +1) and press the ‘+’ button 4 times, what floor will you reach?",
+      "reason": "the solver picked option 1 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the inverse of +4?",
+      "reason": "the critic finds option 3 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the expression (+2) + (–7) = –5 represents the movement to reach Floor –5, which of the following could be a different starting point and movement to reach Floor –5?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following numbers is less than 0?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the result of (–1) – (+2)?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the Starting Floor is +5 and the Target Floor is –3, what is the movement needed?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the result of (–200)–(–40)?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If the Starting Floor is +2 and the Target Floor is –1, what button should you press?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the starting number is +105 and the movement is –55, what is the target number?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the starting number is –99 and the movement is +200, what is the target number?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the result of (+5) + (–3) using tokens?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the result of (+200)–(+40)?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the result of (+5) – (+6) using tokens?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the highest point above sea level on Earth according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; checkExpr \"8848\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the lift attendant starts at Floor 0, and ends up with 4 positive and 7 negative tokens, which floor is he on?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In the hollow integer grid, what is the border sum of the second grid given in the passage?",
+      "reason": "the solver picked option 2 3 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "According to Brahmagupta’s rules, what is the result of subtracting (–5) from (–2)?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a player starts at Floor +2 and presses -3 in the lift, where will they reach? Which expression represents this movement?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following expressions is equivalent to (+4) + (-3)?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the lowest point with respect to sea level on land or on the ocean floor according to the passage?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "A student has 7 credits of `10 each and 5 debits of `10 each. What is their bank account balance?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following sequences represents decreasing order of heights in the geographical cross-section?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person has a bank balance of ₹130 and then withdraws ₹150, what is their new balance?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct sign but incorrect value…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following represents the addition statement for the lift attendant being on floor (+3)?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What is the sum of the integers between -7 and 0 in increasing order?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the inverse of -4 according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a person starts with 0 rupees in their bank account and has credits of ₹30, ₹40, ₹50 and debits of ₹40, ₹50, ₹60, what is their final balance?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If you start at Floor +2 and press -3 in the lift, where will you reach?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If you start at Floor -2 and press -3, what will be your final floor?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the result of the expression (– 1) – (+ 2)?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If the additive inverse of a number is -7, what is the number?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the result of -4 + (-5)?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"4+5\" = 9, but the key says -9"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following statements is true about the sum of a number and its additive inverse?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the highest point above sea level on Earth according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the border sum of the second grid in the passage?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "What is the total sum of the numbers in the grid if the border sum is -2?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A lift attendant starts with an empty pocket and ends with 3 positive and 4 negative tokens. What floor is he on?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following expressions is equivalent to (+2000) – (–200)?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following represents the subtraction of -8 - (-4) using tokens?",
+      "reason": "near-duplicate of served question cmvvb0op200nt0rgnychxjkkx (cosine 0.916 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

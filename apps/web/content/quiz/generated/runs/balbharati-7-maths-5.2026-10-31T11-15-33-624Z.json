@@ -1,0 +1,337 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T11:15:33.624Z",
+  "finishedAt": "2026-10-31T11:28:27.670Z",
+  "seconds": 774,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी गणित इंग्रजी",
+    "bookCode": "703020004",
+    "document": "balbharati/7/mathematics/703020004.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 5 — Operations on Rational Numbers",
+    "edition": "2026 edition",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[RMO 2013 — question paper]\n4. Let x be a non-zero real number such that x + 4 and x + 5 are both rational numbers.\nx x\nProve that x + is a rational number.\nx",
+      "[RMO 2019 — question paper]\n1. Suppose x is a nonzero real number such that both x and 20x + are rational numbers. Prove\nx\nthat x is a rational number.",
+      "[PRMO 2019 — question paper]\n9. Let the rational number p/q be closest to but not equal to 22/7 among all rational numbers\nwith denominator < 100. What is the value of p − 3q ?",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n20. Assertion(A): (2 + √3)√3 is an irrational number. 1\nReason(R): Product of two irrational numbers is always irrational."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 137782,
+      "in": 12,
+      "out": 12,
+      "rejects": 2,
+      "promptTokens": 8552,
+      "completionTokens": 2641
+    },
+    "critique": {
+      "calls": 13,
+      "ms": 333589,
+      "in": 12,
+      "out": 11,
+      "rejects": 1,
+      "promptTokens": 5770,
+      "completionTokens": 2344
+    },
+    "solver": {
+      "calls": 63,
+      "ms": 112815,
+      "in": 11,
+      "out": 9,
+      "rejects": 2,
+      "promptTokens": 9824,
+      "completionTokens": 597
+    },
+    "form": {
+      "calls": 9,
+      "ms": 80087,
+      "in": 9,
+      "out": 2,
+      "rejects": 7,
+      "promptTokens": 2307,
+      "completionTokens": 801
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 3,
+      "ms": 493,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 74057,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4942,
+      "completionTokens": 2456
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which operation is not closed under the set of natural numbers?",
+      "ms": {
+        "draft": 6453,
+        "critique": 33904,
+        "solver": 9377,
+        "form": 20490
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the definition of a rational number?",
+      "ms": {
+        "draft": 6453,
+        "critique": 35383,
+        "solver": 12496,
+        "form": 16148
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If x + 4/x and x + 5/x are both rational numbers, what can be said about x?",
+      "ms": {
+        "draft": 6453,
+        "critique": 52142,
+        "solver": 7353
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If p/q is the rational number closest to but not equal to 22/7 among all rational numbers with denominator less than 100, what is p - 3q?",
+      "ms": {
+        "draft": 6453,
+        "critique": 71450
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is not a rational number?",
+      "ms": {
+        "draft": 6453,
+        "critique": 53681,
+        "solver": 54311
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a terminating decimal?",
+      "ms": {
+        "draft": 16511,
+        "critique": 6298,
+        "solver": 2255,
+        "form": 3558
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the correct order of operations for simplifying an expression?",
+      "ms": {
+        "draft": 16511,
+        "critique": 5620,
+        "solver": 1657,
+        "form": 5324
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following expressions evaluates to 16?",
+      "ms": {
+        "draft": 16511,
+        "critique": 6603,
+        "solver": 2808,
+        "form": 7700
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a recurring decimal?",
+      "ms": {
+        "draft": 16511,
+        "critique": 7709,
+        "solver": 1830,
+        "form": 3301
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a rational number has a terminating decimal form, what can be said about its denominator?",
+      "ms": {
+        "draft": 16511,
+        "critique": 8268,
+        "solver": 1578,
+        "form": 3928
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the multiplicative inverse of -7/2?",
+      "ms": {
+        "draft": 6453,
+        "critique": 28022,
+        "solver": 10122,
+        "form": 31572,
+        "translation": 30723
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a rational number p/q has a terminating decimal form, what is the condition on q?",
+      "ms": {
+        "draft": 16511,
+        "critique": 7305,
+        "solver": 1219,
+        "form": 2119,
+        "translation": 38134
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 1)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which operation is not closed under the set of natural numbers?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Does not understand the example given in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the definition of a rational number?",
+      "reason": "the key is far longer than every distractor (86 vs 44 characters); distractor 3's reason is not a one-line misconception (\"Misunderstands the nature of rational numbers as positive on…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If x + 4/x and x + 5/x are both rational numbers, what can be said about x?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If p/q is the rational number closest to but not equal to 22/7 among all rational numbers with denominator less than 100, what is p - 3q?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is not a rational number?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":2,\"stem\":\"Which of the following is a rational number?\",\"options\":[\"√2\",\"π\",\"1.5\",\"√3\"],\"answerI"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of a terminating decimal?",
+      "reason": "options are in more than one unit (..., none); options are written to different precisions (2 and 3 and 4 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the correct order of operations for simplifying an expression?",
+      "reason": "options 0 and 1 say the same thing (\"Addition, Subtraction, Multiplication, Division\" / \"Multiplication, Division, Addition, Subtraction\"); options 0 and 2 say the same thing (\"Addition, Subtraction, Multiplication, Division\" / \"Division, Multiplication, Addition, Subtraction\"); options 0 and 3 say the same thing (\"Addition, Subtraction, Multiplication, Division\" / \"Multiplication, Addition, Division, Subtraction\"); options 1 and 2 say the same thing (\"Multiplication, Division, Addition, Subtraction\" / \"Division, Multiplication, Addition, Subtraction\"); options 1 and 3 say the same thing (\"Multiplication, Division, Addition, Subtraction\" / \"Multiplication, Addition, Division, Subtraction\"); options 2 and 3 say the same thing (\"Division, Multiplication, Addition, Subtraction\" / \"Multiplication, Addition, Division, Subtraction\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following expressions evaluates to 16?",
+      "reason": "options 0 and 1 are the same (\"72 ÷ 6 + 2 × 2\"); options 0 and 2 are the same (\"72 ÷ 6 + 2 × 2\"); options 0 and 3 are the same (\"72 ÷ 6 + 2 × 2\"); options 1 and 2 are the same (\"72 ÷ 6 × 2 + 2\"); options 1 and 3 are the same (\"72 ÷ 6 × 2 + 2\"); options 2 and 3 are the same (\"72 × 6 ÷ 2 + 2\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a recurring decimal?",
+      "reason": "options are in more than one unit (none, ...); options are written to different precisions (1 and 2 and 3 and 4 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a rational number has a terminating decimal form, what can be said about its denominator?",
+      "reason": "the key is far longer than every distractor (53 vs 26 characters)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

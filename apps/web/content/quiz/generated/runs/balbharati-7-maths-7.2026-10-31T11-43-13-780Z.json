@@ -1,0 +1,224 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T11:43:13.780Z",
+  "finishedAt": "2026-10-31T11:48:19.176Z",
+  "seconds": 305,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी गणित इंग्रजी",
+    "bookCode": "703020004",
+    "document": "balbharati/7/mathematics/703020004.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 7 — Joint Bar Graph",
+    "edition": "2026 edition",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n31. (A) The monthly income of Aryan and Babban are in the ratio 3:4 and their monthly 3\nexpenditures are in ratio 5:7. If each saves ₹ 15,000 per month, find their monthly\nincomes.\nOR\n(B) Solve the following system of equations graphically:\n2𝑥 + 𝑦 =6, 2 𝑥 – 𝑦 – 2=0. Find the area of the triangle so formed by two lines and 𝑥 -\naxis.\nFor Visually Impaired candidates:\nFive years hence, fathers age will be three times the age of son. Five years ago,\nfather was seven times as old as his son. Find their present ages.\n(Section – D)",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2023-24]\n27. Cost of two toys A and B are 50 and 75. On a particular Sunday shopkeeper P sells 7 toys of\ntype A and 10 toys of type B whereas shopkeeper Q sells 8 toys of type A and 6 toys of type B.\nFind income of both shopkeepers using matrix Algebra.",
+      "[CBSE Class XII Mathematics, marking scheme, 2026-27]\n5. (C) |𝑎𝑑𝑗(𝑃𝑄)| = |𝑎𝑑𝑗𝑄. 𝑎𝑑𝑗𝑃| = |𝑎𝑑𝑗𝑄||𝑎𝑑𝑗𝑃| = |𝑄||𝑃| = 3 × 2 = 6 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 1,
+      "ms": 86587,
+      "in": 6,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 4082,
+      "completionTokens": 1525
+    },
+    "critique": {
+      "calls": 7,
+      "ms": 67528,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 3189,
+      "completionTokens": 1211
+    },
+    "solver": {
+      "calls": 31,
+      "ms": 18882,
+      "in": 6,
+      "out": 3,
+      "rejects": 3,
+      "promptTokens": 5197,
+      "completionTokens": 274
+    },
+    "form": {
+      "calls": 2,
+      "ms": 7959,
+      "in": 3,
+      "out": 2,
+      "rejects": 1,
+      "promptTokens": 479,
+      "completionTokens": 128
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 3,
+      "ms": 581,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 89136,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4587,
+      "completionTokens": 2401
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the purpose of a joint bar graph?",
+      "ms": {
+        "draft": 14431,
+        "critique": 13695,
+        "solver": 1615,
+        "form": 6005
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the joint bar graph showing wheat production in Ajay’s and Vijay’s farms, in which year did they both produce equal quantities of wheat?",
+      "ms": {
+        "draft": 14431,
+        "critique": 8617,
+        "solver": 1920
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The joint bar graph below shows the number of boys and girls in different classes. If the total number of students in class 5th is 120, how many girls are there in class 5th?",
+      "ms": {
+        "draft": 14431,
+        "critique": 6861,
+        "solver": 1502
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A joint bar graph is used to compare the number of boys and girls in different classes. If the scale of the graph is 1 cm = 10 students and the bar for girls in class 7th is 4 cm high, how many girls are there in class 7th?",
+      "ms": {
+        "draft": 14431,
+        "critique": 6710,
+        "solver": 6668
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a feature of a joint bar graph?",
+      "ms": {
+        "draft": 14431,
+        "critique": 13940,
+        "solver": 2471,
+        "form": 4515,
+        "translation": 43997
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the scale of a joint bar graph is 1 cm = 10 quintals, and a bar representing wheat production is 3 cm high, what is the quantity of wheat produced?",
+      "ms": {
+        "draft": 14431,
+        "critique": 14243,
+        "solver": 3285,
+        "form": 0,
+        "translation": 38579
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the purpose of a joint bar graph?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct purpose is not understood…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the joint bar graph showing wheat production in Ajay’s and Vijay’s farms, in which year did they both produce equal quantities of wheat?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "The joint bar graph below shows the number of boys and girls in different classes. If the total number of students in class 5th is 120, how many girls are there in class 5th?",
+      "reason": "the solver picked option 1 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A joint bar graph is used to compare the number of boys and girls in different classes. If the scale of the graph is 1 cm = 10 students and the bar for girls in class 7th is 4 cm high, how many girls are there in class 7th?",
+      "reason": "after redrafting distractor 0: the critic finds option 0 correct, the key is 1"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"What is the main purpose of a joint bar graph?\",\n      \"optio"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

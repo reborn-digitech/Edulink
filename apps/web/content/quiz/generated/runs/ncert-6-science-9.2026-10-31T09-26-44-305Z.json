@@ -1,0 +1,743 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T09:26:44.305Z",
+  "finishedAt": "2026-10-31T09:34:29.426Z",
+  "seconds": 465,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "fecu1",
+    "document": "ncert/6/science/fecu109.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 9 — Methods of Separation in Everyday Life",
+    "edition": "Reprint 2026-27",
+    "chunks": 12,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2023 — question paper]\n31. (4 marks) As a part of an experiment to study Tyndall effect, Aamir adds sugar to aqueous dispersion of gold nanoparticles of size 100 nm. Once the experiment is completed, he plans HBCSE property of shikimic acid leads to this difference in amount in the two recipes. 15\nto recover gold nanoparticles and use them in another experiment. As he tries to separate\ngold nanoparticles and sugar, by mistake, he adds the mixture to a tube containing calcium\ncarbonate. This results in a mixture containing gold nanoparticles, sugar, water, and calcium\ncarbonate.\nHe separates the constituents in three steps by using set of apparatus available in the lab.\nInstruments and materials available in the la",
+      "[INJSO 2023 — solutions or answer key]\n31. (4 marks) As a part of an experiment to study Tyndall effect, Aamir adds sugar to aqueous\ndispersion of gold nanoparticles of size 100 nm. Once the experiment is completed, he plans\nto recover gold nanoparticles and use them in another experiment. As he tries to separate\ngold nanoparticles and sugar, by mistake, he adds the mixture to a tube containing calcium\ncarbonate. This results in a mixture containing gold nanoparticles, sugar, water, and calcium\ncarbonate.\nHe separates the constituents in three steps by using set of apparatus available in the lab.\nInstruments and materials available in the lab: Heater, sublimation set up, beaker, filter\npaper, funnel, centrifuge, centrifuge tubes,",
+      "[INJSO 2019 — question paper]\n9. A researcher centrifuged human blood at low speed to separate the red blood cells\n(RBCs) and white blood cells (WBCs). She then suspended the pellet of RBCs in saline\n(0.9% NaCl). She subsequently put a drop of the RBC suspension into three different\nsolutions as indicated below. What will be her observations for solutions I, II and III\nrespectively?\nSolution I Solution II Solution III\nDetergent Distilled 5% NaCl\nwater\n(A)Lysis, lysis, swelling.\n(B) Swelling, no change, shrinkage.\n(C) Lysis, lysis, shrinkage.\n(D)No change, shrinkage, swelling.",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n20. Assertion: Biodegradable substances result in the formation of compost and natural 1\nreplenishment.\nReason: It is due to breakdown of complex inorganic substances into simple organic\nsubstances."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 192459,
+      "in": 39,
+      "out": 37,
+      "rejects": 2,
+      "promptTokens": 35559,
+      "completionTokens": 9865
+    },
+    "critique": {
+      "calls": 42,
+      "ms": 278735,
+      "in": 37,
+      "out": 25,
+      "rejects": 12,
+      "promptTokens": 18287,
+      "completionTokens": 7133
+    },
+    "solver": {
+      "calls": 163,
+      "ms": 92534,
+      "in": 25,
+      "out": 21,
+      "rejects": 4,
+      "promptTokens": 27891,
+      "completionTokens": 1665
+    },
+    "form": {
+      "calls": 15,
+      "ms": 74760,
+      "in": 21,
+      "out": 12,
+      "rejects": 9,
+      "promptTokens": 12655,
+      "completionTokens": 1850
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 57,
+      "ms": 10477,
+      "in": 12,
+      "out": 6,
+      "rejects": 6,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 27,
+      "ms": 297256,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 14981,
+      "completionTokens": 7582
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 5,
+      "stem": "If a mixture of chana dal and puffed rice is given, which method can be used to separate them?",
+      "ms": {
+        "draft": 3819,
+        "critique": 6256,
+        "solver": 1580
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the figure, what happens to the grains and husk during winnowing?",
+      "ms": {
+        "draft": 3819,
+        "critique": 6879,
+        "solver": 1153,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the passage, the process of decantation is used to separate tea leaves from tea. What is the main reason this method is not completely effective?",
+      "ms": {
+        "draft": 3263,
+        "critique": 7344,
+        "solver": 1614
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which method of separation is used to separate iron nails from sawdust?",
+      "ms": {
+        "draft": 8430,
+        "critique": 6306
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a mixture contains oil and water, which method of separation would you use?",
+      "ms": {
+        "draft": 8430,
+        "critique": 5591
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A mixture contains sand and salt. Which two methods would be most effective for separating them?",
+      "ms": {
+        "draft": 8430,
+        "critique": 6666
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a lab, a student has a mixture of salt, sand, and iron filings. What is the correct order of methods to separate them?",
+      "ms": {
+        "draft": 8430,
+        "critique": 6253,
+        "solver": 1753,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a mixture contains oil, water, and salt, which method would you use to separate all three?",
+      "ms": {
+        "draft": 8430,
+        "critique": 6434,
+        "solver": 1258,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which method of separation is used to separate iron powder from sawdust?",
+      "ms": {
+        "draft": 4026,
+        "critique": 6078
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which method of separation would be most suitable to separate salt from a saltwater solution?",
+      "ms": {
+        "draft": 4026,
+        "critique": 6285
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student mixed oil and water in a container. After some time, the oil rose to the top. What method of separation should be used to separate the oil from the water?",
+      "ms": {
+        "draft": 4026,
+        "critique": 5957
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A mixture contains salt, sand, and iron filings. Which method should be used to separate the iron filings first?",
+      "ms": {
+        "draft": 4026,
+        "critique": 5690
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A mixture contains sand, salt, and sawdust. Which of the following is the correct order of steps to separate all the components?",
+      "ms": {
+        "draft": 4026,
+        "critique": 6461,
+        "solver": 6768,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which method of separation is used to remove husk from grains?",
+      "ms": {
+        "draft": 3182,
+        "critique": 7404,
+        "solver": 19333
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A mixture of potatoes, salt, and sawdust is given. Which step should be done first to separate the components?",
+      "ms": {
+        "draft": 3182,
+        "critique": 7752,
+        "solver": 17730,
+        "form": 3691
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which method of separation is used to separate iron nails from sawdust?",
+      "ms": {
+        "draft": 5018,
+        "critique": 6018
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a mixture contains salt and water, which method of separation can be used?",
+      "ms": {
+        "draft": 5018,
+        "critique": 8372
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a mixture of sand and water, the sand settles down at the bottom. What is the name of this process?",
+      "ms": {
+        "draft": 5018,
+        "critique": 8647
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a mixture contains both magnetic and non-magnetic substances, which method of separation is the most effective?",
+      "ms": {
+        "draft": 5018,
+        "critique": 7868
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A mixture contains sand, salt, and iron filings. What is the correct sequence to separate them?",
+      "ms": {
+        "draft": 3182,
+        "critique": 6826,
+        "solver": 20039
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What process is used to separate salt from salt solution by heating?",
+      "ms": {
+        "draft": 7467,
+        "critique": 7357,
+        "solver": 1529,
+        "form": 3364
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which method is used to separate tea leaves from tea after boiling?",
+      "ms": {
+        "draft": 7467,
+        "critique": 6026,
+        "solver": 1770,
+        "form": 4023
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student mixes salt, sand, and water in a beaker. Which method would be most appropriate to separate salt from the mixture?",
+      "ms": {
+        "draft": 7467,
+        "critique": 7691,
+        "solver": 1838,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which method is used to separate small stones and husk from grains by hand?",
+      "ms": {
+        "draft": 5210,
+        "critique": 5763
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A mixture contains oil, water, and salt. Which method would be most effective to separate all three components?",
+      "ms": {
+        "draft": 7467,
+        "critique": 7661,
+        "solver": 1201,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of threshing?",
+      "ms": {
+        "draft": 3819,
+        "critique": 5535,
+        "solver": 1830,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which method is used to remove small stones and husk from grains?",
+      "ms": {
+        "draft": 3819,
+        "critique": 5850,
+        "solver": 2168,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which process is used to recover salt from a salt solution?",
+      "ms": {
+        "draft": 3263,
+        "critique": 7931,
+        "solver": 1172,
+        "form": 3336
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student is trying to separate a mixture of oil and water. Which method should they use?",
+      "ms": {
+        "draft": 3182,
+        "critique": 6960,
+        "solver": 1505,
+        "form": 5837
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A farmer wants to separate grains from their husk. Which method would be most effective?",
+      "ms": {
+        "draft": 3182,
+        "critique": 7438,
+        "solver": 1830,
+        "form": 2573
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student has a mixture of oil and water. Which method of separation should he use?",
+      "ms": {
+        "draft": 5018,
+        "critique": 8541,
+        "solver": 16154,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which method is described as the process of letting heavier particles settle at the bottom of a liquid?",
+      "ms": {
+        "draft": 3263,
+        "critique": 6220,
+        "solver": 1457,
+        "form": 3361,
+        "translation": 41463
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a farmer wants to separate husk from grains, which method should they use?",
+      "ms": {
+        "draft": 3819,
+        "critique": 5138,
+        "solver": 1370,
+        "form": 1,
+        "translation": 62442
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a mixture of tea leaves and tea is left undisturbed, what happens to the tea leaves?",
+      "ms": {
+        "draft": 3263,
+        "critique": 7370,
+        "solver": 1916,
+        "form": 2295,
+        "translation": 48753
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In filtration, what is the name of the liquid that passes through the filter paper?",
+      "ms": {
+        "draft": 3263,
+        "critique": 6743,
+        "solver": 1452,
+        "form": 3880,
+        "translation": 39416
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a student wants to separate a mixture of sand and water, which method would be most effective?",
+      "ms": {
+        "draft": 3263,
+        "critique": 7228,
+        "solver": 2114,
+        "form": 4848,
+        "translation": 51699
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is sieving not suitable for separating salt from seawater?",
+      "ms": {
+        "draft": 3819,
+        "critique": 5603,
+        "solver": 2464,
+        "form": 0,
+        "translation": 48946
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which method of separation is used to separate butter from curd?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a mixture of chana dal and puffed rice is given, which method can be used to separate them?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the figure, what happens to the grains and husk during winnowing?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.direction of air or wind: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In the passage, the process of decantation is used to separate tea leaves from tea. What is the main reason this method is not completely effective?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which method of separation is used to separate iron nails from sawdust?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a mixture contains oil and water, which method of separation would you use?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A mixture contains sand and salt. Which two methods would be most effective for separating them?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a lab, a student has a mixture of salt, sand, and iron filings. What is the correct order of methods to separate them?",
+      "reason": "options 0 and 1 say the same thing (\"Magnetic separation, filtration, evaporation\" / \"Filtration, magnetic separation, evaporation\"); options 0 and 2 say the same thing (\"Magnetic separation, filtration, evaporation\" / \"Evaporation, filtration, magnetic separation\"); options 0 and 3 say the same thing (\"Magnetic separation, filtration, evaporation\" / \"Magnetic separation, evaporation, filtration\"); options 1 and 2 say the same thing (\"Filtration, magnetic separation, evaporation\" / \"Evaporation, filtration, magnetic separation\"); options 1 and 3 say the same thing (\"Filtration, magnetic separation, evaporation\" / \"Magnetic separation, evaporation, filtration\"); options 2 and 3 say the same thing (\"Evaporation, filtration, magnetic separation\" / \"Magnetic separation, evaporation, filtration\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a mixture contains oil, water, and salt, which method would you use to separate all three?",
+      "reason": "options 1 and 3 say the same thing (\"Evaporation and decantation\" / \"Decantation and evaporation\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which method of separation is used to separate iron powder from sawdust?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which method of separation would be most suitable to separate salt from a saltwater solution?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student mixed oil and water in a container. After some time, the oil rose to the top. What method of separation should be used to separate the oil from the water?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A mixture contains salt, sand, and iron filings. Which method should be used to separate the iron filings first?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A mixture contains sand, salt, and sawdust. Which of the following is the correct order of steps to separate all the components?",
+      "reason": "options 0 and 1 say the same thing (\"Dissolve in water, filter, evaporate\" / \"Filter, dissolve in water, evaporate\"); options 0 and 2 say the same thing (\"Dissolve in water, filter, evaporate\" / \"Evaporate, filter, dissolve in water\"); options 0 and 3 say the same thing (\"Dissolve in water, filter, evaporate\" / \"Dissolve in water, evaporate, filter\"); options 1 and 2 say the same thing (\"Filter, dissolve in water, evaporate\" / \"Evaporate, filter, dissolve in water\"); options 1 and 3 say the same thing (\"Filter, dissolve in water, evaporate\" / \"Dissolve in water, evaporate, filter\"); options 2 and 3 say the same thing (\"Evaporate, filter, dissolve in water\" / \"Dissolve in water, evaporate, filter\")"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which method of separation is used to separate iron powder from sawdust?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which method of separation is used to remove husk from grains?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A mixture of potatoes, salt, and sawdust is given. Which step should be done first to separate the components?",
+      "reason": "options 0 and 3 are the same (\"Dissolving in oil\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which method of separation is used to separate iron nails from sawdust?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a mixture contains salt and water, which method of separation can be used?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a mixture of sand and water, the sand settles down at the bottom. What is the name of this process?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a mixture contains both magnetic and non-magnetic substances, which method of separation is the most effective?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A mixture contains sand, salt, and iron filings. What is the correct sequence to separate them?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What process is used to separate salt from salt solution by heating?",
+      "reason": "figure: figure spec refused: spec.parts.2.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'wireGauze'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which method is used to separate tea leaves from tea after boiling?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'cup'"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student mixes salt, sand, and water in a beaker. Which method would be most appropriate to separate salt from the mixture?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'filterPaper'"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which method is used to separate small stones and husk from grains by hand?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A mixture contains oil, water, and salt. Which method would be most effective to separate all three components?",
+      "reason": "figure: figure spec refused: spec.parts: beaker has no label \"salt\" (it has beaker, liquid)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the purpose of threshing?",
+      "reason": "near-duplicate of served question cmvftsfj400ppgpfhnhczc7ac (cosine 0.918 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which method is used to remove small stones and husk from grains?",
+      "reason": "near-duplicate of served question cmv4cpkj100dsgnbalw9u2lbu (cosine 0.959 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which process is used to recover salt from a salt solution?",
+      "reason": "near-duplicate of served question cmv4cpkjj00eggnbasnkvdxkn (cosine 0.929 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "A student is trying to separate a mixture of oil and water. Which method should they use?",
+      "reason": "near-duplicate of served question cmvqbxa1t0apdgp218w3fzfy7 (cosine 0.902 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A farmer wants to separate grains from their husk. Which method would be most effective?",
+      "reason": "near-duplicate of batch item \"If a farmer wants to separate husk from grains, wh…\" (cosine 0.983 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A student has a mixture of oil and water. Which method of separation should he use?",
+      "reason": "near-duplicate of served question cmvendk0700rbgod82aj8007p (cosine 0.912 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

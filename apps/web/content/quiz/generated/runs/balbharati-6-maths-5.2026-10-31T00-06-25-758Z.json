@@ -1,0 +1,500 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T00:06:25.758Z",
+  "finishedAt": "2026-10-31T00:11:03.625Z",
+  "seconds": 278,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 5 — GCD and LCM",
+    "edition": "First Edition 2026",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n1. D HCF × LCM = Product of two numbers 1\n40 × 252 × k = 2520 × 6600\n(D) 1650",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n21. (A)Find the H.C.F and L.C.M of 480 and 720 using the Prime factorisation method. 2\nOR\n(A) The H.C.F of 85 and 238 is expressible in the form 85m -238. Find the value of\nm.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2026-27]\n21. (A) Length = 9.75 m = 975 cm\nBreadth = 6.75 m = 675 cm\nHeight = 5.25 m = 525 cm\nLength of longest unmarked ruler = HCF (975, 675, 525) ½\n975 = 3 × 5 × 13 2\n675 = 3 × 5 3 2 1\n525 = 3 × 5 × 7 2\n∴ HCF (975, 675, 525) = 3 × 5 = 75 2 ½\nHence, the length of longest unmarked ruler is 75 cm or 0.75 m\nOR\n21. (B) LCM of 5, 6 and 8 is 120 1\ni.e., all the bells toll together after an interval of 120 minutes or 2 hours.\nThus, all the bells will again toll together at 12:00 noon, 2:00 pm, 4:00 pm and 6\np.m. i.e., 4 times 1\nSo, the bells will toll together 4 more times, till the park is closed at 7:00 p.m.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n2. The LCM of smallest two digit composite number and smallest composite number is:\na) 12 b) 4 c) 20 d) 44"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 89918,
+      "in": 23,
+      "out": 23,
+      "rejects": 0,
+      "promptTokens": 20722,
+      "completionTokens": 4815
+    },
+    "critique": {
+      "calls": 33,
+      "ms": 224649,
+      "in": 23,
+      "out": 22,
+      "rejects": 1,
+      "promptTokens": 15290,
+      "completionTokens": 6028
+    },
+    "solver": {
+      "calls": 181,
+      "ms": 101265,
+      "in": 22,
+      "out": 12,
+      "rejects": 10,
+      "promptTokens": 39074,
+      "completionTokens": 2001
+    },
+    "form": {
+      "calls": 5,
+      "ms": 15404,
+      "in": 12,
+      "out": 10,
+      "rejects": 2,
+      "promptTokens": 1265,
+      "completionTokens": 396
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 13,
+      "ms": 2424,
+      "in": 10,
+      "out": 5,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 167121,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 11579,
+      "completionTokens": 5187
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "What is the GCD of 24 and 36?",
+      "ms": {
+        "draft": 3528,
+        "critique": 5520,
+        "solver": 14881
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a divisor of 12?",
+      "ms": {
+        "draft": 3528,
+        "critique": 5335,
+        "solver": 16770
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the LCM of 6 and 8?",
+      "ms": {
+        "draft": 3528,
+        "critique": 5374,
+        "solver": 12105
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The product of two numbers is 360 and their GCD is 6. What is their LCM?",
+      "ms": {
+        "draft": 4518,
+        "critique": 5320,
+        "solver": 16405
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the greatest common divisor of 16 and 24?",
+      "ms": {
+        "draft": 4518,
+        "critique": 9792,
+        "solver": 13642
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The product of two numbers is 2520 and their LCM is 6600. What is their GCD?",
+      "ms": {
+        "draft": 4518,
+        "critique": 9648
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Three buses leave a station every 10, 15 and 20 minutes. If all three buses first leave at 8 am, then at what earliest time will they leave together again?",
+      "ms": {
+        "draft": 4518,
+        "critique": 9338,
+        "solver": 1302
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the LCM of 16 and 24?",
+      "ms": {
+        "draft": 4087,
+        "critique": 6468,
+        "solver": 1548,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The product of two numbers is 360 and their GCD is 6. What is their LCM?",
+      "ms": {
+        "draft": 4087,
+        "critique": 6439,
+        "solver": 17750
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The product of two numbers is 120. If their LCM is 60, then what is their GCD?",
+      "ms": {
+        "draft": 4087,
+        "critique": 7897,
+        "solver": 1752
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the GCD of two numbers is 10 and their LCM is 200, what is the product of the two numbers?",
+      "ms": {
+        "draft": 4087,
+        "critique": 7028,
+        "solver": 16155
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a divisor of 12?",
+      "ms": {
+        "draft": 3423,
+        "critique": 6458,
+        "solver": 14709
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The length and breadth of a room are 15 meters and 9 meters respectively. What is the maximum length of each tile to be laid in square tiles in this room?",
+      "ms": {
+        "draft": 3423,
+        "critique": 4780,
+        "solver": 777,
+        "form": 1290
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a common divisor of 12 and 16?",
+      "ms": {
+        "draft": 3528,
+        "critique": 4837,
+        "solver": 1200,
+        "form": 6074
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A room is 15 meters long and 9 meters wide. What is the maximum length of a square tile that can be used to cover the entire floor without cutting any tiles?",
+      "ms": {
+        "draft": 3528,
+        "critique": 6497,
+        "solver": 1630,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A farmer has 250 kg of wheat and 150 kg of jowar. Both the grains are to be filled in sacks so that their weight will be the same. What is the maximum weight of grain that can be filled in each sack?",
+      "ms": {
+        "draft": 4087,
+        "critique": 6955,
+        "solver": 2606,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Three buses going to different places leave from the same station every 10, 15 and 20 minutes. If all the three buses first leave at 8 am, then at what earliest time will they leave at the same time again?",
+      "ms": {
+        "draft": 4087,
+        "critique": 8357,
+        "solver": 1322,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the greatest common divisor (GCD) of 12 and 16?",
+      "ms": {
+        "draft": 3423,
+        "critique": 7293,
+        "solver": 1692,
+        "form": 3021
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for a number that divides another number and leaves no remainder?",
+      "ms": {
+        "draft": 3423,
+        "critique": 5214,
+        "solver": 1387,
+        "form": 3226,
+        "translation": 25774
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the least common multiple (LCM) of 6 and 8?",
+      "ms": {
+        "draft": 3423,
+        "critique": 8078,
+        "solver": 1406,
+        "form": 3090,
+        "translation": 19354
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the smallest number that is divisible by 8, 12 and 16?",
+      "ms": {
+        "draft": 4518,
+        "critique": 7323,
+        "solver": 13883,
+        "form": 0,
+        "translation": 38535
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The LCM of two numbers is 200 and the GCD is 10. If one of the numbers is 40, what is the other number?",
+      "ms": {
+        "draft": 4518,
+        "critique": 6250,
+        "solver": 9423,
+        "form": 0,
+        "translation": 39721
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A garland seller has 48 red roses and 60 white roses. He wants to make garlands with the same number of flowers in each. What is the maximum number of flowers in each garland?",
+      "ms": {
+        "draft": 3528,
+        "critique": 6706,
+        "solver": 1938,
+        "form": 0,
+        "translation": 39531
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the GCD of 24 and 36?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a divisor of 12?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the LCM of 6 and 8?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "The product of two numbers is 360 and their GCD is 6. What is their LCM?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the greatest common divisor of 16 and 24?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "The product of two numbers is 2520 and their LCM is 6600. What is their GCD?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Three buses leave a station every 10, 15 and 20 minutes. If all three buses first leave at 8 am, then at what earliest time will they leave together again?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the LCM of 16 and 24?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Thinks the LCM must be a multiple of both numbers but not th…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "The product of two numbers is 360 and their GCD is 6. What is their LCM?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "The product of two numbers is 120. If their LCM is 60, then what is their GCD?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the GCD of two numbers is 10 and their LCM is 200, what is the product of the two numbers?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a divisor of 12?",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The length and breadth of a room are 15 meters and 9 meters respectively. What is the maximum length of each tile to be laid in square tiles in this room?",
+      "reason": "options are in more than one unit (meter, meters)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a common divisor of 12 and 16?",
+      "reason": "near-duplicate of served question cmvvjth7m002v0rnd108du2uc (cosine 0.974 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A room is 15 meters long and 9 meters wide. What is the maximum length of a square tile that can be used to cover the entire floor without cutting any tiles?",
+      "reason": "near-duplicate of served question cmvvi4th3003d0rbw3mjbmcgr (cosine 0.940 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "A farmer has 250 kg of wheat and 150 kg of jowar. Both the grains are to be filled in sacks so that their weight will be the same. What is the maximum weight of grain that can be filled in each sack?",
+      "reason": "near-duplicate of served question cmvv0nmzo00390rgnvrzdqrm4 (cosine 0.968 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "Three buses going to different places leave from the same station every 10, 15 and 20 minutes. If all the three buses first leave at 8 am, then at what earliest time will they leave at the same time again?",
+      "reason": "near-duplicate of served question cmvvi4thf003v0rbwr62xsuy9 (cosine 0.991 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the greatest common divisor (GCD) of 12 and 16?",
+      "reason": "near-duplicate of served question cmvv0nmze00330rgnk6mzzcp2 (cosine 0.916 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

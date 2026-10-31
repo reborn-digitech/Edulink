@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-29T14:12:36.433Z",
+  "generatedAt": "2026-10-31T12:53:50.441Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 3,
-      "stem": "If 1000 millimeters make 1 meter, how many millimeters make 1 kilometer?",
+      "difficulty": 1,
+      "stem": "What is the decimal number that represents 2 ones, 3 tenths and 5 hundredths?",
       "choices": [
-        "1000000 mm",
-        "100000 mm",
-        "10000 mm",
-        "1000 mm"
+        "2.35",
+        "2.53",
+        "3.25",
+        "5.32"
       ],
       "answerIndex": 0,
-      "solution": "The correct answer is 1000000 mm. Since 1 km = 1000 m and 1 m = 1000 mm, 1 km = 1000 * 1000 = 1000000 mm. The option 100000 mm is incorrect because it is 100 times less. The option 10000 mm is incorrect because it is 1000 times less. The option 1000 mm is incorrect because it is 1000000 times less.",
+      "solution": "The correct answer is 2.35 because 2 ones is 2, 3 tenths is 0.3, and 5 hundredths is 0.05. Adding these gives 2.35. The other options incorrectly place the digits in the wrong decimal places.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि 1000 मिलीमीटर 1 मीटर बनाते हैं, तो 1 किलोमीटर में कितने मिलीमीटर होते हैं?",
+          "stem": "2 एकांक, 3 दशमलव और 5 शतमलव के द्वारा प्रतिनिधित्व किया गया दशमलव संख्या क्या है?",
           "choices": [
-            "1000000 मिमी",
-            "100000 मिमी",
-            "10000 मिमी",
-            "1000 मिमी"
+            "2.35",
+            "2.53",
+            "3.25",
+            "5.32"
           ],
-          "solution": "सही उत्तर 1000000 मिमी है। क्योंकि 1 किमी = 1000 मी और 1 मी = 1000 मिमी, इसलिए 1 किमी = 1000 × 1000 = 1000000 मिमी। विकल्प 100000 मिमी गलत है क्योंकि यह 100 गुना कम है। विकल्प 10000 मिमी गलत है क्योंकि यह 1000 गुना कम है। विकल्प 1000 मिमी गलत है क्योंकि यह 1000000 गुना कम है।",
+          "solution": "सही उत्तर 2.35 है क्योंकि 2 एकांक 2 है, 3 दशमलव 0.3 है, और 5 शतमलव 0.05 है। इनको जोड़ने पर 2.35 प्राप्त होता है। अन्य विकल्प अंकों को गलत दशमलव स्थान पर रखते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms like 'मिमी' for millimeters and 'किमी' for kilometers.",
+          "critique": "The Hindi translation accurately reflects the original English question, with appropriate mathematical terminology and correct answer placement.",
           "flag": null
         },
         "mr": {
-          "stem": "1000 मिलीमीटर 1 मीटर बनतात, तर 1 किलोमीटर किती मिलीमीटर बनतो?",
+          "stem": "2 एकक, 3 दशांश आणि 5 शतांश असलेला दशांश संख्या कोणती आहे?",
           "choices": [
-            "1000000 मिमी",
-            "100000 मिमी",
-            "10000 मिमी",
-            "1000 मिमी"
+            "2.35",
+            "2.53",
+            "3.25",
+            "5.32"
           ],
-          "solution": "बरोबर उत्तर 1000000 मिमी आहे. कारण 1 किमी = 1000 मी आणि 1 मी = 1000 मिमी, म्हणून 1 किमी = 1000 × 1000 = 1000000 मिमी. 100000 मिमी हे चूकीचे आहे कारण ते 100 पट कमी आहे. 10000 मिमी हे चूकीचे आहे कारण ते 1000 पट कमी आहे. 1000 मिमी हे चूकीचे आहे कारण ते 1000000 पट कमी आहे.",
+          "solution": "बरोबर उत्तर 2.35 आहे कारण 2 एकक 2 आहे, 3 दशांश 0.3 आहे आणि 5 शतांश 0.05 आहे. यांची बेरीज केल्यास 2.35 मिळतो. इतर उत्तरांमध्ये अंकांचे चुकीचे दशांश स्थान असते.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -73,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Multiplies by 100 instead of 1000",
-        "Multiplies by 10 instead of 1000",
-        "Does not multiply by 1000 at all"
+        "Confuses the place value of tenths and hundredths",
+        "Mixes up the order of digits",
+        "Confuses the place value of ones and tenths"
       ],
       "solverAnswers": [
         0,
@@ -85,13 +85,35 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The solution is correct and logically sound. The correct answer is 1,000,000 mm, as 1 km = 1000 m and 1 m = 1000 mm, so 1000 * 1000 = 1,000,000 mm. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "critique": "The question is clear and the solution is correct. The correct answer is 2.35, and the author's reasoning for the distractors is valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp103.pdf",
-          "ordinal": 20,
-          "pageStart": 53,
-          "pageEnd": 55,
+          "ordinal": 17,
+          "pageStart": 41,
+          "pageEnd": 47,
+          "headingPath": [
+            "Chapter 3: A Peek Beyond the Point",
+            "3.8 More on the Decimal System",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp103.pdf",
+          "ordinal": 18,
+          "pageStart": 47,
+          "pageEnd": 51,
+          "headingPath": [
+            "Chapter 3: A Peek Beyond the Point",
+            "3.8 More on the Decimal System",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp103.pdf",
+          "ordinal": 19,
+          "pageStart": 51,
+          "pageEnd": 53,
           "headingPath": [
             "Chapter 3: A Peek Beyond the Point",
             "3.8 More on the Decimal System",
@@ -100,49 +122,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T14:12:36.433Z",
+      "generatedAt": "2026-10-31T12:53:50.441Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "In the given passage, what does the length of the folded paper being 4 units, 4 one-tenths, and 5 one-hundredths mean?",
+      "difficulty": 2,
+      "stem": "What is the total weight of the items Mahi bought if she purchased 0.25 kg of beans, 0.3 kg of carrots, 0.5 kg of potatoes, 0.2 kg of capsicums, and 0.05 kg of ginger?",
       "choices": [
-        "It is 4.45 units",
-        "It is 4.05 units",
-        "It is 4.40 units",
-        "It is 4.04 units"
+        "1.3 kg",
+        "1.2 kg",
+        "1.1 kg",
+        "1.0 kg"
       ],
       "answerIndex": 0,
-      "solution": "The length being 4 units, 4 one-tenths, and 5 one-hundredths means 4 + 0.4 + 0.05 = 4.45 units. The other options incorrectly combine the decimal places, such as 4.05 which only includes 5 hundredths instead of 4 tenths and 5 hundredths. 4.40 would omit the 5 hundredths, and 4.04 would incorrectly place the 4 in the hundredths place instead of the tenths.",
-      "checkExpr": null,
+      "solution": "To find the total weight, add all the individual weights: 0.25 + 0.3 + 0.5 + 0.2 + 0.05 = 1.3 kg. The correct option is 1.3 kg because it accurately represents the sum of the decimal values. Other options are incorrect as they result from errors in adding the decimal numbers.",
+      "checkExpr": "0.25+0.3+0.5+0.2+0.05",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "दिए गए पाठ में, मोड़े गए कागज की लंबाई 4 इकाई, 4 दसवां, और 5 सौवां क्या अर्थ रखता है?",
+          "stem": "माही द्वारा खरीदे गए वस्तुओं का कुल वजन क्या है यदि उसने 0.25 किग्रा चना, 0.3 किग्रा गाजर, 0.5 किग्रा आलू, 0.2 किग्रा मिर्च और 0.05 किग्रा अदरक खरीदा?",
           "choices": [
-            "यह 4.45 इकाई है",
-            "यह 4.05 इकाई है",
-            "यह 4.40 इकाई है",
-            "यह 4.04 इकाई है"
+            "1.3 किग्रा",
+            "1.2 किग्रा",
+            "1.1 किग्रा",
+            "1.0 किग्रा"
           ],
-          "solution": "लंबाई 4 इकाई, 4 दसवां, और 5 सौवां होना 4 + 0.4 + 0.05 = 4.45 इकाई के अर्थ में है। अन्य विकल्प गलत रूप से दशमलव स्थानों को जोड़ते हैं, जैसे 4.05 जो केवल 5 सौवां को शामिल करता है बजाय 4 दसवां और 5 सौवां के। 4.40 के बजाय 5 सौवां को छोड़ देता है, और 4.04 के बजाय 4 को सौवां स्थान में गलत रूप से रखता है।",
+          "solution": "कुल वजन ज्ञात करने के लिए, सभी व्यक्तिगत वजनों को जोड़ें: 0.25 + 0.3 + 0.5 + 0.2 + 0.05 = 1.3 किग्रा। सही विकल्प 1.3 किग्रा है क्योंकि यह दशमलव मानों के योग का सही प्रतिनिधित्व करता है। अन्य विकल्प गलत हैं क्योंकि दशमलव संख्याओं के जोड़ में त्रुटि के कारण ये परिणाम प्राप्त होते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer is in the same position (option 1), and the distractors remain incorrect.",
           "flag": null
         },
         "mr": {
-          "stem": "दिलेल्या पाठात, 4 एकक, 4 दशांश आणि 5 शतांश असलेल्या कागदाच्या लांबीचा अर्थ काय आहे?",
+          "stem": "माहीने 0.25 किलो बीन्स, 0.3 किलो गाजर, 0.5 किलो आले, 0.2 किलो पालक, आणि 0.05 किलो गिन्नी खरेदी केल्यास त्या वस्तूंचा एकूण वजन किती असेल?",
           "choices": [
-            "ते 4.45 एकक आहे",
-            "ते 4.05 एकक आहे",
-            "ते 4.40 एकक आहे",
-            "ते 4.04 एकक आहे"
+            "1.3 किलो",
+            "1.2 किलो",
+            "1.1 किलो",
+            "1.0 किलो"
           ],
-          "solution": "4 एकक, 4 दशांश आणि 5 शतांश असलेल्या लांबीचा अर्थ 4 + 0.4 + 0.05 = 4.45 एकक आहे. इतर विकल्प चूकीने दशांश स्थानांचे संयोजन करतात, उदाहरणार्थ 4.05 जो केवळ 5 शतांश आहे आणि 4 दशांश आणि 5 शतांश नाही. 4.40 शतांशांच्या 5 नाहीत, आणि 4.04 च्या 4 शतांशांमध्ये ठेवले जाते तर दशांशांमध्ये ठेवले जात नाही.",
+          "solution": "एकूण वजन शोधण्यासाठी, सर्व व्यक्तिगत वजन जोडा: 0.25 + 0.3 + 0.5 + 0.2 + 0.05 = 1.3 किलो. योग्य पर्याय 1.3 किलो आहे कारण तो दशांश मूल्यांच्या बेरजेचे योग्य प्रतिनिधित्व करतो. इतर पर्याय चूकीने दशांश संख्यांची बेरीज केल्यामुळे चूकीचे असतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terms for decimal places (दशांश, शतांश) that are standard in Marathi textbooks.",
+          "critique": "Translation is accurate, technical terms like 'बीन्स' (beans), 'गाजर' (carrots), 'आले' (potatoes), 'पालक' (capsicums), 'गिन्नी' (ginger) are standard Marathi terms used in textbooks.",
           "flag": null
         }
       },
@@ -152,9 +174,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses tenths and hundredths places, placing the 5 in the wrong decimal position",
-        "Confuses the order of tenths and hundredths",
-        "Mistakenly ignores the hundredths part\",\"Mistakenly places the hundredths in the tenths place\"]},{"
+        "incorrectly adds 0.25 + 0.3 + 0.5 + 0.2 = 1.25 and excludes 0.05",
+        "fails to add 0.25 + 0.3 = 0.55 and miscalculates the total",
+        "does not account for all the items in the sum"
       ],
       "solverAnswers": [
         0,
@@ -163,96 +185,85 @@
         0,
         0
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 4.45 units, as 4 units, 4 tenths, and 5 hundredths equals 4.45. The other options reflect common decimal place value misconceptions.",
+      "levelFlag": null,
+      "critique": "The correct answer is 1.3 kg, and the author's solution is accurate. The distractors reflect plausible errors students might make, such as omitting an item or miscalculating sums.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp103.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 3,
+          "ordinal": 14,
+          "pageStart": 32,
+          "pageEnd": 34,
           "headingPath": [
             "Chapter 3: A Peek Beyond the Point",
-            "3.1 The Need for Smaller Units"
+            "3.8 More on the Decimal System"
           ]
         },
         {
           "document": "ncert/7/mathematics/gegp103.pdf",
-          "ordinal": 1,
-          "pageStart": 3,
-          "pageEnd": 6,
+          "ordinal": 15,
+          "pageStart": 34,
+          "pageEnd": 35,
           "headingPath": [
             "Chapter 3: A Peek Beyond the Point",
-            "3.2 A Tenth Part",
-            "(4 × ) units."
+            "3.8 More on the Decimal System"
           ]
         },
         {
           "document": "ncert/7/mathematics/gegp103.pdf",
-          "ordinal": 2,
-          "pageStart": 6,
-          "pageEnd": 7,
+          "ordinal": 16,
+          "pageStart": 36,
+          "pageEnd": 40,
           "headingPath": [
             "Chapter 3: A Peek Beyond the Point",
-            "3.2 A Tenth Part",
-            "(4 × ) units."
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp103.pdf",
-          "ordinal": 3,
-          "pageStart": 7,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 3: A Peek Beyond the Point",
-            "3.3 A Hundredth Part"
+            "3.8 More on the Decimal System",
+            "SUMMARY"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T14:12:36.433Z",
+      "generatedAt": "2026-10-31T12:53:50.441Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "If the difference between 3.5 m and 2.7 m is calculated, what is the result?",
+      "stem": "Priya needs 2.7 m of cloth for her skirt and Shylaja needs 3.5 m for her kurti. How much more cloth does Shylaja need than Priya?",
       "choices": [
-        "0.5 m",
         "0.8 m",
         "1.2 m",
-        "1.5 m"
+        "1.5 m",
+        "2.0 m"
       ],
-      "answerIndex": 1,
-      "solution": "To find the difference between 3.5 m and 2.7 m, we subtract the smaller number from the larger one. 3.5 - 2.7 = 0.8 m. The other options give incorrect results due to subtraction errors or miscalculations.",
+      "answerIndex": 0,
+      "solution": "The correct answer is 0.8 m. To find how much more cloth Shylaja needs, subtract 2.7 m from 3.5 m. 3.5 - 2.7 = 0.8. 1.2 m is incorrect because it adds the two values instead of subtracting. 1.5 m is incorrect because it subtracts in the wrong order. 2.0 m is incorrect because it miscalculates the difference.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि 3.5 मी और 2.7 मी के बीच का अंतर निकाला जाए, तो परिणाम क्या होगा?",
+          "stem": "प्रिया के स्कर्ट के लिए 2.7 मी बुना हुआ कपड़ा चाहिए और श्यलजा के कुर्ते के लिए 3.5 मी चाहिए। श्यलजा को प्रिया के मुकाबले कितना अधिक कपड़ा चाहिए?",
           "choices": [
-            "0.5 मी",
             "0.8 मी",
             "1.2 मी",
-            "1.5 मी"
+            "1.5 मी",
+            "2.0 मी"
           ],
-          "solution": "3.5 मी और 2.7 मी के बीच का अंतर निकालने के लिए, हम छोटी संख्या को बड़ी संख्या में से घटाते हैं। 3.5 - 2.7 = 0.8 मी। अन्य विकल्प घटाव की त्रुटि या गणना त्रुटि के कारण गलत परिणाम देते हैं।",
+          "solution": "सही उत्तर 0.8 मी है। श्यलजा को कितना अधिक कपड़ा चाहिए निकालने के लिए, 2.7 मी को 3.5 मी से घटाएं। 3.5 - 2.7 = 0.8। 1.2 मी गलत है क्योंकि यह दोनों मानों को जोड़ देता है बजाय घटाने के। 1.5 मी गलत है क्योंकि यह घटाने के क्रम को गलत कर देता है। 2.0 मी गलत है क्योंकि यह अंतर की गणना गलत कर देता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains in the same position, and all distractors are still incorrect.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "3.5 मी आणि 2.7 मी च्या फरकाची गणना केली असता, फलित असेल?",
+          "stem": "प्रिया लहान टोपलीसाठी 2.7 मी कपडा आवश्यकता आहे आणि श्यालजा तिच्या कुर्तीसाठी 3.5 मी आवश्यकता आहे. श्यालजाला प्रियापेक्षा किती जास्त कपडा लागेल?",
           "choices": [
-            "0.5 मी",
             "0.8 मी",
             "1.2 मी",
-            "1.5 मी"
+            "1.5 मी",
+            "2.0 मी"
           ],
-          "solution": "3.5 मी आणि 2.7 मी चा फरक शोधण्यासाठी, आम्ही लहान संख्या वरून मोठी संख्या वजा करतो. 3.5 - 2.7 = 0.8 मी. इतर विकल्प वजा करताना चूक किंवा गणना चूकमुळे अयोग्य असतात.",
+          "solution": "सही उत्तर 0.8 मी आहे. श्यालजाला किती जास्त कपडा लागतो ते शोधण्यासाठी, 2.7 मी मधून 3.5 मी वजा करा. 3.5 - 2.7 = 0.8. 1.2 मी चूक आहे कारण दोन मूल्यांची बेरीज केली गेली आहे आणि वजा केली गेली नाही. 1.5 मी चूक आहे कारण वजा करताना चुकीच्या क्रमात वजा केला गेला आहे. 2.0 मी चूक आहे कारण फरक चुकीच्या पद्धतीने गणित केला गेला आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical operations and measurements.",
           "flag": null
         }
       },
@@ -261,20 +272,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Student subtracts 3.5 - 2.7 as 3.5 - 2.0 = 1.5, then incorrectly subtracts 0.7 from 1.5 to get 0.5 instead of adding.",
         null,
-        "adds the numbers instead of subtracting",
-        "makes a decimal error in subtraction"
+        "Adds the two values instead of subtracting",
+        "Subtracts in the wrong order",
+        "Miscalculates the difference"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is straightforward arithmetic. The correct answer is 0.8 m, and the author's reasoning for the distractors aligns with common student misconceptions.",
+      "critique": "The correct answer is 0.8 m, as 3.5 - 2.7 = 0.8. The author's reasoning for the distractors is accurate and reflects common student misconceptions.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp103.pdf",
@@ -308,7 +319,105 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T14:12:36.433Z",
+      "generatedAt": "2026-10-31T12:53:50.441Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If 0.4 is added to each term in the sequence 4.4, 4.8, 5.2, 5.6, 6.0, what are the next three terms?",
+      "choices": [
+        "6.4, 6.8, 7.2",
+        "6.0, 6.4, 6.8",
+        "6.4, 7.2, 8.0",
+        "6.2, 6.6, 7.0"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 6.4, 6.8, 7.2. Each term increases by 0.4. The next terms are 6.0 + 0.4 = 6.4, 6.4 + 0.4 = 6.8, and 6.8 + 0.4 = 7.2. 6.0, 6.4, 6.8 is incorrect because it misses the first term. 6.4, 7.2, 8.0 is incorrect because it skips some steps. 6.2, 6.6, 7.0 is incorrect because it does not follow the pattern of adding 0.4.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि अनुक्रम 4.4, 4.8, 5.2, 5.6, 6.0 में प्रत्येक पद में 0.4 जोड़ा जाए, तो अगले तीन पद क्या होंगे?",
+          "choices": [
+            "6.4, 6.8, 7.2",
+            "6.0, 6.4, 6.8",
+            "6.4, 7.2, 8.0",
+            "6.2, 6.6, 7.0"
+          ],
+          "solution": "सही उत्तर 6.4, 6.8, 7.2 है। प्रत्येक पद 0.4 से बढ़ता है। अगले पद 6.0 + 0.4 = 6.4, 6.4 + 0.4 = 6.8 और 6.8 + 0.4 = 7.2 हैं। 6.0, 6.4, 6.8 गलत है क्योंकि यह पहला पद छोड़ देता है। 6.4, 7.2, 8.0 गलत है क्योंकि यह कुछ चरण छोड़ देता है। 6.2, 6.6, 7.0 गलत है क्योंकि यह 0.4 जोड़ने के पैटर्न का अनुसरण नहीं करता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "0.4 ची बेरीज अनुक्रम 4.4, 4.8, 5.2, 5.6, 6.0 मध्ये प्रत्येक पदाला केल्यास आगामी तीन पद कोणते असतील?",
+          "choices": [
+            "6.4, 6.8, 7.2",
+            "6.0, 6.4, 6.8",
+            "6.4, 7.2, 8.0",
+            "6.2, 6.6, 7.0"
+          ],
+          "solution": "बरोबर उत्तर 6.4, 6.8, 7.2 आहे. प्रत्येक पद 0.4 ने वाढत आहे. आगामी पदे 6.0 + 0.4 = 6.4, 6.4 + 0.4 = 6.8, आणि 6.8 + 0.4 = 7.2 असतील. 6.0, 6.4, 6.8 चुकीचे आहे कारण ते पहिले पद टाळते. 6.4, 7.2, 8.0 चुकीचे आहे कारण ते काही टप्पे टाळते. 6.2, 6.6, 7.0 चुकीचे आहे कारण ते 0.4 च्या पॅटर्नचे अनुसरण करत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Misses the first term in the sequence",
+        "Skips steps in the sequence",
+        "Fails to follow the addition pattern"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 6.4, 6.8, 7.2. The sequence increases by 0.4 each time, and adding 0.4 to the last term (6.0) gives the next three terms correctly. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp103.pdf",
+          "ordinal": 11,
+          "pageStart": 27,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 3: A Peek Beyond the Point",
+            "3.6 Locating and Comparing Decimals"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp103.pdf",
+          "ordinal": 12,
+          "pageStart": 29,
+          "pageEnd": 31,
+          "headingPath": [
+            "Chapter 3: A Peek Beyond the Point",
+            "3.7 Addition and Subtraction of Decimals"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp103.pdf",
+          "ordinal": 13,
+          "pageStart": 31,
+          "pageEnd": 32,
+          "headingPath": [
+            "Chapter 3: A Peek Beyond the Point",
+            "3.8 More on the Decimal System"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T12:53:50.441Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

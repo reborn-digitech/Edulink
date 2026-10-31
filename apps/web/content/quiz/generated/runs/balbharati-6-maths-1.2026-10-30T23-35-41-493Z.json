@@ -1,0 +1,222 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T23:35:41.493Z",
+  "finishedAt": "2026-10-30T23:46:35.680Z",
+  "seconds": 654,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — Three-Dimensional Shapes",
+    "edition": "First Edition 2026",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2026-27]\n11. Two cubes each of volume 64 cm are joined end to end to form a solid. The surface 3 1\narea of the resultant cuboid is:\n(A) 192 cm 2 (B) 160 cm 2 (C) 96 cm 2 (D) 80 cm 2",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n11. (d) 3√3cm",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n18. B Volume of cube, 𝑎 = 64 ⇒ 𝑎 = 4 cm 3 1\nOn joining two cubes of side = 4 cm, we get a cuboid whose\nLength (𝑙) = 8 cm, Breadth (𝑏) = 4 cm, Height (ℎ) = 4 cm\nSurface area of resulting cuboid = 2(𝑙𝑏 + 𝑏ℎ + ℎ 𝑙)\n= 2(8 × 4 + 4 × 4 + 4 × 8)\n𝟐 =160 cm 2\n(B) 𝟏𝟔𝟎𝐜𝐦",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 1,
+      "ms": 25458,
+      "in": 6,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 4528,
+      "completionTokens": 844
+    },
+    "critique": {
+      "calls": 11,
+      "ms": 99140,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 4370,
+      "completionTokens": 1884
+    },
+    "solver": {
+      "calls": 66,
+      "ms": 67351,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 13532,
+      "completionTokens": 821
+    },
+    "form": {
+      "calls": 6,
+      "ms": 28998,
+      "in": 6,
+      "out": 5,
+      "rejects": 1,
+      "promptTokens": 1321,
+      "completionTokens": 479
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 12,
+      "ms": 13017,
+      "in": 5,
+      "out": 3,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 15,
+      "ms": 777879,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 7603,
+      "completionTokens": 3781
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 0,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If we stack 10 rectangular cards on top of each other, what three-dimensional shape is formed?",
+      "ms": {
+        "draft": 4243,
+        "critique": 7296,
+        "solver": 24934,
+        "form": 3798
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a three-dimensional shape?",
+      "ms": {
+        "draft": 4243,
+        "critique": 7632,
+        "solver": 2829,
+        "form": 6327
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following shapes has 5 faces, 8 edges, and 5 vertices?",
+      "ms": {
+        "draft": 4243,
+        "critique": 12142,
+        "solver": 20556,
+        "form": 10316
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the name of a three-dimensional shape that has two triangular faces and three rectangular faces?",
+      "ms": {
+        "draft": 4243,
+        "critique": 8532,
+        "solver": 21096,
+        "form": 6141,
+        "translation": 225194
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If we stack 10 circular cards on top of each other, what three-dimensional shape is formed?",
+      "ms": {
+        "draft": 4243,
+        "critique": 12388,
+        "solver": 15442,
+        "form": 3474,
+        "translation": 244061
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a three-dimensional shape has a curved surface and no vertices, what is the shape?",
+      "ms": {
+        "draft": 4243,
+        "critique": 10226,
+        "solver": 18113,
+        "form": 2614,
+        "translation": 262021
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If we stack 10 rectangular cards on top of each other, what three-dimensional shape is formed?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a three-dimensional shape?",
+      "reason": "near-duplicate of served question cmvvj03wq00010rnds73w4p9t (cosine 0.927 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Which of the following shapes has 5 faces, 8 edges, and 5 vertices?",
+      "reason": "near-duplicate of served question cmvuxp50n000i0rgne7ijegiu (cosine 0.904 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

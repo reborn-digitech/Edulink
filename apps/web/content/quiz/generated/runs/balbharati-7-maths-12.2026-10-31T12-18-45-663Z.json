@@ -1,0 +1,519 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T12:18:45.663Z",
+  "finishedAt": "2026-10-31T12:24:11.688Z",
+  "seconds": 326,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी गणित इंग्रजी",
+    "bookCode": "703020004",
+    "document": "balbharati/7/mathematics/703020004.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 12 — Perimeter and Area",
+    "edition": "2026 edition",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n13. If the perimeter of a circle is equal to that of a square, then the ratio of their areas is 1\n(a) 22 : 7 (b) 14 : 11 (c) 7 : 22 (d) 11: 14",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n14. If the perimeter and the area of a circle are numerically equal, then the radius of the circle 1\nis\n(a) 2 units (b) π units (c) 4 units (d) 7 units",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n6. The perimeter of a triangle with vertices (0, 4), (0, 0) and (3, 0) is 1\n(a) 5 units (b) 12 units (c) 11 units (d) (7 + √5) units",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n13. The radius of a circle is same as the side of a square. Their perimeters are in the ratio\na) 1 : 1 b) 2 : 𝜋 c) 𝜋 : 2 d) √𝜋 : 2"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 144631,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 17816,
+      "completionTokens": 6260
+    },
+    "critique": {
+      "calls": 32,
+      "ms": 303240,
+      "in": 24,
+      "out": 14,
+      "rejects": 10,
+      "promptTokens": 15129,
+      "completionTokens": 5821
+    },
+    "solver": {
+      "calls": 127,
+      "ms": 93828,
+      "in": 14,
+      "out": 8,
+      "rejects": 6,
+      "promptTokens": 29865,
+      "completionTokens": 1513
+    },
+    "form": {
+      "calls": 1,
+      "ms": 3628,
+      "in": 8,
+      "out": 2,
+      "rejects": 6,
+      "promptTokens": 224,
+      "completionTokens": 61
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 5,
+      "ms": 1093,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 73920,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4312,
+      "completionTokens": 2026
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the formula for the perimeter of a square?",
+      "ms": {
+        "draft": 7457,
+        "critique": 6819,
+        "solver": 2745,
+        "form": 3628
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the length and breadth of a rectangle are doubled, how many times the perimeter of the old rectangle will that of the new rectangle be?",
+      "ms": {
+        "draft": 7457,
+        "critique": 6136,
+        "solver": 19181,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the side of a square is tripled, how many times the perimeter of the first square will that of the new square be?",
+      "ms": {
+        "draft": 7457,
+        "critique": 6775,
+        "solver": 19371,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A rectangular playground is 65 m long and 30 m wide. A pathway of 1.5 m width goes all around the ground, outside it. What is the area of the pathway?",
+      "ms": {
+        "draft": 7457,
+        "critique": 13587
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the perimeter of a circle is equal to that of a square, then the ratio of their areas is",
+      "ms": {
+        "draft": 7457,
+        "critique": 12039
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A rectangular garden is 40 m long and 30 m wide. A two-metre wide path is to be paved inside the garden along its boundary. What is the area of the path?",
+      "ms": {
+        "draft": 7457,
+        "critique": 12618,
+        "solver": 1715
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A cuboid has length 5 cm, breadth 3 cm, and height 2 cm. What is its total surface area?",
+      "ms": {
+        "draft": 5386,
+        "critique": 10666
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula for the total surface area of a cube?",
+      "ms": {
+        "draft": 5386,
+        "critique": 11572
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula for the total surface area of a cuboid?",
+      "ms": {
+        "draft": 5386,
+        "critique": 12844,
+        "solver": 17538,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A cube has a side of 4 cm. What is its total surface area?",
+      "ms": {
+        "draft": 5386,
+        "critique": 9728
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A rectangular hall is 12 m long and 6 m broad. Its flooring is to be made of square tiles of side 30 cm. How many tiles will fit in the entire hall?",
+      "ms": {
+        "draft": 5386,
+        "critique": 10668
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The perimeter of a circle is equal to that of a square. What is the ratio of their areas?",
+      "ms": {
+        "draft": 5386,
+        "critique": 6318
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula to calculate the surface area of a cuboid?",
+      "ms": {
+        "draft": 6121,
+        "critique": 8735,
+        "solver": 2179,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A cuboid has a length of 12 cm, breadth of 10 cm, and height of 5 cm. What is its total surface area?",
+      "ms": {
+        "draft": 6121,
+        "critique": 11154
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total surface area of a cube with a side of 3 cm?",
+      "ms": {
+        "draft": 6121,
+        "critique": 8693,
+        "solver": 18620,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A cube has a total surface area of 96 cm². What is the length of one of its sides?",
+      "ms": {
+        "draft": 6121,
+        "critique": 9028,
+        "solver": 21548
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A cuboid has a length that is twice its breadth and a height that is half of its breadth. If the total surface area is 280 cm², what is the length of the cuboid?",
+      "ms": {
+        "draft": 6121,
+        "critique": 10792
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A cube has a surface area of 150 cm². How many such cubes would be needed to cover a surface area of 750 cm²?",
+      "ms": {
+        "draft": 6121,
+        "critique": 7920,
+        "solver": 24441
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The length of a rectangle is 65 m and its width is 30 m. A 1.5 m wide path surrounds it. What is the area of the path?",
+      "ms": {
+        "draft": 5141,
+        "critique": 9940
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the perimeter of a square with a side of 12 cm?",
+      "ms": {
+        "draft": 5141,
+        "critique": 10246,
+        "solver": 21495
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The perimeter of a circle is equal to the perimeter of a square. What is the ratio of their areas?",
+      "ms": {
+        "draft": 5141,
+        "critique": 9034,
+        "solver": 1727
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A rectangle has a length of 17 cm and a breadth of 15 cm. What is the area of a triangle formed by one of its diagonals?",
+      "ms": {
+        "draft": 5141,
+        "critique": 7801,
+        "solver": 10611
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the area of a rectangle with a length of 15 cm and a breadth of 5 cm?",
+      "ms": {
+        "draft": 5141,
+        "critique": 7713,
+        "solver": 1572,
+        "form": 0,
+        "translation": 33543
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A rectangle has a length of 17 cm and a breadth of 15 cm. What is its perimeter?",
+      "ms": {
+        "draft": 5141,
+        "critique": 7765,
+        "solver": 2214,
+        "form": 0,
+        "translation": 34702
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the formula for the perimeter of a square?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the length and breadth of a rectangle are doubled, how many times the perimeter of the old rectangle will that of the new rectangle be?",
+      "reason": "checkExpr \"2\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the side of a square is tripled, how many times the perimeter of the first square will that of the new square be?",
+      "reason": "checkExpr \"3\" is a bare literal"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A rectangular playground is 65 m long and 30 m wide. A pathway of 1.5 m width goes all around the ground, outside it. What is the area of the pathway?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the perimeter of a circle is equal to that of a square, then the ratio of their areas is",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A rectangular garden is 40 m long and 30 m wide. A two-metre wide path is to be paved inside the garden along its boundary. What is the area of the path?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A cuboid has length 5 cm, breadth 3 cm, and height 2 cm. What is its total surface area?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the formula for the total surface area of a cube?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the formula for the total surface area of a cuboid?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A cube has a side of 4 cm. What is its total surface area?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A rectangular hall is 12 m long and 6 m broad. Its flooring is to be made of square tiles of side 30 cm. How many tiles will fit in the entire hall?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "The perimeter of a circle is equal to that of a square. What is the ratio of their areas?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula to calculate the surface area of a cuboid?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A cuboid has a length of 12 cm, breadth of 10 cm, and height of 5 cm. What is its total surface area?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the total surface area of a cube with a side of 3 cm?",
+      "reason": "options 0 and 2 are the same (\"18 cm²\"); options 0 and 2 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A cube has a total surface area of 96 cm². What is the length of one of its sides?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A cuboid has a length that is twice its breadth and a height that is half of its breadth. If the total surface area is 280 cm², what is the length of the cuboid?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A cube has a surface area of 150 cm². How many such cubes would be needed to cover a surface area of 750 cm²?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "The length of a rectangle is 65 m and its width is 30 m. A 1.5 m wide path surrounds it. What is the area of the path?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the perimeter of a square with a side of 12 cm?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "The perimeter of a circle is equal to the perimeter of a square. What is the ratio of their areas?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A rectangle has a length of 17 cm and a breadth of 15 cm. What is the area of a triangle formed by one of its diagonals?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

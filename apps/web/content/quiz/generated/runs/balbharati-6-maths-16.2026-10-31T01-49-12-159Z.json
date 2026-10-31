@@ -1,0 +1,324 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T01:49:12.159Z",
+  "finishedAt": "2026-10-31T01:51:50.815Z",
+  "seconds": 159,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 16 — Baudhayana-Pythagoras Theorem",
+    "edition": "First Edition 2026",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n25. AB = √(3 + 5) 2 + (0 − 6) 2 = 10 ½\nBC = √(9 − 3) 2 + (8 − 0) 2 = 10 ½\nAC = √(9 + 5) 2 + (8 − 6) 2 = 10√2\n½\nSince AB = BC, therefore 𝛥 ABC is isosceles ½",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n13. B (Hypotenuse ) =(Base) + (Perpendicular) ⇒ (15) = (Base) +(12) 2 2 2 2 2 2 1\n⇒ Base = 9 m\n(B) 𝟗𝐦",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\nSECTION – C (6 x 3 = 18)\nThis section comprises of 6 short answer (SA) type questions of 3 marks each.\nQ26. Given that √𝟓 is irrational, prove that 2 + 3√5 is irrational. 3\nQ27. In the given figure, AX, AY and BC are tangents to the circle with P, R and Q\n(A) 1\nrespective point of contacts. Prove that AP = (AB + BC + CA)\nFor Visually Impaired Candidates\nProve that a parallelogram circumscribing a circle is a rhombus.\nOR\nQ27. Two tangents PA and PB are drawn to a circle with centre O from an external\n(B) point P. Prove that ∠APB = 2∠OAB\nQ28. Determine the ratio in which the point (– 6, y) divides the line segment joining the 3\npoints A (–3, –1) and B (– 8, 9). Also, find the value of y.\nQ29.",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n22. Given:-AB II CD II EF\nTo prove:- ா஽ ஺ா = ஻ி ி஼\nConstruction:- Join BD to\nintersect EF at G.\nProof:- in ∆ ABD\nEG II AB ( EF II AB )\nா஽ ஺ா = ஻ீீ ஽ ( by BPT )___________(1)\nIn ∆𝐷𝐵𝐶\nGF II CD ( EF II CD )\n஻ி ி஼ = ஻ீீ ஽ ( by BPT )___________(2)\n𝑓𝑟𝑜𝑚 (1) & (2)\nா஽ ஺ா = ஻ி ி஼\nGiven AD=6cm, DB=9cm\nAE=8cm, EC=12cm, ∠ADE=48\nTo find:- ∠ABC=?\nProof:\nIn ∆𝐴𝐵𝐶\n஽஻ ஺஽ = = ଺ ଽ ଶ ଷ ……(1)\n஺ா ா஼ = ଵଶ ଼ = ଶ ଷ ……..(2)\nFrom (1) & (2)\n஽஻ ஺஽ = ஺ா ா஼\nDE II BC (Converse of BPT)\n∠ADE=∠ABC (Corresponding angles)\n⇒ ∠ABC=48˚\nOR"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 53593,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 11174,
+      "completionTokens": 2868
+    },
+    "critique": {
+      "calls": 18,
+      "ms": 114681,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 8643,
+      "completionTokens": 3065
+    },
+    "solver": {
+      "calls": 105,
+      "ms": 66832,
+      "in": 12,
+      "out": 7,
+      "rejects": 5,
+      "promptTokens": 25860,
+      "completionTokens": 1296
+    },
+    "form": {
+      "calls": 4,
+      "ms": 13747,
+      "in": 7,
+      "out": 3,
+      "rejects": 4,
+      "promptTokens": 997,
+      "completionTokens": 289
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 16,
+      "ms": 2834,
+      "in": 3,
+      "out": 2,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 52195,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4612,
+      "completionTokens": 2313
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "In a right-angled triangle, if the hypotenuse is 13 cm and one of the other sides is 5 cm, what is the length of the other side?",
+      "ms": {
+        "draft": 5407,
+        "critique": 7955,
+        "solver": 11915
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, what is the length of the unknown side if the hypotenuse is 25 cm and one of the other sides is 7 cm?",
+      "ms": {
+        "draft": 5407,
+        "critique": 6112,
+        "solver": 17137,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A ladder 17 m long is placed diagonally against a wall at the distance of 8 m from it. At what distance above the ground will the top of the ladder be?",
+      "ms": {
+        "draft": 5407,
+        "critique": 8705,
+        "solver": 15861
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a right-angled triangle, the hypotenuse is 25 cm, and one of the other sides is 15 cm. What is the length of the third side?",
+      "ms": {
+        "draft": 5407,
+        "critique": 7414,
+        "solver": 11345
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the theorem that states that the square of the hypotenuse is equal to the sum of the squares of the other two sides in a right-angled triangle?",
+      "ms": {
+        "draft": 3525,
+        "critique": 6832,
+        "solver": 1905
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In a right-angled triangle, which of the following is true according to the Baudhayana-Pythagoras Theorem?",
+      "ms": {
+        "draft": 3525,
+        "critique": 7338,
+        "solver": 2251,
+        "form": 3250
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A right-angled triangle has sides of length 9 cm and 12 cm. What is the length of the hypotenuse?",
+      "ms": {
+        "draft": 3525,
+        "critique": 6360,
+        "solver": 1747,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A right-angled triangle has sides of length 15 cm and 20 cm. What is the length of the hypotenuse?",
+      "ms": {
+        "draft": 3525,
+        "critique": 5562,
+        "solver": 1512,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a right-angled triangle, the hypotenuse is 25 cm and one of the sides forming the right angle is 7 cm. What is the length of the other side?",
+      "ms": {
+        "draft": 3525,
+        "critique": 6300,
+        "solver": 7148
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the side of a right-angled triangle that is opposite the right angle?",
+      "ms": {
+        "draft": 3525,
+        "critique": 6406,
+        "solver": 1409,
+        "form": 3579
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the theorem that states that the square of the hypotenuse is equal to the sum of the squares of the other two sides in a right-angled triangle?",
+      "ms": {
+        "draft": 5407,
+        "critique": 6608,
+        "solver": 17537,
+        "form": 3725,
+        "translation": 26439
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In a right-angled triangle, which side is opposite the right angle?",
+      "ms": {
+        "draft": 5407,
+        "critique": 6335,
+        "solver": 1178,
+        "form": 5249,
+        "translation": 21439
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "In a right-angled triangle, if the hypotenuse is 13 cm and one of the other sides is 5 cm, what is the length of the other side?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given figure, what is the length of the unknown side if the hypotenuse is 25 cm and one of the other sides is 7 cm?",
+      "reason": "checkExpr \"sqrt(25^2 - 7^2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A ladder 17 m long is placed diagonally against a wall at the distance of 8 m from it. At what distance above the ground will the top of the ladder be?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In a right-angled triangle, the hypotenuse is 25 cm, and one of the other sides is 15 cm. What is the length of the third side?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the name of the theorem that states that the square of the hypotenuse is equal to the sum of the squares of the other two sides in a right-angled triangle?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "In a right-angled triangle, which of the following is true according to the Baudhayana-Pythagoras Theorem?",
+      "reason": "options 0 and 2 say the same thing (\"The square of the hypotenuse is less than the sum of the squares of the other two sides\" / \"The square of the hypotenuse is greater than the sum of the squares of the other two sides\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A right-angled triangle has sides of length 9 cm and 12 cm. What is the length of the hypotenuse?",
+      "reason": "checkExpr \"sqrt(9^2 + 12^2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A right-angled triangle has sides of length 15 cm and 20 cm. What is the length of the hypotenuse?",
+      "reason": "checkExpr \"sqrt(15^2 + 20^2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In a right-angled triangle, the hypotenuse is 25 cm and one of the sides forming the right angle is 7 cm. What is the length of the other side?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the side of a right-angled triangle that is opposite the right angle?",
+      "reason": "near-duplicate of batch item \"In a right-angled triangle, which side is opposite…\" (cosine 0.938 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

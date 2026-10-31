@@ -1,0 +1,638 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T02:18:13.582Z",
+  "finishedAt": "2026-10-31T02:31:50.516Z",
+  "seconds": 817,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "fegp1",
+    "document": "ncert/6/mathematics/fegp101.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — Patterns in Mathematics",
+    "edition": "Reprint 2026-27",
+    "chunks": 11,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n6. A) 11 9",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n6. C 𝑎 10 = 𝑎 + (10 − 1)𝑑 = 𝑝 + 9𝑞\n(C) 𝒑 + 𝟗𝒒",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n36. Ms. Sheela visited a store near her house and found that the glass jars are arranged\none above the other in a specific pattern.\nOn the top layer there are 3 jars. In the next layer there are 6 jars. In the 3rd layer from\nthe top there are 9 jars and so on till the 8th layer.\nOn the basis of the above situation answer the following questions.\n(i) Write an A.P whose terms represent the number of jars in different layers starting\nfrom top . Also, find the common difference. 1\n(ii) Is it possible to arrange 34 jars in a layer if this pattern is continued? Justify your\nanswer. 1\n(iii) (A) If there are ‘n’ number of rows in a layer then find the expression for finding the 2\ntotal number of jar"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 205102,
+      "in": 32,
+      "out": 29,
+      "rejects": 3,
+      "promptTokens": 27476,
+      "completionTokens": 6620
+    },
+    "critique": {
+      "calls": 41,
+      "ms": 456450,
+      "in": 29,
+      "out": 26,
+      "rejects": 3,
+      "promptTokens": 19254,
+      "completionTokens": 7417
+    },
+    "solver": {
+      "calls": 214,
+      "ms": 165936,
+      "in": 26,
+      "out": 17,
+      "rejects": 9,
+      "promptTokens": 47530,
+      "completionTokens": 2513
+    },
+    "form": {
+      "calls": 10,
+      "ms": 55407,
+      "in": 17,
+      "out": 5,
+      "rejects": 12,
+      "promptTokens": 2642,
+      "completionTokens": 894
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 51,
+      "ms": 30824,
+      "in": 5,
+      "out": 2,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 83793,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4206,
+      "completionTokens": 1902
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is described as a sequence of numbers where each number is formed by adding 2 to the previous number?",
+      "ms": {
+        "draft": 27565,
+        "critique": 6028,
+        "solver": 2617
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following sequences is an example of a pattern in mathematics?",
+      "ms": {
+        "draft": 22663,
+        "critique": 6524,
+        "solver": 17801
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the sequence of regular polygons, which number sequence represents the number of sides?",
+      "ms": {
+        "draft": 22663,
+        "critique": 6941,
+        "solver": 1592,
+        "form": 5018
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which number sequence is formed by adding 1 to each term of the sequence 1, 2, 4, 8, 16?",
+      "ms": {
+        "draft": 22663,
+        "critique": 9449,
+        "solver": 13473
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A sequence is created by starting with 1 and adding the next odd number to the previous sum. What is the value of the 5th term in this sequence?",
+      "ms": {
+        "draft": 22663,
+        "critique": 6891,
+        "solver": 1912
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the next number in the sequence: 1, 3, 6, 10, 15, ...?",
+      "ms": {
+        "draft": 3999,
+        "critique": 8083,
+        "solver": 13644
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage describes that adding consecutive triangular numbers results in a sequence of square numbers. Which of the following pairs of triangular numbers, when added, gives a square number?",
+      "ms": {
+        "draft": 22663,
+        "critique": 7789,
+        "solver": 19112,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the triangular numbers are multiplied by 6 and 1 is added, what sequence is formed?",
+      "ms": {
+        "draft": 3999,
+        "critique": 6422,
+        "solver": 1737
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the number of jars in each layer of a glass jar arrangement follows the pattern 3, 6, 9, 12, ..., which term of this pattern will have 34 jars?",
+      "ms": {
+        "draft": 3999,
+        "critique": 6545,
+        "solver": 9176,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which sequence is formed by adding counting numbers up and down, e.g., 1, 1 + 2 + 1, 1 + 2 + 3 + 2 + 1, ...?",
+      "ms": {
+        "draft": 13134,
+        "critique": 23748
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which sequence is formed by adding the triangular numbers up?",
+      "ms": {
+        "draft": 13134,
+        "critique": 23749,
+        "solver": 1781
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the sum of 1 + 2 + 3 + ... + 99 + 100 + 99 + ... + 3 + 2 + 1?",
+      "ms": {
+        "draft": 13134,
+        "critique": 24762,
+        "solver": 44458,
+        "form": 5330
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a store, glass jars are arranged in layers such that the top layer has 3 jars, the next layer has 6 jars, the third has 9 jars, and so on. How many layers can be formed if there are 108 jars in total?",
+      "ms": {
+        "draft": 13134,
+        "critique": 36282,
+        "solver": 18316,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If you add 1 to each number in the sequence 1, 3, 7, 15, 31, ..., what sequence do you get?",
+      "ms": {
+        "draft": 13134,
+        "critique": 21712,
+        "solver": 33700,
+        "form": 4103
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the next shape in the sequence of regular polygons?",
+      "ms": {
+        "draft": 4816,
+        "critique": 7084,
+        "solver": 1626
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which number sequence is formed by the number of lines in each shape of the sequence of complete graphs?",
+      "ms": {
+        "draft": 4816,
+        "critique": 7339,
+        "solver": 1541
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which sequence is formed by the number of sides in the sequence of regular polygons?",
+      "ms": {
+        "draft": 4816,
+        "critique": 7331,
+        "solver": 11187,
+        "form": 3096
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a number pattern discussed in the passage?",
+      "ms": {
+        "draft": 19604,
+        "critique": 10348
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does adding the sequence of odd numbers starting from 1 give square numbers?",
+      "ms": {
+        "draft": 4816,
+        "critique": 6900,
+        "solver": 1674,
+        "form": 6875
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about square numbers?",
+      "ms": {
+        "draft": 19604,
+        "critique": 17141,
+        "solver": 3134,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the pattern of the Koch Snowflake continues, how many line segments are there in the fourth iteration?",
+      "ms": {
+        "draft": 4816,
+        "critique": 5882,
+        "solver": 22078,
+        "form": 16034
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the pattern of triangular numbers continues, what is the next number after 10?",
+      "ms": {
+        "draft": 19604,
+        "critique": 18631,
+        "solver": 5512,
+        "form": 6718
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The passage says that 36 is both a triangular number and a square number. Which of the following sequences includes 36 as a term?",
+      "ms": {
+        "draft": 19604,
+        "critique": 23753
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage explains that adding up odd numbers results in square numbers. What is the sum of the first 5 odd numbers?",
+      "ms": {
+        "draft": 19604,
+        "critique": 14332,
+        "solver": 14138,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is described as the branch of mathematics that studies patterns in whole numbers?",
+      "ms": {
+        "draft": 27565,
+        "critique": 5247,
+        "solver": 1266,
+        "form": 5180
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is described as a sequence of numbers where each number is formed by adding 1 to the previous number?",
+      "ms": {
+        "draft": 27565,
+        "critique": 5726,
+        "solver": 17304,
+        "form": 3451
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the sum of the first 10 odd numbers?",
+      "ms": {
+        "draft": 3999,
+        "critique": 6330,
+        "solver": 1147,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is described as a sequence of numbers that can be arranged in a triangle?",
+      "ms": {
+        "draft": 27565,
+        "critique": 7252,
+        "solver": 1495,
+        "form": 2554,
+        "translation": 42075
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the 10th term of the sequence 1, 4, 9, 16, 25, ...?",
+      "ms": {
+        "draft": 3999,
+        "critique": 9328,
+        "solver": 1906,
+        "form": 0,
+        "translation": 37849
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is described as a sequence of numbers that can be arranged in a square?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is described as a sequence of numbers that can be arranged in a cube?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is described as a sequence of numbers where each number is formed by adding 2 to the previous number?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following sequences is an example of a pattern in mathematics?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the sequence of regular polygons, which number sequence represents the number of sides?",
+      "reason": "option 3 is a catch-all (\"None of the above\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which number sequence is formed by adding 1 to each term of the sequence 1, 2, 4, 8, 16?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A sequence is created by starting with 1 and adding the next odd number to the previous sum. What is the value of the 5th term in this sequence?",
+      "reason": "the solver picked option 0 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the next number in the sequence: 1, 3, 6, 10, 15, ...?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage describes that adding consecutive triangular numbers results in a sequence of square numbers. Which of the following pairs of triangular numbers, when added, gives a square number?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the triangular numbers are multiplied by 6 and 1 is added, what sequence is formed?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the number of jars in each layer of a glass jar arrangement follows the pattern 3, 6, 9, 12, ..., which term of this pattern will have 34 jars?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the sum of the first 10 odd numbers?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which sequence is formed by adding counting numbers up and down, e.g., 1, 1 + 2 + 1, 1 + 2 + 3 + 2 + 1, ...?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which sequence is formed by adding the triangular numbers up?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the sum of 1 + 2 + 3 + ... + 99 + 100 + 99 + ... + 3 + 2 + 1?",
+      "reason": "options 0 and 1 are the same (\"10,000\"); options 0 and 1 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a store, glass jars are arranged in layers such that the top layer has 3 jars, the next layer has 6 jars, the third has 9 jars, and so on. How many layers can be formed if there are 108 jars in total?",
+      "reason": "options 0 and 1 are the same (\"12\"); options 2 and 3 are the same (\"36\"); options 0 and 1 are the same number; options 2 and 3 are the same number; checkExpr \"(2*3 + (n-1)*3)*n/2 = 108\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If you add 1 to each number in the sequence 1, 3, 7, 15, 31, ..., what sequence do you get?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Student confuses the sequence with square numbers due to pri…\"); distractor 2's reason is not a one-line misconception (\"Confuses the sequence with cubes due to the word 'cubic' bei…\"); distractor 3's reason is not a one-line misconception (\"Confuses the sequence with triangular numbers due to prior e…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the next shape in the sequence of regular polygons?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which number sequence is formed by the number of lines in each shape of the sequence of complete graphs?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which sequence is formed by the number of sides in the sequence of regular polygons?",
+      "reason": "options 2 and 3 say the same thing (\"Counting numbers starting from 3\" / \"3: Counting numbers starting from 4\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a number pattern discussed in the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does adding the sequence of odd numbers starting from 1 give square numbers?",
+      "reason": "options 0 and 1 say the same thing (\"Because the sum of the first n odd numbers is n²\" / \"Because the sum of the first n odd numbers is 2n\"); options 0 and 2 say the same thing (\"Because the sum of the first n odd numbers is n²\" / \"Because the sum of the first n odd numbers is n + 1\"); options 0 and 3 say the same thing (\"Because the sum of the first n odd numbers is n²\" / \"Because the sum of the first n odd numbers is n(n + 1)\"); options 1 and 2 say the same thing (\"Because the sum of the first n odd numbers is 2n\" / \"Because the sum of the first n odd numbers is n + 1\"); options 1 and 3 say the same thing (\"Because the sum of the first n odd numbers is 2n\" / \"Because the sum of the first n odd numbers is n(n + 1)\"); options 2 and 3 say the same thing (\"Because the sum of the first n odd numbers is n + 1\" / \"Because the sum of the first n odd numbers is n(n + 1)\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about square numbers?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the pattern of the Koch Snowflake continues, how many line segments are there in the fourth iteration?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"3*4^3\" = 192, but the key says 48"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the pattern of triangular numbers continues, what is the next number after 10?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Adds 3 to the previous number, which is incorrect, but the c…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "The passage says that 36 is both a triangular number and a square number. Which of the following sequences includes 36 as a term?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage explains that adding up odd numbers results in square numbers. What is the sum of the first 5 odd numbers?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Adds the first five odd numbers incorrectly, giving 35 inste…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is described as the branch of mathematics that studies patterns in whole numbers?",
+      "reason": "near-duplicate of served question cmvv77mth00hf0rgnsk94mael (cosine 0.946 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is described as a sequence of numbers where each number is formed by adding 1 to the previous number?",
+      "reason": "near-duplicate of served question cmvimcg0k0doygpfhmtdt6cmd (cosine 0.911 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "What is the sum of the first 10 odd numbers?",
+      "reason": "near-duplicate of served question cmveekdyy001dgowcflc5ko0o (cosine 0.924 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -21,49 +21,49 @@
   "board": "BALBHARATI",
   "book": "६ वी गणित इंग्रजी",
   "edition": "First Edition 2026",
-  "generatedAt": "2026-10-30T22:50:56.096Z",
+  "generatedAt": "2026-10-31T00:17:30.012Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "How many vertices does a triangle have?",
+      "stem": "What is the name of the line segment joining the vertices of opposite angles of a quadrilateral?",
       "choices": [
-        "Two",
-        "Three",
-        "Four",
-        "Five"
+        "Side",
+        "Diagonal",
+        "Vertex",
+        "Angle"
       ],
       "answerIndex": 1,
-      "solution": "A triangle has three vertices because it is formed by joining three points. The correct answer is three. The other options are incorrect because they suggest a different number of vertices than what a triangle has.",
+      "solution": "The line segment joining the vertices of opposite angles of a quadrilateral is called a diagonal. The other options are not the correct term for this.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक त्रिभुज में कितने शीर्ष होते हैं?",
+          "stem": "एक चतुर्भुज के विपरीत कोणों के शीर्षों को जोड़ने वाले रेखाखंड का नाम क्या है?",
           "choices": [
-            "दो",
-            "तीन",
-            "चार",
-            "पांच"
+            "भुजा",
+            "विकर्ण",
+            "शीर्ष",
+            "कोण"
           ],
-          "solution": "एक त्रिभुज में तीन शीर्ष होते हैं क्योंकि यह तीन बिंदुओं के जुड़े होने से बनता है। सही उत्तर तीन है। अन्य विकल्प गलत हैं क्योंकि वे एक त्रिभुज के शीर्षों की संख्या के अलग-अलग अनुमान देते हैं।",
+          "solution": "एक चतुर्भुज के विपरीत कोणों के शीर्षों को जोड़ने वाले रेखाखंड को विकर्ण कहते हैं। अन्य विकल्प इसके लिए सही शब्द नहीं हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology.",
+          "critique": "The Hindi translation accurately reflects the English question and options, with appropriate mathematical terminology used.",
           "flag": null
         },
         "mr": {
-          "stem": "त्रिकोणाच्या शिरोबिंदू किती असतात?",
+          "stem": "चतुर्भुजाच्या विरुद्ध कोनांच्या शिरोबिंदूंना जोडणाऱ्या रेखाखंडाचे नाव काय?",
           "choices": [
-            "दोन",
-            "तीन",
-            "चार",
-            "पाच"
+            "बाजू",
+            "कर्ण",
+            "शिरोबिंदू",
+            "कोन"
           ],
-          "solution": "त्रिकोणाला तीन शिरोबिंदू असतात कारण तो तीन बिंदूंनी बनलेला असतो. योग्य उत्तर तीन आहे. इतर विकल्प चुकीचे आहेत कारण ते त्रिकोणाच्या शिरोबिंदूंच्या संख्येपेक्षा वेगळी संख्या सूचित करतात.",
+          "solution": "चतुर्भुजाच्या विरुद्ध कोनांच्या शिरोबिंदूंना जोडणाऱ्या रेखाखंडाला कर्ण म्हणतात. इतर विकल्प यासाठी योग्य शब्द नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
           "flag": null
         }
       },
@@ -72,10 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses triangle with a line segment",
+        "Confuses diagonal with a side",
         null,
-        "Incorrectly counts the sides instead of vertices",
-        "Mistakes triangle for a quadrilateral"
+        "Confuses diagonal with a vertex",
+        "Confuses diagonal with an angle"
       ],
       "solverAnswers": [
         1,
@@ -85,197 +85,7 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The question is straightforward and the solution is correct. The correct answer is 1 (Three), and the author's reasoning for the distractors is valid.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 48,
-          "pageStart": 71,
-          "pageEnd": 73,
-          "headingPath": [
-            "8. Triangles and Squares"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 49,
-          "pageStart": 73,
-          "pageEnd": 75,
-          "headingPath": [
-            "8. Triangles and Squares"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 50,
-          "pageStart": 75,
-          "pageEnd": 77,
-          "headingPath": [
-            "8. Triangles and Squares"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T22:50:56.096Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "If a triangle has one angle that is greater than 90 degrees, what type of triangle is it?",
-      "choices": [
-        "Acute-angled",
-        "Right-angled",
-        "Obtuse-angled",
-        "Equilateral"
-      ],
-      "answerIndex": 2,
-      "solution": "An obtuse-angled triangle is one where one angle is greater than 90 degrees. The correct answer is obtuse-angled. The other options are incorrect because they describe different types of triangles based on their angles.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक त्रिभुज में एक कोण 90 डिग्री से अधिक है, तो यह किस प्रकार का त्रिभुज है?",
-          "choices": [
-            "न्यूनकोणीय",
-            "समकोणीय",
-            "अधिककोणीय",
-            "समबाहु"
-          ],
-          "solution": "एक अधिककोणीय त्रिभुज वह होता है जिसके एक कोण 90 डिग्री से अधिक होता है। सही उत्तर अधिककोणीय है। अन्य विकल्प गलत हैं क्योंकि वे कोणों के आधार पर अलग-अलग प्रकार के त्रिभुजों का वर्णन करते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and options, with appropriate terminology used in Indian curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एका त्रिकोणाचा एक कोन 90 अंशापेक्षा जास्त असेल, तर तो कोणत्या प्रकारचा त्रिकोण असेल?",
-          "choices": [
-            "लघुकोन",
-            "समकोन",
-            "अधिककोन",
-            "समभुज"
-          ],
-          "solution": "अधिककोन त्रिकोण हा एक त्रिकोण आहे ज्याचा एक कोन 90 अंशापेक्षा जास्त असतो. योग्य उत्तर अधिककोन आहे. इतर विकल्प चुकीचे आहेत कारण ते कोनांच्या आधारावर वेगवेगळ्या प्रकारच्या त्रिकोणांचे वर्णन करतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, with appropriate Marathi terminology for triangle types.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Describes a triangle with all angles less than 90 degrees",
-        "Describes a triangle with one 90-degree angle",
-        null,
-        "Confuses equilateral triangle with obtuse-angled triangle"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The question is clear and the solution correctly identifies the obtuse-angled triangle. The distractors are all valid misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 48,
-          "pageStart": 71,
-          "pageEnd": 73,
-          "headingPath": [
-            "8. Triangles and Squares"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 49,
-          "pageStart": 73,
-          "pageEnd": 75,
-          "headingPath": [
-            "8. Triangles and Squares"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 50,
-          "pageStart": 75,
-          "pageEnd": 77,
-          "headingPath": [
-            "8. Triangles and Squares"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T22:50:56.096Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is a quadrilateral?",
-      "choices": [
-        "A polygon with three sides",
-        "A polygon with four sides",
-        "A polygon with five sides",
-        "A polygon with six sides"
-      ],
-      "answerIndex": 1,
-      "solution": "A quadrilateral is defined as a polygon with four sides. A polygon with three sides is a triangle, a polygon with five sides is a pentagon, and a polygon with six sides is a hexagon.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन एक चतुर्भुज है?",
-          "choices": [
-            "तीन भुजाओं वाला बहुभुज",
-            "चार भुजाओं वाला बहुभुज",
-            "पांच भुजाओं वाला बहुभुज",
-            "छह भुजाओं वाला बहुभुज"
-          ],
-          "solution": "एक चतुर्भुज की परिभाषा चार भुजाओं वाला बहुभुज है। तीन भुजाओं वाला बहुभुज एक त्रिभुज है, पांच भुजाओं वाला बहुभुज एक पंचभुज है और छह भुजाओं वाला बहुभुज एक षट्भुज है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, but the key is incorrect. The correct answer should be option (2), not (1).",
-          "flag": "translation critique: not one answer at the same position"
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते चौकोन आहे?",
-          "choices": [
-            "तीन बाजू असलेले बहुभुज",
-            "चार बाजू असलेले बहुभुज",
-            "पाच बाजू असलेले बहुभुज",
-            "सहा बाजू असलेले बहुभुज"
-          ],
-          "solution": "चौकोन म्हणजे चार बाजू असलेले बहुभुज. तीन बाजू असलेले बहुभुज त्रिकोन असतो, पाच बाजू असलेले बहुभुज पंचभुज असतो आणि सहा बाजू असलेले बहुभुज षट्भुज असतो.",
-          "imageAlt": null,
-          "critique": "The key is incorrect - the correct answer should be option (2), not (1).",
-          "flag": "translation critique: not one answer at the same position"
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses quadrilateral with triangle",
-        null,
-        "Confuses quadrilateral with pentagon",
-        "Confuses quadrilateral with hexagon"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The question is clear and the solution correctly identifies that a quadrilateral has four sides. The distractors are based on common misconceptions about polygon names.",
+      "critique": "The question is clear and the correct answer is 'Diagonal'. The author's reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
@@ -288,47 +98,219 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T22:50:56.096Z",
+      "generatedAt": "2026-10-31T00:17:30.012Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "In a triangle, if two sides are equal, what is the name of the triangle?",
+      "difficulty": 1,
+      "stem": "How many pairs of opposite angles does a quadrilateral have?",
       "choices": [
-        "Equilateral",
-        "Scalene",
-        "Isosceles",
-        "Right-angled"
+        "Two",
+        "Three",
+        "Four",
+        "Five"
       ],
-      "answerIndex": 2,
-      "solution": "An isosceles triangle is a triangle with two equal sides. The correct option is isosceles. The other options are incorrect because they describe different types of triangles based on their sides.",
+      "answerIndex": 0,
+      "solution": "A quadrilateral has two pairs of opposite angles. The other options are incorrect as they do not match the definition of a quadrilateral.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक त्रिभुज में, यदि दो भुजाएँ समान हों, तो त्रिभुज का नाम क्या होता है?",
+          "stem": "एक चतुर्भुज में कितने जोड़े विपरीत कोण होते हैं?",
           "choices": [
-            "समभुज",
-            "विषमभुज",
-            "समद्विबाहु",
-            "समकोणीय"
+            "दो",
+            "तीन",
+            "चार",
+            "पांच"
           ],
-          "solution": "एक समद्विबाहु त्रिभुज एक ऐसा त्रिभुज होता है जिसकी दो भुजाएँ समान होती हैं। सही विकल्प समद्विबाहु है। अन्य विकल्प गलत हैं क्योंकि वे भुजाओं के आधार पर अलग-अलग प्रकार के त्रिभुजों का वर्णन करते हैं।",
+          "solution": "एक चतुर्भुज में दो जोड़े विपरीत कोण होते हैं। अन्य विकल्प गलत हैं क्योंकि वे चतुर्भुज के परिभाषा के अनुरूप नहीं हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All options are correctly translated, and the correct answer remains in the same position. The distractors remain incorrect, and the technical terms used are standard in Hindi textbooks.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "त्रिकोणात जर दोन बाजू समान असतील तर त्या त्रिकोणाचे नाव काय असते?",
+          "stem": "चतुर्भुजाला किती जोड्या विरुद्ध कोन असतात?",
           "choices": [
-            "समभुज",
-            "विषमभुज",
-            "समद्विबाहु",
-            "समकोनी"
+            "दोन",
+            "तीन",
+            "चार",
+            "पाच"
           ],
-          "solution": "समद्विबाहू त्रिकोण हा त्रिकोण आहे ज्याच्या दोन बाजू समान असतात. योग्य विकल्प समद्विबाहू आहे. इतर विकल्प चुकीचे आहेत कारण ते त्यांच्या बाजूंवर आधारित वेगवेगळ्या प्रकारच्या त्रिकोणांचे वर्णन करतात.",
+          "solution": "चतुर्भुजाला दोन जोड्या विरुद्ध कोन असतात. इतर विकल्प चतुर्भुजाच्या व्याख्येशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for geometry.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses with number of sides",
+        "Confuses with number of sides",
+        "Confuses with number of sides"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (Two), as a quadrilateral has two pairs of opposite angles. The author's solution is correct, but the key is mislabeled (0 is the correct index, but the key says 0, which is correct). The distractors are all wrong and the reasons are valid misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 51,
+          "pageStart": 77,
+          "pageEnd": 78,
+          "headingPath": [
+            "8. Triangles and Squares"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T00:17:30.012Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a correct definition of a triangle?",
+      "choices": [
+        "A shape with four sides",
+        "A shape formed by joining three non-collinear points",
+        "A shape with four sides and three angles",
+        "A shape formed by joining three collinear points"
+      ],
+      "answerIndex": 1,
+      "solution": "A triangle is a shape formed by joining three non-collinear points because this creates a closed figure with three sides and three angles. A shape with four sides or angles cannot be a triangle, as it would be a different polygon. Joining collinear points would result in a straight line, not a triangle.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा त्रिभुज की सही परिभाषा है?",
+          "choices": [
+            "चार भुजाओं वाला आकृति",
+            "तीन असीमान्त बिंदुओं को जोड़कर बनी आकृति",
+            "चार भुजाओं और तीन कोणों वाला आकृति",
+            "तीन सीमान्त बिंदुओं को जोड़कर बनी आकृति"
+          ],
+          "solution": "एक त्रिभुज तीन असीमान्त बिंदुओं को जोड़कर बनी आकृति होती है क्योंकि इससे तीन भुजाओं और तीन कोणों वाली बंद आकृति बनती है। चार भुजाओं या कोणों वाली आकृति एक त्रिभुज नहीं हो सकती, क्योंकि यह एक अलग बहुभुज होगी। सीमान्त बिंदुओं को जोड़ने से सीधी रेखा बनती है, जो त्रिभुज नहीं होती।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is mostly accurate, but the key is incorrect (should be option 2, not 1).",
+          "flag": "translation critique: not one answer at the same position"
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते त्रिकोणाचे योग्य निर्वचन आहे?",
+          "choices": [
+            "चार बाजू असलेला आकृती",
+            "तीन असंरेख बिंदूंना जोडून तयार होणारा आकृती",
+            "चार बाजू आणि तीन कोन असलेला आकृती",
+            "तीन संरेख बिंदूंना जोडून तयार होणारा आकृती"
+          ],
+          "solution": "त्रिकोण हा तीन असंरेख बिंदूंना जोडून तयार होणारा आकृती आहे कारण हे तीन बाजू आणि तीन कोन असलेला बंद आकृती तयार करते. चार बाजू किंवा कोन असलेला आकृती त्रिकोण नसू शकतो, कारण तो वेगळा बहुभुज असेल. संरेख बिंदूंना जोडल्याने सीधा रेषा तयार होते, जो त्रिकोण नसतो.",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original English question and maintains the correct answer and distractors. Technical terms like 'असंरेख' (non-collinear) and 'संरेख' (collinear) are appropriately used as per Marathi educational terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Pupil may confuse triangle with quadrilateral.",
+        null,
+        "Confuses properties of a quadrilateral with those of a triangle",
+        "Confuses collinear with non-collinear, thinking points can be in a straight line"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 1, as a triangle is defined as a shape formed by joining three non-collinear points. The other options represent common misconceptions about triangles, such as confusing them with quadrilaterals or misunderstanding the role of collinearity.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 48,
+          "pageStart": 71,
+          "pageEnd": 73,
+          "headingPath": [
+            "8. Triangles and Squares"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 49,
+          "pageStart": 73,
+          "pageEnd": 75,
+          "headingPath": [
+            "8. Triangles and Squares"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 50,
+          "pageStart": 75,
+          "pageEnd": 77,
+          "headingPath": [
+            "8. Triangles and Squares"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T00:17:30.012Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following statements is true about a right-angled triangle?",
+      "choices": [
+        "It can have two right angles",
+        "It can be an isosceles triangle",
+        "It cannot have any acute angles",
+        "It has all angles equal"
+      ],
+      "answerIndex": 1,
+      "solution": "A right-angled triangle can be an isosceles triangle if the two other angles are equal. The other options are incorrect based on the properties of a right-angled triangle.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा कथन समकोण त्रिभुज के बारे में सत्य है?",
+          "choices": [
+            "इसमें दो समकोण हो सकते हैं",
+            "इसे समद्विबाहु त्रिभुज हो सकता है",
+            "इसमें कोई न्यूनकोण नहीं हो सकता",
+            "इसके सभी कोण बराबर होते हैं"
+          ],
+          "solution": "एक समकोण त्रिभुज समद्विबाहु त्रिभुज हो सकता है यदि अन्य दो कोण बराबर हों। अन्य विकल्प समकोण त्रिभुज के गुणधर्मों के आधार पर असत्य हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता विधान एका समकोन त्रिकोणाबद्दल खरा आहे?",
+          "choices": [
+            "त्याला दोन समकोन असू शकतात",
+            "तो समद्विभुज त्रिकोण असू शकतो",
+            "त्याला कोणतेही खुर्चे कोन असू शकत नाहीत",
+            "त्याला सर्व कोन समान असतात"
+          ],
+          "solution": "एका समकोन त्रिकोणाला समद्विभुज त्रिकोण असू शकतो जर उरलेल दोन कोन समान असतील. इतर विकल्प समकोन त्रिकोणाच्या गुणधर्मांवर आधारित असून चूकीचे आहेत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -339,93 +321,75 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Describes a triangle with all sides equal",
-        "Describes a triangle with all sides different",
+        "Confuses with properties of other triangles",
         null,
-        "Confuses right-angled triangle with isosceles triangle"
+        "Confuses with properties of other triangles",
+        "Confuses with properties of other triangles"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": null,
-      "critique": "The question is clear and the solution correctly identifies 'isosceles' as the triangle with two equal sides. The distractors are all valid misconceptions.",
+      "critique": "The correct answer is 1, as a right-angled triangle can be isosceles if the two non-right angles are each 45 degrees. The other options are clearly incorrect based on triangle angle properties.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 48,
-          "pageStart": 71,
-          "pageEnd": 73,
-          "headingPath": [
-            "8. Triangles and Squares"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 49,
-          "pageStart": 73,
-          "pageEnd": 75,
-          "headingPath": [
-            "8. Triangles and Squares"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 50,
-          "pageStart": 75,
-          "pageEnd": 77,
+          "ordinal": 51,
+          "pageStart": 77,
+          "pageEnd": 78,
           "headingPath": [
             "8. Triangles and Squares"
           ]
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T22:50:56.096Z",
+      "generatedAt": "2026-10-31T00:17:30.012Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "Which of the following can be the measure of an angle in an acute-angled triangle?",
+      "stem": "In the quadrilateral □LMNO, which side is adjacent to side LM?",
       "choices": [
-        "100°",
-        "90°",
-        "60°",
-        "120°"
+        "MN",
+        "LO",
+        "NO",
+        "OL"
       ],
-      "answerIndex": 2,
-      "solution": "An acute-angled triangle has all three angles less than 90°. 60° is less than 90°, so it can be an angle in such a triangle. 100° and 120° are obtuse angles, which cannot be in an acute-angled triangle. 90° is a right angle, which makes the triangle right-angled, not acute-angled.",
+      "answerIndex": 0,
+      "solution": "In the quadrilateral □LMNO, the side adjacent to side LM is MN. The other options are not adjacent to LM based on the structure of the quadrilateral.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा एक अधिक कोण त्रिभुज के कोण के माप का हो सकता है?",
+          "stem": "चतुर्भुज □LMNO में, कौन सी भुजा LM के समीपवर्ती है?",
           "choices": [
-            "100°",
-            "90°",
-            "60°",
-            "120°"
+            "MN",
+            "LO",
+            "NO",
+            "OL"
           ],
-          "solution": "एक अधिक कोण त्रिभुज में तीनों कोण 90° से कम होते हैं। 60°, 90° से कम है, इसलिए इसे ऐसे त्रिभुज में कोण के रूप में हो सकता है। 100° और 120° अधिक कोण हैं, जो एक अधिक कोण त्रिभुज में नहीं हो सकते। 90° एक समकोण है, जो त्रिभुज को समकोण बना देता है, अधिक कोण नहीं।",
+          "solution": "चतुर्भुज □LMNO में, LM के समीपवर्ती भुजा MN है। चतुर्भुज की संरचना के आधार पर अन्य विकल्प LM के समीपवर्ती नहीं हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. The term 'अधिक कोण त्रिभुज' correctly translates to 'obtuse-angled triangle' and aligns with standard Hindi mathematical terminology.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains in the same position. The term 'समीपवर्ती' is the appropriate Hindi term for 'adjacent' in a geometric context.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता एक अधिक कोन असलेल्या त्रिकोणाचा कोन मोजमाप असू शकतो?",
+          "stem": "चतुर्भुज □LMNO मध्ये, LM बाजूला जवळची कोणती बाजू आहे?",
           "choices": [
-            "100°",
-            "90°",
-            "60°",
-            "120°"
+            "MN",
+            "LO",
+            "NO",
+            "OL"
           ],
-          "solution": "एक अधिक कोन असलेला त्रिकोण असल्यास त्याच्या तीनही कोनांचे मोजमाप 90° पेक्षा कमी असते. 60° हे 90° पेक्षा कमी असल्याने ते अशा त्रिकोणाचा कोन असू शकते. 100° आणि 120° हे अधिक कोन आहेत, जे अधिक कोन असलेल्या त्रिकोणात असू शकत नाहीत. 90° हा लंब कोन आहे, ज्यामुळे त्रिकोण लंबकोनी असतो, अधिक कोनी नव्हे.",
+          "solution": "चतुर्भुज □LMNO मध्ये, LM बाजूला जवळची MN बाजू आहे. चतुर्भुजाच्या संरचनेनुसार LM ला जवळची इतर बाजू नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for geometric concepts.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for geometric shapes and sides.",
           "flag": null
         }
       },
@@ -434,20 +398,174 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "confuses obtuse angles with acute angles",
-        "confuses right angle with acute angle",
         null,
-        "Confuses obtuse angles with possible angles in an acute triangle"
+        "Confuses with opposite side",
+        "Confuses with opposite side",
+        "Confuses with opposite side"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": null,
-      "critique": "The solution correctly identifies that an acute-angled triangle must have all angles less than 90°, and 60° is the only valid option. The reasoning for the distractors aligns with common misconceptions.",
+      "critique": "The correct answer is 0 (MN), as it is adjacent to LM in the quadrilateral. The other options are opposite sides, which is a valid misconception.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 51,
+          "pageStart": 77,
+          "pageEnd": 78,
+          "headingPath": [
+            "8. Triangles and Squares"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T00:17:30.012Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "If the diagonals of a quadrilateral intersect at right angles, what can be said about the quadrilateral?",
+      "choices": [
+        "It is a square",
+        "It is a rhombus",
+        "It is a rectangle",
+        "It is a parallelogram"
+      ],
+      "answerIndex": 1,
+      "solution": "If the diagonals of a quadrilateral intersect at right angles, it can be a rhombus. The other options are not necessarily true for all quadrilaterals with perpendicular diagonals.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक चतुर्भुज के विकर्ण समकोण पर प्रतिच्छेद करते हैं, तो चतुर्भुज के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "यह एक वर्ग है",
+            "यह एक समचतुर्भुज है",
+            "यह एक आयत है",
+            "यह एक समांतर चतुर्भुज है"
+          ],
+          "solution": "यदि एक चतुर्भुज के विकर्ण समकोण पर प्रतिच्छेद करते हैं, तो यह समचतुर्भुज हो सकता है। अन्य विकल्प सभी चतुर्भुजों के लिए आवश्यक रूप से सत्य नहीं हैं जिनके विकर्ण लंबवत होते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "चौकोनाच्या विकर्णांनी समकोनावर छेद केल्यास चौकोनाबद्दल काय म्हणता येईल?",
+          "choices": [
+            "तो चौरस आहे",
+            "तो जादा आहे",
+            "तो आयत आहे",
+            "तो समांतर चौकोन आहे"
+          ],
+          "solution": "जर चौकोनाच्या विकर्णांनी समकोनावर छेद केला असेल तर तो जादा असू शकतो. इतर विकल्प नेहमी खरे नसतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms. The correct answer (2) is in the same position as in the English version. The other options are still incorrect in Marathi.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses with properties of squares",
+        null,
+        "Confuses with properties of rectangles",
+        "Confuses with properties of parallelograms"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1 (rhombus). A rhombus has diagonals that intersect at right angles, but not all quadrilaterals with perpendicular diagonals are squares, rectangles, or parallelograms. The author's reasoning aligns with standard geometric properties.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 51,
+          "pageStart": 77,
+          "pageEnd": 78,
+          "headingPath": [
+            "8. Triangles and Squares"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T00:17:30.012Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a triangle has one angle of 135°, what type of triangle is it?",
+      "choices": [
+        "Equilateral triangle",
+        "Isosceles triangle",
+        "Acute-angled triangle",
+        "Obtuse-angled triangle"
+      ],
+      "answerIndex": 3,
+      "solution": "A triangle with an angle greater than 90° but less than 180° is classified as obtuse-angled. An equilateral triangle has all angles equal to 60°, an isosceles triangle has two equal angles but not necessarily an obtuse angle, and an acute-angled triangle has all angles less than 90°. A 135° angle is greater than 90°, making the triangle obtuse-angled.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक त्रिभुज का एक कोण 135° है, तो यह किस प्रकार का त्रिभुज है?",
+          "choices": [
+            "समबाहु त्रिभुज",
+            "समद्विबाहु त्रिभुज",
+            "न्यूनकोण त्रिभुज",
+            "अधिककोण त्रिभुज"
+          ],
+          "solution": "90° से अधिक लेकिन 180° से कम कोण वाले त्रिभुज को अधिककोण त्रिभुज कहा जाता है। एक समबाहु त्रिभुज में सभी कोण 60° के होते हैं, एक समद्विबाहु त्रिभुज में दो समान कोण होते हैं लेकिन आवश्यक नहीं कि एक अधिककोण हो, और एक न्यूनकोण त्रिभुज में सभी कोण 90° से कम होते हैं। 135° का कोण 90° से अधिक है, इसलिए त्रिभुज अधिककोण त्रिभुज है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are standard in Hindi textbooks, and the logic of the solution matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका त्रिकोणाचा एक कोन 135° असेल, तर तो त्रिकोण कोणत्या प्रकारचा असेल?",
+          "choices": [
+            "समभुज त्रिकोण",
+            "समद्विभुज त्रिकोण",
+            "तीव्रकोन त्रिकोण",
+            "अधिककोन त्रिकोण"
+          ],
+          "solution": "90° पेक्षा जास्त पण 180° पेक्षा कमी असलेला कोन असलेला त्रिकोण अधिककोन त्रिकोण म्हणतात. समभुज त्रिकोणाचे सर्व कोन 60° असतात, समद्विभुज त्रिकोणाला दोन समान कोन असतात पण अवश्य अधिककोन असत नाहीत आणि तीव्रकोन त्रिकोणाचे सर्व कोन 90° पेक्षा कमी असतात. 135° चा कोन 90° पेक्षा जास्त असल्यामुळे त्रिकोण अधिककोन त्रिकोण असेल.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and uses standard Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Pupil may confuse obtuse-angled triangle with equilateral triangle.",
+        "Pupil may confuse obtuse-angled triangle with isosceles triangle.",
+        "Pupil may confuse obtuse-angled triangle with acute-angled triangle.",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. The correct answer is 3 (obtuse-angled triangle), as a 135° angle is greater than 90°, and the explanation is accurate. The distractors are plausible misconceptions.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
@@ -478,7 +596,102 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T22:50:56.096Z",
+      "generatedAt": "2026-10-31T00:17:30.012Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In a triangle, the sum of the measures of any two angles is 120°. What is the measure of the third angle?",
+      "choices": [
+        "60°",
+        "90°",
+        "120°",
+        "180°"
+      ],
+      "answerIndex": 0,
+      "solution": "The sum of the angles in a triangle is always 180°. If the sum of two angles is 120°, the third angle must be 180° - 120° = 60°. The other options are incorrect because 90° and 120° do not satisfy the angle sum property of a triangle, and 180° would make the triangle degenerate.",
+      "checkExpr": "180-120",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक त्रिभुज में किन्हीं दो कोणों के मापों का योग 120° है। तीसरे कोण का माप क्या है?",
+          "choices": [
+            "60°",
+            "90°",
+            "120°",
+            "180°"
+          ],
+          "solution": "त्रिभुज में कोणों का योग हमेशा 180° होता है। यदि दो कोणों के मापों का योग 120° है, तो तीसरा कोण 180° - 120° = 60° होना चाहिए। अन्य विकल्प गलत हैं क्योंकि 90° और 120° त्रिभुज के कोण योग गुण को संतुष्ट नहीं करते, और 180° त्रिभुज को डिजनरेट बना देगा।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "त्रिकोणात, कोणत्याही दोन कोनांच्या मापांची बेरीज 120° आहे. तिसऱ्या कोनाचे माप किती आहे?",
+          "choices": [
+            "60°",
+            "90°",
+            "120°",
+            "180°"
+          ],
+          "solution": "त्रिकोणातील कोनांची बेरीज नेहमी 180° असते. जर दोन कोनांची बेरीज 120° असेल, तर तिसऱ्या कोनाचे माप 180° - 120° = 60° असेल. इतर विकल्प चुकीचे आहेत कारण 90° आणि 120° त्रिकोणाच्या कोनांच्या बेरीजच्या गुणधर्माला अनुरूप नाहीत, आणि 180° असल्यास त्रिकोण अविलीन होईल.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "A student might think that the third angle must be a right angle because 120° is close to 90° and they confuse angle properties of triangles with those of other shapes.",
+        "Miscalculates the third angle by subtracting 120° from 240° instead of 180°",
+        "Overlooks the angle sum property of triangles"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the key. The reasoning for the distractors is plausible and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 48,
+          "pageStart": 71,
+          "pageEnd": 73,
+          "headingPath": [
+            "8. Triangles and Squares"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 49,
+          "pageStart": 73,
+          "pageEnd": 75,
+          "headingPath": [
+            "8. Triangles and Squares"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 50,
+          "pageStart": 75,
+          "pageEnd": 77,
+          "headingPath": [
+            "8. Triangles and Squares"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T00:17:30.012Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

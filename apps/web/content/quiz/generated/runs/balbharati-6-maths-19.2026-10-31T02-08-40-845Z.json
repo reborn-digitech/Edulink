@@ -1,0 +1,320 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T02:08:40.845Z",
+  "finishedAt": "2026-10-31T02:18:11.654Z",
+  "seconds": 571,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 19 — Magical Mathematics - 2",
+    "edition": "First Edition 2026",
+    "chunks": 2,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n6. (b) 12",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n6. A) 11 9",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n6. (c) 5 Unit"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 84902,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 7316,
+      "completionTokens": 3149
+    },
+    "critique": {
+      "calls": 15,
+      "ms": 685274,
+      "in": 12,
+      "out": 9,
+      "rejects": 3,
+      "promptTokens": 6985,
+      "completionTokens": 2662
+    },
+    "solver": {
+      "calls": 63,
+      "ms": 179699,
+      "in": 9,
+      "out": 6,
+      "rejects": 3,
+      "promptTokens": 10038,
+      "completionTokens": 619
+    },
+    "form": {
+      "calls": 5,
+      "ms": 87688,
+      "in": 6,
+      "out": 2,
+      "rejects": 4,
+      "promptTokens": 1398,
+      "completionTokens": 436
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 17,
+      "ms": 10307,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 116081,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4996,
+      "completionTokens": 2577
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If there are 5 discs in the Tower of Hanoi game, how many moves are required to move them all?",
+      "ms": {
+        "draft": 14008,
+        "critique": 7019,
+        "solver": 1615
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct formula to find the number of moves in the Tower of Hanoi game?",
+      "ms": {
+        "draft": 14008,
+        "critique": 7388,
+        "solver": 1532,
+        "form": 4148
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the pan balance problem, what is the minimum number of times the balance is used to identify the lightweight object among 9 objects?",
+      "ms": {
+        "draft": 14008,
+        "critique": 7196,
+        "solver": 1495
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the number of discs in the Tower of Hanoi game is increased to 6, how many moves are required?",
+      "ms": {
+        "draft": 14008,
+        "critique": 5468,
+        "solver": 1751
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many times must the pan balance be used to find the lightweight object among 9 identical objects?",
+      "ms": {
+        "draft": 9963,
+        "critique": 74455
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the minimum number of moves required to solve the Tower of Hanoi with 3 discs?",
+      "ms": {
+        "draft": 9963,
+        "critique": 83447
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the number of discs in the Tower of Hanoi game is increased from 3 to 4, how many additional moves are required?",
+      "ms": {
+        "draft": 9963,
+        "critique": 87462
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which mathematician is known for proving approximately 4000 theorems?",
+      "ms": {
+        "draft": 9963,
+        "critique": 79116,
+        "solver": 116864,
+        "form": 38981
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the relationship between the areas of two squares and the newly formed square when they are joined?",
+      "ms": {
+        "draft": 9963,
+        "critique": 72369,
+        "solver": 124136,
+        "form": 26549
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the side BC of a square is not half of the side QR of another square, can a new square be formed by joining the cut pieces?",
+      "ms": {
+        "draft": 9963,
+        "critique": 75986,
+        "solver": 75333,
+        "form": 13315
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the number of moves required to shift 3 discs in the Tower of Hanoi game?",
+      "ms": {
+        "draft": 14008,
+        "critique": 6547,
+        "solver": 1274,
+        "form": 5756,
+        "translation": 55244
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the side of a square is halved, what is the effect on the area of the square?",
+      "ms": {
+        "draft": 14008,
+        "critique": 4938,
+        "solver": 1047,
+        "form": 0,
+        "translation": 57112
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If there are 5 discs in the Tower of Hanoi game, how many moves are required to move them all?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct formula to find the number of moves in the Tower of Hanoi game?",
+      "reason": "options 1 and 3 are the same (\"n^2\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the pan balance problem, what is the minimum number of times the balance is used to identify the lightweight object among 9 objects?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the number of discs in the Tower of Hanoi game is increased to 6, how many moves are required?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "How many times must the pan balance be used to find the lightweight object among 9 identical objects?",
+      "reason": "the critic finds option 1 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the minimum number of moves required to solve the Tower of Hanoi with 3 discs?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the number of discs in the Tower of Hanoi game is increased from 3 to 4, how many additional moves are required?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which mathematician is known for proving approximately 4000 theorems?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the relationship between the areas of two squares and the newly formed square when they are joined?",
+      "reason": "options 0 and 1 say the same thing (\"The area of the new square is the sum of the areas of the two squares\" / \"The area of the new square is the square of the sum of the sides of the two squares\"); options 0 and 2 say the same thing (\"The area of the new square is the sum of the areas of the two squares\" / \"The area of the new square is the product of the areas of the two squares\"); options 0 and 3 say the same thing (\"The area of the new square is the sum of the areas of the two squares\" / \"The area of the new square is the quotient of the areas of the two squares\"); options 2 and 3 say the same thing (\"The area of the new square is the product of the areas of the two squares\" / \"The area of the new square is the quotient of the areas of the two squares\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the side BC of a square is not half of the side QR of another square, can a new square be formed by joining the cut pieces?",
+      "reason": "option lengths are unalike (2 to 46 characters); options mix numbers and words (1 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

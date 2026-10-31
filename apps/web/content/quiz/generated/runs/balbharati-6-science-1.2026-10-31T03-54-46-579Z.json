@@ -1,0 +1,597 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T03:54:46.579Z",
+  "finishedAt": "2026-10-31T04:01:23.869Z",
+  "seconds": 397,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "603050012",
+    "document": "balbharati/6/science/603050012.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 1 — Characteristics of Living Organisms",
+    "edition": "First Edition 2026",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2022 — question paper]\n11. The following observations were recorded after studying some organisms:\nCharacter Organism W Organism X Organism Y Organism Z\nWater essential for fertilization -\nFormation of filament from -\ngerminating spore\nPlant body sporophytic, differentiated +\nin root, stem and leaves\nMale and female sex organs arranged +\ncompactly in cone\nFemale gametophyte enveloped by +\nsingle layered covering\nTriploid tissue observed in zygote -\n+ - +\n- - +\n+ + -\n+ - -\n- - -\n- + -\nOn the basis of the data, identify the group of organisms:\nA. W- pteridophytes, X- bryophytes, Y- angiosperms, Z- gymnosperms\nB. W- angiosperms, X- gymnosperms, Y-pteridophytes, Z- bryophytes\nC. W- angiosperms, X- bryophytes, Y-gymnos",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n1. Select the group in which all organisms have the same mode of nutrition. 1\nA. Cuscuta, yeast, legumes, leeches and tapeworm\nB. Cactus, ticks, lice, leeches and cow\nC. Cuscuta, ticks, lice, leeches and tapeworm\nD. Cactus, grass, lice, lion and tapeworm",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n35. (a) The reason is that many multi-cellular organisms are not simply a random 5\ncollection of cells. Specialised cells are organised as tissues, and tissues are\norganised into organs, which then have to be placed at definite positions in the\nbody. Therefore, cell-by-cell division would be impractical. (2 marks)\n(b) Sexual maturation of reproductive tissues is a necessary link for reproduction\nbecause of the need for specialised cell called germ-cells to participate in\nsexual reproduction. The body of the individual organism has to grow to its\nadult size, the rate of general body growth begins to slow down, reproductive\ntissues begin to mature. (1½ marks)\nA whole new set of changes in the ",
+      "[CBSE Class X Science, sample question paper, 2022-23]\n35. (a) Why is it not possible to reconstruct the whole organism from a fragment in 5\ncomplex multicellular organisms?\n(b) Sexual maturation of reproductive tissues and organs are necessary link for\nreproduction. Elucidate.\nOR\n(a) How are variations useful for species if there is drastic alteration in the niches?\n(b) Explain how the uterus and placenta provide necessary conditions for proper\ngrowth and development of the embryo after implantation?"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 5,
+      "ms": 95622,
+      "in": 29,
+      "out": 28,
+      "rejects": 2,
+      "promptTokens": 22363,
+      "completionTokens": 5408
+    },
+    "critique": {
+      "calls": 32,
+      "ms": 204071,
+      "in": 28,
+      "out": 26,
+      "rejects": 2,
+      "promptTokens": 13689,
+      "completionTokens": 5649
+    },
+    "solver": {
+      "calls": 154,
+      "ms": 72702,
+      "in": 26,
+      "out": 18,
+      "rejects": 8,
+      "promptTokens": 23862,
+      "completionTokens": 1503
+    },
+    "form": {
+      "calls": 8,
+      "ms": 17796,
+      "in": 18,
+      "out": 7,
+      "rejects": 11,
+      "promptTokens": 1920,
+      "completionTokens": 499
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 11,
+      "ms": 1742,
+      "in": 7,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 255508,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 14394,
+      "completionTokens": 7547
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 1,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "A puppy grows and learns new skills, but its leash remains the same size. Why does the leash not grow?",
+      "ms": {
+        "draft": 3078,
+        "critique": 6623,
+        "solver": 1674
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of all living organisms?",
+      "ms": {
+        "draft": 3078,
+        "critique": 7817,
+        "solver": 1290
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of living organisms according to the passage?",
+      "ms": {
+        "draft": 3078,
+        "critique": 6282,
+        "solver": 1392,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of living organisms as described in the passage?",
+      "ms": {
+        "draft": 3237,
+        "critique": 5918,
+        "solver": 1764,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of movement in plants as described in the passage?",
+      "ms": {
+        "draft": 3237,
+        "critique": 6209,
+        "solver": 1139,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plant's leaves close at night and open in the morning, what does this show according to the passage?",
+      "ms": {
+        "draft": 3237,
+        "critique": 7094,
+        "solver": 1342,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the growth of plants?",
+      "ms": {
+        "draft": 3237,
+        "critique": 6197,
+        "solver": 13330,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is true about the reproduction of sea turtles as described in the passage?",
+      "ms": {
+        "draft": 3237,
+        "critique": 7013,
+        "solver": 16024
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of living organisms?",
+      "ms": {
+        "draft": 4584,
+        "critique": 7428,
+        "solver": 16015
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a main characteristic of living organisms?",
+      "ms": {
+        "draft": 4584,
+        "critique": 5821,
+        "solver": 1217,
+        "form": 1863
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student observes a plant that does not change its position on its own, which of the following characteristics can still be said to apply to it?",
+      "ms": {
+        "draft": 4584,
+        "critique": 7274
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a correct statement based on the passage about the life cycle of a frog?",
+      "ms": {
+        "draft": 4584,
+        "critique": 5391,
+        "solver": 1455,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the life cycle of a frog as described in the passage?",
+      "ms": {
+        "draft": 4584,
+        "critique": 6265,
+        "solver": 7928,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used for the ability of a living being to sense its surroundings?",
+      "ms": {
+        "draft": 2894,
+        "critique": 6260,
+        "solver": 1158
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a characteristic of living organisms?",
+      "ms": {
+        "draft": 2894,
+        "critique": 7766
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a response to a stimulus?",
+      "ms": {
+        "draft": 2894,
+        "critique": 6658,
+        "solver": 1706
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a correct sequence of the life cycle of a frog as described in the passage?",
+      "ms": {
+        "draft": 2894,
+        "critique": 5849,
+        "solver": 1262,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do plants not change their place on their own, according to the passage?",
+      "ms": {
+        "draft": 2894,
+        "critique": 5467,
+        "solver": 1706
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a characteristic of living organisms that involves the removal of waste materials?",
+      "ms": {
+        "draft": 2894,
+        "critique": 6947,
+        "solver": 1971,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage say about the way plants respond to sunlight?",
+      "ms": {
+        "draft": 2907,
+        "critique": 4678,
+        "solver": 1521,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main characteristic used to distinguish living from non-living organisms?",
+      "ms": {
+        "draft": 2907,
+        "critique": 6537,
+        "solver": 1350
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A plant grows towards the moisture in the soil. What does this show?",
+      "ms": {
+        "draft": 2907,
+        "critique": 6408,
+        "solver": 2211,
+        "form": 2014
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of all living organisms?",
+      "ms": {
+        "draft": 2907,
+        "critique": 6795,
+        "solver": 1597,
+        "form": 2612,
+        "translation": 38796
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A plant produces its own food, while an animal depends on other organisms for food. What does this show?",
+      "ms": {
+        "draft": 3078,
+        "critique": 6190,
+        "solver": 1101,
+        "form": 3706,
+        "translation": 49618
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Why do hatchlings move towards the bright light after hatching?",
+      "ms": {
+        "draft": 2907,
+        "critique": 7540,
+        "solver": 1774,
+        "form": 2820,
+        "translation": 38721
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A seed has stored food for the growing seedling. What happens to this stored food?",
+      "ms": {
+        "draft": 3078,
+        "critique": 6870,
+        "solver": 1466,
+        "form": 3219,
+        "translation": 41489
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why plants are considered living organisms?",
+      "ms": {
+        "draft": 2907,
+        "critique": 7384,
+        "solver": 1496,
+        "form": 1091,
+        "translation": 38559
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A plant's roots grow in the direction of water in the ground. What does this show?",
+      "ms": {
+        "draft": 3078,
+        "critique": 7058,
+        "solver": 1509,
+        "form": 3179,
+        "translation": 45041
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What does the passage say about respiration in plants?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A puppy grows and learns new skills, but its leash remains the same size. Why does the leash not grow?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of all living organisms?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of living organisms according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of living organisms as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct option, no reason needed\",\"Misunderstands the moveme…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of movement in plants as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct option, no reason needed\",\"Refers to animal movement…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a plant's leaves close at night and open in the morning, what does this show according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct option, no reason needed\",\"Misunderstands the growth…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the growth of plants?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct option, no reason needed\",\"Misunderstands the condit…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is true about the reproduction of sea turtles as described in the passage?",
+      "reason": "after redrafting distractors 0, 3: the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a characteristic of living organisms?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a main characteristic of living organisms?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Thinks excretion and movement are the main characteristics d…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a student observes a plant that does not change its position on its own, which of the following characteristics can still be said to apply to it?",
+      "reason": "the critic finds option 1 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is a correct statement based on the passage about the life cycle of a frog?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Thinks the larva looks exactly like the adult, which is inco…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following best describes the life cycle of a frog as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 3 say the same thing (\"Egg → larva → adult\" / \"Adult → egg → larva\")"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 2, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":1,\"stem\":\"Which of the following is a characteristic of all living organisms?\",\"options\":[\"They "
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the term used for the ability of a living being to sense its surroundings?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is NOT a characteristic of living organisms?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is an example of a response to a stimulus?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is a correct sequence of the life cycle of a frog as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"Egg → Tadpole → Froglet → Adult Frog\" / \"Egg → Tadpole → Adult Frog\"); options 0 and 2 say the same thing (\"Egg → Tadpole → Froglet → Adult Frog\" / \"Egg → Froglet → Tadpole → Adult Frog\"); options 0 and 3 say the same thing (\"Egg → Tadpole → Froglet → Adult Frog\" / \"Egg → Adult Frog → Tadpole\"); options 1 and 2 say the same thing (\"Egg → Tadpole → Adult Frog\" / \"Egg → Froglet → Tadpole → Adult Frog\"); options 1 and 3 say the same thing (\"Egg → Tadpole → Adult Frog\" / \"Egg → Adult Frog → Tadpole\"); options 2 and 3 say the same thing (\"Egg → Froglet → Tadpole → Adult Frog\" / \"Egg → Adult Frog → Tadpole\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why do plants not change their place on their own, according to the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a characteristic of living organisms that involves the removal of waste materials?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage say about the way plants respond to sunlight?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the main characteristic used to distinguish living from non-living organisms?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "A plant grows towards the moisture in the soil. What does this show?",
+      "reason": "near-duplicate of batch item \"A plant's roots grow in the direction of water in …\" (cosine 0.911 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

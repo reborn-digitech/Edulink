@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-29T14:24:41.542Z",
+  "generatedAt": "2026-10-31T13:07:15.247Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 5,
-      "stem": "A shop sells notebooks for ₹15 each and pens for ₹10 each. If a customer buys x notebooks and y pens, what is the total cost in rupees?",
+      "difficulty": 3,
+      "stem": "If the number in the top left of a 2×2 square is represented as 'a', what is the expression for the sum of the diagonal numbers?",
       "choices": [
-        "15x + 10y",
-        "15x - 10y",
-        "10x + 15y",
-        "15x + 10y + xy"
+        "a + 8",
+        "2a + 8",
+        "a + 1 + a + 7",
+        "2a + 1"
       ],
-      "answerIndex": 0,
-      "solution": "The correct answer is '15x + 10y'. The cost of x notebooks is 15x and the cost of y pens is 10y. The option '15x - 10y' incorrectly uses subtraction. The option '10x + 15y' reverses the coefficients. The option '15x + 10y + xy' incorrectly adds an extra term for the product of x and y.",
+      "answerIndex": 1,
+      "solution": "The diagonal numbers in a 2×2 square can be represented as 'a' and 'a + 8', or 'a + 1' and 'a + 7'. Adding these gives a + (a + 8) = 2a + 8 and (a + 1) + (a + 7) = 2a + 8. The expression 2a + 8 correctly represents the sum of the diagonal numbers. 'a + 8' is only one number, 'a + 1 + a + 7' is not simplified to its standard form, and '2a + 1' does not match the actual sum.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक दुकान में नोटबुक ₹15 प्रत्येक और पेन ₹10 प्रत्येक बेचती है। यदि एक ग्राहक x नोटबुक और y पेन खरीदता है, तो रुपयों में कुल लागत क्या है?",
+          "stem": "यदि 2×2 वर्ग के ऊपरी बाएं कोने में संख्या को 'a' से निरूपित किया जाए, तो विकर्ण की संख्याओं के योग के लिए व्यंजक क्या है?",
           "choices": [
-            "15x + 10y",
-            "15x - 10y",
-            "10x + 15y",
-            "15x + 10y + xy"
+            "a + 8",
+            "2a + 8",
+            "a + 1 + a + 7",
+            "2a + 1"
           ],
-          "solution": "सही उत्तर '15x + 10y' है। x नोटबुक की कीमत 15x है और y पेन की कीमत 10y है। विकल्प '15x - 10y' गलत रूप से घटाव का उपयोग करता है। विकल्प '10x + 15y' गुणांकों को उलट देता है। विकल्प '15x + 10y + xy' x और y के गुणन के लिए अतिरिक्त पद जोड़ देता है।",
+          "solution": "2×2 वर्ग में विकर्ण संख्याएँ 'a' और 'a + 8' या 'a + 1' और 'a + 7' के रूप में निरूपित की जा सकती हैं। इनका योग देता है a + (a + 8) = 2a + 8 और (a + 1) + (a + 7) = 2a + 8। व्यंजक 2a + 8 विकर्ण की संख्याओं के योग के सही निरूपण करता है। 'a + 8' केवल एक संख्या है, 'a + 1 + a + 7' मानक रूप में सरल नहीं किया गया है, और '2a + 1' वास्तविक योग के साथ मेल नहीं खाता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "एका दुकानात नोटबुक्स ₹15 प्रत्येक आणि कलमे ₹10 प्रत्येक आहेत. जर एका ग्राहकाने x नोटबुक्स आणि y कलमे खरेदी केली तर रुपयांमध्ये एकूण खर्च किती असेल?",
+          "stem": "2×2 चौरसाच्या वरच्या बाजूच्या डाव्या कोपर्‍यातील संख्या 'a' असेल तर खालच्या बाजूच्या डाव्या कोपर्‍यातील संख्या काय असेल?",
           "choices": [
-            "15x + 10y",
-            "15x - 10y",
-            "10x + 15y",
-            "15x + 10y + xy"
+            "a + 8",
+            "2a + 8",
+            "a + 1 + a + 7",
+            "2a + 1"
           ],
-          "solution": "बरोबर उत्तर '15x + 10y' आहे. x नोटबुक्सचा खर्च 15x आहे आणि y कलमांचा खर्च 10y आहे. '15x - 10y' उत्तरात चुकीचे वजाबाकी वापरली गेली आहे. '10x + 15y' उत्तरात गुणक उलटले गेले आहेत. '15x + 10y + xy' उत्तरात x आणि y च्या गुणाकाराचा अतिरिक्त पद जोडला गेला आहे.",
+          "solution": "2×2 चौरसातील विकर्णावरील संख्या 'a' आणि 'a + 8' किंवा 'a + 1' आणि 'a + 7' असू शकतात. यांची बेरीज a + (a + 8) = 2a + 8 आणि (a + 1) + (a + 7) = 2a + 8 असते. 2a + 8 विकर्णावरील संख्यांच्या बेरजेचे योग्य व्यंजक आहे. 'a + 8' एक संख्या आहे, 'a + 1 + a + 7' मानक रूपात सोडवलेले नाही आणि '2a + 1' खरी बेरीज नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical expressions.",
+          "critique": "The Marathi translation accurately reflects the English question, with appropriate terminology used for mathematical concepts like '2×2 square', 'diagonal numbers', and 'expression'. The structure and meaning of the question and options are preserved.",
           "flag": null
         }
       },
@@ -72,238 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "confuses one term with the sum",
         null,
-        "incorrectly uses subtraction",
-        "reverses the coefficients",
-        "incorrectly adds an extra term"
+        "fails to simplify",
+        "does not consider all terms in the sum"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 15x + 10y, as it correctly represents the cost of x notebooks at ₹15 each and y pens at ₹10 each. The other options contain common misconceptions such as using subtraction, reversing coefficients, or adding an unnecessary term.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp104.pdf",
-          "ordinal": 19,
-          "pageStart": 30,
-          "pageEnd": 32,
-          "headingPath": [
-            "Chapter 4: Expressions Using Letter-Numbers",
-            "4.5 Pick Patterns and Reveal Relationships",
-            "SUMMARY"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp104.pdf",
-          "ordinal": 20,
-          "pageStart": 32,
-          "pageEnd": 34,
-          "headingPath": [
-            "Chapter 4: Expressions Using Letter-Numbers",
-            "4.5 Pick Patterns and Reveal Relationships",
-            "SUMMARY"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp104.pdf",
-          "ordinal": 21,
-          "pageStart": 34,
-          "pageEnd": 36,
-          "headingPath": [
-            "Chapter 4: Expressions Using Letter-Numbers",
-            "4.5 Pick Patterns and Reveal Relationships",
-            "SUMMARY"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T14:24:41.542Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If 5c + 3c + 10c is simplified, what is the result?",
-      "choices": [
-        "18c",
-        "15c",
-        "10c",
-        "5c"
-      ],
-      "answerIndex": 0,
-      "solution": "The expression 5c + 3c + 10c combines like terms by adding the coefficients of c. 5 + 3 + 10 equals 18, so the simplified form is 18c. The other options incorrectly add or omit some coefficients.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि 5c + 3c + 10c को सरल किया जाए, तो परिणाम क्या होगा?",
-          "choices": [
-            "18c",
-            "15c",
-            "10c",
-            "5c"
-          ],
-          "solution": "अभिव्यक्ति 5c + 3c + 10c में c के गुणांकों को जोड़कर समान पदों को संयोजित किया जाता है। 5 + 3 + 10 का योग 18 होता है, अतः सरल रूप 18c होता है। अन्य विकल्प गलती से कुछ गुणांकों को जोड़ते या छोड़ देते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "5c + 3c + 10c सोपा केल्यास, निकाल काय असेल?",
-          "choices": [
-            "18c",
-            "15c",
-            "10c",
-            "5c"
-          ],
-          "solution": "5c + 3c + 10c या व्यंजकामध्ये c च्या गुणकांची बेरीज करून समान पद जोडले जातात. 5 + 3 + 10 ची बेरीज 18 असते, त्यामुळे सोपे केलेले रूप 18c असते. इतर विकल्पांमध्ये गुणकांची बेरीज किंवा नकार केला जातो.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "adds 5 + 3 + 10 incorrectly as 15",
-        "ignores the 10 and adds only 5 + 3",
-        "takes the value of the smallest term, 10c, as the result instead of summing all terms"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. The coefficients 5, 3, and 10 are correctly added to give 18, resulting in 18c. The author's explanations for the distractors are valid misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp104.pdf",
-          "ordinal": 6,
-          "pageStart": 9,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 4: Expressions Using Letter-Numbers",
-            "4.4 Simplification of Algebraic Expressions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp104.pdf",
-          "ordinal": 7,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 4: Expressions Using Letter-Numbers",
-            "4.4 Simplification of Algebraic Expressions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp104.pdf",
-          "ordinal": 8,
-          "pageStart": 12,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 4: Expressions Using Letter-Numbers",
-            "4.4 Simplification of Algebraic Expressions"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T14:24:41.542Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "If the number of matchsticks in Step y is given by 2y + 1, how many matchsticks are there in Step 33?",
-      "choices": [
-        "67",
-        "65",
-        "63",
-        "61"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct answer is 67. Substituting y = 33 into the expression 2y + 1 gives 2 × 33 + 1 = 66 + 1 = 67. The option 65 incorrectly subtracts 1 instead of adding. The option 63 incorrectly multiplies 33 by 2 and subtracts 3. The option 61 incorrectly multiplies 33 by 2 and subtracts 5.",
-      "checkExpr": "2*33+1",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि चरण y में मैचस्टिक की संख्या 2y + 1 द्वारा दी गई है, तो चरण 33 में कितनी मैचस्टिक हैं?",
-          "choices": [
-            "67",
-            "65",
-            "63",
-            "61"
-          ],
-          "solution": "सही उत्तर 67 है। व्यंजक 2y + 1 में y = 33 की जगह रखने पर 2 × 33 + 1 = 66 + 1 = 67 प्राप्त होता है। विकल्प 65 में गलती से 1 घटाया गया है। विकल्प 63 में गलती से 33 को 2 से गुणा करके 3 घटा दिया गया है। विकल्प 61 में गलती से 33 को 2 से गुणा करके 5 घटा दिया गया है।",
-          "imageAlt": "एक संख्या रेखा जो 67 के मान को दर्शाती है।",
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for mathematical expressions.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर y च्या टप्प्यात तासे च्या संख्या 2y + 1 ने दाखवली गेली असेल, तर टप्पा 33 मध्ये किती तासे असतील?",
-          "choices": [
-            "67",
-            "65",
-            "63",
-            "61"
-          ],
-          "solution": "बरोबर उत्तर 67 आहे. 2y + 1 च्या अभिव्यक्तीमध्ये y = 33 ची बदली करण्याने 2 × 33 + 1 = 66 + 1 = 67 मिळते. 65 चे उत्तर चुकीचे असते कारण 1 जोडल्याऐवजी 1 वजा केला गेला आहे. 63 चे उत्तर चुकीचे असते कारण 33 ला 2 ने गुणल्यानंतर 3 वजा केला गेला आहे. 61 चे उत्तर चुकीचे असते कारण 33 ला 2 ने गुणल्यानंतर 5 वजा केला गेला आहे.",
-          "imageAlt": "संख्या रेषेवर 67 ची किंमत दाखवली गेली आहे.",
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for matchsticks ('तासे') and mathematical operations.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "A number line showing the value 67.",
-      "figure": {
-        "kind": "numberline",
-        "spec": {
-          "min": 0,
-          "max": 100,
-          "step": 10,
-          "points": [
-            {
-              "value": 67,
-              "label": "67",
-              "open": false
-            }
-          ]
-        },
-        "labels": {
-          "67": {
-            "en": "67"
-          }
-        }
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        null,
-        "subtracts 1 instead of adding",
-        "multiplies 33 by 2 and subtracts 3",
-        "multiplies 33 by 2 and subtracts 5"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. Substituting y = 33 into 2y + 1 gives 67. The author's reasoning for the distractors is plausible and reflects common student errors.",
+      "levelFlag": null,
+      "critique": "The solution is correct and matches the author's reasoning. The correct answer is 2a + 8, and the author's explanations for the incorrect options are valid misconceptions.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp104.pdf",
@@ -337,47 +119,145 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T14:24:41.542Z",
+      "generatedAt": "2026-10-31T13:07:15.247Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "Which of the following expressions cannot be simplified further?",
+      "difficulty": 4,
+      "stem": "In the given pattern, Design C appears at positions that are multiples of 3. What is the position of the 10th occurrence of Design C?",
       "choices": [
-        "18c + 11d",
-        "5c + 3c + 10c = 18",
-        "4v + 3v = 7",
-        "12n – 4n = 8"
+        "30",
+        "13",
+        "10",
+        "3"
       ],
       "answerIndex": 0,
-      "solution": "The expression 18c + 11d has unlike terms, so it cannot be simplified further. The other options have like terms that can be combined. Option 2 simplifies to 18c, option 3 to 7v, and option 4 to 8n.",
+      "solution": "The position of the nth occurrence of Design C is given by 3n. For the 10th occurrence, this becomes 3 × 10 = 30. The option '13' is incorrect because it assumes a different pattern. The other options do not follow the given rule.",
+      "checkExpr": "3*10",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "दिए गए पैटर्न में, डिज़ाइन C के स्थान गुणक 3 हैं। डिज़ाइन C के 10वें उद्भव का स्थान क्या है?",
+          "choices": [
+            "30",
+            "13",
+            "10",
+            "3"
+          ],
+          "solution": "डिज़ाइन C के nth उद्भव का स्थान 3n द्वारा दिया जाता है। 10वें उद्भव के लिए, यह 3 × 10 = 30 हो जाता है। विकल्प '13' गलत है क्योंकि यह एक अलग पैटर्न की धारणा करता है। अन्य विकल्प दिए गए नियम का अनुसरण नहीं करते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "दिलेल्या आकृतीत, डिझाइन C ला 3 च्या गुणकांच्या स्थितींमध्ये दिसते. डिझाइन C च्या 10व्या उदयाची स्थिती कोणती आहे?",
+          "choices": [
+            "30",
+            "13",
+            "10",
+            "3"
+          ],
+          "solution": "डिझाइन C च्या n व्या उदयाची स्थिती 3n द्वारे दिली जाते. 10 व्या उदयासाठी, हे 3 × 10 = 30 होय. '13' विकल्प चूक आहे कारण तो वेगळ्या पॅटर्नची असंधान करतो. इतर विकल्प दिलेल्या नियमांचे अनुसरण करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "adds 3 to 10 instead of multiplying",
+        "selects the nth term instead of the position",
+        "chooses the base number"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the 10th occurrence of Design C is at position 30, as the pattern is multiples of 3. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 9,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.4 Simplification of Algebraic Expressions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 10,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.5 Pick Patterns and Reveal Relationships"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 11,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.5 Pick Patterns and Reveal Relationships"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T13:07:15.247Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If the expression for the total money earned by selling pencils and erasers is 18c + 11d, can it be simplified further?",
+      "choices": [
+        "Yes, by combining like terms",
+        "No, because it contains different letter-numbers",
+        "Yes, by subtracting the terms",
+        "No, because it contains like terms"
+      ],
+      "answerIndex": 1,
+      "solution": "The expression 18c + 11d cannot be simplified further because it contains different letter-numbers, c and d. These are unlike terms and cannot be combined. The option 'Yes, by combining like terms' is incorrect because there are no like terms to combine. The option 'Yes, by subtracting the terms' is incorrect because there is no operation that allows subtraction of unlike terms. The option 'No, because it contains like terms' is incorrect because the terms are unlike.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा व्यंजक आगे सरल नहीं किया जा सकता?",
+          "stem": "यदि पेंसिल और रबड़ की बिक्री से कमाए गए कुल पैसे के व्यंजक 18c + 11d है, तो क्या इसे आगे सरल किया जा सकता है?",
           "choices": [
-            "18c + 11d",
-            "5c + 3c + 10c = 18",
-            "4v + 3v = 7",
-            "12n – 4n = 8"
+            "हाँ, जैसे कि समान पदों को जोड़कर",
+            "नहीं, क्योंकि इसमें अलग-अलग अक्षर-संख्याएँ हैं",
+            "हाँ, पदों को घटाकर",
+            "नहीं, क्योंकि इसमें समान पद हैं"
           ],
-          "solution": "व्यंजक 18c + 11d में असमान पद हैं, इसलिए इसे आगे सरल नहीं किया जा सकता। अन्य विकल्पों में समान पद हैं जिन्हें संयोजित किया जा सकता है। विकल्प 2 को 18c में सरल किया जा सकता है, विकल्प 3 को 7v में और विकल्प 4 को 8n में।",
+          "solution": "व्यंजक 18c + 11d को आगे सरल नहीं किया जा सकता क्योंकि इसमें अलग-अलग अक्षर-संख्याएँ, c और d हैं। ये असमान पद हैं और जोड़े नहीं जा सकते। 'समान पदों को जोड़कर' वाला विकल्प गलत है क्योंकि समान पद नहीं हैं। 'पदों को घटाकर' वाला विकल्प गलत है क्योंकि असमान पदों को घटाने की कोई संक्रिया नहीं है। 'समान पद हैं' वाला विकल्प गलत है क्योंकि पद असमान हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The Hindi translation accurately reflects the original English question, with appropriate mathematical terminology and logical structure.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता व्यंजक आणखी सोपा करता येणार नाही?",
+          "stem": "18c + 11d या लेखाचे एकूण पैसे विक्री केल्याने उत्पन्न होते, ते आणखी एका सोप्या रूपात लिहिता येईल का?",
           "choices": [
-            "18c + 11d",
-            "5c + 3c + 10c = 18",
-            "4v + 3v = 7",
-            "12n – 4n = 8"
+            "होय, समान पदांचे जोडल्याने",
+            "नाही, कारण त्यामध्ये वेगळे अक्षर-संख्या आहेत",
+            "होय, पदांचे वजाबाकी करून",
+            "नाही, कारण त्यामध्ये समान पद आहेत"
           ],
-          "solution": "18c + 11d व्यंजकामध्ये विषम पद आहेत, म्हणून तो आणखी सोपा करता येणार नाही. इतर विकल्पांमध्ये सम पद आहेत जे जोडता येतात. विकल्प 2 चे सोपे करून 18c मिळते, विकल्प 3 चे 7v आणि विकल्प 4 चे 8n मिळते.",
+          "solution": "18c + 11d या लेखाचे आणखी सोपे रूप लिहिता येत नाही कारण त्यामध्ये वेगळे अक्षर-संख्या c आणि d आहेत. ही विषम पदे आहेत आणि त्यांना जोडता येत नाही. 'समान पदांचे जोडल्याने' या पर्यायाला चूक आहे कारण समान पदे नाहीत. 'पदांचे वजाबाकी करून' या पर्यायाला चूक आहे कारण विषम पदांची वजाबाकी करता येत नाही. 'समान पद आहेत' या पर्यायाला चूक आहे कारण पदे विषम आहेत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -388,20 +268,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "incorrectly assumes that like terms exist",
         null,
-        "Student incorrectly simplifies the expression by adding coefficients but forgets to include the variable.",
-        "Student incorrectly combines variables and constants, thinking that 4v + 3v equals 7 instead of 7v.",
-        "Student incorrectly simplifies 12n - 4n as 8 instead of 8n"
+        "incorrectly assumes that subtraction is possible",
+        "incorrectly assumes that like terms exist"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0 (18c + 11d) because it contains unlike terms and cannot be simplified. The other options have like terms that can be combined, but they are incorrectly simplified in the options (e.g., 5c + 3c + 10c = 18 instead of 18c). The author's reasoning for the wrong options aligns with common student misconceptions.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The expression 18c + 11d cannot be simplified because c and d are unlike terms. The reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp104.pdf",
@@ -435,7 +315,106 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T14:24:41.542Z",
+      "generatedAt": "2026-10-31T13:07:15.247Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If the nth term of a sequence is 4n, what is the 29th term?",
+      "choices": [
+        "116",
+        "100",
+        "120",
+        "112"
+      ],
+      "answerIndex": 0,
+      "solution": "The nth term of the sequence is given as 4n. To find the 29th term, substitute n = 29 into the expression: 4 × 29 = 116. The option '100' uses n = 25 instead of 29, '120' uses n = 30, and '112' uses n = 28.",
+      "checkExpr": "4*29",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी अनुक्रम का nवाँ पद 4n है, तो 29वाँ पद क्या है?",
+          "choices": [
+            "116",
+            "100",
+            "120",
+            "112"
+          ],
+          "solution": "अनुक्रम का nवाँ पद 4n दिया गया है। 29वाँ पद ज्ञात करने के लिए, व्यंजक में n = 29 का प्रतिस्थापन करें: 4 × 29 = 116। विकल्प '100' में n = 25 का उपयोग किया गया है, '120' में n = 30 का उपयोग किया गया है और '112' में n = 28 का उपयोग किया गया है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर अनुक्रमाचे n वे पद 4n आहे, तर 29 वे पद किती आहे?",
+          "choices": [
+            "116",
+            "100",
+            "120",
+            "112"
+          ],
+          "solution": "अनुक्रमाचे n वे पद 4n दिले आहे. 29 वे पद शोधण्यासाठी, व्यंजकात n = 29 ची बदली करा: 4 × 29 = 116. विकल्प '100' मध्ये n = 25 वापरला गेला आहे, '120' मध्ये n = 30 वापरला गेला आहे आणि '112' मध्ये n = 28 वापरला गेला आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "uses n = 25 instead of 29",
+        "uses n = 30 instead of 29",
+        "uses n = 28 instead of 29"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and straightforward. Substituting n = 29 into 4n gives 116, which matches the correct answer. The distractors are based on common off-by-one errors, which are plausible misconceptions for students.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.1 The Notion of Letter-Numbers"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 4,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.3 Omission of the Multiplication Symbol in",
+            "Algebraic Expressions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.4 Simplification of Algebraic Expressions"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T13:07:15.247Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

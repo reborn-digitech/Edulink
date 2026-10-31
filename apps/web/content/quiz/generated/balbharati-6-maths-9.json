@@ -21,281 +21,50 @@
   "board": "BALBHARATI",
   "book": "६ वी गणित इंग्रजी",
   "edition": "First Edition 2026",
-  "generatedAt": "2026-10-30T23:01:57.136Z",
+  "generatedAt": "2026-10-31T00:21:26.126Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "If x + 12 = 27 then x = ?",
-      "choices": [
-        "39",
-        "15",
-        "25",
-        "29"
-      ],
-      "answerIndex": 1,
-      "solution": "To find x, subtract 12 from both sides of the equation: 27 - 12 = 15. The correct answer is 15. Adding 12 to 27 gives 39, which is incorrect. 25 and 29 are random numbers and not the correct solution.",
-      "checkExpr": "27-12",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि x + 12 = 27 तो x = ?",
-          "choices": [
-            "39",
-            "15",
-            "25",
-            "29"
-          ],
-          "solution": "x ज्ञात करने के लिए समीकरण के दोनों पक्षों में 12 घटाएं: 27 - 12 = 15। सही उत्तर 15 है। 27 में 12 जोड़ने पर 39 प्राप्त होता है, जो गलत है। 25 और 29 यादृच्छिक संख्याएं हैं और सही हल नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर x + 12 = 27 तर x = ?",
-          "choices": [
-            "39",
-            "15",
-            "25",
-            "29"
-          ],
-          "solution": "x शोधण्यासाठी समीकरणाच्या दोन्ही बाजूंमधून 12 वजा करा: 27 - 12 = 15. योग्य उत्तर 15 आहे. 27 मध्ये 12 जोडून 39 मिळतो, जो चूकीचा आहे. 25 आणि 29 हे याच निराळे संख्या आहेत आणि योग्य उत्तर नाहीत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Adds 12 to 27",
-        null,
-        "Confuses the operation",
-        "Random guess"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct. Subtracting 12 from 27 gives 15, which is the correct value of x. The reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 58,
-          "pageStart": 87,
-          "pageEnd": 88,
-          "headingPath": [
-            "9. Equations"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T23:01:57.136Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "If 23 - n = 12 then n = ?",
-      "choices": [
-        "11",
-        "25",
-        "35",
-        "21"
-      ],
-      "answerIndex": 0,
-      "solution": "To find n, subtract 12 from 23: 23 - 12 = 11. The correct answer is 11. Adding 12 to 23 gives 35, which is incorrect. 25 and 21 are random numbers and not the correct solution.",
-      "checkExpr": "23-12",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि 23 - n = 12 हो, तो n = ?",
-          "choices": [
-            "11",
-            "25",
-            "35",
-            "21"
-          ],
-          "solution": "n ज्ञात करने के लिए 12 को 23 में से घटाएं: 23 - 12 = 11। सही उत्तर 11 है। 12 को 23 में जोड़ने पर 35 प्राप्त होता है, जो गलत है। 25 और 21 यादृच्छिक संख्याएं हैं और सही हल नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर 23 - n = 12 तर n = ?",
-          "choices": [
-            "11",
-            "25",
-            "35",
-            "21"
-          ],
-          "solution": "n शोधण्यासाठी 12 चे 23 मधून बेरीज करा: 23 - 12 = 11. योग्य उत्तर 11 आहे. 12 चे 23 मध्ये जोडून 35 मिळते, जे चुकीचे आहे. 25 आणि 21 हे याचे योग्य उत्तर नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Adds 12 to 23",
-        "Adding 23 and 12 instead of subtracting",
-        "Random guess"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct. Subtracting 12 from 23 gives 11, which is the correct value of n. The reasoning for the distractors is valid and reflects common student misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 58,
-          "pageStart": 87,
-          "pageEnd": 88,
-          "headingPath": [
-            "9. Equations"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T23:01:57.136Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "If 12a = 96 then a = ?",
-      "choices": [
-        "108",
-        "8",
-        "84",
-        "1152"
-      ],
-      "answerIndex": 1,
-      "solution": "To find a, divide 96 by 12: 96 ÷ 12 = 8. The correct answer is 8. 108 and 84 are multiples of 12 but not the correct solution. 1152 is much larger and incorrect.",
-      "checkExpr": "96/12",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि 12a = 96 तो a = ?",
-          "choices": [
-            "108",
-            "8",
-            "84",
-            "1152"
-          ],
-          "solution": "a ज्ञात करने के लिए 96 को 12 से विभाजित करें: 96 ÷ 12 = 8। सही उत्तर 8 है। 108 और 84 12 के गुणज हैं लेकिन सही हल नहीं हैं। 1152 बहुत बड़ा है और गलत है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as found in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर 12a = 96 तर a = ?",
-          "choices": [
-            "108",
-            "8",
-            "84",
-            "1152"
-          ],
-          "solution": "a शोधण्यासाठी 96 ला 12 ने भागा: 96 ÷ 12 = 8. योग्य उत्तर 8 आहे. 108 आणि 84 हे 12 चे गुणक आहेत पण योग्य समाधान नाहीत. 1152 खूप मोठे आहे आणि चूक आहे.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Adds 12 to 96",
-        null,
-        "Confuses the operation",
-        "Believes that multiplying 12 by 96 is the correct approach"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct and matches the key. The reasoning for the distractors is plausible and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 58,
-          "pageStart": 87,
-          "pageEnd": 88,
-          "headingPath": [
-            "9. Equations"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T23:01:57.136Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
       "difficulty": 2,
-      "stem": "Which of the following is an example of a single variable equation?",
+      "stem": "What is the term used for a value of the variable that satisfies an equation?",
       "choices": [
-        "3x + 4y = 10",
-        "x + 5 = 12",
-        "2: 2x + 3 = 4y",
-        "a + b = 5"
+        "Root",
+        "Solution",
+        "Value",
+        "Result"
       ],
       "answerIndex": 1,
-      "solution": "A single variable equation contains only one variable. The equation x + 5 = 12 has only the variable x, so it is a single variable equation. The other options include more than one variable, which makes them not single variable equations.",
+      "solution": "A solution is a value of the variable that makes an equation true. 'Root' is often used in the context of functions or polynomials, 'value' is too vague, and 'result' does not specifically describe a variable that satisfies an equation. Therefore, 'Solution' is the correct term.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन एक चर समीकरण का उदाहरण है?",
+          "stem": "एक समीकरण को संतुष्ट करने वाले चर के मान के लिए क्या शब्द प्रयोग किया जाता है?",
           "choices": [
-            "3x + 4y = 10",
-            "x + 5 = 12",
-            "2x + 3 = 4y",
-            "a + b = 5"
+            "मूल",
+            "हल",
+            "मान",
+            "परिणाम"
           ],
-          "solution": "एक चर समीकरण में केवल एक चर होता है। समीकरण x + 5 = 12 में केवल चर x है, अतः यह एक चर समीकरण है। अन्य विकल्पों में एक से अधिक चर हैं, जिसके कारण वे एक चर समीकरण नहीं हैं।",
+          "solution": "हल एक ऐसा मान है जो समीकरण को सत्य बनाता है। 'मूल' का उपयोग आमतौर पर फलनों या बहुपदों के संदर्भ में किया जाता है, 'मान' बहुत व्यापक है और 'परिणाम' एक ऐसे चर को विशेष रूप से वर्णित नहीं करता है जो समीकरण को संतुष्ट करता है। इसलिए, 'हल' सही शब्द है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate mathematical terminology used in a Hindi-medium context.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते एक चल समीकरणाचे उदाहरण आहे?",
+          "stem": "समीकरणाला खात्री देणारा चलाचा मूल्य कोणत्या शब्दाने ओळखला जातो?",
           "choices": [
-            "3x + 4y = 10",
-            "x + 5 = 12",
-            "2x + 3 = 4y",
-            "a + b = 5"
+            "मूळ",
+            "उत्तर",
+            "मूल्य",
+            "निकाल"
           ],
-          "solution": "एक चल समीकरणात फक्त एक चल असतो. समीकरण x + 5 = 12 मध्ये फक्त चल x असतो, म्हणून ते एक चल समीकरण आहे. इतर विकल्पांमध्ये एकापेक्षा जास्त चल असतात, ज्यामुळे ते एक चल समीकरण नसतात.",
+          "solution": "उत्तर हा चलाचा मूल्य आहे जो समीकरणाला खात्री देतो. 'मूळ' शब्दाचा वापर फंक्शन किंवा बहुपदींच्या संदर्भात केला जातो, 'मूल्य' खूप व्यापक आहे आणि 'निकाल' समीकरणाला खात्री देणारा चलाचा मूल्य विशिष्टपणे वर्णन करत नाही. म्हणूनच, 'उत्तर' हा योग्य शब्द आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
+          "critique": "The Marathi translation has significant issues: the stem and solution are mistranslated, the correct answer is incorrectly labeled as (2) 'उत्तर' (Answer) instead of (1) 'मूळ' (Root), and the terminology is not consistent with standard Marathi math terminology.",
+          "flag": "translation critique: meaning changed; not one answer at the same position; a distractor no longer wrong; terms not the board's"
         }
       },
       "imageKey": null,
@@ -303,10 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Uses two variables, x and y",
+        "Confuses solution with root",
         null,
-        "Student thinks equations with letters are always single-variable, not considering the presence of multiple variables",
-        "Uses two variables, x and y"
+        "Confuses solution with value",
+        "Confuses solution with result"
       ],
       "solverAnswers": [
         1,
@@ -316,7 +85,7 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed. The correct answer is 1, as it contains only one variable. The other options contain multiple variables, which aligns with the author's reasoning. The distractors are based on common misconceptions about variables in equations.",
+      "critique": "The correct answer is 'Solution' as it is the standard term for a value that satisfies an equation. The other options are either too general or not standard terminology in this context.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
@@ -347,49 +116,49 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T23:01:57.136Z",
+      "generatedAt": "2026-10-31T00:21:26.126Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "If 4 times a number is 24, what is the number?",
+      "difficulty": 2,
+      "stem": "Which of the following represents a 'variable' in the context of equations?",
       "choices": [
-        "4",
-        "5",
-        "6",
-        "7"
+        "A fixed number",
+        "A letter used to denote an unknown quantity",
+        "A symbol for a mathematical operation",
+        "A constant value"
       ],
-      "answerIndex": 2,
-      "solution": "If 4 times a number equals 24, then dividing 24 by 4 gives the number, which is 6. The other options do not result in 24 when multiplied by 4. Therefore, 6 is the correct answer.",
-      "checkExpr": "24/4",
+      "answerIndex": 1,
+      "solution": "The correct answer is 'A letter used to denote an unknown quantity' because variables in equations are symbols, usually letters, that represent values that can change or are not yet known. A fixed number, a symbol for a mathematical operation, and a constant value do not fit this definition since they do not represent quantities that vary.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि किसी संख्या का 4 गुना 24 है, तो संख्या क्या है?",
+          "stem": "निम्नलिखित में से कौन सा समीकरण के संदर्भ में 'चर' का प्रतिनिधित्व करता है?",
           "choices": [
-            "4",
-            "5",
-            "6",
-            "7"
+            "एक निश्चित संख्या",
+            "एक अज्ञात मात्रा को दर्शाने वाला अक्षर",
+            "गणितीय संक्रिया के लिए एक प्रतीक",
+            "एक नियत मान"
           ],
-          "solution": "यदि किसी संख्या का 4 गुना 24 है, तो 24 को 4 से भाग देने पर संख्या प्राप्त होती है, जो 6 है। अन्य विकल्प 4 से गुणा करने पर 24 नहीं देते। अतः 6 सही उत्तर है।",
+          "solution": "सही उत्तर 'एक अज्ञात मात्रा को दर्शाने वाला अक्षर' है क्योंकि समीकरणों में चर वे प्रतीक होते हैं, जो आमतौर पर अक्षर होते हैं, जो बदल सकने वाले मानों या अभी ज्ञात नहीं होने वाले मानों का प्रतिनिधित्व करते हैं। एक निश्चित संख्या, गणितीय संक्रिया के लिए एक प्रतीक, और एक नियत मान इस परिभाषा के अनुरूप नहीं हैं क्योंकि वे बदलने वाली मात्राओं का प्रतिनिधित्व नहीं करते हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi mathematical terminology.",
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "4 एका संख्येच्या चार पट असल्यास, ती संख्या काय आहे?",
+          "stem": "खालीलपैकी कोणते समीकरणाच्या संदर्भात 'चल' दर्शविते?",
           "choices": [
-            "4",
-            "5",
-            "6",
-            "7"
+            "एक निश्चित संख्या",
+            "अज्ञात मूल्य दर्शविणारा अक्षर",
+            "गणितीय क्रिया सूचित करणारा प्रतीक",
+            "एक स्थिर मूल्य"
           ],
-          "solution": "जर 4 एका संख्येच्या चार पट असेल, तर 24 ला 4 ने भागल्यास संख्या मिळते, जी 6 आहे. इतर विकल्पांमध्ये 4 ने गुणल्यास 24 मिळत नाही. म्हणून, 6 योग्य उत्तर आहे.",
+          "solution": "बरोबर उत्तर 'अज्ञात मूल्य दर्शविणारा अक्षर' आहे कारण समीकरणांमध्ये चल म्हणजे बदलू शकणारे किंवा अजून ज्ञात नसलेले मूल्य दर्शविणारा प्रतीक, सामान्यतः अक्षर. निश्चित संख्या, गणितीय क्रिया सूचित करणारा प्रतीक आणि स्थिर मूल्य हे या व्याख्येस अनुरूप नाहीत कारण ते बदलणारे मूल्य दर्शवित नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
           "flag": null
         }
       },
@@ -398,20 +167,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the equation 4x = 24 with x = 4 instead of solving for x by dividing 24 by 4",
-        "Student thinks 24 divided by 4 is 5 instead of 6",
+        "Confuses variable with a fixed number",
         null,
-        "Confuses the equation 4x = 24 with x = 4 + 24"
+        "Incorrectly identifies a variable as a mathematical operation",
+        "Misunderstands the definition of a variable"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": null,
-      "critique": "The solution is mathematically sound and correctly identifies 6 as the answer. The reasoning for the distractors aligns with plausible student misconceptions.",
+      "critique": "The correct answer is 1, as a variable is indeed a letter used to denote an unknown quantity. The other options correctly represent fixed numbers, operations, and constants, which are not variables.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
@@ -442,197 +211,7 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T23:01:57.136Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "What number should replace the blank in 16 + 4 = _ + 8 to make the equation true?",
-      "choices": [
-        "12",
-        "10",
-        "8",
-        "6"
-      ],
-      "answerIndex": 0,
-      "solution": "To make the equation true, the blank should be filled with 12. On the left side, 16 + 4 = 20. To get 20 on the right side, the blank must be 12, since 12 + 8 = 20. The option 10 would give 18 on the right side, which is not equal to 20. The option 8 would give 16, which is not equal to 20. The option 6 would give 14, which is not equal to 20.",
-      "checkExpr": "16+4-8",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "16 + 4 = _ + 8 में खाली स्थान को कौन-सी संख्या भरे कि समीकरण सही हो जाए?",
-          "choices": [
-            "12",
-            "10",
-            "8",
-            "6"
-          ],
-          "solution": "समीकरण को सही बनाने के लिए खाली स्थान में 12 भरना चाहिए। बाएं पक्ष पर, 16 + 4 = 20। दाएं पक्ष पर 20 प्राप्त करने के लिए, खाली स्थान में 12 होना चाहिए, क्योंकि 12 + 8 = 20। विकल्प 10 दाएं पक्ष पर 18 देगा, जो 20 के बराबर नहीं है। विकल्प 8 दाएं पक्ष पर 16 देगा, जो 20 के बराबर नहीं है। विकल्प 6 दाएं पक्ष पर 14 देगा, जो 20 के बराबर नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "16 + 4 = _ + 8 मध्ये खालील रिक्त जागेला कोणता संख्या बदलावी लागेल की समीकरण खरे राहील?",
-          "choices": [
-            "12",
-            "10",
-            "8",
-            "6"
-          ],
-          "solution": "समीकरण खरे राहील यासाठी रिक्त जागेला 12 बदलावा लागेल. बाजूला, 16 + 4 = 20. 20 च्या उजव्या बाजूला मिळविण्यासाठी रिक्त जागेला 12 असावा, कारण 12 + 8 = 20. 10 असल्यास उजव्या बाजूला 18 मिळेल, जो 20 इतका नाही. 8 असल्यास उजव्या बाजूला 16 मिळेल, जो 20 इतका नाही. 6 असल्यास उजव्या बाजूला 14 मिळेल, जो 20 इतका नाही.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Believes the equal sign means 'calculate the result' and adds 16 + 4 + 8 instead of solving for the missing number.",
-        "subtracts 8 from 16 instead of 20",
-        "subtracts 8 from 16 and then subtracts 4"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and logically sound. The correct answer is 12, and the reasoning for each incorrect option aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 52,
-          "pageStart": 79,
-          "pageEnd": 80,
-          "headingPath": [
-            "9. Equations"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 53,
-          "pageStart": 80,
-          "pageEnd": 82,
-          "headingPath": [
-            "9. Equations"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 54,
-          "pageStart": 82,
-          "pageEnd": 83,
-          "headingPath": [
-            "9. Equations"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T23:01:57.136Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "The price of a pant is Rs. 250 more than the price of a shirt. The total price of a pant and a shirt is Rs. 1250. What is the price of the shirt?",
-      "choices": [
-        "Rs. 500",
-        "Rs. 750",
-        "Rs. 1000",
-        "Rs. 1250"
-      ],
-      "answerIndex": 0,
-      "solution": "Let the price of the shirt be x. Then the price of the pant is x + 250. The total price is x + (x + 250) = 1250. Solving this gives x = 500. The other options do not satisfy the equation.",
-      "checkExpr": "(1250-250)/2",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक पैंट की कीमत एक शर्ट की कीमत से 250 रुपये अधिक है। पैंट और शर्ट की कुल कीमत 1250 रुपये है। शर्ट की कीमत क्या है?",
-          "choices": [
-            "500 रुपये",
-            "750 रुपये",
-            "1000 रुपये",
-            "1250 रुपये"
-          ],
-          "solution": "मान लीजिए शर्ट की कीमत x है। तब पैंट की कीमत x + 250 होगी। कुल कीमत x + (x + 250) = 1250 है। इसको हल करने पर x = 500 प्राप्त होता है। अन्य विकल्प समीकरण को संतुष्ट नहीं करते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "पँटची किंमत शर्टच्या किंमतीपेक्षा 250 रुपये जास्त आहे. पँट आणि शर्टची एकूण किंमत 1250 रुपये आहे. शर्टची किंमत किती आहे?",
-          "choices": [
-            "500 रुपये",
-            "750 रुपये",
-            "1000 रुपये",
-            "1250 रुपये"
-          ],
-          "solution": "मानू शर्टची किंमत x आहे. तर पँटची किंमत x + 250 आहे. एकूण किंमत x + (x + 250) = 1250 आहे. याचे समाधान देऊन x = 500 मिळते. इतर विकल्प समीकरणाला अनुरूप नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Adds 250 to 1250 instead of subtracting",
-        "Divides 1250 by 2 but forgets to subtract 250 first",
-        "Takes the value of x as 1000, which does not satisfy the equation"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and the key is accurate. The reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 55,
-          "pageStart": 83,
-          "pageEnd": 85,
-          "headingPath": [
-            "9. Equations"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 56,
-          "pageStart": 85,
-          "pageEnd": 86,
-          "headingPath": [
-            "9. Equations"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 57,
-          "pageStart": 86,
-          "pageEnd": 87,
-          "headingPath": [
-            "9. Equations"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T23:01:57.136Z",
+      "generatedAt": "2026-10-31T00:21:26.126Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

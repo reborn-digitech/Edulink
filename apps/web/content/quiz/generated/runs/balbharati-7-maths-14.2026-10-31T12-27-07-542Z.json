@@ -1,0 +1,320 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T12:27:07.542Z",
+  "finishedAt": "2026-10-31T12:30:08.602Z",
+  "seconds": 181,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी गणित इंग्रजी",
+    "bookCode": "703020004",
+    "document": "balbharati/7/mathematics/703020004.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 14 — Algebraic Formulae - Expansion of Squares",
+    "edition": "2026 edition",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2023-24]\n27. P(x) = 5x + 5x + 1 2\nି ௕ ି ହ\nα+β = ௔ = ହ = -1\n௖ ଵ\nαβ = ௔ = ହ\n𝛼 + 𝛽 ଶ ଶ = (𝛼 + 𝛽) - 2𝛼𝛽 ଶ\n2 ଵ\n= (-1) – 2 ቀ ቁ ହ\nଶ ଷ\n= 1 - ହ = ହ\nିଵ ିଵ ଵ ଵ\n𝛼 + 𝛽 = ఈ + ఉ\n( 𝛼+𝛽) (ି ଵ)\n= ఈఉ = భ = -5\nఱ\n½\n½\n½\n½\nଵଶ = 9 ½\n½\n½\n½\n½\n½\n½",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n2. C 5 1\nα + β = 2 ; αβ = − 2\n(α−β) =(α+β) −4αβ 2 2 = 2 −4(− ) 2 5 2 = 14\n(C) 𝟏𝟒",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2026-27]\n27. α + β = 4 and αβ = 5\n1 1 αβ + 1 αβ + 1\n(𝛼 + ) × (𝛽 + 𝛽 𝛼 ) = ( β ) × ( α ) =\n5 2\n( + 1) 2\n= 5\n= 10\n(αβ + 1) 2\nαβ ½\n½",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n27. If 𝛼, β are zeroes of quadratic polynomial 5x + 5x + 1, find the value of 2 3\n1. 𝛼 + 𝛽 ଶ ଶ\n2. 𝛼 ି ଵ + 𝛽 ି ଵ"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 62491,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 10222,
+      "completionTokens": 2741
+    },
+    "critique": {
+      "calls": 17,
+      "ms": 144066,
+      "in": 12,
+      "out": 9,
+      "rejects": 3,
+      "promptTokens": 8156,
+      "completionTokens": 3128
+    },
+    "solver": {
+      "calls": 77,
+      "ms": 52100,
+      "in": 9,
+      "out": 6,
+      "rejects": 3,
+      "promptTokens": 16688,
+      "completionTokens": 813
+    },
+    "form": {
+      "calls": 4,
+      "ms": 18228,
+      "in": 6,
+      "out": 2,
+      "rejects": 4,
+      "promptTokens": 1305,
+      "completionTokens": 437
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 5,
+      "ms": 1072,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 73380,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4605,
+      "completionTokens": 1974
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is the expansion of (x + y)^2?",
+      "ms": {
+        "draft": 5114,
+        "critique": 5909,
+        "solver": 1348,
+        "form": 5207
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the value of (a + b)^2 when a = 5 and b = 3?",
+      "ms": {
+        "draft": 5114,
+        "critique": 8884,
+        "solver": 16633
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which binomial has the expansion m^2n^2 + 14mnpq + 49p^2q^2?",
+      "ms": {
+        "draft": 5114,
+        "critique": 8460,
+        "solver": 21317,
+        "form": 5675
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the expanded form of (a + b)^2 - (a - b)^2?",
+      "ms": {
+        "draft": 5114,
+        "critique": 11892,
+        "solver": 11854,
+        "form": 2359
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the expanded form of (x + y)²?",
+      "ms": {
+        "draft": 5301,
+        "critique": 9989
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the expanded form of (a - b)²?",
+      "ms": {
+        "draft": 5301,
+        "critique": 8986,
+        "solver": 2236,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, the side of the square PQRS is (x + y). What is the area of the square PQRS?",
+      "ms": {
+        "draft": 5301,
+        "critique": 10116
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a = 5 and b = 3, what is the value of (a + b)²?",
+      "ms": {
+        "draft": 5301,
+        "critique": 9976,
+        "solver": 2063
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following expressions is the square of the binomial (8x)?",
+      "ms": {
+        "draft": 5301,
+        "critique": 8671,
+        "solver": 14117
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following binomials has the expansion (m + 7pq)²?",
+      "ms": {
+        "draft": 5301,
+        "critique": 4753
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the expanded form of (2x + 3y)^2?",
+      "ms": {
+        "draft": 5114,
+        "critique": 5942,
+        "solver": 2227,
+        "form": 5857,
+        "translation": 34597
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the value of (a + b)^2 if a = 3 and b = 2?",
+      "ms": {
+        "draft": 5114,
+        "critique": 10566,
+        "solver": 16324,
+        "form": 0,
+        "translation": 33599
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is the expansion of (x + y)^2?",
+      "reason": "option 0 repeats the stem's wording (\"x^2 + y^2\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the value of (a + b)^2 when a = 5 and b = 3?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which binomial has the expansion m^2n^2 + 14mnpq + 49p^2q^2?",
+      "reason": "options 1 and 3 are the same (\"(mn + 7pq)\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the expanded form of (a + b)^2 - (a - b)^2?",
+      "reason": "option 3 repeats the stem's wording (\"a^2 - b^2\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is the expanded form of (x + y)²?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is the expanded form of (a - b)²?",
+      "reason": "options 2 and 3 say the same thing (\"a² - 2ab + b²\" / \"a² - 2ab - b²\"); distractor 3's reason is not a one-line misconception (\"Correct formula is a² - 2ab + b², so this is the correct ans…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the given figure, the side of the square PQRS is (x + y). What is the area of the square PQRS?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a = 5 and b = 3, what is the value of (a + b)²?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following expressions is the square of the binomial (8x)?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following binomials has the expansion (m + 7pq)²?",
+      "reason": "option 2 is not wrong"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

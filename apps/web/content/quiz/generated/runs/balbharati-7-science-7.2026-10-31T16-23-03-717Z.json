@@ -1,0 +1,512 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T16:23:03.717Z",
+  "finishedAt": "2026-10-31T16:29:16.694Z",
+  "seconds": 373,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "703020012",
+    "document": "balbharati/7/science/703020012.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 7 — Motion, Force and Work",
+    "edition": "First Edition 2017",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2011 — question paper]\n62. a) Momentum of a ball is changed to 3 times its initial value by an application of a force \ncausing it to deflect by 90°. Calculate the angle between the direction of force and the initial\nmomentum.\n(3 Marks)\nb) In a specially designed device, force varies linearly from zero to a max. value of 10 N, over a\ndistance of 8m. The force remains constant for next 4m and then reduces linearly to zero over\nanother distance of 2m. Draw a F vs. x (distance) graph and hence calculate work done by the force\nover this distance of 2m. Use the attached graph sheet at the end of the answer booklet.\n(2 Marks)",
+      "[INJSO 2009 — question paper]\n1. Which one of the following expressions has the same units as power?\na) Force x distance\nb) Work x time\n¢) Force x acceleration\nd) Force x velocity",
+      "[INJSO 2009 — question paper]\n61. A) A tortoise is crawling Eastward with velocity V3 km/hr and a lazy rabbit is\ntravelling southward with velocity 1 km/hr. With the help of a diagram, find the magnitude\nand direction of the velocity of the tortoise as observed by the rabbit. Show your working\nclearly. (2 marks)\nB) A force F varies with time according to F = 4+12t, where F is in Newton and t in seconds.\nThe force acts on a block of mass m = 2.00 kg, which is‘initially at rest on a frictionless\nhorizontal surface. F makes an angle of 30° with the horizontal, When will the force lift the\nbody from the surface? What will the velocity of the body be at that instant? (3 marks)",
+      "[NSEJS 2015 — question paper]\n37. If a force acting is conservative only when\na) work done by this force is zero when the particle moves once around any closed path\nb) it obeys Newton’s third law\nc) its work is the change in the K.E of the particle\nd) it is not a frictional force"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 98215,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 17680,
+      "completionTokens": 5012
+    },
+    "critique": {
+      "calls": 32,
+      "ms": 228948,
+      "in": 24,
+      "out": 21,
+      "rejects": 3,
+      "promptTokens": 14153,
+      "completionTokens": 5559
+    },
+    "solver": {
+      "calls": 159,
+      "ms": 92054,
+      "in": 21,
+      "out": 19,
+      "rejects": 2,
+      "promptTokens": 29410,
+      "completionTokens": 1633
+    },
+    "form": {
+      "calls": 11,
+      "ms": 42196,
+      "in": 19,
+      "out": 8,
+      "rejects": 11,
+      "promptTokens": 4599,
+      "completionTokens": 1082
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 5,
+      "ms": 963,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 228463,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 13628,
+      "completionTokens": 5722
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 2,
+    "2": 1,
+    "3": 2,
+    "4": 0,
+    "5": 2,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about velocity?",
+      "ms": {
+        "draft": 3884,
+        "critique": 6437,
+        "solver": 3089,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main difference between distance and displacement?",
+      "ms": {
+        "draft": 3884,
+        "critique": 5369,
+        "solver": 1584,
+        "form": 6988
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A truck moves from point A to point D with varying velocities. If its average velocity is 40 km/h, what can be said about its instantaneous velocity?",
+      "ms": {
+        "draft": 3884,
+        "critique": 6492,
+        "solver": 1973,
+        "form": 3518
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A ball is rolling from A to D on a flat surface with a speed of 2cm/s. It is pushed from B to C, and its speed becomes 4cm/s after 2 seconds. What is the acceleration of the ball from B to C?",
+      "ms": {
+        "draft": 13308,
+        "critique": 8489,
+        "solver": 1133
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the figure, a block is being pulled by a force. The block moves forward and is displaced. What can be concluded about the force and the work done?",
+      "ms": {
+        "draft": 13308,
+        "critique": 7790,
+        "solver": 1547,
+        "form": 3677
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the relationship between force, displacement, and work?",
+      "ms": {
+        "draft": 5483,
+        "critique": 6939,
+        "solver": 15070,
+        "form": 2141
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the unit of work in the SI system?",
+      "ms": {
+        "draft": 5483,
+        "critique": 6396,
+        "solver": 14593,
+        "form": 4228
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A force of 1N is applied to a block, and it is displaced by 1m. How much work is done?",
+      "ms": {
+        "draft": 5483,
+        "critique": 7243,
+        "solver": 15715,
+        "form": 4263
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the figure, a wooden block is pulled by a string over a pulley with a weight. What force is being applied to the block?",
+      "ms": {
+        "draft": 5483,
+        "critique": 8083,
+        "solver": 13961,
+        "form": 3281
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A force of 1000N was applied to stop a car that was moving with a constant velocity. The car stopped after moving through 10m. How much work was done?",
+      "ms": {
+        "draft": 5483,
+        "critique": 7513,
+        "solver": 17510
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person moves from point A to point B along a straight line, what is the relationship between their distance and displacement?",
+      "ms": {
+        "draft": 3398,
+        "critique": 7648
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for the minimum distance traversed by a moving body in a particular direction?",
+      "ms": {
+        "draft": 3398,
+        "critique": 8930
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a vector quantity?",
+      "ms": {
+        "draft": 3398,
+        "critique": 7423,
+        "solver": 1820,
+        "form": 2066
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the unit of speed and velocity according to the passage?",
+      "ms": {
+        "draft": 3398,
+        "critique": 8577
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A person walks 500 m east and then 300 m west. What is their displacement?",
+      "ms": {
+        "draft": 3398,
+        "critique": 6599,
+        "solver": 1865,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A car travels 100 km north and then 100 km south. What is the car's displacement?",
+      "ms": {
+        "draft": 3398,
+        "critique": 6277,
+        "solver": 7497,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a scalar quantity?",
+      "ms": {
+        "draft": 13308,
+        "critique": 7057,
+        "solver": 1812,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of speed and velocity?",
+      "ms": {
+        "draft": 3884,
+        "critique": 7168,
+        "solver": 1620,
+        "form": 3453,
+        "translation": 42638
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the unit of force in the SI system?",
+      "ms": {
+        "draft": 5483,
+        "critique": 5210,
+        "solver": 14254,
+        "form": 2508,
+        "translation": 17770
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the unit of work in the SI system?",
+      "ms": {
+        "draft": 13308,
+        "critique": 7305,
+        "solver": 1514,
+        "form": 0,
+        "translation": 21428
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Ranjit travels from his house to school via points A, B, and C. If AB = 500 m, BC = 700 m, and CD = 300 m, what is the total distance he covers?",
+      "ms": {
+        "draft": 3884,
+        "critique": 5798,
+        "solver": 19056,
+        "form": 1,
+        "translation": 41350
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A force of 2N is applied to a block, causing it to be displaced by 3m in the direction of the force. What is the work done?",
+      "ms": {
+        "draft": 13308,
+        "critique": 7780,
+        "solver": 2071,
+        "form": 0,
+        "translation": 28104
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a car travels a distance of 100 km in 2 hours, what is its average speed?",
+      "ms": {
+        "draft": 3884,
+        "critique": 8503,
+        "solver": 1640,
+        "form": 0,
+        "translation": 40839
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A car moving at a constant velocity is stopped by applying a force of 1000N. It stops after moving 10m. What is the work done by the force?",
+      "ms": {
+        "draft": 13308,
+        "critique": 8035,
+        "solver": 1388,
+        "form": 0,
+        "translation": 31962
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about velocity?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main difference between distance and displacement?",
+      "reason": "options 1 and 3 say the same thing (\"Distance is the shortest path and displacement is the actual path\" / \"Distance is the actual path and displacement is the shortest path\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A truck moves from point A to point D with varying velocities. If its average velocity is 40 km/h, what can be said about its instantaneous velocity?",
+      "reason": "the key is far longer than every distractor (54 vs 33 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A ball is rolling from A to D on a flat surface with a speed of 2cm/s. It is pushed from B to C, and its speed becomes 4cm/s after 2 seconds. What is the acceleration of the ball from B to C?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the figure, a block is being pulled by a force. The block moves forward and is displaced. What can be concluded about the force and the work done?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'pulley'"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the relationship between force, displacement, and work?",
+      "reason": "options 1 and 3 say the same thing (\"Work is force divided by displacement\" / \"Work is displacement divided by force\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the unit of work in the SI system?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A force of 1N is applied to a block, and it is displaced by 1m. How much work is done?",
+      "reason": "options are in more than one unit (erg, joule, dyne, newton); options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the figure, a wooden block is pulled by a string over a pulley with a weight. What force is being applied to the block?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A force of 1000N was applied to stop a car that was moving with a constant velocity. The car stopped after moving through 10m. How much work was done?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person moves from point A to point B along a straight line, what is the relationship between their distance and displacement?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term for the minimum distance traversed by a moving body in a particular direction?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a vector quantity?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer','Time is a scalar quantity…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the unit of speed and velocity according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A person walks 500 m east and then 300 m west. What is their displacement?",
+      "reason": "options are in more than one unit (m east, m west); options 0 and 1 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A car travels 100 km north and then 100 km south. What is the car's displacement?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a scalar quantity?",
+      "reason": "near-duplicate of served question cmvwm142z02k10reme024d4kx (cosine 0.925 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

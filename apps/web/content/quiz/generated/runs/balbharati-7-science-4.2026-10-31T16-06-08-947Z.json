@@ -1,0 +1,639 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T16:06:08.947Z",
+  "finishedAt": "2026-10-31T16:12:26.581Z",
+  "seconds": 378,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "703020012",
+    "document": "balbharati/7/science/703020012.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 4 — Nutrition in Living Organisms",
+    "edition": "First Edition 2017",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2023-24]\n8. Generally food is broken and absorbed within the body of organisms. In which of the 1\nfollowing organisms is it done outside the body?\na) Amoeba\nb) Mushroom\nc) Paramoecium\nd) Lice",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n1. Select the group in which all organisms have the same mode of nutrition. 1\nA. Cuscuta, yeast, legumes, leeches and tapeworm\nB. Cactus, ticks, lice, leeches and cow\nC. Cuscuta, ticks, lice, leeches and tapeworm\nD. Cactus, grass, lice, lion and tapeworm",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n7. B. Cooking of food",
+      "[CBSE Class X Science, marking scheme, 2026-27]\n7. C. Secondary Consumer"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 112270,
+      "in": 33,
+      "out": 32,
+      "rejects": 1,
+      "promptTokens": 23633,
+      "completionTokens": 5842
+    },
+    "critique": {
+      "calls": 44,
+      "ms": 320956,
+      "in": 32,
+      "out": 21,
+      "rejects": 11,
+      "promptTokens": 18073,
+      "completionTokens": 7689
+    },
+    "solver": {
+      "calls": 183,
+      "ms": 112131,
+      "in": 21,
+      "out": 17,
+      "rejects": 4,
+      "promptTokens": 30355,
+      "completionTokens": 1976
+    },
+    "form": {
+      "calls": 6,
+      "ms": 17345,
+      "in": 17,
+      "out": 8,
+      "rejects": 9,
+      "promptTokens": 1416,
+      "completionTokens": 452
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 4,
+      "ms": 602,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 294099,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 16470,
+      "completionTokens": 7965
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 2,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "Which of the following organisms is an example of a heterotrophic plant?",
+      "ms": {
+        "draft": 3138,
+        "critique": 8590,
+        "solver": 17529,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the primary reason that plants cannot utilize gaseous nitrogen directly from the air?",
+      "ms": {
+        "draft": 3138,
+        "critique": 8284,
+        "solver": 1627
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of saprozoic nutrition?",
+      "ms": {
+        "draft": 3352,
+        "critique": 8785
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following organisms shows saprophytic nutrition?",
+      "ms": {
+        "draft": 3352,
+        "critique": 9857,
+        "solver": 12943,
+        "form": 5016
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following organisms shows both parasitic and saprophytic nutrition?",
+      "ms": {
+        "draft": 3352,
+        "critique": 7116
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following organisms can be classified as both a decomposer and a parasite?",
+      "ms": {
+        "draft": 3352,
+        "critique": 7073,
+        "solver": 1801
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a parasitic plant?",
+      "ms": {
+        "draft": 3419,
+        "critique": 7273
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is not a saprophytic organism?",
+      "ms": {
+        "draft": 3352,
+        "critique": 8064,
+        "solver": 17019,
+        "form": 3869
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following organisms shows a mode of nutrition different from the others?",
+      "ms": {
+        "draft": 3419,
+        "critique": 7467
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do insectivorous plants grow in soil that is deficient in nitrogen?",
+      "ms": {
+        "draft": 3419,
+        "critique": 8374
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following organisms is a saprophytic organism?",
+      "ms": {
+        "draft": 3419,
+        "critique": 8127,
+        "solver": 15237,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observed that some organisms in a desert have a smaller population compared to those in the sea. Which of the following is the most likely reason for this?",
+      "ms": {
+        "draft": 3419,
+        "critique": 8019,
+        "solver": 11170,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following organisms is an autotroph?",
+      "ms": {
+        "draft": 3632,
+        "critique": 7213
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following organisms is an ectoparasite?",
+      "ms": {
+        "draft": 3632,
+        "critique": 9123,
+        "solver": 2246,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a parasitic plant?",
+      "ms": {
+        "draft": 3632,
+        "critique": 8323,
+        "solver": 13637,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a desert ecosystem, why are heterotrophs fewer in number compared to the sea?",
+      "ms": {
+        "draft": 3632,
+        "critique": 7160,
+        "solver": 12956
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a saprophytic plant?",
+      "ms": {
+        "draft": 3133,
+        "critique": 6950
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of saprozoic nutrition?",
+      "ms": {
+        "draft": 3133,
+        "critique": 6268
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is not a step in the process of nutrition in animals?",
+      "ms": {
+        "draft": 3133,
+        "critique": 7431
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a correct example of an endoparasite?",
+      "ms": {
+        "draft": 3133,
+        "critique": 7664
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is an example of an organism that uses saprophytic nutrition?",
+      "ms": {
+        "draft": 3133,
+        "critique": 7949
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the process of taking in and using food for energy and growth called?",
+      "ms": {
+        "draft": 3914,
+        "critique": 6762,
+        "solver": 1365,
+        "form": 2840
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In which of the following organisms does the process of photosynthesis occur outside the body?",
+      "ms": {
+        "draft": 3914,
+        "critique": 8889,
+        "solver": 1267
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a heterotrophic plant?",
+      "ms": {
+        "draft": 3914,
+        "critique": 10038,
+        "solver": 8565,
+        "form": 1132
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which process is described as the taking in and using of food by living organisms?",
+      "ms": {
+        "draft": 3138,
+        "critique": 7236,
+        "solver": 13122,
+        "form": 0,
+        "translation": 38497
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of carbohydrates in the body?",
+      "ms": {
+        "draft": 3138,
+        "critique": 7445,
+        "solver": 14023,
+        "form": 0,
+        "translation": 38465
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student observes a plant that traps and digests insects, which type of nutrition does it have?",
+      "ms": {
+        "draft": 3632,
+        "critique": 6873,
+        "solver": 1411,
+        "form": 0,
+        "translation": 35367
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the role of chlorophyll in the process of photosynthesis?",
+      "ms": {
+        "draft": 3138,
+        "critique": 8590,
+        "solver": 1439,
+        "form": 0,
+        "translation": 37737
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In which of the following organisms does digestion occur outside the body?",
+      "ms": {
+        "draft": 3352,
+        "critique": 7313,
+        "solver": 2483,
+        "form": 2348,
+        "translation": 35180
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a correct statement about parasitic plants?",
+      "ms": {
+        "draft": 3138,
+        "critique": 8065,
+        "solver": 13537,
+        "form": 0,
+        "translation": 42244
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best describes the mode of nutrition in lichens?",
+      "ms": {
+        "draft": 3914,
+        "critique": 7084,
+        "solver": 1924,
+        "form": 3271,
+        "translation": 33677
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do insectivorous plants have brightly colored parts?",
+      "ms": {
+        "draft": 3632,
+        "critique": 6514,
+        "solver": 10982,
+        "form": 0,
+        "translation": 29504
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following organisms is an example of a heterotrophic plant?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What is the primary reason that plants cannot utilize gaseous nitrogen directly from the air?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is an example of saprozoic nutrition?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following organisms shows saprophytic nutrition?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following organisms shows both parasitic and saprophytic nutrition?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following organisms can be classified as both a decomposer and a parasite?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a parasitic plant?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is not a saprophytic organism?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following organisms shows a mode of nutrition different from the others?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why do insectivorous plants grow in soil that is deficient in nitrogen?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following organisms is a saprophytic organism?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student observed that some organisms in a desert have a smaller population compared to those in the sea. Which of the following is the most likely reason for this?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is an example of holozoic nutrition?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following organisms is an autotroph?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following organisms is an ectoparasite?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Correct answer, no misconception here…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a parasitic plant?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a desert ecosystem, why are heterotrophs fewer in number compared to the sea?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a saprophytic plant?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of saprozoic nutrition?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is not a step in the process of nutrition in animals?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is a correct example of an endoparasite?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following is an example of an organism that uses saprophytic nutrition?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the process of taking in and using food for energy and growth called?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct option, no reason needed, as per rules, this is not …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In which of the following organisms does the process of photosynthesis occur outside the body?",
+      "reason": "the solver picked option 3 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of a heterotrophic plant?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,546 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T04:38:42.245Z",
+  "finishedAt": "2026-10-31T04:46:22.422Z",
+  "seconds": 460,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "603050012",
+    "document": "balbharati/6/science/603050012.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 6 — Properties of Substances",
+    "edition": "First Edition 2026",
+    "chunks": 8,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2022 — question paper]\n2. A student took a sandy soil sample from a desert area, put it in a bucket and poured tap water on it. After\nsome time, the soil settled down in the bucket. She wanted to know if the sample had any soluble\nsubstances in it. Comparison of which of these properties between supernatant bucket water and the\noriginal tap water will most likely answer her question definitively.\nA. pH B. density C. temperature D. light scattering in identical containers",
+      "[INJSO 2012 — question paper]\n65. Sunita was checking chemical properties of some compounds. During her experiments, she\nobserved that when she heated an orange solid 'A', she obtained copious amounts of a green residue\n'B', a colourless gas 'C' and some water vapour. She passed the dry gas 'C' over heated Mg, and\nobtained a white solid 'D'. When she tested the white solid 'D', she found that it reacted with water\nto give a pungent smelling gas 'E', which formed dense fumes with HCl. Can you identify the\nsubstances A, B, C, D, E ? Give chemical reactions in support of your answer.\nTotal: 5 Marks",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n17. to 20 consist of two statements – Assertion (A) and Reason (R). Answer\nthese questions by selecting the appropriate option given below:\nA. Both A and R are true, and R is the correct explanation of A.\nB. Both A and R are true, and R is not the correct explanation of A.\nC. A is true but R is false.\nD. A is false but R is true\n17 Assertion (A): On adding dil. HCl to a test tube containing a substance ‘X’, a 1\ncolourless gas is produced which gives a pop sound when a burning match\nstick is brought near it.\nReason (R): In this reaction metal ‘X’ is displaced by Hydrogen.",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n37. to 39 are case-based/data -based questions.\n37 4\nA. Derive the names of A, Y, Z, M, P & R\nAttempt either subpart B or C.\nB. Improvise an activity to test Z.\nOR\nC. Name the process in which compounds X, Y & Z are formed from A.\nJustify your response.\n- - - - - - - - - - - - - -\nFor visually impaired students\nA. Distinguish between ethanol and ethanoic acid experimentally.\nAttempt either subpart B or C.\nB. Give the IUPAC name of the first member of Alkene which is formed by\naddition of conc. sulphuric acid to it. Illustrate the change with the help\nof a chemical equation.\nOR\nC. “All combustion reactions are oxidation but all oxidation reactions are\nnot combustion.” Justify."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 100727,
+      "in": 31,
+      "out": 27,
+      "rejects": 4,
+      "promptTokens": 26251,
+      "completionTokens": 4985
+    },
+    "critique": {
+      "calls": 31,
+      "ms": 215200,
+      "in": 27,
+      "out": 26,
+      "rejects": 1,
+      "promptTokens": 12869,
+      "completionTokens": 5328
+    },
+    "solver": {
+      "calls": 158,
+      "ms": 79911,
+      "in": 26,
+      "out": 21,
+      "rejects": 5,
+      "promptTokens": 24606,
+      "completionTokens": 1488
+    },
+    "form": {
+      "calls": 11,
+      "ms": 31189,
+      "in": 21,
+      "out": 16,
+      "rejects": 5,
+      "promptTokens": 2679,
+      "completionTokens": 708
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 14,
+      "ms": 2423,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 65,
+      "ms": 693398,
+      "in": 32,
+      "out": 32,
+      "rejects": 0,
+      "promptTokens": 35315,
+      "completionTokens": 17046
+    }
+  },
+  "kept": 16,
+  "keptByLevel": {
+    "1": 3,
+    "2": 3,
+    "3": 3,
+    "4": 3,
+    "5": 4,
+    "6": 0
+  },
+  "flagged": 7,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can we infer about the state of a substance if its particles are loosely bound and can flow towards the slope?",
+      "ms": {
+        "draft": 3356,
+        "critique": 8663,
+        "solver": 1944,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What are the five elements mentioned in ancient Indian scripts that determine the properties of substances?",
+      "ms": {
+        "draft": 3356,
+        "critique": 6487,
+        "solver": 17422
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, why is the gaseous state of a substance considered different from the liquid and solid states?",
+      "ms": {
+        "draft": 3356,
+        "critique": 6885,
+        "solver": 1984,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why a solid object does not change shape when placed in a container?",
+      "ms": {
+        "draft": 3348,
+        "critique": 6667,
+        "solver": 1978
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student measures the mass of a stone as 100 grams and its volume as 20 cm³. What is the density of the stone?",
+      "ms": {
+        "draft": 3348,
+        "critique": 9094,
+        "solver": 17969
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of a gas?",
+      "ms": {
+        "draft": 3135,
+        "critique": 6768,
+        "solver": 1894
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the relationship between the state of a substance and the binding of its particles?",
+      "ms": {
+        "draft": 3135,
+        "critique": 8077,
+        "solver": 1790,
+        "form": 1662
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What determines the state of a substance at a given time?",
+      "ms": {
+        "draft": 2475,
+        "critique": 8589,
+        "solver": 1787
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a substance has a density less than water, what will happen when it is placed in water?",
+      "ms": {
+        "draft": 2475,
+        "critique": 6835
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the meaning of the word 'matter' according to the passage?",
+      "ms": {
+        "draft": 3557,
+        "critique": 5688,
+        "solver": 1508,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what happens to the water level when a large potato is dropped into a jar filled halfway with water?",
+      "ms": {
+        "draft": 3557,
+        "critique": 7241,
+        "solver": 1631,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of a solid?",
+      "ms": {
+        "draft": 3135,
+        "critique": 6669,
+        "solver": 1353,
+        "form": 3348,
+        "translation": 46952
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a state of matter?",
+      "ms": {
+        "draft": 2475,
+        "critique": 6985,
+        "solver": 1604,
+        "form": 3714,
+        "translation": 36120
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of a transparent substance?",
+      "ms": {
+        "draft": 2475,
+        "critique": 7814,
+        "solver": 12763,
+        "form": 2797,
+        "translation": 48032
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which state of matter has particles that are very close to each other and hold each other tightly?",
+      "ms": {
+        "draft": 3356,
+        "critique": 5207,
+        "solver": 1850,
+        "form": 5221,
+        "translation": 45372
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of matter?",
+      "ms": {
+        "draft": 3348,
+        "critique": 6422,
+        "solver": 1921,
+        "form": 2213,
+        "translation": 41243
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the unit of density?",
+      "ms": {
+        "draft": 3348,
+        "critique": 6883,
+        "solver": 2182,
+        "form": 2575,
+        "translation": 31581
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the particles of a substance when it is heated enough to change from solid to liquid?",
+      "ms": {
+        "draft": 3356,
+        "critique": 6277,
+        "solver": 1780,
+        "form": 0,
+        "translation": 55207
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following substances is an example of a liquid?",
+      "ms": {
+        "draft": 3135,
+        "critique": 8331,
+        "solver": 1902,
+        "form": 0,
+        "translation": 29104
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following substances is an example of a solid?",
+      "ms": {
+        "draft": 3135,
+        "critique": 6724,
+        "solver": 1400,
+        "form": 0,
+        "translation": 24720
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements best explains why a solid object retains its shape?",
+      "ms": {
+        "draft": 4205,
+        "critique": 7230,
+        "solver": 2068,
+        "form": 0,
+        "translation": 50574
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What happens to the particles of a substance when it changes from a solid to a liquid?",
+      "ms": {
+        "draft": 4205,
+        "critique": 7648,
+        "solver": 7657,
+        "form": 1,
+        "translation": 28544
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "A student places a solid object into a container filled to the brim with water. The volume of water displaced is 15 cm³. What does this tell us about the object?",
+      "ms": {
+        "draft": 3348,
+        "critique": 6101,
+        "solver": 1425,
+        "form": 4210,
+        "translation": 54391
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a sample of a substance and wants to determine its state of matter. The student observes that the particles are independent and can move far away from each other. Which state of matter is the substance in?",
+      "ms": {
+        "draft": 3356,
+        "critique": 7450,
+        "solver": 1616,
+        "form": 3233,
+        "translation": 56209
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student observed that a solid substance melted when heated and then turned into a gas when more heat was applied. What can be concluded about the substance?",
+      "ms": {
+        "draft": 4205,
+        "critique": 5844,
+        "solver": 1169,
+        "form": 0,
+        "translation": 39229
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student observes that when an object is submerged in water, the water level rises. What is the most likely reason for this observation?",
+      "ms": {
+        "draft": 3348,
+        "critique": 9236,
+        "solver": 1605,
+        "form": 2585,
+        "translation": 52520
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If an object is submerged in water, and the water level rises, which of the following can be determined?",
+      "ms": {
+        "draft": 3557,
+        "critique": 7496,
+        "solver": 2007,
+        "form": 3068,
+        "translation": 50295
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the correct order of the states of matter based on the spacing between particles?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can we infer about the state of a substance if its particles are loosely bound and can flow towards the slope?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What are the five elements mentioned in ancient Indian scripts that determine the properties of substances?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, why is the gaseous state of a substance considered different from the liquid and solid states?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (75 vs 44 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following best explains why a solid object does not change shape when placed in a container?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A student measures the mass of a stone as 100 grams and its volume as 20 cm³. What is the density of the stone?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a property of a gas?",
+      "reason": "the solver picked option 3 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the relationship between the state of a substance and the binding of its particles?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Misinterprets the information in the passage…\")"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What happens to light when it falls on an opaque substance?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is an example of a liquid?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is NOT a state of matter according to the passage?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What determines the state of a substance at a given time?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a substance has a density less than water, what will happen when it is placed in water?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the meaning of the word 'matter' according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what happens to the water level when a large potato is dropped into a jar filled halfway with water?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

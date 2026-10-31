@@ -1,0 +1,652 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T15:57:02.733Z",
+  "finishedAt": "2026-10-31T16:06:07.501Z",
+  "seconds": 545,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "703020012",
+    "document": "balbharati/7/science/703020012.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 3 — Properties of Natural Resources",
+    "edition": "First Edition 2017",
+    "chunks": 10,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2023-24]\n20. Assertion: Biodegradable substances result in the formation of compost and natural 1\nreplenishment.\nReason: It is due to breakdown of complex inorganic substances into simple organic\nsubstances.",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n12. About 100 acres of forest land was declared as Natural reserve park. The 2\nfollowing organisms were predominant in the Natural reserve park:\nrabbit, frog, grass, fish, fox, water insects, zebra, peacock, snake, trees, bird,\nowl, insects, tiger, vulture, duck.\nCreate a food web comprising two separate food chains with different\nproducers by using the above data.",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n7. C. Use of plastic as packaging material. 1",
+      "[CBSE Class X Science, marking scheme, 2026-27]\n7. C. Secondary Consumer"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 124117,
+      "in": 34,
+      "out": 34,
+      "rejects": 0,
+      "promptTokens": 25980,
+      "completionTokens": 6071
+    },
+    "critique": {
+      "calls": 42,
+      "ms": 303646,
+      "in": 34,
+      "out": 18,
+      "rejects": 16,
+      "promptTokens": 17328,
+      "completionTokens": 7275
+    },
+    "solver": {
+      "calls": 141,
+      "ms": 85840,
+      "in": 18,
+      "out": 16,
+      "rejects": 2,
+      "promptTokens": 26499,
+      "completionTokens": 1568
+    },
+    "form": {
+      "calls": 7,
+      "ms": 21393,
+      "in": 16,
+      "out": 11,
+      "rejects": 5,
+      "promptTokens": 1627,
+      "completionTokens": 487
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 3,
+      "ms": 553,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 43,
+      "ms": 507563,
+      "in": 22,
+      "out": 21,
+      "rejects": 1,
+      "promptTokens": 25097,
+      "completionTokens": 12735
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 2,
+    "4": 2,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the main reason given in the passage for the stick going down on the side of the inflated balloon?",
+      "ms": {
+        "draft": 3946,
+        "critique": 7064
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what causes the formation of dew?",
+      "ms": {
+        "draft": 3946,
+        "critique": 10815
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the experiment with the syringe show about air?",
+      "ms": {
+        "draft": 3946,
+        "critique": 6633,
+        "solver": 16044,
+        "form": 3626
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which property of water allows it to be used for water transport in hydroelectric power generation?",
+      "ms": {
+        "draft": 2954,
+        "critique": 7541
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the water in the cup rise when you blow through the small piece of straw?",
+      "ms": {
+        "draft": 3946,
+        "critique": 10015
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements is best supported by the passage about air?",
+      "ms": {
+        "draft": 3946,
+        "critique": 7132,
+        "solver": 16732,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a glass of water is kept in a freezer, what will happen to the water level when it turns into ice?",
+      "ms": {
+        "draft": 2954,
+        "critique": 6796
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why does ice float on water according to the passage?",
+      "ms": {
+        "draft": 2954,
+        "critique": 7755,
+        "solver": 1975,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the density of water decrease when its temperature falls below 4°C?",
+      "ms": {
+        "draft": 2954,
+        "critique": 8148
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of soil has a high proportion of sand particles?",
+      "ms": {
+        "draft": 4158,
+        "critique": 7929
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which type of soil would be best for growing crops that require good water retention?",
+      "ms": {
+        "draft": 4158,
+        "critique": 7166
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a property of good soil structure?",
+      "ms": {
+        "draft": 4158,
+        "critique": 8161
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to rotate crops in the same field?",
+      "ms": {
+        "draft": 4158,
+        "critique": 5688
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why is sandy soil easy to plough?",
+      "ms": {
+        "draft": 4158,
+        "critique": 7631,
+        "solver": 11898,
+        "form": 2302
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a farmer finds that the pH of the soil is 5.5, what type of soil is it?",
+      "ms": {
+        "draft": 4158,
+        "critique": 6142,
+        "solver": 8146
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which type of soil is easy to plough but has low fertility?",
+      "ms": {
+        "draft": 3184,
+        "critique": 7841
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which soil type would be the best for growing crops?",
+      "ms": {
+        "draft": 3184,
+        "critique": 8250
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a farmer uses excessive chemical fertilizers, what might happen to the soil?",
+      "ms": {
+        "draft": 3184,
+        "critique": 7389
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is an example of the plasticity of soil?",
+      "ms": {
+        "draft": 3184,
+        "critique": 8047
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which property of water allows it to be used as a coolant in motor vehicles?",
+      "ms": {
+        "draft": 13350,
+        "critique": 7339
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why does ice float on water?",
+      "ms": {
+        "draft": 13350,
+        "critique": 8606,
+        "solver": 17843
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason water is used as a coolant in engines?",
+      "ms": {
+        "draft": 13350,
+        "critique": 7401
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Why does water come out in the form of a fountain when you blow through a small straw placed near the top of a vertical straw in a cup of water?",
+      "ms": {
+        "draft": 4384,
+        "critique": 7222,
+        "solver": 1426,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which property of air is demonstrated by the experiment where a stick with balloons on both ends tilts when one balloon is inflated?",
+      "ms": {
+        "draft": 4384,
+        "critique": 7938,
+        "solver": 2106,
+        "form": 0,
+        "translation": 40873
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason why we can hear the whistle of a distant train more clearly in winter?",
+      "ms": {
+        "draft": 2954,
+        "critique": 7727,
+        "solver": 1393,
+        "form": 2374,
+        "translation": 47440
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason sandy soil is less fertile?",
+      "ms": {
+        "draft": 3184,
+        "critique": 7568,
+        "solver": 12640,
+        "form": 3814,
+        "translation": 43252
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person blows through a straw and causes a fountain of water to rise, which principle explains this phenomenon?",
+      "ms": {
+        "draft": 3946,
+        "critique": 6358,
+        "solver": 17362,
+        "form": 4694,
+        "translation": 56004
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why is the water holding capacity of clay soil high?",
+      "ms": {
+        "draft": 3184,
+        "critique": 6957,
+        "solver": 11987,
+        "form": 2744,
+        "translation": 49265
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason for the piston of a syringe being pushed back when the inlet hole is closed and the piston is pulled out?",
+      "ms": {
+        "draft": 4384,
+        "critique": 6919,
+        "solver": 1505,
+        "form": 0,
+        "translation": 56297
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What happens to the density of water when its temperature falls below 4°C?",
+      "ms": {
+        "draft": 13350,
+        "critique": 7970,
+        "solver": 1126,
+        "form": 0,
+        "translation": 42133
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What would happen to the Earth's temperature if there were no air?",
+      "ms": {
+        "draft": 2954,
+        "critique": 8370,
+        "solver": 1588,
+        "form": 2592,
+        "translation": 44344
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student adds salt to water and observes that a potato floats. What is the reason for this?",
+      "ms": {
+        "draft": 13350,
+        "critique": 8753,
+        "solver": 1607,
+        "form": 0,
+        "translation": 48427
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why water droplets appear on the outside of a glass containing ice cubes?",
+      "ms": {
+        "draft": 4384,
+        "critique": 4133,
+        "solver": 690,
+        "form": 0,
+        "translation": 71749
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is it easier to swim in the sea than in a lake?",
+      "ms": {
+        "draft": 13350,
+        "critique": 7143,
+        "solver": 2121,
+        "form": 0,
+        "translation": 50950
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main reason given in the passage for the stick going down on the side of the inflated balloon?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, what causes the formation of dew?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the experiment with the syringe show about air?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which property of water allows it to be used for water transport in hydroelectric power generation?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why does the water in the cup rise when you blow through the small piece of straw?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following statements is best supported by the passage about air?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 3 say the same thing (\"Air cannot be compressed\" / \"3: Air cannot be compressed\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a glass of water is kept in a freezer, what will happen to the water level when it turns into ice?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Why does ice float on water according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why does the density of water decrease when its temperature falls below 4°C?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which type of soil has a high proportion of sand particles?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which type of soil would be best for growing crops that require good water retention?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a property of good soil structure?",
+      "reason": "option 1 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is it important to rotate crops in the same field?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why is sandy soil easy to plough?",
+      "reason": "options 0 and 3 are the same (\"Because it has a high water holding capacity\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a farmer finds that the pH of the soil is 5.5, what type of soil is it?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which type of soil is easy to plough but has low fertility?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which soil type would be the best for growing crops?",
+      "reason": "the critic finds option 3 correct, the key is 2; the solution's working is not sound; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a farmer uses excessive chemical fertilizers, what might happen to the soil?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following is an example of the plasticity of soil?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which property of water allows it to be used as a coolant in motor vehicles?",
+      "reason": "the critic finds option 2 correct, the key is 3; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Why does ice float on water?",
+      "reason": "after redrafting distractors 1, 2, 3: the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main reason water is used as a coolant in engines?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Why does water come out in the form of a fountain when you blow through a small straw placed near the top of a vertical straw in a cup of water?",
+      "reason": "options 0 and 1 say the same thing (\"Because the pressure at the top of the vertical straw increases\" / \"Because the pressure at the top of the vertical straw decreases\")"
+    },
+    {
+      "stage": "translation",
+      "level": 6,
+      "stem": "Which of the following best explains why water droplets appear on the outside of a glass containing ice cubes?",
+      "reason": "mr: the model's answer was not JSON (finish: length): {\n  \"stem\": \"खालीलपैकी कोणते शेंग बरोबर बाजूला बरोबर बाजूला बरोबर बाजूला बरोबर बाजूला बरोबर बाजूला बरोबर बाजूला बरोबर बा"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

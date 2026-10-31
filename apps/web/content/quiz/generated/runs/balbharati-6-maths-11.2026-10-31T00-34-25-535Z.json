@@ -1,0 +1,221 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T00:34:25.535Z",
+  "finishedAt": "2026-10-31T00:37:28.283Z",
+  "seconds": 183,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 11 — Decimal Fractions",
+    "edition": "First Edition 2026",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n6. A) 11 9",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n6. (b) 12",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2022-23]\n14. [( 10000 ) − 1] × 100 = [ √ 6 − 1] × 100\n(C) option"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 1,
+      "ms": 15732,
+      "in": 6,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 4554,
+      "completionTokens": 954
+    },
+    "critique": {
+      "calls": 8,
+      "ms": 48948,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 3400,
+      "completionTokens": 1449
+    },
+    "solver": {
+      "calls": 44,
+      "ms": 24775,
+      "in": 6,
+      "out": 5,
+      "rejects": 1,
+      "promptTokens": 9041,
+      "completionTokens": 509
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 3,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 15,
+      "ms": 2585,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 90849,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6010,
+      "completionTokens": 2591
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is a decimal fraction?",
+      "ms": {
+        "draft": 2622,
+        "critique": 5314,
+        "solver": 1245,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the place value of 8 in 9.8?",
+      "ms": {
+        "draft": 2622,
+        "critique": 6389,
+        "solver": 1003,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Convert 0.045 into a common fraction and simplify it.",
+      "ms": {
+        "draft": 2622,
+        "critique": 9539,
+        "solver": 9439
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the expanded form of the decimal fraction 54.632?",
+      "ms": {
+        "draft": 2622,
+        "critique": 5520,
+        "solver": 16788,
+        "form": 0,
+        "translation": 31142
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following decimal fractions is the largest?",
+      "ms": {
+        "draft": 2622,
+        "critique": 5761,
+        "solver": 2902,
+        "form": 0,
+        "translation": 28916
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is the correct way to add 3.64 and 5.4?",
+      "ms": {
+        "draft": 2622,
+        "critique": 6585,
+        "solver": 1267,
+        "form": 0,
+        "translation": 27143
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"Which of the following is a decimal fraction?\",\n      \"option"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a decimal fraction?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed (index 2)…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the place value of 8 in 9.8?",
+      "reason": "options are in more than one unit (units, tenths, hundredths, thousandths); options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Convert 0.045 into a common fraction and simplify it.",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

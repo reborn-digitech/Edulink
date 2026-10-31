@@ -1,0 +1,453 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T00:17:30.012Z",
+  "finishedAt": "2026-10-31T00:21:25.034Z",
+  "seconds": 235,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 8 — Triangles and Squares",
+    "edition": "First Edition 2026",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[IOQM 2021 — question paper]\n1. Three parallel lines L 1 , L 2 , L 3 are drawn in the plane such that the perpendicular distance\nbetween L 1 and L 2 is 3 and the perpendicular distance between L 2 and L 3 is also 3. A\nsquare ABCD is constructed such that A lies on L 1 , B lies on L 3 and C lies on L 2 . Find\nthe area of the square.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n25. Show that the points A(-5,6), B(3, 0) and C( 9, 8) are the vertices of an isosceles 2\ntriangle.",
+      "[RMO 2023 — question paper]\n6. Consider a set of 16 points arranged in a 4 × 4 square grid formation. Prove that if any 7 of these\npoints are coloured blue, then there exists an isosceles right-angled triangle whose vertices are all\nblue.\nे ीय ग णत ओ लिपयाड – 2023\nसमय: 3 घंटे अ टूबर 29, 2023\nिनद श :\n● िकसी भी तरह के गणक (calculators) तथा चांदा (protractors) के योग क अनुम त नह है.\n● पैमाना (rulers) तथा परकार (compasses) के योग क अनुम त है.\n● सभी के उ र दी जये.\n● सभी के अंक समान ह . अ धकतम अंक : 102\n● येक का उ र नए पृ से ारंभ क जये. मांक प प से इंिगत क जये.\n1. मान ली जये ℕ सारे धना मक पूणा क का समु य है और 𝑆 = {(𝑎, 𝑏, 𝑐, 𝑑) ∈ ℕ : 𝑎 + 𝑏 + 𝑐 = 𝑑 . उस 4 2 2 2 2\nसबसे बड़े उस धना मक पूणा क 𝑚 को ात क जये जो 𝑎𝑏𝑐𝑑 क",
+      "[PRMO 2017 — question paper]\n30. Consider the areas of the four triangles obtained by drawing the diagonals AC and\nBD of a trapezium ABCD. The product of these areas, taken two at time, are computed.\nIf among the six products so obtained, two products are 1296 and 576, determine the\nsquare root of the maximum possible area of the trapezium to the nearest integer."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 71587,
+      "in": 23,
+      "out": 20,
+      "rejects": 3,
+      "promptTokens": 17800,
+      "completionTokens": 4093
+    },
+    "critique": {
+      "calls": 23,
+      "ms": 135212,
+      "in": 20,
+      "out": 16,
+      "rejects": 4,
+      "promptTokens": 9701,
+      "completionTokens": 3892
+    },
+    "solver": {
+      "calls": 100,
+      "ms": 42415,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 15285,
+      "completionTokens": 978
+    },
+    "form": {
+      "calls": 5,
+      "ms": 15196,
+      "in": 16,
+      "out": 11,
+      "rejects": 5,
+      "promptTokens": 1221,
+      "completionTokens": 401
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 14,
+      "ms": 2434,
+      "in": 11,
+      "out": 8,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 35,
+      "ms": 248845,
+      "in": 16,
+      "out": 16,
+      "rejects": 1,
+      "promptTokens": 16671,
+      "completionTokens": 7370
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 2,
+    "6": 0
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the minimum number of match sticks required to make a closed shape?",
+      "ms": {
+        "draft": 3756,
+        "critique": 6372
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a triangle, which of the following is true about the interior points?",
+      "ms": {
+        "draft": 3756,
+        "critique": 7564
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a triangle has all three sides of equal length, what type of triangle is it?",
+      "ms": {
+        "draft": 3756,
+        "critique": 6908,
+        "solver": 11039,
+        "form": 3049
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a triangle has all three sides of equal length, can it also be an acute-angled triangle?",
+      "ms": {
+        "draft": 3756,
+        "critique": 6285
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a pair of adjacent sides in quadrilateral UVWX?",
+      "ms": {
+        "draft": 2418,
+        "critique": 5469,
+        "solver": 1690,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the definition of a triangle?",
+      "ms": {
+        "draft": 4347,
+        "critique": 6807,
+        "solver": 1420,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a triangle has all three sides of equal length, what type of triangle is it?",
+      "ms": {
+        "draft": 4347,
+        "critique": 5811,
+        "solver": 1329,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given diagram, points P, Q, and R form a triangle. Which of the following statements is true about the triangle?",
+      "ms": {
+        "draft": 4347,
+        "critique": 5866,
+        "solver": 1871,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a triangle, one angle is twice the measure of another angle, and the third angle is 30°. What is the measure of the largest angle?",
+      "ms": {
+        "draft": 4347,
+        "critique": 6767
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of triangle based on its sides?",
+      "ms": {
+        "draft": 2134,
+        "critique": 6422,
+        "solver": 1266,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the name of a triangle in which only two sides have equal lengths?",
+      "ms": {
+        "draft": 2418,
+        "critique": 4471,
+        "solver": 1211,
+        "form": 3919
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the name of a triangle in which all three sides have the same length?",
+      "ms": {
+        "draft": 2418,
+        "critique": 4660,
+        "solver": 1677,
+        "form": 3680
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the line segment joining the vertices of opposite angles of a quadrilateral?",
+      "ms": {
+        "draft": 2134,
+        "critique": 5727,
+        "solver": 1604,
+        "form": 0,
+        "translation": 24054
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many pairs of opposite angles does a quadrilateral have?",
+      "ms": {
+        "draft": 2134,
+        "critique": 7425,
+        "solver": 1340,
+        "form": 0,
+        "translation": 17626
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct definition of a triangle?",
+      "ms": {
+        "draft": 3756,
+        "critique": 6907,
+        "solver": 13562,
+        "form": 3058,
+        "translation": 61271
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements is true about a right-angled triangle?",
+      "ms": {
+        "draft": 2134,
+        "critique": 7114,
+        "solver": 1761,
+        "form": 0,
+        "translation": 30868
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the quadrilateral □LMNO, which side is adjacent to side LM?",
+      "ms": {
+        "draft": 2134,
+        "critique": 5778,
+        "solver": 1140,
+        "form": 1,
+        "translation": 21770
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the diagonals of a quadrilateral intersect at right angles, what can be said about the quadrilateral?",
+      "ms": {
+        "draft": 2134,
+        "critique": 5132,
+        "solver": 510,
+        "form": 0,
+        "translation": 26067
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a triangle has one angle of 135°, what type of triangle is it?",
+      "ms": {
+        "draft": 3756,
+        "critique": 6124,
+        "solver": 1353,
+        "form": 3658,
+        "translation": 36760
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a triangle, the sum of the measures of any two angles is 120°. What is the measure of the third angle?",
+      "ms": {
+        "draft": 4347,
+        "critique": 6039,
+        "solver": 6185,
+        "form": 0,
+        "translation": 26052
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the minimum number of match sticks required to make a closed shape?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a triangle, which of the following is true about the interior points?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a triangle has all three sides of equal length, what type of triangle is it?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a triangle has all three sides of equal length, can it also be an acute-angled triangle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the name of a triangle in which one angle is 90 degrees?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the name of the line segment joining the vertices of the opposite angles of a quadrilateral?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "In the quadrilateral LMNO, which side is adjacent to side LM?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a pair of adjacent sides in quadrilateral UVWX?",
+      "reason": "options 2 and 3 are the same (\"UV and XW\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the definition of a triangle?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct definition is the only valid one, others are incorre…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a triangle has all three sides of equal length, what type of triangle is it?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct definition is the only valid one, others are incorre…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given diagram, points P, Q, and R form a triangle. Which of the following statements is true about the triangle?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Correct definition is the only valid one, others are incorre…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In a triangle, one angle is twice the measure of another angle, and the third angle is 30°. What is the measure of the largest angle?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a type of triangle based on its sides?",
+      "reason": "near-duplicate of served question cmvv2bwnm00510rgno744d6xl (cosine 0.943 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the name of a triangle in which only two sides have equal lengths?",
+      "reason": "near-duplicate of served question cmvv2bwn7004j0rgnv080ppsm (cosine 0.949 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the name of a triangle in which all three sides have the same length?",
+      "reason": "near-duplicate of served question cmvv2bwns005d0rgnunum4ujx (cosine 0.909 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

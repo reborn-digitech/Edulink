@@ -1,0 +1,740 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T14:31:57.263Z",
+  "finishedAt": "2026-10-31T14:48:34.789Z",
+  "seconds": 998,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash-II",
+    "bookCode": "gegp2",
+    "document": "ncert/7/mathematics/gegp203.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 11 — Finding Common Ground",
+    "edition": "2025 edition (the site's Last-Modified)",
+    "chunks": 13,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 22 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n21. (A)Find the H.C.F and L.C.M of 480 and 720 using the Prime factorisation method. 2\nOR\n(A) The H.C.F of 85 and 238 is expressible in the form 85m -238. Find the value of\nm.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n9. Draw neat and clean figures wherever required. Take 𝜋 = 22 7 wherever required if not stated."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 271809,
+      "in": 40,
+      "out": 38,
+      "rejects": 2,
+      "promptTokens": 44294,
+      "completionTokens": 9760
+    },
+    "critique": {
+      "calls": 52,
+      "ms": 614249,
+      "in": 38,
+      "out": 31,
+      "rejects": 7,
+      "promptTokens": 25009,
+      "completionTokens": 9270
+    },
+    "solver": {
+      "calls": 244,
+      "ms": 191252,
+      "in": 31,
+      "out": 21,
+      "rejects": 10,
+      "promptTokens": 51102,
+      "completionTokens": 2669
+    },
+    "form": {
+      "calls": 6,
+      "ms": 55395,
+      "in": 21,
+      "out": 12,
+      "rejects": 9,
+      "promptTokens": 1619,
+      "completionTokens": 551
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 41,
+      "ms": 28815,
+      "in": 12,
+      "out": 11,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 972379,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 26014,
+      "completionTokens": 11534
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 3,
+    "4": 1,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "The prime factorisation of 840 is 2 × 2 × 2 × 3 × 5 × 7. Which of the following is a factor of 840?",
+      "ms": {
+        "draft": 6755,
+        "critique": 11160
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Sameeksha wants to cover the floor of her room, which is 12 ft by 16 ft, with square tiles of the same size. She wants to use the fewest number of tiles. What should be the side length of each tile?",
+      "ms": {
+        "draft": 6755,
+        "critique": 10124,
+        "solver": 20167
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Kabamai visits the sweet shop every 10 days. How many days will pass before she gets free gajak again?",
+      "ms": {
+        "draft": 5678,
+        "critique": 7144,
+        "solver": 1751
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the HCF of 45 and 75?",
+      "ms": {
+        "draft": 5678,
+        "critique": 7485,
+        "solver": 14563
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 72 = 2 × 2 × 2 × 3 × 3 and 30 = 2 × 3 × 5, what is the HCF?",
+      "ms": {
+        "draft": 5678,
+        "critique": 9339,
+        "solver": 21485
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In the 'Idli-Vada' game, when a number is a common multiple of the two chosen numbers, what should be called out?",
+      "ms": {
+        "draft": 6059,
+        "critique": 7381,
+        "solver": 17452,
+        "form": 5745
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the lowest common multiple of two or more numbers?",
+      "ms": {
+        "draft": 6059,
+        "critique": 9076,
+        "solver": 17644,
+        "form": 5213
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How is the LCM of two numbers determined using prime factorisation according to the passage?",
+      "ms": {
+        "draft": 6059,
+        "critique": 9645
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The LCM of 3 and 24 is 24. What can be said about the relationship between the two numbers?",
+      "ms": {
+        "draft": 6059,
+        "critique": 10146,
+        "solver": 2263
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the HCF of two numbers is 10, and their LCM is 420, what is the product of these two numbers?",
+      "ms": {
+        "draft": 5695,
+        "critique": 6314,
+        "solver": 1952,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the LCM of 14 and 35 based on the passage?",
+      "ms": {
+        "draft": 6059,
+        "critique": 10798,
+        "solver": 14222,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the method to find the HCF of a group of numbers?",
+      "ms": {
+        "draft": 29171,
+        "critique": 42820
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a number is a multiple of 14, and another number is also a multiple of 14, what is the HCF of these two numbers?",
+      "ms": {
+        "draft": 5695,
+        "critique": 43098,
+        "solver": 2869,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the method to find the LCM of a group of numbers?",
+      "ms": {
+        "draft": 29171,
+        "critique": 7488,
+        "solver": 883
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the highest factor that is common to a group of numbers?",
+      "ms": {
+        "draft": 5051,
+        "critique": 5969
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the relationship between the prime factorisation of numbers and their common factors?",
+      "ms": {
+        "draft": 5051,
+        "critique": 6967,
+        "solver": 53799,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage mentions that the HCF of two numbers is the highest common factor, and the LCM is the lowest common multiple. If the HCF of two numbers is 12 and their LCM is 72, which of the following could be the two numbers?",
+      "ms": {
+        "draft": 5051,
+        "critique": 31849
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If both numbers are doubled, what happens to their HCF?",
+      "ms": {
+        "draft": 5221,
+        "critique": 12349
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the HCF of two numbers is 9 and their LCM is 54, which of the following pairs of numbers can be the two numbers?",
+      "ms": {
+        "draft": 5051,
+        "critique": 15809,
+        "solver": 21723
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the HCF of 18 × 10 and 18 × 15?",
+      "ms": {
+        "draft": 5221,
+        "critique": 10772,
+        "solver": 22849
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the HCF of two numbers is 1 and their LCM is 66, what are the two numbers?",
+      "ms": {
+        "draft": 5221,
+        "critique": 9087,
+        "solver": 16661
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the lowest common multiple of two or more numbers?",
+      "ms": {
+        "draft": 18228,
+        "critique": 9158
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A cowherd took all his cows to graze in the fields. The cows passed through 3 gates, 5 gates, and 7 gates, with an equal number of cows passing through each gate. If the cowherd had less than 200 cows, how many cows did he have?",
+      "ms": {
+        "draft": 5221,
+        "critique": 9174,
+        "solver": 14504
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the LCM of 96 and 360 is 1440, which of the following is the correct method to find the LCM using prime factorisation?",
+      "ms": {
+        "draft": 18228,
+        "critique": 7025,
+        "solver": 2818,
+        "form": 3619
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the LCM of 14 and 35 is 70, which of the following is the correct way to write the LCM using prime factors?",
+      "ms": {
+        "draft": 18228,
+        "critique": 7587,
+        "solver": 19164,
+        "form": 4255
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Sameeksha wants to tile her room with square tiles of the same size. The room is 12 ft by 16 ft. She wants to use the largest possible tile size that is a whole number of feet. What is the size of the tile?",
+      "ms": {
+        "draft": 8621,
+        "critique": 7925,
+        "solver": 9611,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the HCF of two numbers is 6 and their LCM is 36, what is the product of the two numbers?",
+      "ms": {
+        "draft": 5051,
+        "critique": 8202,
+        "solver": 2100,
+        "form": 21479
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the lowest multiple that is common to a group of numbers?",
+      "ms": {
+        "draft": 5051,
+        "critique": 7551,
+        "solver": 36081,
+        "form": 15849,
+        "translation": 44153
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the highest common factor (HCF) of 45 and 75?",
+      "ms": {
+        "draft": 6646,
+        "critique": 8713,
+        "solver": 2016,
+        "form": 0,
+        "translation": 36929
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the HCF of 96 and 275?",
+      "ms": {
+        "draft": 5678,
+        "critique": 7171,
+        "solver": 3363,
+        "form": 0,
+        "translation": 84980
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If two numbers are multiplied by 2, what happens to their highest common factor (HCF)?",
+      "ms": {
+        "draft": 5695,
+        "critique": 7695,
+        "solver": 1982,
+        "form": 0,
+        "translation": 70733
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Lekhana has 84 kg of rice from one farm and 108 kg from another. She wants to pack the rice into bags of the same weight, using the fewest number of bags. What should be the weight of each bag?",
+      "ms": {
+        "draft": 6755,
+        "critique": 8107,
+        "solver": 2872,
+        "form": 0,
+        "translation": 209536
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the HCF of 30 and 50?",
+      "ms": {
+        "draft": 6755,
+        "critique": 7619,
+        "solver": 1500,
+        "form": 0,
+        "translation": 147499
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the HCF of 28 and 42?",
+      "ms": {
+        "draft": 6755,
+        "critique": 11400,
+        "solver": 2325,
+        "form": 0,
+        "translation": 142893
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the smallest length of a toran that Anshu and Guna can both make?",
+      "ms": {
+        "draft": 5678,
+        "critique": 10272,
+        "solver": 2894,
+        "form": 0,
+        "translation": 111481
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What is the HCF of 24 and 36, using the prime factorisation method?",
+      "ms": {
+        "draft": 29171,
+        "critique": 6522,
+        "solver": 1084,
+        "form": 0,
+        "translation": 28159
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What is the LCM of 84 and 180?",
+      "ms": {
+        "draft": 5221,
+        "critique": 9214,
+        "solver": 2126,
+        "form": 0,
+        "translation": 27071
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the HCF of two numbers is 6 and their LCM is 36, what could be the two numbers?",
+      "ms": {
+        "draft": 5695,
+        "critique": 43883,
+        "solver": 2715,
+        "form": 1,
+        "translation": 63347
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "The prime factorisation of 225 is 3 × 3 × 5 × 5. What is the total number of factors of 225?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "The prime factorisation of 840 is 2 × 2 × 2 × 3 × 5 × 7. Which of the following is a factor of 840?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Sameeksha wants to cover the floor of her room, which is 12 ft by 16 ft, with square tiles of the same size. She wants to use the fewest number of tiles. What should be the side length of each tile?",
+      "reason": "distractors 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Kabamai visits the sweet shop every 10 days. How many days will pass before she gets free gajak again?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the HCF of 45 and 75?",
+      "reason": "after redrafting distractor 0: the critic finds option 0 correct, the key is 3"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If 72 = 2 × 2 × 2 × 3 × 3 and 30 = 2 × 3 × 5, what is the HCF?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "In the 'Idli-Vada' game, when a number is a common multiple of the two chosen numbers, what should be called out?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used to describe the lowest common multiple of two or more numbers?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses LCM with GCD, which is another term for HCF, and is…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "How is the LCM of two numbers determined using prime factorisation according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "The LCM of 3 and 24 is 24. What can be said about the relationship between the two numbers?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the HCF of two numbers is 10, and their LCM is 420, what is the product of these two numbers?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"10*420\" = 4200, but the key says 840"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the LCM of 14 and 35 based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the method to find the HCF of a group of numbers?",
+      "reason": "the critic finds option 3 correct, the key is 0"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If a number is a multiple of 14, and another number is also a multiple of 14, what is the HCF of these two numbers?",
+      "reason": "the key is far longer than every distractor (25 vs 2 characters); options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the method to find the LCM of a group of numbers?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the highest common factor (HCF) of 96 and 275?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used to describe the highest factor that is common to a group of numbers?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the relationship between the prime factorisation of numbers and their common factors?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"Common factors are derived from the maximum occurrences of each prime in the factorisation.\" / \"Common factors are derived from the highest occurrences of each prime in the factorisation.\"); options 0 and 2 say the same thing (\"Common factors are derived from the maximum occurrences of each prime in the factorisation.\" / \"Common factors are derived from the minimum occurrences of each prime in the factorisation.\"); options 1 and 2 say the same thing (\"Common factors are derived from the highest occurrences of each prime in the factorisation.\" / \"Common factors are derived from the minimum occurrences of each prime in the factorisation.\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "The passage mentions that the HCF of two numbers is the highest common factor, and the LCM is the lowest common multiple. If the HCF of two numbers is 12 and their LCM is 72, which of the following could be the two numbers?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If both numbers are doubled, what happens to their HCF?",
+      "reason": "the solution's working is not sound; option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the HCF of two numbers is 9 and their LCM is 54, which of the following pairs of numbers can be the two numbers?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the HCF of 18 × 10 and 18 × 15?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the HCF of two numbers is 1 and their LCM is 66, what are the two numbers?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used to describe the lowest common multiple of two or more numbers?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A cowherd took all his cows to graze in the fields. The cows passed through 3 gates, 5 gates, and 7 gates, with an equal number of cows passing through each gate. If the cowherd had less than 200 cows, how many cows did he have?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the LCM of 96 and 360 is 1440, which of the following is the correct method to find the LCM using prime factorisation?",
+      "reason": "options 1 and 2 say the same thing (\"Take the maximum number of each prime factor appearing in either number\" / \"Take the minimum number of each prime factor appearing in either number\"); distractor 3's reason is not a one-line misconception (\"This method is not a valid way to find the LCM and is not me…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If the LCM of 14 and 35 is 70, which of the following is the correct way to write the LCM using prime factors?",
+      "reason": "options 0 and 1 say the same thing (\"2 × 5 × 7\" / \"2 × 7 × 5 × 7\"); options 0 and 3 say the same thing (\"2 × 5 × 7\" / \"2 × 2 × 5 × 7\"); options 1 and 3 say the same thing (\"2 × 7 × 5 × 7\" / \"2 × 2 × 5 × 7\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Sameeksha wants to tile her room with square tiles of the same size. The room is 12 ft by 16 ft. She wants to use the largest possible tile size that is a whole number of feet. What is the size of the tile?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If the HCF of two numbers is 6 and their LCM is 36, what is the product of the two numbers?",
+      "reason": "near-duplicate of batch item \"If the HCF of two numbers is 6 and their LCM is 36…\" (cosine 0.907 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

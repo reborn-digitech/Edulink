@@ -21,21 +21,21 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-30T17:09:04.213Z",
+  "generatedAt": "2026-10-31T02:47:31.137Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 2,
+      "difficulty": 1,
       "stem": "Which of the following numbers is a prime number?",
       "choices": [
-        "15",
-        "21",
-        "23",
-        "27"
+        "4",
+        "6",
+        "8",
+        "23"
       ],
-      "answerIndex": 2,
-      "solution": "The number 23 is a prime number because it has only two factors: 1 and itself. 15, 21, and 27 are composite numbers as they have more than two factors.",
+      "answerIndex": 3,
+      "solution": "The correct answer is 23. A prime number has only two factors: 1 and itself. Among the options, 23 has only two factors, 1 and 23. The other numbers have more than two factors: 4 (1, 2, 4), 6 (1, 2, 3, 6), and 8 (1, 2, 4, 8).",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
@@ -43,12 +43,12 @@
         "hi": {
           "stem": "निम्नलिखित में से कौन-सी संख्या एक अभाज्य संख्या है?",
           "choices": [
-            "15",
-            "21",
-            "23",
-            "27"
+            "4",
+            "6",
+            "8",
+            "23"
           ],
-          "solution": "संख्या 23 एक अभाज्य संख्या है क्योंकि इसके केवल दो गुणनखंड होते हैं: 1 और स्वयं। 15, 21 और 27 अभाज्य संख्याएँ नहीं हैं क्योंकि इनमें दो से अधिक गुणनखंड होते हैं।",
+          "solution": "सही उत्तर 23 है। एक अभाज्य संख्या के केवल दो गुणनखंड होते हैं: 1 और स्वयं। विकल्पों में, 23 के केवल दो गुणनखंड, 1 और 23 हैं। अन्य संख्याओं के दो से अधिक गुणनखंड हैं: 4 (1, 2, 4), 6 (1, 2, 3, 6), और 8 (1, 2, 4, 8)।",
           "imageAlt": null,
           "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology.",
           "flag": null
@@ -56,12 +56,12 @@
         "mr": {
           "stem": "खालीलपैकी कोणता संख्या अभाज्य संख्या आहे?",
           "choices": [
-            "15",
-            "21",
-            "23",
-            "27"
+            "4",
+            "6",
+            "8",
+            "23"
           ],
-          "solution": "23 ही अभाज्य संख्या आहे कारण तिला केवळ दोन घटक आहेत: 1 आणि तिच्यापेक्षा जास्त नाही. 15, 21 आणि 27 ही भाज्य संख्या आहेत कारण त्यांना दोनपेक्षा जास्त घटक आहेत.",
+          "solution": "बरोबर उत्तर 23 आहे. अभाज्य संख्येचे केवळ दोन घटक असतात: 1 आणि ती स्वतः. पर्यायांमध्ये, 23 चे केवळ दोन घटक, 1 आणि 23 असतात. इतर संख्या दोनपेक्षा जास्त घटक असतात: 4 (1, 2, 4), 6 (1, 2, 3, 6), आणि 8 (1, 2, 4, 8).",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -72,20 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses multiples of 3 with primes",
-        "Confuses multiples of 3 with primes",
-        null,
-        "Confuses composite numbers with prime numbers, thinking that numbers with odd digits are prime"
+        "Confuses composite numbers with prime numbers",
+        "Confuses composite numbers with prime numbers",
+        "Confuses composite numbers with prime numbers",
+        null
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        3,
+        3,
+        3,
+        3,
+        3
       ],
       "levelFlag": null,
-      "critique": "The solution is correct and the key is accurate. 23 is a prime number, and the other options are composite. The distractors reflect common misconceptions about prime numbers.",
+      "critique": "The solution is correct and matches the key. All distractors are composite numbers, and the reasoning aligns with the definition of prime numbers.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp105.pdf",
@@ -129,47 +129,155 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-30T17:09:04.213Z",
+      "generatedAt": "2026-10-31T02:47:31.137Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 2,
-      "stem": "Which of the following is a correct method to check if two numbers are co-prime?",
+      "stem": "Which of the following numbers has exactly two factors?",
       "choices": [
-        "By checking if they have a common factor other than 1",
-        "By checking if they are both even numbers",
-        "By checking if they are both prime numbers",
-        "By checking if they have the same number of factors"
+        "12",
+        "15",
+        "7",
+        "9"
       ],
-      "answerIndex": 0,
-      "solution": "The correct method to check if two numbers are co-prime is by checking if they have a common factor other than 1. If they do, they are not co-prime. The other options are incorrect because even numbers can be co-prime, prime numbers are not necessarily co-prime with each other, and having the same number of factors is not related to co-primality.",
+      "answerIndex": 2,
+      "solution": "The correct answer is 7. A prime number has exactly two factors: 1 and itself. Among the options, 7 has only two factors, 1 and 7. The other numbers have more than two factors: 12 (1, 2, 3, 4, 6, 12), 15 (1, 3, 5, 15), and 9 (1, 3, 9).",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सी विधि जांचने के लिए सही है कि दो संख्याएं सह-अभाज्य हैं?",
+          "stem": "निम्नलिखित में से कौन-सी संख्या ठीक दो गुणनखंड रखती है?",
           "choices": [
-            "यह जांचने के लिए कि क्या उनका 1 के अलावा एक सामान्य गुणनखंड है",
-            "यह जांचने के लिए कि क्या वे दोनों सम संख्याएं हैं",
-            "यह जांचने के लिए कि क्या वे दोनों अभाज्य संख्याएं हैं",
-            "यह जांचने के लिए कि क्या उनके समान संख्या में गुणनखंड हैं"
+            "12",
+            "15",
+            "7",
+            "9"
           ],
-          "solution": "दो संख्याओं के सह-अभाज्य होने की जांच करने की सही विधि यह जांचना है कि क्या उनका 1 के अलावा एक सामान्य गुणनखंड है। यदि ऐसा है, तो वे सह-अभाज्य नहीं हैं। अन्य विकल्प गलत हैं क्योंकि सम संख्याएं सह-अभाज्य हो सकती हैं, अभाज्य संख्याएं एक दूसरे के साथ आवश्यक रूप से सह-अभाज्य नहीं होती हैं और समान संख्या में गुणनखंड होना सह-अभाज्यता से संबंधित नहीं है।",
+          "solution": "सही उत्तर 7 है। एक अभाज्य संख्या के ठीक दो गुणनखंड होते हैं: 1 और स्वयं। विकल्पों में, 7 के केवल दो गुणनखंड, 1 और 7 हैं। अन्य संख्याओं के दो से अधिक गुणनखंड हैं: 12 (1, 2, 3, 4, 6, 12), 15 (1, 3, 5, 15), और 9 (1, 3, 9)।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता एक योग्य पद्धती दोन संख्या सह-अविभाज्य आहेत किंवा नाहीत ते तपासण्यासाठी आहे?",
+          "stem": "खालीलपैकी कोणत्या संख्येला थोडे दोन घटक आहेत?",
           "choices": [
-            "1 विना एक आमून अपवर्तक असल्याचे तपासणे",
-            "दोन्ही संख्या सम असल्याचे तपासणे",
-            "दोन्ही संख्या अविभाज्य असल्याचे तपासणे",
-            "एकसारखे अपवर्तक संख्या असल्याचे तपासणे"
+            "12",
+            "15",
+            "7",
+            "9"
           ],
-          "solution": "दोन संख्या सह-अविभाज्य आहेत किंवा नाहीत ते तपासण्यासाठी योग्य पद्धती ही त्यांना 1 विना एक आमून अपवर्तक असल्याचे तपासणे आहे. जर असे अपवर्तक असतील तर ते सह-अविभाज्य नसतात. इतर विकल्प अयोग्य आहेत कारण सम संख्या सह-अविभाज्य असू शकतात, अविभाज्य संख्या एकमेकांशी सह-अविभाज्य असल्याची ग्यान नाही आणि एकसारखे अपवर्तक संख्या असणे सह-अविभाज्यतेशी संबंधित नाही.",
+          "solution": "सही उत्तर 7 आहे. एक अभाज्य संख्येला थोडे दोन घटक असतात: 1 आणि ती स्वतः. पर्यायांमध्ये, 7 ला फक्त दोन घटक आहेत, 1 आणि 7. इतर संख्यांचे दोनपेक्षा जास्त घटक आहेत: 12 (1, 2, 3, 4, 6, 12), 15 (1, 3, 5, 15) आणि 9 (1, 3, 9).",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses composite numbers with prime numbers",
+        "Confuses composite numbers with prime numbers",
+        null,
+        "Confuses composite numbers with prime numbers"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 7, which is a prime number with exactly two factors (1 and itself). The other options are composite numbers with more than two factors. The author's reasoning is accurate and matches the correct solution.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.2 Prime Numbers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.2 Prime Numbers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.3 Co-prime numbers for safekeeping treasures"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.3 Co-prime numbers for safekeeping treasures"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T02:47:31.137Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following statements is true about co-prime numbers?",
+      "choices": [
+        "If two numbers have no common factors, they are co-prime.",
+        "If two numbers have a common factor of 2, they are co-prime.",
+        "If two numbers have a common factor of 1, they are not co-prime.",
+        "If two numbers have more than one common factor, they are co-prime."
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is that if two numbers have no common factors, they are co-prime. A co-prime pair of numbers has a greatest common factor of 1, meaning they share no other common factors. The other options are incorrect because a common factor of 2 or more than one common factor would mean the numbers are not co-prime, and having a common factor of 1 is the defining characteristic of co-prime numbers.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा कथन सही है सह-अभाज्य संख्याओं के बारे में?",
+          "choices": [
+            "यदि दो संख्याओं के कोई सामान्य गुणनखंड नहीं हैं, तो वे सह-अभाज्य हैं।",
+            "यदि दो संख्याओं का सामान्य गुणनखंड 2 है, तो वे सह-अभाज्य हैं।",
+            "यदि दो संख्याओं का सामान्य गुणनखंड 1 है, तो वे सह-अभाज्य नहीं हैं।",
+            "यदि दो संख्याओं के एक से अधिक सामान्य गुणनखंड हैं, तो वे सह-अभाज्य हैं।"
+          ],
+          "solution": "सही उत्तर यह है कि यदि दो संख्याओं के कोई सामान्य गुणनखंड नहीं हैं, तो वे सह-अभाज्य हैं। सह-अभाज्य संख्याओं का महत्तम सामान्य गुणनखंड 1 होता है, जिसका अर्थ है कि उनके कोई अन्य सामान्य गुणनखंड नहीं होते। अन्य विकल्प गलत हैं क्योंकि 2 या एक से अधिक सामान्य गुणनखंड होने पर संख्याएं सह-अभाज्य नहीं होती हैं और 1 के सामान्य गुणनखंड होना सह-अभाज्य संख्याओं की परिभाषा है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी को-अभाज्य संख्यांबद्दल कोणता विधान खरा आहे?",
+          "choices": [
+            "जर दोन संख्यांना कोणतेही सामायिक अपवर्तक नसतील तर त्या को-अभाज्य असतात.",
+            "जर दोन संख्यांना सामायिक अपवर्तक 2 असेल तर त्या को-अभाज्य असतात.",
+            "जर दोन संख्यांना सामायिक अपवर्तक 1 असेल तर त्या को-अभाज्य नसतात.",
+            "जर दोन संख्यांना एकापेक्षा जास्त सामायिक अपवर्तक असतील तर त्या को-अभाज्य असतात."
+          ],
+          "solution": "सह-अभाज्य असलेल्या संख्यांचा महत्तम सामायिक अपवर्तक 1 असतो, ज्यामुळे त्यांना इतर कोणतेही सामायिक अपवर्तक नसतात. योग्य उत्तर असे आहे की जर दोन संख्यांना कोणतेही सामायिक अपवर्तक नसतील तर त्या को-अभाज्य असतात. इतर विधाने अयोग्य आहेत कारण 2 किंवा अधिक सामायिक अपवर्तक असल्यास संख्या को-अभाज्य नसतात आणि 1 हा सामायिक अपवर्तक असल्यास त्या को-अभाज्य असतात.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -181,9 +289,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "A pupil might think that if two numbers are both even, they cannot be co-prime, but this is not a valid method to check co-primality.",
-        "Believing that only prime numbers can be co-prime",
-        "Confusing co-prime with numbers having the same number of divisors"
+        "Confuses the definition of co-prime numbers.",
+        "Incorrectly assumes that a common factor of 2 makes numbers co-prime.",
+        "Misunderstands that a common factor of 1 makes numbers not co-prime, when it is the defining characteristic of co-prime numbers, not the opposite."
       ],
       "solverAnswers": [
         0,
@@ -193,7 +301,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The correct method to check if two numbers are co-prime is to check if they have a common factor other than 1. The other options represent common misconceptions about co-primality.",
+      "critique": "The question is well-constructed. The correct answer is clearly option 0, and the author's reasoning for the other options aligns with common misconceptions students might have about co-prime numbers.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp105.pdf",
@@ -227,49 +335,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-30T17:09:04.213Z",
+      "generatedAt": "2026-10-31T02:47:31.137Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 4,
-      "stem": "Using the prime factorisation method, which of the following numbers is divisible by 12?",
+      "stem": "What is the smallest number that has three different prime numbers in its prime factorisation?",
       "choices": [
-        "168",
-        "75",
-        "42",
-        "225"
+        "30",
+        "24",
+        "28",
+        "36"
       ],
       "answerIndex": 0,
-      "solution": "The number 168 is divisible by 12 because its prime factors include 2 × 2 × 3, which are the prime factors of 12. The other numbers do not have all of these prime factors. 75 has factors 3 × 5 × 5, 42 has factors 2 × 3 × 7, and 225 has factors 3 × 3 × 5 × 5, none of which include both 2 × 2 and 3.",
+      "solution": "The correct answer is 30. The prime factorisation of 30 is 2 × 3 × 5, which includes three different prime numbers. The other options do not meet this requirement: 24 is 2 × 2 × 2 × 3, 28 is 2 × 2 × 7, and 36 is 2 × 2 × 3 × 3, each having fewer than three different primes.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "अभाज्य गुणनखंड विधि का उपयोग करके, निम्नलिखित में से कौन-सी संख्या 12 से विभाज्य है?",
+          "stem": "कौन-सी सबसे छोटी संख्या है जिसके अभाज्य गुणनखंडन में तीन अलग-अलग अभाज्य संख्याएं होती हैं?",
           "choices": [
-            "168",
-            "75",
-            "42",
-            "225"
+            "30",
+            "24",
+            "28",
+            "36"
           ],
-          "solution": "संख्या 168, 12 से विभाज्य है क्योंकि इसके अभाज्य गुणनखंड में 2 × 2 × 3 शामिल हैं, जो 12 के अभाज्य गुणनखंड हैं। अन्य संख्याएँ इन सभी अभाज्य गुणनखंडों के साथ नहीं हैं। 75 के गुणनखंड 3 × 5 × 5 हैं, 42 के गुणनखंड 2 × 3 × 7 हैं, और 225 के गुणनखंड 3 × 3 × 5 × 5 हैं, जिनमें से कोई भी 2 × 2 और 3 के साथ नहीं है।",
+          "solution": "सही उत्तर 30 है। 30 के अभाज्य गुणनखंडन 2 × 3 × 5 हैं, जिसमें तीन अलग-अलग अभाज्य संख्याएं शामिल हैं। अन्य विकल्प इस आवश्यकता को पूरा नहीं करते: 24 के अभाज्य गुणनखंडन 2 × 2 × 2 × 3 हैं, 28 के अभाज्य गुणनखंडन 2 × 2 × 7 हैं और 36 के अभाज्य गुणनखंडन 2 × 2 × 3 × 3 हैं, जिनमें प्रत्येक में तीन से कम अलग-अलग अभाज्य संख्याएं हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "प्राइम अवयव पद्धतीने, खालीलपैकी कोणता संख्या 12 ने भागला जातो?",
+          "stem": "तीन वेगवेगळे अभाज्य अंक असलेल्या संख्येचा लहानतम अभाज्य घटकीकरण कोणता आहे?",
           "choices": [
-            "168",
-            "75",
-            "42",
-            "225"
+            "30",
+            "24",
+            "28",
+            "36"
           ],
-          "solution": "168 ही संख्या 12 ने भागली जाते कारण तिचे प्राइम अवयव 2 × 2 × 3 आहेत, जे 12 चे प्राइम अवयव आहेत. इतर संख्यांमध्ये या प्राइम अवयवांचा एकत्रित असणार नाही. 75 चे अवयव 3 × 5 × 5 आहेत, 42 चे अवयव 2 × 3 × 7 आहेत आणि 225 चे अवयव 3 × 3 × 5 × 5 आहेत, ज्यांमध्ये 2 × 2 आणि 3 असणार नाहीत.",
+          "solution": "सही उत्तर 30 आहे. 30 चे अभाज्य घटकीकरण 2 × 3 × 5 आहे, ज्यामध्ये तीन वेगवेगळे अभाज्य अंक आहेत. इतर विकल्प या आवश्यकतेला पूर्ण करत नाहीत: 24 हा 2 × 2 × 2 × 3 आहे, 28 हा 2 × 2 × 7 आहे आणि 36 हा 2 × 2 × 3 × 3 आहे, ज्यामध्ये तीनपेक्षा कमी अभाज्य अंक आहेत.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for prime factors and divisibility.",
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology as used in Marathi-medium textbooks.",
           "flag": null
         }
       },
@@ -279,9 +387,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Believes that if a number contains the same prime factors as another, it is divisible, regardless of exponents",
-        "Incorrectly assumes 75 is divisible by 12, but it lacks the prime factor 2.",
-        "Incorrectly assumes 42 is divisible by 12, but it lacks one 2 in its prime factorisation in the required quantity for 12 (2 × 2 × 3)."
+        "Includes a repeated prime factor but not three different ones.",
+        "Includes a repeated prime factor but not three different ones.",
+        "Includes a repeated prime factor but not three different ones."
       ],
       "solverAnswers": [
         0,
@@ -291,13 +399,13 @@
         0
       ],
       "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 168, as its prime factorization includes 2^2 × 3, which is the prime factorization of 12. The other options fail to include the necessary factors.",
+      "critique": "The question is well-posed and the solution is correct. The correct answer is 30, which has three distinct prime factors (2, 3, and 5). The other options have repeated prime factors but not three distinct ones.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 10,
-          "pageStart": 15,
-          "pageEnd": 16,
+          "ordinal": 7,
+          "pageStart": 11,
+          "pageEnd": 11,
           "headingPath": [
             "Chapter 5: Prime Time",
             "5.4 Prime Factorisation"
@@ -305,69 +413,69 @@
         },
         {
           "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 11,
-          "pageStart": 16,
-          "pageEnd": 17,
+          "ordinal": 8,
+          "pageStart": 12,
+          "pageEnd": 13,
           "headingPath": [
             "Chapter 5: Prime Time",
-            "5.5 Divisibility Tests"
+            "5.4 Prime Factorisation"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 12,
-          "pageStart": 17,
-          "pageEnd": 19,
+          "ordinal": 9,
+          "pageStart": 13,
+          "pageEnd": 15,
           "headingPath": [
             "Chapter 5: Prime Time",
-            "5.5 Divisibility Tests"
+            "5.4 Prime Factorisation"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-30T17:09:04.213Z",
+      "generatedAt": "2026-10-31T02:47:31.137Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "What is the probability that the product of two numbers appearing on two dice is a prime number?",
+      "stem": "If 14560 is divisible by 2, 4, 5, 8, and 10, which two numbers could Guna have checked to conclude this?",
       "choices": [
-        "1/12",
-        "1/6",
-        "1/3",
-        "1/2"
+        "2 and 5",
+        "4 and 5",
+        "8 and 10",
+        "2 and 10"
       ],
       "answerIndex": 1,
-      "solution": "The correct answer is 1/6. The possible outcomes where the product is a prime number are (1,2), (1,3), (1,5), (2,1), (3,1), (5,1), which are 6 outcomes. Since there are 36 total outcomes when two dice are rolled, the probability is 6/36 = 1/6. The other options are incorrect because they do not match the calculated probability.",
+      "solution": "If a number is divisible by 8, it is automatically divisible by 2 and 4 as well. If it is divisible by 10, it is also divisible by 2 and 5. So checking for 4 and 5 is sufficient. Checking 2 and 10 is not sufficient because 10 includes 2, but 2 alone does not ensure divisibility by 5 or 4.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "दो पासों पर आए दो संख्याओं के गुणनफल के अभाज्य संख्या होने की प्रायिकता क्या है?",
+          "stem": "यदि 14560, 2, 4, 5, 8 और 10 से विभाज्य है, तो गुणा ने इसके बारे में निष्कर्ष निकालने के लिए कौन सी दो संख्याएं जांची हो सकती हैं?",
           "choices": [
-            "1/12",
-            "1/6",
-            "1/3",
-            "1/2"
+            "2 और 5",
+            "4 और 5",
+            "8 और 10",
+            "2 और 10"
           ],
-          "solution": "सही उत्तर 1/6 है। अभाज्य संख्या होने वाले संभावित परिणाम (1,2), (1,3), (1,5), (2,1), (3,1), (5,1) हैं, जो कि 6 परिणाम हैं। जब दो पासे फेंके जाते हैं तो कुल 36 परिणाम होते हैं, इसलिए प्रायिकता 6/36 = 1/6 है। अन्य विकल्प गलत हैं क्योंकि वे गणना के परिणाम के बराबर नहीं हैं।",
+          "solution": "यदि कोई संख्या 8 से विभाज्य है, तो वह बिना विशेष जांच के 2 और 4 से भी विभाज्य होती है। यदि यह 10 से विभाज्य है, तो वह 2 और 5 से भी विभाज्य होती है। अतः 4 और 5 की जांच पर्याप्त है। 2 और 10 की जांच पर्याप्त नहीं है क्योंकि 10 में 2 शामिल है, लेकिन 2 अकेले 5 या 4 से विभाज्य होने की गारंटी नहीं देता।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "दोन छक्के वर दिसणाऱ्या दोन संख्यांच्या गुणाकाराची अभिक्षमता किती असेल?",
+          "stem": "14560 हा अंक 2, 4, 5, 8 आणि 10 ने भाग जातो, तर गुणा ने या निष्कर्षापर्यंत पोहोचण्यासाठी कोणते दोन अंक तपासले असतील?",
           "choices": [
-            "1/12",
-            "1/6",
-            "1/3",
-            "1/2"
+            "2 आणि 5",
+            "4 आणि 5",
+            "8 आणि 10",
+            "2 आणि 10"
           ],
-          "solution": "बरोबर उत्तर 1/6 आहे. गुणाकार अभिक्षम असलेले शक्य परिणाम (1,2), (1,3), (1,5), (2,1), (3,1), (5,1) असे 6 आहेत. जेव्हा दोन छक्के फेकले जातात तेव्हा 36 एकूण परिणाम असतात, म्हणून अभिक्षमता 6/36 = 1/6 आहे. इतर उत्तरे चुकीची आहेत कारण ते गणित केलेल्या अभिक्षमतेशी जुळत नाहीत.",
+          "solution": "जर एखादा संख्या 8 ने भाग जात असेल तर ती 2 आणि 4 ने भाग जाते. जर एखादी संख्या 10 ने भाग जात असेल तर ती 2 आणि 5 ने भाग जाते. म्हणून 4 आणि 5 ची तपासणी पुरेशी आहे. 2 आणि 10 ची तपासणी पुरेशी नाही कारण 10 मध्ये 2 आहे, परंतु 2 ची एकटीची तपासणी 5 किंवा 4 ची खात्री करू शकत नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for probability and dice.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -376,10 +484,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Student thinks only (1,2) and (2,1) produce a prime, but forgets other combinations like (1,3), (3,1), etc.",
+        "Student thinks that checking 2 and 5 is sufficient because they are factors of 10 and assume all other numbers are multiples of 10",
         null,
-        "Believes that any combination with a 1 and a prime number will result in a prime product, ignoring that 1 × prime = prime but not all such combinations are unique or valid.",
-        "Believes that since there are only two outcomes (prime or not), the probability is 50-50."
+        "A student might think that checking 8 and 10 is sufficient because they are larger numbers and assume they cover the smaller ones, not understanding that 8 and 10 are not sufficient to imply divisibility by 2, 4, and 5.",
+        "A student might think that checking 2 and 10 is sufficient because they are factors of the others, but they don't account for 4 and 8."
       ],
       "solverAnswers": [
         1,
@@ -389,189 +497,81 @@
         1
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct, and the reasoning aligns with the correct answer. The distractors reflect common misconceptions.",
+      "critique": "The solution is correct: if a number is divisible by 8, it is also divisible by 2 and 4, and if it is divisible by 10, it is also divisible by 2 and 5. Therefore, checking for 4 and 5 is sufficient. The other options are incorrect because they do not cover all required divisors.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 10,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.4 Prime Factorisation"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 11,
-          "pageStart": 16,
-          "pageEnd": 17,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.5 Divisibility Tests"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 12,
-          "pageStart": 17,
+          "ordinal": 13,
+          "pageStart": 19,
           "pageEnd": 19,
           "headingPath": [
             "Chapter 5: Prime Time",
             "5.5 Divisibility Tests"
           ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 14,
+          "pageStart": 20,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.6 Fun with numbers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 15,
+          "pageStart": 22,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.6 Fun with numbers"
+          ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-30T17:09:04.213Z",
+      "generatedAt": "2026-10-31T02:47:31.137Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "A number is divisible by 8 if the number formed by its last three digits is divisible by 8. Which of the following numbers is divisible by 8?",
+      "stem": "In a game, if the jump size is 14, which of the following pairs of numbers will both be landed on?",
       "choices": [
-        "8568",
-        "8560",
-        "8556",
-        "8552"
-      ],
-      "answerIndex": 3,
-      "solution": "The number 8552 is divisible by 8 because 552 is divisible by 8. 8568 is not divisible by 8 because 568 is not divisible by 8. 8560 is divisible by 8, but 8556 is not. 8552 is the correct choice.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक संख्या 8 द्वारा विभाज्य होती है यदि इसके अंतिम तीन अंकों द्वारा बनी संख्या 8 द्वारा विभाज्य हो। निम्नलिखित में से कौन-सी संख्या 8 द्वारा विभाज्य है?",
-          "choices": [
-            "8568",
-            "8560",
-            "8556",
-            "8552"
-          ],
-          "solution": "संख्या 8552, 8 द्वारा विभाज्य है क्योंकि 552, 8 द्वारा विभाज्य है। 8568, 8 द्वारा विभाज्य नहीं है क्योंकि 568, 8 द्वारा विभाज्य नहीं है। 8560, 8 द्वारा विभाज्य है, लेकिन 8556 नहीं। 8552 सही विकल्प है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एक संख्या 8 ने भाग जाते जर तिच्या शेवटच्या तीन अंकांनी बनलेली संख्या 8 ने भाग जाते. खालीलपैकी कोणती संख्या 8 ने भाग जाते?",
-          "choices": [
-            "8568",
-            "8560",
-            "8556",
-            "8552"
-          ],
-          "solution": "संख्या 8552 ला 8 ने भाग जातो कारण 552 ला 8 ने भाग जातो. 8568 ला 8 ने भाग जात नाही कारण 568 ला 8 ने भाग जात नाही. 8560 ला 8 ने भाग जातो, परंतु 8556 ला भाग जात नाही. 8552 ही योग्य निवड आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Student divides the entire number instead of just the last three digits",
-        "Confuses divisibility by 8 with divisibility by 10",
-        "Confuses divisibility by 8 with divisibility by 4, checking only the last two digits instead of the last three",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 3 (8552), as 552 is divisible by 8. The author's reasoning is sound, and the misconceptions described for the wrong options are plausible for students.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 19,
-          "pageStart": 28,
-          "pageEnd": 30,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.6 Fun with numbers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 20,
-          "pageStart": 30,
-          "pageEnd": 32,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.6 Fun with numbers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 21,
-          "pageStart": 32,
-          "pageEnd": 33,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.6 Fun with numbers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 22,
-          "pageStart": 33,
-          "pageEnd": 33,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.6 Fun with numbers"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-30T17:09:04.213Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "What is the remainder when 14560 is divided by 10?",
-      "choices": [
-        "0",
-        "5",
-        "6",
-        "10"
+        "28 and 70",
+        "35 and 50",
+        "42 and 63",
+        "56 and 84"
       ],
       "answerIndex": 0,
-      "solution": "When 14560 is divided by 10, the remainder is 0 because the last digit is 0. The other options are incorrect as the remainder cannot be greater than the divisor, and the last digit of 14560 is 0, not 5, 6, or 10.",
+      "solution": "The jump size 14 will land on 28 and 70. 35 and 50 are not multiples of 14. 42 and 63 are not multiples of 14. 56 and 84 are multiples of 14 but 84 is not in the range of 14's multiples up to 70.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "14560 के 10 से विभाजित होने पर शेष क्या है?",
+          "stem": "खेल में, यदि लंबाई का आकार 14 है, तो निम्नलिखित में से कौन-सा संख्या युग्म दोनों ही लगाए जाएंगे?",
           "choices": [
-            "0",
-            "5",
-            "6",
-            "10"
+            "28 और 70",
+            "35 और 50",
+            "42 और 63",
+            "56 और 84"
           ],
-          "solution": "जब 14560 को 10 से विभाजित किया जाता है, तो शेष 0 होता है क्योंकि अंतिम अंक 0 है। अन्य विकल्प गलत हैं क्योंकि शेष भाजक से अधिक नहीं हो सकता है, और 14560 का अंतिम अंक 0 है, न कि 5, 6 या 10।",
+          "solution": "लंबाई का आकार 14 द्वारा 28 और 70 पर लगाया जाएगा। 35 और 50 14 के गुणज नहीं हैं। 42 और 63 14 के गुणज नहीं हैं। 56 और 84 14 के गुणज हैं लेकिन 84 70 तक 14 के गुणज की सीमा में नहीं है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used for mathematical concepts like 'multiples' (गुणज).",
           "flag": null
         },
         "mr": {
-          "stem": "14560 ला 10 ने भागल्यास उर्वरक काय असेल?",
+          "stem": "खेळात जर लांबी 14 असेल तर खालील पैकी कोणत्या संख्यांच्या जोड्या दोन्ही लक्ष्यावर पोहोचेल?",
           "choices": [
-            "0",
-            "5",
-            "6",
-            "10"
+            "28 आणि 70",
+            "35 आणि 50",
+            "42 आणि 63",
+            "56 आणि 84"
           ],
-          "solution": "14560 ला 10 ने भागल्यास उर्वरक 0 असतो कारण शेवटचा अंक 0 असतो. उर्वरक भाजकापेक्षा मोठे असू शकत नाही आणि 14560 चा शेवटचा अंक 0 असून 5, 6 किंवा 10 नाही.",
+          "solution": "लांबी 14 ला 28 आणि 70 वर पोहोचेल. 35 आणि 50 14 चे गुणक नाहीत. 42 आणि 63 14 चे गुणक नाहीत. 56 आणि 84 14 चे गुणक आहेत परंतु 84 ही 70 पर्यंतच्या 14 च्या गुणकांमध्ये नाही.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -583,9 +583,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Chooses 5, the second last digit of the number",
-        "Chooses 6, the third last digit of the number",
-        "Chooses 10, which is not a valid remainder as the remainder must be less than the divisor"
+        "Believes that numbers must be divisible by the jump size but checks divisibility by the jump size only for one number",
+        "Confuses multiples of 7 with multiples of 14",
+        "Thinking that both numbers are multiples of the jump size but not checking if they are both reachable with the same step size"
       ],
       "solverAnswers": [
         0,
@@ -594,14 +594,14 @@
         0,
         0
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is straightforward. The remainder when dividing by 10 is always the last digit of the number. Since the last digit of 14560 is 0, the remainder is 0. The author's explanation is correct and the reasoning for the distractors is valid.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0 because 28 and 70 are both multiples of 14. The other options contain numbers that are not multiples of 14 or are not in the same sequence of multiples. The author's reasoning for the distractors is valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 19,
-          "pageStart": 28,
-          "pageEnd": 30,
+          "ordinal": 16,
+          "pageStart": 23,
+          "pageEnd": 25,
           "headingPath": [
             "Chapter 5: Prime Time",
             "5.6 Fun with numbers"
@@ -609,9 +609,9 @@
         },
         {
           "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 20,
-          "pageStart": 30,
-          "pageEnd": 32,
+          "ordinal": 17,
+          "pageStart": 25,
+          "pageEnd": 27,
           "headingPath": [
             "Chapter 5: Prime Time",
             "5.6 Fun with numbers"
@@ -619,19 +619,9 @@
         },
         {
           "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 21,
-          "pageStart": 32,
-          "pageEnd": 33,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.6 Fun with numbers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 22,
-          "pageStart": 33,
-          "pageEnd": 33,
+          "ordinal": 18,
+          "pageStart": 27,
+          "pageEnd": 28,
           "headingPath": [
             "Chapter 5: Prime Time",
             "5.6 Fun with numbers"
@@ -639,7 +629,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-30T17:09:04.213Z",
+      "generatedAt": "2026-10-31T02:47:31.137Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

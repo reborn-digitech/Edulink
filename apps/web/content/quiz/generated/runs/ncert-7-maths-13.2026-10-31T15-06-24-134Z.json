@@ -1,0 +1,762 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T15:06:24.134Z",
+  "finishedAt": "2026-10-31T15:19:18.010Z",
+  "seconds": 774,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash-II",
+    "bookCode": "gegp2",
+    "document": "ncert/7/mathematics/gegp205.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 13 — Connecting the Dots…",
+    "edition": "2025 edition (the site's Last-Modified)",
+    "chunks": 24,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n7. C) 140 𝑂",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n4. A) 7",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 22 7 wherever required if not stated."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 14,
+      "ms": 223776,
+      "in": 41,
+      "out": 40,
+      "rejects": 1,
+      "promptTokens": 57120,
+      "completionTokens": 10173
+    },
+    "critique": {
+      "calls": 46,
+      "ms": 357979,
+      "in": 40,
+      "out": 28,
+      "rejects": 12,
+      "promptTokens": 22134,
+      "completionTokens": 8409
+    },
+    "solver": {
+      "calls": 178,
+      "ms": 95320,
+      "in": 28,
+      "out": 20,
+      "rejects": 8,
+      "promptTokens": 30132,
+      "completionTokens": 1659
+    },
+    "form": {
+      "calls": 10,
+      "ms": 37562,
+      "in": 20,
+      "out": 11,
+      "rejects": 9,
+      "promptTokens": 2676,
+      "completionTokens": 795
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 42,
+      "ms": 9342,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 47,
+      "ms": 490889,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 25567,
+      "completionTokens": 11908
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 3,
+    "4": 2,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a statistical statement?",
+      "ms": {
+        "draft": 4827,
+        "critique": 6209,
+        "solver": 1634,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a statistical question?",
+      "ms": {
+        "draft": 4827,
+        "critique": 7330,
+        "solver": 16450,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the average number of flowers that bloomed per day if the data for 7 days is 3, 5, 4, 6, 2, 4, 3?",
+      "ms": {
+        "draft": 6827,
+        "critique": 8482
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the average number of bounces of the ball that Shreyas is able to make with his bat? The data for 8 attempts is 6, 2, 9, 5, 4, 6, 3, 5.",
+      "ms": {
+        "draft": 6827,
+        "critique": 9750,
+        "solver": 15859
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the mean enrolment in the school over the 6 years, given the enrolment numbers: 1555, 1670, 1750, 2013, 2040, 2126?",
+      "ms": {
+        "draft": 6827,
+        "critique": 9610
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Who ran quicker on average between Nikhil and Sunil, given their running times in seconds? Nikhil: 17, 18, 17, 16, 19, 17, 18; Sunil: 20, 18, 18, 17, 16, 16, 17.",
+      "ms": {
+        "draft": 6827,
+        "critique": 8458,
+        "solver": 16488
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The prices of onions in Yahapur and Wahapur over 12 months are shown in a dot plot. The prices in Yahapur are in green, and those in Wahapur are in purple. Based on the dot plot, what is the average price of onions in Yahapur?",
+      "ms": {
+        "draft": 6827,
+        "critique": 11865
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the dot plot, what is the average price of onions in Wahapur?",
+      "ms": {
+        "draft": 6827,
+        "critique": 11862
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the heights of a class are given as 130, 140, 145, 150, 155, 160, 165, what is the median height?",
+      "ms": {
+        "draft": 15899,
+        "critique": 9684
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the effect of an outlier on the mean and median?",
+      "ms": {
+        "draft": 15899,
+        "critique": 7308,
+        "solver": 1616,
+        "form": 4359
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the mean runs scored by a player if the total runs scored by the team is 407 and there are 11 players?",
+      "ms": {
+        "draft": 37052,
+        "critique": 8228,
+        "solver": 1698
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the median of the data set 0, 1, 0, 4, 8, 0, 0, 2, 1, 1, 5, 3, 4, 0, 0, 10, 25, 2, 2, 4?",
+      "ms": {
+        "draft": 37052,
+        "critique": 9128
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, which organisation launched about 35 more rockets in 2023 compared to 2022?",
+      "ms": {
+        "draft": 4718,
+        "critique": 7332,
+        "solver": 1430
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the scale used in the rocket launch graph according to the passage?",
+      "ms": {
+        "draft": 4718,
+        "critique": 7401
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements about the growth of boys and girls can be justified from the passage?",
+      "ms": {
+        "draft": 9863,
+        "critique": 6367,
+        "solver": 1447
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A double bar graph shows the runs scored by two cricket teams in each over. The scale is 1 unit = 5 runs. If the blue team scored 20 runs in over 12, how many units would this be on the graph?",
+      "ms": {
+        "draft": 6330,
+        "critique": 7574,
+        "solver": 9331
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A dot plot shows the time estimates of 10 students for 1 minute. The data points are: 55, 58, 59, 60, 60, 61, 62, 63, 64, 65. What is the median?",
+      "ms": {
+        "draft": 4516,
+        "critique": 5818,
+        "solver": 2148,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A number lock has a 3-digit code. From the clues: (i) One digit is correct and well placed. (ii) Nothing is correct. (iii) One digit is correct but wrongly placed. (iv) One digit is correct but wrongly placed. (v) Two digits are correct but wrongly placed. What is the code?",
+      "ms": {
+        "draft": 4516,
+        "critique": 9935
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a way to describe and compare data?",
+      "ms": {
+        "draft": 4516,
+        "critique": 6727,
+        "solver": 2042,
+        "form": 3492
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The average height of a newborn is 50 cm. If the average height of a 1-year-old is 75 cm and that of a 2-year-old is 85 cm, what is the average growth rate per year for children aged 1 to 2?",
+      "ms": {
+        "draft": 6245,
+        "critique": 8284
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the dot plots showing the distribution of the number of pockets on clothing for boys and girls, which of the following is true?",
+      "ms": {
+        "draft": 6245,
+        "critique": 7398,
+        "solver": 1867,
+        "form": 5344
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The average height of 15-year-old boys in 2019 is more than the average height of 16-year-old boys in 1989. What does this suggest about the growth of boys?",
+      "ms": {
+        "draft": 6245,
+        "critique": 9025,
+        "solver": 1815,
+        "form": 5451
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements about the average height of boys and girls is supported by the passage?",
+      "ms": {
+        "draft": 6245,
+        "critique": 8383
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What type of graph is used to show runs scored per over in the passage?",
+      "ms": {
+        "draft": 35620,
+        "critique": 6950,
+        "solver": 1503
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The mean height of students in one 7th grade section is 154.2 cm. What can be concluded about the mean height of students in the other section if both sections have the same number of students?",
+      "ms": {
+        "draft": 6245,
+        "critique": 6610,
+        "solver": 2215,
+        "form": 3385
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the mean of the data values 0, 1, 0, 4, 8, 0, 0, 2, 1, 1, 5, 3, 4, 0, 0, 10, 25, 2, 2, 4?",
+      "ms": {
+        "draft": 9271,
+        "critique": 7167
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the scale used in the rocket launches graph?",
+      "ms": {
+        "draft": 5351,
+        "critique": 8083
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the middle value in a sorted data set?",
+      "ms": {
+        "draft": 6974,
+        "critique": 6683,
+        "solver": 985,
+        "form": 2375
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the scale on the graph is 1 unit = 5 runs, how many runs did the blue team score in over 12 if the bar reaches 8 units?",
+      "ms": {
+        "draft": 35620,
+        "critique": 9373,
+        "solver": 11851
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the definition of a statistical question?",
+      "ms": {
+        "draft": 4827,
+        "critique": 8434,
+        "solver": 13694,
+        "form": 5158,
+        "translation": 59529
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the middle value in a sorted list of numbers?",
+      "ms": {
+        "draft": 15899,
+        "critique": 7530,
+        "solver": 1791,
+        "form": 3461,
+        "translation": 39913
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the median when there is an even number of values in the data set?",
+      "ms": {
+        "draft": 15899,
+        "critique": 7113,
+        "solver": 1394,
+        "form": 3262,
+        "translation": 46924
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a player scores a total of 120 runs in 6 matches, what is their average score per match?",
+      "ms": {
+        "draft": 4827,
+        "critique": 7025,
+        "solver": 1919,
+        "form": 0,
+        "translation": 34044
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the arithmetic mean of a data set with a total of 40 and 8 values?",
+      "ms": {
+        "draft": 4516,
+        "critique": 6114,
+        "solver": 3033,
+        "form": 0,
+        "translation": 43553
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the range of a data set with a minimum value of 10 and a maximum value of 30?",
+      "ms": {
+        "draft": 4516,
+        "critique": 6815,
+        "solver": 1764,
+        "form": 0,
+        "translation": 27359
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the median tell us about a data set?",
+      "ms": {
+        "draft": 4516,
+        "critique": 5462,
+        "solver": 1665,
+        "form": 0,
+        "translation": 40456
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In the case of Poovizhi’s family, what is the reason the mean is lower than the median?",
+      "ms": {
+        "draft": 15899,
+        "critique": 7664,
+        "solver": 1975,
+        "form": 4359,
+        "translation": 46530
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "The total runs scored by a player in 5 matches are 100. If they play one more match and score 50 runs, what is their new average score?",
+      "ms": {
+        "draft": 4827,
+        "critique": 11102,
+        "solver": 2139,
+        "form": 0,
+        "translation": 39102
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a class of 40 students, the average weight of 20 students is 45 kg and the average weight of the other 20 students is 55 kg. What is the average weight of the entire class?",
+      "ms": {
+        "draft": 4827,
+        "critique": 9792,
+        "solver": 1342,
+        "form": 0,
+        "translation": 51123
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A number lock has a 3-digit code. Four hints are given: (1) One digit is correct and well placed, (2) Nothing is correct, (3) One digit is correct but wrongly placed, (4) Two digits are correct but wrongly placed. Which digit is definitely not in the code?",
+      "ms": {
+        "draft": 5860,
+        "critique": 7528,
+        "solver": 1238,
+        "form": 1,
+        "translation": 56793
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a statistical statement?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, so this is not a d…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a statistical question?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the average number of flowers that bloomed per day if the data for 7 days is 3, 5, 4, 6, 2, 4, 3?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the average number of bounces of the ball that Shreyas is able to make with his bat? The data for 8 attempts is 6, 2, 9, 5, 4, 6, 3, 5.",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the mean enrolment in the school over the 6 years, given the enrolment numbers: 1555, 1670, 1750, 2013, 2040, 2126?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Who ran quicker on average between Nikhil and Sunil, given their running times in seconds? Nikhil: 17, 18, 17, 16, 19, 17, 18; Sunil: 20, 18, 18, 17, 16, 16, 17.",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "The prices of onions in Yahapur and Wahapur over 12 months are shown in a dot plot. The prices in Yahapur are in green, and those in Wahapur are in purple. Based on the dot plot, what is the average price of onions in Yahapur?",
+      "reason": "the critic finds option 1 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Based on the dot plot, what is the average price of onions in Wahapur?",
+      "reason": "the critic finds option 1 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the heights of a class are given as 130, 140, 145, 150, 155, 160, 165, what is the median height?",
+      "reason": "the critic finds option 1 correct, the key is 2; more than one defensible answer, or none; the solution's working is not sound; option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the effect of an outlier on the mean and median?",
+      "reason": "options 1 and 2 say the same thing (\"The mean is affected more than the median\" / \"The median is affected more than the mean\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the mean runs scored by a player if the total runs scored by the team is 407 and there are 11 players?",
+      "reason": "the solver picked option 1 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the median of the data set 0, 1, 0, 4, 8, 0, 0, 2, 1, 1, 5, 3, 4, 0, 0, 10, 25, 2, 2, 4?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "According to the passage, which organisation launched about 35 more rockets in 2023 compared to 2022?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the scale used in the rocket launch graph according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following statements about the growth of boys and girls can be justified from the passage?",
+      "reason": "the solver picked option 0 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A double bar graph shows the runs scored by two cricket teams in each over. The scale is 1 unit = 5 runs. If the blue team scored 20 runs in over 12, how many units would this be on the graph?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If the average number of points scored per game by player A is calculated by dividing the total points by 4, what does this suggest about player A?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A dot plot shows the time estimates of 10 students for 1 minute. The data points are: 55, 58, 59, 60, 60, 61, 62, 63, 64, 65. What is the median?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A number lock has a 3-digit code. From the clues: (i) One digit is correct and well placed. (ii) Nothing is correct. (iii) One digit is correct but wrongly placed. (iv) One digit is correct but wrongly placed. (v) Two digits are correct but wrongly placed. What is the code?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a way to describe and compare data?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "The average height of a newborn is 50 cm. If the average height of a 1-year-old is 75 cm and that of a 2-year-old is 85 cm, what is the average growth rate per year for children aged 1 to 2?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the dot plots showing the distribution of the number of pockets on clothing for boys and girls, which of the following is true?",
+      "reason": "options 1 and 2 say the same thing (\"The median number of pockets for the girls is more than that for the boys.\" / \"The mean number of pockets for the boys is more than that for the girls.\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "The average height of 15-year-old boys in 2019 is more than the average height of 16-year-old boys in 1989. What does this suggest about the growth of boys?",
+      "reason": "options 1 and 2 say the same thing (\"Boys grow more in 2019 than in 1989.\" / \"Boys grow more in 1989 than in 2019.\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following statements about the average height of boys and girls is supported by the passage?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What type of graph is used to show runs scored per over in the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The mean height of students in one 7th grade section is 154.2 cm. What can be concluded about the mean height of students in the other section if both sections have the same number of students?",
+      "reason": "options 0 and 1 say the same thing (\"The mean height of students in the other section is 154.2 cm.\" / \"The mean height of students in the other section is less than 154.2 cm.\"); options 0 and 2 say the same thing (\"The mean height of students in the other section is 154.2 cm.\" / \"The mean height of students in the other section is more than 154.2 cm.\"); options 1 and 2 say the same thing (\"The mean height of students in the other section is less than 154.2 cm.\" / \"The mean height of students in the other section is more than 154.2 cm.\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the mean of the data values 0, 1, 0, 4, 8, 0, 0, 2, 1, 1, 5, 3, 4, 0, 0, 10, 25, 2, 2, 4?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "According to the passage, what is the scale used in the rocket launches graph?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used to describe the middle value in a sorted data set?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no misconception here, but the stem does not…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the scale on the graph is 1 unit = 5 runs, how many runs did the blue team score in over 12 if the bar reaches 8 units?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

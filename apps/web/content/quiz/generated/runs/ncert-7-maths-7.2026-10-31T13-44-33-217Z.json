@@ -1,0 +1,915 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T13:44:33.217Z",
+  "finishedAt": "2026-10-31T13:56:43.581Z",
+  "seconds": 730,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "gegp1",
+    "document": "ncert/7/mathematics/gegp107.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 7 — A Tale of Three Intersecting Lines",
+    "edition": "Reprint 2026-27",
+    "chunks": 20,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n3. The lines representing the given pair of linear equations are non-intersecting. Which of the 1\nfollowing statements is true?\n௔ଵ ௕ଵ ௖ଵ\n(a) ௔ଶ = ௕ଶ = ௖ଶ\n௔ଵ ௕ଵ ௖ଵ\n(b) ௔ଶ = ௕ଶ ≠ ௖ଶ\n௔ଵ ௕ଵ ௖ଵ\n(c) ௔ଶ ≠ ௕ଶ = ௖ଶ\n௔ଵ ௕ଵ ௖ଵ\n(d) ௔ଶ ≠ ௕ଶ ≠ ௖ଶ",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n33. If a line is drawn parallel to one side of a triangle to intersect the other two sides 5\nin distinct points, then prove that the other two sides are divided in the same\nratio.",
+      "[INMO 2025 — question paper]\n3. Euclid has a tool called splitter which can only do the following two types of operations:\n• Given three non-collinear marked points X, Y, Z, it can draw the line which forms\nthe interior angle bisector of ∠XY Z.\n• It can mark the intersection point of two previously drawn non-parallel lines.\nSuppose Euclid is only given three non-collinear marked points A, B, C in the plane.\nProve that Euclid can use the splitter several times to draw the centre of the circle passing\nthrough A, B, and C.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n32. Prove that a line drawn parallel to one side of a triangle intersecting other two sides 5\nin distinct points, divides the other two sides in the same ratio."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 12,
+      "ms": 366459,
+      "in": 51,
+      "out": 45,
+      "rejects": 6,
+      "promptTokens": 55262,
+      "completionTokens": 15039
+    },
+    "critique": {
+      "calls": 61,
+      "ms": 493697,
+      "in": 45,
+      "out": 35,
+      "rejects": 10,
+      "promptTokens": 31185,
+      "completionTokens": 11140
+    },
+    "solver": {
+      "calls": 281,
+      "ms": 200613,
+      "in": 35,
+      "out": 21,
+      "rejects": 14,
+      "promptTokens": 64766,
+      "completionTokens": 3436
+    },
+    "form": {
+      "calls": 7,
+      "ms": 64693,
+      "in": 21,
+      "out": 8,
+      "rejects": 13,
+      "promptTokens": 5570,
+      "completionTokens": 1394
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 39,
+      "ms": 8479,
+      "in": 8,
+      "out": 4,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 221996,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 11291,
+      "completionTokens": 6196
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 1,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 2,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "In the construction of a triangle, if two arcs of different radii are drawn from the two endpoints of the base, what is the significance of their point of intersection?",
+      "ms": {
+        "draft": 7048,
+        "critique": 6884,
+        "solver": 15919,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a triangle has side lengths 3 cm, 4 cm, and 8 cm, what can be said about its possibility?",
+      "ms": {
+        "draft": 7048,
+        "critique": 5542,
+        "solver": 18042
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a correct method to construct a triangle with side lengths 4 cm, 5 cm, and 6 cm?",
+      "ms": {
+        "draft": 7048,
+        "critique": 7868,
+        "solver": 18381
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a triangle, if the sum of the lengths of two sides is less than the third side, what can be concluded about the possibility of constructing the triangle?",
+      "ms": {
+        "draft": 7048,
+        "critique": 8687,
+        "solver": 16008
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a triangle, if the sum of the lengths of any two sides is exactly equal to the third side, what can be said about the triangle?",
+      "ms": {
+        "draft": 7048,
+        "critique": 8428,
+        "solver": 22946,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements is true for a triangle with side lengths 10 cm, 15 cm, and 30 cm?",
+      "ms": {
+        "draft": 7282,
+        "critique": 12541
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A triangle has side lengths of 4 cm, 5 cm, and 8 cm. What is the minimum length of the base that should be chosen to construct this triangle?",
+      "ms": {
+        "draft": 7282,
+        "critique": 8623
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, what is the main reason given for why a triangle with side lengths 10 cm, 15 cm, and 30 cm cannot exist?",
+      "ms": {
+        "draft": 7282,
+        "critique": 9012,
+        "solver": 2141
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a triangle has side lengths of 5 cm, 10 cm, and 15 cm, which of the following statements is true about its existence?",
+      "ms": {
+        "draft": 7282,
+        "critique": 9209
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the reasoning in the passage, which of the following is a necessary condition for a triangle to exist?",
+      "ms": {
+        "draft": 7282,
+        "critique": 7769
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "When do triangles exist according to the chapter?",
+      "ms": {
+        "draft": 14163,
+        "critique": 7497
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In which case do the circles intersect internally according to the chapter?",
+      "ms": {
+        "draft": 14163,
+        "critique": 8595,
+        "solver": 1661
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If two sides and the included angle of a triangle are given, is it always possible to construct a triangle?",
+      "ms": {
+        "draft": 14163,
+        "critique": 10390,
+        "solver": 1861
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a triangle has side lengths of 6 cm, 7 cm, and 13 cm, what is the conclusion about its existence?",
+      "ms": {
+        "draft": 7282,
+        "critique": 9334,
+        "solver": 19811,
+        "form": 5040
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the sum of the angles of any triangle?",
+      "ms": {
+        "draft": 8687,
+        "critique": 8662
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for a line segment drawn from a vertex of a triangle perpendicular to its opposite side?",
+      "ms": {
+        "draft": 4303,
+        "critique": 6078
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the property that states the sum of the angles of any triangle is 180°?",
+      "ms": {
+        "draft": 8687,
+        "critique": 7554,
+        "solver": 1679,
+        "form": 3562
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a line is drawn parallel to one side of a triangle, what is the relationship between the angles formed on the transversal?",
+      "ms": {
+        "draft": 8687,
+        "critique": 8537,
+        "solver": 1493,
+        "form": 3271
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct classification of triangles based on their angle measures?",
+      "ms": {
+        "draft": 4303,
+        "critique": 7347
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following sets of lengths cannot form the sides of a triangle?",
+      "ms": {
+        "draft": 6497,
+        "critique": 8581
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If two angles of a triangle are 70° and 85°, what is the third angle?",
+      "ms": {
+        "draft": 6497,
+        "critique": 5253,
+        "solver": 9285
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a condition for the existence of a triangle?",
+      "ms": {
+        "draft": 4383,
+        "critique": 7564,
+        "solver": 1695,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the lengths of two sides of a triangle are 7 cm and 10 cm, what is the minimum possible length of the third side?",
+      "ms": {
+        "draft": 4383,
+        "critique": 10338
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a triangle, one angle is 70°, and the other two angles are equal. What is the measure of each of the equal angles?",
+      "ms": {
+        "draft": 4383,
+        "critique": 8442,
+        "solver": 3176
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the definition of the altitude of a triangle?",
+      "ms": {
+        "draft": 8699,
+        "critique": 11887,
+        "solver": 1737,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the sum of two angles of a triangle is 150°, which of the following could be the third angle?",
+      "ms": {
+        "draft": 4383,
+        "critique": 8380,
+        "solver": 21515
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements is true for a triangle with angles 30°, 60°, and 90°?",
+      "ms": {
+        "draft": 4383,
+        "critique": 11390,
+        "solver": 20789,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a right-angled triangle, which side is considered the base when calculating the altitude from the right angle?",
+      "ms": {
+        "draft": 8699,
+        "critique": 9378,
+        "solver": 2037
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct method to construct the altitude of a triangle?",
+      "ms": {
+        "draft": 8699,
+        "critique": 8404,
+        "solver": 1502,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a triangle has all three angles acute, what type of triangle is it?",
+      "ms": {
+        "draft": 8699,
+        "critique": 7273,
+        "solver": 2634,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is not a classification of triangles based on the lengths of their sides?",
+      "ms": {
+        "draft": 8699,
+        "critique": 10733,
+        "solver": 18710
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a triangle, if two angles are 30° and 150°, can a triangle be formed?",
+      "ms": {
+        "draft": 5622,
+        "critique": 7632,
+        "solver": 1949,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which case leads to the formation of a triangle according to the passage?",
+      "ms": {
+        "draft": 5083,
+        "critique": 7013,
+        "solver": 2019
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the condition for the circles to intersect internally according to the passage?",
+      "ms": {
+        "draft": 5083,
+        "critique": 8163,
+        "solver": 2133
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a set of three lengths satisfies the triangle inequality, what can we conclude about the existence of a triangle?",
+      "ms": {
+        "draft": 5083,
+        "critique": 6707,
+        "solver": 1528,
+        "form": 3675
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the condition for three given lengths to form a triangle?",
+      "ms": {
+        "draft": 4885,
+        "critique": 8725,
+        "solver": 12792,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If two sides of a triangle are 5 cm and 3 cm, what is the range of possible lengths for the third side to form a triangle?",
+      "ms": {
+        "draft": 5083,
+        "critique": 8406,
+        "solver": 19213
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following sets of lengths can form a triangle?",
+      "ms": {
+        "draft": 14163,
+        "critique": 8299,
+        "solver": 18344,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following sets of lengths can form a triangle?",
+      "ms": {
+        "draft": 4383,
+        "critique": 8409,
+        "solver": 1708,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two angles of a triangle are 60° and 70°, what is the measure of the third angle?",
+      "ms": {
+        "draft": 5622,
+        "critique": 10221,
+        "solver": 13966,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of a triangle in which all sides are of equal length?",
+      "ms": {
+        "draft": 6685,
+        "critique": 6831,
+        "solver": 6913,
+        "form": 1478
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct method to construct an equilateral triangle with side length 4 cm?",
+      "ms": {
+        "draft": 7048,
+        "critique": 10017,
+        "solver": 15290,
+        "form": 0,
+        "translation": 80215
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a triangle, if one angle is 140°, and the other two angles are equal, what is the measure of each of the other two angles?",
+      "ms": {
+        "draft": 5622,
+        "critique": 6559,
+        "solver": 1439,
+        "form": 0,
+        "translation": 39910
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If two circles of the same size intersect at two points, how many equilateral triangles can be formed using the centers and the intersection points?",
+      "ms": {
+        "draft": 8699,
+        "critique": 9671,
+        "solver": 1785,
+        "form": 1,
+        "translation": 50284
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If three lengths satisfy the triangle inequality, what can be said about the existence of a triangle with those lengths?",
+      "ms": {
+        "draft": 4885,
+        "critique": 9483,
+        "solver": 1876,
+        "form": 0,
+        "translation": 46246
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "In which case do the circles touch each other at a point?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "What is the measure of the third angle of a triangle if two of its angles are 60° and 70°?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which type of triangle has all three angles as acute angles?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the construction of a triangle, if two arcs of different radii are drawn from the two endpoints of the base, what is the significance of their point of intersection?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a triangle has side lengths 3 cm, 4 cm, and 8 cm, what can be said about its possibility?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is a correct method to construct a triangle with side lengths 4 cm, 5 cm, and 6 cm?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In a triangle, if the sum of the lengths of two sides is less than the third side, what can be concluded about the possibility of constructing the triangle?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a triangle, if the sum of the lengths of any two sides is exactly equal to the third side, what can be said about the triangle?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following statements is true for a triangle with side lengths 10 cm, 15 cm, and 30 cm?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A triangle has side lengths of 4 cm, 5 cm, and 8 cm. What is the minimum length of the base that should be chosen to construct this triangle?",
+      "reason": "the solution's working is not sound; option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the passage, what is the main reason given for why a triangle with side lengths 10 cm, 15 cm, and 30 cm cannot exist?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a triangle has side lengths of 5 cm, 10 cm, and 15 cm, which of the following statements is true about its existence?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Based on the reasoning in the passage, which of the following is a necessary condition for a triangle to exist?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "When do triangles exist according to the chapter?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In which case do the circles intersect internally according to the chapter?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If two sides and the included angle of a triangle are given, is it always possible to construct a triangle?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a triangle has side lengths of 6 cm, 7 cm, and 13 cm, what is the conclusion about its existence?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 0's reason is not a one-line misconception (\"Confuses the triangle inequality theorem by thinking that as…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the sum of the angles of any triangle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for a line segment drawn from a vertex of a triangle perpendicular to its opposite side?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the property that states the sum of the angles of any triangle is 180°?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"correct answer…\"); distractor 3's reason is not a one-line misconception (\"confuses the Angle Sum Property with the Parallel Line Prope…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a line is drawn parallel to one side of a triangle, what is the relationship between the angles formed on the transversal?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"confuses the relationship between angles formed by a transve…\"); distractor 2's reason is not a one-line misconception (\"difficulty':5,'stem':'If the sum of two angles of a triangle…\"); distractor 3's reason is not a one-line misconception (\"difficulty':5,'stem':'What is the measure of the third angle…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a correct classification of triangles based on their angle measures?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following sets of lengths cannot form the sides of a triangle?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If two angles of a triangle are 70° and 85°, what is the third angle?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "In a triangle, if one angle is 90°, and the other two angles are equal, what is the measure of each of the other two angles?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "If two angles of a triangle are 100° and 50°, what is the measure of the third angle?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "If two angles of a triangle are 120° and 40°, what is the measure of the third angle?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a condition for the existence of a triangle?",
+      "reason": "options 0 and 3 say the same thing (\"The sum of any two sides is equal to the third side\" / \"The sum of any two sides is not equal to the third side\"); options 1 and 2 say the same thing (\"The sum of any two sides is less than the third side\" / \"The sum of any two sides is greater than the third side\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the lengths of two sides of a triangle are 7 cm and 10 cm, what is the minimum possible length of the third side?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In a triangle, one angle is 70°, and the other two angles are equal. What is the measure of each of the equal angles?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the definition of the altitude of a triangle?",
+      "reason": "options 2 and 3 say the same thing (\"The line segment from a vertex to the opposite side that is perpendicular to it\" / \"The line segment from a vertex to the opposite side that is not perpendicular to it\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the sum of two angles of a triangle is 150°, which of the following could be the third angle?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following statements is true for a triangle with angles 30°, 60°, and 90°?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "In a right-angled triangle, which side is considered the base when calculating the altitude from the right angle?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a correct method to construct the altitude of a triangle?",
+      "reason": "options 0 and 1 say the same thing (\"Using a protractor to draw a line from the vertex to the base\" / \"Using a ruler to draw a line from the vertex to the base\"); options 0 and 3 say the same thing (\"Using a protractor to draw a line from the vertex to the base\" / \"Using a compass to draw a line from the vertex to the base\"); options 1 and 3 say the same thing (\"Using a ruler to draw a line from the vertex to the base\" / \"Using a compass to draw a line from the vertex to the base\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a triangle has all three angles acute, what type of triangle is it?",
+      "reason": "figure: figure spec refused: spec.angles.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is not a classification of triangles based on the lengths of their sides?",
+      "reason": "after redrafting distractors 0, 1, 2: the critic finds option 0 correct, the key is 3; the solution's working is not sound; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a triangle, if two angles are 30° and 150°, can a triangle be formed?",
+      "reason": "options 2 and 3 say the same thing (\"Yes, because the sum of the angles is exactly 180°\" / \"No, because the sum of the angles is exactly 180°\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which case leads to the formation of a triangle according to the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the condition for the circles to intersect internally according to the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a set of three lengths satisfies the triangle inequality, what can we conclude about the existence of a triangle?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Thinks the triangle requires angles to exist, which is not s…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the condition for three given lengths to form a triangle?",
+      "reason": "options 0 and 2 say the same thing (\"Each length must be greater than the sum of the other two lengths.\" / \"Each length must be less than the sum of the other two lengths.\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If two sides of a triangle are 5 cm and 3 cm, what is the range of possible lengths for the third side to form a triangle?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "Which of the following sets of lengths can form a triangle?",
+      "reason": "near-duplicate of served question cmveqw0le017zgod8ecsolp5q (cosine 0.943 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following sets of lengths can form a triangle?",
+      "reason": "near-duplicate of served question cmvtp1jmr0kk3gp21rxsjmnbn (cosine 0.924 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If two angles of a triangle are 60° and 70°, what is the measure of the third angle?",
+      "reason": "near-duplicate of served question cmskf4yex05icy2p44wxtpl2d (cosine 0.944 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of a triangle in which all sides are of equal length?",
+      "reason": "near-duplicate of served question cmvqf9ou90azngp21v7gr0cis (cosine 0.908 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

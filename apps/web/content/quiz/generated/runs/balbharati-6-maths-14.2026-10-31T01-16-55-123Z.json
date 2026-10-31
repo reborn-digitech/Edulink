@@ -1,0 +1,479 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T01:16:55.123Z",
+  "finishedAt": "2026-10-31T01:38:56.364Z",
+  "seconds": 1321,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 14 — Geometrical Constructions",
+    "edition": "First Edition 2026",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[RMO 2017 — question paper]\n1. Let AOB be a given angle less than 180° and let P be an interior point of the\nangular region determined by ZAOB. Show, with proof, how to construct,\nusing only ruler and compasses, a line segment CD passing through P such\nthat C' lies on the ray OA and D lies on the ray OB, and CP: PD =1:2.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n33. Correct given, to prove, construction, figure 1\nCorrect proof 2\nAR = AQ = 7cm ½\nBP = BR = AB-AR = 3cm ½\nCP =CQ = 5cm ½\nBC = BP+PC = 3+5 = 8 cm ½",
+      "[RMO 2017 — solutions or answer key]\n1. Let AOB be a given angle less than 180 and let P be an interior point of the ◦\nangular region determined by ∠AOB. Show, with proof, how to construct,\nusing only ruler and compasses, a line segment CD passing through P such\nthat C lies on the ray OA and D lies on the ray OB, and CP : P D = 1 : 2.\nSolution: Draw a line parallel to OA through P. Let it intersect OB in\nM. Using compasses, draw an arc of a circle with centre M and radius M O\nto cut OB in L, L 6= O. Again with L as centre and with the same radius\nOM draw one more arc of a circle to cut OB in D, D 6= M. Join DP and\nextend it to meet OA in C. Then CD is the required line segment such that\nCP : P D = 1 : 2. This follows from simil",
+      "[INMO 2025 — question paper]\n3. Euclid has a tool called splitter which can only do the following two types of operations:\n• Given three non-collinear marked points X, Y, Z, it can draw the line which forms\nthe interior angle bisector of ∠XY Z.\n• It can mark the intersection point of two previously drawn non-parallel lines.\nSuppose Euclid is only given three non-collinear marked points A, B, C in the plane.\nProve that Euclid can use the splitter several times to draw the centre of the circle passing\nthrough A, B, and C."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 470470,
+      "in": 23,
+      "out": 22,
+      "rejects": 1,
+      "promptTokens": 17924,
+      "completionTokens": 4418
+    },
+    "critique": {
+      "calls": 25,
+      "ms": 753554,
+      "in": 22,
+      "out": 14,
+      "rejects": 8,
+      "promptTokens": 10561,
+      "completionTokens": 4301
+    },
+    "solver": {
+      "calls": 85,
+      "ms": 191312,
+      "in": 14,
+      "out": 9,
+      "rejects": 5,
+      "promptTokens": 14150,
+      "completionTokens": 827
+    },
+    "form": {
+      "calls": 7,
+      "ms": 121464,
+      "in": 9,
+      "out": 8,
+      "rejects": 1,
+      "promptTokens": 1727,
+      "completionTokens": 504
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 15,
+      "ms": 15289,
+      "in": 8,
+      "out": 5,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 584139,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 11284,
+      "completionTokens": 5465
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 0,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which tool is used to draw a circle?",
+      "ms": {
+        "draft": 21709,
+        "critique": 9368
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term for the distance from the centre of a circle to any point on the circle?",
+      "ms": {
+        "draft": 21709,
+        "critique": 9896
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is not a way to draw a perpendicular line?",
+      "ms": {
+        "draft": 21709,
+        "critique": 51164
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student wants to draw a line segment of 6 cm. Which tool should they use?",
+      "ms": {
+        "draft": 21709,
+        "critique": 50845
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student wants to draw a perpendicular at a point on a line, which method is not mentioned in the passage?",
+      "ms": {
+        "draft": 21709,
+        "critique": 61163
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which tool is used to draw a line segment of a given length?",
+      "ms": {
+        "draft": 43865,
+        "critique": 60288
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following steps is used to draw a perpendicular to a line from a point above the line?",
+      "ms": {
+        "draft": 30615,
+        "critique": 7335,
+        "solver": 1946
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct method to draw an angle of a given measure?",
+      "ms": {
+        "draft": 30615,
+        "critique": 7603,
+        "solver": 2554
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a student traces an angle on tracing paper and folds the paper so that the two arms of the angle coincide, what does the fold represent?",
+      "ms": {
+        "draft": 30615,
+        "critique": 6122,
+        "solver": 1563
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student is given an angle and asked to draw a line through a point inside the angle such that the ratio of the segments is 1:2, which of the following steps should they perform first?",
+      "ms": {
+        "draft": 30615,
+        "critique": 8268,
+        "solver": 1540
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following tools is used to draw a circle with a specific radius?",
+      "ms": {
+        "draft": 25609,
+        "critique": 7290
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is the correct way to draw a 45° angle without using a protractor?",
+      "ms": {
+        "draft": 25609,
+        "critique": 8553
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT a method to draw a perpendicular line to a given line?",
+      "ms": {
+        "draft": 25609,
+        "critique": 8221,
+        "solver": 36431
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a point is 5 cm away from the centre of a circle, what is the length of the radius of the circle?",
+      "ms": {
+        "draft": 25609,
+        "critique": 7438,
+        "solver": 37565,
+        "form": 5450
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the purpose of folding the paper when drawing an angle bisector using tracing paper?",
+      "ms": {
+        "draft": 43865,
+        "critique": 64042,
+        "solver": 20724,
+        "form": 24057
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the name of a ray that divides an angle into two equal parts?",
+      "ms": {
+        "draft": 43865,
+        "critique": 64464,
+        "solver": 111991,
+        "form": 27815
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term for a ray that divides a given angle into two equal parts?",
+      "ms": {
+        "draft": 30615,
+        "critique": 6706,
+        "solver": 1529,
+        "form": 4397
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary function of a compass in geometrical constructions?",
+      "ms": {
+        "draft": 30615,
+        "critique": 5877,
+        "solver": 2108,
+        "form": 2344,
+        "translation": 69871
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a line segment is 8 cm long, what is its length written as?",
+      "ms": {
+        "draft": 21709,
+        "critique": 11389,
+        "solver": 7508,
+        "form": 32327,
+        "translation": 118299
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a compass is used to draw an arc on a ray, what is the next step to construct an angle of a given measure?",
+      "ms": {
+        "draft": 43865,
+        "critique": 66567,
+        "solver": 14472,
+        "form": 34910,
+        "translation": 148090
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student wants to construct an angle of 110° using a compass and ruler, what should be the first step?",
+      "ms": {
+        "draft": 43865,
+        "critique": 66876,
+        "solver": 10893,
+        "form": 0,
+        "translation": 94898
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the significance of the point where two arcs intersect when drawing an angle bisector?",
+      "ms": {
+        "draft": 43865,
+        "critique": 63157,
+        "solver": 10283,
+        "form": 0,
+        "translation": 149180
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which tool is used to draw a circle?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the term for the distance from the centre of a circle to any point on the circle?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is not a way to draw a perpendicular line?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student wants to draw a line segment of 6 cm. Which tool should they use?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a student wants to draw a perpendicular at a point on a line, which method is not mentioned in the passage?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which tool is used to draw a line segment of a given length?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is used to measure the length of a line segment?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following steps is used to draw a perpendicular to a line from a point above the line?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a correct method to draw an angle of a given measure?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If a student traces an angle on tracing paper and folds the paper so that the two arms of the angle coincide, what does the fold represent?",
+      "reason": "the solver picked option 3 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a student is given an angle and asked to draw a line through a point inside the angle such that the ratio of the segments is 1:2, which of the following steps should they perform first?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following tools is used to draw a circle with a specific radius?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following is the correct way to draw a 45° angle without using a protractor?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is NOT a method to draw a perpendicular line to a given line?",
+      "reason": "after redrafting distractors 0, 1: the solution's working is not sound; option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a point is 5 cm away from the centre of a circle, what is the length of the radius of the circle?",
+      "reason": "options mix numbers and words (3 of 4 are numbers); checkExpr \"5\" is a bare literal"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "What is the purpose of folding the paper when drawing an angle bisector using tracing paper?",
+      "reason": "near-duplicate of served question cmvv5ip0y00b80rgnix9gxfqz (cosine 0.914 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the name of a ray that divides an angle into two equal parts?",
+      "reason": "near-duplicate of served question cmvv5ip0w00b20rgnfu8rswsf (cosine 0.925 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the term for a ray that divides a given angle into two equal parts?",
+      "reason": "near-duplicate of served question cmvv5ip0w00b20rgnfu8rswsf (cosine 0.905 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

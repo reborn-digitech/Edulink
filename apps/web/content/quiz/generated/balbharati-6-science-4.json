@@ -21,47 +21,334 @@
   "board": "BALBHARATI",
   "book": "६ वी सामान्य विज्ञान इंग्रजी",
   "edition": "First Edition 2026",
-  "generatedAt": "2026-10-30T19:26:25.854Z",
+  "generatedAt": "2026-10-31T04:15:02.733Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "Which type of plants have fibrous roots and parallel venation?",
+      "stem": "Which of the following is an example of a terrestrial animal?",
       "choices": [
-        "Dicotyledonous plants",
-        "Monocotyledonous plants",
-        "Climbers",
-        "Creepers"
+        "Fish",
+        "Swan",
+        "Frog",
+        "Goat"
       ],
-      "answerIndex": 1,
-      "solution": "Monocotyledonous plants have fibrous roots and parallel venation, which is a defining characteristic of this group. Dicotyledonous plants typically have taproots and reticulate venation, while climbers and creepers refer to growth habits, not root or venation patterns.",
+      "answerIndex": 3,
+      "solution": "Goat is a terrestrial animal as it lives on land. Fish are aquatic, swan is aerial, and frog is amphibian. Hence, the correct answer is Goat.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "किस प्रकार के पौधों में जालीदार प्रकाश रेखा और बहुत सारी जड़ें होती हैं?",
+          "stem": "निम्नलिखित में से कौन एक भूमिज प्राणी का उदाहरण है?",
           "choices": [
-            "द्विबीजपत्री पौधे",
-            "एकबीजपत्री पौधे",
-            "चढ़ने वाले पौधे",
-            "फैलने वाले पौधे"
+            "मछली",
+            "हंस",
+            "मेंढक",
+            "बकरी"
           ],
-          "solution": "एकबीजपत्री पौधों में जालीदार प्रकाश रेखा और बहुत सारी जड़ें होती हैं, जो इस समूह की विशेषता है। द्विबीजपत्री पौधों में आमतौर पर मुख्य जड़ होती है और जालीदार प्रकाश रेखा होती है, जबकि चढ़ने वाले और फैलने वाले पौधे वृद्धि के तरीके को दर्शाते हैं, न कि जड़ या प्रकाश रेखा के पैटर्न को।",
+          "solution": "बकरी भूमिज प्राणी है क्योंकि यह जमीन पर रहती है। मछली जलीय होती है, हंस वायुमंडलीय होता है और मेंढक जल-भूमि दोनों में रहता है। अतः सही उत्तर बकरी है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate botanical terminology used in Hindi.",
+          "critique": "Translation accurately reflects the original meaning, with appropriate Hindi terms for biological classifications.",
           "flag": null
         },
         "mr": {
-          "stem": "कोणत्या प्रकारच्या वनस्पतींमध्ये रेणू जड आणि समांतर रेणू असतात?",
+          "stem": "खालीलपैकी कोणते एक खालचे प्राणी आहे?",
           "choices": [
-            "द्विबीजपत्री वनस्पती",
-            "एकबीजपत्री वनस्पती",
-            "उभयचर",
-            "कूजणारे"
+            "मासा",
+            "हरिण",
+            "मेंढक",
+            "गाय"
           ],
-          "solution": "एकबीजपत्री वनस्पतींमध्ये रेणू जड आणि समांतर रेणू असतात, जे या वर्गाची वैशिष्ट्ये आहेत. द्विबीजपत्री वनस्पतींमध्ये सामान्यतः एक जड जड आणि जाळीदार रेणू असतात, तर उभयचर आणि कूजणारे वृद्धीच्या आकारांची वर्णन करतात, जड आणि रेणूच्या पॅटर्नची नाहीत.",
+          "solution": "गाय ही खालचे प्राणी आहे कारण ती जमीनवर राहते. मासे जलचर असतात, हरिण हवाई असते आणि मेंढक अर्धसागरी असते. म्हणूनच योग्य उत्तर गाय आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological classifications.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses aquatic animals with terrestrial",
+        "Confuses aerial animals with terrestrial",
+        "Confuses amphibians with terrestrial",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. Goat is indeed a terrestrial animal, while fish are aquatic, swans are aerial, and frogs are amphibians. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 40,
+          "pageStart": 50,
+          "pageEnd": 51,
+          "headingPath": [
+            "4. Diversity in Living Organisms"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 41,
+          "pageStart": 51,
+          "pageEnd": 53,
+          "headingPath": [
+            "4. Diversity in Living Organisms"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 42,
+          "pageStart": 53,
+          "pageEnd": 53,
+          "headingPath": [
+            "4. Diversity in Living Organisms",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T04:15:02.733Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is an example of an aquatic animal?",
+      "choices": [
+        "Tiger",
+        "Rabbit",
+        "Frog",
+        "Fish"
+      ],
+      "answerIndex": 3,
+      "solution": "Fish is an aquatic animal as it lives in water. Tiger and rabbit are terrestrial, and frog is amphibian. Hence, the correct answer is Fish.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक जलीय प्राणी का उदाहरण है?",
+          "choices": [
+            "बाघ",
+            "खरगोश",
+            "मेंढक",
+            "मछली"
+          ],
+          "solution": "मछली एक जलीय प्राणी है क्योंकि यह पानी में रहती है। बाघ और खरगोश भूमिमुख हैं, और मेंढक एक उभयचर है। इसलिए, सही उत्तर मछली है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All terms used are standard in Hindi educational materials.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते जलीय प्राणीचे उदाहरण आहे?",
+          "choices": [
+            "बावळा",
+            "खरा",
+            "मांडूक",
+            "मासा"
+          ],
+          "solution": "मासा हा जलीय प्राणी आहे कारण तो पाण्यात राहतो. बावळा आणि खरा थलीय आहेत आणि मांडूक अर्धा जलीय आहे. म्हणून, योग्य उत्तर मासा आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terms for biological classifications.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses terrestrial animals with aquatic",
+        "Confuses terrestrial animals with aquatic",
+        "Confuses amphibians with aquatic",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and tests recall of basic animal habitats. The correct answer is Fish, and the reasoning provided by the author is accurate. The distractors are plausible misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 40,
+          "pageStart": 50,
+          "pageEnd": 51,
+          "headingPath": [
+            "4. Diversity in Living Organisms"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 41,
+          "pageStart": 51,
+          "pageEnd": 53,
+          "headingPath": [
+            "4. Diversity in Living Organisms"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 42,
+          "pageStart": 53,
+          "pageEnd": 53,
+          "headingPath": [
+            "4. Diversity in Living Organisms",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T04:15:02.733Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main function of roots in plants?",
+      "choices": [
+        "To provide support and absorb moisture and minerals",
+        "To produce flowers and fruits",
+        "To carry out photosynthesis",
+        "To store food in the form of starch"
+      ],
+      "answerIndex": 0,
+      "solution": "The main function of roots in plants is to provide support and absorb moisture and minerals from the soil, which is the correct option. Roots do not produce flowers or fruits, as those are typically produced by other parts of the plant. Photosynthesis is carried out by leaves, not roots, and while some roots may store food, this is not their primary role.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पौधों में जड़ों का मुख्य कार्य क्या है?",
+          "choices": [
+            "समर्थन प्रदान करना और नमी और खनिज अवशोषित करना",
+            "फूल और फल उत्पादित करना",
+            "प्रकाश संश्लेषण करना",
+            "स्टार्च के रूप में भोजन संग्रहित करना"
+          ],
+          "solution": "पौधों में जड़ों का मुख्य कार्य समर्थन प्रदान करना और मिट्टी से नमी और खनिज अवशोषित करना होता है, जो सही विकल्प है। जड़ें फूल या फल उत्पादित नहीं करतीं, क्योंकि ये आमतौर पर पौधे के अन्य हिस्सों द्वारा उत्पादित किए जाते हैं। प्रकाश संश्लेषण पत्तियों द्वारा किया जाता है, न कि जड़ों द्वारा, और कुछ जड़ें भोजन संग्रहित कर सकती हैं, लेकिन यह उनका प्राथमिक कार्य नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi botanical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "वनस्पतींमध्ये मुळांचे मुख्य कार्य काय आहे?",
+          "choices": [
+            "समर्थन प्रदान करणे आणि पाणी आणि खनिज शोषण करणे",
+            "पुष्पे आणि फळे तयार करणे",
+            "प्रकाशसंश्लेषण करणे",
+            "स्टार्चच्या रूपात खाद्य भंडार करणे"
+          ],
+          "solution": "वनस्पतींमध्ये मुळांचे मुख्य कार्य समर्थन प्रदान करणे आणि मातीमधून पाणी आणि खनिज शोषण करणे आहे, हे बरोबर पर्याय आहे. मुळे पुष्पे किंवा फळे तयार करत नाहीत, कारण या कार्यासाठी वनस्पतीच्या इतर भागांचा वापर केला जातो. प्रकाशसंश्लेषण फुलांमार्फत केले जाते, मुळांमार्फत नाही, आणि जरी काही मुळे खाद्य भंडार करू शकतात, तरी ते त्यांचे प्राथमिक कार्य नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi botanical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the role of leaves with the role of roots",
+        "Misunderstands the function of flowers and fruits",
+        "Misconceives photosynthesis as a root function instead of a leaf function"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as roots primarily provide support and absorb water and minerals. The other options are incorrect and reflect common misconceptions about plant functions.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 37,
+          "pageStart": 48,
+          "pageEnd": 49,
+          "headingPath": [
+            "4. Diversity in Living Organisms"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 38,
+          "pageStart": 49,
+          "pageEnd": 49,
+          "headingPath": [
+            "4. Diversity in Living Organisms"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 39,
+          "pageStart": 50,
+          "pageEnd": 50,
+          "headingPath": [
+            "4. Diversity in Living Organisms"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T04:15:02.733Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which type of venation is found in monocot plants?",
+      "choices": [
+        "Reticulate",
+        "Parallel",
+        "Circular",
+        "Spiral"
+      ],
+      "answerIndex": 1,
+      "solution": "Monocot plants have leaves with parallel venation, which is the correct option. Reticulate venation is characteristic of dicot plants, not monocots. Circular and spiral venation are not typical leaf venation patterns found in monocots.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एकबीजपत्री पौधों में किस प्रकार की शिरा व्यवस्था पाई जाती है?",
+          "choices": [
+            "जालीदार",
+            "समान्तर",
+            "चक्रीय",
+            "स्पिरल"
+          ],
+          "solution": "एकबीजपत्री पौधों में समान्तर शिरा व्यवस्था पाई जाती है, जो सही विकल्प है। जालीदार शिरा व्यवस्था द्विबीजपत्री पौधों की विशेषता है, एकबीजपत्री पौधों में नहीं। चक्रीय और स्पिरल शिरा व्यवस्था एकबीजपत्री पौधों में पाई जाने वाली सामान्य पत्ती शिरा व्यवस्था नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard botanical terms used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एकबीजपत्री वनस्पतींमध्ये कोणत्या प्रकारची शिरा विभाजन आढळते?",
+          "choices": [
+            "जालीय",
+            "समांतर",
+            "वृत्ताकार",
+            "स्पायरल"
+          ],
+          "solution": "एकबीजपत्री वनस्पतींमध्ये समांतर शिरा विभाजन असते, हे योग्य विकल्प आहे. जालीय शिरा विभाजन हे द्विबीजपत्री वनस्पतींची वैशिष्ट्य आहे, एकबीजपत्री वनस्पतींमध्ये नाही. वृत्ताकार आणि स्पायरल शिरा विभाजन हे एकबीजपत्री वनस्पतींमध्ये आढळत नाहीत.",
           "imageAlt": null,
           "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
           "flag": null
@@ -72,10 +359,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses monocotyledonous plants with dicotyledonous plants, which have taproots and reticulate venation.",
+        "Confuses dicot with monocot venation",
         null,
-        "Incorrectly assumes that climbers and creepers have fibrous roots and parallel venation, which is not the case.",
-        "Incorrectly assumes that climbers and creepers have fibrous roots and parallel venation, which is not the case."
+        "Misremembers the type of venation in monocots",
+        "Does not understand the term 'parallel' in the context of leaf venation"
       ],
       "solverAnswers": [
         1,
@@ -85,80 +372,80 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed and the solution is accurate. The correct answer is 1, as monocotyledonous plants are characterized by fibrous roots and parallel venation. The distractors reflect common misconceptions.",
+      "critique": "The correct answer is 1 (Parallel), as monocots have parallel venation. The author's solution is accurate, and the reasons for the distractors align with common misconceptions.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 31,
-          "pageStart": 45,
-          "pageEnd": 46,
-          "headingPath": [
-            "4. Diversity in Living Organisms"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 32,
-          "pageStart": 46,
-          "pageEnd": 47,
-          "headingPath": [
-            "4. Diversity in Living Organisms"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 33,
+          "ordinal": 37,
           "pageStart": 48,
           "pageEnd": 49,
+          "headingPath": [
+            "4. Diversity in Living Organisms"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 38,
+          "pageStart": 49,
+          "pageEnd": 49,
+          "headingPath": [
+            "4. Diversity in Living Organisms"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 39,
+          "pageStart": 50,
+          "pageEnd": 50,
           "headingPath": [
             "4. Diversity in Living Organisms"
           ]
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T19:26:25.854Z",
+      "generatedAt": "2026-10-31T04:15:02.733Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 2,
-      "stem": "Which of the following is a feature of dicotyledonous plants?",
+      "stem": "Which of the following is a characteristic of a plant with parallel leaf venation?",
       "choices": [
-        "They have fibrous roots",
-        "They have parallel venation in leaves",
-        "They have a single seed leaf",
-        "They have a taproot system"
+        "It has a taproot",
+        "It has fibrous roots",
+        "It bears flowers",
+        "It has reticulate venation"
       ],
-      "answerIndex": 3,
-      "solution": "Dicotyledonous plants are characterized by having a taproot system, which consists of a main root with smaller lateral roots. Fibrous roots and parallel venation in leaves are features of monocots, not dicots. A single seed leaf is also a trait of monocots, making it incorrect for dicots.",
+      "answerIndex": 1,
+      "solution": "Plants with parallel leaf venation typically have fibrous roots. Taproots are found in plants with reticulate venation. Flowers and reticulate venation are not related to parallel leaf venation. Hence, the correct answer is It has fibrous roots.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सी द्विबीजपत्री पौधों की विशेषता है?",
+          "stem": "निम्नलिखित में से कौन-सा एक समानांतर पत्ती जालिका वाले पौधे का लक्षण है?",
           "choices": [
-            "उनके बहुत सारे जड़ होते हैं",
-            "उनके पत्तों में समानांतर शिरा होती है",
-            "उनके एक बीजपत्र होता है",
-            "उनकी जड़ की प्रणाली एक मुख्य जड़ वाली होती है"
+            "इसमें मुख्य मूल होता है",
+            "इसमें बहुत सारी मूल होती हैं",
+            "इसमें फूल होते हैं",
+            "इसमें जालिका वाली जालिका होती है"
           ],
-          "solution": "द्विबीजपत्री पौधों की विशेषता एक मुख्य जड़ वाली जड़ प्रणाली होती है, जिसमें मुख्य जड़ होती है जिसके छोटी बगल की जड़ें होती हैं। बहुजड़ वाली जड़ें और पत्तों में समानांतर शिरा एकबीजपत्री पौधों की विशेषताएं हैं, न कि द्विबीजपत्री। एक बीजपत्र भी एकबीजपत्री पौधों की विशेषता है, जो द्विबीजपत्री के लिए गलत है।",
+          "solution": "समानांतर पत्ती जालिका वाले पौधों के पास आमतौर पर बहुत सारी मूल होती हैं। मुख्य मूल जालिका वाली जालिका वाले पौधों में पाए जाते हैं। फूल और जालिका वाली जालिका समानांतर पत्ती जालिका से संबंधित नहीं हैं। इसलिए सही उत्तर है इसमें बहुत सारी मूल होती हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते द्विबीजपत्री पौध्यांचे वैशिष्ट्य आहे?",
+          "stem": "खालीलपैकी कोणते एक असे वैशिष्ट्य असेल की ज्या वनस्पतीच्या पानांच्या नाडी अक्षरांमध्ये असतात?",
           "choices": [
-            "त्यांना बर्याच रोमकेंद्र असतात",
-            "त्यांच्या पानांमध्ये समांतर शिरेसंच असतो",
-            "त्यांना एक बीजपत्र असते",
-            "त्यांना एकाधिक रोमकेंद्र असतात"
+            "तिला एक मुख्य मूळ असते",
+            "तिला बर्याच तंतू असतात",
+            "तिला फुले असतात",
+            "तिला जाळीदार नाडी असतात"
           ],
-          "solution": "द्विबीजपत्री पौध्यांची ओळख एकाधिक रोमकेंद्र असणे ही आहे, जे मुख्य रोमाच्या बरोबर लहान बाजूच्या रोमांचे बनलेले असते. बर्याच रोमकेंद्र आणि पानांमध्ये समांतर शिरेसंच हे एकबीजपत्री पौध्यांचे वैशिष्ट्य आहेत, न की द्विबीजपत्री. एक बीजपत्र देखील एकबीजपत्री पौध्यांचे वैशिष्ट्य आहे, त्यामुळे ते द्विबीजपत्री पौध्यांसाठी अयोग्य आहे.",
+          "solution": "अक्षरांमध्ये नाडी असलेल्या वनस्पतींचे तंतू असतात. मुख्य मूळ जाळीदार नाडी असलेल्या वनस्पतींमध्ये असतात. फुले आणि जाळीदार नाडी अक्षरांमध्ये नाडी असलेल्या वनस्पतींशी संबंधित नाहीत. म्हणूनच योग्य उत्तर आहे तिला बर्याच तंतू असतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi botanical terminology used.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi botanical terminology.",
           "flag": null
         }
       },
@@ -167,9 +454,201 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses monocots with dicots",
-        "Confuses monocots with dicots",
-        "Confuses monocots with dicots",
+        "Confuses taproot with fibrous roots",
+        null,
+        "Confuses characteristics of dicots with monocots",
+        "Confuses reticulate venation with parallel venation"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with botanical knowledge: plants with parallel venation (monocots) typically have fibrous roots, not taproots, and do not have reticulate venation. The reasoning for the distractors also reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 40,
+          "pageStart": 50,
+          "pageEnd": 51,
+          "headingPath": [
+            "4. Diversity in Living Organisms"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 41,
+          "pageStart": 51,
+          "pageEnd": 53,
+          "headingPath": [
+            "4. Diversity in Living Organisms"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 42,
+          "pageStart": 53,
+          "pageEnd": 53,
+          "headingPath": [
+            "4. Diversity in Living Organisms",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T04:15:02.733Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main reason for classifying plants into monocots and dicots?",
+      "choices": [
+        "Based on the number of leaves",
+        "Based on the number of cotyledons",
+        "Based on the type of roots",
+        "Based on the shape of the stem"
+      ],
+      "answerIndex": 1,
+      "solution": "Plants are classified into monocots and dicots based on the number of cotyledons in their seeds. The other options are characteristics but not the main basis for classification. Hence, the correct answer is Based on the number of cotyledons.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मोनोकॉट और डाइकॉट में पौधों के वर्गीकरण का मुख्य कारण क्या है?",
+          "choices": [
+            "पत्तियों की संख्या के आधार पर",
+            "बीज में कॉटिलेडॉन की संख्या के आधार पर",
+            "मूल के प्रकार के आधार पर",
+            "कांटे के आकार के आधार पर"
+          ],
+          "solution": "बीज में कॉटिलेडॉन की संख्या के आधार पर मोनोकॉट और डाइकॉट में पौधों का वर्गीकरण किया जाता है। अन्य विकल्प विशेषताएं हैं लेकिन वर्गीकरण के मुख्य आधार नहीं हैं। इसलिए, सही उत्तर पत्तियों की संख्या के आधार पर है।",
+          "imageAlt": null,
+          "critique": "The solution contains an error: it incorrectly states the correct answer as 'based on the number of leaves' (option 1), whereas the correct answer should be option 2 ('based on the number of cotyledons'). This makes the translation incorrect in terms of meaning.",
+          "flag": "translation critique: not one answer at the same position; a distractor no longer wrong"
+        },
+        "mr": {
+          "stem": "मोनोकॉट आणि डायकॉट म्हणून वनस्पतींची वर्गीकरणाचा मुख्य कारण काय आहे?",
+          "choices": [
+            "पानांच्या संख्येवर आधारित",
+            "कॉटिलेडॉनच्या संख्येवर आधारित",
+            "मूळाच्या प्रकारावर आधारित",
+            "स्टेमच्या आकृतीवर आधारित"
+          ],
+          "solution": "वनस्पतींचे मोनोकॉट आणि डायकॉट म्हणून वर्गीकरण त्यांच्या बीजातील कॉटिलेडॉनच्या संख्येवर आधारित असते. इतर विकल्प वैशिष्ट्ये असली तरी वर्गीकरणाच्या मुख्य आधाराचे नाहीत. म्हणूनच योग्य उत्तर 'कॉटिलेडॉनच्या संख्येवर आधारित' आहे.",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original English question and solution, with appropriate Marathi terminology used for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses leaf count with cotyledon count",
+        null,
+        "Confuses root type with cotyledon count",
+        "Confuses stem shape with cotyledon count"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is based on the number of cotyledons, which is the defining characteristic of monocots and dicots. The other options are common misconceptions about plant classification.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 40,
+          "pageStart": 50,
+          "pageEnd": 51,
+          "headingPath": [
+            "4. Diversity in Living Organisms"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 41,
+          "pageStart": 51,
+          "pageEnd": 53,
+          "headingPath": [
+            "4. Diversity in Living Organisms"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 42,
+          "pageStart": 53,
+          "pageEnd": 53,
+          "headingPath": [
+            "4. Diversity in Living Organisms",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T04:15:02.733Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following is an example of a plant that has a weak stem and grows by wrapping around a support?",
+      "choices": [
+        "Banyan tree",
+        "Mango tree",
+        "Rose shrub",
+        "Climber"
+      ],
+      "answerIndex": 3,
+      "solution": "Climbers are plants that have weak stems and grow by wrapping around a support. Rose shrubs have strong stems and do not wrap around supports. Mango trees have sturdy trunks and do not need to wrap around anything. Banyan trees have strong aerial roots that support the tree, so they do not need to wrap around other structures.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक पौधा है जिसका कमजोर तना होता है और समर्थन के चारों ओर लपटते हुए बढ़ता है?",
+          "choices": [
+            "बरगद का पेड़",
+            "आम का पेड़",
+            "गुलाब का झाड़ी",
+            "लता"
+          ],
+          "solution": "लताएं पौधे होते हैं जिनके कमजोर तने होते हैं और समर्थन के चारों ओर लपटते हुए बढ़ते हैं। गुलाब की झाड़ियां कमजोर तने होते हैं और समर्थन के चारों ओर लपटते नहीं हैं। आम के पेड़ों में मजबूत तने होते हैं और वे किसी चीज के चारों ओर लपटते नहीं हैं। बरगद के पेड़ों में मजबूत हवाई जड़ें होती हैं जो पेड़ को समर्थन प्रदान करती हैं, इसलिए वे किसी अन्य संरचना के चारों ओर लपटते नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are appropriately used in Hindi, and the logic of the question and solution is preserved.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता वनस्पतीचा उदाहरण आहे ज्याचा कमजोर तंतू असून तो सहारा असलेल्या वस्तूला घासून वाढतो?",
+          "choices": [
+            "बर्नी वृक्ष",
+            "आमचा वृक्ष",
+            "गुलाबाचा झाडा",
+            "उभयचर"
+          ],
+          "solution": "उभयचर ह्या वनस्पतींचे कमजोर तंतू असतात आणि ते सहारा असलेल्या वस्तूला घासून वाढतात. गुलाबाच्या झाडांचे तंतू शक्तिशाली असतात आणि ते सहारा असलेल्या वस्तूंना घासत नाहीत. आमच्या वृक्षांचे शक्तिशाली ताटे असतात आणि त्यांना कोणत्याही वस्तूला घासण्याची आवश्यकता नसते. बर्नी वृक्षांच्या शक्तिशाली हवेतील मूळ असतात जे वृक्षाला समर्थन देतात, म्हणून ते इतर वस्तूंना घासत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for botanical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses shrubs with climbers",
+        "Misunderstands the characteristics of mango trees",
+        "Misunderstands the characteristics of rose shrubs",
         null
       ],
       "solverAnswers": [
@@ -180,21 +659,21 @@
         3
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 3, as dicots have a taproot system. The other options are features of monocots, and the author's reasoning correctly identifies the confusion between monocots and dicots.",
+      "critique": "The correct answer is 3 (Climber), as climbers are defined by having weak stems and wrapping around supports. The author's reasoning for the other options is valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 31,
-          "pageStart": 45,
-          "pageEnd": 46,
+          "ordinal": 34,
+          "pageStart": 44,
+          "pageEnd": 45,
           "headingPath": [
             "4. Diversity in Living Organisms"
           ]
         },
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 32,
-          "pageStart": 46,
+          "ordinal": 35,
+          "pageStart": 45,
           "pageEnd": 47,
           "headingPath": [
             "4. Diversity in Living Organisms"
@@ -202,327 +681,58 @@
         },
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 33,
-          "pageStart": 48,
-          "pageEnd": 49,
+          "ordinal": 36,
+          "pageStart": 47,
+          "pageEnd": 48,
           "headingPath": [
             "4. Diversity in Living Organisms"
           ]
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T19:26:25.854Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is a feature of monocotyledonous plants?",
-      "choices": [
-        "They have reticulate venation",
-        "They have a taproot system",
-        "They have a single seed leaf",
-        "They have fibrous roots"
-      ],
-      "answerIndex": 2,
-      "solution": "Monocotyledonous plants are defined by having a single seed leaf, which distinguishes them from dicots that have two. Reticulate venation and taproot systems are characteristics of dicots, while fibrous roots are more common in monocots but not the defining feature. The presence of a single seed leaf is the key identifying trait.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सी एकबीजपत्री पौधों की विशेषता है?",
-          "choices": [
-            "उनमें जालीदार शिरा विन्यास होता है",
-            "उनमें मुख्य मूल प्रणाली होती है",
-            "उनमें एक बीजपत्र होता है",
-            "उनमें बहुत सारी जड़ें होती हैं"
-          ],
-          "solution": "एकबीजपत्री पौधों की पहचान करने के लिए एक बीजपत्र होता है, जो द्विबीजपत्री पौधों के दो बीजपत्रों से अलग होता है। जालीदार शिरा विन्यास और मुख्य मूल प्रणाली द्विबीजपत्री पौधों की विशेषताएं हैं, जबकि बहुत सारी जड़ें एकबीजपत्री पौधों में अधिक सामान्य होती हैं लेकिन इसके लिए निर्णायक लक्षण नहीं है। एक बीजपत्र की उपस्थिति एकबीजपत्री पौधों की मुख्य पहचान करने वाली विशेषता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All technical terms are in line with standard Hindi biology textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते एकबीजपत्री वनस्पतींचे वैशिष्ट्य आहे?",
-          "choices": [
-            "त्यांना जाळीदार शिरा असते",
-            "त्यांना एक बीजपत्र असते",
-            "त्यांना एक बीजपत्र असते",
-            "त्यांना रोमक जड असते"
-          ],
-          "solution": "एकबीजपत्री वनस्पतींची विशिष्टता एक बीजपत्र असणे आहे, जे द्विबीजपत्री वनस्पतींपासून भिन्न असते. जाळीदार शिरा आणि एकाधिक जड या द्विबीजपत्री वनस्पतींची वैशिष्ट्ये आहेत, तर रोमक जड एकबीजपत्री वनस्पतींमध्ये सामान्य असते पण त्यांचे निर्धारक लक्षण नाही. एक बीजपत्र असणे हे निर्णायक ओळख लक्षण आहे.",
-          "imageAlt": null,
-          "critique": "Options 2 and 3 are identical in Marathi, making it impossible to determine a single correct answer. This violates the 'oneAnswer' criterion.",
-          "flag": "translation critique: not one answer at the same position; a distractor no longer wrong"
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses dicots with monocots",
-        "Confuses dicots with monocots",
-        null,
-        "Confuses dicots with monocots"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is option 2, as monocots have a single seed leaf. The author's solution is correct, and the reasons for the wrong options are valid misconceptions (confusing monocots with dicots).",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 31,
-          "pageStart": 45,
-          "pageEnd": 46,
-          "headingPath": [
-            "4. Diversity in Living Organisms"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 32,
-          "pageStart": 46,
-          "pageEnd": 47,
-          "headingPath": [
-            "4. Diversity in Living Organisms"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 33,
-          "pageStart": 48,
-          "pageEnd": 49,
-          "headingPath": [
-            "4. Diversity in Living Organisms"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T19:26:25.854Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is a characteristic of a plant's habitat?",
-      "choices": [
-        "It is the place where the plant is found",
-        "It is the type of soil the plant grows in",
-        "It is the temperature of the area where the plant is found",
-        "It is the amount of water the plant receives"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct answer is 'It is the place where the plant is found' because a habitat refers to the general environment where an organism lives. The other options describe specific environmental factors that can influence a habitat but do not define what a habitat is.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा एक पौधे के आवास का गुण है?",
-          "choices": [
-            "यह पौधे के पाए जाने के स्थान है",
-            "यह वह मिट्टी है जिसमें पौधा उगता है",
-            "यह पौधे के पाए जाने वाले क्षेत्र का तापमान है",
-            "यह पौधे को मिलने वाले पानी की मात्रा है"
-          ],
-          "solution": "सही उत्तर 'यह पौधे के पाए जाने के स्थान है' है क्योंकि आवास किसी जीव के जीवन के सामान्य वातावरण को कहते हैं। अन्य विकल्प आवास को प्रभावित कर सकने वाले विशिष्ट पर्यावरणीय कारकों का वर्णन करते हैं लेकिन आवास की परिभाषा नहीं है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for biological concepts.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते वनस्पतीच्या आवासाचे लक्षण आहे?",
-          "choices": [
-            "ते वनस्पती आढळते असे जागा आहे",
-            "ते वनस्पती जिथे वाढते त्या मातीचा प्रकार आहे",
-            "ते वनस्पती आढळते असे क्षेत्राचे तापमान आहे",
-            "ते वनस्पतीला मिळणारे पाणी मात्रा आहे"
-          ],
-          "solution": "बरोबर उत्तर 'ते वनस्पती आढळते असे जागा आहे' आहे कारण आवास म्हणजे एखाद्या सजीवाच्या जीवनाच्या सामान्य वातावरणाला संबोधते. इतर विकल्प आवासाला प्रभावित करू शकणारे विशिष्ट पर्यावरणीय कारक दर्शवतात परंतु आवासाचे निर्वचन करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses habitat with soil type",
-        "Confuses habitat with temperature",
-        "Confuses habitat with water availability"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution is sound and correctly identifies option 0 as the definition of a habitat. The other options are specific environmental factors that influence a habitat but are not the definition of a habitat itself.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 37,
-          "pageStart": 51,
-          "pageEnd": 53,
-          "headingPath": [
-            "4. Diversity in Living Organisms"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 38,
-          "pageStart": 53,
-          "pageEnd": 53,
-          "headingPath": [
-            "4. Diversity in Living Organisms",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T19:26:25.854Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is an example of an amphibian?",
-      "choices": [
-        "Swan",
-        "Fish",
-        "Frog",
-        "Wild buffalo"
-      ],
-      "answerIndex": 2,
-      "solution": "The correct answer is 'Frog' because frogs are animals that live both in water and on land and have a life cycle that includes metamorphosis. Swans are birds, fish are aquatic animals with gills, and wild buffalo are mammals that live on land.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन एक उभयचर का उदाहरण है?",
-          "choices": [
-            "हंस",
-            "मछली",
-            "मेंढक",
-            "वन्य भैंस"
-          ],
-          "solution": "सही उत्तर 'मेंढक' है क्योंकि मेंढक ऐसे जानवर हैं जो पानी और जमीन दोनों पर रहते हैं और उनके जीवन चक्र में परिवर्तन शामिल होता है। हंस पक्षी हैं, मछली पानी में रहने वाले जानवर हैं जिनके गले होते हैं और वन्य भैंस जमीन पर रहने वाले स्तनधारी हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for biological terms like 'उभयचर' (amphibian) and 'मेंढक' (frog).",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते एक उभयचराचे उदाहरण आहे?",
-          "choices": [
-            "हंस",
-            "मासे",
-            "मेंढक",
-            "वन गाय"
-          ],
-          "solution": "बरोबर उत्तर 'मेंढक' आहे कारण मेंढक हे पाण्यात आणि जमिनीवर रहणारे प्राणी आहेत आणि त्यांच्या जीवन चक्रात परिवर्तन असते. हंस हे पक्षी आहेत, मासे हे जलीय प्राणी आहेत ज्यांच्याकडे गिल्स असतात आणि वन गाय हे जमिनीवर रहणारे स्तनधारी आहेत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses amphibians with birds",
-        "Confuses amphibians with fish",
-        null,
-        "Confuses amphibians with mammals"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 'Frog' as it is an amphibian. The other options are correctly identified as birds, fish, and mammals, which are not amphibians. The author's reasoning aligns with scientific classification.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 37,
-          "pageStart": 51,
-          "pageEnd": 53,
-          "headingPath": [
-            "4. Diversity in Living Organisms"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 38,
-          "pageStart": 53,
-          "pageEnd": 53,
-          "headingPath": [
-            "4. Diversity in Living Organisms",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T19:26:25.854Z",
+      "generatedAt": "2026-10-31T04:15:02.733Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "Which of the following plants is most likely to have a taproot system?",
+      "stem": "Which of these plants is most likely to have a taproot system?",
       "choices": [
         "Wheat",
-        "Banyan",
         "Rice",
-        "Corn"
+        "Corn",
+        "Banyan"
       ],
-      "answerIndex": 1,
-      "solution": "Banyan is a tree that typically has a taproot system, which consists of a single, large primary root that grows downward and gives rise to smaller secondary roots. This type of root system provides strong anchorage and is common in many trees. Wheat, rice, and corn are monocots, which generally have fibrous root systems composed of many thin, equally sized roots rather than a single dominant taproot.",
+      "answerIndex": 3,
+      "solution": "Banyan is a tree that typically has a taproot system, which is a single, large central root with smaller branches, providing strong anchorage. Wheat, rice, and corn are monocots that have fibrous root systems, consisting of many thin, similar roots rather than a dominant central root.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा पौधा एक प्रमुख मूल प्रणाली के होने की संभावना अधिक है?",
+          "stem": "इनमें से कौन-सा पौधा एक प्रमुख जड़ प्रणाली के होने की संभावना सबसे अधिक है?",
           "choices": [
             "गेहूँ",
-            "बरगद",
             "चावल",
-            "मक्का"
+            "मक्का",
+            "बरगद"
           ],
-          "solution": "बरगद एक पेड़ है जिसके पास आमतौर पर प्रमुख मूल प्रणाली होती है, जिसमें एक बड़ी प्राथमिक मूल होती है जो नीचे की ओर बढ़ती है और छोटी द्वितीयक मूलों का उत्पादन करती है। इस प्रकार की मूल प्रणाली मजबूत बंधन प्रदान करती है और बहुत सारे पेड़ों में सामान्य होती है। गेहूँ, चावल और मक्का एकलबीजपत्री होते हैं, जिनके पास बहुत सारे पतले, बराबर आकार के मूल होते हैं, जिनके बजाय एक बड़ा प्रमुख मूल नहीं होता।",
+          "solution": "बरगद एक वृक्ष है जिसके पास आमतौर पर एक प्रमुख जड़ प्रणाली होती है, जिसमें एक बड़ी केंद्रीय जड़ होती है जिसके छोटी शाखाएँ होती हैं, जो मजबूत बंधन प्रदान करती है। गेहूँ, चावल और मक्का एकलबीजपत्री होते हैं जिनके बजाय एक प्रमुख केंद्रीय जड़ के स्थान पर बहुत सारी पतली, समान जड़ें होती हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English content with appropriate botanical terminology used in Indian textbooks.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi botanical terms.",
           "flag": null
         },
         "mr": {
-          "stem": "खालील पैकी कोणत्या वनस्पतीला तपमूळ प्रणाली असण्याची शक्यता सर्वात जास्त आहे?",
+          "stem": "हे पैकी कोणत्या वनस्पतीला टॅपरूट प्रणाली असण्याची शक्यता सर्वात जास्त आहे?",
           "choices": [
             "गहू",
-            "बर्नीयन",
-            "काजू",
-            "मका"
+            "कांदा",
+            "मका",
+            "बर्नीयन"
           ],
-          "solution": "बर्नीयन एक वृक्ष आहे ज्याला सामान्यतः तपमूळ प्रणाली असते, जी एका मोठ्या प्राथमिक मूळाच्या खाली वाढते आणि छोट्या द्वितीयक मूळांची निर्मिती करते. अशा प्रकारच्या मूळ प्रणालीमुळे शक्तिशाली आधार असतो आणि अनेक वृक्षांमध्ये सामान्य आहे. गहू, काजू आणि मका हे एककोशी आहेत, ज्यांना बहुतेकदा बहुतेक बरीच थरांच्या आणि समान आकाराच्या मूळांची रचना असते, जी एका प्रमुख मूळाच्या बदल्यात असते.",
+          "solution": "बर्नीयन ही झाडे आहे जी सामान्यतः टॅपरूट प्रणाली असते, जी एका मोठ्या केंद्रीय मूळाची असते आणि त्यावर लहान शाखा असतात, जी शक्तिशाली आधार प्रदान करतात. गहू, कांदा आणि मका हे एककशेपी असतात ज्यांना फाइब्रस रूट प्रणाली असते, जी अनेक थरा, समान मूळ असतात आणि केंद्रीय मूळ नसतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi botanical terms used.",
+          "critique": "The translation is accurate, with appropriate Marathi botanical terms used. 'बर्नीयन' is the correct transliteration of 'Banyan' and is commonly used in Marathi textbooks.",
           "flag": null
         }
       },
@@ -531,94 +741,94 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Monocots have fibrous roots",
-        null,
-        "Confuses monocots with dicots",
-        "Monocots have fibrous roots"
+        "Wheat is a monocot with fibrous roots",
+        "Rice is a monocot with fibrous roots",
+        "Corn is a monocot with fibrous roots",
+        null
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        3,
+        3,
+        3,
+        3,
+        3
       ],
       "levelFlag": null,
-      "critique": "The solution is correct. Banyan is a dicot with a taproot system, while wheat, rice, and corn are monocots with fibrous roots. The reasoning aligns with botanical knowledge.",
+      "critique": "The solution correctly identifies that banyan has a taproot system, while wheat, rice, and corn are monocots with fibrous roots. The reasoning aligns with standard botanical knowledge.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 31,
-          "pageStart": 45,
-          "pageEnd": 46,
-          "headingPath": [
-            "4. Diversity in Living Organisms"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 32,
-          "pageStart": 46,
-          "pageEnd": 47,
-          "headingPath": [
-            "4. Diversity in Living Organisms"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 33,
+          "ordinal": 37,
           "pageStart": 48,
           "pageEnd": 49,
+          "headingPath": [
+            "4. Diversity in Living Organisms"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 38,
+          "pageStart": 49,
+          "pageEnd": 49,
+          "headingPath": [
+            "4. Diversity in Living Organisms"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 39,
+          "pageStart": 50,
+          "pageEnd": 50,
           "headingPath": [
             "4. Diversity in Living Organisms"
           ]
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T19:26:25.854Z",
+      "generatedAt": "2026-10-31T04:15:02.733Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "If a plant has a taproot, what can you infer about the plant?",
+      "stem": "Which of the following animals is likely to be found in a cave?",
       "choices": [
-        "It is a monocot",
-        "It is a shrub",
-        "It is a dicot",
-        "It is an herb"
+        "Lion",
+        "Deer",
+        "Bat",
+        "Elephant"
       ],
       "answerIndex": 2,
-      "solution": "The correct answer is 'It is a dicot' because plants with taproots typically have two cotyledons in their seeds, which is a defining feature of dicots. Monocots, shrubs, and herbs do not specifically have taproots as a defining characteristic.",
+      "solution": "Bats are commonly found in caves. Lions, deer, and elephants are not typically associated with cave habitats. Hence, the correct answer is Bat.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक पौधे में टैपरूट होता है, तो आप पौधे के बारे में क्या निष्कर्ष निकाल सकते हैं?",
+          "stem": "निम्नलिखित में से कौन-सा जानवर गुफा में पाया जा सकता है?",
           "choices": [
-            "यह एक एकबीजपत्री है",
-            "यह एक झाड़ी है",
-            "यह एक द्विबीजपत्री है",
-            "यह एक औषधीय पौधा है"
+            "सिंह",
+            "हिरण",
+            "चमगादड़",
+            "हाथी"
           ],
-          "solution": "सही उत्तर 'यह एक द्विबीजपत्री है' है क्योंकि टैपरूट वाले पौधों के बीज में दो कोटिलेडन होते हैं, जो द्विबीजपत्री की परिभाषात्मक विशेषता है। एकबीजपत्री, झाड़ी और औषधीय पौधे विशेष रूप से टैपरूट के साथ नहीं होते हैं।",
+          "solution": "चमगादड़ आमतौर पर गुफाओं में पाए जाते हैं। सिंह, हिरण और हाथी गुफा के आवास के साथ आमतौर पर जुड़े नहीं होते हैं। इसलिए सही उत्तर चमगादड़ है।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi botanical terminology.",
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi terms for animals and habitats.",
           "flag": null
         },
         "mr": {
-          "stem": "जर एका वनस्पतीला टॅपरूट असेल, तर तुम्हाला वनस्पतीबद्दल काय अंदाज बाहेर काढता येईल?",
+          "stem": "खालील प्राणीपैकी कोणता पाऊसखान्यात आढळू शकतो?",
           "choices": [
-            "ती एक मोनोकॉट आहे",
-            "ती एक झाडी आहे",
-            "ती एक डायकॉट आहे",
-            "ती एक औषधी वनस्पती आहे"
+            "सिंह",
+            "माकड",
+            "उंदीर",
+            "हाडी"
           ],
-          "solution": "बरोबर उत्तर 'ती एक डायकॉट आहे' आहे कारण टॅपरूट असलेल्या वनस्पतींच्या बीजांमध्ये दोन कॉटिलेडॉन असतात, जे डायकॉटचे वैशिष्ट्य आहे. मोनोकॉट, झाडी आणि औषधी वनस्पतींचा विशिष्ट वैशिष्ट्य म्हणून टॅपरूट असत नाही.",
+          "solution": "उंदीर पाऊसखान्यात सामान्यतः आढळू शकतात. सिंह, माकड आणि हाडी पाऊसखान्याच्या आवासाशी सामान्यतः संबंधित नाहीत. म्हणून, योग्य उत्तर उंदीर आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi botanical terms used.",
-          "flag": null
+          "critique": "The Marathi translation contains multiple errors: (1) 'माकड' (monkey) is incorrectly used for 'deer', (2) 'उंदीर' (rat) is incorrectly used for 'bat', (3) 'हाडी' (elephant) is incorrectly used for 'elephant', and (4) the correct answer is incorrectly listed as 'उंदीर' (rat) instead of 'उंदीर' (bat). The solution also contains errors, stating 'उंदीर' as the correct answer when it should be 'उंदीर' (bat).",
+          "flag": "translation critique: meaning changed; not one answer at the same position; a distractor no longer wrong; terms not the board's"
         }
       },
       "imageKey": null,
@@ -626,10 +836,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses taproot with monocots",
-        "Confuses taproot with shrubs",
+        "Confuses savannah animals with cave animals",
+        "Confuses forest animals with cave animals",
         null,
-        "Confuses taproot with herbs"
+        "Confuses jungle animals with cave animals"
       ],
       "solverAnswers": [
         2,
@@ -639,11 +849,20 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The question is valid and the solution is correct. Taproots are a characteristic of dicots, and the distractors reflect common misconceptions about plant classification.",
+      "critique": "The question is valid and the solution is correct. Bats are commonly found in caves, while lions, deer, and elephants are not typically associated with cave habitats.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 37,
+          "ordinal": 40,
+          "pageStart": 50,
+          "pageEnd": 51,
+          "headingPath": [
+            "4. Diversity in Living Organisms"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 41,
           "pageStart": 51,
           "pageEnd": 53,
           "headingPath": [
@@ -652,7 +871,7 @@
         },
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 38,
+          "ordinal": 42,
           "pageStart": 53,
           "pageEnd": 53,
           "headingPath": [
@@ -662,136 +881,49 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T19:26:25.854Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "What would happen to a plant if it had a fibrous root system?",
-      "choices": [
-        "It would have a single, thick root",
-        "It would have many thin roots",
-        "It would have a taproot",
-        "It would have a thick, woody stem"
-      ],
-      "answerIndex": 1,
-      "solution": "The correct answer is 'It would have many thin roots' because a fibrous root system consists of many thin, similar-sized roots that spread out from the base of the plant. Other options describe features of taproots or stems, which are not characteristics of a fibrous root system.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक पौधे पर क्या होगा अगर उसकी जड़ की प्रणाली रेशेदार होगी?",
-          "choices": [
-            "इसकी एक मोटी जड़ होगी",
-            "इसकी कई पतली जड़ें होंगी",
-            "इसकी एक जड़ होगी",
-            "इसका मोटा लकड़ी का तना होगा"
-          ],
-          "solution": "सही उत्तर 'इसकी कई पतली जड़ें होंगी' है क्योंकि रेशेदार जड़ प्रणाली में बहुत सी पतली, लगभग समान आकार की जड़ें होती हैं जो पौधे के आधार से फैल जाती हैं। अन्य विकल्प जड़ों या तने के लक्षणों का वर्णन करते हैं, जो रेशेदार जड़ प्रणाली के लक्षण नहीं हैं।",
-          "imageAlt": null,
-          "critique": "Hindi translation accurately reflects the original meaning, with appropriate botanical terms used in Indian textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका वनस्पतीला फाइब्रस मूळ प्रणाली असल्यास काय होईल?",
-          "choices": [
-            "तिला एक मोठे बाजूचे मूळ असेल",
-            "तिला बरेच थरडे मूळ असेल",
-            "तिला टॅपरूट असेल",
-            "तिला मोठे, लाकडी तंतू असेल"
-          ],
-          "solution": "सही उत्तर 'तिला बरेच थरडे मूळ असेल' आहे कारण फाइब्रस मूळ प्रणालीमध्ये बरेच थरडे, समान आकाराचे मूळ असतात जे वनस्पतीच्या बेसपासून विस्तारतात. इतर विकल्पांमध्ये टॅपरूट किंवा तंतूंच्या वैशिष्ट्यांचा उल्लेख आहे, जे फाइब्रस मूळ प्रणालीच्या वैशिष्ट्यांचे नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi botanical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Describes taproot features",
-        null,
-        "Describes taproot features",
-        "Confuses root system with stem characteristics"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct and aligns with the key. The question is well-constructed and the distractors reflect common misconceptions about root systems.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 37,
-          "pageStart": 51,
-          "pageEnd": 53,
-          "headingPath": [
-            "4. Diversity in Living Organisms"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 38,
-          "pageStart": 53,
-          "pageEnd": 53,
-          "headingPath": [
-            "4. Diversity in Living Organisms",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T19:26:25.854Z",
+      "generatedAt": "2026-10-31T04:15:02.733Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 4,
-      "stem": "Which of the following groups of organisms is most likely to be found in a snowy region?",
+      "stem": "What is the main function of root hairs?",
       "choices": [
-        "Desert plants and camels",
-        "Aquatic plants and fish",
-        "Tropical plants and birds",
-        "Snowy region plants and bears"
+        "To provide support to the plant",
+        "To store food",
+        "To absorb water and minerals from the soil",
+        "To carry out photosynthesis"
       ],
-      "answerIndex": 3,
-      "solution": "The correct answer is 'Snowy region plants and bears' because bears and plants adapted to cold environments are specifically suited to survive in snowy regions. Desert plants and camels are adapted to hot, dry conditions, tropical plants and birds thrive in warm, humid climates, and aquatic plants and fish are suited to water environments, not snowy areas.",
+      "answerIndex": 2,
+      "solution": "Root hairs are specialized structures that increase the surface area of roots, allowing them to efficiently absorb water and dissolved minerals from the soil. Other functions, such as providing support, storing food, or carrying out photosynthesis, are performed by different parts of the plant. These roles are not associated with root hairs based on their structure and location.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा जीवों का समूह हिमांकित क्षेत्र में सबसे अधिक संभावना है कि पाया जाएगा?",
+          "stem": "मुख्य कार्य जड़ के बालों का क्या है?",
           "choices": [
-            "मरुस्थल के पौधे और ऊंट",
-            "जलीय पौधे और मछली",
-            "उष्णकटिबंधीय पौधे और पक्षी",
-            "हिमांकित क्षेत्र के पौधे और भालू"
+            "पौधे को समर्थन प्रदान करना",
+            "भोजन संग्रहित करना",
+            "मिट्टी से पानी एवं खनिज अवशोषित करना",
+            "प्रकाश संश्लेषण करना"
           ],
-          "solution": "सही उत्तर 'हिमांकित क्षेत्र के पौधे और भालू' है क्योंकि हिमांकित क्षेत्रों के लिए अनुकूलित पौधे और भालू विशेष रूप से ठंडे वातावरण में जीवित रहने के लिए उपयुक्त हैं। मरुस्थल के पौधे और ऊंट गर्म और शुष्क परिस्थितियों के लिए अनुकूलित हैं, उष्णकटिबंधीय पौधे और पक्षी गर्म और आर्द्र जलवायु में उत्तम रूप से बढ़ते हैं, और जलीय पौधे और मछली पानी के वातावरण के लिए उपयुक्त हैं, न कि हिमांकित क्षेत्रों के लिए।",
+          "solution": "जड़ के बाल विशेष संरचनाएं हैं जो जड़ों के सतह क्षेत्र को बढ़ाती हैं, जिससे वे मिट्टी से पानी एवं घुलित खनिजों के अवशोषण को दक्षतापूर्वक कर सकती हैं। अन्य कार्य, जैसे कि पौधे को समर्थन प्रदान करना, भोजन संग्रहित करना या प्रकाश संश्लेषण करना, पौधे के अन्य भागों द्वारा किए जाते हैं। इन कार्यों का जड़ के बालों से कोई संबंध नहीं होता है, जो उनकी संरचना एवं स्थिति के आधार पर होता है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for biological contexts.",
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi botanical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणत्या संस्थितीत शीतल क्षेत्रात शक्यतो आढळू शकेल असे सजीव समूह आहेत?",
+          "stem": "मुख्य कार्य रूपांतरित अवयवांचे काय आहे?",
           "choices": [
-            "रेगिस्तानी वनस्पती आणि गायरे",
-            "जलीय वनस्पती आणि मासे",
-            "उष्णकटिबंधीय वनस्पती आणि पक्षी",
-            "हिमीय क्षेत्रातील वनस्पती आणि भालू"
+            "वनस्पतीला समर्थन प्रदान करणे",
+            "खाद्य पदार्थ भंडारित करणे",
+            "मातीमधून पाणी आणि खनिज शोषण करणे",
+            "प्रकाशसंश्लेषण करणे"
           ],
-          "solution": "अचूक उत्तर 'हिमीय क्षेत्रातील वनस्पती आणि भालू' आहे कारण हिमीय परिस्थितींमध्ये जीव अनुकूलित झालेल्या भालू आणि वनस्पती विशेषतः हिमीय क्षेत्रांमध्ये जगू शकतात. रेगिस्तानी वनस्पती आणि गायरे उष्ण आणि शुष्क परिस्थितींमध्ये अनुकूलित झालेल्या आहेत, उष्णकटिबंधीय वनस्पती आणि पक्षी उष्ण आणि आर्द्र जीवनाच्या जागांमध्ये विस्तारू शकतात आणि जलीय वनस्पती आणि मासे जलीय वातावरणासाठी अनुकूलित झालेल्या आहेत, हिमीय क्षेत्रांमध्ये नाहीत.",
+          "solution": "रूपांतरित अवयव हे विशेषीकृत संरचना आहेत ज्यामुळे मूळांचा सतता वाढतो, जेणेकरून ते मातीमधून पाणी आणि विरघळलेले खनिज अत्यंत प्रभावी पद्धतीने शोषू शकतात. वनस्पतीच्या इतर भागांद्वारे केलेल्या इतर कार्यांसारखे, जसे की वनस्पतीला समर्थन प्रदान करणे, खाद्य पदार्थ भंडारित करणे किंवा प्रकाशसंश्लेषण करणे, या भूमिका रूपांतरित अवयवांशी संबद्ध नाहीत. त्यांच्या संरचनेमुळे आणि स्थानामुळे रूपांतरित अवयवांशी या भूमिका नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "critique": "The Marathi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, with the correct answer (option 2) maintaining its position and validity.",
           "flag": null
         }
       },
@@ -800,9 +932,199 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses desert and snowy habitats",
-        "Associates aquatic life with snowy regions",
-        "Thinks tropical organisms live in cold areas",
+        "This is the function of the main root system",
+        "This is the function of storage roots like in carrots",
+        null,
+        "This is the function of leaves"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as root hairs are specifically adapted for absorbing water and minerals. The other options are correctly attributed to other plant structures, and the reasons provided by the author align with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 37,
+          "pageStart": 48,
+          "pageEnd": 49,
+          "headingPath": [
+            "4. Diversity in Living Organisms"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 38,
+          "pageStart": 49,
+          "pageEnd": 49,
+          "headingPath": [
+            "4. Diversity in Living Organisms"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 39,
+          "pageStart": 50,
+          "pageEnd": 50,
+          "headingPath": [
+            "4. Diversity in Living Organisms"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T04:15:02.733Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following plants would have leaves with parallel venation?",
+      "choices": [
+        "Peepal",
+        "Banyan",
+        "Sugarcane",
+        "Mango"
+      ],
+      "answerIndex": 2,
+      "solution": "Sugarcane has leaves with parallel venation, which is a characteristic of monocot plants. Peepal, banyan, and mango have reticulate venation, which is a branching network of veins found in dicot plants.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से किस पौधे के पत्तों में समानांतर शिरा व्यवस्था होगी?",
+          "choices": [
+            "पीपल",
+            "बरगद",
+            "गन्ना",
+            "आम"
+          ],
+          "solution": "गन्ना के पत्तों में समानांतर शिरा व्यवस्था होती है, जो एक एकबीजपत्री पौधे की विशेषता है। पीपल, बरगद और आम के पत्तों में जालीदार शिरा व्यवस्था होती है, जो द्विबीजपत्री पौधों में पाई जाती है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are appropriate for Hindi curriculum, and the answer remains consistent.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणत्या वनस्पतीच्या पानांमध्ये समांतर नस किंवा नसांची व्यवस्था असेल?",
+          "choices": [
+            "पीपल",
+            "बर्बद",
+            "गवत",
+            "आंबा"
+          ],
+          "solution": "गवत या वनस्पतीच्या पानांमध्ये समांतर नस किंवा नसांची व्यवस्था असते, जी एक कोटिल वनस्पतीची वैशिष्ट्ये आहे. पीपल, बर्बद आणि आंबा या वनस्पतींच्या पानांमध्ये जाळीदार नस किंवा नसांची व्यवस्था असते, जी द्विबीजपत्री वनस्पतींची वैशिष्ट्ये आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi botanical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Knows the characteristics of reticulate venation",
+        "Knows the characteristics of reticulate venation",
+        null,
+        "Misunderstands the type of venation in sugarcane"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies sugarcane as having parallel venation, and the reasoning aligns with botanical facts. The distractors are all plants with reticulate venation, and the author's reasons for the wrong options reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 34,
+          "pageStart": 44,
+          "pageEnd": 45,
+          "headingPath": [
+            "4. Diversity in Living Organisms"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 35,
+          "pageStart": 45,
+          "pageEnd": 47,
+          "headingPath": [
+            "4. Diversity in Living Organisms"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 36,
+          "pageStart": 47,
+          "pageEnd": 48,
+          "headingPath": [
+            "4. Diversity in Living Organisms"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-31T04:15:02.733Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following is an example of an animal that lives in the sky?",
+      "choices": [
+        "Fish",
+        "Frog",
+        "Camel",
+        "Swan"
+      ],
+      "answerIndex": 3,
+      "solution": "Swan is an example of an animal that lives in the sky because it is a bird that flies. Fish live in water, frogs are amphibians that spend time on land and in water, and camels are land animals that do not fly. Birds, like swans, are adapted for aerial life through their wings and ability to fly.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक ऐसा पशु है जो आकाश में रहता है?",
+          "choices": [
+            "मछली",
+            "मेंढक",
+            "ऊंट",
+            "हंस"
+          ],
+          "solution": "हंस आकाश में रहने वाले एक पशु का उदाहरण है क्योंकि यह एक पक्षी है जो उड़ सकता है। मछली पानी में रहती है, मेंढक जमीन और पानी दोनों में समय बिताते हैं और ऊंट जमीन वाले पशु हैं जो उड़ नहीं सकते। पक्षी, जैसे हंस, अपने पंखों और उड़ने की क्षमता के कारण हवाई जीवन के लिए अनुकूलित होते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते आकाशात राहणारे प्राणी एक उदाहरण आहे?",
+          "choices": [
+            "मासा",
+            "मेंढक",
+            "ऊंट",
+            "हंस"
+          ],
+          "solution": "हंस आकाशात राहणारे प्राणी एक उदाहरण आहे कारण तो पक्षी आहे जो उडतो. मासे पाण्यात राहतात, मेंढक जमीन आणि पाणी दोन्हीत राहतात आणि ऊंट जमीनीवर राहणारे प्राणी आहेत जे उडू शकत नाहीत. पक्षी, जसे की हंस, त्यांच्या पंखांमुळे आणि उडण्याच्या क्षमतेमुळे वातावरणीय जीवनासाठी अनुकूलित आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for animals and their habitats.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses aquatic animals with aerial animals",
+        "Confuses amphibians with aerial animals",
+        "Confuses terrestrial animals with aerial animals",
         null
       ],
       "solverAnswers": [
@@ -812,324 +1134,40 @@
         3,
         3
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 3, as it directly refers to organisms adapted to snowy regions. The author's reasoning is sound, and the misconceptions listed for the other options are plausible for students.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3 (Swan), as swans are birds and live in the sky. The other options are correctly dismissed as aquatic, amphibious, and terrestrial, respectively. The author's reasoning aligns with the correct classification of animals.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 34,
-          "pageStart": 49,
-          "pageEnd": 49,
-          "headingPath": [
-            "4. Diversity in Living Organisms"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 35,
-          "pageStart": 50,
-          "pageEnd": 50,
-          "headingPath": [
-            "4. Diversity in Living Organisms"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 36,
+          "ordinal": 40,
           "pageStart": 50,
           "pageEnd": 51,
           "headingPath": [
             "4. Diversity in Living Organisms"
           ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T19:26:25.854Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "A student observes a plant with parallel venation and fibrous roots. What can they conclude about the plant?",
-      "choices": [
-        "It is a dicot",
-        "It is a monocot",
-        "It is a gymnosperm",
-        "It is a fern"
-      ],
-      "answerIndex": 1,
-      "solution": "Plants with parallel venation and fibrous roots are typically monocots, as these are defining characteristics of that group. Dicots usually have reticulate venation and taproots, which are not present here. Gymnosperms and ferns do not have the same vascular structures as flowering plants, making them unlikely classifications.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक छात्र एक पौधे के समानांतर शिरा विन्यास और जालीदार जड़ें देखता है। वे पौधे के बारे में क्या निष्कर्ष निकाल सकते हैं?",
-          "choices": [
-            "यह एक द्विबीजपत्री है",
-            "यह एक एकबीजपत्री है",
-            "यह एक अनावृतबीजी है",
-            "यह एक फर्न है"
-          ],
-          "solution": "समानांतर शिरा विन्यास और जालीदार जड़ वाले पौधे आमतौर पर एकबीजपत्री होते हैं, क्योंकि ये उस समूह की परिभाषात्मक विशेषताएं हैं। द्विबीजपत्री के पास आमतौर पर जालीदार शिरा विन्यास और एक मुख्य जड़ होती है, जो यहां उपलब्ध नहीं है। अनावृतबीजी और फर्न फूलों वाले पौधों के समान वास्कुलर संरचनाएं नहीं रखते, इसलिए उनका वर्गीकरण असंभव है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
-          "flag": null
         },
-        "mr": {
-          "stem": "एका विद्यार्थीने एका वनस्पती निरीक्षण केले ज्याच्या अक्षीय वेणी आणि रेशमी मूळे आहेत. त्यांना वनस्पतीबद्दल काय निष्कर्ष काढता येईल?",
-          "choices": [
-            "ती द्विबीजपत्री आहे",
-            "ती एकबीजपत्री आहे",
-            "ती गायम्नोस्पर्म आहे",
-            "ती फर्न आहे"
-          ],
-          "solution": "अक्षीय वेणी आणि रेशमी मूळे असलेल्या वनस्पतींना सामान्यतः एकबीजपत्री म्हणतात, कारण यांचे विशिष्ट लक्षण आहेत. द्विबीजपत्रींच्या सामान्यतः जाळीदार वेणी आणि टॅपरूट असतात, जे येथे उपलब्ध नाहीत. गायम्नोस्पर्म आणि फर्नमध्ये पुष्पवाल्य वनस्पतींसारखे वाहिनी संरचना नसतात, ज्यामुळे त्यांच्या वर्गीकरणाची शक्यता कमी असते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi botanical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses monocots with dicots",
-        null,
-        "Confuses gymnosperms with monocots",
-        "Confuses ferns with monocots"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is sound and aligns with botanical classification. Monocots are correctly identified by parallel venation and fibrous roots, while the other options represent common misconceptions.",
-      "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 31,
-          "pageStart": 45,
-          "pageEnd": 46,
+          "ordinal": 41,
+          "pageStart": 51,
+          "pageEnd": 53,
           "headingPath": [
             "4. Diversity in Living Organisms"
           ]
         },
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 32,
-          "pageStart": 46,
-          "pageEnd": 47,
+          "ordinal": 42,
+          "pageStart": 53,
+          "pageEnd": 53,
           "headingPath": [
-            "4. Diversity in Living Organisms"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 33,
-          "pageStart": 48,
-          "pageEnd": 49,
-          "headingPath": [
-            "4. Diversity in Living Organisms"
+            "4. Diversity in Living Organisms",
+            "Exercises"
           ]
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T19:26:25.854Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "Which of the following best explains why plants from snowy regions cannot survive in a desert?",
-      "choices": [
-        "They are not adapted to the high temperatures in a desert",
-        "They need more water than a desert provides",
-        "They are not able to grow in sandy soil",
-        "They are not able to reproduce in a desert"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct answer is 'They are not adapted to the high temperatures in a desert' because plants from snowy regions have evolved to function in cold environments, and their biological processes are not suited for the extreme heat of a desert. Other options, such as water or soil requirements, may be true but are not the primary reason for their inability to survive in a desert, as the main issue is their lack of thermal adaptation.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा शीतल क्षेत्रों के पौधों के रेगिस्तान में जीवित रहने में असमर्थ होने की बेस्ट व्याख्या करता है?",
-          "choices": [
-            "वे रेगिस्तान में उच्च तापमान के लिए अनुकूलित नहीं हैं",
-            "वे रेगिस्तान द्वारा प्रदान की गई जल की तुलना में अधिक जल की आवश्यकता है",
-            "वे रेतीली मिट्टी में बढ़ नहीं सकते हैं",
-            "वे रेगिस्तान में प्रजनन नहीं कर सकते हैं"
-          ],
-          "solution": "सही उत्तर 'वे रेगिस्तान में उच्च तापमान के लिए अनुकूलित नहीं हैं' है क्योंकि शीतल क्षेत्रों के पौधे ठंडे वातावरण में काम करने के लिए विकसित हुए हैं, और उनकी जैविक प्रक्रियाएं रेगिस्तान के चरम गर्मी के लिए उपयुक्त नहीं हैं। अन्य विकल्प, जैसे जल या मिट्टी की आवश्यकता, सत्य हो सकते हैं लेकिन रेगिस्तान में उनके जीवित रहने में असमर्थ होने की मुख्य वजह उनकी तापीय अनुकूलन की कमी है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology common in textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते शीतक्षेत्रातील वनस्पतींना रेगिस्तानात जगू शकत नाहीत याचे सर्वात चांगले स्पष्टीकरण आहे?",
-          "choices": [
-            "त्यांना रेगिस्तानातील उच्च तापमानाची खात्री नाही",
-            "त्यांना रेगिस्तानातील पाणी पुरेसे नाही",
-            "त्यांना रेगत जमीनीत वाढू शकत नाही",
-            "त्यांना रेगिस्तानात प्रजोत्पादन करू शकत नाही"
-          ],
-          "solution": "बरोबर उत्तर 'त्यांना रेगिस्तानातील उच्च तापमानाची खात्री नाही' आहे कारण शीतक्षेत्रातील वनस्पतींचे जैविक प्रक्रिया थंड वातावरणात कार्य करण्यासाठी अनुकूलित झालेली आहेत, आणि रेगिस्तानातील उच्च तापमानासाठी त्यांची खात्री नाही. इतर विकल्प, जसे की पाणी किंवा जमीनची आवश्यकता, खरे असू शकतात परंतु रेगिस्तानात त्यांच्या असमर्थतेचे मुख्य कारण तापमानाच्या अनुकूलनाची अनुपस्थिती आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and natural, with appropriate Marathi terminology for biological concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Focuses on water availability without considering temperature",
-        "Assumes soil type is the main factor",
-        "Misses the role of adaptation in survival"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0, as the passage emphasizes adaptation to environmental conditions like temperature. The other options are plausible but not directly supported by the passage. The author's reasoning for the distractors reflects common misconceptions about plant survival factors.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 34,
-          "pageStart": 49,
-          "pageEnd": 49,
-          "headingPath": [
-            "4. Diversity in Living Organisms"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 35,
-          "pageStart": 50,
-          "pageEnd": 50,
-          "headingPath": [
-            "4. Diversity in Living Organisms"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 36,
-          "pageStart": 50,
-          "pageEnd": 51,
-          "headingPath": [
-            "4. Diversity in Living Organisms"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T19:26:25.854Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "A plant has a taproot system and reticulate venation. Which of the following is most likely to be true about this plant?",
-      "choices": [
-        "It produces fruits with many seeds",
-        "It is a monocot",
-        "It has a fibrous root system",
-        "It has parallel venation"
-      ],
-      "answerIndex": 0,
-      "solution": "A plant with a taproot system and reticulate venation is likely a dicot. Dicots often produce fruits with multiple seeds, making this the correct option. Monocots have fibrous roots and parallel venation, which contradicts the given characteristics. The presence of a taproot and reticulate venation also rules out the other options.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक पौधे में टैपरूट प्रणाली और रेटिकुलेट शिरा है। इस पौधे के बारे में निम्नलिखित में से कौन-सा सबसे अधिक संभावित रूप से सही है?",
-          "choices": [
-            "इसमें बहुत सारे बीजों वाले फल बनते हैं",
-            "यह एक एकबीजपत्री है",
-            "इसमें जालीदार जड़ प्रणाली होती है",
-            "इसमें समांतर शिराएं होती हैं"
-          ],
-          "solution": "टैपरूट प्रणाली और रेटिकुलेट शिरा वाला पौधा एक द्विबीजपत्री होने की संभावना है। द्विबीजपत्रियों के फल बहुत सारे बीजों वाले होते हैं, जो इस प्रश्न का सही उत्तर बनाते हैं। एकबीजपत्रियों में जालीदार जड़ें और समांतर शिराएं होती हैं, जो दिए गए लक्षणों के विरोधी हैं। टैपरूट प्रणाली और रेटिकुलेट शिराओं की उपस्थिति अन्य विकल्पों को भी असंभव बना देती है।",
-          "imageAlt": null,
-          "critique": "Translation accurately reflects the original meaning with appropriate botanical terminology in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका वनस्पतीला टॅपरूट प्रणाली आणि रेटिकुलेट व्हेनेशन आहे. खालीलपैकी कोणते अत्यंत शक्य असू शकते?",
-          "choices": [
-            "ती अनेक बीजांसह फळे तयार करते",
-            "ती एक क्लोरोप्लास्ट आहे",
-            "तिला फाइब्रस रूट प्रणाली आहे",
-            "तिला समांतर व्हेनेशन आहे"
-          ],
-          "solution": "टॅपरूट प्रणाली आणि रेटिकुलेट व्हेनेशन असलेल्या वनस्पतीला डायकॉट असण्याची शक्यता असते. डायकॉट अनेक बीजांसह फळे तयार करतात, जे योग्य विकल्प बनते. मॉनोकॉटमध्ये फाइब्रस रूट आणि समांतर व्हेनेशन असते, जे दिलेल्या वैशिष्ट्यांच्या विरोधात आहे. टॅपरूट आणि रेटिकुलेट व्हेनेशनच्या उपस्थितीमुळे इतर विकल्पही निराकरित केले जातात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, with appropriate Marathi botanical terms used. The structure and meaning match the original English question.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses monocots with dicots",
-        "Confuses monocots with dicots",
-        "Confuses monocots with dicots"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question correctly links taproot and reticulate venation to dicots. The correct answer is 0, as dicots typically produce fruits with many seeds. The distractors (1, 2, 3) all incorrectly associate monocot traits with the plant described, which is a common misconception.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 31,
-          "pageStart": 45,
-          "pageEnd": 46,
-          "headingPath": [
-            "4. Diversity in Living Organisms"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 32,
-          "pageStart": 46,
-          "pageEnd": 47,
-          "headingPath": [
-            "4. Diversity in Living Organisms"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 33,
-          "pageStart": 48,
-          "pageEnd": 49,
-          "headingPath": [
-            "4. Diversity in Living Organisms"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T19:26:25.854Z",
+      "generatedAt": "2026-10-31T04:15:02.733Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

@@ -1,0 +1,629 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T05:06:55.747Z",
+  "finishedAt": "2026-10-31T05:50:03.568Z",
+  "seconds": 2588,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "603050012",
+    "document": "balbharati/6/science/603050012.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 9 — From Diet to Health",
+    "edition": "First Edition 2026",
+    "chunks": 11,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2023-24]\n29. We are advised to take iodised salt in our diet by doctors. Justify it's importance in our 3\nbody.",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n7. B. Cooking of food",
+      "[CBSE Class X Science, sample question paper, 2022-23]\n23. Patients whose gallbladder are removed are recommended to eat less oily food. 2\nWhy?",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n4. D. insulin from pancreas"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 7,
+      "ms": 624141,
+      "in": 33,
+      "out": 30,
+      "rejects": 4,
+      "promptTokens": 27353,
+      "completionTokens": 5403
+    },
+    "critique": {
+      "calls": 40,
+      "ms": 1813550,
+      "in": 30,
+      "out": 21,
+      "rejects": 9,
+      "promptTokens": 15791,
+      "completionTokens": 6996
+    },
+    "solver": {
+      "calls": 177,
+      "ms": 654520,
+      "in": 21,
+      "out": 16,
+      "rejects": 5,
+      "promptTokens": 34174,
+      "completionTokens": 2053
+    },
+    "form": {
+      "calls": 10,
+      "ms": 236579,
+      "in": 16,
+      "out": 12,
+      "rejects": 4,
+      "promptTokens": 2216,
+      "completionTokens": 716
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 16,
+      "ms": 11407,
+      "in": 12,
+      "out": 7,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 31,
+      "ms": 2229342,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 15931,
+      "completionTokens": 7741
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 2,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is a source of proteins?",
+      "ms": {
+        "draft": 14126,
+        "critique": 27364
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a source of carbohydrates?",
+      "ms": {
+        "draft": 14126,
+        "critique": 27637
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a source of fats?",
+      "ms": {
+        "draft": 14126,
+        "critique": 27639
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a source of vitamins?",
+      "ms": {
+        "draft": 14126,
+        "critique": 22573
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a symptom of vitamin C deficiency?",
+      "ms": {
+        "draft": 18659,
+        "critique": 22303
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of water in the body?",
+      "ms": {
+        "draft": 14126,
+        "critique": 23750
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person is diagnosed with goitre, which of the following dietary changes would be most beneficial?",
+      "ms": {
+        "draft": 18659,
+        "critique": 41888
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following tests can be used to identify the presence of starch in food?",
+      "ms": {
+        "draft": 18659,
+        "critique": 43121,
+        "solver": 82152,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to cut vegetables only after washing them, according to the passage?",
+      "ms": {
+        "draft": 18659,
+        "critique": 46725,
+        "solver": 79925
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a source of carbohydrates?",
+      "ms": {
+        "draft": 14324,
+        "critique": 80591,
+        "solver": 17306
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main purpose of including leafy vegetables in the diet?",
+      "ms": {
+        "draft": 14324,
+        "critique": 35985,
+        "solver": 15723
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person eats only noodles, biscuits, and bread, what health problem might they face?",
+      "ms": {
+        "draft": 14324,
+        "critique": 33649,
+        "solver": 136888,
+        "form": 41380
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is most likely to cause deficiency of vitamin C?",
+      "ms": {
+        "draft": 14324,
+        "critique": 85321,
+        "solver": 136646
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the cause of night blindness according to the passage?",
+      "ms": {
+        "draft": 24518,
+        "critique": 77500,
+        "solver": 3639,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a preventive measure for scurvy?",
+      "ms": {
+        "draft": 24518,
+        "critique": 79982,
+        "solver": 3806
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a source of carbohydrates?",
+      "ms": {
+        "draft": 40324,
+        "critique": 75064
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to include seasonal fruits and vegetables in the diet?",
+      "ms": {
+        "draft": 15258,
+        "critique": 57871
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is NOT a reason for the variation in regional diets?",
+      "ms": {
+        "draft": 15258,
+        "critique": 79641,
+        "solver": 39974,
+        "form": 2747
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A person suffering from night blindness should include which of the following in their diet?",
+      "ms": {
+        "draft": 18659,
+        "critique": 42079,
+        "solver": 2558,
+        "form": 10322
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a remedy for goitre?",
+      "ms": {
+        "draft": 14324,
+        "critique": 59528,
+        "solver": 13063,
+        "form": 40885
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What are the useful substances that our body gets from food items called?",
+      "ms": {
+        "draft": 14324,
+        "critique": 61046,
+        "solver": 112743,
+        "form": 40240
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which vitamin is required for the proper growth of bones in children?",
+      "ms": {
+        "draft": 24518,
+        "critique": 40955,
+        "solver": 3656,
+        "form": 48954
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following tests can identify the presence of starch in food?",
+      "ms": {
+        "draft": 24518,
+        "critique": 44084,
+        "solver": 99924,
+        "form": 14478
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a source of carbohydrates?",
+      "ms": {
+        "draft": 12311,
+        "critique": 40228,
+        "solver": 3121,
+        "form": 0,
+        "translation": 226134
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has a deficiency of vitamin 'B', which of the following symptoms may they experience?",
+      "ms": {
+        "draft": 24518,
+        "critique": 53065,
+        "solver": 91064,
+        "form": 10148,
+        "translation": 380810
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a remedy for a deficiency of vitamin A?",
+      "ms": {
+        "draft": 12311,
+        "critique": 43346,
+        "solver": 51794,
+        "form": 0,
+        "translation": 284766
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a preventive measure for goitre?",
+      "ms": {
+        "draft": 24518,
+        "critique": 75744,
+        "solver": 99636,
+        "form": 35557,
+        "translation": 230569
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "If a person is suffering from constipation, which of the following changes should they make in their diet?",
+      "ms": {
+        "draft": 12311,
+        "critique": 23213,
+        "solver": 12649,
+        "form": 0,
+        "translation": 295952
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements is correct about the role of fiber in the diet?",
+      "ms": {
+        "draft": 12311,
+        "critique": 32526,
+        "solver": 1565,
+        "form": 0,
+        "translation": 308785
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following food items is most likely to be rich in nutrients and should be an essential part of the diet?",
+      "ms": {
+        "draft": 12311,
+        "critique": 24671,
+        "solver": 1540,
+        "form": 7055,
+        "translation": 476774
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is a source of minerals?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a source of proteins?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a source of carbohydrates?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a source of fats?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a source of vitamins?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a symptom of vitamin C deficiency?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main function of water in the body?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a person is diagnosed with goitre, which of the following dietary changes would be most beneficial?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following tests can be used to identify the presence of starch in food?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 2 and 3 are the same (\"Adding copper sulphate to the food sample\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why is it important to cut vegetables only after washing them, according to the passage?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the main function of proteins in the body?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "Which of the following is a source of fats?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a source of carbohydrates?",
+      "reason": "the solver picked option 3 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the main purpose of including leafy vegetables in the diet?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person eats only noodles, biscuits, and bread, what health problem might they face?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following is most likely to cause deficiency of vitamin C?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the cause of night blindness according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a preventive measure for scurvy?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is a source of carbohydrates?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is it important to include seasonal fruits and vegetables in the diet?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is NOT a reason for the variation in regional diets?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "A person suffering from night blindness should include which of the following in their diet?",
+      "reason": "near-duplicate of served question cmvvf4aet017s0rgnrohnirh7 (cosine 0.918 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a remedy for goitre?",
+      "reason": "near-duplicate of served question cmvvf4ae6016g0rgn7ow6wieb (cosine 0.928 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What are the useful substances that our body gets from food items called?",
+      "reason": "near-duplicate of served question cmvvf4adx015y0rgnmfs0n8eu (cosine 0.912 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which vitamin is required for the proper growth of bones in children?",
+      "reason": "near-duplicate of served question cmvvf4ads015s0rgnmvwcuper (cosine 0.964 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following tests can identify the presence of starch in food?",
+      "reason": "near-duplicate of served question cmvvf4aek017a0rgnab37bki1 (cosine 0.928 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

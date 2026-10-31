@@ -1,0 +1,673 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T17:59:14.260Z",
+  "finishedAt": "2026-10-31T18:17:34.816Z",
+  "seconds": 1101,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "703020012",
+    "document": "balbharati/7/science/703020012.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 16 — Natural Resources",
+    "edition": "First Edition 2017",
+    "chunks": 8,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2025-26]\n12. About 100 acres of forest land was declared as Natural reserve park. The 2\nfollowing organisms were predominant in the Natural reserve park:\nrabbit, frog, grass, fish, fox, water insects, zebra, peacock, snake, trees, bird,\nowl, insects, tiger, vulture, duck.\nCreate a food web comprising two separate food chains with different\nproducers by using the above data.",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n20. Assertion: Biodegradable substances result in the formation of compost and natural 1\nreplenishment.\nReason: It is due to breakdown of complex inorganic substances into simple organic\nsubstances.",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n7. C. Use of plastic as packaging material. 1",
+      "[CBSE Class X Science, marking scheme, 2026-27]\n7. C. Secondary Consumer"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 394229,
+      "in": 34,
+      "out": 34,
+      "rejects": 0,
+      "promptTokens": 24240,
+      "completionTokens": 5952
+    },
+    "critique": {
+      "calls": 47,
+      "ms": 671606,
+      "in": 34,
+      "out": 33,
+      "rejects": 1,
+      "promptTokens": 19390,
+      "completionTokens": 8025
+    },
+    "solver": {
+      "calls": 256,
+      "ms": 367903,
+      "in": 33,
+      "out": 23,
+      "rejects": 10,
+      "promptTokens": 45938,
+      "completionTokens": 2783
+    },
+    "form": {
+      "calls": 17,
+      "ms": 79081,
+      "in": 23,
+      "out": 10,
+      "rejects": 13,
+      "promptTokens": 3895,
+      "completionTokens": 1108
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 10,
+      "ms": 2080,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 41,
+      "ms": 851241,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 21485,
+      "completionTokens": 10495
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 2,
+    "2": 1,
+    "3": 4,
+    "4": 1,
+    "5": 0,
+    "6": 2
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Which of the following is a fuel mentioned in the passage?",
+      "ms": {
+        "draft": 8697,
+        "critique": 5509,
+        "solver": 1420,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a natural resource?",
+      "ms": {
+        "draft": 8697,
+        "critique": 5684,
+        "solver": 2058,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a fossil fuel?",
+      "ms": {
+        "draft": 8697,
+        "critique": 7969,
+        "solver": 20818,
+        "form": 2937
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a metallic mineral?",
+      "ms": {
+        "draft": 8697,
+        "critique": 10169,
+        "solver": 18301,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a natural resource that is formed from the remains of dead sea organisms over millions of years?",
+      "ms": {
+        "draft": 10719,
+        "critique": 7097,
+        "solver": 1393
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of compressed natural gas (CNG)?",
+      "ms": {
+        "draft": 10719,
+        "critique": 7203,
+        "solver": 1994
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a protective function of forests?",
+      "ms": {
+        "draft": 10719,
+        "critique": 9451,
+        "solver": 2008,
+        "form": 2645
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of an alternative fuel that can be used to reduce dependence on fossil fuels?",
+      "ms": {
+        "draft": 10719,
+        "critique": 8157,
+        "solver": 1145,
+        "form": 4351
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is natural gas considered an eco-friendly fuel?",
+      "ms": {
+        "draft": 10719,
+        "critique": 8366,
+        "solver": 1787
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a reason for the decline in the diversity of animals in forests as mentioned in the passage?",
+      "ms": {
+        "draft": 3981,
+        "critique": 7223,
+        "solver": 1746,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a mineral resource obtained from the ocean as mentioned in the passage?",
+      "ms": {
+        "draft": 3981,
+        "critique": 9427,
+        "solver": 2913
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main source of fuel for vehicles as mentioned in the passage?",
+      "ms": {
+        "draft": 3981,
+        "critique": 26021,
+        "solver": 6026
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a biodegradable substance mentioned in the passage?",
+      "ms": {
+        "draft": 3981,
+        "critique": 8655,
+        "solver": 42180,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a method of using ocean resources as mentioned in the passage?",
+      "ms": {
+        "draft": 3981,
+        "critique": 22463,
+        "solver": 28711
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a use of potassium according to the passage?",
+      "ms": {
+        "draft": 11464,
+        "critique": 17081
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a mineral resource obtained from the ocean?",
+      "ms": {
+        "draft": 11464,
+        "critique": 12505,
+        "solver": 14446
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a secondary consumer in an oceanic food chain?",
+      "ms": {
+        "draft": 11464,
+        "critique": 56848,
+        "solver": 7784
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct statement about the conservation of natural resources?",
+      "ms": {
+        "draft": 11464,
+        "critique": 69481,
+        "solver": 49344,
+        "form": 27252
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an eco-friendly fuel?",
+      "ms": {
+        "draft": 15137,
+        "critique": 8842,
+        "solver": 20385,
+        "form": 2413
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a mineral?",
+      "ms": {
+        "draft": 19644,
+        "critique": 9203,
+        "solver": 2980
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a natural resource?",
+      "ms": {
+        "draft": 19644,
+        "critique": 9361,
+        "solver": 13618,
+        "form": 3789
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main use of bauxite according to the passage?",
+      "ms": {
+        "draft": 19644,
+        "critique": 10386,
+        "solver": 13002,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a fossil fuel?",
+      "ms": {
+        "draft": 19644,
+        "critique": 8725,
+        "solver": 1281,
+        "form": 4836
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is used for making electric wires?",
+      "ms": {
+        "draft": 19644,
+        "critique": 8772,
+        "solver": 10212
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is mineral oil also known as?",
+      "ms": {
+        "draft": 15137,
+        "critique": 43399,
+        "solver": 56337,
+        "form": 3162,
+        "translation": 98849
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main component of natural gas?",
+      "ms": {
+        "draft": 15137,
+        "critique": 30081,
+        "solver": 1463,
+        "form": 4702,
+        "translation": 112762
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of adding ethyl mercaptan to LPG?",
+      "ms": {
+        "draft": 15137,
+        "critique": 8001,
+        "solver": 1785,
+        "form": 5135,
+        "translation": 52584
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a non-metallic mineral?",
+      "ms": {
+        "draft": 8697,
+        "critique": 6310,
+        "solver": 2464,
+        "form": 2182,
+        "translation": 65629
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the underground reserves of fossil fuels are exhausted, what would be the most likely consequence?",
+      "ms": {
+        "draft": 10719,
+        "critique": 6632,
+        "solver": 2865,
+        "form": 3087,
+        "translation": 139938
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if underground mineral resources are exhausted?",
+      "ms": {
+        "draft": 15137,
+        "critique": 7920,
+        "solver": 2521,
+        "form": 2840,
+        "translation": 43669
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person collects conches and shells from the ocean, which of the following can they make?",
+      "ms": {
+        "draft": 11464,
+        "critique": 9853,
+        "solver": 86145,
+        "form": 2949,
+        "translation": 143516
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a protective function of forests?",
+      "ms": {
+        "draft": 15137,
+        "critique": 8649,
+        "solver": 1854,
+        "form": 4451,
+        "translation": 41925
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the main component of bauxite?",
+      "ms": {
+        "draft": 8697,
+        "critique": 7646,
+        "solver": 19167,
+        "form": 3928,
+        "translation": 98514
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why the conservation of ocean resources is important?",
+      "ms": {
+        "draft": 11464,
+        "critique": 11704,
+        "solver": 92637,
+        "form": 3480,
+        "translation": 109527
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a fuel mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a natural resource?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is soil as it is a natural resource, not man-…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is an example of a fossil fuel?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a metallic mineral?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a natural resource that is formed from the remains of dead sea organisms over millions of years?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of compressed natural gas (CNG)?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a protective function of forests?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Overlooks the specific protective function mentioned in the …\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is an example of an alternative fuel that can be used to reduce dependence on fossil fuels?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Confuses the types of fuels mentioned in the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why is natural gas considered an eco-friendly fuel?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is a reason for the decline in the diversity of animals in forests as mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is a mineral resource obtained from the ocean as mentioned in the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the main source of fuel for vehicles as mentioned in the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is an example of a biodegradable substance mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is a method of using ocean resources as mentioned in the passage?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a use of potassium according to the passage?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a mineral resource obtained from the ocean?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following is an example of a secondary consumer in an oceanic food chain?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a correct statement about the conservation of natural resources?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"This contradicts the passage which states that resources are…\"); distractor 3's reason is not a one-line misconception (\"This is false as the passage emphasizes the need for conserv…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an eco-friendly fuel?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a mineral?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a natural resource?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main use of bauxite according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is a fossil fuel?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses the properties of copper with those of fossil fuels…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following is used for making electric wires?",
+      "reason": "after redrafting distractors 0, 1, 2: the solution's working is not sound"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

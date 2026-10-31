@@ -1,0 +1,579 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T19:53:22.439Z",
+  "finishedAt": "2026-10-31T20:33:11.598Z",
+  "seconds": 2389,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "703020012",
+    "document": "balbharati/7/science/703020012.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 20 — In the World of Stars",
+    "edition": "First Edition 2017",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2024-25]\n7. B. Cooking of food",
+      "[CBSE Class X Science, marking scheme, 2026-27]\n7. C. Secondary Consumer",
+      "[CBSE Class X Science, marking scheme, 2026-27]\n30. B. Hold the lens above a sheet of paper and adjust until the smallest, 1\nbrightest spot is formed.",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n7. C. Use of plastic as packaging material. 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 5,
+      "ms": 603618,
+      "in": 28,
+      "out": 28,
+      "rejects": 1,
+      "promptTokens": 20522,
+      "completionTokens": 6195
+    },
+    "critique": {
+      "calls": 32,
+      "ms": 1603378,
+      "in": 28,
+      "out": 22,
+      "rejects": 6,
+      "promptTokens": 14866,
+      "completionTokens": 5617
+    },
+    "solver": {
+      "calls": 139,
+      "ms": 439622,
+      "in": 22,
+      "out": 20,
+      "rejects": 2,
+      "promptTokens": 23581,
+      "completionTokens": 1464
+    },
+    "form": {
+      "calls": 9,
+      "ms": 199002,
+      "in": 20,
+      "out": 8,
+      "rejects": 12,
+      "promptTokens": 2361,
+      "completionTokens": 760
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 12,
+      "ms": 13804,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 2135312,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 19604,
+      "completionTokens": 9782
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 2,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the primary component of nebulae according to the passage?",
+      "ms": {
+        "draft": 4961,
+        "critique": 52355,
+        "solver": 11982,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT a part of the celestial sphere as described in the passage?",
+      "ms": {
+        "draft": 4961,
+        "critique": 53107
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the main reason for the apparent motion of the sun and moon in the sky?",
+      "ms": {
+        "draft": 4961,
+        "critique": 57926,
+        "solver": 5596,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a star rises at 8 pm tonight, when will it rise tomorrow according to the passage?",
+      "ms": {
+        "draft": 4961,
+        "critique": 62636,
+        "solver": 124841,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is NOT a zodiac sign?",
+      "ms": {
+        "draft": 22276,
+        "critique": 47894
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which constellation is associated with the name 'Mrug'?",
+      "ms": {
+        "draft": 22276,
+        "critique": 37937,
+        "solver": 12123
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for the circle along which the sky seems to touch the ground when seen from a great distance?",
+      "ms": {
+        "draft": 35950,
+        "critique": 39269
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main purpose of the experiment described in the passage?",
+      "ms": {
+        "draft": 22276,
+        "critique": 41800,
+        "solver": 3401,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used for defining the zodiac signs?",
+      "ms": {
+        "draft": 35950,
+        "critique": 34668,
+        "solver": 11885,
+        "form": 23555
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a star rises at 8 pm tonight, at what time will it rise after a month? Why?",
+      "ms": {
+        "draft": 35950,
+        "critique": 58490
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does it mean when it is said that the sun enters a nakshatra?",
+      "ms": {
+        "draft": 35950,
+        "critique": 56662
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is true about the Pole Star?",
+      "ms": {
+        "draft": 27813,
+        "critique": 64698
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the meaning of the term 'zodiac sign' according to the passage?",
+      "ms": {
+        "draft": 27813,
+        "critique": 62190,
+        "solver": 5301,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the moon takes 27.3 days to complete one revolution around the Earth, how many degrees does it cover in one day according to the passage?",
+      "ms": {
+        "draft": 27813,
+        "critique": 65427,
+        "solver": 133924
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many zodiac signs are there according to the passage?",
+      "ms": {
+        "draft": 27813,
+        "critique": 56863,
+        "solver": 3234,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about stars as described in the passage?",
+      "ms": {
+        "draft": 21587,
+        "critique": 40206,
+        "solver": 13984,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a star is observed to rise at 8 pm tonight, at what time will it rise tomorrow according to the passage?",
+      "ms": {
+        "draft": 21587,
+        "critique": 45517,
+        "solver": 11810,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the significance of the Pole Star as mentioned in the passage?",
+      "ms": {
+        "draft": 21587,
+        "critique": 61660,
+        "solver": 1684,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, what is the celestial sphere?",
+      "ms": {
+        "draft": 21587,
+        "critique": 28561,
+        "solver": 13033,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why stars appear to move across the sky?",
+      "ms": {
+        "draft": 21587,
+        "critique": 21664,
+        "solver": 17542,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the galaxy that contains our solar system?",
+      "ms": {
+        "draft": 4961,
+        "critique": 55323,
+        "solver": 10572,
+        "form": 17726,
+        "translation": 241844
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the name given to the line where the sky appears to meet the ground?",
+      "ms": {
+        "draft": 21587,
+        "critique": 37493,
+        "solver": 4847,
+        "form": 9931,
+        "translation": 107559
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to a nebula when the particles in it are attracted to each other due to gravity?",
+      "ms": {
+        "draft": 4961,
+        "critique": 55323,
+        "solver": 12422,
+        "form": 22084,
+        "translation": 349794
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many nakshatras are in one zodiac sign?",
+      "ms": {
+        "draft": 22276,
+        "critique": 52038,
+        "solver": 19037,
+        "form": 51608,
+        "translation": 268559
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the significance of the Pole Star in sky watching?",
+      "ms": {
+        "draft": 22276,
+        "critique": 41677,
+        "solver": 2814,
+        "form": 31100,
+        "translation": 345542
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the sun enters the zodiac sign Capricorn, which constellation is behind the sun?",
+      "ms": {
+        "draft": 22276,
+        "critique": 62430,
+        "solver": 97257,
+        "form": 28291,
+        "translation": 268159
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the sun enters a particular zodiac sign, what does this indicate about the Earth's position?",
+      "ms": {
+        "draft": 27813,
+        "critique": 63462,
+        "solver": 77317,
+        "form": 9952,
+        "translation": 233773
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to understand that the sun's motion is apparent and not real?",
+      "ms": {
+        "draft": 27813,
+        "critique": 60670,
+        "solver": 9029,
+        "form": 10740,
+        "translation": 303150
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the primary component of nebulae according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Mentions other gases not mentioned in the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is NOT a part of the celestial sphere as described in the passage?",
+      "reason": "the critic finds option 3 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the main reason for the apparent motion of the sun and moon in the sky?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a star rises at 8 pm tonight, when will it rise tomorrow according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 3 are the same (\"8:04 pm\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is NOT a zodiac sign?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which constellation is associated with the name 'Mrug'?",
+      "reason": "the solver picked option 1 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term for the circle along which the sky seems to touch the ground when seen from a great distance?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main purpose of the experiment described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the term used for defining the zodiac signs?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Mistakenly thinks it refers to the number of nakshatras in a…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a star rises at 8 pm tonight, at what time will it rise after a month? Why?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What does it mean when it is said that the sun enters a nakshatra?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, which of the following is true about the Pole Star?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the meaning of the term 'zodiac sign' according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"A zodiac sign is a group of 12 constellations that the moon passes through in a year.\" / \"A zodiac sign is a group of 27 constellations that the moon passes through in a year.\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the moon takes 27.3 days to complete one revolution around the Earth, how many degrees does it cover in one day according to the passage?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "How many zodiac signs are there according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about stars as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"Stars are formed from clouds of hydrogen gas and dust particles.\" / \"Stars are formed from clouds of oxygen gas and dust particles.\"); options 0 and 2 say the same thing (\"Stars are formed from clouds of hydrogen gas and dust particles.\" / \"Stars are formed from clouds of carbon gas and dust particles.\"); options 0 and 3 say the same thing (\"Stars are formed from clouds of hydrogen gas and dust particles.\" / \"Stars are formed from clouds of helium gas and dust particles.\"); options 1 and 2 say the same thing (\"Stars are formed from clouds of oxygen gas and dust particles.\" / \"Stars are formed from clouds of carbon gas and dust particles.\"); options 1 and 3 say the same thing (\"Stars are formed from clouds of oxygen gas and dust particles.\" / \"Stars are formed from clouds of helium gas and dust particles.\"); options 2 and 3 say the same thing (\"Stars are formed from clouds of carbon gas and dust particles.\" / \"Stars are formed from clouds of helium gas and dust particles.\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a star is observed to rise at 8 pm tonight, at what time will it rise tomorrow according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the significance of the Pole Star as mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, what is the celestial sphere?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why stars appear to move across the sky?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

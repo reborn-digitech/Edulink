@@ -1,0 +1,863 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T14:48:36.839Z",
+  "finishedAt": "2026-10-31T15:06:21.928Z",
+  "seconds": 1065,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash-II",
+    "bookCode": "gegp2",
+    "document": "ncert/7/mathematics/gegp204.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 12 — Another Peek Beyond the Point",
+    "edition": "2025 edition (the site's Last-Modified)",
+    "chunks": 16,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n7. (A) 9 th (B) 10 th (C) 11 th (D) 12 th 1\nIf the point P (5, 2) divides the line segment joining A( 8, 5) and B( 4, 𝒚) in the",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 22 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n7. C) 140 𝑂"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 490383,
+      "in": 44,
+      "out": 44,
+      "rejects": 0,
+      "promptTokens": 47983,
+      "completionTokens": 12372
+    },
+    "critique": {
+      "calls": 58,
+      "ms": 550189,
+      "in": 44,
+      "out": 41,
+      "rejects": 3,
+      "promptTokens": 29150,
+      "completionTokens": 10726
+    },
+    "solver": {
+      "calls": 306,
+      "ms": 247281,
+      "in": 41,
+      "out": 30,
+      "rejects": 11,
+      "promptTokens": 69996,
+      "completionTokens": 3525
+    },
+    "form": {
+      "calls": 18,
+      "ms": 85527,
+      "in": 30,
+      "out": 7,
+      "rejects": 23,
+      "promptTokens": 4784,
+      "completionTokens": 1560
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 42,
+      "ms": 9381,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 297253,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 16889,
+      "completionTokens": 7909
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 2,
+    "4": 2,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What does the passage say is the natural extension of the Indian place value system?",
+      "ms": {
+        "draft": 5432,
+        "critique": 5921,
+        "solver": 1858,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the first step in dividing a number by 10, 100, 1000, etc.?",
+      "ms": {
+        "draft": 5432,
+        "critique": 6729,
+        "solver": 1837
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the cost of 5 pens if one pen costs ₹9.5?",
+      "ms": {
+        "draft": 5432,
+        "critique": 7135,
+        "solver": 19047,
+        "form": 3536
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 596 × 248 = 147808, what is 5.96 × 24.8?",
+      "ms": {
+        "draft": 5432,
+        "critique": 8536,
+        "solver": 2452
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the product of 0.75 × 0.4 according to the passage?",
+      "ms": {
+        "draft": 15724,
+        "critique": 6482,
+        "solver": 1295,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a car travels 12.5 km per litre of petrol, how far will it travel with 7.5 litres?",
+      "ms": {
+        "draft": 5432,
+        "critique": 11325,
+        "solver": 19590
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the total height of 36 rupee coins placed one over the other, if each coin has a thickness of 1.45 mm?",
+      "ms": {
+        "draft": 15724,
+        "critique": 9531,
+        "solver": 1973,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the rule for dividing a decimal number by 10, 100, 1000, and so on?",
+      "ms": {
+        "draft": 15724,
+        "critique": 8646,
+        "solver": 15377,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In which of the following multiplications is the product less than 1? (a) 7 × 0.6 (b) 0.7 × 0.6 (c) 0.7 × 6 (d) 0.07 × 0.06",
+      "ms": {
+        "draft": 15724,
+        "critique": 8077,
+        "solver": 2490
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens when the remainder in division is not zero?",
+      "ms": {
+        "draft": 14949,
+        "critique": 8538,
+        "solver": 1552,
+        "form": 3501
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the quotient when 1325 is divided by 4?",
+      "ms": {
+        "draft": 14949,
+        "critique": 10584,
+        "solver": 1764,
+        "form": 5149
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 18 × 12 = 216, which of the following products is less than 1?",
+      "ms": {
+        "draft": 15724,
+        "critique": 12796,
+        "solver": 25456
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 237 is divided by 8, what is the quotient?",
+      "ms": {
+        "draft": 14949,
+        "critique": 7081,
+        "solver": 1795,
+        "form": 4007
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the value of 0.06 ÷ 5?",
+      "ms": {
+        "draft": 14949,
+        "critique": 9398,
+        "solver": 1840,
+        "form": 3641
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the weight of each bag if 9.5 kg of sugar is divided equally into 4 bags?",
+      "ms": {
+        "draft": 14949,
+        "critique": 8548,
+        "solver": 14322,
+        "form": 2359
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the result of 10 ÷ 3?",
+      "ms": {
+        "draft": 14949,
+        "critique": 7595,
+        "solver": 1813,
+        "form": 4619
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a car covers 234.45 km using 12.6 litres of petrol, what is the distance covered per litre of petrol?",
+      "ms": {
+        "draft": 15370,
+        "critique": 7914,
+        "solver": 1521,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 13.5 kg of flour is distributed equally among 15 students, how much flour does each student receive?",
+      "ms": {
+        "draft": 15370,
+        "critique": 8376,
+        "solver": 39126,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a regular polygon has a perimeter of 208.8 cm and 12 sides, what is the length of each side?",
+      "ms": {
+        "draft": 15370,
+        "critique": 18412,
+        "solver": 46318
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the Earth takes 365.2422 days to revolve around the Sun once, how many days will it take to revolve 100 times?",
+      "ms": {
+        "draft": 14421,
+        "critique": 19445,
+        "solver": 27381
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many years in 1000 calendar years are divisible by 4 but not divisible by 100 or 400?",
+      "ms": {
+        "draft": 8773,
+        "critique": 7115
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many years in 1000 calendar years are divisible by 400?",
+      "ms": {
+        "draft": 8773,
+        "critique": 10048
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many years in 1000 calendar years are divisible by 100 but not divisible by 400?",
+      "ms": {
+        "draft": 8773,
+        "critique": 6075,
+        "solver": 1919,
+        "form": 3875
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a 210 gram packet of peanut chikki costs ₹70.5, what is the price per gram?",
+      "ms": {
+        "draft": 8773,
+        "critique": 7370,
+        "solver": 1759
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many years in 1000 calendar years are not leap years?",
+      "ms": {
+        "draft": 8773,
+        "critique": 7706,
+        "solver": 2227,
+        "form": 5140
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the Earth takes 365.2422 days to revolve around the Sun once, how many days does it take to revolve around the Sun 1000 times?",
+      "ms": {
+        "draft": 8773,
+        "critique": 7862,
+        "solver": 1967,
+        "form": 5124
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A car covers 234.45 km using 12.6 litres of petrol. What is the distance travelled per litre of petrol?",
+      "ms": {
+        "draft": 17502,
+        "critique": 8186
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the quotient of a division is greater than the dividend, what can be said about the divisor?",
+      "ms": {
+        "draft": 17502,
+        "critique": 8066,
+        "solver": 15976,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a regular polygon has a perimeter of 208.8 cm and 12 sides, what is the length of one side?",
+      "ms": {
+        "draft": 17502,
+        "critique": 8582,
+        "solver": 15886
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the value of 1325 ÷ 4?",
+      "ms": {
+        "draft": 4435,
+        "critique": 8517,
+        "solver": 1954,
+        "form": 4331
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the value of 10 ÷ 3, according to the passage?",
+      "ms": {
+        "draft": 4435,
+        "critique": 9297,
+        "solver": 1959,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the value of 4.23 × 3.7?",
+      "ms": {
+        "draft": 31548,
+        "critique": 11354,
+        "solver": 1929,
+        "form": 4397
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 0.06 ÷ 5 = 0.012, what is the value of 0.006 ÷ 5?",
+      "ms": {
+        "draft": 4435,
+        "critique": 9014,
+        "solver": 24728,
+        "form": 3972
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the product of two numbers is less than 1, which of the following situations could it be?",
+      "ms": {
+        "draft": 31548,
+        "critique": 12371,
+        "solver": 24479
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the product of 0.75 and 5 is 3.75, which of the following statements is true?",
+      "ms": {
+        "draft": 31548,
+        "critique": 10888,
+        "solver": 1691,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Jonali gives Pallabi the fraction 25/1000. What is the equivalent decimal representation?",
+      "ms": {
+        "draft": 31055,
+        "critique": 8965,
+        "solver": 1242,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 5.96 × 24.8 = 147808, what is the value of 59.6 × 2.48?",
+      "ms": {
+        "draft": 31055,
+        "critique": 6599,
+        "solver": 7408
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following situations describes when the product of two numbers is greater than both numbers?",
+      "ms": {
+        "draft": 15724,
+        "critique": 9664,
+        "solver": 1585,
+        "form": 7503,
+        "translation": 60347
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the pattern in the decimal representation of 1 ÷ 2, 1 ÷ 4, 1 ÷ 8, and 1 ÷ 16?",
+      "ms": {
+        "draft": 15370,
+        "critique": 23412,
+        "solver": 7621,
+        "form": 16873,
+        "translation": 48848
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 142857 is multiplied by 7, what is the result?",
+      "ms": {
+        "draft": 15370,
+        "critique": 8228,
+        "solver": 1532,
+        "form": 2542,
+        "translation": 30329
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the perimeter of a regular polygon with 12 sides is 208.8 cm, what is the length of one side?",
+      "ms": {
+        "draft": 17502,
+        "critique": 8349,
+        "solver": 13752,
+        "form": 0,
+        "translation": 31348
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many decimal places should the product of 5.96 and 24.8 have?",
+      "ms": {
+        "draft": 5432,
+        "critique": 9908,
+        "solver": 1608,
+        "form": 5595,
+        "translation": 38862
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In the division of 237 ÷ 8, when the remainder is 5 Ones, what step is taken next?",
+      "ms": {
+        "draft": 4435,
+        "critique": 9866,
+        "solver": 1654,
+        "form": 3909,
+        "translation": 29920
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the quotient of 24.6 ÷ 1.5 is the same as the quotient of 2.46 ÷ 0.15, what does this indicate about the relationship between the dividend and divisor?",
+      "ms": {
+        "draft": 17502,
+        "critique": 9259,
+        "solver": 2513,
+        "form": 0,
+        "translation": 50107
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What does the passage say is the natural extension of the Indian place value system?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "According to the passage, what is the first step in dividing a number by 10, 100, 1000, etc.?",
+      "reason": "the solver picked option 1 3 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the cost of 5 pens if one pen costs ₹9.5?",
+      "reason": "options 0 and 2 are the same (\"₹47.5\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If 596 × 248 = 147808, what is 5.96 × 24.8?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the product of 0.75 × 0.4 according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options are written to different precisions (1 and 2 and 3 and 4 decimals)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a car travels 12.5 km per litre of petrol, how far will it travel with 7.5 litres?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the total height of 36 rupee coins placed one over the other, if each coin has a thickness of 1.45 mm?",
+      "reason": "options are in more than one unit (mm, cm); options are written to different precisions (0 and 1 and 2 decimals); options 0 and 1 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the rule for dividing a decimal number by 10, 100, 1000, and so on?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"Move the decimal point to the right by as many places as there are zeroes in the divisor.\" / \"Move the decimal point to the left by as many places as there are zeroes in the divisor.\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In which of the following multiplications is the product less than 1? (a) 7 × 0.6 (b) 0.7 × 0.6 (c) 0.7 × 6 (d) 0.07 × 0.06",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What happens when the remainder in division is not zero?",
+      "reason": "the key is far longer than every distractor (45 vs 24 characters); distractor 3's reason is not a one-line misconception (\"rounding is not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the quotient when 1325 is divided by 4?",
+      "reason": "options are written to different precisions (1 and 2 decimals); checkExpr \"331.25\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If 18 × 12 = 216, which of the following products is less than 1?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If 237 is divided by 8, what is the quotient?",
+      "reason": "options are written to different precisions (1 and 2 and 3 decimals); checkExpr \"29.625\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What is the value of 0.06 ÷ 5?",
+      "reason": "options are written to different precisions (2 and 3 and 4 decimals); checkExpr \"0.012\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the weight of each bag if 9.5 kg of sugar is divided equally into 4 bags?",
+      "reason": "options are written to different precisions (1 and 2 and 3 decimals); checkExpr \"2.375\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the result of 10 ÷ 3?",
+      "reason": "options 0 and 3 are the same (\"3.333...\"); options are in more than one unit (..., none); options are written to different precisions (1 and 2 and 3 decimals); options 0 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If a car covers 234.45 km using 12.6 litres of petrol, what is the distance covered per litre of petrol?",
+      "reason": "options 0 and 2 are the same (\"18.6 km\"); options are in more than one unit (km, km/litre, km/l); options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number; ARITHMETIC MISMATCH — checkExpr \"234.45/12.6\" = 18.607142857142858, but the key says 18.6"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If 13.5 kg of flour is distributed equally among 15 students, how much flour does each student receive?",
+      "reason": "options are written to different precisions (0 and 1 and 3 decimals)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a regular polygon has a perimeter of 208.8 cm and 12 sides, what is the length of each side?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the Earth takes 365.2422 days to revolve around the Sun once, how many days will it take to revolve 100 times?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "How many years in 1000 calendar years are divisible by 4 but not divisible by 100 or 400?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "How many years in 1000 calendar years are divisible by 400?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "How many years in 1000 calendar years are divisible by 100 but not divisible by 400?",
+      "reason": "checkExpr \"8\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a 210 gram packet of peanut chikki costs ₹70.5, what is the price per gram?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "How many years in 1000 calendar years are not leap years?",
+      "reason": "checkExpr \"750\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If the Earth takes 365.2422 days to revolve around the Sun once, how many days does it take to revolve around the Sun 1000 times?",
+      "reason": "options are written to different precisions (1 and 2 and 3 and 4 decimals)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A car covers 234.45 km using 12.6 litres of petrol. What is the distance travelled per litre of petrol?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the quotient of a division is greater than the dividend, what can be said about the divisor?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a regular polygon has a perimeter of 208.8 cm and 12 sides, what is the length of one side?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the value of 1325 ÷ 4?",
+      "reason": "options are written to different precisions (1 and 2 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the value of 10 ÷ 3, according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options are in more than one unit (..., none); options are written to different precisions (1 and 2 and 3 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What is the value of 4.23 × 3.7?",
+      "reason": "options are written to different precisions (1 and 2 and 3 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If 0.06 ÷ 5 = 0.012, what is the value of 0.006 ÷ 5?",
+      "reason": "options 0 and 3 are the same (\"0.0012\"); options 1 and 2 are the same (\"0.012\"); options are written to different precisions (3 and 4 decimals); options 0 and 3 are the same number; options 1 and 2 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If the product of two numbers is less than 1, which of the following situations could it be?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the product of 0.75 and 5 is 3.75, which of the following statements is true?",
+      "reason": "options 0 and 1 say the same thing (\"The product is less than 5 but greater than 0.75\" / \"The product is less than 0.75 and greater than 5\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the concept of products between numbers betwe…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Jonali gives Pallabi the fraction 25/1000. What is the equivalent decimal representation?",
+      "reason": "options are written to different precisions (1 and 2 and 3 and 4 decimals); distractor 2's reason is not a one-line misconception (\"correct answer…\"); distractor 3's reason is not a one-line misconception (\"adds an extra zero unnecessarily when placing the decimal po…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If 5.96 × 24.8 = 147808, what is the value of 59.6 × 2.48?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

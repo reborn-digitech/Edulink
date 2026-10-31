@@ -1,0 +1,661 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T18:58:22.745Z",
+  "finishedAt": "2026-10-31T19:41:11.504Z",
+  "seconds": 2569,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "703020012",
+    "document": "balbharati/7/science/703020012.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 18 — Sound : Production of Sound",
+    "edition": "First Edition 2017",
+    "chunks": 8,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2021 — question paper]\n20. (6 marks) Smartphones can be used to perform simple experiments related to sound. There are various\napps which record the intensity of an audio signal. An app (WaveEditor TM here) displays the audio signal\nin the form of a wave, whose amplitude is proportional to the loudness of the audio signal.\nTwo students Fatima (F) and Bharat (B) conduct a simple experiment using smartphones. In an open\nfield, both place their smartphones at a distance d from each other as shown in the figure. They stand\nnext to their smartphones, and clap one after another. The audio signals from the claps are digitally\nrecorded by WaveEditor TM and the output produced on their smartphone screens are shown next to ",
+      "[INJSO 2022 — solutions or answer key]\n6. A. frequency of sound waves will not change due to motion of air.",
+      "[INJSO 2013 — question paper]\n66. The natural voices of men, women and children are different and can be distinguished.\nA student makes three hypotheses\nI. The amplitudes of sounds emitted by them are different.\nII. The vocal cords are of different sizes.\nIII. The vocal cords vibrate with different frequencies.\nThe correct option is\nA. I only.\nB. II only.\nC. III only.\nD. I and III only.",
+      "[INJSO 2013 — solutions or answer key]\n66. The natural voices of men, women and children are different and can be distinguished.\nA student makes three hypotheses\nI. The amplitudes of sounds emitted by them are different.\nII. The vocal cords are of different sizes.\nIII. The vocal cords vibrate with different frequencies.\nThe correct option is\nA. I only.\nB. II only.\nC. III only.\nD. I and III only."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 564575,
+      "in": 34,
+      "out": 34,
+      "rejects": 0,
+      "promptTokens": 24825,
+      "completionTokens": 6341
+    },
+    "critique": {
+      "calls": 41,
+      "ms": 1438788,
+      "in": 34,
+      "out": 26,
+      "rejects": 8,
+      "promptTokens": 17144,
+      "completionTokens": 6967
+    },
+    "solver": {
+      "calls": 177,
+      "ms": 479714,
+      "in": 26,
+      "out": 23,
+      "rejects": 3,
+      "promptTokens": 28903,
+      "completionTokens": 1749
+    },
+    "form": {
+      "calls": 20,
+      "ms": 328073,
+      "in": 23,
+      "out": 12,
+      "rejects": 11,
+      "promptTokens": 4882,
+      "completionTokens": 1458
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 11,
+      "ms": 24568,
+      "in": 12,
+      "out": 11,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 3251633,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 25118,
+      "completionTokens": 12383
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 2,
+    "4": 1,
+    "5": 2,
+    "6": 3
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the main factor that determines the pitch of a sound?",
+      "ms": {
+        "draft": 22353,
+        "critique": 46048
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a string of a musical instrument is plucked with more force, what happens to the sound produced?",
+      "ms": {
+        "draft": 22353,
+        "critique": 47178
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of sound being produced due to the vibration of an object?",
+      "ms": {
+        "draft": 22353,
+        "critique": 46658,
+        "solver": 1363
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student claps twice, once with more force than the second time. How does the sound produced in the first clap compare to the second?",
+      "ms": {
+        "draft": 22353,
+        "critique": 39180
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does a singer tune a musical instrument before singing?",
+      "ms": {
+        "draft": 22353,
+        "critique": 55253
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a factor that affects the frequency of a pendulum?",
+      "ms": {
+        "draft": 15174,
+        "critique": 18297,
+        "solver": 14460,
+        "form": 22980
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the term for the back and forth motion of an oscillator around a central position?",
+      "ms": {
+        "draft": 22353,
+        "critique": 33537,
+        "solver": 85258,
+        "form": 16942
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the sound produced by a pendulum?",
+      "ms": {
+        "draft": 15174,
+        "critique": 30062,
+        "solver": 12804,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an ultrasonic sound?",
+      "ms": {
+        "draft": 16313,
+        "critique": 26340,
+        "solver": 12677,
+        "form": 18620
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a sound has a frequency of 15 Hz, what type of sound is it?",
+      "ms": {
+        "draft": 16313,
+        "critique": 50374,
+        "solver": 2474,
+        "form": 10819
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is not a use of ultrasonic sound?",
+      "ms": {
+        "draft": 16313,
+        "critique": 34342,
+        "solver": 81600
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct pair according to the passage?",
+      "ms": {
+        "draft": 11609,
+        "critique": 34738,
+        "solver": 8514
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for a sound with a frequency higher than 20,000 Hz?",
+      "ms": {
+        "draft": 11609,
+        "critique": 24922,
+        "solver": 54025,
+        "form": 26706
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Why can't we hear the movement of our hands but we can hear the movement of a mosquito's wings?",
+      "ms": {
+        "draft": 11609,
+        "critique": 21822,
+        "solver": 10367,
+        "form": 23975
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the frequency of a pendulum when its length is increased?",
+      "ms": {
+        "draft": 17734,
+        "critique": 28692
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student records the sound of a clap using a smartphone app that shows the amplitude of the sound wave. If the amplitude of the wave increases, what can be said about the sound?",
+      "ms": {
+        "draft": 17734,
+        "critique": 21605,
+        "solver": 12562,
+        "form": 11988
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a ruler is held with 25 cm of it off the table and then plucked, will it produce a sound?",
+      "ms": {
+        "draft": 17734,
+        "critique": 29079,
+        "solver": 11208,
+        "form": 23037
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a source of sound according to the passage?",
+      "ms": {
+        "draft": 16371,
+        "critique": 40511
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A pendulum is set into motion and the time for 20 oscillations is recorded. If the length of the pendulum is halved, what happens to its frequency?",
+      "ms": {
+        "draft": 17734,
+        "critique": 45328
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a musical instrument is not producing sound, what could be the reason according to the passage?",
+      "ms": {
+        "draft": 16371,
+        "critique": 23389
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about the relationship between vibration and sound?",
+      "ms": {
+        "draft": 16371,
+        "critique": 45843,
+        "solver": 88961,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the role of elasticity in the production of sound according to the passage?",
+      "ms": {
+        "draft": 16371,
+        "critique": 25670,
+        "solver": 90586,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the unit of frequency of a sound wave?",
+      "ms": {
+        "draft": 17734,
+        "critique": 18390,
+        "solver": 9072,
+        "form": 20202
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the minimum frequency of sound that humans can hear?",
+      "ms": {
+        "draft": 16313,
+        "critique": 41388,
+        "solver": 66736,
+        "form": 9344,
+        "translation": 331047
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the unit of frequency?",
+      "ms": {
+        "draft": 15174,
+        "critique": 33652,
+        "solver": 7653,
+        "form": 21782,
+        "translation": 225598
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a use of ultrasonic sound?",
+      "ms": {
+        "draft": 11609,
+        "critique": 25430,
+        "solver": 8923,
+        "form": 15676,
+        "translation": 280561
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the length of the free part of a ruler is decreased, what happens to the frequency of the sound it produces?",
+      "ms": {
+        "draft": 15174,
+        "critique": 36096,
+        "solver": 2893,
+        "form": 22166,
+        "translation": 337421
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the amplitude of a sound is decreased, what happens to its loudness?",
+      "ms": {
+        "draft": 11609,
+        "critique": 24453,
+        "solver": 2057,
+        "form": 27070,
+        "translation": 261455
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of a sound with a frequency less than 20 Hz?",
+      "ms": {
+        "draft": 17734,
+        "critique": 21817,
+        "solver": 7816,
+        "form": 19445,
+        "translation": 283331
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a student claps near a smartphone and the app records the sound, what does the amplitude of the wave in the app represent?",
+      "ms": {
+        "draft": 15174,
+        "critique": 17052,
+        "solver": 11762,
+        "form": 20925,
+        "translation": 282891
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student hears a sound that is too high for them to hear. What can be said about this sound?",
+      "ms": {
+        "draft": 16313,
+        "critique": 60030,
+        "solver": 34024,
+        "form": 9605,
+        "translation": 304087
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In the experiment with the wire and blocks, what is the relationship between the tension in the wire and the frequency of the sound produced?",
+      "ms": {
+        "draft": 15174,
+        "critique": 47994,
+        "solver": 3059,
+        "form": 15376,
+        "translation": 319548
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A person cannot hear a sound, but a dog can. What can be inferred about this sound?",
+      "ms": {
+        "draft": 16313,
+        "critique": 56527,
+        "solver": 3954,
+        "form": 7969,
+        "translation": 334197
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do we not hear the sound of a bat flying at night?",
+      "ms": {
+        "draft": 11609,
+        "critique": 23070,
+        "solver": 10568,
+        "form": 27657,
+        "translation": 283789
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main factor that determines the pitch of a sound?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a string of a musical instrument is plucked with more force, what happens to the sound produced?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is an example of sound being produced due to the vibration of an object?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student claps twice, once with more force than the second time. How does the sound produced in the first clap compare to the second?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why does a singer tune a musical instrument before singing?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a factor that affects the frequency of a pendulum?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the term for the back and forth motion of an oscillator around a central position?",
+      "reason": "options 2 and 3 are the same (\"Rotation.\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the sound produced by a pendulum?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of an ultrasonic sound?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"picks a sound that is not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a sound has a frequency of 15 Hz, what type of sound is it?",
+      "reason": "option 3 is a catch-all (\"None of the above\"); distractor 3's reason is not a one-line misconception (\"selects an option that is not described in the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is not a use of ultrasonic sound?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is a correct pair according to the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term for a sound with a frequency higher than 20,000 Hz?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Why can't we hear the movement of our hands but we can hear the movement of a mosquito's wings?",
+      "reason": "options 1 and 2 say the same thing (\"Because the frequency of our hands is too low\" / \"Because the amplitude of our hands is too low\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What happens to the frequency of a pendulum when its length is increased?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student records the sound of a clap using a smartphone app that shows the amplitude of the sound wave. If the amplitude of the wave increases, what can be said about the sound?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Confuses amplitude with frequency, which is not directly rel…\"); distractor 1's reason is not a one-line misconception (\"Confuses amplitude with pitch, which is not directly related…\"); distractor 3's reason is not a one-line misconception (\"Believes that wavelength changes with amplitude, which is no…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a ruler is held with 25 cm of it off the table and then plucked, will it produce a sound?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Believes that the material of the ruler affects sound produc…\"); distractor 3's reason is not a one-line misconception (\"Believes that temperature affects sound production, which is…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a source of sound according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A pendulum is set into motion and the time for 20 oscillations is recorded. If the length of the pendulum is halved, what happens to its frequency?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a musical instrument is not producing sound, what could be the reason according to the passage?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage say about the relationship between vibration and sound?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers); distractor 1's reason is not a one-line misconception (\"misunderstands the passage's statement about vibration stopp…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the role of elasticity in the production of sound according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"ignores the passage's explanation of elasticity…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the unit of frequency of a sound wave?",
+      "reason": "near-duplicate of batch item \"What is the unit of frequency?…\" (cosine 0.922 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

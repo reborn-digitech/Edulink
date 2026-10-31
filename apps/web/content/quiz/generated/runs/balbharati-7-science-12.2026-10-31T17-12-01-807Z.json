@@ -1,0 +1,407 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T17:12:01.807Z",
+  "finishedAt": "2026-10-31T17:20:51.249Z",
+  "seconds": 529,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "703020012",
+    "document": "balbharati/7/science/703020012.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 12 — The Muscular System and Digestive System in Human Beings",
+    "edition": "First Edition 2017",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[NSEJS 2015 — question paper]\n4. In humans, the digestion of carbohydrates happens/takes place in the following parts of the\ndigestive system:\na) Mouth, stomach and small intestine b) Mouth and small intestine\nc) Small intestine alone d) Stomach and small intestine",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n8. Generally food is broken and absorbed within the body of organisms. In which of the 1\nfollowing organisms is it done outside the body?\na) Amoeba\nb) Mushroom\nc) Paramoecium\nd) Lice",
+      "[CBSE Class X Science, sample question paper, 2026-27]\n13. How do muscles move at the cellular level and respond when processed 3\nmessages are received from the brain?",
+      "[INJSO 2016 — question paper]\n1. Ingestion, digestion, absorption, assimilation and egestion are the steps in food\nprocessing in our body. Majority of absorption takes place in small intestine (villi)\nand which is transported to different organs through the circulatory system.\nStarting with villi, which of the following is the correct sequence of organs that\nthe absorbed food passes through?\na) Liver → Other organs → Heart\nb) Heart→ Liver → Other organs\nc) Heart → Other organs → Liver\nd) Liver→ Heart →Other organs"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 102446,
+      "in": 23,
+      "out": 19,
+      "rejects": 4,
+      "promptTokens": 17510,
+      "completionTokens": 4169
+    },
+    "critique": {
+      "calls": 22,
+      "ms": 192852,
+      "in": 19,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 9214,
+      "completionTokens": 3707
+    },
+    "solver": {
+      "calls": 109,
+      "ms": 66333,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 14399,
+      "completionTokens": 970
+    },
+    "form": {
+      "calls": 13,
+      "ms": 48382,
+      "in": 18,
+      "out": 17,
+      "rejects": 1,
+      "promptTokens": 3100,
+      "completionTokens": 895
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 17,
+      "out": 17,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 9,
+      "ms": 1850,
+      "in": 17,
+      "out": 16,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 65,
+      "ms": 680383,
+      "in": 32,
+      "out": 32,
+      "rejects": 0,
+      "promptTokens": 35357,
+      "completionTokens": 17520
+    }
+  },
+  "kept": 16,
+  "keptByLevel": {
+    "1": 3,
+    "2": 2,
+    "3": 4,
+    "4": 2,
+    "5": 3,
+    "6": 2
+  },
+  "flagged": 7,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a voluntary muscle?",
+      "ms": {
+        "draft": 3650,
+        "critique": 8705,
+        "solver": 1687,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the body is responsible for the movement of the arm?",
+      "ms": {
+        "draft": 3960,
+        "critique": 7041
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In which part of the digestive system does the digestion of carbohydrates begin?",
+      "ms": {
+        "draft": 3650,
+        "critique": 8983,
+        "solver": 1677,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the body is responsible for the contraction and relaxation of the heart?",
+      "ms": {
+        "draft": 5280,
+        "critique": 8553,
+        "solver": 2242,
+        "form": 5955,
+        "translation": 51531
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the function of the biceps muscle?",
+      "ms": {
+        "draft": 3960,
+        "critique": 5861,
+        "solver": 5701,
+        "form": 1558,
+        "translation": 28700
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the digestive system is responsible for the initial breakdown of carbohydrates?",
+      "ms": {
+        "draft": 17227,
+        "critique": 9203,
+        "solver": 1736,
+        "form": 5355,
+        "translation": 41408
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of the digestive system?",
+      "ms": {
+        "draft": 5280,
+        "critique": 10026,
+        "solver": 2794,
+        "form": 3932,
+        "translation": 43219
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of bile in the digestive system?",
+      "ms": {
+        "draft": 17227,
+        "critique": 8413,
+        "solver": 2348,
+        "form": 5371,
+        "translation": 43987
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person's stomach muscles do not move, what would happen?",
+      "ms": {
+        "draft": 5280,
+        "critique": 9199,
+        "solver": 2384,
+        "form": 5820,
+        "translation": 50523
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which organ is responsible for storing bile?",
+      "ms": {
+        "draft": 17227,
+        "critique": 12204,
+        "solver": 1594,
+        "form": 4960,
+        "translation": 27902
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which part of the digestive system is responsible for the majority of digestion and absorption of food?",
+      "ms": {
+        "draft": 3650,
+        "critique": 8914,
+        "solver": 2371,
+        "form": 0,
+        "translation": 36377
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a function of the liver in the digestive system?",
+      "ms": {
+        "draft": 3650,
+        "critique": 10055,
+        "solver": 2500,
+        "form": 0,
+        "translation": 36594
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the function of the biceps and triceps?",
+      "ms": {
+        "draft": 5280,
+        "critique": 8532,
+        "solver": 1664,
+        "form": 6565,
+        "translation": 47202
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which part of the digestive system is described as being about 6 meters long and responsible for most digestion and absorption?",
+      "ms": {
+        "draft": 17227,
+        "critique": 12364,
+        "solver": 2124,
+        "form": 5250,
+        "translation": 46894
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of an involuntary muscle?",
+      "ms": {
+        "draft": 5280,
+        "critique": 9302,
+        "solver": 1974,
+        "form": 4268,
+        "translation": 38332
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a person's large intestine is not absorbing water properly, what would be the most likely effect on their health?",
+      "ms": {
+        "draft": 17227,
+        "critique": 11986,
+        "solver": 15251,
+        "form": 2675,
+        "translation": 54274
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a person consumes a large amount of alcohol, which part of the digestive system is most affected?",
+      "ms": {
+        "draft": 3650,
+        "critique": 9140,
+        "solver": 1640,
+        "form": 0,
+        "translation": 35145
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why are muscles important for maintaining the structure of the body?",
+      "ms": {
+        "draft": 5280,
+        "critique": 8925,
+        "solver": 18645,
+        "form": 3269,
+        "translation": 46169
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why are cardiac muscles considered involuntary?",
+      "ms": {
+        "draft": 17227,
+        "critique": 7598,
+        "solver": 1212,
+        "form": 3013,
+        "translation": 48481
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is an example of a digestive enzyme?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which type of muscles are responsible for the beating of the heart?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the main function of the digestive system?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which part of the body contains the enzyme ptyalin?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a voluntary muscle?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which part of the body is responsible for the movement of the arm?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "In which part of the digestive system does the digestion of carbohydrates begin?",
+      "reason": "near-duplicate of batch item \"Which part of the digestive system is responsible …\" (cosine 0.914 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

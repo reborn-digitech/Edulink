@@ -1,0 +1,416 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T10:42:44.950Z",
+  "finishedAt": "2026-10-31T10:59:16.055Z",
+  "seconds": 991,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी गणित इंग्रजी",
+    "bookCode": "703020004",
+    "document": "balbharati/7/mathematics/703020004.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 3 — HCF and LCM",
+    "edition": "2026 edition",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n21. (A) 480 = 2 x 3 x 5 5\n720 = 2 x 3 x 5 4 2\nLCM (480,720) = 2 x 3 x 5 = 1440 5 2\nHCF (480, 720) = 2 x 3x 5 = 240 4\nOR\n(B) 85 = 5x17, 238 = 2x7x17\nHCF( 85, 238) = 17\n17 = 85xm -238\nm = 3\n½\n½\n½\n½",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n21. (A)Find the H.C.F and L.C.M of 480 and 720 using the Prime factorisation method. 2\nOR\n(A) The H.C.F of 85 and 238 is expressible in the form 85m -238. Find the value of\nm.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2022-23]\n19. Statement A (Assertion): If product of two numbers is 5780 and their HCF is 17, then\ntheir LCM is 340\nStatement R( Reason) : HCF is always a factor of LCM\n(a) Both assertion (A) and reason (R) are true and reason (R) is the correct explanation\nof assertion (A)\n(b) Both assertion (A) and reason (R) are true and reason (R) is not the correct\nexplanation of assertion (A)\n(c) Assertion (A) is true but reason (R) is false.\n(d) Assertion (A) is false but reason (R) is true.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2022-23]\n1. Let a and b be two positive integers such that a = p q and b = p q , where p and q are 3 4 2 3 1\nprime numbers. If HCF(a,b) = p q and LCM(a,b) = p q , then (m+n)(r+s)= m n r s\n(a) 15 (b) 30 (c) 35 (d) 72"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 137035,
+      "in": 18,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 14566,
+      "completionTokens": 3875
+    },
+    "critique": {
+      "calls": 29,
+      "ms": 370473,
+      "in": 18,
+      "out": 15,
+      "rejects": 3,
+      "promptTokens": 13240,
+      "completionTokens": 5608
+    },
+    "solver": {
+      "calls": 148,
+      "ms": 151460,
+      "in": 15,
+      "out": 9,
+      "rejects": 6,
+      "promptTokens": 40947,
+      "completionTokens": 1885
+    },
+    "form": {
+      "calls": 5,
+      "ms": 42374,
+      "in": 9,
+      "out": 5,
+      "rejects": 4,
+      "promptTokens": 1502,
+      "completionTokens": 537
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 2,
+      "ms": 371,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 856396,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 9904,
+      "completionTokens": 4098
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 2,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If the HCF and LCM of two numbers are 4 and 320 respectively, and the product of the two numbers is 1280, what is the value of the HCF?",
+      "ms": {
+        "draft": 17846,
+        "critique": 11136
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A shop sells a 450 g bottle of jam for 96 rupees and a 600 g bottle of jam for 124 rupees. Which bottle is more profitable to buy?",
+      "ms": {
+        "draft": 17846,
+        "critique": 11829
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The product of two two-digit numbers is 765 and their HCF is 3. What is their LCM?",
+      "ms": {
+        "draft": 17846,
+        "critique": 11883,
+        "solver": 16395
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The LCM and HCF of two numbers are 432 and 72 respectively. If one of the numbers is 216, what is the other number?",
+      "ms": {
+        "draft": 17846,
+        "critique": 11764,
+        "solver": 21445
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about the relationship between the HCF and LCM of two numbers?",
+      "ms": {
+        "draft": 17846,
+        "critique": 12403,
+        "solver": 26532,
+        "form": 5688
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A shop sells a 450 g bottle of jam for 96 rupees and a 600 g bottle for 124 rupees. Which bottle is more profitable to buy?",
+      "ms": {
+        "draft": 5179,
+        "critique": 20510,
+        "solver": 3408,
+        "form": 14981
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the HCF of two numbers is 4 and their product is 1280, what is their LCM?",
+      "ms": {
+        "draft": 5179,
+        "critique": 14985,
+        "solver": 33823
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the relationship between the product of two numbers and their HCF and LCM?",
+      "ms": {
+        "draft": 5179,
+        "critique": 19119,
+        "solver": 28402,
+        "form": 3466
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The LCM of two numbers is 432 and their HCF is 72. If one number is 216, what is the other number?",
+      "ms": {
+        "draft": 5179,
+        "critique": 14006
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The product of two two-digit numbers is 765 and their HCF is 3. What is their LCM?",
+      "ms": {
+        "draft": 5179,
+        "critique": 7214,
+        "solver": 27843,
+        "form": 10915
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the LCM of two numbers is 240 and their HCF is 6, what is the product of the two numbers?",
+      "ms": {
+        "draft": 12182,
+        "critique": 14867,
+        "solver": 24643
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the HCF of two numbers is 12 and their LCM is 144, which of the following could be the two numbers?",
+      "ms": {
+        "draft": 12182,
+        "critique": 21524,
+        "solver": 24644
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the HCF of two numbers is 17 and their LCM is 340, which of the following pairs of numbers could they be?",
+      "ms": {
+        "draft": 12182,
+        "critique": 15583,
+        "solver": 14074
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which number is neither a prime nor a composite number?",
+      "ms": {
+        "draft": 12182,
+        "critique": 11092,
+        "solver": 2230,
+        "form": 0,
+        "translation": 101823
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of co-prime numbers?",
+      "ms": {
+        "draft": 12182,
+        "critique": 15179,
+        "solver": 1852,
+        "form": 0,
+        "translation": 153481
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the HCF of 60 and 48 using the prime factorisation method?",
+      "ms": {
+        "draft": 12182,
+        "critique": 15242,
+        "solver": 29507,
+        "form": 0,
+        "translation": 152057
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A trader has three bundles of string 392 m, 308 m and 490 m long. What is the greatest length of string that the bundles can be cut up into without any left over string?",
+      "ms": {
+        "draft": 17846,
+        "critique": 6475,
+        "solver": 6413,
+        "form": 0,
+        "translation": 209101
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the smallest number that when divided by 8, 10, 12, 14 gives a remainder of 3 every time?",
+      "ms": {
+        "draft": 5179,
+        "critique": 15728,
+        "solver": 1979,
+        "form": 9192,
+        "translation": 203335
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the HCF and LCM of two numbers are 4 and 320 respectively, and the product of the two numbers is 1280, what is the value of the HCF?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A shop sells a 450 g bottle of jam for 96 rupees and a 600 g bottle of jam for 124 rupees. Which bottle is more profitable to buy?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The product of two two-digit numbers is 765 and their HCF is 3. What is their LCM?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "The LCM and HCF of two numbers are 432 and 72 respectively. If one of the numbers is 216, what is the other number?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is true about the relationship between the HCF and LCM of two numbers?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A shop sells a 450 g bottle of jam for 96 rupees and a 600 g bottle for 124 rupees. Which bottle is more profitable to buy?",
+      "reason": "option 0 repeats the stem's wording (\"450 g bottle\"); option 1 repeats the stem's wording (\"600 g bottle\"); options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the HCF of two numbers is 4 and their product is 1280, what is their LCM?",
+      "reason": "after redrafting distractors 0, 2, 3: the critic finds option 0 correct, the key is 1"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the relationship between the product of two numbers and their HCF and LCM?",
+      "reason": "options 0 and 2 say the same thing (\"The product is equal to the HCF divided by the LCM\" / \"The product is equal to the HCF multiplied by the LCM\"); options 0 and 3 say the same thing (\"The product is equal to the HCF divided by the LCM\" / \"The product is equal to the LCM divided by the HCF\"); options 2 and 3 say the same thing (\"The product is equal to the HCF multiplied by the LCM\" / \"The product is equal to the LCM divided by the HCF\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "The LCM of two numbers is 432 and their HCF is 72. If one number is 216, what is the other number?",
+      "reason": "the critic finds option 0 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The product of two two-digit numbers is 765 and their HCF is 3. What is their LCM?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If the LCM of two numbers is 240 and their HCF is 6, what is the product of the two numbers?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the HCF of two numbers is 12 and their LCM is 144, which of the following could be the two numbers?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the HCF of two numbers is 17 and their LCM is 340, which of the following pairs of numbers could they be?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,335 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T12:24:13.925Z",
+  "finishedAt": "2026-10-31T12:27:07.382Z",
+  "seconds": 173,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी गणित इंग्रजी",
+    "bookCode": "703020004",
+    "document": "balbharati/7/mathematics/703020004.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 13 — Pythagoras’ Theorem",
+    "edition": "2026 edition",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n13. B (Hypotenuse ) =(Base) + (Perpendicular) ⇒ (15) = (Base) +(12) 2 2 2 2 2 2 1\n⇒ Base = 9 m\n(B) 𝟗𝐦",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n23. In ∆ OTA, ∠OTA = 90˚\nBy Pythagoras theorem\nOA = OT + AT 2 2 2\n(5) = OT + (4) 2 2 2\n25-16= OT 2\n9 = OT 2\nOT=3cm\nradius of circle = 3cm.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 22 7 wherever required if not stated."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 62602,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 8402,
+      "completionTokens": 2859
+    },
+    "critique": {
+      "calls": 22,
+      "ms": 179971,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 10260,
+      "completionTokens": 3776
+    },
+    "solver": {
+      "calls": 130,
+      "ms": 113634,
+      "in": 12,
+      "out": 8,
+      "rejects": 4,
+      "promptTokens": 31609,
+      "completionTokens": 1641
+    },
+    "form": {
+      "calls": 4,
+      "ms": 16231,
+      "in": 8,
+      "out": 1,
+      "rejects": 7,
+      "promptTokens": 1067,
+      "completionTokens": 284
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 5,
+      "ms": 1033,
+      "in": 1,
+      "out": 0,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 1,
+      "ms": 4493,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 154,
+      "completionTokens": 256
+    }
+  },
+  "kept": 0,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the name of the side opposite to the right angle in a right-angled triangle?",
+      "ms": {
+        "draft": 5527,
+        "critique": 7649,
+        "solver": 2490,
+        "form": 4884
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to Pythagoras' theorem, what is the relationship between the square of the hypotenuse and the squares of the other two sides in a right-angled triangle?",
+      "ms": {
+        "draft": 5527,
+        "critique": 6598,
+        "solver": 2396,
+        "form": 6569
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a right-angled triangle, if the length of one side is 5 cm and the hypotenuse is 13 cm, what is the length of the other side?",
+      "ms": {
+        "draft": 5527,
+        "critique": 8044,
+        "solver": 22784,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A ladder 15 m long is placed against a wall. The top of the ladder reaches a window 9 m above the ground. What is the distance between the base of the ladder and the wall?",
+      "ms": {
+        "draft": 5527,
+        "critique": 10628,
+        "solver": 21659
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a right-angled triangle, if the hypotenuse is 25 cm and one of the sides is 7 cm, what is the length of the other side?",
+      "ms": {
+        "draft": 5527,
+        "critique": 11111,
+        "solver": 22766,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following sets of numbers form a Pythagorean triplet?",
+      "ms": {
+        "draft": 5527,
+        "critique": 10345,
+        "solver": 9969
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a right-angled triangle, if the lengths of the two sides forming the right angle are 5 cm and 12 cm, what is the length of the hypotenuse?",
+      "ms": {
+        "draft": 4907,
+        "critique": 7254,
+        "solver": 17712,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to Pythagoras’ theorem, what is the relationship between the square of the hypotenuse and the squares of the other two sides in a right-angled triangle?",
+      "ms": {
+        "draft": 4907,
+        "critique": 6243,
+        "solver": 17466,
+        "form": 4798
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A ladder is placed against a wall, with the top of the ladder reaching a window 9 m above the ground. The base of the ladder is 12 m away from the wall. What is the length of the ladder?",
+      "ms": {
+        "draft": 4907,
+        "critique": 7545,
+        "solver": 16969,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a right-angled triangle, if the hypotenuse is 15 m and one of the other sides is 9 m, what is the length of the third side?",
+      "ms": {
+        "draft": 4907,
+        "critique": 7971,
+        "solver": 19335
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a right-angled triangle, if the hypotenuse is 25 cm and one of the other sides is 7 cm, what is the length of the third side?",
+      "ms": {
+        "draft": 4907,
+        "critique": 9042,
+        "solver": 16635
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "In a right-angled triangle, what is the name of the side opposite the right angle?",
+      "ms": {
+        "draft": 4907,
+        "critique": 6557,
+        "solver": 15813,
+        "form": 4609
+      },
+      "outcome": "dedupe",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the side opposite to the right angle in a right-angled triangle?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is hypotenuse, not vertex or any other term…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to Pythagoras' theorem, what is the relationship between the square of the hypotenuse and the squares of the other two sides in a right-angled triangle?",
+      "reason": "options 0 and 2 say the same thing (\"The square of the hypotenuse is less than the sum of the squares of the other two sides\" / \"The square of the hypotenuse is greater than the sum of the squares of the other two sides\"); distractor 2's reason is not a one-line misconception (\"Correct answer is the second option…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In a right-angled triangle, if the length of one side is 5 cm and the hypotenuse is 13 cm, what is the length of the other side?",
+      "reason": "checkExpr \"sqrt(13^2 - 5^2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A ladder 15 m long is placed against a wall. The top of the ladder reaches a window 9 m above the ground. What is the distance between the base of the ladder and the wall?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a right-angled triangle, if the hypotenuse is 25 cm and one of the sides is 7 cm, what is the length of the other side?",
+      "reason": "checkExpr \"sqrt(25^2 - 7^2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following sets of numbers form a Pythagorean triplet?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In a right-angled triangle, if the lengths of the two sides forming the right angle are 5 cm and 12 cm, what is the length of the hypotenuse?",
+      "reason": "checkExpr \"sqrt(5^2 + 12^2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to Pythagoras’ theorem, what is the relationship between the square of the hypotenuse and the squares of the other two sides in a right-angled triangle?",
+      "reason": "options 0 and 1 say the same thing (\"The square of the hypotenuse is greater than the sum of the squares of the other two sides.\" / \"The square of the hypotenuse is less than the sum of the squares of the other two sides.\"); options 2 and 3 say the same thing (\"The square of the hypotenuse is equal to the sum of the squares of the other two sides.\" / \"The square of the hypotenuse is equal to the difference of the squares of the other two sides.\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A ladder is placed against a wall, with the top of the ladder reaching a window 9 m above the ground. The base of the ladder is 12 m away from the wall. What is the length of the ladder?",
+      "reason": "checkExpr \"sqrt(9^2 + 12^2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In a right-angled triangle, if the hypotenuse is 15 m and one of the other sides is 9 m, what is the length of the third side?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In a right-angled triangle, if the hypotenuse is 25 cm and one of the other sides is 7 cm, what is the length of the third side?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "In a right-angled triangle, what is the name of the side opposite the right angle?",
+      "reason": "near-duplicate of served question cmvw9ep4l01fh0rem7l6k86sp (cosine 0.958 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

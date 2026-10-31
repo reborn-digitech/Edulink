@@ -1,0 +1,681 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T04:29:35.930Z",
+  "finishedAt": "2026-10-31T04:38:40.658Z",
+  "seconds": 545,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "603050012",
+    "document": "balbharati/6/science/603050012.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 5 — Disaster Management",
+    "edition": "First Edition 2026",
+    "chunks": 10,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2021 — solutions or answer key]\n1. C. Responses to fight-flight situation can either be the result of acute stress such as loss of\nbowel/bladder control and shivering while some could be to help overcome the situation such as pupil\ndilation to accept more light.",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n6. Section E would have 3 source based/case based/passage based/integrated units of\nassessment (04 marks each) with sub-parts of the values of 1/2/3 marks.",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n5. C. Displacement reaction",
+      "[CBSE Class X Science, sample question paper, 2022-23]\n33. Why is damage to the ozone layer a cause for concern? What are its causes and 3\nwhat steps are being taken to limit this damage?"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 140999,
+      "in": 36,
+      "out": 36,
+      "rejects": 0,
+      "promptTokens": 25010,
+      "completionTokens": 7485
+    },
+    "critique": {
+      "calls": 44,
+      "ms": 299227,
+      "in": 36,
+      "out": 22,
+      "rejects": 14,
+      "promptTokens": 18593,
+      "completionTokens": 7488
+    },
+    "solver": {
+      "calls": 163,
+      "ms": 89560,
+      "in": 22,
+      "out": 20,
+      "rejects": 2,
+      "promptTokens": 26579,
+      "completionTokens": 1650
+    },
+    "form": {
+      "calls": 17,
+      "ms": 45969,
+      "in": 20,
+      "out": 13,
+      "rejects": 7,
+      "promptTokens": 3957,
+      "completionTokens": 1063
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 13,
+      "ms": 2326,
+      "in": 13,
+      "out": 12,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 49,
+      "ms": 559679,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 27035,
+      "completionTokens": 13593
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 1,
+    "5": 3,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "What would happen to underground cables and pipes if an earthquake occurs?",
+      "ms": {
+        "draft": 3912,
+        "critique": 5235
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a natural cause of flooding according to the passage?",
+      "ms": {
+        "draft": 3912,
+        "critique": 5526
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for planning, preparation, and actions taken to deal with disasters?",
+      "ms": {
+        "draft": 3912,
+        "critique": 6278
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason for the destruction caused by a tsunami?",
+      "ms": {
+        "draft": 3912,
+        "critique": 6506
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why are river floods more common in areas near the Himalayas?",
+      "ms": {
+        "draft": 3912,
+        "critique": 5678
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What should people do during an earthquake if they are outdoors?",
+      "ms": {
+        "draft": 3912,
+        "critique": 5147,
+        "solver": 1960,
+        "form": 2499
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main cause of forest fires according to the passage?",
+      "ms": {
+        "draft": 5045,
+        "critique": 6323
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is a cyclone?",
+      "ms": {
+        "draft": 5045,
+        "critique": 7263
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What should you do during a storm according to the passage?",
+      "ms": {
+        "draft": 5045,
+        "critique": 6034
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the purpose of a first aid kit according to the passage?",
+      "ms": {
+        "draft": 5045,
+        "critique": 5873
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the main reason for the increase in disasters like floods and landslides according to the passage?",
+      "ms": {
+        "draft": 5045,
+        "critique": 5863,
+        "solver": 1816,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the role of the Information Technology (IT) Act in relation to cyber crimes according to the passage?",
+      "ms": {
+        "draft": 5045,
+        "critique": 6922
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a natural disaster?",
+      "ms": {
+        "draft": 12889,
+        "critique": 7128,
+        "solver": 1341,
+        "form": 4252
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct first aid practice for burns?",
+      "ms": {
+        "draft": 12889,
+        "critique": 5692,
+        "solver": 1815,
+        "form": 4044
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of disaster is caused by the decrease in air pressure in a particular area?",
+      "ms": {
+        "draft": 3960,
+        "critique": 7771
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for the occurrence of industrial accidents according to the passage?",
+      "ms": {
+        "draft": 3960,
+        "critique": 10845
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why should people avoid crowding at the site of a major accident?",
+      "ms": {
+        "draft": 12889,
+        "critique": 7372,
+        "solver": 18026
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the primary impact of war on people as described in the passage?",
+      "ms": {
+        "draft": 3960,
+        "critique": 7674
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What should people do during a storm according to the passage?",
+      "ms": {
+        "draft": 3960,
+        "critique": 8405,
+        "solver": 13214,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a measure to avoid industrial accidents as stated in the passage?",
+      "ms": {
+        "draft": 3960,
+        "critique": 8629,
+        "solver": 11338,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main reason for the occurrence of an earthquake?",
+      "ms": {
+        "draft": 3379,
+        "critique": 6806
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a natural disaster?",
+      "ms": {
+        "draft": 3379,
+        "critique": 7395,
+        "solver": 1834
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main purpose of disaster management?",
+      "ms": {
+        "draft": 3379,
+        "critique": 7902,
+        "solver": 1608,
+        "form": 2446
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why should people avoid crowding at the site of a major accident?",
+      "ms": {
+        "draft": 3729,
+        "critique": 6892,
+        "solver": 1131,
+        "form": 1231
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a man-made disaster?",
+      "ms": {
+        "draft": 3729,
+        "critique": 6500,
+        "solver": 1918,
+        "form": 2708,
+        "translation": 44618
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What should be done if someone is suffering from sunstroke?",
+      "ms": {
+        "draft": 3729,
+        "critique": 6541,
+        "solver": 1793,
+        "form": 3138,
+        "translation": 52915
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the first aid for sunstroke?",
+      "ms": {
+        "draft": 12889,
+        "critique": 7904,
+        "solver": 11594,
+        "form": 4189,
+        "translation": 45661
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What should you do if you are outdoors during an earthquake?",
+      "ms": {
+        "draft": 3379,
+        "critique": 7352,
+        "solver": 1780,
+        "form": 4208,
+        "translation": 51360
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person's clothes catch fire, what is the best first aid measure?",
+      "ms": {
+        "draft": 3729,
+        "critique": 7222,
+        "solver": 2144,
+        "form": 2965,
+        "translation": 49369
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What should you do if your friend is bitten by a snake?",
+      "ms": {
+        "draft": 12889,
+        "critique": 7162,
+        "solver": 1754,
+        "form": 3834,
+        "translation": 40741
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the correct first aid for a burn caused by boiling water?",
+      "ms": {
+        "draft": 3729,
+        "critique": 7110,
+        "solver": 1492,
+        "form": 2295,
+        "translation": 45586
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What would happen to the flow of a river after a major earthquake?",
+      "ms": {
+        "draft": 3379,
+        "critique": 6106,
+        "solver": 14829,
+        "form": 1938,
+        "translation": 41355
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a person is bitten by a snake, which of the following actions is correct?",
+      "ms": {
+        "draft": 3729,
+        "critique": 7084,
+        "solver": 1391,
+        "form": 2484,
+        "translation": 55656
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a person's clothes catch fire in a public place, what should you do?",
+      "ms": {
+        "draft": 12889,
+        "critique": 6358,
+        "solver": 12764,
+        "form": 3926,
+        "translation": 46736
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to prepare for disasters in advance?",
+      "ms": {
+        "draft": 3379,
+        "critique": 7655,
+        "solver": 12221,
+        "form": 2742,
+        "translation": 34675
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to memorize important phone numbers before a disaster?",
+      "ms": {
+        "draft": 3960,
+        "critique": 7059,
+        "solver": 10712,
+        "form": 3331,
+        "translation": 47304
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What would happen to underground cables and pipes if an earthquake occurs?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a natural cause of flooding according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for planning, preparation, and actions taken to deal with disasters?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the main reason for the destruction caused by a tsunami?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why are river floods more common in areas near the Himalayas?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What should people do during an earthquake if they are outdoors?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Incorrect advice given in the passage…\"); distractor 1's reason is not a one-line misconception (\"Correct answer…\"); distractor 3's reason is not a one-line misconception (\"Incorrect advice given in the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main cause of forest fires according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is a cyclone?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What should you do during a storm according to the passage?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the purpose of a first aid kit according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What is the main reason for the increase in disasters like floods and landslides according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Incorrectly identifies the main reason for the increase in d…\"); distractor 2's reason is not a one-line misconception (\"Incorrectly identifies the main reason for the increase in d…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly identifies the main reason for the increase in d…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What is the role of the Information Technology (IT) Act in relation to cyber crimes according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a natural disaster?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct option is the only natural disaster listed in the pa…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a correct first aid practice for burns?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"correct option is stated in the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which type of disaster is caused by the decrease in air pressure in a particular area?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main reason for the occurrence of industrial accidents according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why should people avoid crowding at the site of a major accident?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "What is the primary impact of war on people as described in the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What should people do during a storm according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a measure to avoid industrial accidents as stated in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main reason for the occurrence of an earthquake?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a natural disaster?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main purpose of disaster management?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Avoiding all natural disasters is not possible according to …\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Why should people avoid crowding at the site of a major accident?",
+      "reason": "near-duplicate of served question cmvvdq52j00x80rgn51374e3x (cosine 0.912 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

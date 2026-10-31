@@ -1,0 +1,510 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T10:59:29.825Z",
+  "finishedAt": "2026-10-31T11:15:29.939Z",
+  "seconds": 960,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी गणित इंग्रजी",
+    "bookCode": "703020004",
+    "document": "balbharati/7/mathematics/703020004.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 4 — Angles and Pairs of Angles",
+    "edition": "2026 edition",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n7. (c) ∠B = ∠D",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n17. of contacts as A and B, are inclined to each other at angle of 80°, then ∠AOB is 1\nequal to\n(A) 60° (B) 70° (C) 80° (D)100°\nTwo cubes each of volume 64cm are joined end to end to form a cuboid. The 3",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n9. (b) 70˚",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n11. In the given figure, if △ 𝑂𝐶𝐴 ∼△ 𝑂𝐵𝐷 then ∠𝑂𝐴𝐶 is equal to 1\n(A) 58 ∘ (B) 55 ∘ (C) 128 ∘ (D) 52 ∘"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 557880,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 17804,
+      "completionTokens": 8118
+    },
+    "critique": {
+      "calls": 37,
+      "ms": 539253,
+      "in": 24,
+      "out": 20,
+      "rejects": 4,
+      "promptTokens": 17641,
+      "completionTokens": 6540
+    },
+    "solver": {
+      "calls": 191,
+      "ms": 258939,
+      "in": 20,
+      "out": 13,
+      "rejects": 7,
+      "promptTokens": 45158,
+      "completionTokens": 2206
+    },
+    "form": {
+      "calls": 10,
+      "ms": 74688,
+      "in": 13,
+      "out": 6,
+      "rejects": 7,
+      "promptTokens": 7160,
+      "completionTokens": 1558
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 2,
+      "ms": 557,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 265366,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 13049,
+      "completionTokens": 5680
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 2,
+    "4": 2,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 3,
+  "needsFigure": 2,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct definition of adjacent angles?",
+      "ms": {
+        "draft": 34614,
+        "critique": 36327,
+        "solver": 8093,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If two angles are supplementary and their measures are (3x + 10)° and (2x + 20)°, what is the value of x?",
+      "ms": {
+        "draft": 34614,
+        "critique": 68626,
+        "solver": 12948
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an angle measures 40°, what is the measure of its complement?",
+      "ms": {
+        "draft": 34614,
+        "critique": 40776,
+        "solver": 93550
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If two angles are supplementary and their measures are (3x + 10)° and (2x + 20)°, what is the value of x?",
+      "ms": {
+        "draft": 34614,
+        "critique": 17090,
+        "solver": 2378
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If two angles are supplementary and their measures are (3x + 10)° and (2x + 20)°, what is the value of x?",
+      "ms": {
+        "draft": 34614,
+        "critique": 13486,
+        "solver": 2186
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of angles that have a common arm and whose other arms form a straight line?",
+      "ms": {
+        "draft": 24119,
+        "critique": 6829
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, if ∠PQR and ∠RQS form a linear pair, what is the sum of their measures?",
+      "ms": {
+        "draft": 34614,
+        "critique": 37578,
+        "solver": 97993,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the sum of the measures of two angles in a linear pair?",
+      "ms": {
+        "draft": 24119,
+        "critique": 7721
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two lines intersect and one of the vertically opposite angles is 50°, what is the measure of the other vertically opposite angle?",
+      "ms": {
+        "draft": 24119,
+        "critique": 6833,
+        "solver": 17090,
+        "form": 2529
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the given figure, lines PQ and RS intersect at point M. If the measure of angle PMR is 58°, what is the measure of angle QMS?",
+      "ms": {
+        "draft": 24119,
+        "critique": 8758,
+        "solver": 13979,
+        "form": 4519
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a triangle, an exterior angle is 140°, and the two remote interior angles are equal. What is the measure of each remote interior angle?",
+      "ms": {
+        "draft": 24119,
+        "critique": 8153
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the measure of an exterior angle of a triangle?",
+      "ms": {
+        "draft": 7049,
+        "critique": 16554,
+        "solver": 2045,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the given figure, two lines intersect at point O. The measure of ∠AOB is 80°, and the measure of ∠BOC is 100°. What is the measure of ∠AOC?",
+      "ms": {
+        "draft": 7049,
+        "critique": 10633,
+        "solver": 1880
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, lines PQ and RS intersect at point M. If ∠PMR = x°, what is the measure of ∠QMS?",
+      "ms": {
+        "draft": 7049,
+        "critique": 8980,
+        "solver": 1997
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the given figure, two lines intersect at point O. If ∠AOC = 110°, what is the measure of ∠BOD?",
+      "ms": {
+        "draft": 7049,
+        "critique": 8396,
+        "solver": 14438
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, lines AC and BD intersect at point P. If m∠APD = 47°, what is the measure of ∠BPC?",
+      "ms": {
+        "draft": 7049,
+        "critique": 17292,
+        "solver": 15091,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the sum of the measures of two supplementary angles?",
+      "ms": {
+        "draft": 27198,
+        "critique": 7882
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a pair of adjacent angles?",
+      "ms": {
+        "draft": 27198,
+        "critique": 8755,
+        "solver": 19343,
+        "form": 6573
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the sum of the measures of two complementary angles?",
+      "ms": {
+        "draft": 27198,
+        "critique": 6560,
+        "solver": 15803,
+        "form": 4318,
+        "translation": 37500
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two angles are supplementary and one of them measures 120°, what is the measure of the other angle?",
+      "ms": {
+        "draft": 27198,
+        "critique": 9205,
+        "solver": 19402,
+        "form": 4269,
+        "translation": 37726
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two angles are in a linear pair, what is their sum?",
+      "ms": {
+        "draft": 7049,
+        "critique": 16335,
+        "solver": 17409,
+        "form": 0,
+        "translation": 33312
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, if ∠ABC and ∠ABD form a linear pair, and ∠ABC = 50°, what is the measure of ∠ABD?",
+      "ms": {
+        "draft": 27198,
+        "critique": 10893,
+        "solver": 18072,
+        "form": 4625,
+        "translation": 54298
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, lines AC and BD intersect at point P. If the measure of angle APB is 47°, what is the measure of angle CPD?",
+      "ms": {
+        "draft": 24119,
+        "critique": 10002,
+        "solver": 14181,
+        "form": 3477,
+        "translation": 41332
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In the given figure, if ∠PQR and ∠RQS form a linear pair, and ∠PQR = 30°, what is the measure of ∠RQS?",
+      "ms": {
+        "draft": 27198,
+        "critique": 8314,
+        "solver": 11886,
+        "form": 2606,
+        "translation": 56734
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the correct definition of adjacent angles?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct option is the only one that matches the definition o…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If two angles are supplementary and their measures are (3x + 10)° and (2x + 20)°, what is the value of x?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If an angle measures 40°, what is the measure of its complement?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If two angles are supplementary and their measures are (3x + 10)° and (2x + 20)°, what is the value of x?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If two angles are supplementary and their measures are (3x + 10)° and (2x + 20)°, what is the value of x?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the name of angles that have a common arm and whose other arms form a straight line?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given figure, if ∠PQR and ∠RQS form a linear pair, what is the sum of their measures?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels PQ, QR, QS"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the sum of the measures of two angles in a linear pair?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If two lines intersect and one of the vertically opposite angles is 50°, what is the measure of the other vertically opposite angle?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the given figure, lines PQ and RS intersect at point M. If the measure of angle PMR is 58°, what is the measure of angle QMS?",
+      "reason": "options 1 and 2 are the same (\"122°\"); options 1 and 2 are the same number"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In a triangle, an exterior angle is 140°, and the two remote interior angles are equal. What is the measure of each remote interior angle?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the measure of an exterior angle of a triangle?",
+      "reason": "options 0 and 1 say the same thing (\"Equal to the sum of the two remote interior angles\" / \"Equal to the sum of the two adjacent interior angles\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In the given figure, two lines intersect at point O. The measure of ∠AOB is 80°, and the measure of ∠BOC is 100°. What is the measure of ∠AOC?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the given figure, lines PQ and RS intersect at point M. If ∠PMR = x°, what is the measure of ∠QMS?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In the given figure, two lines intersect at point O. If ∠AOC = 110°, what is the measure of ∠BOD?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given figure, lines AC and BD intersect at point P. If m∠APD = 47°, what is the measure of ∠BPC?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels AC, BD"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the sum of the measures of two supplementary angles?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a pair of adjacent angles?",
+      "reason": "options 2 and 3 say the same thing (\"Two angles with a common vertex and a common arm, but overlapping interiors\" / \"Two angles with a common arm and a common vertex, but overlapping interiors\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

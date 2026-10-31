@@ -1,0 +1,423 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T00:51:30.469Z",
+  "finishedAt": "2026-10-31T01:16:53.212Z",
+  "seconds": 1523,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 13 — Percentage",
+    "edition": "First Edition 2026",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2022-23]\n14. [( 10000 ) − 1] × 100 = [ √ 6 − 1] × 100\n(C) option",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2023-24]\n12. Option (c)\n௥ ௠\n𝑟 ௘௙௙ = ቂቀ1 + ௠ ቁ − 1ቃ × 100\n𝑟 ௘௙௙ = [(1.03) − 1] × 100 = (1.0609 − 1) × 100 = 6.09% ଶ",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2025-26]\n1. In what ratio must a grocer mix two varieties of tea worth ₹ 60 per kg and ₹ 65 1\nper kg so that by selling the mixture at ₹ 68.20 per kg the gain is 10%?\n(A) 3 : 2 (B) 2 : 3 (C) 2 : 5 (D) 3 : 5"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 297314,
+      "in": 18,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 11503,
+      "completionTokens": 4186
+    },
+    "critique": {
+      "calls": 27,
+      "ms": 1511490,
+      "in": 18,
+      "out": 12,
+      "rejects": 6,
+      "promptTokens": 11834,
+      "completionTokens": 5019
+    },
+    "solver": {
+      "calls": 116,
+      "ms": 409714,
+      "in": 12,
+      "out": 4,
+      "rejects": 8,
+      "promptTokens": 20709,
+      "completionTokens": 1309
+    },
+    "form": {
+      "calls": 2,
+      "ms": 43814,
+      "in": 4,
+      "out": 3,
+      "rejects": 1,
+      "promptTokens": 473,
+      "completionTokens": 191
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 15,
+      "ms": 32768,
+      "in": 3,
+      "out": 2,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 409507,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4314,
+      "completionTokens": 2005
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the symbol used to represent percentage?",
+      "ms": {
+        "draft": 12721,
+        "critique": 10801
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Rohan and Rajat bought shoes worth ₹500. Rohan got a discount of ₹125, while Rajat got a discount of 30%. Who got the shoes at a lower price?",
+      "ms": {
+        "draft": 12721,
+        "critique": 87042,
+        "solver": 16475
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is 30% of 90?",
+      "ms": {
+        "draft": 12721,
+        "critique": 35624,
+        "solver": 146678
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is 0.25 as a percentage?",
+      "ms": {
+        "draft": 12721,
+        "critique": 14004,
+        "solver": 140414,
+        "form": 36872
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 384 out of 400 students voted in an election, what is the voting percentage?",
+      "ms": {
+        "draft": 12721,
+        "critique": 84002
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the meaning of the word 'percent'?",
+      "ms": {
+        "draft": 4595,
+        "critique": 72695
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a glass of milk provides 8gm of protein and Meena needs 25gm of protein daily, what percentage of her daily requirement does she get from one glass of milk?",
+      "ms": {
+        "draft": 4595,
+        "critique": 10455
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 75% of a 19500 square meter field was sown with jowar, how many square meters were sown?",
+      "ms": {
+        "draft": 12721,
+        "critique": 83908,
+        "solver": 15144
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A cricket team played 20 matches and lost 40% of them. If the team had won 15 matches instead of the remaining, what would have been the winning percentage?",
+      "ms": {
+        "draft": 4595,
+        "critique": 18804
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an election, Deepti got 44% of the total votes, Trupti got 26%, and the rest did not vote for either. What percentage of the total votes did not go to either of them?",
+      "ms": {
+        "draft": 4595,
+        "critique": 8381,
+        "solver": 75385
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the passage, it says that the symbol / is used in Geography for 'how many out of a thousand'. If the salinity of seawater is 35 parts per thousand, what is the percentage of salinity?",
+      "ms": {
+        "draft": 4595,
+        "critique": 53488,
+        "solver": 66923
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the symbol % mean?",
+      "ms": {
+        "draft": 32236,
+        "critique": 85618
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A cricket team played 20 matches last year. It lost 40% of the matches and won all the remaining matches. How many matches did it win?",
+      "ms": {
+        "draft": 32236,
+        "critique": 76194,
+        "solver": 12475
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a team wants to increase its winning percentage by 10%, what should it do to the number of matches it wins?",
+      "ms": {
+        "draft": 32236,
+        "critique": 77182,
+        "solver": 18162
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an election, Deepti got 44% of the total votes and Trupti got 26% of the total votes. What percentage of the total votes did not go to either of them?",
+      "ms": {
+        "draft": 32236,
+        "critique": 88164,
+        "solver": 124094
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A farmer has 14000 sugarcane seedlings. 700 seedlings were bad. What percentage of the seedlings were bad?",
+      "ms": {
+        "draft": 32236,
+        "critique": 92071,
+        "solver": 90760,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the percentage of bad sugarcane seedlings if 700 out of 14000 were bad?",
+      "ms": {
+        "draft": 4595,
+        "critique": 68857,
+        "solver": 13139,
+        "form": 7607,
+        "translation": 189530
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In a class of 50 students, 20 students are boys. What is the percentage of boys in the class?",
+      "ms": {
+        "draft": 32236,
+        "critique": 95630,
+        "solver": 89497,
+        "form": 0,
+        "translation": 163071
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the symbol used to represent percentage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Rohan and Rajat bought shoes worth ₹500. Rohan got a discount of ₹125, while Rajat got a discount of 30%. Who got the shoes at a lower price?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is 30% of 90?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is 0.25 as a percentage?",
+      "reason": "options 0 and 2 are the same (\"2.5%\"); options are written to different precisions (0 and 1 decimals); options 0 and 2 are the same number"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If 384 out of 400 students voted in an election, what is the voting percentage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the meaning of the word 'percent'?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a glass of milk provides 8gm of protein and Meena needs 25gm of protein daily, what percentage of her daily requirement does she get from one glass of milk?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If 75% of a 19500 square meter field was sown with jowar, how many square meters were sown?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A cricket team played 20 matches and lost 40% of them. If the team had won 15 matches instead of the remaining, what would have been the winning percentage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In an election, Deepti got 44% of the total votes, Trupti got 26%, and the rest did not vote for either. What percentage of the total votes did not go to either of them?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In the passage, it says that the symbol / is used in Geography for 'how many out of a thousand'. If the salinity of seawater is 35 parts per thousand, what is the percentage of salinity?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 2)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What does the symbol % mean?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A cricket team played 20 matches last year. It lost 40% of the matches and won all the remaining matches. How many matches did it win?",
+      "reason": "the solver picked option 3 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a team wants to increase its winning percentage by 10%, what should it do to the number of matches it wins?",
+      "reason": "the solver picked option 1 3 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In an election, Deepti got 44% of the total votes and Trupti got 26% of the total votes. What percentage of the total votes did not go to either of them?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "A farmer has 14000 sugarcane seedlings. 700 seedlings were bad. What percentage of the seedlings were bad?",
+      "reason": "near-duplicate of batch item \"What is the percentage of bad sugarcane seedlings …\" (cosine 0.954 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}
