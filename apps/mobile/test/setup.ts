@@ -169,6 +169,16 @@ jest.mock("expo/fetch", () => ({ fetch: async () => ({ ok: true, status: 200, bo
 // set and clear the owner as the session does.
 // Each test starts with an empty outbox in memory (the phone's is SQLite, which jest has not got).
 beforeEach(() => {
+  // Hindi and Marathi fetched on first use (lib/i18n-words.ts): no server in a
+  // test, so a screen in Hindi shows what the phone keeps and nothing is
+  // fetched; a test of the fetching gives its own network and cache. The
+  // tests run on the whole dictionaries, so a screen in Hindi still reads Hindi.
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const words = require("@/lib/i18n-words") as typeof import("@/lib/i18n-words");
+  words.__setWordsCache(words.memoryWordsCache());
+  words.__setWordsFetch(async () => {
+    throw new Error("no network in tests: give the test its own (__setWordsFetch)");
+  });
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   const outbox = require("@/lib/outbox") as typeof import("@/lib/outbox");
   outbox.__setOutboxStore(outbox.memoryOutbox());

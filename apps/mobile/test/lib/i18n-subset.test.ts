@@ -15,7 +15,9 @@ const subset = require("../../scripts/i18n-subset.cjs") as {
   readDictionary: (locale: string) => unknown;
   sentencesOf: (locale: string, keys: string[]) => string[];
   shapeOf: (keys: string[]) => unknown;
-  subsetFiles: (used: Set<string>) => Record<string, string>;
+  subsetFiles: (used: Set<string>, boot?: Set<string>) => Record<string, string>;
+  bootKeys: (used: Set<string>) => Set<string>;
+  BOOT_SOURCES: string[];
   usedKeys: () => { used: Set<string>; all: Map<string, string>; prefixes: Set<string>; server: Set<string> };
 };
 
@@ -26,10 +28,11 @@ const subset = require("../../scripts/i18n-subset.cjs") as {
  * script to what it says it does; test/setup.ts holds every screen's test to
  * it, and the section walk on the exported web target holds the screens.
  */
+const whole = { en, hi, mr } as Record<string, unknown>;
+
 describe("the phone's share of the dictionaries", () => {
   const { used, all, prefixes } = subset.usedKeys();
   const keys = [...used].sort();
-  const whole = { en, hi, mr } as Record<string, unknown>;
 
   it("reads a dictionary file as the app imports it", () => {
     for (const locale of subset.LOCALES) expect(subset.readDictionary(locale)).toEqual(whole[locale]);
@@ -101,15 +104,61 @@ describe("the phone's share of the dictionaries", () => {
     }
   });
 
-  it("writes files that stand in for the three languages", () => {
+  it("writes files that stand in for the three languages: English whole, Hindi and Marathi the first screens' share", () => {
     const files = subset.subsetFiles(used);
-    expect(Object.keys(files).sort()).toEqual(["en.js", "hi.js", "mr.js", "shape.js"]);
+    expect(Object.keys(files).sort()).toEqual(["boot.js", "en.js", "hi.js", "mr.js", "shape.js"]);
     expect(files["shape.js"]).toContain("export const shape = {");
     expect(files["shape.js"]).toContain("export function inflate(shape, sentences)");
-    for (const locale of subset.LOCALES) expect(files[`${locale}.js`]).toContain(`export const ${locale} = inflate(shape, [`);
+    expect(files["boot.js"]).toContain("export const boot = {");
+    expect(files["en.js"]).toContain("export const en = inflate(shape, [");
+    for (const locale of ["hi", "mr"]) expect(files[`${locale}.js`]).toContain(`export const ${locale} = inflate(boot, [`);
     const bytes = (text: string) => Buffer.byteLength(text);
     const share = Object.values(files).reduce((sum, text) => sum + bytes(text), 0);
     const everything = subset.LOCALES.reduce((sum, locale) => sum + bytes(JSON.stringify(whole[locale])), 0);
-    expect(share).toBeLessThan(everything * 0.6);
+    expect(share).toBeLessThan(everything * 0.2);
+    // Hindi and Marathi bundled are a small share of English bundled: the rest is fetched (src/lib/i18n-words.ts).
+    for (const locale of ["hi", "mr"]) expect(bytes(files[`${locale}.js`])).toBeLessThan(bytes(files["en.js"]) * 0.25);
+  });
+});
+
+/**
+ * Hindi and Marathi are fetched on first use (item 15, 1 Nov 2026) and a
+ * release bundles only the first screens' keys of the two, so that a phone
+ * set to Hindi signs in, and draws its bar and menu, in Hindi before it has
+ * fetched anything.
+ */
+describe("the first screens' share of Hindi and Marathi", () => {
+  const { used } = subset.usedKeys();
+  const boot = subset.bootKeys(used);
+  const keys = [...boot].sort();
+
+  it("is a small share of the phone's keys, all of them keys the phone can ask for", () => {
+    expect(boot.size).toBeGreaterThan(100);
+    expect(boot.size).toBeLessThan(used.size / 4);
+    expect(keys.filter((key) => !used.has(key))).toEqual([]);
+  });
+
+  it("holds every key the sign-in screens, the language row and the update screen write out, and the bar's and the menu's labels", () => {
+    const root = path.join(__dirname, "..", "..");
+    const files = ["src/app/(auth)/index.tsx", "src/app/(auth)/magic-link.tsx", "src/app/(auth)/first-signin.tsx", "src/components/language-row.tsx", "src/screens/shared/update-required.tsx", "src/screens/auth/two-factor-step.tsx"];
+    const written = files.flatMap((file) => [...fs.readFileSync(path.join(root, file), "utf8").matchAll(/\bt\(\s*["']([\w.]+)["']/g)].map((m) => m[1]));
+    expect(written.length).toBeGreaterThan(10);
+    expect(written.filter((key) => used.has(key) && !boot.has(key))).toEqual([]);
+    const labels: string[] = [...Object.values(TABS).flat(), ...Object.values(MENU).flat()].map((entry) => entry.labelKey).concat(Object.values(MENU_GROUP_KEY));
+    expect(labels.filter((key) => !boot.has(key))).toEqual([]);
+  });
+
+  it("is each language's own sentences, filled from the first screens' names", () => {
+    const shape = subset.shapeOf(keys);
+    for (const locale of ["hi", "mr"]) {
+      const built = subset.flatten(subset.inflate(shape, subset.sentencesOf(locale, keys)));
+      const original = subset.flatten(whole[locale]);
+      for (const key of keys) expect(built.get(key)).toBe(original.get(key) ?? "");
+    }
+  });
+
+  it("names places that are there", () => {
+    const root = path.join(__dirname, "..", "..");
+    for (const source of subset.BOOT_SOURCES) expect(fs.existsSync(path.join(root, source))).toBe(true);
   });
 });

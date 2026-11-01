@@ -14,7 +14,7 @@ import { DICTIONARY_FILE } from "./delivery";
 import { dictionaryFor } from "./dictionary";
 import { I18nProvider, loadDictionary, useT } from "./provider";
 import { LOCALES, type Locale } from "./locales";
-import { GET } from "@/app/i18n/[file]/route";
+import { GET, OPTIONS } from "@/app/i18n/[file]/route";
 import { LanguageSwitch } from "@/components/language-switch";
 
 /**
@@ -68,6 +68,32 @@ describe("GET /i18n/<file>", () => {
     expect(response.status).toBe(200);
     expect(response.headers.get("cache-control")).toBe("no-store");
     expect(await response.json()).toEqual(dictionaryFor("hi"));
+  });
+
+  it("answers the phone's copy of today's words 304 with no body, and other words 200 (item 15)", async () => {
+    const asset = dictionaryAsset("mr");
+    const ask = (file: string, etag: string) => GET(new Request(`http://localhost/i18n/${file}`, { headers: { "if-none-match": etag } }), { params: Promise.resolve({ file }) });
+    const current = await ask(asset.href.slice("/i18n/".length), `W/"${asset.hash}"`);
+    expect(current.status).toBe(304);
+    expect(current.headers.get("etag")).toBe(`W/"${asset.hash}"`);
+    expect(await current.text()).toBe("");
+    // The phone with no copy names sixteen zeros; with an older copy, its hash: both get today's words and the hash to keep.
+    const older = await ask("mr.0000000000000000.json", 'W/"0123456789abcdef"');
+    expect(older.status).toBe(200);
+    expect(older.headers.get("etag")).toBe(`W/"${asset.hash}"`);
+    expect(await older.json()).toEqual(dictionaryFor("mr"));
+  });
+
+  it("lets any origin read the words and learn their hash, and answers the browser's question first (item 15)", async () => {
+    const answer = await get(dictionaryAsset("hi").href.slice("/i18n/".length));
+    expect(answer.headers.get("access-control-allow-origin")).toBe("*");
+    expect(answer.headers.get("access-control-expose-headers")).toBe("ETag");
+    expect(answer.headers.get("access-control-allow-credentials")).toBeNull();
+    const asked = OPTIONS();
+    expect(asked.status).toBe(204);
+    expect(asked.headers.get("access-control-allow-origin")).toBe("*");
+    expect(asked.headers.get("access-control-allow-headers")).toContain("If-None-Match");
+    expect(asked.headers.get("access-control-allow-methods")).toBe("GET");
   });
 
   it.each(["xx.0000000000000000.json", "en.json", "en.c940f6985c664a36.js", "../en.0000000000000000.json"])("refuses %s", async (file) => {

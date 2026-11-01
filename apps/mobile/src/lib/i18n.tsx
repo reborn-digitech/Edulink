@@ -1,8 +1,9 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { getLocales } from "expo-localization";
-import { dictionaryFor, normaliseLocale, translatorFor, type Locale, type Translate } from "@edulink/i18n";
+import { DEFAULT_LOCALE, dictionaryFor, normaliseLocale, translatorFor, type Locale, type Translate } from "@edulink/i18n";
 import { KEYS, keyStore } from "./storage";
 import { setApiLocale } from "./api";
+import { overlay, refreshWords, wordsCache, type Words } from "./i18n-words";
 
 /**
  * The same three languages and the same dictionaries as the web
@@ -16,6 +17,12 @@ import { setApiLocale } from "./api";
  * `prefs.locale` once the session knows it, so it agrees with the phone the
  * choice was made on (every choice made in the app is written to the account).
  * A choice made on this phone stays this phone's; nothing is saved by adopting.
+ *
+ * Hindi and Marathi are fetched on first use (lib/i18n-words.ts, 1 Nov 2026):
+ * a release bundles only the first screens' sentences of the two, the rest
+ * is read from the copy kept on the phone and then asked of the server, and
+ * laid over them as it arrives. Until then, and offline with no copy, a
+ * sentence is the first screens' or English.
  */
 type I18n = { locale: Locale; t: Translate; setLocale: (next: Locale) => void; adoptAccountLocale: (account: string) => Promise<void> };
 
@@ -45,10 +52,29 @@ export function I18nProvider({ children, initial }: { children: ReactNode; initi
     setApiLocale(locale);
   }, [locale]);
 
+  // The language's fetched words: the copy kept on the phone first, then the server's if it has others.
+  const [words, setWords] = useState<{ locale: Locale; words: Words } | null>(null);
+  useEffect(() => {
+    if (locale === DEFAULT_LOCALE) return;
+    let alive = true;
+    const store = wordsCache();
+    void (async () => {
+      const kept = await store.read(locale).catch(() => null);
+      if (!alive) return;
+      if (kept) setWords({ locale, words: kept.words });
+      const fresh = await refreshWords(locale, kept, store);
+      if (alive && fresh) setWords({ locale, words: fresh.words });
+    })();
+    return () => {
+      alive = false;
+    };
+  }, [locale]);
+  const laid = words && words.locale === locale ? words.words : null;
+
   const value = useMemo<I18n>(
     () => ({
       locale,
-      t: translatorFor(dictionaryFor(locale)),
+      t: translatorFor(overlay(dictionaryFor(locale), laid)),
       setLocale: (next) => {
         setLocaleState(next);
         void keyStore().set(KEYS.locale, next);
@@ -60,7 +86,7 @@ export function I18nProvider({ children, initial }: { children: ReactNode; initi
         if (!saved) setLocaleState(normaliseLocale(account));
       },
     }),
-    [locale],
+    [locale, laid],
   );
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }

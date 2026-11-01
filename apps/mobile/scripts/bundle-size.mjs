@@ -51,6 +51,19 @@
  * CI jobs run; a builder is measuring the bundle by source map and cutting it
  * (the dictionaries fetched on first use, the icon weights, heavy screens made
  * lazy), after which the ceiling comes back down to the measured number.
+ *
+ * Measured the same day by source map (scripts/bundle-map.mjs, against the
+ * 2 Oct commit 58d4a183 built in a worktree: 5.45 → 7.37 MB Android): the
+ * contracts 237 → 697 KB, Hindi and Marathi 794 → 1,364 KB, English and the
+ * key names 255 → 439 KB, the college and module screens about 0.6 MB. Three
+ * cuts, no feature lost: Hindi and Marathi fetched on first use from the
+ * web's /i18n/<locale>.<hash>.json and kept on the phone, the first screens'
+ * keys still bundled (src/lib/i18n-words.ts; −1,302 KB); Expo's own
+ * EXPO_ROUTER_DISABLE_NATIVE_TABS_MD, which leaves out a 79 KB Material
+ * Symbols table expo-router's native tabs carry on Android and the app never
+ * draws (−88 KB); and the 24 contracts files the phone imports no value from
+ * left out where the index re-exports them (scripts/contracts-subset.cjs;
+ * −96 KB). 5.92 MB Android, 5.76 MB iOS (1.59 and 1.56 MB gzipped).
  */
 import { execSync } from "node:child_process";
 import { mkdtempSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
@@ -59,7 +72,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 
 const TARGET_MB = 4.5;
-const CEILING_MB = 7.5;
+const CEILING_MB = 6;
 const MB = 1024 * 1024;
 
 const out = mkdtempSync(join(tmpdir(), "edulink-bundle-"));
