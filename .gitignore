@@ -1,6 +1,8 @@
 node_modules/
 .next/
-out/
+# Next.js export output only; a route folder named out/ (hostel leave and visitors "out" doors) is source.
+/out/
+/apps/web/out/
 build/
 dist/
 .DS_Store
