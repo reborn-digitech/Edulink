@@ -381,6 +381,10 @@ describe("a month's run", () => {
     expect(st.netPaise).toBe(mine.slips[0]!.netPaise);
   });
 
+  // An advance is recovered from the first run whose month holds its decision day (instalmentsFor: decidedAt on or
+  // before the month's last day), so the month drafted here is the one the clock is in; a fixed "2026-10" failed on
+  // 1 November 2026, when the advance recorded that day belonged to November's run.
+  const ADVANCE_MONTH = new Date().toISOString().slice(0, 7);
   it("takes an advance asked, recorded with an instalment, and recovers it from the next run; what is back is read from the locked slips", async () => {
     const me = await as(ids.teacher2, "TEACHER", ids.mint);
     const ask = await askAdvance(me, { amountPaise: 500_000, reason: "ZZ a family wedding" });
@@ -390,13 +394,13 @@ describe("a month's run", () => {
     const rec = await decideAdvance(admin, { advanceId: ask.id, decision: "RECORD", monthlyRecoveryPaise: 200_000, note: "" });
     expect(rec.status).toBe("RECORDED");
     expect(rec.outstandingPaise).toBe(500_000);
-    const oct = await draftRun(admin, "2026-10");
+    const oct = await draftRun(admin, ADVANCE_MONTH);
     const s = oct.slips!.find((x) => x.membershipId === ids.mTeacher2)!;
     expect(s.lines.find((l) => l.code === "ADVANCE")).toMatchObject({ paise: 200_000, advanceId: ask.id });
     // Not yet back: October is a draft.
     const mine = await myPayslips(await as(ids.teacher2, "TEACHER", ids.mint));
     expect(mine.advances[0]!.recoveredPaise).toBe(0);
-    await lockRun(await as(ids.admin, "ADMIN", ids.mint), "2026-10");
+    await lockRun(await as(ids.admin, "ADMIN", ids.mint), ADVANCE_MONTH);
     const after = await myPayslips(await as(ids.teacher2, "TEACHER", ids.mint));
     expect(after.advances[0]!.recoveredPaise).toBe(200_000);
     expect(after.advances[0]!.outstandingPaise).toBe(300_000);
