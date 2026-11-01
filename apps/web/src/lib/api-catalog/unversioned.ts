@@ -37,7 +37,7 @@ export const UNVERSIONED: Endpoint[] = [
     summary: "Take or correct a class's register for a day: one mark per pupil, each with the device's idempotency key; safe to replay (a stored key is skipped, an older mark never overwrites a newer one); a future day, a class one may not mark that day, or an archived class is refused",
     access: ["TEACHER", "ADMIN"],
     request: c.attendanceRegisterBodySchema,
-    response: c.attendanceRegisterSavedSchema,
+    reach: "formTeacher", response: c.attendanceRegisterSavedSchema,
     emptyBodyStatus: 422,
     sampleBody: (f) =>
       f.classId && f.studentMembershipId
@@ -50,7 +50,7 @@ export const UNVERSIONED: Endpoint[] = [
     summary: "One class's roster for a day with the marks already made and any absence note from the family (?classId=&date=, today in the school's zone by default); read by whoever may mark it that day",
     access: ["TEACHER", "ADMIN"],
     request: c.attendanceRegisterQuerySchema,
-    response: c.attendanceRegisterRosterSchema,
+    reach: "formTeacher", response: c.attendanceRegisterRosterSchema,
     sample: (f) => (f.classId ? `/api/attendance?classId=${f.classId}&date=${SWEEP_REGISTER_DAY}` : null),
   },
   // No sampleBody: an answer needs a sitting the pupil opened, and answering is the act. The handler refuses a body without its three fields with 422 (R-51; it was 400), before it looks at the sitting.
@@ -60,7 +60,7 @@ export const UNVERSIONED: Endpoint[] = [
     summary: "The web's practice answer, the target of its offline outbox and replay-safe as its twin POST /api/v1/practice/answer is (a second delivery returns the stored verdict, replayed: true)",
     access: ["STUDENT"],
     request: c.webPracticeAnswerBodySchema,
-    response: c.webPracticeAnsweredSchema,
+    reach: "self", response: c.webPracticeAnsweredSchema,
     emptyBodyStatus: 422,
   },
 ];

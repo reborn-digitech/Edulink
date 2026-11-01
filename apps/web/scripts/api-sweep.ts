@@ -11,6 +11,7 @@
  *   npm run api:sweep -- --features=on      with every platform feature switched on for the run, as the ZZ
  *                                           operator, and back off at its end (audited both ways); add
  *                                           --plans=on to make the three plans active the same way (402 swept)
+ *   npm run api:sweep -- --variants=off     the per-role walk alone, without the role variants (owner-batch-item13, below)
  *   npm run api:sweep -- --clean-since=<ISO> [--clean-until=<ISO>]
  *                                               no sweep: take away what a run that never reached its own
  *                                               clean-up wrote to the ZZ fixture schools in that window (W-13)
@@ -47,12 +48,23 @@
  * so a new door is classified where it is catalogued and no path or count is kept here; a 404 for another
  * tenant's sample is what a GET's `[200, 404]` already allows. Path prefixes are not used: the college's doors
  * share them with the school's (`/library/eresources` is a college's, `/library/titles` a school's).
+ *
+ * ROLE VARIANTS (owner-batch-item13, 1 Nov 2026). Beside the walk as one person per role, every door that declares a
+ * `reach` (the relation its handler requires: catalog types.ts REACHES) or a duty is walked as the role's VARIANTS —
+ * a timetable-only teacher, a co-teacher and another class's teacher, a second admin without the head's pages, the
+ * guardian of another child, a classmate and a pupil of another class, a support worker, another expert and one under
+ * review, another school's office, another college teacher (scripts/sweep-sessions.ts SWEEP_VARIANTS). What each must
+ * meet is the reach's pair (REACH_PAIRS): one the reach lets through answers what the role's own actor answered for
+ * the same call; one it refuses answers 403 or 404; one without the door's duty meets the gate's 403. A variant
+ * answered otherwise is reported as a finding (`✗ VARIANT …`), with the door, the variant, expected and got; a
+ * refused variant whose empty body was refused by the parser first (422), with no valid body to send, is counted as
+ * not reaching the fence rather than as a pass. `--variants=off` runs the old walk alone.
  */
 import { createHash, randomBytes } from "node:crypto";
 import { fixturePng } from "./png";
 import { Prisma, PrismaClient } from "@prisma/client";
 import { ENDPOINTS, type Endpoint, type SweepFixture } from "../src/lib/api-catalog";
-import { declaredStatus, doorForKind, featuresOf, permits } from "../src/lib/api-catalog/types";
+import { declaredStatus, doorForKind, featuresOf, permits, reachRefusalFor } from "../src/lib/api-catalog/types";
 import { COLLEGE_DOORS } from "./college-doors";
 import { dutiesForRole, isCollegeKind, isDutyRole, parseDuties } from "@edulink/contracts";
 import { ROLES, type Role } from "../src/lib/constants";
@@ -62,8 +74,10 @@ import { restoreSweepThrowaways, SWEEP_APPRAISAL, SWEEP_DOOR_IDS } from "./sweep
 import { inOwnWindow } from "./sweep-window";
 import { crossPlan, FIXTURE_ID, PLATFORM_WIDE } from "./cross-sampler";
 import { PLACEMENT_FIXTURE } from "../src/lib/api-catalog/placement-fixture";
-import { keepSessionsAlive, purgeSessionsOnSignal, sweepSessionExpiry } from "./sweep-sessions";
+import { keepSessionsAlive, purgeSessionsOnSignal, SWEEP_VARIANTS, sweepSessionExpiry, variantCalls, variantCallCount, type SweepVariant, type VariantCall, type VariantId } from "./sweep-sessions";
 import { describeGateState, doorGate, gateFlags, readGateState, runSwitches, type GateState } from "./sweep-features";
+import { healthAnswers, RETRY_PAUSE_MS, RETRY_TIMEOUT_MS, retryOnceIfHealthy } from "./sweep-retry";
+import { isLiveRun, liveRunSkip } from "./sweep-live-run";
 
 const BASE = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL ?? process.env.DATABASE_URL });
@@ -93,7 +107,11 @@ const gated = { FEATURE_OFF: 0, PLAN_REQUIRED: 0 };
  */
 function featureAnswer(e: Endpoint, role: Role | null): { status: 404 | 402; code: "FEATURE_OFF" | "PLAN_REQUIRED" } | null {
   if (role === null && e.access !== "anyone") return null;
-  const g = doorGate(e, { role, userId: role ? (userOf[role] ?? null) : null }, gate);
+  return featureAnswerFor(e, role, role ? (userOf[role] ?? null) : null);
+}
+/** The same for a person (a role variant's: their own entitlements decide a plan; owner-batch-item13). */
+function featureAnswerFor(e: Endpoint, role: Role | null, userId: string | null): { status: 404 | 402; code: "FEATURE_OFF" | "PLAN_REQUIRED" } | null {
+  const g = doorGate(e, { role, userId }, gate);
   if (g.state === "off") return { status: 404, code: "FEATURE_OFF" };
   if (g.state === "plan") return { status: 402, code: "PLAN_REQUIRED" };
   return null;
@@ -126,7 +144,10 @@ async function familyTenant(parentUserId: string): Promise<Tenant> {
  * answer is the handler's for the child's school; "no" otherwise.
  */
 function moduleOff(e: Endpoint, role: Role): "must" | "may" | "no" {
-  const t = tenantOf[role];
+  return moduleOffAt(e, tenantOf[role]);
+}
+/** The same, for a tenant (a role variant's school: owner-batch-item13). */
+function moduleOffAt(e: Endpoint, t: Tenant | undefined): "must" | "may" | "no" {
   if (!t) return "no";
   if (e.module && !t.modules.has(e.module)) return t.schoolId ? "must" : "may";
   if (!t.college && COLLEGE_DOORS.has(e)) return "may";
@@ -139,7 +160,9 @@ function moduleOff(e: Endpoint, role: Role): "must" | "may" | "no" {
  * names no school, so its handler decides and the ordinary expectation holds.
  */
 function kindGone(e: Endpoint, role: Role): boolean {
-  const t = tenantOf[role];
+  return kindGoneAt(e, tenantOf[role]);
+}
+function kindGoneAt(e: Endpoint, t: Tenant | undefined): boolean {
   return Boolean(e.kinds && t?.schoolId && t.kind && !doorForKind(e, t.kind));
 }
 /** How many calls were judged by the kind gate (404 at another kind of institution). */
@@ -385,7 +408,8 @@ async function fixture(slug = "zz-northgate-school"): Promise<SweepFixture> {
     // R-61 Q2 (10 Oct 2026): the departed pupil of zz-fixtures.ts `buildDepartures`, for the settle-on-leaving doors.
     departedMembershipId: await first(db.membership.findFirst({ where: { schoolId: s, role: "STUDENT", leftAt: { not: null } }, orderBy: { leftAt: "desc" }, select: { id: true } })),
     teacherMembershipId: lead?.teacherMembershipId ?? null,
-    adminMembershipId: await first(db.membership.findFirst({ where: { schoolId: s, role: "ADMIN", status: "ACTIVE" }, select: { id: true } })),
+    // zz.admin first (owner-batch-item13: Northgate has a second admin, the variant without the head's pages), else the first by joining.
+    adminMembershipId: (await first(db.membership.findFirst({ where: { schoolId: s, role: "ADMIN", status: "ACTIVE", user: { email: { in: ["zz.admin@zz.test", "zz.admin.b@zz.test"] } } }, select: { id: true } }))) ?? (await first(db.membership.findFirst({ where: { schoolId: s, role: "ADMIN", status: "ACTIVE" }, orderBy: { joinedAt: "asc" }, select: { id: true } }))),
     examSeriesId: await first(db.examSeries.findFirst({ where: { schoolId: s, archivedAt: null }, select: { id: true } })),
     examSlotId: await first(db.examSlot.findFirst({ where: { schoolId: s }, select: { id: true } })),
     assignmentId: await first(db.assignment.findFirst({ where: { schoolId: s }, select: { id: true } })),
@@ -438,6 +462,8 @@ async function fixture(slug = "zz-northgate-school"): Promise<SweepFixture> {
     // The file the link door opens is a document of the sweep parent's application.
     ...(await doorFixture(s, admissions.applicationId)),
     ...(await placementFixture()),
+    // A finished generation run, never the live one (1 Nov 2026; scripts/sweep-live-run.ts guards the calls too).
+    finishedQuizJobId: await first(db.quizGenJob.findFirst({ where: { active: null, state: { in: ["STOPPED", "FINISHED", "FAILED"] } }, orderBy: { createdAt: "desc" }, select: { id: true } })),
     todayKey: new Date().toISOString().slice(0, 10),
   };
 }
@@ -500,6 +526,142 @@ async function actors(): Promise<Record<Role, string>> {
   return out as Record<Role, string>;
 }
 
+/* owner-batch-item13 (1 Nov 2026): the role variants ------------------------------------------------------------ */
+
+/** `--variants=off`: the per-role walk alone. */
+const VARIANTS_OFF = process.argv.includes("--variants=off");
+/** A minted variant: its token, person, school (modules, kind) and the duties it holds. */
+type VariantActor = { variant: SweepVariant; token: string; userId: string; tenant: Tenant; duties: string[] };
+const variantActors = new Map<VariantId, VariantActor>();
+/** The answers the role's own actor got, by door, role and body ("empty" or "body"): what an allowed variant is held to. */
+const baseAnswers = new Map<string, number>();
+const baseKey = (e: Endpoint, role: Role, body: "empty" | "body") => `${e.method} ${e.path}|${role}|${body}`;
+/** Every variant call: the door, the variant, the verdict its reach gives, what was expected and what came back. */
+const variantResults: { door: string; variant: VariantId; role: Role; verdict: string; reach: string | null; body: boolean; expected: string; got: number; ok: boolean; unproved: boolean }[] = [];
+/** The variants the fixtures do not hold (a person missing, or one holding a duty the table says they lack), each with why. */
+const variantsMissing: string[] = [];
+
+/**
+ * One session per role variant (scripts/sweep-sessions.ts SWEEP_VARIANTS), minted as the role's own actors are and
+ * deleted with them. A person the fixtures do not hold is reported and their calls left out; a variant meant to hold
+ * no duty that holds one (the second admin given the head's pages by hand) is left out too, since every expectation
+ * of the table would be wrong for them.
+ */
+async function mintVariants(): Promise<void> {
+  const schools = new Map<string, { id: string; tenant: Tenant } | null>();
+  const schoolOf = async (slug: string) => {
+    if (!schools.has(slug)) {
+      const row = await db.school.findUnique({ where: { slug }, select: { id: true } });
+      schools.set(slug, row ? { id: row.id, tenant: await tenantAt(row.id) } : null);
+    }
+    return schools.get(slug)!;
+  };
+  for (const variant of SWEEP_VARIANTS) {
+    const role = variant.role as Role;
+    const at = variant.school ? await schoolOf(variant.school) : null;
+    if (variant.school && !at) { variantsMissing.push(`${variant.id}: no ${variant.school}`); continue; }
+    let userId: string | null = null;
+    let duties: string[] = [];
+    if (at) {
+      const where = "email" in variant.person ? { user: { email: variant.person.email } } : { user: { name: variant.person.supportName, email: null } };
+      const member = await db.membership.findFirst({ where: { schoolId: at.id, role, status: "ACTIVE", leftAt: null, ...where }, select: { userId: true, dutiesJson: true } });
+      if (member) {
+        userId = member.userId;
+        const head = (await db.membership.count({ where: { schoolId: at.id, role: "PRINCIPAL", status: "ACTIVE", leftAt: null } })) > 0;
+        duties = dutiesForRole(role, member.dutiesJson, head);
+      }
+    } else if ("email" in variant.person) {
+      const user = await db.user.findUnique({ where: { email: variant.person.email }, select: { id: true } });
+      userId = user?.id ?? null;
+      if (userId && role === "PARENT" && !(await db.guardianship.count({ where: { parentUserId: userId, status: "ACTIVE" } }))) userId = null;
+      if (userId && role === "EXPERT" && !(await db.expertProfile.findUnique({ where: { userId }, select: { id: true } }))) userId = null;
+    }
+    if (!userId) { variantsMissing.push(`${variant.id}: ${"email" in variant.person ? variant.person.email : variant.person.supportName} is not a ${role} ${variant.school ? `at ${variant.school}` : "here"} — run zz:fixtures`); continue; }
+    if (duties.length) { variantsMissing.push(`${variant.id}: holds ${duties.join(", ")}, which the variant table says they lack`); continue; }
+    const token = randomBytes(32).toString("base64url");
+    const sess = await db.session.create({ data: { userId, tokenHash: createHash("sha256").update(token).digest("hex"), activeSchoolId: at?.id ?? null, activeRole: role, userAgent: "api-sweep", expiresAt: sweepSessionExpiry() } });
+    minted.push(sess.id);
+    const tenant = at ? at.tenant : role === "PARENT" ? await familyTenant(userId) : { schoolId: null, modules: new Set<string>(), college: false, kind: null };
+    variantActors.set(variant.id, { variant, token, userId, tenant, duties });
+  }
+}
+
+/**
+ * The variant walk at one door (owner-batch-item13), after the role's own actors were walked there. The platform's
+ * gates are judged first, as for the role's own actor (a feature off or a plan the person lacks, the kind, a module
+ * off at the variant's school); then the verdict: an allowed variant must answer what the role's own actor answered
+ * (both a success counts as the same), a refused one 403 or 404 (a 2xx where the door says it `filters`), one without
+ * the duty or the role the gate's 403.
+ */
+async function walkVariants(e: Endpoint, path: string, goodBody: Record<string, unknown> | null): Promise<void> {
+  if (VARIANTS_OFF || e.path === "/api/v1/auth/logout" || e.path === "/api/v1/events") return;
+  const calls = variantCalls(e, (id) => variantActors.has(id), path, goodBody ? JSON.stringify(goodBody) : null);
+  for (const call of calls) {
+    const actor = variantActors.get(call.variant)!;
+    const role = actor.variant.role as Role;
+    for (const body of call.withBody && goodBody ? [false, true] : [false]) {
+      const got = await hit(e, actor.token, path, body ? JSON.stringify(goodBody) : undefined);
+      const { expected, ok, unproved } = judgeVariant(e, call, actor, role, body, got);
+      variantResults.push({ door: `${e.method} ${e.path}`, variant: call.variant, role, verdict: call.verdict, reach: call.reach, body, expected, got: got.status, ok, unproved });
+    }
+  }
+}
+
+function judgeVariant(e: Endpoint, call: VariantCall, actor: VariantActor, role: Role, body: boolean, got: Answer): { expected: string; ok: boolean; unproved: boolean } {
+  const byFeature = featureAnswerFor(e, role, actor.userId);
+  if (byFeature) return { expected: `${byFeature.status} ${byFeature.code}`, ok: got.status === byFeature.status && got.code === byFeature.code, unproved: true };
+  // A plan the variant's person does not hold, answered by the handler itself (a door whose feature the gate leaves to it): the platform's answer, not the reach's.
+  if (got.status === 402 && got.code === "PLAN_REQUIRED") return { expected: "402 PLAN_REQUIRED (the variant's person holds no plan)", ok: true, unproved: true };
+  if (actor.tenant.schoolId && kindGoneAt(e, actor.tenant)) return { expected: "404 (a door for another kind of institution)", ok: got.status === 404, unproved: true };
+  if (call.verdict === "role" || call.verdict === "duty") return { expected: call.verdict === "duty" ? "403 (the gate: without the door's duty)" : "403 (the gate: the role is not named)", ok: got.status === 403, unproved: false };
+  const off = moduleOffAt(e, actor.tenant);
+  if (off === "must") return { expected: "403 MODULE_OFF", ok: got.status === 403 && got.code === "MODULE_OFF", unproved: true };
+  const success = (n: number) => n >= 200 && n < 300;
+  if (call.verdict === "allowed") {
+    const base = baseAnswers.get(baseKey(e, role, body ? "body" : "empty"));
+    if (base === undefined) {
+      // No actor of the role was walked (the support worker): the catalog's own expectation for the role.
+      const want = body ? [200, 201] : expected(e, role);
+      return { expected: `${JSON.stringify(want)} (the catalog, no actor of the role)`, ok: judge(want, off, got), unproved: false };
+    }
+    const same = got.status === base || (success(got.status) && success(base)) || (off === "may" && got.status === 403 && got.code === "MODULE_OFF");
+    return { expected: `${base} (as the ${role} actor, whom the ${call.reach} reach lets through too)`, ok: same, unproved: base === 403 || base === 404 };
+  }
+  // Refused.
+  const refusal = reachRefusalFor(e, role);
+  const answered = got.status !== 0 && got.status < 500;
+  // The sweep's sample is a row this variant reaches after all (a school-wide post, the variant's own letter): nothing to ask.
+  if (refusal === "notAtSample") return { expected: "any answer (the sample is a row the variant reaches; the refusal is not asked here)", ok: answered, unproved: true };
+  // The empty body names no row (the row is in the valid body alone): the call answers the variant's own, which proves nothing.
+  if (!body && !call.namedByPath) return { expected: "any answer (the empty body names no row; the valid body asks the refusal)", ok: answered, unproved: true };
+  if (refusal === "filters") return { expected: "2xx narrowed to what the variant reaches (the door filters)", ok: success(got.status) || got.status === 403 || got.status === 404, unproved: true };
+  if (refusal === "unprocessable" && got.status === 422) return { expected: `403, 404 or 422 (the ${call.reach} reach refuses ${call.variant}; the door answers a row it does not reach 422)`, ok: true, unproved: !body && e.method !== "GET" };
+  if (got.status === 403 || got.status === 404 || (off === "may" && got.status === 403)) return { expected: `403 or 404 (the ${call.reach} reach refuses ${call.variant})`, ok: true, unproved: false };
+  // The parser refused the empty body before the handler asked about the row: nothing proved, nothing found.
+  if (!body && e.method !== "GET" && got.status === 422) return { expected: `403 or 404 (the ${call.reach} reach refuses ${call.variant})`, ok: true, unproved: true };
+  return { expected: `403 or 404 (the ${call.reach} reach refuses ${call.variant})`, ok: false, unproved: false };
+}
+
+/** The variant walk's report: every mismatch as a finding, then the counts (owner-batch-item13). */
+function printVariants(): void {
+  if (VARIANTS_OFF) { console.log("· role variants: off (--variants=off)"); return; }
+  for (const m of variantsMissing) console.log(`· variant left out: ${m}`);
+  const failed = variantResults.filter((r) => !r.ok);
+  for (const r of failed) console.log(`✗ VARIANT ${r.door}${r.body ? " (valid body)" : ""} as ${r.variant} (${r.role}, ${r.verdict}${r.reach ? ` at ${r.reach}` : ""}): expected ${r.expected}, got ${r.got}`);
+  const by = new Map<string, { calls: number; failed: number; unproved: number }>();
+  for (const r of variantResults) {
+    const row = by.get(r.variant) ?? { calls: 0, failed: 0, unproved: 0 };
+    row.calls++;
+    if (!r.ok) row.failed++;
+    if (r.ok && r.unproved) row.unproved++;
+    by.set(r.variant, row);
+  }
+  for (const [id, row] of by) console.log(`· variant ${id}: ${row.calls} calls, ${row.failed} unexpected, ${row.unproved} as expected without reaching the reach (a platform gate, the parser first, or the role's own actor refused too)`);
+  const doors = new Set(variantResults.map((r) => r.door)).size;
+  console.log(`role variants: ${variantResults.length - failed.length}/${variantResults.length} as expected over ${doors} doors, ${failed.length} unexpected, ${variantResults.filter((r) => r.ok && r.unproved).length} without reaching the reach.`);
+}
+/* end owner-batch-item13 ------------------------------------------------------------------------------------------ */
+
 /**
  * Whether the fixture school is closed today by its own calendar — a day off
  * its teaching week, or a closing holiday. The staff self check-in and the
@@ -542,53 +704,53 @@ function expected(e: Endpoint, role: Role | null): number | number[] {
 }
 
 /**
- * A status of 0 is a socket the server dropped, not an answer: the dev
- * server sheds its keep-alive connections while it compiles a route in the
- * background, and a run of 0s at the tail of the catalog was the whole of
- * four failed sweeps in a row. One retry after a short pause; a second 0
- * is reported as the result, so a door that is really shut still shows.
+ * A status of 0 is a socket the server dropped or a call past its timer, not an answer: the dev server sheds its
+ * keep-alive connections while it compiles a route in the background, and a busy one can sit on a request for longer
+ * than the call's eight seconds. So (1 Nov 2026, scripts/sweep-retry.ts) a dropped call is followed by a patient look
+ * at /api/health; while it answers, the call is sent once more after a short pause, with a longer timer, and counted
+ * in the summary ("N calls retried once"). Two runs that day had ended hours in on one unanswered request with
+ * health answering 200 right after.
  */
 async function hit(e: Endpoint, token: string | null, path: string, body?: string): Promise<Answer> {
   const first = await hitOnce(e, token, path, body);
-  if (first.status !== 0) return first;
-  await new Promise((resolve) => setTimeout(resolve, 750));
-  const second = await hitOnce(e, token, path, body);
-  if (second.status === 0) await serverStillThere(`${e.method} ${e.path}`);
-  return second;
+  const door = `${e.method} ${e.path}`;
+  const outcome = await retryOnceIfHealthy(first, {
+    healthy: () => healthAnswers(BASE),
+    pause: () => new Promise((resolve) => setTimeout(resolve, RETRY_PAUSE_MS)),
+    again: () => hitOnce(e, token, path, body, RETRY_TIMEOUT_MS),
+  });
+  if ("gone" in outcome) throw new ServerGone(door, outcome.gone === "health" ? "and /api/health did not answer" : "dropped again on its one retry, /api/health answering");
+  if (outcome.retried) retriedCalls.push(door);
+  return outcome.answer;
 }
+/** The generation runs that are live now (queued, running, stopping or marked active): their ids, which no call may name. */
+async function liveRunIds(): Promise<string[]> {
+  const rows = await db.quizGenJob.findMany({ where: { OR: [{ active: true }, { state: { in: ["QUEUED", "RUNNING", "STOPPING"] } }] }, select: { id: true, state: true, active: true } });
+  return rows.filter(isLiveRun).map((r) => r.id);
+}
+
+/** The calls a dropped answer was retried for, once each, while /api/health answered. */
+const retriedCalls: string[] = [];
 
 /**
  * The server gone is not a result. The desktop app stops the dev server on
  * its own now and then, and on 2 October 2026 a sweep marched through 468
  * doors after it had, reporting "got 0" for each and spending twenty
- * minutes to say one thing. After a door answers 0 twice the health probe
- * is asked; if it does not answer, the run ends here with the door it
- * stopped at and the flag that resumes from it, exit code 2, so a dead
- * server costs seconds and reads as itself and not as 468 failures.
+ * minutes to say one thing. When a dropped call's health look does not
+ * answer, or its one retry is dropped too (scripts/sweep-retry.ts), the run
+ * ends here with the door it stopped at and the flag that resumes from it,
+ * exit code 2, so a dead server costs seconds and reads as itself and not
+ * as 468 failures.
  */
 export class ServerGone extends Error {
-  constructor(public readonly at: string) {
-    super(`the server at ${BASE} stopped answering at ${at}`);
+  constructor(public readonly at: string, why?: string) {
+    super(`the server at ${BASE} stopped answering at ${at}${why ? ` (${why})` : ""}`);
   }
 }
 
-async function serverStillThere(at: string): Promise<void> {
+async function hitOnce(e: Endpoint, token: string | null, path: string, body?: string, timeoutMs = 8_000): Promise<Answer> {
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 5_000);
-  try {
-    const res = await fetch(BASE + "/api/health", { signal: controller.signal });
-    if (res.status === 200) return;
-  } catch {
-    /* no answer */
-  } finally {
-    clearTimeout(timer);
-  }
-  throw new ServerGone(at);
-}
-
-async function hitOnce(e: Endpoint, token: string | null, path: string, body?: string): Promise<Answer> {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 8_000);
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
   const started = performance.now();
   const done = (status: number, code: string | null = null): Answer => {
     const ms = Math.round(performance.now() - started);
@@ -1058,7 +1220,13 @@ async function main() {
   if (CROSS_MODE) return inOwnWindow(() => crossProbe(CROSS_MODE), sweepAway);
   const startedAt = new Date();
   const tokens = await actors();
-  gate = await readGateState(db, Object.values(userOf));
+  if (!VARIANTS_OFF) {
+    // owner-batch-item13: the role variants, and how many calls they add to this run (sweep-sessions.ts variantCalls).
+    await mintVariants();
+    const planned = ENDPOINTS.filter((e, i) => inChunk(i) && (!ONLY || ONLY.some((t) => e.path.includes(t)))).reduce((n, e) => n + variantCallCount(variantCalls(e, (id) => variantActors.has(id))), 0);
+    console.log(`· role variants: ${variantActors.size} minted, at most ${planned} calls added (doors with a reach or a duty, or naming SUPPORT; --variants=off to leave them out)`);
+  }
+  gate = await readGateState(db, [...Object.values(userOf), ...[...variantActors.values()].map((a) => a.userId)]);
   console.log(`· ${describeGateState(gate)}`);
   // The rows whose doors remove them, put back first, so this run proves the removal and not the last run's 404.
   const northgate = await db.school.findUniqueOrThrow({ where: { slug: "zz-northgate-school" }, select: { id: true } });
@@ -1073,6 +1241,14 @@ async function main() {
     if (path === null || /\{\w+\}/.test(path)) {
       skipped.push(`${e.method} ${e.path}`);
       continue;
+    }
+    // The generation run in hand is never the sweep's to touch (1 Nov 2026, scripts/sweep-live-run.ts): read afresh at each such door.
+    if (e.path.includes("/quiz-jobs")) {
+      const why = liveRunSkip(e, path, await liveRunIds());
+      if (why) {
+        skipped.push(`${e.method} ${e.path} (${why})`);
+        continue;
+      }
     }
     const goodBody = e.sampleBody ? e.sampleBody(fx) : null;
     // Sign-in endpoints mint sessions and burn rate limits; the sweep checks
@@ -1116,11 +1292,13 @@ async function main() {
       const byHandler = role !== null && actorPermits(e, role) && !!e.featureInHandler && featuresOf(e).every((f) => !gate.on.has(f));
       const handlerOk = (a: Answer) => byHandler && a.status === 404;
       const got = await hit(e, role ? tokens[role] : null, path);
+      if (role) baseAnswers.set(baseKey(e, role, "empty"), got.status); // owner-batch-item13
       results.push({ endpoint: `${e.method} ${e.path}`, role: role ?? "anonymous", expected: byHandler ? `${JSON.stringify(wanted(want, off))} or 404 (its handler, feature off)` : wanted(want, off), got: got.status, ok: judge(want, off, got) || handlerOk(got) });
       // With a valid body, a permitted role must get through (200), which is
       // the half of the contract an empty body cannot prove.
       if (goodBody && role && e.method !== "GET" && (e.access === "signed-in" || Array.isArray(e.access)) && actorPermits(e, role)) {
         const answer = await hit(e, tokens[role], path, JSON.stringify(goodBody));
+        baseAnswers.set(baseKey(e, role, "body"), answer.status); // owner-batch-item13
         // A status the catalog declares for this role (statusByRole: a Northgate sample is another tenant's row to a college
         // actor, an HOD may not write a college-wide visit) is the valid-body answer too; otherwise a permitted role gets through.
         const declared = e.statusByRole?.[role];
@@ -1128,15 +1306,19 @@ async function main() {
         results.push({ endpoint: `${e.method} ${e.path} (valid body)`, role, expected: byHandler ? `${JSON.stringify(wanted(want, off))} or 404 (its handler, feature off)` : wanted(want, off), got: answer.status, ok: judge(want, off, answer) || handlerOk(answer) });
       }
     }
+    // The role variants at this door, held to what its reach says and to what the role's own actors just answered (owner-batch-item13).
+    await walkVariants(e, path, goodBody);
   }
   const failed = results.filter((r) => !r.ok);
   for (const r of failed) console.log(`✗ ${r.endpoint} as ${r.role}: expected ${JSON.stringify(r.expected)}, got ${r.got}`);
-  for (const s of skipped) console.log(`· skipped (no sample): ${s}`);
+  for (const s of skipped) console.log(s.includes("generation run") ? `· skipped: ${s}` : `· skipped (no sample): ${s}`);
   console.log(`· judged by the platform's switches and plans (${describeGateState(gate)}): ${gated.FEATURE_OFF} calls 404 FEATURE_OFF, ${gated.PLAN_REQUIRED} calls 402 PLAN_REQUIRED, as expected`);
   console.log(`· judged by the institution's kind: ${kindGated} calls 404 at a school for a college's door, as expected`);
+  console.log(`· ${retriedCalls.length} calls retried once (dropped or past their timer while /api/health answered)${retriedCalls.length ? `: ${[...new Set(retriedCalls)].slice(0, 20).join(", ")}` : ""}`);
   console.log(`${results.length - failed.length}/${results.length} as expected, ${failed.length} unexpected, ${skipped.length} skipped.`);
+  printVariants(); // owner-batch-item13
   printSlowest();
-  if (failed.length) process.exitCode = 1;
+  if (failed.length || variantResults.some((r) => !r.ok)) process.exitCode = 1;
   await sweepAway(startedAt);
 }
 

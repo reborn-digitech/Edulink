@@ -637,6 +637,35 @@ export async function switchModulesOn(school: { id: string }, modules: readonly 
  * the open ALUMNUS one, exactly as recordDeparture leaves them. `tag` keeps
  * the demo schools' names apart from Northgate's.
  */
+// owner-batch-item13 (1 Nov 2026): THE API SWEEP'S ROLE VARIANTS that ZZ Northgate lacked (scripts/sweep-sessions.ts
+// SWEEP_VARIANTS): a co-teacher of the sample class (a CO row on Grade 3 · A), a teacher of another class only (a CO
+// row on Grade 5 · A), and a second office admin the head has not given the head's pages. None is on the timetable
+// (buildTimetable rotates the eight form and subject teachers alone), so the co-teacher reaches Grade 3 · A by the
+// row alone and the other teacher has nothing there. Made once; a rerun finds them.
+export const VARIANT_ADMIN_EMAIL = `zz.admin2@${DOMAIN}`;
+export async function buildReachVariants(ctx: Ctx, school: { id: string }): Promise<string[]> {
+  const out: string[] = [];
+  const coTeachers = [
+    { email: `zz.coteach3@${DOMAIN}`, name: "ZZ Meera Joshi", grade: "3", title: "Co-teacher", subjects: ["Mathematics"] },
+    { email: `zz.coteach5@${DOMAIN}`, name: "ZZ Ajay Patil", grade: "5", title: "Co-teacher", subjects: ["Science"] },
+  ];
+  for (const spec of coTeachers) {
+    const klass = await db.class.findFirst({ where: { schoolId: school.id, name: `ZZ Grade ${spec.grade} · A`, archivedAt: null }, select: { id: true } });
+    if (!klass) { out.push(`${spec.email} NOT made (no Grade ${spec.grade} · A)`); continue; }
+    const user = await upsertUser(ctx, spec.email, spec.name);
+    const membership = await upsertMembership(user.id, school.id, "TEACHER", { title: spec.title, subjects: JSON.stringify(spec.subjects) });
+    await attachTeacher(klass.id, school.id, membership.id, "CO");
+    out.push(`${spec.email} co-teacher of Grade ${spec.grade} · A`);
+  }
+  const admin = await upsertUser(ctx, VARIANT_ADMIN_EMAIL, "ZZ Kavita More");
+  const office = await upsertMembership(admin.id, school.id, "ADMIN", { title: "Office assistant" });
+  // Never the head's pages: a hand grant on an earlier run is taken back here, without an audit row (a fixture's reset).
+  if (office.dutiesJson && office.dutiesJson !== "[]") await db.membership.update({ where: { id: office.id }, data: { dutiesJson: "[]" } });
+  out.push(`${VARIANT_ADMIN_EMAIL} a second admin without the head's pages`);
+  return out;
+}
+// end owner-batch-item13
+
 // owner-batch-item2a (27 Oct 2026): SUPPORT STAFF WITHOUT A LOGIN.
 /** The month the fixture support worker's salary starts: after ZZ_PAYROLL_MONTH, so the fixture's locked run is unchanged. */
 export const SUPPORT_SALARY_FROM = "2026-09-01";
@@ -2707,10 +2736,16 @@ async function main() {
   // sweeps, the axe walk and the suites still reach those pages as the office; Vidya's registrar is not given them, so
   // the menu without them is walked too.
   {
-    const headPages = await giveHeadPages(db, northgate.school.id);
+    const headPages = await giveHeadPages(db, northgate.school.id, { except: [VARIANT_ADMIN_EMAIL] }); // owner-batch-item13: not the second admin
     console.log(`  The head's pages: zz.admin at Northgate ${headPages.given ? "given HEAD_PAGES" : "holds HEAD_PAGES (already)"} — /principal/leave, /principal/trends, /admin/reviews, /admin/safety; the head gives them at /principal/staff`);
   }
   // end owner-batch-item9
+  // owner-batch-item13 (1 Nov 2026): the API sweep's role variants that Northgate lacked (scripts/sweep-sessions.ts).
+  {
+    const variants = await buildReachVariants(ctx, northgate.school);
+    console.log(`  Role variants: ${variants.join("; ")} — the API sweep's variant walk`);
+  }
+  // end owner-batch-item13
   // The college foundation (4 Oct 2026): ZZ Vidya College with every module and a person in every college role, ZZ Shastri Autonomous College, and a recruiter.
   const colleges = await buildColleges(db, ctx.passwordHash);
   // The same locked payroll month at ZZ Vidya College (6 Oct 2026): the ACCOUNTS actor lives there, and the API sweep's

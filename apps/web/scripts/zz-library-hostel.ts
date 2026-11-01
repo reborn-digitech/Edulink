@@ -41,7 +41,7 @@ export async function buildLibraryHostel(db: PrismaClient, school: { id: string 
     db.membership.findFirst({ where: { schoolId: s, role: "LIBRARIAN", user: { email: "zz.librarian@zz.test" } }, select: { id: true, userId: true } }),
     db.membership.findFirst({ where: { schoolId: s, role: "WARDEN", user: { email: "zz.warden@zz.test" } }, select: { id: true, userId: true } }),
     db.user.findUnique({ where: { email: "zz.parent01@zz.test" }, select: { id: true } }),
-    db.membership.findFirst({ where: { schoolId: s, role: "ADMIN" }, select: { userId: true } }),
+    db.membership.findFirst({ where: { schoolId: s, role: "ADMIN" }, orderBy: { joinedAt: "asc" }, select: { userId: true } }), // the first by joining (owner-batch-item13: Northgate has two)
   ]);
   if (!p1 || !p2 || !p3 || !librarian || !warden || !admin) return null;
 

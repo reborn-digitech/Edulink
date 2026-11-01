@@ -12,6 +12,8 @@ import type { Endpoint } from "./types";
  */
 const NO_JOB = "/api/v1/appadmin/quiz-jobs/zz-sweep-no-such-job";
 const NO_SERVER = "/api/v1/appadmin/quiz-jobs/servers/zz-sweep-no-such-server";
+/** A finished run (1 Nov 2026: the live run is never a sample), else an id nothing holds. */
+const finished = (tail: string) => (f: { finishedQuizJobId: string | null }) => (f.finishedQuizJobId ? `/api/v1/appadmin/quiz-jobs/${f.finishedQuizJobId}${tail}` : `${NO_JOB}${tail}`);
 
 export const QUIZ_JOBS: Endpoint[] = [
   { method: "GET", path: "/api/v1/appadmin/quiz-jobs", summary: "The generation run in hand, or the last one, with its live line (the chapter running, items drafted and kept, the keep rate, seconds per kept item, rejects per stage, the last chapter's numbers); the latest five runs; the model servers' state (chat, the generator's second chat server, embeddings, the gate's small model)", access: "app-admin", response: c.quizJobsStateSchema },
@@ -19,8 +21,8 @@ export const QUIZ_JOBS: Endpoint[] = [
   { method: "GET", path: "/api/v1/appadmin/quiz-jobs/servers", summary: "The model servers (chat, chat2, embed, small), Running, Starting or Stopped, with the model's name and the port, read from their health endpoints (cached ten seconds)", access: "app-admin", response: c.modelServersSchema },
   { method: "POST", path: "/api/v1/appadmin/quiz-jobs/servers/{server}/start", summary: "Start one model server (chat, chat2, embed or small) through scripts/model-serve.sh; nothing when it already answers; chat2 is refused (500) when the machine has too little free memory", access: "app-admin", response: c.modelServersSchema, sample: `${NO_SERVER}/start` },
   { method: "POST", path: "/api/v1/appadmin/quiz-jobs/servers/{server}/stop", summary: "Stop one model server the script started; 409 while a generation run is active (stop the run first)", access: "app-admin", response: c.modelServersSchema, sample: `${NO_SERVER}/stop` },
-  { method: "GET", path: "/api/v1/appadmin/quiz-jobs/{jobId}", summary: "One generation run: its state, its request, its live line, who started it and which model servers it brought up", access: "app-admin", response: c.quizGenJobReadSchema, sample: NO_JOB },
+  { method: "GET", path: "/api/v1/appadmin/quiz-jobs/{jobId}", summary: "One generation run: its state, its request, its live line, who started it and which model servers it brought up", access: "app-admin", response: c.quizGenJobReadSchema, sample: finished("") },
   // college-content (12 Oct 2026): the card's "College" scope reads the syllabus corpus by stream.
   { method: "GET", path: "/api/v1/appadmin/quiz-jobs/college-syllabi", summary: "The streams with a syllabus in the corpus (SPPU, AICTE, PCI, MPKV): each stream's programmes, their syllabus documents and units (the level-one headings), for the generation card's College scope; and the streams with none", access: "app-admin", response: c.collegeSyllabiSchema },
-  { method: "POST", path: "/api/v1/appadmin/quiz-jobs/{jobId}/stop", summary: "Stop a run: the runner finishes the item in hand and halts, nothing half-written lands, and the model servers this run brought up go down with it; an ended run is left as it is", access: "app-admin", response: c.quizGenJobReadSchema, sample: `${NO_JOB}/stop` },
+  { method: "POST", path: "/api/v1/appadmin/quiz-jobs/{jobId}/stop", summary: "Stop a run: the runner finishes the item in hand and halts, nothing half-written lands, and the model servers this run brought up go down with it; an ended run is left as it is", access: "app-admin", response: c.quizGenJobReadSchema, sample: finished("/stop") },
 ];

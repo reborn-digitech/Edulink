@@ -14,7 +14,7 @@ import { zodToJsonSchema } from "zod-to-json-schema";
 import { ENDPOINTS, type Endpoint } from "../src/lib/api-catalog";
 import { COLLEGE_DOORS } from "./college-doors";
 import { isAdminDuty, PERSON_PLANS, PLAN_FEATURES } from "@edulink/contracts";
-import { featuresOf } from "../src/lib/api-catalog/types";
+import { featuresOf, reachMap } from "../src/lib/api-catalog/types";
 
 /** The plans a door's feature may ask for (16 Oct 2026): a door of such a feature may answer 402 PLAN_REQUIRED, unless planFree or left to its handler. */
 function plansOf(e: Endpoint): string[] {
@@ -64,6 +64,8 @@ function build() {
       ...(e.planFree ? { "x-plan-free": e.planFree } : {}),
       // The duties a FACULTY or HOD must hold to pass (5 Oct 2026); the phone's contract matrix reads it with the actor's /me duties.
       ...(e.duties?.length ? { "x-duties": e.duties } : {}),
+      // The rows each role reaches beyond the role (owner-batch-item13): the handler enforces it, the variant sweep checks it.
+      ...(reachMap(e) ? { "x-reach": reachMap(e) } : {}),
       // A college's door (filed in a college module's catalog file): at a school it may answer 403 MODULE_OFF, module or none (LOAD-6).
       ...(COLLEGE_DOORS.has(e) ? { "x-college": true } : {}),
       responses: {

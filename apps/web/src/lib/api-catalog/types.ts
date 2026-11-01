@@ -32,6 +32,110 @@ export type UnversionedPath = "/api/attendance" | "/api/practice/answer";
 
 export type Access = "anyone" | "signed-in" | "account" | "operator" | "app-admin" | RoleCode[];
 
+/**
+ * owner-batch-item13 (1 Nov 2026): REACH, the relation a door's HANDLER requires beyond the role — a closed list.
+ *
+ * The gate (role-gate.ts) decides the role, the module, the kind, the feature and the duty from the declaration,
+ * before the handler; it does NOT enforce reach and cannot, because the row a request names (a class, a pupil, a
+ * piece of work) is not known until the handler reads it. The handler enforces it through the tenancy helpers
+ * (tenancy.ts assertClassAccess, assertStudentAccess, assertAssignmentAccess, teaching-reach.ts, family-child.ts
+ * childAccess, the self-only and desk checks). This declaration is what the API sweep's variant walk
+ * (scripts/api-sweep.ts with scripts/sweep-sessions.ts REACH_PAIRS) and the catalog test check those handlers
+ * against: per role VARIANT, not per role, so a timetable-only teacher, a co-teacher, the guardian of another
+ * child and the office of another school are each asked what the data model lets them be.
+ *
+ *   ownSchool       any row of the caller's school: the tenant fence alone (the office's and the desks' doors)
+ *   teachesClass    a TEACHER through a ClassTeacher row or one timetable lesson for the class (a FACULTY or HOD:
+ *                   the row); a teacher with neither is refused 404
+ *   formTeacher     a TEACHER (FACULTY, HOD) only through a ClassTeacher row (LEAD or CO); a timetable-only teacher 404
+ *   leadTeacher     only the class's LEAD ClassTeacher row (the report cards): a co-teacher is refused too
+ *   teachesSubject  teachesClass, and a timetable-only teacher only in the subjects they take there (the syllabus,
+ *                   lessons, plan templates, exam marks); a form teacher and the office any subject
+ *   ownWork         a piece of work (assertAssignmentAccess): the class's form teachers all of it, a timetable-only
+ *                   teacher only the work they set, a pupil only published work of their own class or offering
+ *   ownChild        a guardian only a child they guard, a pupil only themselves; another family's child 404
+ *   self            the caller's own row (their membership, request, booking, slot, session…); another person refused
+ *   approvedExpert  an expert whose profile is published; one still under review is refused 403
+ *   ownDesk         a college teacher or a desk narrowed to its own: an HOD their department, a FACULTY the offerings
+ *                   they teach or the postings, juries and batches they run, a DRIVER their own bus
+ */
+export const REACHES = ["ownSchool", "teachesClass", "teachesSubject", "formTeacher", "leadTeacher", "ownWork", "ownChild", "self", "approvedExpert", "ownDesk"] as const;
+export type Reach = (typeof REACHES)[number];
+
+/** The roles each value can describe ("any" for every role); a door's reach names, for each of its roles, one that fits. */
+export const REACH_ROLES: Record<Reach, readonly RoleCode[] | "any"> = {
+  // A school's or a college's own people: never a guardian, an expert or a recruiter, who hold no school.
+  ownSchool: ["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", "DRIVER", "LIBRARIAN", "WARDEN", "ALUMNUS", "FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS", "SUPPORT"],
+  // The feed recasts a college's other staff roles as teachers (bulletin.ts asFeedReader), so they too reach a class.
+  teachesClass: ["TEACHER", "FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS"],
+  teachesSubject: ["TEACHER", "FACULTY", "HOD"],
+  formTeacher: ["TEACHER", "FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS"],
+  // The head writes a class's cards only as its LEAD too (report-cards.ts assertMayWriteCards).
+  leadTeacher: ["TEACHER", "PRINCIPAL", "FACULTY", "HOD"],
+  ownWork: ["TEACHER", "FACULTY", "HOD", "STUDENT"],
+  ownChild: ["STUDENT", "PARENT", "ALUMNUS"],
+  self: "any",
+  approvedExpert: ["EXPERT"],
+  ownDesk: ["FACULTY", "HOD", "DRIVER", "LIBRARIAN", "WARDEN", "EXAM_CONTROLLER", "TPO", "IQAC", "ACCOUNTS"],
+};
+
+/**
+ * A door's reach as written: one value, which binds the roles it can describe while the door's other roles (the office,
+ * the desks) reach `ownSchool`; or a value per role, where the roles differ in more than that (a pupil `self`, a
+ * guardian `ownChild`, a teacher `teachesClass`).
+ */
+export type ReachDeclaration = Reach | Partial<Record<RoleCode, Reach>>;
+
+/**
+ * How a door answers a caller its reach refuses, where that is not 403 or 404 (Endpoint.reachRefusal): "filters" (a 2xx
+ * narrowed to the caller's own, or having changed nothing), "unprocessable" (422), or "notAtSample" — the sweep's sample
+ * is a row the refused variant does reach (a school-wide post every reader opens, a letter that is the variant's own),
+ * so the refusal cannot be asked there and the walk says so.
+ */
+export type ReachRefusal = "filters" | "unprocessable" | "notAtSample";
+
+/** The refusal this role meets at this door: the door's one value, or its value for the role; null for 403 or 404. */
+export function reachRefusalFor(e: Pick<Endpoint, "reachRefusal">, role: RoleCode): ReachRefusal | null {
+  if (!e.reachRefusal) return null;
+  return typeof e.reachRefusal === "string" ? e.reachRefusal : (e.reachRefusal[role] ?? null);
+}
+
+/** Whether a value can describe this role's reach (REACH_ROLES). */
+export function reachFits(reach: Reach, role: RoleCode): boolean {
+  const roles = REACH_ROLES[reach];
+  return roles === "any" || roles.includes(role);
+}
+
+/**
+ * The reach a role meets at this door, or null where the door declares none for it: a per-role declaration's own
+ * value; one value where it fits the role; otherwise `ownSchool` for a role that holds a school, and null for one that
+ * does not (the catalog test refuses a door whose reach leaves one of its roles without a value).
+ */
+export function reachFor(e: Pick<Endpoint, "reach">, role: RoleCode): Reach | null {
+  if (!e.reach) return null;
+  if (typeof e.reach !== "string") return e.reach[role] ?? null;
+  if (reachFits(e.reach, role)) return e.reach;
+  return reachFits("ownSchool", role) ? "ownSchool" : null;
+}
+
+/** The roles a door names, for its reach: its `access` list, or the roles a per-role declaration names on an open door. */
+export function reachRoles(e: Pick<Endpoint, "access" | "reach">): RoleCode[] {
+  if (Array.isArray(e.access)) return [...e.access];
+  if (e.reach && typeof e.reach !== "string") return Object.keys(e.reach) as RoleCode[];
+  return [];
+}
+
+/** A door's reach for every role it names, as the docs publish it (`x-reach`); null without one. */
+export function reachMap(e: Pick<Endpoint, "access" | "reach">): Partial<Record<RoleCode, Reach>> | null {
+  if (!e.reach) return null;
+  const out: Partial<Record<RoleCode, Reach>> = {};
+  for (const role of reachRoles(e)) {
+    const r = reachFor(e, role);
+    if (r) out[role] = r;
+  }
+  return out;
+}
+
 export type Endpoint = {
   method: "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
   /**
@@ -110,6 +214,26 @@ export type Endpoint = {
    * binds only the roles it is given to (`dutyHolderRoles`).
    */
   duties?: AnyDutyCode[];
+  /**
+   * WHICH ROWS A PERMITTED CALLER REACHES (owner-batch-item13, 1 Nov 2026): the relation the handler requires beyond
+   * the role, from the closed list REACHES above, one value or a value per role. NOT enforced by the gate — the row is
+   * not known before the handler reads it — but declared so the API sweep walks the door as each role variant the
+   * value implies (a subject teacher 200 and another class's teacher 404 at `teachesClass`, the subject teacher 404 at
+   * `formTeacher`, another family's guardian 404 at `ownChild`…) and reports a variant answered otherwise as a
+   * finding. Required (tests/api-catalog.test.ts) on every door whose path or body names a class, a pupil, a child, a
+   * membership or a piece of work. Published as `x-reach`, per role.
+   */
+  reach?: ReachDeclaration;
+  /**
+   * How a variant the reach refuses is answered, where it is not 403 or 404 (owner-batch-item13): "filters" for a door
+   * that answers 200 with what the caller reaches and nothing else (a list narrowed rather than refused), the variant
+   * walk then taking the refused variant's 2xx and saying it read nothing of the fence; "unprocessable" for a door that
+   * judges the row it names as a value of the request and refuses one it does not reach with 422 (a pupil "not here"),
+   * which the walk then takes as the refusal; "notAtSample" where the sweep's sample is a row the refused variant
+   * reaches after all (ReachRefusal). Left out, refused is 403 or 404. A value per role where the roles differ
+   * (a guardian refused 404, a pupil whose `childId` is ignored answered their own rows: "filters").
+   */
+  reachRefusal?: ReachRefusal | Partial<Record<RoleCode, ReachRefusal>>;
   request?: ZodTypeAny;
   response: ZodTypeAny;
   /**
@@ -319,6 +443,12 @@ export type SweepFixture = {
    */
   placementApplicationId: string | null;
   placementApplicantMembershipId: string | null;
+  /**
+   * A FINISHED generation run (stopped, finished or failed, not active), the latest, for the run doors' samples (1 Nov
+   * 2026): never a queued, running or stopping one — the sweep's own guard (scripts/sweep-live-run.ts) refuses those
+   * too. Null when no run has finished, and the doors fall back to an id nothing holds.
+   */
+  finishedQuizJobId: string | null;
   todayKey: string;
 };
 

@@ -19,12 +19,12 @@ const competition = (f: { competitionId: string | null }, tail: string) => (f.co
 
 export const CONTEST: Endpoint[] = [
   // ---- a pupil and a guardian ---------------------------------------------------
-  { method: "POST", path: "/api/v1/contest/competitions/{competitionId}/submit", summary: "A pupil hands in, or replaces, the https link to their work", access: ["STUDENT"], request: c.contestSubmitSchema, response: c.okSchema, emptyBodyStatus: 422, sample: (f) => competition(f, "/submit") },
+  { method: "POST", path: "/api/v1/contest/competitions/{competitionId}/submit", summary: "A pupil hands in, or replaces, the https link to their work", access: ["STUDENT"], request: c.contestSubmitSchema, reach: "self", response: c.okSchema, emptyBodyStatus: 422, sample: (f) => competition(f, "/submit") },
   // An entry NOBODY MADE (SWEEPS-1, 4 Oct 2026). The call deletes the entry, so a real one would be gone after
   // the pupil's turn; this id is refused 403 to every role outside `access` (withdrawEntry asks the role before
   // it reads the id, which it did not on 2026-10-01, when the expert's 404 stopped the sample) and 404 to the
   // pupil and the guardian, and nothing is deleted. tests/api-v1-contest.test.ts proves the withdrawal itself.
-  { method: "DELETE", path: "/api/v1/contest/entries/{entryId}", summary: "The pupil withdraws their entry, or their guardian says not this time", access: ["STUDENT", "PARENT"], response: c.okSchema, sample: "/api/v1/contest/entries/zz-sweep-no-such-entry" },
+  { method: "DELETE", path: "/api/v1/contest/entries/{entryId}", summary: "The pupil withdraws their entry, or their guardian says not this time", access: ["STUDENT", "PARENT"], reach: { STUDENT: "self", PARENT: "ownChild" }, response: c.okSchema, sample: "/api/v1/contest/entries/zz-sweep-no-such-entry" },
   // ---- a school admin organising one ---------------------------------------------
   { method: "POST", path: "/api/v1/contest/competitions", summary: "A school admin posts a competition, saved as a draft", access: ["ADMIN"], request: c.contestCreateSchema, response: c.contestCreatedSchema, emptyBodyStatus: 422 },
   { method: "POST", path: "/api/v1/contest/competitions/{competitionId}/status", summary: "The organising school publishes, withdraws or re-drafts its competition", access: ["ADMIN"], request: c.contestStatusSchema, response: c.contestStatusSetSchema, emptyBodyStatus: 422, sample: (f) => competition(f, "/status") },

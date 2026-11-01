@@ -14,10 +14,15 @@ import type { ActiveContext } from "../src/lib/session";
  */
 const HEAD_PREFS = { theme: "system", contrast: "normal", font: "default", motion: "full", locale: "en", channels: { push: false, email: false }, quietHours: null } as const;
 
-export async function giveHeadPages(db: PrismaClient, schoolId: string): Promise<{ given: number; already: number; noHead: boolean }> {
+/**
+ * owner-batch-item13 (1 Nov 2026): `except` names admins (by address) the head does NOT give the pages to — ZZ
+ * Northgate's second admin, the API sweep's variant without the head's pages (scripts/sweep-sessions.ts), who must stay
+ * without them on every run of zz:fixtures.
+ */
+export async function giveHeadPages(db: PrismaClient, schoolId: string, opts: { except?: readonly string[] } = {}): Promise<{ given: number; already: number; noHead: boolean }> {
   const head = await db.membership.findFirst({ where: { schoolId, role: "PRINCIPAL", status: "ACTIVE", leftAt: null }, orderBy: { joinedAt: "asc" }, select: { id: true, user: { select: { id: true, name: true, email: true, isMinor: true, isSuperuser: true, isAppAdmin: true } } } });
   if (!head) return { given: 0, already: 0, noHead: true };
-  const admins = await db.membership.findMany({ where: { schoolId, role: "ADMIN", status: "ACTIVE", leftAt: null }, select: { id: true, dutiesJson: true } });
+  const admins = await db.membership.findMany({ where: { schoolId, role: "ADMIN", status: "ACTIVE", leftAt: null, ...(opts.except?.length ? { NOT: { user: { email: { in: [...opts.except] } } } } : {}) }, select: { id: true, dutiesJson: true } });
   const waiting = admins.filter((a) => !parseAdminDuties(a.dutiesJson).includes("HEAD_PAGES"));
   if (waiting.length === 0) return { given: 0, already: admins.length, noHead: false };
   const u = head.user;

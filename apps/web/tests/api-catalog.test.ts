@@ -8,6 +8,7 @@ import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { ENDPOINTS, type SweepFixture } from "@/lib/api-catalog";
 import { OUTSIDE_THE_CATALOG, UNVERSIONED } from "@/lib/api-catalog/unversioned";
+import { REACHES, reachFits, reachFor, reachRoles } from "@/lib/api-catalog/types"; // owner-batch-item13
 
 const ROOT = "src/app/api/v1";
 const METHODS = ["GET", "POST", "PUT", "PATCH", "DELETE"] as const;
@@ -115,7 +116,96 @@ describe("the /api/v1 catalog", () => {
     for (const path of ["/api/v1/accounts/mess-bill", "/api/v1/accounts/route-fees"]) expect(ENDPOINTS.find((e) => e.method === "POST" && e.path === path)?.kinds, path).toEqual(["COLLEGE", "AUTONOMOUS_COLLEGE"]);
     for (const path of ["/api/v1/admin/hostel/mess-bill", "/api/v1/admin/transport/route-fees"]) expect(ENDPOINTS.find((e) => e.method === "POST" && e.path === path)?.kinds, path).toBeUndefined();
   });
+
+  /**
+   * owner-batch-item13 (1 Nov 2026, after the subject-teacher bug of 10e5f2d2): a door whose path or body names a
+   * class, a pupil, a child, a membership or a piece of work declares its REACH — which of those rows each of its roles
+   * reaches (catalog types.ts REACHES) — so the API sweep walks it as the role variants that reach implies. Those that
+   * name such a thing and declare none are listed in REACH_EXEMPT, each with why.
+   */
+  it("a door naming a class, pupil, child, membership or piece of work declares its reach, or is exempted with a reason", () => {
+    const missing: string[] = [];
+    for (const e of ENDPOINTS) {
+      const key = `${e.method} ${e.path}`;
+      const names = reachNames(e);
+      if (names.length === 0) continue;
+      if (REACH_EXEMPT[key]) {
+        expect(e.reach, `${key} is exempted and declares a reach`).toBeUndefined();
+        continue;
+      }
+      if (!e.reach) missing.push(`${key} (names ${names.join(", ")})`);
+    }
+    expect(missing).toEqual([]);
+    for (const [key, reason] of Object.entries(REACH_EXEMPT)) {
+      const e = ENDPOINTS.find((x) => `${x.method} ${x.path}` === key);
+      expect(e, `${key}: exempted but not in the catalog`).toBeDefined();
+      expect(reachNames(e!).length, `${key}: exempted but names nothing that asks for a reach`).toBeGreaterThan(0);
+      expect(reason.trim().split(/\s+/).length, `${key}: the exemption says why in a sentence`).toBeGreaterThanOrEqual(6);
+    }
+  });
+
+  it("a declared reach gives every role of its door one value from the closed list that fits that role", () => {
+    const wrong: string[] = [];
+    const declared = ENDPOINTS.filter((e) => e.reach);
+    expect(declared.length).toBeGreaterThan(100);
+    for (const e of declared) {
+      const key = `${e.method} ${e.path}`;
+      const roles = reachRoles(e);
+      if (roles.length === 0) wrong.push(`${key}: an open door's reach must name its roles one by one`);
+      if (typeof e.reach === "string" && !(REACHES as readonly string[]).includes(e.reach)) wrong.push(`${key}: ${e.reach} is not a reach`);
+      if (typeof e.reach === "object") {
+        for (const [role, value] of Object.entries(e.reach)) {
+          if (!(REACHES as readonly string[]).includes(value as string)) wrong.push(`${key}: ${role} ${value} is not a reach`);
+          if (Array.isArray(e.access) && !e.access.includes(role as never)) wrong.push(`${key}: ${role} is in the reach and not in access`);
+        }
+      }
+      for (const role of roles) {
+        const r = reachFor(e, role);
+        if (!r) wrong.push(`${key}: ${role} has no reach`);
+        else if (!reachFits(r, role)) wrong.push(`${key}: ${r} cannot describe a ${role}`);
+      }
+      if (e.reachRefusal && !e.reach) wrong.push(`${key}: reachRefusal without a reach`);
+    }
+    expect(wrong).toEqual([]);
+  });
 });
+
+/** The parameter and body names that ask a door for a reach (owner-batch-item13): a class, a pupil, a child, a membership, a piece of work. */
+const REACH_NAME = /^(classId|classIds|fromClassId|toClassIds?|childId|childIds|assignmentIds?|studentMembershipIds?|membershipIds?|[a-z][A-Za-z]*MembershipIds?)$/;
+
+/** Every key a zod schema names, nested objects and arrays included (zod 3's _def). */
+function schemaKeys(schema: unknown, depth = 0): string[] {
+  const def = (schema as { _def?: Record<string, unknown> } | undefined)?._def;
+  if (!def || depth > 6) return [];
+  switch (def.typeName) {
+    case "ZodObject": {
+      const shape = (typeof def.shape === "function" ? (def.shape as () => Record<string, unknown>)() : def.shape) as Record<string, unknown>;
+      return Object.entries(shape).flatMap(([k, v]) => [k, ...schemaKeys(v, depth + 1)]);
+    }
+    case "ZodOptional": case "ZodNullable": case "ZodDefault": case "ZodReadonly": case "ZodCatch": case "ZodBranded":
+      return schemaKeys(def.innerType ?? def.type, depth);
+    case "ZodEffects": return schemaKeys(def.schema, depth);
+    case "ZodPipeline": return schemaKeys(def.in, depth);
+    case "ZodLazy": return schemaKeys((def.getter as () => unknown)(), depth + 1);
+    case "ZodArray": return schemaKeys(def.type, depth + 1);
+    case "ZodUnion": case "ZodDiscriminatedUnion": {
+      const options = def.options instanceof Map ? [...def.options.values()] : (def.options as unknown[]);
+      return options.flatMap((o) => schemaKeys(o, depth + 1));
+    }
+    case "ZodIntersection": return [...schemaKeys(def.left, depth + 1), ...schemaKeys(def.right, depth + 1)];
+    default: return [];
+  }
+}
+
+function reachNames(e: (typeof ENDPOINTS)[number]): string[] {
+  const names = new Set([...[...e.path.matchAll(/\{(\w+)\}/g)].map((m) => m[1]!), ...schemaKeys(e.request)]);
+  return [...names].filter((n) => REACH_NAME.test(n)).sort();
+}
+
+/** Doors that name such a thing and declare no reach, each with why (owner-batch-item13). */
+const REACH_EXEMPT: Record<string, string> = {
+  // None on 1 November 2026: every such door declares one. An entry is "METHOD /path": "why, in a sentence".
+};
 
 /**
  * EVERY /api ROUTE, NOT ONLY /api/v1 (A3-inventory-9, audit of 5 October

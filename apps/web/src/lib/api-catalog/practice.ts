@@ -22,7 +22,7 @@ export const PRACTICE: Endpoint[] = [
     summary: "Open a sitting on a chapter (or on a chapter the teacher set), or pick up the one left half-way, with the question to answer now",
     access: ["STUDENT"],
     request: c.practiceBeginBodySchema,
-    response: c.practiceBeganSchema,
+    reach: "ownWork", response: c.practiceBeganSchema,
     emptyBodyStatus: 422,
   },
   // The sweep's samples for the three reads that need a query name an attempt,
@@ -34,7 +34,7 @@ export const PRACTICE: Endpoint[] = [
     summary: "Answer a question, with the verdict and the working — replay-safe, so the outbox may deliver it twice",
     access: ["STUDENT"],
     request: c.practiceAnswerBodySchema,
-    response: c.practiceAnsweredSchema,
+    reach: "self", response: c.practiceAnsweredSchema,
     emptyBodyStatus: 422,
   },
   {
@@ -43,7 +43,7 @@ export const PRACTICE: Endpoint[] = [
     summary: "Show the working before answering; costs the chapter's badge for this sitting",
     access: ["STUDENT"],
     request: c.practiceRevealBodySchema,
-    response: c.practiceRevealedSchema,
+    reach: "self", response: c.practiceRevealedSchema,
     emptyBodyStatus: 422,
   },
   // ---- /student/practice/revision ------------------------------------------

@@ -43,8 +43,10 @@ describe("the API sweep's sessions", () => {
   it("are what api-sweep.ts mints, renews and purges; no day-long session is left in it", () => {
     const src = readFileSync(join(process.cwd(), "scripts", "api-sweep.ts"), "utf8");
     expect(src).not.toMatch(/86_400_000/);
-    // The two mints (the actors, the session the sign-out door signs out) and the renewal.
-    expect(src.match(/expiresAt: sweepSessionExpiry\(\)/g)?.length).toBe(3);
+    // The three mints (the actors, the session the sign-out door signs out, the role variants: owner-batch-item13) and the renewal.
+    expect(src.match(/expiresAt: sweepSessionExpiry\(\)/g)?.length).toBe(4);
+    // Every variant session is pushed onto `minted`, so the renewal, the signal and the finally reach it too.
+    expect(src).toMatch(/const sess = await db\.session\.create\([^\n]*\n\s*minted\.push\(sess\.id\);/);
     expect(src).toMatch(/keepSessionsAlive\(\(\) => db\.session\.updateMany\(\{ where: \{ id: \{ in: minted \} \}/);
     // On a signal the run first switches back what --features=on / --plans=on switched on (16 Oct 2026), then deletes its sessions.
     expect(src).toMatch(/purgeSessionsOnSignal\(async \(\) => \{\s*await switches\.restore\(\)[^\n]*\n\s*await db\.session\.deleteMany\(\{ where: \{ id: \{ in: minted \} \} \}\);\s*\}\)/);

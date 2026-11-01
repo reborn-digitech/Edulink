@@ -1890,6 +1890,26 @@
           "RECRUITER",
           "SUPPORT"
         ],
+        "x-reach": {
+          "ADMIN": "self",
+          "PRINCIPAL": "self",
+          "TEACHER": "self",
+          "STUDENT": "self",
+          "PARENT": "self",
+          "EXPERT": "self",
+          "DRIVER": "self",
+          "LIBRARIAN": "self",
+          "WARDEN": "self",
+          "ALUMNUS": "self",
+          "FACULTY": "self",
+          "HOD": "self",
+          "EXAM_CONTROLLER": "self",
+          "IQAC": "self",
+          "TPO": "self",
+          "ACCOUNTS": "self",
+          "RECRUITER": "self",
+          "SUPPORT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -2297,6 +2317,12 @@
           }
         ],
         "x-access": "signed-in",
+        "x-reach": {
+          "TEACHER": "ownWork",
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild",
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -2389,6 +2415,10 @@
           "TEACHER",
           "ADMIN"
         ],
+        "x-reach": {
+          "TEACHER": "teachesSubject",
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -2524,6 +2554,21 @@
           "TPO",
           "ACCOUNTS"
         ],
+        "x-reach": {
+          "ADMIN": "self",
+          "PRINCIPAL": "self",
+          "TEACHER": "self",
+          "STUDENT": "self",
+          "PARENT": "self",
+          "EXPERT": "self",
+          "ALUMNUS": "self",
+          "FACULTY": "self",
+          "HOD": "self",
+          "EXAM_CONTROLLER": "self",
+          "IQAC": "self",
+          "TPO": "self",
+          "ACCOUNTS": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -2963,6 +3008,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -3616,6 +3664,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -3894,6 +3945,10 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -4085,6 +4140,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -4273,6 +4331,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -4411,6 +4472,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -4499,6 +4563,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -4587,6 +4654,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -4705,6 +4775,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -4814,6 +4887,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -4926,6 +5002,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -5034,6 +5113,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -5122,6 +5204,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -6051,6 +6136,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -6158,6 +6246,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -6524,6 +6615,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -6788,6 +6882,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -7256,6 +7353,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -8182,6 +8282,10 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -9145,6 +9249,10 @@
         "x-duties": [
           "HEAD_PAGES"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -10323,6 +10431,9 @@
         "x-plans": [
           "TEACHER"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -10904,6 +11015,10 @@
         "x-duties": [
           "HEAD_PAGES"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -12185,6 +12300,10 @@
           "TEACHER",
           "ADMIN"
         ],
+        "x-reach": {
+          "TEACHER": "formTeacher",
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -12601,6 +12720,10 @@
           "TEACHER",
           "ADMIN"
         ],
+        "x-reach": {
+          "TEACHER": "teachesClass",
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -12893,6 +13016,10 @@
           "TEACHER",
           "ADMIN"
         ],
+        "x-reach": {
+          "TEACHER": "formTeacher",
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -13021,6 +13148,10 @@
           "TEACHER",
           "ADMIN"
         ],
+        "x-reach": {
+          "TEACHER": "ownWork",
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -13292,6 +13423,10 @@
           "TEACHER",
           "ADMIN"
         ],
+        "x-reach": {
+          "TEACHER": "teachesClass",
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -13427,6 +13562,10 @@
           "TEACHER",
           "ADMIN"
         ],
+        "x-reach": {
+          "TEACHER": "ownWork",
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -13697,6 +13836,10 @@
           "TEACHER",
           "ADMIN"
         ],
+        "x-reach": {
+          "TEACHER": "teachesClass",
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -14290,6 +14433,9 @@
         "x-plans": [
           "STUDENT"
         ],
+        "x-reach": {
+          "TEACHER": "formTeacher"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -14650,6 +14796,9 @@
         "x-plans": [
           "STUDENT"
         ],
+        "x-reach": {
+          "TEACHER": "teachesClass"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -14779,6 +14928,9 @@
         "x-plans": [
           "STUDENT"
         ],
+        "x-reach": {
+          "TEACHER": "teachesClass"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -15134,6 +15286,9 @@
         "x-access": [
           "TEACHER"
         ],
+        "x-reach": {
+          "TEACHER": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -15450,6 +15605,19 @@
           "TPO",
           "ACCOUNTS"
         ],
+        "x-reach": {
+          "TEACHER": "self",
+          "PRINCIPAL": "self",
+          "DRIVER": "self",
+          "LIBRARIAN": "self",
+          "WARDEN": "self",
+          "FACULTY": "self",
+          "HOD": "self",
+          "EXAM_CONTROLLER": "self",
+          "IQAC": "self",
+          "TPO": "self",
+          "ACCOUNTS": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -17141,6 +17309,10 @@
           "PRINCIPAL",
           "ADMIN"
         ],
+        "x-reach": {
+          "PRINCIPAL": "ownSchool",
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -17637,6 +17809,10 @@
           "PRINCIPAL",
           "ADMIN"
         ],
+        "x-reach": {
+          "PRINCIPAL": "ownSchool",
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -17809,6 +17985,9 @@
         "x-access": [
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -19347,6 +19526,9 @@
         "x-access": [
           "STUDENT"
         ],
+        "x-reach": {
+          "STUDENT": "ownWork"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -20375,6 +20557,9 @@
         "x-access": [
           "PARENT"
         ],
+        "x-reach": {
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -20995,6 +21180,9 @@
         "x-access": [
           "PARENT"
         ],
+        "x-reach": {
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -21364,6 +21552,9 @@
         "x-access": [
           "PARENT"
         ],
+        "x-reach": {
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -21594,6 +21785,9 @@
         "x-plans": [
           "STUDENT"
         ],
+        "x-reach": {
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -22056,6 +22250,9 @@
         "x-access": [
           "PARENT"
         ],
+        "x-reach": {
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -22162,6 +22359,9 @@
         "x-access": [
           "PARENT"
         ],
+        "x-reach": {
+          "PARENT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -22555,6 +22755,10 @@
           "STUDENT",
           "PARENT"
         ],
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -23347,6 +23551,10 @@
           "STUDENT",
           "PARENT"
         ],
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -24095,6 +24303,10 @@
           "STUDENT",
           "PARENT"
         ],
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -24387,6 +24599,10 @@
           "STUDENT",
           "PARENT"
         ],
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -24547,6 +24763,9 @@
         "x-access": [
           "PARENT"
         ],
+        "x-reach": {
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -24764,6 +24983,9 @@
         "x-access": [
           "PARENT"
         ],
+        "x-reach": {
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -24875,6 +25097,9 @@
         "x-access": [
           "PARENT"
         ],
+        "x-reach": {
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -25301,6 +25526,10 @@
           "STUDENT",
           "PARENT"
         ],
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -25532,6 +25761,9 @@
         "x-access": [
           "PARENT"
         ],
+        "x-reach": {
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -25651,6 +25883,10 @@
           "STUDENT",
           "PARENT"
         ],
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -25804,6 +26040,10 @@
           "STUDENT",
           "PARENT"
         ],
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -25995,6 +26235,10 @@
           "STUDENT",
           "PARENT"
         ],
+        "x-reach": {
+          "STUDENT": "self",
+          "PARENT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -26157,6 +26401,9 @@
         "x-access": [
           "PARENT"
         ],
+        "x-reach": {
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -26638,6 +26885,20 @@
           "TPO",
           "ACCOUNTS"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "TEACHER": "teachesClass",
+          "STUDENT": "ownChild",
+          "PARENT": "self",
+          "EXPERT": "self",
+          "FACULTY": "teachesClass",
+          "HOD": "teachesClass",
+          "EXAM_CONTROLLER": "teachesClass",
+          "IQAC": "teachesClass",
+          "TPO": "teachesClass",
+          "ACCOUNTS": "teachesClass"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -27262,6 +27523,21 @@
           "TPO",
           "ACCOUNTS"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "TEACHER": "formTeacher",
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild",
+          "EXPERT": "self",
+          "ALUMNUS": "ownSchool",
+          "FACULTY": "formTeacher",
+          "HOD": "formTeacher",
+          "EXAM_CONTROLLER": "formTeacher",
+          "IQAC": "formTeacher",
+          "TPO": "formTeacher",
+          "ACCOUNTS": "formTeacher"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -27692,6 +27968,21 @@
           "TPO",
           "ACCOUNTS"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "TEACHER": "formTeacher",
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild",
+          "EXPERT": "self",
+          "ALUMNUS": "ownSchool",
+          "FACULTY": "formTeacher",
+          "HOD": "formTeacher",
+          "EXAM_CONTROLLER": "formTeacher",
+          "IQAC": "formTeacher",
+          "TPO": "formTeacher",
+          "ACCOUNTS": "formTeacher"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -27812,6 +28103,21 @@
           "TPO",
           "ACCOUNTS"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "TEACHER": "formTeacher",
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild",
+          "EXPERT": "self",
+          "ALUMNUS": "ownSchool",
+          "FACULTY": "formTeacher",
+          "HOD": "formTeacher",
+          "EXAM_CONTROLLER": "formTeacher",
+          "IQAC": "formTeacher",
+          "TPO": "formTeacher",
+          "ACCOUNTS": "formTeacher"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -27923,6 +28229,10 @@
           "TEACHER",
           "ADMIN"
         ],
+        "x-reach": {
+          "TEACHER": "formTeacher",
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -28161,6 +28471,10 @@
           "TEACHER",
           "ADMIN"
         ],
+        "x-reach": {
+          "TEACHER": "formTeacher",
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -28560,6 +28874,10 @@
           "TEACHER",
           "ADMIN"
         ],
+        "x-reach": {
+          "TEACHER": "formTeacher",
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -28677,6 +28995,11 @@
           "PRINCIPAL",
           "PARENT"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -29045,6 +29368,21 @@
           "TPO",
           "ACCOUNTS"
         ],
+        "x-reach": {
+          "ADMIN": "self",
+          "PRINCIPAL": "self",
+          "TEACHER": "self",
+          "STUDENT": "self",
+          "PARENT": "self",
+          "EXPERT": "self",
+          "ALUMNUS": "self",
+          "FACULTY": "self",
+          "HOD": "self",
+          "EXAM_CONTROLLER": "self",
+          "IQAC": "self",
+          "TPO": "self",
+          "ACCOUNTS": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -29355,6 +29693,14 @@
           }
         ],
         "x-access": "signed-in",
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "TEACHER": "self",
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild",
+          "EXPERT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -29550,6 +29896,14 @@
           }
         ],
         "x-access": "signed-in",
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "TEACHER": "self",
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild",
+          "EXPERT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -29972,6 +30326,26 @@
           "RECRUITER",
           "SUPPORT"
         ],
+        "x-reach": {
+          "ADMIN": "self",
+          "PRINCIPAL": "self",
+          "TEACHER": "self",
+          "STUDENT": "self",
+          "PARENT": "self",
+          "EXPERT": "self",
+          "DRIVER": "self",
+          "LIBRARIAN": "self",
+          "WARDEN": "self",
+          "ALUMNUS": "self",
+          "FACULTY": "self",
+          "HOD": "self",
+          "EXAM_CONTROLLER": "self",
+          "IQAC": "self",
+          "TPO": "self",
+          "ACCOUNTS": "self",
+          "RECRUITER": "self",
+          "SUPPORT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -30839,6 +31213,9 @@
         "x-access": [
           "PARENT"
         ],
+        "x-reach": {
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -31160,6 +31537,14 @@
           }
         ],
         "x-access": "signed-in",
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "TEACHER": "self",
+          "STUDENT": "self",
+          "PARENT": "self",
+          "EXPERT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -31312,6 +31697,14 @@
           }
         ],
         "x-access": "signed-in",
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "TEACHER": "self",
+          "STUDENT": "self",
+          "PARENT": "self",
+          "EXPERT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -31597,6 +31990,14 @@
         "x-plans": [
           "EXPERT"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "TEACHER": "teachesClass",
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild",
+          "EXPERT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -31767,6 +32168,14 @@
         "x-plans": [
           "EXPERT"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "TEACHER": "teachesClass",
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild",
+          "EXPERT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -31890,6 +32299,13 @@
           "STUDENT",
           "PARENT"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "TEACHER": "self",
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -32802,6 +33218,9 @@
         "x-plans": [
           "EXPERT"
         ],
+        "x-reach": {
+          "EXPERT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -44013,6 +44432,9 @@
         "x-plans": [
           "STUDENT"
         ],
+        "x-reach": {
+          "STUDENT": "ownWork"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -44453,6 +44875,9 @@
         "x-plans": [
           "STUDENT"
         ],
+        "x-reach": {
+          "STUDENT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -44621,6 +45046,9 @@
         "x-plans": [
           "STUDENT"
         ],
+        "x-reach": {
+          "STUDENT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -45862,6 +46290,10 @@
         "x-plans": [
           "EXPERT"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "TEACHER": "teachesClass"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -46221,6 +46653,9 @@
         "x-plans": [
           "EXPERT"
         ],
+        "x-reach": {
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -46326,6 +46761,12 @@
         "x-plans": [
           "EXPERT"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "TEACHER": "teachesClass",
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -46426,6 +46867,11 @@
           "PRINCIPAL",
           "TEACHER"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "TEACHER": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -47254,6 +47700,10 @@
           "TEACHER",
           "ADMIN"
         ],
+        "x-reach": {
+          "TEACHER": "teachesClass",
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -47418,6 +47868,10 @@
           "TEACHER",
           "ADMIN"
         ],
+        "x-reach": {
+          "TEACHER": "ownWork",
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -47708,6 +48162,10 @@
           "TEACHER",
           "ADMIN"
         ],
+        "x-reach": {
+          "TEACHER": "ownWork",
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -47852,6 +48310,11 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "TEACHER": "leadTeacher",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "leadTeacher"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -48205,6 +48668,11 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "TEACHER": "leadTeacher",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "leadTeacher"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -48346,6 +48814,11 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "TEACHER": "leadTeacher",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "leadTeacher"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -48461,6 +48934,11 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "TEACHER": "leadTeacher",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "leadTeacher"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -48569,6 +49047,11 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "TEACHER": "leadTeacher",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "leadTeacher"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -48859,6 +49342,11 @@
           "STUDENT",
           "PARENT"
         ],
+        "x-reach": {
+          "TEACHER": "teachesClass",
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -48970,6 +49458,11 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "TEACHER": "formTeacher",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -49087,6 +49580,11 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "TEACHER": "formTeacher",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -49197,6 +49695,11 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "TEACHER": "teachesClass",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -49998,6 +50501,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -50533,6 +51039,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -50633,6 +51142,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -51071,6 +51583,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -51763,6 +52278,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -52745,6 +53263,26 @@
           "RECRUITER",
           "SUPPORT"
         ],
+        "x-reach": {
+          "ADMIN": "self",
+          "PRINCIPAL": "self",
+          "TEACHER": "self",
+          "STUDENT": "self",
+          "PARENT": "self",
+          "EXPERT": "self",
+          "DRIVER": "self",
+          "LIBRARIAN": "self",
+          "WARDEN": "self",
+          "ALUMNUS": "self",
+          "FACULTY": "self",
+          "HOD": "self",
+          "EXAM_CONTROLLER": "self",
+          "IQAC": "self",
+          "TPO": "self",
+          "ACCOUNTS": "self",
+          "RECRUITER": "self",
+          "SUPPORT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -53658,6 +54196,11 @@
           "TEACHER",
           "EXPERT"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "TEACHER": "ownSchool",
+          "EXPERT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -53820,6 +54363,11 @@
           "TEACHER",
           "EXPERT"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "TEACHER": "ownSchool",
+          "EXPERT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -53931,6 +54479,11 @@
           "TEACHER",
           "EXPERT"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "TEACHER": "ownSchool",
+          "EXPERT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -54456,6 +55009,9 @@
         "x-access": [
           "STUDENT"
         ],
+        "x-reach": {
+          "STUDENT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -54565,6 +55121,10 @@
           "STUDENT",
           "PARENT"
         ],
+        "x-reach": {
+          "STUDENT": "self",
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -56961,6 +57521,11 @@
           "PRINCIPAL",
           "ACCOUNTS"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "ACCOUNTS": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -57197,6 +57762,10 @@
           "ADMIN",
           "ACCOUNTS"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "ACCOUNTS": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -59314,6 +59883,10 @@
           "ADMIN",
           "ACCOUNTS"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "ACCOUNTS": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -59449,6 +60022,10 @@
           "ADMIN",
           "ACCOUNTS"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "ACCOUNTS": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -59554,6 +60131,11 @@
           "PRINCIPAL",
           "ACCOUNTS"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "ACCOUNTS": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -59740,6 +60322,11 @@
           "PRINCIPAL",
           "ACCOUNTS"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "ACCOUNTS": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -60211,6 +60798,10 @@
           "ADMIN",
           "ACCOUNTS"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "ACCOUNTS": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -60428,6 +61019,10 @@
           "ADMIN",
           "ACCOUNTS"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "ACCOUNTS": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -60807,6 +61402,10 @@
           "ADMIN",
           "PARENT"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -61687,6 +62286,9 @@
         "x-access": [
           "PARENT"
         ],
+        "x-reach": {
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -62053,6 +62655,9 @@
         "x-access": [
           "PARENT"
         ],
+        "x-reach": {
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -62204,6 +62809,9 @@
         "x-access": [
           "PARENT"
         ],
+        "x-reach": {
+          "PARENT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -62325,6 +62933,9 @@
         "x-access": [
           "PARENT"
         ],
+        "x-reach": {
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -62459,6 +63070,9 @@
         "x-access": [
           "PARENT"
         ],
+        "x-reach": {
+          "PARENT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -62564,6 +63178,9 @@
         "x-access": [
           "PARENT"
         ],
+        "x-reach": {
+          "PARENT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -64197,6 +64814,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -64430,6 +65050,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -65065,6 +65688,10 @@
           "STUDENT",
           "PARENT"
         ],
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -65309,6 +65936,9 @@
         "x-access": [
           "PARENT"
         ],
+        "x-reach": {
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -65633,6 +66263,11 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "TEACHER": "formTeacher",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -65871,6 +66506,10 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -66200,6 +66839,10 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -66667,6 +67310,11 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "TEACHER": "formTeacher",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -66887,6 +67535,11 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "TEACHER": "teachesClass",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -67159,6 +67812,11 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "TEACHER": "teachesClass",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -67371,6 +68029,11 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "TEACHER": "teachesClass",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -67814,6 +68477,10 @@
           "STUDENT",
           "PARENT"
         ],
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -68135,6 +68802,11 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "TEACHER": "formTeacher",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -68645,6 +69317,10 @@
           "PARENT",
           "STUDENT"
         ],
+        "x-reach": {
+          "PARENT": "ownChild",
+          "STUDENT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -68804,6 +69480,11 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "TEACHER": "formTeacher",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -69318,6 +69999,10 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -70539,6 +71224,11 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "TEACHER": "teachesClass",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -70797,6 +71487,11 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "TEACHER": "teachesSubject",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -70914,6 +71609,11 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "TEACHER": "teachesSubject",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -71055,6 +71755,11 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "TEACHER": "teachesSubject",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -71414,6 +72119,11 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "TEACHER": "teachesSubject",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -71533,6 +72243,11 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "TEACHER": "self",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -71909,6 +72624,10 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -72498,6 +73217,11 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "TEACHER": "self",
+          "ADMIN": "self",
+          "PRINCIPAL": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -72593,6 +73317,11 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "TEACHER": "self",
+          "ADMIN": "self",
+          "PRINCIPAL": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -73626,6 +74355,10 @@
           "TEACHER",
           "ADMIN"
         ],
+        "x-reach": {
+          "TEACHER": "leadTeacher",
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -73768,6 +74501,13 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild",
+          "TEACHER": "formTeacher",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -73858,6 +74598,11 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "TEACHER": "formTeacher",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -75405,6 +76150,10 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -76090,6 +76839,10 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -77072,6 +77825,10 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -77174,6 +77931,10 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -77332,6 +78093,10 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -78220,6 +78985,14 @@
           "PRINCIPAL",
           "ALUMNUS"
         ],
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild",
+          "TEACHER": "formTeacher",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "ALUMNUS": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -78641,6 +79414,14 @@
           "PRINCIPAL",
           "ALUMNUS"
         ],
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild",
+          "TEACHER": "formTeacher",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "ALUMNUS": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -78730,6 +79511,10 @@
           "STUDENT",
           "PARENT"
         ],
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -79425,6 +80210,11 @@
           "PRINCIPAL",
           "TEACHER"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "TEACHER": "formTeacher"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -79600,6 +80390,11 @@
           "PRINCIPAL",
           "TEACHER"
         ],
+        "x-reach": {
+          "ADMIN": "self",
+          "PRINCIPAL": "self",
+          "TEACHER": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -79682,6 +80477,13 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild",
+          "TEACHER": "formTeacher",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -79772,6 +80574,11 @@
           "PRINCIPAL",
           "TEACHER"
         ],
+        "x-reach": {
+          "ADMIN": "self",
+          "PRINCIPAL": "self",
+          "TEACHER": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -79873,6 +80680,11 @@
           "PRINCIPAL",
           "TEACHER"
         ],
+        "x-reach": {
+          "ADMIN": "self",
+          "PRINCIPAL": "self",
+          "TEACHER": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -80130,6 +80942,11 @@
           "PRINCIPAL",
           "TEACHER"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "TEACHER": "formTeacher"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -80252,6 +81069,10 @@
           "STUDENT",
           "PARENT"
         ],
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -80502,6 +81323,10 @@
           "STUDENT",
           "PARENT"
         ],
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -81019,6 +81844,10 @@
           "STUDENT",
           "PARENT"
         ],
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -81897,6 +82726,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -83044,6 +83876,9 @@
         "x-access": [
           "PARENT"
         ],
+        "x-reach": {
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -83406,6 +84241,11 @@
           "PARENT",
           "ALUMNUS"
         ],
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild",
+          "ALUMNUS": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -83606,6 +84446,11 @@
           "PARENT",
           "ALUMNUS"
         ],
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild",
+          "ALUMNUS": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -83809,6 +84654,11 @@
           "PARENT",
           "ALUMNUS"
         ],
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild",
+          "ALUMNUS": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -84716,6 +85566,12 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -84943,6 +85799,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -90790,6 +91649,10 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -90934,6 +91797,9 @@
         "x-access": [
           "PARENT"
         ],
+        "x-reach": {
+          "PARENT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -91642,6 +92508,9 @@
         "x-access": [
           "PARENT"
         ],
+        "x-reach": {
+          "PARENT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -92137,6 +93006,9 @@
         "x-access": [
           "PARENT"
         ],
+        "x-reach": {
+          "PARENT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -92679,6 +93551,9 @@
         "x-access": [
           "PARENT"
         ],
+        "x-reach": {
+          "PARENT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -93194,6 +94069,9 @@
         "x-access": [
           "PARENT"
         ],
+        "x-reach": {
+          "PARENT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -93716,6 +94594,9 @@
         "x-access": [
           "PARENT"
         ],
+        "x-reach": {
+          "PARENT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -95423,6 +96304,9 @@
         "x-plans": [
           "TEACHER"
         ],
+        "x-reach": {
+          "TEACHER": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -96378,6 +97262,9 @@
         "x-plans": [
           "TEACHER"
         ],
+        "x-reach": {
+          "TEACHER": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -96615,6 +97502,9 @@
         "x-plans": [
           "TEACHER"
         ],
+        "x-reach": {
+          "TEACHER": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -96937,6 +97827,9 @@
         "x-plans": [
           "TEACHER"
         ],
+        "x-reach": {
+          "TEACHER": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -97183,6 +98076,9 @@
         ],
         "x-feature": "QUESTION_GIG",
         "x-feature-note": "open while the QUESTION_GIG feature is on, and while it is off to a teacher the company still owes for questions the bank took (src/lib/question-gig.ts payeeDoorOpen); 404 to any other teacher",
+        "x-reach": {
+          "TEACHER": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -97305,6 +98201,10 @@
           "TEACHER",
           "EXPERT"
         ],
+        "x-reach": {
+          "STUDENT": "self",
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -97675,6 +98575,10 @@
           "TEACHER",
           "EXPERT"
         ],
+        "x-reach": {
+          "STUDENT": "self",
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -97880,6 +98784,9 @@
           "TEACHER",
           "EXPERT"
         ],
+        "x-reach": {
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -98080,6 +98987,14 @@
           "TEACHER",
           "EXPERT"
         ],
+        "x-reach": {
+          "STUDENT": "self",
+          "PARENT": "ownChild",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "TEACHER": "self",
+          "EXPERT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -98217,6 +99132,10 @@
           "TEACHER",
           "EXPERT"
         ],
+        "x-reach": {
+          "STUDENT": "self",
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -98394,6 +99313,10 @@
           "TEACHER",
           "EXPERT"
         ],
+        "x-reach": {
+          "STUDENT": "self",
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -98524,6 +99447,10 @@
           "TEACHER",
           "EXPERT"
         ],
+        "x-reach": {
+          "PARENT": "ownChild",
+          "STUDENT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -98680,6 +99607,10 @@
           "STUDENT",
           "PARENT"
         ],
+        "x-reach": {
+          "STUDENT": "self",
+          "PARENT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -98889,6 +99820,10 @@
           "TEACHER",
           "EXPERT"
         ],
+        "x-reach": {
+          "PARENT": "self",
+          "STUDENT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -99017,6 +99952,10 @@
           "STUDENT",
           "PARENT"
         ],
+        "x-reach": {
+          "STUDENT": "self",
+          "PARENT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -99114,6 +100053,10 @@
           "TEACHER",
           "EXPERT"
         ],
+        "x-reach": {
+          "EXPERT": "approvedExpert",
+          "TEACHER": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -99635,6 +100578,10 @@
           "TEACHER",
           "EXPERT"
         ],
+        "x-reach": {
+          "EXPERT": "self",
+          "TEACHER": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -99762,6 +100709,10 @@
           "TEACHER",
           "EXPERT"
         ],
+        "x-reach": {
+          "EXPERT": "self",
+          "TEACHER": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -99885,6 +100836,9 @@
         ],
         "x-feature": "EXPERT_SESSIONS",
         "x-plan-free": "what an expert earned, and the details the money owed is paid to, stay theirs after their plan ends (plans, 16 Oct 2026)",
+        "x-reach": {
+          "EXPERT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -100163,6 +101117,9 @@
         ],
         "x-feature": "EXPERT_SESSIONS",
         "x-plan-free": "what an expert earned, and the details the money owed is paid to, stay theirs after their plan ends (plans, 16 Oct 2026)",
+        "x-reach": {
+          "EXPERT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -100508,6 +101465,9 @@
         ],
         "x-feature": "EXPERT_SESSIONS",
         "x-plan-free": "what an expert earned, and the details the money owed is paid to, stay theirs after their plan ends (plans, 16 Oct 2026)",
+        "x-reach": {
+          "EXPERT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -100798,6 +101758,9 @@
         ],
         "x-feature": "EXPERT_SESSIONS",
         "x-plan-free": "what an expert earned, and the details the money owed is paid to, stay theirs after their plan ends (plans, 16 Oct 2026)",
+        "x-reach": {
+          "EXPERT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -101106,6 +102069,9 @@
         ],
         "x-feature": "EXPERT_SESSIONS",
         "x-plan-free": "what an expert earned, and the details the money owed is paid to, stay theirs after their plan ends (plans, 16 Oct 2026)",
+        "x-reach": {
+          "EXPERT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -101341,6 +102307,9 @@
         ],
         "x-feature": "EXPERT_SESSIONS",
         "x-plan-free": "what an expert earned, and the details the money owed is paid to, stay theirs after their plan ends (plans, 16 Oct 2026)",
+        "x-reach": {
+          "EXPERT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -104768,6 +105737,12 @@
           "TEACHER_SESSIONS"
         ],
         "x-plan-free": "a provider whose plan has ended still holds the sessions already booked with them, and reads where to hold them (seats, 17 Oct 2026)",
+        "x-reach": {
+          "STUDENT": "self",
+          "PARENT": "ownChild",
+          "EXPERT": "self",
+          "TEACHER": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -106103,6 +107078,9 @@
           "ADMIN"
         ],
         "x-module": "TRANSPORT",
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -106223,6 +107201,9 @@
           "ADMIN"
         ],
         "x-module": "TRANSPORT",
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -106313,6 +107294,10 @@
           "PRINCIPAL"
         ],
         "x-module": "TRANSPORT",
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -106525,6 +107510,9 @@
           "ADMIN"
         ],
         "x-module": "TRANSPORT",
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -107285,6 +108273,9 @@
           "DRIVER"
         ],
         "x-module": "TRANSPORT",
+        "x-reach": {
+          "DRIVER": "ownDesk"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -107654,6 +108645,9 @@
           "DRIVER"
         ],
         "x-module": "TRANSPORT",
+        "x-reach": {
+          "DRIVER": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -107735,6 +108729,9 @@
           "DRIVER"
         ],
         "x-module": "TRANSPORT",
+        "x-reach": {
+          "DRIVER": "ownDesk"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -107857,6 +108854,9 @@
           "DRIVER"
         ],
         "x-module": "TRANSPORT",
+        "x-reach": {
+          "DRIVER": "ownDesk"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -108018,6 +109018,9 @@
           "DRIVER"
         ],
         "x-module": "TRANSPORT",
+        "x-reach": {
+          "DRIVER": "ownDesk"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -108174,6 +109177,9 @@
           "DRIVER"
         ],
         "x-module": "TRANSPORT",
+        "x-reach": {
+          "DRIVER": "ownDesk"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -108264,6 +109270,10 @@
           "STUDENT"
         ],
         "x-module": "TRANSPORT",
+        "x-reach": {
+          "PARENT": "ownChild",
+          "STUDENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -108594,6 +109604,9 @@
           "PARENT"
         ],
         "x-module": "TRANSPORT",
+        "x-reach": {
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -109252,6 +110265,9 @@
           "ALUMNUS"
         ],
         "x-module": "ALUMNI",
+        "x-reach": {
+          "ALUMNUS": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -109383,6 +110399,9 @@
           "ALUMNUS"
         ],
         "x-module": "ALUMNI",
+        "x-reach": {
+          "ALUMNUS": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -109594,6 +110613,11 @@
           "TEACHER"
         ],
         "x-module": "ALUMNI",
+        "x-reach": {
+          "ADMIN": "self",
+          "PRINCIPAL": "self",
+          "TEACHER": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -110014,6 +111038,9 @@
           "ADMIN"
         ],
         "x-module": "ALUMNI",
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -110122,6 +111149,9 @@
           "ADMIN"
         ],
         "x-module": "ALUMNI",
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -111774,6 +112804,10 @@
           "ACCOUNTS"
         ],
         "x-module": "INVENTORY",
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "ACCOUNTS": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -112863,6 +113897,10 @@
           "ACCOUNTS"
         ],
         "x-module": "INVENTORY",
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "ACCOUNTS": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -113427,6 +114465,10 @@
           "ACCOUNTS"
         ],
         "x-module": "INVENTORY",
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "ACCOUNTS": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -114870,6 +115912,20 @@
           "ACCOUNTS"
         ],
         "x-module": "INVENTORY",
+        "x-reach": {
+          "TEACHER": "self",
+          "PRINCIPAL": "self",
+          "ADMIN": "self",
+          "DRIVER": "self",
+          "LIBRARIAN": "self",
+          "WARDEN": "self",
+          "FACULTY": "self",
+          "HOD": "self",
+          "EXAM_CONTROLLER": "self",
+          "IQAC": "self",
+          "TPO": "self",
+          "ACCOUNTS": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -116010,6 +117066,10 @@
           "ACCOUNTS"
         ],
         "x-module": "PAYROLL",
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "ACCOUNTS": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -117309,6 +118369,10 @@
           "ACCOUNTS"
         ],
         "x-module": "PAYROLL",
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "ACCOUNTS": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -118786,6 +119850,10 @@
           "ACCOUNTS"
         ],
         "x-module": "PAYROLL",
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "ACCOUNTS": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -119163,6 +120231,10 @@
           "ACCOUNTS"
         ],
         "x-module": "PAYROLL",
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "ACCOUNTS": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -119692,6 +120764,11 @@
           "ACCOUNTS"
         ],
         "x-module": "PAYROLL",
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "ACCOUNTS": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -119790,6 +120867,10 @@
           "ACCOUNTS"
         ],
         "x-module": "PAYROLL",
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "ACCOUNTS": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -120139,6 +121220,10 @@
           "ACCOUNTS"
         ],
         "x-module": "PAYROLL",
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "ACCOUNTS": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -121019,6 +122104,21 @@
           "SUPPORT"
         ],
         "x-module": "PAYROLL",
+        "x-reach": {
+          "TEACHER": "self",
+          "PRINCIPAL": "self",
+          "ADMIN": "self",
+          "DRIVER": "self",
+          "LIBRARIAN": "self",
+          "WARDEN": "self",
+          "FACULTY": "self",
+          "HOD": "self",
+          "EXAM_CONTROLLER": "self",
+          "IQAC": "self",
+          "TPO": "self",
+          "ACCOUNTS": "self",
+          "SUPPORT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -121645,6 +122745,16 @@
           "HOD"
         ],
         "x-module": "LIBRARY",
+        "x-reach": {
+          "STUDENT": "ownSchool",
+          "PARENT": "ownChild",
+          "TEACHER": "ownSchool",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "LIBRARIAN": "ownSchool",
+          "FACULTY": "ownSchool",
+          "HOD": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -122204,6 +123314,16 @@
           "HOD"
         ],
         "x-module": "LIBRARY",
+        "x-reach": {
+          "STUDENT": "ownSchool",
+          "PARENT": "ownChild",
+          "TEACHER": "ownSchool",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "LIBRARIAN": "ownSchool",
+          "FACULTY": "ownSchool",
+          "HOD": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -124752,6 +125872,11 @@
           "PRINCIPAL"
         ],
         "x-module": "LIBRARY",
+        "x-reach": {
+          "LIBRARIAN": "ownSchool",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -125080,6 +126205,10 @@
           "ADMIN"
         ],
         "x-module": "LIBRARY",
+        "x-reach": {
+          "LIBRARIAN": "ownSchool",
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -126031,6 +127160,16 @@
           "HOD"
         ],
         "x-module": "LIBRARY",
+        "x-reach": {
+          "STUDENT": "self",
+          "PARENT": "ownChild",
+          "TEACHER": "self",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "self",
+          "LIBRARIAN": "ownSchool",
+          "FACULTY": "self",
+          "HOD": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -126174,6 +127313,16 @@
           "HOD"
         ],
         "x-module": "LIBRARY",
+        "x-reach": {
+          "STUDENT": "self",
+          "PARENT": "ownChild",
+          "TEACHER": "self",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "self",
+          "LIBRARIAN": "ownSchool",
+          "FACULTY": "self",
+          "HOD": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -127508,6 +128657,15 @@
           "HOD"
         ],
         "x-module": "LIBRARY",
+        "x-reach": {
+          "STUDENT": "self",
+          "PARENT": "ownChild",
+          "TEACHER": "self",
+          "ADMIN": "self",
+          "PRINCIPAL": "self",
+          "FACULTY": "self",
+          "HOD": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -128078,6 +129236,9 @@
           "ADMIN"
         ],
         "x-module": "HOSTEL",
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -129006,6 +130167,10 @@
           "ADMIN"
         ],
         "x-module": "HOSTEL",
+        "x-reach": {
+          "WARDEN": "ownSchool",
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -130377,6 +131542,10 @@
           "ADMIN"
         ],
         "x-module": "HOSTEL",
+        "x-reach": {
+          "WARDEN": "self",
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -132130,6 +133299,13 @@
           "PARENT"
         ],
         "x-module": "HOSTEL",
+        "x-reach": {
+          "WARDEN": "ownSchool",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -133424,6 +134600,10 @@
           "PARENT"
         ],
         "x-module": "HOSTEL",
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -133783,6 +134963,10 @@
           "PARENT"
         ],
         "x-module": "HOSTEL",
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -134034,6 +135218,9 @@
           "PARENT"
         ],
         "x-module": "HOSTEL",
+        "x-reach": {
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -134266,6 +135453,10 @@
           "PARENT"
         ],
         "x-module": "HOSTEL",
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -136757,6 +137948,9 @@
           "ADMIN"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -136882,6 +138076,9 @@
           "ADMIN"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -137198,6 +138395,10 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -137699,6 +138900,11 @@
           "FACULTY"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "HOD": "ownDesk",
+          "FACULTY": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -138197,6 +139403,11 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -138393,6 +139604,9 @@
           "ADMIN"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -138868,6 +140082,10 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -139126,6 +140344,13 @@
           "STUDENT"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "HOD": "ownSchool",
+          "FACULTY": "ownSchool",
+          "STUDENT": "ownChild"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -139566,6 +140791,11 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -139754,6 +140984,10 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -139861,6 +141095,10 @@
           "ADMIN"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "ADMIN": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -140175,6 +141413,10 @@
           "ADMIN"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "ADMIN": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -140642,6 +141884,9 @@
           "ADMIN"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -140862,6 +142107,10 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "FACULTY": "ownDesk",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -141040,6 +142289,12 @@
           "PRINCIPAL"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "FACULTY": "ownDesk",
+          "HOD": "ownDesk",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -141249,6 +142504,10 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "FACULTY": "ownDesk",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -141409,6 +142668,12 @@
           "PRINCIPAL"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "FACULTY": "ownDesk",
+          "HOD": "ownDesk",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -141600,6 +142865,12 @@
           "EXAM_CONTROLLER"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "HOD": "ownDesk",
+          "EXAM_CONTROLLER": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -141746,6 +143017,12 @@
           "ADMIN"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "HOD": "ownDesk",
+          "PRINCIPAL": "ownSchool",
+          "ADMIN": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -141952,6 +143229,9 @@
           "STUDENT"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "STUDENT": "ownChild"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -142179,6 +143459,10 @@
           "PRINCIPAL"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "HOD": "ownDesk",
+          "PRINCIPAL": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -142393,6 +143677,12 @@
           "PRINCIPAL"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "FACULTY": "ownDesk",
+          "HOD": "ownDesk",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -142635,6 +143925,10 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "FACULTY": "ownDesk",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -142782,6 +144076,10 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "FACULTY": "ownDesk",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -142942,6 +144240,10 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "FACULTY": "ownDesk",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -143029,6 +144331,9 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -143116,6 +144421,9 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -143207,6 +144515,13 @@
           "STUDENT"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "FACULTY": "ownDesk",
+          "HOD": "ownDesk",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "STUDENT": "ownChild"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -143547,6 +144862,10 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "FACULTY": "ownDesk",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -143691,6 +145010,10 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "FACULTY": "ownDesk",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -143835,6 +145158,9 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -143946,6 +145272,13 @@
           "PRINCIPAL"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "FACULTY": "ownDesk",
+          "HOD": "ownDesk",
+          "STUDENT": "ownChild",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -144124,6 +145457,10 @@
           "ADMIN"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "HOD": "ownDesk",
+          "ADMIN": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -144244,6 +145581,10 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "FACULTY": "ownDesk",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -144363,6 +145704,10 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "FACULTY": "ownDesk",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -144720,6 +146065,9 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -145140,6 +146488,9 @@
           "STUDENT"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "STUDENT": "ownChild"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -145832,6 +147183,9 @@
           "PARENT"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "PARENT": "ownChild"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -146789,6 +148143,9 @@
           "TPO"
         ],
         "x-module": "PLACEMENT",
+        "x-reach": {
+          "TPO": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -150686,6 +152043,10 @@
           "RECRUITER"
         ],
         "x-module": "PLACEMENT",
+        "x-reach": {
+          "TPO": "ownSchool",
+          "RECRUITER": "self"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -150838,6 +152199,10 @@
           "RECRUITER"
         ],
         "x-module": "PLACEMENT",
+        "x-reach": {
+          "TPO": "ownSchool",
+          "RECRUITER": "self"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -151016,6 +152381,10 @@
           "RECRUITER"
         ],
         "x-module": "PLACEMENT",
+        "x-reach": {
+          "TPO": "ownSchool",
+          "RECRUITER": "self"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -151738,6 +153107,13 @@
           "PRINCIPAL"
         ],
         "x-module": "PLACEMENT",
+        "x-reach": {
+          "TPO": "ownSchool",
+          "HOD": "ownDesk",
+          "FACULTY": "ownDesk",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -152016,6 +153392,10 @@
           "HOD"
         ],
         "x-module": "PLACEMENT",
+        "x-reach": {
+          "TPO": "ownSchool",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -152282,6 +153662,11 @@
           "FACULTY"
         ],
         "x-module": "PLACEMENT",
+        "x-reach": {
+          "TPO": "ownSchool",
+          "HOD": "ownDesk",
+          "FACULTY": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -152559,6 +153944,10 @@
           "FACULTY"
         ],
         "x-module": "PLACEMENT",
+        "x-reach": {
+          "HOD": "ownDesk",
+          "FACULTY": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -152723,6 +154112,10 @@
           "FACULTY"
         ],
         "x-module": "PLACEMENT",
+        "x-reach": {
+          "HOD": "ownSchool",
+          "FACULTY": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -152909,6 +154302,10 @@
           "FACULTY"
         ],
         "x-module": "PLACEMENT",
+        "x-reach": {
+          "HOD": "ownDesk",
+          "FACULTY": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -154261,6 +155658,9 @@
           "STUDENT"
         ],
         "x-module": "PLACEMENT",
+        "x-reach": {
+          "STUDENT": "ownChild"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -154569,6 +155969,9 @@
           "STUDENT"
         ],
         "x-module": "PLACEMENT",
+        "x-reach": {
+          "STUDENT": "ownChild"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -154855,6 +156258,9 @@
           "STUDENT"
         ],
         "x-module": "PLACEMENT",
+        "x-reach": {
+          "STUDENT": "ownChild"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -155016,6 +156422,9 @@
           "STUDENT"
         ],
         "x-module": "PLACEMENT",
+        "x-reach": {
+          "STUDENT": "ownChild"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -155330,6 +156739,9 @@
           "STUDENT"
         ],
         "x-module": "PLACEMENT",
+        "x-reach": {
+          "STUDENT": "ownChild"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -155596,6 +157008,9 @@
           "STUDENT"
         ],
         "x-module": "PLACEMENT",
+        "x-reach": {
+          "STUDENT": "ownChild"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -155858,6 +157273,9 @@
           "PARENT"
         ],
         "x-module": "PLACEMENT",
+        "x-reach": {
+          "PARENT": "ownChild"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -156208,6 +157626,9 @@
           "PARENT"
         ],
         "x-module": "PLACEMENT",
+        "x-reach": {
+          "PARENT": "ownChild"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -156570,6 +157991,9 @@
         "x-access": [
           "RECRUITER"
         ],
+        "x-reach": {
+          "RECRUITER": "self"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -156745,6 +158169,9 @@
         "x-access": [
           "RECRUITER"
         ],
+        "x-reach": {
+          "RECRUITER": "self"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -156975,6 +158402,9 @@
         "x-access": [
           "RECRUITER"
         ],
+        "x-reach": {
+          "RECRUITER": "self"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -157173,6 +158603,9 @@
         "x-access": [
           "RECRUITER"
         ],
+        "x-reach": {
+          "RECRUITER": "self"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -157379,6 +158812,9 @@
         "x-access": [
           "RECRUITER"
         ],
+        "x-reach": {
+          "RECRUITER": "self"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -157674,6 +159110,9 @@
         "x-access": [
           "RECRUITER"
         ],
+        "x-reach": {
+          "RECRUITER": "self"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -157900,6 +159339,9 @@
         "x-access": [
           "RECRUITER"
         ],
+        "x-reach": {
+          "RECRUITER": "self"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -158247,6 +159689,9 @@
         "x-access": [
           "RECRUITER"
         ],
+        "x-reach": {
+          "RECRUITER": "self"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -158522,6 +159967,9 @@
         "x-access": [
           "RECRUITER"
         ],
+        "x-reach": {
+          "RECRUITER": "self"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -158937,6 +160385,9 @@
         "x-access": [
           "RECRUITER"
         ],
+        "x-reach": {
+          "RECRUITER": "self"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -159026,6 +160477,9 @@
         "x-access": [
           "RECRUITER"
         ],
+        "x-reach": {
+          "RECRUITER": "self"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -159123,6 +160577,9 @@
         "x-access": [
           "RECRUITER"
         ],
+        "x-reach": {
+          "RECRUITER": "self"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -159565,6 +161022,9 @@
           "ALUMNUS"
         ],
         "x-module": "ALUMNI",
+        "x-reach": {
+          "ALUMNUS": "self"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -159848,6 +161308,9 @@
           "ALUMNUS"
         ],
         "x-module": "ALUMNI",
+        "x-reach": {
+          "ALUMNUS": "self"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -159990,6 +161453,9 @@
           "ALUMNUS"
         ],
         "x-module": "ALUMNI",
+        "x-reach": {
+          "ALUMNUS": "self"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -160121,6 +161587,9 @@
           "ALUMNUS"
         ],
         "x-module": "ALUMNI",
+        "x-reach": {
+          "ALUMNUS": "self"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -160223,6 +161692,9 @@
           "ALUMNUS"
         ],
         "x-module": "ALUMNI",
+        "x-reach": {
+          "ALUMNUS": "self"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -160627,6 +162099,9 @@
           "ADMIN"
         ],
         "x-module": "ALUMNI",
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -162715,6 +164190,10 @@
           "EXAM_CONTROLLER"
         ],
         "x-module": "EXAMS",
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "EXAM_CONTROLLER": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -163609,6 +165088,13 @@
           "PRINCIPAL"
         ],
         "x-module": "EXAMS",
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild",
+          "EXAM_CONTROLLER": "ownSchool",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -163699,6 +165185,9 @@
           "EXAM_CONTROLLER"
         ],
         "x-module": "EXAMS",
+        "x-reach": {
+          "EXAM_CONTROLLER": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -163823,6 +165312,9 @@
           "EXAM_CONTROLLER"
         ],
         "x-module": "EXAMS",
+        "x-reach": {
+          "EXAM_CONTROLLER": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -164141,6 +165633,9 @@
           "EXAM_CONTROLLER"
         ],
         "x-module": "EXAMS",
+        "x-reach": {
+          "EXAM_CONTROLLER": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -164403,6 +165898,9 @@
           "EXAM_CONTROLLER"
         ],
         "x-module": "EXAMS",
+        "x-reach": {
+          "EXAM_CONTROLLER": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -164780,6 +166278,10 @@
           "ADMIN"
         ],
         "x-module": "EXAMS",
+        "x-reach": {
+          "EXAM_CONTROLLER": "ownSchool",
+          "ADMIN": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -165064,6 +166566,9 @@
           "EXAM_CONTROLLER"
         ],
         "x-module": "EXAMS",
+        "x-reach": {
+          "EXAM_CONTROLLER": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -165205,6 +166710,9 @@
           "EXAM_CONTROLLER"
         ],
         "x-module": "EXAMS",
+        "x-reach": {
+          "EXAM_CONTROLLER": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -166821,6 +168329,9 @@
           "EXAM_CONTROLLER"
         ],
         "x-module": "EXAMS",
+        "x-reach": {
+          "EXAM_CONTROLLER": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -166944,6 +168455,13 @@
           "PRINCIPAL"
         ],
         "x-module": "EXAMS",
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild",
+          "EXAM_CONTROLLER": "ownSchool",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -167534,6 +169052,9 @@
           "EXAM_CONTROLLER"
         ],
         "x-module": "EXAMS",
+        "x-reach": {
+          "EXAM_CONTROLLER": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -167659,6 +169180,10 @@
           "HOD"
         ],
         "x-module": "EXAMS",
+        "x-reach": {
+          "FACULTY": "self",
+          "HOD": "self"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -168155,6 +169680,9 @@
           "EXAM_CONTROLLER"
         ],
         "x-module": "EXAMS",
+        "x-reach": {
+          "EXAM_CONTROLLER": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -168392,6 +169920,10 @@
           "HOD"
         ],
         "x-module": "EXAMS",
+        "x-reach": {
+          "FACULTY": "self",
+          "HOD": "self"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -168619,6 +170151,10 @@
           "PARENT"
         ],
         "x-module": "EXAMS",
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -169407,6 +170943,9 @@
           "STUDENT"
         ],
         "x-module": "EXAMS",
+        "x-reach": {
+          "STUDENT": "ownChild"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -169529,6 +171068,9 @@
           "STUDENT"
         ],
         "x-module": "EXAMS",
+        "x-reach": {
+          "STUDENT": "ownChild"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -173478,6 +175020,13 @@
           "HOD"
         ],
         "x-module": "IQAC",
+        "x-reach": {
+          "IQAC": "ownSchool",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "FACULTY": "self",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -173662,6 +175211,12 @@
           "HOD"
         ],
         "x-module": "IQAC",
+        "x-reach": {
+          "IQAC": "ownSchool",
+          "ADMIN": "ownSchool",
+          "FACULTY": "self",
+          "HOD": "self"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -173928,6 +175483,12 @@
           "HOD"
         ],
         "x-module": "IQAC",
+        "x-reach": {
+          "IQAC": "ownSchool",
+          "ADMIN": "ownSchool",
+          "FACULTY": "self",
+          "HOD": "self"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -174124,6 +175685,12 @@
           "HOD"
         ],
         "x-module": "IQAC",
+        "x-reach": {
+          "IQAC": "ownSchool",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -174283,6 +175850,11 @@
           "HOD"
         ],
         "x-module": "IQAC",
+        "x-reach": {
+          "IQAC": "ownSchool",
+          "ADMIN": "ownSchool",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -174702,6 +176274,9 @@
           "ADMIN"
         ],
         "x-module": "IQAC",
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -175500,6 +177075,13 @@
           "HOD"
         ],
         "x-module": "IQAC",
+        "x-reach": {
+          "IQAC": "ownSchool",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "FACULTY": "ownDesk",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -177405,6 +178987,9 @@
           "ADMIN"
         ],
         "x-module": "IQAC",
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -177743,6 +179328,10 @@
           "HOD"
         ],
         "x-module": "IQAC",
+        "x-reach": {
+          "FACULTY": "self",
+          "HOD": "self"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -177856,6 +179445,10 @@
           "HOD"
         ],
         "x-module": "IQAC",
+        "x-reach": {
+          "FACULTY": "self",
+          "HOD": "self"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -178028,6 +179621,10 @@
           "HOD"
         ],
         "x-module": "IQAC",
+        "x-reach": {
+          "FACULTY": "self",
+          "HOD": "self"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -179666,6 +181263,12 @@
           "HOD"
         ],
         "x-module": "IQAC",
+        "x-reach": {
+          "IQAC": "ownSchool",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -181161,6 +182764,12 @@
           "HOD"
         ],
         "x-module": "IQAC",
+        "x-reach": {
+          "IQAC": "ownSchool",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -181397,6 +183006,10 @@
           "HOD"
         ],
         "x-module": "IQAC",
+        "x-reach": {
+          "IQAC": "ownSchool",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -181685,6 +183298,13 @@
           "PARENT"
         ],
         "x-module": "IQAC",
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "ALUMNUS": "ownSchool",
+          "FACULTY": "ownSchool",
+          "HOD": "ownSchool",
+          "PARENT": "ownChild"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -181896,6 +183516,13 @@
           "PARENT"
         ],
         "x-module": "IQAC",
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "ALUMNUS": "ownSchool",
+          "FACULTY": "ownSchool",
+          "HOD": "ownSchool",
+          "PARENT": "ownChild"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -182137,6 +183764,9 @@
           "STUDENT"
         ],
         "x-module": "IQAC",
+        "x-reach": {
+          "STUDENT": "self"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -182390,6 +184020,9 @@
           "STUDENT"
         ],
         "x-module": "IQAC",
+        "x-reach": {
+          "STUDENT": "self"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -183179,6 +184812,12 @@
           "HOD"
         ],
         "x-module": "IQAC",
+        "x-reach": {
+          "IQAC": "ownSchool",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -184381,6 +186020,12 @@
           "HOD"
         ],
         "x-module": "IQAC",
+        "x-reach": {
+          "IQAC": "ownSchool",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -184568,6 +186213,11 @@
           "HOD"
         ],
         "x-module": "IQAC",
+        "x-reach": {
+          "IQAC": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -185037,6 +186687,11 @@
           "HOD"
         ],
         "x-module": "IQAC",
+        "x-reach": {
+          "IQAC": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -185204,6 +186859,12 @@
           "HOD"
         ],
         "x-module": "IQAC",
+        "x-reach": {
+          "IQAC": "ownSchool",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -185851,6 +187512,12 @@
           "HOD"
         ],
         "x-module": "IQAC",
+        "x-reach": {
+          "IQAC": "ownSchool",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -191997,6 +193664,10 @@
           "ADMIN"
         ],
         "x-module": "SCHOLARSHIPS",
+        "x-reach": {
+          "ACCOUNTS": "ownSchool",
+          "ADMIN": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -192882,6 +194553,10 @@
           "PARENT"
         ],
         "x-module": "SCHOLARSHIPS",
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -193175,6 +194850,9 @@
           "STUDENT"
         ],
         "x-module": "SCHOLARSHIPS",
+        "x-reach": {
+          "STUDENT": "ownChild"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -194307,6 +195985,10 @@
           "ACCOUNTS",
           "ADMIN"
         ],
+        "x-reach": {
+          "ACCOUNTS": "ownSchool",
+          "ADMIN": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -194736,6 +196418,11 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "ACCOUNTS": "ownSchool",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -195152,6 +196839,10 @@
           "STUDENT",
           "PARENT"
         ],
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -195586,6 +197277,14 @@
           "WARDEN",
           "HOD"
         ],
+        "x-reach": {
+          "ACCOUNTS": "ownSchool",
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "LIBRARIAN": "ownSchool",
+          "WARDEN": "ownSchool",
+          "HOD": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -195765,6 +197464,13 @@
           "WARDEN",
           "HOD"
         ],
+        "x-reach": {
+          "ACCOUNTS": "ownSchool",
+          "ADMIN": "ownSchool",
+          "LIBRARIAN": "ownSchool",
+          "WARDEN": "ownSchool",
+          "HOD": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -196358,6 +198064,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -199738,6 +201447,9 @@
           "ADMIN"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -201127,6 +202839,11 @@
         "x-duties": [
           "PRACTICE_TEACHING_COORDINATOR"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "FACULTY": "ownSchool",
+          "HOD": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -201251,6 +202968,10 @@
         "x-duties": [
           "PRACTICE_TEACHING_COORDINATOR"
         ],
+        "x-reach": {
+          "FACULTY": "ownSchool",
+          "HOD": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -201633,6 +203354,11 @@
         "x-duties": [
           "NSS_OFFICER"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "FACULTY": "ownSchool",
+          "HOD": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -201746,6 +203472,11 @@
         "x-duties": [
           "NSS_OFFICER"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "FACULTY": "ownSchool",
+          "HOD": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -201859,6 +203590,11 @@
         "x-duties": [
           "NSS_OFFICER"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "FACULTY": "ownSchool",
+          "HOD": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -202241,6 +203977,11 @@
         "x-duties": [
           "NCC_OFFICER"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "FACULTY": "ownSchool",
+          "HOD": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -202354,6 +204095,11 @@
         "x-duties": [
           "NCC_OFFICER"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "FACULTY": "ownSchool",
+          "HOD": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -202467,6 +204213,11 @@
         "x-duties": [
           "NCC_OFFICER"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "FACULTY": "ownSchool",
+          "HOD": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -203040,6 +204791,10 @@
         "x-duties": [
           "EXAM_SQUAD"
         ],
+        "x-reach": {
+          "FACULTY": "ownSchool",
+          "HOD": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -203684,6 +205439,10 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "FACULTY": "ownDesk",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -204230,6 +205989,10 @@
         "x-duties": [
           "CLINICAL_COORDINATOR"
         ],
+        "x-reach": {
+          "FACULTY": "ownSchool",
+          "HOD": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -204364,6 +206127,10 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "FACULTY": "ownDesk",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -204473,6 +206240,10 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "FACULTY": "ownDesk",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -204582,6 +206353,9 @@
           "STUDENT"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "STUDENT": "ownChild"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -204860,6 +206634,9 @@
           "STUDENT"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "STUDENT": "ownChild"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -204993,6 +206770,9 @@
           "STUDENT"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "STUDENT": "ownChild"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -205666,6 +207446,11 @@
         "x-duties": [
           "STUDIO_COORDINATOR"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "FACULTY": "ownSchool",
+          "HOD": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -205828,6 +207613,10 @@
         "x-duties": [
           "STUDIO_COORDINATOR"
         ],
+        "x-reach": {
+          "FACULTY": "ownSchool",
+          "HOD": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -205991,6 +207780,10 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "FACULTY": "ownDesk",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -206604,6 +208397,10 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "FACULTY": "ownDesk",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -206739,6 +208536,10 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "FACULTY": "ownDesk",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -206831,6 +208632,10 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "FACULTY": "ownDesk",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -206944,6 +208749,9 @@
           "STUDENT"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "STUDENT": "ownChild"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -207213,6 +209021,9 @@
           "STUDENT"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "STUDENT": "ownChild"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -207352,6 +209163,12 @@
           "FACULTY"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "HOD": "ownDesk",
+          "FACULTY": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -207766,6 +209583,9 @@
           "ADMIN"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -207990,6 +209810,12 @@
           "FACULTY"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "HOD": "ownDesk",
+          "FACULTY": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -208226,6 +210052,10 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "FACULTY": "ownDesk",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -208367,6 +210197,10 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "FACULTY": "ownDesk",
+          "HOD": "ownDesk"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -208670,6 +210504,11 @@
           "FACULTY"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "HOD": "ownDesk",
+          "FACULTY": "self"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -208838,6 +210677,12 @@
           "TPO"
         ],
         "x-module": "PLACEMENT",
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "HOD": "ownDesk",
+          "TPO": "ownSchool"
+        },
         "x-college": true,
         "responses": {
           "200": {
@@ -210189,6 +212034,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -210300,6 +212148,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -210420,6 +212271,20 @@
           "ACCOUNTS",
           "ADMIN"
         ],
+        "x-reach": {
+          "TEACHER": "self",
+          "PRINCIPAL": "ownSchool",
+          "DRIVER": "self",
+          "LIBRARIAN": "self",
+          "WARDEN": "self",
+          "FACULTY": "self",
+          "HOD": "self",
+          "EXAM_CONTROLLER": "self",
+          "IQAC": "self",
+          "TPO": "self",
+          "ACCOUNTS": "self",
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -210790,6 +212655,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -210908,6 +212776,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -211017,6 +212888,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -211219,6 +213093,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -212725,6 +214602,9 @@
           "TPO"
         ],
         "x-module": "PLACEMENT",
+        "x-reach": {
+          "TPO": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -213249,6 +215129,9 @@
           "STUDENT"
         ],
         "x-module": "PLACEMENT",
+        "x-reach": {
+          "STUDENT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -215159,6 +217042,9 @@
           "TPO"
         ],
         "x-module": "PLACEMENT",
+        "x-reach": {
+          "TPO": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -215484,6 +217370,9 @@
           "TPO"
         ],
         "x-module": "PLACEMENT",
+        "x-reach": {
+          "TPO": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -215979,6 +217868,9 @@
           "STUDENT"
         ],
         "x-module": "PLACEMENT",
+        "x-reach": {
+          "STUDENT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -217039,6 +218931,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -217622,6 +219517,12 @@
           "ADMIN"
         ],
         "x-module": "IQAC",
+        "x-reach": {
+          "IQAC": "ownSchool",
+          "HOD": "ownDesk",
+          "PRINCIPAL": "ownSchool",
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -217812,6 +219713,10 @@
           "HOD"
         ],
         "x-module": "IQAC",
+        "x-reach": {
+          "IQAC": "ownSchool",
+          "HOD": "ownDesk"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -218302,6 +220207,12 @@
           "ADMIN"
         ],
         "x-module": "IQAC",
+        "x-reach": {
+          "IQAC": "ownSchool",
+          "HOD": "ownDesk",
+          "PRINCIPAL": "ownSchool",
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -218717,6 +220628,10 @@
           "HOD"
         ],
         "x-module": "IQAC",
+        "x-reach": {
+          "IQAC": "ownSchool",
+          "HOD": "ownDesk"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -219189,6 +221104,10 @@
           "HOD"
         ],
         "x-module": "IQAC",
+        "x-reach": {
+          "IQAC": "ownSchool",
+          "HOD": "ownDesk"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -219720,6 +221639,10 @@
           "HOD"
         ],
         "x-module": "IQAC",
+        "x-reach": {
+          "IQAC": "ownSchool",
+          "HOD": "ownDesk"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -220147,6 +222070,12 @@
           "ADMIN"
         ],
         "x-module": "IQAC",
+        "x-reach": {
+          "IQAC": "ownSchool",
+          "HOD": "ownDesk",
+          "PRINCIPAL": "ownSchool",
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -220236,6 +222165,10 @@
           "TEACHER",
           "ADMIN"
         ],
+        "x-reach": {
+          "TEACHER": "formTeacher",
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -220406,6 +222339,10 @@
           "TEACHER",
           "ADMIN"
         ],
+        "x-reach": {
+          "TEACHER": "formTeacher",
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -220595,6 +222532,9 @@
         "x-plans": [
           "STUDENT"
         ],
+        "x-reach": {
+          "STUDENT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -220749,6 +222689,10 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "FACULTY": "ownDesk",
+          "HOD": "ownDesk"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -220871,6 +222815,10 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "FACULTY": "ownDesk",
+          "HOD": "ownDesk"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -221066,6 +223014,10 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "FACULTY": "ownDesk",
+          "HOD": "ownDesk"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -221232,6 +223184,10 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "FACULTY": "ownWork",
+          "HOD": "ownWork"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -221544,6 +223500,10 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "FACULTY": "ownWork",
+          "HOD": "ownWork"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -221634,6 +223594,10 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "FACULTY": "ownWork",
+          "HOD": "ownWork"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -221778,6 +223742,10 @@
           "HOD"
         ],
         "x-module": "ACADEMICS",
+        "x-reach": {
+          "FACULTY": "ownWork",
+          "HOD": "ownWork"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -222088,6 +224056,10 @@
           "ADMIN"
         ],
         "x-module": "LIBRARY",
+        "x-reach": {
+          "LIBRARIAN": "ownSchool",
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -222867,6 +224839,10 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -223472,6 +225448,20 @@
           "TPO",
           "ACCOUNTS"
         ],
+        "x-reach": {
+          "TEACHER": "self",
+          "PRINCIPAL": "ownSchool",
+          "ADMIN": "ownSchool",
+          "DRIVER": "self",
+          "LIBRARIAN": "self",
+          "WARDEN": "self",
+          "FACULTY": "self",
+          "HOD": "self",
+          "EXAM_CONTROLLER": "self",
+          "IQAC": "self",
+          "TPO": "self",
+          "ACCOUNTS": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -223747,6 +225737,23 @@
           "STUDENT",
           "TEACHER"
         ],
+        "x-reach": {
+          "ADMIN": "self",
+          "PRINCIPAL": "self",
+          "TEACHER": "self",
+          "STUDENT": "self",
+          "PARENT": "ownChild",
+          "DRIVER": "self",
+          "LIBRARIAN": "self",
+          "WARDEN": "self",
+          "ALUMNUS": "self",
+          "FACULTY": "self",
+          "HOD": "self",
+          "EXAM_CONTROLLER": "self",
+          "IQAC": "self",
+          "TPO": "self",
+          "ACCOUNTS": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -223910,6 +225917,23 @@
           "STUDENT",
           "TEACHER"
         ],
+        "x-reach": {
+          "ADMIN": "self",
+          "PRINCIPAL": "self",
+          "TEACHER": "self",
+          "STUDENT": "self",
+          "PARENT": "self",
+          "DRIVER": "self",
+          "LIBRARIAN": "self",
+          "WARDEN": "self",
+          "ALUMNUS": "self",
+          "FACULTY": "self",
+          "HOD": "self",
+          "EXAM_CONTROLLER": "self",
+          "IQAC": "self",
+          "TPO": "self",
+          "ACCOUNTS": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -224064,6 +226088,23 @@
           "STUDENT",
           "TEACHER"
         ],
+        "x-reach": {
+          "ADMIN": "self",
+          "PRINCIPAL": "self",
+          "TEACHER": "self",
+          "STUDENT": "self",
+          "PARENT": "self",
+          "DRIVER": "self",
+          "LIBRARIAN": "self",
+          "WARDEN": "self",
+          "ALUMNUS": "self",
+          "FACULTY": "self",
+          "HOD": "self",
+          "EXAM_CONTROLLER": "self",
+          "IQAC": "self",
+          "TPO": "self",
+          "ACCOUNTS": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -224549,6 +226590,23 @@
           "STUDENT",
           "TEACHER"
         ],
+        "x-reach": {
+          "ADMIN": "self",
+          "PRINCIPAL": "self",
+          "TEACHER": "self",
+          "STUDENT": "self",
+          "PARENT": "self",
+          "DRIVER": "self",
+          "LIBRARIAN": "self",
+          "WARDEN": "self",
+          "ALUMNUS": "self",
+          "FACULTY": "self",
+          "HOD": "self",
+          "EXAM_CONTROLLER": "self",
+          "IQAC": "self",
+          "TPO": "self",
+          "ACCOUNTS": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -224671,6 +226729,23 @@
           "STUDENT",
           "TEACHER"
         ],
+        "x-reach": {
+          "ADMIN": "self",
+          "PRINCIPAL": "self",
+          "TEACHER": "self",
+          "STUDENT": "self",
+          "PARENT": "self",
+          "DRIVER": "self",
+          "LIBRARIAN": "self",
+          "WARDEN": "self",
+          "ALUMNUS": "self",
+          "FACULTY": "self",
+          "HOD": "self",
+          "EXAM_CONTROLLER": "self",
+          "IQAC": "self",
+          "TPO": "self",
+          "ACCOUNTS": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -225193,6 +227268,23 @@
           "STUDENT",
           "TEACHER"
         ],
+        "x-reach": {
+          "ADMIN": "self",
+          "PRINCIPAL": "self",
+          "TEACHER": "self",
+          "STUDENT": "self",
+          "PARENT": "self",
+          "DRIVER": "self",
+          "LIBRARIAN": "self",
+          "WARDEN": "self",
+          "ALUMNUS": "self",
+          "FACULTY": "self",
+          "HOD": "self",
+          "EXAM_CONTROLLER": "self",
+          "IQAC": "self",
+          "TPO": "self",
+          "ACCOUNTS": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -225820,6 +227912,9 @@
           "STUDENT",
           "TEACHER"
         ],
+        "x-reach": {
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -225940,6 +228035,9 @@
           "STUDENT",
           "TEACHER"
         ],
+        "x-reach": {
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -226066,6 +228164,11 @@
           "STUDENT",
           "TEACHER"
         ],
+        "x-reach": {
+          "TEACHER": "ownWork",
+          "FACULTY": "ownWork",
+          "HOD": "ownWork"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -226170,6 +228273,11 @@
           "STUDENT",
           "TEACHER"
         ],
+        "x-reach": {
+          "TEACHER": "ownWork",
+          "FACULTY": "ownWork",
+          "HOD": "ownWork"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -229962,6 +232070,11 @@
           "PRINCIPAL",
           "ACCOUNTS"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool",
+          "ACCOUNTS": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -230193,6 +232306,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -230467,6 +232583,9 @@
         "x-access": [
           "PARENT"
         ],
+        "x-reach": {
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -230648,6 +232767,10 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -230890,6 +233013,10 @@
           "STUDENT",
           "PARENT"
         ],
+        "x-reach": {
+          "STUDENT": "ownChild",
+          "PARENT": "ownChild"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -231139,6 +233266,10 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool",
+          "PRINCIPAL": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -231274,6 +233405,9 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-reach": {
+          "ADMIN": "ownSchool"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -247756,6 +249890,12 @@
           "TEACHER",
           "EXPERT"
         ],
+        "x-reach": {
+          "STUDENT": "self",
+          "PARENT": "ownChild",
+          "TEACHER": "self",
+          "EXPERT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -248047,6 +250187,12 @@
           "TEACHER",
           "EXPERT"
         ],
+        "x-reach": {
+          "STUDENT": "self",
+          "PARENT": "self",
+          "TEACHER": "self",
+          "EXPERT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -248601,6 +250747,26 @@
           "RECRUITER",
           "SUPPORT"
         ],
+        "x-reach": {
+          "ADMIN": "self",
+          "PRINCIPAL": "self",
+          "TEACHER": "self",
+          "STUDENT": "self",
+          "PARENT": "self",
+          "EXPERT": "self",
+          "DRIVER": "self",
+          "LIBRARIAN": "self",
+          "WARDEN": "self",
+          "ALUMNUS": "self",
+          "FACULTY": "self",
+          "HOD": "self",
+          "EXAM_CONTROLLER": "self",
+          "IQAC": "self",
+          "TPO": "self",
+          "ACCOUNTS": "self",
+          "RECRUITER": "self",
+          "SUPPORT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -248884,6 +251050,26 @@
           "RECRUITER",
           "SUPPORT"
         ],
+        "x-reach": {
+          "ADMIN": "self",
+          "PRINCIPAL": "self",
+          "TEACHER": "self",
+          "STUDENT": "self",
+          "PARENT": "self",
+          "EXPERT": "self",
+          "DRIVER": "self",
+          "LIBRARIAN": "self",
+          "WARDEN": "self",
+          "ALUMNUS": "self",
+          "FACULTY": "self",
+          "HOD": "self",
+          "EXAM_CONTROLLER": "self",
+          "IQAC": "self",
+          "TPO": "self",
+          "ACCOUNTS": "self",
+          "RECRUITER": "self",
+          "SUPPORT": "self"
+        },
         "responses": {
           "200": {
             "description": "OK",

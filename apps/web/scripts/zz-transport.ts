@@ -30,7 +30,7 @@ export async function buildTransport(db: PrismaClient, school: { id: string }): 
   const schoolId = school.id;
   const driver = await db.membership.findFirst({ where: { schoolId, role: "DRIVER", user: { email: "zz.driver01@zz.test" } }, select: { id: true } });
   const [p1, p2, p3] = await Promise.all(["zz.pupil01@zz.test", "zz.pupil02@zz.test", "zz.pupil03@zz.test"].map((email) => db.membership.findFirst({ where: { schoolId, role: "STUDENT", user: { email } }, select: { id: true } })));
-  const admin = await db.membership.findFirst({ where: { schoolId, role: "ADMIN", status: "ACTIVE" }, select: { userId: true } });
+  const admin = await db.membership.findFirst({ where: { schoolId, role: "ADMIN", status: "ACTIVE" }, orderBy: { joinedAt: "asc" }, select: { userId: true } }); // the first admin by joining (owner-batch-item13: Northgate has two)
   if (!driver || !p1 || !p2 || !p3) return null;
   const tz = (await db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { timezone: true } })).timezone;
   const today = todayKey(tz);
