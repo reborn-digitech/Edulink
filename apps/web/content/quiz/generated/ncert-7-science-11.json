@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Curiosity",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-29T17:40:20.172Z",
+  "generatedAt": "2026-10-31T23:34:34.106Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the name of the image formed by a plane mirror?",
+      "stem": "What is the term used for objects that emit their own light?",
       "choices": [
-        "Virtual image",
-        "Real image",
-        "Inverted image",
-        "Erect image"
+        "Non-luminous objects",
+        "Luminous objects",
+        "Transparent objects",
+        "Opaque objects"
       ],
-      "answerIndex": 0,
-      "solution": "The image formed by a plane mirror is a virtual image. A pupil who is confused about the nature of the image might think it is a real image. A pupil who thinks the image is inverted might choose that. A pupil who understands the image is upright might choose that.",
+      "answerIndex": 1,
+      "solution": "Objects that emit their own light are called luminous objects. The other options are incorrect as they refer to different properties of objects.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक समतल दर्पण द्वारा बने चित्र का नाम क्या है?",
+          "stem": "प्रकाश उत्पन्न करने वाली वस्तुओं के लिए शब्द क्या है?",
           "choices": [
-            "आभासी चित्र",
-            "वास्तविक चित्र",
-            "उल्टा चित्र",
-            "सीधा चित्र"
+            "अप्रकाशमान वस्तुएं",
+            "प्रकाशमान वस्तुएं",
+            "पारदर्शी वस्तुएं",
+            "अपारदर्शी वस्तुएं"
           ],
-          "solution": "समतल दर्पण द्वारा बना चित्र आभासी चित्र होता है। चित्र की प्रकृति के बारे में भ्रमित छात्र इसे वास्तविक चित्र समझ सकता है। चित्र उल्टा हो सकता है, ऐसा सोचने वाला छात्र इसे चुन सकता है। चित्र सीधा है, ऐसा समझने वाला छात्र इसे चुन सकता है।",
+          "solution": "जो वस्तुएं अपने आप प्रकाश उत्पन्न करती हैं उन्हें प्रकाशमान वस्तुएं कहते हैं। अन्य विकल्प गलत हैं क्योंकि वे वस्तुओं के अलग-अलग गुणों को संदर्भित करते हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses standard Hindi terminology used in textbooks.",
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for scientific concepts.",
           "flag": null
         },
         "mr": {
-          "stem": "समतल दर्पणाद्वारे तयार होणाऱ्या चित्राचे नाव काय आहे?",
+          "stem": "प्रकाश उत्पन्न करणार्या वस्तूंसाठी वापरल्या जाणार्‍या शब्दाचे नाव काय आहे?",
           "choices": [
-            "काल्पनिक चित्र",
-            "वास्तविक चित्र",
-            "उलट चित्र",
-            "उभय चित्र"
+            "अप्रकाशमान वस्तू",
+            "प्रकाशमान वस्तू",
+            "पारदर्शक वस्तू",
+            "अपारदर्शक वस्तू"
           ],
-          "solution": "समतल दर्पणाद्वारे तयार होणारे चित्र काल्पनिक चित्र आहे. चित्राच्या प्रकृतीबद्दल गोंधळलेला विद्यार्थी ते वास्तविक चित्र मानू शकतो. चित्र उलट असल्याचा विचार करणारा विद्यार्थी ते निवडू शकतो. चित्र उभय असल्याचे समजलेला विद्यार्थी ते निवडू शकतो.",
+          "solution": "ज्या वस्तू आपल्यापासून प्रकाश उत्पन्न करतात त्यांना प्रकाशमान वस्तू म्हणतात. इतर विकल्प अयोग्य आहेत कारण ते वस्तूंच्या वेगवेगळ्या गुणधर्मांचा संदर्भ देतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
           "flag": null
         }
       },
@@ -72,624 +72,104 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "This refers to objects that do not emit their own light",
         null,
-        "confuses virtual with real",
-        "thinks image is inverted",
-        "understands the image is upright"
+        "Believes light-emitting objects must allow light to pass through them",
+        "This refers to how light passes through an object"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": null,
-      "critique": "The solution correctly identifies the virtual image as the correct answer and provides accurate explanations for the other options, which are common misconceptions.",
+      "critique": "The correct answer is 'Luminous objects' as they are defined as objects that emit their own light. The other options are correctly identified as referring to different properties, and the misconceptions described are plausible for students at this level.",
       "sources": [
         {
           "document": "ncert/7/science/gecu111.pdf",
-          "ordinal": 8,
-          "pageStart": 9,
-          "pageEnd": 10,
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
           "headingPath": [
-            "Chapter 11: Light: Shadows and Reflections",
-            "11.6 Images Formed in a Plane Mirror"
+            "Chapter 11: Light: Shadows and Reflections"
           ]
         },
         {
           "document": "ncert/7/science/gecu111.pdf",
-          "ordinal": 9,
-          "pageStart": 10,
-          "pageEnd": 11,
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
           "headingPath": [
             "Chapter 11: Light: Shadows and Reflections",
-            "11.7 Pinhole Camera"
+            "11.1 Sources of Light"
           ]
         },
         {
           "document": "ncert/7/science/gecu111.pdf",
-          "ordinal": 10,
-          "pageStart": 11,
-          "pageEnd": 12,
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
           "headingPath": [
             "Chapter 11: Light: Shadows and Reflections",
-            "11.8 Making Some Useful Items"
+            "11.2 Does Light Travel in a Straight Line?"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu111.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 11: Light: Shadows and Reflections",
+            "11.3 Light through Transparent,",
+            "Translucent, and Opaque Materials"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T17:40:20.172Z",
+      "generatedAt": "2026-10-31T23:34:34.106Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 2,
-      "stem": "Which of the following is a luminous object?",
+      "stem": "Which of the following is a correct statement about shadows?",
       "choices": [
-        "A mirror",
-        "A candle flame",
-        "A book",
-        "A wall"
+        "Shadows are always dark",
+        "Shadows change shape when the light source is moved",
+        "Shadows are formed only by opaque objects",
+        "Shadows are formed by all types of objects"
       ],
-      "answerIndex": 1,
-      "solution": "A candle flame emits its own light, making it a luminous object. A mirror and a wall do not emit light; they only reflect it. A book also does not emit light.",
+      "answerIndex": 2,
+      "solution": "Shadows are formed when an opaque object blocks light. Transparent and translucent objects do not form shadows or form very faint ones. Shadows can change shape when the light source is moved, but they are not always dark. Therefore, the correct statement is that shadows are formed only by opaque objects.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन एक प्रकाशमान वस्तु है?",
+          "stem": "निम्नलिखित में से कौन-सा छाया के बारे में सही कथन है?",
           "choices": [
-            "एक दर्पण",
-            "एक मोमबत्ती की लौ",
-            "एक किताब",
-            "एक दीवार"
+            "छायाएँ हमेशा गहरी होती हैं",
+            "जब प्रकाश स्रोत गति करता है तो छाया का आकार बदल जाता है",
+            "छायाएँ केवल अपारदर्शी वस्तुओं द्वारा बनती हैं",
+            "सभी प्रकार की वस्तुओं द्वारा छायाएँ बनती हैं"
           ],
-          "solution": "एक मोमबत्ती की लौ अपना स्वयं का प्रकाश उत्सर्जित करती है, जिसके कारण यह एक प्रकाशमान वस्तु है। एक दर्पण और एक दीवार प्रकाश उत्सर्जित नहीं करते हैं; वे केवल इसका परावर्तन करते हैं। एक किताब भी प्रकाश उत्सर्जित नहीं करती है।",
+          "solution": "छायाएँ तब बनती हैं जब अपारदर्शी वस्तु प्रकाश को रोक देती है। पारदर्शी और अर्धपारदर्शी वस्तुएँ छायाएँ नहीं बनाती हैं या बहुत हल्की छायाएँ बनाती हैं। जब प्रकाश स्रोत गति करता है तो छाया का आकार बदल सकता है, लेकिन वे हमेशा गहरी नहीं होती। इसलिए सही कथन यह है कि छायाएँ केवल अपारदर्शी वस्तुओं द्वारा बनती हैं।",
           "imageAlt": null,
           "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते एक उजळ वस्तू आहे?",
+          "stem": "खालीलपैकी कोणता छायांच्या बाबतीत बरोबर विधान आहे?",
           "choices": [
-            "एक दर्पण",
-            "मोमबत्तीचा ज्वाला",
-            "एक पुस्तक",
-            "एक भिंत"
+            "छाया नेहमी गडद असते",
+            "जेव्हा प्रकाश स्रोत हलवला जातो तेव्हा छाया आकृती बदलते",
+            "छाया फक्त अपारदर्शक वस्तूमुळे तयार होते",
+            "सर्व प्रकारच्या वस्तूमुळे छाया तयार होते"
           ],
-          "solution": "मोमबत्तीचा ज्वाला आपल्याला आपले प्रकाश उत्सर्जित करते, ज्यामुळे तो उजळ वस्तू बनते. दर्पण आणि भिंत प्रकाश उत्सर्जित करत नाहीत; ते केवळ प्रतिबिंबित करतात. पुस्तक देखील प्रकाश उत्सर्जित करत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses reflection with emission",
-        null,
-        "Does not understand the definition of luminous objects",
-        "Thinks all objects can emit light"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies the candle flame as a luminous object because it emits its own light. The other options are correctly identified as non-luminous because they only reflect light.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu111.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 1,
-          "headingPath": [
-            "Chapter 11: Light: Shadows and Reflections"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu111.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 11: Light: Shadows and Reflections",
-            "11.1 Sources of Light"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu111.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 11: Light: Shadows and Reflections",
-            "11.2 Does Light Travel in a Straight Line?"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu111.pdf",
-          "ordinal": 3,
-          "pageStart": 4,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 11: Light: Shadows and Reflections",
-            "11.3 Light through Transparent,",
-            "Translucent, and Opaque Materials"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T17:40:20.172Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the main reason a shadow is formed?",
-      "choices": [
-        "Light is absorbed by the object",
-        "Light is blocked by the object",
-        "Light is reflected by the object",
-        "Light is scattered by the object"
-      ],
-      "answerIndex": 1,
-      "solution": "A shadow is formed when an object blocks the path of light. The correct answer is that light is blocked by the object. The other options are incorrect because the absorption of light is not the main reason for a shadow, reflection and scattering do not form a shadow in the same way.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "छाया बनने का मुख्य कारण क्या है?",
-          "choices": [
-            "वस्तु द्वारा प्रकाश का अवशोषण",
-            "वस्तु द्वारा प्रकाश का अवरोध",
-            "वस्तु द्वारा प्रकाश का परावर्तन",
-            "वस्तु द्वारा प्रकाश का बिखराव"
-          ],
-          "solution": "छाया तब बनती है जब कोई वस्तु प्रकाश के पथ को अवरुद्ध कर देती है। सही उत्तर यह है कि प्रकाश वस्तु द्वारा अवरुद्ध हो जाता है। अन्य विकल्प गलत हैं क्योंकि छाया के लिए प्रकाश का अवशोषण मुख्य कारण नहीं है, परावर्तन और बिखराव छाया के बनने के समान तरीके से नहीं होते।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "छाया तयार होण्याचे मुख्य कारण काय आहे?",
-          "choices": [
-            "वस्तू द्वारे प्रकाश शोषला जातो",
-            "वस्तू द्वारे प्रकाश अडवला जातो",
-            "वस्तू द्वारे प्रकाश परावर्तित होतो",
-            "वस्तू द्वारे प्रकाश बिखेरला जातो"
-          ],
-          "solution": "छाया तयार होते जेव्हा एखादी वस्तू प्रकाशाच्या मार्गाला अडवते. योग्य उत्तर असे की प्रकाश वस्तू द्वारे अडवला जातो. इतर विकल्प अयोग्य आहेत कारण प्रकाशाचा शोष छाया तयार होण्याचे मुख्य कारण नाही, परावर्तन आणि बिखेरण ही छाया तयार करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Thinks the absorption of light causes a shadow, but the main reason is that light is blocked",
-        null,
-        "Thinks the reflection of light causes a shadow, but reflection is why we see images, not shadows",
-        "Thinks the scattering of light causes a shadow, but scattering is a different phenomenon that is not directly responsible for shadow formation."
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct and aligns with the scientific understanding that shadows are formed when light is blocked by an object. The reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu111.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 11: Light: Shadows and Reflections",
-            "11.4 Shadow Formation"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu111.pdf",
-          "ordinal": 5,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 11: Light: Shadows and Reflections",
-            "11.4 Shadow Formation"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu111.pdf",
-          "ordinal": 6,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 11: Light: Shadows and Reflections",
-            "11.5 Reflection of Light"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu111.pdf",
-          "ordinal": 7,
-          "pageStart": 8,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 11: Light: Shadows and Reflections",
-            "11.5 Reflection of Light"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T17:40:20.172Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following statements is true about the image formed by a plane mirror?",
-      "choices": [
-        "The image is always larger than the object",
-        "The image is always inverted",
-        "The image is always upright",
-        "The image is always smaller than the object"
-      ],
-      "answerIndex": 2,
-      "solution": "The image formed by a plane mirror is always upright. A pupil who confuses the properties of concave and convex mirrors might think the image is inverted. A pupil who misunderstands the concept might think the image is larger or smaller. A pupil who is confused about the nature of reflection might think the image is inverted.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा कथन समतल दर्पण द्वारा बने प्रतिबिंब के बारे में सत्य है?",
-          "choices": [
-            "प्रतिबिंब हमेशा वस्तु के बराबर होता है",
-            "प्रतिबिंब हमेशा उल्टा होता है",
-            "प्रतिबिंब हमेशा ऊर्ध्वाधर होता है",
-            "प्रतिबिंब हमेशा वस्तु से छोटा होता है"
-          ],
-          "solution": "समतल दर्पण द्वारा बना प्रतिबिंब हमेशा ऊर्ध्वाधर होता है। एक छात्र जो अवतल और उत्तल दर्पण के गुणों को गलत ढंग से समझता है, वह प्रतिबिंब को उल्टा समझ सकता है। एक छात्र जो अवशोषण की अवधारणा को गलत समझता है, वह प्रतिबिंब को बड़ा या छोटा समझ सकता है। एक छात्र जो परावर्तन की प्रकृति में भ्रमित होता है, वह प्रतिबिंब को उल्टा समझ सकता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms. The correct answer remains option (3), and the distractors are still incorrect.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता विधान तलाव दर्पणाद्वारे तयार झालेल्या चित्राबद्दल खरा आहे?",
-          "choices": [
-            "चित्र हमेशा वस्तूपेक्षा मोठे असते",
-            "चित्र हमेशा उलटे असते",
-            "चित्र हमेशा उभे असते",
-            "चित्र हमेशा वस्तूपेक्षा लहान असते"
-          ],
-          "solution": "तलाव दर्पणाद्वारे तयार झालेले चित्र हमेशा उभे असते. एखादा विद्यार्थी अवतल आणि उत्तल दर्पणांच्या गुणधर्मांच्या चुकीच्या समजूतीमुळे चित्र उलटे असल्याचे समजू शकतो. एखादा विद्यार्थी असे चुकीचे समजूतीमुळे चित्र मोठे किंवा लहान असल्याचे समजू शकतो. एखादा विद्यार्थी प्रतिबिंबाच्या प्रकृतीबद्दल गोंधळलेला असल्यास चित्र उलटे असल्याचे समजू शकतो.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for optical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "confuses concave mirror properties",
-        "thinks image is inverted",
-        null,
-        "confuses size of image with other mirrors"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 2, as a plane mirror always forms an upright image. The author's reasoning for the distractors aligns with common misconceptions about mirror properties.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu111.pdf",
-          "ordinal": 8,
-          "pageStart": 9,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 11: Light: Shadows and Reflections",
-            "11.6 Images Formed in a Plane Mirror"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu111.pdf",
-          "ordinal": 9,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 11: Light: Shadows and Reflections",
-            "11.7 Pinhole Camera"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu111.pdf",
-          "ordinal": 10,
-          "pageStart": 11,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 11: Light: Shadows and Reflections",
-            "11.8 Making Some Useful Items"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T17:40:20.172Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a torch is placed next to a transparent object, what will happen to the light?",
-      "choices": [
-        "It will be blocked completely",
-        "It will be reflected back",
-        "It will pass through completely",
-        "It will bend around the object"
-      ],
-      "answerIndex": 2,
-      "solution": "Transparent objects allow light to pass through them completely. A transparent object does not block or reflect light. Light does not bend around objects in this context, as it travels in a straight line.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक टॉर्च एक पारदर्शक वस्तु के पास रखी जाती है, तो प्रकाश पर क्या प्रभाव पड़ेगा?",
-          "choices": [
-            "इसे पूरी तरह अवरुद्ध कर दिया जाएगा",
-            "इसे पूरी तरह वापस परावर्तित कर दिया जाएगा",
-            "इसे पूरी तरह गुजरने दिया जाएगा",
-            "इसे वस्तु के चारों ओर मुड़ जाएगा"
-          ],
-          "solution": "पारदर्शक वस्तुएं प्रकाश के पार होने की अनुमति देती हैं। एक पारदर्शक वस्तु प्रकाश को अवरुद्ध या परावर्तित नहीं करती है। इस संदर्भ में प्रकाश वस्तु के चारों ओर मुड़ नहीं जाता है, क्योंकि यह सीधी रेखा में यात्रा करता है।",
-          "imageAlt": null,
-          "critique": "Translation accurately reflects the original meaning with appropriate Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एक टॉर्च एका पारदर्शक वस्तूजवळ ठेवली जाते, तर प्रकाशावर काय परिणाम होईल?",
-          "choices": [
-            "तो पूर्णपणे अडवला जाईल",
-            "तो परत फिरवला जाईल",
-            "तो पूर्णपणे जाईल",
-            "तो वस्तूच्या आजूबाजूने मोडला जाईल"
-          ],
-          "solution": "पारदर्शक वस्तू प्रकाशाला त्यांच्यातून पूर्णपणे जाऊ देतात. एका पारदर्शक वस्तूने प्रकाश अडवला किंवा परावर्तित केला जात नाही. या संदर्भात प्रकाश वस्तूच्या आजूबाजूने मोडत नाही, कारण तो सरळ रेषेत जातो.",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Thinks transparent objects block light",
-        "Confuses reflection with transmission",
-        null,
-        "Believes light bends around objects"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies that transparent objects allow light to pass through. The reasoning for the distractors aligns with common misconceptions about light behavior with transparent materials.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu111.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 1,
-          "headingPath": [
-            "Chapter 11: Light: Shadows and Reflections"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu111.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 11: Light: Shadows and Reflections",
-            "11.1 Sources of Light"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu111.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 11: Light: Shadows and Reflections",
-            "11.2 Does Light Travel in a Straight Line?"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu111.pdf",
-          "ordinal": 3,
-          "pageStart": 4,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 11: Light: Shadows and Reflections",
-            "11.3 Light through Transparent,",
-            "Translucent, and Opaque Materials"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T17:40:20.172Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "A student holds a mirror in front of a light source. What happens to the light that hits the mirror?",
-      "choices": [
-        "It is absorbed by the mirror",
-        "It passes through the mirror",
-        "It reflects off the mirror",
-        "It changes direction"
-      ],
-      "answerIndex": 2,
-      "solution": "The mirror is a shiny surface, so it reflects the light. Light reflects off mirrors, which is why we can see our reflection. The correct answer is that it reflects off the mirror. The other options are incorrect because light does not pass through a mirror, it is not absorbed in the same way as an opaque object, and it changes direction by reflecting, not on its own.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक छात्र एक प्रकाश स्रोत के सामने एक दर्पण रखता है। दर्पण पर टकराने वाला प्रकाश क्या होता है?",
-          "choices": [
-            "इसे दर्पण द्वारा अवशोषित कर लिया जाता है",
-            "इसे दर्पण में से गुजर जाता है",
-            "इसे दर्पण से परावर्तित कर दिया जाता है",
-            "इसकी दिशा बदल जाती है"
-          ],
-          "solution": "दर्पण एक चमकदार सतह है, इसलिए यह प्रकाश को परावर्तित कर देता है। प्रकाश दर्पणों से परावर्तित होता है, जिसके कारण हम अपनी प्रतिबिंब देख सकते हैं। सही उत्तर यह है कि यह दर्पण से परावर्तित हो जाता है। अन्य विकल्प गलत हैं क्योंकि प्रकाश दर्पण में से नहीं गुजरता है, यह एक अपारदर्शी वस्तु के समान अवशोषित नहीं होता है, और इसकी दिशा परावर्तन के कारण बदलती है, न कि अकेले।",
-          "imageAlt": null,
-          "critique": "The translation accurately reflects the original question and maintains the correct answer and distractors. Technical terms like 'परावर्तित' (reflected) are appropriate for Hindi-medium science education.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका विद्यार्थीने प्रकाश स्रोताच्या अगोदर एका दर्पणाचा वापर केला. प्रकाशाचा जो भाग दर्पणावर आला तो काय होतो?",
-          "choices": [
-            "तो दर्पणाद्वारे शोषला जातो",
-            "तो दर्पणामार्फत जातो",
-            "तो दर्पणावरून परावर्तित होतो",
-            "तो दिशा बदलतो"
-          ],
-          "solution": "दर्पण हे चमकदार सतत असते, म्हणून ते प्रकाशाचे परावर्तन करते. प्रकाश दर्पणावरून परावर्तित होतो, ज्यामुळे आपण आपले प्रतिबिंब पाहू शकतो. योग्य उत्तर असे की, तो दर्पणावरून परावर्तित होतो. इतर विकल्प अयोग्य आहेत कारण प्रकाश दर्पणामार्फत जात नाही, तो अपारदर्शक वस्तूप्रमाणे शोषला जात नाही आणि तो दिशा बदलतो त्याच्या आत नसून परावर्तनामुळे बदलतो.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for light reflection and mirrors.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Thinks mirrors absorb light like opaque objects, but mirrors are reflective",
-        "Thinks light passes through mirrors, which is not true for a plane mirror",
-        null,
-        "Thinks light changes direction on its own, but it only changes direction when it reflects off a surface like a mirror."
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 2, as mirrors reflect light. The other options represent common misconceptions: absorption (like opaque objects), transmission (like transparent objects), and direction change without reflection.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu111.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 11: Light: Shadows and Reflections",
-            "11.4 Shadow Formation"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu111.pdf",
-          "ordinal": 5,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 11: Light: Shadows and Reflections",
-            "11.4 Shadow Formation"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu111.pdf",
-          "ordinal": 6,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 11: Light: Shadows and Reflections",
-            "11.5 Reflection of Light"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu111.pdf",
-          "ordinal": 7,
-          "pageStart": 8,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 11: Light: Shadows and Reflections",
-            "11.5 Reflection of Light"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T17:40:20.172Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "A student moves an object closer to a light source. What happens to the shadow of the object?",
-      "choices": [
-        "It becomes larger",
-        "It becomes smaller",
-        "It disappears",
-        "It changes colour"
-      ],
-      "answerIndex": 0,
-      "solution": "When an object is moved closer to a light source, the shadow on the screen becomes larger. This is because the object blocks more of the light as it is closer to the source. The correct answer is that it becomes larger. The other options are incorrect because the shadow does not become smaller, disappear, or change colour when the object is moved closer to the light source.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक छात्र एक वस्तु को एक प्रकाश स्रोत के पास ले जाता है। वस्तु के छाया पर क्या प्रभाव पड़ता है?",
-          "choices": [
-            "यह बड़ा हो जाता है",
-            "यह छोटा हो जाता है",
-            "यह लुप्त हो जाता है",
-            "यह रंग बदल जाता है"
-          ],
-          "solution": "जब एक वस्तु को प्रकाश स्रोत के पास ले जाया जाता है, तो स्क्रीन पर छाया बड़ी हो जाती है। इसका कारण यह है कि वस्तु प्रकाश के अधिक भाग को रोक लेती है जब यह स्रोत के पास होती है। सही उत्तर यह है कि यह बड़ा हो जाता है। अन्य विकल्प गलत हैं क्योंकि जब वस्तु प्रकाश स्रोत के पास ले जाई जाती है तो छाया छोटी नहीं होती, लुप्त नहीं होती और रंग भी नहीं बदलता।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका विद्यार्थीने एका वस्तूला प्रकाश स्रोताच्या जवळ घेतले. वस्तूच्या छायेवर काय परिणाम होतो?",
-          "choices": [
-            "ती मोठी होते",
-            "ती लहान होते",
-            "ती नाहीसी होते",
-            "ती रंग बदलते"
-          ],
-          "solution": "जेव्हा एखादी वस्तू प्रकाश स्रोताच्या जवळ घेतली जाते, तेव्हा स्क्रीनवरील छाया मोठी होते. हे कारण असे आहे की वस्तू प्रकाशाच्या जास्तीत जास्त भाग अडवते जेव्हा ती स्रोताच्या जवळ असते. योग्य उत्तर म्हणजे ती मोठी होते. इतर विकल्प अयोग्य आहेत कारण छाया लहान होत नाही, नाहीसी होत नाही आणि रंग बदलत नाही जेव्हा वस्तू प्रकाश स्रोताच्या जवळ घेतली जाते.",
+          "solution": "छाया अपारदर्शक वस्तूमुळे तयार होते. पारदर्शक आणि अर्धपारदर्शक वस्तू छाया तयार करत नाहीत किंवा खूप फार कमी छाया तयार करतात. जेव्हा प्रकाश स्रोत हलवला जातो तेव्हा छाया आकृती बदलू शकते, परंतु छाया नेहमी गडद असत नाही. म्हणून, छाया फक्त अपारदर्शक वस्तूमुळे तयार होते असे बरोबर विधान आहे.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for scientific concepts.",
           "flag": null
@@ -700,20 +180,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Believes all objects form shadows",
+        "Thinks shadows are always dark",
         null,
-        "Thinks the shadow becomes smaller when the object is closer, but the opposite is true",
-        "Thinks the shadow disappears when the object is moved, which is not correct",
-        "Thinks the shadow changes colour, but the colour of the shadow is not affected by the object's position."
+        "Does not understand the role of opacity in shadow formation"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        2,
+        2,
+        2
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. Moving an object closer to a light source increases the size of the shadow because the object blocks more light, creating a larger shadow on the screen. The other options are incorrect as shadows do not shrink, disappear, or change color with proximity to the light source.",
+      "levelFlag": "level 2 but the solver missed it 2 of 5 times",
+      "critique": "The correct answer is 2, as shadows are indeed formed only by opaque objects. The solution correctly explains that transparent and translucent objects do not form shadows. Option 1 is incorrect because shadows can be light or dark depending on the light source, and option 0 is incorrect because not all objects form shadows.",
       "sources": [
         {
           "document": "ncert/7/science/gecu111.pdf",
@@ -757,147 +237,430 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T17:40:20.172Z",
+      "generatedAt": "2026-10-31T23:34:34.106Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A student wants to see a shadow of a book on a wall. Which of the following is NOT necessary for forming a shadow?",
+      "choices": [
+        "A source of light",
+        "A screen",
+        "A transparent object",
+        "An opaque object"
+      ],
+      "answerIndex": 2,
+      "solution": "A shadow is formed when an opaque object blocks light from reaching a screen. A transparent object allows light to pass through and does not form a shadow. A source of light and a screen are necessary for the formation of a shadow. Therefore, a transparent object is not necessary for forming a shadow.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र किसी पुस्तक के छाया देखना चाहता है। निम्नलिखित में से कौन-सा छाया बनने के लिए आवश्यक नहीं है?",
+          "choices": [
+            "प्रकाश का स्रोत",
+            "एक स्क्रीन",
+            "एक पारदर्शी वस्तु",
+            "एक अपारदर्शी वस्तु"
+          ],
+          "solution": "एक अपारदर्शी वस्तु प्रकाश को स्क्रीन तक पहुँचने से रोकती है और छाया बनती है। एक पारदर्शी वस्तु प्रकाश को गुजरने देती है और छाया नहीं बनाती। प्रकाश का स्रोत और स्क्रीन छाया बनने के लिए आवश्यक हैं। इसलिए, पारदर्शी वस्तु छाया बनने के लिए आवश्यक नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology as found in standard textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याला पुस्तकाचा दिवाला छाया पाहायचा आहे. खालीलपैकी कोणते छाया तयार करण्यासाठी आवश्यक नाही?",
+          "choices": [
+            "प्रकाशाचा स्रोत",
+            "एका स्क्रीन",
+            "एका पारदर्शक वस्तू",
+            "एका अपारदर्शक वस्तू"
+          ],
+          "solution": "अपारदर्शक वस्तू प्रकाशाला रोखते आणि छाया तयार होते. पारदर्शक वस्तू प्रकाशाला जाऊ देते आणि छाया तयार करत नाही. प्रकाशाचा स्रोत आणि स्क्रीन छाया तयार करण्यासाठी आवश्यक आहेत. म्हणूनच पारदर्शक वस्तू छाया तयार करण्यासाठी आवश्यक नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the role of transparent objects in shadow formation",
+        "Misunderstands the function of a light source",
+        null,
+        "Does not recognize that a transparent object cannot block light to form a shadow"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that a transparent object is not necessary for forming a shadow, as it allows light to pass through. The reasoning aligns with the scientific understanding of shadow formation.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu111.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 11: Light: Shadows and Reflections",
+            "11.4 Shadow Formation"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu111.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 11: Light: Shadows and Reflections",
+            "11.4 Shadow Formation"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu111.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 11: Light: Shadows and Reflections",
+            "11.5 Reflection of Light"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu111.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 11: Light: Shadows and Reflections",
+            "11.5 Reflection of Light"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T23:34:34.106Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the main reason for the formation of a shadow?",
+      "choices": [
+        "Light is absorbed by the object",
+        "Light is reflected by the object",
+        "Light is scattered by the object",
+        "Light is blocked by the object"
+      ],
+      "answerIndex": 3,
+      "solution": "A shadow is formed when an object blocks light from reaching a surface. Light is not absorbed, reflected, or scattered in a way that prevents the formation of a shadow. The main reason is that the object blocks the light. Therefore, the correct answer is that light is blocked by the object.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "छाया के निर्माण का मुख्य कारण क्या है?",
+          "choices": [
+            "वस्तु द्वारा प्रकाश का अवशोषण किया जाता है",
+            "वस्तु द्वारा प्रकाश का परावर्तन किया जाता है",
+            "वस्तु द्वारा प्रकाश का प्रकीर्णन किया जाता है",
+            "वस्तु द्वारा प्रकाश का अवरोध किया जाता है"
+          ],
+          "solution": "छाया तब बनती है जब कोई वस्तु प्रकाश के एक सतह तक पहुंचने से रोक देती है। छाया के निर्माण के लिए प्रकाश का अवशोषण, परावर्तन या प्रकीर्णन नहीं होता है। मुख्य कारण यह है कि वस्तु प्रकाश का अवरोध करती है। इसलिए सही उत्तर यह है कि प्रकाश वस्तु द्वारा अवरुद्ध कर दिया जाता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate scientific terminology used in a Hindi-medium context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "छाया तयार होण्याचे मुख्य कारण काय आहे?",
+          "choices": [
+            "वस्तू द्वारे प्रकाश शोषला जातो",
+            "वस्तू द्वारे प्रकाश परावर्तित होतो",
+            "वस्तू द्वारे प्रकाश बिखेरला जातो",
+            "वस्तू द्वारे प्रकाश अडवला जातो"
+          ],
+          "solution": "छाया तयार होते जेव्हा एखादी वस्तू प्रकाशाला एखाद्या पृष्ठभागावर पोहोचू देत नाही. छाया तयार होण्यासाठी प्रकाश शोषला, परावर्तित किंवा बिखेरला जाण्याचा असा प्रकार नसतो. मुख्य कारण असे आहे की वस्तू प्रकाश अडवते. म्हणूनच योग्य उत्तर असे आहे की प्रकाश वस्तू द्वारे अडवला जातो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses absorption with shadow formation",
+        "Thinks reflection causes shadows",
+        "Does not understand that scattering does not block light",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that the main reason for a shadow is the blocking of light, and the reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu111.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 11: Light: Shadows and Reflections",
+            "11.4 Shadow Formation"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu111.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 11: Light: Shadows and Reflections",
+            "11.4 Shadow Formation"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu111.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 11: Light: Shadows and Reflections",
+            "11.5 Reflection of Light"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu111.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 11: Light: Shadows and Reflections",
+            "11.5 Reflection of Light"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T23:34:34.106Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 4,
-      "stem": "What happens when a person raises their left arm in front of a plane mirror?",
+      "stem": "In Activity 11.6, a student uses a comb with a slit to create a thin beam of light. What happens when this beam is reflected by a mirror?",
       "choices": [
-        "The image raises its right arm",
-        "The image raises its left arm",
-        "The image disappears",
-        "The image inverts"
+        "The beam continues in a straight line without change",
+        "The beam gets absorbed by the mirror",
+        "The beam changes direction",
+        "The beam splits into multiple beams"
       ],
-      "answerIndex": 0,
-      "solution": "The image formed by a plane mirror shows lateral inversion, so when a person raises their left arm, the image raises its right arm. A pupil who does not understand lateral inversion might think the image raises its left arm. A pupil who thinks the image is a direct copy might think it disappears. A pupil who confuses inversion with flipping might think the image inverts.",
+      "answerIndex": 2,
+      "solution": "When a light beam is reflected by a mirror, it changes direction according to the law of reflection. The beam does not continue in a straight line, nor does it get absorbed or split into multiple beams. The change in direction of the light beam is a clear indication of reflection. Therefore, the beam changes direction when it reflects off the mirror.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "जब कोई व्यक्ति एक समतल दर्पण के सामने अपना बाएं हाथ ऊपर उठाता है तो क्या होता है?",
+          "stem": "क्रियाकलाप 11.6 में, एक छात्र एक छड़ी के साथ एक झिरी का उपयोग करके प्रकाश की एक पतली किरण बनाता है। जब इस किरण को एक दर्पण द्वारा परावर्तित किया जाता है तो क्या होता है?",
           "choices": [
-            "छवि अपना दाएं हाथ ऊपर उठाती है",
-            "छवि अपना बाएं हाथ ऊपर उठाती है",
-            "छवि गायब हो जाती है",
-            "छवि उलट जाती है"
+            "किरण सीधी रेखा में बिना किसी परिवर्तन के जाती है",
+            "किरण दर्पण द्वारा अवशोषित हो जाती है",
+            "किरण दिशा बदल जाती है",
+            "किरण कई किरणों में विभाजित हो जाती है"
           ],
-          "solution": "समतल दर्पण द्वारा बनी छवि पार्श्व उल्टाव दर्शाती है, इसलिए जब कोई व्यक्ति अपना बाएं हाथ ऊपर उठाता है, तो छवि अपना दाएं हाथ ऊपर उठाती है। जो छात्र पार्श्व उल्टाव को समझ नहीं पाता, वह सोच सकता है कि छवि अपना बाएं हाथ ऊपर उठाती है। जो छात्र छवि को सीधा कॉपी समझता है, वह सोच सकता है कि छवि गायब हो जाती है। जो छात्र उल्टाव को उल्टाने से भ्रमित कर लेता है, वह सोच सकता है कि छवि उलट जाती है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "solution": "जब प्रकाश की किरण दर्पण द्वारा परावर्तित होती है, तो यह परावर्तन के नियम के अनुसार दिशा बदल जाती है। किरण सीधी रेखा में बिना किसी परिवर्तन के नहीं जाती, न ही यह दर्पण द्वारा अवशोषित हो जाती है या कई किरणों में विभाजित हो जाती है। प्रकाश किरण की दिशा में परिवर्तन परावर्तन के स्पष्ट संकेत है। इसलिए, जब प्रकाश की किरण दर्पण से परावर्तित होती है तो इसकी दिशा बदल जाती है।",
+          "imageAlt": "एक समतल दर्पण के साथ एक आपतित किरण और एक परावर्तित किरण दर्शाने वाला चित्र",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "एका व्यक्तीने एखाद्या समतल दर्पणासमोर आपला बाजूचा हात उंच केल्यास काय होते?",
+          "stem": "क्रियाकलाप 11.6 मध्ये, एका विद्यार्थीने एका कंबमध्ये एका छिद्राचा वापर करून प्रकाशाचा थरातील बीम तयार करतो. जेव्हा हा बीम एका दर्पणाने परावर्तित होतो तेव्हा काय होते?",
           "choices": [
-            "चित्र आपला उजवा हात उंच करते",
-            "चित्र आपला डावा हात उंच करते",
-            "चित्र अदृश्य होते",
-            "चित्र उलटते"
+            "बीम सरळ रेषेत बदलाशिवाय चालू राहतो",
+            "बीम दर्पणाद्वारे शोषला जातो",
+            "बीम दिशा बदलतो",
+            "बीम अनेक बीममध्ये विभाजित होतो"
           ],
-          "solution": "समतल दर्पणाद्वारे तयार झालेले चित्र बाजूच्या उलटपालट दर्शवते, म्हणून जेव्हा एखाद्या व्यक्तीने आपला बाजूचा हात उंच केला तेव्हा चित्र आपला उजवा हात उंच करते. बाजूच्या उलटपालट बद्दल अज्ञान असलेला विद्यार्थी चित्र आपला बाजूचा हात उंच करते असे समजू शकतो. चित्र एक सीधा प्रतिबिंब असल्याचे विचार करणारा विद्यार्थी चित्र अदृश्य होते असे समजू शकतो. उलटपालट आणि फिरवण्याच्या गोष्टी चुकून घेणारा विद्यार्थी चित्र उलटते असे समजू शकतो.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for optical concepts.",
+          "solution": "जेव्हा प्रकाशाचा बीम दर्पणाने परावर्तित होतो तेव्हा तो परावर्तनाच्या कायद्यानुसार दिशा बदलतो. प्रकाशाचा बीम सरळ रेषेत बदलाशिवाय चालू राहत नाही, नाही तो शोषला जातो किंवा अनेक बीममध्ये विभाजित होतो. प्रकाशाचा बीम दिशा बदलणे हे परावर्तनाचे स्पष्ट संकेत आहे. त्यामुळे प्रकाशाचा बीम दर्पणावरून परावर्तित होताना दिशा बदलतो.",
+          "imageAlt": "एका समतल दर्पणाचा आकृती ज्यामध्ये एका अभिसरण किरणाचा आणि परावर्तित किरणाचा समावेश आहे",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
+      "imageAlt": "A diagram showing a plane mirror with an incident ray and a reflected ray",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "planeMirror",
+              "x": 50,
+              "y": 30,
+              "size": 20,
+              "labels": [
+                "mirror"
+              ],
+              "text": {
+                "incidentRay": "incidentRay",
+                "reflectedRay": "reflectedRay"
+              }
+            }
+          ],
+          "arrows": [
+            {
+              "from": [
+                40,
+                30
+              ],
+              "to": [
+                50,
+                30
+              ],
+              "label": "incidentRay",
+              "curved": false
+            },
+            {
+              "from": [
+                50,
+                30
+              ],
+              "to": [
+                60,
+                30
+              ],
+              "label": "reflectedRay",
+              "curved": false
+            }
+          ]
+        },
+        "labels": {
+          "incidentRay": {
+            "en": "incident ray",
+            "hi": "आपतित किरण",
+            "mr": "अभिसरण किरण"
+          },
+          "reflectedRay": {
+            "en": "reflected ray",
+            "hi": "परावर्तित किरण",
+            "mr": "परावर्तित किरण"
+          }
+        }
+      },
+      "needsFigure": true,
       "distractorReason": [
+        "Believes light does not change direction upon reflection",
+        "Thinks mirrors absorb light",
         null,
-        "does not understand lateral inversion",
-        "thinks image is direct copy",
-        "confuses inversion with flipping"
+        "Does not understand that light reflects in a different direction"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies lateral inversion as the principle at play. The reasoning for the distractors aligns with common misconceptions about mirror images.",
+      "critique": "The question is well-constructed, with a clear correct answer and plausible misconceptions in the distractors. The solution correctly explains that the beam changes direction upon reflection, which aligns with the law of reflection.",
       "sources": [
         {
           "document": "ncert/7/science/gecu111.pdf",
-          "ordinal": 8,
-          "pageStart": 9,
-          "pageEnd": 10,
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
           "headingPath": [
             "Chapter 11: Light: Shadows and Reflections",
-            "11.6 Images Formed in a Plane Mirror"
+            "11.4 Shadow Formation"
           ]
         },
         {
           "document": "ncert/7/science/gecu111.pdf",
-          "ordinal": 9,
-          "pageStart": 10,
-          "pageEnd": 11,
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
           "headingPath": [
             "Chapter 11: Light: Shadows and Reflections",
-            "11.7 Pinhole Camera"
+            "11.4 Shadow Formation"
           ]
         },
         {
           "document": "ncert/7/science/gecu111.pdf",
-          "ordinal": 10,
-          "pageStart": 11,
-          "pageEnd": 12,
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
           "headingPath": [
             "Chapter 11: Light: Shadows and Reflections",
-            "11.8 Making Some Useful Items"
+            "11.5 Reflection of Light"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu111.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 11: Light: Shadows and Reflections",
+            "11.5 Reflection of Light"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T17:40:20.172Z",
+      "generatedAt": "2026-10-31T23:34:34.106Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "A student is trying to observe the image of a tree using a pinhole camera. He notices that the image is inverted. Why does this happen?",
+      "stem": "A student placed a transparent object in front of a light source and observed a faint shadow. What could be the reason for this observation?",
       "choices": [
-        "Because the pinhole camera uses a convex lens",
-        "Because the light rays converge",
-        "Because of the straight-line propagation of light",
-        "Because of lateral inversion"
+        "The object is completely transparent",
+        "The object is opaque",
+        "The object is translucent",
+        "The object is a mirror"
       ],
       "answerIndex": 2,
-      "solution": "The image in a pinhole camera is inverted due to the straight-line propagation of light. A pupil who is confused about the function of lenses might think it is due to a convex lens. A pupil who thinks about convergence might think it is because the light rays converge. A pupil who understands lateral inversion might think it is due to that.",
+      "solution": "Translucent objects allow some light to pass through but scatter it, resulting in a faint shadow. Transparent objects do not form shadows because light passes through them completely. Opaque objects form dark shadows, and mirrors reflect light, not form shadows. Therefore, the object being translucent explains the faint shadow observed.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक छात्र पिनहोल कैमरा का उपयोग करके एक पेड़ के चित्र को देखने की कोशिश कर रहा है। वह देखता है कि चित्र उल्टा है। ऐसा क्यों होता है?",
+          "stem": "एक छात्र ने एक पारदर्शक वस्तु को एक प्रकाश स्रोत के सामने रखा और एक हल्का छाया देखी। इस अवलोकन के लिए क्या कारण हो सकता है?",
           "choices": [
-            "क्योंकि पिनहोल कैमरा अवतल लेंस का उपयोग करता है",
-            "क्योंकि प्रकाश की किरणें अभिसरित होती हैं",
-            "क्योंकि प्रकाश के सीधी रेखा में प्रसार के कारण",
-            "क्योंकि पार्श्व विपरीतता के कारण"
+            "वस्तु पूरी तरह पारदर्शक है",
+            "वस्तु अपारदर्शक है",
+            "वस्तु अर्धपारदर्शक है",
+            "वस्तु एक दर्पण है"
           ],
-          "solution": "पिनहोल कैमरा में चित्र सीधी रेखा में प्रकाश के प्रसार के कारण उल्टा होता है। लेंस के कार्य के बारे में भ्रमित छात्र यह सोच सकता है कि यह अवतल लेंस के कारण होता है। अभिसरण के बारे में सोचने वाला छात्र यह सोच सकता है कि प्रकाश की किरणें अभिसरित होती हैं। पार्श्व विपरीतता के बारे में समझ वाला छात्र यह सोच सकता है कि यह इसके कारण होता है।",
+          "solution": "अर्धपारदर्शक वस्तुएं कुछ प्रकाश को पार करने देती हैं लेकिन इसे बिखेर देती हैं, जिसके कारण हल्की छाया बनती है। पारदर्शक वस्तुएं छाया नहीं बनाती हैं क्योंकि प्रकाश उनमें पूरी तरह से गुजर जाता है। अपारदर्शक वस्तुएं गहरी छाया बनाती हैं और दर्पण प्रकाश को परावर्तित करते हैं, छाया नहीं बनाते। इसलिए, वस्तु के अर्धपारदर्शक होने के कारण हल्की छाया देखी गई।",
           "imageAlt": null,
-          "critique": "Hindi translation accurately reflects the original English question and solution, with appropriate technical terms used in Hindi.",
+          "critique": "Hindi translation accurately reflects the English original in meaning, technical terms, and option structure. The correct answer remains option (2) and the distractors are still incorrect.",
           "flag": null
         },
         "mr": {
-          "stem": "एका विद्यार्थीने पिनहोल कॅमेरा वापरून झाडाचे छायाचित्र पाहण्याचा प्रयत्न केला. तिला असे दिसते की छायाचित्र उलटे असते. हे का होते?",
+          "stem": "एका विद्यार्थीने एका प्रकाश स्रोताच्या अगोदर एका पारदर्शक वस्तू ठेवली आणि तिला एक अतिशय दुबळा छाया दिसली. ह्या अवलोकनाचे कारण काय असू शकते?",
           "choices": [
-            "कारण पिनहोल कॅमेरामध्ये उत्तल लेन्स वापरला जातो",
-            "कारण प्रकाशाचे किरण एकत्रित होतात",
-            "कारण प्रकाशाचा सरळ रेखीय प्रसार होतो",
-            "कारण बाजूच्या उलटी होते"
+            "वस्तू पूर्णपणे पारदर्शक आहे",
+            "वस्तू अपारदर्शक आहे",
+            "वस्तू अर्धपारदर्शक आहे",
+            "वस्तू दर्पण आहे"
           ],
-          "solution": "पिनहोल कॅमेरामधील छायाचित्र सरळ रेखीय प्रसारामुळे उलटे असते. लेन्सच्या कार्याबद्दल गुंतलेला विद्यार्थी असे विचार करू शकतो की उत्तल लेन्समुळे असे होते. प्रकाशाच्या एकत्रित होण्याबद्दल विचार करणारा विद्यार्थी असे विचार करू शकतो की प्रकाशाचे किरण एकत्रित होतात. बाजूच्या उलटीबद्दल जाणून घेणारा विद्यार्थी असे विचार करू शकतो की बाजूच्या उलटीमुळे असे होते.",
+          "solution": "अर्धपारदर्शक वस्तूंमधून काही प्रकाश जातो पण तो बिखरतो, ज्यामुळे दुबळा छाया तयार होतो. पारदर्शक वस्तूंमुळे छाया तयार होत नाही कारण प्रकाश पूर्णपणे जातो. अपारदर्शक वस्तूंमुळे गडद छाया तयार होते आणि दर्पण प्रकाश फक्त परावर्तित करतात, छाया तयार करत नाहीत. म्हणूनच, वस्तू अर्धपारदर्शक असल्यामुळे दिसलेली दुबळी छाया समजूत येते.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms (अर्धपारदर्शक, अपारदर्शक, पारदर्शक) that match standard Marathi science terminology.",
           "flag": null
         }
       },
@@ -906,10 +669,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "confuses pinhole with lens",
-        "thinks about convergence",
+        "Assumes transparent objects form shadows",
+        "Thinks opaque objects form faint shadows",
         null,
-        "understands lateral inversion"
+        "Confuses the properties of mirrors with those of translucent objects"
       ],
       "solverAnswers": [
         2,
@@ -919,105 +682,7 @@
         2
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2, as the inversion in a pinhole camera is due to the straight-line propagation of light. The author's reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu111.pdf",
-          "ordinal": 8,
-          "pageStart": 9,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 11: Light: Shadows and Reflections",
-            "11.6 Images Formed in a Plane Mirror"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu111.pdf",
-          "ordinal": 9,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 11: Light: Shadows and Reflections",
-            "11.7 Pinhole Camera"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu111.pdf",
-          "ordinal": 10,
-          "pageStart": 11,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 11: Light: Shadows and Reflections",
-            "11.8 Making Some Useful Items"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T17:40:20.172Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "A student observes a shadow on a wall and then changes the position of the object. What information can be inferred about the object based on the shadow?",
-      "choices": [
-        "Its shape",
-        "Its colour",
-        "Its weight",
-        "Its temperature"
-      ],
-      "answerIndex": 0,
-      "solution": "The shape of the shadow provides information about the shape of the object. The correct answer is that its shape can be inferred. The other options are incorrect because the colour of the shadow does not change with the object's colour, and the weight and temperature of the object are not related to the shadow itself.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक छात्र दीवार पर एक छाया देखता है और फिर वस्तु की स्थिति बदल देता है। छाया के आधार पर वस्तु के बारे में कौन सी जानकारी निष्कर्ष निकाली जा सकती है?",
-          "choices": [
-            "इसका आकार",
-            "इसका रंग",
-            "इसका भार",
-            "इसका तापमान"
-          ],
-          "solution": "छाया के आकार से वस्तु के आकार के बारे में जानकारी मिलती है। सही उत्तर यह है कि इसका आकार निष्कर्ष निकाला जा सकता है। अन्य विकल्प गलत हैं क्योंकि छाया का रंग वस्तु के रंग में बदलाव नहीं दर्शाता है, और वस्तु के भार और तापमान का छाया से कोई संबंध नहीं है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका विद्यार्थीने दिवाला छाया पाहिली आणि नंतर वस्तूच्या स्थानात बदल केला. छायावरून वस्तूबद्दल कोणती माहिती अंदाज करता येईल?",
-          "choices": [
-            "त्याचे आकार",
-            "त्याचे रंग",
-            "त्याचे वजन",
-            "त्याचे तापमान"
-          ],
-          "solution": "छायाचा आकार वस्तूच्या आकृतीबद्दल माहिती देतो. त्यामुळे वस्तूच्या आकाराबद्दल अंदाज बाहेर काढता येतो. इतर विकल्प अयोग्य आहेत कारण छायाचा रंग वस्तूच्या रंगाशी बदलत नाही, आणि वस्तूचे वजन आणि तापमान छायाशी संबंधित नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with textbook language.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Thinks the colour of the shadow changes with the object's colour, but the shadow's colour is usually black or dark grey",
-        "Thinks the weight of the object can be inferred from the shadow, but weight is not related to the shadow's appearance",
-        "Thinks the temperature of the object can be inferred from the shadow, but temperature has no effect on the shadow."
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is sound and correctly identifies that the shape of the shadow reveals the shape of the object. The other options are correctly dismissed as unrelated to the shadow.",
+      "critique": "The solution correctly identifies that translucent objects allow partial light transmission and scattering, resulting in a faint shadow. The reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/7/science/gecu111.pdf",
@@ -1061,7 +726,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T17:40:20.172Z",
+      "generatedAt": "2026-10-31T23:34:34.106Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

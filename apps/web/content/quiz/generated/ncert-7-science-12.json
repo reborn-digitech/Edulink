@@ -21,164 +21,49 @@
   "board": "NCERT",
   "book": "Curiosity",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-29T17:53:16.262Z",
+  "generatedAt": "2026-10-31T23:45:24.335Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the reason for the occurrence of seasons on Earth?",
+      "stem": "Why do the seasons change on Earth?",
       "choices": [
-        "The Earth's rotation on its axis",
-        "The Earth's distance from the Sun",
-        "The tilt of the Earth's axis",
-        "The Earth's revolution around the Sun"
-      ],
-      "answerIndex": 2,
-      "solution": "The tilt of the Earth's axis is the main reason for the occurrence of seasons. As the Earth revolves around the Sun, the tilt causes different parts of the Earth to receive varying amounts of sunlight throughout the year. The other options are incorrect because the Earth's rotation causes day and night, its distance from the Sun is not the main cause of seasons, and its revolution around the Sun causes the yearly cycle, not the seasons directly.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "पृथ्वी पर मौसम के उत्पन्न होने का क्या कारण है?",
-          "choices": [
-            "पृथ्वी का अपने अक्ष पर घूर्णन",
-            "पृथ्वी की सूर्य से दूरी",
-            "पृथ्वी के अक्ष का झुकाव",
-            "पृथ्वी का सूर्य के चारों ओर परिक्रमा"
-          ],
-          "solution": "पृथ्वी के अक्ष का झुकाव मौसम के उत्पन्न होने का मुख्य कारण है। जैसे-जैसे पृथ्वी सूर्य के चारों ओर परिक्रमा करती है, झुकाव के कारण पृथ्वी के विभिन्न हिस्सों को वर्ष के दौरान अलग-अलग मात्रा में सूर्य के प्रकाश मिलता है। अन्य विकल्प गलत हैं क्योंकि पृथ्वी के घूर्णन के कारण दिन और रात होती है, इसकी सूर्य से दूरी मौसम के उत्पन्न होने का मुख्य कारण नहीं है, और इसके सूर्य के चारों ओर परिक्रमा के कारण वार्षिक चक्र होता है, न कि मौसम की सीधे रूप से।",
-          "imageAlt": null,
-          "critique": "Translation accurately reflects the original meaning with appropriate Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "भूमीवर वसंत ऋतू उदय होण्याचे कारण काय आहे?",
-          "choices": [
-            "भूमीचे आपल्या अक्षाभोवती फिरणे",
-            "भूमीचे सूर्यापासून अंतर",
-            "भूमीच्या अक्षाचा झुकाव",
-            "भूमीचे सूर्याभोवती फिरणे"
-          ],
-          "solution": "भूमीच्या अक्षाचा झुकाव हा ऋतूंच्या उदयाचे मुख्य कारण आहे. जेव्हा भूमी सूर्याभोवती फिरते, तेव्हा झुकावामुळे भूमीच्या विविध भागांना वर्षभर वेगवेगळ्या प्रमाणात सूर्यप्रकाश मिळतो. इतर विकल्प चूक आहेत कारण भूमीचे आपल्या अक्षाभोवती फिरणे दिवस आणि रात्री उदय होण्याचे कारण आहे, भूमीचे सूर्यापासून अंतर ऋतूंच्या उदयाचे मुख्य कारण नाही, आणि भूमीचे सूर्याभोवती फिरणे वार्षिक चक्र उदय होण्याचे कारण आहे, ऋतूंच्या उदयाचे लक्ष्य नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the correct answer position, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses rotation with the cause of seasons",
-        "Thinks the distance from the Sun determines seasons",
-        null,
-        "Misunderstands the role of Earth's revolution"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 2 (the tilt of the Earth's axis). The author's solution is accurate, and the reasons for the wrong options reflect common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 15,
-          "pageStart": 15,
-          "pageEnd": 17,
-          "headingPath": [
-            "Chapter 12: Earth, Moon, and the Sun",
-            "12.3 Eclipses",
-            "12.3.2 Lunar eclipse"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 16,
-          "pageStart": 17,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 12: Earth, Moon, and the Sun",
-            "12.3 Eclipses",
-            "12.3.2 Lunar eclipse",
-            "Let Us Enhance Our Learning"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 17,
-          "pageStart": 18,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 12: Earth, Moon, and the Sun",
-            "12.3 Eclipses",
-            "12.3.2 Lunar eclipse",
-            "Exploratory Projects"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 18,
-          "pageStart": 19,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 12: Earth, Moon, and the Sun",
-            "12.3 Eclipses",
-            "12.3.2 Lunar eclipse",
-            "It's Still Not the End, My Friend!"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T17:53:16.262Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "Which of the following events occurs when the Earth comes between the Sun and the Moon?",
-      "choices": [
-        "Solar eclipse",
-        "Lunar eclipse",
-        "Partial eclipse",
-        "Annular eclipse"
+        "Because the Earth is closer to the Sun in summer",
+        "Because the Earth's axis is tilted",
+        "Because the Earth revolves around the Sun",
+        "Because the Earth is not spherical"
       ],
       "answerIndex": 1,
-      "solution": "A lunar eclipse occurs when the Earth comes between the Sun and the Moon, blocking sunlight from reaching the Moon. A solar eclipse happens when the Moon comes between the Sun and the Earth. The other options are incorrect because they describe different types of eclipses or are not events related to the described scenario.",
+      "solution": "The correct answer is because the Earth's axis is tilted. This tilt causes different parts of the Earth to receive varying amounts of sunlight throughout the year, leading to seasonal changes. The other options are incorrect because the distance to the Sun does not cause seasons, the revolution around the Sun is a factor in the year's length, and the Earth's shape is not the primary reason for seasonal changes.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सी घटना तब होती है जब पृथ्वी सूर्य और चंद्रमा के बीच आ जाती है?",
+          "stem": "पृथ्वी पर मौसम क्यों बदलते हैं?",
           "choices": [
-            "सूर्य ग्रहण",
-            "चंद्र ग्रहण",
-            "आ частिक ग्रहण",
-            "अंनुलिक ग्रहण"
+            "क्योंकि पृथ्वी गर्मी में सूर्य के निकट होती है",
+            "क्योंकि पृथ्वी का अक्ष झुका होता है",
+            "क्योंकि पृथ्वी सूर्य के चारों ओर घूमती है",
+            "क्योंकि पृथ्वी गोलाकार नहीं है"
           ],
-          "solution": "जब पृथ्वी सूर्य और चंद्रमा के बीच आ जाती है तो चंद्र ग्रहण होता है, जो सूर्य के प्रकाश को चंद्रमा तक पहुंचने से रोक देता है। सूर्य ग्रहण तब होता है जब चंद्रमा सूर्य और पृथ्वी के बीच आ जाता है। अन्य विकल्प गलत हैं क्योंकि वे अलग-अलग प्रकार के ग्रहणों का वर्णन करते हैं या विवरण के अनुरूप घटनाओं से संबंधित नहीं हैं।",
+          "solution": "सही उत्तर क्योंकि पृथ्वी का अक्ष झुका होता है। इस झुकाव के कारण पृथ्वी के विभिन्न हिस्सों को वर्ष के दौरान अलग-अलग मात्रा में सूर्य के प्रकाश मिलता है, जिसके कारण मौसम के बदलाव होते हैं। अन्य विकल्प गलत हैं क्योंकि सूर्य से दूरी मौसम के बदलाव का कारण नहीं होती है, सूर्य के चारों ओर घूमना वर्ष की लंबाई का कारण है, और पृथ्वी के आकार के कारण मौसम के बदलाव नहीं होते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard Hindi terms for astronomical events.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for scientific concepts.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता घटना तारा आणि चंद्र दरम्यान भूमी येत असताना होतो?",
+          "stem": "भूमीवर वसंत ऋतू का बदलतात?",
           "choices": [
-            "सूर्यग्रहण",
-            "चंद्रग्रहण",
-            "अर्धग्रहण",
-            "अंगुलीग्रहण"
+            "कारण भूमी उन्हाळ्यात सूर्याजवळ असते",
+            "कारण भूमीचा अक्ष झुकलेला असतो",
+            "कारण भूमी सूर्याभोवती फिरते",
+            "कारण भूमी गोल नसते"
           ],
-          "solution": "भूमी तारा आणि चंद्र दरम्यान येत असताना चंद्रग्रहण होतो, ज्यामुळे ताराप्रकाश चंद्रावर पोहोचत नाही. सूर्यग्रहण होत असताना चंद्र तारा आणि भूमी दरम्यान येतो. इतर विकल्प चुकीचे आहेत कारण ते वेगवेगळ्या प्रकारच्या ग्रहणांचे वर्णन करतात किंवा वर्णन केलेल्या परिस्थितीशी संबंधित नसतात.",
+          "solution": "योग्य उत्तर हे की भूमीचा अक्ष झुकलेला असतो. हा झुकाव वर्षातील वेगवेगळ्या कालावधीत भूमीच्या विविध भागांना वेगवेगळ्या प्रमाणात सूर्यप्रकाश मिळण्यास कारणीभूत ठरतो, ज्यामुळे ऋतूंचा बदल होतो. इतर विकल्प चुकीचे आहेत कारण सूर्यापासून अंतर ऋतूंच्या बदलाचे कारण नाही, सूर्याभोवती फिरणे हा वर्षाच्या लांबीचा एक कारण आहे आणि भूमीच्या आकृतीचा ऋतूंच्या बदलाचे मुख्य कारण नाही.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses standard terminology used in Marathi science textbooks.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
         }
       },
@@ -187,10 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses solar eclipse with lunar eclipse",
+        "Confuses the reason for seasons with Earth's distance from the Sun",
         null,
-        "Thinks it is a general type of eclipse",
-        "Misunderstands the sequence of events in an eclipse"
+        "Misunderstands the role of Earth's axis tilt",
+        "Thinks the revolution alone causes seasons, ignoring the tilt and shape of the Earth"
       ],
       "solverAnswers": [
         1,
@@ -200,558 +85,7 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed and the solution correctly identifies the lunar eclipse as the event when Earth is between the Sun and the Moon. The distractors are plausible misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 15,
-          "pageStart": 15,
-          "pageEnd": 17,
-          "headingPath": [
-            "Chapter 12: Earth, Moon, and the Sun",
-            "12.3 Eclipses",
-            "12.3.2 Lunar eclipse"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 16,
-          "pageStart": 17,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 12: Earth, Moon, and the Sun",
-            "12.3 Eclipses",
-            "12.3.2 Lunar eclipse",
-            "Let Us Enhance Our Learning"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 17,
-          "pageStart": 18,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 12: Earth, Moon, and the Sun",
-            "12.3 Eclipses",
-            "12.3.2 Lunar eclipse",
-            "Exploratory Projects"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 18,
-          "pageStart": 19,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 12: Earth, Moon, and the Sun",
-            "12.3 Eclipses",
-            "12.3.2 Lunar eclipse",
-            "It's Still Not the End, My Friend!"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T17:53:16.262Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If an observer in Pune notes the orientation of the Big Dipper and the Pole Star at 11 PM and then again at 1 AM, what would they observe?",
-      "choices": [
-        "The Big Dipper would be in the same position relative to the Pole Star",
-        "The Big Dipper would have moved significantly away from the Pole Star",
-        "The Big Dipper would appear to have rotated around the Pole Star",
-        "The Big Dipper would no longer be visible in the sky"
-      ],
-      "answerIndex": 2,
-      "solution": "The Earth's rotation causes the stars to appear to move around the Pole Star. So, after two hours, the Big Dipper would appear to have rotated around the Pole Star. The other options are incorrect because the Big Dipper does not stay in the same position, it does not move significantly away from the Pole Star, and it remains visible in the sky.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "पुणे में एक अवलोकक 11 बजे बड़े डिपर और ध्रुव तारा के अवस्थिति को नोट करता है और फिर 1 बजे फिर से नोट करता है, तो वे क्या अवलोकन करेंगे?",
-          "choices": [
-            "बड़े डिपर ध्रुव तारा के सापेक्ष एक ही स्थिति में होगा",
-            "बड़े डिपर ध्रुव तारा से काफी दूर चला जाएगा",
-            "बड़े डिपर ध्रुव तारा के चारों ओर घूमता हुआ दिखाई देगा",
-            "बड़े डिपर आकाश में दिखाई नहीं देगा"
-          ],
-          "solution": "पृथ्वी के घूर्णन के कारण तारे ध्रुव तारा के चारों ओर घूमते हुए दिखाई देते हैं। इसलिए, दो घंटे बाद बड़े डिपर ध्रुव तारा के चारों ओर घूमता हुआ दिखाई देगा। अन्य विकल्प गलत हैं क्योंकि बड़े डिपर एक ही स्थिति में नहीं रहता है, यह ध्रुव तारा से काफी दूर नहीं जाता है, और यह आकाश में दिखाई देता रहता है।",
-          "imageAlt": "एक चित्र जिसमें सूर्य, पृथ्वी और चंद्रमा है जहां पृथ्वी सूर्य के चारों ओर घूम रही है और चंद्रमा पृथ्वी के चारों ओर घूम रहा है।",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for astronomical concepts.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "पुणे मधील एक निरीक्षक रात्री 11 वाजता बिग डिपर आणि पोल स्टार ची दिशा नोंदवतो आणि नंतर रात्री 1 वाजता पुन्हा नोंदवतो, तर त्यांना काय नोंद मिळेल?",
-          "choices": [
-            "बिग डिपर पोल स्टार च्या तुलनेत एकाच जागी असेल",
-            "बिग डिपर पोल स्टार पासून चांगलाच दूर गेलेला दिसेल",
-            "बिग डिपर पोल स्टार च्या आजूबाजूने फिरलेला दिसेल",
-            "बिग डिपर आकाशात दिसत राहणार नाही"
-          ],
-          "solution": "भूमीच्या फिरत रहाण्यामुळे तारांना पोल स्टार च्या आजूबाजूने फिरत असल्याचे दिसते. म्हणून दोन तासांनंतर बिग डिपर पोल स्टार च्या आजूबाजूने फिरलेला दिसेल. इतर विकल्प चुकीचे आहेत कारण बिग डिपर एकाच जागी राहत नाही, तो पोल स्टार पासून चांगलाच दूर जात नाही आणि आकाशात दिसत राहतो.",
-          "imageAlt": "सूर्य, भूमी आणि चंद्र दर्शविणारा आकृती ज्यात भूमी सूर्याच्या भोवती फिरत असते आणि चंद्र भूमीच्या भोवती फिरत असतो.",
-          "critique": "The translation accurately reflects the original meaning, with appropriate Marathi terminology for astronomical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "A diagram showing the Sun, Earth, and Moon with the Earth orbiting the Sun and the Moon orbiting the Earth.",
-      "figure": {
-        "kind": "diagram",
-        "spec": {
-          "parts": [
-            {
-              "part": "sunEarthMoon",
-              "x": 50,
-              "y": 31.25,
-              "size": 30,
-              "labels": [
-                "sun",
-                "earth",
-                "moon"
-              ],
-              "text": {
-                "orbit": "orbit"
-              }
-            }
-          ],
-          "arrows": [
-            {
-              "from": [
-                50,
-                31.25
-              ],
-              "to": [
-                70,
-                31.25
-              ],
-              "label": "orbit",
-              "curved": true
-            }
-          ],
-          "texts": [
-            {
-              "x": 50,
-              "y": 10,
-              "label": "sunEarthMoon"
-            }
-          ]
-        },
-        "labels": {
-          "orbit": {
-            "en": "orbit",
-            "hi": "कक्षा",
-            "mr": "मार्ग"
-          },
-          "sunEarthMoon": {
-            "en": "Sun-Earth-Moon system",
-            "hi": "सूर्य-पृथ्वी-चंद्रमा प्रणाली",
-            "mr": "सूर्य-भूमी-चंद्र प्रणाली"
-          }
-        }
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        "Does not account for the Earth's rotation, which causes stars to appear to move",
-        "Incorrectly assumes the Big Dipper would not move significantly over two hours",
-        null,
-        "Assumes the Big Dipper would not be visible, but it remains in the night sky"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The question is about the apparent motion of stars due to Earth's rotation. The correct answer is 2, as the Big Dipper would appear to rotate around the Pole Star over two hours. The author's solution and reasoning are accurate, and the distractors reflect common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 12: Earth, Moon, and the Sun",
-            "12.1 Rotation of the Earth"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 5,
-          "pageStart": 6,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 12: Earth, Moon, and the Sun",
-            "12.1 Rotation of the Earth"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 6,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 12: Earth, Moon, and the Sun",
-            "12.2 Revolution of the Earth"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 7,
-          "pageStart": 8,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 12: Earth, Moon, and the Sun",
-            "12.2 Revolution of the Earth",
-            "12.2.1 Changing view of night sky from the Earth"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T17:53:16.262Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "During a solar eclipse, why is it not safe to look directly at the Sun even when the Moon is blocking it?",
-      "choices": [
-        "Because the Sun is still very bright and can cause eye damage",
-        "Because the Moon is too close to the Sun",
-        "Because the Sun is too far away",
-        "Because the Sun is not visible during an eclipse"
-      ],
-      "answerIndex": 0,
-      "solution": "During a solar eclipse, it is not safe to look directly at the Sun even when the Moon is blocking it because the Sun is still very bright and can cause serious eye damage. The other options are incorrect because the Moon's distance from the Sun is not the reason for the danger, and the Sun is visible during an eclipse, though partially obscured.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "सूर्य ग्रहण के दौरान, चाहे चंद्रमा इसे ब्लॉक कर रहा हो, तो भी सीधे सूर्य को देखना क्यों सुरक्षित नहीं है?",
-          "choices": [
-            "क्योंकि सूर्य अभी भी बहुत चमकीला है और आंखों को नुकसान पहुंचा सकता है",
-            "क्योंकि चंद्रमा सूर्य से बहुत निकट है",
-            "क्योंकि सूर्य बहुत दूर है",
-            "क्योंकि सूर्य ग्रहण के दौरान दृश्यमान नहीं होता है"
-          ],
-          "solution": "सूर्य ग्रहण के दौरान, चाहे चंद्रमा इसे ब्लॉक कर रहा हो, तो भी सीधे सूर्य को देखना असुरक्षित है क्योंकि सूर्य अभी भी बहुत चमकीला है और गंभीर आंखों के नुकसान का कारण बन सकता है। अन्य विकल्प गलत हैं क्योंकि चंद्रमा की सूर्य से दूरी खतरे का कारण नहीं है, और सूर्य ग्रहण के दौरान दृश्यमान होता है, भले ही आंशिक रूप से छिपा हुआ हो।",
-          "imageAlt": null,
-          "critique": "The translation accurately preserves the meaning, technical terms, and logical structure of the original question.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "सूर्य ग्रहणादरम्यान, चंद्र त्याला आच्छादित करत असताना सूर्याकडे थेट पाहणे का सुरक्षित नाही?",
-          "choices": [
-            "कारण सूर्य अजूनही खूप तीव्र आहे आणि डोळ्यांचे नुकसान करू शकतो",
-            "कारण चंद्र सूर्यापासून खूप जवळ आहे",
-            "कारण सूर्य खूप दूर आहे",
-            "कारण सूर्य ग्रहणादरम्यान दिसत नाही"
-          ],
-          "solution": "सूर्य ग्रहणादरम्यान, चंद्र त्याला आच्छादित करत असताना सूर्याकडे थेट पाहणे सुरक्षित नाही कारण सूर्य अजूनही खूप तीव्र आहे आणि डोळ्यांचे गंभीर नुकसान करू शकतो. इतर विकल्प अयोग्य आहेत कारण चंद्रच्या सूर्यापासून अंतराचा धोका नाही आणि सूर्य ग्रहणादरम्यान दिसत असतो, जरी तो आंशिकपणे आच्छादित असला तरी.",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for astronomical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the reason for eye damage with the Moon's position relative to the Sun",
-        "Incorrectly assumes the Moon's proximity to the Sun makes it unsafe",
-        "Misunderstands the visibility of the Sun during an eclipse"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0, as the Sun remains dangerously bright during a solar eclipse. The other options reflect common misconceptions about the Moon's position and the visibility of the Sun.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 11,
-          "pageStart": 12,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 12: Earth, Moon, and the Sun",
-            "12.3 Eclipses",
-            "12.3.1 Solar eclipse"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 12,
-          "pageStart": 13,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 12: Earth, Moon, and the Sun",
-            "12.3 Eclipses",
-            "12.3.1 Solar eclipse"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 13,
-          "pageStart": 14,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 12: Earth, Moon, and the Sun",
-            "12.3 Eclipses",
-            "12.3.1 Solar eclipse"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 14,
-          "pageStart": 14,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 12: Earth, Moon, and the Sun",
-            "12.3 Eclipses",
-            "12.3.2 Lunar eclipse"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T17:53:16.262Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "Based on the description of the Foucault pendulum, what can be inferred about its purpose?",
-      "choices": [
-        "To measure the distance between the Earth and the Sun",
-        "To demonstrate the Earth's rotation",
-        "To measure the speed of the Earth's revolution around the Sun",
-        "To show the movement of the Moon around the Earth"
-      ],
-      "answerIndex": 1,
-      "solution": "The Foucault pendulum is used to demonstrate the Earth's rotation. The other options are incorrect because the pendulum does not measure the distance to the Sun, the speed of the Earth's revolution, or the Moon's orbit.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "फौकॉल्ट पेंडुलम के वर्णन के आधार पर, इसके उद्देश्य के बारे में क्या अनुमान लगाया जा सकता है?",
-          "choices": [
-            "पृथ्वी और सूर्य के बीच की दूरी को मापना",
-            "पृथ्वी के घूर्णन को दर्शाना",
-            "पृथ्वी के सूर्य के चारों ओर घूमने की गति को मापना",
-            "चंद्रमा के पृथ्वी के चारों ओर घूमने को दर्शाना"
-          ],
-          "solution": "फौकॉल्ट पेंडुलम का उपयोग पृथ्वी के घूर्णन को दर्शाने के लिए किया जाता है। अन्य विकल्प गलत हैं क्योंकि पेंडुलम सूर्य तक की दूरी, पृथ्वी के सूर्य के चारों ओर घूमने की गति या चंद्रमा के कक्षा में घूमने को मापता नहीं है।",
-          "imageAlt": "एक आरेख जो पृथ्वी के सूर्य के चारों ओर घूमते हुए दिखाता है और चंद्रमा के पृथ्वी के चारों ओर घूमते हुए दिखाता है",
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and technical terms. All options are correctly translated, and the correct answer remains in the same position. The distractors remain incorrect in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "फॉकॉल्ट पेंडुलमच्या वर्णनावर आधारित, त्याच्या उद्देशाबद्दल काय अंदाज लावता येईल?",
-          "choices": [
-            "भूमी आणि सूर्य दरम्यानचे अंतर मोजणे",
-            "भूमीच्या फिरत जाण्याचे दर्शन करून देणे",
-            "सूर्याभोवती भूमीच्या फिरत जाण्याचा वेग मोजणे",
-            "चंद्राच्या भूमीभोवती फिरत जाण्याचे दर्शन करून देणे"
-          ],
-          "solution": "फॉकॉल्ट पेंडुलम भूमीच्या फिरत जाण्याचे दर्शन करून देण्यासाठी वापरला जातो. इतर विकल्प अयोग्य आहेत कारण पेंडुलम सूर्यापासूनचे अंतर, भूमीच्या सूर्याभोवती फिरत जाण्याचा वेग किंवा चंद्राच्या कक्षेचे मोजत नाही.",
-          "imageAlt": "भूमी आणि सूर्य दरम्यानच्या कक्षेचा आरेखन करणारा आरेखन",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for scientific concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "A diagram showing the Earth orbiting the Sun with the Moon orbiting the Earth",
-      "figure": {
-        "kind": "diagram",
-        "spec": {
-          "parts": [
-            {
-              "part": "sunEarthMoon",
-              "x": 50,
-              "y": 31.25,
-              "size": 30,
-              "labels": [
-                "sun",
-                "earth",
-                "moon"
-              ],
-              "text": {
-                "orbit": "orbit"
-              }
-            }
-          ],
-          "arrows": [
-            {
-              "from": [
-                50,
-                31.25
-              ],
-              "to": [
-                70,
-                31.25
-              ],
-              "label": "orbit",
-              "curved": true
-            }
-          ],
-          "texts": [
-            {
-              "x": 50,
-              "y": 10,
-              "label": "sunEarthMoon"
-            }
-          ]
-        },
-        "labels": {
-          "orbit": {
-            "en": "orbit",
-            "hi": "कक्षा",
-            "mr": "कक्षा"
-          },
-          "sunEarthMoon": {
-            "en": "Sun-Earth-Moon system",
-            "hi": "सूर्य-पृथ्वी-चंद्रमा प्रणाली",
-            "mr": "सूर्य-भूमी-चंद्र प्रणाली"
-          }
-        }
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        "Confuses the purpose of the Foucault pendulum with measuring distances in space",
-        null,
-        "Misunderstands the function of the Foucault pendulum, thinking it measures the Earth's revolution",
-        "Believes the pendulum shows the Moon's movement around the Earth, which is not its purpose"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is flawed because it references a Foucault pendulum, but the diagram shown is about the Earth-Moon-Sun system. The question is not logically connected to the diagram. The correct answer (1) is valid for the Foucault pendulum, but the question is misleading.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 12: Earth, Moon, and the Sun",
-            "12.1 Rotation of the Earth"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 5,
-          "pageStart": 6,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 12: Earth, Moon, and the Sun",
-            "12.1 Rotation of the Earth"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 6,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 12: Earth, Moon, and the Sun",
-            "12.2 Revolution of the Earth"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 7,
-          "pageStart": 8,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 12: Earth, Moon, and the Sun",
-            "12.2 Revolution of the Earth",
-            "12.2.1 Changing view of night sky from the Earth"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T17:53:16.262Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "What happens to the length of daylight in the Northern Hemisphere after the summer solstice?",
-      "choices": [
-        "It increases",
-        "It decreases",
-        "It remains the same until the autumn equinox",
-        "It becomes zero"
-      ],
-      "answerIndex": 1,
-      "solution": "After the summer solstice on 21 June, the duration of the day becomes shorter while the duration of the night becomes longer in the Northern Hemisphere. This is due to the tilt of the Earth's axis and its position in its orbit around the Sun. The length of daylight does not remain the same, nor does it become zero, as the Sun continues to rise and set, even if for shorter periods.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "उत्तरी गोलार्ध में ग्रीष्म संक्रांति के बाद दिन की लंबाई क्या होती है?",
-          "choices": [
-            "यह बढ़ती है",
-            "यह घटती है",
-            "यह विजय विषुव के तक समान रहती है",
-            "यह शून्य हो जाती है"
-          ],
-          "solution": "21 जून को ग्रीष्म संक्रांति के बाद उत्तरी गोलार्ध में दिन की अवधि छोटी हो जाती है जबकि रात की अवधि लंबी हो जाती है। इसका कारण पृथ्वी के अक्ष के झुकाव और इसकी सूर्य के चारों ओर कक्षा में स्थिति है। दिन की लंबाई समान नहीं रहती है, न ही इसका मान शून्य हो जाता है क्योंकि सूर्य अभी भी उदय और अस्त होता है, भले ही छोटे समय के लिए हो।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English content with appropriate terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "उत्तरी गोलार्धात उन्नतीच्या दिवसानंतर दिवसाच्या लांबीचा काय फायदा होतो?",
-          "choices": [
-            "तो वाढतो",
-            "तो कमी होतो",
-            "तो वसंत विषुववर्त आधी तसाच रहातो",
-            "तो शून्य होतो"
-          ],
-          "solution": "21 जून रोजी उन्नतीच्या दिवसानंतर, उत्तरी गोलार्धात दिवसाचा कालावधी लहान होतो आणि रात्रीचा कालावधी वाढतो. हे भूमीच्या अक्षाच्या झुकलेल्या स्थितीमुळे आणि सूर्याच्या भूमीच्या भ्रमणामुळे होते. दिवसाच्या लांबी तसाच राहत नाही, आणि ती शून्य होत नाही, कारण सूर्य अजूनही उगवतो आणि अस्तागत होतो, चांगल्या कालावधीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for astronomical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the concept of the solstice with an increasing day length",
-        null,
-        "students often believe the length of day stays constant after the solstice until the equinox",
-        "Fails to understand that the day length changes after the solstice"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly explains that after the summer solstice, daylight decreases in the Northern Hemisphere. All distractors represent common misconceptions.",
+      "critique": "The correct answer is 1, as the Earth's axial tilt is the primary reason for the seasons. The other options reflect common misconceptions about the Earth's orbit and shape.",
       "sources": [
         {
           "document": "ncert/7/science/gecu112.pdf",
@@ -787,161 +121,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T17:53:16.262Z",
+      "generatedAt": "2026-10-31T23:45:24.335Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "During a solar eclipse, the Sun appears to be completely blocked by the Moon. If the Moon were twice as far from the Earth as it is now, what would happen to the appearance of the Sun?",
+      "difficulty": 2,
+      "stem": "What happens to a part of the Earth when it receives sunlight?",
       "choices": [
-        "The Sun would appear twice as large.",
-        "The Sun would appear half as large.",
-        "The Sun would appear unchanged.",
-        "The Sun would no longer be visible."
-      ],
-      "answerIndex": 1,
-      "solution": "If the Moon were twice as far, it would appear smaller, and the Sun would appear larger relative to the Moon. The Sun would not be completely blocked, so it would appear smaller than before. The other options are incorrect because the Sun’s size is not directly proportional to the Moon’s distance, and the Sun would still be visible.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "सूर्य ग्रहण के दौरान, सूर्य के पूरी तरह से चांद द्वारा आच्छादित होने का आभास होता है। यदि चांद अब के मुकाबले दोगुनी दूरी पर होता, तो सूर्य के दिखाई देने में क्या होता?",
-          "choices": [
-            "सूर्य दोगुना बड़ा दिखाई देता।",
-            "सूर्य आधा बड़ा दिखाई देता।",
-            "सूर्य अपरिवर्तित रहता।",
-            "सूर्य अब दिखाई नहीं देता।"
-          ],
-          "solution": "यदि चांद दोगुनी दूरी पर होता, तो वह छोटा दिखाई देता, और सूर्य चांद के सापेक्ष बड़ा दिखाई देता। सूर्य पूरी तरह से आच्छादित नहीं होता, इसलिए वह पहले की तुलना में छोटा दिखाई देता है। अन्य विकल्प गलत हैं क्योंकि सूर्य के आकार का सीधा संबंध चांद की दूरी से नहीं होता है, और सूर्य अभी भी दिखाई देता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology and logical structure.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "सूर्य ग्रहणादरम्यान, सूर्य चंद्राने पूर्णपणे आवरला दिसतो. जर चंद्र आतापेक्षा दुप्पट अंतरावर असत तर सूर्याचा दिसायला काय होईल?",
-          "choices": [
-            "सूर्य दुप्पट मोठा दिसेल.",
-            "सूर्य अर्धा मोठा दिसेल.",
-            "सूर्य बरोबर दिसेल.",
-            "सूर्य आता दिसणार नाही."
-          ],
-          "solution": "जर चंद्र दुप्पट अंतरावर असत तर तो लहान दिसेल आणि सूर्य चंद्राच्या तुलनेत मोठा दिसेल. सूर्य पूर्णपणे आवरला जाणार नाही, त्यामुळे तो आ se आधीपेक्षा लहान दिसेल. इतर विकल्प चुकीचे आहेत कारण सूर्याच्या आकाराचा चंद्राच्या अंतराशी सीधा संबंध नाही, आणि सूर्य अजूनही दिसेल.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Assumes the Sun's size changes with the Moon's distance.",
-        null,
-        "Confuses the relationship between distance and apparent size.",
-        "Misinterprets the effect of distance on visibility."
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is sound, correctly identifying that the Sun would appear smaller relative to the Moon if the Moon were farther away, and that the Sun would still be visible. The reasoning aligns with the physics of apparent size and eclipses.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 11,
-          "pageStart": 12,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 12: Earth, Moon, and the Sun",
-            "12.3 Eclipses",
-            "12.3.1 Solar eclipse"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 12,
-          "pageStart": 13,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 12: Earth, Moon, and the Sun",
-            "12.3 Eclipses",
-            "12.3.1 Solar eclipse"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 13,
-          "pageStart": 14,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 12: Earth, Moon, and the Sun",
-            "12.3 Eclipses",
-            "12.3.1 Solar eclipse"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 14,
-          "pageStart": 14,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 12: Earth, Moon, and the Sun",
-            "12.3 Eclipses",
-            "12.3.2 Lunar eclipse"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T17:53:16.262Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "A solar eclipse can only be seen from a small region on Earth. Why is this the case?",
-      "choices": [
-        "Because the Earth is very large",
-        "Because the Sun is very bright",
-        "Because the Moon's shadow is small",
-        "Because the Moon moves very slowly"
+        "It becomes dark",
+        "It experiences night",
+        "It experiences day",
+        "It rotates faster"
       ],
       "answerIndex": 2,
-      "solution": "A solar eclipse can only be seen from a small region on Earth because the Moon's shadow is small. The shadow of the Moon that falls on the Earth is very narrow, so only people in that specific area can witness the total eclipse. The other options are incorrect because the size of the Earth, the brightness of the Sun, and the speed of the Moon are not the main reasons for the limited visibility of a solar eclipse.",
+      "solution": "When a part of the Earth receives sunlight, it experiences day because sunlight directly illuminates that area. The option stating it becomes dark is incorrect because darkness occurs where sunlight does not reach. The option about experiencing night is wrong because night happens when a region is not facing the Sun. The claim that it rotates faster has no basis in the relationship between sunlight and Earth's rotation.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "सूर्य ग्रहण केवल पृथ्वी के एक छोटे क्षेत्र से देखा जा सकता है। ऐसा क्यों होता है?",
+          "stem": "पृथ्वी के एक हिस्से पर सूर्य का प्रकाश क्यों पड़ता है?",
           "choices": [
-            "क्योंकि पृथ्वी बहुत बड़ी है",
-            "क्योंकि सूर्य बहुत चमकदार है",
-            "क्योंकि चंद्र की छाया छोटी है",
-            "क्योंकि चंद्र बहुत धीरे गति करता है"
+            "यह अंधेरा हो जाता है",
+            "इसे रात का अनुभव होता है",
+            "इसे दिन का अनुभव होता है",
+            "यह तेजी से घूमता है"
           ],
-          "solution": "सूर्य ग्रहण केवल पृथ्वी के एक छोटे क्षेत्र से देखा जा सकता है क्योंकि चंद्र की छाया छोटी है। पृथ्वी पर पड़ने वाली चंद्र की छाया बहुत संकीर्ण होती है, इसलिए केवल उस विशिष्ट क्षेत्र में रहने वाले लोग पूर्ण ग्रहण देख सकते हैं। अन्य विकल्प गलत हैं क्योंकि पृथ्वी के आकार, सूर्य की चमक और चंद्र की गति सूर्य ग्रहण के सीमित दृश्यता के मुख्य कारण नहीं हैं।",
+          "solution": "जब पृथ्वी के एक हिस्से पर सूर्य का प्रकाश पड़ता है, तो उस क्षेत्र में दिन का अनुभव होता है क्योंकि सूर्य का प्रकाश सीधे उस क्षेत्र को रोशन करता है। यह विकल्प गलत है कि यह अंधेरा हो जाता है क्योंकि अंधेरा तब होता है जब सूर्य का प्रकाश नहीं पहुँचता है। रात का अनुभव होने का विकल्प गलत है क्योंकि रात तब होती है जब एक क्षेत्र सूर्य के सामने नहीं होता है। इसके घूमने की गति बढ़ जाने का कथन सूर्य के प्रकाश और पृथ्वी के घूर्णन के संबंध में कोई आधार नहीं रखता है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a Hindi-medium educational context.",
           "flag": null
         },
         "mr": {
-          "stem": "सूर्यग्रहण फक्त एका लहान भागातून दिसू शकते. हे का असते?",
+          "stem": "भूमीच्या एका भागाला सूर्याचे प्रकाश मिळतो तेव्हा काय होते?",
           "choices": [
-            "कारण भूमी खूप मोठी आहे",
-            "कारण सूर्य खूप तीव्र आहे",
-            "कारण चंद्राच्या छाया लहान आहे",
-            "कारण चंद्र खूप धीमा चालतो"
+            "तो अंधार झाला",
+            "त्याला रात्र जाणवते",
+            "त्याला दिवस जाणवते",
+            "तो वेगाने फिरतो"
           ],
-          "solution": "सूर्यग्रहण फक्त एका लहान भागातून दिसू शकते कारण चंद्राच्या छाया लहान आहे. भूमीवर पडणारी चंद्राची छाया खूप अंगठा असते, म्हणून फक्त त्या विशिष्ट भागातील लोक संपूर्ण ग्रहण पाहू शकतात. इतर विकल्प चुकीचे आहेत कारण भूमीच्या आकाराचा, सूर्याच्या तीव्रतेचा आणि चंद्राच्या गतीचा सूर्यग्रहणाच्या मर्यादित दृश्यतेशी संबंध नाही.",
+          "solution": "भूमीच्या एका भागाला सूर्याचे प्रकाश मिळतो तेव्हा तो दिवस अनुभवतो कारण सूर्याचा प्रकाश सीधा त्या भागाला दिलेला जातो. अंधार झाल्याचा विधान चूक आहे कारण अंधार तेथे होतो जेथे सूर्याचा प्रकाश पोहोचत नाही. रात्र अनुभवल्याचा विधान चूक आहे कारण रात्र तेव्हा होते जेव्हा एखादा भाग सूर्यापासून दूर असतो. वेगाने फिरण्याचा दावा सूर्याच्या प्रकाशाच्या आणि भूमीच्या फिरण्याच्या संबंधाशी आधार नसतो.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
           "flag": null
         }
       },
@@ -950,10 +172,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Incorrectly assumes the Earth's size affects eclipse visibility",
-        "Confuses the brightness of the Sun with the visibility of the eclipse",
+        "Incorrectly assumes the side facing the Sun becomes dark",
+        "Refers to the side not facing the Sun",
         null,
-        "Misunderstands the Moon's motion in relation to eclipse visibility"
+        "Confuses Earth's rotation with the effect of sunlight on motion"
       ],
       "solverAnswers": [
         2,
@@ -962,96 +184,91 @@
         2,
         2
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2, as the Moon's shadow is indeed small, which limits the area where a solar eclipse is visible. The other options reflect common misconceptions about the size of the Earth, the brightness of the Sun, and the speed of the Moon.",
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that the side of Earth facing the Sun experiences day, and the reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 11,
-          "pageStart": 12,
-          "pageEnd": 12,
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
           "headingPath": [
-            "Chapter 12: Earth, Moon, and the Sun",
-            "12.3 Eclipses",
-            "12.3.1 Solar eclipse"
+            "Chapter 12: Earth, Moon, and the Sun"
           ]
         },
         {
           "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 12,
-          "pageStart": 13,
-          "pageEnd": 13,
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
           "headingPath": [
             "Chapter 12: Earth, Moon, and the Sun",
-            "12.3 Eclipses",
-            "12.3.1 Solar eclipse"
+            "12.1 Rotation of the Earth"
           ]
         },
         {
           "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 13,
-          "pageStart": 14,
-          "pageEnd": 14,
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
           "headingPath": [
             "Chapter 12: Earth, Moon, and the Sun",
-            "12.3 Eclipses",
-            "12.3.1 Solar eclipse"
+            "12.1 Rotation of the Earth"
           ]
         },
         {
           "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 14,
-          "pageStart": 14,
-          "pageEnd": 15,
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
           "headingPath": [
             "Chapter 12: Earth, Moon, and the Sun",
-            "12.3 Eclipses",
-            "12.3.2 Lunar eclipse"
+            "12.1 Rotation of the Earth"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T17:53:16.262Z",
+      "generatedAt": "2026-10-31T23:45:24.335Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "If the Moon's orbit were perfectly aligned with the Earth's orbit around the Sun, how often would lunar eclipses occur?",
+      "difficulty": 2,
+      "stem": "Which of the following is a true statement about the Earth's rotation?",
       "choices": [
-        "Once every month",
-        "Once every year",
-        "Never",
-        "Twice every year"
+        "It takes 365 days to complete one rotation",
+        "It causes the changing of seasons",
+        "It is responsible for day and night",
+        "It is perpendicular to the Earth's orbit"
       ],
-      "answerIndex": 0,
-      "solution": "If the Moon's orbit were perfectly aligned with the Earth's orbit around the Sun, lunar eclipses would occur once every month. This is because the Moon would pass through the Earth's shadow every time it completes an orbit. The other options are incorrect because a lunar eclipse would not occur only once a year or twice a year, and it would not never occur if the orbits are perfectly aligned.",
+      "answerIndex": 2,
+      "solution": "The Earth's rotation on its axis is responsible for day and night. The rotation causes different parts of the Earth to face the Sun, resulting in daylight, while other parts face away, resulting in night. The other options are incorrect because the Earth's rotation takes about 24 hours, the changing of seasons is caused by the tilt of the Earth's axis, and the Earth's rotation is not perpendicular to its orbit.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि चंद्रमा की कक्षा पृथ्वी की सूर्य के चारों ओर कक्षा के साथ पूरी तरह से संरेखित होती, तो चंद्रग्रहण कितनी बार होते?",
+          "stem": "निम्नलिखित में से कौन-सा पृथ्वी के घूर्णन के बारे में एक सही कथन है?",
           "choices": [
-            "हर महीने एक बार",
-            "हर साल एक बार",
-            "कभी नहीं",
-            "हर साल दो बार"
+            "इसे एक घूर्णन पूरा करने में 365 दिन लगते हैं",
+            "इसके कारण मौसम के बदलने के कारण होते हैं",
+            "इसके द्वारा दिन और रात का बनना होता है",
+            "यह पृथ्वी के कक्षा के लंबवत होता है"
           ],
-          "solution": "यदि चंद्रमा की कक्षा पृथ्वी की सूर्य के चारों ओर कक्षा के साथ पूरी तरह से संरेखित होती, तो चंद्रग्रहण हर महीने एक बार होता। इसका कारण यह है कि चंद्रमा हर बार अपनी कक्षा पूरी करने पर पृथ्वी की छाया में गुजरता। अन्य विकल्प गलत हैं क्योंकि चंद्रग्रहण हर साल एक बार या दो बार नहीं होता, और यदि कक्षाएं पूरी तरह से संरेखित होती हैं तो चंद्रग्रहण कभी नहीं होता नहीं।",
+          "solution": "पृथ्वी के अपने अक्ष पर घूर्णन के कारण दिन और रात का बनना होता है। घूर्णन के कारण पृथ्वी के विभिन्न हिस्से सूर्य के सामने आते हैं, जिससे दिन का होना होता है, जबकि अन्य हिस्से दूर हो जाते हैं, जिससे रात का होना होता है। अन्य विकल्प गलत हैं क्योंकि पृथ्वी के घूर्णन को लगभग 24 घंटे लगते हैं, मौसम के बदलने के कारण पृथ्वी के अक्ष के झुकाव होता है, और पृथ्वी के घूर्णन कक्षा के लंबवत नहीं होता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "जर चंद्राचा मर्यादित मार्ग सूर्याच्या पृथ्वीच्या मार्गाशी पूर्णपणे समांतर असेल, तर चंद्रग्रहण किती वेळा होईल?",
+          "stem": "खालीलपैकी भूमीच्या फिरत जाण्याबद्दल सत्य विधान कोणते आहे?",
           "choices": [
-            "महिन्याला एकदा",
-            "वर्षाला एकदा",
-            "कधीही नाही",
-            "वर्षाला दोनदा"
+            "त्याला एक फिरत जाण्यास 365 दिवस लागतात",
+            "त्यामुळे वर्षांच्या बदलाचे कारण होते",
+            "त्यामुळे दिवस आणि रात्र जबाबदार आहे",
+            "ते भूमीच्या कक्षेला लंब आहे"
           ],
-          "solution": "जर चंद्राचा मर्यादित मार्ग सूर्याच्या पृथ्वीच्या मार्गाशी पूर्णपणे समांतर असेल, तर चंद्रग्रहण महिन्याला एकदा होईल. हे कारण असे आहे की चंद्र पृथ्वीच्या छायेतून प्रत्येक वेळी जाईल जेव्हा तो आपला मार्ग पूर्ण करतो. इतर विकल्प अयोग्य आहेत कारण चंद्रग्रहण वर्षाला एकदा किंवा दोनदा होणार नाही, आणि जर मार्ग पूर्णपणे समांतर असतील तर ते कधीही नाही होणार नाही.",
+          "solution": "भूमीच्या आपल्या अक्षावर फिरत जाण्यामुळे दिवस आणि रात्र जबाबदार आहे. फिरत जाण्यामुळे भूमीच्या विविध भागांना सूर्याच्या दिशेने व्हायला मिळते, ज्यामुळे दिवस होतो, आणि इतर भागांना दूर राहतात, ज्यामुळे रात्र होते. इतर विकल्प चुकीचे आहेत कारण भूमीच्या फिरत जाण्याला जवळपास 24 तास लागतात, वर्षांच्या बदलाचे कारण भूमीच्या अक्षाच्या झुकलेल्या असण्यामुळे आहे, आणि भूमीच्या फिरत जाण्याला तिच्या कक्षेला लंब नाही.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
@@ -1062,20 +279,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Confuses rotation with revolution",
+        "Thinks the tilt of the axis causes day and night",
         null,
-        "Mistakenly believes the frequency is less than monthly",
-        "Incorrectly assumes the alignment would prevent eclipses",
-        "Confuses the frequency of solar and lunar eclipses"
+        "Does not understand the relationship between the Earth's rotation and its orbit."
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. If the Moon's orbit were perfectly aligned with the Earth's orbit around the Sun, a lunar eclipse would occur every time the Moon passes through the Earth's shadow, which happens once per lunar orbit — approximately once per month.",
+      "levelFlag": null,
+      "critique": "The correct answer is option 2, as Earth's rotation is indeed responsible for day and night. The other options reflect common misconceptions about rotation versus revolution, the cause of seasons, and the orientation of Earth's axis.",
       "sources": [
         {
           "document": "ncert/7/science/gecu112.pdf",
@@ -1126,54 +343,169 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T17:53:16.262Z",
+      "generatedAt": "2026-10-31T23:45:24.335Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "If a person is at the equator, how long does the day last throughout the year?",
+      "difficulty": 3,
+      "stem": "During a lunar eclipse, which of the following is blocked from reaching the Moon?",
       "choices": [
-        "It varies between 12 hours and 14 hours",
-        "It is always 12 hours",
-        "It varies between 12 hours and 16 hours",
-        "It is always 24 hours"
+        "Sunlight",
+        "Moonlight",
+        "Starlight",
+        "Atmospheric light"
       ],
-      "answerIndex": 1,
-      "solution": "At the equator, the length of the day remains constant at 12 hours throughout the year because the Earth's axis is tilted relative to its orbit, but the equator always receives equal amounts of daylight and darkness. Other options suggesting variations are incorrect because they do not align with the consistent 12-hour day-night cycle at the equator. The idea of a 24-hour day is also incorrect because it would mean constant daylight, which does not occur at the equator.",
+      "answerIndex": 0,
+      "solution": "During a lunar eclipse, the Earth comes between the Sun and the Moon, blocking sunlight from reaching the Moon. This is why the Moon appears dark during a lunar eclipse. The other options are incorrect because moonlight, starlight, and atmospheric light are not the main factors involved in a lunar eclipse.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि कोई व्यक्ति भूमध्य रेखा पर है, तो वर्ष भर दिन कितना लंबा रहता है?",
+          "stem": "एक चंद्र ग्रहण के दौरान, निम्नलिखित में से कौन चंद्रमा तक पहुंचने से रोक दिया जाता है?",
           "choices": [
-            "यह 12 घंटे और 14 घंटे के बीच बदलता रहता है",
-            "यह हमेशा 12 घंटा होता है",
-            "यह 12 घंटे और 16 घंटे के बीच बदलता रहता है",
-            "यह हमेशा 24 घंटा होता है"
+            "सूर्य का प्रकाश",
+            "चंद्र का प्रकाश",
+            "तारा का प्रकाश",
+            "वातावरण का प्रकाश"
           ],
-          "solution": "भूमध्य रेखा पर दिन की लंबाई हमेशा 12 घंटा रहती है क्योंकि पृथ्वी के अक्ष का इसके कक्षा के सापेक्ष झुकाव होता है, लेकिन भूमध्य रेखा हमेशा दिन और रात के समान समय के लिए प्रकाश प्राप्त करती है। अन्य विकल्प गलत हैं क्योंकि वे भूमध्य रेखा पर नियमित 12 घंटे के दिन-रात चक्र के साथ संगत नहीं हैं। 24 घंटे के दिन का विचार भी गलत है क्योंकि इसका अर्थ होता है कि सतत दिन होता है, जो भूमध्य रेखा पर नहीं होता है।",
-          "imageAlt": "भूमध्य रेखा के लिए वर्ष भर प्रकाश के समान वितरण के साथ चित्र",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology.",
+          "solution": "एक चंद्र ग्रहण के दौरान, पृथ्वी सूर्य और चंद्रमा के बीच आ जाती है, जिससे सूर्य का प्रकाश चंद्रमा तक नहीं पहुंच पाता। इसी कारण चंद्र ग्रहण के समय चंद्रमा अंधेरा दिखाई देता है। अन्य विकल्प गलत हैं क्योंकि चंद्र का प्रकाश, तारा का प्रकाश और वातावरण का प्रकाश चंद्र ग्रहण में मुख्य कारक नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "एक व्यक्ती भूमध्यरेखेवर असल्यास, वर्षभर दिवस किती लांब असतो?",
+          "stem": "चंद्र ग्रहणादरम्यान, खालीलपैकी कोणते चंद्राला पोहोचत नाही?",
           "choices": [
-            "तो 12 तास आणि 14 तास दरम्यान बदलतो",
-            "तो नेहमी 12 तास असतो",
-            "तो 12 तास आणि 16 तास दरम्यान बदलतो",
-            "तो नेहमी 24 तास असतो"
+            "सूर्याचे प्रकाश",
+            "चंद्राचे प्रकाश",
+            "तारकांचे प्रकाश",
+            "वातावरणाचा प्रकाश"
           ],
-          "solution": "भूमध्यरेखेवर, दिवसाची लांबी वर्षभर नेहमी 12 तास राहते कारण भूमीच्या अक्षाचा तिच्या कक्षेच्या संदर्भात झुकाव असतो, परंतु भूमध्यरेखा नेहमी दिवस आणि रात्रीच्या बरोबरीच्या दिव्याच्या प्रमाणात प्राप्त करते. इतर विकल्प चुकीचे आहेत कारण ते भूमध्यरेखेवर नेहमी 12 तासांच्या दिवस-रात्रीच्या चक्राशी जुळत नाहीत. 24 तासांच्या दिवसाचा विचार देखील चुकीचा आहे कारण त्याचा अर्थ नेहमी दिवस असेल, जे भूमध्यरेखेवर होत नाही.",
-          "imageAlt": "भूमध्यरेखा वर्षभर बरोबरीने सूर्यप्रकाश मिळत असल्याचे चित्र",
+          "solution": "चंद्र ग्रहणादरम्यान, पृथ्वी सूर्य आणि चंद्रमध्ये येऊन चंद्राला पोहोचणारा सूर्याचा प्रकाश अडवते. यामुळे चंद्र ग्रहणादरम्यान गडगडत दिसतो. इतर विकल्प चुकीचे आहेत कारण चंद्राचा प्रकाश, तारकांचा प्रकाश आणि वातावरणाचा प्रकाश चंद्र ग्रहणाच्या मुख्य कारणांमध्ये समाविष्ट नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses lunar eclipse with a solar eclipse",
+        "Thinks moonlight is the main light source during an eclipse",
+        "Does not understand the role of sunlight in eclipses."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is accurate. The correct answer is 0, and the author's reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu112.pdf",
+          "ordinal": 15,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 12: Earth, Moon, and the Sun",
+            "12.3 Eclipses",
+            "12.3.2 Lunar eclipse"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu112.pdf",
+          "ordinal": 16,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 12: Earth, Moon, and the Sun",
+            "12.3 Eclipses",
+            "12.3.2 Lunar eclipse",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu112.pdf",
+          "ordinal": 17,
+          "pageStart": 18,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 12: Earth, Moon, and the Sun",
+            "12.3 Eclipses",
+            "12.3.2 Lunar eclipse",
+            "Exploratory Projects"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu112.pdf",
+          "ordinal": 18,
+          "pageStart": 19,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 12: Earth, Moon, and the Sun",
+            "12.3 Eclipses",
+            "12.3.2 Lunar eclipse",
+            "It's Still Not the End, My Friend!"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T23:45:24.335Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Based on Fig. 12.10, which statement is true about the intensity of sunlight in the Northern and Southern Hemispheres in June?",
+      "choices": [
+        "The Northern Hemisphere receives less intense sunlight",
+        "The Southern Hemisphere receives more intense sunlight",
+        "The intensity of sunlight is the same in both hemispheres",
+        "The Northern Hemisphere receives more intense sunlight"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct answer is that the Northern Hemisphere receives more intense sunlight. In June, the Earth's tilt causes the Northern Hemisphere to be directly facing the Sun, resulting in more concentrated sunlight. The Southern Hemisphere, tilted away, receives less direct sunlight, making the other options incorrect.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "चित्र 12.10 के आधार पर, जून में उत्तरी और दक्षिणी गोलार्ध में सूर्य के प्रकाश की तीव्रता के बारे में कौन-सा कथन सही है?",
+          "choices": [
+            "उत्तरी गोलार्ध को कम तीव्रता वाला सूर्य प्रकाश मिलता है",
+            "दक्षिणी गोलार्ध को अधिक तीव्रता वाला सूर्य प्रकाश मिलता है",
+            "दोनों गोलार्धों में सूर्य प्रकाश की तीव्रता समान होती है",
+            "उत्तरी गोलार्ध को अधिक तीव्रता वाला सूर्य प्रकाश मिलता है"
+          ],
+          "solution": "सही उत्तर यह है कि उत्तरी गोलार्ध को अधिक तीव्रता वाला सूर्य प्रकाश मिलता है। जून में पृथ्वी के झुकाव के कारण उत्तरी गोलार्ध सीधे सूर्य की ओर होता है, जिसके कारण अधिक संकेंद्रित सूर्य प्रकाश मिलता है। दक्षिणी गोलार्ध, जो झुके हुए होते हैं, कम सीधा सूर्य प्रकाश प्राप्त करता है, जिसके कारण अन्य विकल्प गलत हैं।",
+          "imageAlt": "एक आरेख जिसमें सूर्य, पृथ्वी और चंद्रमा हैं और सूर्य प्रकाश पृथ्वी पर पड़ रहा है",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains in the same position. The distractors remain incorrect, and the technical terms used are appropriate for a Hindi-medium textbook.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "चित्र 12.10 वर आधारित, जून महिन्यात उत्तर आणि दक्षिण गोलार्धात सूर्यप्रकाशाच्या तीव्रतेबद्दल कोणता विधान खरा आहे?",
+          "choices": [
+            "उत्तर गोलार्धाला कमी तीव्रतेचा सूर्यप्रकाश मिळतो",
+            "दक्षिण गोलार्धाला जास्त तीव्रतेचा सूर्यप्रकाश मिळतो",
+            "दोन्ही गोलार्धांमध्ये सूर्यप्रकाशाची तीव्रता समान असते",
+            "उत्तर गोलार्धाला जास्त तीव्रतेचा सूर्यप्रकाश मिळतो"
+          ],
+          "solution": "उत्तर गोलार्धाला जास्त तीव्रतेचा सूर्यप्रकाश मिळतो हे योग्य उत्तर आहे. जून महिन्यात, पृथ्वीच्या झुकाणामुळे उत्तर गोलार्ध सूर्याकडे लागलेला असतो, ज्यामुळे सूर्याचा जास्त एकाग्र प्रकाश मिळतो. दक्षिण गोलार्ध दूर झुकलेला असतो, ज्यामुळे त्याला कमी प्रत्यक्ष सूर्यप्रकाश मिळतो, ज्यामुळे इतर विधाने चुकीची ठरतात.",
+          "imageAlt": "सूर्य, पृथ्वी आणि चंद्र असलेले एक आकृती ज्यात सूर्यप्रकाश पृथ्वीवर पडत आहे",
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for geographical concepts.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": "Diagram showing the equator receiving equal sunlight throughout the year",
+      "imageAlt": "A diagram showing the Sun, Earth, and Moon with sunlight falling on the Earth",
       "figure": {
         "kind": "diagram",
         "spec": {
@@ -1181,6 +513,264 @@
             {
               "part": "sunEarthMoon",
               "x": 50,
+              "y": 31.25,
+              "size": 30,
+              "labels": [
+                "sun",
+                "earth",
+                "moon"
+              ],
+              "text": {
+                "sun": "sun",
+                "earth": "earth",
+                "moon": "moon"
+              }
+            }
+          ],
+          "arrows": [
+            {
+              "from": [
+                50,
+                31.25
+              ],
+              "to": [
+                30,
+                31.25
+              ],
+              "label": "sunlight",
+              "curved": false
+            }
+          ]
+        },
+        "labels": {
+          "sun": {
+            "en": "Sun",
+            "hi": "सूर्य",
+            "mr": "सूर्य"
+          },
+          "earth": {
+            "en": "Earth",
+            "hi": "पृथ्वी",
+            "mr": "पृथ्वी"
+          },
+          "moon": {
+            "en": "Moon",
+            "hi": "चंद्रमा",
+            "mr": "चंद्र"
+          },
+          "sunlight": {
+            "en": "Sunlight",
+            "hi": "सूर्य प्रकाश",
+            "mr": "सूर्यप्रकाश"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "incorrectly assumes the Northern Hemisphere receives less sunlight",
+        "incorrectly assumes the Southern Hemisphere receives more sunlight",
+        "misunderstands the difference in sunlight intensity between hemispheres",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the Northern Hemisphere receives more intense sunlight in June due to axial tilt. The reasoning for the distractors aligns with common misconceptions about seasonal sunlight intensity.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu112.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 12: Earth, Moon, and the Sun",
+            "12.2 Revolution of the Earth",
+            "12.2.2 Seasons on the Earth"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu112.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 12: Earth, Moon, and the Sun",
+            "12.2 Revolution of the Earth",
+            "12.2.2 Seasons on the Earth"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu112.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 12: Earth, Moon, and the Sun",
+            "12.3 Eclipses"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T23:45:24.335Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What happens to the sunlight in the Northern Hemisphere in June?",
+      "choices": [
+        "It is spread over a larger area and is less intense",
+        "It is concentrated in a smaller area and is more intense",
+        "It is blocked by the Earth's atmosphere",
+        "It is reflected back into space"
+      ],
+      "answerIndex": 1,
+      "solution": "In June, the Northern Hemisphere is tilted toward the Sun, causing sunlight to be concentrated in a smaller area, which makes it more intense. This is due to the angle at which sunlight strikes the Earth's surface. The other options are incorrect because sunlight is not spread over a larger area, nor is it blocked by the atmosphere or reflected back into space in this way.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जून में उत्तरी गोलार्ध में सूर्य की रोशनी क्या होती है?",
+          "choices": [
+            "यह एक बड़े क्षेत्र में फैल जाती है और कम तीव्र होती है",
+            "यह एक छोटे क्षेत्र में केंद्रित हो जाती है और अधिक तीव्र होती है",
+            "यह पृथ्वी के वातावरण द्वारा रोक दी जाती है",
+            "यह अंतरिक्ष में वापस परावर्तित कर दी जाती है"
+          ],
+          "solution": "जून में उत्तरी गोलार्ध सूर्य की ओर झुका होता है, जिसके कारण सूर्य की रोशनी एक छोटे क्षेत्र में केंद्रित हो जाती है, जो इसे अधिक तीव्र बना देता है। यह सूर्य की रोशनी के पृथ्वी की सतह पर किस कोण पर पड़ने के कारण होता है। अन्य विकल्प गलत हैं क्योंकि सूर्य की रोशनी एक बड़े क्षेत्र में फैल नहीं जाती है, न ही इसे वातावरण द्वारा रोक दिया जाता है या अंतरिक्ष में वापस परावर्तित कर दिया जाता है।",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original meaning, with appropriate Hindi terminology and correct answer positioning.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जूनमध्ये उत्तर गोलार्धात सूर्याच्या प्रकाशाचे काय होते?",
+          "choices": [
+            "तो एका मोठ्या क्षेत्रावर विस्तारला जातो आणि कमी तीव्रता असते",
+            "तो छोट्या क्षेत्रात केंद्रित केला जातो आणि अधिक तीव्रता असते",
+            "तो पृथ्वीच्या वातावरणाद्वारे अडवला जातो",
+            "तो अंतरिक्षात परत परत फेकला जातो"
+          ],
+          "solution": "जूनमध्ये उत्तर गोलार्ध पृथ्वी च्या बाजूने सूर्याकडे झुकलेला असतो, ज्यामुळे सूर्याचा प्रकाश छोट्या क्षेत्रात केंद्रित होतो, जे त्याची अधिक तीव्रता बनवतो. हे सूर्याच्या प्रकाशाच्या धारेच्या कोनामुळे आहे. इतर विकल्प अयोग्य आहेत कारण सूर्याचा प्रकाश एका मोठ्या क्षेत्रावर विस्तारला जात नाही, आणि वातावरणाद्वारे अडवला जात नाही किंवा अंतरिक्षात परत परत फेकला जात नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misinterprets the effect of Earth's tilt on sunlight distribution",
+        null,
+        "Believes the sunlight is blocked by the atmosphere",
+        "Misunderstands the effect of Earth's tilt on sunlight intensity"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as the Northern Hemisphere is tilted toward the Sun in June, causing sunlight to be more concentrated and intense. The author's reasoning is sound, and the distractors reflect common misconceptions about Earth's tilt and sunlight distribution.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu112.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 12: Earth, Moon, and the Sun",
+            "12.2 Revolution of the Earth",
+            "12.2.2 Seasons on the Earth"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu112.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 12: Earth, Moon, and the Sun",
+            "12.2 Revolution of the Earth",
+            "12.2.2 Seasons on the Earth"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu112.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 12: Earth, Moon, and the Sun",
+            "12.3 Eclipses"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-31T23:45:24.335Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why can we safely watch a lunar eclipse with our naked eye, but not a solar eclipse?",
+      "choices": [
+        "Because the Moon is much smaller than the Sun",
+        "Because the Earth blocks the sunlight during a lunar eclipse",
+        "Because the Sun is not visible during a lunar eclipse",
+        "Because the light from the Moon is not harmful to our eyes"
+      ],
+      "answerIndex": 1,
+      "solution": "We can safely watch a lunar eclipse with our naked eye because the Earth blocks the sunlight during a lunar eclipse, so the Moon is not directly illuminated by the Sun. During a solar eclipse, the Sun is still visible and harmful to our eyes. The other options are incorrect because the Moon's size and the visibility of the Sun are not the primary reasons for the difference in safety.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "हम चंद्र ग्रहण को अपनी नंगी आंखों से सुरक्षित रूप से देख सकते हैं, लेकिन सूर्य ग्रहण को नहीं क्यों?",
+          "choices": [
+            "क्योंकि चंद्रमा सूर्य की अपेक्षा बहुत छोटा होता है",
+            "क्योंकि पृथ्वी चंद्र ग्रहण के दौरान सूर्य के प्रकाश को रोक देती है",
+            "क्योंकि चंद्र ग्रहण के दौरान सूर्य दिखाई नहीं देता है",
+            "क्योंकि चंद्रमा का प्रकाश हमारी आंखों के लिए हानिकारक नहीं होता है"
+          ],
+          "solution": "हम चंद्र ग्रहण को अपनी नंगी आंखों से सुरक्षित रूप से देख सकते हैं क्योंकि पृथ्वी चंद्र ग्रहण के दौरान सूर्य के प्रकाश को रोक देती है, इसलिए चंद्रमा सूर्य के प्रकाश से सीधे नहीं रोशन होता है। सूर्य ग्रहण के दौरान सूर्य अभी भी दिखाई देता है और आंखों के लिए हानिकारक होता है। अन्य विकल्प गलत हैं क्योंकि चंद्रमा के आकार और सूर्य के दृश्यता के कारण सुरक्षा में अंतर के मुख्य कारण नहीं हैं।",
+          "imageAlt": "चंद्र ग्रहण के दौरान सूर्य, पृथ्वी और चंद्रमा का चित्र, सूर्य के प्रकाश के तीर और पृथ्वी की छाया के साथ।",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. The correct answer remains option (1), and all distractors remain incorrect. Technical terms like 'चंद्र ग्रहण' (lunar eclipse) and 'सूर्य ग्रहण' (solar eclipse) are standard in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आपण चंद्र ग्रहण नग्न डोळ्यांनी सुरक्षितपणे पाहू शकतो, परंतु सूर्य ग्रहण नाही का?",
+          "choices": [
+            "कारण चंद्र सूर्यापेक्षा खूप लहान आहे",
+            "कारण चंद्र ग्रहण दरम्यान पृथ्वी सूर्याच्या प्रकाशाला अडवते",
+            "कारण चंद्र ग्रहण दरम्यान सूर्य दिसत नाही",
+            "कारण चंद्राचा प्रकाश आपल्या डोळ्यांसाठी हानिकारक नाही"
+          ],
+          "solution": "आपण चंद्र ग्रहण नग्न डोळ्यांनी सुरक्षितपणे पाहू शकतो कारण चंद्र ग्रहण दरम्यान पृथ्वी सूर्याच्या प्रकाशाला अडवते, त्यामुळे चंद्र सूर्याच्या प्रकाशाने सीधा उजळलेला नसतो. सूर्य ग्रहण दरम्यान सूर्य अजूनही दिसत असतो आणि आपल्या डोळ्यांसाठी हानिकारक असतो. इतर विकल्प चुकीचे आहेत कारण चंद्राच्या आकाराची आणि सूर्याच्या दृश्यतेची अस्तित्वे सुरक्षेत फरकाचे प्रमुख कारण नाहीत.",
+          "imageAlt": "सूर्य, पृथ्वी आणि चंद्र चंद्र ग्रहण दरम्यान दाखवलेला आरेख, सूर्याच्या प्रकाशाच्या तीरांसह.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "Diagram showing the Sun, Earth, and Moon during a lunar eclipse, with arrows indicating the light from the Sun and Earth's shadow.",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "sunEarthMoon",
+              "x": 40,
               "y": 30,
               "size": 20,
               "labels": [
@@ -1194,32 +784,49 @@
           "arrows": [
             {
               "from": [
-                50,
+                40,
                 30
               ],
               "to": [
-                70,
+                60,
                 30
               ],
-              "label": "sunlight",
+              "label": "light_from_Sun",
+              "curved": false
+            },
+            {
+              "from": [
+                60,
+                30
+              ],
+              "to": [
+                80,
+                30
+              ],
+              "label": "Earths_shadow",
               "curved": false
             }
           ]
         },
         "labels": {
-          "sunlight": {
-            "en": "sunlight",
-            "hi": "सूर्य प्रकाश",
-            "mr": "सूर्यप्रकाश"
+          "light_from_Sun": {
+            "en": "light from Sun",
+            "hi": "सूर्य का प्रकाश",
+            "mr": "सूर्याचा प्रकाश"
+          },
+          "Earths_shadow": {
+            "en": "Earth's shadow",
+            "hi": "पृथ्वी की छाया",
+            "mr": "पृथ्वीचे छाया"
           }
         }
       },
       "needsFigure": true,
       "distractorReason": [
-        "assumes the equator experiences longer days in certain seasons, which is incorrect",
+        "fails to understand the difference in light sources during the two types of eclipses",
         null,
-        "Believes the equator experiences longer days in summer and shorter in winter due to Earth's tilt",
-        "Believes the Earth's tilt causes constant daylight at the equator"
+        "confuses the reason for the safety of lunar eclipse viewing",
+        "fails to understand the reason for the danger of solar eclipse viewing"
       ],
       "solverAnswers": [
         1,
@@ -1228,108 +835,8 @@
         1,
         1
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as the equator receives equal sunlight throughout the year, resulting in 12 hours of daylight and 12 hours of darkness daily. The distractors reflect common misconceptions about the effects of Earth's tilt on the equator.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 8,
-          "pageStart": 9,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 12: Earth, Moon, and the Sun",
-            "12.2 Revolution of the Earth",
-            "12.2.2 Seasons on the Earth"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 9,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 12: Earth, Moon, and the Sun",
-            "12.2 Revolution of the Earth",
-            "12.2.2 Seasons on the Earth"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 10,
-          "pageStart": 11,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 12: Earth, Moon, and the Sun",
-            "12.3 Eclipses"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T17:53:16.262Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "If the Moon were to move farther away from the Earth, how would this affect the possibility of a total solar eclipse?",
-      "choices": [
-        "It would make total solar eclipses more frequent",
-        "It would make total solar eclipses less frequent",
-        "It would make total solar eclipses impossible",
-        "It would have no effect on total solar eclipses"
-      ],
-      "answerIndex": 2,
-      "solution": "If the Moon were to move farther away from the Earth, it would make total solar eclipses impossible. This is because the Moon would no longer be close enough to completely block the Sun, and only annular eclipses would occur. The other options are incorrect because the frequency of eclipses would not necessarily change, and the Moon's distance is the key factor in determining whether a total eclipse is possible.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि चंद्रमा पृथ्वी से दूर हट जाए, तो यह पूर्ण सूर्य ग्रहण की संभावना पर कैसा प्रभाव डालेगा?",
-          "choices": [
-            "यह पूर्ण सूर्य ग्रहण अधिक आम बना देगा",
-            "यह पूर्ण सूर्य ग्रहण कम आम बना देगा",
-            "यह पूर्ण सूर्य ग्रहण असंभव बना देगा",
-            "यह पूर्ण सूर्य ग्रहण पर कोई प्रभाव नहीं डालेगा"
-          ],
-          "solution": "यदि चंद्रमा पृथ्वी से दूर हट जाए, तो पूर्ण सूर्य ग्रहण असंभव हो जाएगा। इसका कारण यह है कि चंद्रमा सूर्य को पूरी तरह से ढकने के लिए पर्याप्त निकट नहीं रहेगा, और केवल अंगूठी के ग्रहण ही होंगे। अन्य विकल्प गलत हैं क्योंकि ग्रहणों की आवृत्ति आवश्यक रूप से बदल नहीं सकती है, और चंद्रमा की दूरी पूर्ण ग्रहण के संभव होने के लिए निर्णायक कारक है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate astronomical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर चंद्र भूमीपासून दूर जाईल, तर हे सूर्यग्रहणाच्या पूर्णता शक्यतेवर कसे प्रभाव पाडेल?",
-          "choices": [
-            "ते पूर्ण सूर्यग्रहणांची वारंवारता वाढवील",
-            "ते पूर्ण सूर्यग्रहणांची वारंवारता कमी करील",
-            "ते पूर्ण सूर्यग्रहणांची अशक्यता करील",
-            "त्याने पूर्ण सूर्यग्रहणांवर कोणताही प्रभाव नसेल"
-          ],
-          "solution": "जर चंद्र भूमीपासून दूर जाईल, तर पूर्ण सूर्यग्रहणे अशक्य होतील. हे असे कारण आहे कारण चंद्र सूर्यला पूर्णपणे आवरू शकणार नाही आणि फक्त वृत्ताकार ग्रहणे होतील. इतर विकल्प चुकीचे आहेत कारण ग्रहणांची वारंवारता आवश्यकता असू शकत नाही आणि चंद्राची अंतर हे पूर्ण ग्रहणाच्या शक्यतेवर निर्णायक कारक आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Misunderstands the relationship between the Moon's distance and eclipse frequency",
-        "Incorrectly assumes the Moon's distance does not affect the type of eclipse",
-        null,
-        "Misunderstands the role of the Moon's distance in determining whether a total eclipse is possible"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. The Moon's distance from Earth determines whether it can fully cover the Sun during an eclipse. If the Moon moves farther away, it would appear smaller in the sky and could no longer completely block the Sun, making total solar eclipses impossible.",
+      "critique": "The correct answer is 1, as the Earth blocking sunlight during a lunar eclipse makes it safe to view. The other options reflect common misconceptions about the nature of eclipses and light sources.",
       "sources": [
         {
           "document": "ncert/7/science/gecu112.pdf",
@@ -1377,167 +884,107 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T17:53:16.262Z",
+      "generatedAt": "2026-10-31T23:45:24.335Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 6,
-      "stem": "Why do different stars appear in the night sky over the course of a year?",
+      "stem": "Why is the Sun's light not blocked by Mercury or Venus, even though they revolve between the Earth and the Sun?",
       "choices": [
-        "The Earth's axis of rotation changes direction",
-        "The Earth's orbit around the Sun causes a change in the direction we face at night",
-        "The stars themselves move significantly in the sky",
-        "The Moon blocks different stars at different times of the year"
+        "Because they are too far away",
+        "Because they are too small",
+        "Because they do not block the entire light from the Sun",
+        "Because they are not visible from Earth"
       ],
-      "answerIndex": 1,
-      "solution": "As the Earth revolves around the Sun, the direction we face at night changes, which causes different stars to appear in the sky over the course of a year. A pupil who thinks the stars themselves move might select the third option.",
+      "answerIndex": 2,
+      "solution": "The correct answer is because they do not block the entire light from the Sun. Mercury and Venus are small compared to the Sun, so they only partially block its light when they pass between Earth and the Sun. The other options are incorrect because their distance or visibility does not explain why their light is not completely blocked, and their size alone does not account for the partial blocking effect.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक साल के दौरान रात के आकाश में अलग-अलग तारे क्यों दिखाई देते हैं?",
+          "stem": "सूर्य के प्रकाश को बुध या शुक्र द्वारा नहीं रोका जाता, भले ही वे पृथ्वी और सूर्य के बीच घूमते हों?",
           "choices": [
-            "पृथ्वी के घूर्णन अक्ष की दिशा बदल जाती है",
-            "सूर्य के चारों ओर पृथ्वी की कक्षा के कारण रात के समय हमारी दिशा में परिवर्तन होता है",
-            "तारों के स्वयं आकाश में महत्वपूर्ण गति होती है",
-            "चंद्रमा वर्ष के विभिन्न समय पर अलग-अलग तारों को छान लेता है"
+            "क्योंकि वे बहुत दूर हैं",
+            "क्योंकि वे बहुत छोटे हैं",
+            "क्योंकि वे सूर्य के पूरे प्रकाश को नहीं रोकते",
+            "क्योंकि वे पृथ्वी से दिखाई नहीं देते"
           ],
-          "solution": "जैसे-जैसे पृथ्वी सूर्य के चारों ओर घूमती है, रात के समय हमारी दिशा में परिवर्तन होता है, जिसके कारण एक साल के दौरान आकाश में अलग-अलग तारे दिखाई देते हैं। एक छात्र जो सोचता है कि तारे स्वयं आकाश में गति करते हैं, तीसरा विकल्प चुन सकता है।",
-          "imageAlt": "सूर्य के चारों ओर पृथ्वी की कक्षा को दर्शाने वाला चित्र जिसमें कक्षा को दर्शाने वाली तीर और इसका वर्णन लेबल है।",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "solution": "सही उत्तर यह है कि वे सूर्य के पूरे प्रकाश को नहीं रोकते। बुध और शुक्र सूर्य के मुकाबले छोटे होते हैं, इसलिए जब वे पृथ्वी और सूर्य के बीच गुजरते हैं तो उनके द्वारा सूर्य के प्रकाश का केवल आंशिक भाग रोका जाता है। अन्य विकल्प गलत हैं क्योंकि उनकी दूरी या दृश्यता यह स्पष्ट नहीं करती कि उनके प्रकाश को पूरी तरह से रोका नहीं जाता है, और उनका आकार अकेले पूर्ण अवरोध के प्रभाव की व्याख्या नहीं करता है।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning, technical terms are appropriate for Hindi-medium curriculum, and the correct answer remains option 2.",
           "flag": null
         },
         "mr": {
-          "stem": "एका वर्षात रात्रीच्या आकाशात विविध तारे का दिसतात?",
+          "stem": "सूर्याचे प्रकाश मर्क्युरी किंवा शुक्रामुळे ब्लॉक का होत नाही, तरीही ते पृथ्वी आणि सूर्यमध्ये फिरतात?",
           "choices": [
-            "भूमीचा घूर्णन अक्ष दिशा बदलतो",
-            "सूर्याभोवती भूमीचा मार्ग रात्रीच्या दिशेत बदलतो",
-            "तारे स्वतः आकाशात मोठ्या प्रमाणात गतिमान होतात",
-            "चंद्र वर्षाच्या वेगवेगळ्या वेळी वेगवेगळ्या ताऱ्यांना आडवा घालतो"
+            "कारण ते खूप दूर आहेत",
+            "कारण ते खूप लहान आहेत",
+            "कारण ते सूर्याचा पूर्ण प्रकाश ब्लॉक करत नाहीत",
+            "कारण ते पृथ्वीवरून दिसत नाहीत"
           ],
-          "solution": "भूमी सूर्याभोवती फिरत असताना रात्रीच्या दिशेत बदल होतो, ज्यामुळे एका वर्षात आकाशात विविध तारे दिसतात. जो विद्यार्थी तारांच्या स्वतःच गतीचा विचार करतो तो तिसरा विकल्प निवडू शकतो.",
-          "imageAlt": "सूर्याभोवती भूमीच्या मार्गाचे चित्र ज्यामध्ये ओर्बिट दर्शविणारा तीर आणि त्याचे वर्णन असते.",
-          "critique": "The translation is accurate and maintains the scientific meaning. Technical terms like 'घूर्णन अक्ष' (rotational axis) and 'मार्ग' (orbit) are appropriate for Marathi science textbooks.",
+          "solution": "हे योग्य उत्तर आहे कारण ते सूर्याचा पूर्ण प्रकाश ब्लॉक करत नाहीत. मर्क्युरी आणि शुक्र सूर्याच्या तुलनेत लहान असतात, म्हणून ते पृथ्वी आणि सूर्यमध्ये जाताना त्याचा अंशतः प्रकाश ब्लॉक करतात. इतर विकल्प अयोग्य आहेत कारण त्यांच्या अंतर किंवा दृश्यतेमुळे त्यांचा प्रकाश पूर्णपणे ब्लॉक होत नाही, आणि त्यांच्या आकारामुळे अंशतः ब्लॉक होण्याचा प्रभाव व्याख्यान करत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": "Diagram showing the Earth's orbit around the Sun with an arrow indicating the orbit and a label describing it.",
-      "figure": {
-        "kind": "diagram",
-        "spec": {
-          "parts": [
-            {
-              "part": "sunEarthMoon",
-              "x": 50,
-              "y": 31.25,
-              "size": 20,
-              "labels": [
-                "sun",
-                "earth",
-                "moon"
-              ],
-              "text": {}
-            }
-          ],
-          "arrows": [
-            {
-              "from": [
-                50,
-                31.25
-              ],
-              "to": [
-                50,
-                10
-              ],
-              "label": "orbit_of_earth",
-              "curved": true
-            }
-          ],
-          "texts": [
-            {
-              "x": 50,
-              "y": 50,
-              "label": "earths_orbit_around_sun"
-            }
-          ]
-        },
-        "labels": {
-          "orbit_of_earth": {
-            "en": "Orbit of Earth",
-            "hi": "पृथ्वी की कक्षा",
-            "mr": "भूमीचा ओर्बिट"
-          },
-          "earths_orbit_around_sun": {
-            "en": "Earth's orbit around the Sun",
-            "hi": "पृथ्वी की सूर्य के चारों ओर कक्षा",
-            "mr": "भूमीचा सूर्याभोवती ओर्बिट"
-          }
-        }
-      },
-      "needsFigure": true,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
       "distractorReason": [
-        "Believes that the Earth's axis of rotation is the main cause of the changing night sky",
+        "Misunderstands the distance of the planets from Earth",
+        "Believes the size of the planets determines whether they block sunlight",
         null,
-        "Thinks stars move significantly over time",
-        "Confuses the Moon's effect with the Earth's orbital motion"
+        "Thinks the visibility of planets affects their ability to block sunlight"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as the Earth's orbital motion changes the direction we face at night, leading to different stars being visible. The other options reflect common misconceptions about the Earth's axis, star movement, and the Moon's role.",
+      "critique": "The correct answer is 2, as Mercury and Venus are too small to block the entire light from the Sun. The other options reflect common misconceptions about planetary size, distance, and visibility.",
       "sources": [
         {
           "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 12: Earth, Moon, and the Sun",
-            "12.1 Rotation of the Earth"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 5,
-          "pageStart": 6,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 12: Earth, Moon, and the Sun",
-            "12.1 Rotation of the Earth"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 6,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 12: Earth, Moon, and the Sun",
-            "12.2 Revolution of the Earth"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu112.pdf",
-          "ordinal": 7,
-          "pageStart": 8,
-          "pageEnd": 8,
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 10,
           "headingPath": [
             "Chapter 12: Earth, Moon, and the Sun",
             "12.2 Revolution of the Earth",
-            "12.2.1 Changing view of night sky from the Earth"
+            "12.2.2 Seasons on the Earth"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu112.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 12: Earth, Moon, and the Sun",
+            "12.2 Revolution of the Earth",
+            "12.2.2 Seasons on the Earth"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu112.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 12: Earth, Moon, and the Sun",
+            "12.3 Eclipses"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T17:53:16.262Z",
+      "generatedAt": "2026-10-31T23:45:24.335Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

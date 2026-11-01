@@ -1,0 +1,405 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T00:27:52.502Z",
+  "finishedAt": "2026-11-01T00:34:53.367Z",
+  "seconds": 421,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी गणित इंग्रजी",
+    "bookCode": "803020004",
+    "document": "balbharati/8/mathematics/803020004.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 7 — Variation",
+    "edition": "First Edition 2018",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n8. B) 8𝑥 - 20 2",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n8. (b) 5 : 1",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n14. B) 3 8",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n8. 1\nratio 3 : 1, then the value of 𝒚 is\n(A) 4 (B) 3 (C) 2 (D) 1\nA letter from the word INDEPENDENCE is selected at random. What is the"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 85362,
+      "in": 18,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 12140,
+      "completionTokens": 4537
+    },
+    "critique": {
+      "calls": 29,
+      "ms": 192441,
+      "in": 18,
+      "out": 17,
+      "rejects": 1,
+      "promptTokens": 14489,
+      "completionTokens": 4981
+    },
+    "solver": {
+      "calls": 152,
+      "ms": 93506,
+      "in": 17,
+      "out": 11,
+      "rejects": 6,
+      "promptTokens": 25978,
+      "completionTokens": 1573
+    },
+    "form": {
+      "calls": 2,
+      "ms": 6056,
+      "in": 11,
+      "out": 8,
+      "rejects": 3,
+      "promptTokens": 424,
+      "completionTokens": 151
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 3,
+      "ms": 502,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 35,
+      "ms": 343789,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 17680,
+      "completionTokens": 8037
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 3,
+    "2": 3,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If the cost of 3 notebooks is ` 60, what is the cost of 10 notebooks?",
+      "ms": {
+        "draft": 4164,
+        "critique": 6848
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the cost of 5 apples is ` 125, what is the cost of 12 apples?",
+      "ms": {
+        "draft": 4164,
+        "critique": 5603,
+        "solver": 14691
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the cost of 4 kg of groundnuts is ` 120, find the cost of 15 kg of groundnuts.",
+      "ms": {
+        "draft": 4164,
+        "critique": 7344,
+        "solver": 15352
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the cost of 8 notebooks is ` 160, what is the cost of 12 notebooks?",
+      "ms": {
+        "draft": 4164,
+        "critique": 7621,
+        "solver": 10407
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the cost of 10 apples is ` 200, what is the cost of 7 apples?",
+      "ms": {
+        "draft": 4164,
+        "critique": 9019,
+        "solver": 8109
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A car with speed 60 km/hr takes 8 hours to travel a distance. What should be the increase in the speed if the same distance is to be covered in 6 hours?",
+      "ms": {
+        "draft": 7190,
+        "critique": 9168,
+        "solver": 13140,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 15 workers can build a wall in 48 hours, how many workers are required to do the same work in 30 hours?",
+      "ms": {
+        "draft": 7190,
+        "critique": 7640,
+        "solver": 16390
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 180 bags of half litre milk can be filled in 3 minutes, how many minutes will it take to fill 1800 bags?",
+      "ms": {
+        "draft": 7190,
+        "critique": 9327,
+        "solver": 14810,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If x and y are in inverse variation, and x = 4 when y = 6, what is the value of x when y = 8?",
+      "ms": {
+        "draft": 7190,
+        "critique": 7997,
+        "solver": 12173
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of direct variation?",
+      "ms": {
+        "draft": 7190,
+        "critique": 7041,
+        "solver": 13449,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the mathematical symbol used to denote direct variation?",
+      "ms": {
+        "draft": 2873,
+        "critique": 6652,
+        "solver": 2064,
+        "form": 0,
+        "translation": 45873
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the equation form of direct variation?",
+      "ms": {
+        "draft": 2873,
+        "critique": 6174,
+        "solver": 1835,
+        "form": 3747,
+        "translation": 39230
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the equation form of inverse variation?",
+      "ms": {
+        "draft": 2873,
+        "critique": 7448,
+        "solver": 1922,
+        "form": 2984,
+        "translation": 44214
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the cost of 3 notebooks is ` 60, what is the cost of 1 notebook?",
+      "ms": {
+        "draft": 2873,
+        "critique": 5421,
+        "solver": 1457,
+        "form": 0,
+        "translation": 32023
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the cost of 5 notebooks is ` 100, what is the cost of 1 notebook?",
+      "ms": {
+        "draft": 2873,
+        "critique": 7045,
+        "solver": 7727,
+        "form": 0,
+        "translation": 24000
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of inverse variation?",
+      "ms": {
+        "draft": 7190,
+        "critique": 7943,
+        "solver": 2656,
+        "form": 0,
+        "translation": 66936
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 6 workers can complete a job in 10 days, how many workers are needed to complete the job in 5 days?",
+      "ms": {
+        "draft": 4164,
+        "critique": 5416,
+        "solver": 12372,
+        "form": 0,
+        "translation": 52737
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the cost of 10 notebooks is ` 200, what is the cost of 15 notebooks?",
+      "ms": {
+        "draft": 2873,
+        "critique": 5223,
+        "solver": 1555,
+        "form": 0,
+        "translation": 33694
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"Which of the following situations is an example of inverse va"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the cost of 3 notebooks is ` 60, what is the cost of 10 notebooks?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the cost of 5 apples is ` 125, what is the cost of 12 apples?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If the cost of 4 kg of groundnuts is ` 120, find the cost of 15 kg of groundnuts.",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the cost of 8 notebooks is ` 160, what is the cost of 12 notebooks?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the cost of 10 apples is ` 200, what is the cost of 7 apples?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A car with speed 60 km/hr takes 8 hours to travel a distance. What should be the increase in the speed if the same distance is to be covered in 6 hours?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"makes an incorrect calculation by dividing the original spee…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 15 workers can build a wall in 48 hours, how many workers are required to do the same work in 30 hours?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If 180 bags of half litre milk can be filled in 3 minutes, how many minutes will it take to fill 1800 bags?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"makes an incorrect calculation, possibly by multiplying 1800…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If x and y are in inverse variation, and x = 4 when y = 6, what is the value of x when y = 8?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of direct variation?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

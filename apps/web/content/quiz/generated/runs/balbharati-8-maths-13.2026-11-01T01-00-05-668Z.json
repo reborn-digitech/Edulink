@@ -1,0 +1,497 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T01:00:05.668Z",
+  "finishedAt": "2026-11-01T01:06:49.523Z",
+  "seconds": 404,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी गणित इंग्रजी",
+    "bookCode": "803020004",
+    "document": "balbharati/8/mathematics/803020004.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 13 — Congruence of triangles",
+    "edition": "First Edition 2018",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n8. Which of the following is NOT a similarity criterion of traingles?\na) AA b) SAS c) AAA d) RHS",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n16. B In ∆ABC and ∆PQR , 1\nAB 2\n∠B = ∠Q ; ∠R = ∠C ; PQ = 1\n∴ ∆ABC ~∆PQR\nHence , the triangles are similar but not congruent because AB≠PQ\n(B) 𝐒𝐢𝐦𝐢𝐥𝐚𝐫 𝐛𝐮𝐭 𝐧𝐨𝐭 𝐜𝐨𝐧𝐠𝐫𝐮𝐞𝐧𝐭",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n22. Given:-AB II CD II EF\nTo prove:- ா஽ ஺ா = ஻ி ி஼\nConstruction:- Join BD to\nintersect EF at G.\nProof:- in ∆ ABD\nEG II AB ( EF II AB )\nா஽ ஺ா = ஻ீீ ஽ ( by BPT )___________(1)\nIn ∆𝐷𝐵𝐶\nGF II CD ( EF II CD )\n஻ி ி஼ = ஻ீீ ஽ ( by BPT )___________(2)\n𝑓𝑟𝑜𝑚 (1) & (2)\nா஽ ஺ா = ஻ி ி஼\nGiven AD=6cm, DB=9cm\nAE=8cm, EC=12cm, ∠ADE=48\nTo find:- ∠ABC=?\nProof:\nIn ∆𝐴𝐵𝐶\n஽஻ ஺஽ = = ଺ ଽ ଶ ଷ ……(1)\n஺ா ா஼ = ଵଶ ଼ = ଶ ଷ ……..(2)\nFrom (1) & (2)\n஽஻ ஺஽ = ஺ா ா஼\nDE II BC (Converse of BPT)\n∠ADE=∠ABC (Corresponding angles)\n⇒ ∠ABC=48˚\nOR",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n10. B) isosceles and similar"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 122407,
+      "in": 24,
+      "out": 23,
+      "rejects": 1,
+      "promptTokens": 17482,
+      "completionTokens": 6044
+    },
+    "critique": {
+      "calls": 28,
+      "ms": 219133,
+      "in": 23,
+      "out": 18,
+      "rejects": 5,
+      "promptTokens": 13607,
+      "completionTokens": 4815
+    },
+    "solver": {
+      "calls": 128,
+      "ms": 76828,
+      "in": 18,
+      "out": 12,
+      "rejects": 6,
+      "promptTokens": 25326,
+      "completionTokens": 1440
+    },
+    "form": {
+      "calls": 9,
+      "ms": 153028,
+      "in": 12,
+      "out": 7,
+      "rejects": 5,
+      "promptTokens": 9847,
+      "completionTokens": 3122
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 5,
+      "ms": 1097,
+      "in": 7,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 351662,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 16886,
+      "completionTokens": 9024
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 2,
+    "4": 1,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "In a triangle, if two sides and the included angle are congruent to two sides and the included angle of another triangle, which congruence criterion applies?",
+      "ms": {
+        "draft": 4959,
+        "critique": 7575
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, if the triangles are congruent and the corresponding parts are marked, which of the following is the correct one-to-one correspondence of vertices?",
+      "ms": {
+        "draft": 4959,
+        "critique": 8319,
+        "solver": 2244,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If two triangles have two angles and a non-included side congruent, which congruence criterion applies?",
+      "ms": {
+        "draft": 4959,
+        "critique": 9651
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a criterion for congruence of triangles?",
+      "ms": {
+        "draft": 4959,
+        "critique": 7611,
+        "solver": 19141
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If two triangles are congruent, which of the following statements is true?",
+      "ms": {
+        "draft": 4959,
+        "critique": 7792,
+        "solver": 1540,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If two triangles are congruent, which of the following is always true?",
+      "ms": {
+        "draft": 4959,
+        "critique": 9485,
+        "solver": 18817
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the given figure, if two sides and an angle not included by them are congruent with corresponding parts of the other triangle, what can be concluded about the congruence of the triangles?",
+      "ms": {
+        "draft": 5497,
+        "critique": 8868
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, if two angles and the included side of one triangle are congruent with the corresponding parts of the other triangle, which test is used to prove the congruence of the triangles?",
+      "ms": {
+        "draft": 5497,
+        "critique": 6785,
+        "solver": 2165
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Two triangles are congruent by the ASA test. What must be true about the triangles?",
+      "ms": {
+        "draft": 5629,
+        "critique": 6915,
+        "solver": 1352
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, two triangles are marked with identical symbols. Which test can be used to prove their congruence?",
+      "ms": {
+        "draft": 5629,
+        "critique": 7134,
+        "solver": 2003,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a criterion for congruence of triangles?",
+      "ms": {
+        "draft": 4317,
+        "critique": 8749
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the given figure, the triangles ABC and PQR are congruent. Which of the following statements is correct?",
+      "ms": {
+        "draft": 4317,
+        "critique": 9543,
+        "solver": 2570
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, the triangles ABC and DEF are congruent. Which of the following is the correct correspondence of vertices?",
+      "ms": {
+        "draft": 4317,
+        "critique": 8780,
+        "solver": 19232
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the given figure, the triangles ABC and DEF are congruent. Which of the following is the correct one-to-one correspondence of vertices?",
+      "ms": {
+        "draft": 4317,
+        "critique": 8269
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, two triangles are marked with identical symbols. Which test can be used to prove their congruence?",
+      "ms": {
+        "draft": 5629,
+        "critique": 7854,
+        "solver": 1882,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the given figure, the triangles ABC and DEF are congruent. Which of the following statements is correct?",
+      "ms": {
+        "draft": 4317,
+        "critique": 8518,
+        "solver": 14534,
+        "form": 2372
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the given figure, two triangles are marked with congruent sides and angles. Which test can be used to prove their congruence?",
+      "ms": {
+        "draft": 5629,
+        "critique": 12355,
+        "solver": 1749,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which test is used to determine the congruence of two right-angled triangles if the hypotenuse and one side of one triangle are congruent with the hypotenuse and the corresponding side of the other triangle?",
+      "ms": {
+        "draft": 5497,
+        "critique": 6049,
+        "solver": 1910,
+        "form": 5851,
+        "translation": 65171
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Two triangles are congruent by the SSS test. What must be true about the triangles?",
+      "ms": {
+        "draft": 5629,
+        "critique": 7487,
+        "solver": 1728,
+        "form": 0,
+        "translation": 50285
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, if segments AB and CB are congruent, segments DA and DC are congruent, and segment AC is common, which test is used to prove that triangles ABD and CBD are congruent?",
+      "ms": {
+        "draft": 5497,
+        "critique": 7459,
+        "solver": 1588,
+        "form": 4812,
+        "translation": 58917
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In the given figure, if two sides and the included angle of one triangle are congruent with the corresponding parts of the other triangle, which test is used to prove the congruence of the triangles?",
+      "ms": {
+        "draft": 5497,
+        "critique": 7345,
+        "solver": 7320,
+        "form": 1664,
+        "translation": 52488
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In the given figure, two triangles have two sides and a non-included angle congruent. Can these triangles be congruent?",
+      "ms": {
+        "draft": 5629,
+        "critique": 8015,
+        "solver": 3698,
+        "form": 0,
+        "translation": 62569
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If in two triangles, two angles and a non-included side are congruent, which test can be used to prove the triangles are congruent?",
+      "ms": {
+        "draft": 5497,
+        "critique": 6570,
+        "solver": 2143,
+        "form": 4628,
+        "translation": 58275
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In a triangle, if two sides and the included angle are congruent to two sides and the included angle of another triangle, which congruence criterion applies?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given figure, if the triangles are congruent and the corresponding parts are marked, which of the following is the correct one-to-one correspondence of vertices?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Incorrect order of vertices, which does not match the congru…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If two triangles have two angles and a non-included side congruent, which congruence criterion applies?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a criterion for congruence of triangles?",
+      "reason": "distractors 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If two triangles are congruent, which of the following statements is true?",
+      "reason": "options 0 and 1 say the same thing (\"The triangles are similar but not congruent\" / \"The triangles are congruent but not similar\"); distractor 3's reason is not a one-line misconception (\"Correct answer, so this is incorrect. The correct answer is …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If two triangles are congruent, which of the following is always true?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In the given figure, if two sides and an angle not included by them are congruent with corresponding parts of the other triangle, what can be concluded about the congruence of the triangles?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the given figure, if two angles and the included side of one triangle are congruent with the corresponding parts of the other triangle, which test is used to prove the congruence of the triangles?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If two triangles are congruent, which of the following must be true?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Two triangles are congruent by the ASA test. What must be true about the triangles?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given figure, two triangles are marked with identical symbols. Which test can be used to prove their congruence?",
+      "reason": "figure: figure spec refused: spec: Unrecognized key(s) in object: 'labels'"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a criterion for congruence of triangles?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "In the given figure, the triangles ABC and PQR are congruent. Which of the following statements is correct?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the given figure, the triangles ABC and DEF are congruent. Which of the following is the correct correspondence of vertices?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In the given figure, the triangles ABC and DEF are congruent. Which of the following is the correct one-to-one correspondence of vertices?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given figure, two triangles are marked with identical symbols. Which test can be used to prove their congruence?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels side2, side3"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the given figure, the triangles ABC and DEF are congruent. Which of the following statements is correct?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"Matches the vertices in an incorrect order and misrepresents…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "In the given figure, two triangles are marked with congruent sides and angles. Which test can be used to prove their congruence?",
+      "reason": "near-duplicate of batch item \"In the given figure, if two sides and the included…\" (cosine 0.909 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

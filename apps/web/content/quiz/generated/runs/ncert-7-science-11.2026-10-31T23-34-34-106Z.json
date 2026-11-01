@@ -1,0 +1,750 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-31T23:34:34.106Z",
+  "finishedAt": "2026-10-31T23:45:22.254Z",
+  "seconds": 648,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "gecu1",
+    "document": "ncert/7/science/gecu111.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 11 — Light: Shadows and Reflections",
+    "edition": "Reprint 2026-27",
+    "chunks": 15,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2023-24]\n14. When light enters the atmosphere it strikes on extremely fine particles, which deflect the 1\nrays of light in all possible directions, This is due to -\na) reflection of light\nb) atmospheric refraction\nc) scattering of light\nd) dispersion of light",
+      "[INJSO 2021 — solutions or answer key]\n5. D. Her field of view will be determined by drawing rays from each of the toys to the right and left edges\nof the plane mirror. She can see the image if she is within the range of these reflected rays.",
+      "[INJSO 2012 — question paper]\n34. White light is incident on one of the refracting faces of a prism. Inside the prism,\ni. at normal incidence, the blue light slows down more than red light\nii. at normal incidence, blue light refracts same as red light\niii. for oblique incidence, blue light bends more than red light\niv. for oblique incidence, blue light slows down more than the red light\nWhich of the above statements are correct?\na) i & iv\nb) i, iii & iv\nc) ii, iii & iv\nd) i, ii, iii & iv",
+      "[CBSE Class X Science, marking scheme, 2026-27]\n30. B. Hold the lens above a sheet of paper and adjust until the smallest, 1\nbrightest spot is formed."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 268295,
+      "in": 41,
+      "out": 36,
+      "rejects": 5,
+      "promptTokens": 35271,
+      "completionTokens": 12374
+    },
+    "critique": {
+      "calls": 46,
+      "ms": 356431,
+      "in": 36,
+      "out": 29,
+      "rejects": 7,
+      "promptTokens": 21596,
+      "completionTokens": 7998
+    },
+    "solver": {
+      "calls": 202,
+      "ms": 125603,
+      "in": 29,
+      "out": 22,
+      "rejects": 7,
+      "promptTokens": 34527,
+      "completionTokens": 1974
+    },
+    "form": {
+      "calls": 9,
+      "ms": 83254,
+      "in": 22,
+      "out": 8,
+      "rejects": 14,
+      "promptTokens": 9617,
+      "completionTokens": 1843
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 55,
+      "ms": 11078,
+      "in": 8,
+      "out": 6,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 280977,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 14008,
+      "completionTokens": 7355
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 3,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a non-luminous object?",
+      "ms": {
+        "draft": 4375,
+        "critique": 6031,
+        "solver": 15294,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the activity where light passes through a straight pipe but not a bent one, what does this indicate about light?",
+      "ms": {
+        "draft": 4375,
+        "critique": 6345,
+        "solver": 16144,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following activities best demonstrates that light travels in a straight line?",
+      "ms": {
+        "draft": 4375,
+        "critique": 7607,
+        "solver": 16094,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student uses a laser in a dark room and places a transparent object in the path of the laser beam, what will they observe?",
+      "ms": {
+        "draft": 4375,
+        "critique": 7880,
+        "solver": 15213,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a dark room, a student uses a torch and a mirror to direct light on a wall. If the mirror is tilted slightly, what happens to the spot of light on the wall?",
+      "ms": {
+        "draft": 4721,
+        "critique": 10865,
+        "solver": 1520
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used for the image seen in a mirror?",
+      "ms": {
+        "draft": 7909,
+        "critique": 6876
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person stands 2 meters away from a plane mirror, how far away does their image appear to be from the mirror?",
+      "ms": {
+        "draft": 7909,
+        "critique": 8181
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person stands 3 meters in front of a plane mirror and the mirror is 1 meter tall, how tall is the image of the person?",
+      "ms": {
+        "draft": 7909,
+        "critique": 8525
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A person stands in front of a plane mirror and looks at their image. If the person moves 1 meter closer to the mirror, how much closer does the image appear to be?",
+      "ms": {
+        "draft": 7909,
+        "critique": 8900
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a plane mirror, if a person raises their left hand, what does their image do?",
+      "ms": {
+        "draft": 7909,
+        "critique": 9336,
+        "solver": 1546,
+        "form": 3851
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In Fig. 11.16, who can see the candle flame?",
+      "ms": {
+        "draft": 7130,
+        "critique": 10369,
+        "solver": 2152
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a luminous object?",
+      "ms": {
+        "draft": 7130,
+        "critique": 9455,
+        "solver": 12295
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In Fig. 11.18, which scenario results in a larger shadow?",
+      "ms": {
+        "draft": 7130,
+        "critique": 8225,
+        "solver": 1327
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In Fig. 11.21, if two mirrors are placed at an angle, how many images of an object are formed?",
+      "ms": {
+        "draft": 7130,
+        "critique": 6178,
+        "solver": 5817,
+        "form": 1503
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a pinhole camera, what type of image is formed?",
+      "ms": {
+        "draft": 17735,
+        "critique": 8068,
+        "solver": 1505,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a luminous object?",
+      "ms": {
+        "draft": 17735,
+        "critique": 8981,
+        "solver": 2024,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the reason we do not see the shadow of a bird flying high in the sky?",
+      "ms": {
+        "draft": 17735,
+        "critique": 7296,
+        "solver": 1616
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In which scenario would the shadow of a ball be the largest?",
+      "ms": {
+        "draft": 17735,
+        "critique": 8571,
+        "solver": 2059,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Sahil, Rekha, Patrick, and Qasima are trying to observe the candle flame through the pipe as shown in Fig. 11.16. Who can see the flame?",
+      "ms": {
+        "draft": 17735,
+        "critique": 9131,
+        "solver": 17589,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student places a pen in front of a plane mirror and observes its image. What can be said about the size of the image compared to the pen?",
+      "ms": {
+        "draft": 9169,
+        "critique": 7525,
+        "solver": 1825,
+        "form": 4628
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A person stands at a distance of 1 meter from a plane mirror. How far does the image of the person appear to be from the mirror?",
+      "ms": {
+        "draft": 9169,
+        "critique": 7690,
+        "solver": 1834
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A person sees an image of a car in a plane mirror. The car is 4 meters in front of the mirror. The person is 1 meter behind the mirror. What is the total distance between the person and the car's image?",
+      "ms": {
+        "draft": 9169,
+        "critique": 8226
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is formed when an opaque object blocks the path of light?",
+      "ms": {
+        "draft": 8261,
+        "critique": 7132
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of using a periscope?",
+      "ms": {
+        "draft": 17735,
+        "critique": 9349,
+        "solver": 2163,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student observes that when she moves closer to a plane mirror, the image also appears closer to the mirror. What does this observation indicate about the nature of images formed by plane mirrors?",
+      "ms": {
+        "draft": 9169,
+        "critique": 7261,
+        "solver": 2128,
+        "form": 4209
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a source of natural light?",
+      "ms": {
+        "draft": 4127,
+        "critique": 7315
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In which of the following cases will a shadow NOT be formed?",
+      "ms": {
+        "draft": 8261,
+        "critique": 7959,
+        "solver": 14406
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What do we need to observe a shadow?",
+      "ms": {
+        "draft": 8261,
+        "critique": 6968,
+        "solver": 2063,
+        "form": 3298
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the Moon not considered a source of light?",
+      "ms": {
+        "draft": 4375,
+        "critique": 7498,
+        "solver": 15524,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the reason for the formation of a shadow?",
+      "ms": {
+        "draft": 7130,
+        "critique": 9985,
+        "solver": 1970,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for objects that emit their own light?",
+      "ms": {
+        "draft": 4375,
+        "critique": 6538,
+        "solver": 16326,
+        "form": 0,
+        "translation": 31736
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about shadows?",
+      "ms": {
+        "draft": 4721,
+        "critique": 10247,
+        "solver": 2630,
+        "form": 0,
+        "translation": 50536
+      },
+      "outcome": "kept",
+      "flag": "level 2 but the solver missed it 2 of 5 times"
+    },
+    {
+      "level": 3,
+      "stem": "A student wants to see a shadow of a book on a wall. Which of the following is NOT necessary for forming a shadow?",
+      "ms": {
+        "draft": 4721,
+        "critique": 9605,
+        "solver": 1359,
+        "form": 0,
+        "translation": 39269
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main reason for the formation of a shadow?",
+      "ms": {
+        "draft": 4721,
+        "critique": 7669,
+        "solver": 1770,
+        "form": 0,
+        "translation": 40398
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In Activity 11.6, a student uses a comb with a slit to create a thin beam of light. What happens when this beam is reflected by a mirror?",
+      "ms": {
+        "draft": 4721,
+        "critique": 8988,
+        "solver": 3037,
+        "form": 0,
+        "translation": 58659
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student placed a transparent object in front of a light source and observed a faint shadow. What could be the reason for this observation?",
+      "ms": {
+        "draft": 4721,
+        "critique": 7663,
+        "solver": 2163,
+        "form": 0,
+        "translation": 53640
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the main reason an image cannot be formed on a screen by a plane mirror?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a non-luminous object?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the activity where light passes through a straight pipe but not a bent one, what does this indicate about light?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following activities best demonstrates that light travels in a straight line?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a student uses a laser in a dark room and places a transparent object in the path of the laser beam, what will they observe?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In a dark room, a student uses a torch and a mirror to direct light on a wall. If the mirror is tilted slightly, what happens to the spot of light on the wall?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the term used for the image seen in a mirror?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person stands 2 meters away from a plane mirror, how far away does their image appear to be from the mirror?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a person stands 3 meters in front of a plane mirror and the mirror is 1 meter tall, how tall is the image of the person?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A person stands in front of a plane mirror and looks at their image. If the person moves 1 meter closer to the mirror, how much closer does the image appear to be?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a plane mirror, if a person raises their left hand, what does their image do?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Correct answer…\"); distractor 2's reason is not a one-line misconception (\"Confuses lateral inversion with a direct image, thinking the…\"); distractor 3's reason is not a one-line misconception (\"Does not match the explanation of lateral inversion in the p…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In Fig. 11.16, who can see the candle flame?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a luminous object?",
+      "reason": "after redrafting distractor 3: the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In Fig. 11.18, which scenario results in a larger shadow?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In Fig. 11.21, if two mirrors are placed at an angle, how many images of an object are formed?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is not a property of an image formed by a plane mirror?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What happens when a mirror is placed in the path of a light beam?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which object does not emit its own light?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of these is a source of artificial light?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In a pinhole camera, what type of image is formed?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is 'Inverted' because the image is upside dow…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a luminous object?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is 'Pole Star' because it emits its own light…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What is the reason we do not see the shadow of a bird flying high in the sky?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In which scenario would the shadow of a ball be the largest?",
+      "reason": "figure: figure spec refused: spec.parts: barMagnet has no label \"object\" (it has north, south, fieldLine)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Sahil, Rekha, Patrick, and Qasima are trying to observe the candle flame through the pipe as shown in Fig. 11.16. Who can see the flame?",
+      "reason": "option lengths are unalike (5 to 71 characters); options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A student places a pen in front of a plane mirror and observes its image. What can be said about the size of the image compared to the pen?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct answer, not a distractor (not listed in the distract…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A person stands at a distance of 1 meter from a plane mirror. How far does the image of the person appear to be from the mirror?",
+      "reason": "the solver picked option 1 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A person sees an image of a car in a plane mirror. The car is 4 meters in front of the mirror. The person is 1 meter behind the mirror. What is the total distance between the person and the car's image?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is formed when an opaque object blocks the path of light?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of using a periscope?",
+      "reason": "figure: figure spec refused: spec.parts.2.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'light'"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student observes that when she moves closer to a plane mirror, the image also appears closer to the mirror. What does this observation indicate about the nature of images formed by plane mirrors?",
+      "reason": "the key is far longer than every distractor (84 vs 47 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a source of natural light?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In which of the following cases will a shadow NOT be formed?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What do we need to observe a shadow?",
+      "reason": "figure: figure spec refused: spec.parts: dryCell has no label \"source\" (it has positive, negative, cell)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Why is the Moon not considered a source of light?",
+      "reason": "near-duplicate of served question cmvqjefdp0bdzgp21z90rh9rg (cosine 0.917 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the reason for the formation of a shadow?",
+      "reason": "near-duplicate of batch item \"What is the main reason for the formation of a sha…\" (cosine 0.993 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,313 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T00:15:24.253Z",
+  "finishedAt": "2026-11-01T00:18:23.299Z",
+  "seconds": 179,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी गणित इंग्रजी",
+    "bookCode": "803020004",
+    "document": "balbharati/8/mathematics/803020004.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 3 — Indices and Cube root",
+    "edition": "First Edition 2018",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n11. (d) 3√3cm",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n12. 3\nC)\n√3",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n11. ( c) √3",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n26. Prove that √3 is an irrational number."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 60964,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 9146,
+      "completionTokens": 2646
+    },
+    "critique": {
+      "calls": 19,
+      "ms": 147075,
+      "in": 12,
+      "out": 7,
+      "rejects": 5,
+      "promptTokens": 8234,
+      "completionTokens": 3388
+    },
+    "solver": {
+      "calls": 78,
+      "ms": 67978,
+      "in": 7,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 15673,
+      "completionTokens": 870
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 3,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 2,
+      "ms": 260,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 118765,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6408,
+      "completionTokens": 2750
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 0,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following expressions represents the square root of 25?",
+      "ms": {
+        "draft": 5130,
+        "critique": 7912
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 5^3 = 125, then what is the value of 5^6?",
+      "ms": {
+        "draft": 5130,
+        "critique": 10057
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the cube of the square root of 16?",
+      "ms": {
+        "draft": 5130,
+        "critique": 8952
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 3^4 = 81, then what is the value of 3^(4/2)?",
+      "ms": {
+        "draft": 5130,
+        "critique": 8715
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following represents the cube root of 216?",
+      "ms": {
+        "draft": 5130,
+        "critique": 7266,
+        "solver": 13136,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If (x^2)^(3/2) = 64, what is the value of x?",
+      "ms": {
+        "draft": 5130,
+        "critique": 5299
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 3^5 = 243, then what is 3^(-5)?",
+      "ms": {
+        "draft": 5030,
+        "critique": 6501,
+        "solver": 16374,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 3^x = 81, what is the value of x?",
+      "ms": {
+        "draft": 5030,
+        "critique": 8363,
+        "solver": 16853,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 2^x = 128, what is x?",
+      "ms": {
+        "draft": 5030,
+        "critique": 6171,
+        "solver": 18867
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the index form of the fifth root of 13?",
+      "ms": {
+        "draft": 5030,
+        "critique": 6885,
+        "solver": 16849,
+        "form": 0,
+        "translation": 39260
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following represents the square root of 256 in index form?",
+      "ms": {
+        "draft": 5030,
+        "critique": 7796,
+        "solver": 17371,
+        "form": 0,
+        "translation": 35419
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which expression represents the cube of the square root of 225?",
+      "ms": {
+        "draft": 5030,
+        "critique": 10691,
+        "solver": 17450,
+        "form": 0,
+        "translation": 38706
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following expressions represents the square root of 25?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If 5^3 = 125, then what is the value of 5^6?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the cube of the square root of 16?",
+      "reason": "the critic finds option 3 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If 3^4 = 81, then what is the value of 3^(4/2)?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following represents the cube root of 216?",
+      "reason": "options 2 and 3 are the same (\"6^2\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If (x^2)^(3/2) = 64, what is the value of x?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If 3^5 = 243, then what is 3^(-5)?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If 3^x = 81, what is the value of x?",
+      "reason": "checkExpr \"4\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If 2^x = 128, what is x?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

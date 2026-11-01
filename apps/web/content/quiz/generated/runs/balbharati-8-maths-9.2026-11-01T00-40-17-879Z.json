@@ -1,0 +1,484 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T00:40:17.879Z",
+  "finishedAt": "2026-11-01T00:47:18.800Z",
+  "seconds": 421,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी गणित इंग्रजी",
+    "bookCode": "803020004",
+    "document": "balbharati/8/mathematics/803020004.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 9 — Discount and Commission",
+    "edition": "First Edition 2018",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2026-27]\n10. (B) 8 %\n𝑃 = 𝑅 𝑖 ⟹ 40000 = 3200 𝑖\n⟹ 𝑟 = 0.08 = 8 %",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2022-23]\n25. 𝑉 = 437500, 𝑉 = 350000 𝑓 𝑖 1\n𝑉 𝑓 −𝑉 𝑖\nNominal rate = 𝑉 × 100\n𝑖\n437500 − 350000 1\n= × 100 = 25%",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2023-24]\n8. Option (a) i = ସ଴଴ ௥ .\nP = ோ ௜ ⟹ 24000 = ଷ଴଴×ସ଴଴ ௥ ⟹ 𝑟 = ଵଶ଴ ଶସ = 5% 1 Mark\n௟௢௚௫",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2026-27]\n9. (C) Principal component increases and interest component decreases. 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 145172,
+      "in": 24,
+      "out": 23,
+      "rejects": 1,
+      "promptTokens": 16906,
+      "completionTokens": 7156
+    },
+    "critique": {
+      "calls": 31,
+      "ms": 249319,
+      "in": 23,
+      "out": 18,
+      "rejects": 5,
+      "promptTokens": 15704,
+      "completionTokens": 5752
+    },
+    "solver": {
+      "calls": 147,
+      "ms": 112405,
+      "in": 18,
+      "out": 14,
+      "rejects": 4,
+      "promptTokens": 33647,
+      "completionTokens": 1858
+    },
+    "form": {
+      "calls": 3,
+      "ms": 14133,
+      "in": 14,
+      "out": 9,
+      "rejects": 5,
+      "promptTokens": 829,
+      "completionTokens": 267
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 3,
+      "ms": 722,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 39,
+      "ms": 417693,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 23149,
+      "completionTokens": 10216
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 4,
+    "4": 1,
+    "5": 2,
+    "6": 0
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "A shopkeeper marks the price of an item 25% above the decided price and then offers a 20% discount. What is the net percentage of profit or loss?",
+      "ms": {
+        "draft": 6591,
+        "critique": 7741
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A saree has a marked price of Rs. 1200. A 15% discount is given. What is the selling price of the saree?",
+      "ms": {
+        "draft": 6591,
+        "critique": 7328,
+        "solver": 2166
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A customer bought an item for Rs. 1120 after a 20% discount. What was the marked price of the item?",
+      "ms": {
+        "draft": 6591,
+        "critique": 8828
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A shopkeeper gives 10% discount on a product and still makes a 20% profit. If the marked price of the product is Rs. 1200, what is the cost price of the product?",
+      "ms": {
+        "draft": 6591,
+        "critique": 8170
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for a person who brings the seller and the buyer together and receives commission?",
+      "ms": {
+        "draft": 6071,
+        "critique": 8355
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A farmer sold foodgrains for Rs. 2,50,000 through an agent. The rate of commission was 2%. How much amount did the agent get, and what is the total amount received by the farmer?",
+      "ms": {
+        "draft": 6071,
+        "critique": 7637,
+        "solver": 1481,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for a person who brings a seller and a buyer together and earns commission?",
+      "ms": {
+        "draft": 5419,
+        "critique": 5721,
+        "solver": 1986
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a seller sells an item and pays a commission to an agent, what is the effect on the seller's income?",
+      "ms": {
+        "draft": 5419,
+        "critique": 5271,
+        "solver": 1213,
+        "form": 4053
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A seller sold goods worth Rs. 1,00,000 and received a rebate of 10%. How much did the seller pay after the rebate?",
+      "ms": {
+        "draft": 5419,
+        "critique": 10169,
+        "solver": 3639,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A bookseller sold books worth Rs. 2,00,000 and received a 15% commission. If the commission was paid to the agent and the bookseller also received a rebate of 5%, what is the net amount the bookseller received?",
+      "ms": {
+        "draft": 5419,
+        "critique": 7511,
+        "solver": 17569
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A seller sold goods worth Rs. 1,50,000 and received a commission of 10% and a rebate of 5%. If the commission was paid to the agent, what is the net amount the seller received?",
+      "ms": {
+        "draft": 5419,
+        "critique": 7062,
+        "solver": 20167,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of a 'Monsoon Sale' according to the passage?",
+      "ms": {
+        "draft": 6115,
+        "critique": 9232,
+        "solver": 14648,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A chair has a marked price of Rs. 1200. A 10% discount is given. What is the selling price of the chair?",
+      "ms": {
+        "draft": 6115,
+        "critique": 13323,
+        "solver": 23061
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A shopkeeper marks up the price of an item by 30% and then offers a 20% discount. What is the net percentage gain or loss compared to the original price?",
+      "ms": {
+        "draft": 6115,
+        "critique": 6277
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the meaning of 'Marked Price' of an item?",
+      "ms": {
+        "draft": 6591,
+        "critique": 5986,
+        "solver": 11647,
+        "form": 0,
+        "translation": 36308
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a broker receives commission from both the buyer and the seller, what is this called?",
+      "ms": {
+        "draft": 6071,
+        "critique": 7266,
+        "solver": 1806,
+        "form": 5003,
+        "translation": 47465
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the marked price of a fan is Rs. 1500 and the shopkeeper gives a 12% discount, what is the selling price of the fan?",
+      "ms": {
+        "draft": 6591,
+        "critique": 9418,
+        "solver": 16502,
+        "form": 0,
+        "translation": 36439
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A book has a marked price of Rs. 360. It is sold for Rs. 306. What is the percentage discount given?",
+      "ms": {
+        "draft": 6115,
+        "critique": 8088,
+        "solver": 26921,
+        "form": 0,
+        "translation": 35622
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a seller sells an item for Rs. 250,000 and the broker receives 2% brokerage, how much total brokerage does the broker get if they receive it from both the buyer and the seller?",
+      "ms": {
+        "draft": 6071,
+        "critique": 10748,
+        "solver": 1647,
+        "form": 6483,
+        "translation": 55617
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Rajesh sold a house for Rs. 5,00,000 through a broker who charged 2% commission. How much total commission did the broker receive?",
+      "ms": {
+        "draft": 5419,
+        "critique": 6897,
+        "solver": 2319,
+        "form": 1,
+        "translation": 37146
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If Sukhdeo sold 10 quintals of wheat at Rs. 4050 per quintal and the commission was 1%, how much did he receive after paying the commission?",
+      "ms": {
+        "draft": 6071,
+        "critique": 8099,
+        "solver": 1925,
+        "form": 0,
+        "translation": 49954
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A saree is sold for Rs. 1120 after a 20% discount. What is the marked price of the saree?",
+      "ms": {
+        "draft": 6115,
+        "critique": 10077,
+        "solver": 19465,
+        "form": 0,
+        "translation": 33736
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A broker receives 3% commission on the sale of a house worth Rs. 7,50,000. If the broker receives the commission from both the buyer and the seller, what is the total commission received by the broker?",
+      "ms": {
+        "draft": 6071,
+        "critique": 9371,
+        "solver": 801,
+        "form": 0,
+        "translation": 81543
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A shopkeeper marks the price of an item 25% above the decided price and then offers a 20% discount. What is the net percentage of profit or loss?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A saree has a marked price of Rs. 1200. A 15% discount is given. What is the selling price of the saree?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A customer bought an item for Rs. 1120 after a 20% discount. What was the marked price of the item?",
+      "reason": "the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A shopkeeper gives 10% discount on a product and still makes a 20% profit. If the marked price of the product is Rs. 1200, what is the cost price of the product?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for a person who brings the seller and the buyer together and receives commission?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A farmer sold foodgrains for Rs. 2,50,000 through an agent. The rate of commission was 2%. How much amount did the agent get, and what is the total amount received by the farmer?",
+      "reason": "checkExpr \"250000*0.02, 250000 - 250000*0.02\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A fan has a marked price of Rs. 1500. A 12% discount is given. What is the total discount and the selling price of the fan?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the term used for a person who brings a seller and a buyer together and earns commission?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If a seller sells an item and pays a commission to an agent, what is the effect on the seller's income?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"refers to a general condition not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A seller sold goods worth Rs. 1,00,000 and received a rebate of 10%. How much did the seller pay after the rebate?",
+      "reason": "option 3 repeats the stem's wording (\"Rs. 1,00,000\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A bookseller sold books worth Rs. 2,00,000 and received a 15% commission. If the commission was paid to the agent and the bookseller also received a rebate of 5%, what is the net amount the bookseller received?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A seller sold goods worth Rs. 1,50,000 and received a commission of 10% and a rebate of 5%. If the commission was paid to the agent, what is the net amount the seller received?",
+      "reason": "options 1 and 3 are the same (\"Rs. 1,35,000\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the purpose of a 'Monsoon Sale' according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A chair has a marked price of Rs. 1200. A 10% discount is given. What is the selling price of the chair?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A shopkeeper marks up the price of an item by 30% and then offers a 20% discount. What is the net percentage gain or loss compared to the original price?",
+      "reason": "the solution's working is not sound"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,481 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T00:49:50.127Z",
+  "finishedAt": "2026-11-01T00:56:15.212Z",
+  "seconds": 385,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी गणित इंग्रजी",
+    "bookCode": "803020004",
+    "document": "balbharati/8/mathematics/803020004.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 11 — Statistics",
+    "edition": "First Edition 2018",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2023-24]\n3. Which of the following is a statistic\n(a) 𝜇 (b) 𝑥̅ (c) 𝜎 ଶ (d) None",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2023-24]\n3. Option (b) 𝑥̅ 𝑖𝑠 𝑎 statistic",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2022-23]\n18. In a school, a random sample of 145 students is taken to check whether a student’s average calory\nintake is 1500 or not. The collected data of average calories intake of sample students is presented\nin a frequency distribution, which is called a:\na) Statistics b) Sampling c) Parameter d) Population\ndistribution sampling\nFor questions 19 and 20, two statements are given – one labelled Assertion(A) and the other labelled\nReason (R). Select the correct answer to these questions from the codes (i), (ii), (iii) and (iv) as given\nbelow:\n(i) Both A and R are true and R is the correct explanation of the assertion\n(ii) Both A and R are true but R is not the correct explanation of the assertion\n(i",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n31. The length of 40 leaves of a plant are measured correct to nearest millimetre, and the data 3\nobtained is represented in the following table.\nLength [in mm]\n118 – 126\n127 – 135\nNumber of leaves\n172 – 180\nFind the mean length of the leaves."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 104981,
+      "in": 24,
+      "out": 23,
+      "rejects": 1,
+      "promptTokens": 16324,
+      "completionTokens": 5129
+    },
+    "critique": {
+      "calls": 26,
+      "ms": 186406,
+      "in": 23,
+      "out": 19,
+      "rejects": 4,
+      "promptTokens": 11705,
+      "completionTokens": 4429
+    },
+    "solver": {
+      "calls": 115,
+      "ms": 60400,
+      "in": 19,
+      "out": 15,
+      "rejects": 4,
+      "promptTokens": 17873,
+      "completionTokens": 1112
+    },
+    "form": {
+      "calls": 7,
+      "ms": 22239,
+      "in": 15,
+      "out": 12,
+      "rejects": 3,
+      "promptTokens": 1733,
+      "completionTokens": 553
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 4,
+      "ms": 908,
+      "in": 12,
+      "out": 10,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 41,
+      "ms": 501247,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 24229,
+      "completionTokens": 12237
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 1,
+    "4": 1,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the process of collecting, analysing, and interpreting data to draw conclusions called?",
+      "ms": {
+        "draft": 5608,
+        "critique": 5737
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the average of a set of numbers in statistics?",
+      "ms": {
+        "draft": 5608,
+        "critique": 6848
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a frequency table, what does the symbol 'N' represent?",
+      "ms": {
+        "draft": 5608,
+        "critique": 6239,
+        "solver": 1611,
+        "form": 3876
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A frequency table for the number of saplings planted by 30 students is given. If the total number of saplings planted is 150, what is the mean number of saplings planted by each student?",
+      "ms": {
+        "draft": 5608,
+        "critique": 9404
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is the correct method to calculate the mean of a set of data?",
+      "ms": {
+        "draft": 5608,
+        "critique": 8814,
+        "solver": 2279
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a bar in a percentage bar graph represents 40% of the total, what percentage does the remaining part of the bar represent?",
+      "ms": {
+        "draft": 3780,
+        "critique": 8373,
+        "solver": 2129
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a frequency table, what does the symbol 'Sf x' represent?",
+      "ms": {
+        "draft": 5608,
+        "critique": 8630,
+        "solver": 14676,
+        "form": 4987
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the difference between a percentage bar graph and a subdivided bar graph?",
+      "ms": {
+        "draft": 4339,
+        "critique": 8206,
+        "solver": 2039,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the sum of all scores is 259 and the total number of scores is 37, what is the mean?",
+      "ms": {
+        "draft": 3770,
+        "critique": 7378
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the frequency table provided, what is the mean number of saplings planted by each student?",
+      "ms": {
+        "draft": 3770,
+        "critique": 7764,
+        "solver": 1437
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the production of soyabean per acre in quintal obtained by farmers in Rajapur is given as a frequency distribution, what is the best way to represent this data?",
+      "ms": {
+        "draft": 3770,
+        "critique": 5335,
+        "solver": 658
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of a percentage bar graph?",
+      "ms": {
+        "draft": 4339,
+        "critique": 7647,
+        "solver": 2246,
+        "form": 3216
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a percentage bar graph, if the total number of trees in a town is 100 and 70 trees survived, what is the percentage of trees that did not survive?",
+      "ms": {
+        "draft": 4339,
+        "critique": 8028,
+        "solver": 13695,
+        "form": 4027
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of bar graph that shows percentages of different categories within a single bar?",
+      "ms": {
+        "draft": 4339,
+        "critique": 8726,
+        "solver": 2157,
+        "form": 2663,
+        "translation": 48437
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used for the average of numerical data in statistics?",
+      "ms": {
+        "draft": 3770,
+        "critique": 7780,
+        "solver": 2090,
+        "form": 2865,
+        "translation": 40053
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of a percentage bar graph?",
+      "ms": {
+        "draft": 3780,
+        "critique": 8546,
+        "solver": 1593,
+        "form": 0,
+        "translation": 54505
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the difference between a percentage bar graph and a subdivided bar graph?",
+      "ms": {
+        "draft": 3780,
+        "critique": 7257,
+        "solver": 8546,
+        "form": 0,
+        "translation": 67884
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a bar in a percentage bar graph represents 70% of survived trees, what percentage of trees did not survive?",
+      "ms": {
+        "draft": 4339,
+        "critique": 7460,
+        "solver": 1236,
+        "form": 0,
+        "translation": 35895
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a percentage bar graph, what does the height of each bar represent?",
+      "ms": {
+        "draft": 3780,
+        "critique": 6250,
+        "solver": 1465,
+        "form": 0,
+        "translation": 51036
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a school, a random sample of 145 students is taken to check whether a student’s average calory intake is 1500 or not. The collected data of average calories intake of sample students is presented in a frequency distribution. What is this frequency distribution called?",
+      "ms": {
+        "draft": 3770,
+        "critique": 7450,
+        "solver": 1787,
+        "form": 2198,
+        "translation": 38709
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A percentage bar graph is drawn for three towns, and the bar for Arvi shows 70% of trees survived. If the total number of trees in Arvi is 1000, how many trees survived?",
+      "ms": {
+        "draft": 3780,
+        "critique": 5968,
+        "solver": 2892,
+        "form": 1,
+        "translation": 51416
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a percentage bar graph, if the bar for a category is divided into two parts, one representing 30% and the other 70%, what does this indicate about the data?",
+      "ms": {
+        "draft": 3780,
+        "critique": 8253,
+        "solver": 1352,
+        "form": 0,
+        "translation": 55647
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a percentage bar graph is used to show the percentage of students in different streams, what is the significance of the total height of the bar?",
+      "ms": {
+        "draft": 4339,
+        "critique": 7615,
+        "solver": 1980,
+        "form": 0,
+        "translation": 52875
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the process of collecting, analysing, and interpreting data to draw conclusions called?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used to describe the average of a set of numbers in statistics?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In a frequency table, what does the symbol 'N' represent?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Confuses the total number of data points with the sum of all…\"); distractor 2's reason is not a one-line misconception (\"Confuses the total number of data points with the frequency …\"); distractor 3's reason is not a one-line misconception (\"Confuses the total number of data points with the average of…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A frequency table for the number of saplings planted by 30 students is given. If the total number of saplings planted is 150, what is the mean number of saplings planted by each student?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is the correct method to calculate the mean of a set of data?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a bar in a percentage bar graph represents 40% of the total, what percentage does the remaining part of the bar represent?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a frequency table, what does the symbol 'Sf x' represent?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 0's reason is not a one-line misconception (\"Confuses the sum of all scores with the sum of the product o…\"); distractor 3's reason is not a one-line misconception (\"Confuses the sum of the product of frequencies and scores wi…\")"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the term used for the average of numerical data in statistics?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the difference between a percentage bar graph and a subdivided bar graph?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the sum of all scores is 259 and the total number of scores is 37, what is the mean?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the frequency table provided, what is the mean number of saplings planted by each student?",
+      "reason": "the solver picked option 2 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the production of soyabean per acre in quintal obtained by farmers in Rajapur is given as a frequency distribution, what is the best way to represent this data?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the main purpose of a percentage bar graph?",
+      "reason": "near-duplicate of batch item \"What is the main purpose of a percentage bar graph…\" (cosine 0.969 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "In a percentage bar graph, if the total number of trees in a town is 100 and 70 trees survived, what is the percentage of trees that did not survive?",
+      "reason": "near-duplicate of batch item \"If a bar in a percentage bar graph represents 70% …\" (cosine 0.958 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

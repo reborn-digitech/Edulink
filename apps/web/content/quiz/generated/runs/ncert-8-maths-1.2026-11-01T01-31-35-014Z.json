@@ -1,0 +1,761 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T01:31:35.014Z",
+  "finishedAt": "2026-11-01T01:40:55.589Z",
+  "seconds": 561,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash Part-I",
+    "bookCode": "hegp1",
+    "document": "ncert/8/mathematics/hegp101.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — A Square and a Cube",
+    "edition": "Reprint 2026-27",
+    "chunks": 15,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2026-27]\n9. (D) 5 Total outcomes = 96 1\n48 Perfect square numbers – 4, 9, 16, 25, 36, 49, 64, 81\nperfect cubes are 8, 27, 64,\ncommon number is 64\nNumber of favourable outcomes = 10\n10 5\nP(either a perfect square or a perfect cube) = 96 = 48",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2026-27]\n11. (B) 160 cm 2 Side of cube = 4 cm 1\nDimensions of resulting cuboid: length = 8 cm, breadth = 4 cm, height\n= 4 cm.\nTotal surface area = 2 (8 × 4 + 4 × 4 + 8 × 4) = 160 cm 2",
+      "[PRMO 2017 — question paper]\n12. In a class, the total numbers of boys and girls are in the ratio 4 : 3. On one day it\nwas found that 8 boys and 14 girls were absent from the class, and that the number of\nboys was the square of the number of girls. What is the total number of students in the\nclass?",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n8. B) 8𝑥 - 20 2"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 185270,
+      "in": 45,
+      "out": 36,
+      "rejects": 9,
+      "promptTokens": 46997,
+      "completionTokens": 8034
+    },
+    "critique": {
+      "calls": 51,
+      "ms": 401201,
+      "in": 36,
+      "out": 33,
+      "rejects": 3,
+      "promptTokens": 22100,
+      "completionTokens": 9093
+    },
+    "solver": {
+      "calls": 269,
+      "ms": 174288,
+      "in": 33,
+      "out": 20,
+      "rejects": 13,
+      "promptTokens": 53386,
+      "completionTokens": 2957
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 20,
+      "out": 16,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 48,
+      "ms": 10943,
+      "in": 16,
+      "out": 9,
+      "rejects": 7,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 254866,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 17175,
+      "completionTokens": 6626
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 2,
+    "2": 0,
+    "3": 2,
+    "4": 3,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "Which of the following numbers is not a perfect square?",
+      "ms": {
+        "draft": 3225,
+        "critique": 8280,
+        "solver": 18142
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the square of 12?",
+      "ms": {
+        "draft": 3225,
+        "critique": 12961,
+        "solver": 12871
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What can you say about the parity of a number and its square?",
+      "ms": {
+        "draft": 4532,
+        "critique": 6794,
+        "solver": 1832,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following numbers have the digit 6 in the units place?",
+      "ms": {
+        "draft": 4532,
+        "critique": 8584,
+        "solver": 13720,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A number is a perfect square. If the number is 36, what is the square root of 36?",
+      "ms": {
+        "draft": 4532,
+        "critique": 8722,
+        "solver": 1717
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a perfect square?",
+      "ms": {
+        "draft": 3379,
+        "critique": 8796,
+        "solver": 20414
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a perfect cube?",
+      "ms": {
+        "draft": 3379,
+        "critique": 10200,
+        "solver": 18208
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the cube of 12?",
+      "ms": {
+        "draft": 4513,
+        "critique": 9832
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following numbers is a perfect cube?",
+      "ms": {
+        "draft": 4513,
+        "critique": 9271,
+        "solver": 12839
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the smallest number you must multiply 1323 by to make it a perfect cube?",
+      "ms": {
+        "draft": 4513,
+        "critique": 9221
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 1331 is a perfect cube, what is its cube root?",
+      "ms": {
+        "draft": 4513,
+        "critique": 8256,
+        "solver": 12199
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the square root of 441?",
+      "ms": {
+        "draft": 4915,
+        "critique": 6885,
+        "solver": 2239,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the smallest number that must be multiplied by 9408 to make it a perfect square?",
+      "ms": {
+        "draft": 4915,
+        "critique": 6819,
+        "solver": 1373
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the number of boys in a class is the square of the number of girls and there are 8 boys and 14 girls absent, what is the total number of students in the class?",
+      "ms": {
+        "draft": 4915,
+        "critique": 8407
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the cube root of 32768?",
+      "ms": {
+        "draft": 4915,
+        "critique": 5369,
+        "solver": 8226
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the smallest number by which 9408 must be multiplied to make it a perfect square?",
+      "ms": {
+        "draft": 3858,
+        "critique": 10211,
+        "solver": 1426
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many numbers lie between the squares of 16 and 17?",
+      "ms": {
+        "draft": 3858,
+        "critique": 11153,
+        "solver": 2211
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the square root of 441?",
+      "ms": {
+        "draft": 3858,
+        "critique": 6189,
+        "solver": 17975
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following numbers is a perfect cube?",
+      "ms": {
+        "draft": 3723,
+        "critique": 7686,
+        "solver": 13713,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Akhil has a square piece of cloth of area 125 cm². What is the maximum size of a square handkerchief with integer side length that can be cut out from this cloth?",
+      "ms": {
+        "draft": 3873,
+        "critique": 8658,
+        "solver": 19796
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following numbers is a perfect square?",
+      "ms": {
+        "draft": 3225,
+        "critique": 7718,
+        "solver": 2008,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a number contains 3 zeros at the end, how many zeros will its square have at the end?",
+      "ms": {
+        "draft": 4532,
+        "critique": 7148,
+        "solver": 2513,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the smallest square number that is divisible by 4, 9, and 10?",
+      "ms": {
+        "draft": 3858,
+        "critique": 5812,
+        "solver": 1129,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following numbers is a perfect square?",
+      "ms": {
+        "draft": 3873,
+        "critique": 8676,
+        "solver": 1724,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number ends with 3 zeros, how many zeros will its square end with?",
+      "ms": {
+        "draft": 26318,
+        "critique": 9904,
+        "solver": 2368,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the sum of the first n odd numbers is n², then what is the value of 36², given that 35² = 1225?",
+      "ms": {
+        "draft": 26318,
+        "critique": 9434,
+        "solver": 17037,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following numbers is a perfect square?",
+      "ms": {
+        "draft": 5830,
+        "critique": 7001,
+        "solver": 8993,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the cube root of 64?",
+      "ms": {
+        "draft": 3858,
+        "critique": 5812,
+        "solver": 2070,
+        "form": 0,
+        "translation": 28664
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the square of 15?",
+      "ms": {
+        "draft": 3379,
+        "critique": 12872,
+        "solver": 1620,
+        "form": 0,
+        "translation": 21243
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the square of 7?",
+      "ms": {
+        "draft": 3225,
+        "critique": 7156,
+        "solver": 1646,
+        "form": 0,
+        "translation": 18581
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the cube root of 27000?",
+      "ms": {
+        "draft": 3858,
+        "critique": 7074,
+        "solver": 18521,
+        "form": 0,
+        "translation": 27956
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a locker is toggled an odd number of times, what will be its final state?",
+      "ms": {
+        "draft": 3225,
+        "critique": 10169,
+        "solver": 2278,
+        "form": 0,
+        "translation": 35335
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following numbers has 6 in the units place when squared?",
+      "ms": {
+        "draft": 26318,
+        "critique": 10040,
+        "solver": 19766,
+        "form": 0,
+        "translation": 25642
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the approximate square root of 250?",
+      "ms": {
+        "draft": 3873,
+        "critique": 7864,
+        "solver": 2030,
+        "form": 0,
+        "translation": 24829
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following numbers is both a perfect square and a perfect cube?",
+      "ms": {
+        "draft": 5830,
+        "critique": 6780,
+        "solver": 1834,
+        "form": 0,
+        "translation": 30681
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Using the pattern of odd numbers, find the value of 36^2, given that 35^2 = 1225.",
+      "ms": {
+        "draft": 4532,
+        "critique": 9352,
+        "solver": 1668,
+        "form": 0,
+        "translation": 37062
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following numbers has an odd number of factors?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the cube of 4?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following numbers is a perfect square and a perfect cube?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following numbers is not a perfect square?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the square of 12?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What can you say about the parity of a number and its square?",
+      "reason": "options 0 and 1 say the same thing (\"Odd numbers have odd squares and even numbers have even squares\" / \"Odd numbers have even squares and even numbers have odd squares\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following numbers have the digit 6 in the units place?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A number is a perfect square. If the number is 36, what is the square root of 36?",
+      "reason": "the solver picked option 1 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a perfect square?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a perfect cube?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the cube of 12?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following numbers is a perfect cube?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What is the smallest number you must multiply 1323 by to make it a perfect cube?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If 1331 is a perfect cube, what is its cube root?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the square root of 441?",
+      "reason": "checkExpr \"21\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the smallest number that must be multiplied by 9408 to make it a perfect square?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the number of boys in a class is the square of the number of girls and there are 8 boys and 14 girls absent, what is the total number of students in the class?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What is the cube root of 32768?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the cube root of 216?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following numbers is a perfect square?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the square root of 81?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following numbers is not a perfect cube?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following numbers is a perfect cube?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "Which of the following numbers has an odd number of factors?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the smallest number by which 9408 must be multiplied to make it a perfect square?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "How many numbers lie between the squares of 16 and 17?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the square root of 441?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following numbers is a perfect cube?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Akhil has a square piece of cloth of area 125 cm². What is the maximum size of a square handkerchief with integer side length that can be cut out from this cloth?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Which of the following numbers is a perfect square?",
+      "reason": "near-duplicate of served question cmvg1rl5y01qtgpfhsc47m6zs (cosine 0.924 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "If a number contains 3 zeros at the end, how many zeros will its square have at the end?",
+      "reason": "near-duplicate of served question cmvevus4y01x4god8ll3cqljv (cosine 0.985 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the smallest square number that is divisible by 4, 9, and 10?",
+      "reason": "near-duplicate of served question cmvevus4u01wmgod885z7a8w2 (cosine 0.941 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following numbers is a perfect square?",
+      "reason": "near-duplicate of served question cmvg1rl5y01qtgpfhsc47m6zs (cosine 0.917 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If a number ends with 3 zeros, how many zeros will its square end with?",
+      "reason": "near-duplicate of served question cmvevus4y01x4god8ll3cqljv (cosine 0.967 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If the sum of the first n odd numbers is n², then what is the value of 36², given that 35² = 1225?",
+      "reason": "near-duplicate of served question cmvqk840z0bflgp21pbkmm0u8 (cosine 0.910 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Which of the following numbers is a perfect square?",
+      "reason": "near-duplicate of served question cmvg1rl5y01qtgpfhsc47m6zs (cosine 0.928 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

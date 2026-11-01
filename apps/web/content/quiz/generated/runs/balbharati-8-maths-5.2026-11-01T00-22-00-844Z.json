@@ -1,0 +1,227 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T00:22:00.844Z",
+  "finishedAt": "2026-11-01T00:25:39.944Z",
+  "seconds": 219,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी गणित इंग्रजी",
+    "bookCode": "803020004",
+    "document": "balbharati/8/mathematics/803020004.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 5 — Expansion formulae",
+    "edition": "First Edition 2018",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n8. B) 8𝑥 - 20 2",
+      "[CBSE Class XII Mathematics, sample question paper, 2023-24]\n31. If  a bx e   x then prove that x 2  \na  2\n .\ndx  a  bx ",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n28. 5\nFrom given polynomial 𝛼 + 𝛽 = 6\n𝛼 + 𝛽 2 2 = ( ) - 2 x 5 6 2 1 6 = 13 36\n2 2 1 2 1\nAnd 𝛼 𝛽 = ( ) = 6 36\n𝑥 - 2 13 36 𝑥 + 36 1\n½\n½\n, 𝛼𝛽 = 1 6 1\n½\n½\n Required polynomial is 36𝑥 -13 𝑥+1",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2023-24]\n27. P(x) = 5x + 5x + 1 2\nି ௕ ି ହ\nα+β = ௔ = ହ = -1\n௖ ଵ\nαβ = ௔ = ହ\n𝛼 + 𝛽 ଶ ଶ = (𝛼 + 𝛽) - 2𝛼𝛽 ଶ\n2 ଵ\n= (-1) – 2 ቀ ቁ ହ\nଶ ଷ\n= 1 - ହ = ହ\nିଵ ିଵ ଵ ଵ\n𝛼 + 𝛽 = ఈ + ఉ\n( 𝛼+𝛽) (ି ଵ)\n= ఈఉ = భ = -5\nఱ\n½\n½\n½\n½\nଵଶ = 9 ½\n½\n½\n½\n½\n½\n½"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 1,
+      "ms": 32574,
+      "in": 6,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 5749,
+      "completionTokens": 1218
+    },
+    "critique": {
+      "calls": 10,
+      "ms": 98133,
+      "in": 6,
+      "out": 5,
+      "rejects": 1,
+      "promptTokens": 4613,
+      "completionTokens": 1802
+    },
+    "solver": {
+      "calls": 43,
+      "ms": 48301,
+      "in": 5,
+      "out": 2,
+      "rejects": 3,
+      "promptTokens": 17064,
+      "completionTokens": 678
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 1,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 2,
+      "ms": 340,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 15553,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 1978,
+      "completionTokens": 857
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct expansion of (a + b)^2?",
+      "ms": {
+        "draft": 5429,
+        "critique": 10575
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the expansion of (x + a)(x + b)?",
+      "ms": {
+        "draft": 5429,
+        "critique": 11809,
+        "solver": 19525,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the simplified form of (5m + 3n)(5m - 3n)?",
+      "ms": {
+        "draft": 5429,
+        "critique": 11326,
+        "solver": 19524
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If (x + 1)^3 = x^3 + 3x^2 + 3x + 1, what is the value of x^3 + 3x^2 + 3x + 1 when x = 2?",
+      "ms": {
+        "draft": 5429,
+        "critique": 10016,
+        "solver": 27706
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If (a + b)^3 = a^3 + 3a^2b + 3ab^2 + b^3, what is the value of (2 + 3)^3?",
+      "ms": {
+        "draft": 5429,
+        "critique": 8793,
+        "solver": 13965
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the value of (x + 2y)^2?",
+      "ms": {
+        "draft": 5429,
+        "critique": 9884,
+        "solver": 1965,
+        "form": 1,
+        "translation": 11482
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is the correct expansion of (a + b)^2?",
+      "reason": "the critic finds option 3 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the expansion of (x + a)(x + b)?",
+      "reason": "options 1 and 2 say the same thing (\"x + (a + b)x + ab\" / \"x^2 + (a + b) + ab\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the simplified form of (5m + 3n)(5m - 3n)?",
+      "reason": "after redrafting distractor 0: the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If (x + 1)^3 = x^3 + 3x^2 + 3x + 1, what is the value of x^3 + 3x^2 + 3x + 1 when x = 2?",
+      "reason": "after redrafting distractors 0, 2, 3: option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If (a + b)^3 = a^3 + 3a^2b + 3ab^2 + b^3, what is the value of (2 + 3)^3?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"Which expansion formula is used to simplify (x + a)(x + b)?\","
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

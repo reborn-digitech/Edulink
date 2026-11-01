@@ -1,0 +1,225 @@
+{
+  "subject": "MATHS",
+  "classLevel": 8,
+  "chapter": "Chapter 10 — Division of Polynomials",
+  "name": "Division of Polynomials",
+  "slug": "balbharati-maths-8-division-of-polynomials",
+  "summary": "This chapter teaches how to divide one polynomial by another using long division method.",
+  "position": 10,
+  "source": "generated against Balbharati Mathematics, Class 8, chapter 10 (First Edition 2018)",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {
+    "hi": {
+      "name": "बहुपदों का विभाजन",
+      "summary": "इस अध्याय में लंबी विभाजन विधि का उपयोग करके एक बहुपद को दूसरे बहुपद से विभाजित करना सीखा जाता है।"
+    },
+    "mr": {
+      "name": "बहुपदांचे भागाकार",
+      "summary": "हा अध्याय लांबी भागाकार पद्धती वापरून एक बहुपदाला दुसऱ्या बहुपदाने भागण्याचे शिकवतो."
+    }
+  },
+  "board": "BALBHARATI",
+  "book": "८ वी गणित इंग्रजी",
+  "edition": "First Edition 2018",
+  "generatedAt": "2026-11-01T00:47:20.746Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": true,
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a polynomial in one variable?",
+      "choices": [
+        "3y + 2y + y + 5",
+        "x + 2x + 3y",
+        "3x + 4y + 5z",
+        "2a + 3b + 4c"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct option, 3y + 2y + y + 5, is a polynomial in one variable because it contains only the variable y with whole number exponents. The other options include more than one variable, which disqualifies them from being polynomials in one variable.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक चर में बहुपद है?",
+          "choices": [
+            "3y + 2y + y + 5",
+            "x + 2x + 3y",
+            "3x + 4y + 5z",
+            "2a + 3b + 4c"
+          ],
+          "solution": "सही विकल्प, 3y + 2y + y + 5, एक चर में बहुपद है क्योंकि इसमें केवल चर y है जिसके पूर्ण संख्या घात हैं। अन्य विकल्प एक से अधिक चर रखते हैं, जो इन्हें एक चर में बहुपद होने से अयोग्य बना देता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक चलातील बहुपद आहे?",
+          "choices": [
+            "3y + 2y + y + 5",
+            "x + 2x + 3y",
+            "3x + 4y + 5z",
+            "2a + 3b + 4c"
+          ],
+          "solution": "सही विकल्प, 3y + 2y + y + 5, एक चलातील बहुपद आहे कारण त्यामध्ये केवळ चल y आहे आणि त्याचे घात पूर्ण संख्या आहेत. इतर विकल्पांमध्ये एकापेक्षा जास्त चल असल्यामुळे ते एक चलातील बहुपद नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses polynomials with expressions containing multiple variables.",
+        "Includes multiple variables, which is not allowed in a polynomial in one variable.",
+        "Includes multiple variables, which is not allowed in a polynomial in one variable."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 0, as it contains only one variable (y) with whole number exponents. The other options contain multiple variables, which disqualifies them as polynomials in one variable. The author's reasoning aligns with the mathematical definition of a polynomial in one variable.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 45,
+          "pageStart": 71,
+          "pageEnd": 73,
+          "headingPath": [
+            "10. Division of Polynomials",
+            "Part 2"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 46,
+          "pageStart": 73,
+          "pageEnd": 75,
+          "headingPath": [
+            "10. Division of Polynomials",
+            "Part 2"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 47,
+          "pageStart": 75,
+          "pageEnd": 76,
+          "headingPath": [
+            "10. Division of Polynomials",
+            "Part 2"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:47:20.746Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of a polynomial?",
+      "choices": [
+        "x + 1/x",
+        "3x^2 + 4x + 5",
+        "x^2 + 3/x",
+        "2x - 1/x"
+      ],
+      "answerIndex": 1,
+      "solution": "A polynomial is an expression where each term has a variable raised to a non-negative integer power. 3x^2 + 4x + 5 meets this criterion because all exponents are whole numbers. The other options include terms with negative or fractional exponents, which are not allowed in polynomials.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक बहुपद का उदाहरण है?",
+          "choices": [
+            "x + 1/x",
+            "3x^2 + 4x + 5",
+            "x^2 + 3/x",
+            "2x - 1/x"
+          ],
+          "solution": "एक बहुपद एक अभिव्यक्ति होती है जिसमें प्रत्येक पद में चर की घात अऋणात्मक पूर्णांक होती है। 3x^2 + 4x + 5 इस मानदंड को पूरा करता है क्योंकि सभी घातें पूर्णांक हैं। अन्य विकल्पों में ऋणात्मक या भिन्नात्मक घात वाले पद शामिल हैं, जो बहुपद में अनुमेय नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate mathematical terminology used in a Hindi-medium context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते बहुपदीचे उदाहरण आहे?",
+          "choices": [
+            "x + 1/x",
+            "3x^2 + 4x + 5",
+            "x^2 + 3/x",
+            "2x - 1/x"
+          ],
+          "solution": "बहुपदी हे असे व्यंजक आहे ज्यात प्रत्येक पदात चलाची घात अपूर्णांक किंवा ऋणात्मक नसते. 3x^2 + 4x + 5 हे शर्तील बरोबर आहे कारण सर्व घात पूर्ण संख्या आहेत. इतर विकल्पांमध्ये ऋणात्मक किंवा अपूर्णांक घात असलेले पद असतात, जे बहुपदीत अनुमत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Includes a term with a negative exponent, which is not a whole number.",
+        null,
+        "Student confuses polynomials with expressions that have variables in the denominator",
+        "Includes a term with a fractional exponent, which is not a whole number."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as 3x^2 + 4x + 5 contains only whole number exponents. The other options contain terms with negative or fractional exponents, which are not allowed in polynomials. The author's reasoning aligns with common misconceptions students might have.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 45,
+          "pageStart": 71,
+          "pageEnd": 73,
+          "headingPath": [
+            "10. Division of Polynomials",
+            "Part 2"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 46,
+          "pageStart": 73,
+          "pageEnd": 75,
+          "headingPath": [
+            "10. Division of Polynomials",
+            "Part 2"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 47,
+          "pageStart": 75,
+          "pageEnd": 76,
+          "headingPath": [
+            "10. Division of Polynomials",
+            "Part 2"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-01T00:47:20.746Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}

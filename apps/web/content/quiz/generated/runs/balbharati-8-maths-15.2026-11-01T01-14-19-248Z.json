@@ -1,0 +1,416 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T01:14:19.248Z",
+  "finishedAt": "2026-11-01T01:21:25.654Z",
+  "seconds": 426,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी गणित इंग्रजी",
+    "bookCode": "803020004",
+    "document": "balbharati/8/mathematics/803020004.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 15 — Area",
+    "edition": "First Edition 2018",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2024-25]\n1. (C) 4\n 3 \nThe required area is given by 4 x dx =  x 2  = 2 ( 8 − 1 ) = 14 squnits.\n 1 ( )  3  3 3\n \n 2  1",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n10. (c) 8cm",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n12. (d) 9π cm 2",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2025-26]\n7. D) 8[ - గ √ଷ ] cm 2 1\n଺ ସ\nRequired Area=8 × area of one segment (with r = 1cm and 𝜃 = 60˚)\n଺଴° 2 √ଷ 2\n=8x ( ଷ଺଴° x 𝜋 x 1 − ସ x 1 )\n= 8[ − గ ଺ √ଷ ସ ] cm 2\nFor Visually Impaired candidates:\n(D) 9𝜋cm 2\narea of circle=𝜋(3 ) ଶ\n=9 𝜋 cm 2"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 93832,
+      "in": 18,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 14454,
+      "completionTokens": 4240
+    },
+    "critique": {
+      "calls": 24,
+      "ms": 188112,
+      "in": 18,
+      "out": 15,
+      "rejects": 3,
+      "promptTokens": 11112,
+      "completionTokens": 4256
+    },
+    "solver": {
+      "calls": 112,
+      "ms": 75236,
+      "in": 15,
+      "out": 9,
+      "rejects": 6,
+      "promptTokens": 25340,
+      "completionTokens": 1235
+    },
+    "form": {
+      "calls": 2,
+      "ms": 8630,
+      "in": 9,
+      "out": 5,
+      "rejects": 4,
+      "promptTokens": 515,
+      "completionTokens": 144
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 6,
+      "ms": 1263,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 23,
+      "ms": 250487,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 13724,
+      "completionTokens": 5946
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 0,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the formula for the area of a trapezium?",
+      "ms": {
+        "draft": 5410,
+        "critique": 9174,
+        "solver": 2506,
+        "form": 6389
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A parallelogram has a base of 15 cm and a height of 10 cm. What is its area?",
+      "ms": {
+        "draft": 5410,
+        "critique": 10908,
+        "solver": 19854
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which formula is used to find the area of a triangle when the lengths of its sides are known?",
+      "ms": {
+        "draft": 5191,
+        "critique": 6223
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, ABCDE is a polygon divided into triangles and a trapezium. What is the total area of the polygon?",
+      "ms": {
+        "draft": 5191,
+        "critique": 6264,
+        "solver": 2140
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the area of a triangle with sides 17 cm, 25 cm, and 26 cm?",
+      "ms": {
+        "draft": 5191,
+        "critique": 8009,
+        "solver": 1947
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A circular garden has a diameter of 35 m. There is a 7 m wide road around the garden. What is the area of the road?",
+      "ms": {
+        "draft": 5191,
+        "critique": 9202,
+        "solver": 1718,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the area of a circle whose circumference is 88 cm?",
+      "ms": {
+        "draft": 5191,
+        "critique": 7779,
+        "solver": 2321,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A parallelogram has a base of 8 cm and a height of 5 cm. What is its area?",
+      "ms": {
+        "draft": 5038,
+        "critique": 7065
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula to calculate the area of a parallelogram?",
+      "ms": {
+        "draft": 5038,
+        "critique": 8163,
+        "solver": 16174,
+        "form": 3205
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the area of a parallelogram is 112 sq cm and its base is 10 cm, what is the height?",
+      "ms": {
+        "draft": 5038,
+        "critique": 7457,
+        "solver": 19449
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A rhombus has diagonals of 12 cm and 16 cm. What is the area of the rhombus?",
+      "ms": {
+        "draft": 5038,
+        "critique": 11106,
+        "solver": 14371
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A trapezium has parallel sides of 7 cm and 8 cm, and a height of 6 cm. What is the area of the trapezium?",
+      "ms": {
+        "draft": 5038,
+        "critique": 8417
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A triangle has sides of 17 cm, 25 cm, and 26 cm. What is its area using Heron's formula?",
+      "ms": {
+        "draft": 5038,
+        "critique": 6335,
+        "solver": 6503
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula for the area of a trapezium?",
+      "ms": {
+        "draft": 5191,
+        "critique": 7475,
+        "solver": 2326,
+        "form": 0,
+        "translation": 41081
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A triangle has sides of 13 cm, 14 cm, and 15 cm. What is the area of the triangle?",
+      "ms": {
+        "draft": 5410,
+        "critique": 8655,
+        "solver": 1541,
+        "form": 0,
+        "translation": 53479
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The area of a circle is 3850 sq m. What is the radius of the circle?",
+      "ms": {
+        "draft": 5410,
+        "critique": 11473,
+        "solver": 2005,
+        "form": 0,
+        "translation": 40006
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A circular garden has a diameter of 14 m. A 2 m wide road surrounds the garden. What is the area of the road?",
+      "ms": {
+        "draft": 5410,
+        "critique": 9285,
+        "solver": 11701,
+        "form": 0,
+        "translation": 47392
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A figure is made up of a rectangle and a semicircle on top. The rectangle has a length of 10 m and a width of 5 m. The diameter of the semicircle is equal to the width of the rectangle. What is the total area of the figure?",
+      "ms": {
+        "draft": 5410,
+        "critique": 9024,
+        "solver": 1743,
+        "form": 0,
+        "translation": 63401
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"What is the formula to calculate the area of a parallelogram?"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the formula for the area of a trapezium?",
+      "reason": "options 0 and 1 say the same thing (\"(1/2) × (sum of parallel sides) × height\" / \"(sum of parallel sides) × height\"); options 2 and 3 say the same thing (\"(1/2) × (sum of all sides) × height\" / \"(sum of all sides) × height\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A parallelogram has a base of 15 cm and a height of 10 cm. What is its area?",
+      "reason": "after redrafting distractors 0, 2, 3: the critic finds option 0 correct, the key is 1"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which formula is used to find the area of a triangle when the lengths of its sides are known?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the given figure, ABCDE is a polygon divided into triangles and a trapezium. What is the total area of the polygon?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the area of a triangle with sides 17 cm, 25 cm, and 26 cm?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A circular garden has a diameter of 35 m. There is a 7 m wide road around the garden. What is the area of the road?",
+      "reason": "checkExpr \"1540\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the area of a circle whose circumference is 88 cm?",
+      "reason": "checkExpr \"616\" is a bare literal"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A parallelogram has a base of 8 cm and a height of 5 cm. What is its area?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula to calculate the area of a parallelogram?",
+      "reason": "options 0 and 2 are the same (\"Base + Height\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If the area of a parallelogram is 112 sq cm and its base is 10 cm, what is the height?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A rhombus has diagonals of 12 cm and 16 cm. What is the area of the rhombus?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A trapezium has parallel sides of 7 cm and 8 cm, and a height of 6 cm. What is the area of the trapezium?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A triangle has sides of 17 cm, 25 cm, and 26 cm. What is its area using Heron's formula?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

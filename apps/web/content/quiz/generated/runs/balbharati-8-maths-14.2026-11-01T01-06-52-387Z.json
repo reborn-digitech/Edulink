@@ -1,0 +1,410 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T01:06:52.387Z",
+  "finishedAt": "2026-11-01T01:14:16.600Z",
+  "seconds": 444,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी गणित इंग्रजी",
+    "bookCode": "803020004",
+    "document": "balbharati/8/mathematics/803020004.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 14 — Compound interest",
+    "edition": "First Edition 2018",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2022-23]\n31. 10 years ago, Mr Mehra set up a sinking fund to save for his daughter’s higher studies. At the end\nof 10 years, he has received an amount of ₹ 10,21,760. What amount did he put in the sinking fund\nat the end of every 6 months for the tenure, which paid him 5% p.a. compounded semi-annually? 3\n[Use (1.025) 20 = 1.6386]",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2022-23]\n25. Mitul invested ₹ 3,50,000 in a fund. At the end of the year the value of the fund is ₹ 4,37,500.\nWhat is the nominal rate of interest, if the market price is same at the end of the year? 2",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2023-24]\n8. If the cash equivalent of a perpetuity of Rs 300 payable at the end of each quarter is 24000\nthen rate of interest compounded quarterly is\n(a) 5% (b) 4% (c) 3% (d) 2%",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2023-24]\n8. Option (a) i = ସ଴଴ ௥ .\nP = ோ ௜ ⟹ 24000 = ଷ଴଴×ସ଴଴ ௥ ⟹ 𝑟 = ଵଶ଴ ଶସ = 5% 1 Mark\n௟௢௚௫"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 86787,
+      "in": 18,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 11749,
+      "completionTokens": 4215
+    },
+    "critique": {
+      "calls": 31,
+      "ms": 250631,
+      "in": 18,
+      "out": 15,
+      "rejects": 3,
+      "promptTokens": 13481,
+      "completionTokens": 5537
+    },
+    "solver": {
+      "calls": 162,
+      "ms": 114887,
+      "in": 15,
+      "out": 13,
+      "rejects": 2,
+      "promptTokens": 34903,
+      "completionTokens": 1877
+    },
+    "form": {
+      "calls": 5,
+      "ms": 15328,
+      "in": 13,
+      "out": 8,
+      "rejects": 5,
+      "promptTokens": 1257,
+      "completionTokens": 389
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 5,
+      "ms": 1169,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 257118,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 14171,
+      "completionTokens": 6018
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 2,
+    "2": 0,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the formula to calculate the amount (A) in compound interest?",
+      "ms": {
+        "draft": 4137,
+        "critique": 8442,
+        "solver": 18804,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the amount after 2 years is ₹10,890 and the principal is ₹9,000, what is the compound interest earned?",
+      "ms": {
+        "draft": 4137,
+        "critique": 8209,
+        "solver": 20316
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a principal of ₹1,000 becomes ₹1,331 in 3 years, what is the rate of compound interest?",
+      "ms": {
+        "draft": 4137,
+        "critique": 8578,
+        "solver": 12889
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A principal amount of 5000 is invested at a rate of 10% p.c.p.a. for 2 years. What is the compound interest?",
+      "ms": {
+        "draft": 5169,
+        "critique": 8603
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a principal amount is 9000 and the compound interest is 1890 after two years, what is the total amount?",
+      "ms": {
+        "draft": 5169,
+        "critique": 8110,
+        "solver": 19775,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the amount after 2 years is 10890 and the rate of interest is 10% p.c.p.a., what is the principal?",
+      "ms": {
+        "draft": 5169,
+        "critique": 8032
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A loan of 20000 is taken on compound interest at 10% p.c.p.a. for 2 years. What is the amount to settle the loan?",
+      "ms": {
+        "draft": 5169,
+        "critique": 12600,
+        "solver": 15855,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula to calculate simple interest?",
+      "ms": {
+        "draft": 5160,
+        "critique": 9893,
+        "solver": 18395,
+        "form": 3145
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A principal of ₹ 4,000 is invested at 12% p.a. for 3 years. What is the compound interest?",
+      "ms": {
+        "draft": 5160,
+        "critique": 11091,
+        "solver": 13055,
+        "form": 5289
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a loan of ₹ 1,000 is taken at 10% p.a. for 2 years, compounded annually, what is the total amount to be repaid?",
+      "ms": {
+        "draft": 5160,
+        "critique": 9365
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The population of a suburb is 10000 and increases by 5% every year. What is the population after 2 years?",
+      "ms": {
+        "draft": 5169,
+        "critique": 10547,
+        "solver": 13876,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the additional money paid on a loan?",
+      "ms": {
+        "draft": 5160,
+        "critique": 6559,
+        "solver": 2111,
+        "form": 2451,
+        "translation": 44070
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for compound interest?",
+      "ms": {
+        "draft": 5169,
+        "critique": 7600,
+        "solver": 1326,
+        "form": 1,
+        "translation": 35810
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a principal of ₹ 10,000 is invested at 10% p.a. for 1 year, what is the amount after one year?",
+      "ms": {
+        "draft": 5160,
+        "critique": 8872,
+        "solver": 15819,
+        "form": 3112,
+        "translation": 44771
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a principal of ₹5,000 is invested at 10% p.c.p.a. for 2 years, what is the amount?",
+      "ms": {
+        "draft": 4137,
+        "critique": 8920,
+        "solver": 16234,
+        "form": 0,
+        "translation": 34280
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The population of a suburb is 10,000 and increases by 5% every year. What is the population after 2 years?",
+      "ms": {
+        "draft": 4137,
+        "critique": 8627,
+        "solver": 13550,
+        "form": 0,
+        "translation": 35795
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A machine costs ₹50,000 and depreciates at 10% per year. What will be its value after 2 years?",
+      "ms": {
+        "draft": 4137,
+        "critique": 9634,
+        "solver": 12364,
+        "form": 0,
+        "translation": 34637
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A principal of ₹ 60,000 depreciates at 20% per year. What is its value after 2 years?",
+      "ms": {
+        "draft": 5160,
+        "critique": 7817,
+        "solver": 5192,
+        "form": 1333,
+        "translation": 22624
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"What is the term for the additional money paid on a loan apar"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula to calculate the amount (A) in compound interest?",
+      "reason": "options 1 and 2 say the same thing (\"A = P × (1 + r)^n\" / \"A = P × r × n\"); options 1 and 3 say the same thing (\"A = P × (1 + r)^n\" / \"A = P × r × n\"); options 2 and 3 are the same (\"A = P × r × n\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If the amount after 2 years is ₹10,890 and the principal is ₹9,000, what is the compound interest earned?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a principal of ₹1,000 becomes ₹1,331 in 3 years, what is the rate of compound interest?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A principal amount of 5000 is invested at a rate of 10% p.c.p.a. for 2 years. What is the compound interest?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If a principal amount is 9000 and the compound interest is 1890 after two years, what is the total amount?",
+      "reason": "options 0 and 2 are the same (\"10890\"); options 0 and 2 are the same number"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the amount after 2 years is 10890 and the rate of interest is 10% p.c.p.a., what is the principal?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A loan of 20000 is taken on compound interest at 10% p.c.p.a. for 2 years. What is the amount to settle the loan?",
+      "reason": "options 1 and 2 are the same (\"22000\"); options 1 and 2 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the formula to calculate simple interest?",
+      "reason": "options 2 and 3 say the same thing (\"I = P / (N * R)\" / \"I = P * N / R\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A principal of ₹ 4,000 is invested at 12% p.a. for 3 years. What is the compound interest?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"4000 * (1 + 0.12)^3 - 4000\" = 1619.7120000000014, but the key says 1695.31"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a loan of ₹ 1,000 is taken at 10% p.a. for 2 years, compounded annually, what is the total amount to be repaid?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "The population of a suburb is 10000 and increases by 5% every year. What is the population after 2 years?",
+      "reason": "near-duplicate of batch item \"The population of a suburb is 10,000 and increases…\" (cosine 0.983 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

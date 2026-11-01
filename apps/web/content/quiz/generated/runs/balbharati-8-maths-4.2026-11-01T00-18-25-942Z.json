@@ -1,0 +1,310 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T00:18:25.942Z",
+  "finishedAt": "2026-11-01T00:21:58.061Z",
+  "seconds": 212,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी गणित इंग्रजी",
+    "bookCode": "803020004",
+    "document": "balbharati/8/mathematics/803020004.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 4 — Altitudes and Medians of a triangle",
+    "edition": "First Edition 2018",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[PRMO 2018 — question paper]\n13. In a triangle ABC, right-angled at A, the altitude through A and the internal bisector of\n\\A have lengths 3 and 4, respectively. Find the length of the median through A.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n22. In the figure, altitudes AD and CE of Δ ABC intersect 2\neach other at the point P. Show that:\n(i) ΔABD ~ ΔCBE\n(ii) ΔPDC ~ ΔBEC\n[OR]\nBF BE\nIn the figure, DE || AC and DF || AE. Prove that FE = EC",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n23. If AP and DQ are medians of triangles ABC and DEF respectively, where 2\n∆ABC~ ∆DEF, then prove that 𝐷𝐸 𝐴𝐵 = 𝐷𝑄 𝐴𝑃",
+      "[RMO 2016 — solutions or answer key]\n5. Let ABC be a triangle, AD an altitude and AE a median. Assume B, D, E, C lie in that order on\nthe line BC. Suppose the incentre of triangle ABE lies on AD and the incentre of ADC lies on\nAE. Find the angles of triangle ABC.\nSolution: Since AD ⊥ BE and the incentre of 4ABE\nlies on AD, it follows that ABE is isosceles. In particu-\nlar ∠BAD = ∠DAE = α, say. Since AE is the bisector\nof∠DAC, it follows that ∠EAC = ∠DAE = α. Moreover,\nwe have\nAD DE\n= .\nAC CE\nSince BE = EC = a 2 , we also have DE = 2 1\nwe get\nAD\n=\nAC\nBE = a 4 . Thus\nDE a/4 1\n= = .\nEC a/2 2\nSince 4ADE is a right-angled triangle and AD = AC/2, it follows that ∠ACD = 30 . Hence ◦\n∠DAC = 60 . Since ∠DAC = 2α, we get α = 30 . Now ∠A "
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 60644,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 8594,
+      "completionTokens": 2588
+    },
+    "critique": {
+      "calls": 13,
+      "ms": 107624,
+      "in": 12,
+      "out": 10,
+      "rejects": 2,
+      "promptTokens": 5820,
+      "completionTokens": 2163
+    },
+    "solver": {
+      "calls": 56,
+      "ms": 33273,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 7492,
+      "completionTokens": 476
+    },
+    "form": {
+      "calls": 7,
+      "ms": 30452,
+      "in": 10,
+      "out": 7,
+      "rejects": 3,
+      "promptTokens": 1792,
+      "completionTokens": 587
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 2,
+      "ms": 346,
+      "in": 7,
+      "out": 5,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 233397,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 11225,
+      "completionTokens": 5335
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 2,
+    "2": 0,
+    "3": 1,
+    "4": 2,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "In a triangle, if the centroid divides each median in the ratio 2:1, what is the length of the segment from the vertex to the centroid if the entire median is 9 cm?",
+      "ms": {
+        "draft": 5635,
+        "critique": 8986,
+        "solver": 2802,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a triangle, the medians are concurrent at the centroid. If the centroid divides one of the medians into segments of lengths 10 cm and 5 cm, and another median into segments of 12 cm and 6 cm, what is the ratio of the entire median lengths?",
+      "ms": {
+        "draft": 5635,
+        "critique": 9336
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a right-angled triangle, where is the orthocentre located?",
+      "ms": {
+        "draft": 4473,
+        "critique": 9228
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements is true about the orthocentre of a triangle?",
+      "ms": {
+        "draft": 4473,
+        "critique": 9242,
+        "solver": 2655,
+        "form": 4296
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a triangle, the medians are drawn from each vertex. The centroid divides each median in the ratio 2:1. If the length of the entire median is 9 units, what is the length of the segment from the vertex to the centroid?",
+      "ms": {
+        "draft": 4473,
+        "critique": 8842,
+        "solver": 8796,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the point where the altitudes of a triangle meet?",
+      "ms": {
+        "draft": 4473,
+        "critique": 8749,
+        "solver": 1653,
+        "form": 5793
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a triangle, the altitudes are drawn from each vertex. If the altitudes are concurrent, what is the point of their intersection called?",
+      "ms": {
+        "draft": 4473,
+        "critique": 8126,
+        "solver": 1428,
+        "form": 4762
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the point where the three altitudes of a triangle meet?",
+      "ms": {
+        "draft": 5635,
+        "critique": 7957,
+        "solver": 1738,
+        "form": 5687,
+        "translation": 42328
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is defined as the segment joining a vertex of a triangle to the midpoint of the opposite side?",
+      "ms": {
+        "draft": 5635,
+        "critique": 8204,
+        "solver": 2481,
+        "form": 6248,
+        "translation": 60453
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a triangle, the orthocentre lies outside the triangle. What type of triangle is it?",
+      "ms": {
+        "draft": 5635,
+        "critique": 7946,
+        "solver": 2289,
+        "form": 4482,
+        "translation": 43136
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a triangle, if the centroid divides the median into segments of 4 cm and 2 cm, what is the length of the entire median?",
+      "ms": {
+        "draft": 5635,
+        "critique": 7943,
+        "solver": 2342,
+        "form": 0,
+        "translation": 47600
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In an acute-angled triangle, where is the orthocentre located?",
+      "ms": {
+        "draft": 4473,
+        "critique": 9782,
+        "solver": 1826,
+        "form": 3535,
+        "translation": 34559
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "In a triangle, if the centroid divides each median in the ratio 2:1, what is the length of the segment from the vertex to the centroid if the entire median is 9 cm?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a triangle, the medians are concurrent at the centroid. If the centroid divides one of the medians into segments of lengths 10 cm and 5 cm, and another median into segments of 12 cm and 6 cm, what is the ratio of the entire median lengths?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In a right-angled triangle, where is the orthocentre located?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following statements is true about the orthocentre of a triangle?",
+      "reason": "the key is far longer than every distractor (80 vs 35 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a triangle, the medians are drawn from each vertex. The centroid divides each median in the ratio 2:1. If the length of the entire median is 9 units, what is the length of the segment from the vertex to the centroid?",
+      "reason": "options 0 and 2 are the same (\"3\"); options are written to different precisions (0 and 1 decimals); options 0 and 2 are the same number"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the point where the altitudes of a triangle meet?",
+      "reason": "near-duplicate of batch item \"What is the name of the point where the three alti…\" (cosine 0.989 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "In a triangle, the altitudes are drawn from each vertex. If the altitudes are concurrent, what is the point of their intersection called?",
+      "reason": "near-duplicate of batch item \"What is the name of the point where the three alti…\" (cosine 0.916 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}
