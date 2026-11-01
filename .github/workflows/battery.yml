@@ -57,7 +57,9 @@ jobs:
     # About 26 minutes on 2026-10-01 (the phone battery 5 to 10 of them, the
     # web suite 6, the build 4 to 5); run 36848020146 met the old 30-minute cap
     # in the production build with every step before it green.
-    timeout-minutes: 45
+    # 1 Nov 2026: 45 cut the job off at the unit suite on the first runs since billing (typecheck 25 min, the phone
+    # battery 8, the bundle gate 4 before the suite even starts); 120 holds the whole job with room.
+    timeout-minutes: 120
     services:
       postgres:
         # pgvector for the assistant's content tables (migration 20261008151729_assistant_content).
