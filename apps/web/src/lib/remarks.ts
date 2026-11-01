@@ -7,6 +7,7 @@ import { notify } from "./notify";
 import { audit } from "./audit";
 import { AccessError, assertRemarkAccess, assertStudentAccess, taughtClassWhere } from "./tenancy";
 import type { ActiveContext } from "./session";
+import { assertParentMaySee } from "./student-consent";
 
 /**
  * Private teacher ↔ guardian threads about one student.
@@ -339,6 +340,11 @@ export async function createThread(
       select: { id: true, studentSchoolId: true },
     });
     if (!guardian) throw new AccessError("access.thatIsNotYourChild", "NOT_FOUND");
+    // An adult at a college decides whether their guardian is in the room (MESSAGES), here as on the thread's own
+    // read (assertRemarkAccess): a guardian kept out could otherwise open a thread they would then be refused, its
+    // first message telling the student and the teacher (owner's item 14, 1 Nov 2026). 403 consent.refuseNotGranted,
+    // as every family door answers a grant that is off.
+    await assertParentMaySee(input.studentMembershipId, "MESSAGES");
     schoolId = guardian.studentSchoolId;
     const teaches = await teacherTeaches(
       schoolId,

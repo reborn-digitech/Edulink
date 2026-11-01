@@ -4,7 +4,7 @@ import { audit } from "./audit";
 import { notify } from "./notify";
 import { headPageHolders } from "./duties";
 import { AccessError } from "./tenancy";
-import { arrangeCover } from "./register-duty";
+import { arrangeCover, REGISTER_COVER_ROLES } from "./register-duty";
 import { dateKeyRange, weekdayOfKey } from "./dates";
 import type { ActiveContext } from "./session";
 
@@ -33,7 +33,6 @@ import type { ActiveContext } from "./session";
 // not for callers. See leave-kinds.ts.
 import { LEAVE_KINDS, type LeaveKind, type LeaveRow } from "./leave-kinds";
 import type { TranslationKey } from "./i18n/dictionary";
-import { STAFF_ROLES } from "./staff-records";
 import { readJsonArray } from "./json";
 // Dates in a notice are said in each reader's language (B-15, 5 Oct 2026).
 import { noticeDate } from "./notice-dates";
@@ -286,10 +285,12 @@ export async function decideLeave(
         where: {
           id: { in: staffIds },
           schoolId: ctx.schoolId,
-          // Anybody on the staff, the same set the nominee picker and
-          // `arrangeCover` accept — an admin standing in was silently dropped
-          // here and the class then counted as covered.
-          role: { in: [...STAFF_ROLES] },
+          // The set `arrangeCover` writes a row for (REGISTER_COVER_ROLES) — an
+          // admin standing in was silently dropped here and the class then
+          // counted as covered, and so, until the owner's item 14 (1 Nov 2026),
+          // was a FACULTY or HOD member, whom STAFF_ROLES let through and
+          // `arrangeCover` refused.
+          role: { in: [...REGISTER_COVER_ROLES] },
           status: "ACTIVE",
           leftAt: null,
         },
@@ -303,6 +304,11 @@ export async function decideLeave(
         pairs.add(`${a.classId}|${a.coverMembershipId}`);
       }
 
+      // Covered means a cover row was WRITTEN for the class: a substitute
+      // `arrangeCover` refused (a class of another school, say) must not hide
+      // the class from the fallback below, nor count in the answer.
+      const covered = new Set<string>();
+      const writtenPairs = new Set<string>();
       for (const pair of pairs) {
         const [classId, coveringMembershipId] = pair.split("|") as [string, string];
         const result = await arrangeCover(
@@ -318,6 +324,8 @@ export async function decideLeave(
         );
         if (result.ok) {
           coversCreated++;
+          covered.add(classId);
+          writtenPairs.add(pair);
           remember(coveringMembershipId, classId);
         }
       }
@@ -336,14 +344,12 @@ export async function decideLeave(
         },
         select: { classId: true },
       });
-      // Covered means a cover row was actually asked for: an assignment whose
-      // substitute failed validation must not hide its class from the fallback.
-      const covered = new Set([...pairs].map((pair) => pair.split("|")[0]!));
       const uncoveredRegisters = registerOnly.filter((r) => !covered.has(r.classId));
       if (uncoveredRegisters.length > 0) {
+        // The busiest substitute, counting only the assignments whose cover row was written.
         const counts = new Map<string, number>();
         for (const a of assignments) {
-          if (!valid.has(a.coverMembershipId)) continue;
+          if (!writtenPairs.has(`${a.classId}|${a.coverMembershipId}`)) continue;
           counts.set(a.coverMembershipId, (counts.get(a.coverMembershipId) ?? 0) + 1);
         }
         const busiest = [...counts.entries()].sort((a, b) => b[1] - a[1])[0]?.[0] ?? null;

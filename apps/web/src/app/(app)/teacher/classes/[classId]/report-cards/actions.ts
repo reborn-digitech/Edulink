@@ -63,7 +63,7 @@ export async function generate(classId: string, input: GenerateInput): Promise<R
 export async function saveRemark(classId: string, cardId: string, remark: string): Promise<Result> {
   try {
     const ctx = await requireApiRole("TEACHER", "ADMIN", "PRINCIPAL");
-    const result = await translated(await setRemark(ctx, cardId, remark));
+    const result = await translated(await setRemark(ctx, cardId, remark, { classId }));
     revalidatePath(`/teacher/classes/${classId}/report-cards`);
     return result;
   } catch (error) {
@@ -79,7 +79,7 @@ export async function saveCoScholastic(
 ): Promise<Result> {
   try {
     const ctx = await requireApiRole("TEACHER", "ADMIN", "PRINCIPAL");
-    const result = await translated(await setCoScholastic(ctx, cardId, grades));
+    const result = await translated(await setCoScholastic(ctx, cardId, grades, { classId }));
     revalidatePath(`/teacher/classes/${classId}/report-cards`);
     return result;
   } catch (error) {

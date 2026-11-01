@@ -727,7 +727,9 @@ export async function cancelReservation(ctx: ActiveContext, reservationId: strin
   const isOwner = r.member.membership.userId === ctx.user.id && ctx.schoolId === schoolId;
   let isGuardian = false;
   if (!isDesk && !isOwner && ctx.role === "PARENT") {
-    await assertGuardianAccess(ctx.user.id, r.member.membership.id);
+    // MONEY, the grant placing and viewing the reservation ask (reserveTitle, myLibrary): an adult college
+    // student's guardian who may place one may take it back, and one who may not is refused (owner's item 14).
+    await assertGuardianAccess(ctx.user.id, r.member.membership.id, "MONEY");
     isGuardian = true;
   }
   if (!isDesk && !isOwner && !isGuardian) throw new AccessError("library.refuseNoReservation", "NOT_FOUND");

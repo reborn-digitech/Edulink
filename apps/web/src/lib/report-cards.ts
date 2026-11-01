@@ -667,9 +667,15 @@ export async function setCoScholastic(
   ctx: ActiveContext,
   cardId: string,
   grades: { area: string; grade: string | null; note?: string }[],
+  /**
+   * The class the caller is acting in — the door's {classId}, the web page's class (owner's item 14, 1 Nov 2026):
+   * a card of another class, even one the caller also leads, is "not in this school" through this class, as on the
+   * remark door, so a URL never writes a class it does not name. Another school's class finds no card at all.
+   */
+  scope: { classId: string },
 ): Promise<{ ok: boolean; errorKey?: TranslationKey }> {
   const card = await db.reportCard.findFirst({
-    where: { id: cardId, schoolId: ctx.schoolId ?? "" },
+    where: { id: cardId, schoolId: ctx.schoolId ?? "", classId: scope.classId },
     select: { id: true, classId: true, status: true },
   });
   if (!card) return { ok: false, errorKey: "reportCards.notInSchool" };
@@ -704,9 +710,11 @@ export async function setRemark(
   ctx: ActiveContext,
   cardId: string,
   remark: string,
+  /** The class acted in, as setCoScholastic's: the web page passes its own; the door pins the card itself first. */
+  scope?: { classId: string },
 ): Promise<{ ok: boolean; errorKey?: TranslationKey }> {
   const card = await db.reportCard.findFirst({
-    where: { id: cardId, schoolId: ctx.schoolId ?? "" },
+    where: { id: cardId, schoolId: ctx.schoolId ?? "", ...(scope ? { classId: scope.classId } : {}) },
     select: { id: true, classId: true, status: true },
   });
   if (!card) return { ok: false, errorKey: "reportCards.notInSchool" };

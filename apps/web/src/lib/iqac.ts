@@ -505,6 +505,15 @@ async function departmentOf(schoolId: string, membershipId: string): Promise<{ d
   return { departmentIds: ids, facultyIds: [...faculty.map((f) => f.membershipId), membershipId] };
 }
 
+/** The departments a teacher belongs to (DepartmentFaculty) or heads. */
+async function departmentsOfTeacher(schoolId: string, membershipId: string): Promise<string[]> {
+  const [headed, member] = await Promise.all([
+    db.department.findMany({ where: { schoolId, hodMembershipId: membershipId }, select: { id: true } }),
+    db.departmentFaculty.findMany({ where: { schoolId, membershipId }, select: { departmentId: true } }),
+  ]);
+  return [...headed.map((d) => d.id), ...member.map((m) => m.departmentId)];
+}
+
 export async function researchRegister(ctx: ActiveContext) {
   const actor = await iqacActor(ctx, [...DESK_READ, ...TEACHERS]);
   let where: Record<string, unknown> = { schoolId: actor.schoolId };
@@ -539,6 +548,17 @@ export async function addResearchItem(ctx: ActiveContext, input: z.infer<typeof 
     if (!t) throw new RuleRefusal("iqac.refuseNotTeacher", 422, undefined, "facultyMembershipId");
   }
   if (input.kind === "PUBLICATION" && input.indexing === "NONE") throw new RuleRefusal("iqac.refuseIndexing", 422, undefined, "indexing");
+  /*
+   * THE DEPARTMENT IS CHECKED, not stored as sent (owner's item 14, 1 Nov 2026): ResearchItem.departmentId has no
+   * foreign key, and the HOD's register reads every item filed under their department, so an unchecked id let a
+   * teacher place their item in any department's register. The desk names any department of this college; a
+   * teacher one they belong to or head. Anything else is 422 on departmentId.
+   */
+  if (input.departmentId) {
+    const department = await db.department.findFirst({ where: { id: input.departmentId, schoolId: actor.schoolId }, select: { id: true } });
+    const own = department && TEACHERS.includes(actor.role) ? (await departmentsOfTeacher(actor.schoolId, actor.membershipId)).includes(department.id) : Boolean(department);
+    if (!own) throw new RuleRefusal("iqac.refuseDepartment", 422, undefined, "departmentId");
+  }
   const fileId = await spendFile(actor, input.fileId, "RESEARCH", input.title);
   const row = await db.researchItem.create({ data: { schoolId: actor.schoolId, kind: input.kind, title: input.title, indexing: input.kind === "PUBLICATION" ? input.indexing : "NONE", year: input.year, amountLakhs: input.amountLakhs, facultyMembershipId, departmentId: input.departmentId, fileId, createdByUserId: actor.userId }, select: { id: true } });
   await audit({ schoolId: actor.schoolId, actorUserId: actor.userId, action: "iqac.research.add", targetType: "ResearchItem", targetId: row.id, meta: { kind: input.kind, year: input.year } });
@@ -824,7 +844,8 @@ async function eligibleSurveys(actor: Desk, today: string): Promise<SurveyRow[]>
   const rows = await db.survey.findMany({ where: { schoolId: actor.schoolId, kind: { in: kinds }, opensOn: { lte: today }, closesOn: { gte: today }, closedAt: null }, orderBy: { closesOn: "asc" }, select: SURVEY_SELECT });
   if (actor.role !== "STUDENT") return rows;
   const offerings = rows.filter((s) => s.kind === "COURSE_FEEDBACK" && s.offeringId).map((s) => s.offeringId!);
-  const mine = offerings.length ? new Set((await db.courseRegistration.findMany({ where: { studentMembershipId: actor.membershipId, offeringId: { in: offerings } }, select: { offeringId: true } })).map((r) => r.offeringId)) : new Set<string>();
+  // A current registration only: a student who DROPPED the course neither sees nor answers its feedback (owner's item 14).
+  const mine = offerings.length ? new Set((await db.courseRegistration.findMany({ where: { studentMembershipId: actor.membershipId, offeringId: { in: offerings }, status: "REGISTERED" }, select: { offeringId: true } })).map((r) => r.offeringId)) : new Set<string>();
   return rows.filter((s) => s.kind !== "COURSE_FEEDBACK" || (s.offeringId && mine.has(s.offeringId)));
 }
 

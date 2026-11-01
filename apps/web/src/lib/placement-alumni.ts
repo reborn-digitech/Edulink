@@ -167,10 +167,14 @@ export async function linkMyCompany(ctx: ActiveContext, input: { identifier: str
 }
 
 /** Register for a meet (or cancel): an alumnus, for a meet of their batch or of everyone, not yet held. */
-export async function registerForMeet(ctx: ActiveContext, meetId: string, going: boolean) {
+export async function registerForMeet(ctx: ActiveContext, meetId: string, going: boolean, now: Date = new Date()) {
   const me = await alumnusAtCollege(ctx);
-  const meet = await db.alumniMeet.findFirst({ where: { id: meetId, schoolId: me.schoolId, OR: [{ batchYear: null }, { batchYear: me.batchYear }] }, select: { id: true, onKey: true } });
+  const meet = await db.alumniMeet.findFirst({ where: { id: meetId, schoolId: me.schoolId, OR: [{ batchYear: null }, { batchYear: me.batchYear }] }, select: { id: true, onKey: true, school: { select: { timezone: true } } } });
   if (!meet) throw new AccessError("placement.noSuchMeet", "NOT_FOUND");
+  // Held once its day is past by the college's clock (a meet keeps a day, not an hour, and is listed through its
+  // own day): no registration and no cancellation after it, which would write and audit a row the alumnus's list,
+  // keeping only meets to come, never shows (owner's item 14, 1 Nov 2026).
+  if (meet.onKey < todayKey(meet.school.timezone, now)) throw new RuleRefusal("placement.refuseMeetHeld", 409);
   if (going) await db.alumniMeetRegistration.upsert({ where: { meetId_alumnusMembershipId: { meetId, alumnusMembershipId: me.membershipId } }, update: { cancelledAt: null }, create: { schoolId: me.schoolId, meetId, alumnusMembershipId: me.membershipId } });
   else await db.alumniMeetRegistration.updateMany({ where: { meetId, alumnusMembershipId: me.membershipId, cancelledAt: null }, data: { cancelledAt: new Date() } });
   await audit({ schoolId: me.schoolId, actorUserId: me.userId, action: going ? "placement.meet.register" : "placement.meet.cancel", targetType: "AlumniMeet", targetId: meetId });

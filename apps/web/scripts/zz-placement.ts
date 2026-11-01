@@ -211,7 +211,15 @@ export async function buildPlacement(db: PrismaClient): Promise<{ drives: number
     await db.alumniGift.create({ data: { schoolId, alumnusMembershipId: alumnus.id, kind: "DONATION", amountRupees: 5000, receiptRef: "ZZ-RCPT-0001", note: "ZZ Towards the library", onKey: "2026-08-15", recordedByUserId: admin.userId } });
   }
   const meetOn = istDay(30);
-  const existingMeet = await db.alumniMeet.findUnique({ where: { id: F.meet }, select: { id: true } });
+  const existingMeet = await db.alumniMeet.findUnique({ where: { id: F.meet }, select: { id: true, onKey: true, holidayId: true } });
+  // owner-batch-item14: a meet already held takes no registration (409, placement-alumni.ts registerForMeet), so a
+  // fixture meet made once and never moved would turn the sweep's 200 into a 409 thirty days after the first run.
+  // A held fixture meet is moved to thirty days on, with its calendar row.
+  if (existingMeet && existingMeet.onKey < istDay(0)) {
+    await db.alumniMeet.update({ where: { id: F.meet }, data: { onKey: meetOn } });
+    if (existingMeet.holidayId) await db.holiday.updateMany({ where: { id: existingMeet.holidayId, schoolId }, data: { startDateKey: meetOn, endDateKey: meetOn } });
+  }
+  // end owner-batch-item14
   if (!existingMeet) {
     const holiday = await db.holiday.create({ data: { schoolId, name: "ZZ Batch of 2025 reunion", startDateKey: meetOn, endDateKey: meetOn, kind: "EVENT", note: "ZZ Main hall" }, select: { id: true } });
     await db.alumniMeet.create({ data: { id: F.meet, schoolId, title: "ZZ Batch of 2025 reunion", onKey: meetOn, venue: "ZZ Main hall", batchYear: 2025, holidayId: holiday.id, createdByUserId: admin.userId } });

@@ -9,6 +9,7 @@ import type { ActiveContext } from "./session";
 import { applicationOwningFile } from "./admissions";
 import { kycOwningFile } from "./expert-kyc";
 import { parentMaySee } from "./student-consent";
+import { teachesClass } from "./tenancy";
 
 /**
  * Per-file read authorisation.
@@ -88,6 +89,17 @@ function jsonRef(fileId: string): string {
   return `"fileId":"${fileId}"`;
 }
 
+/**
+ * Whether a school TEACHER reaches one piece of class work and its files: through a ClassTeacher row on the class
+ * (every piece of it), or through a lesson on its timetable for the work they set themselves (teachesClass, the
+ * owner's item 1 of 27 October 2026). A timetable-only teacher reads nothing of the form teacher's work.
+ */
+async function teacherReachesWork(ctx: { schoolId: string; membershipId: string; role: "TEACHER" }, classId: string, authorMembershipId: string | null): Promise<boolean> {
+  const how = await teachesClass(ctx, classId);
+  if (!how) return false;
+  return how.formTeacher || authorMembershipId === ctx.membershipId;
+}
+
 export async function authorizeFileRead(
   fileId: string,
   session: ActiveContext | null,
@@ -155,7 +167,7 @@ export async function authorizeFileRead(
     select: {
       studentMembershipId: true,
       schoolId: true,
-      assignment: { select: { classId: true, offeringId: true } },
+      assignment: { select: { classId: true, offeringId: true, authorMembershipId: true } },
       student: { select: { userId: true } },
     },
   });
@@ -180,13 +192,13 @@ export async function authorizeFileRead(
     if (role === "ADMIN" && schoolId === submission.schoolId) {
       return { allowed: true, kind: "submission", public: false };
     }
-    // A teacher of the class the work was set for — not merely a colleague.
+    // A teacher of the class the work was set for — not merely a colleague: one of its own teachers (a ClassTeacher
+    // row), or a teacher the timetable sends to the class for the work THEY set there (owner's item 14, 1 Nov 2026;
+    // the line assertAssignmentAccess draws, so the gradebook that lists the attachment also opens it).
     if (role === "TEACHER" && schoolId === submission.schoolId && membershipId && submission.assignment.classId) {
-      const teaches = await db.classTeacher.findFirst({
-        where: { classId: submission.assignment.classId, teacherMembershipId: membershipId },
-        select: { id: true },
-      });
-      if (teaches) return { allowed: true, kind: "submission", public: false };
+      if (await teacherReachesWork({ schoolId, membershipId, role }, submission.assignment.classId, submission.assignment.authorMembershipId)) {
+        return { allowed: true, kind: "submission", public: false };
+      }
     }
     // A college offering's work (R-48): its faculty member or its department's HOD.
     if (schoolId === submission.schoolId && membershipId && submission.assignment.offeringId && (await teachesOffering(submission.assignment.offeringId, membershipId, role))) {
@@ -346,7 +358,7 @@ export async function authorizeFileRead(
   // ---- 3. assignment attachment: anyone who can see the assignment
   const assignment = await db.assignment.findFirst({
     where: { attachments: { contains: ref } },
-    select: { id: true, schoolId: true, classId: true, offeringId: true, publishedAt: true },
+    select: { id: true, schoolId: true, classId: true, offeringId: true, publishedAt: true, authorMembershipId: true },
   });
 
   // A college offering's handouts (R-48): its faculty member or HOD, the office, and once published its REGISTERED
@@ -385,11 +397,9 @@ export async function authorizeFileRead(
     if (role === "ADMIN") return { allowed: true, kind: "assignment", public: false };
 
     if (role === "TEACHER" && membershipId) {
-      const teaches = await db.classTeacher.findFirst({
-        where: { classId: assignment.classId, teacherMembershipId: membershipId },
-        select: { id: true },
-      });
-      if (teaches) return { allowed: true, kind: "assignment", public: false };
+      if (await teacherReachesWork({ schoolId: assignment.schoolId, membershipId, role }, assignment.classId, assignment.authorMembershipId)) {
+        return { allowed: true, kind: "assignment", public: false };
+      }
       return DENY;
     }
 

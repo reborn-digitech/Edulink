@@ -872,6 +872,10 @@ export async function lectureSubstitutions(ctx: ActiveContext, date?: string): P
   const dateKey = date && isDateKey(date) ? date : todayKey(c.timeZone);
   await ensureLecturesForDay(c.schoolId, dateKey);
   const dept = c.role === "HOD" ? await hodDepartment(c) : null;
+  // An HOD who heads no department has no board: no lecture to cover and nobody to name, as the other HOD reads
+  // answer an empty list (listSeats, eligibilityList). Before, the missing department dropped the filter and such
+  // an HOD read the whole college's away lectures (owner's item 14, 1 Nov 2026).
+  if (c.role === "HOD" && !dept) return { dateKey, lectures: [], candidates: [] };
   const [away, lectures, staff] = await Promise.all([
     awayOn(c.schoolId, dateKey),
     db.lecture.findMany({ where: { schoolId: c.schoolId, dateKey, cancelledAt: null, ...(dept ? { offering: { course: { scheme: { programme: { departmentId: dept.id } } } } } : {}) }, select: { id: true, startMinute: true, endMinute: true, substituteMembershipId: true, offering: { select: { facultyMembershipId: true, divisionId: true, course: { select: { code: true, name: true } } } } }, orderBy: { startMinute: "asc" } }),

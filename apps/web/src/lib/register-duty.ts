@@ -254,6 +254,14 @@ export type CoverInput = {
 
 const DATE_KEY = /^\d{4}-\d{2}-\d{2}$/;
 
+/**
+ * Who may be handed a register: the people who can mark one (the register doors take TEACHER and ADMIN; the
+ * head marks as the office does). A FACULTY or HOD member stands in for a lecture on the college's own board
+ * (academics.ts setLectureSubstitute), not for a class register, so a cover row for one would grant nothing
+ * they could use. decideLeave validates its substitutes against this same list (owner's item 14, 1 Nov 2026).
+ */
+export const REGISTER_COVER_ROLES = ["TEACHER", "ADMIN", "PRINCIPAL"] as const;
+
 /** Arranges cover for a class over a range of days. */
 export async function arrangeCover(
   ctx: ActiveContext,
@@ -287,7 +295,7 @@ export async function arrangeCover(
       id: input.coveringMembershipId,
       schoolId: ctx.schoolId,
       status: "ACTIVE",
-      role: { in: ["TEACHER", "ADMIN", "PRINCIPAL"] },
+      role: { in: [...REGISTER_COVER_ROLES] },
     },
     select: { id: true, userId: true },
   });

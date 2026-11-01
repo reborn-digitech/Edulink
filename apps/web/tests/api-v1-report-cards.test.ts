@@ -233,7 +233,7 @@ describe("a term card", () => {
 
   it("takes the class teacher's co-scholastic grades, refuses an unknown area or grade and another teacher, keeps them through a regeneration, and locks them on publishing", async () => {
     await as("TEACHER");
-    const post = (body: unknown) => coScholasticPost(json(`/api/v1/teaching/classes/${classId}/report-cards/co-scholastic`, body));
+    const post = (body: unknown) => coScholasticPost(json(`/api/v1/teaching/classes/${classId}/report-cards/co-scholastic`, body), params({ classId }));
     expect((await post({ cardId: cardA, grades: [{ area: "Sport", grade: "A" }] })).status).toBe(403);
     expect((await post({ cardId: cardA, grades: [{ area: "Discipline", grade: "Z" }] })).status).toBe(403);
     let res = await post({ cardId: cardA, grades: [{ area: "discipline", grade: "a", note: "Punctual" }, { area: "Art", grade: null }] });

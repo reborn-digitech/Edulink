@@ -256,9 +256,15 @@ export async function decidePaperSignature(ctx: ActiveContext, signatureId: stri
   const row = await db.paperSignature.findFirst({ where: { id: signatureId, schoolId: me.schoolId } });
   if (!row || row.slot === "SEAL") throw new AccessError("signatures.notFound", "NOT_FOUND");
   const paper = { paperKind: row.paperKind as PaperKind, paperId: row.paperId };
-  // A settled one is answered as it stands to either of the two who sign the school's papers: both read the paper.
-  if (row.status !== "PENDING") return { ...(await opened(me.schoolId, paper)), status: row.status };
-  if (!(await mine(me, row))) throw new AccessError("signatures.notYours");
+  /*
+   * WHOSE LINE IT IS COMES FIRST (owner's item 14, 1 Nov 2026). A settled one is answered as it stands to the office
+   * and the head, who read every paper of the school, and to the person whose line it is; anyone else is refused
+   * as for a line that waits. The settled answer was given before this check, so any teacher of the school — one
+   * the timetable sends to the class, a teacher of another class — learned the paper's kind, id and status.
+   */
+  const isMine = await mine(me, row);
+  if (row.status !== "PENDING" && (isMine || me.role !== "TEACHER")) return { ...(await opened(me.schoolId, paper)), status: row.status };
+  if (!isMine) throw new AccessError("signatures.notYours");
   let png: Uint8Array<ArrayBuffer> | null = null;
   if (approve) {
     const own = await db.signatureImage.findFirst({ where: { membershipId: me.membershipId, schoolId: me.schoolId, kind: "PERSON" }, select: { png: true } });
