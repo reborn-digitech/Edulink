@@ -89,11 +89,18 @@ jobs:
             -c "CREATE ROLE edulink_app LOGIN PASSWORD 'edulink-ci'" \
             -c "CREATE DATABASE edulink_ci" \
             -c "CREATE DATABASE edulink_shadow"
+          # 1 Nov 2026: the unit suite seals bank accounts, UPI ids and survey keys under FEES_SECRET_KEY and
+          # signs file links under FILE_LINK_SECRET, as the server jobs below already set; the first CI run
+          # since billing failed 55 tests for want of them.
           node -e '
             const k = require("web-push").generateVAPIDKeys();
+            const fees = require("crypto").randomBytes(32).toString("base64");
+            const links = require("crypto").randomBytes(32).toString("base64url");
             console.log(`::add-mask::${k.privateKey}`);
+            console.log(`::add-mask::${fees}`);
+            console.log(`::add-mask::${links}`);
             require("fs").appendFileSync(process.env.GITHUB_ENV,
-              `NEXT_PUBLIC_VAPID_PUBLIC_KEY=${k.publicKey}\nVAPID_PRIVATE_KEY=${k.privateKey}\n`);
+              `NEXT_PUBLIC_VAPID_PUBLIC_KEY=${k.publicKey}\nVAPID_PRIVATE_KEY=${k.privateKey}\nFEES_SECRET_KEY=${fees}\nFILE_LINK_SECRET=${links}\n`);
           '
 
       - name: Migrations are the schema

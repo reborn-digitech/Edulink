@@ -506,7 +506,9 @@ describe("the doors by role", () => {
     ]);
     for (const d of doors) {
       expect(d.access, d.path).toBe("app-admin");
-      if (d.path.includes("{")) expect(String(d.sample), d.path).toMatch(/zz-sweep-no-such/);
+      // The sample may be a function of the sweep's fixtures (owner-batch-item13: the latest finished run when one exists); with no fixtures it falls back to the nonexistent id.
+      const sample = typeof d.sample === "function" ? (d.sample as unknown as (f: unknown) => string | null)({}) : d.sample;
+      if (d.path.includes("{")) expect(String(sample), d.path).toMatch(/zz-sweep-no-such/);
     }
   });
 });
