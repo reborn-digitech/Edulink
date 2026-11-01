@@ -374,7 +374,9 @@ describe("practice", () => {
     expect((await practicePost(json("/x", { classId, topicSlug: "", targetLevel: 1 }))).status).toBe(422);
     expect((await practiceArchivePost(json("/x", { id: "c" + "z".repeat(24) }))).status).toBe(404);
 
-    const topic = await db.quizTopic.findFirst({ select: { slug: true } });
+    // The door sets only a chapter the school lists (practiceTopicsWhere): a school-audience, unretired topic, not
+    // whatever row happens to come first, which on CI's seeded bank was one the door refuses (1 Nov 2026).
+    const topic = await db.quizTopic.findFirst({ where: { audience: "SCHOOL", retiredAt: null }, orderBy: { position: "asc" }, select: { slug: true } });
     if (topic) {
       const set = await practicePost(json("/x", { classId, topicSlug: topic.slug, targetLevel: 2, note: "ZZ revise", dueDate: futureKey(20) }));
       expect(set.status).toBe(200);
