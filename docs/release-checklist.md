@@ -24,11 +24,13 @@ Keep `:3000` and `:8081` up between steps and check `/api/health` before and aft
 - [ ] The axe gate on the pages added since the last walk (`apps/web/e2e`, the viewport matrix at 390 px).
 - [ ] `npm run data:audit`: 0 FAIL (the report is `docs/data-audit/latest.md`).
 - [ ] `corepack pnpm audit` from the repository root: the count recorded here and in
-      `docs/audit-2026-10-05/08-remaining-risks.md` (R-17), the two policy ignores and the `package.json`
-      overrides kept. `decode-uri-component` sits in the phone's bundle but on no deep-link path.
-      Last run 5 October 2026 (risks batch): 7 vulnerabilities, 4 moderate and 3 high (2 ignored by policy): braces
-      (build and lint), uuid (prebuild), vitest and @vitest/mocker (tests), decode-uri-component (phone bundle,
-      not on a deep-link path); none reaches the web runtime.
+      `docs/audit-2026-10-05/08-remaining-risks.md` (R-17), the two policy ignores, the `package.json`
+      overrides and the two `patches/` (zod's size-cap backport, query-string's import of the ES-module
+      decode-uri-component) kept; the reasons are in the comment above the audit step of
+      `.github/workflows/battery.yml`.
+      Last run 2 November 2026 (`--prod`): 7 vulnerabilities, 1 low, 4 moderate and 2 high (both ignored by
+      policy): deepmerge 4.3.1 (no patched release), glob 13.0.6, minimatch 10.2.6 and 3.1.5, uuid 7.0.3, all
+      under Expo's CLI and each fixed only in a later major.
 - [ ] The Linux e2e baselines through a CI dispatch with `update_snapshots=true`, once GitHub Actions is no
       longer refused on billing (R-16, the owner's).
 

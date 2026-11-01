@@ -170,10 +170,19 @@ jobs:
       - name: OpenAPI document is current
         working-directory: apps/web
         run: npm run api:docs -- --check
-      # Ignored advisories live in the root package.json (pnpm.auditConfig.ignoreGhsas),
-      # each one tooling that never ships in the app: GHSA-ggr8-5vv4-36mx and, since
-      # 2 October 2026, GHSA-86w9-cpqp-85rv (node-forge, reached only through Expo's
-      # CLI, no patched release). Review the list when Expo ships a fix.
+      # Ignored advisories live in the root package.json (pnpm.auditConfig.ignoreGhsas):
+      # GHSA-ggr8-5vv4-36mx (deepmerge-ts 7 under Prisma 6's config loader, tooling,
+      # fixed only in the 8 major), and since 2 November 2026 GHSA-mrhx-c7xc-m3w5 (zod
+      # 3.25.76, fixed upstream only in zod 4.6.6): its fix, a collection over its
+      # .max()/.length() failing before any element is parsed, is backported into zod's
+      # v3 array and set by patches/zod@3.25.76.patch, so the ignore stands while that
+      # patch does; drop both when the contracts move to zod 4. GHSA-86w9-cpqp-85rv
+      # (node-forge) left the list on 2 November 2026: node-forge 1.4.2 is out of its range.
+      # The pnpm.overrides beside them each lift a transitive package to its patched
+      # release within its major (2 November 2026: shell-quote, compression, node-forge,
+      # source-map-js under Expo's CLI and React Native; decode-uri-component under
+      # expo-router's query-string, which patches/query-string@7.1.3.patch lets require
+      # the ES-module-only 0.5 line). Review both lists when Expo or Prisma ships a fix.
       - name: Dependency audit
         run: pnpm audit --prod --audit-level high
       - name: Production build

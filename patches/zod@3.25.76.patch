@@ -1,0 +1,87 @@
+diff --git a/src/v3/types.ts b/src/v3/types.ts
+index b10e84f1beb1dacdae5e01c42a223974b9e20b73..8a662b70498d1a8f5ea8263fb2d084d30dc3ecdd 100644
+--- a/src/v3/types.ts
++++ b/src/v3/types.ts
+@@ -2295,6 +2295,12 @@ export class ZodArray<T extends ZodTypeAny, Cardinality extends ArrayCardinality
+       }
+     }
+ 
++    // Backport of colinhacks/zod#6652 (GHSA-mrhx-c7xc-m3w5, fixed in zod 4.6.6): a collection over its
++    // maximum fails on its size checks before any element is parsed, so no issue is made per element.
++    if ((def.exactLength !== null && ctx.data.length > def.exactLength.value) ||
++        (def.maxLength !== null && ctx.data.length > def.maxLength.value)) {
++        return INVALID;
++    }
+     if (ctx.common.async) {
+       return Promise.all(
+         ([...ctx.data] as any[]).map((item, i) => {
+@@ -3727,6 +3733,11 @@ export class ZodSet<Value extends ZodTypeAny = ZodTypeAny> extends ZodType<
+       }
+     }
+ 
++    // Backport of colinhacks/zod#6652 (GHSA-mrhx-c7xc-m3w5, fixed in zod 4.6.6): a collection over its
++    // maximum fails on its size checks before any element is parsed, so no issue is made per element.
++    if (def.maxSize !== null && ctx.data.size > def.maxSize.value) {
++        return INVALID;
++    }
+     const valueType = this._def.valueType;
+ 
+     function finalizeSet(elements: SyncParseReturnType<any>[]) {
+diff --git a/v3/types.cjs b/v3/types.cjs
+index 11ed4dfc4745f9af1f1501874576b78b77d294ef..6622ac8db74f6a12b4b7b02eb8fb2edb9e2c7e7b 100644
+--- a/v3/types.cjs
++++ b/v3/types.cjs
+@@ -1819,6 +1819,12 @@ class ZodArray extends ZodType {
+                 status.dirty();
+             }
+         }
++        // Backport of colinhacks/zod#6652 (GHSA-mrhx-c7xc-m3w5, fixed in zod 4.6.6): a collection over its
++        // maximum fails on its size checks before any element is parsed, so no issue is made per element.
++        if ((def.exactLength !== null && ctx.data.length > def.exactLength.value) ||
++            (def.maxLength !== null && ctx.data.length > def.maxLength.value)) {
++            return parseUtil_js_1.INVALID;
++        }
+         if (ctx.common.async) {
+             return Promise.all([...ctx.data].map((item, i) => {
+                 return def.type._parseAsync(new ParseInputLazyPath(ctx, item, ctx.path, i));
+@@ -2846,6 +2852,11 @@ class ZodSet extends ZodType {
+                 status.dirty();
+             }
+         }
++        // Backport of colinhacks/zod#6652 (GHSA-mrhx-c7xc-m3w5, fixed in zod 4.6.6): a collection over its
++        // maximum fails on its size checks before any element is parsed, so no issue is made per element.
++        if (def.maxSize !== null && ctx.data.size > def.maxSize.value) {
++            return parseUtil_js_1.INVALID;
++        }
+         const valueType = this._def.valueType;
+         function finalizeSet(elements) {
+             const parsedSet = new Set();
+diff --git a/v3/types.js b/v3/types.js
+index 40b11c0f01b2af54e0ed48e198607bd8836d9a63..3309e45d64df1048e1768b9fb6529b73e83e08dd 100644
+--- a/v3/types.js
++++ b/v3/types.js
+@@ -1798,6 +1798,12 @@ export class ZodArray extends ZodType {
+                 status.dirty();
+             }
+         }
++        // Backport of colinhacks/zod#6652 (GHSA-mrhx-c7xc-m3w5, fixed in zod 4.6.6): a collection over its
++        // maximum fails on its size checks before any element is parsed, so no issue is made per element.
++        if ((def.exactLength !== null && ctx.data.length > def.exactLength.value) ||
++            (def.maxLength !== null && ctx.data.length > def.maxLength.value)) {
++            return INVALID;
++        }
+         if (ctx.common.async) {
+             return Promise.all([...ctx.data].map((item, i) => {
+                 return def.type._parseAsync(new ParseInputLazyPath(ctx, item, ctx.path, i));
+@@ -2817,6 +2823,11 @@ export class ZodSet extends ZodType {
+                 status.dirty();
+             }
+         }
++        // Backport of colinhacks/zod#6652 (GHSA-mrhx-c7xc-m3w5, fixed in zod 4.6.6): a collection over its
++        // maximum fails on its size checks before any element is parsed, so no issue is made per element.
++        if (def.maxSize !== null && ctx.data.size > def.maxSize.value) {
++            return INVALID;
++        }
+         const valueType = this._def.valueType;
+         function finalizeSet(elements) {
+             const parsedSet = new Set();
