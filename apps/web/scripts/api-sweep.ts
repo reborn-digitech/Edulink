@@ -449,8 +449,12 @@ async function fixture(slug = "zz-northgate-school"): Promise<SweepFixture> {
     // …and on a pupil of the sampled class, so its lead — the sweep's teacher — may add a note; the newest open incident is often one an earlier sweep opened on another class.
     incidentId: await first(db.incident.findFirst({ where: { schoolId: s, status: "OPEN", ...(klass ? { student: { enrollments: { some: { classId: klass.id, status: "ACTIVE" } } } } : {}) }, orderBy: { createdAt: "desc" }, select: { id: true } })),
     circularId: await first(db.post.findFirst({ where: { schoolId: s, requiresAck: true, status: "APPROVED" }, orderBy: { createdAt: "desc" }, select: { id: true } })),
-    syllabusUnitId: klass ? await first(db.syllabusUnit.findFirst({ where: { schoolId: s, gradeLevel: (await db.class.findUniqueOrThrow({ where: { id: klass.id }, select: { gradeLevel: true } })).gradeLevel ?? "" }, orderBy: { position: "asc" }, select: { id: true } })) : null,
-    lessonPlanId: klass ? await first(db.lessonPlan.findFirst({ where: { classId: klass.id }, orderBy: { createdAt: "desc" }, select: { id: true } })) : null,
+    // The grade's MATHEMATICS unit and lesson, by name: the reach table (sweep-sessions.ts teachesSubject) counts on
+    // the subject teacher, who takes English there, being refused, and the fixture writes an English unit at every
+    // position and an English lesson last, so "first by position" and "newest" each land on English on a fresh
+    // database (CI run 41376053419, 2 November 2026: two 200s where 403 was expected).
+    syllabusUnitId: klass ? await first(db.syllabusUnit.findFirst({ where: { schoolId: s, subject: "Mathematics", gradeLevel: (await db.class.findUniqueOrThrow({ where: { id: klass.id }, select: { gradeLevel: true } })).gradeLevel ?? "" }, orderBy: { position: "asc" }, select: { id: true } })) : null,
+    lessonPlanId: klass ? await first(db.lessonPlan.findFirst({ where: { classId: klass.id, subject: "Mathematics" }, orderBy: { createdAt: "desc" }, select: { id: true } })) : null,
     ...(await substitutionFixture(s)),
     // A cover the sweep's head was asked to take today (zz-fixtures.ts `buildHeadCover`; the grade-3 lead teaches every staffed period, so no honest cover names them), so the acknowledge door answers 200 for the PRINCIPAL and 404 for the others; null skips both doors.
     myCoverId: await first(db.substitution.findFirst({ where: { schoolId: s, dateKey: new Date().toISOString().slice(0, 10), substitute: { role: "PRINCIPAL", user: { email: "zz.principal@zz.test" } } }, select: { id: true } })),

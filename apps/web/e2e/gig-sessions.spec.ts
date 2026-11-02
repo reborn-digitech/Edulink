@@ -133,10 +133,13 @@ test("a teacher is offered one-to-ones only, and the pages are nobody else's", a
   expect((await teacher.goto("/teacher/guidance", { waitUntil: "networkidle" }))?.status()).toBe(200);
   await expect(teacher.getByTestId("slot-form")).toBeVisible();
   await expect(teacher.getByTestId("slot-kind")).toHaveCount(0);
+  // Neither page is a teacher's: each sends them on. The redirect is thrown once the shell has begun streaming,
+  // so the document answers 200 and the browser is moved by the page a moment later; the address is read until
+  // it has moved, not once.
   await teacher.goto("/admin/sessions", { waitUntil: "networkidle" });
-  expect(new URL(teacher.url()).pathname).not.toBe("/admin/sessions");
+  await expect(teacher).not.toHaveURL(/\/admin\/sessions$/);
   await teacher.goto("/sessions", { waitUntil: "networkidle" });
-  expect(new URL(teacher.url()).pathname).not.toBe("/sessions");
+  await expect(teacher).not.toHaveURL(/\/sessions$/);
   await teacher.context().close();
 });
 

@@ -9,7 +9,12 @@ pitch
 .claude
 .git
 docs
-**/coverage
+# Test coverage output at a package root only: a source folder may be named coverage too (the syllabus
+# coverage door, apps/web/src/app/api/v1/office/syllabus/coverage, which **/coverage kept out of the image
+# on 2 November 2026 and the build then could not resolve).
+/coverage
+apps/*/coverage
+packages/*/coverage
 **/*.tsbuildinfo
 **/e2e/results
 **/e2e/report

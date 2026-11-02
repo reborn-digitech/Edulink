@@ -10,7 +10,7 @@ import { HARNESS_EXAM_NAME } from "./harness-exam";
  * Sessions for one actor per role on ZZ Northgate, written to e2e/.sessions.json.
  * Minted, not signed in: the login form is exercised by its own suite, and
  * no password is typed here. Every session carries userAgent "e2e" and a
- * one-hour expiry; global-teardown.ts removes them after the run.
+ * six-hour expiry; global-teardown.ts removes them after the run.
  */
 export type Actor = {
   role: string;
@@ -41,7 +41,9 @@ async function mint(userId: string, role: string | null, schoolId: string | null
       activeSchoolId: schoolId,
       activeRole: role,
       userAgent: "e2e",
-      expiresAt: new Date(Date.now() + 3_600_000),
+      // Six hours, not one: the axe walk alone is past 90 minutes on the runner (run 41376053419, 2 November
+      // 2026, where every page after the hour was sent to /login); the teardown removes them whatever the clock.
+      expiresAt: new Date(Date.now() + 6 * 3_600_000),
     },
   });
   return `edulink_session=${token}`;

@@ -43,7 +43,10 @@ test("signed out: /login carries no dictionary, comes alive from the file, and t
   expect(await page.locator("body").innerText()).not.toMatch(RAW_KEY);
 
   await page.getByRole("radio", { name: /हिन्दी/ }).click();
-  await expect(page.locator("html")).toHaveAttribute("lang", "hi");
+  // The switch is a server action and a route refresh; this is the first test of the run against a server that
+  // has just started, and on the shared runner the refresh took past five seconds twice on 2 November 2026
+  // (run 41376053419) while the same build answered in under a second here. Twenty seconds is the cold allowance.
+  await expect(page.locator("html")).toHaveAttribute("lang", "hi", { timeout: 20_000 });
   await expect(page.getByRole("radio", { name: /हिन्दी/ })).toHaveAttribute("aria-checked", "true");
   // The client's words are the server's: the same page fetched in Hindi labels the switch the same way.
   const server = await (await context.request.get("/login")).text();

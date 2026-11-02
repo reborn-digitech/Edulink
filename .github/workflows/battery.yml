@@ -319,7 +319,7 @@ jobs:
         run: tail -n 200 server.log
 
   web-e2e:
-    name: web · ${{ matrix.suite }} · production server
+    name: web · ${{ matrix.suite }}${{ matrix.part }} · production server
     needs: battery
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-24.04
@@ -329,13 +329,21 @@ jobs:
         # The two projects playwright.config.ts cuts the suite into: the axe
         # walk alone (354 pages, 21 minutes on run 36936519173) and every other
         # spec (143 tests: the viewport matrix, the record, the seven flows,
-        # the editors; 18 minutes).
-        suite: [axe, pages]
+        # the editors; 18 minutes). The walk is 1,240 pages since the roles,
+        # modules and college streams of October, and on run 41376053419
+        # (2 November 2026) 1,016 of them took 86 minutes on one worker, past
+        # the hour the sessions lived and past any cap worth setting, so it
+        # runs as two Playwright shards on two runners, each its own server.
+        include:
+          - { suite: axe, shard: 1/2, part: " 1 of 2" }
+          - { suite: axe, shard: 2/2, part: " 2 of 2" }
+          - { suite: pages, shard: 1/1, part: "" }
     # Measured on run 36936519173: set-up, seed and build 8 minutes, the
     # browsers 0.5, the axe walk 21 — 30 for the longer entry; 1.5 × 30 = 45.
     # On run 41352685224 (2 November 2026) the walk was 1,240 pages (the new
     # roles, modules and college streams) and reached 625 in 33 minutes before
-    # the cap: about 67 minutes whole, plus 12 to build; 100 covers it.
+    # the cap; on 41376053419 1,016 in 86. Half the walk is about 55 minutes,
+    # plus 13 to seed and build; 100 covers a shard with room.
     timeout-minutes: 100
     services:
       postgres:
@@ -435,15 +443,15 @@ jobs:
         # comparing; download the artifact and commit e2e/__screenshots__/linux.
         run: |
           if [ "${{ github.event.inputs.update_snapshots }}" = "true" ]; then
-            npx playwright test --project ${{ matrix.suite }} --update-snapshots
+            npx playwright test --project ${{ matrix.suite }} --shard ${{ matrix.shard }} --update-snapshots
           else
-            npx playwright test --project ${{ matrix.suite }}
+            npx playwright test --project ${{ matrix.suite }} --shard ${{ matrix.shard }}
           fi
       - name: Playwright report and screenshots
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: e2e-${{ github.run_number }}-${{ matrix.suite }}
+          name: e2e-${{ github.run_number }}-${{ matrix.suite }}-${{ strategy.job-index }}
           path: |
             apps/web/e2e/report
             apps/web/e2e/results
@@ -461,8 +469,11 @@ jobs:
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-24.04
     # Measured on run 36936519173: set-up, seed and build 8 minutes, the export
-    # 2.3, the font 0.1, the suite 32 — 43 in all; 1.5 × 43 = 65.
-    timeout-minutes: 65
+    # 2.3, the font 0.1, the suite 32 — 43 in all; 1.5 × 43 = 65. On 2 November
+    # 2026 the suite was 1,994 tests: 38 minutes on run 41376096566, but 46 for
+    # 1,409 of them on 41376053419 beside five other jobs, cut at the cap with
+    # about 20 to go after 17 of set-up; 100 covers the slow runner.
+    timeout-minutes: 100
     services:
       postgres:
         # pgvector for the assistant's content tables (migration 20261008151729_assistant_content).
