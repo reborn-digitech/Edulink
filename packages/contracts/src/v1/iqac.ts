@@ -267,6 +267,7 @@ export const activitySaveSchema = z.object({
   title: z.string().trim().min(3).max(300),
   at: dateKey,
   participants: z.number().int().min(0).max(100000).default(0),
+  // Large cap on purpose (item 16, 2 Nov 2026): a college-wide activity (a convocation, an NSS camp) names most of the roll; `participants` carries the count beyond it.
   participantMembershipIds: z.array(id).max(2000).default([]),
   theme: capacityThemeSchema.nullable().default(null),
   departmentId: z.string().max(64).nullable().default(null),

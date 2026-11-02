@@ -334,6 +334,7 @@ export type TeachingPracticeDesk = z.infer<typeof teachingPracticeDeskSchema>;
 /** The NSS or NCC officer's desk. */
 export const corpsEnrolSchema = z.object({ studentMembershipIds: z.array(cuid).min(1).max(500), unit: text(80) });
 export const corpsLeaveSchema = z.object({ studentMembershipIds: z.array(cuid).min(1).max(500), on: dateKey });
+// participantMembershipIds is capped at 1000 on purpose (item 16, 2 Nov 2026): an NSS or NCC camp enrols the whole corps of a large college, where an enrolment or leave sheet (500) is one unit's.
 export const corpsActivitySaveSchema = z.object({ title: text(160).min(2), at: dateKey, hours: z.number().min(0.5).max(240), camp: z.boolean(), participantMembershipIds: z.array(cuid).max(1000) });
 /** GET /api/v1/duties/nss and /ncc */
 export const corpsDeskSchema = z.object({

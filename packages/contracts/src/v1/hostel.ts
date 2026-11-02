@@ -165,6 +165,7 @@ export const hostelRollCallTakeSchema = z.object({
   dateKey,
   slot: hostelRollSlotSchema,
   clientId: z.string().min(8).max(80),
+  // Large cap on purpose (item 16, 2 Nov 2026): one sheet is every resident of the hostel at the slot, a university hostel housing up to two thousand.
   entries: z.array(z.object({ allotmentId: cuid, status: hostelRollStatusSchema })).min(1).max(2000),
 });
 export type HostelRollCallTake = z.infer<typeof hostelRollCallTakeSchema>;
@@ -175,6 +176,7 @@ export const hostelRollCallResultSchema = z.object({ rollCallId: z.string(), pre
  * with every mark before and after. The warden's lock stays: a second sheet for the slot is still refused.
  */
 export const hostelRollCallCorrectSchema = z.object({
+  // The same ceiling as the sheet it corrects: every resident at the slot.
   entries: z.array(z.object({ allotmentId: cuid, status: hostelRollStatusSchema })).min(1).max(2000),
   reason: z.string().trim().min(3).max(300),
 });
@@ -254,6 +256,7 @@ export const messAttendanceSaveSchema = z.object({
   hostelId: cuid,
   dateKey,
   meal: messMealSchema,
+  // Large cap on purpose: one meal's sheet is every resident of the hostel, as the roll call's is.
   entries: z.array(z.object({ allotmentId: cuid, present: z.boolean() })).min(1).max(2000),
 });
 export const messAttendanceResultSchema = z.object({ saved: z.number().int() });

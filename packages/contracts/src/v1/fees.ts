@@ -147,6 +147,7 @@ export type FeeStructureDetail = z.infer<typeof feeStructureDetailSchema>;
 /* Plans and concessions                                                   */
 /* ---------------------------------------------------------------------- */
 
+// Large cap on purpose (item 16, 2 Nov 2026): a structure may be assigned to a hand-picked roll across the whole school, up to two thousand pupils; a class is named by classId instead.
 export const feeAssignBodySchema = z
   .object({ structureId: id, classId: id.optional(), studentMembershipIds: z.array(id).max(2000).optional() })
   .refine((v) => Boolean(v.classId) || Boolean(v.studentMembershipIds?.length), { message: "classId or studentMembershipIds", path: ["classId"] });
@@ -340,6 +341,7 @@ export const feeDuesSchema = z.object({
 });
 export type FeeDues = z.infer<typeof feeDuesSchema>;
 
+// Large cap on purpose: the reminder goes to the defaulter list, which can be most of a big school; left out, it goes to every defaulter.
 export const feeRemindBodySchema = z.object({ studentMembershipIds: z.array(id).max(2000).optional() });
 export const feeRemindResultSchema = z.object({ families: z.number().int(), demands: z.number().int() });
 
