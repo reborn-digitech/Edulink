@@ -357,6 +357,8 @@ export type SweepFixture = {
   recordChangeId: string | null;
   /** A settled signature on a fixture certificate (deciding it answers it as it stands), and a small PNG to set one with. */
   paperSignatureId: string | null;
+  /** The fixture's signed TEACHER line on a report card set: what the decide door hands its teacher, who reads back only their own line (item 14). */
+  teacherPaperSignatureId: string | null;
   /** A teacher's question for the bank that waits for the content team, and one its author took back (zz-fixtures.ts `buildGigQuestions`). */
   gigContributionId: string | null;
   gigWithdrawnContributionId: string | null;
