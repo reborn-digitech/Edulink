@@ -191,13 +191,23 @@ async function signInAs(whom: "CURATOR" | "OPERATOR" | "ADMIN" | "TEACHER" | "ST
   else if (whom === "STUDENT") await createSession(ids.student, { schoolId, role: "STUDENT" });
 }
 
+/**
+ * THE LANDING'S CLOCK IS PINNED to the day these cases were written (12 October 2026, the same day
+ * extractCompetitions is told below): every date an entry carries is read against it, and the landing's
+ * PAST rule (competition-crawl-rules.ts rejectReason) otherwise starts refusing the entries as the real
+ * calendar passes them, as CI's run 41370316559 did on 2 November 2026 with the twins' 1 November event.
+ * The landing reads no clock but this context's (now, runStartedAt, and the crawledAt it stored from
+ * them), so nothing here compares against the wall clock. A later run in the same case is LATER_RUN.
+ */
+const CRAWL_DAY = new Date("2026-10-12T06:30:00.000Z");
+const LATER_RUN = { now: new Date(CRAWL_DAY.getTime() + 3_600_000), runStartedAt: new Date(CRAWL_DAY.getTime() + 3_600_000) };
 const landCtx = (over: Partial<LandContext> = {}): LandContext => ({
   source: { id: sources.official, rootUrl: ROOT },
   organiserRoots: [ROOT],
   pageUrl: `${ROOT}nso`,
   pageHash: "hash-1",
-  now: new Date(),
-  runStartedAt: new Date(Date.now() - 60_000),
+  now: CRAWL_DAY,
+  runStartedAt: new Date(CRAWL_DAY.getTime() - 60_000),
   ...over,
 });
 
@@ -509,7 +519,7 @@ describe("landing: a draft, the dedupe, the re-crawl rule", () => {
   it("the same competition again: unchanged is left alone; a DRAFT follows its page; another year is another competition", async () => {
     const first = await db.competitionCrawl.findFirstOrThrow({ where: { competition: { title: `ZZ CC National Science Olympiad ${TAG}` } } });
     expect((await land(entry(), { pageHash: "hash-1" })).outcome).toBe("UNCHANGED");
-    const moved = await land(entry({ registrationCloses: "2026-11-07" }), { pageHash: "hash-2", runStartedAt: new Date() });
+    const moved = await land(entry({ registrationCloses: "2026-11-07" }), { pageHash: "hash-2", ...LATER_RUN });
     expect(moved.outcome).toBe("UPDATED");
     expect(moved.competitionId).toBe(first.competitionId);
     const c = await db.competition.findUniqueOrThrow({ where: { id: first.competitionId }, include: { crawl: true } });
@@ -528,7 +538,7 @@ describe("landing: a draft, the dedupe, the re-crawl rule", () => {
     const published = await db.competition.findUniqueOrThrow({ where: { id: row.competitionId } });
     expect(published.verified).toBe(true);
     const before = { ...published };
-    const r = await land(entry({ registrationCloses: "2026-11-14", eventStarts: "2026-12-13", eventEnds: "2026-12-13" }), { pageHash: "hash-3", runStartedAt: new Date() });
+    const r = await land(entry({ registrationCloses: "2026-11-14", eventStarts: "2026-12-13", eventEnds: "2026-12-13" }), { pageHash: "hash-3", ...LATER_RUN });
     expect(r.outcome).toBe("CHANGED_PUBLISHED");
     const after = await db.competition.findUniqueOrThrow({ where: { id: row.competitionId }, include: { crawl: true } });
     expect(after.registrationClosesAt).toEqual(before.registrationClosesAt);
@@ -536,7 +546,7 @@ describe("landing: a draft, the dedupe, the re-crawl rule", () => {
     expect(after.updatedAt).toEqual(before.updatedAt);
     expect(after.crawl!.changedSinceReview).toBe(true);
     expect(after.crawl!.diff).toMatchObject({ registrationClosesAt: { before: "2026-11-07", after: "2026-11-14" }, startsAt: { before: "2026-12-06", after: "2026-12-13" } });
-    await land(entry({ registrationCloses: "2026-11-21", eventStarts: "2026-12-13", eventEnds: "2026-12-13" }), { pageHash: "hash-4", runStartedAt: new Date() });
+    await land(entry({ registrationCloses: "2026-11-21", eventStarts: "2026-12-13", eventEnds: "2026-12-13" }), { pageHash: "hash-4", ...LATER_RUN });
     const merged = await db.competitionCrawl.findUniqueOrThrow({ where: { id: row.id } });
     expect(merged.diff).toMatchObject({ registrationClosesAt: { before: "2026-11-07", after: "2026-11-21" } });
     expect((await db.competition.findUniqueOrThrow({ where: { id: row.competitionId } })).registrationClosesAt).toEqual(before.registrationClosesAt);
