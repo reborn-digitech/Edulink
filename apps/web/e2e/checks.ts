@@ -21,18 +21,29 @@ export async function overflow(page: Page): Promise<number> {
 export async function overflowers(page: Page): Promise<string> {
   return page.evaluate(() => {
     const w = document.documentElement.clientWidth;
-    const out: { right: number; label: string }[] = [];
+    const out: { width: number; label: string }[] = [];
+    // A fixed bar (the offline banner, the bottom bar, the toasts) spans the layout viewport, which a phone-emulated
+    // page widens to its widest content, so those follow the culprit and are left out; among the rest the narrowest
+    // first, since the widest are the wrappers the culprit sits in (run 41454850718, 2 November 2026).
     for (const el of document.querySelectorAll<HTMLElement>("body *")) {
       const r = el.getBoundingClientRect();
       if (r.width === 0 || r.right <= w + 0.5) continue;
+      let fixed = false;
+      for (let node: HTMLElement | null = el; node && node !== document.body; node = node.parentElement) {
+        if (getComputedStyle(node).position === "fixed") {
+          fixed = true;
+          break;
+        }
+      }
+      if (fixed) continue;
       const text = (el.textContent ?? "").trim().replace(/\s+/g, " ").slice(0, 40);
-      out.push({ right: r.right, label: `${el.tagName.toLowerCase()}.${String(el.className).split(" ").slice(0, 4).join(".")} ${Math.round(r.left)}→${Math.round(r.right)} "${text}"` });
+      out.push({ width: r.width, label: `${el.tagName.toLowerCase()}.${String(el.className).split(" ").slice(0, 5).join(".")} ${Math.round(r.left)}→${Math.round(r.right)} "${text}"` });
     }
-    return out
-      .sort((a, b) => b.right - a.right)
-      .slice(0, 6)
+    return `viewport ${w}, document ${document.documentElement.scrollWidth}: ${out
+      .sort((a, b) => a.width - b.width)
+      .slice(0, 10)
       .map((o) => o.label)
-      .join(" | ");
+      .join(" | ")}`;
   });
 }
 
