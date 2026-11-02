@@ -26,7 +26,7 @@ import { LIMITED_ROLES, meSchema, sessionsListSchema } from "@edulink/contracts"
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { callsInSource } from "../lib/api-catalog.test";
-import { allowed, judge, moduleOff, tenantFromMe, walkBudgetMs, walkedGets, type Doc } from "./role-matrix";
+import { allowed, judge, moduleOff, tenantFromMe, walkBudgetMs, walkedGets, type Doc, featureGated } from "./role-matrix";
 
 const BASE = process.env.EDULINK_API_BASE;
 const TOKENS = {
@@ -119,7 +119,7 @@ describeIf("the role matrix, from the app's client", () => {
         const op = doc.paths[path]!.get!;
         const res = await client(token).get(path);
         const want = allowed(op, role, MODULE_ROLES, [...(parsedMe?.duties ?? []), ...(parsedMe?.adminDuties ?? [])]);
-        const verdict = judge(want, moduleOff(op, want, tenant), res);
+        const verdict = judge(want, moduleOff(op, want, tenant), res, featureGated(op));
         if (verdict) wrong.push(`${path}: ${verdict}`);
       }
       expect(wrong).toEqual([]);

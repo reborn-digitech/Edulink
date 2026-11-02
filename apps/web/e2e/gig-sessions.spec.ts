@@ -46,7 +46,9 @@ test("an expert offers a time, a pupil asks, a guardian agrees, the office reads
   await expert.getByTestId("slot-link").fill(LINK);
   await expert.getByTestId("slot-offer").click();
   const mine = expert.getByTestId("provider-slot").filter({ hasText: TITLE });
-  await expect(mine).toContainText("0 of 1 seats taken");
+  // The offer is a server action and a route refresh; on the shared runner the new slot appeared after the five
+  // seconds the check waited, on both attempts (run 41454850718, 2 November 2026), so it is given twenty.
+  await expect(mine).toContainText("0 of 1 seats taken", { timeout: 20_000 });
 
   // The pupil sees it among what is open, with no link, and asks.
   const pupil = await open(browser, "STUDENT", baseURL!);

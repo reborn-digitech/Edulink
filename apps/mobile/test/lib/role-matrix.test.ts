@@ -10,7 +10,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { LIMITED_ROLES } from "@edulink/contracts";
-import { allowed, judge, moduleOff, tenantFromMe, walkBudgetMs, walkedGets, WALK_MS_FLOOR, type Answer, type Doc, type Tenant } from "../contract/role-matrix";
+import { allowed, judge, moduleOff, tenantFromMe, walkBudgetMs, walkedGets, WALK_MS_FLOOR, type Answer, type Doc, type Tenant, featureGated } from "../contract/role-matrix";
 import { callsInSource } from "./api-catalog.test";
 
 const doc = JSON.parse(readFileSync(join(__dirname, "..", "..", "..", "..", "docs", "api", "openapi.json"), "utf8")) as Doc;
@@ -96,6 +96,21 @@ describe("the contract matrix's module and college rules (LOAD-6)", () => {
     const [path] = door!;
     expect(verdict(path, "PARENT", guardian, MODULE_OFF)).toBeNull();
     expect(verdict(path, "PARENT", guardian, OK)).toBeNull();
+  });
+  it("a feature door (x-feature) answers 404 FEATURE_OFF to every role while the operator's switch is off, and opens as usual once on", () => {
+    const FEATURE_OFF: Answer = { ok: false, status: 404, code: "FEATURE_OFF" };
+    const door = Object.entries(doc.paths).find(([, ops]) => ops.get && featureGated(ops.get) && Array.isArray(ops.get["x-access"]) && (ops.get["x-access"] as string[]).includes("TEACHER"));
+    expect(door).toBeDefined();
+    const [path] = door!;
+    const want = allowed(op(path), "TEACHER", LIMITED);
+    expect(want).toBe("2xx");
+    // Off: the switch's answer is the platform's, for a permitted and a refused role alike; on: the usual rule.
+    expect(judge(want, moduleOff(op(path), want, northgate), FEATURE_OFF, featureGated(op(path)))).toBeNull();
+    expect(judge(allowed(op(path), "DRIVER", LIMITED), "no", FEATURE_OFF, true)).toBeNull();
+    expect(judge(want, moduleOff(op(path), want, northgate), OK, featureGated(op(path)))).toBeNull();
+    // A door with no feature never takes that answer, and a plain 404 is still wrong on a feature door.
+    expect(judge(want, "no", FEATURE_OFF)).toBe("wanted 2xx, got 404 (FEATURE_OFF)");
+    expect(judge(want, "no", { ok: false, status: 404, code: "NOT_FOUND" }, true)).toBe("wanted 2xx, got 404 (NOT_FOUND)");
   });
   it("a duty's door (x-duties, 5 Oct 2026) opens to a FACULTY or HOD holding the duty, and to the office and the head without one", () => {
     const path = "/api/v1/duties/anti-ragging";

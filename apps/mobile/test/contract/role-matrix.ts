@@ -26,7 +26,7 @@
 import { dutyHolderRoles, isCollegeKind, type Me } from "@edulink/contracts";
 
 export type Access = "anyone" | "signed-in" | "account" | "operator" | "app-admin" | string[];
-export type Op = { "x-access": Access; "x-limited-roles"?: string[]; "x-module"?: string; "x-college"?: boolean; "x-duties"?: string[]; "x-kinds"?: string[] };
+export type Op = { "x-access": Access; "x-limited-roles"?: string[]; "x-module"?: string; "x-college"?: boolean; "x-duties"?: string[]; "x-kinds"?: string[]; "x-feature"?: string | string[] };
 export type Doc = { paths: Record<string, Record<string, Op>> };
 export type Want = "2xx" | 401 | 403 | "2xx-or-403";
 export type Off = "must" | "may" | "no" | "gone";
@@ -81,8 +81,20 @@ export function moduleOff(op: Op, want: Want, tenant: Tenant): Off {
   return "no";
 }
 
-/** Whether the answer is what `want` allows, with the module gate's answer where `off` says; null when fine, else the line the test prints. */
-export function judge(want: Want, off: Off, res: Answer): string | null {
+/** Whether the door belongs to a platform feature (x-feature): one the operator switches on, off by default since 15 October 2026. */
+export function featureGated(op: Op): boolean {
+  const f = op["x-feature"];
+  return Array.isArray(f) ? f.length > 0 : Boolean(f);
+}
+
+/**
+ * Whether the answer is what `want` allows, with the module gate's answer where `off` says; null when fine, else the
+ * line the test prints. A feature door (`gated`) answers 404 FEATURE_OFF to every role while its switch is off, before
+ * the role is asked (lib/platform-features.ts; the API sweep calls it "judged by the platform's switches"), and CI's
+ * database has every switch off, so that answer is the platform's and fine; with the switch on the usual rule holds.
+ */
+export function judge(want: Want, off: Off, res: Answer, gated = false): string | null {
+  if (gated && !res.ok && res.status === 404 && res.code === "FEATURE_OFF") return null;
   if (off === "gone") return !res.ok && res.status === 404 ? null : `wanted 404 (a door for another kind of institution), got ${res.ok ? "2xx" : res.status}${res.ok ? "" : ` (${res.code})`}`;
   const isModuleOff = !res.ok && res.status === 403 && res.code === "MODULE_OFF";
   const got = res.ok || ((want === "2xx" || want === "2xx-or-403") && res.status === 422) ? "2xx" : res.status;
