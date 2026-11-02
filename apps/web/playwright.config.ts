@@ -48,7 +48,10 @@ export default defineConfig({
    * screenshot path has no project name in it, so the baselines did not move.
    */
   projects: [
-    { name: "axe", testMatch: /axe\.spec\.ts$/, use: { browserName: "chromium" } },
+    // fullyParallel on the walk alone: Playwright shards a file-serial project by FILE, and the walk is one file,
+    // so `--shard 2/2` of it ran nothing on CI run 41415675038 (2 November 2026) while 1/2 took the whole walk.
+    // Each page is its own test and the order never mattered; one worker still runs them one at a time.
+    { name: "axe", testMatch: /axe\.spec\.ts$/, fullyParallel: true, use: { browserName: "chromium" } },
     { name: "pages", testIgnore: /axe\.spec\.ts$/, use: { browserName: "chromium" } },
   ],
 });
