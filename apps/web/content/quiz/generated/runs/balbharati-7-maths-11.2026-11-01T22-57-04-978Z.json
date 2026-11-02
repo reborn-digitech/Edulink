@@ -1,0 +1,319 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T22:57:04.978Z",
+  "finishedAt": "2026-11-01T23:16:50.291Z",
+  "seconds": 1185,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी गणित इंग्रजी",
+    "bookCode": "703020004",
+    "document": "balbharati/7/mathematics/703020004.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 11 — Circle",
+    "edition": "2026 edition",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated.\n______________________________________________________________________________________________________________",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n9. Draw neat and clean figures wherever required. Take 𝜋 = 22 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not\nstated."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 297078,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 9020,
+      "completionTokens": 3361
+    },
+    "critique": {
+      "calls": 18,
+      "ms": 748657,
+      "in": 12,
+      "out": 11,
+      "rejects": 1,
+      "promptTokens": 8492,
+      "completionTokens": 3199
+    },
+    "solver": {
+      "calls": 92,
+      "ms": 448016,
+      "in": 11,
+      "out": 8,
+      "rejects": 3,
+      "promptTokens": 22345,
+      "completionTokens": 1082
+    },
+    "form": {
+      "calls": 3,
+      "ms": 377831,
+      "in": 8,
+      "out": 3,
+      "rejects": 5,
+      "promptTokens": 6295,
+      "completionTokens": 885
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 8,
+      "ms": 15061,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 873998,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6468,
+      "completionTokens": 3012
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 0,
+    "4": 1,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "If the radius of a circle is 7 cm, what is its circumference?",
+      "ms": {
+        "draft": 22856,
+        "critique": 42754
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the formula to find the circumference of a circle?",
+      "ms": {
+        "draft": 22856,
+        "critique": 37014,
+        "solver": 57453
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A circle has a circumference of 198 cm. What is its radius?",
+      "ms": {
+        "draft": 22856,
+        "critique": 35277,
+        "solver": 62291
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A wheel with a diameter of 0.7 m is used to travel 22 km. How many rotations will the wheel make?",
+      "ms": {
+        "draft": 22856,
+        "critique": 41822,
+        "solver": 17259
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about a circle?",
+      "ms": {
+        "draft": 26657,
+        "critique": 63064,
+        "solver": 14820,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The circumference of a circle is 62.80 cm. If π is taken as 3.14, what is the diameter of the circle?",
+      "ms": {
+        "draft": 26657,
+        "critique": 63356,
+        "solver": 155470,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a circle with center O, the measure of arc AXB is 120°. What is the measure of its corresponding arc AYB?",
+      "ms": {
+        "draft": 26657,
+        "critique": 54049,
+        "solver": 14455,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A circular plot has a radius of 7.7 metres. If fencing with 3 rounds of wire is required, and the cost is 50 rupees per metre, what is the total cost of fencing?",
+      "ms": {
+        "draft": 26657,
+        "critique": 73254,
+        "solver": 114086,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a circle, the measure of a minor arc is 110°. What is the measure of its corresponding major arc?",
+      "ms": {
+        "draft": 26657,
+        "critique": 38510,
+        "solver": 145660,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a radius of a circle?",
+      "ms": {
+        "draft": 26657,
+        "critique": 23496,
+        "solver": 13850,
+        "form": 0,
+        "translation": 297759
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the measure of a minor arc is 120°, what is the measure of its corresponding major arc?",
+      "ms": {
+        "draft": 22856,
+        "critique": 28175,
+        "solver": 8828,
+        "form": 0,
+        "translation": 266010
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a circle with centre O, the measure of a minor arc is 110°. What is the measure of the major arc PYQ?",
+      "ms": {
+        "draft": 22856,
+        "critique": 35738,
+        "solver": 1227,
+        "form": 0,
+        "translation": 276664
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If the radius of a circle is 7 cm, what is its circumference?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is the formula to find the circumference of a circle?",
+      "reason": "after redrafting distractor 3: the critic finds option 3 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A circle has a circumference of 198 cm. What is its radius?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A wheel with a diameter of 0.7 m is used to travel 22 km. How many rotations will the wheel make?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about a circle?",
+      "reason": "options 1 and 2 say the same thing (\"A circle has multiple radii but only one diameter\" / \"A circle has one diameter but multiple radii\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "The circumference of a circle is 62.80 cm. If π is taken as 3.14, what is the diameter of the circle?",
+      "reason": "options are written to different precisions (0 and 1 and 2 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a circle with center O, the measure of arc AXB is 120°. What is the measure of its corresponding arc AYB?",
+      "reason": "figure: figure spec refused: spec.arcs.0: Unrecognized key(s) in object: 'label', 'measure'"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A circular plot has a radius of 7.7 metres. If fencing with 3 rounds of wire is required, and the cost is 50 rupees per metre, what is the total cost of fencing?",
+      "reason": "figure: figure spec refused: spec.frame.unit: Invalid enum value. Expected 'cm' | 'units', received 'm'"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a circle, the measure of a minor arc is 110°. What is the measure of its corresponding major arc?",
+      "reason": "options 0 and 2 are the same (\"250°\"); options 0 and 2 are the same number"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

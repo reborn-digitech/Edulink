@@ -21,49 +21,49 @@
   "board": "BALBHARATI",
   "book": "८ वी गणित इंग्रजी",
   "edition": "First Edition 2018",
-  "generatedAt": "2026-11-01T00:18:25.942Z",
+  "generatedAt": "2026-11-02T07:13:20.877Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the name of the point where the three altitudes of a triangle meet?",
+      "stem": "What is the name of the point where the three medians of a triangle meet?",
       "choices": [
         "Centroid",
         "Incentre",
-        "Circumcentre",
-        "Orthocentre"
+        "Orthocentre",
+        "Circumcentre"
       ],
-      "answerIndex": 3,
-      "solution": "The point where the three altitudes of a triangle meet is called the orthocentre. This is distinct from the centroid, which is where the medians meet, the incenter, which is where the angle bisectors meet, and the circumcenter, which is where the perpendicular bisectors meet.",
+      "answerIndex": 0,
+      "solution": "The point where the three medians of a triangle meet is called the centroid. This is because the centroid is the intersection point of the medians, which are the lines drawn from each vertex to the midpoint of the opposite side. The other options refer to different points: the orthocentre is where the altitudes meet, the incentre is where the angle bisectors meet, and the circumcentre is where the perpendicular bisectors meet.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक त्रिभुज के तीन ऊंचाइयों के मिलने वाले बिंदु का नाम क्या है?",
+          "stem": "एक त्रिभुज के तीन माध्यिकाओं के मिलने वाले बिंदु का नाम क्या है?",
           "choices": [
-            "केंद्रक",
+            "केन्द्रक",
             "अंतःकेंद्र",
-            "परिकेंद्र",
-            "लंबकेंद्र"
+            "लंबकेंद्र",
+            "परिकेंद्र"
           ],
-          "solution": "एक त्रिभुज के तीन ऊंचाइयों के मिलने वाले बिंदु को लंबकेंद्र कहते हैं। यह केंद्रक से अलग है, जो माध्यिकाओं के मिलने बिंदु होता है, अंतःकेंद्र जो कोण समद्विभाजकों के मिलने बिंदु होता है और परिकेंद्र जो लंब समद्विभाजकों के मिलने बिंदु होता है।",
+          "solution": "एक त्रिभुज की तीन माध्यिकाओं के मिलने वाले बिंदु को केन्द्रक कहा जाता है। इसके अलावा अन्य विकल्प अलग-अलग बिंदुओं को संदर्भित करते हैं: लंबकेंद्र ऊंचाइयों के मिलने बिंदु होता है, अंतःकेंद्र कोण द्विभाजकों के मिलने बिंदु होता है और परिकेंद्र लंब समद्विभाजकों के मिलने बिंदु होता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All technical terms are standard in Hindi mathematics textbooks.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard geometric terminology as taught in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "त्रिकोणाच्या तीन आंतरिक लंबांच्या बिंदू कोणता असतो?",
+          "stem": "त्रिकोणाच्या तीन आलेखांच्या भेट बिंदूचे नाव काय आहे?",
           "choices": [
             "केंद्रक",
-            "अंतःकेंद्र",
-            "परिकेंद्र",
-            "लंबकेंद्र"
+            "अंतर्केंद्र",
+            "लंबकेंद्र",
+            "परिकेंद्र"
           ],
-          "solution": "त्रिकोणाच्या तीन आंतरिक लंबांचा बिंदू लंबकेंद्र म्हणतात. हे केंद्रक, ज्याचे छेदक बिंदू असतात, अंतःकेंद्र, ज्याचे कोन दुभाजक बिंदू असतात आणि परिकेंद्र, ज्याचे लंब दुभाजक बिंदू असतात यापासून वेगळे असते.",
+          "solution": "त्रिकोणाच्या तीन आलेखांच्या भेट बिंदूला केंद्रक म्हणतात. हे कारण असे आहे की केंद्रक हा आलेखांचा छेदन बिंदू आहे, जे शिरोबिंदूपासून विरुद्ध बाजूच्या मध्य बिंदूला जोडणारे रेषाखंड आहेत. इतर विकल्पांचा अर्थ वेगळा आहे: लंबकेंद्र हा लंबांच्या भेट बिंदू आहे, अंतर्केंद्र हा कोन दुभाजकांच्या भेट बिंदू आहे आणि परिकेंद्र हा लंबसमद्विभाजकांच्या भेट बिंदू आहे.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, with appropriate technical terms used. The solution correctly explains the difference between the orthocenter and other triangle centers.",
+          "critique": "The translation is accurate and uses standard Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -72,115 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses centroid with orthocentre",
-        "Confuses incenter with orthocentre",
-        "Confuses circumcenter with orthocentre",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors that reflect common misconceptions about triangle centers.",
-      "sources": [
-        {
-          "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 18,
-          "pageStart": 29,
-          "pageEnd": 30,
-          "headingPath": [
-            "4. Altitudes and Medians of a triangle"
-          ]
-        },
-        {
-          "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 19,
-          "pageStart": 30,
-          "pageEnd": 32,
-          "headingPath": [
-            "4. Altitudes and Medians of a triangle"
-          ]
-        },
-        {
-          "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 20,
-          "pageStart": 32,
-          "pageEnd": 32,
-          "headingPath": [
-            "4. Altitudes and Medians of a triangle"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T00:18:25.942Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "Which of the following is defined as the segment joining a vertex of a triangle to the midpoint of the opposite side?",
-      "choices": [
-        "Altitude",
-        "Median",
-        "Angle bisector",
-        "Perpendicular bisector"
-      ],
-      "answerIndex": 1,
-      "solution": "A median is defined as the segment joining a vertex of a triangle to the midpoint of the opposite side. An altitude is a perpendicular segment from a vertex to the opposite side, which does not necessarily reach the midpoint. An angle bisector divides the angle at the vertex into two equal parts, and a perpendicular bisector is a line that is perpendicular to a side and passes through its midpoint, but it does not necessarily start at a vertex.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा त्रिभुज के एक शीर्ष को विपरीत भुजा के मध्य बिंदु से जोड़ने वाले खंड के रूप में परिभाषित किया जाता है?",
-          "choices": [
-            "ऊंचाई",
-            "माध्यिका",
-            "कोण समद्विभाजक",
-            "लंब समद्विभाजक"
-          ],
-          "solution": "माध्यिका को त्रिभुज के एक शीर्ष को विपरीत भुजा के मध्य बिंदु से जोड़ने वाले खंड के रूप में परिभाषित किया जाता है। ऊंचाई एक लंब खंड होता है जो शीर्ष से विपरीत भुजा पर गिराया जाता है, जो आवश्यक नहीं कि मध्य बिंदु तक पहुंचे। कोण समद्विभाजक शीर्ष पर कोण को दो समान भागों में विभाजित करता है, और लंब समद्विभाजक एक रेखा होती है जो भुजा के मध्य बिंदु से गुजरती है और उसके लंबवत होती है, लेकिन आवश्यक नहीं कि शीर्ष से शुरू हो।",
-          "imageAlt": null,
-          "critique": "Translation accurately reflects the original meaning with appropriate Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते त्रिकोणाच्या एका शिरोबिंदूला विरुद्ध बाजूच्या मध्यबिंदूला जोडणारा खंड म्हणून व्याख्या केली जाते?",
-          "choices": [
-            "ऊंची",
-            "मध्यगा",
-            "कोन दुभाजक",
-            "लंबदुभाजक"
-          ],
-          "solution": "मध्यगा म्हणजे त्रिकोणाच्या एका शिरोबिंदूला विरुद्ध बाजूच्या मध्यबिंदूला जोडणारा खंड आहे. ऊंची म्हणजे शिरोबिंदूपासून विरुद्ध बाजूला लंब खंड असतो, जो मध्यबिंदूवर जाऊ शकत नाही. कोन दुभाजक शिरोबिंदूवरील कोनाला दोन समान भागांमध्ये विभागतो, आणि लंबदुभाजक हा बाजूला लंब असलेला रेषा असतो जी तिच्या मध्यबिंदूतून जाते, परंतु तो शिरोबिंदूपासून सुरू होत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses altitude with median",
         null,
-        "Incorrectly identifies angle bisector as median",
-        "Confuses perpendicular bisector with median"
+        "Confuses centroid with orthocentre",
+        "Confuses centroid with incentre",
+        "Confuses centroid with circumcentre"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": null,
-      "critique": "The question is clear and the correct answer is correctly identified. The distractors are all common misconceptions that students might have about triangle segments.",
+      "critique": "The solution is correct and matches the key. The centroid is indeed the point where the medians of a triangle meet, and the other options refer to different triangle centers.",
       "sources": [
         {
           "document": "balbharati/8/mathematics/803020004.pdf",
@@ -211,49 +116,49 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T00:18:25.942Z",
+      "generatedAt": "2026-11-02T07:13:20.877Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "In a triangle, the orthocentre lies outside the triangle. What type of triangle is it?",
+      "difficulty": 2,
+      "stem": "Which of the following statements is true about the altitudes of a triangle?",
       "choices": [
-        "Acute-angled",
-        "Right-angled",
-        "Obtuse-angled",
-        "Equilateral"
+        "They are always inside the triangle",
+        "They are always outside the triangle",
+        "They are concurrent",
+        "They are parallel to each other"
       ],
       "answerIndex": 2,
-      "solution": "The orthocentre of a triangle is the point where its three altitudes intersect. In an obtuse-angled triangle, one angle is greater than 90 degrees, causing the altitudes to intersect outside the triangle. In acute-angled triangles, the orthocentre lies inside, and in right-angled triangles, it is at the vertex of the right angle. Equilateral triangles are a subset of acute-angled triangles, so their orthocentre is also inside.",
+      "solution": "The altitudes of a triangle are concurrent, meaning they all intersect at a single point called the orthocenter. This is always true regardless of the triangle's type. Altitudes can be inside, outside, or on the triangle, depending on whether it is acute, obtuse, or right-angled. They are not parallel because they intersect at the orthocenter.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक त्रिभुज में, ऑर्थोसेंटर त्रिभुज के बाहर स्थित है। यह किस प्रकार का त्रिभुज है?",
+          "stem": "निम्नलिखित में से कौन-सा कथन त्रिभुज की ऊंचाइयों के बारे में सत्य है?",
           "choices": [
-            "न्यूनकोणीय",
-            "समकोणीय",
-            "अधिककोणीय",
-            "समबाहु"
+            "वे हमेशा त्रिभुज के भीतर होती हैं",
+            "वे हमेशा त्रिभुज के बाहर होती हैं",
+            "वे एकत्रित होती हैं",
+            "वे एक दूसरे के समांतर होती हैं"
           ],
-          "solution": "एक त्रिभुज का ऑर्थोसेंटर त्रिभुज की तीन ऊंचाइयों के प्रतिच्छेद बिंदु होता है। एक अधिककोणीय त्रिभुज में एक कोण 90 डिग्री से अधिक होता है, जिसके कारण ऊंचाइयां त्रिभुज के बाहर प्रतिच्छेद करती हैं। न्यूनकोणीय त्रिभुजों में, ऑर्थोसेंटर अंदर स्थित होता है, और समकोणीय त्रिभुजों में, यह समकोण के शीर्ष पर होता है। समबाहु त्रिभुज एक न्यूनकोणीय त्रिभुज के उपसमुच्चय होते हैं, इसलिए उनका ऑर्थोसेंटर भी अंदर होता है।",
+          "solution": "त्रिभुज की ऊंचाइयां एकत्रित होती हैं, जिसका अर्थ है कि वे एक बिंदु पर प्रतिच्छेद करती हैं जिसे ऑर्थोसेंटर कहा जाता है। यह हमेशा सत्य होता है, चाहे त्रिभुज न्यूनकोणीय, अधिककोणीय या समकोणीय हो। ऊंचाइयां त्रिभुज के भीतर, बाहर या त्रिभुज पर हो सकती हैं। वे समांतर नहीं होती क्योंकि वे ऑर्थोसेंटर पर प्रतिच्छेद करती हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms.",
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a Hindi-medium math context.",
           "flag": null
         },
         "mr": {
-          "stem": "त्रिकोणात, लंबकेंद्र त्रिकोणाबाहेर असते. ते कोणत्या प्रकारचा त्रिकोण असेल?",
+          "stem": "खालीलपैकी कोणता विधान त्रिकोणाच्या उंचींबद्दल खरा आहे?",
           "choices": [
-            "तीव्रकोनी",
-            "समकोनी",
-            "अधिककोनी",
-            "समभुज"
+            "ते नेहमी त्रिकोणाच्या आत असतात",
+            "ते नेहमी त्रिकोणाच्या बाहेर असतात",
+            "ते एकाग्र असतात",
+            "ते एकमेकांना समांतर असतात"
           ],
-          "solution": "त्रिकोणाचे लंबकेंद्र हे त्याच्या तीन लंबांच्या छेदनबिंदू असते. अधिककोनी त्रिकोणात, एक कोन 90 अंशापेक्षा जास्त असतो, ज्यामुळे लंब त्रिकोणाबाहेर छेदतात. तीव्रकोनी त्रिकोणांमध्ये, लंबकेंद्र आत असते, आणि समकोनी त्रिकोणांमध्ये, ते समकोनाच्या शिरोबिंदूवर असते. समभुज त्रिकोण हे तीव्रकोनी त्रिकोणाच्या उपसमूहात असतात, त्यामुळे त्यांचे लंबकेंद्र देखील आत असते.",
+          "solution": "त्रिकोणाच्या उंची एकाग्र असतात, म्हणजे त्या एका बिंदूवर एकत्र येतात ज्याला ऑर्थोसेंटर म्हणतात. हे त्रिकोणाच्या प्रकारावर अवलंबून नसते. उंची त्रिकोणाच्या आत, बाहेर किंवा त्रिकोणावर असू शकतात, जे त्रिकोण निरक्षर, अधिककोनी किंवा समकोनी असल्यावर अवलंबून असते. त्या एकमेकांना समांतर नसतात कारण त्या ऑर्थोसेंटर वर एकत्र येतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for geometry.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms like 'एकाग्र' (concurrent) and 'ऑर्थोसेंटर' (orthocenter) that are standard in Marathi textbooks.",
           "flag": null
         }
       },
@@ -262,10 +167,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses orthocentre location for acute-angled triangles",
-        "Confuses orthocentre location for right-angled triangles",
+        "Incorrectly assumes altitudes are always inside",
+        "Incorrectly assumes altitudes are always outside",
         null,
-        "Incorrectly assumes equilateral triangles have orthocentres outside"
+        "Confuses concurrency with parallelism"
       ],
       "solverAnswers": [
         2,
@@ -275,7 +180,7 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The solution correctly identifies that the orthocenter lies outside the triangle only in the case of an obtuse-angled triangle. The reasoning aligns with standard geometric principles.",
+      "critique": "The correct answer is option 2, as altitudes of a triangle are always concurrent, meeting at the orthocenter. The other options are incorrect because altitudes can be inside, outside, or on the triangle depending on its type, and they are not parallel.",
       "sources": [
         {
           "document": "balbharati/8/mathematics/803020004.pdf",
@@ -306,47 +211,142 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T00:18:25.942Z",
+      "generatedAt": "2026-11-02T07:13:20.877Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "In a triangle, if the centroid divides the median into segments of 4 cm and 2 cm, what is the length of the entire median?",
+      "difficulty": 2,
+      "stem": "In a triangle, what is the ratio in which the centroid divides each median?",
       "choices": [
-        "2 cm",
-        "4 cm",
-        "6 cm",
-        "8 cm"
+        "1:1",
+        "2:1",
+        "2: 1:3",
+        "1:2"
       ],
-      "answerIndex": 2,
-      "solution": "The centroid divides the median into a 2:1 ratio, with the longer segment being closer to the vertex. So, if the two segments are 4 cm and 2 cm, the total length of the median is 4 + 2 = 6 cm. Other options misinterpret the ratio or add incorrectly.",
-      "checkExpr": "4+2",
+      "answerIndex": 1,
+      "solution": "The centroid of a triangle divides each median in the ratio 2:1, with the longer segment being closer to the vertex. This is a fundamental geometric property of centroids, which are the intersection points of the medians. The other options do not reflect this established relationship between the centroid and the medians.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक त्रिभुज में, यदि केन्द्रक माध्यिका को 4 सेमी और 2 सेमी के अंतर्भागों में विभाजित करता है, तो पूरी माध्यिका की लंबाई क्या है?",
+          "stem": "एक त्रिभुज में, केन्द्रक प्रत्येक माध्यिका को किस अनुपात में विभाजित करता है?",
           "choices": [
-            "2 सेमी",
-            "4 सेमी",
-            "6 सेमी",
-            "8 सेमी"
+            "1:1",
+            "2:1",
+            "1:3",
+            "1:2"
           ],
-          "solution": "केन्द्रक माध्यिका को 2:1 के अनुपात में विभाजित करता है, जहां लंबा अंतर्भाग शीर्ष के पास होता है। इसलिए, यदि दोनों अंतर्भाग 4 सेमी और 2 सेमी हैं, तो माध्यिका की कुल लंबाई 4 + 2 = 6 सेमी है। अन्य विकल्प अनुपात को गलत तरीके से समझते हैं या गलत तरीके से जोड़ते हैं।",
+          "solution": "एक त्रिभुज का केन्द्रक प्रत्येक माध्यिका को 2:1 के अनुपात में विभाजित करता है, जहां लंबा खंड शीर्ष के पास होता है। यह केन्द्रक और माध्यिकाओं के बीच एक स्थापित संबंध को प्रतिबिंबित नहीं करते हैं। अन्य विकल्प इस स्थापित संबंध को प्रतिबिंबित नहीं करते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard mathematical terminology.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate geometric terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "त्रिकोणात, जर भुजिका 4 सेमी आणि 2 सेमी असलेल्या खंडांमध्ये भागली गेली असेल, तर पूर्ण भुजिकेची लांबी किती असेल?",
+          "stem": "त्रिकोणात, केंद्रक प्रत्येक मध्य रेखेला कोनत्या गुणोत्तरात विभाजित करतो?",
           "choices": [
-            "2 सेमी",
-            "4 सेमी",
-            "6 सेमी",
-            "8 सेमी"
+            "1:1",
+            "2:1",
+            "1:3",
+            "1:2"
           ],
-          "solution": "भुजिकेचा भाग गुरुमंडळ 2:1 अनुपातात करतो, जेथे लांब खंड शिरोबिंदूजवळ असतो. म्हणून, जर दोन खंड 4 सेमी आणि 2 सेमी असतील, तर भुजिकेची एकूण लांबी 4 + 2 = 6 सेमी असेल. इतर विकल्प अनुपात चुकून घेतात किंवा बेरीज चुकून करतात.",
+          "solution": "त्रिकोणाचा केंद्रक प्रत्येक मध्य रेखेला 2:1 गुणोत्तरात विभाजित करतो, जेथे लांब खंड शीर्षकाजवळ असतो. हे केंद्रक आणि मध्य रेखांमधील या स्थापित संबंधाचे एक मूलभूत भौमितिक गुणधर्म आहे. इतर विकल्प या संबंधाला न दर्शवता असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for geometric concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the ratio with 1:1",
+        null,
+        "Confuses the ratio of the entire median with the segment from vertex to centroid",
+        "Confuses the ratio with 1:2"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1 (2:1), as the centroid divides each median in the ratio 2:1. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 18,
+          "pageStart": 29,
+          "pageEnd": 30,
+          "headingPath": [
+            "4. Altitudes and Medians of a triangle"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 19,
+          "pageStart": 30,
+          "pageEnd": 32,
+          "headingPath": [
+            "4. Altitudes and Medians of a triangle"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 20,
+          "pageStart": 32,
+          "pageEnd": 32,
+          "headingPath": [
+            "4. Altitudes and Medians of a triangle"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T07:13:20.877Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "In a right-angled triangle, where is the orthocentre located?",
+      "choices": [
+        "Inside the triangle",
+        "Outside the triangle",
+        "At the vertex of the right angle",
+        "At the midpoint of the hypotenuse"
+      ],
+      "answerIndex": 2,
+      "solution": "In a right-angled triangle, the orthocentre is located at the vertex where the right angle is formed because the altitudes of the triangle intersect there. The other options are incorrect because the orthocentre does not lie inside the triangle, outside the triangle, or at the midpoint of the hypotenuse.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक समकोण त्रिभुज में, लंबकेंद्र कहाँ स्थित होता है?",
+          "choices": [
+            "त्रिभुज के अंदर",
+            "त्रिभुज के बाहर",
+            "समकोण के शीर्ष पर",
+            "कर्ण के मध्य बिंदु पर"
+          ],
+          "solution": "एक समकोण त्रिभुज में, लंबकेंद्र समकोण बनाने वाले शीर्ष पर स्थित होता है क्योंकि त्रिभुज की ऊंचाइयाँ वहाँ पर प्रतिच्छेद करती हैं। अन्य विकल्प गलत हैं क्योंकि लंबकेंद्र त्रिभुज के अंदर, बाहर या कर्ण के मध्य बिंदु पर नहीं होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English content, with appropriate terminology used in a Hindi-medium math context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "समकोन त्रिकोणात, ऑर्थोसेंटर कुठे असतो?",
+          "choices": [
+            "त्रिकोणांतर्गत",
+            "त्रिकोणाबाहेर",
+            "समकोनाच्या शिरोबिंदूवर",
+            "कर्णाच्या मध्यबिंदूवर"
+          ],
+          "solution": "समकोन त्रिकोणात, ऑर्थोसेंटर समकोन तयार करणाऱ्या शिरोबिंदूवर असतो कारण त्रिकोणाच्या उंची येथे छेदतात. इतर विकल्प चुकीचे आहेत कारण ऑर्थोसेंटर त्रिकोणांतर्गत, बाहेर किंवा कर्णाच्या मध्यबिंदूवर नसतो.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
           "flag": null
@@ -357,10 +357,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "States the length of the shorter segment only",
-        "States the length of the longer segment only",
+        "Incorrectly assumes orthocentre is inside",
+        "Incorrectly assumes orthocentre is outside",
         null,
-        "Adds the segments incorrectly"
+        "Confuses orthocentre with centroid"
       ],
       "solverAnswers": [
         2,
@@ -369,8 +369,8 @@
         2,
         2
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly applies the 2:1 ratio of the centroid dividing a median, and correctly adds 4 + 2 = 6 cm. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "levelFlag": null,
+      "critique": "The orthocenter of a right-angled triangle is indeed located at the vertex of the right angle, making option 2 correct. The other options represent common misconceptions about the location of the orthocenter in different types of triangles.",
       "sources": [
         {
           "document": "balbharati/8/mathematics/803020004.pdf",
@@ -401,49 +401,49 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T00:18:25.942Z",
+      "generatedAt": "2026-11-02T07:13:20.877Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "In an acute-angled triangle, where is the orthocentre located?",
+      "difficulty": 5,
+      "stem": "In a triangle, the centroid divides a median into two parts such that the part from the vertex to the centroid is 8 units. What is the length of the entire median?",
       "choices": [
-        "Inside the triangle",
-        "On the triangle",
-        "Outside the triangle",
-        "At the midpoint of a side"
+        "12 units",
+        "16 units",
+        "24 units",
+        "32 units"
       ],
       "answerIndex": 0,
-      "solution": "In an acute-angled triangle, the orthocentre is located inside the triangle because all altitudes intersect within the triangle's interior. The other options are incorrect because the orthocentre does not lie on the triangle's sides, outside the triangle, or at the midpoint of any side.",
-      "checkExpr": null,
+      "solution": "The centroid divides the median in the ratio 2:1, so the part from the vertex to the centroid is two-thirds of the total length. If this part is 8 units, then the total length is 8 ÷ (2/3) = 12 units. The other options do not follow the 2:1 ratio correctly.",
+      "checkExpr": "8/(2/3)",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक न्यूनकोण त्रिभुज में, ऑर्थोसेंटर कहाँ स्थित होता है?",
+          "stem": "एक त्रिभुज में, केन्द्रक एक माध्यिका को दो भागों में विभाजित करता है जिसमें शीर्ष से केन्द्रक तक का भाग 8 इकाई है। पूरी माध्यिका की लंबाई क्या है?",
           "choices": [
-            "त्रिभुज के अंदर",
-            "त्रिभुज पर",
-            "त्रिभुज के बाहर",
-            "एक भुजा के मध्य बिंदु पर"
+            "12 इकाई",
+            "16 इकाई",
+            "24 इकाई",
+            "32 इकाई"
           ],
-          "solution": "एक न्यूनकोण त्रिभुज में, ऑर्थोसेंटर त्रिभुज के अंदर स्थित होता है क्योंकि सभी ऊंचाइयाँ त्रिभुज के आंतरिक भाग में प्रतिच्छेद करती हैं। अन्य विकल्प गलत हैं क्योंकि ऑर्थोसेंटर त्रिभुज की भुजाओं पर, त्रिभुज के बाहर या किसी भी भुजा के मध्य बिंदु पर नहीं होता है।",
+          "solution": "केन्द्रक माध्यिका को 2:1 के अनुपात में विभाजित करता है, अतः शीर्ष से केन्द्रक तक का भाग कुल लंबाई के दो तिहाई होता है। यदि इस भाग की लंबाई 8 इकाई है, तो कुल लंबाई 8 ÷ (2/3) = 12 इकाई होगी। अन्य विकल्प सही 2:1 अनुपात का अनुसरण नहीं करते।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms for geometry.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms like 'केन्द्रक' (centroid) and 'माध्यिका' (median) as used in standard Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "तीव्र कोन असलेल्या त्रिकोणात, ऑर्थोसेंटर कुठे असतो?",
+          "stem": "त्रिकोणात, केंद्रक एका माध्यिकेला दोन भागांमध्ये विभागतो, ज्यामध्ये शिरोबिंदूपासून केंद्रकापर्यंतचा भाग 8 एकक आहे. पूर्ण माध्यिकेची लांबी किती आहे?",
           "choices": [
-            "त्रिकोणाच्या आत",
-            "त्रिकोणावर",
-            "त्रिकोणाबाहेर",
-            "एका बाजूच्या मध्यबिंदूवर"
+            "12 एकक",
+            "16 एकक",
+            "24 एकक",
+            "32 एकक"
           ],
-          "solution": "तीव्र कोन असलेल्या त्रिकोणात, ऑर्थोसेंटर त्रिकोणाच्या आत असतो कारण सर्व उंची त्रिकोणाच्या आतर्गत भागात एकमेकांना छेदतात. इतर विकल्प चुकीचे आहेत कारण ऑर्थोसेंटर त्रिकोणाच्या बाजूवर, त्रिकोणाबाहेर किंवा कोणत्याही बाजूच्या मध्यबिंदूवर नसतो.",
+          "solution": "केंद्रक माध्यिकेला 2:1 च्या गुणोत्तरात विभागतो, म्हणून शिरोबिंदूपासून केंद्रकापर्यंतचा भाग एकूण लांबीच्या दोन तृतीयांश असतो. जर हा भाग 8 एकक असेल, तर एकूण लांबी 8 ÷ (2/3) = 12 एकक असेल. इतर विकल्प 2:1 च्या गुणोत्तरानुसार नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for geometry.",
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi technical terms like 'केंद्रक' (centroid) and 'माध्यिका' (median).",
           "flag": null
         }
       },
@@ -453,9 +453,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Believes orthocentre is on the triangle",
-        "Believes orthocentre is outside the triangle",
-        "Confuses midpoint with orthocentre"
+        "Finds the length of the segment from centroid to midpoint instead of the total",
+        "Incorrectly multiplies by 2 instead of dividing",
+        "Incorrectly multiplies by 4 instead of dividing"
       ],
       "solverAnswers": [
         0,
@@ -464,8 +464,8 @@
         0,
         0
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and aligns with the mathematical definition of the orthocenter in an acute-angled triangle. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly applies the 2:1 ratio of the centroid dividing a median, and the reasoning is sound. The correct answer is 12 units.",
       "sources": [
         {
           "document": "balbharati/8/mathematics/803020004.pdf",
@@ -496,7 +496,7 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T00:18:25.942Z",
+      "generatedAt": "2026-11-02T07:13:20.877Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

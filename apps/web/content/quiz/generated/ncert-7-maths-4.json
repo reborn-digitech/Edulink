@@ -21,343 +21,49 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-31T13:07:15.247Z",
+  "generatedAt": "2026-11-02T01:11:33.522Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 3,
-      "stem": "If the number in the top left of a 2×2 square is represented as 'a', what is the expression for the sum of the diagonal numbers?",
+      "stem": "What is the value of 7k when k = 4?",
       "choices": [
-        "a + 8",
-        "2a + 8",
-        "a + 1 + a + 7",
-        "2a + 1"
+        "28",
+        "32",
+        "24",
+        "36"
       ],
-      "answerIndex": 1,
-      "solution": "The diagonal numbers in a 2×2 square can be represented as 'a' and 'a + 8', or 'a + 1' and 'a + 7'. Adding these gives a + (a + 8) = 2a + 8 and (a + 1) + (a + 7) = 2a + 8. The expression 2a + 8 correctly represents the sum of the diagonal numbers. 'a + 8' is only one number, 'a + 1 + a + 7' is not simplified to its standard form, and '2a + 1' does not match the actual sum.",
+      "answerIndex": 0,
+      "solution": "The value of 7k when k = 4 is 7 × 4 = 28. '32' is 8 × 4, '24' is 6 × 4, and '36' is 9 × 4.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि 2×2 वर्ग के ऊपरी बाएं कोने में संख्या को 'a' से निरूपित किया जाए, तो विकर्ण की संख्याओं के योग के लिए व्यंजक क्या है?",
+          "stem": "7k का मान क्या है जब k = 4?",
           "choices": [
-            "a + 8",
-            "2a + 8",
-            "a + 1 + a + 7",
-            "2a + 1"
+            "28",
+            "32",
+            "24",
+            "36"
           ],
-          "solution": "2×2 वर्ग में विकर्ण संख्याएँ 'a' और 'a + 8' या 'a + 1' और 'a + 7' के रूप में निरूपित की जा सकती हैं। इनका योग देता है a + (a + 8) = 2a + 8 और (a + 1) + (a + 7) = 2a + 8। व्यंजक 2a + 8 विकर्ण की संख्याओं के योग के सही निरूपण करता है। 'a + 8' केवल एक संख्या है, 'a + 1 + a + 7' मानक रूप में सरल नहीं किया गया है, और '2a + 1' वास्तविक योग के साथ मेल नहीं खाता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "2×2 चौरसाच्या वरच्या बाजूच्या डाव्या कोपर्‍यातील संख्या 'a' असेल तर खालच्या बाजूच्या डाव्या कोपर्‍यातील संख्या काय असेल?",
-          "choices": [
-            "a + 8",
-            "2a + 8",
-            "a + 1 + a + 7",
-            "2a + 1"
-          ],
-          "solution": "2×2 चौरसातील विकर्णावरील संख्या 'a' आणि 'a + 8' किंवा 'a + 1' आणि 'a + 7' असू शकतात. यांची बेरीज a + (a + 8) = 2a + 8 आणि (a + 1) + (a + 7) = 2a + 8 असते. 2a + 8 विकर्णावरील संख्यांच्या बेरजेचे योग्य व्यंजक आहे. 'a + 8' एक संख्या आहे, 'a + 1 + a + 7' मानक रूपात सोडवलेले नाही आणि '2a + 1' खरी बेरीज नाही.",
-          "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the English question, with appropriate terminology used for mathematical concepts like '2×2 square', 'diagonal numbers', and 'expression'. The structure and meaning of the question and options are preserved.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "confuses one term with the sum",
-        null,
-        "fails to simplify",
-        "does not consider all terms in the sum"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct and matches the author's reasoning. The correct answer is 2a + 8, and the author's explanations for the incorrect options are valid misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp104.pdf",
-          "ordinal": 12,
-          "pageStart": 18,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 4: Expressions Using Letter-Numbers",
-            "4.5 Pick Patterns and Reveal Relationships"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp104.pdf",
-          "ordinal": 13,
-          "pageStart": 20,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 4: Expressions Using Letter-Numbers",
-            "4.5 Pick Patterns and Reveal Relationships"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp104.pdf",
-          "ordinal": 14,
-          "pageStart": 21,
-          "pageEnd": 22,
-          "headingPath": [
-            "Chapter 4: Expressions Using Letter-Numbers",
-            "4.5 Pick Patterns and Reveal Relationships"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T13:07:15.247Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "In the given pattern, Design C appears at positions that are multiples of 3. What is the position of the 10th occurrence of Design C?",
-      "choices": [
-        "30",
-        "13",
-        "10",
-        "3"
-      ],
-      "answerIndex": 0,
-      "solution": "The position of the nth occurrence of Design C is given by 3n. For the 10th occurrence, this becomes 3 × 10 = 30. The option '13' is incorrect because it assumes a different pattern. The other options do not follow the given rule.",
-      "checkExpr": "3*10",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "दिए गए पैटर्न में, डिज़ाइन C के स्थान गुणक 3 हैं। डिज़ाइन C के 10वें उद्भव का स्थान क्या है?",
-          "choices": [
-            "30",
-            "13",
-            "10",
-            "3"
-          ],
-          "solution": "डिज़ाइन C के nth उद्भव का स्थान 3n द्वारा दिया जाता है। 10वें उद्भव के लिए, यह 3 × 10 = 30 हो जाता है। विकल्प '13' गलत है क्योंकि यह एक अलग पैटर्न की धारणा करता है। अन्य विकल्प दिए गए नियम का अनुसरण नहीं करते।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "दिलेल्या आकृतीत, डिझाइन C ला 3 च्या गुणकांच्या स्थितींमध्ये दिसते. डिझाइन C च्या 10व्या उदयाची स्थिती कोणती आहे?",
-          "choices": [
-            "30",
-            "13",
-            "10",
-            "3"
-          ],
-          "solution": "डिझाइन C च्या n व्या उदयाची स्थिती 3n द्वारे दिली जाते. 10 व्या उदयासाठी, हे 3 × 10 = 30 होय. '13' विकल्प चूक आहे कारण तो वेगळ्या पॅटर्नची असंधान करतो. इतर विकल्प दिलेल्या नियमांचे अनुसरण करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "adds 3 to 10 instead of multiplying",
-        "selects the nth term instead of the position",
-        "chooses the base number"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that the 10th occurrence of Design C is at position 30, as the pattern is multiples of 3. The reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp104.pdf",
-          "ordinal": 9,
-          "pageStart": 13,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 4: Expressions Using Letter-Numbers",
-            "4.4 Simplification of Algebraic Expressions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp104.pdf",
-          "ordinal": 10,
-          "pageStart": 15,
-          "pageEnd": 17,
-          "headingPath": [
-            "Chapter 4: Expressions Using Letter-Numbers",
-            "4.5 Pick Patterns and Reveal Relationships"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp104.pdf",
-          "ordinal": 11,
-          "pageStart": 17,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 4: Expressions Using Letter-Numbers",
-            "4.5 Pick Patterns and Reveal Relationships"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T13:07:15.247Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If the expression for the total money earned by selling pencils and erasers is 18c + 11d, can it be simplified further?",
-      "choices": [
-        "Yes, by combining like terms",
-        "No, because it contains different letter-numbers",
-        "Yes, by subtracting the terms",
-        "No, because it contains like terms"
-      ],
-      "answerIndex": 1,
-      "solution": "The expression 18c + 11d cannot be simplified further because it contains different letter-numbers, c and d. These are unlike terms and cannot be combined. The option 'Yes, by combining like terms' is incorrect because there are no like terms to combine. The option 'Yes, by subtracting the terms' is incorrect because there is no operation that allows subtraction of unlike terms. The option 'No, because it contains like terms' is incorrect because the terms are unlike.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि पेंसिल और रबड़ की बिक्री से कमाए गए कुल पैसे के व्यंजक 18c + 11d है, तो क्या इसे आगे सरल किया जा सकता है?",
-          "choices": [
-            "हाँ, जैसे कि समान पदों को जोड़कर",
-            "नहीं, क्योंकि इसमें अलग-अलग अक्षर-संख्याएँ हैं",
-            "हाँ, पदों को घटाकर",
-            "नहीं, क्योंकि इसमें समान पद हैं"
-          ],
-          "solution": "व्यंजक 18c + 11d को आगे सरल नहीं किया जा सकता क्योंकि इसमें अलग-अलग अक्षर-संख्याएँ, c और d हैं। ये असमान पद हैं और जोड़े नहीं जा सकते। 'समान पदों को जोड़कर' वाला विकल्प गलत है क्योंकि समान पद नहीं हैं। 'पदों को घटाकर' वाला विकल्प गलत है क्योंकि असमान पदों को घटाने की कोई संक्रिया नहीं है। 'समान पद हैं' वाला विकल्प गलत है क्योंकि पद असमान हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question, with appropriate mathematical terminology and logical structure.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "18c + 11d या लेखाचे एकूण पैसे विक्री केल्याने उत्पन्न होते, ते आणखी एका सोप्या रूपात लिहिता येईल का?",
-          "choices": [
-            "होय, समान पदांचे जोडल्याने",
-            "नाही, कारण त्यामध्ये वेगळे अक्षर-संख्या आहेत",
-            "होय, पदांचे वजाबाकी करून",
-            "नाही, कारण त्यामध्ये समान पद आहेत"
-          ],
-          "solution": "18c + 11d या लेखाचे आणखी सोपे रूप लिहिता येत नाही कारण त्यामध्ये वेगळे अक्षर-संख्या c आणि d आहेत. ही विषम पदे आहेत आणि त्यांना जोडता येत नाही. 'समान पदांचे जोडल्याने' या पर्यायाला चूक आहे कारण समान पदे नाहीत. 'पदांचे वजाबाकी करून' या पर्यायाला चूक आहे कारण विषम पदांची वजाबाकी करता येत नाही. 'समान पद आहेत' या पर्यायाला चूक आहे कारण पदे विषम आहेत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "incorrectly assumes that like terms exist",
-        null,
-        "incorrectly assumes that subtraction is possible",
-        "incorrectly assumes that like terms exist"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. The expression 18c + 11d cannot be simplified because c and d are unlike terms. The reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp104.pdf",
-          "ordinal": 6,
-          "pageStart": 9,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 4: Expressions Using Letter-Numbers",
-            "4.4 Simplification of Algebraic Expressions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp104.pdf",
-          "ordinal": 7,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 4: Expressions Using Letter-Numbers",
-            "4.4 Simplification of Algebraic Expressions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp104.pdf",
-          "ordinal": 8,
-          "pageStart": 12,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 4: Expressions Using Letter-Numbers",
-            "4.4 Simplification of Algebraic Expressions"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T13:07:15.247Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "If the nth term of a sequence is 4n, what is the 29th term?",
-      "choices": [
-        "116",
-        "100",
-        "120",
-        "112"
-      ],
-      "answerIndex": 0,
-      "solution": "The nth term of the sequence is given as 4n. To find the 29th term, substitute n = 29 into the expression: 4 × 29 = 116. The option '100' uses n = 25 instead of 29, '120' uses n = 30, and '112' uses n = 28.",
-      "checkExpr": "4*29",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि किसी अनुक्रम का nवाँ पद 4n है, तो 29वाँ पद क्या है?",
-          "choices": [
-            "116",
-            "100",
-            "120",
-            "112"
-          ],
-          "solution": "अनुक्रम का nवाँ पद 4n दिया गया है। 29वाँ पद ज्ञात करने के लिए, व्यंजक में n = 29 का प्रतिस्थापन करें: 4 × 29 = 116। विकल्प '100' में n = 25 का उपयोग किया गया है, '120' में n = 30 का उपयोग किया गया है और '112' में n = 28 का उपयोग किया गया है।",
+          "solution": "जब k = 4 हो तो 7k का मान 7 × 4 = 28 होता है। '32' 8 × 4 है, '24' 6 × 4 है और '36' 9 × 4 है।",
           "imageAlt": null,
           "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "जर अनुक्रमाचे n वे पद 4n आहे, तर 29 वे पद किती आहे?",
+          "stem": "7k ची किंमत किती आहे जेव्हा k = 4?",
           "choices": [
-            "116",
-            "100",
-            "120",
-            "112"
+            "28",
+            "32",
+            "24",
+            "36"
           ],
-          "solution": "अनुक्रमाचे n वे पद 4n दिले आहे. 29 वे पद शोधण्यासाठी, व्यंजकात n = 29 ची बदली करा: 4 × 29 = 116. विकल्प '100' मध्ये n = 25 वापरला गेला आहे, '120' मध्ये n = 30 वापरला गेला आहे आणि '112' मध्ये n = 28 वापरला गेला आहे.",
+          "solution": "k = 4 असताना 7k ची किंमत 7 × 4 = 28 आहे. '32' ही 8 × 4 आहे, '24' ही 6 × 4 आहे आणि '36' ही 9 × 4 आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terminology for algebraic expressions.",
           "flag": null
         }
       },
@@ -367,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "uses n = 25 instead of 29",
-        "uses n = 30 instead of 29",
-        "uses n = 28 instead of 29"
+        "incorrectly multiplies 8 by 4",
+        "incorrectly multiplies 6 by 4",
+        "incorrectly multiplies 9 by 4"
       ],
       "solverAnswers": [
         0,
@@ -378,8 +84,8 @@
         0,
         0
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and straightforward. Substituting n = 29 into 4n gives 116, which matches the correct answer. The distractors are based on common off-by-one errors, which are plausible misconceptions for students.",
+      "levelFlag": null,
+      "critique": "The correct answer is 28, as 7 × 4 = 28. The distractors are based on incorrect multiplications of 8 × 4, 6 × 4, and 9 × 4, which are plausible errors for students who misread or miscalculate.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp104.pdf",
@@ -414,7 +120,304 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T13:07:15.247Z",
+      "generatedAt": "2026-11-02T01:11:33.522Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the simplified form of the expression 2d – d – c – c?",
+      "choices": [
+        "d – 2c",
+        "d + 2c",
+        "2d – 2c",
+        "–d – 2c"
+      ],
+      "answerIndex": 0,
+      "solution": "The expression 2d – d – c – c simplifies to d – 2c. This is because 2d – d = d and –c – c = –2c. The other options incorrectly combine or misrepresent the terms.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अभिव्यक्ति 2d – d – c – c का सरलीकृत रूप क्या है?",
+          "choices": [
+            "d – 2c",
+            "d + 2c",
+            "2d – 2c",
+            "–d – 2c"
+          ],
+          "solution": "अभिव्यक्ति 2d – d – c – c का सरलीकरण d – 2c होता है। इसका कारण 2d – d = d और –c – c = –2c है। अन्य विकल्प गलत रूप से पदों को संयोजित करते हैं या गलत तरीके से प्रस्तुत करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology common in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अभिव्यक्ती 2d – d – c – c चा सरलीकृत रूप काय आहे?",
+          "choices": [
+            "d – 2c",
+            "d + 2c",
+            "2d – 2c",
+            "-d – 2c"
+          ],
+          "solution": "अभिव्यक्ती 2d – d – c – c चा सरलीकृत रूप d – 2c आहे. हे कारण 2d – d = d आणि –c – c = –2c आहे. इतर विकल्प अशा प्रकारे चुकीचे जोडले गेले आहेत किंवा चुकीचे प्रतिनिधित्व केले गेले आहेत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "The pupil incorrectly combines the terms as d + 2c.",
+        "The pupil adds the terms instead of subtracting them.",
+        "The pupil reverses the sign of the d term."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The expression simplifies to d – 2c by combining like terms. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 19,
+          "pageStart": 30,
+          "pageEnd": 32,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.5 Pick Patterns and Reveal Relationships",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 20,
+          "pageStart": 32,
+          "pageEnd": 34,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.5 Pick Patterns and Reveal Relationships",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 21,
+          "pageStart": 34,
+          "pageEnd": 36,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.5 Pick Patterns and Reveal Relationships",
+            "SUMMARY"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T01:11:33.522Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Charu’s total score is 21p – 9q, and Krishita’s score is 23p – 7q. What is the difference between their scores?",
+      "choices": [
+        "2p + 2q",
+        "2p – 2q",
+        "-2p - 2q",
+        "-2p + 2q"
+      ],
+      "answerIndex": 1,
+      "solution": "The difference is 23p – 7q – (21p – 9q) = 23p – 7q – 21p + 9q = 2p + 2q. 2p + 2q is the correct answer. –2p + 2q subtracts incorrectly, –2p – 2q subtracts both terms incorrectly, and 2p – 2q subtracts the q term incorrectly.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "चारू के कुल अंक 21p – 9q हैं, और कृष्णा के अंक 23p – 7q हैं। उनके अंकों के बीच अंतर क्या है?",
+          "choices": [
+            "2p + 2q",
+            "2p – 2q",
+            "-2p - 2q",
+            "-2p + 2q"
+          ],
+          "solution": "अंतर 23p – 7q – (21p – 9q) = 23p – 7q – 21p + 9q = 2p + 2q है। 2p + 2q सही उत्तर है। –2p + 2q गलत घटाव करता है, –2p – 2q दोनों पद गलत घटाता है, और 2p – 2q q पद को गलत घटाता है।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the original English question, with equivalent mathematical terms and correct answer positioning.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "चारूचा एकूण गुण 21p – 9q आहे, आणि कृषिताचा गुण 23p – 7q आहे. त्यांच्या गुणांमध्ये किती फरक आहे?",
+          "choices": [
+            "2p + 2q",
+            "2p – 2q",
+            "-2p - 2q",
+            "-2p + 2q"
+          ],
+          "solution": "फरक 23p – 7q – (21p – 9q) = 23p – 7q – 21p + 9q = 2p + 2q. 2p + 2q हा योग्य उत्तर आहे. –2p + 2q चूकीने वजा केला गेला आहे, –2p – 2q दोन्ही वर्गांचा चूकीने वजा केला गेला आहे, आणि 2p – 2q q वर्गाचा चूकीने वजा केला गेला आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for algebraic expressions.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the signs when subtracting algebraic expressions",
+        null,
+        "Student subtracts incorrectly, reversing signs of both terms",
+        "Confuses the sign when subtracting like terms, especially when dealing with negative coefficients."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct, and the reasoning matches the common misconceptions students might have when subtracting algebraic expressions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 6,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.4 Simplification of Algebraic Expressions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 7,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.4 Simplification of Algebraic Expressions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 8,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.4 Simplification of Algebraic Expressions"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T01:11:33.522Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In a 2 × 2 square of a calendar, the top left number is 'a'. What is the expression for the number that is two rows below 'a'?",
+      "choices": [
+        "a + 7",
+        "a + 14",
+        "a + 21",
+        "a + 28"
+      ],
+      "answerIndex": 1,
+      "solution": "In a calendar, each row has 7 days. So, two rows below 'a' would be a + 7 (one row) + 7 (another row) = a + 14. The other options add an incorrect number of days, either one row (a + 7), three rows (a + 21), or four rows (a + 28).",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक कैलेंडर के 2 × 2 वर्ग में, शीर्ष बाएं संख्या 'a' है। 'a' के दो पंक्तियां नीचे संख्या के लिए व्यंजक क्या है?",
+          "choices": [
+            "a + 7",
+            "a + 14",
+            "a + 21",
+            "a + 28"
+          ],
+          "solution": "कैलेंडर में प्रत्येक पंक्ति में 7 दिन होते हैं। इसलिए 'a' के दो पंक्तियां नीचे a + 7 (एक पंक्ति) + 7 (अन्य पंक्ति) = a + 14 होगा। अन्य विकल्प गलत संख्या दिन जोड़ते हैं, एक पंक्ति (a + 7), तीन पंक्तियां (a + 21), या चार पंक्तियां (a + 28)।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका कॅलेंडरच्या 2 × 2 चौरसात, वरच्या बाजूचा बाजूचा संख्या 'a' आहे. 'a' च्या दोन ओळी खालील संख्येचे व्यंजक काय आहे?",
+          "choices": [
+            "a + 7",
+            "a + 14",
+            "a + 21",
+            "a + 28"
+          ],
+          "solution": "कॅलेंडरमध्ये प्रत्येक ओळीत 7 दिवस असतात. म्हणून 'a' च्या दोन ओळी खालील संख्या a + 7 (एक ओळ) + 7 (दुसरी ओळ) = a + 14 असेल. इतर विकल्पांमध्ये चुकीचे दिवस जोडले गेले आहेत, जे एक ओळ (a + 7), तीन ओळी (a + 21) किंवा चार ओळी (a + 28) असतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate calendar terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "adds only one row of 7 days",
+        null,
+        "adds three rows of 7 days",
+        "adds four rows of 7 days"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Two rows below 'a' in a calendar is two weeks, or 14 days, so the correct expression is a + 14.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 9,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.4 Simplification of Algebraic Expressions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 10,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.5 Pick Patterns and Reveal Relationships"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 11,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.5 Pick Patterns and Reveal Relationships"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T01:11:33.522Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

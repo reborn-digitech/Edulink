@@ -1,0 +1,838 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T10:00:23.558Z",
+  "finishedAt": "2026-11-02T10:09:57.247Z",
+  "seconds": 574,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash Part-II",
+    "bookCode": "hegp2",
+    "document": "ncert/8/mathematics/hegp205.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 12 — Tales by Dots and Lines",
+    "edition": "2025 edition (the site's Last-Modified)",
+    "chunks": 18,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated.\n______________________________________________________________________________________________________________",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not\nstated.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n8. B) 8𝑥 - 20 2",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 12,
+      "ms": 252694,
+      "in": 45,
+      "out": 43,
+      "rejects": 2,
+      "promptTokens": 48468,
+      "completionTokens": 12372
+    },
+    "critique": {
+      "calls": 45,
+      "ms": 328431,
+      "in": 43,
+      "out": 28,
+      "rejects": 15,
+      "promptTokens": 22756,
+      "completionTokens": 8011
+    },
+    "solver": {
+      "calls": 154,
+      "ms": 74996,
+      "in": 28,
+      "out": 17,
+      "rejects": 11,
+      "promptTokens": 23801,
+      "completionTokens": 1355
+    },
+    "form": {
+      "calls": 2,
+      "ms": 13291,
+      "in": 17,
+      "out": 7,
+      "rejects": 10,
+      "promptTokens": 2291,
+      "completionTokens": 309
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 55,
+      "ms": 11323,
+      "in": 7,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 287303,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 14961,
+      "completionTokens": 7189
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 2,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If the mean of 5 numbers is 12, and one of the numbers is 16, what is the sum of the remaining 4 numbers?",
+      "ms": {
+        "draft": 5072,
+        "critique": 5829
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The mean of 4 numbers is 10. If two numbers are added, 8 and 12, what is the new mean?",
+      "ms": {
+        "draft": 5072,
+        "critique": 7189
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The mean of 5 numbers is 14. If one number is removed, the mean becomes 13. What is the value of the removed number?",
+      "ms": {
+        "draft": 5072,
+        "critique": 7088
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The mean of a set of 6 numbers is 10. If one number is increased by 15, and another number is decreased by 5, what is the new mean?",
+      "ms": {
+        "draft": 5072,
+        "critique": 6704,
+        "solver": 1935,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The mean of a set of 6 numbers is 15. If a new number 20 is added, what is the new mean?",
+      "ms": {
+        "draft": 5072,
+        "critique": 8074,
+        "solver": 12034,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Venkayya calculates the average coconut harvest per tree as 25.6. One tree's count is incorrectly noted as 3 more than the actual. If there are 15 trees, what is the correct average harvest per tree?",
+      "ms": {
+        "draft": 8142,
+        "critique": 7429,
+        "solver": 2027
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a class, the frequency of family sizes is given. The frequencies are 3 for 3 members, 11 for 4 members, 9 for 5 members, 7 for 6 members, 3 for 7 members, 1 for 8 members, 1 for 9 members, and 1 for 10 members. What is the median family size?",
+      "ms": {
+        "draft": 8142,
+        "critique": 8936
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Sudhakar has entered the marks of 20 students in a spreadsheet. He wants to calculate the class average in Science. Which formula should he use?",
+      "ms": {
+        "draft": 8142,
+        "critique": 7365,
+        "solver": 2039,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A dot plot shows a collection of data with an average of 9, but one dot is missing. The data points are 3, 5, 7, 9, 11, 13, and the missing dot. What is the value of the missing dot?",
+      "ms": {
+        "draft": 8142,
+        "critique": 7904
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a spreadsheet, the marks of 20 students in 5 subjects are entered. To calculate the total marks for a student, which formula should be used?",
+      "ms": {
+        "draft": 8142,
+        "critique": 6996,
+        "solver": 1671,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a frequency table, the number of students in a class is 36. The frequencies are 3 for 3 family members, 11 for 4, 9 for 5, 7 for 6, 3 for 7, 1 for 8, 1 for 9, and 1 for 10. What is the median family size?",
+      "ms": {
+        "draft": 8142,
+        "critique": 7111
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the average number of times students rode their cycles is 2.5, and exactly 5 students rode their cycles more than once on some days, what is the total number of students in the class?",
+      "ms": {
+        "draft": 4168,
+        "critique": 8156
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a valid inference based on the passage?",
+      "ms": {
+        "draft": 5604,
+        "critique": 7393,
+        "solver": 1757,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the data on monthly average rainfall of cities in India was shown as a clustered column graph, how many bars would there be in total?",
+      "ms": {
+        "draft": 5604,
+        "critique": 6614,
+        "solver": 1804
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct method to compile the monthly average rainfall data for a city?",
+      "ms": {
+        "draft": 5604,
+        "critique": 6812,
+        "solver": 1947,
+        "form": 2703
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the average sleep time for 6-year-olds according to the graph mentioned in the passage?",
+      "ms": {
+        "draft": 4949,
+        "critique": 7619,
+        "solver": 1074,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the line graph showing sleep durations?",
+      "ms": {
+        "draft": 4949,
+        "critique": 6817,
+        "solver": 2112
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main objective of the game Hex as described in the passage?",
+      "ms": {
+        "draft": 3889,
+        "critique": 6837
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a method to represent data as per the passage?",
+      "ms": {
+        "draft": 3889,
+        "critique": 7853
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A group of students tracks the daily sleep time of their family members for a week. They calculate the average sleep time for children, adults, and elderly. If the average sleep time for children is 10 hours, for adults is 8 hours, and for elderly is 7 hours, what is the overall average sleep time if there are 5 children, 3 adults, and 2 elderly in the group?",
+      "ms": {
+        "draft": 6205,
+        "critique": 6724
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The graph shows the sunrise and sunset times across the year at four different places in India. Based on the graph, which place has the longest day length in June?",
+      "ms": {
+        "draft": 6205,
+        "critique": 5785,
+        "solver": 1401
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a line graph, the x-axis represents the months of the year and the y-axis represents the average temperature in degrees Celsius. The graph shows the temperature trend for a city. If the temperature increases by 2°C every month from January to June and then decreases by 1°C every month from July to December, what is the temperature in December if the temperature in January is 10°C?",
+      "ms": {
+        "draft": 6205,
+        "critique": 8874
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "The passage mentions that the mean is a fair-share. What does this mean?",
+      "ms": {
+        "draft": 6205,
+        "critique": 8217,
+        "solver": 1607,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The graph shows the moonrise and moonset times over a month. On which date does the moon rise at 8:00 pm?",
+      "ms": {
+        "draft": 6205,
+        "critique": 6200,
+        "solver": 2381,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the passage, it is mentioned that when values greater than the mean are added, the mean increases. What happens to the mean if a value equal to the mean is added to the data set?",
+      "ms": {
+        "draft": 6205,
+        "critique": 7137,
+        "solver": 1465,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the average height of Sudhakar’s class was 150.2 cm and two new students with heights 149 cm and 152 cm joined the class, what can we say about the new average height?",
+      "ms": {
+        "draft": 14260,
+        "critique": 10030
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the line graph, what is the trend in average sleep time for Indians as they age from 6 to 75?",
+      "ms": {
+        "draft": 14260,
+        "critique": 9509,
+        "solver": 1677
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the line graph showing the average sleep time of Indians, what is the average sleep time for people aged 30 to 50?",
+      "ms": {
+        "draft": 14260,
+        "critique": 6798,
+        "solver": 2037
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the average weight of a group of people was 65.3 kg and the median weight was 67 kg, and one person lost 2 kg while two people gained 1 kg, what can we say about the new mean and median weight?",
+      "ms": {
+        "draft": 14260,
+        "critique": 9398
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the average sleep time of 6-year-olds is 9.5 hours per day and the average sleep time of adults between 30 and 50 is 8 hours, what is the difference in their average sleep times?",
+      "ms": {
+        "draft": 14260,
+        "critique": 9525,
+        "solver": 18410
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which statement is a valid inference based on the passage?",
+      "ms": {
+        "draft": 6592,
+        "critique": 7028,
+        "solver": 1855
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which city among the given cities receives the least number of days of rainfall per year according to the graph mentioned in the passage?",
+      "ms": {
+        "draft": 6592,
+        "critique": 6675
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the total number of bars in a clustered column graph that shows the worldwide count of space object launches for each year from 2012 to 2024, with 4 columns per year?",
+      "ms": {
+        "draft": 6592,
+        "critique": 7655,
+        "solver": 2166
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the approximate number of births in July 2017, based on the line graph mentioned in the passage?",
+      "ms": {
+        "draft": 6592,
+        "critique": 9855
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the median of the data: 8, 10, 19, 23, 26, 34, 40, 41, 41, 48, 51, 55, 70?",
+      "ms": {
+        "draft": 4993,
+        "critique": 7662,
+        "solver": 1332
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the mean of two numbers is exactly halfway between them, what is the mean of 3 and 7?",
+      "ms": {
+        "draft": 6331,
+        "critique": 6363,
+        "solver": 1208
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the correct average height of the class after removing the 1 cm added by the shoes?",
+      "ms": {
+        "draft": 4993,
+        "critique": 8755,
+        "solver": 2346,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the correct average harvest per tree if the initial average was 25.6 and one tree's count was 3 more than the actual?",
+      "ms": {
+        "draft": 6620,
+        "critique": 8382,
+        "solver": 824,
+        "form": 0,
+        "translation": 34038
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the correct average height of the class if the students were wearing shoes that added 1 cm to their height?",
+      "ms": {
+        "draft": 4168,
+        "critique": 7131,
+        "solver": 1953,
+        "form": 0,
+        "translation": 48435
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main advantage of using a line graph over a column graph for showing data with many points?",
+      "ms": {
+        "draft": 14260,
+        "critique": 5920,
+        "solver": 2409,
+        "form": 0,
+        "translation": 49500
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The mean of 3 numbers is 12. If one of the numbers is 10, what is the average of the other two numbers?",
+      "ms": {
+        "draft": 5072,
+        "critique": 7797,
+        "solver": 2067,
+        "form": 0,
+        "translation": 47617
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements is always true about the median of a data set?",
+      "ms": {
+        "draft": 4168,
+        "critique": 6519,
+        "solver": 1663,
+        "form": 0,
+        "translation": 66785
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the mean of the numbers 8, 13, 10, 4, 5, 20, y, 10 is 10.375, what is the value of y?",
+      "ms": {
+        "draft": 4168,
+        "critique": 7233,
+        "solver": 2004,
+        "form": 0,
+        "translation": 35700
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "If the median of the data 12, 47, 8, 73, 18, 35, 39, 8, 29, 25, p is 29, which of the following could be p?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the mean of 5 numbers is 12, and one of the numbers is 16, what is the sum of the remaining 4 numbers?",
+      "reason": "the critic finds option 1 correct, the key is 0"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "The mean of 4 numbers is 10. If two numbers are added, 8 and 12, what is the new mean?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "The mean of 5 numbers is 14. If one number is removed, the mean becomes 13. What is the value of the removed number?",
+      "reason": "the critic finds option 3 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The mean of a set of 6 numbers is 10. If one number is increased by 15, and another number is decreased by 5, what is the new mean?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"(6*10+15-5)/6\" = 11.666666666666666, but the key says 11"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "The mean of a set of 6 numbers is 15. If a new number 20 is added, what is the new mean?",
+      "reason": "options are written to different precisions (0 and 1 decimals); ARITHMETIC MISMATCH — checkExpr \"(6*15+20)/7\" = 15.714285714285714, but the key says 16.5"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Venkayya calculates the average coconut harvest per tree as 25.6. One tree's count is incorrectly noted as 3 more than the actual. If there are 15 trees, what is the correct average harvest per tree?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a class, the frequency of family sizes is given. The frequencies are 3 for 3 members, 11 for 4 members, 9 for 5 members, 7 for 6 members, 3 for 7 members, 1 for 8 members, 1 for 9 members, and 1 for 10 members. What is the median family size?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Sudhakar has entered the marks of 20 students in a spreadsheet. He wants to calculate the class average in Science. Which formula should he use?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"correct answer…\"); distractor 3's reason is not a one-line misconception (\"refers to the wrong column, which is not Science but another…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A dot plot shows a collection of data with an average of 9, but one dot is missing. The data points are 3, 5, 7, 9, 11, 13, and the missing dot. What is the value of the missing dot?",
+      "reason": "the critic finds option 3 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a spreadsheet, the marks of 20 students in 5 subjects are entered. To calculate the total marks for a student, which formula should be used?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"correct answer…\"); distractor 3's reason is not a one-line misconception (\"refers to the wrong column, which is not the student's marks…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a frequency table, the number of students in a class is 36. The frequencies are 3 for 3 family members, 11 for 4, 9 for 5, 7 for 6, 3 for 7, 1 for 8, 1 for 9, and 1 for 10. What is the median family size?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the average number of times students rode their cycles is 2.5, and exactly 5 students rode their cycles more than once on some days, what is the total number of students in the class?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a valid inference based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Assumes Nepal launched more than others without evidence in …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the data on monthly average rainfall of cities in India was shown as a clustered column graph, how many bars would there be in total?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct method to compile the monthly average rainfall data for a city?",
+      "reason": "options 0 and 2 say the same thing (\"Collect rainfall data for one year and average it for each month.\" / \"Collect rainfall data for one month and average it for each year.\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the average sleep time for 6-year-olds according to the graph mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the line graph showing sleep durations?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main objective of the game Hex as described in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a method to represent data as per the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the average family size of the class based on the given data?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A group of students tracks the daily sleep time of their family members for a week. They calculate the average sleep time for children, adults, and elderly. If the average sleep time for children is 10 hours, for adults is 8 hours, and for elderly is 7 hours, what is the overall average sleep time if there are 5 children, 3 adults, and 2 elderly in the group?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The graph shows the sunrise and sunset times across the year at four different places in India. Based on the graph, which place has the longest day length in June?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In a line graph, the x-axis represents the months of the year and the y-axis represents the average temperature in degrees Celsius. The graph shows the temperature trend for a city. If the temperature increases by 2°C every month from January to June and then decreases by 1°C every month from July to December, what is the temperature in December if the temperature in January is 10°C?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "The passage mentions that the mean is a fair-share. What does this mean?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The graph shows the moonrise and moonset times over a month. On which date does the moon rise at 8:00 pm?",
+      "reason": "figure: figure spec refused: spec.curves.0.poly: Array must contain at most 5 element(s)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In the passage, it is mentioned that when values greater than the mean are added, the mean increases. What happens to the mean if a value equal to the mean is added to the data set?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; option 0 repeats the stem's wording (\"The mean increases\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the average height of Sudhakar’s class was 150.2 cm and two new students with heights 149 cm and 152 cm joined the class, what can we say about the new average height?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the line graph, what is the trend in average sleep time for Indians as they age from 6 to 75?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the line graph showing the average sleep time of Indians, what is the average sleep time for people aged 30 to 50?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the average weight of a group of people was 65.3 kg and the median weight was 67 kg, and one person lost 2 kg while two people gained 1 kg, what can we say about the new mean and median weight?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the average sleep time of 6-year-olds is 9.5 hours per day and the average sleep time of adults between 30 and 50 is 8 hours, what is the difference in their average sleep times?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which statement is a valid inference based on the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which city among the given cities receives the least number of days of rainfall per year according to the graph mentioned in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What is the total number of bars in a clustered column graph that shows the worldwide count of space object launches for each year from 2012 to 2024, with 4 columns per year?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "What is the approximate number of births in July 2017, based on the line graph mentioned in the passage?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is the median of the data: 8, 10, 19, 23, 26, 34, 40, 41, 41, 48, 51, 55, 70?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If the mean of two numbers is exactly halfway between them, what is the mean of 3 and 7?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the correct average height of the class after removing the 1 cm added by the shoes?",
+      "reason": "near-duplicate of batch item \"What is the correct average height of the class if…\" (cosine 0.942 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

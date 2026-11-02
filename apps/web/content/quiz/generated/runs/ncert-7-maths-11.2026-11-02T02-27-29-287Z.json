@@ -1,0 +1,720 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T02:27:29.287Z",
+  "finishedAt": "2026-11-02T02:36:28.572Z",
+  "seconds": 539,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash-II",
+    "bookCode": "gegp2",
+    "document": "ncert/7/mathematics/gegp203.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 11 — Finding Common Ground",
+    "edition": "2025 edition (the site's Last-Modified)",
+    "chunks": 13,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 22 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n21. (A)Find the H.C.F and L.C.M of 480 and 720 using the Prime factorisation method. 2\nOR\n(A) The H.C.F of 85 and 238 is expressible in the form 85m -238. Find the value of\nm.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n9. Draw neat and clean figures wherever required. Take 𝜋 = 22 7 wherever required if not stated."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 174680,
+      "in": 39,
+      "out": 37,
+      "rejects": 2,
+      "promptTokens": 43986,
+      "completionTokens": 10070
+    },
+    "critique": {
+      "calls": 53,
+      "ms": 331412,
+      "in": 37,
+      "out": 32,
+      "rejects": 5,
+      "promptTokens": 25496,
+      "completionTokens": 9365
+    },
+    "solver": {
+      "calls": 266,
+      "ms": 150099,
+      "in": 32,
+      "out": 21,
+      "rejects": 11,
+      "promptTokens": 58881,
+      "completionTokens": 3097
+    },
+    "form": {
+      "calls": 3,
+      "ms": 10025,
+      "in": 21,
+      "out": 13,
+      "rejects": 8,
+      "promptTokens": 794,
+      "completionTokens": 257
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 48,
+      "ms": 8939,
+      "in": 13,
+      "out": 12,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 49,
+      "ms": 384120,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 26982,
+      "completionTokens": 11806
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 2,
+    "4": 3,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Why should Sameeksha choose the largest square tile size?",
+      "ms": {
+        "draft": 5474,
+        "critique": 6772,
+        "solver": 12219
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the HCF of 14 and 30?",
+      "ms": {
+        "draft": 5474,
+        "critique": 5536
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If Sameeksha allows the tile size to be a fractional number of feet, how will the number of tiles change?",
+      "ms": {
+        "draft": 5474,
+        "critique": 7402,
+        "solver": 1819
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the HCF of 84 and 108 using prime factorisation?",
+      "ms": {
+        "draft": 5474,
+        "critique": 6173,
+        "solver": 11613
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Kabamai visits the sweet shop every 10 days. If today is a Monday, after how many days will she get free gajak again?",
+      "ms": {
+        "draft": 4413,
+        "critique": 9175
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If Anshu uses 6 cm strips and Guna uses 8 cm strips, what is the smallest length of a toran they can both make?",
+      "ms": {
+        "draft": 4413,
+        "critique": 6020,
+        "solver": 15428
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Anshu claims that larger numbers have longer prime factorisations. Is this claim correct?",
+      "ms": {
+        "draft": 4413,
+        "critique": 6889,
+        "solver": 11356
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the LCM of 96 and 360?",
+      "ms": {
+        "draft": 3647,
+        "critique": 8358
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "If the HCF of two numbers is 10 and the LCM is 200, what is the product of the two numbers?",
+      "ms": {
+        "draft": 3107,
+        "critique": 6957,
+        "solver": 16200,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the HCF of two numbers is 6 and their LCM is 36, what could be the two numbers?",
+      "ms": {
+        "draft": 3647,
+        "critique": 8742,
+        "solver": 20471
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the highest number that divides all the numbers in a group?",
+      "ms": {
+        "draft": 51240,
+        "critique": 4606
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the HCF of two numbers is 14 and their LCM is 84, what is the product of the numbers?",
+      "ms": {
+        "draft": 3107,
+        "critique": 7601,
+        "solver": 11879
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If two numbers are multiples of 10, and their HCF is 10, which of the following could be the numbers?",
+      "ms": {
+        "draft": 3107,
+        "critique": 5152,
+        "solver": 8155,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the prime factorisation of two numbers is 2^3 * 3^2 and 2^2 * 3^3, what is the HCF of the two numbers?",
+      "ms": {
+        "draft": 3907,
+        "critique": 4576,
+        "solver": 1104,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the meaning of the term 'common factor' as described in the chapter?",
+      "ms": {
+        "draft": 3907,
+        "critique": 5907,
+        "solver": 1635,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the prime factorisation of a number is 2^4 * 3^2 * 5, how many of its factors are perfect squares?",
+      "ms": {
+        "draft": 3907,
+        "critique": 7444,
+        "solver": 2191
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "If both numbers are doubled, what happens to their HCF?",
+      "ms": {
+        "draft": 4054,
+        "critique": 5688,
+        "solver": 2085,
+        "form": 4258
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "In the example given in the passage, what is the HCF of 270 and 50?",
+      "ms": {
+        "draft": 4054,
+        "critique": 7448,
+        "solver": 1153
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The HCF of two numbers is 12, and their LCM is 72. One of the numbers is 24. What is the other number?",
+      "ms": {
+        "draft": 3907,
+        "critique": 7305,
+        "solver": 12983
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the HCF of 14 × 6 and 14 × 9?",
+      "ms": {
+        "draft": 4054,
+        "critique": 7436
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the LCM of 96 and 360?",
+      "ms": {
+        "draft": 5903,
+        "critique": 4974,
+        "solver": 2315
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the HCF of two numbers is one of the numbers, what can be said about the relationship between the two numbers?",
+      "ms": {
+        "draft": 5903,
+        "critique": 5337,
+        "solver": 2169,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the lowest common multiple of 14 and 35?",
+      "ms": {
+        "draft": 5903,
+        "critique": 5850,
+        "solver": 15341,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Sameeksha wants to cover her 12 ft by 16 ft room with square tiles of the same size, using the least number of tiles. What is the largest possible size of the tiles in feet?",
+      "ms": {
+        "draft": 8890,
+        "critique": 4978,
+        "solver": 7839,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the HCF of 96 and 275?",
+      "ms": {
+        "draft": 4413,
+        "critique": 5537,
+        "solver": 13272,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the largest square tile size that Sameeksha should buy to cover her room without cutting tiles?",
+      "ms": {
+        "draft": 5474,
+        "critique": 8403,
+        "solver": 11759,
+        "form": 2949,
+        "translation": 37829
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the HCF of 45 and 75 based on their prime factorisations?",
+      "ms": {
+        "draft": 4413,
+        "critique": 5996,
+        "solver": 1173,
+        "form": 0,
+        "translation": 29786
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the HCF of 30 and 72?",
+      "ms": {
+        "draft": 4413,
+        "critique": 6290,
+        "solver": 11924,
+        "form": 0,
+        "translation": 27873
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If both numbers are doubled, what happens to their HCF?",
+      "ms": {
+        "draft": 3107,
+        "critique": 7508,
+        "solver": 1411,
+        "form": 0,
+        "translation": 31559
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Lekhana wants to use the fewest number of bags, what should the weight of each bag be?",
+      "ms": {
+        "draft": 5474,
+        "critique": 7197,
+        "solver": 2153,
+        "form": 4332,
+        "translation": 34071
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the LCM of 14 and 35?",
+      "ms": {
+        "draft": 3647,
+        "critique": 7529,
+        "solver": 11263,
+        "form": 0,
+        "translation": 29970
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The prime factorisation of a number is 2^4 * 3^2. How many factors does the number have?",
+      "ms": {
+        "draft": 3907,
+        "critique": 4741,
+        "solver": 1937,
+        "form": 0,
+        "translation": 22623
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "If the LCM of two numbers is one of the numbers, what can be said about the relationship between the two numbers?",
+      "ms": {
+        "draft": 3647,
+        "critique": 5956,
+        "solver": 1355,
+        "form": 0,
+        "translation": 45344
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "If a number is a multiple of another, what is the LCM of the two numbers?",
+      "ms": {
+        "draft": 3647,
+        "critique": 6252,
+        "solver": 1320,
+        "form": 0,
+        "translation": 32415
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Anshu claims, 'The larger a number is, the longer its prime factorisation will be.' Which of the following numbers can be used as a counterexample to disprove this claim?",
+      "ms": {
+        "draft": 5451,
+        "critique": 7985,
+        "solver": 2433,
+        "form": 0,
+        "translation": 35889
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the LCM of two numbers is 24 and their HCF is 8, what is the product of the two numbers?",
+      "ms": {
+        "draft": 3647,
+        "critique": 6083,
+        "solver": 1708,
+        "form": 0,
+        "translation": 28142
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the highest common factor (HCF) of 75 and 225?",
+      "ms": {
+        "draft": 5451,
+        "critique": 6193,
+        "solver": 12473,
+        "form": 0,
+        "translation": 23990
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Why should Sameeksha choose the largest square tile size?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the HCF of 14 and 30?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If Sameeksha allows the tile size to be a fractional number of feet, how will the number of tiles change?",
+      "reason": "the solver picked option 1 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What is the HCF of 84 and 108 using prime factorisation?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Kabamai visits the sweet shop every 10 days. If today is a Monday, after how many days will she get free gajak again?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If Anshu uses 6 cm strips and Guna uses 8 cm strips, what is the smallest length of a toran they can both make?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Anshu claims that larger numbers have longer prime factorisations. Is this claim correct?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the LCM of 96 and 360?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "If the HCF of two numbers is 10 and the LCM is 200, what is the product of the two numbers?",
+      "reason": "options 1 and 3 are the same (\"100\"); options 1 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the HCF of two numbers is 6 and their LCM is 36, what could be the two numbers?",
+      "reason": "after redrafting distractors 0, 1, 2: the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for the highest number that divides all the numbers in a group?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the HCF of two numbers is 14 and their LCM is 84, what is the product of the numbers?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If two numbers are multiples of 10, and their HCF is 10, which of the following could be the numbers?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If the prime factorisation of two numbers is 2^3 * 5 and 2^2 * 5^2, what is the LCM of the two numbers?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is a case where the HCF is the same as the common multiplier?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the prime factorisation of two numbers is 2^3 * 3^2 and 2^2 * 3^3, what is the HCF of the two numbers?",
+      "reason": "options 0 and 1 say the same thing (\"2^2 * 3^2\" / \"2^3 * 3^3\"); options 0 and 2 say the same thing (\"2^2 * 3^2\" / \"2^3 * 3^2\"); options 0 and 3 say the same thing (\"2^2 * 3^2\" / \"2^2 * 3^3\"); options 1 and 2 say the same thing (\"2^3 * 3^3\" / \"2^3 * 3^2\"); options 1 and 3 say the same thing (\"2^3 * 3^3\" / \"2^2 * 3^3\"); options 2 and 3 say the same thing (\"2^3 * 3^2\" / \"2^2 * 3^3\"); option 0 repeats the stem's wording (\"2^2 * 3^2\"); option 1 repeats the stem's wording (\"2^3 * 3^3\"); option 2 repeats the stem's wording (\"2^3 * 3^2\"); option 3 repeats the stem's wording (\"2^2 * 3^3\"); ARITHMETIC MISMATCH — checkExpr \"2^2*3^2\" = 36, but the key says 2"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the meaning of the term 'common factor' as described in the chapter?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the prime factorisation of a number is 2^4 * 3^2 * 5, how many of its factors are perfect squares?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "If both numbers are doubled, what happens to their HCF?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct choice, no reason needed for distractors (not applic…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "In the example given in the passage, what is the HCF of 270 and 50?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "The HCF of two numbers is 12, and their LCM is 72. One of the numbers is 24. What is the other number?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the HCF of 14 × 6 and 14 × 9?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What is the LCM of 96 and 360?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the HCF of two numbers is one of the numbers, what can be said about the relationship between the two numbers?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses the direction of the relationship between factor an…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the lowest common multiple of 14 and 35?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Sameeksha wants to cover her 12 ft by 16 ft room with square tiles of the same size, using the least number of tiles. What is the largest possible size of the tiles in feet?",
+      "reason": "options 2 and 3 are the same (\"3 ft\"); options 2 and 3 are the same number"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What is the HCF of 96 and 275?",
+      "reason": "near-duplicate of served question cmvwinngj021j0remwogi5het (cosine 0.968 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

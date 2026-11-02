@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Curiosity",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-31T07:56:13.809Z",
+  "generatedAt": "2026-11-01T18:42:52.894Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the name of the feature that allows plants and animals to survive in a particular environment?",
+      "stem": "Which of the following is an example of a plant that can store water in its stems?",
       "choices": [
-        "Adaptation",
-        "Habitat",
-        "Environment",
-        "Survival"
+        "Cactus",
+        "Deodar",
+        "Rhododendron",
+        "Camel"
       ],
       "answerIndex": 0,
-      "solution": "The special features that help plants and animals survive in a particular region are called adaptations. Habitat refers to the place where they live, environment is the surrounding, and survival is the outcome. Therefore, the correct answer is adaptation.",
+      "solution": "Cactus is an example of a plant that can store water in its stems because its thick and fleshy stems are adapted to retain water in arid environments. Deodar and rhododendron are trees that do not have this specific adaptation, and camel is an animal, not a plant.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "किसी विशेष पर्यावरण में पौधों और जानवरों के जीवित रहने में सहायता करने वाले लक्षण का नाम क्या है?",
+          "stem": "निम्न में से कौन-सा एक पौधा है जो अपने तनों में पानी के भंडारण का उदाहरण है?",
           "choices": [
-            "अनुकूलन",
-            "आवास",
-            "पर्यावरण",
-            "जीवित रहना"
+            "कैक्टस",
+            "देवदार",
+            "रोडोडेंड्रॉन",
+            "ऊंट"
           ],
-          "solution": "किसी विशेष क्षेत्र में पौधों और जानवरों के जीवित रहने में सहायता करने वाले विशेष लक्षणों को अनुकूलन कहते हैं। आवास वह स्थान है जहां वे रहते हैं, पर्यावरण आसपास की वस्तुएं हैं और जीवित रहना परिणाम है। अतः सही उत्तर अनुकूलन है।",
+          "solution": "कैक्टस एक ऐसा पौधा है जो अपने मोटे और मांसल तनों में पानी के भंडारण का उदाहरण है क्योंकि यह शुष्क वातावरण में पानी के भंडारण के लिए अनुकूलित होता है। देवदार और रोडोडेंड्रॉन ऐसे वृक्ष हैं जिनके पास इस विशिष्ट अनुकूलन की कमी है, और ऊंट एक जानवर है, पौधा नहीं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology as found in standard textbooks.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi botanical terms.",
           "flag": null
         },
         "mr": {
-          "stem": "कोणत्या वैशिष्ट्याचे नाव आहे जे वनस्पती आणि प्राणी एखाद्या विशिष्ट वातावरणात जगू शकतात?",
+          "stem": "खालीलपैकी कोणता वनस्पतीचा उदाहरण आहे जी तिच्या तंतूंमध्ये पाणी साठवू शकते?",
           "choices": [
-            "अनुकूलन",
-            "निवासस्थान",
-            "वातावरण",
-            "जीवन"
+            "कॅक्टस",
+            "देवदार",
+            "रोडोडेंड्रॉन",
+            "ऊंट"
           ],
-          "solution": "एखाद्या विशिष्ट भागात वनस्पती आणि प्राणी जगू शकतात अशी विशेष वैशिष्ट्ये अनुकूलन म्हणतात. निवासस्थान हे त्यांचे रहाण्याचे जागा आहे, वातावरण हे आजूबाजूचे वातावरण आहे आणि जीवन हे फलित आहे. म्हणूनच योग्य उत्तर अनुकूलन आहे.",
+          "solution": "कॅक्टस ही एक वनस्पतीचे उदाहरण आहे जी तिच्या मोठ्या आणि मांसल तंतूंमध्ये पाणी साठवू शकते कारण तिच्या मोठ्या आणि मांसल तंतूंमध्ये शुष्क वातावरणात पाणी जमा करण्यासाठी अनुकूलित केले गेले आहे. देवदार आणि रोडोडेंड्रॉन ही झाडे आहेत ज्यांना ही विशिष्ट अनुकूलन नाही आणि ऊंट हे प्राणी आहे, वनस्पती नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with educational materials.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi botanical terms.",
           "flag": null
         }
       },
@@ -73,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses habitat with the feature itself",
-        "Misunderstands the term environment",
-        "Thinks survival is a feature rather than a result"
+        "Believes that all trees in mountainous regions are adapted to store water like cacti",
+        "A student might confuse rhododendron with a plant that stores water in its stems, not realizing it is a flowering shrub with no such adaptation",
+        "Does not understand the role of stems in plants"
       ],
       "solverAnswers": [
         0,
@@ -85,7 +85,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed, and the solution correctly identifies 'adaptation' as the correct answer. The reasoning for the distractors aligns with common student misconceptions.",
+      "critique": "The correct answer is Cactus (option 0), as it is well-known that cacti have thick, fleshy stems for water storage. The other options are either not plants (camel) or not adapted for water storage in their stems (deodar and rhododendron). The author's reasoning aligns with scientific knowledge and common misconceptions.",
       "sources": [
         {
           "document": "ncert/6/science/fecu102.pdf",
@@ -122,49 +122,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T07:56:13.809Z",
+      "generatedAt": "2026-11-01T18:42:52.894Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 2,
-      "stem": "Which type of venation is found in the leaves of hibiscus plants?",
+      "stem": "Which of the following is an example of an animal that lives on land and in water?",
       "choices": [
-        "Parallel venation",
-        "Reticulate venation",
-        "Circular venation",
-        "Radial venation"
+        "Crow",
+        "Ant",
+        "Frog",
+        "Cow"
       ],
-      "answerIndex": 1,
-      "solution": "Reticulate venation is found in hibiscus leaves because it features a network of interconnected veins, which is a common pattern in broad-leaved plants. Parallel venation consists of veins running side by side, typically seen in grasses. Circular and radial venation are not recognized patterns in leaf structures.",
+      "answerIndex": 2,
+      "solution": "Frogs are amphibians, meaning they can live both on land and in water. Crows are birds that primarily live on land, ants are insects that live in underground nests, and cows are mammals that live exclusively on land. Therefore, the correct answer is frog because it is the only animal that can live in both environments.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "हिबिस्कस पौधों के पत्तों में किस प्रकार की शिरा-व्यवस्था पाई जाती है?",
+          "stem": "निम्नलिखित में से कौन-सा एक ऐसे जानवर का उदाहरण है जो भूमि पर और पानी में रहता है?",
           "choices": [
-            "समांतर शिरा-व्यवस्था",
-            "जालीदार शिरा-व्यवस्था",
-            "चक्रीय शिरा-व्यवस्था",
-            "किरणीय शिरा-व्यवस्था"
+            "कौआ",
+            "चींटी",
+            "मेंढक",
+            "गाय"
           ],
-          "solution": "हिबिस्कस के पत्तों में जालीदार शिरा-व्यवस्था पाई जाती है क्योंकि इसमें एक जाल के रूप में जुड़ी हुई शिराएं होती हैं, जो चौड़े पत्ते वाले पौधों में सामान्य पैटर्न है। समांतर शिरा-व्यवस्था में शिराएं साथ-साथ चलती हैं, जो घास में देखी जाती है। चक्रीय और किरणीय शिरा-व्यवस्था पत्ते की संरचना में मान्य पैटर्न नहीं हैं।",
+          "solution": "मेंढक एम्फीबियन होते हैं, जिनका अर्थ है कि वे भूमि पर और पानी में दोनों में रह सकते हैं। कौए पक्षी होते हैं जो मुख्य रूप से भूमि पर रहते हैं, चींटियां कीट होते हैं जो भूमि के नीचे के छिद्रों में रहते हैं, और गायें स्तनधारी होते हैं जो केवल भूमि पर रहते हैं। इसलिए, सही उत्तर मेंढक है क्योंकि यह एकमात्र ऐसा जानवर है जो दोनों पर्यावरणों में रह सकता है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, with appropriate Hindi botanical terms used. The correct answer remains option (2), and the explanations for other options are consistent with the English version.",
+          "critique": "Translation accurately preserves meaning, technical terms are standard in Hindi textbooks, and the correct answer remains option 2 (मेंढक).",
           "flag": null
         },
         "mr": {
-          "stem": "हिबिस्कस पौध्याच्या पानांमध्ये कोणत्या प्रकारची शिरा आढळून येते?",
+          "stem": "खालीलपैकी कोणता जीव जमीनीवर आणि पाण्यात राहण्याचा उदाहरण आहे?",
           "choices": [
-            "समांतर शिरा",
-            "जाळीदार शिरा",
-            "वृत्ताकार शिरा",
-            "किरणीय शिरा"
+            "कॉर",
+            "मांजर",
+            "मेंढक",
+            "गाय"
           ],
-          "solution": "हिबिस्कस पानांमध्ये जाळीदार शिरा असते कारण ती एक परस्परसंबंधित शिरांची जाळी असते, जी विस्तृत पान असलेल्या वनस्पतींमध्ये सामान्य आहे. समांतर शिरा ही एकमेकांच्या बरोबर धार चालणारी शिरा असते, जी लांब घासांमध्ये दिसते. वृत्ताकार आणि किरणीय शिरा ही पान संरचनांमध्ये ओळखली जाणारी पैकी नाहीत.",
+          "solution": "मेंढक हे अम्फिबियन आहेत, जे जमीनीवर आणि पाण्यात दोन्ही ठिकाणी राहू शकतात. कॉर हे पक्षी आहेत जे जमीनीवर आधिकारिकपणे राहतात, मांजर हे कीटक आहेत जे खोदलेल्या खोल्यात राहतात आणि गाय हे स्तनधारी आहेत जे जमीनीवर फक्त राहतात. त्यामुळे, योग्य उत्तर मेंढक आहे कारण ते दोन्ही पर्यावरणात राहू शकतो.",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Marathi botanical terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terms for biological concepts (e.g., 'मेंढक' for frog, 'अम्फिबियन' for amphibian).",
           "flag": null
         }
       },
@@ -173,194 +173,97 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses reticulate with parallel venation",
+        "Crows live on trees and do not live in water.",
+        "Ants live in nests in the soil and do not live in water.",
         null,
-        "Incorrectly assumes a different type of venation",
-        "Mistakenly thinks the venation pattern is circular or radial"
+        "Cows live on land and do not live in water."
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 1 (Reticulate venation), as hibiscus leaves have a net-like venation pattern. The other options are incorrect, and the author's reasons for the wrong options align with common misconceptions.",
+      "critique": "The question is clear and the correct answer is logically derived. The explanation provided by the author is accurate and matches the biological facts.",
       "sources": [
         {
           "document": "ncert/6/science/fecu102.pdf",
-          "ordinal": 3,
-          "pageStart": 6,
-          "pageEnd": 7,
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
           "headingPath": [
             "Chapter 2: Diversity in the Living World",
-            "2.2 How to Group Plants and Animals?"
+            "छायामनयसय कुर्वननति नतिष्ठन नति सरयमातिपे । फलानयनप परारा्वय रकृााः सतपुरुषा इ र ॥",
+            "(सुभानषति)"
           ]
         },
         {
           "document": "ncert/6/science/fecu102.pdf",
-          "ordinal": 4,
-          "pageStart": 7,
-          "pageEnd": 9,
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
           "headingPath": [
             "Chapter 2: Diversity in the Living World",
-            "2.2 How to Group Plants and Animals?"
+            "2.1 Diversity in Plants and Animals Around Us"
           ]
         },
         {
           "document": "ncert/6/science/fecu102.pdf",
-          "ordinal": 5,
-          "pageStart": 9,
-          "pageEnd": 10,
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 6,
           "headingPath": [
             "Chapter 2: Diversity in the Living World",
-            "2.2 How to Group Plants and Animals?"
+            "2.1 Diversity in Plants and Animals Around Us"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T07:56:13.809Z",
+      "generatedAt": "2026-11-01T18:42:52.894Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "A student groups plants based on whether their stems are hard or soft. Which of the following groups is most likely to be formed?",
+      "difficulty": 2,
+      "stem": "Which of the following is an example of an aquatic animal?",
       "choices": [
-        "Trees and shrubs",
-        "Herbs and creepers",
-        "Climbers and creepers",
-        "Herbs and trees"
-      ],
-      "answerIndex": 0,
-      "solution": "Trees and shrubs have hard stems, while herbs and creepers have soft stems. Grouping plants based on stem hardness would place trees and shrubs together. The other options mix plants with different stem characteristics.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक छात्र वनस्पति के पौधों के आधार पर समूह बनाता है कि उनके तने कठोर हैं या नरम। निम्नलिखित में से कौन सा समूह सबसे अधिक संभावना है?",
-          "choices": [
-            "वृक्ष और झाड़ियाँ",
-            "शाक और चढ़ने वाले",
-            "चढ़ने वाले और चरने वाले",
-            "शाक और वृक्ष"
-          ],
-          "solution": "वृक्ष और झाड़ियाँ कठोर तने वाले होते हैं, जबकि शाक और चरने वाले नरम तने वाले होते हैं। तने की कठोरता के आधार पर वनस्पति के समूह बनाने पर वृक्ष और झाड़ियाँ एक साथ रहेंगे। अन्य विकल्प पानी के अलग-अलग विशेषताओं वाले पौधों के मिश्रण के साथ हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses appropriate botanical terms in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका विद्यार्थ्याने पानांच्या ताकदीवर आधारित वनस्पतींचे वर्गीकरण केले. खालीलपैकी कोणता वर्ग सर्वात जास्त तयार होण्याची शक्यता आहे?",
-          "choices": [
-            "वृक्ष आणि झाडे",
-            "शाक, वाढक वनस्पती",
-            "उभयचर आणि वाढक वनस्पती",
-            "शाक आणि वृक्ष"
-          ],
-          "solution": "वृक्ष आणि झाडांचे ताकददार पान असतात, तर शाक आणि वाढक वनस्पतींचे नरम पान असतात. पानांच्या ताकदीवर आधारित वनस्पतींचे वर्गीकरण केल्यास वृक्ष आणि झाडे एकत्र येतात. इतर विकल्पांमध्ये विविध पान वैशिष्ट्यांच्या वनस्पतींचा समावेश असतो.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi botanical terms used.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Herbs have soft stems, so they would not be grouped with shrubs",
-        "Climbers and creepers are not described in terms of stem hardness",
-        "Herbs and trees have different stem types"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0 (Trees and shrubs) because both have hard stems, which aligns with the grouping criterion. The other options contain plants with soft stems or are not described in terms of stem hardness, making them invalid groupings.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu102.pdf",
-          "ordinal": 3,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 2: Diversity in the Living World",
-            "2.2 How to Group Plants and Animals?"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu102.pdf",
-          "ordinal": 4,
-          "pageStart": 7,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 2: Diversity in the Living World",
-            "2.2 How to Group Plants and Animals?"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu102.pdf",
-          "ordinal": 5,
-          "pageStart": 9,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 2: Diversity in the Living World",
-            "2.2 How to Group Plants and Animals?"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T07:56:13.809Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "A student observes that a plant has a thick, hard stem and branches arise higher on the stem. Which group does this plant most likely belong to?",
-      "choices": [
-        "Herb",
-        "Shrub",
-        "Creeper",
-        "Tree"
+        "Frog",
+        "Tortoise",
+        "Horse",
+        "Whale"
       ],
       "answerIndex": 3,
-      "solution": "Trees are characterized by having thick, hard stems with branches that grow higher up the stem. Shrubs have shorter, less thick stems with branches closer to the ground. Creepers have weak, sprawling stems that do not grow tall. Herbs have soft, flexible stems that do not become woody. Therefore, the plant described most likely belongs to the tree group.",
+      "solution": "Whales are aquatic animals because they live exclusively in water and are adapted to marine environments. Frogs are amphibians, meaning they live both in water and on land. Tortoises and horses are land animals, not aquatic. Therefore, the correct answer is whale.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक छात्र देखता है कि एक पौधे के पास मोटा, कठोर तना है और शाखाएं तने के ऊपर उत्पन्न होती हैं। इस पौधे के संभावित समूह कौन सा है?",
+          "stem": "निम्नलिखित में से कौन एक जलीय प्राणी का उदाहरण है?",
           "choices": [
-            "शाक",
-            "झाड़ी",
-            "आलू लेपन वाला",
-            "वृक्ष"
+            "मेंढक",
+            "कछुआ",
+            "घोड़ा",
+            "व्हेल"
           ],
-          "solution": "वृक्षों की विशेषता मोटे, कठोर तने होते हैं जिन पर शाखाएं तने के ऊपर उत्पन्न होती हैं। झाड़ियों के पास छोटे, कम मोटे तने होते हैं जिन पर शाखाएं जमीन के पास उत्पन्न होती हैं। आलू लेपन वाले पौधों के पास कमजोर, फैले हुए तने होते हैं जो ऊंचाई नहीं बढ़ते। शाकों के पास नरम, लचीले तने होते हैं जो लकड़ी के रूप में नहीं बनते। इसलिए, वर्णित पौधा वृक्ष समूह में संभावित रूप से आता है।",
+          "solution": "व्हेल जलीय प्राणी हैं क्योंकि वे पूरी तरह से पानी में रहते हैं और समुद्री वातावरण में अनुकूलित होते हैं। मेंढक एक उभयचर है, जिसका अर्थ है कि वे जल और भूमि दोनों में रहते हैं। कछुआ और घोड़ा भूमि प्राणी हैं, जलीय नहीं। इसलिए सही उत्तर व्हेल है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate botanical terminology as taught in Hindi-medium textbooks.",
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for biological concepts.",
           "flag": null
         },
         "mr": {
-          "stem": "एका विद्यार्थ्याने एका वनस्पतीला निरीक्षण केले की तिच्याकडे मोठा, कठीण बीजांचा असतो आणि डांबर बीजांच्या वर असतात. या वनस्पतीला कोणत्या गटात असण्याची शक्यता आहे?",
+          "stem": "खालीलपैकी कोणते जलजीवाचे उदाहरण आहे?",
           "choices": [
-            "शाक",
-            "लता",
-            "कांदा",
-            "वृक्ष"
+            "मांजर",
+            "कांबडा",
+            "गाढव",
+            "व्हेल"
           ],
-          "solution": "वृक्षांची वैशिष्ट्ये मोठा, कठीण बीजांचा असतो आणि डांबर बीजांच्या वर असतात. लतांमध्ये लहान, कमी जाड बीजांचा असतो आणि डांबर जमिनीजवळ असतात. कांद्यांमध्ये कमजोर, विस्तारलेले बीजांचा असतो जे उंच वाढत नाही. शाकांमध्ये नरम, लचका बीजांचा असतो जो लाकडाचा बनत नाही. म्हणून, वर्णन केलेल्या वनस्पतीला वृक्ष गटात असण्याची शक्यता आहे.",
+          "solution": "व्हेल हे जलजीव आहेत कारण ते निरंतर पाण्यात राहतात आणि समुद्री वातावरणासाठी अनुकूलित आहेत. मांजर अर्धजलजीव आहेत, जे पाण्यात आणि जमीनीवर दोन्ही ठिकाणी राहतात. कांबडा आणि गाढव हे जमीनीवरचे प्राणी आहेत, जलजीव नाहीत. म्हणूनच योग्य उत्तर व्हेल आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi botanical terms used.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for biological concepts.",
           "flag": null
         }
       },
@@ -369,9 +272,9 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Herbs have soft stems, not hard ones",
-        "Shrubs have hard stems, but their branches start close to the ground",
-        "Creepers do not have tall stems",
+        "Confuses amphibians with aquatic animals",
+        "Does not understand the difference between terrestrial and amphibious animals",
+        "Does not know the classification of tortoises",
         null
       ],
       "solverAnswers": [
@@ -381,8 +284,214 @@
         3,
         3
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies the plant as a tree based on the description of a thick, hard stem and branches arising higher on the stem. The reasoning for the other options is also accurate and reflects common misconceptions.",
+      "levelFlag": null,
+      "critique": "The correct answer is 3 (Whale), as whales are fully aquatic. The author's reasoning is sound, and the misconceptions listed for the distractors are plausible for students at this level.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu102.pdf",
+          "ordinal": 12,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 2: Diversity in the Living World",
+            "2.3 Plants and Animals in Different",
+            "Surroundings"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu102.pdf",
+          "ordinal": 13,
+          "pageStart": 20,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 2: Diversity in the Living World",
+            "2.3 Plants and Animals in Different",
+            "Surroundings",
+            "Keywords"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu102.pdf",
+          "ordinal": 14,
+          "pageStart": 23,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 2: Diversity in the Living World",
+            "2.3 Plants and Animals in Different",
+            "Surroundings",
+            "Let us enhance our learning"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-01T18:42:52.894Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a plant has fibrous roots and parallel venation in its leaves, which group does it belong to?",
+      "choices": [
+        "Dicot plants",
+        "Monocot plants",
+        "Shrubs",
+        "Trees"
+      ],
+      "answerIndex": 1,
+      "solution": "Monocot plants typically have fibrous roots and leaves with parallel venation, which matches the characteristics described. Dicot plants usually have a taproot system and leaves with reticulate venation. Shrubs and trees refer to plant structure and height, not root or leaf vein patterns.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक पौधे में जालीदार जड़ें और पत्तियों में समानांतर शिरा होती हैं, तो यह किस समूह में आता है?",
+          "choices": [
+            "द्विबीजपत्री पौधे",
+            "एकबीजपत्री पौधे",
+            "झाड़ियाँ",
+            "वृक्ष"
+          ],
+          "solution": "एकबीजपत्री पौधों के पास आमतौर पर जालीदार जड़ें और पत्तियों में समानांतर शिरा होती है, जो वर्णित विशेषताओं के साथ मेल खाती है। द्विबीजपत्री पौधों के पास आमतौर पर एक मुख्य जड़ की प्रणाली होती है और पत्तियों में जालीदार शिरा होती है। झाड़ियाँ और वृक्ष पौधे की संरचना और ऊंचाई के संदर्भ में होते हैं, जड़ या पत्ती की शिरा पैटर्न के बारे में नहीं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate botanical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका वनस्पतीला फाइब्रस जडे आणि पानांमध्ये समांतर वेनेशन असेल, तर ती कोणत्या गटात येते?",
+          "choices": [
+            "द्विबीजपत्री वनस्पती",
+            "एकबीजपत्री वनस्पती",
+            "झाडे",
+            "वृक्ष"
+          ],
+          "solution": "एकबीजपत्री वनस्पतींमध्ये सामान्यतः फाइब्रस जडे आणि पानांमध्ये समांतर वेनेशन असते, जे वर्णन केलेल्या वैशिष्ट्यांसह मेळ खाते. द्विबीजपत्री वनस्पतींमध्ये सामान्यतः टॅपरूट प्रणाली आणि पानांमध्ये जाळीदार वेनेशन असते. झाडे आणि वृक्ष हे वनस्पतीच्या संरचनेचे आणि उंचीचे वर्णन करतात, जडे किंवा पानांच्या वेनेशन पॅटर्न नाहीत.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains scientific terminology appropriate for Marathi-medium education.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses monocots with dicots",
+        null,
+        "Does not understand the characteristics of monocots",
+        "Does not know the classification based on root type"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that monocots have fibrous roots and parallel venation, and the reasoning aligns with standard botanical classification.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu102.pdf",
+          "ordinal": 12,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 2: Diversity in the Living World",
+            "2.3 Plants and Animals in Different",
+            "Surroundings"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu102.pdf",
+          "ordinal": 13,
+          "pageStart": 20,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 2: Diversity in the Living World",
+            "2.3 Plants and Animals in Different",
+            "Surroundings",
+            "Keywords"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu102.pdf",
+          "ordinal": 14,
+          "pageStart": 23,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 2: Diversity in the Living World",
+            "2.3 Plants and Animals in Different",
+            "Surroundings",
+            "Let us enhance our learning"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-01T18:42:52.894Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the main reason for grouping plants and animals?",
+      "choices": [
+        "To make them look more attractive",
+        "To help in their classification and study",
+        "To make them easier to grow",
+        "To help them reproduce"
+      ],
+      "answerIndex": 1,
+      "solution": "The main reason for grouping plants and animals is to help in their classification and study, as this allows scientists to organize and understand them based on shared characteristics. The other options, such as making them look more attractive or easier to grow, do not align with the scientific purpose of classification. Similarly, helping them reproduce is not a primary goal of biological grouping.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पौधों और जानवरों के समूहीकरण का मुख्य कारण क्या है?",
+          "choices": [
+            "उन्हें अधिक सुंदर दिखाने के लिए",
+            "उनके वर्गीकरण और अध्ययन में सहायता करने के लिए",
+            "उन्हें अधिक आसानी से उगाने के लिए",
+            "उनके प्रजनन में सहायता करने के लिए"
+          ],
+          "solution": "पौधों और जानवरों के समूहीकरण का मुख्य कारण उनके वर्गीकरण और अध्ययन में सहायता करना है, क्योंकि यह वैज्ञानिकों को उन्हें साझा विशेषताओं के आधार पर संगठित और समझने में सक्षम बनाता है। अन्य विकल्प, जैसे उन्हें अधिक सुंदर दिखाना या उन्हें अधिक आसानी से उगाना, वर्गीकरण के वैज्ञानिक उद्देश्य के साथ मेल नहीं खाते। इसी तरह, उनके प्रजनन में सहायता करना जीवविज्ञानी समूहीकरण का प्राथमिक उद्देश्य नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate scientific terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "वनस्पती आणि प्राण्यांच्या गटांचा मुख्य कारण काय आहे?",
+          "choices": [
+            "त्यांना अधिक आकर्षक दिसण्यासाठी",
+            "त्यांच्या वर्गीकरण आणि अभ्यासासाठी मदत करण्यासाठी",
+            "त्यांना लहान वाढवण्यासाठी सोपे करण्यासाठी",
+            "त्यांच्या प्रजोत्पादनासाठी मदत करण्यासाठी"
+          ],
+          "solution": "वनस्पती आणि प्राण्यांच्या गटांचा मुख्य कारण त्यांच्या वर्गीकरण आणि अभ्यासासाठी मदत करणे आहे, कारण हे वैज्ञानिकांना सामान्य वैशिष्ट्यांवर आधारित त्यांच्या व्यवस्थित व्यवस्थापनास आणि समजूत देण्यास मदत करते. इतर विकल्प, जसे की त्यांना अधिक आकर्षक दिसण्यासाठी किंवा लहान वाढवण्यासाठी, वर्गीकरणाच्या वैज्ञानिक उद्देशाशी जुळत नाहीत. समान प्रजोत्पादनासाठी मदत करणे हा जीवशास्त्रीय गटांचा प्राथमिक उद्देश नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks appearance is the main reason",
+        null,
+        "Believes growth is the main goal",
+        "Assumes reproduction is the primary purpose"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as grouping organisms helps in their classification and study. The other options reflect common misconceptions about the purpose of biological classification.",
       "sources": [
         {
           "document": "ncert/6/science/fecu102.pdf",
@@ -416,47 +525,552 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T07:56:13.809Z",
+      "generatedAt": "2026-11-01T18:42:52.894Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "A student observes two types of camels in different regions. One has long legs and wide hooves, while the other has short legs and two humps. What is the most likely reason for these differences?",
+      "difficulty": 4,
+      "stem": "Which of the following is an example of a plant that can be classified as both a shrub and a dicot?",
       "choices": [
-        "Different species of camels",
-        "Different habitats",
-        "Different food sources",
-        "Different temperatures"
+        "Wheat",
+        "Radish",
+        "Pomegranate",
+        "Mango"
       ],
-      "answerIndex": 1,
-      "solution": "The differences in the camels' physical traits are most likely due to the environments they live in. Long legs and wide hooves help camels move efficiently on sand in hot deserts, while short legs and two humps are better suited for cold, mountainous areas. Other factors like food or temperature alone do not fully explain these specific adaptations.",
+      "answerIndex": 2,
+      "solution": "Pomegranate is a shrub, which means it has a woody stem and multiple stems growing from the base. It is also a dicot, meaning it has a vascular system with a ring of vascular bundles and reticulate leaf venation. Wheat is a monocot, which has a different vascular structure and is not a shrub. Radish is a herb, not a shrub, and mango is a tree, not a shrub.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक छात्र अलग-अलग क्षेत्रों में दो प्रकार के ऊंटों के अवलोकन करता है। एक के लंबे पैर और चौड़े खुर हैं, जबकि दूसरे के छोटे पैर और दो गाले हैं। इन अंतरों के लिए सबसे संभावित कारण क्या है?",
+          "stem": "निम्नलिखित में से कौन एक पौधा है जिसे एक झाड़ी और द्विबीजपत्री के रूप में वर्गीकृत किया जा सकता है?",
           "choices": [
-            "ऊंटों की अलग-अलग प्रजातियां",
-            "अलग-अलग आवास",
-            "अलग-अलग भोजन के स्रोत",
-            "अलग-अलग तापमान"
+            "गेहूँ",
+            "मूली",
+            "अनार",
+            "आम"
           ],
-          "solution": "ऊंटों के शारीरिक लक्षणों में अंतर अधिक संभावना उनके वातावरण में होने के कारण है। लंबे पैर और चौड़े खुर गर्म मरुस्थल में रेत पर प्रभावी ढंग से चलने में मदद करते हैं, जबकि छोटे पैर और दो गाले ठंडे पर्वतीय क्षेत्रों के लिए अधिक उपयुक्त होते हैं। भोजन या तापमान के अलगाव अकेले इन विशिष्ट अनुकूलन की व्याख्या नहीं कर सकते।",
+          "solution": "अनार एक झाड़ी है, जिसका एक लकड़ी का तना होता है और आधार से बहुत सारे तने उगते हैं। यह एक द्विबीजपत्री भी है, जिसका एक वाहक तंत्र होता है जिसमें वाहक पैकेज की एक छल्ला होती है और पत्तियों की जालीदार शिरा होती है। गेहूँ एक एकबीजपत्री है, जिसका अलग वाहक संरचना होती है और यह एक झाड़ी नहीं है। मूली एक औषधीय पौधा है, जो एक झाड़ी नहीं है और आम एक वृक्ष है, जो एक झाड़ी नहीं है।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology for biological concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate botanical terminology in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "एका विद्यार्थ्याने विविध प्रदेशांमध्ये दोन प्रकारच्या ऊंटांचा अवलोकन केला. एकाच्या लांब पाय आणि विस्तृत खांदे आहेत, तर दुसऱ्याच्या छोटे पाय आणि दोन गुडघे आहेत. या फरकाचा सर्वात शक्य कारण काय आहे?",
+          "stem": "खालीलपैकी कोणते वनस्पतीचे उदाहरण आहे जी एका झाडाच्या आणि द्विबीजपत्री वर्गात वर्गीकृत केली जाऊ शकते?",
           "choices": [
-            "ऊंटांचे विविध प्रजाती",
-            "विविध वासस्थाने",
-            "विविध खाद्य स्रोत",
-            "विविध तापमान"
+            "गहू",
+            "मूलतिरी",
+            "अमरंद",
+            "आंबा"
           ],
-          "solution": "ऊंटांच्या शारीरिक लक्षणांमधील फरक त्यांच्या वासस्थानांमुळे असावेत. लांब पाय आणि विस्तृत खांदे हे उष्ण मरुभूमीत रेतीवर प्रवास करण्यास मदत करतात, तर छोटे पाय आणि दोन गुडघे हे थंड, पर्वतीय भागांसाठी योग्य आहेत. खाद्य अथवा तापमान यांच्यामुळे हे विशिष्ट समायोजन नक्की स्पष्ट करू शकत नाहीत.",
+          "solution": "अमरंद एक झाड आहे, ज्याचा खोल वृक्षपेशी असतो आणि त्याच्या बेसमधून अनेक वृक्षपेशी वाढतात. त्याच्या वाहिनी प्रणालीत एक वलयातील वाहिनी बंडल असतात आणि पानांचे जाळे असते. गहू हा एक एकबीजपत्री वर्गात येतो, ज्याची वाहिनी प्रणाली वेगळी असते आणि तो झाड नसतो. मूलतिरी ही एक औषधी वनस्पती आहे, झाड नसते आणि आंबा एक वृक्ष आहे, झाड नसतो.",
+          "imageAlt": null,
+          "critique": "The translation accurately conveys the scientific terms and concepts, with appropriate Marathi equivalents for botanical classifications.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses monocots with dicots",
+        "Does not understand the characteristics of shrubs",
+        null,
+        "Does not know the classification of mango and pomegranate"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is pomegranate (option 2), which is a shrub and a dicot. The author's solution is accurate, and the reasoning for the wrong options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu102.pdf",
+          "ordinal": 12,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 2: Diversity in the Living World",
+            "2.3 Plants and Animals in Different",
+            "Surroundings"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu102.pdf",
+          "ordinal": 13,
+          "pageStart": 20,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 2: Diversity in the Living World",
+            "2.3 Plants and Animals in Different",
+            "Surroundings",
+            "Keywords"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu102.pdf",
+          "ordinal": 14,
+          "pageStart": 23,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 2: Diversity in the Living World",
+            "2.3 Plants and Animals in Different",
+            "Surroundings",
+            "Let us enhance our learning"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-01T18:42:52.894Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student observes a plant with fibrous roots and parallel venation in its leaves. She also notices that the plant has no flowers. Which group does this plant likely belong to?",
+      "choices": [
+        "Algae",
+        "Pteridophyta",
+        "Monocots",
+        "Dicots"
+      ],
+      "answerIndex": 2,
+      "solution": "Monocots typically have fibrous root systems and leaves with parallel venation, which matches the observed characteristics. Algae lack roots and vascular structures, making them unlikely. Pteridophyta have vascular tissues but do not produce flowers, but their leaves usually have different venation patterns. Dicots generally have taproots and reticulate venation, which do not match the plant observed.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्रा एक पौधा देखती है जिसकी जड़ें बाल की जड़ें हैं और पत्तियों में समानांतर नसें हैं। वह यह भी ध्यान देती है कि पौधे में कोई पुष्प नहीं है। इस पौधे के संभावित समूह कौन सा है?",
+          "choices": [
+            "शैवाल",
+            "प्टेरिडोफाइटा",
+            "एकबीजपत्री",
+            "द्विबीजपत्री"
+          ],
+          "solution": "एकबीजपत्री के पास आमतौर पर बाल की जड़ प्रणाली और पत्तियों में समानांतर नसें होती हैं, जो निरीक्षित विशेषताओं के साथ मेल खाती है। शैवाल के पास जड़ें और वास्कुलर संरचनाएं नहीं होती हैं, इसलिए वे असंभावित हैं। प्टेरिडोफाइटा के पास वास्कुलर ऊतक होते हैं लेकिन वे पुष्प उत्पन्न नहीं करते हैं, लेकिन उनकी पत्तियां आमतौर पर अलग नस व्यवस्था वाली होती हैं। द्विबीजपत्री के पास आमतौर पर एकल जड़ और जालीदार नसें होती हैं, जो निरीक्षित पौधे के अनुरूप नहीं होती हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate botanical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थिनीला एका वनस्पतीचे रेणू जड जडदार आणि तिच्या पानांमध्ये समांतर नस असल्याचे लक्षात येते. तिला त्या वनस्पतीमध्ये पुष्प नसल्याचे दिसते. ही वनस्पती कोणत्या गटात असावी?",
+          "choices": [
+            "शैवाल",
+            "प्टेरिडोफाइटा",
+            "एकबीजपत्री",
+            "द्विबीजपत्री"
+          ],
+          "solution": "एकबीजपत्रींमध्ये सामान्यतः रेणू जडदार आणि पानांमध्ये समांतर नस असतात, जे निरीक्षित लक्षणांनी मेळ खातात. शैवालांमध्ये जडदार आणि वास्क्युलर संरचना नसतात, त्यामुळे त्यांच्याशी जुळत नाही. प्टेरिडोफाइटांमध्ये वास्क्युलर ऊती असतात परंतु पुष्प नसतात, परंतु त्यांच्या पानांमध्ये वेगळ्या नसांच्या पॅटर्न असतात. द्विबीजपत्रींमध्ये सामान्यतः टॅपरूट आणि जाळीदार नस असतात, जे निरीक्षित वनस्पतीशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the scientific terminology used in Marathi textbooks, and preserves the logical structure of the question and solution.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses monocots with algae",
+        "Does not understand the characteristics of Pteridophyta",
+        null,
+        "Does not know the traits of dicots"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that monocots have fibrous roots and parallel venation, and that the plant lacks flowers, which aligns with the characteristics of monocots. The reasoning for the other options is also valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu102.pdf",
+          "ordinal": 12,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 2: Diversity in the Living World",
+            "2.3 Plants and Animals in Different",
+            "Surroundings"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu102.pdf",
+          "ordinal": 13,
+          "pageStart": 20,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 2: Diversity in the Living World",
+            "2.3 Plants and Animals in Different",
+            "Surroundings",
+            "Keywords"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu102.pdf",
+          "ordinal": 14,
+          "pageStart": 23,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 2: Diversity in the Living World",
+            "2.3 Plants and Animals in Different",
+            "Surroundings",
+            "Let us enhance our learning"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-01T18:42:52.894Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student grouped plants based on whether they have flowers or not. Another student grouped them based on stem type. What could explain the difference in their grouping?",
+      "choices": [
+        "One student is incorrect",
+        "The basis of grouping can vary",
+        "Only one correct way to group exists",
+        "Grouping is not helpful"
+      ],
+      "answerIndex": 1,
+      "solution": "The basis of grouping can vary because different characteristics, like flowers or stem type, can be used to classify plants. This explains why the students grouped the plants differently. The other options are incorrect because they suggest there is only one correct way to group or that grouping is unhelpful, which is not supported by scientific reasoning.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र ने पौधों के फूल होने या न होने के आधार पर वर्गीकरण किया। एक अन्य छात्र ने तने के प्रकार के आधार पर वर्गीकरण किया। उनके वर्गीकरण में अंतर क्यों हो सकता है?",
+          "choices": [
+            "एक छात्र गलत है",
+            "वर्गीकरण के आधार में भिन्नता हो सकती है",
+            "केवल एक सही तरीका वर्गीकरण का होता है",
+            "वर्गीकरण उपयोगी नहीं होता"
+          ],
+          "solution": "वर्गीकरण के आधार में भिन्नता हो सकती है क्योंकि फूल या तने के प्रकार जैसी विभिन्न विशेषताओं का उपयोग पौधों के वर्गीकरण के लिए किया जा सकता है। इससे यह स्पष्ट होता है कि छात्रों ने पौधों के वर्गीकरण में अंतर क्यों हुआ। अन्य विकल्प गलत हैं क्योंकि वे यह सुझाव देते हैं कि केवल एक सही तरीका वर्गीकरण का होता है या वर्गीकरण उपयोगी नहीं होता, जो वैज्ञानिक तर्क के विरुद्ध है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and maintains the same meaning, structure, and intent. Technical terms like 'वर्गीकरण' (classification) and 'तने के प्रकार' (stem type) are appropriate for a Hindi-medium science curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने पानांच्या अस्तित्वावर विशेषतः फुले असलेल्या वनस्पतींचे वर्गीकरण केले. दुसऱ्या विद्यार्थ्याने त्यांचे तंतूच्या प्रकारावर वर्गीकरण केले. त्यांच्या वर्गीकरणातील फरकाचे कारण काय असू शकते?",
+          "choices": [
+            "एका विद्यार्थ्याने चूक केली आहे",
+            "वर्गीकरणाचा आधार बदलू शकतो",
+            "मात्र एकच पद्धतीने वर्गीकरण करता येते",
+            "वर्गीकरण उपयुक्त नाही"
+          ],
+          "solution": "वर्गीकरणाचा आधार बदलू शकतो कारण फुले किंवा तंतूच्या प्रकारासारख्या विविध वैशिष्ट्यांचा वापर वनस्पतींच्या वर्गीकरणासाठी केला जाऊ शकतो. हे विद्यार्थ्यांनी वनस्पतींचे वर्गीकरण वेगळे करण्याचे कारण स्पष्ट करते. इतर विकल्प चूक आहेत कारण ते वर्गीकरणाची एकच पद्धती असल्याचे सूचित करतात किंवा वर्गीकरण अनुपयुक्त आहे असे सूचित करतात, जे वैज्ञानिक तर्काच्या विरुद्ध आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks only one grouping is correct",
+        null,
+        "Believes the student is wrong",
+        "Disagrees with the concept of grouping"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as the question implies that different criteria can be used for grouping, which is a core concept in classification. The other options reflect misconceptions about the nature of classification.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu102.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 2: Diversity in the Living World",
+            "2.2 How to Group Plants and Animals?"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu102.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 2: Diversity in the Living World",
+            "2.2 How to Group Plants and Animals?"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu102.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 2: Diversity in the Living World",
+            "2.2 How to Group Plants and Animals?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-01T18:42:52.894Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A student is given a plant with a taproot and reticulate venation in its leaves. The plant also has flowers. Based on this information, which group does it belong to?",
+      "choices": [
+        "Monocots",
+        "Pteridophyta",
+        "Algae",
+        "Dicots"
+      ],
+      "answerIndex": 3,
+      "solution": "Dicots typically have reticulate venation in their leaves and a taproot system, and they usually have flowers. Monocots have parallel venation and fibrous roots, and they do not have flowers. Algae and Pteridophyta lack the characteristics of having a taproot, reticulate venation, and flowers.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र को एक पौधा दिया जाता है जिसमें एक बुनियादी जड़ और पत्तियों में जालीदार शिरा होती है। पौधे में फूल भी होते हैं। इस जानकारी के आधार पर, इसके समूह में यह किसके अंतर्गत आता है?",
+          "choices": [
+            "एकबीजपत्री",
+            "टेरिडोफाइटा",
+            "शैवाल",
+            "द्विबीजपत्री"
+          ],
+          "solution": "द्विबीजपत्री में सामान्य रूप से पत्तियों में जालीदार शिरा होती है और बुनियादी जड़ प्रणाली होती है, और वे आमतौर पर फूल रखते हैं। एकबीजपत्री में समानांतर शिरा होती है और जालीदार जड़ें होती हैं, और उनमें फूल नहीं होते। शैवाल और टेरिडोफाइटा में बुनियादी जड़, जालीदार शिरा और फूल होने के गुण नहीं होते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate botanical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याला एका वनस्पती दिली गेली आहे जिच्याकडे एक अकर्षक मूळ आहे आणि पानांमध्ये जाळीदार निर्मिती आहे. वनस्पतीला फुले देखील आहेत. या माहितीवर आधारित, ती कोणत्या गटात येते?",
+          "choices": [
+            "एकबीजपत्री",
+            "प्टेरिडोफाइटा",
+            "शैवाल",
+            "द्विबीजपत्री"
+          ],
+          "solution": "द्विबीजपत्रींमध्ये सामान्यतः पानांमध्ये जाळीदार निर्मिती असते आणि एक अकर्षक मूळ प्रणाली असते, आणि त्यांना फुले असतात. एकबीजपत्रींमध्ये समांतर निर्मिती असते आणि एक जालीदार मूळ प्रणाली असते, आणि त्यांना फुले नसतात. शैवाल आणि प्टेरिडोफाइटांमध्ये अकर्षक मूळ, जाळीदार निर्मिती आणि फुले असण्याच्या लक्षणांचा अभाव असतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses monocots with dicots",
+        "Does not understand the traits of Pteridophyta",
+        "Does not know the features of algae",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the key. The reasoning correctly identifies that dicots have taproots, reticulate venation, and flowers, which matches the plant's characteristics.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu102.pdf",
+          "ordinal": 12,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 2: Diversity in the Living World",
+            "2.3 Plants and Animals in Different",
+            "Surroundings"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu102.pdf",
+          "ordinal": 13,
+          "pageStart": 20,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 2: Diversity in the Living World",
+            "2.3 Plants and Animals in Different",
+            "Surroundings",
+            "Keywords"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu102.pdf",
+          "ordinal": 14,
+          "pageStart": 23,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 2: Diversity in the Living World",
+            "2.3 Plants and Animals in Different",
+            "Surroundings",
+            "Let us enhance our learning"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-01T18:42:52.894Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why can't a plant be reconstructed from a single leaf?",
+      "choices": [
+        "Because leaves are not alive",
+        "Because leaves do not contain cells",
+        "Because leaves are not part of the stem",
+        "Because a plant has specialized tissues"
+      ],
+      "answerIndex": 3,
+      "solution": "A plant cannot be reconstructed from a single leaf because leaves are specialized for photosynthesis and do not contain the full range of tissues needed for a complete plant. Leaves are alive and contain cells, and they are part of the plant's structure, but they lack the necessary parts like roots or stems.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक एकल पत्ती से पौधे का पुनर्निर्माण क्यों नहीं किया जा सकता?",
+          "choices": [
+            "क्योंकि पत्तियाँ जीवित नहीं होती हैं",
+            "क्योंकि पत्तियाँ कोशिकाओं में नहीं होती हैं",
+            "क्योंकि पत्तियाँ तने का हिस्सा नहीं होती हैं",
+            "क्योंकि एक पौधे में विशेषित ऊतक होते हैं"
+          ],
+          "solution": "एक एकल पत्ती से पौधे का पुनर्निर्माण नहीं किया जा सकता क्योंकि पत्तियाँ प्रकाश संश्लेषण के लिए विशेषित होती हैं और पूरे पौधे के लिए आवश्यक ऊतकों की पूर्ण श्रृंखला नहीं रखती हैं। पत्तियाँ जीवित होती हैं और कोशिकाओं में होती हैं, और वे पौधे की संरचना का हिस्सा होती हैं, लेकिन उनमें जड़ों या तने के आवश्यक हिस्से नहीं होते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. The correct answer remains option (3), and all distractors are still incorrect. Technical terms like 'ऊतक' (tissues) and 'तना' (stem) are appropriately used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका पानापासून वनस्पती नवीन कसे तयार करता येत नाही?",
+          "choices": [
+            "कारण पाने जीवंत नाहीत",
+            "कारण पानांमध्ये कोशिका नाहीत",
+            "कारण पाने डांबराचा भाग नाहीत",
+            "कारण एका वनस्पतीमध्ये विशिष्ट ऊती असतात"
+          ],
+          "solution": "एका पानापासून वनस्पती नवीन कसे तयार करता येत नाही कारण पाने प्रकाशसंश्लेषणासाठी विशिष्ट आहेत आणि पूर्ण वनस्पतीसाठी आवश्यक ऊतींचा पूर्ण प्रमाण त्यांमध्ये नाही. पाने जीवंत आहेत आणि त्यांमध्ये कोशिका असतात, आणि ते वनस्पतीच्या संरचनेचा भाग आहेत, परंतु त्यांमध्ये मूळ किंवा डांबरासारख्या आवश्यक भागांची कमतरता असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks leaves are not alive",
+        "Believes leaves lack cells",
+        "Assumes leaves are not part of the stem",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3, as plants require specialized tissues and organs to regenerate, not just a single leaf. The other options reflect common misconceptions about leaves, which the author correctly identifies.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu102.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 2: Diversity in the Living World",
+            "2.2 How to Group Plants and Animals?"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu102.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 2: Diversity in the Living World",
+            "2.2 How to Group Plants and Animals?"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu102.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 2: Diversity in the Living World",
+            "2.2 How to Group Plants and Animals?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-01T18:42:52.894Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following is an example of how an animal's body shape helps it survive in its habitat?",
+      "choices": [
+        "A fish having a streamlined body",
+        "A lion having long legs",
+        "A deodar tree having conical shape",
+        "A rhododendron having small leaves"
+      ],
+      "answerIndex": 0,
+      "solution": "A fish having a streamlined body reduces water resistance, allowing it to swim more efficiently, which is essential for survival in its aquatic environment. Long legs help a lion run faster but are not directly related to body shape for survival in its habitat. A conical shape in a tree and small leaves in a plant are adaptations to environmental factors like snow or water conservation, but they are not body shapes of animals. The streamlined body of a fish is specifically an example of how an animal's body shape aids survival.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक ऐसा उदाहरण है जहां जानवर के शरीर के आकार उसके आवास में जीवित रहने में मदद करता है?",
+          "choices": [
+            "मछली के एक धारा-संरचित शरीर के होने का",
+            "सिंह के लंबे पैर होने का",
+            "देवदार के शंक्वाकार आकार के होने का",
+            "रोडोडेंड्रॉन के छोटे पत्ते होने का"
+          ],
+          "solution": "मछली के धारा-संरचित शरीर के होने से जल प्रतिरोध कम हो जाता है, जिससे यह अपने जलीय वातावरण में जीवित रहने के लिए अधिक कुशलता से तैर सकती है। लंबे पैर सिंह को तेज दौड़ने में मदद करते हैं लेकिन इसके आवास में जीवित रहने के लिए शरीर के आकार से सीधा संबंध नहीं होता है। एक पेड़ में शंक्वाकार आकार और एक पौधे में छोटे पत्ते बर्फ या पानी के संरक्षण जैसे पर्यावरणीय कारकों के अनुकूलन हैं, लेकिन ये जानवरों के शरीर के आकार नहीं हैं। मछली के धारा-संरचित शरीर के होने का एक ऐसा उदाहरण है जहां जानवर के शरीर के आकार जीवित रहने में मदद करता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate biological terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक प्राणीच्या शरीराच्या आकृतीमुळे त्याच्या वासस्थानात जगण्यास मदत होण्याचे उदाहरण आहे?",
+          "choices": [
+            "मासा एका वाहिनी आकृतीचा असणे",
+            "सिंहाच्या लांब पायांचे असणे",
+            "देवदार झाडाच्या शंकू आकृतीचे असणे",
+            "रोडोडेंड्रॉनच्या लहान पानांचे असणे"
+          ],
+          "solution": "मासा एका वाहिनी आकृतीचा असणे पाण्याच्या प्रतिरोधाला कमी करते, ज्यामुळे तो अधिक दक्षतेने तरतरीत शकतो, जे त्याच्या जलीय वासस्थानात जगण्यासाठी आवश्यक आहे. लांब पाय म्हणजे सिंहाच्या धावण्याच्या गतीला वाढवतात परंतु ते त्याच्या वासस्थानात जगण्यासाठी शरीराच्या आकृतीशी सीधा संबंध नाही. झाडाच्या शंकू आकृती आणि वनस्पतीच्या लहान पानांचे असणे हे हिम अथवा पाणी जतन करण्यासारख्या वातावरणीय कारकांचे अनुकूलन आहेत, परंतु ते प्राणीच्या शरीराच्या आकृती नाहीत. मासा एका वाहिनी आकृतीचा असणे हे एक प्राणीच्या शरीराच्या आकृतीमुळे त्याच्या जगण्यास मदत होण्याचे उदाहरण आहे.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
           "flag": null
@@ -467,20 +1081,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses classification with adaptation",
         null,
-        "Believes that animals adapt to their environment based on what they eat, not on physical or structural features",
-        "Confuses food with adaptation"
+        "Thinks long legs are for survival",
+        "Thinks conical shape is for survival",
+        "Thinks small leaves are for survival"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1 (Different habitats), as the question describes physical adaptations that help camels survive in specific environments. The author's reasoning aligns with this, and the distractors reflect common misconceptions about classification, diet, and temperature as causes of adaptation.",
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. The correct answer (0) is clearly supported by the explanation. The other options represent common misconceptions about how body shape contributes to survival in different habitats.",
       "sources": [
         {
           "document": "ncert/6/science/fecu102.pdf",
@@ -517,311 +1131,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T07:56:13.809Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Which of the following is a correct way to group plants based on their features?",
-      "choices": [
-        "By the colour of their flowers",
-        "By the number of cotyledons in their seeds",
-        "By the type of habitat they live in",
-        "By the size of their leaves"
-      ],
-      "answerIndex": 1,
-      "solution": "The correct answer is 'By the number of cotyledons in their seeds' because this is a fundamental characteristic used in plant classification, distinguishing between monocots and dicots. Flower color and leaf size vary widely and are not reliable for grouping, while habitat type relates more to environmental adaptation than biological classification.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा पौधों के विशेषताओं के आधार पर उन्हें समूह में रखने का सही तरीका है?",
-          "choices": [
-            "उनके फूलों के रंग द्वारा",
-            "उनके बीजों में बीजपत्रों की संख्या द्वारा",
-            "उनके रहने वाले आवास के प्रकार द्वारा",
-            "उनके पत्तियों के आकार द्वारा"
-          ],
-          "solution": "सही उत्तर 'उनके बीजों में बीजपत्रों की संख्या द्वारा' है क्योंकि यह पौधों के वर्गीकरण के लिए एक मूलभूत विशेषता है, जो एकबीजपत्री और द्विबीजपत्री के बीच अंतर दर्शाती है। फूल के रंग और पत्तियों के आकार के बीच बहुत अधिक भिन्नता होती है और इन्हें समूह में रखने के लिए विश्वसनीय नहीं माना जा सकता है, जबकि आवास के प्रकार जैविक वर्गीकरण के बजाय पर्यावरणीय अनुकूलन से संबंधित होते हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses appropriate botanical terms in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता वनस्पतींच्या वैशिष्ट्यांवर आधारित वनस्पतींच्या वर्गीकरणाचा योग्य प्रकार आहे?",
-          "choices": [
-            "त्यांच्या पुष्पांच्या रंगानुसार",
-            "त्यांच्या बीजातील कॉटिलेडॉनच्या संख्येनुसार",
-            "त्यांच्या रहिवासाच्या प्रकारानुसार",
-            "त्यांच्या पानांच्या मोठेपणानुसार"
-          ],
-          "solution": "बरोबर उत्तर 'त्यांच्या बीजातील कॉटिलेडॉनच्या संख्येनुसार' आहे कारण हे वनस्पतींच्या वर्गीकरणासाठी एक मूलभूत लक्षण आहे, मोनोकॉट आणि डायकॉट च्या फरकाच्या निर्धारणासाठी. पुष्पांच्या रंगाने आणि पानांच्या मोठेपणाने वर्गीकरण विश्वासार्ह नाहीत, तर रहिवासाच्या प्रकाराने पर्यावरणीय अनुकूलनाच्या बरोबरीने जैविक वर्गीकरणाशी संबंधित नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi botanical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Focuses on superficial features",
-        null,
-        "Confuses habitat with classification method",
-        "Thinks leaf size is a main classification factor"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as the number of cotyledons is a valid and standard classification feature in plant biology. The other options represent common misconceptions or superficial features not used in formal classification.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu102.pdf",
-          "ordinal": 12,
-          "pageStart": 19,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 2: Diversity in the Living World",
-            "2.3 Plants and Animals in Different",
-            "Surroundings"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu102.pdf",
-          "ordinal": 13,
-          "pageStart": 20,
-          "pageEnd": 22,
-          "headingPath": [
-            "Chapter 2: Diversity in the Living World",
-            "2.3 Plants and Animals in Different",
-            "Surroundings",
-            "Keywords"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu102.pdf",
-          "ordinal": 14,
-          "pageStart": 23,
-          "pageEnd": 25,
-          "headingPath": [
-            "Chapter 2: Diversity in the Living World",
-            "2.3 Plants and Animals in Different",
-            "Surroundings",
-            "Let us enhance our learning"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T07:56:13.809Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Why do sacred groves help in preserving biodiversity?",
-      "choices": [
-        "They allow people to cut trees freely",
-        "They are protected by the local community",
-        "They are located in remote areas",
-        "They are used for farming"
-      ],
-      "answerIndex": 1,
-      "solution": "Sacred groves are protected by the local community, which prevents activities like cutting trees or harming animals, thereby supporting biodiversity. The other options are incorrect because allowing tree cutting or using the area for farming would harm biodiversity, and being in remote areas does not inherently protect it.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "आध्यात्मिक वन क्यों जैव विविधता के संरक्षण में सहायता करते हैं?",
-          "choices": [
-            "वे लोगों को वृक्ष काटने की स्वतंत्रता देते हैं",
-            "वे स्थानीय समुदाय द्वारा संरक्षित होते हैं",
-            "वे दूरस्थ क्षेत्रों में स्थित होते हैं",
-            "वे कृषि के लिए उपयोग किए जाते हैं"
-          ],
-          "solution": "आध्यात्मिक वन स्थानीय समुदाय द्वारा संरक्षित होते हैं, जो वृक्ष काटने या जानवरों को चोट पहुंचाने जैसी गतिविधियों को रोकते हैं, जिससे जैव विविधता का समर्थन होता है। अन्य विकल्प गलत हैं क्योंकि वृक्ष काटने की अनुमति देना या कृषि के लिए क्षेत्र का उपयोग जैव विविधता के लिए हानिकारक होता है, और दूरस्थ क्षेत्रों में होना आवश्यक रूप से इसकी सुरक्षा नहीं करता है।",
-          "imageAlt": null,
-          "critique": "Translation accurately reflects the original meaning with appropriate Hindi terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "कोणत्या कारणामुळे आदिम वन बायोडायवर्सिटी जतन करतात?",
-          "choices": [
-            "ते लोकांना वृक्ष कापण्यास परवानगी देतात",
-            "ते स्थानिक समुदायाद्वारे संरक्षित आहेत",
-            "ते दूरवर असलेल्या ठिकाणी आहेत",
-            "ते शेतीसाठी वापरले जातात"
-          ],
-          "solution": "आदिम वन स्थानिक समुदायाद्वारे संरक्षित असतात, जे वृक्ष कापणे किंवा प्राण्यांचा त्रास देण्यासारख्या क्रियाकलापांना रोखतात, ज्यामुळे बायोडायवर्सिटी टिकून राहते. इतर विकल्प चुकीचे आहेत कारण वृक्ष कापण्याची परवानगी देणे किंवा त्या भूमीचा शेतीसाठी वापर करणे बायोडायवर्सिटीला नुकसान पोहोचवते, आणि दूरवर असणे त्यांच्या संरक्षणाचे निश्चित नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for ecological concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Thinks sacred groves are not protected",
-        null,
-        "students may confuse sacred groves with being isolated or inaccessible",
-        "Students may think that areas used for farming are naturally rich in biodiversity, not realizing that farming often reduces it."
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as sacred groves are indeed protected by the local community, which aligns with the author's key. The reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu102.pdf",
-          "ordinal": 12,
-          "pageStart": 19,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 2: Diversity in the Living World",
-            "2.3 Plants and Animals in Different",
-            "Surroundings"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu102.pdf",
-          "ordinal": 13,
-          "pageStart": 20,
-          "pageEnd": 22,
-          "headingPath": [
-            "Chapter 2: Diversity in the Living World",
-            "2.3 Plants and Animals in Different",
-            "Surroundings",
-            "Keywords"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu102.pdf",
-          "ordinal": 14,
-          "pageStart": 23,
-          "pageEnd": 25,
-          "headingPath": [
-            "Chapter 2: Diversity in the Living World",
-            "2.3 Plants and Animals in Different",
-            "Surroundings",
-            "Let us enhance our learning"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T07:56:13.809Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "If a plant has a fibrous root system, which of the following is most likely to be true about its seeds?",
-      "choices": [
-        "The seed has two cotyledons",
-        "The seed has one cotyledon",
-        "The seed has three cotyledons",
-        "The seed has no cotyledons"
-      ],
-      "answerIndex": 1,
-      "solution": "Plants with fibrous root systems are typically monocots, which have seeds with one cotyledon. This is a fundamental characteristic of monocots, distinguishing them from dicots, which have two cotyledons and usually have taproot systems. The other options do not align with the known biological classification of plants based on their root systems and seed structure.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक पौधे में जालीदार जड़ प्रणाली है, तो निम्नलिखित में से कौन-सा उसके बीज के बारे में सबसे अधिक संभावित सत्य होगा?",
-          "choices": [
-            "बीज में दो कॉटिलिडॉन होते हैं",
-            "बीज में एक कॉटिलिडॉन होता है",
-            "बीज में तीन कॉटिलिडॉन होते हैं",
-            "बीज में कॉटिलिडॉन नहीं होता"
-          ],
-          "solution": "जालीदार जड़ प्रणाली वाले पौधे आमतौर पर एकबीजपत्री होते हैं, जिनके बीज में एक कॉटिलिडॉन होता है। यह एकबीजपत्री की मूलभूत विशेषता है, जो द्विबीजपत्री से अलग करती है, जिनके बीज में दो कॉटिलिडॉन होते हैं और आमतौर पर एक मुख्य जड़ प्रणाली होती है। अन्य विकल्प पादपों के जड़ प्रणालियों और बीज संरचना के ज्ञात जैविक वर्गीकरण के साथ संगत नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard botanical terms in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एका वनस्पतीला फाइब्रस जडणीची प्रणाली असेल, तर खालीलपैकी कोणते त्याच्या बीपैकी खास असण्याची शक्यता असेल?",
-          "choices": [
-            "बीमध्ये दोन कॉटिलेडॉन असतात",
-            "बीमध्ये एक कॉटिलेडॉन असतो",
-            "बीमध्ये तीन कॉटिलेडॉन असतात",
-            "बीमध्ये कॉटिलेडॉन नसतात"
-          ],
-          "solution": "फाइब्रस जडणीची प्रणाली असलेल्या वनस्पती अक्षिप्रस्थ असतात, ज्यांच्या बीमध्ये एक कॉटिलेडॉन असतो. हे अक्षिप्रस्थांचे मूलभूत लक्षण असून ते द्विबीजपत्रींपासून भिन्न असतात, ज्यांच्या बीमध्ये दोन कॉटिलेडॉन असतात आणि त्यांच्या जडणीची प्रणाली मुख्य जडणीची असते. इतर विकल्प जडणीच्या प्रणाली आणि बीच्या संरचनेवर आधारित वनस्पतींच्या ज्ञात वर्गीकरणाशी जुळत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintaining the scientific terminology and logical structure of the original question. The terms 'कॉटिलेडॉन' (cotyledon) and 'अक्षिप्रस्थ' (monocot) are correctly used as per Marathi botanical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Assumes seeds have two cotyledons, which is associated with taproots",
-        null,
-        "A common misconception is that plants with fibrous roots have more than two cotyledons, such as three.",
-        "Incorrectly assumes the number of cotyledons in monocots"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly links fibrous root systems (monocots) with one cotyledon, and the reasoning aligns with standard botanical knowledge. The distractors reflect common misconceptions about cotyledon numbers in monocots and dicots.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu102.pdf",
-          "ordinal": 6,
-          "pageStart": 10,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 2: Diversity in the Living World",
-            "2.2 How to Group Plants and Animals?"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu102.pdf",
-          "ordinal": 7,
-          "pageStart": 12,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 2: Diversity in the Living World",
-            "2.2 How to Group Plants and Animals?"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu102.pdf",
-          "ordinal": 8,
-          "pageStart": 14,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 2: Diversity in the Living World",
-            "2.2 How to Group Plants and Animals?"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T07:56:13.809Z",
+      "generatedAt": "2026-11-01T18:42:52.894Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

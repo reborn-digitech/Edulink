@@ -21,150 +21,49 @@
   "board": "NCERT",
   "book": "Ganita Prakash Part-I",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-29T19:00:00.584Z",
+  "generatedAt": "2026-11-02T09:09:21.656Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "Which of the following is known as cross multiplication of terms?",
+      "stem": "What is the ratio of teachers to students in the school described in Example 4?",
       "choices": [
-        "Multiplying both sides by a",
-        "Multiplying both sides by b",
-        "When a:b::c:d, then ad=bc",
-        "When a:b::c:d, then ab=cd"
-      ],
-      "answerIndex": 2,
-      "solution": "The correct option describes the mathematical relationship where, if a:b is equivalent to c:d, then multiplying the outer terms (a and d) and the inner terms (b and c) results in ad=bc, which is known as cross multiplication. The other option, ab=cd, incorrectly multiplies the same terms on each side and does not represent the cross multiplication method.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से किसे पदों के एक दूसरे के अंक गुणा के रूप में जाना जाता है?",
-          "choices": [
-            "दोनों ओर एक से गुणा करना",
-            "दोनों ओर बी से गुणा करना",
-            "जब ए:बी::सी:डी होता है, तो एड=बीसी होता है",
-            "जब ए:बी::सी:डी होता है, तो एबी=सीडी होता है"
-          ],
-          "solution": "सही विकल्प गणितीय संबंध का वर्णन करता है जहां, यदि ए:बी समानुपाती है सी:डी के, तो बाहरी पदों (ए और डी) और आंतरिक पदों (बी और सी) को गुणा करने पर एड=बीसी प्राप्त होता है, जिसे एक दूसरे के अंक गुणा के रूप में जाना जाता है। अन्य विकल्प, एबी=सीडी, एक ही पदों को प्रत्येक ओर गुणा करता है और एक दूसरे के अंक गुणा के विधि का प्रतिनिधित्व नहीं करता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते वर्तुळ गुणाकार म्हणून ओळखले जाते?",
-          "choices": [
-            "दोन्ही बाजूंना a ने गुणणे",
-            "दोन्ही बाजूंना b ने गुणणे",
-            "जेव्हा a:b::c:d, तेव्हा ad=bc",
-            "जेव्हा a:b::c:d, तेव्हा ab=cd"
-          ],
-          "solution": "योग्य विकल्प गणितीय संबंध वर्णन करतो, जेव्हा a:b च्या बरोबरीत c:d असते, तेव्हा बाहेरील वर्ण (a आणि d) आणि आंतरिक वर्ण (b आणि c) गुणाकार करणे ad=bc च्या निर्माणास सांगते, ज्याला वर्तुळ गुणाकार म्हणतात. इतर विकल्प, ab=cd, एकाच वर्णांच्या बाजूंनी गुणाकार करतो आणि वर्तुळ गुणाकार पद्धतीचे प्रतिनिधित्व करत नाही.",
-          "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the English original in meaning, structure, and terminology. The term 'वर्तुळ गुणाकार' (cross multiplication) is correctly used, and the mathematical concepts are clearly conveyed.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the process of cross multiplication with multiplying by a",
-        "Confuses the process of cross multiplication with multiplying by b",
-        null,
-        "Confuses cross multiplication with multiplying the same terms together"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is option 2, which correctly defines cross multiplication in a proportion. The other options represent common misconceptions about the process.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp107.pdf",
-          "ordinal": 7,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 7: Proportional Reasoning-1",
-            "7.4 Problem Solving with Proportional Reasoning",
-            "Trairasika—The Rule of Three"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp107.pdf",
-          "ordinal": 8,
-          "pageStart": 11,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 7: Proportional Reasoning-1",
-            "7.4 Problem Solving with Proportional Reasoning",
-            "Trairasika—The Rule of Three"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp107.pdf",
-          "ordinal": 9,
-          "pageStart": 12,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 7: Proportional Reasoning-1",
-            "7.4 Problem Solving with Proportional Reasoning",
-            "Trairasika—The Rule of Three"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T19:00:00.584Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "If a ratio is 3 : 30, what is its simplest form?",
-      "choices": [
-        "1 : 10",
-        "3 : 10",
-        "1 : 30",
-        "3 : 30"
+        "5 : 170",
+        "170 : 5",
+        "5 : 175",
+        "175 : 5"
       ],
       "answerIndex": 0,
-      "solution": "The ratio 3 : 30 can be simplified by dividing both numbers by their greatest common divisor, which is 3, resulting in 1 : 10. The option 3 : 10 is incorrect because it does not fully simplify the ratio. The option 1 : 30 is wrong because it only simplifies one part of the ratio. The option 3 : 30 is the original ratio and not simplified.",
+      "solution": "The correct ratio of teachers to students is 5 : 170 because it represents 5 teachers for every 170 students. The other options either reverse the order of the numbers or incorrectly add them, which does not reflect the actual relationship between the number of teachers and students.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक अनुपात 3 : 30 है, तो इसका सरलतम रूप क्या है?",
+          "stem": "उदाहरण 4 में वर्णित स्कूल में शिक्षकों का छात्रों से अनुपात क्या है?",
           "choices": [
-            "1 : 10",
-            "3 : 10",
-            "1 : 30",
-            "3 : 30"
+            "5 : 170",
+            "170 : 5",
+            "5 : 175",
+            "175 : 5"
           ],
-          "solution": "अनुपात 3 : 30 को अपने महत्तम सामान्य भाजक द्वारा विभाजित करके सरल किया जा सकता है, जो 3 है, जिसके परिणामस्वरूप 1 : 10 प्राप्त होता है। विकल्प 3 : 10 गलत है क्योंकि यह अनुपात को पूरी तरह से सरल नहीं करता है। विकल्प 1 : 30 गलत है क्योंकि यह अनुपात के एक हिस्से को सरल करता है। विकल्प 3 : 30 मूल अनुपात है और सरल नहीं है।",
+          "solution": "शिक्षकों का छात्रों से सही अनुपात 5 : 170 है क्योंकि यह 5 शिक्षक प्रति 170 छात्रों का प्रतिनिधित्व करता है। अन्य विकल्प या तो संख्याओं के क्रम को उलट देते हैं या गलती से उन्हें जोड़ देते हैं, जो शिक्षकों और छात्रों की संख्या के बीच वास्तविक संबंध को दर्शाने में असमर्थ हैं।",
           "imageAlt": null,
           "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "जर एक अनुपात 3 : 30 असेल, तर त्याचे सरळीकृत रूप काय असेल?",
+          "stem": "शाळेतील शिक्षकांच्या संख्येचे विद्यार्थ्यांच्या संख्येशी असलेले गुणोत्तर किती आहे, ज्याचे उदाहरण 4 मध्ये वर्णन केले आहे?",
           "choices": [
-            "1 : 10",
-            "3 : 10",
-            "1 : 30",
-            "3 : 30"
+            "5 : 170",
+            "170 : 5",
+            "5 : 175",
+            "175 : 5"
           ],
-          "solution": "अनुपात 3 : 30 ला त्यांच्या महत्तम सामान्य भाजकाने भागून सरळीकृत केले जाऊ शकते, जो 3 आहे, ज्यामुळे 1 : 10 मिळते. 3 : 10 हा विकल्प चुकीचा आहे कारण तो अनुपात पूर्णपणे सरळीकृत करत नाही. 1 : 30 हा विकल्प चुकीचा आहे कारण तो अनुपाताच्या एका भागाला सरळीकृत करतो. 3 : 30 हा विकल्प मूळ अनुपात आहे आणि सरळीकृत नाही.",
+          "solution": "शिक्षकांचे विद्यार्थ्यांशी असलेले योग्य गुणोत्तर 5 : 170 आहे कारण हे 5 शिक्षकांसाठी 170 विद्यार्थी दर्शवते. इतर विकल्पांमध्ये संख्यांचा क्रम उलटलेला आहे किंवा त्यांनी योग घेतलेला आहे, जे शिक्षकांच्या आणि विद्यार्थ्यांच्या संख्येच्या खर्या संबंधाचे प्रतिनिधित्व करत नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for 'ratio' (गुणोत्तर) and 'teachers/students' (शिक्षक/विद्यार्थी).",
           "flag": null
         }
       },
@@ -174,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "The student does not simplify the ratio correctly.",
-        "The student only simplifies one term.",
-        "The student does not simplify the ratio at all."
+        "Confuses the order of the ratio",
+        "Confuses the order of the ratio",
+        "Adds the numbers instead of keeping them as a ratio"
       ],
       "solverAnswers": [
         0,
@@ -186,7 +85,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 1 : 10, as both 3 and 30 are divisible by 3. The author's reasoning and explanations for the distractors are valid and reflect common student misconceptions.",
+      "critique": "The correct answer is 0 (5 : 170), as stated directly in the passage. The other options involve common misconceptions such as reversing the ratio or adding the numbers, which aligns with the author's reasoning.",
       "sources": [
         {
           "document": "ncert/8/mathematics/hegp107.pdf",
@@ -220,49 +119,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T19:00:00.584Z",
+      "generatedAt": "2026-11-02T09:09:21.656Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "A mason needs to build a house with walls of total length 108 feet. If 10 feet of wall requires 1450 bricks, how many bricks are required for the entire house?",
+      "difficulty": 2,
+      "stem": "In Example 6, what is the ratio of Neelima's age to her mother's age when Neelima is 12 years old?",
       "choices": [
-        "15660",
-        "15000",
-        "14500",
-        "16000"
+        "12 : 39",
+        "39 : 12",
+        "12 : 30",
+        "30 : 12"
       ],
       "answerIndex": 0,
-      "solution": "To find the total number of bricks needed, first calculate the number of bricks per foot by dividing 1450 by 10, which gives 145 bricks per foot. Multiply this by the total wall length of 108 feet, resulting in 145 × 108 = 15660. The other options are incorrect because they either use wrong calculations or rounded values.",
-      "checkExpr": "1450*108/10",
+      "solution": "When Neelima is 12 years old, her mother is 39 years old, so the ratio of their ages is 12 : 39. This is the correct option because it directly compares their ages at that specific time. The other options either reverse the order or use incorrect age values that do not match the given scenario.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक मास्टर को कुल लंबाई 108 फीट की दीवार बनानी है। यदि 10 फीट की दीवार के लिए 1450 ईंटें आवश्यक हैं, तो पूरे घर के लिए कितनी ईंटें आवश्यक हैं?",
+          "stem": "उदाहरण 6 में, जब नीलिमा की आयु 12 वर्ष हो जाती है तो उसकी आयु और उसकी माँ की आयु का अनुपात क्या है?",
           "choices": [
-            "15660",
-            "15000",
-            "14500",
-            "16000"
+            "12 : 39",
+            "39 : 12",
+            "12 : 30",
+            "30 : 12"
           ],
-          "solution": "कुल ईंटों की संख्या ज्ञात करने के लिए, सबसे पहले 1450 को 10 से विभाजित करके प्रति फीट ईंटों की संख्या ज्ञात करें, जो 145 ईंटें प्रति फीट देता है। इसे कुल दीवार की लंबाई 108 फीट से गुणा करें, जिससे 145 × 108 = 15660 प्राप्त होता है। अन्य विकल्प गलत कारणों से गलत हैं, क्योंकि वे गलत गणना या बराबर मूल्यों का उपयोग करते हैं।",
+          "solution": "जब नीलिमा की आयु 12 वर्ष हो जाती है, तो उसकी माँ की आयु 39 वर्ष हो जाती है, इसलिए उनकी आयु का अनुपात 12 : 39 होता है। यह सही विकल्प है क्योंकि यह उस विशिष्ट समय पर उनकी आयु की तुलना सीधे करता है। अन्य विकल्प या तो क्रम को उलट देते हैं या उनमें गलत आयु मान होते हैं जो दिए गए परिदृश्य के अनुरूप नहीं होते।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer is in the same position (option 1) and the distractors remain incorrect.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "एक मस्तानला 108 फूट एकूण लांबीच्या इमारतीच्या भिंती बांधायच्या आहेत. जर 10 फूट भिंतीला 1450 इमारती लागतात, तर एकूण इमारतीसाठी किती इमारती लागतील?",
+          "stem": "उदाहरण 6 मध्ये, नीलिमाच्या वयाचे तिच्या आईच्या वयाशी अनुपात काय असेल जेव्हा नीलिमाचे वय 12 वर्षे असेल?",
           "choices": [
-            "15660",
-            "15000",
-            "14500",
-            "16000"
+            "12 : 39",
+            "39 : 12",
+            "12 : 30",
+            "30 : 12"
           ],
-          "solution": "एकूण इमारतींची संख्या शोधण्यासाठी, सर्वप्रथम 1450 ला 10 ने भागून इमारती प्रति फूट काढा, जे 145 इमारती प्रति फूट देते. हे 108 फूट एकूण भिंतीच्या लांबीने गुणायला हवे, जे 145 × 108 = 15660 देते. इतर विकल्प चुकीच्या गणना किंवा फेकटलेल्या मूल्यांमुळे चुकीचे आहेत.",
+          "solution": "जेव्हा नीलिमाचे वय 12 वर्षे असेल तेव्हा तिच्या आईचे वय 39 वर्षे असेल, म्हणून त्यांच्या वयांचा अनुपात 12 : 39 असेल. हे योग्य पर्याय आहे कारण ते त्या विशिष्ट काळात त्यांच्या वयांची तुलना सीध्दर दर्शवते. इतर पर्याय अनुक्रम उलट करतात किंवा दिलेल्या परिस्थितीशी जुळत नसलेल्या वयांच्या अपयशांचा वापर करतात.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The solution and options are correctly translated and retain their original logic.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for age and ratio.",
           "flag": null
         }
       },
@@ -272,9 +171,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Incorrectly multiplies 1450 by 108 directly",
-        "Fails to scale up the ratio properly",
-        "Assumes the same number of bricks for 108 feet as for 10 feet without scaling"
+        "Reverses the ratio",
+        "Reverses the ratio",
+        "Uses the original ages instead of the updated ones"
       ],
       "solverAnswers": [
         0,
@@ -284,84 +183,81 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The correct calculation is (1450 / 10) × 108 = 15660. The solution is sound and matches the key. All distractors represent plausible misconceptions.",
+      "critique": "The correct answer is 12 : 39, as stated in the passage. The other options either reverse the ratio or use incorrect ages. The author's reasoning for the distractors is valid and reflects common student misconceptions.",
       "sources": [
         {
           "document": "ncert/8/mathematics/hegp107.pdf",
-          "ordinal": 16,
-          "pageStart": 24,
-          "pageEnd": 26,
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
           "headingPath": [
             "Chapter 7: Proportional Reasoning-1",
-            "7.6 Unit Conversions",
-            "PROPORTIONAL REASONING-1"
+            "7.4 Problem Solving with Proportional Reasoning"
           ]
         },
         {
           "document": "ncert/8/mathematics/hegp107.pdf",
-          "ordinal": 17,
-          "pageStart": 26,
-          "pageEnd": 28,
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 8,
           "headingPath": [
             "Chapter 7: Proportional Reasoning-1",
-            "7.6 Unit Conversions",
-            "PROPORTIONAL REASONING-1"
+            "7.4 Problem Solving with Proportional Reasoning"
           ]
         },
         {
           "document": "ncert/8/mathematics/hegp107.pdf",
-          "ordinal": 18,
-          "pageStart": 28,
-          "pageEnd": 29,
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 10,
           "headingPath": [
             "Chapter 7: Proportional Reasoning-1",
-            "7.6 Unit Conversions",
-            "PROPORTIONAL REASONING-1"
+            "7.4 Problem Solving with Proportional Reasoning"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T19:00:00.584Z",
+      "generatedAt": "2026-11-02T09:09:21.656Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "If 42 counters are to be divided between two people in the ratio of 4 : 3, what is the total number of groups?",
+      "difficulty": 3,
+      "stem": "If the ratio of the width to height of a rectangle is 60 : 40, what is the simplest form of this ratio?",
       "choices": [
-        "4",
-        "6",
-        "7",
-        "12"
+        "3 : 2",
+        "2 : 3",
+        "1 : 2",
+        "2 : 1"
       ],
-      "answerIndex": 2,
-      "solution": "To divide 42 counters in the ratio 4 : 3, the total number of groups is 4 + 3 = 7. The option '4' is wrong because it assumes only the first part's value. The option '6' is wrong because it assumes the total groups are equal to the size of each group. The option '12' is wrong because it assumes the total groups are the sum of the parts multiplied by 2.",
+      "answerIndex": 0,
+      "solution": "The simplest form of the ratio 60 : 40 is found by dividing both terms by their HCF, which is 20. This gives 3 : 2. The other options are incorrect because they do not represent the simplified version of the given ratio.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि 42 गणना दो व्यक्तियों के बीच 4:3 के अनुपात में विभाजित किए जाएं, तो कुल समूहों की संख्या क्या होगी?",
+          "stem": "यदि एक आयत की चौड़ाई और ऊंचाई का अनुपात 60 : 40 है, तो इस अनुपात का सरलतम रूप क्या है?",
           "choices": [
-            "4",
-            "6",
-            "7",
-            "12"
+            "3 : 2",
+            "2 : 3",
+            "1 : 2",
+            "2 : 1"
           ],
-          "solution": "42 गणना को 4:3 के अनुपात में विभाजित करने के लिए, कुल समूहों की संख्या 4 + 3 = 7 होती है। विकल्प '4' गलत है क्योंकि यह केवल पहले हिस्से के मान के अनुमान पर आधारित है। विकल्प '6' गलत है क्योंकि यह कुल समूहों के आकार के बराबर मानता है। विकल्प '12' गलत है क्योंकि यह कुल समूहों के योग के बराबर मानता है।",
+          "solution": "अनुपात 60 : 40 का सरलतम रूप इसके महत्तम समापवर्तक (HCF) 20 से दोनों पदों को विभाजित करके प्राप्त किया जाता है। इससे 3 : 2 प्राप्त होता है। अन्य विकल्प गलत हैं क्योंकि वे दिए गए अनुपात के सरलतम रूप का प्रतिनिधित्व नहीं करते।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "42 गणनाच्या बाबी दोन लोकांमध्ये 4 : 3 च्या गुणोत्तरात वाटल्या पाहिजेत, तर एकूण गटांची संख्या किती असेल?",
+          "stem": "जर आयताच्या रुंदी आणि उंचीचे गुणोत्तर 60 : 40 असेल, तर हे गुणोत्तर सर्वांत सोप्या रूपात काय असेल?",
           "choices": [
-            "4",
-            "6",
-            "7",
-            "12"
+            "3 : 2",
+            "2 : 3",
+            "1 : 2",
+            "2 : 1"
           ],
-          "solution": "42 गणनाच्या बाबी 4 : 3 च्या गुणोत्तरात वाटल्या पाहिजेत, तर एकूण गटांची संख्या 4 + 3 = 7 असेल. पर्याय '4' चूक आहे कारण तो पहिल्या भागाच्या मूल्याचा अंदाज घेतो. पर्याय '6' चूक आहे कारण तो एकूण गटांची संख्या प्रत्येक गटाच्या मापाच्या बरोबरीत घेतो. पर्याय '12' चूक आहे कारण तो गुणोत्तराच्या भागांच्या बेरजेच्या दुप्पट एकूण गटांच्या संख्येचा अंदाज घेतो.",
+          "solution": "60 : 40 चे सर्वांत सोपे रूप शोधण्यासाठी दोन्ही विषयांना त्यांच्या महत्तम सामाईक अपवर्तक (HCF) ने भागले जाते, जो 20 आहे. हे 3 : 2 देते. इतर विकल्प चुकीचे आहेत कारण ते दिलेल्या गुणोत्तराचे सर्वांत सोपे रूप प्रतिनिधित्व करत नाहीत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -372,20 +268,128 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "thinks only the first part determines the groups",
-        "thinks the groups are equal to the size of each group",
         null,
-        "thinks the groups are double the sum of the parts"
+        "Confuses the order of the ratio, thinking width:height is height:width",
+        "Reverses the terms of the ratio, which is not the correct simplification.",
+        "Divides only one term by the HCF, leading to an incorrect simplification."
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 7, which is the sum of the ratio parts (4 + 3). The author's solution is correct, and the reasoning for the distractors aligns with common misconceptions.",
+      "levelFlag": null,
+      "critique": "The solution is correct. The ratio 60:40 simplifies to 3:2 by dividing both terms by their HCF, 20. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp107.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 7: Proportional Reasoning-1",
+            "7.1 Observing Similarity in Change"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp107.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 7: Proportional Reasoning-1",
+            "7.2 Ratios"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp107.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 7: Proportional Reasoning-1",
+            "7.3 Ratios in their Simplest Form"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp107.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 7: Proportional Reasoning-1",
+            "7.4 Problem Solving with Proportional Reasoning"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T09:09:21.656Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Prashanti and Bhuvan invested ₹75,000 and ₹25,000 respectively. If they gained a profit of ₹4,000, how much profit does Prashanti get?",
+      "choices": [
+        "₹3,000",
+        "₹1,000",
+        "₹2,000",
+        "₹4,000"
+      ],
+      "answerIndex": 0,
+      "solution": "The investment ratio is 75000 : 25000 = 3 : 1. Total parts = 3 + 1 = 4. Each part is 4000 ÷ 4 = 1000. Prashanti gets 3 × 1000 = ₹3,000. The option '₹1,000' is Bhuvan's share. '₹2,000' is incorrect as it divides the profit equally. '₹4,000' is the total profit, not Prashanti's share.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "प्रशांति और भुवन क्रमशः ₹75,000 और ₹25,000 निवेश करते हैं। यदि उन्हें ₹4,000 का लाभ होता है, तो प्रशांति को कितना लाभ मिलता है?",
+          "choices": [
+            "₹3,000",
+            "₹1,000",
+            "₹2,000",
+            "₹4,000"
+          ],
+          "solution": "निवेश का अनुपात 75000 : 25000 = 3 : 1 है। कुल भाग = 3 + 1 = 4। प्रत्येक भाग 4000 ÷ 4 = 1000 है। प्रशांति को 3 × 1000 = ₹3,000 मिलता है। विकल्प '₹1,000' भुवन का हिस्सा है। '₹2,000' गलत है क्योंकि लाभ को बराबर बांट दिया गया है। '₹4,000' कुल लाभ है, प्रशांति का हिस्सा नहीं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "प्रशांती आणि भूवन यांनी रु. 75,000 आणि रु. 25,000 पैसे गुंतवले. जर त्यांना रु. 4,000 नफा झाला, तर प्रशांतीला किती नफा मिळेल?",
+          "choices": [
+            "रु. 3,000",
+            "रु. 1,000",
+            "रु. 2,000",
+            "रु. 4,000"
+          ],
+          "solution": "गुंतवणुकीचे गुणोत्तर 75000 : 25000 = 3 : 1 आहे. एकूण भाग = 3 + 1 = 4. प्रत्येक भाग 4000 ÷ 4 = 1000 आहे. प्रशांतीला 3 × 1000 = रु. 3,000 मिळतात. रु. 1,000 भूवनचा भाग आहे. रु. 2,000 अपयशी नफा समान वाटप करण्याचा चुकीचा उत्तर आहे. रु. 4,000 एकूण नफा आहे, प्रशांतीचा भाग नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate financial terminology common in Marathi-medium education.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses Bhuvan's share with Prashanti's",
+        "assumes equal profit sharing",
+        "does not calculate the ratio correctly"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the key. The reasoning for the distractors is valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "ncert/8/mathematics/hegp107.pdf",
@@ -419,105 +423,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T19:00:00.584Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "A recipe requires a ratio of 4 : 9 for ingredients A and B. If 12 units of A are used, how many units of B should be used to keep the ratio the same?",
-      "choices": [
-        "27",
-        "18",
-        "16",
-        "9"
-      ],
-      "answerIndex": 0,
-      "solution": "The original ratio is 4 : 9. If 12 units of A are used, the amount of B should be (12/4) × 9 = 27 units to maintain the same ratio. The other options do not maintain the proportional relationship.",
-      "checkExpr": "(12/4)*9",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक रेसिपी में अवयव A और B के लिए 4 : 9 का अनुपात की आवश्यकता होती है। यदि A के 12 इकाई का उपयोग किया जाता है, तो अनुपात समान रखने के लिए B के कितने इकाई का उपयोग किया जाना चाहिए?",
-          "choices": [
-            "27",
-            "18",
-            "16",
-            "9"
-          ],
-          "solution": "मूल अनुपात 4 : 9 है। यदि A के 12 इकाई का उपयोग किया जाता है, तो B की मात्रा (12/4) × 9 = 27 इकाई होनी चाहिए ताकि अनुपात समान रहे। अन्य विकल्प अनुपाती संबंध बनाए नहीं रखते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका रेसिपीमध्ये घटक A आणि B चे गुणोत्तर 4 : 9 आहे. जर A चे 12 एकक वापरले जात असतील, तर गुणोत्तर सारखे ठेवण्यासाठी B चे किती एकक वापरावे लागेल?",
-          "choices": [
-            "27",
-            "18",
-            "16",
-            "9"
-          ],
-          "solution": "मूळ गुणोत्तर 4 : 9 आहे. जर A चे 12 एकक वापरले जात असतील, तर B चे प्रमाण (12/4) × 9 = 27 एकक असावे लागेल जेणेकरून गुणोत्तर सारखे राहील. इतर विकल्प अनुपाती संबंध ठेवत नाहीत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the ratio as 4:9 meaning 4+9=13, then scales 12 as 13*1.5=19.5, rounds to 18",
-        "Confuses the ratio by adding instead of multiplying the scaling factor",
-        "The student uses the same value as A without adjusting."
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and clearly explains the proportional reasoning. The correct answer is 27, and the author's reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp107.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 7: Proportional Reasoning-1",
-            "7.4 Problem Solving with Proportional Reasoning"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp107.pdf",
-          "ordinal": 5,
-          "pageStart": 6,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 7: Proportional Reasoning-1",
-            "7.4 Problem Solving with Proportional Reasoning"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp107.pdf",
-          "ordinal": 6,
-          "pageStart": 8,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 7: Proportional Reasoning-1",
-            "7.4 Problem Solving with Proportional Reasoning"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T19:00:00.584Z",
+      "generatedAt": "2026-11-02T09:09:21.656Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

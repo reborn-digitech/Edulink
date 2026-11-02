@@ -1,0 +1,310 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T07:13:20.877Z",
+  "finishedAt": "2026-11-02T07:15:47.320Z",
+  "seconds": 146,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी गणित इंग्रजी",
+    "bookCode": "803020004",
+    "document": "balbharati/8/mathematics/803020004.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 4 — Altitudes and Medians of a triangle",
+    "edition": "First Edition 2018",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[PRMO 2018 — question paper]\n13. In a triangle ABC, right-angled at A, the altitude through A and the internal bisector of\n\\A have lengths 3 and 4, respectively. Find the length of the median through A.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n22. In the figure, altitudes AD and CE of Δ ABC intersect 2\neach other at the point P. Show that:\n(i) ΔABD ~ ΔCBE\n(ii) ΔPDC ~ ΔBEC\n[OR]\nBF BE\nIn the figure, DE || AC and DF || AE. Prove that FE = EC",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n23. If AP and DQ are medians of triangles ABC and DEF respectively, where 2\n∆ABC~ ∆DEF, then prove that 𝐷𝐸 𝐴𝐵 = 𝐷𝑄 𝐴𝑃",
+      "[RMO 2016 — solutions or answer key]\n5. Let ABC be a triangle, AD an altitude and AE a median. Assume B, D, E, C lie in that order on\nthe line BC. Suppose the incentre of triangle ABE lies on AD and the incentre of ADC lies on\nAE. Find the angles of triangle ABC.\nSolution: Since AD ⊥ BE and the incentre of 4ABE\nlies on AD, it follows that ABE is isosceles. In particu-\nlar ∠BAD = ∠DAE = α, say. Since AE is the bisector\nof∠DAC, it follows that ∠EAC = ∠DAE = α. Moreover,\nwe have\nAD DE\n= .\nAC CE\nSince BE = EC = a 2 , we also have DE = 2 1\nwe get\nAD\n=\nAC\nBE = a 4 . Thus\nDE a/4 1\n= = .\nEC a/2 2\nSince 4ADE is a right-angled triangle and AD = AC/2, it follows that ∠ACD = 30 . Hence ◦\n∠DAC = 60 . Since ∠DAC = 2α, we get α = 30 . Now ∠A "
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 41878,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 8594,
+      "completionTokens": 2575
+    },
+    "critique": {
+      "calls": 14,
+      "ms": 70925,
+      "in": 12,
+      "out": 10,
+      "rejects": 2,
+      "promptTokens": 6224,
+      "completionTokens": 2438
+    },
+    "solver": {
+      "calls": 62,
+      "ms": 27279,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 8539,
+      "completionTokens": 559
+    },
+    "form": {
+      "calls": 7,
+      "ms": 20203,
+      "in": 10,
+      "out": 8,
+      "rejects": 2,
+      "promptTokens": 1690,
+      "completionTokens": 547
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 8,
+      "ms": 1385,
+      "in": 8,
+      "out": 5,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 157591,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 11007,
+      "completionTokens": 5161
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 1,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "If the centroid of a triangle divides each median in the ratio 2:1, what is the length of the segment from the vertex to the centroid if the entire median is 9 units long?",
+      "ms": {
+        "draft": 3697,
+        "critique": 5250,
+        "solver": 2006,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the centroid of a triangle divides each median in the ratio 2:1, and the length of the median from a vertex is 15 units, what is the length of the segment from the centroid to the midpoint of the opposite side?",
+      "ms": {
+        "draft": 3697,
+        "critique": 6017,
+        "solver": 833,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a triangle, if the length of a median is 6 units, what is the length of the segment from the vertex to the centroid?",
+      "ms": {
+        "draft": 3283,
+        "critique": 6117
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the length of a median is 9 units, what is the length of the segment from the centroid to the midpoint of the side?",
+      "ms": {
+        "draft": 3283,
+        "critique": 4632
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the point where the three altitudes of a triangle meet?",
+      "ms": {
+        "draft": 3697,
+        "critique": 4589,
+        "solver": 1131,
+        "form": 3900
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the point where the three altitudes of a triangle meet?",
+      "ms": {
+        "draft": 3283,
+        "critique": 5032,
+        "solver": 10299,
+        "form": 3716
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an acute-angled triangle, where is the orthocentre located?",
+      "ms": {
+        "draft": 3283,
+        "critique": 3769,
+        "solver": 759,
+        "form": 1180
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the point where the three medians of a triangle meet?",
+      "ms": {
+        "draft": 3283,
+        "critique": 4471,
+        "solver": 1366,
+        "form": 5316,
+        "translation": 29616
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements is true about the altitudes of a triangle?",
+      "ms": {
+        "draft": 3697,
+        "critique": 5264,
+        "solver": 2005,
+        "form": 3205,
+        "translation": 38985
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In a triangle, what is the ratio in which the centroid divides each median?",
+      "ms": {
+        "draft": 3283,
+        "critique": 5659,
+        "solver": 10199,
+        "form": 2728,
+        "translation": 23664
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a right-angled triangle, where is the orthocentre located?",
+      "ms": {
+        "draft": 3697,
+        "critique": 5021,
+        "solver": 1597,
+        "form": 3314,
+        "translation": 27428
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a triangle, the centroid divides a median into two parts such that the part from the vertex to the centroid is 8 units. What is the length of the entire median?",
+      "ms": {
+        "draft": 3697,
+        "critique": 4659,
+        "solver": 1261,
+        "form": 0,
+        "translation": 34210
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If the centroid of a triangle divides each median in the ratio 2:1, what is the length of the segment from the vertex to the centroid if the entire median is 9 units long?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the centroid of a triangle divides each median in the ratio 2:1, and the length of the median from a vertex is 15 units, what is the length of the segment from the centroid to the midpoint of the opposite side?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In a triangle, if the length of a median is 6 units, what is the length of the segment from the vertex to the centroid?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the length of a median is 9 units, what is the length of the segment from the centroid to the midpoint of the side?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the point where the three altitudes of a triangle meet?",
+      "reason": "near-duplicate of served question cmvx351rx03mj0rembmu73uan (cosine 0.943 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the point where the three altitudes of a triangle meet?",
+      "reason": "near-duplicate of served question cmvx351rx03mj0rembmu73uan (cosine 0.943 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "In an acute-angled triangle, where is the orthocentre located?",
+      "reason": "near-duplicate of served question cmvx351sd03n70rembfmuypyd (cosine 0.959 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

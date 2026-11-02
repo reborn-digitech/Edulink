@@ -21,49 +21,126 @@
   "board": "BALBHARATI",
   "book": "८ वी गणित इंग्रजी",
   "edition": "First Edition 2018",
-  "generatedAt": "2026-11-01T01:06:52.387Z",
+  "generatedAt": "2026-11-02T07:50:02.199Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the term used for the additional money paid on a loan?",
+      "stem": "What is the formula for compound interest?",
       "choices": [
-        "Interest",
-        "Principal",
-        "Amount",
-        "Rate"
+        "A = P + I",
+        "A = P * (1 + r/n)^(nt)",
+        "I = P * r * t",
+        "A = P * r * t"
       ],
-      "answerIndex": 0,
-      "solution": "Interest is the term for the additional money paid on a loan, as it represents the cost of borrowing money. Principal is the original amount borrowed, amount refers to the total sum paid, and rate is the percentage used to calculate interest. None of the other options describe the extra money paid beyond the original loan.",
+      "answerIndex": 1,
+      "solution": "The correct formula for compound interest is A = P * (1 + r/n)^(nt). The other options are either formulas for simple interest or incorrect representations of the compound interest formula.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक ऋण पर अतिरिक्त धन के लिए किस शब्द का उपयोग किया जाता है?",
+          "stem": "चक्रवृद्धि ब्याज का सूत्र क्या है?",
           "choices": [
-            "ब्याज",
-            "मूलधन",
-            "राशि",
-            "दर"
+            "A = P + I",
+            "A = P * (1 + r/n)^(nt)",
+            "I = P * r * t",
+            "A = P * r * t"
           ],
-          "solution": "ब्याज एक ऋण पर अतिरिक्त धन के लिए शब्द है, क्योंकि यह धन उधार लेने की लागत का प्रतिनिधित्व करता है। मूलधन उधार ली गई मूल राशि है, राशि कुल भुगतान की गई राशि को संदर्भित करती है, और दर ब्याज की गणना के लिए उपयोग किए जाने वाले प्रतिशत को संदर्भित करती है। अन्य विकल्पों में से कोई भी मूल ऋण के बाद अतिरिक्त धन का वर्णन नहीं करता है।",
+          "solution": "चक्रवृद्धि ब्याज का सही सूत्र A = P * (1 + r/n)^(nt) है। अन्य विकल्प साधारण ब्याज के सूत्र हैं या चक्रवृद्धि ब्याज के सूत्र के गलत प्रतिनिधित्व हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All technical terms are standard in Hindi financial education.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. Technical terms like 'चक्रवृद्धि ब्याज' (compound interest) and 'साधारण ब्याज' (simple interest) are correctly used.",
           "flag": null
         },
         "mr": {
-          "stem": "कर्जावर अतिरिक्त रक्कम भरल्यास तिला काय म्हणतात?",
+          "stem": "चक्रवाढ व्याजाचे सूत्र काय आहे?",
           "choices": [
-            "व्याज",
-            "मूळ रक्कम",
-            "एकूण रक्कम",
-            "दर"
+            "A = P + I",
+            "A = P * (1 + r/n)^(nt)",
+            "I = P * r * t",
+            "A = P * r * t"
           ],
-          "solution": "कर्जावर अतिरिक्त रक्कम भरल्यास तिला व्याज म्हणतात, कारण ते व्याज घेण्याचा खर्च आहे. मूळ रक्कम ही घेतलेली मूळ रक्कम आहे, एकूण रक्कम ही भरलेली एकूण रक्कम दर्शवते आणि दर हा व्याज गणित करण्यासाठी वापरलेला शेकडा आहे. इतर कोणत्याही पर्यायाने मूळ कर्जापेक्षा अतिरिक्त रक्कम वर्णन केली जात नाही.",
+          "solution": "चक्रवाढ व्याजाचे योग्य सूत्र A = P * (1 + r/n)^(nt) आहे. इतर विकल्प साधे व्याजाचे सूत्र आहेत किंवा चक्रवाढ व्याजाचे चुकीचे प्रतिनिधित्व आहेत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi financial terminology.",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms for compound interest.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses compound interest with simple interest",
+        null,
+        "does not recognize the correct formula",
+        "confuses simple interest with compound interest"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct formula for compound interest is A = P * (1 + r/n)^(nt). The other options are either simple interest formulas or incorrect. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 64,
+          "pageStart": 102,
+          "pageEnd": 103,
+          "headingPath": [
+            "14. Compound interest"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T07:50:02.199Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the formula for calculating simple interest?",
+      "choices": [
+        "I = PNR/100",
+        "I = P + NR",
+        "I = PNR/10",
+        "I = P/RN"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct formula for simple interest is I = PNR/100, where I represents the interest, P is the principal amount, N is the number of years, and R is the rate of interest. The other options incorrectly combine or divide the variables, failing to represent the proper relationship between principal, rate, and time in simple interest calculations.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "साधारण ब्याज की गणना के लिए सूत्र क्या है?",
+          "choices": [
+            "I = PNR/100",
+            "I = P + NR",
+            "I = PNR/10",
+            "I = P/RN"
+          ],
+          "solution": "साधारण ब्याज के लिए सही सूत्र I = PNR/100 है, जहां I ब्याज को दर्शाता है, P मूलधन की राशि है, N वर्षों की संख्या है, और R ब्याज की दर है। अन्य विकल्प चर को गलत ढंग से जोड़ते या विभाजित करते हैं, जो साधारण ब्याज की गणना में मूलधन, दर और समय के सही संबंध को दर्शाने में असफल रहते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard Hindi financial terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "साधे व्याज काढण्याचे सूत्र काय आहे?",
+          "choices": [
+            "I = PNR/100",
+            "I = P + NR",
+            "I = PNR/10",
+            "I = P/RN"
+          ],
+          "solution": "साधे व्याजाचे बरोबर सूत्र I = PNR/100 आहे, जेथे I व्याज दर्शवते, P मुद्दल रक्कम आहे, N वर्षांची संख्या आहे आणि R व्याज दर आहे. इतर पर्याय चुकीच्या पद्धतीने चलांचे संयोजन किंवा भागाकार करतात, ज्यामुळे साधे व्याज गणनेतील मुद्दल, दर आणि वेळ यांच्यातील योग्य संबंध दर्शवत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology as taught in Marathi-medium textbooks.",
           "flag": null
         }
       },
@@ -73,9 +150,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "confuses principal with the additional money",
-        "refers to the initial amount borrowed",
-        "refers to the percentage of interest"
+        "Believes interest is added as a separate amount rather than a proportion of principal",
+        "Believes the formula lacks a divisor, but incorrectly divides by 10 instead of 100",
+        "Confuses the formula by inverting the denominator and incorrectly placing the variables"
       ],
       "solverAnswers": [
         0,
@@ -85,7 +162,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The question is straightforward and tests recall of basic financial terminology. The correct answer is 'Interest,' and the author's reasoning for the distractors aligns with common misconceptions.",
+      "critique": "The correct formula for simple interest is I = PNR/100. The author's solution is accurate and matches standard mathematical definitions. The distractors reflect common misconceptions about how simple interest is calculated.",
       "sources": [
         {
           "document": "balbharati/8/mathematics/803020004.pdf",
@@ -116,49 +193,49 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T01:06:52.387Z",
+      "generatedAt": "2026-11-02T07:50:02.199Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 1,
-      "stem": "What is the formula for compound interest?",
+      "difficulty": 2,
+      "stem": "If the principal is ₹5000 and the rate is 10% per annum, what is the amount after 2 years?",
       "choices": [
-        "A = P + I",
-        "A = P(1 + r/n)^(nt)",
-        "I = PRT",
-        "A = P(1 + r)"
+        "₹5500",
+        "₹6000",
+        "₹6050",
+        "₹7000"
       ],
-      "answerIndex": 1,
-      "solution": "The formula for compound interest is A = P(1 + r/n)^(nt), where A is the amount, P is the principal, r is the rate of interest, n is the number of times interest is compounded per year, and t is the time in years. The other options are incorrect because they represent simple interest or incomplete formulas.",
-      "checkExpr": null,
+      "answerIndex": 2,
+      "solution": "Using the compound interest formula A = P(1 + r)^n, the amount after 2 years is ₹6050. The other options are incorrect calculations or misunderstandings of the formula.",
+      "checkExpr": "5000*(1+0.1)^2",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "चक्रवृद्धि ब्याज का सूत्र क्या है?",
+          "stem": "यदि मूलधन ₹5000 और दर 10% प्रति वर्ष है, तो 2 वर्ष बाद राशि क्या होगी?",
           "choices": [
-            "A = P + I",
-            "A = P(1 + r/n)^(nt)",
-            "I = PRT",
-            "A = P(1 + r)"
+            "₹5500",
+            "₹6000",
+            "₹6050",
+            "₹7000"
           ],
-          "solution": "चक्रवृद्धि ब्याज का सूत्र A = P(1 + r/n)^(nt) है, जहां A राशि है, P मूलधन है, r ब्याज की दर है, n वर्ष में ब्याज की बार गिनती है और t वर्षों में समय है। अन्य विकल्प गलत हैं क्योंकि वे साधारण ब्याज या अपूर्ण सूत्र प्रस्तुत करते हैं।",
+          "solution": "चक्रवृद्धि ब्याज के सूत्र A = P(1 + r)^n का उपयोग करके, 2 वर्ष बाद राशि ₹6050 है। अन्य विकल्प सूत्र की गलत गणना या समझ के कारण गलत हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate Hindi terminology for financial concepts.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms like 'चक्रवृद्धि ब्याज' (compound interest) and 'मूलधन' (principal) as used in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "चक्रवाढ व्याजाचे सूत्र काय आहे?",
+          "stem": "मुद्दल ₹5000 आणि दर 10% वार्षिक असल्यास, 2 वर्षानंतर एकूण रक्कम किती असेल?",
           "choices": [
-            "A = P + I",
-            "A = P(1 + r/n)^(nt)",
-            "I = PRT",
-            "A = P(1 + r)"
+            "₹5500",
+            "₹6000",
+            "₹6050",
+            "₹7000"
           ],
-          "solution": "चक्रवाढ व्याजाचे सूत्र A = P(1 + r/n)^(nt) आहे, जेथे A एकूण रक्कम आहे, P मूळ रक्कम आहे, r व्याजाचा दर आहे, n व्याज वार्षिक वेळा गणले जाते आणि t वर्षांमध्ये वेळ आहे. इतर विकल्प चुकीचे आहेत कारण ते साधे व्याज किंवा अपूर्ण सूत्र दर्शवतात.",
+          "solution": "संयुक्त व्याजाच्या सूत्रानुसार A = P(1 + r)^n, 2 वर्षानंतर एकूण रक्कम ₹6050 आहे. इतर विकल्प चुकीच्या गणना किंवा सूत्राच्या चुकीच्या समजामुळे असतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for financial concepts.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi financial terminology.",
           "flag": null
         }
       },
@@ -167,20 +244,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "confuses compound interest with simple interest",
+        "adds simple interest for two years",
+        "uses 10% for one year only",
         null,
-        "incorrect formula for compound interest",
-        "incorrectly assumes interest is only compounded once per year"
+        "adds 10% twice without compounding"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": null,
-      "critique": "The correct formula for compound interest is A = P(1 + r/n)^(nt). The other options are either simple interest formulas or incomplete versions of the compound interest formula.",
+      "critique": "The correct answer is ₹6050, calculated using the compound interest formula A = P(1 + r)^n. The other options reflect common misconceptions such as using simple interest, applying the rate for only one year, or incorrectly adding the interest without compounding.",
       "sources": [
         {
           "document": "balbharati/8/mathematics/803020004.pdf",
@@ -193,47 +270,47 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T01:06:52.387Z",
+      "generatedAt": "2026-11-02T07:50:02.199Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "If a principal of ₹ 10,000 is invested at 10% p.a. for 1 year, what is the amount after one year?",
+      "stem": "If the principal is ₹10,000, the rate of interest is 10% per annum, and the time is 1 year, what is the amount after one year?",
       "choices": [
-        "₹ 11,000",
-        "₹ 10,100",
-        "₹ 10,010",
-        "₹ 10,000"
+        "₹11,000",
+        "₹10,100",
+        "₹10,000",
+        "₹9,000"
       ],
       "answerIndex": 0,
-      "solution": "The amount after one year is calculated by adding the interest to the principal. At 10% per annum, the interest on ₹ 10,000 is ₹ 1,000, resulting in a total of ₹ 11,000. The other options incorrectly calculate the interest or fail to add it properly.",
-      "checkExpr": "10000 + (10000 * 10 / 100)",
+      "solution": "The amount after one year is calculated by adding the interest to the principal. The interest is 10% of ₹10,000, which is ₹1,000, so the total amount is ₹10,000 + ₹1,000 = ₹11,000. The other options are incorrect because they either do not add the interest or add it in the wrong way.",
+      "checkExpr": "10000 + (10000*10/100)",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि ₹ 10,000 की मूल राशि 10% प्रति वर्ष की दर से 1 वर्ष के लिए निवेश की जाती है, तो एक वर्ष के बाद राशि क्या होगी?",
+          "stem": "यदि मूलधन ₹10,000 है, ब्याज की दर 10% प्रति वर्ष है, और समय 1 वर्ष है, तो एक वर्ष के बाद राशि क्या होगी?",
           "choices": [
-            "₹ 11,000",
-            "₹ 10,100",
-            "₹ 10,010",
-            "₹ 10,000"
+            "₹11,000",
+            "₹10,100",
+            "₹10,000",
+            "₹9,000"
           ],
-          "solution": "एक वर्ष के बाद राशि की गणना मूल राशि में ब्याज जोड़कर की जाती है। 10% प्रति वर्ष की दर से ₹ 10,000 पर ब्याज ₹ 1,000 होता है, जिससे कुल ₹ 11,000 बनता है। अन्य विकल्प ब्याज की गलत गणना करते हैं या इसे सही तरह से जोड़ना भूल जाते हैं।",
+          "solution": "एक वर्ष के बाद राशि मूलधन में ब्याज जोड़कर निकाली जाती है। ब्याज ₹10,000 का 10% है, जो ₹1,000 है, इसलिए कुल राशि ₹10,000 + ₹1,000 = ₹11,000 है। अन्य विकल्प गलत हैं क्योंकि वे ब्याज नहीं जोड़ते या ब्याज को गलत तरीके से जोड़ते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, with the correct answer remaining in the same position. The technical terms like 'मूल राशि' (principal), 'ब्याज' (interest), and 'राशि' (amount) are appropriate for a Hindi-medium curriculum.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate financial terminology as taught in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "₹ 10,000 मुद्दल 10% वार्षिक दराने 1 वर्षासाठी गुंतवले गेले असतील तर एका वर्षानंतर एकूण रक्कम किती असेल?",
+          "stem": "जर मूळ रक्कम ₹10,000, व्याजाचा दर 10% वार्षिक आहे आणि वेळ 1 वर्ष आहे, तर एक वर्षानंतर एकूण रक्कम किती असेल?",
           "choices": [
-            "₹ 11,000",
-            "₹ 10,100",
-            "₹ 10,010",
-            "₹ 10,000"
+            "₹11,000",
+            "₹10,100",
+            "₹10,000",
+            "₹9,000"
           ],
-          "solution": "एका वर्षानंतर एकूण रक्कम मुद्दलावर व्याज जोडून काढली जाते. 10% वार्षिक दराने ₹ 10,000 वर व्याज ₹ 1,000 असते, ज्यामुळे एकूण ₹ 11,000 होते. इतर विकल्प व्याज चुकीच्या पद्धतीने काढतात किंवा ते जोडत नाहीत.",
+          "solution": "एक वर्षानंतर एकूण रक्कम मूळ रक्कम आणि व्याजाची बेरीज असते. व्याज ₹10,000 च्या 10% आहे, जो ₹1,000 आहे, म्हणून एकूण रक्कम ₹10,000 + ₹1,000 = ₹11,000 असते. इतर विकल्प चुकीचे आहेत कारण ते व्याज जोडत नाहीत किंवा व्याज चुकीच्या पद्धतीने जोडतात.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi financial terminology.",
           "flag": null
@@ -245,9 +322,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Miscalculates simple interest as 10% of principal plus 100 instead of 1000",
-        "adds only 100 as interest",
-        "does not add any interest"
+        "Adds the interest incorrectly as 100 instead of 1,000.",
+        "Fails to add the interest at all.",
+        "Subtracts the interest instead of adding it."
       ],
       "solverAnswers": [
         0,
@@ -257,7 +334,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The question is straightforward, and the correct answer is clearly ₹ 11,000. The author's solution and reasoning are accurate, and the distractors reflect common misconceptions about calculating simple interest.",
+      "critique": "The solution is correct and matches the key. The calculation of simple interest (10% of 10,000 = 1,000) and the addition to the principal (10,000 + 1,000 = 11,000) is accurate. The reasoning for the distractors is also valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "balbharati/8/mathematics/803020004.pdf",
@@ -288,203 +365,144 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T01:06:52.387Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a principal of ₹5,000 is invested at 10% p.c.p.a. for 2 years, what is the amount?",
-      "choices": [
-        "₹6,050",
-        "₹5,500",
-        "₹6,500",
-        "₹5,000"
-      ],
-      "answerIndex": 0,
-      "solution": "The amount is calculated using A = P × (1 + r)^n. So, ₹5,000 × (1 + 0.10)^2 = ₹6,050. The other options are incorrect calculations.",
-      "checkExpr": "5000*(1+0.10)^2",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि ₹5,000 की मूल राशि 10% प्रति वर्ष की दर से 2 वर्ष के लिए निवेश की जाती है, तो राशि क्या होगी?",
-          "choices": [
-            "₹6,050",
-            "₹5,500",
-            "₹6,500",
-            "₹5,000"
-          ],
-          "solution": "राशि A = P × (1 + r)^n के उपयोग से गणना की जाती है। अतः ₹5,000 × (1 + 0.10)^2 = ₹6,050। अन्य विकल्प गलत गणनाएँ हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "₹5,000 च्या मूळ रकमेचे 10% वार्षिक दराने 2 वर्षांसाठी गुंतवणूक केल्यास एकूण रकमेचे किती होईल?",
-          "choices": [
-            "₹6,050",
-            "₹5,500",
-            "₹6,500",
-            "₹5,000"
-          ],
-          "solution": "एकूण रकमेची गणना A = P × (1 + r)^n या सूत्राने केली जाते. म्हणून, ₹5,000 × (1 + 0.10)^2 = ₹6,050. इतर विकल्प चुकीच्या गणनेने मिळतात.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate financial terminology as used in Marathi-medium textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Calculates simple interest instead of compound interest",
-        "uses simple interest",
-        "does not consider the rate"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is ₹6,050, calculated using the compound interest formula. The other options represent common errors like simple interest or no interest at all.",
-      "sources": [
-        {
-          "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 64,
-          "pageStart": 102,
-          "pageEnd": 103,
-          "headingPath": [
-            "14. Compound interest"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T01:06:52.387Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "The population of a suburb is 10,000 and increases by 5% every year. What is the population after 2 years?",
-      "choices": [
-        "11,025",
-        "11,000",
-        "10,500",
-        "10,250"
-      ],
-      "answerIndex": 0,
-      "solution": "The population after 2 years is calculated using the compound interest formula. So, 10,000 × (1 + 0.05)^2 = 11,025. The other options are incorrect calculations.",
-      "checkExpr": "10000*(1+0.05)^2",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक उपनगर की जनसंख्या 10,000 है और प्रतिवर्ष 5% बढ़ती है। 2 साल बाद जनसंख्या क्या होगी?",
-          "choices": [
-            "11,025",
-            "11,000",
-            "10,500",
-            "10,250"
-          ],
-          "solution": "2 साल बाद जनसंख्या की गणना चक्रवृद्धि ब्याज के सूत्र का उपयोग करके की जाती है। अतः, 10,000 × (1 + 0.05)^2 = 11,025। अन्य विकल्प गलत गणना हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as found in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका उपनगराची लोकसंख्या 10,000 आहे आणि ती दरवर्षी 5% ने वाढते. 2 वर्षानंतर लोकसंख्या किती असेल?",
-          "choices": [
-            "11,025",
-            "11,000",
-            "10,500",
-            "10,250"
-          ],
-          "solution": "2 वर्षानंतर लोकसंख्या चक्रवृद्धी व्याजाच्या सूत्राने गणली जाते. म्हणून, 10,000 × (1 + 0.05)^2 = 11,025. इतर विकल्प चुकीच्या गणना आहेत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Calculates simple interest instead of compound interest, adding 5% once per year without compounding.",
-        "uses simple interest",
-        "ignores the compounding effect"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly applies the compound interest formula, and the reasoning for the distractors aligns with common student misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 64,
-          "pageStart": 102,
-          "pageEnd": 103,
-          "headingPath": [
-            "14. Compound interest"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T01:06:52.387Z",
+      "generatedAt": "2026-11-02T07:50:02.199Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "A machine costs ₹50,000 and depreciates at 10% per year. What will be its value after 2 years?",
+      "stem": "A loan of ₹60,000 is taken at a rate of 20% per annum for 2 years. If the interest is compounded annually, what is the amount to be paid after 2 years?",
       "choices": [
-        "₹40,500",
-        "₹45,000",
-        "₹50,000",
-        "₹35,000"
+        "₹96,000",
+        "₹72,000",
+        "₹86,400",
+        "₹60,000"
       ],
-      "answerIndex": 0,
-      "solution": "The value after depreciation is calculated as ₹50,000 × (1 - 0.10)^2 = ₹40,500. The other options are incorrect calculations.",
-      "checkExpr": "50000*(1-0.10)^2",
+      "answerIndex": 2,
+      "solution": "The formula for compound interest is A = P × (1 + R/100)^N. Applying this, A = 60,000 × (1 + 20/100)^2 = 60,000 × 1.44 = 86,400. The other options are incorrect as they do not account for compounding or miscalculate the rate.",
+      "checkExpr": "60000*(1+20/100)^2",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक मशीन की कीमत ₹50,000 है और यह 10% प्रति वर्ष कम हो जाती है। 2 वर्ष बाद इसकी कीमत क्या होगी?",
+          "stem": "₹60,000 के ऋण को 2 वर्ष के लिए 20% वार्षिक दर पर लिया जाता है। यदि ब्याज वार्षिक रूप से संयोजित होता है, तो 2 वर्ष के बाद भुगतान करने वाली राशि क्या होगी?",
           "choices": [
-            "₹40,500",
-            "₹45,000",
-            "₹50,000",
-            "₹35,000"
+            "₹96,000",
+            "₹72,000",
+            "₹86,400",
+            "₹60,000"
           ],
-          "solution": "अवमूल्यन के बाद मूल्य की गणना ₹50,000 × (1 - 0.10)^2 = ₹40,500 के रूप में की जाती है। अन्य विकल्प गलत गणना हैं।",
+          "solution": "चक्रवृद्धि ब्याज का सूत्र A = P × (1 + R/100)^N है। इसके अनुसार, A = 60,000 × (1 + 20/100)^2 = 60,000 × 1.44 = 86,400। अन्य विकल्प गलत हैं क्योंकि वे संयोजन के प्रभाव को ध्यान में नहीं रखते या दर की गणना गलत करते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate financial terminology.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "एका मशीनची किंमत रु. 50,000 आहे आणि ती 10% वार्षिक दराने कमी होत आहे. 2 वर्षानंतर तिची किंमत किती असेल?",
+          "stem": "₹60,000 चा उत्तर वर्षाला 20% दराने 2 वर्षांसाठी घेतला जातो. जर व्याज वार्षिक रूपाने चक्रवर्धित असेल, तर 2 वर्षानंतर भरल्या जाणारी रक्कम किती असेल?",
           "choices": [
-            "रु. 40,500",
-            "रु. 45,000",
-            "रु. 50,000",
-            "रु. 35,000"
+            "₹96,000",
+            "₹72,000",
+            "₹86,400",
+            "₹60,000"
           ],
-          "solution": "कमी झालेल्या किंमतीची गणना रु. 50,000 × (1 - 0.10)^2 = रु. 40,500 असे केली जाते. इतर विकल्प चुकीच्या गणना आहेत.",
+          "solution": "चक्रवर्धित व्याजाचा सूत्र A = P × (1 + R/100)^N आहे. याचा अवलंब करून, A = 60,000 × (1 + 20/100)^2 = 60,000 × 1.44 = 86,400. इतर विकल्प चक्रवर्धन न लक्षात घेतल्यामुळे किंवा दराच्या चुकीच्या गणनेमुळे अयोग्य आहेत.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for depreciation and financial calculations.",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate financial terminology as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Calculates simple interest instead of compound interest.",
+        "Fails to compound the interest and only calculates 20% of 60,000 for two years.",
+        null,
+        "Assumes no interest is charged over the two years."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly applies the compound interest formula and arrives at the correct answer. The reasoning for the distractors is valid and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 61,
+          "pageStart": 98,
+          "pageEnd": 99,
+          "headingPath": [
+            "14. Compound interest"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 62,
+          "pageStart": 99,
+          "pageEnd": 100,
+          "headingPath": [
+            "14. Compound interest"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 63,
+          "pageStart": 100,
+          "pageEnd": 102,
+          "headingPath": [
+            "14. Compound interest"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T07:50:02.199Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A loan of ₹10000 is taken at 10% per annum compound interest. What is the total amount to be paid after 3 years?",
+      "choices": [
+        "₹13310",
+        "₹13000",
+        "₹13500",
+        "₹14000"
+      ],
+      "answerIndex": 0,
+      "solution": "The total amount after 3 years is ₹13310, calculated using A = P(1 + r)^n. The other options are incorrect due to miscalculations or misunderstanding of compounding.",
+      "checkExpr": "10000*(1+0.1)^3",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "₹10000 के ऋण को 10% वार्षिक चक्रवृद्धि ब्याज पर लिया जाता है। 3 वर्ष बाद चुकाए जाने वाली कुल राशि क्या है?",
+          "choices": [
+            "₹13310",
+            "₹13000",
+            "₹13500",
+            "₹14000"
+          ],
+          "solution": "3 वर्ष बाद कुल राशि ₹13310 है, जो A = P(1 + r)^n के उपयोग से गणना की गई है। अन्य विकल्प गलत गणना या चक्रवृद्धि के अंतर्दृष्टि के कारण गलत हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer is in the same position (option 1), and the distractors remain incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "₹10000 चा ऋण 10% वार्षिक चक्रवृद्धी दराने घेतला जातो. 3 वर्षानंतर चुकीची रक्कम किती असेल?",
+          "choices": [
+            "₹13310",
+            "₹13000",
+            "₹13500",
+            "₹14000"
+          ],
+          "solution": "3 वर्षांनंतर एकूण रक्कम ₹13310 असेल, जी A = P(1 + r)^n च्या सूत्राने गणली जाते. इतर विकल्प चुकीच्या गणना किंवा चक्रवृद्धीच्या असमजुतीमुळे चुकीच्या आहेत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains in the same position (option 1), and the distractors are still incorrect.",
           "flag": null
         }
       },
@@ -494,9 +512,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Calculates simple interest instead of compound depreciation",
-        "uses simple depreciation",
-        "ignores the compounding effect"
+        "adds simple interest for 3 years",
+        "miscalculates the rate",
+        "uses 10% for only two years"
       ],
       "solverAnswers": [
         0,
@@ -506,7 +524,7 @@
         0
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly applies the formula for depreciation, which is similar to compound interest but with a reduction instead of growth. The calculation ₹50,000 × (1 - 0.10)^2 = ₹40,500 is accurate. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "critique": "The correct answer is ₹13310, calculated using the compound interest formula A = P(1 + r)^n. The other options reflect common misconceptions such as using simple interest, miscalculating the rate, or applying the interest for fewer years.",
       "sources": [
         {
           "document": "balbharati/8/mathematics/803020004.pdf",
@@ -519,49 +537,49 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T01:06:52.387Z",
+      "generatedAt": "2026-11-02T07:50:02.199Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 6,
-      "stem": "A principal of ₹ 60,000 depreciates at 20% per year. What is its value after 2 years?",
+      "stem": "A principal amount grows to ₹6,655 in 3 years at 10% per annum compounded annually. What is the principal amount?",
       "choices": [
-        "₹ 38,400",
-        "₹ 48,000",
-        "₹ 40,000",
-        "₹ 36,000"
+        "₹5,000",
+        "₹5,500",
+        "₹6,000",
+        "₹6,500"
       ],
       "answerIndex": 0,
-      "solution": "The value of the principal after depreciation is calculated by applying the 20% annual decrease for two years. This results in 60,000 × (0.80)² = 38,400. The other options fail to account for the compounding effect of depreciation over two years.",
-      "checkExpr": "60000 * (1 - 0.20)^2",
+      "solution": "Using the formula A = P × (1 + R/100)^N, we rearrange it to find P = A / (1 + R/100)^N. Substituting A = 6,655, R = 10, N = 3, we get P = 6,655 / (1.1)^3 = 5,000. The other options are incorrect as they do not satisfy the formula when reversed.",
+      "checkExpr": "6655/(1+10/100)^3",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "₹ 60,000 के मूलधन के वार्षिक 20% के अनुसार मूल्यह्रास होता है। 2 वर्ष बाद इसका मूल्य क्या होगा?",
+          "stem": "एक मूल राशि 10% प्रति वर्ष की वार्षिक रूप से संयोजित ब्याज दर पर 3 वर्ष में ₹6,655 हो जाती है। मूल राशि क्या है?",
           "choices": [
-            "₹ 38,400",
-            "₹ 48,000",
-            "₹ 40,000",
-            "₹ 36,000"
+            "₹5,000",
+            "₹5,500",
+            "₹6,000",
+            "₹6,500"
           ],
-          "solution": "मूलधन का मूल्य ह्रास के बाद दो वर्षों के लिए वार्षिक 20% कमी लागू करके गणना की जाती है। इससे 60,000 × (0.80)² = 38,400 प्राप्त होता है। अन्य विकल्प दो वर्षों में ह्रास के संयोजित प्रभाव को ध्यान में नहीं रखते।",
+          "solution": "सूत्र A = P × (1 + R/100)^N का उपयोग करके, हम इसे P = A / (1 + R/100)^N के रूप में पुनर्व्यवस्थित करते हैं। A = 6,655, R = 10, N = 3 के मान रखने पर, हमें P = 6,655 / (1.1)^3 = 5,000 प्राप्त होता है। अन्य विकल्प गलत हैं क्योंकि वे सूत्र के विलोम के साथ संतुष्ट नहीं होते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains in the same position (option 1), and the distractors are still incorrect.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "₹ 60,000 च्या मुद्दलाची वार्षिक 20% नुकसान होते. 2 वर्षानंतर त्याची किंमत किती असेल?",
+          "stem": "एक रक्कम 10% वार्षिक दराने वार्षिक रूपाने चक्रवृद्धी व्याजाने 3 वर्षांत ₹6,655 ला वाढते. तर त्या रकमेची मूळ रक्कम किती आहे?",
           "choices": [
-            "₹ 38,400",
-            "₹ 48,000",
-            "₹ 40,000",
-            "₹ 36,000"
+            "₹5,000",
+            "₹5,500",
+            "₹6,000",
+            "₹6,500"
           ],
-          "solution": "मुद्दलाची किंमत नुकसानानंतर वार्षिक 20% घट लावून गणली जाते. हे 60,000 × (0.80)² = 38,400 च्या निकालास पोहोचते. इतर विकल्पांमध्ये दोन वर्षांतील नुकसानाच्या चक्रवृद्धी प्रभावाचा विचार केला गेलेला नाही.",
+          "solution": "सूत्र A = P × (1 + R/100)^N वापरून, आम्ही P = A / (1 + R/100)^N असे लिहू शकतो. A = 6,655, R = 10, N = 3 यांच्या स्थानावर ठेवल्यास, आम्ही P = 6,655 / (1.1)^3 = 5,000 मिळतो. इतर विकल्प चुकीचे आहेत कारण ते सूत्राची पुनरावृत्ती केल्यास संतुष्ट होत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for depreciation and financial calculations.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for financial calculations.",
           "flag": null
         }
       },
@@ -571,9 +589,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Calculates depreciation as a simple interest on the original principal instead of applying it to the reduced value each year",
-        "calculates depreciation as 20% of the original amount for two years",
-        "uses 10% depreciation instead of 20%"
+        "Fails to account for compounding and assumes the interest is simple.",
+        "Uses an incorrect value for the rate or time in the formula.",
+        "Estimates the principal without applying the reverse calculation."
       ],
       "solverAnswers": [
         0,
@@ -583,7 +601,7 @@
         0
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly applies the compound depreciation formula, and the reasoning for the distractors aligns with common student misconceptions.",
+      "critique": "The solution correctly applies the compound interest formula and arrives at the correct answer. The reasoning for the distractors is plausible and reflects common misconceptions.",
       "sources": [
         {
           "document": "balbharati/8/mathematics/803020004.pdf",
@@ -614,7 +632,7 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T01:06:52.387Z",
+      "generatedAt": "2026-11-02T07:50:02.199Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

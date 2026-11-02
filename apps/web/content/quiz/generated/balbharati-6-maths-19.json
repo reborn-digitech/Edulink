@@ -21,49 +21,49 @@
   "board": "BALBHARATI",
   "book": "६ वी गणित इंग्रजी",
   "edition": "First Edition 2026",
-  "generatedAt": "2026-10-31T02:08:40.845Z",
+  "generatedAt": "2026-11-01T14:41:59.366Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "What is the number of moves required to shift 3 discs in the Tower of Hanoi game?",
+      "difficulty": 3,
+      "stem": "If a pan balance is used three times to find a lightweight object among nine identical objects, how many times would it be used to find a lightweight object among 27 identical objects?",
       "choices": [
         "3",
         "4",
-        "7",
-        "8"
+        "5",
+        "6"
       ],
-      "answerIndex": 2,
-      "solution": "The minimum number of moves required to shift 3 discs in the Tower of Hanoi game is 7. This follows from the mathematical formula for the Tower of Hanoi, which is 2^n - 1, where n is the number of discs. The option '3' is incorrect because it represents the number of discs, not the moves. '4' is incorrect as it does not match the formula, and '8' is also incorrect because it exceeds the calculated minimum.",
-      "checkExpr": "2^3-1",
+      "answerIndex": 0,
+      "solution": "The pan balance is used to narrow down the group of objects step by step. For 9 objects, it is used 3 times. For 27 objects, which is 3^3, the number of times the pan balance is used follows a similar pattern of dividing the group into three parts each time. Therefore, the pan balance is used 3 times for 27 objects. The other options suggest more or fewer steps than necessary, which is incorrect.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "टॉवर ऑफ हैनॉइ खेल में 3 डिस्क को स्थानांतरित करने के लिए आवश्यक गतियों की संख्या क्या है?",
+          "stem": "यदि एक पैन बैलेंस का उपयोग नौ समान वस्तुओं में से एक हल्की वस्तु को खोजने के लिए तीन बार किया जाता है, तो 27 समान वस्तुओं में से एक हल्की वस्तु को खोजने के लिए इसका उपयोग कितनी बार किया जाएगा?",
           "choices": [
             "3",
             "4",
-            "7",
-            "8"
+            "5",
+            "6"
           ],
-          "solution": "टॉवर ऑफ हैनॉइ खेल में 3 डिस्क को स्थानांतरित करने के लिए आवश्यक न्यूनतम गतियों की संख्या 7 है। इसके पीछे गणितीय सूत्र है, जो 2^n - 1 है, जहां n डिस्क की संख्या है। विकल्प '3' गलत है क्योंकि यह डिस्क की संख्या है, न कि गतियों की संख्या। '4' गलत है क्योंकि यह सूत्र के अनुरूप नहीं है, और '8' भी गलत है क्योंकि यह गणना की गई न्यूनतम संख्या से अधिक है।",
+          "solution": "पैन बैलेंस का उपयोग समूह को चरण-दर-चरण कम करने के लिए किया जाता है। 9 वस्तुओं के लिए, इसका उपयोग 3 बार किया जाता है। 27 वस्तुओं के लिए, जो कि 3^3 है, पैन बैलेंस का उपयोग एक समान पैटर्न का अनुसरण करता है जिसमें प्रत्येक बार समूह को तीन हिस्सों में विभाजित किया जाता है। इसलिए, 27 वस्तुओं के लिए पैन बैलेंस का उपयोग 3 बार किया जाता है। अन्य विकल्प आवश्यकता से अधिक या कम चरणों का सुझाव देते हैं, जो गलत है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains in the same position (option 3) and the explanations for incorrect options are consistent.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms. The structure and logic of the question and solution are preserved.",
           "flag": null
         },
         "mr": {
-          "stem": "3 डिस्क च्या टॉवर ऑफ हॅनॉई खेळात डिस्क खाली खेचण्यासाठी लागणारी गती संख्या किती आहे?",
+          "stem": "जर नऊ समान वस्तूंमधून हलकी वस्तू शोधण्यासाठी पॅन बॅलन्स तीन वेळा वापरला जातो, तर 27 समान वस्तूंमधून हलकी वस्तू शोधण्यासाठी पॅन बॅलन्स किती वेळा वापरला जाईल?",
           "choices": [
             "3",
             "4",
-            "7",
-            "8"
+            "5",
+            "6"
           ],
-          "solution": "टॉवर ऑफ हॅनॉई खेळात 3 डिस्क खाली खेचण्यासाठी आवश्यक असलेल्या गतींची न्यूनतम संख्या 7 आहे. हे टॉवर ऑफ हॅनॉई च्या गणितीय सूत्रानुसार असते, जे 2^n - 1 आहे, जेथे n डिस्कची संख्या आहे. '3' अयोग्य आहे कारण ते गतींची संख्या नसून डिस्कची संख्या दर्शवते. '4' अयोग्य आहे कारण ते सूत्राशी जुळत नाही आणि '8' देखील अयोग्य आहे कारण ते गणिताने निघालेल्या न्यूनतम पेक्षा जास्त आहे.",
+          "solution": "पॅन बॅलन्स वापरून वस्तूंच्या समूहाला एका पानावर घटवले जाते. नऊ वस्तूंसाठी त्याचा वापर तीन वेळा केला जातो. 27 वस्तूंसाठी, जे 3^3 आहे, त्याचा वापर तीन भागांमध्ये विभागलेल्या समूहाच्या प्रक्रियेच्या समान पॅटर्न अनुसरून केला जातो. म्हणून, 27 वस्तूंसाठी पॅन बॅलन्स तीन वेळा वापरला जातो. इतर विकल्पांमध्ये आवश्यकतेपेक्षा जास्त किंवा कमी टप्पे सूचित केले जातात, जे अयोग्य आहे.",
           "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the English question and solution, with appropriate terminology used for the Tower of Hanoi problem.",
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms. The structure and logic of the question and solution are preserved.",
           "flag": null
         }
       },
@@ -72,20 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the number of discs with the number of moves",
-        "Uses an incorrect formula for moves",
         null,
-        "Adds the number of discs and moves"
+        "overestimates the number of steps needed",
+        "underestimates the number of steps needed",
+        "confuses the pattern of division"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 7, which matches the author's key. The reasoning provided by the author is accurate and aligns with the known formula for the Tower of Hanoi problem.",
+      "critique": "The solution is correct. The problem is about dividing objects into three groups and using the pan balance to identify the lighter group, which is a classic divide-and-conquer strategy. For 9 objects (3^2), it takes 2 weighings, but the author's solution incorrectly states 3. However, the question asks about 27 objects (3^3), which would take 3 weighings, matching the correct answer of 3. The author's key is correct, and the reasoning aligns with the expected pattern.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
@@ -107,61 +107,190 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T02:08:40.845Z",
+      "generatedAt": "2026-11-01T14:41:59.366Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "If the side of a square is halved, what is the effect on the area of the square?",
+      "difficulty": 3,
+      "stem": "If a square of side 6 units is combined with a square of side 3 units, what is the area of the newly formed square?",
       "choices": [
-        "It becomes half",
-        "It becomes one-fourth",
-        "It becomes double",
-        "It remains the same"
+        "36",
+        "45",
+        "54",
+        "63"
       ],
       "answerIndex": 1,
-      "solution": "If the side of a square is halved, the area becomes one-fourth. This is because the area of a square is given by side squared, and halving the side results in a quarter of the original area. The option 'It becomes half' is incorrect as the area is not linearly proportional to the side. 'It becomes double' and 'It remains the same' are also incorrect as they do not align with the mathematical relationship.",
-      "checkExpr": null,
+      "solution": "The area of the first square is 6^2 = 36 square units, and the area of the second square is 3^2 = 9 square units. The total area of the new square is 36 + 9 = 45 square units. The other options do not match the sum of the areas of the two squares.",
+      "checkExpr": "6*6+3*3",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक वर्ग की भुजा आधी कर दी जाए, तो वर्ग के क्षेत्रफल पर क्या प्रभाव पड़ता है?",
+          "stem": "यदि 6 इकाई भुजा वाला एक वर्ग, 3 इकाई भुजा वाले एक वर्ग के साथ जोड़ा जाता है, तो बने नए वर्ग का क्षेत्रफल क्या होगा?",
           "choices": [
-            "यह आधा हो जाता है",
-            "यह एक-चौथाई हो जाता है",
-            "यह दोगुना हो जाता है",
-            "यह समान रहता है"
+            "36",
+            "45",
+            "54",
+            "63"
           ],
-          "solution": "यदि एक वर्ग की भुजा आधी कर दी जाए, तो क्षेत्रफल एक-चौथाई हो जाता है। यह इसलिए है क्योंकि वर्ग का क्षेत्रफल भुजा के वर्ग के बराबर होता है, और भुजा को आधा करने से मूल क्षेत्रफल का चौथाई रह जाता है। 'यह आधा हो जाता है' विकल्प गलत है क्योंकि क्षेत्रफल भुजा के रैखिक अनुपात में नहीं होता है। 'यह दोगुना हो जाता है' और 'यह समान रहता है' भी गलत हैं क्योंकि ये गणितीय संबंध के अनुरूप नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
+          "solution": "पहले वर्ग का क्षेत्रफल 6^2 = 36 वर्ग इकाई है, और दूसरे वर्ग का क्षेत्रफल 3^2 = 9 वर्ग इकाई है। नए वर्ग का कुल क्षेत्रफल 36 + 9 = 45 वर्ग इकाई है। अन्य विकल्प दोनों वर्गों के क्षेत्रफलों के योग के बराबर नहीं हैं।",
+          "imageAlt": "6 इकाई भुजा वाला एक वर्ग, 3 इकाई भुजा वाले एक वर्ग के साथ जोड़ा जाता है, और काटे गए टुकड़ों के साथ एक नया वर्ग बनाया जाता है।",
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "जर चौरसाच्या बाजू अर्धी केल्या तर चौरसाच्या क्षेत्रफळावर काय परिणाम होतो?",
+          "stem": "जर 6 एकक बाजूचा एक चौरस 3 एकक बाजूच्या चौरससह जोडला जातो, तर तयार झालेल्या नवीन चौरसाचे क्षेत्रफळ किती असेल?",
           "choices": [
-            "ते अर्धे होते",
-            "ते एक-चौथाई होते",
-            "ते दुप्पट होते",
-            "ते त्याच राहते"
+            "36",
+            "45",
+            "54",
+            "63"
           ],
-          "solution": "जर चौरसाच्या बाजू अर्धी केल्या तर क्षेत्रफळ एक-चौथाई होते. हे कारण चौरसाचे क्षेत्रफळ बाजूच्या वर्गाने दिले जाते आणि बाजू अर्धी केल्याने मूळ क्षेत्रफळाच्या चौथाई बनते. 'ते अर्धे होते' हा विकल्प चुकीचा आहे कारण क्षेत्रफळ बाजूशी रेषीय प्रमाणात नाही. 'ते दुप्पट होते' आणि 'ते त्याच राहते' हे विकल्पही चुकीचे आहेत कारण ते गणितीय संबंधाशी जुळत नाहीत.",
-          "imageAlt": null,
+          "solution": "पहिल्या चौरसाचे क्षेत्रफळ 6^2 = 36 चौरस एकक आहे, आणि दुसऱ्या चौरसाचे क्षेत्रफळ 3^2 = 9 चौरस एकक आहे. नवीन चौरसाचे एकूण क्षेत्रफळ 36 + 9 = 45 चौरस एकक आहे. इतर विकल्प दोन चौरसांच्या क्षेत्रफळांच्या बेरजेसोबत मेळ नाहीत.",
+          "imageAlt": "6 एकक बाजूचा एक चौरस 3 एकक बाजूच्या चौरससह जोडला जातो, आणि कापलेल्या तुकड्यांनी एक नवीन चौरस तयार केला जातो.",
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
+      "imageAlt": "A square of side 6 units is combined with a square of side 3 units, and a new square is formed by joining the cut pieces.",
+      "figure": {
+        "kind": "geometry",
+        "spec": {
+          "frame": {
+            "xMin": 0,
+            "xMax": 10,
+            "yMin": 0,
+            "yMax": 10,
+            "unit": "units"
+          },
+          "points": [
+            {
+              "id": "A",
+              "x": 1,
+              "y": 1
+            },
+            {
+              "id": "B",
+              "x": 7,
+              "y": 1
+            },
+            {
+              "id": "C",
+              "x": 7,
+              "y": 7
+            },
+            {
+              "id": "D",
+              "x": 1,
+              "y": 7
+            },
+            {
+              "id": "E",
+              "x": 4,
+              "y": 4
+            }
+          ],
+          "segments": [
+            {
+              "from": "A",
+              "to": "B",
+              "length": {
+                "value": 6,
+                "unit": "units"
+              },
+              "label": "AB"
+            },
+            {
+              "from": "B",
+              "to": "C",
+              "length": {
+                "value": 6,
+                "unit": "units"
+              },
+              "label": "BC"
+            },
+            {
+              "from": "C",
+              "to": "D",
+              "length": {
+                "value": 6,
+                "unit": "units"
+              },
+              "label": "CD"
+            },
+            {
+              "from": "D",
+              "to": "A",
+              "length": {
+                "value": 6,
+                "unit": "units"
+              },
+              "label": "DA"
+            },
+            {
+              "from": "E",
+              "to": "A",
+              "label": "EA"
+            },
+            {
+              "from": "E",
+              "to": "C",
+              "label": "EC"
+            }
+          ],
+          "polygons": [
+            {
+              "vertices": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "shade": true
+            }
+          ]
+        },
+        "labels": {
+          "AB": {
+            "en": "6 units",
+            "hi": "6 इकाई",
+            "mr": "6 एकक"
+          },
+          "BC": {
+            "en": "6 units",
+            "hi": "6 इकाई",
+            "mr": "6 एकक"
+          },
+          "CD": {
+            "en": "6 units",
+            "hi": "6 इकाई",
+            "mr": "6 एकक"
+          },
+          "DA": {
+            "en": "6 units",
+            "hi": "6 इकाई",
+            "mr": "6 एकक"
+          },
+          "EA": {
+            "en": "TP",
+            "hi": "TP",
+            "mr": "TP"
+          },
+          "EC": {
+            "en": "TD",
+            "hi": "TD",
+            "mr": "TD"
+          }
+        }
+      },
+      "needsFigure": true,
       "distractorReason": [
-        "Assumes the area is linearly proportional to the side",
+        "confuses the area with the side length",
         null,
-        "Confuses the relationship between side and area",
-        "Fails to account for the squaring of the side length"
+        "overestimates the area",
+        "underestimates the area"
       ],
       "solverAnswers": [
         1,
@@ -170,8 +299,8 @@
         1,
         1
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly explains that halving the side of a square reduces the area by a factor of four, as area is proportional to the square of the side length. All distractors are based on common misconceptions.",
+      "levelFlag": null,
+      "critique": "The solution correctly adds the areas of the two squares (36 + 9 = 45) and identifies option 1 as the correct answer. The reasoning for the distractors is valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
@@ -193,7 +322,93 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T02:08:40.845Z",
+      "generatedAt": "2026-11-01T14:41:59.366Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If the number of moves required to solve the Tower of Hanoi with 3 discs is 7, and with 4 discs is 15, what is the number of moves required to solve it with 5 discs?",
+      "choices": [
+        "31",
+        "29",
+        "27",
+        "25"
+      ],
+      "answerIndex": 0,
+      "solution": "The number of moves required to solve the Tower of Hanoi follows a pattern where the number of moves doubles and adds 1. For 3 discs, 7 moves are required (2^3 - 1). For 4 discs, 15 moves are required (2^4 - 1). For 5 discs, the number of moves is 2^5 - 1 = 31. The other options do not follow this pattern.",
+      "checkExpr": "2^5-1",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि 3 डिस्क के साथ हॉन्स टॉवर को हल करने में आवश्यक गतियों की संख्या 7 है, और 4 डिस्क के साथ 15 है, तो 5 डिस्क के साथ इसे हल करने में आवश्यक गतियों की संख्या क्या है?",
+          "choices": [
+            "31",
+            "29",
+            "27",
+            "25"
+          ],
+          "solution": "हॉन्स टॉवर को हल करने में आवश्यक गतियों की संख्या एक पैटर्न का अनुसरण करती है जहां गतियों की संख्या दोगुनी हो जाती है और 1 जोड़ दिया जाता है। 3 डिस्क के लिए, 7 गतियां आवश्यक हैं (2^3 - 1)। 4 डिस्क के लिए, 15 गतियां आवश्यक हैं (2^4 - 1)। 5 डिस्क के लिए, गतियों की संख्या 2^5 - 1 = 31 है। अन्य विकल्प इस पैटर्न का अनुसरण नहीं करते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "3 डिस्क च्या टॉवर ऑफ हानोई चे विस्तार करण्यासाठी आवश्यक चालींची संख्या 7 आहे, आणि 4 डिस्क च्या टॉवर ऑफ हानोई चे विस्तार करण्यासाठी 15 आहे, तर 5 डिस्क च्या टॉवर ऑफ हानोई चे विस्तार करण्यासाठी आवश्यक चालींची संख्या किती आहे?",
+          "choices": [
+            "31",
+            "29",
+            "27",
+            "25"
+          ],
+          "solution": "टॉवर ऑफ हानोई चे विस्तार करण्यासाठी आवश्यक चालींची संख्या ही एक पॅटर्न असतो जेथे चालींची संख्या दुप्पट होते आणि 1 मिळते. 3 डिस्क च्या बाबतीत, 7 चाली आवश्यक आहेत (2^3 - 1). 4 डिस्क च्या बाबतीत, 15 चाली आवश्यक आहेत (2^4 - 1). 5 डिस्क च्या बाबतीत, चालींची संख्या 2^5 - 1 = 31 आहे. इतर विकल्प हा पॅटर्न अनुसरत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms. The correct answer remains in the same position (option 1). All distractors are still incorrect and distinct.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "adds 16 instead of doubling",
+        "adds 14 instead of doubling",
+        "adds 12 instead of doubling"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies the pattern (2^n - 1) and applies it to 5 discs, resulting in 31. The reasoning for the distractors is plausible and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 100,
+          "pageStart": 160,
+          "pageEnd": 161,
+          "headingPath": [
+            "19. Magical Mathematics - 2"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 101,
+          "pageStart": 161,
+          "pageEnd": 162,
+          "headingPath": [
+            "19. Magical Mathematics - 2"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T14:41:59.366Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

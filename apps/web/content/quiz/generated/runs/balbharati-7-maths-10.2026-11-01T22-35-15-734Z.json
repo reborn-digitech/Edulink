@@ -1,0 +1,333 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T22:35:15.734Z",
+  "finishedAt": "2026-11-01T22:57:01.552Z",
+  "seconds": 1306,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी गणित इंग्रजी",
+    "bookCode": "703020004",
+    "document": "balbharati/7/mathematics/703020004.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 10 — Banks and Simple Interest",
+    "edition": "2026 edition",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2022-23]\n21. P = 250000, R = 7500, 𝑖 = 𝑟/400\n7500 × 400 1\n⇒ 250000 = ⇒ 𝑟 = 12\n𝑟\n⇒ 𝑟 = 12",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2023-24]\n30. Mr Surya borrowed a sum of 5,00,000 with total interest to be paid 2,00,000(flat) and he is\npaying an EMI of 12,500. Calculate loan tenure.",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2022-23]\n25. Mitul invested ₹ 3,50,000 in a fund. At the end of the year the value of the fund is ₹ 4,37,500.\nWhat is the nominal rate of interest, if the market price is same at the end of the year? 2",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2022-23]\n30. Surjeet purchased a new house, costing ₹ 40,00,000 and made a certain amount of down payment\nso that he can pay the balance by taking a home loan from XYZ Bank. If his equated monthly\ninstalment is ₹ 30,000, at 9% interest compounded monthly (reducing balance method) and\npayable for 25 years, then what is the initial down payment made by him? 3\n[Use (1.0075) −300 = 0.1062]"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 129991,
+      "in": 12,
+      "out": 12,
+      "rejects": 2,
+      "promptTokens": 9654,
+      "completionTokens": 2517
+    },
+    "critique": {
+      "calls": 17,
+      "ms": 962335,
+      "in": 12,
+      "out": 11,
+      "rejects": 1,
+      "promptTokens": 7722,
+      "completionTokens": 3038
+    },
+    "solver": {
+      "calls": 93,
+      "ms": 443211,
+      "in": 11,
+      "out": 10,
+      "rejects": 1,
+      "promptTokens": 21335,
+      "completionTokens": 1212
+    },
+    "form": {
+      "calls": 2,
+      "ms": 29432,
+      "in": 10,
+      "out": 6,
+      "rejects": 4,
+      "promptTokens": 451,
+      "completionTokens": 121
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 8,
+      "ms": 10223,
+      "in": 6,
+      "out": 3,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 467525,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6527,
+      "completionTokens": 3005
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the formula to calculate simple interest?",
+      "ms": {
+        "draft": 5996,
+        "critique": 25508,
+        "solver": 2417,
+        "form": 28941
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person borrowed ₹120000 at 8.5% per annum for 4 years, what is the total amount to be returned to the bank?",
+      "ms": {
+        "draft": 5996,
+        "critique": 84919,
+        "solver": 126908,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a sum of ₹350000 is invested and the value increases to ₹437500 at the end of one year, what is the nominal rate of interest?",
+      "ms": {
+        "draft": 5996,
+        "critique": 72564,
+        "solver": 129458
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for the total amount returned to the bank, which includes the principal and the interest?",
+      "ms": {
+        "draft": 15670,
+        "critique": 68866
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main purpose of a bank?",
+      "ms": {
+        "draft": 15670,
+        "critique": 71235,
+        "solver": 13525,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which account type allows a person to deposit a fixed amount every month and earns higher interest than a savings account?",
+      "ms": {
+        "draft": 15670,
+        "critique": 68350,
+        "solver": 19775,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a principal amount of ₹25000 is deposited at 8% per annum for 3 years, what is the total interest earned?",
+      "ms": {
+        "draft": 5996,
+        "critique": 27015,
+        "solver": 122026,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person deposits 25000 rupees at 8% p.c.p.a. for 3 years, what is the total interest they earn?",
+      "ms": {
+        "draft": 15670,
+        "critique": 78172,
+        "solver": 15492,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A person borrowed 120000 rupees for 4 years at 8.5% p.c.p.a. What is the total amount they will return to the bank?",
+      "ms": {
+        "draft": 15670,
+        "critique": 59864,
+        "solver": 34612,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of a bank passbook?",
+      "ms": {
+        "draft": 5996,
+        "critique": 84369,
+        "solver": 19285,
+        "form": 3996,
+        "translation": 154672
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person deposits 50000 rupees at 12% p.c.p.a. for one year, what is the total amount they will return to the bank?",
+      "ms": {
+        "draft": 15670,
+        "critique": 93901,
+        "solver": 126417,
+        "form": 0,
+        "translation": 137605
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A bank passbook records the balance after each transaction. If a person deposits ₹30000 and the interest for one year is ₹2400, what is the total amount returned to the bank?",
+      "ms": {
+        "draft": 5996,
+        "critique": 28786,
+        "solver": 17640,
+        "form": 0,
+        "translation": 167858
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 1)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the formula to calculate simple interest?",
+      "reason": "options 0 and 1 are the same (\"I = P × T × R\"); options 0 and 2 say the same thing (\"I = P × T × R\" / \"I = P × R / T\"); options 0 and 3 say the same thing (\"I = P × T × R\" / \"I = P × T / R\"); options 1 and 2 say the same thing (\"I = P + T + R\" / \"I = P × R / T\"); options 1 and 3 say the same thing (\"I = P + T + R\" / \"I = P × T / R\"); options 2 and 3 say the same thing (\"I = P × R / T\" / \"I = P × T / R\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a person borrowed ₹120000 at 8.5% per annum for 4 years, what is the total amount to be returned to the bank?",
+      "reason": "options 1 and 2 are the same (\"₹153600\"); options 1 and 3 are the same (\"₹153600\"); options 2 and 3 are the same (\"₹153600\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a sum of ₹350000 is invested and the value increases to ₹437500 at the end of one year, what is the nominal rate of interest?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term for the total amount returned to the bank, which includes the principal and the interest?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the main purpose of a bank?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which account type allows a person to deposit a fixed amount every month and earns higher interest than a savings account?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a principal amount of ₹25000 is deposited at 8% per annum for 3 years, what is the total interest earned?",
+      "reason": "near-duplicate of served question cmvwd4qxz01oe0rem5en5wj2l (cosine 0.915 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If a person deposits 25000 rupees at 8% p.c.p.a. for 3 years, what is the total interest they earn?",
+      "reason": "near-duplicate of served question cmvwd4qxz01oe0rem5en5wj2l (cosine 0.961 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "A person borrowed 120000 rupees for 4 years at 8.5% p.c.p.a. What is the total amount they will return to the bank?",
+      "reason": "near-duplicate of batch item \"If a person deposits 50000 rupees at 12% p.c.p.a. …\" (cosine 0.906 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

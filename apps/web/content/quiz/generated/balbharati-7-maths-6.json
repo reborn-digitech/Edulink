@@ -21,47 +21,47 @@
   "board": "BALBHARATI",
   "book": "७ वी गणित इंग्रजी",
   "edition": "2026 edition",
-  "generatedAt": "2026-10-31T11:28:29.996Z",
+  "generatedAt": "2026-11-01T21:35:10.304Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the square root of 81?",
+      "stem": "What is the square root of 9?",
       "choices": [
-        "9",
-        "81",
         "3",
-        "27"
+        "9",
+        "2",
+        "6"
       ],
       "answerIndex": 0,
-      "solution": "The square root of 81 is 9 because 9 × 9 = 81. The other options are incorrect because 81 is the original number, 3 is the square root of 9, and 27 is not a square root of 81.",
+      "solution": "The square root of 9 is 3 because 3 × 3 equals 9. The other options are incorrect because 9 × 9 is 81, 2 × 2 is 4, and 6 × 6 is 36.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "81 का वर्गमूल क्या है?",
+          "stem": "9 का वर्गमूल क्या है?",
           "choices": [
-            "9",
-            "81",
             "3",
-            "27"
+            "9",
+            "2",
+            "6"
           ],
-          "solution": "81 का वर्गमूल 9 है क्योंकि 9 × 9 = 81। अन्य विकल्प गलत हैं क्योंकि 81 मूल संख्या है, 3 का वर्गमूल 9 है और 27, 81 का वर्गमूल नहीं है।",
+          "solution": "9 का वर्गमूल 3 है क्योंकि 3 × 3 बराबर 9 है। अन्य विकल्प गलत हैं क्योंकि 9 × 9 81 है, 2 × 2 4 है और 6 × 6 36 है।",
           "imageAlt": null,
-          "critique": "All elements match the original. Hindi translation uses standard mathematical terms.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "81 चे वर्गमूळ किती आहे?",
+          "stem": "9 चे वर्गमूळ किती आहे?",
           "choices": [
-            "9",
-            "81",
             "3",
-            "27"
+            "9",
+            "2",
+            "6"
           ],
-          "solution": "81 चे वर्गमूळ 9 आहे कारण 9 × 9 = 81. इतर विकल्प चूक आहेत कारण 81 मूळ संख्या आहे, 3 हा 9 चा वर्गमूळ आहे आणि 27 हा 81 चा वर्गमूळ नाही.",
+          "solution": "9 चे वर्गमूळ 3 आहे कारण 3 × 3 = 9. इतर विकल्प अयोग्य आहेत कारण 9 × 9 = 81, 2 × 2 = 4 आणि 6 × 6 = 36.",
           "imageAlt": null,
           "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
@@ -73,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses the square with the square root",
-        "Confuses square root with cube root or division by 3",
-        "Confuses square root with cube root or multiplication by 3"
+        "confuses the square with the square root",
+        "mistakes the number itself for its square root",
+        "chooses a number that is not the square root of 9"
       ],
       "solverAnswers": [
         0,
@@ -85,7 +85,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 9, as 9 × 9 = 81. The author's reasoning for the distractors is reasonable and reflects common misconceptions.",
+      "critique": "The correct answer is 3, as 3 × 3 = 9. The other options are incorrect, and the author's reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "balbharati/7/mathematics/703020004.pdf",
@@ -98,124 +98,47 @@
         }
       ],
       "edition": "2026 edition",
-      "generatedAt": "2026-10-31T11:28:29.996Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is the correct method to find the square root of a number?",
-      "choices": [
-        "By multiplying the number by itself",
-        "By dividing the number by 2",
-        "By factorising the number into pairs of equal factors",
-        "By adding the number to itself"
-      ],
-      "answerIndex": 2,
-      "solution": "The correct method to find the square root of a number is by factorising it into pairs of equal factors. The other options are incorrect because multiplying a number by itself gives its square, dividing by 2 is not a method for square roots, and adding a number to itself is not related to square roots.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सी विधि एक संख्या के वर्गमूल ज्ञात करने के लिए सही है?",
-          "choices": [
-            "संख्या को खुद से गुणा करके",
-            "संख्या को 2 से विभाजित करके",
-            "संख्या के समान गुणनखंडों के जोड़े में अपघटित करके",
-            "संख्या को खुद से जोड़कर"
-          ],
-          "solution": "एक संख्या के वर्गमूल ज्ञात करने की सही विधि समान गुणनखंडों के जोड़े में अपघटित करना है। अन्य विकल्प गलत हैं क्योंकि किसी संख्या को खुद से गुणा करने से उसका वर्ग प्राप्त होता है, 2 से विभाजित करना वर्गमूल के लिए एक विधि नहीं है, और किसी संख्या को खुद से जोड़ना वर्गमूल से संबंधित नहीं है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता एक अंकाच्या वर्गमूळ शोधण्याचा योग्य पद्धत आहे?",
-          "choices": [
-            "अंकाला त्याच्याशी गुणणे",
-            "अंकाला 2 ने भागणे",
-            "अंकाला समान घटकांच्या जोड्यांमध्ये अवयवित करणे",
-            "अंकाला त्याच्याशी जोडणे"
-          ],
-          "solution": "अंकाच्या वर्गमूळ शोधण्याची योग्य पद्धत त्याला समान घटकांच्या जोड्यांमध्ये अवयवित करणे आहे. इतर पद्धती अयोग्य आहेत कारण अंकाला त्याच्याशी गुणणे त्याच्या वर्गाचे उत्पादन देते, 2 ने भागणे वर्गमूळासाठी पद्धत नाही आणि अंकाला त्याच्याशी जोडणे वर्गमूळाशी संबंधित नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "understands the concept of squaring a number",
-        "attempts a simple arithmetic operation",
-        null,
-        "confuses square root with square"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct method for finding the square root is factorising into pairs of equal factors. The other options are incorrect: multiplying by itself gives the square, dividing by 2 is unrelated, and adding to itself is also unrelated.",
-      "sources": [
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 36,
-          "pageStart": 59,
-          "pageEnd": 60,
-          "headingPath": [
-            "6. Indices"
-          ]
-        }
-      ],
-      "edition": "2026 edition",
-      "generatedAt": "2026-10-31T11:28:29.996Z",
+      "generatedAt": "2026-11-01T21:35:10.304Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "Find the square root of 144 using the factorisation method.",
+      "stem": "What is the square root of 144 using the factors method?",
       "choices": [
-        "10",
         "12",
-        "14",
-        "16"
+        "24",
+        "6",
+        "36"
       ],
-      "answerIndex": 1,
-      "solution": "The square root of 144 is 12 because 144 = 2 × 2 × 2 × 2 × 3 × 3. Taking one factor from each pair gives 2 × 2 × 3 = 12. The other options are incorrect because they are not the square roots of 144.",
+      "answerIndex": 0,
+      "solution": "The square root of 144 is found by breaking it into prime factors and pairing them, resulting in 2 × 2 × 3 = 12. 24 is too large because it is double the correct answer. 6 and 36 are not the result of properly pairing the prime factors of 144.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "144 का वर्गमूल गुणनखंड विधि का उपयोग करके ज्ञात कीजिए।",
+          "stem": "144 के वर्गमूल की गणना कारक विधि द्वारा क्या है?",
           "choices": [
-            "10",
             "12",
-            "14",
-            "16"
+            "24",
+            "6",
+            "36"
           ],
-          "solution": "144 का वर्गमूल 12 है क्योंकि 144 = 2 × 2 × 2 × 2 × 3 × 3। प्रत्येक जोड़े से एक गुणक लेने पर 2 × 2 × 3 = 12 प्राप्त होता है। अन्य विकल्प गलत हैं क्योंकि वे 144 के वर्गमूल नहीं हैं।",
+          "solution": "144 का वर्गमूल अभाज्य कारकों में तोड़कर जोड़े बनाकर निकाला जाता है, जिसके परिणामस्वरूप 2 × 2 × 3 = 12 प्राप्त होता है। 24 बहुत बड़ा है क्योंकि यह सही उत्तर का दोगुना है। 6 और 36 अभाज्य कारकों के सही जोड़े नहीं हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
           "flag": null
         },
         "mr": {
-          "stem": "144 चे वर्गमूळ अपघटन पद्धतीने शोधा.",
+          "stem": "144 चे वर्गमूळ अविभाज्य घटक पद्धतीने काय असते?",
           "choices": [
-            "10",
             "12",
-            "14",
-            "16"
+            "24",
+            "6",
+            "36"
           ],
-          "solution": "144 चे वर्गमूळ 12 आहे कारण 144 = 2 × 2 × 2 × 2 × 3 × 3. प्रत्येक जोडीमधून एक घटक घेतल्यास 2 × 2 × 3 = 12 मिळते. इतर विकल्प चुकीचे आहेत कारण ते 144 चे वर्गमूळ नाहीत.",
+          "solution": "144 चे वर्गमूळ अविभाज्य घटकांमध्ये विभाजित करून आणि जोड्यांमध्ये ठेवून शोधले जाते, जे 2 × 2 × 3 = 12 असते. 24 चुकीचे उत्तर आहे कारण ते योग्य उत्तराच्या दुप्पट आहे. 6 आणि 36 हे 144 च्या अविभाज्य घटकांच्या योग्य जोड्यांमुळे निर्माण होत नाहीत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -226,20 +149,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Student confuses square root of 100 with square root of 144",
         null,
-        "chooses a number greater than the correct square root",
-        "chooses the square root of 256 instead of 144"
+        "Confuses the square root with double the number",
+        "incorrect multiplication of factors",
+        "Confuses the square root with half of the number multiplied by 2"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 12, and the solution correctly explains the factorisation method. The distractors are based on plausible misconceptions.",
+      "critique": "The correct answer is 12, as the square root of 144 is 12. The author's solution is correct, and the reasons for the wrong options align with common misconceptions.",
       "sources": [
         {
           "document": "balbharati/7/mathematics/703020004.pdf",
@@ -252,219 +175,47 @@
         }
       ],
       "edition": "2026 edition",
-      "generatedAt": "2026-10-31T11:28:29.996Z",
+      "generatedAt": "2026-11-01T21:35:10.304Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "If 2^3 × 2^4 = 2^m, what is the value of m?",
+      "difficulty": 5,
+      "stem": "What is the square root of 324?",
       "choices": [
-        "7",
-        "12",
-        "3",
-        "4"
+        "18",
+        "16",
+        "24",
+        "12"
       ],
       "answerIndex": 0,
-      "solution": "When multiplying powers with the same base, the exponents are added together. Therefore, 2^3 × 2^4 equals 2^(3+4), which is 2^7. The correct value of m is 7. The other options incorrectly add or use the exponents without combining them.",
-      "checkExpr": "3+4",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि 2^3 × 2^4 = 2^m, तो m का मान क्या है?",
-          "choices": [
-            "7",
-            "12",
-            "3",
-            "4"
-          ],
-          "solution": "एक ही आधार वाली घातों के गुणन में घातांकों को जोड़ दिया जाता है। अतः 2^3 × 2^4 बराबर 2^(3+4) होता है, जो 2^7 है। m का सही मान 7 है। अन्य विकल्प गलती से घातांकों को जोड़ते या संयोजित किए बिना उपयोग करते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "2^3 × 2^4 = 2^m असल्यास m ची किंमत काय असेल?",
-          "choices": [
-            "7",
-            "12",
-            "3",
-            "4"
-          ],
-          "solution": "समान बेस असलेल्या घातांच्या गुणाकारासाठी, घातांकांची बेरीज करतात. म्हणून, 2^3 × 2^4 हे 2^(3+4) च्या बरोबरीत असते, जे 2^7 आहे. m ची बरोबर किंमत 7 आहे. इतर विकल्प चुकीच्या प्रकारे घातांक जोडतात किंवा जोडले न गेलेले घातांक वापरतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for exponents and bases.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses exponent rules, thinking 2^3 × 2^4 means multiplying the exponents instead of adding them",
-        "Confuses addition with multiplication.",
-        "Takes the first exponent as the answer."
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is clear and the solution correctly applies the rule of adding exponents when multiplying like bases. The reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 33,
-          "pageStart": 53,
-          "pageEnd": 54,
-          "headingPath": [
-            "6. Indices"
-          ]
-        },
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 34,
-          "pageStart": 54,
-          "pageEnd": 57,
-          "headingPath": [
-            "6. Indices"
-          ]
-        },
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 35,
-          "pageStart": 57,
-          "pageEnd": 59,
-          "headingPath": [
-            "6. Indices"
-          ]
-        }
-      ],
-      "edition": "2026 edition",
-      "generatedAt": "2026-10-31T11:28:29.996Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "If the square root of 9801 is 99, what is the square of 99?",
-      "choices": [
-        "9801",
-        "99",
-        "900",
-        "100"
-      ],
-      "answerIndex": 0,
-      "solution": "The square of 99 is 9801 because 99 × 99 = 9801. The other options are incorrect because they do not represent the square of 99.",
-      "checkExpr": "99*99",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि 9801 का वर्गमूल 99 है, तो 99 का वर्ग क्या है?",
-          "choices": [
-            "9801",
-            "99",
-            "900",
-            "100"
-          ],
-          "solution": "99 का वर्ग 9801 है क्योंकि 99 × 99 = 9801। अन्य विकल्प गलत हैं क्योंकि वे 99 के वर्ग का प्रतिनिधित्व नहीं करते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "9801 चा वर्गमूळ 99 असल्यास 99 चा वर्ग किती असेल?",
-          "choices": [
-            "9801",
-            "99",
-            "900",
-            "100"
-          ],
-          "solution": "99 चा वर्ग 9801 असतो कारण 99 × 99 = 9801. इतर विकल्प चुकीचे आहेत कारण ते 99 चा वर्ग प्रतिनिधित्व करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "confuses the square root with the square",
-        "mistakenly takes the number itself as the square",
-        "mistakenly rounds 99 to 100 and squares it"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is straightforward and the correct answer is clearly 9801. The author's reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 36,
-          "pageStart": 59,
-          "pageEnd": 60,
-          "headingPath": [
-            "6. Indices"
-          ]
-        }
-      ],
-      "edition": "2026 edition",
-      "generatedAt": "2026-10-31T11:28:29.996Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "What is the value of (-1)^10?",
-      "choices": [
-        "1",
-        "-1",
-        "0",
-        "10"
-      ],
-      "answerIndex": 0,
-      "solution": "When a negative number is raised to an even power, the result is positive. Since 10 is even, (-1)^10 equals 1. If the exponent were odd, the result would be -1, but 10 is not odd. 0 and 10 are not possible results for this expression.",
+      "solution": "The square root of 324 is 18 because 18 × 18 equals 324. The other options are incorrect because 16 × 16 is 256, 24 × 24 is 576, and 12 × 12 is 144.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "(-1)^10 का मान क्या है?",
+          "stem": "324 का वर्गमूल क्या है?",
           "choices": [
-            "1",
-            "-1",
-            "0",
-            "10"
+            "18",
+            "16",
+            "24",
+            "12"
           ],
-          "solution": "जब एक ऋणात्मक संख्या किसी सम घात पर होती है, तो परिणाम धनात्मक होता है। चूंकि 10 सम है, (-1)^10 का मान 1 होता है। यदि घात विषम होती, तो परिणाम -1 होता, लेकिन 10 विषम नहीं है। 0 और 10 इस व्यंजक के संभावित परिणाम नहीं हैं।",
+          "solution": "324 का वर्गमूल 18 है क्योंकि 18 × 18 बराबर 324 है। अन्य विकल्प गलत हैं क्योंकि 16 × 16 256 है, 24 × 24 576 है और 12 × 12 144 है।",
           "imageAlt": null,
           "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "(-1)^10 ची किंमत काय आहे?",
+          "stem": "324 चा वर्गमूळ किती आहे?",
           "choices": [
-            "1",
-            "-1",
-            "0",
-            "10"
+            "18",
+            "16",
+            "24",
+            "12"
           ],
-          "solution": "ऋणात्मक संख्या जेव्हा सम घातावर असते तेव्हा निकाल धनात्मक असतो. 10 हा सम घात असल्याने (-1)^10 ची किंमत 1 असते. जर घात विषम असता तर निकाल -1 असता, पण 10 विषम नाही. 0 आणि 10 हे या व्यंजकाच्या निकालासाठी शक्य नाहीत.",
+          "solution": "324 चा वर्गमूळ 18 आहे कारण 18 × 18 चे मूल्य 324 आहे. उरलेल्या विकल्पांमध्ये 16 × 16 चे मूल्य 256 आहे, 24 × 24 चे मूल्य 576 आहे आणि 12 × 12 चे मूल्य 144 आहे.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -476,9 +227,86 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Believes that any negative number raised to an even power remains negative",
-        "Student thinks even exponents result in zero instead of positive one",
-        "Confuses the exponent with the base or misinterprets the meaning of the index as a multiplier."
+        "Confuses square root of 324 with square of 16",
+        "Confuses the square of 12 (144) with the square root of 324",
+        "Confuses square root of 324 with square root of 144"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 18, as 18 × 18 = 324. The other options are incorrect, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 36,
+          "pageStart": 59,
+          "pageEnd": 60,
+          "headingPath": [
+            "6. Indices"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-01T21:35:10.304Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following is the correct representation of 3^2 × 3^5?",
+      "choices": [
+        "3^7",
+        "9^5",
+        "3^10",
+        "9^10"
+      ],
+      "answerIndex": 0,
+      "solution": "When multiplying expressions with the same base, the exponents are added. Therefore, 3^2 × 3^5 equals 3^(2+5) = 3^7. The option 9^5 is incorrect because it changes the base and does not apply the exponent addition rule. 3^10 and 9^10 are also incorrect because they do not follow the correct application of exponent rules.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन 3^2 × 3^5 के सही प्रतिनिधित्व है?",
+          "choices": [
+            "3^7",
+            "9^5",
+            "3^10",
+            "9^10"
+          ],
+          "solution": "समान आधार वाले व्यंजकों के गुणन में, घातांक जोड़े जाते हैं। अतः 3^2 × 3^5 बराबर 3^(2+5) = 3^7 होता है। 9^5 गलत है क्योंकि यह आधार को बदल देता है और घातांक जोड़ के नियम का उपयोग नहीं करता। 3^10 और 9^10 भी गलत हैं क्योंकि वे घातांक नियमों के सही उपयोग का अनुसरण नहीं करते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते 3^2 × 3^5 चे योग्य प्रतिनिधित्व आहे?",
+          "choices": [
+            "3^7",
+            "9^5",
+            "3^10",
+            "9^10"
+          ],
+          "solution": "समान बेस असलेल्या व्यंजकांच्या गुणाकारासाठी, घातांक जोडले जातात. म्हणून, 3^2 × 3^5 हे 3^(2+5) = 3^7 च्या बरोबर आहे. 9^5 अयोग्य आहे कारण ते बेस बदलते आणि घातांक जोडण्याच्या नियमाचा अवलंब करत नाही. 3^10 आणि 9^10 देखील अयोग्य आहेत कारण ते घातांक नियमाच्या योग्य अवलंबाचे अनुसरण करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the base with the result of squaring the base before applying the exponent rule",
+        "Confuses the base and exponent.",
+        "Multiplies the exponents instead of adding them."
       ],
       "solverAnswers": [
         0,
@@ -488,7 +316,7 @@
         0
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as (-1) raised to an even power is 1. The author's key is correct, and the reasoning for the distractors aligns with common misconceptions.",
+      "critique": "The solution correctly applies the rule of adding exponents when multiplying like bases. The reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "balbharati/7/mathematics/703020004.pdf",
@@ -519,49 +347,49 @@
         }
       ],
       "edition": "2026 edition",
-      "generatedAt": "2026-10-31T11:28:29.996Z",
+      "generatedAt": "2026-11-01T21:35:10.304Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 6,
-      "stem": "If the square of a number is between 11.7 and 11.8, what is the possible value of the square root?",
+      "stem": "What is the simplified form of (2^3)^2?",
       "choices": [
-        "3.4",
-        "3.5",
-        "3.6",
-        "3.7"
+        "2^5",
+        "2^6",
+        "2^2",
+        "2^3"
       ],
       "answerIndex": 1,
-      "solution": "If the square of a number is between 11.7 and 11.8, the square root must be between 3.4 and 3.5 because 3.4² = 11.56 and 3.5² = 12.25. The only option that lies in this range is 3.5. The other options are incorrect because they are either too low or too high.",
+      "solution": "The expression (2^3)^2 can be simplified by multiplying the exponents, resulting in 2^(3×2) = 2^6. The option '2^5' incorrectly adds the exponents instead of multiplying them, '2^2' is not related to the calculation, and '2^3' is the original expression, not the simplified version.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि किसी संख्या का वर्ग 11.7 और 11.8 के बीच है, तो वर्गमूल का संभावित मान क्या है?",
+          "stem": "(2^3)^2 का सरलीकृत रूप क्या है?",
           "choices": [
-            "3.4",
-            "3.5",
-            "3.6",
-            "3.7"
+            "2^5",
+            "2^6",
+            "2^2",
+            "2^3"
           ],
-          "solution": "यदि किसी संख्या का वर्ग 11.7 और 11.8 के बीच है, तो वर्गमूल 3.4 और 3.5 के बीच होना चाहिए क्योंकि 3.4² = 11.56 और 3.5² = 12.25 है। इस रेंज में केवल 3.5 ही है। अन्य विकल्प गलत हैं क्योंकि वे या तो बहुत कम हैं या बहुत अधिक हैं।",
+          "solution": "अभिव्यक्ति (2^3)^2 को घातांकों को गुणा करके सरल किया जा सकता है, जिससे 2^(3×2) = 2^6 प्राप्त होता है। विकल्प '2^5' घातांकों को जोड़ने के बजाय गुणा करने के गलत तरीके से प्राप्त होता है, '2^2' गणना से संबंधित नहीं है और '2^3' सरलीकृत रूप के बजाय मूल अभिव्यक्ति है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "संख्येचा वर्ग 11.7 आणि 11.8 दरम्यान असल्यास, वर्गमूळाची शक्यतोला किंमत काय असू शकते?",
+          "stem": "(2^3)^2 चा सरलीकृत रूप काय आहे?",
           "choices": [
-            "3.4",
-            "3.5",
-            "3.6",
-            "3.7"
+            "2^5",
+            "2^6",
+            "2^2",
+            "2^3"
           ],
-          "solution": "जर कोणत्याही संख्येचा वर्ग 11.7 आणि 11.8 दरम्यान असेल, तर वर्गमूळ 3.4 आणि 3.5 दरम्यान असणे आवश्यक आहे कारण 3.4² = 11.56 आणि 3.5² = 12.25. ह्या अंतरात असणारी एकमेव विकल्प 3.5 आहे. इतर विकल्प चुकीचे आहेत कारण ते कमी किंवा जास्त असतात.",
+          "solution": "(2^3)^2 चे सरलीकरण घातांक गुणाकार करून केले जाऊ शकते, जे 2^(3×2) = 2^6 देते. '2^5' घातांक जोडले जाऊन चुकीचे आहे, '2^2' गणनेशी संबंधित नाही आणि '2^3' सरलीकृत रूप नसून मूळ व्यंजक आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for mathematical concepts.",
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for exponents.",
           "flag": null
         }
       },
@@ -570,10 +398,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "chooses a value lower than the correct range",
+        "Adds the exponents instead of multiplying them, leading to 2^5.",
         null,
-        "chooses the midpoint between 3.4 and 3.5",
-        "chooses a value higher than the correct range"
+        "Chooses the incorrect exponent after misunderstanding the rule for the power of a power.",
+        "Chooses the original expression, not the simplified form, and does not apply the rule for the power of a power."
       ],
       "solverAnswers": [
         1,
@@ -583,7 +411,102 @@
         1
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 3.5, as its square (12.25) is just above 11.8. The solution correctly identifies the range of square roots and eliminates the other options based on their values.",
+      "critique": "The solution correctly applies the power of a power rule (a^m)^n = a^(m×n) and identifies the correct answer as 2^6. The reasoning for the distractors is valid and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 33,
+          "pageStart": 53,
+          "pageEnd": 54,
+          "headingPath": [
+            "6. Indices"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 34,
+          "pageStart": 54,
+          "pageEnd": 57,
+          "headingPath": [
+            "6. Indices"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 35,
+          "pageStart": 57,
+          "pageEnd": 59,
+          "headingPath": [
+            "6. Indices"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-01T21:35:10.304Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "What is the square root of 324 using the factors method?",
+      "choices": [
+        "18",
+        "9",
+        "36",
+        "24"
+      ],
+      "answerIndex": 0,
+      "solution": "The square root of 324 can be found by breaking it into prime factors and pairing them, resulting in 2 × 3 × 3 = 18. The option 9 is too small, 36 is too large, and 24 is not a factor of 324.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "324 के वर्गमूल की गणना गुणनखंड विधि द्वारा क्या है?",
+          "choices": [
+            "18",
+            "9",
+            "36",
+            "24"
+          ],
+          "solution": "324 का वर्गमूल अभाज्य गुणनखंडों में तोड़कर जोड़े बनाकर ज्ञात किया जा सकता है, जिसके परिणामस्वरूप 2 × 3 × 3 = 18 प्राप्त होता है। विकल्प 9 बहुत छोटा है, 36 बहुत बड़ा है और 24, 324 का गुणनखंड नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms match standard Hindi math terminology, and the logic of the solution is preserved.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "324 चे वर्गमूळ घटक पद्धतीने काय असेल?",
+          "choices": [
+            "18",
+            "9",
+            "36",
+            "24"
+          ],
+          "solution": "324 चे वर्गमूळ अविभाज्य घटकांमध्ये विभाजित करून आणि जोड्यांमध्ये ठेवून शोधता येते, ज्यामुळे 2 × 3 × 3 = 18 मिळते. विकल्प 9 खूप लहान आहे, 36 खूप मोठा आहे आणि 24 हा 324 चा घटक नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Student confuses square root with half the number",
+        "incorrect multiplication of factors",
+        "incorrect division of 324 by 36 (36 is not the square root), "
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 18, as the square root of 324 is 18. The solution correctly uses the prime factorization method, pairing factors and taking one from each pair. The author's reasoning for the distractors aligns with common student misconceptions.",
       "sources": [
         {
           "document": "balbharati/7/mathematics/703020004.pdf",
@@ -596,7 +519,7 @@
         }
       ],
       "edition": "2026 edition",
-      "generatedAt": "2026-10-31T11:28:29.996Z",
+      "generatedAt": "2026-11-01T21:35:10.304Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

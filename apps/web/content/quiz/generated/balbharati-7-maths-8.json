@@ -21,508 +21,49 @@
   "board": "BALBHARATI",
   "book": "७ वी गणित इंग्रजी",
   "edition": "2026 edition",
-  "generatedAt": "2026-10-31T11:48:21.553Z",
+  "generatedAt": "2026-11-01T22:01:36.751Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "Which of the following is an algebraic expression?",
-      "choices": [
-        "3 + 1",
-        "3 × 2 + 1",
-        "3 × n + 1",
-        "3 × 1 + 1"
-      ],
-      "answerIndex": 2,
-      "solution": "The correct answer is '3 × n + 1' because it contains a variable (n), which is a key characteristic of an algebraic expression. '3 + 1' and '3 × 1 + 1' are numerical expressions, not algebraic. '3 × 2 + 1' also uses specific numbers and does not include a variable.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा बीजगणितीय व्यंजक है?",
-          "choices": [
-            "3 + 1",
-            "3 × 2 + 1",
-            "3 × n + 1",
-            "3 × 1 + 1"
-          ],
-          "solution": "सही उत्तर '3 × n + 1' है क्योंकि इसमें एक चर (n) होता है, जो बीजगणितीय व्यंजक की मुख्य विशेषता है। '3 + 1' और '3 × 1 + 1' संख्यात्मक व्यंजक हैं, बीजगणितीय नहीं। '3 × 2 + 1' में भी विशिष्ट संख्याएं होती हैं और कोई चर नहीं होता।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as found in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते बीजगणितीय व्यंजक आहे?",
-          "choices": [
-            "3 + 1",
-            "3 × 2 + 1",
-            "3 × n + 1",
-            "3 × 1 + 1"
-          ],
-          "solution": "बरोबर उत्तर '3 × n + 1' आहे कारण त्यामध्ये चल (n) असतो, जो बीजगणितीय व्यंजकाचा मुख्य लक्षण आहे. '3 + 1' आणि '3 × 1 + 1' अंकगणितीय व्यंजक आहेत, बीजगणितीय नाहीत. '3 × 2 + 1' देखील विशिष्ट संख्यांचा वापर करते आणि चल शामिल करत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses a numerical expression with an algebraic one.",
-        "Confuses a numerical expression with an algebraic one.",
-        null,
-        "Confuses a numerical expression with an algebraic expression by using only constants"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct and aligns with the definition of an algebraic expression, which must contain at least one variable. Option 2 is the only one with a variable (n), making it the correct choice.",
-      "sources": [
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 40,
-          "pageStart": 65,
-          "pageEnd": 66,
-          "headingPath": [
-            "8. Algebraic Expressions and Operations on them"
-          ]
-        },
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 41,
-          "pageStart": 66,
-          "pageEnd": 68,
-          "headingPath": [
-            "8. Algebraic Expressions and Operations on them"
-          ]
-        },
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 42,
-          "pageStart": 68,
-          "pageEnd": 70,
-          "headingPath": [
-            "8. Algebraic Expressions and Operations on them"
-          ]
-        }
-      ],
-      "edition": "2026 edition",
-      "generatedAt": "2026-10-31T11:48:21.553Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is an example of like terms?",
-      "choices": [
-        "2x and 3y",
-        "5xy and 7x",
-        "4ab and 3bc",
-        "6mn and 8mn"
-      ],
-      "answerIndex": 3,
-      "solution": "The correct answer is '6mn and 8mn' because like terms have the same variables with the same powers. The other options have different variables or different powers of variables.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा एक समान पद का उदाहरण है?",
-          "choices": [
-            "2x और 3y",
-            "5xy और 7x",
-            "4ab और 3bc",
-            "6mn और 8mn"
-          ],
-          "solution": "सही उत्तर '6mn और 8mn' है क्योंकि समान पदों में समान चर होते हैं और उनकी घातें भी समान होती हैं। अन्य विकल्पों में चर अलग होते हैं या चरों की घातें अलग होती हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते एक समान पदांचे उदाहरण आहे?",
-          "choices": [
-            "2x आणि 3y",
-            "5xy आणि 7x",
-            "4ab आणि 3bc",
-            "6mn आणि 8mn"
-          ],
-          "solution": "बरोबर उत्तर '6mn आणि 8mn' आहे कारण समान पदांमध्ये समान चल आणि चलांचे समान घात असतात. इतर विकल्पांमध्ये वेगळे चल किंवा चलांचे वेगळे घात असतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses unlike terms with like terms",
-        "Confuses unlike terms with like terms",
-        "Confuses unlike terms with like terms",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct. Like terms must have the same variables raised to the same powers. Only option 3 (6mn and 8mn) satisfies this condition.",
-      "sources": [
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 40,
-          "pageStart": 65,
-          "pageEnd": 66,
-          "headingPath": [
-            "8. Algebraic Expressions and Operations on them"
-          ]
-        },
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 41,
-          "pageStart": 66,
-          "pageEnd": 68,
-          "headingPath": [
-            "8. Algebraic Expressions and Operations on them"
-          ]
-        },
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 42,
-          "pageStart": 68,
-          "pageEnd": 70,
-          "headingPath": [
-            "8. Algebraic Expressions and Operations on them"
-          ]
-        }
-      ],
-      "edition": "2026 edition",
-      "generatedAt": "2026-10-31T11:48:21.553Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the simplest form of 5 ÷ 3/7?",
-      "choices": [
-        "35/3",
-        "15/7",
-        "7/3",
-        "3/7"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct answer is '35/3' because dividing by a fraction is equivalent to multiplying by its reciprocal. 5 ÷ (3/7) = 5 × (7/3) = 35/3. The other options are incorrect results of different operations involving the numbers 5 and 3/7.",
-      "checkExpr": "5/(3/7)",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "5 ÷ 3/7 का सरलतम रूप क्या है?",
-          "choices": [
-            "35/3",
-            "15/7",
-            "7/3",
-            "3/7"
-          ],
-          "solution": "सही उत्तर '35/3' है क्योंकि एक भिन्न से भाग देना उसके व्युत्क्रम से गुणा करने के बराबर होता है। 5 ÷ (3/7) = 5 × (7/3) = 35/3। अन्य विकल्प संख्याओं 5 और 3/7 के विभिन्न संचालनों के गलत परिणाम हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "5 ÷ 3/7 ची सरळ रूप काय आहे?",
-          "choices": [
-            "35/3",
-            "15/7",
-            "7/3",
-            "3/7"
-          ],
-          "solution": "बरोबर उत्तर '35/3' आहे कारण एका अपूर्णांकाने भाग देणे हे त्याच्या व्यस्ताने गुणण्यासारखे आहे. 5 ÷ (3/7) = 5 × (7/3) = 35/3. इतर उत्तरे 5 आणि 3/7 च्या विविध ऑपरेशनमुळे अचूक निकाल असतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Multiplies 5 by 3 instead of 7",
-        "Confuses the reciprocal of 3/7 with 7/3",
-        "Fails to multiply 5 by 7"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct. Dividing by a fraction is equivalent to multiplying by its reciprocal, so 5 ÷ (3/7) = 5 × (7/3) = 35/3. The reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 43,
-          "pageStart": 70,
-          "pageEnd": 71,
-          "headingPath": [
-            "8. Algebraic Expressions and Operations on them"
-          ]
-        },
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 44,
-          "pageStart": 71,
-          "pageEnd": 72,
-          "headingPath": [
-            "8. Algebraic Expressions and Operations on them",
-            "qqq"
-          ]
-        }
-      ],
-      "edition": "2026 edition",
-      "generatedAt": "2026-10-31T11:48:21.553Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the solution to the equation 3x + x = 16?",
-      "choices": [
-        "4",
-        "8",
-        "12",
-        "16"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct answer is '4' because 3x + x = 4x, and 4x = 16 implies x = 4. The other options do not satisfy the equation.",
-      "checkExpr": "16/4",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "समीकरण 3x + x = 16 का हल क्या है?",
-          "choices": [
-            "4",
-            "8",
-            "12",
-            "16"
-          ],
-          "solution": "सही उत्तर '4' है क्योंकि 3x + x = 4x, और 4x = 16 का अर्थ है x = 4। अन्य विकल्प समीकरण को संतुष्ट नहीं करते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "समीकरण 3x + x = 16 चे उत्तर काय आहे?",
-          "choices": [
-            "4",
-            "8",
-            "12",
-            "16"
-          ],
-          "solution": "बरोबर उत्तर '4' आहे कारण 3x + x = 4x, आणि 4x = 16 असताना x = 4 होतो. इतर उत्तरे समीकरणाला अनुरूप नाहीत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Divides 16 by 2 instead of 4",
-        "Divides 16 by 2 instead of 4",
-        "Divides 16 by 1 instead of 4"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct. The equation simplifies to 4x = 16, so x = 4. The other options result from incorrect division, which is a plausible misconception.",
-      "sources": [
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 43,
-          "pageStart": 70,
-          "pageEnd": 71,
-          "headingPath": [
-            "8. Algebraic Expressions and Operations on them"
-          ]
-        },
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 44,
-          "pageStart": 71,
-          "pageEnd": 72,
-          "headingPath": [
-            "8. Algebraic Expressions and Operations on them",
-            "qqq"
-          ]
-        }
-      ],
-      "edition": "2026 edition",
-      "generatedAt": "2026-10-31T11:48:21.553Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
       "difficulty": 3,
-      "stem": "If the length of a rectangle is (3x + 2) and the breadth is (x + 1), what is the expression for its area?",
+      "stem": "If the sum of Rakesh's and Sania's ages is 27 years and Rakesh is 5 years younger than Sania, what is Sania's age?",
       "choices": [
-        "3x² + 5x + 2",
-        "3x² + 3x + 2",
-        "3x² + 2x + 2",
-        "3x² + 5x + 1"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct answer is '3x² + 5x + 2' because the area of a rectangle is the product of its length and breadth. (3x + 2)(x + 1) = 3x² + 3x + 2x + 2 = 3x² + 5x + 2. The other options have incorrect coefficients or constants.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक आयत की लंबाई (3x + 2) और चौड़ाई (x + 1) है, तो इसके क्षेत्रफल के लिए व्यंजक क्या है?",
-          "choices": [
-            "3x² + 5x + 2",
-            "3x² + 3x + 2",
-            "3x² + 2x + 2",
-            "3x² + 5x + 1"
-          ],
-          "solution": "सही उत्तर '3x² + 5x + 2' है क्योंकि आयत का क्षेत्रफल इसकी लंबाई और चौड़ाई के गुणनफल होता है। (3x + 2)(x + 1) = 3x² + 3x + 2x + 2 = 3x² + 5x + 2। अन्य विकल्प गलत गुणांक या अचर संख्या रखते हैं।",
-          "imageAlt": null,
-          "critique": "All elements match the original English version in meaning, structure, and correctness. Technical terms like 'क्षेत्रफल' (area), 'गुणनफल' (product) are standard in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर आयताची लांबी (3x + 2) आणि रुंदी (x + 1) असेल, तर त्याच्या क्षेत्रफळाचे व्यंजक काय असेल?",
-          "choices": [
-            "3x² + 5x + 2",
-            "3x² + 3x + 2",
-            "3x² + 2x + 2",
-            "3x² + 5x + 1"
-          ],
-          "solution": "सही उत्तर '3x² + 5x + 2' असेल कारण आयताचे क्षेत्रफळ त्याच्या लांबी आणि रुंदीच्या गुणाकाराने मिळते. (3x + 2)(x + 1) = 3x² + 3x + 2x + 2 = 3x² + 5x + 2. इतर उत्तरांमध्ये चुकीचे गुणक किंवा अचूक स्थिरांक असतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terminology for mathematical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Mistakenly adds the coefficients of the middle term instead of multiplying them",
-        "Confuses the middle term by adding 2x instead of 5x due to incorrect multiplication of the outer terms",
-        "Miscalculates the constant term by adding 2 and 1 instead of multiplying them"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0 (3x² + 5x + 2), and the solution is mathematically sound. The author's reasoning for the distractors reflects common misconceptions students might have when multiplying binomials.",
-      "sources": [
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 40,
-          "pageStart": 65,
-          "pageEnd": 66,
-          "headingPath": [
-            "8. Algebraic Expressions and Operations on them"
-          ]
-        },
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 41,
-          "pageStart": 66,
-          "pageEnd": 68,
-          "headingPath": [
-            "8. Algebraic Expressions and Operations on them"
-          ]
-        },
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 42,
-          "pageStart": 68,
-          "pageEnd": 70,
-          "headingPath": [
-            "8. Algebraic Expressions and Operations on them"
-          ]
-        }
-      ],
-      "edition": "2026 edition",
-      "generatedAt": "2026-10-31T11:48:21.553Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Shubhangi has twice as many 20-rupee notes as she has 50-rupee notes. Altogether, she has 2700 rupees. How many 50-rupee notes does she have?",
-      "choices": [
-        "25",
-        "30",
-        "35",
-        "40"
+        "14 years",
+        "16 years",
+        "20 years",
+        "22 years"
       ],
       "answerIndex": 1,
-      "solution": "The correct answer is 30. Let the number of 50-rupee notes be x, then the number of 20-rupee notes is 2x. The total amount is 50x + 20(2x) = 2700, which simplifies to 90x = 2700, so x = 30. The other options result from incorrect calculations or misinterpretation of the relationship between the notes.",
+      "solution": "The correct answer is 16 years. Let Sania's age be x. Then Rakesh's age is x - 5. The equation x + (x - 5) = 27 gives 2x = 32, so x = 16. The option 11 years is incorrect as it does not satisfy the equation. The option 22 years is incorrect as it does not satisfy the equation. The option 27 years is incorrect as it assumes Sania's age alone is 27.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "शुभंगी के पास 50 रुपए के नोटों की तुलना में दोगुने 20 रुपए के नोट हैं। कुल मिलाकर उसके पास 2700 रुपए हैं। उसके पास कितने 50 रुपए के नोट हैं?",
+          "stem": "अगर राकेश और सानिया की उम्र का योग 27 वर्ष है और राकेश सानिया से 5 वर्ष छोटा है, तो सानिया की उम्र क्या है?",
           "choices": [
-            "25",
-            "30",
-            "35",
-            "40"
+            "14 वर्ष",
+            "16 वर्ष",
+            "20 वर्ष",
+            "22 वर्ष"
           ],
-          "solution": "सही उत्तर 30 है। मान लीजिए 50 रुपए के नोटों की संख्या x है, तो 20 रुपए के नोटों की संख्या 2x है। कुल राशि 50x + 20(2x) = 2700 है, जो 90x = 2700 के रूप में सरलीकृत हो जाता है, अतः x = 30। अन्य विकल्प गलत गणना या नोटों के बीच संबंध के गलत अर्थात्मक व्याख्या के कारण प्राप्त होते हैं।",
+          "solution": "सही उत्तर 16 वर्ष है। माना सानिया की उम्र x है। तब राकेश की उम्र x - 5 होगी। समीकरण x + (x - 5) = 27 द्वारा 2x = 32, अतः x = 16 प्राप्त होता है। 11 वर्ष का विकल्प गलत है क्योंकि यह समीकरण को संतुष्ट नहीं करता। 22 वर्ष का विकल्प गलत है क्योंकि यह समीकरण को संतुष्ट नहीं करता। 27 वर्ष का विकल्प गलत है क्योंकि यह मान लेता है कि सानिया की उम्र अकेले 27 है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer is in the same position (option 2) and the distractors remain incorrect.",
           "flag": null
         },
         "mr": {
-          "stem": "शुभांगीला 50 रुपयांच्या नोटा इतक्या 20 रुपयांच्या नोटा आहेत. एकूण तिला 2700 रुपये आहेत. तिला 50 रुपयांच्या किती नोटा आहेत?",
+          "stem": "राकेश आणि सानिया यांच्या वयांची बेरीज 27 वर्षे आहे आणि राकेश सानियापेक्षा 5 वर्षांनी लहान आहे, तर सानियाचे वय किती?",
           "choices": [
-            "25",
-            "30",
-            "35",
-            "40"
+            "14 वर्षे",
+            "16 वर्षे",
+            "20 वर्षे",
+            "22 वर्षे"
           ],
-          "solution": "योग्य उत्तर 30 आहे. 50 रुपयांच्या नोटांची संख्या x असेल, तर 20 रुपयांच्या नोटांची संख्या 2x असेल. एकूण रक्कम 50x + 20(2x) = 2700 असेल, जे 90x = 2700 असे सोपे केले जाऊ शकते, म्हणून x = 30. इतर उत्तरे चुकीच्या गणना किंवा नोटांमधील संबंधाच्या चुकीच्या अटलकरणामुळे मिळतात.",
+          "solution": "बरोबर उत्तर 16 वर्षे आहे. मानू तर सानियाचे वय x आहे. तर राकेशचे वय x - 5 आहे. समीकरण x + (x - 5) = 27 चे उपाय 2x = 32, म्हणून x = 16. 11 वर्षे असलेला उत्तर चुकीचा आहे कारण तो समीकरणाला अनुरूप नाही. 22 वर्षे असलेला उत्तर चुकीचा आहे कारण तो समीकरणाला अनुरूप नाही. 27 वर्षे असलेला उत्तर चुकीचा आहे कारण तो सानियाचे वयच एकटे 27 वर्षे असल्याचे मानतो.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for mathematical concepts.",
           "flag": null
         }
       },
@@ -531,10 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Student assumes the total amount is divided equally between the two types of notes",
+        "Pupil subtracts 5 from 27 instead of solving the system of equations correctly.",
         null,
-        "Confuses the number of 20-rupee notes",
-        "Incorrectly divides 2700 by 70"
+        "Student adds 5 to 27 instead of subtracting and then dividing.",
+        "Student adds the difference to the total instead of using it to set up an equation"
       ],
       "solverAnswers": [
         1,
@@ -544,7 +85,7 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The solution is mathematically sound and correctly arrives at the answer. The reasoning for the distractors is plausible and reflects common student misconceptions.",
+      "critique": "The solution is correct and logically leads to the answer 16. The reasoning for the distractors is plausible and reflects common student misconceptions.",
       "sources": [
         {
           "document": "balbharati/7/mathematics/703020004.pdf",
@@ -567,7 +108,94 @@
         }
       ],
       "edition": "2026 edition",
-      "generatedAt": "2026-10-31T11:48:21.553Z",
+      "generatedAt": "2026-11-01T22:01:36.751Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is the simplest form of the expression (3x + 11y) - (17x + 13y)?",
+      "choices": [
+        "-14x - 2y",
+        "-14x + 2y",
+        "14x - 2y",
+        "14x + 2y"
+      ],
+      "answerIndex": 0,
+      "solution": "Simplifying (3x + 11y) - (17x + 13y) gives 3x - 17x + 11y - 13y = -14x - 2y. Option 0 (-14x - 2y) is correct. Option 1 (-14x + 2y) is incorrect because the sign of the y term is wrong. Option 2 (14x - 2y) is incorrect because the sign of the x term is wrong. Option 3 (14x + 2y) is incorrect because both signs are wrong.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन व्यंजक (3x + 11y) - (17x + 13y) का सरलतम रूप है?",
+          "choices": [
+            "-14x - 2y",
+            "-14x + 2y",
+            "14x - 2y",
+            "14x + 2y"
+          ],
+          "solution": "(3x + 11y) - (17x + 13y) को सरल करने पर 3x - 17x + 11y - 13y = -14x - 2y प्राप्त होता है। विकल्प 0 (-14x - 2y) सही है। विकल्प 1 (-14x + 2y) गलत है क्योंकि y पद का चिह्न गलत है। विकल्प 2 (14x - 2y) गलत है क्योंकि x पद का चिह्न गलत है। विकल्प 3 (14x + 2y) गलत है क्योंकि दोनों चिह्न गलत हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते व्यंजक (3x + 11y) - (17x + 13y) चे सरळीकृत रूप आहे?",
+          "choices": [
+            "-14x - 2y",
+            "-14x + 2y",
+            "14x - 2y",
+            "14x + 2y"
+          ],
+          "solution": "(3x + 11y) - (17x + 13y) सोपे करणे देते 3x - 17x + 11y - 13y = -14x - 2y. विकल्प 0 (-14x - 2y) बरोबर आहे. विकल्प 1 (-14x + 2y) चुकीचा आहे कारण y च्या चिन्हाची चूक आहे. विकल्प 2 (14x - 2y) चुकीचा आहे कारण x च्या चिन्हाची चूक आहे. विकल्प 3 (14x + 2y) चुकीचा आहे कारण दोन्ही चिन्हांची चूक आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terminology for algebraic expressions.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "incorrectly changes the sign of the y term",
+        "incorrectly changes the sign of the x term",
+        "incorrectly changes both signs"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly simplifies the expression by distributing the negative sign and combining like terms. The reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 43,
+          "pageStart": 70,
+          "pageEnd": 71,
+          "headingPath": [
+            "8. Algebraic Expressions and Operations on them"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 44,
+          "pageStart": 71,
+          "pageEnd": 72,
+          "headingPath": [
+            "8. Algebraic Expressions and Operations on them",
+            "qqq"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-01T22:01:36.751Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

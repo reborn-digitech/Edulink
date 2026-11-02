@@ -21,50 +21,50 @@
   "board": "BALBHARATI",
   "book": "७ वी गणित इंग्रजी",
   "edition": "2026 edition",
-  "generatedAt": "2026-10-31T11:15:33.624Z",
+  "generatedAt": "2026-11-01T21:28:52.130Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 3,
-      "stem": "What is the multiplicative inverse of -7/2?",
+      "difficulty": 1,
+      "stem": "Which of the following is a rational number?",
       "choices": [
-        "-2/7",
-        "2/7",
-        "7/2",
-        "-7/2"
+        "√2",
+        "π",
+        "3/4",
+        "3: √9"
       ],
-      "answerIndex": 0,
-      "solution": "The correct answer is -2/7. The multiplicative inverse of a number is the number that, when multiplied by the original, results in 1. Multiplying -7/2 by -2/7 gives 1. The other options do not satisfy this condition: 2/7 gives -1 when multiplied by -7/2, 7/2 gives -1 when multiplied by -2/7, and -7/2 is the original number, not its inverse.",
+      "answerIndex": 2,
+      "solution": "A rational number is any number that can be expressed as a fraction of two integers. Among the given options, 3/4 is a rational number because it is a fraction of two integers. The other options are irrational numbers that cannot be expressed as fractions.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "−7/2 का गुणात्मक प्रतिलोम क्या है?",
+          "stem": "निम्नलिखित में से कौन एक परिमेय संख्या है?",
           "choices": [
-            "-2/7",
-            "2/7",
-            "7/2",
-            "-7/2"
+            "√2",
+            "π",
+            "3/4",
+            "√9"
           ],
-          "solution": "सही उत्तर -2/7 है। किसी संख्या का गुणात्मक प्रतिलोम वह संख्या होती है जिसे मूल संख्या से गुणा करने पर 1 प्राप्त होता है। −7/2 को −2/7 से गुणा करने पर 1 प्राप्त होता है। अन्य विकल्प इस स्थिति को पूरा नहीं करते हैं: 2/7 को −7/2 से गुणा करने पर −1 प्राप्त होता है, 7/2 को −2/7 से गुणा करने पर −1 प्राप्त होता है और −7/2 मूल संख्या है, न कि इसका प्रतिलोम।",
+          "solution": "एक परिमेय संख्या वह संख्या होती है जिसे दो पूर्णांकों के भिन्न के रूप में व्यक्त किया जा सकता है। दिए गए विकल्पों में 3/4 एक परिमेय संख्या है क्योंकि यह दो पूर्णांकों का भिन्न है। अन्य विकल्प अपरिमेय संख्याएं हैं जिन्हें भिन्न के रूप में व्यक्त नहीं किया जा सकता।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
           "flag": null
         },
         "mr": {
-          "stem": "−7/2 चा गुणाकारात्मक व्यस्त काय आहे?",
+          "stem": "खालीलपैकी कोणते एक अपरिमेय संख्या आहे?",
           "choices": [
-            "-2/7",
-            "2/7",
-            "7/2",
-            "-7/2"
+            "√2",
+            "π",
+            "3/4",
+            "√9"
           ],
-          "solution": "बरोबर उत्तर -2/7 आहे. एखाद्या संख्येचा गुणाकारात्मक व्यस्त अशी संख्या आहे जी मूळ संख्येने गुणली असता 1 मिळते. −7/2 ला −2/7 ने गुणल्यास 1 मिळतो. इतर विकल्प या अटीला अनुरूप नाहीत: 2/7 ला −7/2 ने गुणल्यास −1 मिळतो, 7/2 ला −2/7 ने गुणल्यास −1 मिळतो आणि −7/2 मूळ संख्या आहे, ती तिचा व्यस्त नाही.",
+          "solution": "अपरिमेय संख्या ही कोणतीही संख्या आहे जी दोन पूर्णांकांच्या अंशात व्यक्त केली जाऊ शकते. दिलेल्या विकल्पांमध्ये 3/4 ही अपरिमेय संख्या आहे कारण ती दोन पूर्णांकांच्या अंशात आहे. इतर विकल्प ही अपरिमेय संख्या आहेत ज्या अंशात व्यक्त करता येत नाहीत.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
+          "critique": "The stem and solution have opposite meaning (rational vs. irrational). The solution incorrectly identifies 3/4 as irrational.",
+          "flag": "translation critique: meaning changed; a distractor no longer wrong"
         }
       },
       "imageKey": null,
@@ -72,20 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "confuses irrational numbers with rational numbers",
+        "confuses irrational numbers with rational numbers",
         null,
-        "Confuses the sign of the multiplicative inverse",
-        "Fails to recognize the reciprocal",
-        "Misunderstands the definition of multiplicative inverse"
+        "believes that square roots are always irrational"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is -2/7, which is the multiplicative inverse of -7/2. The solution is correct and matches the key. The reasons for the wrong options are valid misconceptions.",
+      "critique": "The correct answer is 3/4, which is a rational number. The other options are irrational. The author's reasoning is sound and matches the correct solution.",
       "sources": [
         {
           "document": "balbharati/7/mathematics/703020004.pdf",
@@ -116,49 +116,49 @@
         }
       ],
       "edition": "2026 edition",
-      "generatedAt": "2026-10-31T11:15:33.624Z",
+      "generatedAt": "2026-11-01T21:28:52.130Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "If a rational number p/q has a terminating decimal form, what is the condition on q?",
+      "difficulty": 3,
+      "stem": "What is the result of adding 1/2 and 1/4?",
       "choices": [
-        "q must be a prime number",
-        "q must be a power of 2",
-        "q must have prime factors only of 2 and 5",
-        "q must be a power of 5"
+        "1/4",
+        "3/4",
+        "1/2",
+        "2/3"
       ],
-      "answerIndex": 2,
-      "solution": "A rational number has a terminating decimal if and only if its denominator, when the fraction is in simplest form, has no prime factors other than 2 and 5. This is because 2 and 5 are the prime factors of 10, the base of our number system. Other options are incorrect because they limit the denominator to only one of these primes or require it to be a prime itself, which is not necessary.",
-      "checkExpr": null,
+      "answerIndex": 1,
+      "solution": "To add 1/2 and 1/4, we need a common denominator. The least common denominator of 2 and 4 is 4. Converting 1/2 to 2/4, we get 2/4 + 1/4 = 3/4. Therefore, the correct answer is 3/4. 1/2 is incorrect because it is less than the sum, 1 is incorrect because it is greater, and 2/3 is not the correct sum.",
+      "checkExpr": "1/2+1/4",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक परिमेय संख्या p/q का दशमलव रूप अंतिम है, तो q पर क्या शर्त होनी चाहिए?",
+          "stem": "1/2 और 1/4 के जोड़ने पर परिणाम क्या होता है?",
           "choices": [
-            "q एक अभाज्य संख्या होनी चाहिए",
-            "q 2 की घात होनी चाहिए",
-            "q के अभाज्य गुणनखंड केवल 2 और 5 होने चाहिए",
-            "q 5 की घात होनी चाहिए"
+            "1/4",
+            "3/4",
+            "1/2",
+            "2/3"
           ],
-          "solution": "एक परिमेय संख्या के दशमलव रूप अंतिम होता है यदि और केवल यदि इसके हर, जब भिन्न सरलतम रूप में होता है, में 2 और 5 के अलावा कोई अभाज्य गुणनखंड नहीं होता है। इसका कारण यह है कि 2 और 5 संख्या प्रणाली के आधार 10 के अभाज्य गुणनखंड हैं। अन्य विकल्प गलत हैं क्योंकि वे हर को केवल इन दोनों अभाज्य संख्याओं में से एक तक सीमित कर देते हैं या इसे एक अभाज्य संख्या होने की आवश्यकता होती है, जो आवश्यक नहीं है।",
+          "solution": "1/2 और 1/4 को जोड़ने के लिए हमें एक सामान्य हर की आवश्यकता होती है। 2 और 4 का लघुत्तम सामान्य हर 4 है। 1/2 को 2/4 में बदलकर हमें 2/4 + 1/4 = 3/4 मिलता है। अतः सही उत्तर 3/4 है। 1/2 गलत है क्योंकि यह योग से कम है, 1 गलत है क्योंकि यह योग से अधिक है, और 2/3 सही योग नहीं है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate mathematical terminology used in a Hindi-medium context.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as found in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "जर एक अपरिमेय संख्या p/q चा अंतर्गत दशांश रूप असेल, तर q वर कोणता अट असावी?",
+          "stem": "1/2 आणि 1/4 ची बेरीज किती होईल?",
           "choices": [
-            "q एक अभाज्य संख्या असावी",
-            "q 2 चा घात असावा",
-            "q च्या अभाज्य घटकांमध्ये केवळ 2 आणि 5 असावेत",
-            "q एक 5 चा घात असावा"
+            "1/4",
+            "3/4",
+            "1/2",
+            "2/3"
           ],
-          "solution": "एक अपरिमेय संख्या अंतर्गत दशांश असते जेव्हा तिच्या छेदामध्ये सर्वात सोप्या रूपात 2 आणि 5 व्यतिरिक्त कोणतेही अभाज्य घटक नसतात. हे कारण 2 आणि 5 हे 10 चे अभाज्य घटक आहेत, जे आमच्या संख्या प्रणालीचे आधार आहे. इतर विकल्प चुकीचे आहेत कारण ते छेदाला केवळ एका अभाज्य घटकाकडे मर्यादित करतात किंवा त्याला अभाज्य असणे आवश्यक असल्याचे म्हणतात, जे आवश्यक नाही.",
+          "solution": "1/2 आणि 1/4 ची बेरीज करण्यासाठी आम्हाला सामान्य छेद लागतो. 2 आणि 4 चा लहानतम सामान्य छेद 4 आहे. 1/2 ला 2/4 मध्ये बदलल्यास आम्हाला 2/4 + 1/4 = 3/4 मिळते. म्हणून, योग्य उत्तर 3/4 आहे. 1/2 चूक आहे कारण ते बेरीजपेक्षा कमी आहे, 1 चूक आहे कारण ते बेरीजपेक्षा जास्त आहे, आणि 2/3 बेरीज चूक आहे.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         }
       },
@@ -167,20 +167,115 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "incorrectly assumes q is prime",
-        "incorrectly assumes q is only a power of 2",
+        "Believes you can add fractions by only adding numerators when denominators are the same",
         null,
-        "incorrectly assumes q is only a power of 5"
+        "Believes you can add denominators directly without finding a common denominator",
+        "Adding numerators and denominators separately, thinking 1/2 + 1/4 = (1+1)/(2+4) = 2/6 = 1/3, but then incorrectly simplifying to 2/3"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is option 2, as the condition for a rational number to have a terminating decimal is that the denominator (in simplest form) must have only 2 and 5 as prime factors. The other options are incorrect because they impose unnecessary restrictions.",
+      "levelFlag": null,
+      "critique": "The solution is correct and matches the author's key. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 28,
+          "pageStart": 44,
+          "pageEnd": 45,
+          "headingPath": [
+            "5. Operations on Rational Numbers"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 29,
+          "pageStart": 45,
+          "pageEnd": 47,
+          "headingPath": [
+            "5. Operations on Rational Numbers"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 30,
+          "pageStart": 47,
+          "pageEnd": 49,
+          "headingPath": [
+            "5. Operations on Rational Numbers"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-01T21:28:52.130Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the value of the expression 72 ÷ 6 + 2 × 2?",
+      "choices": [
+        "28",
+        "16",
+        "14",
+        "24"
+      ],
+      "answerIndex": 1,
+      "solution": "Multiplication and division are performed before addition. 72 divided by 6 is 12, and 2 multiplied by 2 is 4. Adding 12 and 4 gives 16. Other options arise from not following the correct order of operations.",
+      "checkExpr": "72/6+2*2",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अभिव्यक्ति 72 ÷ 6 + 2 × 2 का मान क्या है?",
+          "choices": [
+            "28",
+            "16",
+            "14",
+            "24"
+          ],
+          "solution": "गुणन और भाग को जोड़ से पहले किया जाता है। 72 को 6 से भाग देने पर 12 प्राप्त होता है, और 2 को 2 से गुणा करने पर 4 प्राप्त होता है। 12 और 4 को जोड़ने पर 16 प्राप्त होता है। अन्य विकल्प ऑपरेशन के सही क्रम का अनुसरण न करने के कारण आते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक्सप्रेशन 72 ÷ 6 + 2 × 2 ची किंमत किती आहे?",
+          "choices": [
+            "28",
+            "16",
+            "14",
+            "24"
+          ],
+          "solution": "गुणाकार आणि भागाकार जोडण्यापूर्वी केले जातात. 72 चा 6 ने भाग घातल्यास 12 होतो आणि 2 चा 2 ने गुणाकार केल्यास 4 होतो. 12 आणि 4 जोडल्यास 16 होतो. इतर उत्तरे ऑपरेशनच्या योग्य क्रमाचा अनुसरण केल्याने नाही तर येतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "adds before performing division and multiplication",
+        null,
+        "multiplies 12 by 2 instead of adding",
+        "adds 72 and 6 first"
+      ],
+      "solverAnswers": [
+        1,
+        2,
+        1,
+        2,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly applies the order of operations, performing division and multiplication before addition. The author's reasoning for the distractors is valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "balbharati/7/mathematics/703020004.pdf",
@@ -202,7 +297,93 @@
         }
       ],
       "edition": "2026 edition",
-      "generatedAt": "2026-10-31T11:15:33.624Z",
+      "generatedAt": "2026-11-01T21:28:52.130Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If x is a rational number such that x + 1/x is also rational, what can we say about x?",
+      "choices": [
+        "x is irrational",
+        "x is an integer",
+        "x is rational",
+        "x is negative"
+      ],
+      "answerIndex": 2,
+      "solution": "The question is based on the concept that the sum of a rational number and its reciprocal is also rational. This is only true if the number itself is rational. The other options are not necessarily true based on the given condition.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि x एक परिमेय संख्या है जैसे कि x + 1/x भी परिमेय है, तो हम क्या कह सकते हैं?",
+          "choices": [
+            "x अपरिमेय है",
+            "x एक पूर्णांक है",
+            "x परिमेय है",
+            "x ऋणात्मक है"
+          ],
+          "solution": "प्रश्न परिमेय संख्या और उसके व्युत्क्रम के योग के अवधारणा पर आधारित है। यह केवल तभी सत्य होता है जब संख्या स्वयं परिमेय हो। दिए गए शर्त के आधार पर अन्य विकल्प आवश्यक रूप से सत्य नहीं होते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर x हा अपरिमेय संख्या असेल आणि x + 1/x ही अपरिमेय असेल, तर x बद्दल आपण काय म्हणू शकतो?",
+          "choices": [
+            "x अपरिमेय आहे",
+            "x पूर्णांक आहे",
+            "x परिमेय आहे",
+            "x ऋणात्मक आहे"
+          ],
+          "solution": "प्रश्नात असे विचारले आहे की x ही परिमेय संख्या असल्यास x + 1/x ही परिमेय असते. हे केवळ तेव्हाच खरे असते जेव्हा संख्या स्वत: परिमेय असते. दिलेल्या अटीवर आधारित इतर विकल्प अनिश्चित असतात.",
+          "imageAlt": null,
+          "critique": "The stem and solution have opposite logic: the English says x is rational and x+1/x is rational, while the Marathi says x is irrational and x+1/x is irrational. This reverses the logic of the question.",
+          "flag": "translation critique: meaning changed"
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "incorrectly assumes x is irrational",
+        "assumes x must be an integer",
+        null,
+        "assumes x must be negative"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. If x is rational, then 1/x is also rational (as long as x ≠ 0), and the sum of two rationals is rational. The other options are not necessarily true.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 31,
+          "pageStart": 49,
+          "pageEnd": 51,
+          "headingPath": [
+            "5. Operations on Rational Numbers"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 32,
+          "pageStart": 51,
+          "pageEnd": 52,
+          "headingPath": [
+            "5. Operations on Rational Numbers"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-01T21:28:52.130Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

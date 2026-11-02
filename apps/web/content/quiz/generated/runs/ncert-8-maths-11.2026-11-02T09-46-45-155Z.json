@@ -1,0 +1,791 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T09:46:45.155Z",
+  "finishedAt": "2026-11-02T10:00:22.280Z",
+  "seconds": 817,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash Part-II",
+    "bookCode": "hegp2",
+    "document": "ncert/8/mathematics/hegp204.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 11 — Exploring Some Geometric Themes",
+    "edition": "2025 edition (the site's Last-Modified)",
+    "chunks": 16,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated.\n______________________________________________________________________________________________________________",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not\nstated.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2022-23]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 247934,
+      "in": 44,
+      "out": 40,
+      "rejects": 4,
+      "promptTokens": 41259,
+      "completionTokens": 12610
+    },
+    "critique": {
+      "calls": 47,
+      "ms": 347666,
+      "in": 40,
+      "out": 33,
+      "rejects": 7,
+      "promptTokens": 22530,
+      "completionTokens": 8317
+    },
+    "solver": {
+      "calls": 214,
+      "ms": 121101,
+      "in": 33,
+      "out": 26,
+      "rejects": 7,
+      "promptTokens": 38523,
+      "completionTokens": 2163
+    },
+    "form": {
+      "calls": 12,
+      "ms": 84722,
+      "in": 26,
+      "out": 12,
+      "rejects": 14,
+      "promptTokens": 12059,
+      "completionTokens": 1961
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 54,
+      "ms": 11234,
+      "in": 12,
+      "out": 11,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 47,
+      "ms": 538066,
+      "in": 22,
+      "out": 22,
+      "rejects": 1,
+      "promptTokens": 28003,
+      "completionTokens": 13709
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 2,
+    "4": 2,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 5,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "The Sierpinski Carpet is formed by removing the central square in each step. How many holes are formed at Step 2?",
+      "ms": {
+        "draft": 9696,
+        "critique": 9310
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The Sierpinski Gasket is created by dividing an equilateral triangle into 4 smaller equilateral triangles and removing the central one. If the area of the original triangle is 1 sq. unit, what is the area of the remaining region at Step 2?",
+      "ms": {
+        "draft": 9696,
+        "critique": 10543,
+        "solver": 2022
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the Sierpinski Carpet, at Step 0, there is 1 square. At Step 1, the square is divided into 9 smaller squares, and the central square is removed. How many squares remain at Step 1?",
+      "ms": {
+        "draft": 9696,
+        "critique": 7126,
+        "solver": 18013
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The Koch Snowflake is formed by starting with an equilateral triangle and adding a smaller triangle to each side in each step. If the starting triangle has a perimeter of 3 units, what is the perimeter at Step 1?",
+      "ms": {
+        "draft": 9696,
+        "critique": 10007
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The Koch Snowflake is formed by adding triangles to each side of an equilateral triangle. If the starting triangle has a perimeter of 3 units, what is the perimeter at Step 2?",
+      "ms": {
+        "draft": 9696,
+        "critique": 8183,
+        "solver": 2032,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a prism has a base with 10 sides, how many vertices does it have?",
+      "ms": {
+        "draft": 4276,
+        "critique": 7319,
+        "solver": 18699,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A solid has a rectangular profile from one viewpoint and a triangular profile from another viewpoint. Which of the following could be the solid?",
+      "ms": {
+        "draft": 4276,
+        "critique": 9688,
+        "solver": 1617,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a net is folded to form a solid, and the net has 6 faces, which of the following could be the solid?",
+      "ms": {
+        "draft": 4276,
+        "critique": 7833,
+        "solver": 1994,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a correct statement about the net of a solid?",
+      "ms": {
+        "draft": 4693,
+        "critique": 7295,
+        "solver": 2010,
+        "form": 2688
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many different nets are there for a cube?",
+      "ms": {
+        "draft": 4693,
+        "critique": 7554
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What shape is formed when the sides of an equilateral triangle are marked into thirds and each corner is cut off as far as the marks?",
+      "ms": {
+        "draft": 4276,
+        "critique": 6929,
+        "solver": 19306,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the ant is at the center of a face and the laddu is at the center of the edge of a cuboid with dimensions 4 cm × 4 cm × 8 cm, which of the following must be true about the shortest path?",
+      "ms": {
+        "draft": 4693,
+        "critique": 9502
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the ant is at the centre of the side face and the laddu is at the centre of the top face, and the cuboid has dimensions 4 cm × 4 cm × 8 cm, what is the shortest path the ant can take?",
+      "ms": {
+        "draft": 4693,
+        "critique": 8528,
+        "solver": 13513,
+        "form": 3625
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a way to represent a solid on a plane?",
+      "ms": {
+        "draft": 22640,
+        "critique": 7491,
+        "solver": 1555,
+        "form": 3782
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the meaning of the word 'isometric' in Greek?",
+      "ms": {
+        "draft": 3437,
+        "critique": 7472
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the shape of the isometric projection of a cube?",
+      "ms": {
+        "draft": 3437,
+        "critique": 3620,
+        "solver": 832,
+        "form": 1045
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the shape of the isometric projection of a cube?",
+      "ms": {
+        "draft": 5112,
+        "critique": 5869,
+        "solver": 2869,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an isometric projection, which of the following represents the direction of the height axis?",
+      "ms": {
+        "draft": 5112,
+        "critique": 5167,
+        "solver": 1468,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a cube is drawn on an isometric grid, how many different orientations can the first Tetris shape (a straight line of four cubes) have?",
+      "ms": {
+        "draft": 5112,
+        "critique": 7413,
+        "solver": 1801
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the shortest path between two points on the surface of a cuboid?",
+      "ms": {
+        "draft": 5112,
+        "critique": 7280,
+        "solver": 1815
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A line of actual length 12 cm is projected onto a plane. If the projection is 6 cm long, what is the angle between the line and the plane?",
+      "ms": {
+        "draft": 4978,
+        "critique": 7841
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many different nets can a cube have according to the passage?",
+      "ms": {
+        "draft": 7059,
+        "critique": 8727,
+        "solver": 1238,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of using a net of a solid according to the passage?",
+      "ms": {
+        "draft": 7059,
+        "critique": 7620,
+        "solver": 2090,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a cube has side length 4 cm, what is the length of the shortest path on its surface from the center of one face to the center of the opposite face, as described in the passage?",
+      "ms": {
+        "draft": 7059,
+        "critique": 8605,
+        "solver": 1991
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main idea of the passage?",
+      "ms": {
+        "draft": 36421,
+        "critique": 6270
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the shortest path on the surface of a cuboid from the ant to the laddu is 40 cm, what could be the dimensions of the cuboid?",
+      "ms": {
+        "draft": 7059,
+        "critique": 12610,
+        "solver": 1768
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a solid that has a square profile from one viewpoint and a circular profile from another viewpoint?",
+      "ms": {
+        "draft": 26166,
+        "critique": 7844,
+        "solver": 13144,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the Sierpinski Carpet starts with a square of area 1, what is the area remaining after Step 2?",
+      "ms": {
+        "draft": 36421,
+        "critique": 6501,
+        "solver": 8415
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A line segment of length 13 cm is projected onto a plane, and its projection is 5 cm. What is the length of the perpendicular from the line segment to the plane?",
+      "ms": {
+        "draft": 4978,
+        "critique": 7377,
+        "solver": 1968,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the projection of a point on a plane?",
+      "ms": {
+        "draft": 22640,
+        "critique": 5918,
+        "solver": 1283,
+        "form": 0,
+        "translation": 34031
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the view of an object on the vertical plane?",
+      "ms": {
+        "draft": 22640,
+        "critique": 7295,
+        "solver": 1595,
+        "form": 2390,
+        "translation": 33843
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following solids has a square profile from one viewpoint and a circular profile from another viewpoint?",
+      "ms": {
+        "draft": 4276,
+        "critique": 6196,
+        "solver": 1226,
+        "form": 0,
+        "translation": 78850
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is a net of a solid?",
+      "ms": {
+        "draft": 4693,
+        "critique": 7430,
+        "solver": 1774,
+        "form": 4221,
+        "translation": 40852
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A solid has the following views: front view is a square, top view is a square, and side view is a square. What is the solid?",
+      "ms": {
+        "draft": 5112,
+        "critique": 5484,
+        "solver": 2027,
+        "form": 1,
+        "translation": 46572
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following solids has 6 faces, 12 edges and 8 vertices?",
+      "ms": {
+        "draft": 4276,
+        "critique": 7913,
+        "solver": 1212,
+        "form": 0,
+        "translation": 40088
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the shortest path for an ant to reach a laddu on a cuboid?",
+      "ms": {
+        "draft": 4693,
+        "critique": 8191,
+        "solver": 1705,
+        "form": 3820,
+        "translation": 54324
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In a projection, the actual length of a line is 10 cm, and its projection is 6 cm. What is the length of the perpendicular from the line to the plane?",
+      "ms": {
+        "draft": 4978,
+        "critique": 7994,
+        "solver": 1195,
+        "form": 0,
+        "translation": 46124
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "The Sierpinski Carpet is created by removing the central square at each step. If the area of the starting square is 1 sq. unit, what is the area of the remaining region at Step 2?",
+      "ms": {
+        "draft": 9696,
+        "critique": 8275,
+        "solver": 18304,
+        "form": 0,
+        "translation": 68759
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A line segment of length 15 cm is projected onto a plane, and its projection is 9 cm. What is the length of the perpendicular from the line segment to the plane?",
+      "ms": {
+        "draft": 4978,
+        "critique": 7159,
+        "solver": 2160,
+        "form": 0,
+        "translation": 34575
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the isometric projection effective in communicating the shape of a solid?",
+      "ms": {
+        "draft": 5112,
+        "critique": 7644,
+        "solver": 2077,
+        "form": 0,
+        "translation": 55653
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "The Sierpinski Carpet is formed by removing the central square in each step. How many holes are formed at Step 2?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The Sierpinski Gasket is created by dividing an equilateral triangle into 4 smaller equilateral triangles and removing the central one. If the area of the original triangle is 1 sq. unit, what is the area of the remaining region at Step 2?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "In the Sierpinski Carpet, at Step 0, there is 1 square. At Step 1, the square is divided into 9 smaller squares, and the central square is removed. How many squares remain at Step 1?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "The Koch Snowflake is formed by starting with an equilateral triangle and adding a smaller triangle to each side in each step. If the starting triangle has a perimeter of 3 units, what is the perimeter at Step 1?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The Koch Snowflake is formed by adding triangles to each side of an equilateral triangle. If the starting triangle has a perimeter of 3 units, what is the perimeter at Step 2?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a prism has a base with 10 sides, how many vertices does it have?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A solid has a rectangular profile from one viewpoint and a triangular profile from another viewpoint. Which of the following could be the solid?",
+      "reason": "figure: figure spec refused: spec.parts: prism has no label \"base\" (it has prism, whiteLight, spectrum, red, violet)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a net is folded to form a solid, and the net has 6 faces, which of the following could be the solid?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'cubeNet'"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a correct statement about the net of a solid?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Includes flaps, which the passage says are not part of the n…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "How many different nets are there for a cube?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What shape is formed when the sides of an equilateral triangle are marked into thirds and each corner is cut off as far as the marks?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels AB, BC, CA"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the ant is at the center of a face and the laddu is at the center of the edge of a cuboid with dimensions 4 cm × 4 cm × 8 cm, which of the following must be true about the shortest path?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the ant is at the centre of the side face and the laddu is at the centre of the top face, and the cuboid has dimensions 4 cm × 4 cm × 8 cm, what is the shortest path the ant can take?",
+      "reason": "options 0 and 1 say the same thing (\"√(8² + 4²) cm\" / \"√(4² + 8²) cm\"); checkExpr \"sqrt(8^2 + 4^2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a way to represent a solid on a plane?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Uses a general term instead of the specific method mentioned…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the meaning of the word 'isometric' in Greek?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the shape of the isometric projection of a cube?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is a regular hexagon, not a triangle…\")"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A line of actual length 20 cm is projected onto a plane. If the projection is 16 cm long, what is the angle between the line and the plane?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "A line of actual length 10 cm is projected onto a plane, and the length of the projection is 8 cm. What is the length of the perpendicular from the line to the plane?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the name of the shape that has two congruent polygons as opposite faces, with edges connecting the corresponding vertices of these polygons, and all other faces as parallelograms?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is a solid that has a triangular profile from one viewpoint and a circular profile from another viewpoint?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the shape of the isometric projection of a cube?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'cube'"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In an isometric projection, which of the following represents the direction of the height axis?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a cube is drawn on an isometric grid, how many different orientations can the first Tetris shape (a straight line of four cubes) have?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the shortest path between two points on the surface of a cuboid?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A line of actual length 12 cm is projected onto a plane. If the projection is 6 cm long, what is the angle between the line and the plane?",
+      "reason": "the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "How many different nets can a cube have according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"incorrectly remembers the number from the passage about the …\"); checkExpr \"11\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of using a net of a solid according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a cube has side length 4 cm, what is the length of the shortest path on its surface from the center of one face to the center of the opposite face, as described in the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main idea of the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the shortest path on the surface of a cuboid from the ant to the laddu is 40 cm, what could be the dimensions of the cuboid?",
+      "reason": "the solver picked option 2 1 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a solid that has a square profile from one viewpoint and a circular profile from another viewpoint?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses the profile of a cone with that of a cylinder, not …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the Sierpinski Carpet starts with a square of area 1, what is the area remaining after Step 2?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "A line segment of length 13 cm is projected onto a plane, and its projection is 5 cm. What is the length of the perpendicular from the line segment to the plane?",
+      "reason": "near-duplicate of batch item \"In a projection, the actual length of a line is 10…\" (cosine 0.902 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

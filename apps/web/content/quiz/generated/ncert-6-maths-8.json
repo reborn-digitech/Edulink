@@ -21,256 +21,54 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-31T03:14:21.103Z",
+  "generatedAt": "2026-11-01T15:47:07.089Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the name of the line that connects the centre of a circle to any point on the circle?",
+      "stem": "What is the name given to the point P in a circle, which is at an equal distance from all points on the circle?",
       "choices": [
-        "Radius",
         "Diameter",
-        "Chord",
-        "Tangent"
+        "Radius",
+        "Centre",
+        "Circumference"
       ],
-      "answerIndex": 0,
-      "solution": "The distance from the centre of a circle to any point on the circle is called the radius. A diameter is a line that passes through the centre and connects two points on the circle. A chord is a line that connects two points on the circle but does not pass through the centre. A tangent touches the circle at only one point and does not pass through the centre.",
+      "answerIndex": 2,
+      "solution": "The point P in a circle that is at an equal distance from all points on the circle is called the centre. This is because the centre is the fixed point from which all points on the circle's perimeter are equidistant. The diameter is a line segment through the centre, the radius is the distance from the centre to the perimeter, and the circumference is the distance around the circle.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक वृत्त के केंद्र को वृत्त पर किसी बिंदु से जोड़ने वाली रेखा का नाम क्या है?",
+          "stem": "एक वृत्त में बिंदु P का नाम क्या दिया जाता है, जो वृत्त के सभी बिंदुओं से समान दूरी पर होता है?",
           "choices": [
-            "त्रिज्या",
             "व्यास",
-            "जीवा",
-            "स्पर्श रेखा"
-          ],
-          "solution": "एक वृत्त के केंद्र से वृत्त पर किसी बिंदु तक की दूरी को त्रिज्या कहते हैं। व्यास एक रेखा है जो केंद्र से गुजरती है और वृत्त पर दो बिंदुओं को जोड़ती है। जीवा एक रेखा है जो वृत्त पर दो बिंदुओं को जोड़ती है लेकिन केंद्र से नहीं गुजरती। स्पर्श रेखा वृत्त के केवल एक बिंदु पर स्पर्श करती है और केंद्र से नहीं गुजरती।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology as taught in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "वर्तुळाच्या केंद्राला वर्तुळावरील कोणत्याही बिंदूला जोडणाऱ्या रेषेचे नाव काय आहे?",
-          "choices": [
             "त्रिज्या",
+            "केंद्र",
+            "परिधि"
+          ],
+          "solution": "एक वृत्त में बिंदु P जो वृत्त के सभी बिंदुओं से समान दूरी पर होता है, केंद्र कहलाता है। ऐसा इसलिए है क्योंकि केंद्र वृत्त के परिधि पर सभी बिंदुओं से समान दूरी पर निश्चित बिंदु होता है। व्यास केंद्र से गुजरने वाला एक रेखाखंड होता है, त्रिज्या केंद्र से परिधि तक की दूरी होती है और परिधि वृत्त के चारों ओर की दूरी होती है।",
+          "imageAlt": "एक वृत्त जिसमें केंद्र पर बिंदु P है",
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "वर्तुळातील बिंदू P चे नाव काय असते, जो वर्तुळावरील सर्व बिंदूंपासून समान अंतरावर असतो?",
+          "choices": [
             "व्यास",
-            "जीवा",
-            "स्पर्शिका"
+            "त्रिज्या",
+            "केंद्र",
+            "परिघ"
           ],
-          "solution": "वर्तुळाच्या केंद्रापासून वर्तुळावरील कोणत्याही बिंदूपर्यंतचा अंतर त्रिज्या म्हणतात. व्यास ही केंद्रामार्गे जाणारी रेषा आहे जी वर्तुळावरील दोन बिंदूंना जोडते. जीवा ही वर्तुळावरील दोन बिंदूंना जोडणारी रेषा आहे परंतु केंद्रामार्गे जात नाही. स्पर्शिका ही वर्तुळाला केवळ एका बिंदूत छेदते आणि केंद्रामार्गे जात नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
+          "solution": "वर्तुळातील बिंदू P जो वर्तुळावरील सर्व बिंदूंपासून समान अंतरावर असतो, त्याला केंद्र म्हणतात. हे कारण असे आहे की केंद्र हा फक्त बिंदू आहे जिथून वर्तुळाच्या कंसावरील सर्व बिंदू एकसारख्या अंतरावर असतात. व्यास हा केंद्रमधून जाणारा रेषाखंड असतो, त्रिज्या हा केंद्र आणि कंसाच्या बिंदूमधील अंतर असतो आणि परिघ हा वर्तुळाच्या आजूबाजूचा अंतर असतो.",
+          "imageAlt": "एक वर्तुळ ज्यात केंद्रावर बिंदू P आहे",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for geometric concepts.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses radius with diameter",
-        "Confuses radius with chord",
-        "Confuses radius with tangent"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is clear and the solution is correct. The correct answer is 'Radius', and the explanations for the other options are valid misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 13,
-          "pageStart": 30,
-          "pageEnd": 32,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.6 points equidistant from Two Given points",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 14,
-          "pageStart": 32,
-          "pageEnd": 34,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.6 points equidistant from Two Given points",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 15,
-          "pageStart": 34,
-          "pageEnd": 38,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.6 points equidistant from Two Given points",
-            "S u m m a r y"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T03:14:21.103Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the name of the figure that has all its sides equal and all its angles equal to 90°?",
-      "choices": [
-        "Rectangle",
-        "Square",
-        "Parallelogram",
-        "Rhombus"
-      ],
-      "answerIndex": 1,
-      "solution": "A square is a figure that has all its sides equal and all its angles equal to 90°. A rectangle has all angles equal to 90°, but its sides are not necessarily equal. A parallelogram has opposite sides equal, but not all sides. A rhombus has all sides equal, but its angles are not necessarily 90°.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "सभी भुजाएँ बराबर और सभी कोण 90° के बराबर होने वाली आकृति का नाम क्या है?",
-          "choices": [
-            "आयत",
-            "वर्ग",
-            "समांतर चतुर्भुज",
-            "समचतुर्भुज"
-          ],
-          "solution": "वर्ग एक आकृति है जिसकी सभी भुजाएँ बराबर होती हैं और सभी कोण 90° के होते हैं। आयत के सभी कोण 90° के होते हैं, लेकिन इसकी भुजाएँ आवश्यक रूप से बराबर नहीं होती हैं। समांतर चतुर्भुज में विपरीत भुजाएँ बराबर होती हैं, लेकिन सभी भुजाएँ बराबर नहीं होती हैं। समचतुर्भुज में सभी भुजाएँ बराबर होती हैं, लेकिन इसके कोण आवश्यक रूप से 90° के नहीं होते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately preserves the meaning, technical terms, and correct answer position. All distractors remain incorrect as in the original.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "सर्व बाजू एकसारख्या आणि सर्व कोन 90° असलेल्या आकृतीचे नाव काय आहे?",
-          "choices": [
-            "आयत",
-            "चौरस",
-            "समांतरभुज",
-            "समभुज"
-          ],
-          "solution": "चौरस ही आकृती आहे जिच्या सर्व बाजू एकसारख्या आहेत आणि सर्व कोन 90° असतात. आयताच्या सर्व कोन 90° असतात, परंतु त्याच्या बाजू एकसारख्या नसतात. समांतरभुजाच्या विरुद्ध बाजू एकसारख्या असतात, परंतु सर्व बाजू एकसारख्या नसतात. समभुजाच्या सर्व बाजू एकसारख्या असतात, परंतु त्याचे कोन नक्की 90° असतील असे नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses square with rectangle",
-        null,
-        "Confuses square with parallelogram",
-        "Confuses square with rhombus"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The question is clear and the solution correctly identifies the square as the figure with all sides and angles equal. The reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 13,
-          "pageStart": 30,
-          "pageEnd": 32,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.6 points equidistant from Two Given points",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 14,
-          "pageStart": 32,
-          "pageEnd": 34,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.6 points equidistant from Two Given points",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 15,
-          "pageStart": 34,
-          "pageEnd": 38,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.6 points equidistant from Two Given points",
-            "S u m m a r y"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T03:14:21.103Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "A rectangle ABCD has AB = 7 cm and BC = 4 cm. Point X is on AD and point Y is on BC. If X is 5 mm from A and Y is 3 cm from B, what is the length of XY?",
-      "choices": [
-        "3.5 cm",
-        "4.5 cm",
-        "5.5 cm",
-        "6.5 cm"
-      ],
-      "answerIndex": 1,
-      "solution": "To find the length of XY, note that X is 0.5 cm from A on AD and Y is 3 cm from B on BC. Since AD and BC are both 4 cm long, Y is 1 cm from C. The horizontal distance between X and Y is the same as the length of AB, which is 7 cm. The vertical distance between X and Y is 4 cm - 0.5 cm - 1 cm = 2.5 cm. Using the Pythagorean theorem, the length of XY is sqrt(7^2 + 2.5^2) = 4.5 cm. The other options do not match this calculated distance.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक आयत ABCD में AB = 7 सेमी और BC = 4 सेमी है। बिंदु X, AD पर और बिंदु Y, BC पर है। यदि X, A से 5 मिमी की दूरी पर है और Y, B से 3 सेमी की दूरी पर है, तो XY की लंबाई क्या है?",
-          "choices": [
-            "3.5 सेमी",
-            "4.5 सेमी",
-            "5.5 सेमी",
-            "6.5 सेमी"
-          ],
-          "solution": "XY की लंबाई ज्ञात करने के लिए, ध्यान दें कि X, AD पर A से 0.5 सेमी की दूरी पर है और Y, BC पर B से 3 सेमी की दूरी पर है। AD और BC दोनों 4 सेमी लंबे हैं, इसलिए Y, C से 1 सेमी की दूरी पर है। X और Y के बीच क्षैतिज दूरी AB के बराबर है, जो 7 सेमी है। X और Y के बीच क्षैतिज दूरी 4 सेमी - 0.5 सेमी - 1 सेमी = 2.5 सेमी है। पाइथागोरस प्रमेय का उपयोग करके, XY की लंबाई sqrt(7^2 + 2.5^2) = 4.5 सेमी है। अन्य विकल्प इस गणना के अनुरूप नहीं हैं।",
-          "imageAlt": "एक आयत ABCD जिसमें AB = 7 सेमी और BC = 4 सेमी है। बिंदु X, AD पर, A से 5 मिमी की दूरी पर है, और बिंदु Y, BC पर, B से 3 सेमी की दूरी पर है। XY की लंबाई की गणना की जानी है।",
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi technical terms.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "A rectangle ABCD मध्ये AB = 7 सेमी आणि BC = 4 सेमी आहे. बिंदू X, AD वर आहे आणि बिंदू Y, BC वर आहे. जर X, A पासून 5 मिमी अंतरावर असेल आणि Y, B पासून 3 सेमी अंतरावर असेल, तर XY ची लांबी किती असेल?",
-          "choices": [
-            "3.5 सेमी",
-            "4.5 सेमी",
-            "5.5 सेमी",
-            "6.5 सेमी"
-          ],
-          "solution": "XY ची लांबी शोधण्यासाठी, X हा AD वर A पासून 0.5 सेमी अंतरावर आहे आणि Y हा BC वर B पासून 3 सेमी अंतरावर आहे. AD आणि BC दोन्ही 4 सेमी लांब असल्याने, Y हा C पासून 1 सेमी अंतरावर आहे. X आणि Y दरम्यान अनुदैर्घ्य अंतर AB च्या लांबीइतके, जे 7 सेमी आहे. X आणि Y दरम्यान लंब अंतर 4 सेमी - 0.5 सेमी - 1 सेमी = 2.5 सेमी आहे. पायथागोरसच्या प्रमेयानुसार, XY ची लांबी sqrt(7^2 + 2.5^2) = 4.5 सेमी आहे. इतर विकल्प या गणिताने मेळ नाहीत.",
-          "imageAlt": "एक आयत ABCD ज्यात AB = 7 सेमी आणि BC = 4 सेमी आहे. बिंदू X, AD वर, A पासून 5 मिमी अंतरावर आहे आणि बिंदू Y, BC वर, B पासून 3 सेमी अंतरावर आहे. XY ची लांबी शोधायची आहे.",
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "A rectangle ABCD with AB = 7 cm and BC = 4 cm. Point X is on AD, 5 mm from A, and point Y is on BC, 3 cm from B. The length of XY is to be calculated.",
+      "imageAlt": "A circle with point P at the center",
       "figure": {
         "kind": "geometry",
         "spec": {
@@ -283,104 +81,149 @@
           },
           "points": [
             {
-              "id": "A",
-              "x": 1,
-              "y": 1,
-              "label": "A"
-            },
-            {
-              "id": "B",
-              "x": 7,
-              "y": 1,
-              "label": "B"
-            },
-            {
-              "id": "C",
-              "x": 7,
-              "y": 5,
-              "label": "C"
-            },
-            {
-              "id": "D",
-              "x": 1,
-              "y": 5,
-              "label": "D"
-            },
-            {
-              "id": "X",
-              "x": 1,
-              "y": 0.5,
-              "label": "X"
-            },
-            {
-              "id": "Y",
-              "x": 7,
-              "y": 3.5,
-              "label": "Y"
+              "id": "P",
+              "x": 5,
+              "y": 3,
+              "label": "P"
             }
           ],
-          "segments": [
+          "circles": [
             {
-              "from": "A",
-              "to": "B",
-              "label": "AB"
-            },
-            {
-              "from": "B",
-              "to": "C",
-              "label": "BC"
-            },
-            {
-              "from": "C",
-              "to": "D",
-              "label": "CD"
-            },
-            {
-              "from": "D",
-              "to": "A",
-              "label": "DA"
-            },
-            {
-              "from": "X",
-              "to": "Y",
-              "label": "XY"
+              "center": "P",
+              "radius": 3
             }
           ]
         },
         "labels": {
-          "AB": {
-            "en": "AB",
-            "hi": "AB",
-            "mr": "AB"
-          },
-          "BC": {
-            "en": "BC",
-            "hi": "BC",
-            "mr": "BC"
-          },
-          "CD": {
-            "en": "CD",
-            "hi": "CD",
-            "mr": "CD"
-          },
-          "DA": {
-            "en": "DA",
-            "hi": "DA",
-            "mr": "DA"
-          },
-          "XY": {
-            "en": "XY",
-            "hi": "XY",
-            "mr": "XY"
+          "P": {
+            "en": "P"
           }
         }
       },
       "needsFigure": true,
       "distractorReason": [
-        "Confuses 5 mm with 5 cm",
+        "Confuses the term 'diameter' with the center",
+        "Confuses the term 'radius' with the center",
         null,
-        "Adds the distances from A and B",
-        "Mistakenly assumes XY is equal to BC or AB without measuring directly"
+        "Confuses the center of a circle with its circumference, thinking both are points"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is correct. The correct answer is 'Centre' and the author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 8: Playing with Constructions",
+            "8.1 Artwork"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp108.pdf",
+          "ordinal": 1,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: Playing with Constructions",
+            "8.1 Artwork"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp108.pdf",
+          "ordinal": 2,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: Playing with Constructions",
+            "8.2 Squares and Rectangles"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp108.pdf",
+          "ordinal": 3,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: Playing with Constructions",
+            "8.2 Squares and Rectangles"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp108.pdf",
+          "ordinal": 4,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 8: Playing with Constructions",
+            "8.3 Constructing Squares and Rectangles"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-01T15:47:07.089Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the term used for the distance from the center of a circle to any point on its edge?",
+      "choices": [
+        "Diameter",
+        "Radius",
+        "Chord",
+        "Circumference"
+      ],
+      "answerIndex": 1,
+      "solution": "The term for the distance from the center of a circle to any point on its edge is defined as the radius. Diameter refers to the distance across the circle through the center, chord is a line segment connecting two points on the circle, and circumference is the total distance around the circle.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक वृत्त के केंद्र से किसी बिंदु तक की दूरी के लिए कौन सा शब्द प्रयोग किया जाता है जो इसकी किनारे पर होता है?",
+          "choices": [
+            "व्यास",
+            "त्रिज्या",
+            "जीवा",
+            "परिधि"
+          ],
+          "solution": "एक वृत्त के केंद्र से किसी बिंदु तक की दूरी के लिए शब्द त्रिज्या के रूप में परिभाषित किया जाता है। व्यास वृत्त के माध्यम से केंद्र से गुजरने वाली दूरी के लिए शब्द है, जीवा वृत्त पर दो बिंदुओं को जोड़ने वाले रेखा खंड के लिए शब्द है और परिधि वृत्त के चारों ओर कुल दूरी के लिए शब्द है।",
+          "imageAlt": null,
+          "critique": "All terms are standard Hindi mathematical terms used in textbooks. The translation is accurate and maintains the original meaning and structure.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "वर्तुळाच्या केंद्रापासून त्याच्या किनार्यावरील कोणत्याही बिंदूपर्यंतच्या अंतरासाठी वापरलेले शब्द काय आहे?",
+          "choices": [
+            "व्यास",
+            "त्रिज्या",
+            "ज्या",
+            "परिघ"
+          ],
+          "solution": "वर्तुळाच्या केंद्रापासून त्याच्या किनार्यावरील कोणत्याही बिंदूपर्यंतच्या अंतरासाठी वापरलेले शब्द त्रिज्या असे म्हणतात. व्यास हा वर्तुळाच्या मध्यातून जाणारा अंतर दर्शवतो, ज्या हा वर्तुळावरील दोन बिंदूंना जोडणारा रेषाखंड आहे आणि परिघ हा वर्तुळाच्या आजूबाजूच्या एकूण अंतरास संबोधित करतो.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses standard mathematical terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses radius with diameter",
+        null,
+        "Does not understand the definition of radius",
+        "Does not know the term for a line segment joining two points on the circle"
       ],
       "solverAnswers": [
         1,
@@ -390,115 +233,7 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 4.5 cm. The solution is sound, and the author's reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 5,
-          "pageStart": 11,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.4 An Exploration in Rectangles"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 6,
-          "pageStart": 13,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.4 An Exploration in Rectangles"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 7,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.4 An Exploration in Rectangles"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 8,
-          "pageStart": 17,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.5 Exploring Diagonals of Rectangles and Squares"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T03:14:21.103Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "In a figure, the points of a circle are all at the same distance from the centre. What is this distance called?",
-      "choices": [
-        "Circumference",
-        "Radius",
-        "Diameter",
-        "Arc"
-      ],
-      "answerIndex": 1,
-      "solution": "The distance from the centre of a circle to any point on the circle is called the radius. The circumference is the distance around the circle. The diameter is a line that passes through the centre and connects two points on the circle. An arc is a part of the circle's circumference.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक आकृति में, वृत्त के बिंदु केंद्र से समान दूरी पर होते हैं। इस दूरी को क्या कहते हैं?",
-          "choices": [
-            "परिधि",
-            "त्रिज्या",
-            "व्यास",
-            "चाप"
-          ],
-          "solution": "वृत्त के केंद्र से किसी भी बिंदु तक की दूरी को त्रिज्या कहते हैं। परिधि वृत्त के चारों ओर की दूरी होती है। व्यास केंद्र से गुजरने वाली रेखा होती है जो वृत्त के दो बिंदुओं को जोड़ती है। चाप वृत्त की परिधि का एक हिस्सा होता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All technical terms are standard in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका आकृतीत, वर्तुळाचे बिंदू त्याच्या केंद्रापासून एकसारख्या अंतरावर असतात. या अंतराला काय म्हणतात?",
-          "choices": [
-            "परिघ",
-            "त्रिज्या",
-            "व्यास",
-            "चाप"
-          ],
-          "solution": "वर्तुळाच्या केंद्रापासून वर्तुळावरील कोणत्याही बिंदूपर्यंतचे अंतर त्रिज्या म्हणतात. परिघ हा वर्तुळाच्या आसपासचा अंतर आहे. व्यास हा केंद्रामार्गे जाणारा आणि वर्तुळावरील दोन बिंदूंना जोडणारा रेषाखंड आहे. चाप हा वर्तुळाच्या परिघाचा भाग आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and uses standard Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses radius with circumference",
-        null,
-        "Confuses radius with diameter",
-        "Confuses radius with arc"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is clear and the correct answer is unambiguous. The solution correctly identifies the radius as the distance from the center to the circumference, and the explanations for the distractors are valid misconceptions.",
+      "critique": "The correct answer is 'Radius' as defined by the passage. The other options represent common misconceptions or related but distinct terms.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp108.pdf",
@@ -535,54 +270,54 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T03:14:21.103Z",
+      "generatedAt": "2026-11-01T15:47:07.089Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "In the construction of a rectangle with one side 5 cm and diagonal 7 cm, what is the shape of the set of all points that are 7 cm from point D?",
+      "difficulty": 2,
+      "stem": "In the construction of a rectangle, what is the purpose of drawing a circle with a radius equal to the diagonal?",
       "choices": [
-        "A triangle",
-        "A square",
-        "A circle",
-        "A line segment"
+        "To find the midpoint of the side",
+        "To locate a point that is at a fixed distance from one end of the side",
+        "To measure the length of the diagonal",
+        "To construct a perpendicular line from the diagonal"
       ],
-      "answerIndex": 2,
-      "solution": "The correct answer is a circle. The set of all points that are a fixed distance from a given point forms a circle. A triangle, square, and line segment do not represent all points at a fixed distance from a single point.",
+      "answerIndex": 1,
+      "solution": "The purpose is to locate a point that is at a fixed distance from one end of the side. This helps in determining the position of the opposite corner of the rectangle. The other options are incorrect as they do not explain the purpose of drawing the circle.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक आयत के निर्माण में एक भुजा 5 सेमी और विकर्ण 7 सेमी है, बिंदु D से 7 सेमी की दूरी पर सभी बिंदुओं के समुच्चय का आकार क्या है?",
+          "stem": "आयत के निर्माण में, विकर्ण के बराबर त्रिज्या वाला वृत्त खींचने का उद्देश्य क्या होता है?",
           "choices": [
-            "एक त्रिभुज",
-            "एक वर्ग",
-            "एक वृत्त",
-            "एक रेखा खंड"
+            "भुजा के मध्य बिंदु का पता लगाना",
+            "एक बिंदु की स्थिति निर्धारित करना जो भुजा के एक सिरे से निश्चित दूरी पर हो",
+            "विकर्ण की लंबाई मापना",
+            "विकर्ण से लंब रेखा खींचना"
           ],
-          "solution": "सही उत्तर एक वृत्त है। एक दिए गए बिंदु से निश्चित दूरी पर सभी बिंदुओं के समुच्चय एक वृत्त बनाते हैं। एक त्रिभुज, वर्ग और रेखा खंड एक ही बिंदु से निश्चित दूरी पर सभी बिंदुओं का प्रतिनिधित्व नहीं करते हैं।",
-          "imageAlt": "7 सेमी त्रिज्या वाला एक वृत्त",
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
+          "solution": "उद्देश्य एक बिंदु की स्थिति निर्धारित करना है जो भुजा के एक सिरे से निश्चित दूरी पर हो। इससे आयत के विपरीत कोने की स्थिति निर्धारित करने में सहायता मिलती है। अन्य विकल्प गलत हैं क्योंकि वे वृत्त खींचने के उद्देश्य की व्याख्या नहीं करते।",
+          "imageAlt": "5 सेमी लंबाई का एक रेखा खंड DC और एक वृत्त जिसका केंद्र D है और जिसकी त्रिज्या 7 सेमी है।",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "एका चौरसाच्या निर्मितीत ज्याचा एक बाजू 5 सेमी आहे आणि त्याचा विकर्ण 7 सेमी आहे, तर बिंदू D पासून 7 सेमी अंतरावरील सर्व बिंदूंचा आकार काय असेल?",
+          "stem": "आयत बनविण्यामध्ये, विकर्णाच्या त्रिज्येइतका वर्तुळ काढण्याचा उद्देश काय असतो?",
           "choices": [
-            "एक त्रिकोण",
-            "एक चौरस",
-            "एक वर्तुळ",
-            "एक रेषाखंड"
+            "बाजूच्या मध्यबिंदूचा शोध घेणे",
+            "एका बाजूच्या एका छेदापासून निश्चित अंतरावर असलेल्या बिंदूचे स्थान ठरवणे",
+            "विकर्णाच्या लांबीचे मोजणे",
+            "विकर्णापासून लंब रेषा बनवणे"
           ],
-          "solution": "बरोबर उत्तर वर्तुळ आहे. दिलेल्या बिंदूपासून निश्चित अंतरावरील सर्व बिंदूंचा एक वर्तुळ बनतो. त्रिकोण, चौरस आणि रेषाखंड एका बिंदूपासून निश्चित अंतरावरील सर्व बिंदूंचे प्रतिनिधित्व करत नाहीत.",
-          "imageAlt": "7 सेमी त्रिज्या असलेले वर्तुळ",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "solution": "उद्देश एका बाजूच्या एका छेदापासून निश्चित अंतरावर असलेल्या बिंदूचे स्थान ठरवणे असतो. हे आयताच्या विरुद्ध कोनाच्या स्थानाची निश्चितता करण्यामध्ये मदत करते. इतर विकल्प अयोग्य असतात कारण ते वर्तुळ काढण्याचा उद्देश स्पष्ट करत नाहीत.",
+          "imageAlt": "5 सेमी लांबीचा रेखाखंड DC आणि D च्या केंद्रावर असलेला 7 सेमी त्रिज्येचा वर्तुळ.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The correct answer remains in the same position (option 2), and the distractors are still incorrect.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": "A circle with center D and radius 7 cm",
+      "imageAlt": "A line segment DC of 5 cm and a circle with center D and radius 7 cm.",
       "figure": {
         "kind": "geometry",
         "spec": {
@@ -590,44 +325,65 @@
             "xMin": 0,
             "xMax": 10,
             "yMin": 0,
-            "yMax": 10,
+            "yMax": 7,
             "unit": "cm"
           },
           "points": [
             {
               "id": "D",
-              "x": 5,
-              "y": 5,
+              "x": 0,
+              "y": 0,
               "label": "D"
+            },
+            {
+              "id": "C",
+              "x": 5,
+              "y": 0,
+              "label": "C"
+            }
+          ],
+          "segments": [
+            {
+              "from": "D",
+              "to": "C",
+              "length": {
+                "value": 5,
+                "unit": "cm"
+              }
             }
           ],
           "circles": [
             {
               "center": "D",
-              "radius": 7,
-              "dashed": false,
-              "shade": false
+              "radius": 7
             }
           ]
         },
-        "labels": {}
+        "labels": {
+          "D": {
+            "en": "D"
+          },
+          "C": {
+            "en": "C"
+          }
+        }
       },
       "needsFigure": true,
       "distractorReason": [
-        "A student might think that only three points can be 7 cm from D in the context of constructing a rectangle.",
-        "Believes that all points at a fixed distance from a point form a square instead of a circle",
+        "Student thinks the diagonal's radius is used to find a midpoint instead of locating a vertex",
         null,
-        "A student might think the set of points 7 cm from D is limited to the intersection with another line, not recognizing it as a full circle."
+        "Confuses the purpose of the circle with measuring, rather than locating a point at a fixed distance",
+        "A student might confuse the purpose of the circle with constructing perpendiculars instead of locating a point at a fixed distance"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is well-constructed. The correct answer is clearly a circle, and the author's reasoning for the distractors reflects common misconceptions.",
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as drawing a circle with the radius equal to the diagonal helps locate a point at a fixed distance from one end of the side, which is essential for constructing the opposite corner of the rectangle. The other options represent common misconceptions.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp108.pdf",
@@ -671,162 +427,267 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T03:14:21.103Z",
+      "generatedAt": "2026-11-01T15:47:07.089Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "In the construction of a rectangle, if one side is 5 cm and the diagonal is 7 cm, what method can be used to find the position of a point that is 7 cm away from one end of the side?",
+      "choices": [
+        "Drawing a straight line of 7 cm from the end and then measuring 5 cm along it",
+        "Using a ruler to measure and mark the point",
+        "Drawing a circle with radius 7 cm and centre at the end",
+        "Drawing a triangle with the side and diagonal as sides"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct method is to draw a circle with radius 7 cm and centre at the end of the side. This is because all points at a fixed distance from a given point lie on a circle. The other options are incorrect because drawing a straight line or using a ruler leads to inaccuracies, and drawing a triangle is not the most efficient method.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "आयत के निर्माण में, यदि एक भुजा 5 सेमी है और विकर्ण 7 सेमी है, तो एक बिंदु की स्थिति ज्ञात करने के लिए कौन सी विधि का उपयोग किया जा सकता है जो भुजा के एक सिरे से 7 सेमी की दूरी पर हो?",
+          "choices": [
+            "सिरे से 7 सेमी की सीधी रेखा खींचना और फिर इसके साथ 5 सेमी मापना",
+            "एक पटरी का उपयोग करके बिंदु को मापकर अंकित करना",
+            "एक 7 सेमी त्रिज्या वाला वृत्त खींचना और सिरे पर केंद्र रखना",
+            "भुजा और विकर्ण के रूप में भुजाओं वाला त्रिभुज खींचना"
+          ],
+          "solution": "सही विधि एक 7 सेमी त्रिज्या वाला वृत्त खींचना है और इसका केंद्र भुजा के सिरे पर रखना है। इसका कारण यह है कि एक दिए गए बिंदु से निश्चित दूरी पर सभी बिंदु एक वृत्त पर होते हैं। अन्य विकल्प गलत हैं क्योंकि सीधी रेखा खींचना या पटरी का उपयोग असटीकता के कारण होता है, और त्रिभुज खींचना सबसे अधिक कुशल विधि नहीं है।",
+          "imageAlt": "5 सेमी लंबाई का एक रेखा खंड DC और एक वृत्त जिसका केंद्र D है और त्रिज्या 7 सेमी है।",
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आयताच्या रचनेत, जर एक बाजू 5 सेमी असेल आणि त्याचा विकर्ण 7 सेमी असेल, तर एका बिंदूची जागा शोधण्यासाठी कोणता पद्धत वापरावा जो बाजूच्या एका छेदापासून 7 सेमी अंतरावर असेल?",
+          "choices": [
+            "छेदापासून 7 सेमी ची थराही रेषा काढणे आणि त्यावर 5 सेमी मोजणे",
+            "रुळ वापरून बिंदू निर्दिष्ट करणे",
+            "छेदावर केंद्र असलेला 7 सेमी त्रिज्येचा वर्तुळ काढणे",
+            "बाजू आणि विकर्ण असलेले त्रिकोण काढणे"
+          ],
+          "solution": "योग्य पद्धत छेदावर केंद्र असलेला 7 सेमी त्रिज्येचा वर्तुळ काढणे आहे. कारण दिलेल्या बिंदूपासून एक निश्चित अंतरावर असलेले सर्व बिंदू वर्तुळावर असतात. इतर पद्धती अयोग्य आहेत कारण थराही रेषा काढणे किंवा रुळ वापरणे अचूकतेची कमतरता निर्माण करतात आणि त्रिकोण काढणे सर्वात अधिक दक्ष पद्धत नाही.",
+          "imageAlt": "5 सेमी लांबीचा रेषाखंड DC आणि D च्या केंद्रावर 7 सेमी त्रिज्येचा वर्तुळ.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A line segment DC of 5 cm and a circle with center D and radius 7 cm.",
+      "figure": {
+        "kind": "geometry",
+        "spec": {
+          "frame": {
+            "xMin": 0,
+            "xMax": 10,
+            "yMin": 0,
+            "yMax": 7,
+            "unit": "cm"
+          },
+          "points": [
+            {
+              "id": "D",
+              "x": 0,
+              "y": 0,
+              "label": "D"
+            },
+            {
+              "id": "C",
+              "x": 5,
+              "y": 0,
+              "label": "C"
+            }
+          ],
+          "segments": [
+            {
+              "from": "D",
+              "to": "C",
+              "length": {
+                "value": 5,
+                "unit": "cm"
+              }
+            }
+          ],
+          "circles": [
+            {
+              "center": "D",
+              "radius": 7
+            }
+          ]
+        },
+        "labels": {
+          "D": {
+            "en": "D"
+          },
+          "C": {
+            "en": "C"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Student assumes the diagonal and side can be added directly without considering the right triangle relationship",
+        "This method is not accurate and involves trial and error",
+        null,
+        "Believing that the diagonal and side can directly form a triangle without considering the right angle or using the Pythagorean theorem"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 2, as it correctly uses the definition of a circle to find a point at a fixed distance from a given point. The reasoning for the other options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp108.pdf",
+          "ordinal": 9,
+          "pageStart": 19,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 8: Playing with Constructions",
+            "8.5 Exploring Diagonals of Rectangles and Squares"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp108.pdf",
+          "ordinal": 10,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 8: Playing with Constructions",
+            "8.5 Exploring Diagonals of Rectangles and Squares"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp108.pdf",
+          "ordinal": 11,
+          "pageStart": 25,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 8: Playing with Constructions",
+            "8.6 points equidistant from Two Given points"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp108.pdf",
+          "ordinal": 12,
+          "pageStart": 27,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 8: Playing with Constructions",
+            "8.6 points equidistant from Two Given points"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-01T15:47:07.089Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "In a rectangle, the diagonals are equal in length and bisect each other. If one diagonal is 10 cm long, what is the length of the other diagonal?",
+      "stem": "To construct a rectangle with a side of 5 cm and a diagonal of 7 cm, which step is necessary to find the position of the opposite corner?",
       "choices": [
-        "5 cm",
-        "10 cm",
-        "15 cm",
-        "20 cm"
-      ],
-      "answerIndex": 1,
-      "solution": "In a rectangle, the diagonals are equal in length. So, if one diagonal is 10 cm, the other diagonal must also be 10 cm. The other options are incorrect because they do not match the property of equal diagonals in a rectangle.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक आयत में, विकर्ण समान लंबाई के होते हैं और एक दूसरे को आधा करते हैं। यदि एक विकर्ण 10 सेमी लंबा है, तो दूसरे विकर्ण की लंबाई क्या है?",
-          "choices": [
-            "5 सेमी",
-            "10 सेमी",
-            "15 सेमी",
-            "20 सेमी"
-          ],
-          "solution": "एक आयत में, विकर्ण समान लंबाई के होते हैं। इसलिए, यदि एक विकर्ण 10 सेमी है, तो दूसरा विकर्ण भी 10 सेमी होना चाहिए। अन्य विकल्प गलत हैं क्योंकि वे आयत में समान विकर्ण के गुण के अनुरूप नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology used in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "आयतामध्ये विकर्णांची लांबी समान असते आणि ते एकमेकांना दुभागतात. जर एक विकर्ण 10 सेमी लांबीचा असेल, तर दुसऱ्या विकर्णाची लांबी किती असेल?",
-          "choices": [
-            "5 सेमी",
-            "10 सेमी",
-            "15 सेमी",
-            "20 सेमी"
-          ],
-          "solution": "आयतामध्ये विकर्णांची लांबी समान असते. म्हणून, जर एक विकर्ण 10 सेमी असेल, तर दुसरा विकर्ण देखील 10 सेमी असेल. इतर विकल्प चूक आहेत कारण ते आयतामध्ये समान विकर्णांच्या गुणधर्माशी जुळत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for mathematical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Divides the diagonal by 2",
-        null,
-        "Adds 5 cm to the diagonal",
-        "Multiplies the diagonal by 2"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is straightforward and aligns with the known property of rectangles that their diagonals are equal. The solution is correct and the reasoning for the distractors matches common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 13,
-          "pageStart": 30,
-          "pageEnd": 32,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.6 points equidistant from Two Given points",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 14,
-          "pageStart": 32,
-          "pageEnd": 34,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.6 points equidistant from Two Given points",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 15,
-          "pageStart": 34,
-          "pageEnd": 38,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.6 points equidistant from Two Given points",
-            "S u m m a r y"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T03:14:21.103Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "In a rectangle, if one of the diagonals divides an angle into two equal parts, what can be said about the rectangle?",
-      "choices": [
-        "It is a square",
-        "It is a parallelogram",
-        "It is a rhombus",
-        "It is a trapezium"
+        "Draw a line of 5 cm and a circle of 7 cm from one end",
+        "Measure the angle between the side and the diagonal",
+        "Construct a perpendicular at one end of the side",
+        "Draw a triangle with the side and diagonal as sides"
       ],
       "answerIndex": 0,
-      "solution": "If a diagonal of a rectangle divides an angle into two equal parts, the rectangle must be a square because only in a square do the diagonals bisect the angles. A parallelogram does not guarantee equal angles, a rhombus is not necessarily a rectangle, and a trapezium has only one pair of parallel sides, which does not satisfy the condition.",
+      "solution": "The correct step is to draw a line of 5 cm and a circle of 7 cm from one end. This helps locate the opposite corner by finding the intersection point of the circle with the perpendicular line. The other options are incorrect as they do not directly help in locating the opposite corner.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक आयत में, यदि एक विकर्ण कोण को दो समान भागों में विभाजित करता है, तो आयत के बारे में क्या कहा जा सकता है?",
+          "stem": "5 सेमी के एक किनारे और 7 सेमी के विकर्ण के साथ एक आयत के निर्माण के लिए, विपरीत कोने की स्थिति ज्ञात करने के लिए कौन सा चरण आवश्यक है?",
           "choices": [
-            "यह एक वर्ग है",
-            "यह एक समांतर चतुर्भुज है",
-            "यह एक समचतुर्भुज है",
-            "यह एक समलंब चतुर्भुज है"
+            "5 सेमी की रेखा खींचें और एक छोर से 7 सेमी के वृत्त की रचना करें",
+            "किनारे और विकर्ण के बीच के कोण को मापें",
+            "किनारे के एक छोर पर लंब खींचें",
+            "किनारे और विकर्ण के रूप में एक त्रिभुज खींचें"
           ],
-          "solution": "यदि एक आयत के विकर्ण कोण को दो समान भागों में विभाजित करता है, तो आयत एक वर्ग होना चाहिए क्योंकि केवल एक वर्ग में विकर्ण कोणों को समद्विभाजित करते हैं। एक समांतर चतुर्भुज कोणों के समान होने की गारंटी नहीं देता है, एक समचतुर्भुज एक आयत नहीं होता है और एक समलंब चतुर्भुज में केवल एक जोड़ा समांतर भुजाएं होती हैं, जो शर्त को पूरा नहीं करता है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
+          "solution": "सही चरण 5 सेमी की रेखा खींचना और एक छोर से 7 सेमी के वृत्त की रचना करना है। यह लंब रेखा के साथ वृत्त के प्रतिच्छेद बिंदु के ज्ञात करके विपरीत कोने की स्थिति ज्ञात करने में मदद करता है। अन्य विकल्प गलत हैं क्योंकि वे विपरीत कोने की स्थिति को सीधे ज्ञात नहीं करते।",
+          "imageAlt": "5 सेमी के एक रेखा खंड DC और केंद्र D और त्रिज्या 7 सेमी के वृत्त के साथ एक वृत्त।",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "आयतात, जर एक कर्ण कोनाला दोन समान भागांमध्ये विभागतो असेल, तर आयताबद्दल काय म्हणाल जाऊ शकते?",
+          "stem": "5 सेमी आणि 7 सेमी व्यासार्धाच्या आयताच्या बाजूच्या विरुद्ध कोनाच्या स्थितीचा शोध घेण्यासाठी कोणता टप्पा आवश्यक आहे?",
           "choices": [
-            "तो चौरस असतो",
-            "तो समांतर चौकोन असतो",
-            "तो समभुज असतो",
-            "तो समलंब असतो"
+            "5 सेमी लांबीचा रेखा काढा आणि एका छेदापासून 7 सेमी व्यासार्धाचा वर्तुळ काढा",
+            "बाजू आणि व्यासार्ध यांच्या मध्ये कोन मोजा",
+            "बाजूच्या एका छेदावर लंब रेखा बनवा",
+            "बाजू आणि व्यासार्ध यांच्या बाजूंमध्ये त्रिकोण काढा"
           ],
-          "solution": "जर आयताच्या कर्णाने कोन दोन समान भागांमध्ये विभागला असेल, तर आयत चौरस असणे आवश्यक असते कारण फक्त चौरसात कर्ण कोन विभाजित करतात. समांतर चौकोन समान कोनांची खात्री देत नाही, समभुज फक्त आयत असेल असे नसते आणि समलंबात केवळ एक जोडी समांतर बाजू असते, जे अट पूर्ण करत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
+          "solution": "सही टप्पा हा आहे की 5 सेमी लांबीचा रेखा काढा आणि एका छेदापासून 7 सेमी व्यासार्धाचा वर्तुळ काढा. हे वर्तुळाच्या लंब रेखेशी छेदाच्या बिंदूच्या शोधास मदत करते. इतर पर्याय चुकीचे आहेत कारण ते विरुद्ध कोनाच्या स्थितीच्या शोधास थेट मदत करत नाहीत.",
+          "imageAlt": "5 सेमी लांबीचा रेखा DC आणि D केंद्राचा 7 सेमी व्यासार्धाचा वर्तुळ.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
+      "imageAlt": "A line segment DC of 5 cm and a circle with center D and radius 7 cm.",
+      "figure": {
+        "kind": "geometry",
+        "spec": {
+          "frame": {
+            "xMin": 0,
+            "xMax": 10,
+            "yMin": 0,
+            "yMax": 7,
+            "unit": "cm"
+          },
+          "points": [
+            {
+              "id": "D",
+              "x": 0,
+              "y": 0,
+              "label": "D"
+            },
+            {
+              "id": "C",
+              "x": 5,
+              "y": 0,
+              "label": "C"
+            }
+          ],
+          "segments": [
+            {
+              "from": "D",
+              "to": "C",
+              "length": {
+                "value": 5,
+                "unit": "cm"
+              }
+            }
+          ],
+          "circles": [
+            {
+              "center": "D",
+              "radius": 7
+            }
+          ]
+        },
+        "labels": {
+          "D": {
+            "en": "D"
+          },
+          "C": {
+            "en": "C"
+          }
+        }
+      },
+      "needsFigure": true,
       "distractorReason": [
         null,
-        "Confuses square properties with parallelogram",
-        "Confuses square properties with rhombus",
-        "Confuses square properties with trapezium"
+        "Student assumes angle measurement is needed instead of using geometric constructions like circles or perpendiculars",
+        "This method does not locate the opposite corner accurately",
+        "This is not the most efficient method to find the opposite corner"
       ],
       "solverAnswers": [
         0,
@@ -835,45 +696,52 @@
         0,
         0
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. A rectangle with a diagonal that bisects an angle must be a square, as only in a square do the diagonals bisect the angles. The other options are incorrect because they do not satisfy this condition.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as drawing a 5 cm line and a circle of 7 cm radius from one end allows the opposite corner to be found at the intersection point. The other options are not directly useful for this construction.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 13,
-          "pageStart": 30,
-          "pageEnd": 32,
+          "ordinal": 9,
+          "pageStart": 19,
+          "pageEnd": 23,
           "headingPath": [
             "Chapter 8: Playing with Constructions",
-            "8.6 points equidistant from Two Given points",
-            "S u m m a r y"
+            "8.5 Exploring Diagonals of Rectangles and Squares"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 14,
-          "pageStart": 32,
-          "pageEnd": 34,
+          "ordinal": 10,
+          "pageStart": 23,
+          "pageEnd": 24,
           "headingPath": [
             "Chapter 8: Playing with Constructions",
-            "8.6 points equidistant from Two Given points",
-            "S u m m a r y"
+            "8.5 Exploring Diagonals of Rectangles and Squares"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 15,
-          "pageStart": 34,
-          "pageEnd": 38,
+          "ordinal": 11,
+          "pageStart": 25,
+          "pageEnd": 27,
           "headingPath": [
             "Chapter 8: Playing with Constructions",
-            "8.6 points equidistant from Two Given points",
-            "S u m m a r y"
+            "8.6 points equidistant from Two Given points"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp108.pdf",
+          "ordinal": 12,
+          "pageStart": 27,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 8: Playing with Constructions",
+            "8.6 points equidistant from Two Given points"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T03:14:21.103Z",
+      "generatedAt": "2026-11-01T15:47:07.089Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

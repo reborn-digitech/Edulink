@@ -1,0 +1,760 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T16:28:04.554Z",
+  "finishedAt": "2026-11-02T16:42:24.596Z",
+  "seconds": 860,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "९ वी गणित भाग-१ इंग्रजी",
+    "bookCode": "903000608",
+    "document": "balbharati/9/mathematics/903000608.pdf",
+    "classLevel": 9,
+    "subject": "Mathematics",
+    "chapter": "Chapter 7 — Statistics",
+    "edition": "2026 edition",
+    "chunks": 15,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2023-24]\n3. Which of the following is a statistic\n(a) 𝜇 (b) 𝑥̅ (c) 𝜎 ଶ (d) None",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2022-23]\n18. In a school, a random sample of 145 students is taken to check whether a student’s average calory\nintake is 1500 or not. The collected data of average calories intake of sample students is presented\nin a frequency distribution, which is called a:\na) Statistics b) Sampling c) Parameter d) Population\ndistribution sampling\nFor questions 19 and 20, two statements are given – one labelled Assertion(A) and the other labelled\nReason (R). Select the correct answer to these questions from the codes (i), (ii), (iii) and (iv) as given\nbelow:\n(i) Both A and R are true and R is the correct explanation of the assertion\n(ii) Both A and R are true but R is not the correct explanation of the assertion\n(i",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2023-24]\n3. Option (b) 𝑥̅ 𝑖𝑠 𝑎 statistic",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n29. Find the mean using the step deviation method. 3\nClass 0-10 10-20 20-30 30-40 40-50\nFrequency 6 10 15 9 10"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 279928,
+      "in": 41,
+      "out": 40,
+      "rejects": 1,
+      "promptTokens": 40888,
+      "completionTokens": 9492
+    },
+    "critique": {
+      "calls": 50,
+      "ms": 528756,
+      "in": 40,
+      "out": 26,
+      "rejects": 14,
+      "promptTokens": 22672,
+      "completionTokens": 8753
+    },
+    "solver": {
+      "calls": 200,
+      "ms": 168814,
+      "in": 26,
+      "out": 19,
+      "rejects": 7,
+      "promptTokens": 40193,
+      "completionTokens": 2156
+    },
+    "form": {
+      "calls": 9,
+      "ms": 41842,
+      "in": 19,
+      "out": 13,
+      "rejects": 6,
+      "promptTokens": 2191,
+      "completionTokens": 663
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 5,
+      "ms": 1316,
+      "in": 13,
+      "out": 12,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 47,
+      "ms": 749849,
+      "in": 24,
+      "out": 23,
+      "rejects": 1,
+      "promptTokens": 26805,
+      "completionTokens": 13219
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 1,
+    "4": 2,
+    "5": 1,
+    "6": 4
+  },
+  "flagged": 7,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "In a percentage bar diagram, what does the height of each bar represent?",
+      "ms": {
+        "draft": 6349,
+        "critique": 8228,
+        "solver": 23548,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for the study of numerical information collected from a group?",
+      "ms": {
+        "draft": 5856,
+        "critique": 9050
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main difference between a sub-divided bar diagram and a percentage bar diagram?",
+      "ms": {
+        "draft": 6349,
+        "critique": 12418,
+        "solver": 2289,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which type of data is collected by visiting each house in a village to record the agricultural land owned?",
+      "ms": {
+        "draft": 5856,
+        "critique": 9433
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A teacher collects the marks of students in a class and arranges them in ascending order. What is the purpose of this arrangement?",
+      "ms": {
+        "draft": 5856,
+        "critique": 11639
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student is given a set of data and is asked to prepare a frequency distribution table. Which of the following is the most efficient way to do this?",
+      "ms": {
+        "draft": 5856,
+        "critique": 10996
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student collects the heights of students by actual measurement, what type of data is this?",
+      "ms": {
+        "draft": 5856,
+        "critique": 10034,
+        "solver": 19160,
+        "form": 4612
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct property of primary data?",
+      "ms": {
+        "draft": 5856,
+        "critique": 10817,
+        "solver": 22586,
+        "form": 3646
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the total number of observations in a class?",
+      "ms": {
+        "draft": 11836,
+        "critique": 9854
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct definition of a class mark?",
+      "ms": {
+        "draft": 11836,
+        "critique": 9826
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the class mark of a class is 15 and the class width is 10, what are the lower and upper class limits?",
+      "ms": {
+        "draft": 11836,
+        "critique": 10978
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the cumulative frequency table below, how many students scored less than 30 marks?",
+      "ms": {
+        "draft": 11836,
+        "critique": 10441
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A group of students was asked to measure the length of pencils in their compass-boxes in centimeters. The data collected is as follows: 5, 6, 7, 8, 10, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22, 23, 24, 25, 26, 27. Which of the following is the correct grouped frequency distribution table using the inclusive method?",
+      "ms": {
+        "draft": 11836,
+        "critique": 9206
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the given cumulative frequency distribution table, which of the following is the correct way to find the number of students who scored between 20 and 30 marks?",
+      "ms": {
+        "draft": 11836,
+        "critique": 10815,
+        "solver": 27518
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the measure of central tendency that is used to find the most frequently occurring value in a data set?",
+      "ms": {
+        "draft": 8297,
+        "critique": 12335
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a class of 35 students, the total sum of their marks in a test is 956. What is the mean of the marks?",
+      "ms": {
+        "draft": 4796,
+        "critique": 15433,
+        "solver": 16728
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the most frequently occurring value in a data set?",
+      "ms": {
+        "draft": 7103,
+        "critique": 9776
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the middle value of a data set when it is arranged in order?",
+      "ms": {
+        "draft": 7103,
+        "critique": 10810
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the mean of 5 observations is 10 and one observation is removed, making the mean of the remaining 4 observations 8, what is the value of the removed observation?",
+      "ms": {
+        "draft": 7103,
+        "critique": 12071
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In a data set, if the mean is 10 and the number of observations is 15, what is the sum of all the observations?",
+      "ms": {
+        "draft": 7103,
+        "critique": 10556,
+        "solver": 18721
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The mean of 10 observations is 20. One observation is removed, and the mean of the remaining 9 observations becomes 18. What is the value of the removed observation?",
+      "ms": {
+        "draft": 7103,
+        "critique": 12663
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The following data shows the number of goals scored by a hockey player in 9 matches: 5, 4, 0, 2, 2, 4, 4, 3, 3. What is the mode of this data?",
+      "ms": {
+        "draft": 7103,
+        "critique": 13113,
+        "solver": 26372
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given data, what is the mode of the ages of workers?",
+      "ms": {
+        "draft": 4905,
+        "critique": 10943,
+        "solver": 2347,
+        "form": 4404
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a class of 35 students, the mean marks obtained are 27.31. What is the total sum of marks obtained by all students?",
+      "ms": {
+        "draft": 4905,
+        "critique": 11799,
+        "solver": 2778,
+        "form": 5902
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the definition of cumulative frequency?",
+      "ms": {
+        "draft": 4905,
+        "critique": 11247,
+        "solver": 2779
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the class mark of a class is 15 and the class width is 5, what is the class interval?",
+      "ms": {
+        "draft": 6089,
+        "critique": 15223,
+        "solver": 22061
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a grouped frequency distribution table, the cumulative frequency less than 30 is 34. If the frequency of the class 20-30 is 20, what is the cumulative frequency less than 20?",
+      "ms": {
+        "draft": 6089,
+        "critique": 10769,
+        "solver": 18139
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the number of observations is even, how is the median calculated?",
+      "ms": {
+        "draft": 4905,
+        "critique": 10264,
+        "solver": 2717,
+        "form": 4630
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is defined as the average of the lower and upper class limits of a class?",
+      "ms": {
+        "draft": 6089,
+        "critique": 9217,
+        "solver": 2792,
+        "form": 6023,
+        "translation": 49653
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the total number of observations in a class?",
+      "ms": {
+        "draft": 6089,
+        "critique": 9605,
+        "solver": 1867,
+        "form": 3787,
+        "translation": 51342
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of using a sub-divided bar diagram?",
+      "ms": {
+        "draft": 6349,
+        "critique": 9450,
+        "solver": 20293,
+        "form": 0,
+        "translation": 213200
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a measure of central tendency?",
+      "ms": {
+        "draft": 4905,
+        "critique": 10721,
+        "solver": 2816,
+        "form": 3909,
+        "translation": 55411
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the term used for the average of all observations in a data set?",
+      "ms": {
+        "draft": 4796,
+        "critique": 8036,
+        "solver": 2067,
+        "form": 0,
+        "translation": 61533
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the given passage, which type of diagram would best represent the percentage of boys and girls in different states?",
+      "ms": {
+        "draft": 6349,
+        "critique": 8581,
+        "solver": 3053,
+        "form": 0,
+        "translation": 67683
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "If the number of observations is even, how is the median calculated?",
+      "ms": {
+        "draft": 4796,
+        "critique": 8298,
+        "solver": 3049,
+        "form": 0,
+        "translation": 57842
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a bar in a percentage bar diagram is divided into two parts, with 60% representing wheat and 40% representing jowar, what does this indicate?",
+      "ms": {
+        "draft": 6349,
+        "critique": 13005,
+        "solver": 2479,
+        "form": 0,
+        "translation": 85611
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A farmer uses a percentage bar diagram to show the production of wheat and jowar over three years. If the bar for 2012 shows 70% wheat and 30% jowar, what can be inferred about the production in 2012 compared to 2011?",
+      "ms": {
+        "draft": 6349,
+        "critique": 11175,
+        "solver": 2483,
+        "form": 0,
+        "translation": 97080
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is an example of a statistic?",
+      "ms": {
+        "draft": 7005,
+        "critique": 10196,
+        "solver": 4668,
+        "form": 0,
+        "translation": 44606
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a frequency distribution table, the mode is defined as the value that appears most frequently. If two values appear with the same highest frequency, what is the term used to describe this situation?",
+      "ms": {
+        "draft": 4796,
+        "critique": 13094,
+        "solver": 1986,
+        "form": 0,
+        "translation": 68892
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the median of a data set is 32.5, which of the following could be the number of observations?",
+      "ms": {
+        "draft": 4905,
+        "critique": 11966,
+        "solver": 2056,
+        "form": 6531,
+        "translation": 61692
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is a measure of central tendency?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In a percentage bar diagram, what does the height of each bar represent?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term for the study of numerical information collected from a group?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main difference between a sub-divided bar diagram and a percentage bar diagram?",
+      "reason": "options 0 and 1 say the same thing (\"A sub-divided bar diagram shows absolute values, while a percentage bar diagram shows relative values\" / \"A sub-divided bar diagram shows percentages, while a percentage bar diagram shows absolute values\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which type of data is collected by visiting each house in a village to record the agricultural land owned?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A teacher collects the marks of students in a class and arranges them in ascending order. What is the purpose of this arrangement?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A student is given a set of data and is asked to prepare a frequency distribution table. Which of the following is the most efficient way to do this?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student collects the heights of students by actual measurement, what type of data is this?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a correct property of primary data?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for the total number of observations in a class?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is the correct definition of a class mark?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the class mark of a class is 15 and the class width is 10, what are the lower and upper class limits?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the cumulative frequency table below, how many students scored less than 30 marks?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A group of students was asked to measure the length of pencils in their compass-boxes in centimeters. The data collected is as follows: 5, 6, 7, 8, 10, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22, 23, 24, 25, 26, 27. Which of the following is the correct grouped frequency distribution table using the inclusive method?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound; option 1 is not wrong; option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In the given cumulative frequency distribution table, which of the following is the correct way to find the number of students who scored between 20 and 30 marks?",
+      "reason": "after redraft: the solver picked option 1 1 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the measure of central tendency that is used to find the most frequently occurring value in a data set?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a class of 35 students, the total sum of their marks in a test is 956. What is the mean of the marks?",
+      "reason": "after redraft: the solver picked option 2 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used to describe the most frequently occurring value in a data set?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used to describe the middle value of a data set when it is arranged in order?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the mean of 5 observations is 10 and one observation is removed, making the mean of the remaining 4 observations 8, what is the value of the removed observation?",
+      "reason": "the critic finds option 3 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "In a data set, if the mean is 10 and the number of observations is 15, what is the sum of all the observations?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "The mean of 10 observations is 20. One observation is removed, and the mean of the remaining 9 observations becomes 18. What is the value of the removed observation?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The following data shows the number of goals scored by a hockey player in 9 matches: 5, 4, 0, 2, 2, 4, 4, 3, 3. What is the mode of this data?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given data, what is the mode of the ages of workers?",
+      "reason": "option 3 is a catch-all (\"None of the above\"); options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a class of 35 students, the mean marks obtained are 27.31. What is the total sum of marks obtained by all students?",
+      "reason": "checkExpr \"956\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the definition of cumulative frequency?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the class mark of a class is 15 and the class width is 5, what is the class interval?",
+      "reason": "distractors 0, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a grouped frequency distribution table, the cumulative frequency less than 30 is 34. If the frequency of the class 20-30 is 20, what is the cumulative frequency less than 20?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If the number of observations is even, how is the median calculated?",
+      "reason": "near-duplicate of batch item \"If the number of observations is even, how is the …\" (cosine 0.994 ≥ 0.9)"
+    },
+    {
+      "stage": "translation",
+      "level": 2,
+      "stem": "What is the main purpose of using a sub-divided bar diagram?",
+      "reason": "mr: the model's answer was not JSON (finish: length): {\n  \"stem\": \"उप-विभाजित बार आलेख वापरण्याचा मुख्य उद्देश काय आहे?\",\n  \"options\": [\n    \"वेगवेगळ्या वर्षांच्या एकूण उत्पा"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,686 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T09:35:51.659Z",
+  "finishedAt": "2026-11-02T09:46:43.952Z",
+  "seconds": 652,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash Part-II",
+    "bookCode": "hegp2",
+    "document": "ncert/8/mathematics/hegp203.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 10 — Proportional Reasoning–2",
+    "edition": "2025 edition (the site's Last-Modified)",
+    "chunks": 13,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n8. (b) 5 : 1",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2022-23]\n9. In the given figure, DE ∥ BC, AE = a units, EC =b units, DE =x units and BC = y 1\nunits. Which of the following is true?\n(a) x= 𝑎+𝑏 𝑎𝑦 (b) y= 𝑎+𝑏 𝑎𝑥 (c) x= 𝑎+𝑏 𝑎𝑦 (d) 𝑦 𝑥 = 𝑎 𝑏",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n8. 1\nratio 3 : 1, then the value of 𝒚 is\n(A) 4 (B) 3 (C) 2 (D) 1\nA letter from the word INDEPENDENCE is selected at random. What is the",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n32. Prove that a line drawn parallel to one side of a triangle intersecting other two sides 5\nin distinct points, divides the other two sides in the same ratio."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 173304,
+      "in": 39,
+      "out": 34,
+      "rejects": 5,
+      "promptTokens": 34353,
+      "completionTokens": 8798
+    },
+    "critique": {
+      "calls": 44,
+      "ms": 318791,
+      "in": 34,
+      "out": 28,
+      "rejects": 6,
+      "promptTokens": 20773,
+      "completionTokens": 7511
+    },
+    "solver": {
+      "calls": 213,
+      "ms": 137426,
+      "in": 28,
+      "out": 21,
+      "rejects": 7,
+      "promptTokens": 45244,
+      "completionTokens": 2404
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 21,
+      "out": 13,
+      "rejects": 8,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 53,
+      "ms": 11042,
+      "in": 13,
+      "out": 12,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 49,
+      "ms": 538336,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 28713,
+      "completionTokens": 13094
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 2,
+    "2": 0,
+    "3": 2,
+    "4": 4,
+    "5": 3,
+    "6": 1
+  },
+  "flagged": 8,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "If two ratios are proportional, which condition must be satisfied?",
+      "ms": {
+        "draft": 5004,
+        "critique": 7132
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 8 : 4 : 2 : 1 is proportional to 4 : 2 : 1 : 0.5, what is the relationship between the two ratios?",
+      "ms": {
+        "draft": 5004,
+        "critique": 7743,
+        "solver": 1191
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "On a map with a scale of 1 : 60,00,000, a distance of 1 cm on the map represents how many kilometers in reality?",
+      "ms": {
+        "draft": 5004,
+        "critique": 8167,
+        "solver": 2025
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A spice mix has the ratio of coriander seeds to red chillies to toor dal to fenugreek seeds as 8 : 4 : 2 : 1. If Puneet has 2 red chillies, how many spoons of coriander seeds should he use to maintain the same taste?",
+      "ms": {
+        "draft": 5004,
+        "critique": 6890,
+        "solver": 2047
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the ratio of cement to sand to gravel is 1 : 1.5 : 3 and we have 3 bags of cement, how many bags of sand are needed?",
+      "ms": {
+        "draft": 5004,
+        "critique": 7258,
+        "solver": 1957,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 200 ml of a solution is to be divided in the ratio 3 : 2 : 5, how much of the solution will be in the largest part?",
+      "ms": {
+        "draft": 4432,
+        "critique": 8660,
+        "solver": 1904,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about inverse proportion?",
+      "ms": {
+        "draft": 15634,
+        "critique": 10852
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given table, the speed and time taken to travel a fixed distance are given. Which of the following is the constant product of speed and time?",
+      "ms": {
+        "draft": 15634,
+        "critique": 10519
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 2 pumps can fill a tank in 18 hours, how much time will it take to fill the tank if we add 2 more pumps of the same kind?",
+      "ms": {
+        "draft": 15634,
+        "critique": 7250
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a class, the ratio of boys to girls is 5 : 3. If there are 40 boys, how many girls are there?",
+      "ms": {
+        "draft": 4432,
+        "critique": 8977,
+        "solver": 23733,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following pairs of quantities are in inverse proportion?",
+      "ms": {
+        "draft": 15634,
+        "critique": 9844,
+        "solver": 1632
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A car takes 2 hours to reach a destination at 60 km/h. How long will it take if it travels at 80 km/h?",
+      "ms": {
+        "draft": 5292,
+        "critique": 7978,
+        "solver": 1375,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "A tank has enough water for 20 families for 6 days. If 10 more families move in, how long will the water last?",
+      "ms": {
+        "draft": 5292,
+        "critique": 6894,
+        "solver": 11020
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a car takes 2 hours to reach a destination, travelling at a speed of 60 km/h, how long will the car take if it travels at a speed of 80 km/h?",
+      "ms": {
+        "draft": 4192,
+        "critique": 5862,
+        "solver": 2029,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A small pump can fill a tank in 3 hours, while a large pump can fill the same tank in 2 hours. If both pumps are used together, how long will the tank take to fill?",
+      "ms": {
+        "draft": 4192,
+        "critique": 8869,
+        "solver": 18608,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the most common mode of transport according to the pie chart?",
+      "ms": {
+        "draft": 4192,
+        "critique": 8718,
+        "solver": 15930
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 20 workers take 4 days to complete laying a road, how many days will 10 workers take to complete the same work?",
+      "ms": {
+        "draft": 4003,
+        "critique": 8482
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If two quantities x and y vary in inverse proportion, what is the relation between them?",
+      "ms": {
+        "draft": 4003,
+        "critique": 9362,
+        "solver": 18853,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a quantity x is divided in the ratio a : b : c, what is the formula for the part corresponding to a?",
+      "ms": {
+        "draft": 19600,
+        "critique": 8110
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If Ram takes 1 hour to cut a given quantity of vegetables and Shyam takes 1.5 hours to cut the same quantity, how much time will they take to cut the vegetables if they work together?",
+      "ms": {
+        "draft": 4003,
+        "critique": 7984,
+        "solver": 11385
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "If two ratios a : b and c : d are proportional, which of the following must be true?",
+      "ms": {
+        "draft": 4995,
+        "critique": 7350,
+        "solver": 7180,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If 24 pencils cost ₹120, how much will 20 such pencils cost?",
+      "ms": {
+        "draft": 4192,
+        "critique": 5376,
+        "solver": 1542,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "In the ratio 8 : 4 : 2 : 1, what does the fourth term represent?",
+      "ms": {
+        "draft": 4995,
+        "critique": 7259,
+        "solver": 1113,
+        "form": 0,
+        "translation": 33859
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "If 24 pencils cost ₹120, how much will 20 such pencils cost?",
+      "ms": {
+        "draft": 5292,
+        "critique": 6055,
+        "solver": 2057,
+        "form": 0,
+        "translation": 43963
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A factory requires 42 machines to produce a given number of toys in 63 days. How many machines are required to produce the same number of toys in 54 days?",
+      "ms": {
+        "draft": 4192,
+        "critique": 7894,
+        "solver": 15936,
+        "form": 0,
+        "translation": 44377
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a mixture, the ratio of sugar to water is 2 : 5. If the total mixture is 210 grams, how many grams of sugar are there?",
+      "ms": {
+        "draft": 4432,
+        "critique": 7349,
+        "solver": 1472,
+        "form": 0,
+        "translation": 38608
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A tank on a building has enough water to supply 20 families living there for 6 days. If 10 more families move in there, how long will the water last?",
+      "ms": {
+        "draft": 4192,
+        "critique": 6136,
+        "solver": 16259,
+        "form": 0,
+        "translation": 58182
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "A pie chart is drawn to represent the distribution of students in different grades. If the number of students in each grade is in the ratio 12 : 10 : 8 : 6 : 4, what is the angle corresponding to the grade with 12 students?",
+      "ms": {
+        "draft": 19600,
+        "critique": 7560,
+        "solver": 1658,
+        "form": 0,
+        "translation": 42552
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "If 110 units of concrete are to be made using a ratio of 1 : 1.5 : 3 for cement, sand, and gravel, what is the amount of cement needed?",
+      "ms": {
+        "draft": 19600,
+        "critique": 6774,
+        "solver": 2280,
+        "form": 0,
+        "translation": 34949
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In a school, food provisions are available for 80 students for 15 days. If 20 more students join, for how many days will the provisions last?",
+      "ms": {
+        "draft": 4003,
+        "critique": 6932,
+        "solver": 2848,
+        "form": 0,
+        "translation": 41077
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a pump fills 2 tanks in 6 hours, how many hours will it take to fill 5 tanks?",
+      "ms": {
+        "draft": 5292,
+        "critique": 7613,
+        "solver": 1796,
+        "form": 0,
+        "translation": 50532
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If 5 workers can move 4500 bricks in a day, how many workers are needed to move 18000 bricks in a day?",
+      "ms": {
+        "draft": 15634,
+        "critique": 8195,
+        "solver": 16431,
+        "form": 0,
+        "translation": 53313
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If 2 pumps can fill a tank in 18 hours, how much time will it take to fill the tank if we add 2 more pumps of the same kind?",
+      "ms": {
+        "draft": 4003,
+        "critique": 7020,
+        "solver": 2043,
+        "form": 0,
+        "translation": 35726
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a paint mixture, the ratio of red to blue to white is 2 : 3 : 5. If Yasmin has 10 liters of white paint, how many liters of red paint should she add to maintain the same shade?",
+      "ms": {
+        "draft": 5004,
+        "critique": 6737,
+        "solver": 1104,
+        "form": 0,
+        "translation": 56213
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A recipe requires flour, sugar, and butter in the ratio 4 : 2 : 1. If 200 grams of flour is used, how much sugar is used?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "In a class of 60 students, the ratio of students who like science to those who like history is 3 : 2. How many students like science?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A sum of money is divided between A and B in the ratio 3 : 4. If B gets ₹280, how much does A get?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "If a quantity is divided into parts in the ratio p : q : r : s, what is the formula for the first part?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If two ratios are proportional, which condition must be satisfied?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 8 : 4 : 2 : 1 is proportional to 4 : 2 : 1 : 0.5, what is the relationship between the two ratios?",
+      "reason": "the solver picked option 1 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "On a map with a scale of 1 : 60,00,000, a distance of 1 cm on the map represents how many kilometers in reality?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A spice mix has the ratio of coriander seeds to red chillies to toor dal to fenugreek seeds as 8 : 4 : 2 : 1. If Puneet has 2 red chillies, how many spoons of coriander seeds should he use to maintain the same taste?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If the ratio of cement to sand to gravel is 1 : 1.5 : 3 and we have 3 bags of cement, how many bags of sand are needed?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If 200 ml of a solution is to be divided in the ratio 3 : 2 : 5, how much of the solution will be in the largest part?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct calculation, but misreads the question as asking for…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is true about inverse proportion?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the given table, the speed and time taken to travel a fixed distance are given. Which of the following is the constant product of speed and time?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If 2 pumps can fill a tank in 18 hours, how much time will it take to fill the tank if we add 2 more pumps of the same kind?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In a class, the ratio of boys to girls is 5 : 3. If there are 40 boys, how many girls are there?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Thinking that the ratio 5:3 means 5 parts boys and 3 parts g…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following pairs of quantities are in inverse proportion?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A car takes 2 hours to reach a destination at 60 km/h. How long will it take if it travels at 80 km/h?",
+      "reason": "options are in more than one unit (hours, hour); options are written to different precisions (0 and 1 and 2 decimals)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "A tank has enough water for 20 families for 6 days. If 10 more families move in, how long will the water last?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "In a triangle, if the angles are in the ratio 1 : 3 : 5, what is the measure of the largest angle?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a car takes 2 hours to reach a destination, travelling at a speed of 60 km/h, how long will the car take if it travels at a speed of 80 km/h?",
+      "reason": "options are in more than one unit (hours, hour); options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A small pump can fill a tank in 3 hours, while a large pump can fill the same tank in 2 hours. If both pumps are used together, how long will the tank take to fill?",
+      "reason": "options are in more than one unit (hours, hour); options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the most common mode of transport according to the pie chart?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If 20 workers take 4 days to complete laying a road, how many days will 10 workers take to complete the same work?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If two quantities x and y vary in inverse proportion, what is the relation between them?",
+      "reason": "options 1 and 3 say the same thing (\"x + y = k where k is a constant\" / \"x - y = k where k is a constant\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If a quantity x is divided in the ratio a : b : c, what is the formula for the part corresponding to a?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If Ram takes 1 hour to cut a given quantity of vegetables and Shyam takes 1.5 hours to cut the same quantity, how much time will they take to cut the vegetables if they work together?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "If two ratios a : b and c : d are proportional, which of the following must be true?",
+      "reason": "options 0 and 1 say the same thing (\"a + d = b + c\" / \"a × b = c × d\"); options 0 and 2 are the same (\"a + d = b + c\"); options 0 and 3 say the same thing (\"a + d = b + c\" / \"3: a + b = c + d\"); options 1 and 2 say the same thing (\"a × b = c × d\" / \"a × d = b × c\"); options 1 and 3 say the same thing (\"a × b = c × d\" / \"3: a + b = c + d\"); options 2 and 3 say the same thing (\"a × d = b × c\" / \"3: a + b = c + d\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "If 24 pencils cost ₹120, how much will 20 such pencils cost?",
+      "reason": "near-duplicate of batch item \"If 24 pencils cost ₹120, how much will 20 such pen…\" (cosine 1.000 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,841 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T03:06:39.778Z",
+  "finishedAt": "2026-11-02T03:14:47.604Z",
+  "seconds": 488,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash-II",
+    "bookCode": "gegp2",
+    "document": "ncert/7/mathematics/gegp207.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 15 — Finding the Unknown",
+    "edition": "2025 edition (the site's Last-Modified)",
+    "chunks": 17,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 22 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n9. Draw neat and clean figures wherever required. Take 𝜋 = 22 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n7. B 210 = 21 + (𝑛 − 1)21 ⇒ 𝑛 = 10\n(B) 𝟏𝟎 𝒕𝒉"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 184038,
+      "in": 45,
+      "out": 43,
+      "rejects": 2,
+      "promptTokens": 47910,
+      "completionTokens": 11057
+    },
+    "critique": {
+      "calls": 56,
+      "ms": 351408,
+      "in": 43,
+      "out": 28,
+      "rejects": 15,
+      "promptTokens": 25686,
+      "completionTokens": 9867
+    },
+    "solver": {
+      "calls": 238,
+      "ms": 131118,
+      "in": 28,
+      "out": 15,
+      "rejects": 13,
+      "promptTokens": 56044,
+      "completionTokens": 2983
+    },
+    "form": {
+      "calls": 5,
+      "ms": 34313,
+      "in": 15,
+      "out": 5,
+      "rejects": 10,
+      "promptTokens": 3100,
+      "completionTokens": 965
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 50,
+      "ms": 9204,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 168406,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 11367,
+      "completionTokens": 5392
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the main idea of the passage?",
+      "ms": {
+        "draft": 3810,
+        "critique": 4841
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the equation 4 + 2y = 16, what is the value of y?",
+      "ms": {
+        "draft": 3810,
+        "critique": 4424,
+        "solver": 1197
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 5x - 4 = 7, what is the value of x?",
+      "ms": {
+        "draft": 3810,
+        "critique": 8049
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the equation 2n + 1 = 99 is solved, what is the value of n?",
+      "ms": {
+        "draft": 3810,
+        "critique": 5367,
+        "solver": 12824,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the weight of one fried egg is e, and the equation is 2e = 6, what is the value of e?",
+      "ms": {
+        "draft": 3810,
+        "critique": 7741
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the value of y in the equation 11y + (–5) = 61?",
+      "ms": {
+        "draft": 3533,
+        "critique": 5608,
+        "solver": 1764
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How can the equation 15 + 8 = 23 be used to explain the properties of equations?",
+      "ms": {
+        "draft": 3810,
+        "critique": 7979,
+        "solver": 16981,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the value of m in the equation 4(m + 6) – 8 = 2m – 4?",
+      "ms": {
+        "draft": 3533,
+        "critique": 7502
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the expression that gives the number of tiles needed to make an arrangement in Step k?",
+      "ms": {
+        "draft": 3749,
+        "critique": 5956,
+        "solver": 1680,
+        "form": 2556
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total number of people that can attend the party, including Madhubanti and her family members, if she buys 18 plates of snacks?",
+      "ms": {
+        "draft": 3749,
+        "critique": 6706,
+        "solver": 1393,
+        "form": 4588
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If Akash’s final answer was 24, what was the starting number he thought of, based on the steps described in the passage?",
+      "ms": {
+        "draft": 3749,
+        "critique": 7051,
+        "solver": 1616
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the total number of marbles between Ramesh and Suresh is 60, and Ramesh has 30 more marbles than Suresh, what is the number of marbles Suresh has?",
+      "ms": {
+        "draft": 3749,
+        "critique": 6607,
+        "solver": 1353
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "After how many months will Jahnavi and Sunita have the same amount of money, given their respective savings patterns?",
+      "ms": {
+        "draft": 3749,
+        "critique": 7276,
+        "solver": 13124
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following equations can be solved without performing any calculations?",
+      "ms": {
+        "draft": 4046,
+        "critique": 6472,
+        "solver": 856
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 100x + 75 = 250, what is the value of x?",
+      "ms": {
+        "draft": 4046,
+        "critique": 8577
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best describes the concept of bījagaṇita as mentioned in the passage?",
+      "ms": {
+        "draft": 4046,
+        "critique": 6632,
+        "solver": 1072,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of an equation whose solution is y = 5?",
+      "ms": {
+        "draft": 4046,
+        "critique": 7154,
+        "solver": 15388
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the price of one horse in the example given in the passage?",
+      "ms": {
+        "draft": 3289,
+        "critique": 5949,
+        "solver": 1058
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total number of vertical lines in the given figure?",
+      "ms": {
+        "draft": 11004,
+        "critique": 4407,
+        "solver": 704,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a symbol used to denote a line segment in geometry?",
+      "ms": {
+        "draft": 4508,
+        "critique": 6400
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, what is the measure of angle AOB if the measure of angle AOC is 120 degrees and angle BOC is 30 degrees?",
+      "ms": {
+        "draft": 4508,
+        "critique": 7335
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe a line that starts at a point and extends infinitely in one direction?",
+      "ms": {
+        "draft": 4508,
+        "critique": 5543,
+        "solver": 10581
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a line segment is 5 cm long and is divided into 5 equal parts, what is the length of each part?",
+      "ms": {
+        "draft": 4508,
+        "critique": 5980,
+        "solver": 12857
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A rectangle has a length of 10 cm and a width of 6 cm. A square is drawn inside the rectangle such that it shares one of its sides with the rectangle. If the area of the square is 36 cm², what is the length of the side of the square?",
+      "ms": {
+        "draft": 4508,
+        "critique": 6369
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A triangle has angles in the ratio 2:3:4. What is the measure of the largest angle?",
+      "ms": {
+        "draft": 4508,
+        "critique": 6693
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the meaning of 'Bījagaṇita' in mathematics?",
+      "ms": {
+        "draft": 11417,
+        "critique": 6547,
+        "solver": 1290,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the equation 650m + 4000 = 500m + 5050, what is the value of m?",
+      "ms": {
+        "draft": 11417,
+        "critique": 9510
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A taxi driver charges a fixed fee of ₹800 per day plus ₹20 for each kilometer traveled. If the total cost for a taxi ride is ₹2200, how many kilometers were traveled?",
+      "ms": {
+        "draft": 11417,
+        "critique": 6856
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 5x + 4 = 3x + 8, what is the value of x?",
+      "ms": {
+        "draft": 11417,
+        "critique": 5635,
+        "solver": 16348
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the price of one horse is ₹x, and the equation given is 300 + 6x = 10x – 100, what is the value of x?",
+      "ms": {
+        "draft": 11417,
+        "critique": 6594,
+        "solver": 17156,
+        "form": 4414
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an equation whose solution is y = 5?",
+      "ms": {
+        "draft": 3742,
+        "critique": 5877,
+        "solver": 1912,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In the equation 3y = 15, what is the value of y?",
+      "ms": {
+        "draft": 3742,
+        "critique": 6140
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following operations will change the equation 2y = 60 to y = 30?",
+      "ms": {
+        "draft": 3742,
+        "critique": 6717
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number is increased by 9 and the result is equal to the number itself, what is the number?",
+      "ms": {
+        "draft": 3742,
+        "critique": 6910
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The sum of two numbers is 76. One number is three times the other number. What are the numbers?",
+      "ms": {
+        "draft": 11417,
+        "critique": 6926,
+        "solver": 15205
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the general expression for the number of tiles needed to make an arrangement in Step k?",
+      "ms": {
+        "draft": 6051,
+        "critique": 6825
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the weight of a brick is 1 kg more than half its weight, what is the weight of the brick?",
+      "ms": {
+        "draft": 3742,
+        "critique": 6281,
+        "solver": 11598,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the value of the expression 23 × 41 × 11 × 8 if it is known that 23 × 41 × 11 × 8 × 7 = 5,80,888?",
+      "ms": {
+        "draft": 7874,
+        "critique": 6944,
+        "solver": 7385
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the branch of mathematics that uses letter symbols to solve mathematical problems?",
+      "ms": {
+        "draft": 3289,
+        "critique": 5606,
+        "solver": 1431,
+        "form": 1991,
+        "translation": 23670
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the value of x in the equation 5x – 4 = 7?",
+      "ms": {
+        "draft": 3533,
+        "critique": 7281,
+        "solver": 15141,
+        "form": 0,
+        "translation": 29076
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following operations is used to solve the equation 3y = 15?",
+      "ms": {
+        "draft": 4046,
+        "critique": 5687,
+        "solver": 1621,
+        "form": 0,
+        "translation": 31033
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Ranjana creates a sequence of arrangements with square tiles as shown below. How many tiles will be used in the 10th step of the sequence?",
+      "ms": {
+        "draft": 3533,
+        "critique": 6527,
+        "solver": 1651,
+        "form": 0,
+        "translation": 40384
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the equation 11y + (–5) = 61, what is the correct step to isolate the term with the variable y?",
+      "ms": {
+        "draft": 3533,
+        "critique": 5765,
+        "solver": 11402,
+        "form": 0,
+        "translation": 41145
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the value of u in the equation = 6?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main idea of the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the equation 4 + 2y = 16, what is the value of y?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If 5x - 4 = 7, what is the value of x?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the equation 2n + 1 = 99 is solved, what is the value of n?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"99-1/2\" = 98.5, but the key says 49"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the weight of one fried egg is e, and the equation is 2e = 6, what is the value of e?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the value of y in the equation 11y + (–5) = 61?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "How can the equation 15 + 8 = 23 be used to explain the properties of equations?",
+      "reason": "options 1 and 3 say the same thing (\"By showing that multiplying the same number by both sides preserves equality.\" / \"By showing that dividing the same number by both sides preserves equality.\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the value of m in the equation 4(m + 6) – 8 = 2m – 4?",
+      "reason": "the critic finds option 3 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the expression that gives the number of tiles needed to make an arrangement in Step k?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Does not recognize the correct expression from the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the total number of people that can attend the party, including Madhubanti and her family members, if she buys 18 plates of snacks?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Does not read the passage carefully…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If Akash’s final answer was 24, what was the starting number he thought of, based on the steps described in the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the total number of marbles between Ramesh and Suresh is 60, and Ramesh has 30 more marbles than Suresh, what is the number of marbles Suresh has?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "After how many months will Jahnavi and Sunita have the same amount of money, given their respective savings patterns?",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following equations can be solved without performing any calculations?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If 100x + 75 = 250, what is the value of x?",
+      "reason": "the critic finds option 0 correct, the key is 2; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best describes the concept of bījagaṇita as mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is an example of an equation whose solution is y = 5?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the price of one horse in the example given in the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the total number of vertical lines in the given figure?",
+      "reason": "checkExpr \"16\" is a bare literal"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the cost incurred for the snacks if Madhubanti invites f friends to her party?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a symbol used to denote a line segment in geometry?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the given figure, what is the measure of angle AOB if the measure of angle AOC is 120 degrees and angle BOC is 30 degrees?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the term used to describe a line that starts at a point and extends infinitely in one direction?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a line segment is 5 cm long and is divided into 5 equal parts, what is the length of each part?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A rectangle has a length of 10 cm and a width of 6 cm. A square is drawn inside the rectangle such that it shares one of its sides with the rectangle. If the area of the square is 36 cm², what is the length of the side of the square?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A triangle has angles in the ratio 2:3:4. What is the measure of the largest angle?",
+      "reason": "the critic finds option 2 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the meaning of 'Bījagaṇita' in mathematics?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misinterprets the passage's description of Bījagaṇita as num…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the equation 650m + 4000 = 500m + 5050, what is the value of m?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A taxi driver charges a fixed fee of ₹800 per day plus ₹20 for each kilometer traveled. If the total cost for a taxi ride is ₹2200, how many kilometers were traveled?",
+      "reason": "the critic finds option 3 correct, the key is 2"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 5x + 4 = 3x + 8, what is the value of x?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the price of one horse is ₹x, and the equation given is 300 + 6x = 10x – 100, what is the value of x?",
+      "reason": "checkExpr \"100\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an equation whose solution is y = 5?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"thinks the equation is solved by subtracting 5 from both sid…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "In the equation 3y = 15, what is the value of y?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following operations will change the equation 2y = 60 to y = 30?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a number is increased by 9 and the result is equal to the number itself, what is the number?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The sum of two numbers is 76. One number is three times the other number. What are the numbers?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the general expression for the number of tiles needed to make an arrangement in Step k?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the weight of a brick is 1 kg more than half its weight, what is the weight of the brick?",
+      "reason": "options 2 and 3 are the same (\"3 kg\"); options are written to different precisions (0 and 1 decimals); options 2 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the value of the expression 23 × 41 × 11 × 8 if it is known that 23 × 41 × 11 × 8 × 7 = 5,80,888?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

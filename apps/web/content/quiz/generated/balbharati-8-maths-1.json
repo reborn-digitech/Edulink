@@ -21,50 +21,50 @@
   "board": "BALBHARATI",
   "book": "८ वी गणित इंग्रजी",
   "edition": "First Edition 2018",
-  "generatedAt": "2026-11-01T00:02:57.615Z",
+  "generatedAt": "2026-11-02T07:00:12.003Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 3,
-      "stem": "Which of the following numbers lies between 1 and 2 on the number line?",
+      "difficulty": 2,
+      "stem": "Which of the following is a correct representation of a rational number?",
       "choices": [
-        "1.2",
-        "3.5",
-        "0.5",
-        "-1.5"
+        "7/0",
+        "-5/3",
+        "√2/1",
+        "π/2"
       ],
-      "answerIndex": 0,
-      "solution": "On the number line, 1.2 lies between 1 and 2. The other options are either less than 1 or greater than 2, so they do not lie between 1 and 2.",
+      "answerIndex": 1,
+      "solution": "The number -5/3 is a rational number because it can be expressed in the form p/q where p and q are integers and q ≠ 0. The other options are not rational numbers as they either have a zero denominator or involve irrational numbers.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सी संख्या संख्या रेखा पर 1 और 2 के बीच में है?",
+          "stem": "निम्नलिखित में से कौन-सा एक परिमेय संख्या का सही प्रतिनिधित्व है?",
           "choices": [
-            "1.2",
-            "3.5",
-            "0.5",
-            "-1.5"
+            "7/0",
+            "-5/3",
+            "√2/1",
+            "π/2"
           ],
-          "solution": "संख्या रेखा पर 1.2, 1 और 2 के बीच में है। अन्य विकल्प या तो 1 से कम हैं या 2 से अधिक हैं, इसलिए वे 1 और 2 के बीच में नहीं हैं।",
+          "solution": "संख्या -5/3 एक परिमेय संख्या है क्योंकि इसे p/q के रूप में व्यक्त किया जा सकता है जहाँ p और q पूर्णांक हैं और q ≠ 0। अन्य विकल्प परिमेय संख्याएँ नहीं हैं क्योंकि ये या तो शून्य हर वाली संख्या हैं या अपरिमेय संख्याओं के साथ आती हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi mathematical terminology.",
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता संख्या संख्या रेषेवर 1 आणि 2 च्या मध्ये आहे?",
+          "stem": "खालीलपैकी कोणते एक अपरिमेय संख्येचे योग्य प्रतिनिधित्व आहे?",
           "choices": [
-            "1.2",
-            "3.5",
-            "0.5",
-            "-1.5"
+            "7/0",
+            "-5/3",
+            "√2/1",
+            "π/2"
           ],
-          "solution": "संख्या रेषेवर, 1.2 च्या 1 आणि 2 च्या मध्ये आहे. इतर विकल्प 1 पेक्षा कमी किंवा 2 पेक्षा जास्त आहेत, म्हणून ते 1 आणि 2 च्या मध्ये नाहीत.",
+          "solution": "संख्या -5/3 अपरिमेय संख्या आहे कारण ती p/q च्या रूपात व्यक्त केली जाऊ शकते जेथे p आणि q पूर्णांक असतात आणि q ≠ 0. इतर विकल्प परिमेय संख्या नाहीत कारण त्यांमध्ये शून्य छेद असतो किंवा अपरिमेय संख्यांचा समावेश असतो.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
+          "critique": "The stem and solution have opposite meaning (rational vs. irrational). The correct answer is (2), but the key says (1).",
+          "flag": "translation critique: meaning changed"
         }
       },
       "imageKey": null,
@@ -72,20 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Denominator is zero, which is undefined",
         null,
-        "Chooses a number that is greater than 2",
-        "Chooses a number that is less than 1",
-        "Chooses a negative number"
+        "Involves an irrational number in the numerator",
+        "Involves an irrational number in the numerator"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": null,
-      "critique": "The question is straightforward and the solution is correct. Option 0 (1.2) is indeed between 1 and 2. The other options are correctly identified as not lying between 1 and 2.",
+      "critique": "The question is well-constructed. The correct answer is -5/3, which is a rational number. The other options are correctly identified as invalid due to division by zero or inclusion of irrational numbers.",
       "sources": [
         {
           "document": "balbharati/8/mathematics/803020004.pdf",
@@ -119,7 +119,330 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T00:02:57.615Z",
+      "generatedAt": "2026-11-02T07:00:12.003Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a correct representation of a rational number on a number line?",
+      "choices": [
+        "Dividing the unit into 3 equal parts and marking the 2nd point",
+        "Dividing the unit into 2 equal parts and marking the 1st point",
+        "Dividing the unit into 4 equal parts and marking the 5th point",
+        "Dividing the unit into 5 equal parts and marking the 7th point"
+      ],
+      "answerIndex": 0,
+      "solution": "To represent a rational number like 2/3 on a number line, the unit should be divided into 3 equal parts, and the 2nd point should be marked. This is a correct representation of a rational number on a number line. The other options involve incorrect divisions or markings.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक संख्या रेखा पर एक परिमेय संख्या के सही प्रतिनिधित्व का उदाहरण है?",
+          "choices": [
+            "इकाई को 3 बराबर भागों में विभाजित करके दूसरे बिंदु को चिह्नित करना",
+            "इकाई को 2 बराबर भागों में विभाजित करके पहले बिंदु को चिह्नित करना",
+            "इकाई को 4 बराबर भागों में विभाजित करके पांचवें बिंदु को चिह्नित करना",
+            "इकाई को 5 बराबर भागों में विभाजित करके सातवें बिंदु को चिह्नित करना"
+          ],
+          "solution": "2/3 जैसी परिमेय संख्या को संख्या रेखा पर दर्शाने के लिए, इकाई को 3 बराबर भागों में विभाजित करना चाहिए और दूसरे बिंदु को चिह्नित करना चाहिए। यह संख्या रेखा पर एक परिमेय संख्या के सही प्रतिनिधित्व का एक सही उदाहरण है। अन्य विकल्प गलत विभाजन या चिह्नित करने के कारण गलत हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक अपरिमेय संख्या नंबर रेषेवर योग्य प्रतिनिधित्व आहे?",
+          "choices": [
+            "एकक तीन समान भागांमध्ये विभाजित करून दुसरे बिंदू निर्दिष्ट करणे",
+            "एकक दोन समान भागांमध्ये विभाजित करून पहिले बिंदू निर्दिष्ट करणे",
+            "एकक चार समान भागांमध्ये विभाजित करून पाचवे बिंदू निर्दिष्ट करणे",
+            "एकक पाच समान भागांमध्ये विभाजित करून सातवे बिंदू निर्दिष्ट करणे"
+          ],
+          "solution": "2/3 अशा अपरिमेय संख्या नंबर रेषेवर दाखवण्यासाठी, एकक तीन समान भागांमध्ये विभाजित करावे आणि दुसरे बिंदू निर्दिष्ट करावे. हे नंबर रेषेवर अपरिमेय संख्येचे योग्य प्रतिनिधित्व आहे. इतर विकल्पांमध्ये अयोग्य विभाजन किंवा निर्दिष्ट करण्याची चूक आहे.",
+          "imageAlt": null,
+          "critique": "The question has a major error: 'अपरिमेय संख्या' (irrational number) was translated instead of 'परिमेय संख्या' (rational number). This changes the meaning completely. The solution also incorrectly refers to 2/3 as an irrational number, which is a fundamental mathematical error.",
+          "flag": "translation critique: meaning changed; terms not the board's"
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the numerator with the number of divisions rather than the mark",
+        "Confuses numerator and denominator",
+        "Confuses numerator and denominator with the number of divisions, 'Confuses numerator and denominator with the number of divisions, '"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 0, as dividing the unit into 3 equal parts and marking the 2nd point correctly represents 2/3. The other options either mark points beyond the unit or misinterpret the relationship between numerator and denominator.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 8,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "1. Rational and Irrational numbers",
+            "Part 1"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 9,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "1. Rational and Irrational numbers",
+            "Part 1"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 10,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "1. Rational and Irrational numbers",
+            "Part 1"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T07:00:12.003Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the value of the expression 1/2 + 1/3?",
+      "choices": [
+        "5/6",
+        "2/5",
+        "3/5",
+        "1/6"
+      ],
+      "answerIndex": 0,
+      "solution": "To add 1/2 and 1/3, we find the common denominator, which is 6. Converting both fractions, we get 3/6 + 2/6 = 5/6. The other options are incorrect due to miscalculations.",
+      "checkExpr": "1/2 + 1/3",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक्सप्रेशन 1/2 + 1/3 का मान क्या है?",
+          "choices": [
+            "5/6",
+            "2/5",
+            "3/5",
+            "1/6"
+          ],
+          "solution": "1/2 और 1/3 को जोड़ने के लिए, हम सामान्य हर ढूंढते हैं, जो 6 है। दोनों भिन्नों को परिवर्तित करने पर, हमें 3/6 + 2/6 = 5/6 मिलता है। अन्य विकल्प गणना त्रुटियों के कारण गलत हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "1/2 + 1/3 चे मूल्य किती आहे?",
+          "choices": [
+            "5/6",
+            "2/5",
+            "3/5",
+            "1/6"
+          ],
+          "solution": "1/2 आणि 1/3 जोडण्यासाठी, आम्ही सामान्य हर्वे शोधतो, जो 6 आहे. दोन्ही अपूर्णांक रूपांतरित करून, आम्ही 3/6 + 2/6 = 5/6 मिळतो. इतर विकल्प चूकीच्या गणनेमुळे अयोग्य आहेत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Adding numerators and denominators separately instead of finding a common denominator",
+        "Adds the numerators and denominators separately",
+        "Adds the numerators and denominators separately', "
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 5/6, and the solution is sound. The distractors are all based on the common misconception of adding numerators and denominators separately, which is a valid and realistic error for students.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 8,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "1. Rational and Irrational numbers",
+            "Part 1"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 9,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "1. Rational and Irrational numbers",
+            "Part 1"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 10,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "1. Rational and Irrational numbers",
+            "Part 1"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T07:00:12.003Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following is an example of an irrational number that can be shown on a number line?",
+      "choices": [
+        "√2",
+        "1: 0.333... (repeating)",
+        "2: 0.5",
+        "3: 2/7"
+      ],
+      "answerIndex": 0,
+      "solution": "The number √2 is an irrational number that can be shown on a number line. It is a non-terminating and non-repeating decimal. The other options are rational numbers, which can also be shown on a number line, but they are not irrational.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक अपरिमेय संख्या का उदाहरण है जिसे संख्या रेखा पर दर्शाया जा सकता है?",
+          "choices": [
+            "√2",
+            "0.333... (पुनरावर्ती)",
+            "0.5",
+            "2/7"
+          ],
+          "solution": "संख्या √2 एक अपरिमेय संख्या है जिसे संख्या रेखा पर दर्शाया जा सकता है। यह एक असांत आवर्ती दशमलव है। अन्य विकल्प परिमेय संख्याएं हैं, जिन्हें संख्या रेखा पर भी दर्शाया जा सकता है, लेकिन वे अपरिमेय नहीं हैं।",
+          "imageAlt": "संख्या रेखा -2 से 2 तक जिस पर बिंदु √2 लेबल किया गया है",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. The term 'अपरिमेय' (irrational) and 'परिमेय' (rational) are standard mathematical terms in Hindi textbooks. The solution correctly identifies √2 as the irrational number, and the other options remain clearly rational.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता अपरिमेय संख्येचा उदाहरण आहे जी संख्या रेषेवर दाखवता येऊ शकते?",
+          "choices": [
+            "√2",
+            "0.333... (पुनरावर्तित)",
+            "0.5",
+            "2/7"
+          ],
+          "solution": "संख्या √2 अपरिमेय संख्या आहे जी संख्या रेषेवर दाखवता येऊ शकते. ही एक अंततः नसलेली आणि पुनरावर्तित नसलेली दशांश आहे. इतर विकल्प परिमेय संख्या आहेत, ज्या संख्या रेषेवर दाखवता येऊ शकतात, परंतु त्या अपरिमेय नाहीत.",
+          "imageAlt": "संख्या रेषा -2 ते 2 आहे आणि एक बिंदू √2 लेबल केलेला आहे",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A number line from -2 to 2 with a point labeled √2",
+      "figure": {
+        "kind": "numberline",
+        "spec": {
+          "min": -2,
+          "max": 2,
+          "step": 1,
+          "points": [
+            {
+              "value": 1.4142,
+              "label": "sqrt2",
+              "open": false
+            }
+          ],
+          "intervals": [
+            {
+              "from": -2,
+              "to": 2,
+              "closedFrom": true,
+              "closedTo": true
+            }
+          ]
+        },
+        "labels": {
+          "sqrt2": {
+            "en": "√2",
+            "hi": "√2",
+            "mr": "√2"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        null,
+        "students often confuse repeating decimals with irrational numbers",
+        "Student thinks all decimals are irrational because they are not whole numbers",
+        "Student thinks all fractions are rational and forgets that irrational numbers cannot be expressed as fractions."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. The correct answer is √2, an irrational number. The other options are rational, and the author's explanations for the distractors align with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 8,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "1. Rational and Irrational numbers",
+            "Part 1"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 9,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "1. Rational and Irrational numbers",
+            "Part 1"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 10,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "1. Rational and Irrational numbers",
+            "Part 1"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T07:00:12.003Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

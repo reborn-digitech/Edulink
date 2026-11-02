@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-31T02:18:13.582Z",
+  "generatedAt": "2026-11-01T14:46:01.400Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "Which of the following is described as a sequence of numbers that can be arranged in a triangle?",
+      "difficulty": 2,
+      "stem": "Which of the following is an example of an odd number sequence?",
       "choices": [
-        "Triangular numbers",
-        "Square numbers",
-        "Cubes",
-        "Powers of 2"
+        "1, 2, 3, 4, 5",
+        "1, 3, 5, 7, 9",
+        "2: 2, 3, 5, 7, 11",
+        "3: 1, 2, 4, 8, 16"
       ],
-      "answerIndex": 0,
-      "solution": "Triangular numbers are a sequence that can be arranged in a triangular pattern, with each row containing one more element than the previous. Square numbers form a square arrangement, cubes form a three-dimensional cube, and powers of 2 do not form any of these geometric patterns.",
+      "answerIndex": 1,
+      "solution": "The sequence 1, 3, 5, 7, 9 represents odd numbers because they are not divisible by 2. The other options represent counting numbers, even numbers, and square numbers respectively.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सी संख्याओं के अनुक्रम को एक त्रिभुज में व्यवस्थित किया जा सकता है?",
+          "stem": "निम्नलिखित में से कौन-सा विषम संख्या अनुक्रम का उदाहरण है?",
           "choices": [
-            "त्रिभुजाकार संख्याएं",
-            "वर्ग संख्याएं",
-            "घन",
-            "2 की घातें"
+            "1, 2, 3, 4, 5",
+            "1, 3, 5, 7, 9",
+            "2, 3, 5, 7, 11",
+            "1, 2, 4, 8, 16"
           ],
-          "solution": "त्रिभुजाकार संख्याएं एक अनुक्रम होती हैं जिन्हें एक त्रिभुजाकार पैटर्न में व्यवस्थित किया जा सकता है, जिसमें प्रत्येक पंक्ति में पिछले के एक अधिक तत्व होते हैं। वर्ग संख्याएं वर्ग व्यवस्था बनाती हैं, घन त्रि-आयामी घन बनाते हैं, और 2 की घातें कोई भी इन ज्यामितीय पैटर्न नहीं बनाती हैं।",
+          "solution": "अनुक्रम 1, 3, 5, 7, 9 विषम संख्याओं का प्रतिनिधित्व करता है क्योंकि ये 2 से विभाज्य नहीं हैं। अन्य विकल्प क्रमशः गणना संख्याएँ, सम संख्याएँ और वर्ग संख्याएँ का प्रतिनिधित्व करते हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते संख्यांच्या अनुक्रमाचे वर्णन त्रिकोणात व्यवस्थित करता येणारा असतो?",
+          "stem": "खालीलपैकी कोणते विषम संख्या अनुक्रमाचे उदाहरण आहे?",
           "choices": [
-            "त्रिकोणी संख्या",
-            "चौरस संख्या",
-            "घन",
-            "२ ची घात"
+            "1, 2, 3, 4, 5",
+            "1, 3, 5, 7, 9",
+            "2, 3, 5, 7, 11",
+            "1, 2, 4, 8, 16"
           ],
-          "solution": "त्रिकोणी संख्या हा अनुक्रम असतो जो त्रिकोणाकृती व्यवस्थित करता येतो, जेथे प्रत्येक ओळीत आधीच्या ओळीपेक्षा एक अधिक घटक असतो. चौरस संख्या चौरस व्यवस्थित करतात, घन त्रिमापीय घन बनवतात आणि २ च्या घात या कोणत्याही भौमितिक आकृती बनवत नाहीत.",
+          "solution": "1, 3, 5, 7, 9 अनुक्रम विषम संख्यांचा अनुक्रम आहे कारण ते 2 ने भाग जात नाहीत. इतर विकल्प क्रमांकन संख्या, सम संख्यांचा अनुक्रम आणि वर्ग संख्यांचा अनुक्रम दर्शवितात.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology used.",
           "flag": null
         }
       },
@@ -72,20 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Confuses odd numbers with counting numbers.",
         null,
-        "Refers to square numbers",
-        "Refers to cubes",
-        "Refers to powers of 2"
+        "Believes prime numbers are odd number sequences",
+        "Believes exponential growth is an odd number sequence"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": null,
-      "critique": "The question is clear and the correct answer is 0 (Triangular numbers). The other options are correctly identified as incorrect. The reasoning aligns with mathematical definitions.",
+      "critique": "The correct answer is 1, as it represents a sequence of odd numbers. The other options are incorrectly categorized by the author, but the reasons given for the misconceptions are plausible for students at this level.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp101.pdf",
@@ -128,49 +128,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T02:18:13.582Z",
+      "generatedAt": "2026-11-01T14:46:01.400Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "What is the 10th term of the sequence 1, 4, 9, 16, 25, ...?",
+      "stem": "If the number of sides in a regular polygon is 10, what is the name of the polygon?",
       "choices": [
-        "81",
-        "100",
-        "121",
-        "144"
+        "Decagon",
+        "Nonagon",
+        "Octagon",
+        "Heptagon"
       ],
-      "answerIndex": 1,
-      "solution": "This is a square number sequence where each term is the square of a counting number. The 10th term is 10² = 100. 81 is 9², 121 is 11², and 144 is 12², which are incorrect terms in the sequence.",
+      "answerIndex": 0,
+      "solution": "A regular polygon with 10 sides is called a decagon. Nonagon refers to a 9-sided polygon, octagon to an 8-sided one, and heptagon to a 7-sided one. The naming of polygons is based on the number of their sides, making decagon the correct term for a 10-sided polygon.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "अनुक्रम 1, 4, 9, 16, 25, ... का 10वां पद क्या है?",
+          "stem": "यदि एक नियमित बहुभुज में भुजाओं की संख्या 10 है, तो बहुभुज का नाम क्या है?",
           "choices": [
-            "81",
-            "100",
-            "121",
-            "144"
+            "दशभुज",
+            "नौभुज",
+            "अष्टभुज",
+            "सप्तभुज"
           ],
-          "solution": "यह एक वर्ग संख्या अनुक्रम है जहां प्रत्येक पद एक गणना संख्या के वर्ग होता है। 10वां पद 10² = 100 है। 81 नौवें के वर्ग है, 121 ग्यारहवें के वर्ग है और 144 बारहवें के वर्ग है, जो अनुक्रम में गलत पद हैं।",
+          "solution": "10 भुजाओं वाले एक नियमित बहुभुज को दशभुज कहा जाता है। नौभुज का अर्थ 9 भुजाओं वाला बहुभुज होता है, अष्टभुज का अर्थ 8 भुजाओं वाला बहुभुज होता है, और सप्तभुज का अर्थ 7 भुजाओं वाला बहुभुज होता है। बहुभुज के नामकरण में भुजाओं की संख्या पर आधारित होता है, जिसके कारण 10 भुजाओं वाले बहुभुज के लिए दशभुज शब्द सही है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The Hindi translation accurately preserves the meaning, structure, and technical terms of the original English question. All options are correctly translated and maintain their original meaning. The correct answer remains in the same position (option 1).",
           "flag": null
         },
         "mr": {
-          "stem": "अनुक्रम 1, 4, 9, 16, 25, ... चा 10वा पद किती आहे?",
+          "stem": "जर एका नियमित बहुभुजाच्या बाजूंची संख्या 10 असेल, तर बहुभुजाचे नाव काय असेल?",
           "choices": [
-            "81",
-            "100",
-            "121",
-            "144"
+            "दशभुज",
+            "नवभुज",
+            "अष्टभुज",
+            "सप्तभुज"
           ],
-          "solution": "हा वर्ग संख्या अनुक्रम आहे जेथे प्रत्येक पद गणन संख्येचा वर्ग आहे. 10वा पद 10² = 100 आहे. 81 हा 9² आहे, 121 हा 11² आहे आणि 144 हा 12² आहे, जे अनुक्रमात चुकीचे पद आहेत.",
+          "solution": "10 बाजू असलेला नियमित बहुभुज दशभुज म्हणतात. नवभुज हा 9 बाजू असलेल्या बहुभुजाला म्हणतात, अष्टभुज हा 8 बाजू असलेल्या बहुभुजाला आणि सप्तभुज हा 7 बाजू असलेल्या बहुभुजाला म्हणतात. बहुभुजांचे नाव बाजूंच्या संख्येवर आधारित असते, ज्यामुळे 10 बाजू असलेल्या बहुभुजाला दशभुज हे नाव दिले जाते.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
+          "critique": "The Marathi translation accurately reflects the English original in meaning, structure, and terminology. All technical terms (दशभुज, नवभुज, अष्टभुज, सप्तभुज) are standard Marathi terms used in textbooks, and the solution clearly explains the correct answer with appropriate context.",
           "flag": null
         }
       },
@@ -179,10 +179,228 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "uses the 9th term",
         null,
-        "uses the 11th term",
-        "uses the 12th term"
+        "Refers to a 9-sided polygon, which is not the correct answer",
+        "Refers to an 8-sided polygon, which is not the correct answer",
+        "Refers to a 7-sided polygon, which is not the correct answer"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and the solution is correct. The correct answer is decagon for a 10-sided polygon, and the other options correspond to polygons with fewer sides, which is a common misconception.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 4,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.4 Relations among Number Sequences"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.5 Patterns in Shapes"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 6,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.6 Relation to Number Sequences"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 7,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.6 Relation to Number Sequences",
+            "S u m m a r y"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-01T14:46:01.400Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If the number of little squares in each shape of the sequence of Stacked Squares is 1, 4, 9, 16, ..., what is the next number in the sequence?",
+      "choices": [
+        "25",
+        "21",
+        "20",
+        "36"
+      ],
+      "answerIndex": 0,
+      "solution": "The sequence 1, 4, 9, 16 represents square numbers, where each term is the square of an integer (1², 2², 3², 4²). The next number is 5², which is 25. The other options are not perfect squares, so they do not fit the pattern.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अगर ढेर वाले वर्गों के अनुक्रम में प्रत्येक आकृति में छोटे वर्गों की संख्या 1, 4, 9, 16, ... है, तो अनुक्रम में अगली संख्या क्या है?",
+          "choices": [
+            "25",
+            "21",
+            "20",
+            "36"
+          ],
+          "solution": "अनुक्रम 1, 4, 9, 16 वर्ग संख्याएँ दर्शाता है, जहाँ प्रत्येक पद एक पूर्णांक के वर्ग होता है (1², 2², 3², 4²)। अगली संख्या 5² है, जो 25 है। अन्य विकल्प पूर्ण वर्ग नहीं हैं, इसलिए वे पैटर्न के अनुरूप नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "संख्या 1, 4, 9, 16, ... असलेल्या आकृतींच्या अनुक्रमातील लहान चौरसांची संख्या असल्यास, अनुक्रमातील आगामी संख्या काय असेल?",
+          "choices": [
+            "25",
+            "21",
+            "20",
+            "36"
+          ],
+          "solution": "अनुक्रम 1, 4, 9, 16 हे वर्ग संख्या दर्शवितात, जेथे प्रत्येक पद पूर्णांकाचा वर्ग असतो (1², 2², 3², 4²). आगामी संख्या 5² असेल, जी 25 आहे. इतर विकल्प पूर्ण वर्ग नसल्याने ते आकृतीच्या पॅटर्नला अनुरूप नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the sequence with triangular numbers or additive patterns",
+        "Believes the pattern is adding consecutive even numbers instead of squares",
+        "Confuses square numbers with consecutive even numbers"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The sequence is clearly the square numbers (1², 2², 3², 4², ...), so the next number is 5² = 25. The author's reasoning is sound and matches the correct solution.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 4,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.4 Relations among Number Sequences"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.5 Patterns in Shapes"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 6,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.6 Relation to Number Sequences"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 7,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.6 Relation to Number Sequences",
+            "S u m m a r y"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-01T14:46:01.400Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If you add up the numbers 1, 2, 3, ..., 10, what is the result?",
+      "choices": [
+        "50",
+        "55",
+        "60",
+        "65"
+      ],
+      "answerIndex": 1,
+      "solution": "The sum of the numbers from 1 to 10 can be calculated using the formula for the sum of an arithmetic series, n(n + 1)/2. For n = 10, this gives 10 * 11 / 2 = 55. The correct answer is 55. The other options do not match the result of this mathematical calculation.",
+      "checkExpr": "10*11/2",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि आप 1, 2, 3, ..., 10 संख्याओं को जोड़ दें, तो परिणाम क्या होगा?",
+          "choices": [
+            "50",
+            "55",
+            "60",
+            "65"
+          ],
+          "solution": "1 से 10 तक की संख्याओं का योग समांतर श्रेढ़ी के योग के सूत्र, n(n + 1)/2 का उपयोग करके गणना की जा सकती है। n = 10 के लिए, यह 10 × 11 / 2 = 55 देता है। सही उत्तर 55 है। अन्य विकल्प इस गणितीय गणना के परिणाम के अनुरूप नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "1, 2, 3, ..., 10 या संख्यांची बेरीज केली असता निकाल काय होईल?",
+          "choices": [
+            "50",
+            "55",
+            "60",
+            "65"
+          ],
+          "solution": "1 ते 10 या संख्यांची बेरीज अंकगणितीय श्रेढीच्या सूत्राने गणली जाऊ शकते, n(n + 1)/2. n = 10 साठी, हे 10 * 11 / 2 = 55 देते. योग्य उत्तर 55 आहे. इतर विकल्पांमध्ये ही गणितीय गणनेचा निकाल असत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Miscalculating the sum by adding 1 through 10 as 5 pairs of 10 instead of 5 pairs of 11",
+        null,
+        "Confuses the sum of numbers 1-10 with the sum of numbers 1-12",
+        "Confuses the sum of the first 10 numbers with the sum of numbers from 1 to 13"
       ],
       "solverAnswers": [
         1,
@@ -192,7 +410,7 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The sequence is clearly the squares of natural numbers, so the 10th term is 10² = 100. The distractors correspond to the 9th, 11th, and 12th terms, which are common errors.",
+      "critique": "The solution is correct and matches the key. The author's reasoning is sound, and the misconceptions listed for the distractors are plausible for students who might misunderstand the formula or the arithmetic.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp101.pdf",
@@ -229,7 +447,108 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T02:18:13.582Z",
+      "generatedAt": "2026-11-01T14:46:01.400Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If the sequence of powers of 2 is 1, 2, 4, 8, 16, …, what is the sum of the first 5 terms?",
+      "choices": [
+        "31",
+        "32",
+        "127",
+        "255"
+      ],
+      "answerIndex": 0,
+      "solution": "The sum of the first 5 terms of the sequence of powers of 2 (1 + 2 + 4 + 8 + 16) is 31. This is the correct answer. The other options represent sums of more terms than asked in the question.",
+      "checkExpr": "1+2+4+8+16",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि 2 के घातों का अनुक्रम 1, 2, 4, 8, 16, ... है, तो पहले 5 पदों का योग क्या है?",
+          "choices": [
+            "31",
+            "32",
+            "127",
+            "255"
+          ],
+          "solution": "2 के घातों के अनुक्रम के पहले 5 पदों (1 + 2 + 4 + 8 + 16) का योग 31 है। यह सही उत्तर है। अन्य विकल्प प्रश्न में मांगे गए पदों से अधिक पदों के योग का प्रतिनिधित्व करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर 2 च्या घातांची अनुक्रम 1, 2, 4, 8, 16, … असेल, तर पहिल्या 5 पदांची बेरीज किती असेल?",
+          "choices": [
+            "31",
+            "32",
+            "127",
+            "255"
+          ],
+          "solution": "2 च्या घातांच्या अनुक्रमाच्या पहिल्या 5 पदांची बेरीज (1 + 2 + 4 + 8 + 16) 31 आहे. हे योग्य उत्तर आहे. इतर उत्तरे ज्यांनी विचारलेल्या पदांपेक्षा जास्त पदांची बेरीज दर्शवतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for 'powers' and 'sequence'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the sum of the first 5 powers of 2 with the 5th power of 2",
+        "Confuses the sum of the first 6 terms with the sum of the first 5",
+        "Confuses the sum of the first 7 terms with the sum of the first 5"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 31, as the sum of the first 5 terms (1 + 2 + 4 + 8 + 16) is indeed 31. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 8,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.6 Relation to Number Sequences",
+            "S u m m a r y"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 9,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.6 Relation to Number Sequences",
+            "S u m m a r y"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp101.pdf",
+          "ordinal": 10,
+          "pageStart": 17,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 1: Patterns in Mathematics",
+            "1.6 Relation to Number Sequences",
+            "S u m m a r y"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-01T14:46:01.400Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

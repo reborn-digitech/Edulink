@@ -1,0 +1,629 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T03:32:31.507Z",
+  "finishedAt": "2026-11-02T03:39:08.483Z",
+  "seconds": 397,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "703020012",
+    "document": "balbharati/7/science/703020012.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 4 — Nutrition in Living Organisms",
+    "edition": "First Edition 2017",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2023-24]\n8. Generally food is broken and absorbed within the body of organisms. In which of the 1\nfollowing organisms is it done outside the body?\na) Amoeba\nb) Mushroom\nc) Paramoecium\nd) Lice",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n1. Select the group in which all organisms have the same mode of nutrition. 1\nA. Cuscuta, yeast, legumes, leeches and tapeworm\nB. Cactus, ticks, lice, leeches and cow\nC. Cuscuta, ticks, lice, leeches and tapeworm\nD. Cactus, grass, lice, lion and tapeworm",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n7. B. Cooking of food",
+      "[CBSE Class X Science, marking scheme, 2026-27]\n7. C. Secondary Consumer"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 111197,
+      "in": 34,
+      "out": 32,
+      "rejects": 2,
+      "promptTokens": 23606,
+      "completionTokens": 6773
+    },
+    "critique": {
+      "calls": 44,
+      "ms": 256469,
+      "in": 32,
+      "out": 24,
+      "rejects": 8,
+      "promptTokens": 18361,
+      "completionTokens": 7677
+    },
+    "solver": {
+      "calls": 203,
+      "ms": 105210,
+      "in": 24,
+      "out": 23,
+      "rejects": 1,
+      "promptTokens": 35936,
+      "completionTokens": 2329
+    },
+    "form": {
+      "calls": 8,
+      "ms": 20972,
+      "in": 23,
+      "out": 15,
+      "rejects": 8,
+      "promptTokens": 1859,
+      "completionTokens": 566
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 15,
+      "ms": 2321,
+      "in": 15,
+      "out": 13,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 57,
+      "ms": 442217,
+      "in": 26,
+      "out": 26,
+      "rejects": 1,
+      "promptTokens": 28686,
+      "completionTokens": 13632
+    }
+  },
+  "kept": 13,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 2,
+    "4": 2,
+    "5": 2,
+    "6": 3
+  },
+  "flagged": 7,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the process of taking in and using food called?",
+      "ms": {
+        "draft": 3801,
+        "critique": 4192
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What are the substances required in large quantity for the growth and health of the body?",
+      "ms": {
+        "draft": 3801,
+        "critique": 4930
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which process do plants use to produce their own food?",
+      "ms": {
+        "draft": 3801,
+        "critique": 5460
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which part of the plant is responsible for transporting water and minerals from the roots to the leaves?",
+      "ms": {
+        "draft": 3801,
+        "critique": 4904
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following organisms has a mode of nutrition that is different from the others?",
+      "ms": {
+        "draft": 3801,
+        "critique": 6014
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following organisms performs saprozoic nutrition?",
+      "ms": {
+        "draft": 2792,
+        "critique": 7237
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In which of the following cases is the mode of nutrition most similar to that of a mushroom?",
+      "ms": {
+        "draft": 2792,
+        "critique": 7202,
+        "solver": 1371
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct example of parasitic nutrition?",
+      "ms": {
+        "draft": 2792,
+        "critique": 7103,
+        "solver": 14454,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student observes an organism that absorbs nutrients from a dead body and secretes enzymes to break it down. Which type of nutrition does this organism exhibit?",
+      "ms": {
+        "draft": 2792,
+        "critique": 6734,
+        "solver": 11627,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following organisms shows a mode of nutrition where food is absorbed outside the body?",
+      "ms": {
+        "draft": 3786,
+        "critique": 6342
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following groups contains organisms that all rely on the same type of nutrition?",
+      "ms": {
+        "draft": 3786,
+        "critique": 7067
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observed that the number of heterotrophs in desert regions is smaller than in the sea. Why is this the case?",
+      "ms": {
+        "draft": 3786,
+        "critique": 6045,
+        "solver": 12024,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a saprophytic organism?",
+      "ms": {
+        "draft": 3137,
+        "critique": 5295,
+        "solver": 13024,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is not an example of holozoic nutrition?",
+      "ms": {
+        "draft": 3246,
+        "critique": 6958,
+        "solver": 14948,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a saprozoic organism?",
+      "ms": {
+        "draft": 3246,
+        "critique": 7403,
+        "solver": 15025,
+        "form": 3163
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of the xylem in plants?",
+      "ms": {
+        "draft": 2775,
+        "critique": 5917,
+        "solver": 9690,
+        "form": 2011
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of autotrophic nutrition?",
+      "ms": {
+        "draft": 2775,
+        "critique": 6599,
+        "solver": 9725,
+        "form": 2382
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do insectivorous plants have brightly colored parts?",
+      "ms": {
+        "draft": 3786,
+        "critique": 5648,
+        "solver": 11219,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a saprophytic plant?",
+      "ms": {
+        "draft": 3246,
+        "critique": 6207,
+        "solver": 1614,
+        "form": 1715
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the process of taking in and using food called?",
+      "ms": {
+        "draft": 2775,
+        "critique": 6779,
+        "solver": 9732,
+        "form": 2438,
+        "translation": 35473
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the process by which plants make their own food?",
+      "ms": {
+        "draft": 3137,
+        "critique": 6668,
+        "solver": 1043,
+        "form": 0,
+        "translation": 27699
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of saprophytic nutrition?",
+      "ms": {
+        "draft": 2792,
+        "critique": 7012,
+        "solver": 11070,
+        "form": 0,
+        "translation": 23576
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the process by which food is converted into a soluble form in the body?",
+      "ms": {
+        "draft": 3246,
+        "critique": 6406,
+        "solver": 1087,
+        "form": 2482,
+        "translation": 50321
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a saprophytic organism?",
+      "ms": {
+        "draft": 3786,
+        "critique": 5314,
+        "solver": 2530,
+        "form": 0,
+        "translation": 39842
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student eats a piece of bread, which part of the bread is digested first?",
+      "ms": {
+        "draft": 3137,
+        "critique": 5017,
+        "solver": 1496,
+        "form": 0,
+        "translation": 25863
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of a parasitic plant?",
+      "ms": {
+        "draft": 3786,
+        "critique": 6411,
+        "solver": 1274,
+        "form": 0,
+        "translation": 27586
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In the given diagram, which part of the digestive system is responsible for absorbing water?",
+      "ms": {
+        "draft": 3137,
+        "critique": 4508,
+        "solver": 1190,
+        "form": 0,
+        "translation": 26955
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student observed that a plant had yellowing leaves and retarded growth. Which nutrient deficiency might be the cause?",
+      "ms": {
+        "draft": 3246,
+        "critique": 7111,
+        "solver": 1733,
+        "form": 3325,
+        "translation": 44521
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following organisms can survive without consuming any other organism?",
+      "ms": {
+        "draft": 3137,
+        "critique": 8271,
+        "solver": 1502,
+        "form": 0,
+        "translation": 22306
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do insectivorous plants like Drosera burmanii feed on insects?",
+      "ms": {
+        "draft": 3801,
+        "critique": 4875,
+        "solver": 9280,
+        "form": 3748,
+        "translation": 45989
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a student observes an organism that lives inside another organism, absorbs nutrients from it, and causes harm, which of the following best describes its nutrition?",
+      "ms": {
+        "draft": 2792,
+        "critique": 6711,
+        "solver": 1390,
+        "form": 0,
+        "translation": 36571
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do desert animals have a smaller number of heterotrophs compared to sea animals?",
+      "ms": {
+        "draft": 3137,
+        "critique": 6980,
+        "solver": 1157,
+        "form": 0,
+        "translation": 32519
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the process of taking in and using food called?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What are the substances required in large quantity for the growth and health of the body?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which process do plants use to produce their own food?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which part of the plant is responsible for transporting water and minerals from the roots to the leaves?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following organisms has a mode of nutrition that is different from the others?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following organisms performs saprozoic nutrition?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In which of the following cases is the mode of nutrition most similar to that of a mushroom?",
+      "reason": "the solver picked option 1 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct example of parasitic nutrition?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A student observes an organism that absorbs nutrients from a dead body and secretes enzymes to break it down. Which type of nutrition does this organism exhibit?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following organisms shows a mode of nutrition where food is absorbed outside the body?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following groups contains organisms that all rely on the same type of nutrition?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student observed that the number of heterotrophs in desert regions is smaller than in the sea. Why is this the case?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is not a macro-nutrient?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is an example of a parasitic plant?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a saprophytic organism?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is not an example of holozoic nutrition?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of a saprozoic organism?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main function of the xylem in plants?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of autotrophic nutrition?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Why do insectivorous plants have brightly colored parts?",
+      "reason": "near-duplicate of served question cmvwlnhdo02hf0remn6ljqdji (cosine 0.927 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is an example of a saprophytic plant?",
+      "reason": "near-duplicate of batch item \"Which of the following is an example of a saprophy…\" (cosine 0.933 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

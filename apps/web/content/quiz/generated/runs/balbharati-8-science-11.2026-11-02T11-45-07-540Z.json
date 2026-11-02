@@ -1,0 +1,528 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T11:45:07.540Z",
+  "finishedAt": "2026-11-02T11:53:16.687Z",
+  "seconds": 489,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 11 — Human Body and Organ System",
+    "edition": "First Edition 2018",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2024-25]\n8. D. carbon dioxide in human cells",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n8. Generally food is broken and absorbed within the body of organisms. In which of the 1\nfollowing organisms is it done outside the body?\na) Amoeba\nb) Mushroom\nc) Paramoecium\nd) Lice",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n11. Students to attempt either option A or B. 2\nA. How many chambers are there in the heart of the following organisms?\nHow is mixing of oxygenated and deoxygenated blood prevented in their\nbody?\n(i) Fishes\n(ii) Humans\nOR\nB. Explain the mechanism by which the water is transported in plants?",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n23. What is the purpose of making urine in the human body? Name the organs that stores and 2\nreleases the urine.\nOR\nWhy do arteries have thick and elastic walls whereas veins have valves?"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 110684,
+      "in": 29,
+      "out": 25,
+      "rejects": 4,
+      "promptTokens": 25305,
+      "completionTokens": 5237
+    },
+    "critique": {
+      "calls": 26,
+      "ms": 174201,
+      "in": 25,
+      "out": 23,
+      "rejects": 2,
+      "promptTokens": 10604,
+      "completionTokens": 4411
+    },
+    "solver": {
+      "calls": 121,
+      "ms": 61226,
+      "in": 23,
+      "out": 23,
+      "rejects": 0,
+      "promptTokens": 14321,
+      "completionTokens": 997
+    },
+    "form": {
+      "calls": 18,
+      "ms": 57925,
+      "in": 23,
+      "out": 19,
+      "rejects": 4,
+      "promptTokens": 4191,
+      "completionTokens": 1352
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 19,
+      "out": 19,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 59,
+      "ms": 10117,
+      "in": 19,
+      "out": 13,
+      "rejects": 6,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 55,
+      "ms": 726097,
+      "in": 26,
+      "out": 26,
+      "rejects": 1,
+      "promptTokens": 32096,
+      "completionTokens": 16662
+    }
+  },
+  "kept": 13,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 1,
+    "4": 2,
+    "5": 3,
+    "6": 3
+  },
+  "flagged": 8,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, which structure in the lungs allows for efficient gas exchange?",
+      "ms": {
+        "draft": 4051,
+        "critique": 8479,
+        "solver": 2355,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a function of blood?",
+      "ms": {
+        "draft": 3137,
+        "critique": 7813,
+        "solver": 1298,
+        "form": 4619
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about blood pressure?",
+      "ms": {
+        "draft": 4265,
+        "critique": 6870,
+        "solver": 2144,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is blood donation considered the best donation according to the passage?",
+      "ms": {
+        "draft": 3408,
+        "critique": 7603,
+        "solver": 2349,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is not an organ system in the human body?",
+      "ms": {
+        "draft": 4275,
+        "critique": 8710
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the main function of the respiratory system?",
+      "ms": {
+        "draft": 4275,
+        "critique": 4401
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is responsible for filtering air before it reaches the lungs?",
+      "ms": {
+        "draft": 4051,
+        "critique": 6997,
+        "solver": 1831,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an organ system in the human body?",
+      "ms": {
+        "draft": 4051,
+        "critique": 7787,
+        "solver": 1916,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main component of plasma?",
+      "ms": {
+        "draft": 3137,
+        "critique": 7509,
+        "solver": 2070,
+        "form": 3822
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A person with blood group 'AB' is called a universal recipient. Which of the following best explains this?",
+      "ms": {
+        "draft": 4265,
+        "critique": 5673,
+        "solver": 1187,
+        "form": 3402
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which blood group can donate blood to any other blood group?",
+      "ms": {
+        "draft": 3408,
+        "critique": 5797,
+        "solver": 2160,
+        "form": 3789
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has blood group AB, which blood groups can they receive blood from?",
+      "ms": {
+        "draft": 3408,
+        "critique": 5540,
+        "solver": 1436,
+        "form": 5458
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which blood group is considered a universal donor?",
+      "ms": {
+        "draft": 4265,
+        "critique": 5678,
+        "solver": 2091,
+        "form": 4853,
+        "translation": 45718
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a function of blood?",
+      "ms": {
+        "draft": 4309,
+        "critique": 8674,
+        "solver": 1560,
+        "form": 3594,
+        "translation": 56358
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a reason why blood donation is considered superior to other donations?",
+      "ms": {
+        "draft": 4265,
+        "critique": 6802,
+        "solver": 1680,
+        "form": 3060,
+        "translation": 44201
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary function of the circulatory system?",
+      "ms": {
+        "draft": 4051,
+        "critique": 6376,
+        "solver": 1971,
+        "form": 2777,
+        "translation": 52816
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is responsible for carrying oxygen in the blood?",
+      "ms": {
+        "draft": 3137,
+        "critique": 7639,
+        "solver": 2439,
+        "form": 3394,
+        "translation": 46498
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A person with blood group O is called a universal donor because their blood lacks which component?",
+      "ms": {
+        "draft": 3408,
+        "critique": 6183,
+        "solver": 2798,
+        "form": 2434,
+        "translation": 49376
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Why do veins have valves?",
+      "ms": {
+        "draft": 4309,
+        "critique": 7683,
+        "solver": 1698,
+        "form": 2916,
+        "translation": 58355
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a person has a blood group of AB and is a universal recipient, which of the following is true?",
+      "ms": {
+        "draft": 3408,
+        "critique": 7443,
+        "solver": 1358,
+        "form": 4985,
+        "translation": 71167
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Why is it advised not to talk while eating?",
+      "ms": {
+        "draft": 4051,
+        "critique": 7899,
+        "solver": 2062,
+        "form": 3748,
+        "translation": 54503
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a correct statement about capillaries?",
+      "ms": {
+        "draft": 4309,
+        "critique": 8610,
+        "solver": 1118,
+        "form": 4949,
+        "translation": 53745
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is blood pressure recorded as two numbers, like 120/80?",
+      "ms": {
+        "draft": 4265,
+        "critique": 5429,
+        "solver": 6183,
+        "form": 1008,
+        "translation": 45778
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why the walls of the lungs are elastic?",
+      "ms": {
+        "draft": 4051,
+        "critique": 6562,
+        "solver": 1417,
+        "form": 5225,
+        "translation": 65061
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why does the heart have a higher number of beats in infants compared to adults?",
+      "ms": {
+        "draft": 4309,
+        "critique": 7584,
+        "solver": 2272,
+        "form": 3251,
+        "translation": 77202
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Why are arteries provided with thick walls?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the function of platelets in blood?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "How many red blood cells are present in one cubic millimeter of blood?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which structure in the lungs allows for efficient gas exchange?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a function of blood?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about blood pressure?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the normal systolic blood pressure for a healthy person?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is blood donation considered the best donation according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is not an organ system in the human body?",
+      "reason": "the critic finds option 3 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is the main function of the respiratory system?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Which of the following is responsible for filtering air before it reaches the lungs?",
+      "reason": "near-duplicate of served question cmvf2pnz002xggod8kqkmnxrs (cosine 0.901 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is an example of an organ system in the human body?",
+      "reason": "near-duplicate of served question cmvf2pnyy02xagod83v18fles (cosine 0.912 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What is the main component of plasma?",
+      "reason": "near-duplicate of served question cmvf2pnyu02wugod8lp24lu1t (cosine 0.910 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A person with blood group 'AB' is called a universal recipient. Which of the following best explains this?",
+      "reason": "near-duplicate of served question cmvqt3ir50c0hgp21dt9p6fgc (cosine 0.932 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which blood group can donate blood to any other blood group?",
+      "reason": "near-duplicate of served question cmvf2pnyn02w6god80r3gf6bo (cosine 0.954 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a person has blood group AB, which blood groups can they receive blood from?",
+      "reason": "near-duplicate of served question cmvf2pnyx02x6god8gc2g0k2x (cosine 0.956 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -21,71 +21,105 @@
   "board": "NCERT",
   "book": "Curiosity",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-31T21:15:23.989Z",
+  "generatedAt": "2026-11-02T05:25:32.663Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 2,
-      "stem": "What is the function of the metal cap on an electric cell?",
+      "difficulty": 1,
+      "stem": "What is the name of the device that Nihal and his classmates used to learn about electricity?",
       "choices": [
-        "It is the negative terminal",
-        "It is the positive terminal",
-        "It stores electricity",
-        "It generates electricity"
+        "Torchlight",
+        "Battery",
+        "Switch",
+        "Cell"
       ],
-      "answerIndex": 1,
-      "solution": "The metal cap on an electric cell is the positive terminal because it is designed to allow the flow of electric current out of the cell. The other options are incorrect because the cap does not store or generate electricity, and the negative terminal is typically a metal disc, not the cap.",
+      "answerIndex": 0,
+      "solution": "Torchlight is the correct answer because it is the complete device used to demonstrate electricity in the activity. A battery and a cell are components that power the device, while a switch controls the flow of electricity but is not the main device used for learning.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक विद्युत सेल के धातु के ढक्कन का कार्य क्या है?",
+          "stem": "निहाल और उसके सहपाठी किस उपकरण का उपयोग बिजली के बारे में सीखने के लिए करते हैं?",
           "choices": [
-            "यह ऋणात्मक टर्मिनल है",
-            "यह धनात्मक टर्मिनल है",
-            "यह विद्युत को संग्रहीत करता है",
-            "यह विद्युत को उत्पन्न करता है"
+            "टॉर्चलाइट",
+            "बैटरी",
+            "स्विच",
+            "सेल"
           ],
-          "solution": "विद्युत सेल के धातु के ढक्कन का कार्य धनात्मक टर्मिनल होना है क्योंकि इसका उद्देश्य सेल से विद्युत धारा के प्रवाह की अनुमति देना है। अन्य विकल्प गलत हैं क्योंकि ढक्कन विद्युत को संग्रहीत या उत्पन्न नहीं करता है और ऋणात्मक टर्मिनल आमतौर पर धातु का डिस्क होता है, न कि ढक्कन।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "solution": "टॉर्चलाइट सही उत्तर है क्योंकि यह गतिविधि में बिजली के प्रदर्शन के लिए उपयोग किया जाने वाला पूर्ण उपकरण है। बैटरी और सेल उपकरण को शक्ति प्रदान करने वाले घटक हैं, जबकि स्विच बिजली के प्रवाह को नियंत्रित करता है लेकिन शिक्षण के लिए मुख्य उपकरण नहीं है।",
+          "imageAlt": "एक शुष्क सेल जिसमें धनात्मक और ऋणात्मक टर्मिनल होते हैं",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "विद्युत सेल च्या धातूच्या शिरोलेखाची कार्ये काय आहे?",
+          "stem": "निहाल आणि त्याच्या मित्रांनी विद्युत शिकण्यासाठी कोणत्या उपकरणाचा वापर केला त्याचे नाव काय आहे?",
           "choices": [
-            "ते ऋण टर्मिनल आहे",
-            "ते धन टर्मिनल आहे",
-            "ते विद्युत भंडारित करते",
-            "ते विद्युत उत्पन्न करते"
+            "टॉर्चलाईट",
+            "बॅटरी",
+            "स्विच",
+            "सेल"
           ],
-          "solution": "विद्युत सेल च्या धातूच्या शिरोलेखाची कार्ये धन टर्मिनल आहे कारण ते सेल मधून विद्युत प्रवाहाची परवानगी देण्यासाठी डिझाइन केले गेले आहे. इतर विकल्प अयोग्य आहेत कारण शिरोलेख विद्युत भंडारित करत नाही किंवा उत्पन्न करत नाही, आणि ऋण टर्मिनल सामान्यतः धातूचा डिस्क असतो, नाही की शिरोलेख.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi textbooks.",
+          "solution": "टॉर्चलाईट हे बरोबर उत्तर आहे कारण ते विद्युत चाचणीत वापरलेले पूर्ण उपकरण आहे. बॅटरी आणि सेल उपकरणाचे घटक आहेत जे उपकरण चालवतात, तर स्विच विद्युत प्रवाह नियंत्रित करते परंतु शिकण्यासाठी मुख्य उपकरण नाही.",
+          "imageAlt": "एक शुष्क सेल ज्याचे धन आणि ऋण टर्मिनल आहेत",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
+      "imageAlt": "A dry cell with positive and negative terminals",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "dryCell",
+              "x": 50,
+              "y": 30,
+              "size": 30,
+              "labels": [
+                "positive",
+                "negative"
+              ],
+              "text": {
+                "positive": "positive",
+                "negative": "negative"
+              }
+            }
+          ],
+          "arrows": [],
+          "texts": []
+        },
+        "labels": {
+          "positive": {
+            "en": "Positive terminal",
+            "hi": "धनात्मक टर्मिनल",
+            "mr": "धन टर्मिनल"
+          },
+          "negative": {
+            "en": "Negative terminal",
+            "hi": "ऋणात्मक टर्मिनल",
+            "mr": "ऋण टर्मिनल"
+          }
+        }
+      },
+      "needsFigure": true,
       "distractorReason": [
-        "Confuses the positive and negative terminals",
         null,
-        "Confuses the function of the metal cap with a storage device",
-        "Confuses the function of the metal cap with an energy source"
+        "Confuses the battery with the device",
+        "Refers to a component of the torchlight",
+        "Refers to a component of the torchlight"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 1, as the metal cap is the positive terminal. The other options represent common misconceptions about the function of the metal cap.",
+      "critique": "The question is clear and the correct answer is 0 (Torchlight). The other options are components of the torchlight, not the complete device used in the activity.",
       "sources": [
         {
           "document": "ncert/7/science/gecu103.pdf",
@@ -130,149 +164,47 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T21:15:23.989Z",
+      "generatedAt": "2026-11-02T05:25:32.663Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 2,
-      "stem": "Which part of an incandescent lamp glows when current passes through it?",
+      "stem": "In a torchlight, what is the function of the switch?",
       "choices": [
-        "The glass bulb",
-        "The thick wires",
-        "The filament",
-        "The insulator"
+        "To connect the battery",
+        "To control the flow of electricity",
+        "To store electrical energy",
+        "To generate electricity"
       ],
-      "answerIndex": 2,
-      "solution": "The filament is the thin wire inside the glass bulb that glows when current passes through it. The glass bulb, thick wires, and insulator do not glow. The filament is designed to heat up and emit light, making it the correct answer.",
+      "answerIndex": 1,
+      "solution": "The switch in a torchlight is used to control the flow of electricity, allowing the circuit to be completed or broken. This determines whether the torch lights up or not. The other options describe functions of different components, such as the battery or a generator, not the switch.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक अपवर्तक बल्ब का कौन-सा भाग विद्युत धारा पार करने पर चमकता है?",
+          "stem": "टॉर्च में स्विच का कार्य क्या है?",
           "choices": [
-            "कांच का बल्ब",
-            "मोटे तार",
-            "तंतु",
-            "अन्तरावरोधक"
+            "बैटरी को जोड़ना",
+            "विद्युत के प्रवाह को नियंत्रित करना",
+            "विद्युत ऊर्जा को संग्रहीत करना",
+            "विद्युत का उत्पादन करना"
           ],
-          "solution": "तंतु कांच के बल्ब के अंदर का पतला तार होता है जो विद्युत धारा पार करने पर चमकता है। कांच के बल्ब, मोटे तार और अन्तरावरोधक चमकते नहीं हैं। तंतु को गर्म होकर प्रकाश उत्सर्जित करने के लिए डिज़ाइन किया गया है, इसलिए यह सही उत्तर है।",
+          "solution": "टॉर्च में स्विच का उपयोग विद्युत के प्रवाह को नियंत्रित करने के लिए किया जाता है, जो सर्किट को पूरा करने या तोड़ने की अनुमति देता है। यह निर्धारित करता है कि टॉर्च जलता है या नहीं। अन्य विकल्प बैटरी या एक जनरेटर जैसे अन्य घटकों के कार्यों का वर्णन करते हैं, स्विच के नहीं।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate technical terms used.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi-medium science textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "अॅन्सेंडेंट लॅम्पचा कोणता भाग विद्युत प्रवाह वाहत असताना जळतो?",
+          "stem": "टॉर्चलाइटमध्ये स्विचचे कार्य काय आहे?",
           "choices": [
-            "काचेचा बल्ब",
-            "जास्त मोठे तार",
-            "तापदायक तार",
-            "अवाहक"
+            "बॅटरीला जोडणे",
+            "विद्युत प्रवाह नियंत्रित करणे",
+            "विद्युत ऊर्जा जमा करणे",
+            "विद्युत उत्पन्न करणे"
           ],
-          "solution": "तापदायक तार हा काचेच्या बल्बात अंतर्गत असलेला तार आहे जो विद्युत प्रवाह वाहत असताना जळतो. काचेचा बल्ब, जास्त मोठे तार आणि अवाहक जळत नाहीत. तापदायक तार तापलेला असतो आणि प्रकाश उत्सर्जित करतो, ज्यामुळे तो योग्य उत्तर बनतो.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the glowing part with the glass bulb",
-        "Thinks thick wires are the glowing part",
-        null,
-        "Student thinks the insulating material is the part that emits light"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The question is clear and the solution is correct. The filament is the correct answer, and the distractors reflect common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu103.pdf",
-          "ordinal": 4,
-          "pageStart": 4,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 3: Electricity: Circuits and their Components",
-            "3.2 A Simple Electrical Circuit",
-            "3.2.3 Electric lamp"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu103.pdf",
-          "ordinal": 5,
-          "pageStart": 5,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 3: Electricity: Circuits and their Components",
-            "3.2 A Simple Electrical Circuit",
-            "3.2.4 Making an electric lamp glow using an",
-            "electric cell or battery"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu103.pdf",
-          "ordinal": 6,
-          "pageStart": 8,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 3: Electricity: Circuits and their Components",
-            "3.2 A Simple Electrical Circuit",
-            "3.2.5 An electrical circuit"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T21:15:23.989Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What happens to the LED when the wires connected to it are interchanged?",
-      "choices": [
-        "It glows brighter",
-        "It glows",
-        "It does not glow",
-        "It glows dimmer"
-      ],
-      "answerIndex": 2,
-      "solution": "An LED only allows current to flow in one direction. When the wires are interchanged, the current cannot pass through, so the LED does not glow. It does not glow brighter or dimmer because the direction of current determines whether it functions at all, not the intensity of the light.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "LED पर क्या होता है जब इससे जुड़े तारों को बदल दिया जाता है?",
-          "choices": [
-            "यह अधिक चमकता है",
-            "यह चमकता है",
-            "यह चमकता नहीं है",
-            "यह कम चमकता है"
-          ],
-          "solution": "एक एलईडी केवल एक दिशा में धारा के प्रवाह की अनुमति देती है। जब तारों को बदल दिया जाता है, तो धारा नहीं बह सकती, इसलिए एलईडी चमकता नहीं है। चमक की तीव्रता नहीं बदलती क्योंकि धारा की दिशा इसके कार्य करने के लिए निर्धारित करती है, न कि चमक की तीव्रता।",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi technical terms used.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एलईडी काय होतो जेव्हा त्याला जोडलेल्या तारा बदलल्या जातात?",
-          "choices": [
-            "तो जास्त जाळतो",
-            "तो जाळतो",
-            "तो जाळत नाही",
-            "तो कमी जाळतो"
-          ],
-          "solution": "एलईडी केवळ एका दिशेने विद्युत प्रवाह वाहू देते. जेव्हा तारा बदलल्या जातात, तेव्हा विद्युत प्रवाह वाहू शकत नाही, त्यामुळे एलईडी जाळत नाही. जाळण्याची तीव्रता निश्चित करणारा विद्युत प्रवाहाचा दिशा नसतो, तर तो कार्य करतो की नाही यावर अवलंबून असतो.",
+          "solution": "टॉर्चलाइटमधील स्विच विद्युत प्रवाह नियंत्रित करण्यासाठी वापरला जातो, जेणेकरून परिपथ पूर्ण किंवा तोडला जाऊ शकतो. हे ठरवते की टॉर्च जागे राहते की नाही. इतर विकल्प बॅटरी किंवा जनरेटरसारख्या वेगवेगळ्या घटकांचे कार्य वर्णन करतात, स्विचचे नाही.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
           "flag": null
@@ -283,20 +215,129 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Believes that reversing the connections increases the brightness.",
-        "Assumes that the LED will still function but in a different way.",
+        "Thinks the switch connects the battery",
         null,
-        "Student believes reversing polarity only affects brightness, not whether the LED lights at all."
+        "Does not understand the role of a switch",
+        "Confuses the function of a switch with that of a battery"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": null,
-      "critique": "The solution correctly identifies that reversing the polarity of an LED prevents it from glowing, as LEDs are directional components. The reasoning aligns with the correct answer and the provided misconceptions.",
+      "critique": "The correct answer is 1, as the switch's function is to control the flow of electricity. The author's reasoning aligns with standard scientific understanding and the misconceptions listed are common among students.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.1 A Torchlight"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.1 Electric cell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.2 Battery"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T05:25:32.663Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "In a circuit, an LED glows only when its longer wire is connected to the positive terminal of the battery. Why is this so?",
+      "choices": [
+        "The LED is designed to allow current to pass in only one direction",
+        "The LED requires more voltage to glow",
+        "The longer wire is always connected to the negative terminal",
+        "The shorter wire is made of a different material"
+      ],
+      "answerIndex": 0,
+      "solution": "The LED glows only when the current flows in the correct direction. The longer wire of the LED is the positive terminal, and it must be connected to the battery's positive terminal for the current to flow through the LED. The other options are incorrect because they do not explain the directional nature of the LED.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक सर्किट में, एक एलईडी केवल तभी जलती है जब इसका लंबा तार बैटरी के धनात्मक टर्मिनल से जुड़ा होता है। ऐसा क्यों होता है?",
+          "choices": [
+            "एलईडी को केवल एक दिशा में धारा प्रवाहित होने की अनुमति देने के लिए डिज़ाइन किया गया है",
+            "एलईडी को जलने के लिए अधिक वोल्टेज की आवश्यकता होती है",
+            "लंबे तार को हमेशा ऋणात्मक टर्मिनल से जोड़ा जाता है",
+            "छोटे तार का पदार्थ अलग होता है"
+          ],
+          "solution": "एलईडी केवल तभी जलती है जब धारा सही दिशा में प्रवाहित होती है। एलईडी का लंबा तार धनात्मक टर्मिनल होता है और इसे बैटरी के धनात्मक टर्मिनल से जोड़ा जाना चाहिए ताकि धारा एलईडी से होकर प्रवाहित हो सके। अन्य विकल्प गलत हैं क्योंकि वे एलईडी की दिशात्मक प्रकृति की व्याख्या नहीं करते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सर्किटमध्ये एलईडी फक्त तेव्हाच जळते जेव्हा त्याचा लांब तार बॅटरीच्या धनात्मक टर्मिनलला जोडला जातो. हे का असते?",
+          "choices": [
+            "एलईडी विद्युतप्रवाह फक्त एका दिशेने पार करण्यासाठी डिझाइन केलेला असतो",
+            "एलईडी जळण्यासाठी जास्त व्होल्टेज आवश्यक असतो",
+            "लांब तार नेहमी ऋणात्मक टर्मिनलला जोडला जातो",
+            "लहान तार वेगळ्या सामग्रीचा बनलेला असतो"
+          ],
+          "solution": "एलईडी फक्त जेव्हा विद्युतप्रवाह योग्य दिशेने वाहतो तेव्हा जळते. एलईडीचा लांब तार धनात्मक टर्मिनल असतो आणि बॅटरीच्या धनात्मक टर्मिनलला जोडल्यास विद्युतप्रवाह एलईडीमधून वाहतो. इतर विकल्प चुकीचे आहेत कारण ते एलईडीच्या दिशात्मक प्रकृतीला स्पष्ट करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the function of the LED with a regular bulb",
+        "Assumes LEDs require more voltage than other components",
+        "Incorrectly assumes the longer wire is negative based on length alone"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as LEDs are diodes that only allow current to flow in one direction. The explanation provided by the author is accurate and aligns with the correct reasoning.",
       "sources": [
         {
           "document": "ncert/7/science/gecu103.pdf",
@@ -342,49 +383,269 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T21:15:23.989Z",
+      "generatedAt": "2026-11-02T05:25:32.663Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "If a torch uses two electric cells, what happens when the cells are connected in the correct order?",
+      "stem": "A student connects an LED to a battery, but it does not glow. What should the student check first?",
       "choices": [
-        "The lamp glows",
-        "The lamp does not glow",
-        "The lamp flickers",
-        "The lamp gets damaged"
+        "The battery's voltage",
+        "The LED's orientation",
+        "The wire's length",
+        "The room's lighting"
       ],
-      "answerIndex": 0,
-      "solution": "When electric cells are connected in the correct order, they provide a continuous flow of electric current, which powers the lamp and causes it to glow. If the cells are connected incorrectly, the current cannot flow properly, so the lamp does not glow. The lamp flickering or getting damaged would require different conditions, such as an unstable current or excessive voltage.",
+      "answerIndex": 1,
+      "solution": "The LED must be connected correctly, with the longer wire (positive) to the battery's positive terminal and the shorter wire (negative) to the negative terminal. If the LED is connected in reverse, it will not glow. The other options are not directly related to the LED's functionality.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक टॉर्च में दो विद्युत सेल होते हैं, तो सेल के सही क्रम में जुड़े होने पर क्या होता है?",
+          "stem": "एक छात्र एक एलईडी को बैटरी से जोड़ता है, लेकिन यह नहीं जलता। छात्र के पहले क्या जांचना चाहिए?",
           "choices": [
-            "लैंप जलता है",
-            "लैंप नहीं जलता",
-            "लैंप झिलमिलाता है",
-            "लैंप खराब हो जाता है"
+            "बैटरी के वोल्टेज",
+            "एलईडी की अभिविन्यास",
+            "तार की लंबाई",
+            "कमरे के प्रकाश"
           ],
-          "solution": "जब विद्युत सेल सही क्रम में जुड़े होते हैं, तो वे विद्युत धारा के निरंतर प्रवाह के कारण, लैंप को शक्ति प्रदान करते हैं और लैंप जलता है। यदि सेल गलत क्रम में जुड़े होते हैं, तो धारा सही तरीके से प्रवाहित नहीं हो पाती, इसलिए लैंप नहीं जलता। लैंप के झिलमिलाने या खराब होने के लिए अलग-अलग स्थितियां आवश्यक होती हैं, जैसे अस्थिर धारा या अत्यधिक वोल्टेज।",
+          "solution": "एलईडी को सही ढंग से जोड़ना आवश्यक है, लंबे तार (धनात्मक) को बैटरी के धनात्मक टर्मिनल से और छोटे तार (ऋणात्मक) को ऋणात्मक टर्मिनल से जोड़ना चाहिए। यदि एलईडी उल्टा जुड़ी हुई है, तो यह नहीं जलेगी। अन्य विकल्प एलईडी के कार्यक्षमता से सीधे संबंधित नहीं हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms.",
+          "critique": "The Hindi translation accurately preserves the meaning, structure, and technical terms of the original English question. The correct answer remains option (1), and all distractors remain incorrect.",
           "flag": null
         },
         "mr": {
-          "stem": "जर टॉर्चमध्ये दोन विद्युत सेल वापरले जात असतील, तर सेल योग्य क्रमाने जोडले गेल्यास काय होते?",
+          "stem": "एका विद्यार्थ्याने एका बॅटरीला एलईडी जोडला, पण तो जळत नाही. विद्यार्थ्याने सर्वात प्रथम काय तपासावे?",
           "choices": [
-            "दिवा जळतो",
-            "दिवा जळत नाही",
-            "दिवा झपाटा मारतो",
-            "दिवा नुकसान होतो"
+            "बॅटरीचा व्होल्टेज",
+            "एलईडीची दिशा",
+            "तारेची लांबी",
+            "कक्षेचे प्रकाश"
           ],
-          "solution": "जेव्हा विद्युत सेल योग्य क्रमाने जोडले जातात तेव्हा ते विद्युत प्रवाहाचा सतत प्रवाह पुरवतात, जो दिवा चालवतो आणि तो जळतो. जर सेल चुकीच्या क्रमाने जोडले गेले असतील तर प्रवाह योग्यरित्या होऊ शकत नाही, त्यामुळे दिवा जळत नाही. दिवा झपाटा मारणे किंवा नुकसान होणे अशा वेगळ्या परिस्थितींमुळे होऊ शकते, जसे अस्थिर प्रवाह किंवा अतिरिक्त व्होल्टेज.",
+          "solution": "एलईडी बॅटरीच्या धनात्मक टर्मिनलला लांब तार आणि ऋणात्मक टर्मिनलला लहान तार जोडून योग्यरित्या जोडला पाहिजे. जर एलईडी उलट जोडला गेला तर तो जळत नाही. इतर विकल्प एलईडीच्या कार्यक्षमतेशी सीधा संबंधित नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms like 'विद्युत सेल' and 'दिवा' which are standard in Marathi textbooks.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Assumes the battery is faulty without checking the LED",
+        null,
+        "Believes wire length affects LED glow",
+        "Thinks lighting conditions affect LED operation"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as LED orientation is a common issue. The author's reasoning for the other options reflects typical misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.5 An electrical circuit"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.6 Electric switch"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.3 Circuit Diagrams"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T05:25:32.663Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In a circuit diagram, the symbol for an LED shows an arrow pointing towards the direction of current flow. What does this indicate?",
+      "choices": [
+        "The LED emits light in both directions",
+        "The LED allows current to pass in only one direction",
+        "The LED is a conductor",
+        "The LED is a battery"
+      ],
+      "answerIndex": 1,
+      "solution": "The arrow in the LED symbol indicates the direction in which current can flow through the LED. LEDs are diodes that allow current to pass in only one direction. The other options are incorrect because they misinterpret the LED's function.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक परिपथ आरेख में, एलईडी के लिए प्रतीक धारा प्रवाह की दिशा की ओर एक त стрелка दिखाता है। इसका क्या अर्थ है?",
+          "choices": [
+            "एलईडी दोनों दिशाओं में प्रकाश उत्सर्जित करता है",
+            "एलईडी केवल एक दिशा में धारा पास करता है",
+            "एलईडी एक चालक है",
+            "एलईडी एक बैटरी है"
+          ],
+          "solution": "एलईडी के प्रतीक में तीर धारा के उस दिशा को दर्शाता है जिसमें धारा एलईडी से गुजर सकती है। एलईडी डायोड होते हैं जो केवल एक दिशा में धारा पास करते हैं। अन्य विकल्प गलत हैं क्योंकि वे एलईडी के कार्य की गलत व्याख्या करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सर्किट चित्रात, एलईडीसाठी चिन्हाच्या बाजूला विद्युत प्रवाहाच्या दिशेने एक तीर असतो. हे काय सूचित करते?",
+          "choices": [
+            "एलईडी दोन्ही दिशांमध्ये प्रकाश उत्सर्जित करते",
+            "एलईडी फक्त एका दिशेने विद्युत प्रवाह पार करू देते",
+            "एलईडी एक वाहक आहे",
+            "एलईडी एक बॅटरी आहे"
+          ],
+          "solution": "एलईडीच्या चिन्हातील तीर एलईडीमध्ये विद्युत प्रवाह कोणत्या दिशेने पार करता येईल याचा संकेत देतो. एलईडी हे डायोड आहेत जे फक्त एका दिशेने विद्युत प्रवाह पार करू देतात. इतर विकल्प चुकीचे आहेत कारण ते एलईडीच्या कार्याचे चुकीचे अर्थ सूचित करतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms. The correct answer remains option (2) and the distractors are still incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes LEDs work like regular bulbs",
+        null,
+        "Thinks the arrow indicates a conductor",
+        "Confuses the LED symbol with a battery symbol"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the arrow in the LED symbol indicates unidirectional current flow, which aligns with the correct answer. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.5 An electrical circuit"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.6 Electric switch"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.3 Circuit Diagrams"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T05:25:32.663Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a torch uses two electric cells in a battery, what is the main advantage of using a battery?",
+      "choices": [
+        "It provides a longer duration of energy",
+        "It reduces the cost of the torch",
+        "It increases the brightness of the lamp",
+        "It makes the torch lighter"
+      ],
+      "answerIndex": 0,
+      "solution": "Using a battery with two electric cells allows the torch to operate for a longer time because multiple cells can store more energy. The other options, such as reducing cost or increasing brightness, are not directly related to the number of cells in a battery. Making the torch lighter is also not a result of using multiple cells.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक टॉर्च में बैटरी में दो विद्युत सेल होती हैं, तो बैटरी का प्रयोग करने का मुख्य लाभ क्या है?",
+          "choices": [
+            "इसके द्वारा ऊर्जा की अवधि लंबी होती है",
+            "इसके द्वारा टॉर्च की लागत कम हो जाती है",
+            "इसके द्वारा लैंप की चमक बढ़ जाती है",
+            "इसके द्वारा टॉर्च हल्का हो जाता है"
+          ],
+          "solution": "दो विद्युत सेल वाली बैटरी के उपयोग से टॉर्च लंबे समय तक कार्य कर सकता है क्योंकि अधिक सेल अधिक ऊर्जा संग्रहीत कर सकते हैं। अन्य विकल्प, जैसे लागत कम करना या चमक बढ़ाना, सीधे रूप से बैटरी में सेलों की संख्या से संबंधित नहीं हैं। अधिक सेलों के कारण टॉर्च हल्का होना भी संभव नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and technical terminology. All options are correctly translated and maintain their original intent. The correct answer remains in the same position (option 1), and the distractors remain incorrect as in the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर टॉर्चमध्ये बॅटरीमध्ये दोन विद्युत सेल वापरले जातात, तर बॅटरी वापरण्याचा मुख्य फायदा काय आहे?",
+          "choices": [
+            "ते ऊर्जेचा लांब कालावधी पुरवते",
+            "ते टॉर्चची किंमत कमी करते",
+            "ते दिव्याची तीव्रता वाढवते",
+            "ते टॉर्चला हलके बनवते"
+          ],
+          "solution": "दोन विद्युत सेल असलेल्या बॅटरीचा वापर करणे टॉर्चला लांब काळ चालू ठेवण्यास मदत करते कारण अनेक सेल अधिक ऊर्जा साठवू शकतात. इतर विकल्प, जसे की किंमत कमी करणे किंवा तीव्रता वाढवणे, सेलच्या संख्येशी सीधा संबंध नाही. बॅटरीमध्ये अधिक सेल वापरणे टॉर्चला हलके बनवत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
           "flag": null
         }
       },
@@ -394,9 +655,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses the effect of correct connection with a fault",
-        "Confuses the effect of correct connection with a malfunction",
-        "Confuses the effect of correct connection with damage"
+        "Thinks cost is the main advantage",
+        "Believes brightness increases with a battery",
+        "Confuses battery with weight reduction"
       ],
       "solverAnswers": [
         0,
@@ -405,8 +666,8 @@
         0,
         0
       ],
-      "levelFlag": null,
-      "critique": "The question is clear and the correct answer is logically derived from the explanation. The reasoning for the distractors aligns with common misconceptions.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as using multiple cells in a battery provides more energy over time. The other options are incorrect and represent common misconceptions.",
       "sources": [
         {
           "document": "ncert/7/science/gecu103.pdf",
@@ -451,71 +712,113 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T21:15:23.989Z",
+      "generatedAt": "2026-11-02T05:25:32.663Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "What happens if a switch is in the 'OFF' position?",
+      "difficulty": 5,
+      "stem": "If a student uses a copper wire with its insulator covering intact in a circuit, what will happen?",
       "choices": [
-        "Electric current flows through the circuit",
-        "The circuit is completed",
-        "The circuit is broken",
-        "The lamp glows"
+        "The lamp will glow brightly",
+        "The lamp will not glow",
+        "The lamp will glow dimly",
+        "The lamp will glow for a while and then stop"
       ],
-      "answerIndex": 2,
-      "solution": "When a switch is in the 'OFF' position, the circuit is broken, preventing electric current from flowing. The other options describe situations when the switch is in the 'ON' position.",
+      "answerIndex": 1,
+      "solution": "If the insulator covering the copper wire is not removed, the circuit will not be complete, and hence, the lamp will not glow. Copper is a good conductor, but the presence of an insulator prevents the flow of electric current. Hence, the correct answer is that the lamp will not glow.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि स्विच 'ऑफ' स्थिति में हो तो क्या होता है?",
+          "stem": "यदि एक छात्र एक सीसा तार का उपयोग करता है जिसका इन्सुलेटर कवर अखंड रहता है एक परिपथ में, तो क्या होगा?",
           "choices": [
-            "विद्युत धारा परिपथ में प्रवाहित होती है",
-            "परिपथ पूर्ण हो जाता है",
-            "परिपथ टूट जाता है",
-            "लैंप जलता है"
+            "लैंप तेजी से जलेगा",
+            "लैंप नहीं जलेगा",
+            "लैंप कमजोर रूप से जलेगा",
+            "लैंप थोड़ी देर के लिए जलेगा और फिर बंद हो जाएगा"
           ],
-          "solution": "जब स्विच 'ऑफ' स्थिति में होता है तो परिपथ टूट जाता है जिससे विद्युत धारा प्रवाहित नहीं हो पाती। अन्य विकल्प स्विच की 'ऑन' स्थिति के अवसरों का वर्णन करते हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, technical terms are appropriate for Hindi-medium curriculum, and the logic of the question and solution is preserved.",
+          "solution": "यदि सीसा तार के इन्सुलेटर कवर को हटाया नहीं जाता है, तो परिपथ पूरा नहीं होगा, इसलिए लैंप नहीं जलेगा। सीसा एक अच्छा चालक है, लेकिन इन्सुलेटर की उपस्थिति विद्युत प्रवाह को रोकती है। इसलिए, सही उत्तर यह है कि लैंप नहीं जलेगा।",
+          "imageAlt": "एक सरल परिपथ जिसमें एक सीसा तार और एक लैंप है। सीसा तार दो नोड्स के बीच अखंड रहता है, और लैंप भी परिपथ में जुड़ा हुआ है।",
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate technical terms used (e.g., 'इन्सुलेटर' for 'insulator', 'चालक' for 'conductor'). The correct answer remains option (2), and all distractors are still incorrect.",
           "flag": null
         },
         "mr": {
-          "stem": "जर स्विच 'ऑफ' शीर्षकावर असेल तर काय होते?",
+          "stem": "एका विद्यार्थ्याने एका तांब्याच्या तारेचा वापर केला ज्याचा इसोलेटरचा आवरण अखंड आहे, तर करंटमध्ये काय घडेल?",
           "choices": [
-            "विद्युत प्रवाह सर्किटमधून वाहतो",
-            "सर्किट पूर्ण होतो",
-            "सर्किट तुटतो",
-            "दिवा ज्वलित होतो"
+            "दिवा जास्त जागे राहील",
+            "दिवा जागे राहणार नाही",
+            "दिवा कमी जागे राहील",
+            "दिवा थोडा काळ जागे राहील आणि नंतर बंद होईल"
           ],
-          "solution": "जेव्हा स्विच 'ऑफ' शीर्षकावर असतो तेव्हा सर्किट तुटतो, जेणेकरून विद्युत प्रवाह प्रवाहित होऊ शकत नाही. इतर पर्याय स्विच 'ऑन' शीर्षकावर असताना घडतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for 'circuit' and 'switch'.",
+          "solution": "जर तांब्याच्या तारेचा इसोलेटरचा आवरण दूर करण्यात आलेला नाही, तर करंट पूर्ण होणार नाही आणि त्यामुळे दिवा जागे राहणार नाही. तांबा एक चांगला वाहक आहे, परंतु इसोलेटरच्या उपस्थितीमुळे विद्युत प्रवाह रोखला जाईल. म्हणून दिवा जागे राहणार नाही हे योग्य उत्तर आहे.",
+          "imageAlt": "एक साधा करंट ज्यामध्ये तांब्याची तार आणि दिवा आहे. तांब्याची तार दोन नोडमध्ये जोडलेली आहे आणि दिवा करंटमध्ये जोडलेला आहे.",
+          "critique": "The translation is accurate and maintains the technical terms and meaning of the original English question.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
+      "imageAlt": "A simple circuit with a copper wire and a lamp. The copper wire is intact and connected between two nodes, and the lamp is also connected in the circuit.",
+      "figure": {
+        "kind": "circuit",
+        "spec": {
+          "nodes": [
+            {
+              "id": "n1",
+              "x": 2,
+              "y": 4
+            },
+            {
+              "id": "n2",
+              "x": 8,
+              "y": 4
+            }
+          ],
+          "parts": [
+            {
+              "type": "wire",
+              "from": "n1",
+              "to": "n2",
+              "label": "A",
+              "value": {
+                "value": 0,
+                "unit": "ohm"
+              }
+            },
+            {
+              "type": "bulb",
+              "from": "n2",
+              "to": "n1",
+              "label": "B"
+            }
+          ]
+        },
+        "labels": {
+          "A": {
+            "en": "copper wire"
+          },
+          "B": {
+            "en": "lamp"
+          }
+        }
+      },
+      "needsFigure": true,
       "distractorReason": [
-        "Thinks the switch being off allows current to flow",
-        "Thinks the switch being off completes the circuit",
+        "Assumes that the conductor will still allow current to flow even with the insulator",
         null,
-        "Thinks the switch being off causes the lamp to glow"
+        "Student thinks insulator can allow some current through, so lamp glows but not brightly",
+        "Assumes that the lamp will function even with an incomplete circuit"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "levelFlag": null,
-      "critique": "The correct answer is 2, as an 'OFF' switch breaks the circuit. The reasoning is sound and matches the misconceptions described.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The presence of an insulator on the copper wire prevents the flow of electric current, making the circuit incomplete. Therefore, the lamp will not glow. The author's reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/7/science/gecu103.pdf",
@@ -562,120 +865,181 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T21:15:23.989Z",
+      "generatedAt": "2026-11-02T05:25:32.663Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "If the positive terminal of a cell is connected to the negative terminal of another cell, what is the effect on the overall voltage of the circuit?",
+      "difficulty": 5,
+      "stem": "A circuit has an LED, a battery, and a switch. The LED does not glow even when the switch is closed. What is the most likely reason?",
       "choices": [
-        "The voltage remains the same",
-        "The voltage decreases",
-        "The voltage increases",
-        "The voltage becomes zero"
+        "The switch is faulty",
+        "The LED is connected in reverse",
+        "The battery is dead",
+        "The wires are too long"
       ],
-      "answerIndex": 2,
-      "solution": "When the positive terminal of one cell is connected to the negative terminal of another cell, the overall voltage of the circuit increases. This is because the cells are connected in series, and the voltages add up. The voltage does not remain the same, decrease, or become zero in this arrangement.",
+      "answerIndex": 1,
+      "solution": "LEDs require correct orientation to glow. If the LED is connected in reverse, the current will not pass through it, and it will not glow. The other options are possible but less likely to be the first thing to check.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक सेल के धनात्मक टर्मिनल को दूसरे सेल के ऋणात्मक टर्मिनल से जोड़ा जाता है, तो परिपथ के कुल वोल्टेज पर क्या प्रभाव पड़ता है?",
+          "stem": "एक सर्किट में एक एलईडी, एक बैटरी और एक स्विच है। स्विच बंद होने पर भी एलईडी नहीं जलती। संभावित कारण क्या है?",
           "choices": [
-            "वोल्टेज वही रहता है",
-            "वोल्टेज कम हो जाता है",
-            "वोल्टेज बढ़ जाता है",
-            "वोल्टेज शून्य हो जाता है"
+            "स्विच खराब है",
+            "एलईडी उल्टा जुड़ा हुआ है",
+            "बैटरी में बिजली खत्म हो गई है",
+            "तार बहुत लंबे हैं"
           ],
-          "solution": "जब एक सेल के धनात्मक टर्मिनल को दूसरे सेल के ऋणात्मक टर्मिनल से जोड़ा जाता है, तो परिपथ के कुल वोल्टेज बढ़ जाता है। यह इसलिए है क्योंकि सेल श्रेणी में जुड़े होते हैं और वोल्टेज जुड़ जाते हैं। इस व्यवस्था में वोल्टेज वही नहीं रहता, कम नहीं होता और शून्य नहीं होता।",
-          "imageAlt": "दो बैटरी के तार के साथ श्रेणी में जुड़ी हुई हैं, धनात्मक और ऋणात्मक टर्मिनल दिखाए गए हैं।",
-          "critique": "Translation is accurate, maintains the same meaning, and uses standard Hindi technical terms.",
+          "solution": "एलईडी को सही दिशा में जोड़ना आवश्यक होता है। यदि एलईडी उल्टा जुड़ा हुआ है तो धारा इसमें पास नहीं होगी और यह जलेगी नहीं। अन्य विकल्प संभव हैं लेकिन पहली बार जांच के लिए कम संभावना है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains the original meaning, and uses standard Hindi technical terms.",
           "flag": null
         },
         "mr": {
-          "stem": "जर सेलच्या धनात्मक टर्मिनलला दुसऱ्या सेलच्या ऋणात्मक टर्मिनलला जोडले जाते, तर परिपथाच्या एकूण व्होल्टेजवर काय परिणाम होतो?",
+          "stem": "एका परिपथात एलईडी, बॅटरी आणि स्विच आहे. स्विच बंद असताना एलईडी जळत नाही. तरीही संभाव्य कारण काय असू शकते?",
           "choices": [
-            "व्होल्टेज तितकाच राहतो",
-            "व्होल्टेज कमी होतो",
-            "व्होल्टेज वाढतो",
-            "व्होल्टेज शून्य होतो"
+            "स्विच खराब आहे",
+            "एलईडी उलट जोडलेला आहे",
+            "बॅटरी खराब आहे",
+            "तार खूप लांब आहेत"
           ],
-          "solution": "जर एका सेलच्या धनात्मक टर्मिनलला दुसऱ्या सेलच्या ऋणात्मक टर्मिनलला जोडले जाते, तर परिपथाच्या एकूण व्होल्टेज वाढतो. हे त्यामुळे होते कारण सेल सीरिजमध्ये जोडले गेले आहेत आणि व्होल्टेज जमा होतो. ही व्यवस्था असताना व्होल्टेज तितकाच राहत नाही, कमी होत नाही किंवा शून्य होत नाही.",
-          "imageAlt": "दोन बॅटरी तारेने श्रेणीमध्ये जोडल्या गेल्या आहेत, धनात्मक आणि ऋणात्मक टर्मिनल दर्शविले आहेत.",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for electrical concepts.",
+          "solution": "एलईडी जळायला योग्य दिशा आवश्यक असते. जर एलईडी उलट जोडलेला असेल तर विद्युतप्रवाह त्यातून जाणार नाही आणि तो जळणार नाही. इतर पर्याय शक्य आहेत पण त्यांची तपासणी सर्वप्रथम करण्याची शक्यता कमी असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The correct answer remains option (1) and the distractors are still incorrect.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": "Two batteries connected in series with a wire, showing positive and negative terminals.",
-      "figure": {
-        "kind": "circuit",
-        "spec": {
-          "nodes": [
-            {
-              "id": "n1",
-              "x": 1,
-              "y": 4
-            },
-            {
-              "id": "n2",
-              "x": 3,
-              "y": 4
-            },
-            {
-              "id": "n3",
-              "x": 5,
-              "y": 4
-            }
-          ],
-          "parts": [
-            {
-              "type": "battery",
-              "from": "n1",
-              "to": "n2",
-              "label": "B1",
-              "value": {
-                "value": 1.5,
-                "unit": "V"
-              }
-            },
-            {
-              "type": "battery",
-              "from": "n2",
-              "to": "n3",
-              "label": "B2",
-              "value": {
-                "value": 1.5,
-                "unit": "V"
-              }
-            },
-            {
-              "type": "wire",
-              "from": "n1",
-              "to": "n3"
-            }
-          ]
-        },
-        "labels": {}
-      },
-      "needsFigure": true,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
       "distractorReason": [
-        "Thinks the voltage is unaffected by the arrangement",
-        "Believes the voltage decreases when cells are connected in series",
+        "Assumes the switch is the main issue",
         null,
-        "Does not understand the concept of series connection"
+        "Thinks a dead battery is the only possible cause",
+        "Believes wire length affects LED operation"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that LED orientation is the most likely issue. The reasoning aligns with common student misconceptions about LED polarity.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.5 An electrical circuit"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.6 Electric switch"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.3 Circuit Diagrams"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T05:25:32.663Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In a circuit, if the cells are connected in reverse order, what is the most likely outcome?",
+      "choices": [
+        "The circuit works normally",
+        "The circuit does not work",
+        "The current increases",
+        "The voltage doubles"
+      ],
+      "answerIndex": 1,
+      "solution": "If the cells are connected in reverse order, the circuit does not work because the flow of electric current is blocked, preventing the circuit from functioning. The other options are incorrect because reversing the cells does not cause the circuit to work normally, increase current, or double the voltage.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक परिपथ में, यदि सेल उलटे क्रम में जुड़े हों, तो सबसे संभावित परिणाम क्या है?",
+          "choices": [
+            "परिपथ सामान्य रूप से कार्य करता है",
+            "परिपथ कार्य नहीं करता है",
+            "धारा बढ़ जाती है",
+            "वोल्टेज दुगना हो जाता है"
+          ],
+          "solution": "यदि सेल उलटे क्रम में जुड़े हों, तो परिपथ कार्य नहीं करता है क्योंकि विद्युत धारा के प्रवाह को रोक दिया जाता है, जिससे परिपथ कार्य करने में असमर्थ हो जाता है। अन्य विकल्प गलत हैं क्योंकि सेल को उलटे क्रम में जोड़ने से परिपथ सामान्य रूप से कार्य नहीं करता है, धारा बढ़ नहीं जाती है या वोल्टेज दुगना नहीं होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सर्किटमध्ये, जर सेल्स उलट्या क्रमाने जोडले गेले तर, अपेक्षित फलिताचा सर्वात शक्य निकाल काय असेल?",
+          "choices": [
+            "सर्किट सामान्यपणे कार्य करते",
+            "सर्किट कार्य करत नाही",
+            "विद्युत प्रवाह वाढतो",
+            "वोल्टेज दुप्पट होतो"
+          ],
+          "solution": "जर सेल्स उलट्या क्रमाने जोडले गेले तर, सर्किट कार्य करत नाही कारण विद्युत प्रवाह अडथळा निर्माण करतो आणि सर्किट कार्य करू शकत नाही. इतर विकल्प अयोग्य आहेत कारण उलट्या क्रमाने सेल्स जोडल्यामुळे सर्किट सामान्यपणे कार्य करू शकत नाही, प्रवाह वाढत नाही किंवा वोल्टेज दुप्पट होत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks reverse connection works normally",
+        null,
+        "Believes current increases with reverse connection",
+        "Confuses voltage with cell arrangement"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is well-posed and the solution is correct. Connecting cells in series increases the total voltage, and the reasoning provided by the author is accurate. The distractors are plausible misconceptions for students.",
+      "critique": "The correct answer is 1, as reversing the cells in a circuit typically prevents the flow of current, making the circuit non-functional. The reasoning provided by the author aligns with the physics of electrical circuits and the misconceptions students might have.",
       "sources": [
         {
           "document": "ncert/7/science/gecu103.pdf",
@@ -720,7 +1084,117 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T21:15:23.989Z",
+      "generatedAt": "2026-11-02T05:25:32.663Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In a circuit, a student connects an LED to a battery, but it does not glow. The student then reverses the LED's connections. What is the most likely outcome?",
+      "choices": [
+        "The LED glows",
+        "The LED glows brighter",
+        "The LED does not glow",
+        "The LED gets damaged"
+      ],
+      "answerIndex": 0,
+      "solution": "LEDs allow current to pass in only one direction. If the LED is reversed, it will not glow. When the connections are reversed correctly, the LED will glow. The other options are incorrect because they do not reflect the directional nature of LEDs.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक सर्किट में, एक छात्र एक एलईडी को बैटरी से जोड़ता है, लेकिन यह नहीं जलता। छात्र फिर एलईडी के संयोजन को उलट देता है। सबसे संभावित परिणाम क्या होगा?",
+          "choices": [
+            "एलईडी जलती है",
+            "एलईडी अधिक चमकती है",
+            "एलईडी नहीं जलती",
+            "एलईडी टूट जाती है"
+          ],
+          "solution": "एलईडी केवल एक ही दिशा में धारा पारित करती है। यदि एलईडी को उलट दिया जाता है, तो यह जलती नहीं है। जब संयोजन सही दिशा में उलट दिए जाते हैं, तो एलईडी जलती है। अन्य विकल्प गलत हैं क्योंकि वे एलईडी की दिशात्मक प्रकृति को प्रतिबिंबित नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains option (1), and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका परिपथात, एका विद्यार्थ्याने बॅटरीला एलईडी जोडला, परंतु तो तापत नाही. विद्यार्थी नंतर एलईडीच्या जोडण्या उलट करतो. शक्यतोला काय फलित होईल?",
+          "choices": [
+            "एलईडी तापत नाही",
+            "एलईडी जास्त तापत नाही",
+            "एलईडी तापत नाही",
+            "एलईडी नुकसान पावतो"
+          ],
+          "solution": "एलईडीला केवळ एका दिशेने विद्युत प्रवाह जाऊ देते. जर एलईडी उलट केला जातो, तर तो तापत नाही. जेव्हा जोडण्या योग्य दिशेने उलट केल्या जातात, तेव्हा एलईडी तापतो. इतर विकल्प अयोग्य आहेत कारण ते एलईडीच्या दिशात्मक प्रकृतीला प्रतिबिंबित करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate and maintains the technical meaning of the original English question. The term 'एलईडी' is the standard Marathi term used for 'LED' in educational contexts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes LEDs work like regular bulbs",
+        "Assumes reversing connections increases brightness",
+        "Thinks reversing connections damages the LED"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that LEDs are unidirectional and will only glow when connected properly. Reversing them prevents current flow, so the correct answer is that the LED glows when connections are reversed correctly.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.5 An electrical circuit"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.2 A Simple Electrical Circuit",
+            "3.2.6 Electric switch"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.3 Circuit Diagrams"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu103.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 3: Electricity: Circuits and their Components",
+            "3.4 Electrical Conductors and Insulators"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T05:25:32.663Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

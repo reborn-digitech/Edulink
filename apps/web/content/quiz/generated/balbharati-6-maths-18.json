@@ -21,47 +21,241 @@
   "board": "BALBHARATI",
   "book": "६ वी गणित इंग्रजी",
   "edition": "First Edition 2026",
-  "generatedAt": "2026-10-31T01:56:23.683Z",
+  "generatedAt": "2026-11-01T14:34:50.009Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 2,
-      "stem": "What is the purpose of a frequency table?",
+      "stem": "What is the purpose of using a bar graph?",
       "choices": [
-        "To list the scores in descending order",
-        "To show the number of times a score occurs",
-        "To show the total number of observations",
-        "To calculate the median"
+        "To show the exact number of items",
+        "To compare different categories visually",
+        "To display a single number",
+        "To create a decorative image"
       ],
       "answerIndex": 1,
-      "solution": "A frequency table is used to display how often each score appears in a dataset. The correct option reflects this by stating it shows the number of times a score occurs. Listing scores in descending order is a characteristic of a ranked list, not a frequency table. Showing the total number of observations can be derived from a frequency table but is not its main purpose. Calculating the median requires additional steps beyond what a frequency table provides.",
+      "solution": "A bar graph is used to compare different categories visually. It is not for showing the exact number of items, displaying a single number, or creating a decorative image.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक बारंबारता सारणी का उद्देश्य क्या है?",
+          "stem": "बार ग्राफ के उपयोग का उद्देश्य क्या है?",
           "choices": [
-            "अंकों को अवरोही क्रम में सूचीबद्ध करना",
-            "एक अंक के बार बार होने की संख्या दिखाना",
-            "अवलोकनों की कुल संख्या दिखाना",
-            "माध्यक की गणना करना"
+            "आइटम की ठीक संख्या दिखाना",
+            "विभिन्न श्रेणियों की तुलना दृश्य रूप से करना",
+            "एक एकल संख्या प्रदर्शित करना",
+            "एक सजावटी चित्र बनाना"
           ],
-          "solution": "एक बारंबारता सारणी डेटा सेट में प्रत्येक अंक के बार बार होने के तरीके को दर्शाने के लिए उपयोग की जाती है। सही विकल्प इसके द्वारा एक अंक के बार बार होने की संख्या दिखाना है। अंकों को अवरोही क्रम में सूचीबद्ध करना एक रैंक की सूची की विशेषता है, एक बारंबारता सारणी की नहीं। अवलोकनों की कुल संख्या एक बारंबारता सारणी से निकाली जा सकती है लेकिन इसका मुख्य उद्देश्य नहीं है। माध्यक की गणना बारंबारता सारणी से अधिक चरणों की आवश्यकता होती है।",
+          "solution": "एक बार ग्राफ का उपयोग विभिन्न श्रेणियों की तुलना दृश्य रूप से करने के लिए किया जाता है। इसका उद्देश्य आइटम की ठीक संख्या दिखाना, एक एकल संख्या प्रदर्शित करना या एक सजावटी चित्र बनाना नहीं है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a Hindi-medium educational context.",
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for educational context.",
           "flag": null
         },
         "mr": {
-          "stem": "आवृत्ती टेबलचा उद्देश काय आहे?",
+          "stem": "बार ग्राफ वापरण्याचा उद्देश काय आहे?",
           "choices": [
-            "स्कोअर्स अवरोही क्रमाने नोंदवणे",
-            "एका स्कोअरच्या घटनांची संख्या दर्शविणे",
-            "अवलोकनांची एकूण संख्या दर्शविणे",
-            "मध्यमा काढणे"
+            "वस्तूंची अचूक संख्या दाखवणे",
+            "विविध वर्गांची तुलना दृश्यरूपाने करणे",
+            "एक नंबर दाखवणे",
+            "सजावटीचा चित्र तयार करणे"
           ],
-          "solution": "एका आवृत्ती टेबलचा उपयोग डेटासेटमध्ये प्रत्येक स्कोअरच्या घटनांची व्याख्या करण्यासाठी केला जातो. योग्य पर्याय याचा अर्थ दर्शवितो की एका स्कोअरच्या घटनांची संख्या दर्शविणे. स्कोअर्स अवरोही क्रमाने नोंदवणे हे एका रॅंक केलेल्या यादीचे वैशिष्ट्य आहे, नाही की आवृत्ती टेबलचे. अवलोकनांची एकूण संख्या आवृत्ती टेबलमधून मिळू शकते परंतु ते त्याचे मुख्य उद्देश नाही. मध्यमा काढण्यासाठी आवृत्ती टेबलपेक्षा अधिक चरणांची आवश्यकता असते.",
+          "solution": "बार ग्राफ विविध वर्गांची तुलना दृश्यरूपाने करण्यासाठी वापरला जातो. तो वस्तूंची अचूक संख्या दाखवण्यासाठी, एक नंबर दाखवण्यासाठी किंवा सजावटीचा चित्र तयार करण्यासाठी नसतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for technical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses with a table",
+        null,
+        "Focuses on one number",
+        "Ignores the purpose of a graph"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as bar graphs are primarily used to compare different categories visually. The other options represent common misconceptions about the purpose of graphs.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 97,
+          "pageStart": 155,
+          "pageEnd": 157,
+          "headingPath": [
+            "18. Data Representation"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 98,
+          "pageStart": 157,
+          "pageEnd": 159,
+          "headingPath": [
+            "18. Data Representation",
+            "Peaks in Maharashtra"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 99,
+          "pageStart": 159,
+          "pageEnd": 159,
+          "headingPath": [
+            "18. Data Representation",
+            "Peaks in Maharashtra"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T14:34:50.009Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main purpose of an infographic?",
+      "choices": [
+        "To provide detailed text",
+        "To present information in an artistic way",
+        "To show the exact data values",
+        "To record scientific measurements"
+      ],
+      "answerIndex": 1,
+      "solution": "An infographic is meant to present information in an artistic, aesthetic, and attractive way. It is not for detailed text, showing exact data values, or recording measurements.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक इनफॉग्राफिक का मुख्य उद्देश्य क्या है?",
+          "choices": [
+            "विस्तृत पाठ प्रदान करना",
+            "एक कलात्मक तरीके से जानकारी प्रस्तुत करना",
+            "ठीक डेटा मान दिखाना",
+            "वैज्ञानिक माप को दर्ज करना"
+          ],
+          "solution": "एक इनफॉग्राफिक का उद्देश्य जानकारी को कलात्मक, सुंदर और आकर्षक तरीके से प्रस्तुत करना है। यह विस्तृत पाठ, ठीक डेटा मान दिखाना या माप को दर्ज करना के लिए नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अनुक्रमांकाचा मुख्य उद्देश काय आहे?",
+          "choices": [
+            "विस्तृत लेखन पुरविणे",
+            "कलात्मक पद्धतीने माहिती दाखवणे",
+            "अचूक डेटा मूल्ये दाखवणे",
+            "वैज्ञानिक मापने नोंदवणे"
+          ],
+          "solution": "एका अनुक्रमांकाचा उद्देश कलात्मक, सौंदर्यपूर्ण आणि आकर्षक पद्धतीने माहिती दाखवणे आहे. तो विस्तृत लेखन, अचूक डेटा मूल्ये दाखवणे किंवा मापने नोंदवणे नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for educational context.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses with a report",
+        null,
+        "Focuses on appearance only",
+        "Ignores the visual aspect"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1. The solution is sound and matches the reasoning. The distractors reflect common misconceptions about the purpose of infographics.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 97,
+          "pageStart": 155,
+          "pageEnd": 157,
+          "headingPath": [
+            "18. Data Representation"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 98,
+          "pageStart": 157,
+          "pageEnd": 159,
+          "headingPath": [
+            "18. Data Representation",
+            "Peaks in Maharashtra"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 99,
+          "pageStart": 159,
+          "pageEnd": 159,
+          "headingPath": [
+            "18. Data Representation",
+            "Peaks in Maharashtra"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T14:34:50.009Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "In a frequency table, what is the term used to describe the number of times a score occurs?",
+      "choices": [
+        "Tally marks",
+        "Frequency",
+        "Score",
+        "Total number of students"
+      ],
+      "answerIndex": 1,
+      "solution": "Frequency is the term used to describe the number of times a score occurs, as it directly refers to how often a particular value appears in a dataset. Tally marks are a method of counting, not the term for the count itself. A score is the value being counted, and the total number of students refers to the overall count of participants, not the repetition of a specific score.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक बारंबारता सारणी में, एक स्कोर के बार बार आने के लिए उपयोग किए जाने वाले शब्द क्या है?",
+          "choices": [
+            "टैली चिह्न",
+            "बारंबारता",
+            "स्कोर",
+            "छात्रों की कुल संख्या"
+          ],
+          "solution": "बारंबारता शब्द का उपयोग एक स्कोर के बार बार आने के लिए किया जाता है, क्योंकि यह डेटा सेट में एक विशिष्ट मान के कितनी बार उपस्थिति को सीधे संदर्भित करता है। टैली चिह्न गणना की एक विधि है, लेकिन गणना के लिए शब्द नहीं है। स्कोर मान की गणना कर रहा है, और छात्रों की कुल संख्या सभी भाग लेने वालों की कुल गणना को संदर्भित करता है, एक विशिष्ट स्कोर के पुनरावृत्ति के बजाय।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All options are correctly translated and maintain their original logical relationship to the question.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आवृत्ती टेबलमध्ये, एका गुणाच्या वारंवारतेचे वर्णन करण्यासाठी वापरलेले शब्द काय आहे?",
+          "choices": [
+            "टॅली मार्क्स",
+            "आवृत्ती",
+            "गुण",
+            "विद्यार्थ्यांची एकूण संख्या"
+          ],
+          "solution": "आवृत्ती हा शब्द एका गुणाच्या वारंवारतेचे वर्णन करण्यासाठी वापरला जातो, कारण तो डेटासेटमध्ये विशिष्ट मूल्याच्या वारंवारतेला सीधा हवाला देतो. टॅली मार्क्स हा गणनेचा एक पद्धत आहे, म्हणजे गणनेचा शब्द नाही. गुण हा गणल्या जाणार्या मूल्याचा शब्द आहे, आणि विद्यार्थ्यांची एकूण संख्या ही एकूण भाग घेणार्यांची संख्या दर्शवते, नाही की विशिष्ट गुणाची वारंवारता.",
           "imageAlt": null,
           "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for statistical concepts.",
           "flag": null
@@ -72,10 +266,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Misunderstands the purpose of the table",
+        "the student mistakes tally marks for the term",
         null,
-        "A pupil might confuse the purpose of a frequency table with that of the total count (N) in the table.",
-        "Confuses the frequency table with other data representation methods"
+        "the student confuses score with frequency",
+        "the student selects the total as the term"
       ],
       "solverAnswers": [
         1,
@@ -85,7 +279,7 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 1, as a frequency table's purpose is to show how often each score occurs. The other options represent common misconceptions about the purpose of frequency tables.",
+      "critique": "The question is clear and the correct answer is unambiguous. The distractors represent common misconceptions.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
@@ -116,49 +310,49 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T01:56:23.683Z",
+      "generatedAt": "2026-11-01T14:34:50.009Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "If 1 cm represents 5 plants in a bar graph, how many plants are represented by a bar of 3 cm?",
+      "stem": "If a bar graph is drawn with a scale of 1 cm = ₹500, and the expenditure on groceries is ₹2000, how long should the bar for groceries be?",
       "choices": [
-        "5",
-        "10",
-        "15",
-        "20"
+        "2 cm",
+        "3 cm",
+        "4 cm",
+        "5 cm"
       ],
       "answerIndex": 2,
-      "solution": "If 1 cm represents 5 plants, then 3 cm would represent 3 × 5 = 15 plants. The other options are incorrect because they do not multiply the scale correctly.",
-      "checkExpr": "3*5",
+      "solution": "If the scale is 1 cm = ₹500, then ₹2000 would be represented by 4 cm (2000 ÷ 500 = 4). The bar for groceries should be 4 cm long. 2 cm would represent ₹1000, 3 cm would represent ₹1500, and 5 cm would represent ₹2500.",
+      "checkExpr": "2000/500",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक बार ग्राफ में 1 सेमी 5 पौधों का प्रतिनिधित्व करता है, तो 3 सेमी के बार द्वारा कितने पौधे प्रतिनिधित्व किए जाते हैं?",
+          "stem": "यदि एक बार ग्राफ के पैमाने को 1 सेमी = ₹500 लिया जाए, और खाने के सामग्री पर खर्च ₹2000 हो, तो खाने के सामग्री के लिए बार कितना लंबा होना चाहिए?",
           "choices": [
-            "5",
-            "10",
-            "15",
-            "20"
+            "2 सेमी",
+            "3 सेमी",
+            "4 सेमी",
+            "5 सेमी"
           ],
-          "solution": "यदि 1 सेमी 5 पौधों का प्रतिनिधित्व करता है, तो 3 सेमी 3 × 5 = 15 पौधों का प्रतिनिधित्व करेगा। अन्य विकल्प गलत हैं क्योंकि वे स्केल को सही तरह से गुणा नहीं करते।",
+          "solution": "यदि पैमाना 1 सेमी = ₹500 है, तो ₹2000 के लिए 4 सेमी होगा (2000 ÷ 500 = 4)। खाने के सामग्री के लिए बार 4 सेमी लंबा होना चाहिए। 2 सेमी ₹1000 के बराबर होगा, 3 सेमी ₹1500 के बराबर होगा और 5 सेमी ₹2500 के बराबर होगा।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for a textbook context.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains in the same position (option 3). All distractors remain incorrect.",
           "flag": null
         },
         "mr": {
-          "stem": "1 सेमी 5 वनस्पतींचे प्रतिनिधित्व करतो, तर 3 सेमी लांबीच्या बार ग्राफमध्ये किती वनस्पती असतील?",
+          "stem": "जर एक दंड आलेख 1 सेमी = ₹500 च्या पैलूने काढला गेला असेल आणि विजयाच्या खर्चावर ₹2000 खर्च होत असेल, तर विजयाच्या बरोबरीत दंड किती लांब असावा?",
           "choices": [
-            "5",
-            "10",
-            "15",
-            "20"
+            "2 सेमी",
+            "3 सेमी",
+            "4 सेमी",
+            "5 सेमी"
           ],
-          "solution": "जर 1 सेमी 5 वनस्पतींचे प्रतिनिधित्व करत असेल, तर 3 सेमी 3 × 5 = 15 वनस्पतींचे प्रतिनिधित्व करेल. इतर विकल्प चुकीचे आहेत कारण ते पॅम्प योग्यरित्या गुणाकार करत नाहीत.",
+          "solution": "जर पैलू 1 सेमी = ₹500 असेल, तर ₹2000 ला 4 सेमी असेल (2000 ÷ 500 = 4). विजयाच्या बरोबरीत दंड 4 सेमी लांब असावा. 2 सेमी ला ₹1000 असेल, 3 सेमी ला ₹1500 असेल आणि 5 सेमी ला ₹2500 असेल.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for a textbook context.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for mathematical concepts.",
           "flag": null
         }
       },
@@ -167,10 +361,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "uses the scale value directly",
-        "adds the scale value to the length",
+        "incorrectly divides by 1000 instead of 500",
+        "Confuses the scale by adding an extra 1 cm to the correct calculation",
         null,
-        "doubles the scale value"
+        "adds 1 to the result incorrectly"
       ],
       "solverAnswers": [
         2,
@@ -180,7 +374,7 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The solution is correct and matches the key. The reasoning for the distractors aligns with common misconceptions.",
+      "critique": "The correct calculation is 2000 ÷ 500 = 4 cm. The author's solution is correct, and the reasons for the wrong options are plausible misconceptions.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
@@ -213,49 +407,49 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T01:56:23.683Z",
+      "generatedAt": "2026-11-01T14:34:50.009Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 4,
-      "stem": "In a bar graph, the vertical columns are used to show the height of mountains. What is the main reason for keeping the columns of uniform width?",
+      "stem": "In the pictograph, how many books did Sushil read?",
       "choices": [
-        "To make the graph look more attractive",
-        "To compare the heights effectively",
-        "To show the temperature of the place",
-        "To represent the shape of the mountains"
+        "5",
+        "10",
+        "15",
+        "20"
       ],
-      "answerIndex": 1,
-      "solution": "The main reason for keeping the columns of uniform width is to compare the heights effectively. The other options are not the primary purpose of uniform width in a bar graph.",
+      "answerIndex": 0,
+      "solution": "The pictograph shows Sushil's books represented by five symbols, each symbol standing for one book. Therefore, Sushil read 5 books. The other options represent different numbers of symbols, which do not match the representation for Sushil.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक बार ग्राफ में, ऊर्ध्वाधर स्तंभों का उपयोग पहाड़ों की ऊंचाई दिखाने के लिए किया जाता है। स्तंभों के समान चौड़ाई रखने का मुख्य कारण क्या है?",
+          "stem": "चित्रग्राफ में, सुशील ने कितनी पुस्तकें पढ़ीं?",
           "choices": [
-            "ग्राफ को अधिक सुंदर दिखाने के लिए",
-            "ऊंचाई की तुलना करने के लिए",
-            "स्थान के तापमान को दिखाने के लिए",
-            "पहाड़ों के आकार को दर्शाने के लिए"
+            "5",
+            "10",
+            "15",
+            "20"
           ],
-          "solution": "स्तंभों के समान चौड़ाई रखने का मुख्य कारण ऊंचाई की तुलना करना है। अन्य विकल्प बार ग्राफ में समान चौड़ाई के मुख्य उद्देश्य नहीं हैं।",
+          "solution": "चित्रग्राफ में सुशील की पुस्तकें पांच प्रतीकों द्वारा दर्शाई गई हैं, प्रत्येक प्रतीक एक पुस्तक के लिए है। अतः सुशील ने 5 पुस्तकें पढ़ीं। अन्य विकल्प विभिन्न संख्या में प्रतीकों के लिए हैं, जो सुशील के लिए दर्शाए गए प्रतीकों के अनुरूप नहीं हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for bar graphs.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains in the same position (option 1) and the distractors are still incorrect.",
           "flag": null
         },
         "mr": {
-          "stem": "बार ग्राफमध्ये, उभे स्तंभ शिखरांच्या उंची दर्शविण्यासाठी वापरले जातात. समान रुंदीचे स्तंभ ठेवण्याचा मुख्य कारण काय आहे?",
+          "stem": "चित्रपटात, सुशिलने किती पुस्तके वाचली?",
           "choices": [
-            "ग्राफ अधिक आकर्षक दिसावा",
-            "उंचींची तुलना प्रभावीपणे करायला",
-            "त्या ठिकाणी तापमान दर्शवायला",
-            "शिखरांच्या आकृती दर्शवायला"
+            "5",
+            "10",
+            "15",
+            "20"
           ],
-          "solution": "समान रुंदीचे स्तंभ ठेवण्याचा मुख्य कारण उंचींची तुलना प्रभावीपणे करायला आहे. इतर विकल्प बार ग्राफमध्ये समान रुंदीच्या स्तंभांच्या मुख्य उद्देशाशी संबंधित नाहीत.",
+          "solution": "चित्रपटात सुशिलची पुस्तके पाच प्रतिमांद्वारे दर्शविली गेली आहेत, ज्यापैकी प्रत्येक प्रतिमा एक पुस्तक दर्शविते. म्हणूनच, सुशिलने 5 पुस्तके वाचली. इतर विकल्पांमध्ये वेगळ्या प्रतिमांच्या संख्या दर्शविल्या गेल्या आहेत, ज्या सुशिलच्या प्रतिमांच्या प्रतिनिधित्वाशी जुळत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for graph elements.",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The solution correctly identifies option (1) as the answer.",
           "flag": null
         }
       },
@@ -264,247 +458,51 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "focuses on aesthetics",
         null,
-        "misunderstands the purpose of width",
-        "confuses height with shape"
+        "the student misreads the scale",
+        "the student misinterprets the pictograph",
+        "the student adds other values"
       ],
       "solverAnswers": [
+        2,
+        0,
         1,
-        1,
-        1,
-        1,
-        1
+        2,
+        0
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as uniform width in a bar graph ensures that the visual comparison of heights is not skewed. The other options reflect common misconceptions or irrelevant purposes.",
+      "levelFlag": null,
+      "critique": "The question is straightforward, with the correct answer explicitly stated in the passage. The author's reasoning for the distractors aligns with common student misconceptions.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 97,
-          "pageStart": 155,
-          "pageEnd": 157,
+          "ordinal": 94,
+          "pageStart": 149,
+          "pageEnd": 151,
           "headingPath": [
             "18. Data Representation"
           ]
         },
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 98,
-          "pageStart": 157,
-          "pageEnd": 159,
-          "headingPath": [
-            "18. Data Representation",
-            "Peaks in Maharashtra"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 99,
-          "pageStart": 159,
-          "pageEnd": 159,
-          "headingPath": [
-            "18. Data Representation",
-            "Peaks in Maharashtra"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T01:56:23.683Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "The table below shows the monthly expenditure of John's family on various items. If the scale is 1 cm = ₹500, and the expenditure on 'Electricity' is ₹1000, how long should the bar be for 'Electricity'?",
-      "choices": [
-        "1 cm",
-        "2 cm",
-        "3 cm",
-        "4 cm"
-      ],
-      "answerIndex": 1,
-      "solution": "If 1 cm represents ₹500, then ₹1000 would be represented by 1000 ÷ 500 = 2 cm. The other options are incorrect because they do not calculate the length based on the scale.",
-      "checkExpr": "1000/500",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "नीचे दी गई तालिका जॉन के परिवार द्वारा विभिन्न वस्तुओं पर मासिक व्यय को दर्शाती है। यदि पैमाना 1 सेमी = ₹500 है, और 'बिजली' पर व्यय ₹1000 है, तो 'बिजली' के लिए बार कितना लंबा होना चाहिए?",
-          "choices": [
-            "1 सेमी",
-            "2 सेमी",
-            "3 सेमी",
-            "4 सेमी"
-          ],
-          "solution": "यदि 1 सेमी ₹500 का प्रतिनिधित्व करता है, तो ₹1000 का प्रतिनिधित्व 1000 ÷ 500 = 2 सेमी द्वारा किया जाएगा। अन्य विकल्प गलत हैं क्योंकि वे पैमाने के आधार पर लंबाई की गणना नहीं करते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, with the correct answer remaining in the same position. The technical terms like 'पैमाना' (scale) and 'बार' (bar) are appropriate for a Hindi-medium curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालील तक्ता जॉनच्या कुटुंबाने विविध वस्तूंवर महिनाभर खर्च केलेल्या रकमेचे दर्शन करतो. जर अक्षांचा अंतर 1 सेंमी = ₹500 असेल, आणि 'वीज' वर खर्च ₹1000 असेल, तर 'वीज' साठी बार किती लांब असावा?",
-          "choices": [
-            "1 सेंमी",
-            "2 सेंमी",
-            "3 सेंमी",
-            "4 सेंमी"
-          ],
-          "solution": "जर 1 सेंमी ₹500 चे प्रतिनिधित्व करत असेल, तर ₹1000 चे प्रतिनिधित्व 1000 ÷ 500 = 2 सेंमी असेल. इतर विकल्प अयोग्य आहेत कारण ते अक्षांच्या पैमान्यावर आधारित लांबी गणना करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology for mathematical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "uses the scale value directly",
-        null,
-        "adds the scale value to the expenditure",
-        "doubles the scale value"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and straightforward. The calculation 1000 ÷ 500 = 2 cm is accurate. The distractors reflect plausible misconceptions, such as using the scale directly, adding the scale to the expenditure, or doubling the scale.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 97,
-          "pageStart": 155,
-          "pageEnd": 157,
+          "ordinal": 95,
+          "pageStart": 151,
+          "pageEnd": 153,
           "headingPath": [
             "18. Data Representation"
           ]
         },
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 98,
-          "pageStart": 157,
-          "pageEnd": 159,
-          "headingPath": [
-            "18. Data Representation",
-            "Peaks in Maharashtra"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 99,
-          "pageStart": 159,
-          "pageEnd": 159,
-          "headingPath": [
-            "18. Data Representation",
-            "Peaks in Maharashtra"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T01:56:23.683Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If a bar graph shows the number of students in different activities, and the scale is 1 cm = 5 students, how many centimeters would represent 25 students?",
-      "choices": [
-        "2 cm",
-        "3 cm",
-        "4 cm",
-        "5 cm"
-      ],
-      "answerIndex": 3,
-      "solution": "If 1 cm represents 5 students, then 25 students would be represented by 25 ÷ 5 = 5 cm. The other options do not match this calculation. A pupil who divides incorrectly might choose 2 cm, 3 cm, or 4 cm.",
-      "checkExpr": "25/5",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक बार ग्राफ विभिन्न गतिविधियों में छात्रों की संख्या दिखाता है, और पैमाना 1 सेमी = 5 छात्र है, तो 25 छात्रों को कितने सेमी द्वारा दर्शाया जाएगा?",
-          "choices": [
-            "2 सेमी",
-            "3 सेमी",
-            "4 सेमी",
-            "5 सेमी"
-          ],
-          "solution": "यदि 1 सेमी 5 छात्रों को दर्शाता है, तो 25 छात्रों को 25 ÷ 5 = 5 सेमी द्वारा दर्शाया जाएगा। अन्य विकल्प इस गणना के अनुरूप नहीं हैं। गलती से विभाजन करने वाला छात्र 2 सेमी, 3 सेमी या 4 सेमी चुन सकता है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology for a textbook context.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एक दंड आलेख विविध क्रियाकलापांमधील विद्यार्थ्यांच्या संख्येचे दर्शवितो आणि अंकन पद्धत 1 सेमी = 5 विद्यार्थी आहे, तर 25 विद्यार्थी किती सेमी द्वारे दर्शविले जातील?",
-          "choices": [
-            "2 सेमी",
-            "3 सेमी",
-            "4 सेमी",
-            "5 सेमी"
-          ],
-          "solution": "जर 1 सेमी 5 विद्यार्थी दर्शवितो, तर 25 विद्यार्थी 25 ÷ 5 = 5 सेमी द्वारे दर्शविले जातील. इतर विकल्प या गणनेशी जुळत नाहीत. चुकीच्या पद्धतीने भागाकार करणारा विद्यार्थी 2 सेमी, 3 सेमी किंवा 4 सेमी निवडू शकतो.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Divides incorrectly",
-        "Divides incorrectly",
-        "Divides incorrectly",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 5 cm (option 3), as 25 ÷ 5 = 5. The author's solution is correct, and the reasoning for the distractors is valid as they reflect common division errors.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 97,
-          "pageStart": 155,
-          "pageEnd": 157,
+          "ordinal": 96,
+          "pageStart": 153,
+          "pageEnd": 155,
           "headingPath": [
             "18. Data Representation"
           ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 98,
-          "pageStart": 157,
-          "pageEnd": 159,
-          "headingPath": [
-            "18. Data Representation",
-            "Peaks in Maharashtra"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 99,
-          "pageStart": 159,
-          "pageEnd": 159,
-          "headingPath": [
-            "18. Data Representation",
-            "Peaks in Maharashtra"
-          ]
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T01:56:23.683Z",
+      "generatedAt": "2026-11-01T14:34:50.009Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

@@ -1,0 +1,780 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T17:03:35.900Z",
+  "finishedAt": "2026-11-02T17:15:18.545Z",
+  "seconds": 703,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "९ वी गणित भाग-२ इंग्रजी",
+    "bookCode": "903000609",
+    "document": "balbharati/9/mathematics/903000609.pdf",
+    "classLevel": 9,
+    "subject": "Mathematics",
+    "chapter": "Chapter 10 — Triangles",
+    "edition": "2026 edition",
+    "chunks": 14,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n37.\nA\nD\nP Q\nB C\nE F\nTriangle is a very popular shape used in interior designing. The picture given above\nshows a cabinet designed by a famous interior designer.\nHere the largest triangle is represented by △ ABC and smallest one with shelf is\nrepresented by △ DEF. PQ is parallel to EF.\n(i) Show that △ DPQ ∼ △ DEF.\n𝑃𝑄\n(ii) If DP= 50 cm and PE = 70 cm then find .\n𝐸𝐹 1\n𝑝𝑒𝑟𝑖𝑚𝑒𝑡𝑒𝑟 𝑜𝑓 △𝐴𝐵𝐶\n(iii) (A) If 2AB = 5DE and △ ABC ∼ △ DEF then show that 𝑝𝑒𝑟𝑖𝑚𝑒𝑡𝑒𝑟 𝑜𝑓 △𝐷𝐸𝐹 is constant.\nOR 2\n(iii) (B) If AM and DN are medians of triangles ABC and DEF respectively then prove\nthat △ ABM ∼ △ DEN.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n25. Show that the points A(-5,6), B(3, 0) and C( 9, 8) are the vertices of an isosceles 2\ntriangle.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n33. Prove that If a line is drawn parallel to one side of a triangle to intersect the other two\nsides in distinct points, the other two sides are divided in the same ratio.\nIn ΔPQR, S and T are points on PQ and PR respectively. ௌொ ௉ௌ = ௉்் ோ and ∠PST = ∠PRQ. Prove that\nPQR is an isosceles triangle.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n32. Prove that a line drawn parallel to one side of a triangle intersecting other two sides 5\nin distinct points, divides the other two sides in the same ratio."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 198053,
+      "in": 42,
+      "out": 41,
+      "rejects": 1,
+      "promptTokens": 40496,
+      "completionTokens": 9069
+    },
+    "critique": {
+      "calls": 50,
+      "ms": 355248,
+      "in": 41,
+      "out": 30,
+      "rejects": 11,
+      "promptTokens": 22209,
+      "completionTokens": 8704
+    },
+    "solver": {
+      "calls": 214,
+      "ms": 126423,
+      "in": 30,
+      "out": 25,
+      "rejects": 5,
+      "promptTokens": 41037,
+      "completionTokens": 2257
+    },
+    "form": {
+      "calls": 11,
+      "ms": 38713,
+      "in": 25,
+      "out": 16,
+      "rejects": 9,
+      "promptTokens": 2778,
+      "completionTokens": 856
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 7,
+      "ms": 1381,
+      "in": 16,
+      "out": 12,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 51,
+      "ms": 571131,
+      "in": 24,
+      "out": 24,
+      "rejects": 1,
+      "promptTokens": 29732,
+      "completionTokens": 13981
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 3,
+    "2": 0,
+    "3": 2,
+    "4": 3,
+    "5": 1,
+    "6": 3
+  },
+  "flagged": 7,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the measure of an exterior angle of a triangle?",
+      "ms": {
+        "draft": 5785,
+        "critique": 7511,
+        "solver": 1775,
+        "form": 4686
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a triangle, if the measure of one angle is twice the measure of the smallest angle and the other is thrice the measure of the smallest angle, what is the measure of the smallest angle?",
+      "ms": {
+        "draft": 5785,
+        "critique": 6177
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the angles of a triangle are in the ratio 5:6:7, what is the measure of the largest angle?",
+      "ms": {
+        "draft": 5785,
+        "critique": 7545,
+        "solver": 14138,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a triangle, if one angle is 40° and another is 70°, what is the measure of the third angle?",
+      "ms": {
+        "draft": 5785,
+        "critique": 8503
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage state about corresponding parts of congruent triangles?",
+      "ms": {
+        "draft": 5883,
+        "critique": 5359,
+        "solver": 1838,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which test states that if two angles of a triangle and the included side are equal to the corresponding parts of another triangle, then the triangles are congruent?",
+      "ms": {
+        "draft": 5883,
+        "critique": 6449,
+        "solver": 2295
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two triangles are congruent, what can be said about their corresponding angles?",
+      "ms": {
+        "draft": 5883,
+        "critique": 6849,
+        "solver": 1537,
+        "form": 5300
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If in two triangles, three corresponding sides are equal, which test can be used to prove congruence?",
+      "ms": {
+        "draft": 5883,
+        "critique": 6830
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the name of the property that states that in a right-angled triangle with angles 45°, the length of each side containing the right angle is equal to the hypotenuse?",
+      "ms": {
+        "draft": 15784,
+        "critique": 7147
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the hypotenuse of a right-angled triangle is 15 units, what is the length of the median drawn to the hypotenuse?",
+      "ms": {
+        "draft": 15784,
+        "critique": 8361
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a right-angled triangle, if the median drawn to the hypotenuse is 6 units, what is the length of the hypotenuse?",
+      "ms": {
+        "draft": 15784,
+        "critique": 7011
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the length of the median drawn to the hypotenuse of a right-angled triangle is 4 units, what is the length of the hypotenuse?",
+      "ms": {
+        "draft": 15784,
+        "critique": 8351
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In triangle XYZ, it is given that XZ > XY. Which of the following can be concluded about the angles of the triangle?",
+      "ms": {
+        "draft": 4546,
+        "critique": 8045,
+        "solver": 1249
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the name of the property that states that in a right-angled triangle with angles 30°, the length of the side opposite to 30° is half the hypotenuse?",
+      "ms": {
+        "draft": 15784,
+        "critique": 8347,
+        "solver": 18638
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In triangle ABC, it is given that AB + AC > BC, AB + BC > AC, and AC + BC > AB. Which of the following is a valid conclusion?",
+      "ms": {
+        "draft": 4546,
+        "critique": 7155,
+        "solver": 17413,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If in triangle PQR, angle R is greater than angle Q, what can be said about the sides of the triangle?",
+      "ms": {
+        "draft": 4241,
+        "critique": 8655
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a triangle, if the length of one side is 5 cm and another side is 1.5 cm, what cannot be the length of the third side?",
+      "ms": {
+        "draft": 4241,
+        "critique": 10183,
+        "solver": 10701
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If two triangles are equiangular, which of the following is true about their sides?",
+      "ms": {
+        "draft": 4522,
+        "critique": 6685,
+        "solver": 1749,
+        "form": 2913
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a triangle, if two sides are 5 cm and 1.5 cm, which of the following cannot be the length of the third side?",
+      "ms": {
+        "draft": 4522,
+        "critique": 9590,
+        "solver": 2005
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a triangle, if two angles are unequal, which of the following is true?",
+      "ms": {
+        "draft": 15438,
+        "critique": 7095
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In triangle ABC, point P lies on the angle bisector of angle A. If seg PM is perpendicular to AB and point M is the midpoint of AB, which of the following is true?",
+      "ms": {
+        "draft": 15438,
+        "critique": 8006,
+        "solver": 1502,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a triangle, if the sum of two sides is greater than the third side, which property of triangles is being referred to?",
+      "ms": {
+        "draft": 15438,
+        "critique": 6925,
+        "solver": 13094,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of similar triangles?",
+      "ms": {
+        "draft": 15438,
+        "critique": 9707
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In triangle ABC, if the bisector of angle A is perpendicular to side BC, what type of triangle is ABC?",
+      "ms": {
+        "draft": 15438,
+        "critique": 7994,
+        "solver": 15072,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a triangle ABC, D is the midpoint of BC, and E is the midpoint of AC. If the length of BE is 10 cm, what is the length of the median from A to BC?",
+      "ms": {
+        "draft": 4198,
+        "critique": 7505
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "If two triangles are equiangular, what can be said about their corresponding angles?",
+      "ms": {
+        "draft": 4522,
+        "critique": 6966,
+        "solver": 1673,
+        "form": 4089
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In a right-angled triangle, if one of the acute angles is 30°, what is the length of the side opposite to this angle compared to the hypotenuse?",
+      "ms": {
+        "draft": 4198,
+        "critique": 6947,
+        "solver": 1790,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which test is used to prove that two triangles are congruent when two angles and the included side are equal?",
+      "ms": {
+        "draft": 4408,
+        "critique": 5277,
+        "solver": 1383,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two triangles have three equal sides, which test can be used to prove they are congruent?",
+      "ms": {
+        "draft": 4408,
+        "critique": 3185,
+        "solver": 731,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the sum of the measures of the three angles of a triangle?",
+      "ms": {
+        "draft": 5785,
+        "critique": 7029,
+        "solver": 1555,
+        "form": 6454,
+        "translation": 38709
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which theorem states that if two sides of a triangle are unequal, then the angle opposite to the greater side is greater than the angle opposite to the smaller side?",
+      "ms": {
+        "draft": 4546,
+        "critique": 6981,
+        "solver": 1990,
+        "form": 1,
+        "translation": 57059
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "If two triangles are equiangular, what can be said about their corresponding sides?",
+      "ms": {
+        "draft": 4241,
+        "critique": 7803,
+        "solver": 11292,
+        "form": 4417,
+        "translation": 78342
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a right-angled triangle, if the two acute angles are both 45°, what is the relationship between the lengths of the sides containing the right angle?",
+      "ms": {
+        "draft": 4198,
+        "critique": 6886,
+        "solver": 2165,
+        "form": 0,
+        "translation": 40960
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a triangle, the side opposite to a larger angle is always:",
+      "ms": {
+        "draft": 4522,
+        "critique": 6660,
+        "solver": 832,
+        "form": 5128,
+        "translation": 42971
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a triangle, if two sides and the included angle are equal to the corresponding parts of another triangle, which test can be used to prove congruence?",
+      "ms": {
+        "draft": 5883,
+        "critique": 6596,
+        "solver": 15085,
+        "form": 3027,
+        "translation": 52674
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In a right-angled triangle, the length of the median on the hypotenuse is what fraction of the hypotenuse?",
+      "ms": {
+        "draft": 4198,
+        "critique": 7752,
+        "solver": 1730,
+        "form": 0,
+        "translation": 31839
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "If two triangles are similar, which of the following statements is correct?",
+      "ms": {
+        "draft": 4522,
+        "critique": 7135,
+        "solver": 2363,
+        "form": 2358,
+        "translation": 48330
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a right-angled triangle, if one of the angles is 30 degrees, what is the relationship between the side opposite to this angle and the hypotenuse?",
+      "ms": {
+        "draft": 5883,
+        "critique": 6258,
+        "solver": 18481,
+        "form": 3008,
+        "translation": 43426
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a triangle, the bisectors of angles A and B meet at point O. If angle C is 70°, what is the measure of angle AOB?",
+      "ms": {
+        "draft": 5785,
+        "critique": 6107,
+        "solver": 1537,
+        "form": 0,
+        "translation": 34971
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If in triangle ABC, the angle bisector of ∠BAC is perpendicular to side BC, what type of triangle is ABC?",
+      "ms": {
+        "draft": 4546,
+        "critique": 9780,
+        "solver": 1637,
+        "form": 0,
+        "translation": 44476
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a triangle, if the bisector of an angle divides the opposite side in the ratio of the adjacent sides, which of the following is true?",
+      "ms": {
+        "draft": 4522,
+        "critique": 8893,
+        "solver": 1472,
+        "form": 4460,
+        "translation": 54391
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "According to the passage, what is the name of the property that states that in a right-angled triangle with angles 60°, the length of the side opposite to 60° is equal to the hypotenuse?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the measure of an exterior angle of a triangle?",
+      "reason": "options 2 and 3 say the same thing (\"Greater than the sum of its remote interior angles\" / \"Less than the sum of its remote interior angles\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a triangle, if the measure of one angle is twice the measure of the smallest angle and the other is thrice the measure of the smallest angle, what is the measure of the smallest angle?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the angles of a triangle are in the ratio 5:6:7, what is the measure of the largest angle?",
+      "reason": "options 1 and 2 are the same (\"60°\"); options 1 and 2 are the same number"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a triangle, if one angle is 40° and another is 70°, what is the measure of the third angle?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage state about corresponding parts of congruent triangles?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"contradicts the passage, which states that corresponding par…\"); distractor 3's reason is not a one-line misconception (\"incorrectly assumes a geometric property not mentioned in th…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which test states that if two angles of a triangle and the included side are equal to the corresponding parts of another triangle, then the triangles are congruent?",
+      "reason": "the solver picked option 1 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If two triangles are congruent, what can be said about their corresponding angles?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"contradicts the passage's definition of congruent triangles…\"); distractor 3's reason is not a one-line misconception (\"incorrectly assumes a geometric property not mentioned in th…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If in two triangles, three corresponding sides are equal, which test can be used to prove congruence?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "According to the passage, what is the name of the property that states that in a right-angled triangle with angles 45°, the length of each side containing the right angle is equal to the hypotenuse?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the hypotenuse of a right-angled triangle is 15 units, what is the length of the median drawn to the hypotenuse?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a right-angled triangle, if the median drawn to the hypotenuse is 6 units, what is the length of the hypotenuse?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the length of the median drawn to the hypotenuse of a right-angled triangle is 4 units, what is the length of the hypotenuse?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In triangle XYZ, it is given that XZ > XY. Which of the following can be concluded about the angles of the triangle?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "According to the passage, what is the name of the property that states that in a right-angled triangle with angles 30°, the length of the side opposite to 30° is half the hypotenuse?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In triangle ABC, it is given that AB + AC > BC, AB + BC > AC, and AC + BC > AB. Which of the following is a valid conclusion?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If in triangle PQR, angle R is greater than angle Q, what can be said about the sides of the triangle?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a triangle, if the length of one side is 5 cm and another side is 1.5 cm, what cannot be the length of the third side?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If two triangles are equiangular, which of the following is true about their sides?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misinterprets the relationship between sides of equiangular …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a triangle, if two sides are 5 cm and 1.5 cm, which of the following cannot be the length of the third side?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In a triangle, if two angles are unequal, which of the following is true?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In triangle ABC, point P lies on the angle bisector of angle A. If seg PM is perpendicular to AB and point M is the midpoint of AB, which of the following is true?",
+      "reason": "option 2 repeats the stem's wording (\"PM is the angle bisector of angle A\"); option 3 repeats the stem's wording (\"PM is the perpendicular bisector of AB\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a triangle, if the sum of two sides is greater than the third side, which property of triangles is being referred to?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a property of similar triangles?",
+      "reason": "the critic finds option 0 correct, the key is 3; the solution's working is not sound; option 0 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In triangle ABC, if the bisector of angle A is perpendicular to side BC, what type of triangle is ABC?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a triangle ABC, D is the midpoint of BC, and E is the midpoint of AC. If the length of BE is 10 cm, what is the length of the median from A to BC?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "If two triangles are equiangular, what can be said about their corresponding angles?",
+      "reason": "near-duplicate of batch item \"If two triangles are equiangular, what can be said…\" (cosine 0.900 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "In a right-angled triangle, if one of the acute angles is 30°, what is the length of the side opposite to this angle compared to the hypotenuse?",
+      "reason": "near-duplicate of batch item \"In a right-angled triangle, if one of the angles i…\" (cosine 0.941 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which test is used to prove that two triangles are congruent when two angles and the included side are equal?",
+      "reason": "near-duplicate of batch item \"In a triangle, if two sides and the included angle…\" (cosine 0.932 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If two triangles have three equal sides, which test can be used to prove they are congruent?",
+      "reason": "near-duplicate of batch item \"In a triangle, if two sides and the included angle…\" (cosine 0.911 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

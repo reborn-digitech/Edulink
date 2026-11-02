@@ -1,0 +1,737 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T10:16:13.422Z",
+  "finishedAt": "2026-11-02T10:26:25.135Z",
+  "seconds": 612,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash Part-II",
+    "bookCode": "hegp2",
+    "document": "ncert/8/mathematics/hegp207.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 14 — Area",
+    "edition": "2025 edition (the site's Last-Modified)",
+    "chunks": 12,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2024-25]\n1. (C) 4\n 3 \nThe required area is given by 4 x dx =  x 2  = 2 ( 8 − 1 ) = 14 squnits.\n 1 ( )  3  3 3\n \n 2  1",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n10. (c) 8cm",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n12. (d) 9π cm 2",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2025-26]\n7. D) 8[ - గ √ଷ ] cm 2 1\n଺ ସ\nRequired Area=8 × area of one segment (with r = 1cm and 𝜃 = 60˚)\n଺଴° 2 √ଷ 2\n=8x ( ଷ଺଴° x 𝜋 x 1 − ସ x 1 )\n= 8[ − గ ଺ √ଷ ସ ] cm 2\nFor Visually Impaired candidates:\n(D) 9𝜋cm 2\narea of circle=𝜋(3 ) ଶ\n=9 𝜋 cm 2"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 207955,
+      "in": 40,
+      "out": 37,
+      "rejects": 3,
+      "promptTokens": 35470,
+      "completionTokens": 10085
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 363096,
+      "in": 37,
+      "out": 29,
+      "rejects": 8,
+      "promptTokens": 22941,
+      "completionTokens": 8525
+    },
+    "solver": {
+      "calls": 210,
+      "ms": 135820,
+      "in": 29,
+      "out": 20,
+      "rejects": 9,
+      "promptTokens": 41433,
+      "completionTokens": 2246
+    },
+    "form": {
+      "calls": 3,
+      "ms": 10364,
+      "in": 20,
+      "out": 11,
+      "rejects": 9,
+      "promptTokens": 812,
+      "completionTokens": 252
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 55,
+      "ms": 11642,
+      "in": 11,
+      "out": 9,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 448890,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 23839,
+      "completionTokens": 11353
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 3,
+    "5": 0,
+    "6": 3
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the area of a rectangle with side lengths 7 cm and 4 cm?",
+      "ms": {
+        "draft": 4083,
+        "critique": 8503,
+        "solver": 16353
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a rectangle is divided into two congruent triangles by its diagonal, what is the area of each triangle if the rectangle's area is 28 cm²?",
+      "ms": {
+        "draft": 4083,
+        "critique": 7151,
+        "solver": 20170,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A rectangular park is surrounded by a path of uniform width. If the outer rectangle has dimensions 30 m by 20 m and the inner park has dimensions 20 m by 10 m, what is the area of the path?",
+      "ms": {
+        "draft": 4083,
+        "critique": 6757,
+        "solver": 1817
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a square is divided into 4 parts of equal area and each part is rearranged to form a larger square with a hole, what can be said about the area of the original square and the new square?",
+      "ms": {
+        "draft": 4083,
+        "critique": 6842,
+        "solver": 1921,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a rectangle is divided into four triangles by its diagonals, what can be said about their areas?",
+      "ms": {
+        "draft": 6114,
+        "critique": 6738,
+        "solver": 1542,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A line l is parallel to BC, and A lies on l. Which triangle with base BC and third vertex on l has the minimum perimeter?",
+      "ms": {
+        "draft": 6114,
+        "critique": 9311
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the length of the altitude BY in a triangle where the area is 7.5 sq. units and the base AC is 4 units?",
+      "ms": {
+        "draft": 6114,
+        "critique": 8398,
+        "solver": 2045
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the area of a triangle if its base is 4 units and its height is 3.75 units?",
+      "ms": {
+        "draft": 6114,
+        "critique": 8138,
+        "solver": 12216,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the area of ∆SEB is 24 sq. units and ∆SUB is isosceles with SE perpendicular to UB, what is the area of ∆SUB?",
+      "ms": {
+        "draft": 6114,
+        "critique": 8538
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a parallelogram is converted into a rectangle of equal area, what is the relationship between their bases and heights?",
+      "ms": {
+        "draft": 6114,
+        "critique": 9123,
+        "solver": 1573
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A parallelogram has a base of 6 cm and a height of 4 cm. Another parallelogram has a base of 8 cm and a height of 3 cm. Which parallelogram has a greater area?",
+      "ms": {
+        "draft": 4523,
+        "critique": 10921,
+        "solver": 2177
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the area of a parallelogram if its base is 7 cm and its height is 4 cm?",
+      "ms": {
+        "draft": 4523,
+        "critique": 9562,
+        "solver": 17304
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the area of a rhombus?",
+      "ms": {
+        "draft": 23157,
+        "critique": 9817,
+        "solver": 1807
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the area of a trapezium?",
+      "ms": {
+        "draft": 23157,
+        "critique": 8157,
+        "solver": 15465,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the area of a triangle?",
+      "ms": {
+        "draft": 23157,
+        "critique": 7117,
+        "solver": 1896,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A rectangle has sides 10 cm and 6 cm. A parallelogram has the same base and height. What is the area of the parallelogram?",
+      "ms": {
+        "draft": 4523,
+        "critique": 10108,
+        "solver": 16346,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the figure, ABCD is a trapezium with AB || CD. If the area of ABCD is 144 cm², AB = 10 cm, and CD = 14 cm, what is the height of the trapezium?",
+      "ms": {
+        "draft": 6637,
+        "critique": 6371
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A trapezium has parallel sides of 10 cm and 14 cm, and the distance between them is 8 cm. What is the area of the trapezium?",
+      "ms": {
+        "draft": 6637,
+        "critique": 8495
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A rectangular field has a length of 20 m and a width of 15 m. A trapezium is cut out from the field such that its parallel sides are 10 m and 12 m, and the height is 8 m. What is the area of the remaining field?",
+      "ms": {
+        "draft": 6637,
+        "critique": 8380
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A trapezium has parallel sides of lengths a and b, and the height is h. If the trapezium is divided into two triangles of equal area by a line segment parallel to the bases, what is the length of this segment?",
+      "ms": {
+        "draft": 6637,
+        "critique": 6559,
+        "solver": 1901
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The area of a trapezium is 120 cm², and its height is 10 cm. If one of its parallel sides is 8 cm, what is the length of the other parallel side?",
+      "ms": {
+        "draft": 6637,
+        "critique": 8309
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the area of a triangle is 24 sq. units and its base is 8 units, what is the height?",
+      "ms": {
+        "draft": 4280,
+        "critique": 6141
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the area of a triangle?",
+      "ms": {
+        "draft": 4280,
+        "critique": 8573,
+        "solver": 14369,
+        "form": 2896
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the area of a rectangle with length 7 cm and width 4 cm?",
+      "ms": {
+        "draft": 6109,
+        "critique": 8182,
+        "solver": 16149
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A path is laid around a rectangular park EFGH. If the outer rectangle has length 35 in and width 28 in, and the inner rectangle has length 31 in and width 24 in, what is the area of the path?",
+      "ms": {
+        "draft": 6109,
+        "critique": 10541
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the diagonal of a rectangle divides it into two congruent triangles, what is the area of each triangle if the area of the rectangle is 28 sq. cm?",
+      "ms": {
+        "draft": 6109,
+        "critique": 8038,
+        "solver": 15650,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A trapezium has parallel sides of lengths 6 cm and 10 cm, and the height is 4 cm. What is the area of the trapezium?",
+      "ms": {
+        "draft": 5874,
+        "critique": 6387,
+        "solver": 2255,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a triangle has a base of 6 cm and a height of 4 cm, what is its area?",
+      "ms": {
+        "draft": 4280,
+        "critique": 6251,
+        "solver": 1404,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the area of a triangle if its base is 7 cm and height is 4 cm?",
+      "ms": {
+        "draft": 4083,
+        "critique": 7501,
+        "solver": 1934,
+        "form": 0,
+        "translation": 37620
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the side lengths of a rectangle are 8 cm and 3 cm, how many unit squares of 1 cm each side can fit inside it?",
+      "ms": {
+        "draft": 4083,
+        "critique": 8775,
+        "solver": 15412,
+        "form": 1,
+        "translation": 45100
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The area of a rhombus is 120 cm², and one of its diagonals is 24 cm. What is the length of the other diagonal?",
+      "ms": {
+        "draft": 6637,
+        "critique": 5920,
+        "solver": 1363,
+        "form": 0,
+        "translation": 49746
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given parallelogram ABCD, if the base DC is 5 cm and the corresponding height is 3 cm, what is the area of the parallelogram?",
+      "ms": {
+        "draft": 4523,
+        "critique": 7248,
+        "solver": 1937,
+        "form": 0,
+        "translation": 45922
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "A trapezium has parallel sides of lengths 5 cm and 9 cm, and the distance between them is 4 cm. What is its area?",
+      "ms": {
+        "draft": 4523,
+        "critique": 9675,
+        "solver": 1273,
+        "form": 1,
+        "translation": 44199
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "A parallelogram is converted into a rectangle by dissecting and rearranging its parts. Which of the following statements correctly describes the relationship between the area of the parallelogram and the area of the rectangle?",
+      "ms": {
+        "draft": 5874,
+        "critique": 6847,
+        "solver": 1274,
+        "form": 5331,
+        "translation": 70835
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the area of a triangle is half the area of a rectangle with the same base and height, what is the area of a triangle with base 14 m and height 4 m?",
+      "ms": {
+        "draft": 6109,
+        "critique": 7598,
+        "solver": 5689,
+        "form": 0,
+        "translation": 41560
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the diagonals of a rectangle divide it into four triangles of equal areas, what can be said about the triangles?",
+      "ms": {
+        "draft": 4280,
+        "critique": 8111,
+        "solver": 1976,
+        "form": 2994,
+        "translation": 49480
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A parallelogram ABCD is transformed into a rectangle ABYX by dissecting and rearranging. The height of the parallelogram is 5 cm and the base is 8 cm. If the height of the rectangle is also 5 cm, what is the length of the base of the rectangle?",
+      "ms": {
+        "draft": 5874,
+        "critique": 7241,
+        "solver": 1511,
+        "form": 0,
+        "translation": 60213
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the area of a rhombus if its diagonals are 8 cm and 6 cm?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the area of a rectangle with side lengths 7 cm and 4 cm?",
+      "reason": "after redrafting distractors 1, 2, 3: the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If a rectangle is divided into two congruent triangles by its diagonal, what is the area of each triangle if the rectangle's area is 28 cm²?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A rectangular park is surrounded by a path of uniform width. If the outer rectangle has dimensions 30 m by 20 m and the inner park has dimensions 20 m by 10 m, what is the area of the path?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a square is divided into 4 parts of equal area and each part is rearranged to form a larger square with a hole, what can be said about the area of the original square and the new square?",
+      "reason": "options 0 and 1 say the same thing (\"The area of the new square is greater than the original\" / \"The area of the new square is less than the original\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a rectangle is divided into four triangles by its diagonals, what can be said about their areas?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct answer (no reason needed for the correct option, onl…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A line l is parallel to BC, and A lies on l. Which triangle with base BC and third vertex on l has the minimum perimeter?",
+      "reason": "the solution's working is not sound; option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What is the length of the altitude BY in a triangle where the area is 7.5 sq. units and the base AC is 4 units?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the area of a triangle if its base is 4 units and its height is 3.75 units?",
+      "reason": "options 0 and 2 are the same (\"15 sq. units\"); options are written to different precisions (0 and 1 decimals); options 0 and 2 are the same number; distractor 3's reason is not a one-line misconception (\"adds base and height and divides by 2 incorrectly (4 + 3.75 …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the area of ∆SEB is 24 sq. units and ∆SUB is isosceles with SE perpendicular to UB, what is the area of ∆SUB?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a parallelogram is converted into a rectangle of equal area, what is the relationship between their bases and heights?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A parallelogram has a base of 6 cm and a height of 4 cm. Another parallelogram has a base of 8 cm and a height of 3 cm. Which parallelogram has a greater area?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the area of a parallelogram if its base is 7 cm and its height is 4 cm?",
+      "reason": "after redrafting distractors 2, 3: the critic finds option 2 correct, the key is 0"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the formula for the area of a rhombus?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula for the area of a trapezium?",
+      "reason": "options 0 and 1 are the same (\"Area = base × height\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula for the area of a triangle?",
+      "reason": "options 0 and 1 are the same (\"Area = base × height\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A rectangle has sides 10 cm and 6 cm. A parallelogram has the same base and height. What is the area of the parallelogram?",
+      "reason": "options 2 and 3 are the same (\"30 cm²\"); options 2 and 3 are the same number"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "A rhombus is a type of parallelogram. Which of the following formulas is used to calculate the area of a rhombus based on the lengths of its diagonals?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "A rectangle and a parallelogram have the same side lengths of 5 cm and 4 cm. Which of the following statements is true about their areas?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the figure, ABCD is a trapezium with AB || CD. If the area of ABCD is 144 cm², AB = 10 cm, and CD = 14 cm, what is the height of the trapezium?",
+      "reason": "the critic finds option 3 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A trapezium has parallel sides of 10 cm and 14 cm, and the distance between them is 8 cm. What is the area of the trapezium?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A rectangular field has a length of 20 m and a width of 15 m. A trapezium is cut out from the field such that its parallel sides are 10 m and 12 m, and the height is 8 m. What is the area of the remaining field?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A trapezium has parallel sides of lengths a and b, and the height is h. If the trapezium is divided into two triangles of equal area by a line segment parallel to the bases, what is the length of this segment?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "The area of a trapezium is 120 cm², and its height is 10 cm. If one of its parallel sides is 8 cm, what is the length of the other parallel side?",
+      "reason": "the critic finds option 3 correct, the key is 2"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If the area of a triangle is 24 sq. units and its base is 8 units, what is the height?",
+      "reason": "the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula for the area of a triangle?",
+      "reason": "options 0 and 2 are the same (\"Base × Height\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the area of a rectangle with length 7 cm and width 4 cm?",
+      "reason": "distractors 0, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A path is laid around a rectangular park EFGH. If the outer rectangle has length 35 in and width 28 in, and the inner rectangle has length 31 in and width 24 in, what is the area of the path?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If the diagonal of a rectangle divides it into two congruent triangles, what is the area of each triangle if the area of the rectangle is 28 sq. cm?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A trapezium has parallel sides of lengths 6 cm and 10 cm, and the height is 4 cm. What is the area of the trapezium?",
+      "reason": "near-duplicate of served question cmskj0eg2070zy206vougsrh7 (cosine 0.970 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If a triangle has a base of 6 cm and a height of 4 cm, what is its area?",
+      "reason": "near-duplicate of batch item \"What is the area of a triangle if its base is 7 cm…\" (cosine 0.902 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

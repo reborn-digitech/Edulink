@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-31T12:53:50.441Z",
+  "generatedAt": "2026-11-02T01:01:37.243Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the decimal number that represents 2 ones, 3 tenths and 5 hundredths?",
+      "stem": "What is the total quantity of milk supplied to the dairy in the last three days?",
       "choices": [
-        "2.35",
-        "2.53",
-        "3.25",
-        "5.32"
+        "12.76 L",
+        "11.23 L",
+        "10.50 L",
+        "9.80 L"
       ],
       "answerIndex": 0,
-      "solution": "The correct answer is 2.35 because 2 ones is 2, 3 tenths is 0.3, and 5 hundredths is 0.05. Adding these gives 2.35. The other options incorrectly place the digits in the wrong decimal places.",
+      "solution": "To find the total quantity of milk supplied in the last three days, add the amounts from the first three days: 3.79 L + 4.2 L + 4.25 L = 12.24 L. Subtract this from the total of 25 L, resulting in 12.76 L for the last three days. The other options do not match this calculation. 11.23 L, 10.50 L, and 9.80 L are not the result of subtracting 12.24 L from 25 L.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "2 एकांक, 3 दशमलव और 5 शतमलव के द्वारा प्रतिनिधित्व किया गया दशमलव संख्या क्या है?",
+          "stem": "गत तीन दिनों में डेयरी को दूध की कुल मात्रा क्या है?",
           "choices": [
-            "2.35",
-            "2.53",
-            "3.25",
-            "5.32"
+            "12.76 लीटर",
+            "11.23 लीटर",
+            "10.50 लीटर",
+            "9.80 लीटर"
           ],
-          "solution": "सही उत्तर 2.35 है क्योंकि 2 एकांक 2 है, 3 दशमलव 0.3 है, और 5 शतमलव 0.05 है। इनको जोड़ने पर 2.35 प्राप्त होता है। अन्य विकल्प अंकों को गलत दशमलव स्थान पर रखते हैं।",
+          "solution": "गत तीन दिनों में दूध की कुल मात्रा ज्ञात करने के लिए पहले तीन दिनों की मात्राओं को जोड़ें: 3.79 लीटर + 4.2 लीटर + 4.25 लीटर = 12.24 लीटर। इसे 25 लीटर से घटाएं, जिससे गत तीन दिनों के लिए 12.76 लीटर प्राप्त होता है। अन्य विकल्प इस गणना के अनुरूप नहीं हैं। 11.23 लीटर, 10.50 लीटर और 9.80 लीटर 25 लीटर में से 12.24 लीटर के घटाने के परिणाम नहीं हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question, with appropriate mathematical terminology and correct answer placement.",
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi technical terms for quantities and operations.",
           "flag": null
         },
         "mr": {
-          "stem": "2 एकक, 3 दशांश आणि 5 शतांश असलेला दशांश संख्या कोणती आहे?",
+          "stem": "गेल्या तीन दिवसांत डेअरीला दिलेल्या दुधाची एकूण मात्रा किती आहे?",
           "choices": [
-            "2.35",
-            "2.53",
-            "3.25",
-            "5.32"
+            "12.76 एल",
+            "11.23 एल",
+            "10.50 एल",
+            "9.80 एल"
           ],
-          "solution": "बरोबर उत्तर 2.35 आहे कारण 2 एकक 2 आहे, 3 दशांश 0.3 आहे आणि 5 शतांश 0.05 आहे. यांची बेरीज केल्यास 2.35 मिळतो. इतर उत्तरांमध्ये अंकांचे चुकीचे दशांश स्थान असते.",
+          "solution": "गेल्या तीन दिवसांत दिलेल्या दुधाची एकूण मात्रा शोधण्यासाठी पहिल्या तीन दिवसांच्या रकमा जोडा: 3.79 एल + 4.2 एल + 4.25 एल = 12.24 एल. याची 25 एल मधून बेरीज करा, ज्यामुळे गेल्या तीन दिवसांसाठी 12.76 एल मिळते. इतर विकल्प या गणनेशी जुळत नाहीत. 11.23 एल, 10.50 एल आणि 9.80 एल हे 25 एल मधून 12.24 एल वजा करून मिळत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The structure and logic of the question and solution are preserved.",
           "flag": null
         }
       },
@@ -73,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses the place value of tenths and hundredths",
-        "Mixes up the order of digits",
-        "Confuses the place value of ones and tenths"
+        "Adding the first three days' milk supply without properly accounting for decimal places",
+        "Adds the first three days incorrectly.",
+        "Fails to subtract the first three days' total from the overall total."
       ],
       "solverAnswers": [
         0,
@@ -85,7 +85,165 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The question is clear and the solution is correct. The correct answer is 2.35, and the author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "critique": "The calculation is correct: 3.79 + 4.2 + 4.25 = 12.24, and 25 - 12.24 = 12.76. The author's reasoning for the wrong options is valid and reflects common student errors.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp103.pdf",
+          "ordinal": 20,
+          "pageStart": 53,
+          "pageEnd": 55,
+          "headingPath": [
+            "Chapter 3: A Peek Beyond the Point",
+            "3.8 More on the Decimal System",
+            "SUMMARY"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T01:01:37.243Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Has Tinku gained or lost weight, and by how much?",
+      "choices": [
+        "Gained 1.25 kg",
+        "Lost 1.25 kg",
+        "Gained 2.50 kg",
+        "Lost 2.50 kg"
+      ],
+      "answerIndex": 1,
+      "solution": "Tinku's weight decreased from 35.75 kg to 34.50 kg, which is a loss of 1.25 kg. The correct option reflects this decrease. The other options either show the wrong direction of change or an incorrect amount of weight loss.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "क्या टिंकू के वजन में वृद्धि हुई या कमी हुई, और कितने किग्रा के?",
+          "choices": [
+            "1.25 किग्रा वृद्धि",
+            "1.25 किग्रा कमी",
+            "2.50 किग्रा वृद्धि",
+            "2.50 किग्रा कमी"
+          ],
+          "solution": "टिंकू के वजन में 35.75 किग्रा से 34.50 किग्रा तक कमी हुई, जो 1.25 किग्रा कमी है। सही विकल्प इस कमी को दर्शाता है। अन्य विकल्प या तो बदलाव की गलत दिशा दर्शाते हैं या गलत मात्रा कमी दर्शाते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi terminology for weight change.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तिंकू ची वजन वाढले की कमी झाले, आणि किती?",
+          "choices": [
+            "1.25 किग्रा वाढले",
+            "1.25 किग्रा कमी झाले",
+            "2.50 किग्रा वाढले",
+            "2.50 किग्रा कमी झाले"
+          ],
+          "solution": "तिंकूचे वजन 35.75 किग्रा ते 34.50 किग्रा झाले, जे 1.25 किग्रा च्या गेलेल्या वजनाचे दर्शन करते. योग्य विकल्प हा घट दर्शवतो. इतर विकल्प कमी झालेल्या दिशेच्या चुकीच्या दिशा किंवा चुकीच्या वजन कमीच्या रकमेचे दर्शन करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for weight change.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "States the wrong direction of weight change.",
+        null,
+        "Adds the weights instead of subtracting them.",
+        "Confuses the weight change with double the actual value."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and matches the key. The weight decreased by 1.25 kg, so the correct answer is 'Lost 1.25 kg'. The distractors are based on common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp103.pdf",
+          "ordinal": 20,
+          "pageStart": 53,
+          "pageEnd": 55,
+          "headingPath": [
+            "Chapter 3: A Peek Beyond the Point",
+            "3.8 More on the Decimal System",
+            "SUMMARY"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T01:01:37.243Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the next term in the sequence: 13.5, 16, 18.5, 21.0, …?",
+      "choices": [
+        "23.5",
+        "22.5",
+        "24.5",
+        "25.0"
+      ],
+      "answerIndex": 0,
+      "solution": "The sequence increases by 2.5 each time. So, the next term after 21.0 is 23.5. The other options do not follow the pattern of adding 2.5.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अनुक्रम: 13.5, 16, 18.5, 21.0, … में अगला पद क्या है?",
+          "choices": [
+            "23.5",
+            "22.5",
+            "24.5",
+            "25.0"
+          ],
+          "solution": "अनुक्रम प्रत्येक बार 2.5 से बढ़ता है। अतः 21.0 के बाद अगला पद 23.5 है। अन्य विकल्प 2.5 जोड़ने के पैटर्न का अनुसरण नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अनुक्रमातील अगदी खालील वर्ण शोधा: 13.5, 16, 18.5, 21.0, …?",
+          "choices": [
+            "23.5",
+            "22.5",
+            "24.5",
+            "25.0"
+          ],
+          "solution": "अनुक्रमात दरवेळी 2.5 ची वाढ होत आहे. म्हणून, 21.0 नंतर अगदी खालील वर्ण 23.5 असेल. इतर विकल्प 2.5 च्या पॅटर्नचा अनुसरण करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "adds 1.5 instead of 2.5",
+        "adds 2.0 instead of 2.5",
+        "adds 3.0 instead of 2.5"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The sequence increases by 2.5 each time (13.5 + 2.5 = 16, 16 + 2.5 = 18.5, 18.5 + 2.5 = 21.0, 21.0 + 2.5 = 23.5). The author's solution is correct and the reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp103.pdf",
@@ -122,148 +280,157 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T12:53:50.441Z",
+      "generatedAt": "2026-11-02T01:01:37.243Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 2,
-      "stem": "What is the total weight of the items Mahi bought if she purchased 0.25 kg of beans, 0.3 kg of carrots, 0.5 kg of potatoes, 0.2 kg of capsicums, and 0.05 kg of ginger?",
+      "difficulty": 4,
+      "stem": "How many thousandths make one unit?",
       "choices": [
-        "1.3 kg",
-        "1.2 kg",
-        "1.1 kg",
-        "1.0 kg"
+        "10",
+        "100",
+        "1000",
+        "10000"
       ],
-      "answerIndex": 0,
-      "solution": "To find the total weight, add all the individual weights: 0.25 + 0.3 + 0.5 + 0.2 + 0.05 = 1.3 kg. The correct option is 1.3 kg because it accurately represents the sum of the decimal values. Other options are incorrect as they result from errors in adding the decimal numbers.",
-      "checkExpr": "0.25+0.3+0.5+0.2+0.05",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "माही द्वारा खरीदे गए वस्तुओं का कुल वजन क्या है यदि उसने 0.25 किग्रा चना, 0.3 किग्रा गाजर, 0.5 किग्रा आलू, 0.2 किग्रा मिर्च और 0.05 किग्रा अदरक खरीदा?",
-          "choices": [
-            "1.3 किग्रा",
-            "1.2 किग्रा",
-            "1.1 किग्रा",
-            "1.0 किग्रा"
-          ],
-          "solution": "कुल वजन ज्ञात करने के लिए, सभी व्यक्तिगत वजनों को जोड़ें: 0.25 + 0.3 + 0.5 + 0.2 + 0.05 = 1.3 किग्रा। सही विकल्प 1.3 किग्रा है क्योंकि यह दशमलव मानों के योग का सही प्रतिनिधित्व करता है। अन्य विकल्प गलत हैं क्योंकि दशमलव संख्याओं के जोड़ में त्रुटि के कारण ये परिणाम प्राप्त होते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer is in the same position (option 1), and the distractors remain incorrect.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "माहीने 0.25 किलो बीन्स, 0.3 किलो गाजर, 0.5 किलो आले, 0.2 किलो पालक, आणि 0.05 किलो गिन्नी खरेदी केल्यास त्या वस्तूंचा एकूण वजन किती असेल?",
-          "choices": [
-            "1.3 किलो",
-            "1.2 किलो",
-            "1.1 किलो",
-            "1.0 किलो"
-          ],
-          "solution": "एकूण वजन शोधण्यासाठी, सर्व व्यक्तिगत वजन जोडा: 0.25 + 0.3 + 0.5 + 0.2 + 0.05 = 1.3 किलो. योग्य पर्याय 1.3 किलो आहे कारण तो दशांश मूल्यांच्या बेरजेचे योग्य प्रतिनिधित्व करतो. इतर पर्याय चूकीने दशांश संख्यांची बेरीज केल्यामुळे चूकीचे असतात.",
-          "imageAlt": null,
-          "critique": "Translation is accurate, technical terms like 'बीन्स' (beans), 'गाजर' (carrots), 'आले' (potatoes), 'पालक' (capsicums), 'गिन्नी' (ginger) are standard Marathi terms used in textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "incorrectly adds 0.25 + 0.3 + 0.5 + 0.2 = 1.25 and excludes 0.05",
-        "fails to add 0.25 + 0.3 = 0.55 and miscalculates the total",
-        "does not account for all the items in the sum"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1.3 kg, and the author's solution is accurate. The distractors reflect plausible errors students might make, such as omitting an item or miscalculating sums.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp103.pdf",
-          "ordinal": 14,
-          "pageStart": 32,
-          "pageEnd": 34,
-          "headingPath": [
-            "Chapter 3: A Peek Beyond the Point",
-            "3.8 More on the Decimal System"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp103.pdf",
-          "ordinal": 15,
-          "pageStart": 34,
-          "pageEnd": 35,
-          "headingPath": [
-            "Chapter 3: A Peek Beyond the Point",
-            "3.8 More on the Decimal System"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp103.pdf",
-          "ordinal": 16,
-          "pageStart": 36,
-          "pageEnd": 40,
-          "headingPath": [
-            "Chapter 3: A Peek Beyond the Point",
-            "3.8 More on the Decimal System",
-            "SUMMARY"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T12:53:50.441Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "Priya needs 2.7 m of cloth for her skirt and Shylaja needs 3.5 m for her kurti. How much more cloth does Shylaja need than Priya?",
-      "choices": [
-        "0.8 m",
-        "1.2 m",
-        "1.5 m",
-        "2.0 m"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct answer is 0.8 m. To find how much more cloth Shylaja needs, subtract 2.7 m from 3.5 m. 3.5 - 2.7 = 0.8. 1.2 m is incorrect because it adds the two values instead of subtracting. 1.5 m is incorrect because it subtracts in the wrong order. 2.0 m is incorrect because it miscalculates the difference.",
+      "answerIndex": 2,
+      "solution": "A unit is divided into 10 equal parts to make tenths, each tenth into 10 to make hundredths, and each hundredth into 10 to make thousandths. This pattern shows that 1000 thousandths make one unit. The option 10 represents tenths, 100 represents hundredths, and 10000 represents ten thousandths, none of which equal one unit.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "प्रिया के स्कर्ट के लिए 2.7 मी बुना हुआ कपड़ा चाहिए और श्यलजा के कुर्ते के लिए 3.5 मी चाहिए। श्यलजा को प्रिया के मुकाबले कितना अधिक कपड़ा चाहिए?",
+          "stem": "एक इकाई बनाने में कितने हजारवें होते हैं?",
           "choices": [
-            "0.8 मी",
-            "1.2 मी",
-            "1.5 मी",
-            "2.0 मी"
+            "10",
+            "100",
+            "1000",
+            "10000"
           ],
-          "solution": "सही उत्तर 0.8 मी है। श्यलजा को कितना अधिक कपड़ा चाहिए निकालने के लिए, 2.7 मी को 3.5 मी से घटाएं। 3.5 - 2.7 = 0.8। 1.2 मी गलत है क्योंकि यह दोनों मानों को जोड़ देता है बजाय घटाने के। 1.5 मी गलत है क्योंकि यह घटाने के क्रम को गलत कर देता है। 2.0 मी गलत है क्योंकि यह अंतर की गणना गलत कर देता है।",
+          "solution": "एक इकाई को 10 बराबर भागों में बांटा जाता है जिससे दसवां बनता है, प्रत्येक दसवां को 10 बराबर भागों में बांटा जाता है जिससे सौवां बनता है, और प्रत्येक सौवां को 10 बराबर भागों में बांटा जाता है जिससे हजारवां बनता है। इस पैटर्न से पता चलता है कि एक इकाई बनाने में 1000 हजारवें होते हैं। विकल्प 10 दसवां को दर्शाता है, 100 सौवां को दर्शाता है, और 10000 दस हजारवें को दर्शाता है, जिनमें से कोई भी एक इकाई के बराबर नहीं है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi terminology.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "प्रिया लहान टोपलीसाठी 2.7 मी कपडा आवश्यकता आहे आणि श्यालजा तिच्या कुर्तीसाठी 3.5 मी आवश्यकता आहे. श्यालजाला प्रियापेक्षा किती जास्त कपडा लागेल?",
+          "stem": "एक एकक किती हजारांमध्ये बनते?",
           "choices": [
-            "0.8 मी",
-            "1.2 मी",
-            "1.5 मी",
-            "2.0 मी"
+            "10",
+            "100",
+            "1000",
+            "10000"
           ],
-          "solution": "सही उत्तर 0.8 मी आहे. श्यालजाला किती जास्त कपडा लागतो ते शोधण्यासाठी, 2.7 मी मधून 3.5 मी वजा करा. 3.5 - 2.7 = 0.8. 1.2 मी चूक आहे कारण दोन मूल्यांची बेरीज केली गेली आहे आणि वजा केली गेली नाही. 1.5 मी चूक आहे कारण वजा करताना चुकीच्या क्रमात वजा केला गेला आहे. 2.0 मी चूक आहे कारण फरक चुकीच्या पद्धतीने गणित केला गेला आहे.",
+          "solution": "एक एकक 10 समान भागांमध्ये विभाजित केले जाते जेणेकरून दशांश मिळतील, प्रत्येक दशांश 10 मध्ये विभाजित केला जातो जेणेकरून शतांश मिळतील आणि प्रत्येक शतांश 10 मध्ये विभाजित केला जातो जेणेकरून हजारांमध्ये मिळतील. हा पॅटर्न दर्शवतो की एक एकक बनविण्यासाठी 1000 हजारांची आवश्यकता असते. पर्याय 10 दशांश दर्शवतो, 100 शतांश आहे आणि 10000 दहा हजारांचे दर्शवतो, जे कोणतेही एक एककाच्या बरोबर नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical operations and measurements.",
+          "critique": "The Marathi translation accurately reflects the English content with appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "represents the number of tenths in a unit",
+        "represents the number of hundredths in a unit",
+        null,
+        "incorrectly assumes the number of ten-thousandths in a unit"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is clear and the solution is correct. The correct answer is 1000, as 1000 thousandths make one unit. The author's reasoning for the distractors is accurate and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp103.pdf",
+          "ordinal": 4,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 3: A Peek Beyond the Point",
+            "3.3 A Hundredth Part"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp103.pdf",
+          "ordinal": 5,
+          "pageStart": 13,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 3: A Peek Beyond the Point",
+            "3.4 Decimal Place Value"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp103.pdf",
+          "ordinal": 6,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 3: A Peek Beyond the Point",
+            "3.4 Decimal Place Value"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp103.pdf",
+          "ordinal": 7,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 3: A Peek Beyond the Point",
+            "3.4 Decimal Place Value"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T01:01:37.243Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a decimal number is 0.5 hours after noon, what time will it be?",
+      "choices": [
+        "12:30 p.m.",
+        "1:00 p.m.",
+        "12:50 p.m.",
+        "1:30 p.m."
+      ],
+      "answerIndex": 0,
+      "solution": "0.5 hours means half an hour. Since the time is 0.5 hours after noon, it will be 12:30 p.m. This is calculated by adding 30 minutes to 12:00 p.m. The other options are incorrect because 1:00 p.m. is 1 hour after noon, 12:50 p.m. is 50 minutes after noon, and 1:30 p.m. is 1 hour and 30 minutes after noon.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक दशमलव संख्या दोपहर के बाद 0.5 घंटा है, तो समय क्या होगा?",
+          "choices": [
+            "12:30 पूर्वाह्न",
+            "1:00 पूर्वाह्न",
+            "12:50 पूर्वाह्न",
+            "1:30 पूर्वाह्न"
+          ],
+          "solution": "0.5 घंटा अर्ध घंटा के बराबर होता है। चूंकि समय दोपहर के बाद 0.5 घंटा है, इसलिए यह 12:30 पूर्वाह्न होगा। इसे 12:00 पूर्वाह्न में 30 मिनट जोड़कर गणना की जाती है। अन्य विकल्प गलत हैं क्योंकि 1:00 पूर्वाह्न दोपहर के 1 घंटा बाद है, 12:50 पूर्वाह्न दोपहर के 50 मिनट बाद है और 1:30 पूर्वाह्न दोपहर के 1 घंटा और 30 मिनट बाद है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate use of terms like 'पूर्वाह्न' (a.m.) and correct time formatting.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक दशांश संख्या 12:00 दुपारी नंतर 0.5 तास असल्यास, ते कोणत्या वेळेला असेल?",
+          "choices": [
+            "12:30 दुपारी",
+            "1:00 दुपारी",
+            "12:50 दुपारी",
+            "1:30 दुपारी"
+          ],
+          "solution": "0.5 तास म्हणजे अर्धा तास. जर वेळ 12:00 दुपारी नंतर 0.5 तास असेल तर ती 12:30 दुपारी असेल. हे 12:00 दुपारी ला 30 मिनिटे जोडून गणले जाते. इतर विकल्प चुकीचे आहेत कारण 1:00 दुपारी हा 1 तास नंतर असतो, 12:50 दुपारी हा 50 मिनिटे नंतर असतो आणि 1:30 दुपारी हा 1 तास आणि 30 मिनिटे नंतर असतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terms for time and mathematical concepts.",
           "flag": null
         }
       },
@@ -273,9 +440,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Adds the two values instead of subtracting",
-        "Subtracts in the wrong order",
-        "Miscalculates the difference"
+        "This is 1 hour after noon, not 0.5 hours",
+        "This is 50 minutes after noon, not 0.5 hours",
+        "Confuses 0.5 hours as 30 minutes but adds it incorrectly as 1 hour and 30 minutes"
       ],
       "solverAnswers": [
         0,
@@ -285,7 +452,7 @@
         0
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0.8 m, as 3.5 - 2.7 = 0.8. The author's reasoning for the distractors is accurate and reflects common student misconceptions.",
+      "critique": "The question is straightforward and the solution is correct. 0.5 hours is 30 minutes, so adding it to noon gives 12:30 p.m. The other options represent common errors in interpreting decimal hours.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp103.pdf",
@@ -319,105 +486,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T12:53:50.441Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "If 0.4 is added to each term in the sequence 4.4, 4.8, 5.2, 5.6, 6.0, what are the next three terms?",
-      "choices": [
-        "6.4, 6.8, 7.2",
-        "6.0, 6.4, 6.8",
-        "6.4, 7.2, 8.0",
-        "6.2, 6.6, 7.0"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct answer is 6.4, 6.8, 7.2. Each term increases by 0.4. The next terms are 6.0 + 0.4 = 6.4, 6.4 + 0.4 = 6.8, and 6.8 + 0.4 = 7.2. 6.0, 6.4, 6.8 is incorrect because it misses the first term. 6.4, 7.2, 8.0 is incorrect because it skips some steps. 6.2, 6.6, 7.0 is incorrect because it does not follow the pattern of adding 0.4.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि अनुक्रम 4.4, 4.8, 5.2, 5.6, 6.0 में प्रत्येक पद में 0.4 जोड़ा जाए, तो अगले तीन पद क्या होंगे?",
-          "choices": [
-            "6.4, 6.8, 7.2",
-            "6.0, 6.4, 6.8",
-            "6.4, 7.2, 8.0",
-            "6.2, 6.6, 7.0"
-          ],
-          "solution": "सही उत्तर 6.4, 6.8, 7.2 है। प्रत्येक पद 0.4 से बढ़ता है। अगले पद 6.0 + 0.4 = 6.4, 6.4 + 0.4 = 6.8 और 6.8 + 0.4 = 7.2 हैं। 6.0, 6.4, 6.8 गलत है क्योंकि यह पहला पद छोड़ देता है। 6.4, 7.2, 8.0 गलत है क्योंकि यह कुछ चरण छोड़ देता है। 6.2, 6.6, 7.0 गलत है क्योंकि यह 0.4 जोड़ने के पैटर्न का अनुसरण नहीं करता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "0.4 ची बेरीज अनुक्रम 4.4, 4.8, 5.2, 5.6, 6.0 मध्ये प्रत्येक पदाला केल्यास आगामी तीन पद कोणते असतील?",
-          "choices": [
-            "6.4, 6.8, 7.2",
-            "6.0, 6.4, 6.8",
-            "6.4, 7.2, 8.0",
-            "6.2, 6.6, 7.0"
-          ],
-          "solution": "बरोबर उत्तर 6.4, 6.8, 7.2 आहे. प्रत्येक पद 0.4 ने वाढत आहे. आगामी पदे 6.0 + 0.4 = 6.4, 6.4 + 0.4 = 6.8, आणि 6.8 + 0.4 = 7.2 असतील. 6.0, 6.4, 6.8 चुकीचे आहे कारण ते पहिले पद टाळते. 6.4, 7.2, 8.0 चुकीचे आहे कारण ते काही टप्पे टाळते. 6.2, 6.6, 7.0 चुकीचे आहे कारण ते 0.4 च्या पॅटर्नचे अनुसरण करत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Misses the first term in the sequence",
-        "Skips steps in the sequence",
-        "Fails to follow the addition pattern"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 6.4, 6.8, 7.2. The sequence increases by 0.4 each time, and adding 0.4 to the last term (6.0) gives the next three terms correctly. The author's reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp103.pdf",
-          "ordinal": 11,
-          "pageStart": 27,
-          "pageEnd": 28,
-          "headingPath": [
-            "Chapter 3: A Peek Beyond the Point",
-            "3.6 Locating and Comparing Decimals"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp103.pdf",
-          "ordinal": 12,
-          "pageStart": 29,
-          "pageEnd": 31,
-          "headingPath": [
-            "Chapter 3: A Peek Beyond the Point",
-            "3.7 Addition and Subtraction of Decimals"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp103.pdf",
-          "ordinal": 13,
-          "pageStart": 31,
-          "pageEnd": 32,
-          "headingPath": [
-            "Chapter 3: A Peek Beyond the Point",
-            "3.8 More on the Decimal System"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T12:53:50.441Z",
+      "generatedAt": "2026-11-02T01:01:37.243Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

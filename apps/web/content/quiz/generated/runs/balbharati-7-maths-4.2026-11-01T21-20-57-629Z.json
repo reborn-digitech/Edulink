@@ -1,0 +1,477 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T21:20:57.629Z",
+  "finishedAt": "2026-11-01T21:28:49.944Z",
+  "seconds": 472,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी गणित इंग्रजी",
+    "bookCode": "703020004",
+    "document": "balbharati/7/mathematics/703020004.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 4 — Angles and Pairs of Angles",
+    "edition": "2026 edition",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n7. (c) ∠B = ∠D",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n17. of contacts as A and B, are inclined to each other at angle of 80°, then ∠AOB is 1\nequal to\n(A) 60° (B) 70° (C) 80° (D)100°\nTwo cubes each of volume 64cm are joined end to end to form a cuboid. The 3",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n9. (b) 70˚",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n11. In the given figure, if △ 𝑂𝐶𝐴 ∼△ 𝑂𝐵𝐷 then ∠𝑂𝐴𝐶 is equal to 1\n(A) 58 ∘ (B) 55 ∘ (C) 128 ∘ (D) 52 ∘"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 120722,
+      "in": 23,
+      "out": 23,
+      "rejects": 0,
+      "promptTokens": 17771,
+      "completionTokens": 7195
+    },
+    "critique": {
+      "calls": 32,
+      "ms": 212014,
+      "in": 23,
+      "out": 18,
+      "rejects": 5,
+      "promptTokens": 15346,
+      "completionTokens": 5726
+    },
+    "solver": {
+      "calls": 148,
+      "ms": 77671,
+      "in": 18,
+      "out": 13,
+      "rejects": 5,
+      "promptTokens": 29844,
+      "completionTokens": 1545
+    },
+    "form": {
+      "calls": 10,
+      "ms": 80983,
+      "in": 13,
+      "out": 9,
+      "rejects": 4,
+      "promptTokens": 9906,
+      "completionTokens": 2066
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 6,
+      "ms": 1252,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 340232,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 21035,
+      "completionTokens": 9207
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 2,
+    "4": 2,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 5,
+  "needsFigure": 4,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "In the figure, ∠ABC and ∠ABD are adjacent angles. What is the measure of ∠CBD if m∠ABC = 50° and m∠ABD = 90°?",
+      "ms": {
+        "draft": 8204,
+        "critique": 5740,
+        "solver": 18249
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the figure, ∠AOB is a straight angle. What is the measure of ∠AOC if ∠BOC is the supplement of ∠AOC?",
+      "ms": {
+        "draft": 8204,
+        "critique": 7300,
+        "solver": 1428
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If two angles form a linear pair, what is their sum?",
+      "ms": {
+        "draft": 5369,
+        "critique": 6290
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Two lines intersect, forming four angles. If one of the angles is 120°, what is the measure of its vertically opposite angle?",
+      "ms": {
+        "draft": 5369,
+        "critique": 6138
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the figure, ∠ABC = 60° and ∠ACB = 70°. What is the measure of the exterior angle at C?",
+      "ms": {
+        "draft": 5369,
+        "critique": 7630,
+        "solver": 1446
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given diagram, lines PQ and RS intersect at point M. If ∠PMR = 50°, what is the measure of ∠QMS?",
+      "ms": {
+        "draft": 5369,
+        "critique": 6550,
+        "solver": 10343,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Two lines intersect at point P. If ∠APB = 110°, what is the measure of the angle opposite to ∠APB?",
+      "ms": {
+        "draft": 5369,
+        "critique": 4270
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Two lines intersect at a point. One of the angles formed is 47°. What is the sum of the measures of the two opposite angles?",
+      "ms": {
+        "draft": 12133,
+        "critique": 5918,
+        "solver": 2390
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Two lines intersect each other. One of the angles formed is 140°. What is the measure of the angle opposite to it?",
+      "ms": {
+        "draft": 12133,
+        "critique": 5207,
+        "solver": 14766,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Two lines intersect at a point. One of the angles formed is 120°. What is the measure of the angle adjacent to it?",
+      "ms": {
+        "draft": 12133,
+        "critique": 5427,
+        "solver": 17581
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Two lines intersect at a point. The measures of two vertically opposite angles are 3x and 4x. What is the value of x?",
+      "ms": {
+        "draft": 12133,
+        "critique": 8215
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Two lines intersect at a point. The measures of three angles formed are 45°, 45°, and 90°. What is the measure of the fourth angle?",
+      "ms": {
+        "draft": 12133,
+        "critique": 8982
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for two angles that add up to 180°?",
+      "ms": {
+        "draft": 14233,
+        "critique": 6628,
+        "solver": 1048,
+        "form": 3057
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for two angles that add up to 90°?",
+      "ms": {
+        "draft": 14233,
+        "critique": 6929,
+        "solver": 1779,
+        "form": 2344
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following describes angles in a linear pair?",
+      "ms": {
+        "draft": 5369,
+        "critique": 6734,
+        "solver": 10973,
+        "form": 3670,
+        "translation": 44709
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a pair of complementary angles?",
+      "ms": {
+        "draft": 14233,
+        "critique": 8616,
+        "solver": 11746,
+        "form": 2052,
+        "translation": 29937
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If ∠PQR and ∠RQS form a linear pair and m∠PQR = 110°, what is the measure of ∠RQS?",
+      "ms": {
+        "draft": 8204,
+        "critique": 5649,
+        "solver": 1786,
+        "form": 1,
+        "translation": 38849
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an angle measures 40°, what is the measure of its complement?",
+      "ms": {
+        "draft": 14233,
+        "critique": 7731,
+        "solver": 1020,
+        "form": 3947,
+        "translation": 28956
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the figure, ∠AOB is a straight angle. What is the measure of ∠AOC if m∠BOC = 70°?",
+      "ms": {
+        "draft": 8204,
+        "critique": 4549,
+        "solver": 1643,
+        "form": 0,
+        "translation": 39937
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In the figure, ∠ABC and ∠ABD are adjacent angles. If m∠ABC = 30° and m∠ABD = 150°, what is the measure of ∠CBD?",
+      "ms": {
+        "draft": 8204,
+        "critique": 7415,
+        "solver": 11462,
+        "form": 0,
+        "translation": 45854
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In the figure, ∠ABC is a right angle. What is the measure of ∠ABD if ∠DBC = 30° and ∠ABD is the complement of ∠DBC?",
+      "ms": {
+        "draft": 8204,
+        "critique": 5465,
+        "solver": 1572,
+        "form": 0,
+        "translation": 38280
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Two supplementary angles are in the ratio 2:3. What is the measure of the larger angle?",
+      "ms": {
+        "draft": 14233,
+        "critique": 7597,
+        "solver": 8882,
+        "form": 1690,
+        "translation": 30494
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a triangle, the measure of an exterior angle is 140°. What is the sum of the measures of the two non-adjacent interior angles?",
+      "ms": {
+        "draft": 12133,
+        "critique": 7829,
+        "solver": 12078,
+        "form": 0,
+        "translation": 40049
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "In the figure, ∠ABC and ∠ABD are adjacent angles. What is the measure of ∠CBD if m∠ABC = 50° and m∠ABD = 90°?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In the figure, ∠AOB is a straight angle. What is the measure of ∠AOC if ∠BOC is the supplement of ∠AOC?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If two angles form a linear pair, what is their sum?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Two lines intersect, forming four angles. If one of the angles is 120°, what is the measure of its vertically opposite angle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In the figure, ∠ABC = 60° and ∠ACB = 70°. What is the measure of the exterior angle at C?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given diagram, lines PQ and RS intersect at point M. If ∠PMR = 50°, what is the measure of ∠QMS?",
+      "reason": "options 1 and 2 are the same (\"180°\"); options 1 and 2 are the same number"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Two lines intersect at point P. If ∠APB = 110°, what is the measure of the angle opposite to ∠APB?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Two lines intersect at a point. One of the angles formed is 47°. What is the sum of the measures of the two opposite angles?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Two lines intersect each other. One of the angles formed is 140°. What is the measure of the angle opposite to it?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Two lines intersect at a point. One of the angles formed is 120°. What is the measure of the angle adjacent to it?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Two lines intersect at a point. The measures of two vertically opposite angles are 3x and 4x. What is the value of x?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Two lines intersect at a point. The measures of three angles formed are 45°, 45°, and 90°. What is the measure of the fourth angle?",
+      "reason": "the solution's working is not sound; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term for two angles that add up to 180°?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Refers to angles that share a common side and vertex but not…\"); distractor 3's reason is not a one-line misconception (\"Refers to angles that share a common side and vertex but not…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term for two angles that add up to 90°?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Refers to angles that share a common side and vertex but not…\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -21,335 +21,49 @@
   "board": "BALBHARATI",
   "book": "८ वी सामान्य विज्ञान इंग्रजी",
   "edition": "First Edition 2018",
-  "generatedAt": "2026-10-29T20:30:49.917Z",
+  "generatedAt": "2026-11-02T11:20:43.317Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 2,
-      "stem": "Which of the following is a physical property of metals?",
-      "choices": [
-        "They are generally brittle",
-        "They have a dull appearance",
-        "They are good conductors of heat and electricity",
-        "They form anions when they react"
-      ],
-      "answerIndex": 2,
-      "solution": "Metals are good conductors of heat and electricity because their atomic structure allows free movement of electrons, which facilitates the transfer of energy. Other options are incorrect because metals are typically malleable and ductile, not brittle; they usually have a shiny or lustrous appearance, not dull; and they tend to lose electrons to form cations, not gain electrons to form anions.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा धातुओं का भौतिक गुण है?",
-          "choices": [
-            "वे आम तौर पर भंगुर होते हैं",
-            "वे एक अमीर दिखाई देते हैं",
-            "वे ऊष्मा एवं विद्युत के अच्छे चालक होते हैं",
-            "वे अभिक्रिया करते समय ऋणायन बनाते हैं"
-          ],
-          "solution": "धातु ऊष्मा एवं विद्युत के अच्छे चालक होते हैं क्योंकि उनकी परमाणु संरचना इलेक्ट्रॉनों के स्वतंत्र गति की अनुमति देती है, जो ऊर्जा के संचरण में सहायता करती है। अन्य विकल्प गलत हैं क्योंकि धातु आम तौर पर ढालने योग्य एवं खींचने योग्य होते हैं, न कि भंगुर; वे आमतौर पर चमकदार या चमकीला दिखाई देते हैं, न कि अमीर; एवं वे ऋणायन के बजाय इलेक्ट्रॉन खोकर सकायन बनाते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate technical terms used in a Hindi-medium context.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी धातूंचे भौतिक गुणधर्म कोणता आहे?",
-          "choices": [
-            "ते सामान्यतः भंगुर असतात",
-            "त्यांचा रंग डुथळ असतो",
-            "ते ऊष्मा आणि विद्युत चांगले वाहक असतात",
-            "ते प्रतिकारक तयार करतात जेव्हा ते अभिक्रिया करतात"
-          ],
-          "solution": "धातू ऊष्मा आणि विद्युत चांगले वाहक असतात कारण त्यांची अणु संरचना इलेक्ट्रॉनच्या मुक्त गतीला परवानगी देते, जे ऊर्जेच्या हस्तांतरणास सक्षम करते. इतर विकल्प अयोग्य आहेत कारण धातू सामान्यतः मॅलिएबल आणि डक्टाइल असतात, भंगुर नाहीत; त्यांचा रंग सामान्यतः चमकदार किंवा लुस्ट्रस असतो, डुथळ नाही; आणि ते इलेक्ट्रॉन कमी करून कॅटायन तयार करतात, इलेक्ट्रॉन जोडून अॅनियन तयार करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses properties of nonmetals with metals",
-        "Confuses properties of nonmetals with metals",
-        null,
-        "Students often confuse cations and anions, thinking metals form anions instead of cations."
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 2, as metals are indeed good conductors of heat and electricity. The other options are incorrect because metals are not brittle, do not have a dull appearance, and form cations, not anions.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 68,
-          "pageStart": 59,
-          "pageEnd": 59,
-          "headingPath": [
-            "7. Metals and Nonmetals"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 69,
-          "pageStart": 59,
-          "pageEnd": 60,
-          "headingPath": [
-            "7. Metals and Nonmetals"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 70,
-          "pageStart": 60,
-          "pageEnd": 61,
-          "headingPath": [
-            "7. Metals and Nonmetals"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T20:30:49.917Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is a nonmetal that occurs in a liquid state at room temperature?",
-      "choices": [
-        "Carbon",
-        "Sulfur",
-        "Phosphorus",
-        "Bromine"
-      ],
-      "answerIndex": 3,
-      "solution": "Bromine is a nonmetal that exists as a liquid at room temperature, which is a unique property among nonmetals. Carbon, sulfur, and phosphorus are all nonmetals that are solid at room temperature, making them incorrect choices.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन एक अधातु है जो कमरे के तापमान पर द्रव अवस्था में पाई जाती है?",
-          "choices": [
-            "कार्बन",
-            "सल्फर",
-            "फॉस्फोरस",
-            "ब्रोमीन"
-          ],
-          "solution": "ब्रोमीन एक अधातु है जो कमरे के तापमान पर द्रव अवस्था में होती है, जो अधातुओं में एक विशिष्ट गुण है। कार्बन, सल्फर और फॉस्फोरस सभी अधातु हैं जो कमरे के तापमान पर ठोस अवस्था में होते हैं, जिसके कारण ये गलत विकल्प हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी एक अधातू आहे जी कमरा तापमानावर द्रव अवस्थेत असते?",
-          "choices": [
-            "कार्बन",
-            "गंधक",
-            "फॉस्फरस",
-            "ब्रोमीन"
-          ],
-          "solution": "ब्रोमीन ही एक अधातू आहे जी कमरा तापमानावर द्रव अवस्थेत असते, हे अधातूंमध्ये एक विशिष्ट गुणधर्म आहे. कार्बन, गंधक आणि फॉस्फरस हे सर्व अधातू आहेत जे कमरा तापमानावर घन अवस्थेत असतात, ज्यामुळे ते चुकीचे निवडी बनतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Incorrectly assumes that all nonmetals are solids",
-        "Incorrectly assumes that all nonmetals are solids",
-        "Incorrectly assumes that all nonmetals are solids",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is Bromine (option 3), which is a nonmetal that exists as a liquid at room temperature. The other options are nonmetals that are solids at room temperature, and the author's reasoning for the distractors is valid, as it reflects a common misconception that all nonmetals are solids.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 68,
-          "pageStart": 59,
-          "pageEnd": 59,
-          "headingPath": [
-            "7. Metals and Nonmetals"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 69,
-          "pageStart": 59,
-          "pageEnd": 60,
-          "headingPath": [
-            "7. Metals and Nonmetals"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 70,
-          "pageStart": 60,
-          "pageEnd": 61,
-          "headingPath": [
-            "7. Metals and Nonmetals"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T20:30:49.917Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
       "difficulty": 3,
-      "stem": "Which of the following is an example of corrosion?",
+      "stem": "What happens to a metal when it reacts with air and moisture?",
       "choices": [
-        "Rusting of iron",
-        "Ductility of copper",
-        "Luster of gold",
-        "Malleability of silver"
-      ],
-      "answerIndex": 0,
-      "solution": "Rusting of iron is an example of corrosion, as it involves the reaction of iron with oxygen and moisture. Ductility, luster, and malleability are properties of metals, not examples of corrosion.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन जंग लगने का उदाहरण है?",
-          "choices": [
-            "लोहे का जंग लगना",
-            "तांबे की खुरदरापन",
-            "सोने की चमक",
-            "चांदी की तन्यता"
-          ],
-          "solution": "लोहे का जंग लगना जंग लगने का उदाहरण है, क्योंकि यह लोहे के ऑक्सीजन और नमी के साथ अभिक्रिया के कारण होता है। खुरदरापन, चमक और तन्यता धातुओं के गुण हैं, जंग लगने के उदाहरण नहीं हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, technical terms are appropriately used in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते अपघटनाचे उदाहरण आहे?",
-          "choices": [
-            "लोहाचे अपघटन",
-            "तांब्याची तांतूनता",
-            "सोन्याची चमक",
-            "रूपाची तांतूनता"
-          ],
-          "solution": "लोहाचे अपघटन अपघटनाचे उदाहरण आहे, कारण त्यात लोहाचा ऑक्सीजन आणि आर्द्रतेशी अभिक्रिया होते. तांतूनता, चमक आणि तांतूनता हे धातूंचे गुणधर्म आहेत, अपघटनाचे उदाहरण नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for corrosion and metal properties.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses properties with examples of corrosion",
-        "Misunderstands the meaning of luster",
-        "Mistakes malleability for a form of corrosion"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0 (Rusting of iron), as corrosion is the process of metal degradation due to reaction with the environment. The other options describe physical properties of metals, not examples of corrosion. The author's reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 71,
-          "pageStart": 61,
-          "pageEnd": 62,
-          "headingPath": [
-            "7. Metals and Nonmetals"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 72,
-          "pageStart": 62,
-          "pageEnd": 63,
-          "headingPath": [
-            "7. Metals and Nonmetals"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 73,
-          "pageStart": 63,
-          "pageEnd": 63,
-          "headingPath": [
-            "7. Metals and Nonmetals",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T20:30:49.917Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Why is pure gold not used for making ornaments?",
-      "choices": [
-        "It is too expensive",
-        "It is not strong enough",
-        "It is not shiny",
-        "It is not available"
+        "It becomes lustrous",
+        "It gets corroded",
+        "It becomes harder",
+        "It turns into a nonmetal"
       ],
       "answerIndex": 1,
-      "solution": "Pure gold is not strong enough to hold its shape, especially when made into intricate ornaments, which is why it is usually mixed with other metals. The other options are incorrect because the cost of gold is not the main reason for not using it, its shininess is not an issue, and it is still available but not suitable for structural purposes.",
+      "solution": "When a metal reacts with air and moisture, it undergoes a process called corrosion. This causes the metal to get damaged and lose its shine. It does not become lustrous, harder, or turn into a nonmetal.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "शुद्ध सोना आभूषण बनाने के लिए क्यों नहीं उपयोग किया जाता है?",
+          "stem": "धातु में हवा और नमी के साथ प्रतिक्रिया करने पर क्या होता है?",
           "choices": [
-            "यह बहुत महंगा है",
-            "यह पर्याप्त ताकतवर नहीं है",
-            "यह चमकदार नहीं है",
-            "यह उपलब्ध नहीं है"
+            "यह चमकदार हो जाता है",
+            "यह जंग खाता है",
+            "यह कठोर हो जाता है",
+            "यह अधातु में बदल जाता है"
           ],
-          "solution": "शुद्ध सोना अपने आकार को बरकरार रखने के लिए पर्याप्त मजबूत नहीं होता है, विशेष रूप से जब इसे जटिल आभूषण बनाया जाता है, इसलिए इसके साथ अन्य धातुओं को मिलाया जाता है। अन्य विकल्प गलत हैं क्योंकि सोने की कीमत इसके उपयोग न करने का मुख्य कारण नहीं है, इसकी चमक की समस्या नहीं है, और यह उपलब्ध है लेकिन संरचनात्मक उद्देश्यों के लिए उपयुक्त नहीं है।",
+          "solution": "जब धातु हवा और नमी के साथ प्रतिक्रिया करती है, तो इसमें जंग लगने की प्रक्रिया होती है। इससे धातु क्षतिग्रस्त हो जाती है और इसकी चमक खो जाती है। यह चमकदार, कठोर नहीं होता है या अधातु में बदल जाता है।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "critique": "The Hindi translation accurately reflects the meaning, structure, and technical terms of the original English question. The correct answer remains option (2) and the distractors are still incorrect.",
           "flag": null
         },
         "mr": {
-          "stem": "शुद्ध सोने दागिने बनवण्यासाठी का वापरले जात नाही?",
+          "stem": "धातू वायू आणि आर्द्रतेशी भाग घेतल्यास काय होते?",
           "choices": [
-            "ते खूप खर्चिक आहे",
-            "ते पुरेसे दृढ नाही",
-            "ते चमकदार नाही",
-            "ते उपलब्ध नाही"
+            "तो चकचकीत होतो",
+            "तो खराब होतो",
+            "तो अधिक कठिण होतो",
+            "तो अधातूमध्ये बदलतो"
           ],
-          "solution": "शुद्ध सोने आपला आकार ठेवण्यासाठी पुरेसे दृढ नाही, विशेषतः जेव्हा त्याचा जटिल दागिने बनवला जातो, ज्यामुळे त्याला इतर धातूंसह मिसळले जाते. इतर विकल्प चुकीचे आहेत कारण सोन्याच्या किंमतीचा वापर करण्याचा मुख्य कारण नाही, त्याची चमक हा विषय नाही आणि ते उपलब्ध आहे परंतु रचनात्मक उद्देशांसाठी उपयुक्त नाही.",
+          "solution": "धातू वायू आणि आर्द्रतेशी भाग घेतल्यास त्याला अपघटन होतो. हे धातूला नुकसान पोहोचवते आणि त्याची चकचक गमावते. तो चकचकीत होत नाही, कठिण होत नाही किंवा अधातूमध्ये बदलत नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for technical concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms like 'अपघटन' (corrosion) which is commonly used in Marathi textbooks.",
           "flag": null
         }
       },
@@ -358,10 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses cost with practicality",
+        "Confuses the effect of corrosion with luster",
         null,
-        "Mistakes the reason for not using pure gold",
-        "student believes pure gold is rare or hard to find"
+        "Confuses the effect of corrosion with hardness",
+        "Confuses the effect of corrosion with a change in metal type"
       ],
       "solverAnswers": [
         1,
@@ -370,8 +84,8 @@
         1,
         1
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as pure gold is indeed too soft for use in ornaments. The author's reasoning aligns with this, and the misconceptions listed for the other options are plausible for students.",
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as corrosion is the process by which metals react with air and moisture, leading to damage and loss of shine. The other options represent common misconceptions about the effects of corrosion.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -403,7 +117,293 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T20:30:49.917Z",
+      "generatedAt": "2026-11-02T11:20:43.317Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following is a property of metalloids?",
+      "choices": [
+        "They are good conductors of electricity",
+        "They are generally soft",
+        "They show properties of both metals and nonmetals",
+        "They are always brittle"
+      ],
+      "answerIndex": 2,
+      "solution": "Metalloids have properties that are intermediate between metals and nonmetals. They are not good conductors like metals, nor are they brittle like nonmetals. Hence, the correct answer is 'They show properties of both metals and nonmetals'.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा धातुमय का गुण है?",
+          "choices": [
+            "वे विद्युत के अच्छे चालक होते हैं",
+            "वे आमतौर पर नरम होते हैं",
+            "वे धातुओं और अधातुओं दोनों के गुण दर्शाते हैं",
+            "वे हमेशा भंगुर होते हैं"
+          ],
+          "solution": "धातुमय के गुण धातुओं और अधातुओं के बीच मध्यवर्ती होते हैं। वे धातुओं के जैसे अच्छे चालक नहीं होते, न ही अधातुओं के जैसे भंगुर। इसलिए सही उत्तर 'वे धातुओं और अधातुओं दोनों के गुण दर्शाते हैं' है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for scientific concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते धातूमय वैशिष्ट्य आहे?",
+          "choices": [
+            "ते विद्युत चांगले वाहक आहेत",
+            "ते सामान्यतः मऊ असतात",
+            "ते धातू आणि अधातू दोन्हीचे वैशिष्ट्य दर्शवतात",
+            "ते नेहमी भंगुर असतात"
+          ],
+          "solution": "धातूमय धातू आणि अधातू दरम्यान मध्यम वैशिष्ट्य असतात. ते धातू प्रमाणे चांगले वाहक नसतात, नाही तर अधातू प्रमाणे भंगुर नसतात. म्हणूनच योग्य उत्तर 'ते धातू आणि अधातू दोन्हीचे वैशिष्ट्य दर्शवतात' आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Property of metals",
+        "Property of metals",
+        null,
+        "N/A (correct option)  ','Property of nonmetals']},{"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as metalloids exhibit properties of both metals and nonmetals. The solution is sound and aligns with the correct reasoning.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 68,
+          "pageStart": 59,
+          "pageEnd": 59,
+          "headingPath": [
+            "7. Metals and Nonmetals"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 69,
+          "pageStart": 59,
+          "pageEnd": 60,
+          "headingPath": [
+            "7. Metals and Nonmetals"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 70,
+          "pageStart": 60,
+          "pageEnd": 61,
+          "headingPath": [
+            "7. Metals and Nonmetals"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T11:20:43.317Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following reactions is correct for a metal reacting with an acid?",
+      "choices": [
+        "Metal + Acid → Salt + Oxygen gas",
+        "Metal + Acid → Salt + Hydrogen gas",
+        "Metal + Acid → Salt + Water",
+        "Metal + Acid → Salt + Carbon dioxide"
+      ],
+      "answerIndex": 1,
+      "solution": "When a metal reacts with an acid, it typically produces a salt and hydrogen gas. This occurs because the acid donates protons, which combine with electrons from the metal to form hydrogen gas. The other options are incorrect because oxygen, water, and carbon dioxide are not typically produced in such reactions.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी अभिक्रिया धातु के अम्ल के साथ अभिक्रिया के लिए सही है?",
+          "choices": [
+            "धातु + अम्ल → लवण + ऑक्सीजन गैस",
+            "धातु + अम्ल → लवण + हाइड्रोजन गैस",
+            "धातु + अम्ल → लवण + जल",
+            "धातु + अम्ल → लवण + कार्बन डाइऑक्साइड"
+          ],
+          "solution": "जब धातु अम्ल के साथ अभिक्रिया करती है, तो आमतौर पर लवण और हाइड्रोजन गैस बनती है। यह इसलिए होता है क्योंकि अम्ल प्रोटॉन के दान करता है, जो धातु से इलेक्ट्रॉनों के साथ मिलकर हाइड्रोजन गैस बनाते हैं। अन्य विकल्प गलत हैं क्योंकि ऑक्सीजन, जल और कार्बन डाइऑक्साइड ऐसी अभिक्रियाओं में आमतौर पर उत्पादित नहीं होते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains the same meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता अभिक्रिया धातू आणि अम्लाच्या प्रतिक्रियेसाठी बरोबर आहे?",
+          "choices": [
+            "धातू + अम्ल → लवण + ऑक्सीजन वायू",
+            "धातू + अम्ल → लवण + हायड्रोजन वायू",
+            "धातू + अम्ल → लवण + पाणी",
+            "धातू + अम्ल → लवण + कार्बन डायऑक्साइड"
+          ],
+          "solution": "धातू अम्लाशी प्रतिक्रिया करताना लवण आणि हायड्रोजन वायू तयार होतो. हे अम्ल अणू प्रोटॉन देतात, जे धातूमधून इलेक्ट्रॉनसह जोडून हायड्रोजन वायू तयार करतात. इतर विकल्प अयोग्य आहेत कारण ऑक्सीजन, पाणी आणि कार्बन डायऑक्साइड अशा प्रतिक्रियांमध्ये सामान्यतः तयार होत नाहीत.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the products of metal-acid reactions",
+        null,
+        "Incorrectly identifies the gas produced in the reaction",
+        "Confuses the products of metal-acid reactions"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as metals reacting with acids typically produce salt and hydrogen gas. The other options reflect common misconceptions about the products of such reactions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 68,
+          "pageStart": 59,
+          "pageEnd": 59,
+          "headingPath": [
+            "7. Metals and Nonmetals"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 69,
+          "pageStart": 59,
+          "pageEnd": 60,
+          "headingPath": [
+            "7. Metals and Nonmetals"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 70,
+          "pageStart": 60,
+          "pageEnd": 61,
+          "headingPath": [
+            "7. Metals and Nonmetals"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T11:20:43.317Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following is a correct statement about noble metals?",
+      "choices": [
+        "They react readily with air",
+        "They are used to make medicines",
+        "They are found in nature in the elemental state",
+        "They are not used in electronics"
+      ],
+      "answerIndex": 2,
+      "solution": "Noble metals are found in nature in the elemental state because they are chemically inert and do not readily form compounds. They do not react readily with air, which is why they remain unaltered in natural environments. Some noble metals are used in medicines and electronics due to their stability and conductivity.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा अक्रिय धातुओं के बारे में सही कथन है?",
+          "choices": [
+            "वे हवा के साथ तेजी से अभिक्रिया करते हैं",
+            "वे औषधियों के निर्माण में प्रयुक्त किए जाते हैं",
+            "वे प्रकृति में तत्व के रूप में पाए जाते हैं",
+            "वे इलेक्ट्रॉनिक्स में प्रयुक्त नहीं किए जाते हैं"
+          ],
+          "solution": "अक्रिय धातुएँ प्रकृति में तत्व के रूप में पाई जाती हैं क्योंकि वे रासायनिक रूप से अक्रिय होती हैं और ये यौगिक बनाने के लिए तत्पर नहीं होती हैं। वे हवा के साथ तेजी से अभिक्रिया नहीं करती हैं, जिसके कारण वे प्राकृतिक वातावरण में अपरिवर्तित रहती हैं। कुछ अक्रिय धातुओं के स्थायित्व और चालकता के कारण इनका उपयोग औषधियों और इलेक्ट्रॉनिक्स में किया जाता है।",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original meaning, with appropriate Hindi terminology for 'noble metals' and related concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता नोबल धातूबद्दल बरोबर विधान आहे?",
+          "choices": [
+            "ते हवेसह तत्काळ प्रतिक्रिया दर्शवतात",
+            "त्यांचा औषधांच्या तयारीसाठी वापर केला जातो",
+            "ते प्रकृतीत घटक अवस्थेत आढळतात",
+            "त्यांचा इलेक्ट्रॉनिक्समध्ये वापर केला जात नाही"
+          ],
+          "solution": "नोबल धातू प्रकृतीत घटक अवस्थेत आढळतात कारण ते रासायनिकदृष्ट्या निष्क्रिय असतात आणि त्वरित संयुगे बनवत नाहीत. ते हवेसह तत्काळ प्रतिक्रिया दर्शवत नाहीत, ज्यामुळे ते प्राकृतिक वातावरणात अपरिवर्तित राहतात. त्यांचा स्थिरतेमुळे आणि विद्युत वाहकतेमुळे काही नोबल धातू औषधांमध्ये आणि इलेक्ट्रॉनिक्समध्ये वापरले जातात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for 'noble metals' and related concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks noble metals react with air",
+        "Knows silver is used in medicines but not the correct answer",
+        null,
+        "Believes noble metals are not used in electronics"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as noble metals are typically found in the elemental state in nature. The other options reflect common misconceptions about noble metals.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 71,
+          "pageStart": 61,
+          "pageEnd": 62,
+          "headingPath": [
+            "7. Metals and Nonmetals"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 72,
+          "pageStart": 62,
+          "pageEnd": 63,
+          "headingPath": [
+            "7. Metals and Nonmetals"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 73,
+          "pageStart": 63,
+          "pageEnd": 63,
+          "headingPath": [
+            "7. Metals and Nonmetals",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T11:20:43.317Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

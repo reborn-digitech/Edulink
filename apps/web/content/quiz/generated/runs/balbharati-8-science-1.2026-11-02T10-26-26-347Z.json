@@ -1,0 +1,418 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T10:26:26.347Z",
+  "finishedAt": "2026-11-02T10:33:30.837Z",
+  "seconds": 424,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 1 — Living World and Classification of Microbes",
+    "edition": "First Edition 2018",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2025-26]\n1. C. Cuscuta, ticks, lice, leeches and tapeworm; as all of these are parasites. 1",
+      "[INJSO 2023 — question paper]\n3. Some microbes produce diffusible\nmetabolites that can be used by\nother microbes for their growth.\nThree such microorganisms were\ntested for their nutritional growth\nrequirements (under +/- light,\nscheme below) either on minimal\nsalt media (lacking any organic\nsources of carbon and nitrogen)\nOR on complete or rich media con-\ntaining salts with organic carbon\nand nitrogen.\nBased on the growth patterns\nshown after 24hrs, pick the correct\noption:\nA. P - Autotrophs, Q - Heterotroph, R - Heterotroph\nB. P – Photoautotroph, Q – Chemoheterotroph, R - Chemoautotroph\nC. P - Chemoautotrophs, Q - Chemoautotrophs, R – Heterotroph\nD. P - Photoautotroph, Q - Chemoheterotroph, R - Saprophyte",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n1. Select the group in which all organisms have the same mode of nutrition. 1\nA. Cuscuta, yeast, legumes, leeches and tapeworm\nB. Cactus, ticks, lice, leeches and cow\nC. Cuscuta, ticks, lice, leeches and tapeworm\nD. Cactus, grass, lice, lion and tapeworm",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n10. D. Longer small intestine."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 66014,
+      "in": 18,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 12971,
+      "completionTokens": 3267
+    },
+    "critique": {
+      "calls": 20,
+      "ms": 139809,
+      "in": 18,
+      "out": 14,
+      "rejects": 4,
+      "promptTokens": 8173,
+      "completionTokens": 3409
+    },
+    "solver": {
+      "calls": 82,
+      "ms": 41814,
+      "in": 14,
+      "out": 12,
+      "rejects": 2,
+      "promptTokens": 10888,
+      "completionTokens": 727
+    },
+    "form": {
+      "calls": 10,
+      "ms": 32704,
+      "in": 12,
+      "out": 9,
+      "rejects": 3,
+      "promptTokens": 2428,
+      "completionTokens": 758
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 55,
+      "ms": 9406,
+      "in": 9,
+      "out": 5,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 23,
+      "ms": 217486,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 12577,
+      "completionTokens": 6156
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is a saprotrophic organism?",
+      "ms": {
+        "draft": 3564,
+        "critique": 8260
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following statements about the five-kingdom system is correct?",
+      "ms": {
+        "draft": 4135,
+        "critique": 8698,
+        "solver": 12764
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following organisms is a parasite?",
+      "ms": {
+        "draft": 3564,
+        "critique": 7110
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a characteristic of viruses?",
+      "ms": {
+        "draft": 3564,
+        "critique": 7191
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a microbe that can be seen with the naked eye?",
+      "ms": {
+        "draft": 3564,
+        "critique": 7311
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements about fungi is true?",
+      "ms": {
+        "draft": 3564,
+        "critique": 5030,
+        "solver": 5309,
+        "form": 1283
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the mode of nutrition of fungi according to the passage?",
+      "ms": {
+        "draft": 13765,
+        "critique": 7362,
+        "solver": 1464,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary mode of nutrition of protozoa according to the passage?",
+      "ms": {
+        "draft": 13765,
+        "critique": 9328,
+        "solver": 1755,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information given, which kingdom includes organisms that can be both autotrophic and heterotrophic?",
+      "ms": {
+        "draft": 13765,
+        "critique": 6754,
+        "solver": 1711
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a microorganism is found to be unicellular, has a nucleus, and is able to move using cilia, which kingdom does it belong to?",
+      "ms": {
+        "draft": 4135,
+        "critique": 7142,
+        "solver": 2169,
+        "form": 3325
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of organisms in Kingdom Monera?",
+      "ms": {
+        "draft": 4135,
+        "critique": 7749,
+        "solver": 2490,
+        "form": 3659
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a free-living microbe?",
+      "ms": {
+        "draft": 3564,
+        "critique": 6282,
+        "solver": 1756,
+        "form": 4253
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of organisms in Kingdom Monera?",
+      "ms": {
+        "draft": 13765,
+        "critique": 8029,
+        "solver": 2679,
+        "form": 4463
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a mode of nutrition for organisms in Kingdom Fungi?",
+      "ms": {
+        "draft": 4135,
+        "critique": 6933,
+        "solver": 1513,
+        "form": 4811,
+        "translation": 38331
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a saprophytic organism?",
+      "ms": {
+        "draft": 13765,
+        "critique": 7676,
+        "solver": 2039,
+        "form": 4462,
+        "translation": 46365
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a microorganism has a cell wall but no distinct nucleus, which kingdom does it belong to?",
+      "ms": {
+        "draft": 13765,
+        "critique": 7423,
+        "solver": 1107,
+        "form": 1896,
+        "translation": 38585
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following correctly matches a microorganism with its classification?",
+      "ms": {
+        "draft": 4135,
+        "critique": 6983,
+        "solver": 1526,
+        "form": 5123,
+        "translation": 42852
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A researcher found an organism that is unicellular, has a cell wall, and is unable to perform photosynthesis. Which kingdom does this organism most likely belong to?",
+      "ms": {
+        "draft": 4135,
+        "critique": 7020,
+        "solver": 1989,
+        "form": 4237,
+        "translation": 47122
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a saprotrophic organism?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Based on the passage, which of the following statements about the five-kingdom system is correct?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following organisms is a parasite?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is a characteristic of viruses?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is an example of a microbe that can be seen with the naked eye?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following statements about fungi is true?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":2,\"stem\":\"Which of the following is an example of a saprotrophic organism?\",\"options\":[\"Amoeba\","
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the mode of nutrition of fungi according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the primary mode of nutrition of protozoa according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the information given, which kingdom includes organisms that can be both autotrophic and heterotrophic?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a microorganism is found to be unicellular, has a nucleus, and is able to move using cilia, which kingdom does it belong to?",
+      "reason": "near-duplicate of served question cmvtygnab0lcngp21ed9vw4gp (cosine 0.917 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a characteristic of organisms in Kingdom Monera?",
+      "reason": "near-duplicate of served question cmvg59ofi027rgpfh48f6vtg3 (cosine 0.902 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is an example of a free-living microbe?",
+      "reason": "near-duplicate of served question cmvezt4k002glgod8xqywq3z5 (cosine 0.948 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a characteristic of organisms in Kingdom Monera?",
+      "reason": "near-duplicate of served question cmvg59ofi027rgpfh48f6vtg3 (cosine 0.902 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

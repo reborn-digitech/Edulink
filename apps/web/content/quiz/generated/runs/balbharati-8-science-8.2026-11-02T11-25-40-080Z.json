@@ -1,0 +1,726 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T11:25:40.080Z",
+  "finishedAt": "2026-11-02T11:32:44.174Z",
+  "seconds": 424,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 8 — Pollution",
+    "edition": "First Edition 2018",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2022-23]\n26. A lot of waste is generated in neighborhood. However, almost all of it is 2\nbiodegradable. What impact will it have on the environment or human health?",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n26. Excess generation of biodegradable wastes can be harmful as - 2\nIts decomposition is a slow process leading to production of foul smell and gases.\n(1mark)\nIt can be the breeding ground for germs that create unhygienic conditions.(1 mark)",
+      "[CBSE Class X Science, sample question paper, 2022-23]\n33. Why is damage to the ozone layer a cause for concern? What are its causes and 3\nwhat steps are being taken to limit this damage?",
+      "[NSEJS 2016 — question paper]\n12. Every major city in India has a pollution control board to monitor air and water pollution. The following data is\nfrom three different localities in Bangalore city from the year 2015.\nLocality Annual average of SO 2 in the air\n(volume/volume)\nP 16.3 mL/m 3\nY 16.3 ppb (m /m ) 3 3\nZ 16.3 ppm (m /m ) 3 3\nppb stands for parts per billion and ppm stands for parts per million. These are different units to express\nJS530\nconcentration. They are very similar to percentage (which is actually parts per hundred).\nBased on the above data, which place will you choose to live in?\na) All localities are equally polluted, so I have no preference.\nb) P is the more polluted than Y and Z, hence I will live i"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 153480,
+      "in": 35,
+      "out": 35,
+      "rejects": 0,
+      "promptTokens": 25292,
+      "completionTokens": 7499
+    },
+    "critique": {
+      "calls": 47,
+      "ms": 347075,
+      "in": 35,
+      "out": 33,
+      "rejects": 2,
+      "promptTokens": 19647,
+      "completionTokens": 8076
+    },
+    "solver": {
+      "calls": 240,
+      "ms": 140274,
+      "in": 33,
+      "out": 30,
+      "rejects": 3,
+      "promptTokens": 40286,
+      "completionTokens": 2445
+    },
+    "form": {
+      "calls": 13,
+      "ms": 54874,
+      "in": 30,
+      "out": 5,
+      "rejects": 25,
+      "promptTokens": 4977,
+      "completionTokens": 1077
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 58,
+      "ms": 9851,
+      "in": 5,
+      "out": 4,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 183340,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 9101,
+      "completionTokens": 4822
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a city experiences frequent dust storms, which of the following is most likely to be affected?",
+      "ms": {
+        "draft": 4033,
+        "critique": 6309
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for air pollution according to the passage?",
+      "ms": {
+        "draft": 4033,
+        "critique": 8380,
+        "solver": 13710,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a natural pollutant?",
+      "ms": {
+        "draft": 4033,
+        "critique": 6008,
+        "solver": 13755,
+        "form": 3429
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct statement about pollutants?",
+      "ms": {
+        "draft": 4033,
+        "critique": 8560,
+        "solver": 20201,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A city has a high level of particulate matter in the air. Which of the following is the most likely source?",
+      "ms": {
+        "draft": 4033,
+        "critique": 8514,
+        "solver": 17550
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main cause of the greenhouse effect?",
+      "ms": {
+        "draft": 3581,
+        "critique": 7583,
+        "solver": 2064,
+        "form": 4199
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a reason for depletion of the ozone layer?",
+      "ms": {
+        "draft": 4033,
+        "critique": 7978,
+        "solver": 16014,
+        "form": 4063
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a reason for water pollution?",
+      "ms": {
+        "draft": 3581,
+        "critique": 6797,
+        "solver": 2025,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main effect of acid rain on the environment?",
+      "ms": {
+        "draft": 3581,
+        "critique": 6479,
+        "solver": 1695,
+        "form": 3740
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a city has a high concentration of sulfur dioxide in the air, what is a likely consequence?",
+      "ms": {
+        "draft": 3581,
+        "critique": 6570,
+        "solver": 1605,
+        "form": 3948
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of soil pollution according to the passage?",
+      "ms": {
+        "draft": 4509,
+        "critique": 5933,
+        "solver": 2608,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A city has a high level of sulfur dioxide and nitrogen oxides in the air. What is the most likely impact on the environment?",
+      "ms": {
+        "draft": 3581,
+        "critique": 6065,
+        "solver": 1504,
+        "form": 4231
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a river is polluted due to the release of tanning waste, what is the most significant long-term effect on the ecosystem?",
+      "ms": {
+        "draft": 3581,
+        "critique": 6241,
+        "solver": 2256,
+        "form": 4164
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would be the most likely consequence of not composting wet waste as mentioned in the passage?",
+      "ms": {
+        "draft": 4509,
+        "critique": 7129,
+        "solver": 2066,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is an example of how soil pollution can lead to water pollution?",
+      "ms": {
+        "draft": 4509,
+        "critique": 7593,
+        "solver": 1623,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a village has a lot of garbage dumped in open areas, what is the most likely environmental impact according to the passage?",
+      "ms": {
+        "draft": 4509,
+        "critique": 7496,
+        "solver": 1651,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following is the most important step to prevent pollution from agricultural chemicals?",
+      "ms": {
+        "draft": 4509,
+        "critique": 6366,
+        "solver": 1183,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a law mentioned in the passage to control pollution?",
+      "ms": {
+        "draft": 4509,
+        "critique": 5787,
+        "solver": 6816,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of soil pollution according to the passage?",
+      "ms": {
+        "draft": 4015,
+        "critique": 7456,
+        "solver": 1326,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a village has a lot of garbage and foul-smelling waste, what kind of pollution is likely to occur?",
+      "ms": {
+        "draft": 4015,
+        "critique": 7639,
+        "solver": 2387
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is a cause of air pollution?",
+      "ms": {
+        "draft": 4015,
+        "critique": 8998,
+        "solver": 12615,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an effect of acid rain on the environment?",
+      "ms": {
+        "draft": 5761,
+        "critique": 8019,
+        "solver": 1801,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is an example of a pollutant that can cause both soil and water pollution?",
+      "ms": {
+        "draft": 4015,
+        "critique": 10629,
+        "solver": 14226,
+        "form": 3085
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a city has high levels of sulfur dioxide (SO2) in the air, which of the following is most likely to occur?",
+      "ms": {
+        "draft": 5761,
+        "critique": 9077,
+        "solver": 1731,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which of the following is a type of pollutant?",
+      "ms": {
+        "draft": 4015,
+        "critique": 9762,
+        "solver": 14086,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the data provided, which locality in Bangalore is the most polluted?",
+      "ms": {
+        "draft": 5761,
+        "critique": 8364
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a manmade cause of water pollution?",
+      "ms": {
+        "draft": 5761,
+        "critique": 8428,
+        "solver": 13553,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A city has recorded the following data for air pollution: Locality P has 16.3 mL/m³ of SO₂, Locality Y has 16.3 ppb, and Locality Z has 16.3 ppm. Based on this, which locality is the most polluted?",
+      "ms": {
+        "draft": 4417,
+        "critique": 7704,
+        "solver": 2008,
+        "form": 3780
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a source of air pollution according to the passage?",
+      "ms": {
+        "draft": 4417,
+        "critique": 7456,
+        "solver": 1032,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage states that the ozone layer protects Earth from harmful UV-B rays. Which of the following actions would best help in preventing the depletion of the ozone layer?",
+      "ms": {
+        "draft": 4417,
+        "critique": 7794,
+        "solver": 15449
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Nilesh is facing asthma problems due to pollution in the city. Which type of pollution is most likely responsible for this?",
+      "ms": {
+        "draft": 4015,
+        "critique": 8425,
+        "solver": 2069,
+        "form": 3013
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main cause of the greenhouse effect?",
+      "ms": {
+        "draft": 5761,
+        "critique": 7947,
+        "solver": 2389,
+        "form": 0,
+        "translation": 37725
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an effect of air pollution on plants?",
+      "ms": {
+        "draft": 4417,
+        "critique": 7028,
+        "solver": 1863,
+        "form": 5667,
+        "translation": 31122
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a man-made pollutant that does not get destroyed by natural processes?",
+      "ms": {
+        "draft": 4417,
+        "critique": 6799,
+        "solver": 2291,
+        "form": 4111,
+        "translation": 58053
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to monitor the air quality index in cities?",
+      "ms": {
+        "draft": 5761,
+        "critique": 8483,
+        "solver": 15244,
+        "form": 0,
+        "translation": 51325
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a city experiences frequent dust storms, which of the following is most likely to be affected?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main reason for air pollution according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a natural pollutant?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct statement about pollutants?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A city has a high level of particulate matter in the air. Which of the following is the most likely source?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main cause of the greenhouse effect?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Ignores the direct cause mentioned in the passage…\"); distractor 3's reason is not a one-line misconception (\"Mistakenly attributes the effect to a natural process unrela…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a reason for depletion of the ozone layer?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a reason for water pollution?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Fails to recognize the direct cause of pollution mentioned i…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main effect of acid rain on the environment?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Fails to recognize the direct impact on ecosystems stated in…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a city has a high concentration of sulfur dioxide in the air, what is a likely consequence?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Overlooks the direct mention of damage to structures in the …\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of soil pollution according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A city has a high level of sulfur dioxide and nitrogen oxides in the air. What is the most likely impact on the environment?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Fails to recognize the direct link between pollutants and ac…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a river is polluted due to the release of tanning waste, what is the most significant long-term effect on the ecosystem?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Fails to recognize the indirect effect of pollution on soil …\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What would be the most likely consequence of not composting wet waste as mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is an example of how soil pollution can lead to water pollution?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a village has a lot of garbage dumped in open areas, what is the most likely environmental impact according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following is the most important step to prevent pollution from agricultural chemicals?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a law mentioned in the passage to control pollution?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Confuses the year of the Air Pollution Act with the one ment…\"); distractor 3's reason is not a one-line misconception (\"Invents a law not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of soil pollution according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a village has a lot of garbage and foul-smelling waste, what kind of pollution is likely to occur?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is a cause of air pollution?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an effect of acid rain on the environment?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed for distractor reason list …\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is an example of a pollutant that can cause both soil and water pollution?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Is not mentioned as a cause of pollution in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a city has high levels of sulfur dioxide (SO2) in the air, which of the following is most likely to occur?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed for distractor reason list …\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, which of the following is a type of pollutant?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the data provided, which locality in Bangalore is the most polluted?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is an example of a manmade cause of water pollution?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A city has recorded the following data for air pollution: Locality P has 16.3 mL/m³ of SO₂, Locality Y has 16.3 ppb, and Locality Z has 16.3 ppm. Based on this, which locality is the most polluted?",
+      "reason": "figure: figure spec refused: spec.title: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a source of air pollution according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The passage states that the ozone layer protects Earth from harmful UV-B rays. Which of the following actions would best help in preventing the depletion of the ozone layer?",
+      "reason": "after redrafting distractors 1, 2, 3: the critic finds option 2 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "Nilesh is facing asthma problems due to pollution in the city. Which type of pollution is most likely responsible for this?",
+      "reason": "near-duplicate of served question cmvf1uf1o02s3god85bn7pi93 (cosine 0.944 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

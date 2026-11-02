@@ -21,36 +21,49 @@
   "board": "BALBHARATI",
   "book": "८ वी सामान्य विज्ञान इंग्रजी",
   "edition": "First Edition 2018",
-  "generatedAt": "2026-10-29T20:54:54.594Z",
+  "generatedAt": "2026-11-02T11:45:07.540Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 2,
-      "stem": "Which of the following is NOT a type of blood cell?",
+      "difficulty": 1,
+      "stem": "Which blood group is considered a universal donor?",
       "choices": [
-        "Red blood cell",
-        "White blood cell",
-        "Platelet",
-        "Stem cell"
+        "AB",
+        "A",
+        "B",
+        "O"
       ],
       "answerIndex": 3,
-      "solution": "Stem cells are not classified as blood cells; they are undifferentiated cells that can develop into various cell types, including blood cells. Red blood cells, white blood cells, and platelets are all recognized types of blood cells. Therefore, the correct answer is 'Stem cell' because it is not a type of blood cell.",
+      "solution": "Blood group O is considered a universal donor because it lacks both A and B antigens, allowing it to be safely given to individuals with any blood type. AB blood contains both antigens and cannot be given to others without causing a reaction. A and B blood have one antigen each, limiting their compatibility with only certain blood types.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
-        "mr": {
-          "stem": "खालीलपैकी कोणता रक्ताणू नाही?",
+        "hi": {
+          "stem": "कौन सा रक्त समूह सार्वत्रिक दाता के रूप में माना जाता है?",
           "choices": [
-            "लाल रक्ताणू",
-            "श्वेत रक्ताणू",
-            "प्लेटलेट",
-            "स्टेम सेल"
+            "AB",
+            "A",
+            "B",
+            "O"
           ],
-          "solution": "स्टेम सेल रक्ताणू म्हणून वर्गीकृत केले जात नाहीत; ते अपेक्षित नसलेले सेल आहेत जे विविध सेल प्रकारांमध्ये विकसित होऊ शकतात, जे रक्ताणू देखील आहेत. लाल रक्ताणू, श्वेत रक्ताणू आणि प्लेटलेट हे सर्व रक्ताणूचे ओळखले गेलेले प्रकार आहेत. त्यामुळे सही उत्तर 'स्टेम सेल' आहे कारण ते रक्ताणूचा प्रकार नाही.",
+          "solution": "रक्त समूह O को सार्वत्रिक दाता के रूप में माना जाता है क्योंकि इसमें A और B एंटीजन दोनों की कमी होती है, जिसके कारण इसे किसी भी रक्त समूह वाले व्यक्ति को सुरक्षित रूप से दिया जा सकता है। AB रक्त में दोनों एंटीजन होते हैं और इसे किसी अन्य के बिना एक अभिक्रिया का कारण बन सकता है। A और B रक्त में प्रत्येक में एक एंटीजन होता है, जो इसकी संगतता केवल कुछ रक्त समूहों के साथ सीमित रहती है।",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for biological concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi terminology for blood groups.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणता रक्तगट जागतिक दाता मानला जातो?",
+          "choices": [
+            "AB",
+            "A",
+            "B",
+            "O"
+          ],
+          "solution": "रक्तगट O जागतिक दाता मानला जातो कारण त्यामध्ये A आणि B अँटिजन दोन्ही असत नाहीत, ज्यामुळे तो कोणत्याही रक्तगटाच्या व्यक्तीला सुरक्षितपणे दिला जाऊ शकतो. AB रक्तामध्ये दोन्ही अँटिजन असतात आणि त्याला कोणालाही देण्यासाठी प्रतिक्रिया होऊ शकते. A आणि B रक्तामध्ये एक अँटिजन असतो, ज्यामुळे त्यांची सुसंगतता केवळ काही रक्तगटांशी मर्यादित असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for blood groups and antigens.",
           "flag": null
         }
       },
@@ -59,9 +72,9 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses stem cells with blood cells",
-        "Thinks all blood components are types of blood cells",
-        "Mistakenly includes stem cells as a blood cell type",
+        "confuses AB with the universal donor",
+        "does not know the universal donor blood group",
+        "does not know the universal donor blood group",
         null
       ],
       "solverAnswers": [
@@ -72,387 +85,7 @@
         3
       ],
       "levelFlag": null,
-      "critique": "The solution is correct. Stem cells are not classified as a type of blood cell, while red blood cells, white blood cells, and platelets are. The reasoning aligns with standard biology.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 99,
-          "pageStart": 87,
-          "pageEnd": 88,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 100,
-          "pageStart": 88,
-          "pageEnd": 89,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 101,
-          "pageStart": 89,
-          "pageEnd": 90,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T20:54:54.594Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "What happens to the diaphragm during inhalation?",
-      "choices": [
-        "It relaxes and moves upward",
-        "It contracts and moves downward",
-        "It remains stationary",
-        "It contracts and moves upward"
-      ],
-      "answerIndex": 1,
-      "solution": "During inhalation, the diaphragm contracts and moves downward, increasing the volume of the thoracic cavity and allowing air to enter the lungs. The other options describe the opposite or incorrect movements of the diaphragm.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "श्वास लेने के दौरान डायफ्राम क्या होता है?",
-          "choices": [
-            "यह शिथिल हो जाता है और ऊपर की ओर जाता है",
-            "यह संकुचित हो जाता है और नीचे की ओर जाता है",
-            "यह स्थिर रहता है",
-            "यह संकुचित हो जाता है और ऊपर की ओर जाता है"
-          ],
-          "solution": "श्वास लेने के दौरान डायफ्राम संकुचित हो जाता है और नीचे की ओर जाता है, जिससे थोरेसिक गुहा का आयतन बढ़ जाता है और हवा फेफड़ों में प्रवेश कर जाती है। अन्य विकल्प डायफ्राम के विपरीत या गलत गति का वर्णन करते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, technical terms, and option structure. The correct answer remains option 1, and all distractors are still incorrect.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "श्वासाच्या वेळी डायफ्राम काय होतो?",
-          "choices": [
-            "तो शिथिल होतो आणि वर जातो",
-            "तो खिचून खाली जातो",
-            "तो थांबलेला राहतो",
-            "तो खिचून वर जातो"
-          ],
-          "solution": "श्वासाच्या वेळी, डायफ्राम खिचून खाली जातो, जेणेकरून थोरॅक्स कॅव्हिटीचा आकार वाढतो आणि हवा फुफ्फुसात प्रवेश करतो. इतर विकल्पांमध्ये डायफ्रामच्या विरुद्ध किंवा चुकीच्या गतीचे वर्णन केले आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, technical terms are appropriately used in Marathi, and the correct answer remains in the same position.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the movement of the diaphragm during exhalation with that during inhalation",
-        null,
-        "Incorrectly assumes the diaphragm remains stationary during inhalation",
-        "Misunderstands the role of the diaphragm in increasing thoracic cavity volume during inhalation"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly explains that the diaphragm contracts and moves downward during inhalation, which matches the correct answer. The reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 96,
-          "pageStart": 85,
-          "pageEnd": 85,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 97,
-          "pageStart": 85,
-          "pageEnd": 86,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 98,
-          "pageStart": 86,
-          "pageEnd": 87,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T20:54:54.594Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "Which of the following processes involves the exchange of gases between blood and body cells?",
-      "choices": [
-        "External respiration",
-        "Internal respiration",
-        "Cellular respiration",
-        "Breathing"
-      ],
-      "answerIndex": 1,
-      "solution": "Internal respiration refers to the exchange of gases between blood and body cells. External respiration involves the lungs, while cellular respiration is the process within cells. Breathing is the physical act of inhaling and exhaling air.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सी प्रक्रिया रक्त एवं शरीर की कोशिकाओं के बीच गैसों के आदान-प्रदान के लिए जिम्मेदार है?",
-          "choices": [
-            "बाह्य श्वसन",
-            "आंतरिक श्वसन",
-            "कोशिकीय श्वसन",
-            "श्वास लेना"
-          ],
-          "solution": "आंतरिक श्वसन रक्त एवं शरीर की कोशिकाओं के बीच गैसों के आदान-प्रदान के लिए जिम्मेदार है। बाह्य श्वसन फेफड़ों से संबंधित होता है, जबकि कोशिकीय श्वसन कोशिकाओं में होने वाली प्रक्रिया है। श्वास लेना हवा के अंदर आने एवं बाहर जाने की शारीरिक क्रिया है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English content with appropriate terminology used in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता प्रक्रिया रक्त आणि शारीरिक कोशिकांमध्ये वायूंच्या विनिमयाशी संबंधित आहे?",
-          "choices": [
-            "बाह्य श्वसन",
-            "आंतरिक श्वसन",
-            "कोशिकांतील श्वसन",
-            "श्वासोच्छ्वास"
-          ],
-          "solution": "आंतरिक श्वसन हा रक्त आणि शारीरिक कोशिकांमध्ये वायूंच्या विनिमयाशी संबंधित आहे. बाह्य श्वसन हा फुफ्फुसाशी जुडलेला असतो, तर कोशिकांतील श्वसन ही कोशिकांमध्ये होणारी प्रक्रिया आहे. श्वासोच्छ्वास ही वायूंच्या श्वास घेण्याच्या आणि बाहेर काढण्याच्या शारीरिक क्रियेचा अंग आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the process of gas exchange in the lungs with that in the body",
-        null,
-        "Confuses the process of gas exchange in the cells with that in the body",
-        "Confuses the process of energy production in the cells with that in the body"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is accurate. Internal respiration correctly refers to gas exchange between blood and body cells, while the other options involve different processes.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 96,
-          "pageStart": 85,
-          "pageEnd": 85,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 97,
-          "pageStart": 85,
-          "pageEnd": 86,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 98,
-          "pageStart": 86,
-          "pageEnd": 87,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T20:54:54.594Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "Which of the following is an example of external respiration?",
-      "choices": [
-        "Oxygen moving from blood to tissue fluid",
-        "Carbon dioxide moving from tissue fluid to blood",
-        "Oxygen entering the blood from the alveoli",
-        "Water vapour moving from blood to the alveoli"
-      ],
-      "answerIndex": 2,
-      "solution": "External respiration refers to the exchange of gases between the alveoli and the blood. Oxygen enters the blood from the alveoli, while carbon dioxide moves from the blood into the alveoli. The other options describe internal respiration, which involves gas exchange between the blood and body cells.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा बाह्य श्वसन का उदाहरण है?",
-          "choices": [
-            "रक्त से ऊतक द्रव में ऑक्सीजन का गमन",
-            "ऊतक द्रव से रक्त में कार्बन डाइऑक्साइड का गमन",
-            "एल्विओली से रक्त में ऑक्सीजन का प्रवेश",
-            "रक्त से एल्विओली में जल वाष्प का गमन"
-          ],
-          "solution": "बाह्य श्वसन एल्विओली और रक्त के बीच गैसों के आदान-प्रदान को कहते हैं। ऑक्सीजन एल्विओली से रक्त में प्रवेश करती है, जबकि कार्बन डाइऑक्साइड रक्त से एल्विओली में गमन करती है। अन्य विकल्प आंतरिक श्वसन को दर्शाते हैं, जिसमें रक्त और शरीर की कोशिकाओं के बीच गैसों का आदान-प्रदान होता है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते बाह्य श्वासोच्छ्वासाचे उदाहरण आहे?",
-          "choices": [
-            "रक्तातून ऊतक द्रवात ऑक्सीजन चलतो",
-            "ऊतक द्रवातून रक्तात कार्बन डायऑक्साइड चलतो",
-            "अल्विओलीमधून रक्तात ऑक्सीजन प्रवेश करतो",
-            "रक्तातून अल्विओलीमध्ये जल वाफ चलतो"
-          ],
-          "solution": "बाह्य श्वासोच्छ्वास म्हणजे अल्विओली आणि रक्त दरम्यान वायूंचा विनिमय आहे. अल्विओलीमधून रक्तात ऑक्सीजन प्रवेश करतो, तर कार्बन डायऑक्साइड रक्तातून अल्विओलीमध्ये जातो. इतर विकल्प आंतरिक श्वासोच्छ्वास दर्शवतात, जो रक्त आणि शरीरातील सेल दरम्यान वायूंचा विनिमय आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with standard biology textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Describes internal respiration, not external respiration",
-        "Confuses the direction of gas movement during external respiration",
-        null,
-        "Misinterprets the process of gas exchange in the alveoli as internal respiration"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies external respiration as gas exchange between alveoli and blood. Option 2 matches this, while the other options describe internal respiration or incorrect gas movement.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 96,
-          "pageStart": 85,
-          "pageEnd": 85,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 97,
-          "pageStart": 85,
-          "pageEnd": 86,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 98,
-          "pageStart": 86,
-          "pageEnd": 87,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T20:54:54.594Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Which of the following is an example of a situation where blood transfusion is necessary?",
-      "choices": [
-        "A person with a broken leg",
-        "A person with a mild cold",
-        "A person with anemia",
-        "A person with a headache"
-      ],
-      "answerIndex": 2,
-      "solution": "Anemia is a condition where the body lacks enough healthy red blood cells, making blood transfusion necessary to restore oxygen delivery. A broken leg, mild cold, and headache do not involve a significant loss or deficiency of blood cells, so they do not require a transfusion.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सी स्थिति रक्त आधान की आवश्यकता होती है इसका एक उदाहरण है?",
-          "choices": [
-            "टूटी हुई जांघ वाला व्यक्ति",
-            "हल्का बुखार वाला व्यक्ति",
-            "एनीमिया वाला व्यक्ति",
-            "सिरदर्द वाला व्यक्ति"
-          ],
-          "solution": "एनीमिया एक ऐसी स्थिति है जिसमें शरीर के पर्याप्त स्वस्थ लाल रक्त कोशिकाओं की कमी होती है, जिसके कारण रक्त आधान की आवश्यकता होती है। टूटी हुई जांघ, हल्का बुखार और सिरदर्द में रक्त कोशिकाओं के महत्वपूर्ण हानि या कमी नहीं होती है, इसलिए इनमें आधान की आवश्यकता नहीं होती है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate medical terminology as found in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता एक असा परिस्थितीचा उदाहरण आहे जेथे रक्त प्रत्यारोपण आवश्यक असते?",
-          "choices": [
-            "टूकडा तुटलेल्या व्यक्ती",
-            "हलका खाज असलेल्या व्यक्ती",
-            "एनेमियाच्या असलेल्या व्यक्ती",
-            "मानेच्या व्यक्ती"
-          ],
-          "solution": "एनेमिया ही एक अशी अवस्था आहे जेथे शरीरात पुरेसे आरोग्यकर लाल रक्ताणू नसतात, ज्यामुळे ऑक्सीजन पुरवठा पुन्हा सुरू करण्यासाठी रक्त प्रत्यारोपण आवश्यक असते. टूकडा तुटलेल्या, हलका खाज असलेल्या आणि मानेच्या व्यक्तींमध्ये रक्ताणूंच्या मोठ्या गुंतवणुकीचा किंवा कमतरतेचा अभाव नसतो, ज्यामुळे त्यांना प्रत्यारोपण आवश्यक नसते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Mistakenly thinks broken legs require transfusion",
-        "Mistakenly thinks colds require transfusion",
-        null,
-        "Mistakenly thinks headaches require transfusion"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2 (anemia), as blood transfusion is indeed necessary in cases of anemia. The other options are not valid reasons for a blood transfusion, and the author's reasoning for the distractors reflects common misconceptions.",
+      "critique": "The solution correctly identifies O as the universal donor, and the reasons for the wrong options reflect common misconceptions.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -484,7 +117,1151 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T20:54:54.594Z",
+      "generatedAt": "2026-11-02T11:45:07.540Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a function of blood?",
+      "choices": [
+        "Transport of gases",
+        "Production of oxygen",
+        "Formation of urine",
+        "Regulation of body temperature"
+      ],
+      "answerIndex": 0,
+      "solution": "Blood is responsible for transporting gases like oxygen and carbon dioxide throughout the body, which is a key function of the circulatory system. Producing oxygen is not a function of blood, as oxygen is absorbed from the lungs. Forming urine is the role of the kidneys, not blood. Regulating body temperature is primarily managed by mechanisms like sweating and blood flow to the skin, not directly by blood itself.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा रक्त का कार्य है?",
+          "choices": [
+            "गैसों का परिवहन",
+            "ऑक्सीजन का उत्पादन",
+            "मूत्र का निर्माण",
+            "शरीर के तापमान का नियमन"
+          ],
+          "solution": "रक्त शरीर के चारों ओर ऑक्सीजन और कार्बन डाइऑक्साइड जैसी गैसों के परिवहन के लिए जिम्मेदार होता है, जो परिसंचरण प्रणाली का एक मुख्य कार्य है। ऑक्सीजन का उत्पादन रक्त का कार्य नहीं है, क्योंकि ऑक्सीजन फेफड़ों से अवशोषित होती है। मूत्र का निर्माण किडनी का कार्य होता है, न कि रक्त का। शरीर के तापमान का नियमन सीधे रक्त द्वारा नहीं, बल्कि घाटी और त्वचा में रक्त प्रवाह जैसे तंत्रों द्वारा किया जाता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi medical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी रक्ताचे कार्य कोणते आहे?",
+          "choices": [
+            "गॅसचा परिवहन",
+            "ऑक्सीजनचे उत्पादन",
+            "मूत्राची निर्मिती",
+            "शरीराचे तापमान नियमन"
+          ],
+          "solution": "रक्त शरीरामध्ये ऑक्सीजन आणि कार्बन डायऑक्साइड या गॅसचा परिवहन करते, जे परिसंचरण प्रणालीचे मुख्य कार्य आहे. ऑक्सीजन तयार करणे रक्ताचे कार्य नाही, कारण ऑक्सीजन फुफ्फुसांमधून शोषला जातो. मूत्राची निर्मिती ही किडनीचे कार्य आहे, रक्ताचे नाही. शरीराचे तापमान नियमन हे प्रामुख्याने घाम वर येणे आणि त्वचेमार्फत रक्ताच्या प्रवाहाद्वारे नियमित केले जाते, रक्ताच्या आतील नियमनाद्वारे नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses the function of the lungs with that of blood",
+        "incorrectly assumes blood produces oxygen",
+        "refers to the function of the kidneys rather than blood"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (Transport of gases), as blood's primary role includes transporting oxygen and carbon dioxide. The other options are incorrect: option 1 confuses the lungs' role, option 2 incorrectly attributes oxygen production to blood, and option 3 refers to the kidneys' function.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 99,
+          "pageStart": 87,
+          "pageEnd": 88,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 100,
+          "pageStart": 88,
+          "pageEnd": 89,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 101,
+          "pageStart": 89,
+          "pageEnd": 90,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T11:45:07.540Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a reason why blood donation is considered superior to other donations?",
+      "choices": [
+        "It is voluntary",
+        "It saves lives",
+        "It is done in a hospital",
+        "It is done once a year"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 'It saves lives' because blood donation directly helps individuals in need by providing essential blood components for medical treatments. The other options, such as being voluntary or done in a hospital, are not unique or primary reasons for its superiority.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा रक्त दान को अन्य दानों के मुकाबले श्रेष्ठ माना जाता है कारण है?",
+          "choices": [
+            "यह स्वेच्छा से किया जाता है",
+            "यह जीवन बचाता है",
+            "यह अस्पताल में किया जाता है",
+            "यह एक बार प्रति वर्ष किया जाता है"
+          ],
+          "solution": "सही उत्तर 'यह जीवन बचाता है' है क्योंकि रक्त दान मेडिकल उपचार के लिए आवश्यक रक्त घटक प्रदान करके आवश्यकता वाले व्यक्ति की सीधे मदद करता है। अन्य विकल्प, जैसे कि स्वेच्छा से किया जाना या अस्पताल में किया जाना, इसकी श्रेष्ठता के अद्वितीय या मुख्य कारण नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते रक्तदान हे इतर दानांपेक्षा श्रेष्ठ मानले जाते याचे कारण आहे?",
+          "choices": [
+            "ते स्वयंस्फूर्त आहे",
+            "ते जीव वाचवते",
+            "ते रुग्णालयात केले जाते",
+            "ते वार्षिक एकदा केले जाते"
+          ],
+          "solution": "बरोबर उत्तर 'ते जीव वाचवते' आहे कारण रक्तदान रुग्णांना आवश्यक रक्त घटक पुरवून त्यांच्या आयुष्याला वाचवते. इतर विकल्प, जसे की स्वयंस्फूर्त असणे किंवा रुग्णालयात केले जाणे, यांचे विशिष्ट किंवा प्राथमिक कारण नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology. The solution explanation is consistent with the English version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "focuses on the nature of the donation instead of its impact",
+        null,
+        "confuses the reason with a general fact",
+        "confuses the reason with a frequency-related detail"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1 (It saves lives), which aligns with the reasoning that blood donation is considered superior because it directly saves lives. The other options are either irrelevant or based on misconceptions about the nature, setting, or frequency of donation.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 102,
+          "pageStart": 90,
+          "pageEnd": 90,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 103,
+          "pageStart": 91,
+          "pageEnd": 91,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 104,
+          "pageStart": 91,
+          "pageEnd": 92,
+          "headingPath": [
+            "11. Human Body and Organ System",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T11:45:07.540Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the primary function of the circulatory system?",
+      "choices": [
+        "To transport substances in the body",
+        "To filter air",
+        "To break down food",
+        "To remove waste materials"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 'To transport substances in the body' because the circulatory system is responsible for moving essential materials like oxygen, nutrients, and hormones throughout the body. The other options describe functions of different systems, such as the respiratory system for filtering air or the digestive system for breaking down food.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "क्रमविन्यास प्रणाली का प्राथमिक कार्य क्या है?",
+          "choices": [
+            "शरीर में पदार्थों का परिवहन करना",
+            "हवा का छानना",
+            "भोजन का अपघटन करना",
+            "अपशिष्ट पदार्थों को हटाना"
+          ],
+          "solution": "सही उत्तर 'शरीर में पदार्थों का परिवहन करना' है क्योंकि क्रमविन्यास प्रणाली शरीर में ऑक्सीजन, पोषक तत्व और हार्मोन जैसे महत्वपूर्ण सामग्री के वितरण के लिए जिम्मेदार है। अन्य विकल्प अलग प्रणालियों के कार्यों का वर्णन करते हैं, जैसे श्वसन प्रणाली के लिए हवा का छानना या पाचन प्रणाली के लिए भोजन का अपघटन।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains in the same position. The distractors remain incorrect, and the technical terms used are standard in Hindi science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "शरीरातील पदार्थ वाहून नेणे हे परिसंचरण प्रणालीचे प्राथमिक कार्य काय आहे?",
+          "choices": [
+            "शरीरातील पदार्थ वाहून नेणे",
+            "वायू फिल्टर करणे",
+            "खाद्य पदार्थ विघटित करणे",
+            "अपशिष्ट पदार्थ दूर करणे"
+          ],
+          "solution": "योग्य उत्तर 'शरीरातील पदार्थ वाहून नेणे' आहे कारण परिसंचरण प्रणाली शरीरात ऑक्सीजन, पोषक द्रव्ये आणि हॉर्मोन अशा महत्वपूर्ण पदार्थांच्या गतीसाठी जबाबदार आहे. उरलेल्या विकल्पांमध्ये वायू फिल्टर करणे यासारख्या श्वसन प्रणालीच्या कार्याचे वर्णन केले गेले आहे किंवा खाद्य पदार्थ विघटित करणे यासारख्या पाचन प्रणालीच्या कार्याचे वर्णन केले गेले आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with standard textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the function of the circulatory system with that of the respiratory system",
+        "Confuses the function of the circulatory system with that of the digestive system",
+        "Confuses the function of the circulatory system with that of the excretory system"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as the circulatory system's primary function is to transport substances. The other options correspond to other systems, and the author's reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 96,
+          "pageStart": 85,
+          "pageEnd": 85,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 97,
+          "pageStart": 85,
+          "pageEnd": 86,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 98,
+          "pageStart": 86,
+          "pageEnd": 87,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T11:45:07.540Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following is responsible for carrying oxygen in the blood?",
+      "choices": [
+        "Plasma",
+        "White blood cells",
+        "Red blood cells",
+        "Platelets"
+      ],
+      "answerIndex": 2,
+      "solution": "Red blood cells are responsible for carrying oxygen in the blood because they contain hemoglobin, a protein that binds to oxygen molecules. Plasma is the liquid part of blood and does not carry oxygen. White blood cells are involved in the immune response, and platelets are used for blood clotting, not oxygen transport.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन रक्त में ऑक्सीजन ले जाने के लिए जिम्मेदार है?",
+          "choices": [
+            "प्लाज्मा",
+            "श्वेत रक्त कोशिकाएं",
+            "लाल रक्त कोशिकाएं",
+            "प्लेटलेट्स"
+          ],
+          "solution": "लाल रक्त कोशिकाएं रक्त में ऑक्सीजन ले जाने के लिए जिम्मेदार हैं क्योंकि वे हीमोग्लोबिन नामक प्रोटीन रखती हैं, जो ऑक्सीजन अणुओं से जुड़ती है। प्लाज्मा रक्त का तरल भाग है और ऑक्सीजन नहीं ले जाता है। श्वेत रक्त कोशिकाएं प्रतिरक्षा प्रतिक्रिया में शामिल हैं, और प्लेटलेट्स रक्त जमाव के लिए उपयोग की जाती हैं, ऑक्सीजन परिवहन के लिए नहीं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi medical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी रक्तातील ऑक्सीजन वाहून नेणारा कोण आहे?",
+          "choices": [
+            "प्लाज्मा",
+            "श्वेत रक्ताणू",
+            "लाल रक्ताणू",
+            "प्लेटलेट्स"
+          ],
+          "solution": "लाल रक्ताणू रक्तातील ऑक्सीजन वाहून नेतात कारण त्यांच्यात हीमोग्लोबिन नावाचे प्रोटीन असते, जे ऑक्सीजन अणूंशी जोडले जाते. प्लाज्मा हे रक्ताचे द्रव भाग आहे आणि ऑक्सीजन वाहून नेत नाही. श्वेत रक्ताणू रोगप्रतिकार प्रणालीशी संबंधित असतात, आणि प्लेटलेट्स रक्ताच्या थक्कतेसाठी वापरले जातात, ऑक्सीजन परिवहनासाठी नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses plasma with the oxygen-carrying component",
+        "Chooses a cell type involved in immunity",
+        null,
+        "Confuses the role of platelets in clotting"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors based on common misconceptions. The solution correctly identifies red blood cells as the oxygen-carrying component due to hemoglobin.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 99,
+          "pageStart": 87,
+          "pageEnd": 88,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 100,
+          "pageStart": 88,
+          "pageEnd": 89,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 101,
+          "pageStart": 89,
+          "pageEnd": 90,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T11:45:07.540Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "A person with blood group O is called a universal donor because their blood lacks which component?",
+      "choices": [
+        "Antibodies",
+        "Antigens",
+        "Plasma",
+        "Platelets"
+      ],
+      "answerIndex": 1,
+      "solution": "Blood group O is considered a universal donor because it lacks antigens, which are the substances that can trigger immune responses in recipients. Antibodies are present in all blood types and are not the reason for compatibility. Plasma and platelets are components of blood but do not determine compatibility in the same way antigens do.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक व्यक्ति जिसके रक्त समूह O होता है, एक सार्वभौम दाता कहलाता है क्योंकि उनके रक्त में कौन सा घटक अनुपस्थित होता है?",
+          "choices": [
+            "एंटीबॉडीज",
+            "एंटीजन्स",
+            "प्लाज्मा",
+            "प्लेटलेट्स"
+          ],
+          "solution": "रक्त समूह O को सार्वभौम दाता माना जाता है क्योंकि इसमें एंटीजन्स की कमी होती है, जो रक्त प्रतिरक्षा प्रतिक्रियाओं को उत्तेजित कर सकते हैं। एंटीबॉडीज सभी रक्त समूहों में उपस्थित होते हैं और पारस्परिकता के कारण नहीं होते हैं। प्लाज्मा और प्लेटलेट्स रक्त के घटक हैं लेकिन एंटीजन्स के समान तरीके से पारस्परिकता निर्धारित नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are correctly used in Hindi, and the logic of the solution matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रक्तगट O असलेल्या व्यक्तीला सार्वत्रिक दाता म्हणतात कारण त्यांच्या रक्तात खालीलपैकी कोणता घटक असत नाही?",
+          "choices": [
+            "प्रतिपिंडे",
+            "अँटिजन",
+            "प्लाज्मा",
+            "प्लेटलेट्स"
+          ],
+          "solution": "रक्तगट O ला सार्वत्रिक दाता मानले जाते कारण त्यात अँटिजन असत नाहीत, जे रक्ताच्या प्रतिक्रियांमुळे प्रतिकूल परिणाम होऊ शकतात. प्रतिपिंडे सर्व रक्तगटांमध्ये असतात आणि अनुकूलतेचे कारण नाहीत. प्लाज्मा आणि प्लेटलेट्स रक्ताचे घटक आहेत परंतु अँटिजन प्रमाणे अनुकूलता ठरवत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks. The structure and meaning of the question and solution are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses antigens with antibodies",
+        null,
+        "Confuses with another blood component",
+        "Confuses with another blood component"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. The correct answer is 1 (Antigens), as blood group O lacks antigens on red blood cells, making it a universal donor. The author's solution and reasoning are accurate.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 102,
+          "pageStart": 90,
+          "pageEnd": 90,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 103,
+          "pageStart": 91,
+          "pageEnd": 91,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 104,
+          "pageStart": 91,
+          "pageEnd": 92,
+          "headingPath": [
+            "11. Human Body and Organ System",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T11:45:07.540Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Why do veins have valves?",
+      "choices": [
+        "To prevent the backflow of blood",
+        "To increase the speed of blood flow",
+        "To allow blood to flow in one direction",
+        "To reduce the pressure in the veins"
+      ],
+      "answerIndex": 0,
+      "solution": "Veins have valves to prevent the backflow of blood, ensuring it moves in one direction toward the heart. This is essential because veins carry blood under lower pressure and rely on valves to maintain forward movement. The other options do not accurately describe the function of valves in veins.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "रक्त वाहिनियों में वाल्व क्यों होते हैं?",
+          "choices": [
+            "रक्त के पीछे की ओर बहाव को रोकने के लिए",
+            "रक्त के प्रवाह की गति बढ़ाने के लिए",
+            "रक्त के एक दिशा में प्रवाह की अनुमति देने के लिए",
+            "रक्त वाहिनियों में दबाव कम करने के लिए"
+          ],
+          "solution": "रक्त वाहिनियां वाल्व रखती हैं ताकि रक्त का पीछे की ओर बहाव रोका जा सके और यह हृदय की ओर एक दिशा में बहे। यह आवश्यक है क्योंकि रक्त वाहिनियां निम्न दबाव के साथ रक्त ले जाती हैं और वाल्व के बिना आगे की ओर गति बनाए रखना कठिन हो जाता है। अन्य विकल्प रक्त वाहिनियों में वाल्व के कार्य का सही वर्णन नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi medical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रक्तवाहिन्यांमध्ये बॅल्व्ह असतात कारण?",
+          "choices": [
+            "रक्ताच्या पुन्हा प्रवाहाला रोखण्यासाठी",
+            "रक्ताच्या प्रवाहाच्या वेगात वाढ करण्यासाठी",
+            "रक्ताला एका दिशेने प्रवाहित होण्यासाठी",
+            "रक्तवाहिन्यांमध्ये दाब कमी करण्यासाठी"
+          ],
+          "solution": "रक्तवाहिन्यांमध्ये बॅल्व्ह असतात कारण रक्ताच्या पुन्हा प्रवाहाला रोखण्यासाठी, जेणेकरून रक्त हृदयाकडे एका दिशेने प्रवाहित होते. हे आवश्यक आहे कारण रक्तवाहिन्या रक्ताला कमी दाबाखाली वाहतात आणि त्यांना एका दिशेने प्रवाहित करण्यासाठी बॅल्व्ह वापरतात. इतर विकल्प रक्तवाहिन्यांमधील बॅल्व्हच्या कार्याचे योग्य वर्णन करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "misunderstands the role of valves as related to speed",
+        "confuses the function of valves with that of arteries",
+        "incorrectly attributes the purpose of valves to pressure regulation"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as valves in veins prevent backflow of blood. The other options reflect common misconceptions about the function of valves.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 99,
+          "pageStart": 87,
+          "pageEnd": 88,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 100,
+          "pageStart": 88,
+          "pageEnd": 89,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 101,
+          "pageStart": 89,
+          "pageEnd": 90,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T11:45:07.540Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a person has a blood group of AB and is a universal recipient, which of the following is true?",
+      "choices": [
+        "They can receive blood from all groups",
+        "They can donate blood to all groups",
+        "They can only receive blood from AB",
+        "They can only donate blood to AB"
+      ],
+      "answerIndex": 0,
+      "solution": "AB blood type is known as the universal recipient because it can accept blood from all other blood groups. This is due to the presence of both A and B antigens on red blood cells, which do not trigger an immune response when receiving blood from other types. However, AB individuals can only donate blood to other AB individuals because their blood contains both antigens. Therefore, the statement that they can receive blood from all groups is correct.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी व्यक्ति का रक्त समूह AB है और वह एक सार्वभौमिक प्राप्तकर्ता है, तो निम्नलिखित में से कौन सा सत्य है?",
+          "choices": [
+            "वे सभी समूहों से रक्त प्राप्त कर सकते हैं",
+            "वे सभी समूहों को रक्त दे सकते हैं",
+            "वे केवल AB से रक्त प्राप्त कर सकते हैं",
+            "वे केवल AB को रक्त दे सकते हैं"
+          ],
+          "solution": "AB रक्त समूह को सार्वभौमिक प्राप्तकर्ता के रूप में जाना जाता है क्योंकि यह अन्य सभी रक्त समूहों से रक्त प्राप्त कर सकता है। इसके पीछे कारण लाल रक्त कोशिकाओं पर A और B एंटीजन की उपस्थिति है, जो अन्य प्रकार के रक्त से रक्त प्राप्त करते समय प्रतिरक्षा प्रतिक्रिया को उत्तेजित नहीं करते हैं। हालांकि, AB व्यक्ति केवल अन्य AB व्यक्तियों को रक्त दे सकते हैं क्योंकि उनके रक्त में दोनों एंटीजन होते हैं। इसलिए, यह कथन सत्य है कि वे सभी समूहों से रक्त प्राप्त कर सकते हैं।",
+          "imageAlt": null,
+          "critique": "Translation accurately conveys the medical terminology and the logic of the question. The correct answer (option 1) is in the same position as in the English version.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका व्यक्तीचा रक्तगट AB असून तो जागतिक ग्राहक असेल, तर खालीलपैकी कोणते खरे आहे?",
+          "choices": [
+            "त्यांना सर्व गटांमधून रक्त मिळू शकते",
+            "त्यांना सर्व गटांमध्ये रक्त देऊ शकता",
+            "त्यांना AB मधून फक्त रक्त मिळू शकते",
+            "त्यांना AB मध्ये फक्त रक्त देऊ शकता"
+          ],
+          "solution": "AB रक्तगट जागतिक ग्राहक म्हणून ओळखला जातो कारण तो इतर सर्व रक्तगटांमधून रक्त घेऊ शकतो. हे त्याच्या लाल रक्ताणूवरील A आणि B प्रतिजनांच्या उपस्थितीमुळे होते, जे इतर प्रकारांमधून रक्त घेताना प्रतिरोध उत्पन्न करत नाहीत. मात्र, AB व्यक्तींना फक्त इतर AB व्यक्तींना रक्त देऊ शकता कारण त्यांच्या रक्तात दोन्ही प्रतिजन असतात. म्हणून, त्यांना सर्व गटांमधून रक्त मिळू शकते असे विधान खरे आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for blood groups and related concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses universal recipient with universal donor",
+        "Thinks AB can only receive from AB",
+        "Thinks AB can only donate to AB"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is clear and the solution correctly identifies option 0 as the correct answer. The author's reasoning for the distractors aligns with common misconceptions about blood groups.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 102,
+          "pageStart": 90,
+          "pageEnd": 90,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 103,
+          "pageStart": 91,
+          "pageEnd": 91,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 104,
+          "pageStart": 91,
+          "pageEnd": 92,
+          "headingPath": [
+            "11. Human Body and Organ System",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T11:45:07.540Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Why is it advised not to talk while eating?",
+      "choices": [
+        "It can cause choking",
+        "It can reduce the efficiency of digestion",
+        "It can lead to indigestion",
+        "It can cause heartburn"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 'It can cause choking' because talking while eating can interfere with the proper closure of the epiglottis, which normally prevents food from entering the windpipe. This can lead to choking if food particles enter the airway. The other options, while related to digestion, are not directly caused by talking during eating.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "खाते समय बात करने की सलाह क्यों नहीं दी जाती है?",
+          "choices": [
+            "इससे गले में फंस सकता है",
+            "इससे पाचन की दक्षता कम हो सकती है",
+            "इससे अपच हो सकता है",
+            "इससे दांत दर्द हो सकता है"
+          ],
+          "solution": "सही उत्तर 'इससे गले में फंस सकता है' है क्योंकि खाते समय बात करना आम तौर पर एपिग्लॉटिस के सही बंद होने में बाधा पहुंचा सकता है, जो सामान्य रूप से खाना वायुनली में प्रवेश करने से रोकता है। यदि खाने के कण हवा के मार्ग में प्रवेश कर जाएं तो इससे गले में फंस सकता है। अन्य विकल्प जिनका पाचन से संबंध है, लेकिन खाते समय बात करने से सीधे नहीं होते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate medical terminology commonly found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खाताना बोलणे का टाळावे लागते?",
+          "choices": [
+            "ते गळून जाण्याच्या शक्यतेला कारणीभूत होऊ शकते",
+            "ते पचनाच्या दक्षतेला घटवू शकते",
+            "ते अपचनाच्या शक्यतेला कारणीभूत होऊ शकते",
+            "ते हृदयाच्या जळजळीच्या शक्यतेला कारणीभूत होऊ शकते"
+          ],
+          "solution": "सही उत्तर 'ते गळून जाण्याच्या शक्यतेला कारणीभूत होऊ शकते' आहे कारण खाताना बोलणे अंगाच्या वायुमार्गात जाणाऱ्या खाद्याच्या प्रवेशाला अडथळा निर्माण करू शकते. खाद्याच्या टुकरा वायुमार्गात जाऊ शकतात ज्यामुळे गळून जाण्याची शक्यता असते. इतर विकल्प, तरी अपचनाशी संबंधित आहेत, परंतु खाताना बोलण्यामुळे ते थेट उद्भवत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for medical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the reason for not talking while eating with digestion",
+        "Confuses the reason for not talking while eating with digestion",
+        "Confuses the reason for not talking while eating with digestion"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the passage explains choking as the reason, and the other options are not mentioned. The distractors reflect common misconceptions about digestion, which is a reasonable and realistic error for students to make.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 96,
+          "pageStart": 85,
+          "pageEnd": 85,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 97,
+          "pageStart": 85,
+          "pageEnd": 86,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 98,
+          "pageStart": 86,
+          "pageEnd": 87,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T11:45:07.540Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following is a correct statement about capillaries?",
+      "choices": [
+        "They have thick walls",
+        "They are the largest blood vessels",
+        "They allow exchange of materials with cells",
+        "They carry oxygenated blood"
+      ],
+      "answerIndex": 2,
+      "solution": "Capillaries allow exchange of materials with cells because their walls are extremely thin, consisting of a single layer of cells, which facilitates the diffusion of oxygen, nutrients, and waste products. They do not have thick walls, as that would hinder exchange. Capillaries are not the largest blood vessels, and they do not exclusively carry oxygenated blood, as some carry deoxygenated blood.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक रक्तवाहिनी के बारे में सही कथन है?",
+          "choices": [
+            "उनकी दीवारें मोटी होती हैं",
+            "वे सबसे बड़े रक्तवाहिनी हैं",
+            "वे कोशिकाओं के साथ सामग्री के आदान-प्रदान की अनुमति देते हैं",
+            "वे ऑक्सीजनयुक्त रक्त ले जाते हैं"
+          ],
+          "solution": "रक्तवाहिनी कोशिकाओं के साथ सामग्री के आदान-प्रदान की अनुमति देते हैं क्योंकि उनकी दीवारें अत्यंत पतली होती हैं, जो एक स्तर कोशिकाओं से बनी होती है, जो ऑक्सीजन, पोषक तत्वों और अपशिष्ट पदार्थों के विसरण को सुविधाजनक बनाती है। उनकी दीवारें मोटी नहीं होती, क्योंकि ऐसा करना आदान-प्रदान को अवरुद्ध कर देगा। रक्तवाहिनी सबसे बड़े रक्तवाहिनी नहीं हैं, और वे केवल ऑक्सीजनयुक्त रक्त नहीं ले जाते हैं, क्योंकि कुछ अपोक्सीजनयुक्त रक्त ले जाते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi medical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता रक्तवाहिन्यांबद्दल बरोबर विधान आहे?",
+          "choices": [
+            "त्यांच्या जाड भिंती आहेत",
+            "ते सर्वात मोठ्या रक्तवाहिन्या आहेत",
+            "त्यांनी कोशिकांशी पदार्थांचा विनिमय करण्याची परवानगी देतात",
+            "ते ऑक्सीजनयुक्त रक्त वहन करतात"
+          ],
+          "solution": "रक्तवाहिन्या कोशिकांशी पदार्थांचा विनिमय करण्याची परवानगी देतात कारण त्यांच्या भिंती अतिशय थराच असतात, जी एका कोशिकेच्या थरापासून बनलेल्या असतात, जी ऑक्सीजन, पोषक द्रव्ये आणि अपशिष्ट पदार्थांच्या विसर्जनास परवानगी देतात. त्यांच्या जाड भिंती नसतात, कारण त्यांनी विनिमय अडवू शकतात. रक्तवाहिन्या सर्वात मोठ्या रक्तवाहिन्या नसतात, आणि त्या फक्त ऑक्सीजनयुक्त रक्त वहन करत नसतात, कारण काही त्यांनी ऑक्सीजनरहित रक्त वहन करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses the characteristics of arteries with those of capillaries",
+        "incorrectly identifies arteries as the largest blood vessels",
+        null,
+        "refers to the function of arteries rather than capillaries"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as capillaries are indeed the site of material exchange between blood and tissues. The other options are incorrect: capillaries have thin walls, not thick; the largest blood vessels are arteries; and capillaries carry both oxygenated and deoxygenated blood depending on their location.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 99,
+          "pageStart": 87,
+          "pageEnd": 88,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 100,
+          "pageStart": 88,
+          "pageEnd": 89,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 101,
+          "pageStart": 89,
+          "pageEnd": 90,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T11:45:07.540Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is blood pressure recorded as two numbers, like 120/80?",
+      "choices": [
+        "It shows the temperature of the blood",
+        "It represents the systolic and diastolic pressure",
+        "It shows the amount of blood in the body",
+        "It represents the heart rate"
+      ],
+      "answerIndex": 1,
+      "solution": "The two numbers in a blood pressure reading represent the pressure in the arteries when the heart contracts (systolic) and when it relaxes (diastolic). The other options are unrelated to how blood pressure is measured and interpreted.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "रक्त का दबाव 120/80 जैसे दो संख्याओं के रूप में क्यों दर्ज किया जाता है?",
+          "choices": [
+            "यह रक्त के तापमान को दर्शाता है",
+            "यह अंतर्वेधी और अंतरावेधी दबाव का प्रतिनिधित्व करता है",
+            "यह शरीर में रक्त की मात्रा को दर्शाता है",
+            "यह हृदय गति का प्रतिनिधित्व करता है"
+          ],
+          "solution": "रक्त के दबाव के आंकड़े में दो संख्याएं हृदय सिकुड़ते समय धमनियों में दबाव (अंतर्वेधी) और आराम के समय (अंतरावेधी) का प्रतिनिधित्व करती हैं। अन्य विकल्प रक्त के दबाव के माप और व्याख्या से संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. Technical terms like 'systolic' and 'diastolic' are correctly translated as 'अंतर्वेधी' and 'अंतरावेधी', which are standard in Hindi medical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रक्तदाब 120/80 प्रमाणे दोन संख्यांमध्ये का नोंदवला जातो?",
+          "choices": [
+            "रक्ताचा तापमान दर्शवते",
+            "ते अवस्फीती आणि आवस्फीती दाब दर्शवते",
+            "रक्ताच्या शरीरातील प्रमाणाचे दर्शवते",
+            "ते हृदयाच्या धडधडीचे दर दर्शवते"
+          ],
+          "solution": "रक्तदाब नोंदीतील दोन संख्या हृदय आवर्तन करताना अवस्फीती आणि आवस्फीती दरम्यान रक्तनाळ्यांमधील दाब दर्शवतात. इतर विकल्प रक्तदाब मोजण्याच्या आणि व्याख्याकरणाच्या संदर्भात असंबंधित आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi medical terminology used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses blood pressure with temperature",
+        null,
+        "Student thinks blood pressure numbers indicate volume of blood rather than pressure levels",
+        "confuses the concept of blood volume with pressure"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed, with a clear correct answer and plausible misconceptions in the distractors. The solution correctly identifies the systolic and diastolic pressures as the two numbers in a blood pressure reading.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 102,
+          "pageStart": 90,
+          "pageEnd": 90,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 103,
+          "pageStart": 91,
+          "pageEnd": 91,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 104,
+          "pageStart": 91,
+          "pageEnd": 92,
+          "headingPath": [
+            "11. Human Body and Organ System",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T11:45:07.540Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following best explains why the walls of the lungs are elastic?",
+      "choices": [
+        "To allow for the expansion and contraction during breathing",
+        "To prevent the lungs from collapsing",
+        "To increase the surface area for gas exchange",
+        "To protect the lungs from infections"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 'To allow for the expansion and contraction during breathing' because the elasticity of lung walls enables them to stretch when inhaling and return to their original shape when exhaling. The other options are incorrect because preventing collapse is primarily due to surfactant, increasing surface area is a function of alveoli, and protection from infections is handled by the immune system.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा वायुमार्ग की दीवारों के लचीलेपन की व्याख्या सबसे अच्छा करता है?",
+          "choices": [
+            "सांस लेने के दौरान फेफड़ों के विस्तार और संकुचन की अनुमति देने के लिए",
+            "फेफड़ों के ढीला होने से रोकने के लिए",
+            "गैस विनिमय के लिए सतह क्षेत्र बढ़ाने के लिए",
+            "फेफड़ों की संक्रमण से रक्षा करने के लिए"
+          ],
+          "solution": "सही उत्तर 'सांस लेने के दौरान फेफड़ों के विस्तार और संकुचन की अनुमति देने के लिए' है क्योंकि फेफड़ों की दीवारों की लचीलेपन सांस लेते समय फैलने की अनुमति देता है और छोड़ते समय अपने मूल आकार में वापस आ जाता है। अन्य विकल्प गलत हैं क्योंकि ढीला होने से रोकना सतही तेल के कारण होता है, सतह क्षेत्र बढ़ाना एल्विओली का कार्य है और संक्रमण से रक्षा आंतरिक प्रतिरक्षा प्रणाली द्वारा की जाती है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate medical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते श्वासनलिकांच्या भिंती लोचदार असल्याचे सर्वात चांगले स्पष्टीकरण देते?",
+          "choices": [
+            "श्वास घेताना विस्तार आणि संकोच करण्यासाठी",
+            "श्वासनलिकांच्या कोलॅप्स होण्यापासून रोखण्यासाठी",
+            "गॅस विनिमयासाठी पृष्ठभागाच्या क्षेत्राचे वाढवण्यासाठी",
+            "श्वासनलिकांच्या संसर्गापासून रक्षणासाठी"
+          ],
+          "solution": "बरोबर उत्तर 'श्वास घेताना विस्तार आणि संकोच करण्यासाठी' आहे कारण श्वासनलिकांच्या भिंती लोचदार असल्यामुळे त्या श्वास घेताना विस्तारतात आणि श्वास बाहेर काढताना त्यांच्या मूळ आकारात परत येतात. इतर विकल्प चुकीचे आहेत कारण कोलॅप्स होण्यापासून रोखणे हे अतिरिक्त पदार्थामुळे होते, पृष्ठभागाच्या क्षेत्राची वाढ हे एल्विओली च्या कार्याचे आहे आणि संसर्गापासून रक्षण हे प्रतिकार निर्माणामुळे होते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the function of lung elasticity with preventing collapse",
+        "Confuses the function of lung elasticity with increasing surface area",
+        "Confuses the function of lung elasticity with protection from infection"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as elasticity allows for expansion and contraction during breathing. The other options represent common misconceptions about lung function.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 96,
+          "pageStart": 85,
+          "pageEnd": 85,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 97,
+          "pageStart": 85,
+          "pageEnd": 86,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 98,
+          "pageStart": 86,
+          "pageEnd": 87,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T11:45:07.540Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why does the heart have a higher number of beats in infants compared to adults?",
+      "choices": [
+        "Because infants have smaller hearts",
+        "Because infants have a higher metabolic rate",
+        "Because infants have thinner blood",
+        "Because infants have more capillaries"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is because infants have a higher metabolic rate. A higher metabolic rate requires more oxygen and nutrients to be delivered to the body, which is achieved through a higher heart rate. The other options are incorrect because heart size, blood thickness, and number of capillaries do not directly determine the heart rate in this context.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "नवजात शिशुओं में वयस्कों की तुलना में हृदय की धड़कन की संख्या अधिक क्यों होती है?",
+          "choices": [
+            "क्योंकि नवजात शिशुओं के हृदय छोटे होते हैं",
+            "क्योंकि नवजात शिशुओं में उच्च एंजाइम दर होती है",
+            "क्योंकि नवजात शिशुओं का रक्त पतला होता है",
+            "क्योंकि नवजात शिशुओं में अधिक कैपिलरी होती हैं"
+          ],
+          "solution": "सही उत्तर यह है कि नवजात शिशुओं में उच्च एंजाइम दर होती है। एक उच्च एंजाइम दर के कारण शरीर में अधिक ऑक्सीजन और पोषक तत्व आवश्यकता होती है, जिसे उच्च हृदय दर द्वारा पूरा किया जाता है। अन्य विकल्प गलत हैं क्योंकि हृदय के आकार, रक्त की मोटाई और कैपिलरी की संख्या इस संदर्भ में हृदय दर को सीधे निर्धारित नहीं करती है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation contains several inaccuracies. 'एंजाइम दर' (enzyme rate) is incorrect for 'metabolic rate'. 'कैपिलरी' (capillaries) is correctly translated, but the term 'एंजाइम दर' is a mistranslation that changes the meaning. The correct answer is in the same position (option 2), but the content of the options and solution is not equivalent to the English version.",
+          "flag": "translation critique: meaning changed; a distractor no longer wrong; terms not the board's"
+        },
+        "mr": {
+          "stem": "बालकांच्या हृदयाच्या धडधडीची संख्या वयस्करांपेकी जास्त का असते?",
+          "choices": [
+            "कारण बालकांचे हृदय लहान असते",
+            "कारण बालकांचा उच्च विकासक क्रियाशीलता असते",
+            "कारण बालकांचा रक्त जास्त पातळ असतो",
+            "कारण बालकांच्या रक्तवाहिन्या जास्त असतात"
+          ],
+          "solution": "योग्य उत्तर हे बालकांचा उच्च विकासक क्रियाशीलता असते. उच्च विकासक क्रियाशीलता शरीराला अधिक ऑक्सीजन आणि पोषक घटक देण्याची आवश्यकता असते, जे उच्च हृदयाच्या धडधडीद्वारे पूर्ण केले जाते. इतर विकल्प चुकीचे आहेत कारण हृदयाच्या आकार, रक्ताची जास्त पातळपणा आणि रक्तवाहिन्यांची संख्या हा संदर्भात हृदयाच्या धडधडीला थोडे नियंत्रित करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "misinterprets the relationship between heart size and heart rate",
+        null,
+        "incorrectly assumes blood thickness affects heart rate",
+        "confuses the function of capillaries with that of heart rate"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as infants have a higher metabolic rate, which requires a higher heart rate to supply oxygen and nutrients. The other options reflect common misconceptions about heart size, blood thickness, and capillaries.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 99,
+          "pageStart": 87,
+          "pageEnd": 88,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 100,
+          "pageStart": 88,
+          "pageEnd": 89,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 101,
+          "pageStart": 89,
+          "pageEnd": 90,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T11:45:07.540Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

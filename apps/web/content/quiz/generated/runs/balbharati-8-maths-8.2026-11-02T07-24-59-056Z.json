@@ -1,0 +1,475 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T07:24:59.056Z",
+  "finishedAt": "2026-11-02T07:29:32.236Z",
+  "seconds": 273,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी गणित इंग्रजी",
+    "bookCode": "803020004",
+    "document": "balbharati/8/mathematics/803020004.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 8 — Quadrilateral : Constructions and Types",
+    "edition": "First Edition 2018",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INMO 2004 — question paper]\n1. Consider a convex quadrilateral ABCD, in which K, L, M, N are the midpoints of the sides AB,\nBC, CD, DA respectively. Suppose\n(a) BD bisects KM at Q;\n(b) QA =QB=QC =QD; and\n(¢) LK/LM = CD/CB.\nProve that ABCD is a square.\nSolution:\nD 14 c\n4 K B\nFig. 1.\nObserve that KLMN is a paralellogram, @ is the midpoint of MK and hence NL also passes\nthrough Q. Let T be the point of intersection of AC and BD; and let S be the point of intersection\nof BD and MN.\nConsider the triangle MNK. Note that SQ is parallel to NK and Q is the midpoint of MK.\nHence S is the mid-point of MN. Since MN is parallel to AC, it follows that 7\" is the mid-point\nof AC. Now Q is the circumcentre of AABC and the median BT pas",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n29. A circle touches all the four sides of quadrilateral ABCD. Prove that AB + CD = AD + BC.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n16. The points A(9,0), B(9, -6) ,C(-9,0) and D(-9,6) are the vertices of a 1\n(A) Square (B) Rectangle (C) Parallelogram (D) Trapezium",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n28. A quadrilateral ABCD is drawn to circumscribe a circle, as shown in the given 3\nAB + CD\nfigure. Show that = 1\nAD + BC\nFor visually Impaired students only\nShow that parallelogram circumscribing a circle is a rhombus.\n*Please note that the assessment scheme of the Academic Session 2024-25 will continue in the current session i.e. 2025-26"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 82460,
+      "in": 23,
+      "out": 20,
+      "rejects": 3,
+      "promptTokens": 20968,
+      "completionTokens": 4855
+    },
+    "critique": {
+      "calls": 28,
+      "ms": 161856,
+      "in": 20,
+      "out": 17,
+      "rejects": 3,
+      "promptTokens": 12559,
+      "completionTokens": 5019
+    },
+    "solver": {
+      "calls": 141,
+      "ms": 73291,
+      "in": 17,
+      "out": 12,
+      "rejects": 5,
+      "promptTokens": 32433,
+      "completionTokens": 1566
+    },
+    "form": {
+      "calls": 8,
+      "ms": 25308,
+      "in": 12,
+      "out": 7,
+      "rejects": 5,
+      "promptTokens": 2015,
+      "completionTokens": 615
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 8,
+      "ms": 1544,
+      "in": 7,
+      "out": 3,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 117747,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 7207,
+      "completionTokens": 3657
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "In a rectangle, if the length of one diagonal is 17 cm, what is the length of the other diagonal?",
+      "ms": {
+        "draft": 3806,
+        "critique": 5396,
+        "solver": 10543,
+        "form": 3978
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a square, if the diagonals intersect at point E and one of the diagonals is 10 cm, what is the length of each part of the diagonal?",
+      "ms": {
+        "draft": 3806,
+        "critique": 6657,
+        "solver": 14159
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the measure of the other angle if two adjacent angles of a parallelogram are 70° and 110°?",
+      "ms": {
+        "draft": 3643,
+        "critique": 6294,
+        "solver": 16253,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the diagonals of a rhombus are 24 cm and 70 cm, what is the length of one of its sides?",
+      "ms": {
+        "draft": 3643,
+        "critique": 9346,
+        "solver": 14488
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the diagonals of a parallelogram intersect at point T and one segment of the diagonal is 3.5 cm, what is the full length of the diagonal?",
+      "ms": {
+        "draft": 3643,
+        "critique": 4595,
+        "solver": 5308,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the diagonals of a rhombus are 24 cm and 70 cm, what is the length of each side of the rhombus?",
+      "ms": {
+        "draft": 3294,
+        "critique": 4578,
+        "solver": 1523,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of a rectangle?",
+      "ms": {
+        "draft": 13993,
+        "critique": 9515,
+        "solver": 1373
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the diagonals of a rectangle are 10 cm, what is the length of each side if one side is 6 cm?",
+      "ms": {
+        "draft": 3294,
+        "critique": 5307,
+        "solver": 12453,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a parallelogram, if one angle measures 118°, what is the measure of the adjacent angle?",
+      "ms": {
+        "draft": 3294,
+        "critique": 5710,
+        "solver": 14786
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a rectangle, if the length of one side is 8 cm, what is the length of the opposite side?",
+      "ms": {
+        "draft": 13993,
+        "critique": 5717
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In a rectangle, what is the measure of each angle?",
+      "ms": {
+        "draft": 13993,
+        "critique": 7314
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a rectangle, if the length of one diagonal is 17 cm, what is the length of the other diagonal?",
+      "ms": {
+        "draft": 13993,
+        "critique": 5699
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a rectangle, if the length of one diagonal is 17 cm and the length of one side is 8 cm, what is the length of the adjacent side?",
+      "ms": {
+        "draft": 13993,
+        "critique": 3840,
+        "solver": 4191
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a quadrilateral has all sides equal and all angles equal, what is it called?",
+      "ms": {
+        "draft": 3806,
+        "critique": 4436,
+        "solver": 1584,
+        "form": 3583
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the diagonals of a quadrilateral are equal and bisect each other, which type of quadrilateral is it?",
+      "ms": {
+        "draft": 3806,
+        "critique": 4567,
+        "solver": 1291,
+        "form": 4607
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of a parallelogram?",
+      "ms": {
+        "draft": 3643,
+        "critique": 6751,
+        "solver": 1311,
+        "form": 3120
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a parallelogram, if one angle measures 118°, what is the measure of the opposite angle?",
+      "ms": {
+        "draft": 3643,
+        "critique": 5935,
+        "solver": 1650,
+        "form": 3536
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of a rectangle?",
+      "ms": {
+        "draft": 3806,
+        "critique": 5396,
+        "solver": 1663,
+        "form": 3908,
+        "translation": 37432
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a trapezium, which of the following is true?",
+      "ms": {
+        "draft": 3643,
+        "critique": 8384,
+        "solver": 1591,
+        "form": 2173,
+        "translation": 38605
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a quadrilateral, if the diagonals are not congruent but bisect each other, what type of quadrilateral is it?",
+      "ms": {
+        "draft": 3806,
+        "critique": 7040,
+        "solver": 1637,
+        "form": 3693,
+        "translation": 38198
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In a rectangle, if the length of one diagonal is 17 cm, what is the length of the other diagonal?",
+      "reason": "options mix numbers and words (3 of 4 are numbers); checkExpr \"17\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In a square, if the diagonals intersect at point E and one of the diagonals is 10 cm, what is the length of each part of the diagonal?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the measure of the other angle if two adjacent angles of a parallelogram are 70° and 110°?",
+      "reason": "options 0 and 3 are the same (\"70°\"); options 1 and 2 are the same (\"110°\"); options 0 and 3 are the same number; options 1 and 2 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If the diagonals of a rhombus are 24 cm and 70 cm, what is the length of one of its sides?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the diagonals of a parallelogram intersect at point T and one segment of the diagonal is 3.5 cm, what is the full length of the diagonal?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If one angle of a rhombus is 50°, what is the measure of the opposite angle?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "In a parallelogram, if the length of one side is 5.4 cm, what is the length of the opposite side?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If the diagonals of a rhombus intersect at 90°, which of the following is true?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the diagonals of a rhombus are 24 cm and 70 cm, what is the length of each side of the rhombus?",
+      "reason": "checkExpr \"sqrt(12*12+35*35)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a property of a rectangle?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the diagonals of a rectangle are 10 cm, what is the length of each side if one side is 6 cm?",
+      "reason": "checkExpr \"sqrt(10*10-6*6)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "In a parallelogram, if one angle measures 118°, what is the measure of the adjacent angle?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a rectangle, if the length of one side is 8 cm, what is the length of the opposite side?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "In a rectangle, what is the measure of each angle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a rectangle, if the length of one diagonal is 17 cm, what is the length of the other diagonal?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In a rectangle, if the length of one diagonal is 17 cm and the length of one side is 8 cm, what is the length of the adjacent side?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "If a quadrilateral has all sides equal and all angles equal, what is it called?",
+      "reason": "near-duplicate of served question cmvx3sk8t03pl0remtkhubt1f (cosine 0.954 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If the diagonals of a quadrilateral are equal and bisect each other, which type of quadrilateral is it?",
+      "reason": "near-duplicate of served question cmvx3sk9803q30remd0g8po4s (cosine 0.962 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a property of a parallelogram?",
+      "reason": "near-duplicate of batch item \"Which of the following is a property of a rectangl…\" (cosine 0.942 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "In a parallelogram, if one angle measures 118°, what is the measure of the opposite angle?",
+      "reason": "near-duplicate of served question cmvx3sk9403px0rem43ucyp67 (cosine 0.927 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

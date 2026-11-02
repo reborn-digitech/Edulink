@@ -1,0 +1,225 @@
+{
+  "subject": "MATHS",
+  "classLevel": 8,
+  "chapter": "Chapter 9 — The Baudhāyana-Pythagoras Theorem",
+  "name": "The Baudhāyana-Pythagoras Theorem",
+  "slug": "maths-8-the-baudha-yana-pythagoras-theorem",
+  "summary": "This chapter explores the Baudhāyana-Pythagoras Theorem, its historical context, and its applications in geometry and number theory.",
+  "position": 9,
+  "source": "generated against NCERT Mathematics, Class 8, chapter 9 (\"Ganita Prakash Part-II\", chapter 2) (2025 edition (the site's Last-Modified))",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {
+    "hi": {
+      "name": "बौधायन-पाइथागोरस प्रमेय",
+      "summary": "इस अध्याय में बौधायन-पाइथागोरस प्रमेय, इसके ऐतिहासिक पृष्ठभूमि और ज्यामिति और संख्या सिद्धांत में इसके अनुप्रयोगों का अध्ययन किया गया है।"
+    },
+    "mr": {
+      "name": "बौधायन-पायथागोरस प्रमेय",
+      "summary": "हा अध्याय बौधायन-पायथागोरस प्रमेय, त्याच्या ऐतिहासिक पायाभूमी आणि ज्यामिती आणि संख्या सिद्धांतात त्याच्या अनुप्रयोगांचा अभ्यास करतो."
+    }
+  },
+  "board": "NCERT",
+  "book": "Ganita Prakash Part-II",
+  "edition": "2025 edition (the site's Last-Modified)",
+  "generatedAt": "2026-11-02T09:26:04.359Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": true,
+  "questions": [
+    {
+      "difficulty": 5,
+      "stem": "A right-angled triangle has a base of 5 cm and a perpendicular of 12 cm. If the hypotenuse is 13 cm, what is the area of the square drawn on the hypotenuse?",
+      "choices": [
+        "169 cm²",
+        "120 cm²",
+        "25 cm²",
+        "60 cm²"
+      ],
+      "answerIndex": 0,
+      "solution": "The area of the square on the hypotenuse is the square of the hypotenuse. Since the hypotenuse is 13 cm, the area is 13² = 169 cm². The other options represent the areas of the squares on the base or perpendicular or the triangle's area.",
+      "checkExpr": "13^2",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक समकोण त्रिभुज के आधार की लंबाई 5 सेमी और लंब की लंबाई 12 सेमी है। यदि कर्ण 13 सेमी है, तो कर्ण पर बने वर्ग का क्षेत्रफल क्या है?",
+          "choices": [
+            "169 सेमी²",
+            "120 सेमी²",
+            "25 सेमी²",
+            "60 सेमी²"
+          ],
+          "solution": "कर्ण पर बने वर्ग का क्षेत्रफल कर्ण के वर्ग के बराबर होता है। चूंकि कर्ण 13 सेमी है, तो क्षेत्रफल 13² = 169 सेमी² है। अन्य विकल्प आधार या लंब पर बने वर्ग के क्षेत्रफल या त्रिभुज के क्षेत्रफल को दर्शाते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate and maintains the original meaning, with appropriate mathematical terminology used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक समकोनी त्रिकोणाच्या आधाराची लांबी 5 सेंमी आणि लंबाची 12 सेंमी आहे. जर कर्ण 13 सेंमी असेल, तर कर्णावर असलेल्या चौरसाचे क्षेत्रफळ किती असेल?",
+          "choices": [
+            "169 सेंमी²",
+            "120 सेंमी²",
+            "25 सेंमी²",
+            "60 सेंमी²"
+          ],
+          "solution": "कर्णावर असलेल्या चौरसाचे क्षेत्रफळ कर्णाच्या वर्गाइतके असते. कर्ण 13 सेंमी असल्याने, क्षेत्रफळ 13² = 169 सेंमी² असेल. इतर विकल्प आधार किंवा लंबावर असलेल्या चौरसाचे क्षेत्रफळ किंवा त्रिकोणाचे क्षेत्रफळ दर्शवतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Miscalculates the area of the square as 5*12 instead of 13²",
+        "Confuses the hypotenuse with one of the shorter sides and squares it",
+        "Believes the area of the square on the hypotenuse is the same as the area of the triangle"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is clear and the solution correctly applies the Pythagorean theorem. The correct answer is 169 cm², and the distractors represent common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp202.pdf",
+          "ordinal": 6,
+          "pageStart": 12,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 9: The Baudhāyana-Pythagoras Theorem",
+            "2.4 Combining Two Different Squares"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp202.pdf",
+          "ordinal": 7,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 9: The Baudhāyana-Pythagoras Theorem",
+            "2.4 Combining Two Different Squares"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp202.pdf",
+          "ordinal": 8,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 9: The Baudhāyana-Pythagoras Theorem",
+            "2.5 Right–Triangles Having Integer Sidelengths"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-11-02T09:26:04.359Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following is a primitive Baudhāyana triple?",
+      "choices": [
+        "(3, 4, 5)",
+        "(6, 8, 10)",
+        "(9, 12, 15)",
+        "(12, 16, 20)"
+      ],
+      "answerIndex": 0,
+      "solution": "A primitive Baudhāyana triple is one that has no common factor greater than 1. (3, 4, 5) is primitive because 3, 4, and 5 have no common factor. The other options are scaled versions of (3, 4, 5) and are not primitive.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक प्राचीन बौधायन त्रिक है?",
+          "choices": [
+            "(3, 4, 5)",
+            "(6, 8, 10)",
+            "(9, 12, 15)",
+            "(12, 16, 20)"
+          ],
+          "solution": "एक प्राचीन बौधायन त्रिक वह होता है जिसका 1 से अधिक कोई सामान्य गुणनखंड नहीं होता। (3, 4, 5) प्राचीन है क्योंकि 3, 4 और 5 का कोई सामान्य गुणनखंड नहीं है। अन्य विकल्प (3, 4, 5) के अनुपात में बढ़ाए गए हैं और इसलिए प्राचीन नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate use of Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक प्राचीन बौधायन त्रिक आहे?",
+          "choices": [
+            "(3, 4, 5)",
+            "(6, 8, 10)",
+            "(9, 12, 15)",
+            "(12, 16, 20)"
+          ],
+          "solution": "एक प्राचीन बौधायन त्रिक हा असा असतो ज्याचा 1 पेक्षा मोठा सामाईक अपवर्तक नसतो. (3, 4, 5) हा प्राचीन आहे कारण 3, 4 आणि 5 चा सामाईक अपवर्तक नसतो. इतर विकल्प (3, 4, 5) चे विस्तारित रूप असून प्राचीन नसतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "is a scaled version of (3, 4, 5)",
+        "is a scaled version of (3, 4, 5)",
+        "is a scaled version of (3, 4, 5)"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question correctly identifies (3, 4, 5) as the only primitive triple, as it has no common factor other than 1. The other options are non-primitive multiples of (3, 4, 5). The reasoning is sound and the distractors are valid.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp202.pdf",
+          "ordinal": 6,
+          "pageStart": 12,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 9: The Baudhāyana-Pythagoras Theorem",
+            "2.4 Combining Two Different Squares"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp202.pdf",
+          "ordinal": 7,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 9: The Baudhāyana-Pythagoras Theorem",
+            "2.4 Combining Two Different Squares"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp202.pdf",
+          "ordinal": 8,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 9: The Baudhāyana-Pythagoras Theorem",
+            "2.5 Right–Triangles Having Integer Sidelengths"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-11-02T09:26:04.359Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}

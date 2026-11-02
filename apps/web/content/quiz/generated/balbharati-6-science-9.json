@@ -21,49 +21,49 @@
   "board": "BALBHARATI",
   "book": "६ वी सामान्य विज्ञान इंग्रजी",
   "edition": "First Edition 2026",
-  "generatedAt": "2026-10-31T05:06:55.747Z",
+  "generatedAt": "2026-11-01T17:53:48.999Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 2,
-      "stem": "Which of the following is a source of carbohydrates?",
+      "difficulty": 1,
+      "stem": "Which of the following is a source of proteins?",
       "choices": [
-        "Proteins",
-        "Fats",
-        "Vegetables",
-        "Breads"
+        "Pulses",
+        "Rice",
+        "Ghee",
+        "Fruits"
       ],
-      "answerIndex": 3,
-      "solution": "Breads are a source of carbohydrates as they contain starch, which provides energy. Proteins and fats are not primarily sources of carbohydrates. Vegetables are not a major source of carbohydrates.",
+      "answerIndex": 0,
+      "solution": "Pulses are a source of proteins because they contain a high amount of protein necessary for body functions. Rice mainly provides carbohydrates, ghee is rich in fats, and fruits are primarily a source of vitamins and minerals. Therefore, the correct answer is pulses.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन कार्बोहाइड्रेट का स्रोत है?",
+          "stem": "निम्नलिखित में से कौन एक प्रोटीन के स्रोत है?",
           "choices": [
-            "प्रोटीन",
-            "वसा",
-            "सब्जियां",
-            "रोटी"
+            "दालें",
+            "चावल",
+            "मक्खन",
+            "फल"
           ],
-          "solution": "रोटी कार्बोहाइड्रेट का स्रोत है क्योंकि इसमें स्टार्च होता है जो ऊर्जा प्रदान करता है। प्रोटीन और वसा मुख्य रूप से कार्बोहाइड्रेट के स्रोत नहीं हैं। सब्जियां कार्बोहाइड्रेट के मुख्य स्रोत नहीं हैं।",
+          "solution": "दालें प्रोटीन के स्रोत हैं क्योंकि वे शरीर के कार्यों के लिए आवश्यक उच्च मात्रा में प्रोटीन रखती हैं। चावल मुख्य रूप से कार्बोहाइड्रेट प्रदान करता है, मक्खन वसा में समृद्ध है, और फल मुख्य रूप से विटामिन और खनिज के स्रोत हैं। इसलिए, सही उत्तर दालें है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology commonly found in textbooks.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi terms as found in textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कार्बोहायड्रेटचा स्रोत कोणता आहे?",
+          "stem": "खालीलपैकी कोणते प्रोटीनचे स्रोत आहे?",
           "choices": [
-            "प्रोटीन्स",
-            "तेले",
-            "भाज्या",
-            "रोटी"
+            "दाणे",
+            "काजू",
+            "माखणे",
+            "भाजीपाला"
           ],
-          "solution": "रोटी हे कार्बोहायड्रेटचे स्रोत आहेत कारण त्यामध्ये अंबर असतो, जो ऊर्जा पुरवतो. प्रोटीन्स आणि तेले कार्बोहायड्रेटचे प्रमुख स्रोत नाहीत. भाज्या कार्बोहायड्रेटचे मुख्य स्रोत नाहीत.",
+          "solution": "दाणे प्रोटीनचे स्रोत आहेत कारण त्यांमध्ये शरीराच्या कार्यांसाठी आवश्यक उच्च प्रमाणात प्रोटीन असतो. काजू मुख्यतः कार्बोहायड्रेट पुरवतो, माखणे चरबीत भरपूर असते आणि भाजीपाला मुख्यतः व्हिटॅमिन्स आणि मिनरल्सचे स्रोत असतात. त्यामुळे योग्य उत्तर दाणे आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for scientific concepts.",
+          "critique": "The Marathi translation is accurate and maintains the original meaning, with appropriate terminology used in Marathi education context.",
           "flag": null
         }
       },
@@ -72,9 +72,389 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses proteins with carbohydrates",
-        "Confuses fats with carbohydrates",
-        "Thinks vegetables are the main source of carbohydrates",
+        null,
+        "Believes carbohydrates are a source of protein",
+        "Believes fats are a source of protein due to confusion between fat and protein categories",
+        "Believes fruits are a major source of protein due to confusion between nutrients and food groups"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (Pulses), as proteins are indeed found in pulses. The reasoning for the other options aligns with common misconceptions about nutrient sources.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 82,
+          "pageStart": 94,
+          "pageEnd": 95,
+          "headingPath": [
+            "9. From Diet to Health"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 83,
+          "pageStart": 95,
+          "pageEnd": 96,
+          "headingPath": [
+            "9. From Diet to Health"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 84,
+          "pageStart": 96,
+          "pageEnd": 97,
+          "headingPath": [
+            "9. From Diet to Health"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T17:53:48.999Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which food item is rich in vitamin C?",
+      "choices": [
+        "Carrot",
+        "Milk",
+        "Lemon",
+        "Egg"
+      ],
+      "answerIndex": 2,
+      "solution": "Lemon is rich in vitamin C, which is a water-soluble vitamin known for its role in immune function and skin health. Carrots are primarily a source of vitamin A, milk is a source of vitamin D, and eggs are mainly a source of protein and some B vitamins.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन सा भोजन का वस्तु विटामिन सी में समृद्ध है?",
+          "choices": [
+            "गाजर",
+            "दूध",
+            "नींबू",
+            "अंडा"
+          ],
+          "solution": "नींबू विटामिन सी में समृद्ध होता है, जो जल घुलनशील विटामिन है जो प्रतिरक्षा कार्य और त्वचा स्वास्थ्य में भूमिका निभाता है। गाजर मुख्य रूप से विटामिन ए का स्रोत होता है, दूध विटामिन डी का स्रोत होता है, और अंडा मुख्य रूप से प्रोटीन और कुछ बी विटामिन का स्रोत होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard Hindi terminology for vitamins and food items.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणता खाद्य वस्तू व्हिटॅमिन सी मध्ये समृद्ध आहे?",
+          "choices": [
+            "गाजर",
+            "दूध",
+            "नारंगी",
+            "अंडे"
+          ],
+          "solution": "नारंगी व्हिटॅमिन सी मध्ये समृद्ध असते, जे पाण्यात विरघळणारे व्हिटॅमिन आहे जे प्रतिकार प्रणाली आणि त्वचा स्वास्थ्यामध्ये महत्वपूर्ण भूमिका बजावते. गाजर हा व्हिटॅमिन ए चा मुख्य स्रोत आहे, दूध हा व्हिटॅमिन डी चा स्रोत आहे आणि अंडे प्रथिने आणि काही बी व्हिटॅमिन चा मुख्य स्रोत आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for vitamins and food items.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Associates carrots with vision",
+        "Links milk with bone health",
+        null,
+        "Confuses egg with vitamin C"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies lemon as the source of vitamin C, and the reasons for the other options align with common misconceptions about the nutritional content of these foods.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 85,
+          "pageStart": 97,
+          "pageEnd": 98,
+          "headingPath": [
+            "9. From Diet to Health"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 86,
+          "pageStart": 98,
+          "pageEnd": 99,
+          "headingPath": [
+            "9. From Diet to Health"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 87,
+          "pageStart": 99,
+          "pageEnd": 99,
+          "headingPath": [
+            "9. From Diet to Health"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T17:53:48.999Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which vitamin deficiency causes night blindness?",
+      "choices": [
+        "Vitamin A",
+        "Vitamin B",
+        "Vitamin C",
+        "Vitamin D"
+      ],
+      "answerIndex": 0,
+      "solution": "Vitamin A is essential for the production of rhodopsin, a pigment in the eyes that allows vision in low light, so its deficiency leads to night blindness. Vitamin B deficiency affects energy metabolism and can cause fatigue, Vitamin C deficiency weakens connective tissue and causes scurvy, and Vitamin D deficiency impairs bone development, leading to rickets.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "रात्रि अंधापन किस विटामिन की कमी के कारण होता है?",
+          "choices": [
+            "विटामिन ए",
+            "विटामिन बी",
+            "विटामिन सी",
+            "विटामिन डी"
+          ],
+          "solution": "विटामिन ए अंधापन के लिए आवश्यक होता है, जो आंखों में रहोडॉप्सिन नामक एक वर्णक बनाने में मदद करता है जो कम प्रकाश में दृष्टि की अनुमति देता है, इसलिए इसकी कमी रात्रि अंधापन के कारण होती है। विटामिन बी की कमी ऊर्जा चयापचय को प्रभावित करती है और थकान का कारण बन सकती है, विटामिन सी की कमी संयोजी ऊतक को कमजोर करती है और स्कर्वी का कारण बनती है, और विटामिन डी की कमी अस्थि विकास को प्रभावित करती है, जिसके कारण रिकेट्स होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard Hindi medical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रात्रीत अंधत्व कोणत्या विटामिनाच्या अभावामुळे होते?",
+          "choices": [
+            "विटामिन A",
+            "विटामिन B",
+            "विटामिन C",
+            "विटामिन D"
+          ],
+          "solution": "विटामिन A हे रोडॉप्सिन नावाच्या रंगद्रव्याच्या उत्पादनासाठी आवश्यक असते, जे अंधकारात दृष्टी देण्यासाठी आवश्यक असते, म्हणून त्याच्या अभावामुळे रात्रीत अंधत्व होते. विटामिन B च्या अभावामुळे ऊर्जा विकासाचे अडथळा होतो आणि थकवा होतो, विटामिन C च्या अभावामुळे जोडणारे तंतू कमजोर होतात आणि स्कर्वी होतो, आणि विटामिन D च्या अभावामुळे अस्थिच्या विकासाचा अडथळा होतो, ज्यामुळे रिकेट्स होतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses symptoms of other deficiencies",
+        "thinks B vitamins are linked to vision",
+        "knows scurvy is caused by C but not the exact vitamin for night blindness"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed with a clear correct answer and plausible distractors based on common misconceptions about vitamin deficiencies.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 85,
+          "pageStart": 97,
+          "pageEnd": 98,
+          "headingPath": [
+            "9. From Diet to Health"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 86,
+          "pageStart": 98,
+          "pageEnd": 99,
+          "headingPath": [
+            "9. From Diet to Health"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 87,
+          "pageStart": 99,
+          "pageEnd": 99,
+          "headingPath": [
+            "9. From Diet to Health"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T17:53:48.999Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What should a person with a goitre include in their diet?",
+      "choices": [
+        "Iodized salt",
+        "Lemon",
+        "Carrots",
+        "Eggs"
+      ],
+      "answerIndex": 0,
+      "solution": "Goitre is caused by a lack of iodine, and iodized salt provides this essential nutrient. Lemon contains vitamin C, carrots contain vitamin A, and eggs are a good source of protein, but none of these address the iodine deficiency. Iodized salt is the only option that directly helps prevent or treat goitre.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक गायल के साथ अपने आहार में क्या शामिल करना चाहिए?",
+          "choices": [
+            "आयोडीन युक्त नमक",
+            "नींबू",
+            "गाजर",
+            "अंडे"
+          ],
+          "solution": "गायल के कारण आयोडीन की कमी होती है, और आयोडीन युक्त नमक इस आवश्यक पोषक तत्व की पूर्ति करता है। नींबू विटामिन सी का स्रोत है, गाजर विटामिन ए का स्रोत है, और अंडे प्रोटीन का अच्छा स्रोत है, लेकिन इनमें से कोई भी आयोडीन की कमी को नहीं दूर करता है। आयोडीन युक्त नमक एकमात्र विकल्प है जो गायल के रोकथाम या उपचार में सीधे मदद करता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate medical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "गोइटर असलेल्या व्यक्तीने आहारात काय समाविष्ट करावे?",
+          "choices": [
+            "आयोडिनीकृत लवण",
+            "नारंगी",
+            "गाजर",
+            "अंडी"
+          ],
+          "solution": "गोइटर आयोडीनच्या कमतरतेमुळे होतो आणि आयोडिनीकृत लवण हा आवश्यक पोषक तत्व पुरवतो. नारंगी विटामिन सी आहे, गाजर विटामिन ए आहे आणि अंडी प्रोटीनचे चांगले स्रोत आहेत, परंतु यापैकी कोणतेही आयोडीनच्या कमतरतेला निवारण करत नाही. आयोडिनीकृत लवण हे एकमेव विकल्प आहे जो गोइटर रोखण्यात किंवा त्याच्या उपचारात मदत करतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "thinks citrus fruits help with thyroid issues",
+        "knows carrots are good for eyes but not for thyroid",
+        "associates eggs with general health but not iodine deficiency"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, with a clear and accurate solution. The correct answer is iodized salt, as goitre is caused by iodine deficiency. The distractors are plausible but based on common misconceptions about the nutritional value of other foods.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 85,
+          "pageStart": 97,
+          "pageEnd": 98,
+          "headingPath": [
+            "9. From Diet to Health"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 86,
+          "pageStart": 98,
+          "pageEnd": 99,
+          "headingPath": [
+            "9. From Diet to Health"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 87,
+          "pageStart": 99,
+          "pageEnd": 99,
+          "headingPath": [
+            "9. From Diet to Health"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T17:53:48.999Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What should be done to preserve the nutritive value of vegetables during cooking?",
+      "choices": [
+        "Peel them before washing",
+        "Cook them with excess water",
+        "Cut them and store for later",
+        "Cut them after washing and cook immediately"
+      ],
+      "answerIndex": 3,
+      "solution": "Cutting vegetables after washing and cooking them immediately helps retain their nutrients by minimizing exposure to air and water, which can leach out vitamins. Peeling before washing can remove nutrients found in the skin, and cooking with excess water causes water-soluble nutrients to be lost. Storing cut vegetables also leads to nutrient degradation over time.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पकाने के दौरान सब्जियों के पोषक मूल्य को बरकरार रखने के लिए क्या करना चाहिए?",
+          "choices": [
+            "उन्हें धोने से पहले छीलें",
+            "अत्यधिक पानी के साथ उन्हें पकाएं",
+            "उन्हें काटें और बाद में रखें",
+            "धोने के बाद उन्हें काटें और तुरंत पकाएं"
+          ],
+          "solution": "धोने के बाद सब्जियों को काटना और तुरंत पकाना उनके पोषक तत्वों को बरकरार रखने में मदद करता है, जो हवा और पानी के संपर्क में आने से कम करता है, जो विटामिन को बाहर निकाल सकता है। धोने से पहले छीलने से छिलके में पाए जाने वाले पोषक तत्व खो जाते हैं, और अत्यधिक पानी के साथ पकाने से जल विलेय पोषक तत्व खो जाते हैं। छोटे टुकड़ों को रखने से समय के साथ पोषक तत्व घट जाते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and technical terms. All options and the solution are correctly translated, with the correct answer remaining in the same position (option 3).",
+          "flag": null
+        },
+        "mr": {
+          "stem": "शाकूंच्या पोषकता किंमतीचे उपयोग करताना त्यांचे संरक्षण करण्यासाठी काय करावे लागेल?",
+          "choices": [
+            "त्यांना धुण्यापूर्वी विणावे",
+            "अतिरिक्त पाण्यासह त्यांना शिजवावे",
+            "त्यांना कापून नंतर साठवावे",
+            "धुण्यानंतर कापून त्वरित शिजवावे"
+          ],
+          "solution": "धुण्यानंतर कापून त्वरित शिजवणे त्यांच्या पोषकता घटकांचे निर्वहन कमी करते, जे हवेत आणि पाण्यात जाऊ शकतात. धुण्यापूर्वी विणणे त्वचेत असलेल्या पोषकता घटकांचे नुकसान करू शकते, आणि अतिरिक्त पाण्यासह शिजवणे पाण्यात विरघळणाऱ्या पोषकता घटकांचे नुकसान करू शकते. कापलेल्या शाकूंचे साठवणे देखील समयानुसार पोषकता घटकांच्या विघटनास कारणीभूत ठरू शकते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for nutritional concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes peeling preserves nutrients",
+        "Thinks more water helps retain nutrients",
+        "Assumes storing cut vegetables is better",
         null
       ],
       "solverAnswers": [
@@ -85,94 +465,7 @@
         3
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 3 (Breads), as they are a primary source of carbohydrates. The other options are correctly identified as incorrect, and the reasons for the wrong options reflect common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 88,
-          "pageStart": 100,
-          "pageEnd": 101,
-          "headingPath": [
-            "9. From Diet to Health"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 89,
-          "pageStart": 101,
-          "pageEnd": 101,
-          "headingPath": [
-            "9. From Diet to Health",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T05:06:55.747Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a person has a deficiency of vitamin 'B', which of the following symptoms may they experience?",
-      "choices": [
-        "Fatigue or tiredness",
-        "Bleeding gums",
-        "Weak bones",
-        "Poor vision in dim light"
-      ],
-      "answerIndex": 0,
-      "solution": "Vitamin B deficiency can lead to fatigue or tiredness because B vitamins are essential for energy production in the body. Bleeding gums are typically linked to vitamin C deficiency, weak bones are associated with vitamin D deficiency, and poor vision in dim light is connected to vitamin A deficiency.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि किसी व्यक्ति के पास विटामिन 'बी' की कमी है, तो निम्नलिखित में से कौन सा लक्षण उन्हें हो सकता है?",
-          "choices": [
-            "थकान या थके हुए महसूस करना",
-            "खून आने वाले दांतों के गांठ",
-            "कमजोर हड्डियां",
-            "अंधेरे में खराब दृष्टि"
-          ],
-          "solution": "विटामिन बी की कमी थकान या थके हुए महसूस करने के कारण हो सकती है क्योंकि बी विटामिन शरीर में ऊर्जा उत्पादन के लिए आवश्यक हैं। खून आने वाले दांतों के गांठ आमतौर पर विटामिन सी की कमी से जुड़े होते हैं, कमजोर हड्डियां विटामिन डी की कमी से जुड़ी होती हैं, और अंधेरे में खराब दृष्टि विटामिन ए की कमी से जुड़ी होती है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate medical terminology in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एखाद्या व्यक्तीला 'बी' विटामिनची कमतरता असेल, तर खालीलपैकी कोणते लक्षण त्यांना अनुभवायला लागू शकते?",
-          "choices": [
-            "ताकद नसणे किंवा थकलेलेपणा",
-            "रक्तस्रावाच्या ताकदांचे लक्षण",
-            "कमजोर हड्ड्या",
-            "अंधारात खाली बघण्याची खराब दृष्टी"
-          ],
-          "solution": "विटामिन 'बी' ची कमतरता शरीरातील ऊर्जा उत्पादनासाठी आवश्यक असलेल्या बी विटामिन्समुळे ताकद नसणे किंवा थकलेलेपणा होऊ शकते. रक्तस्रावाच्या ताकदांचे लक्षण सामान्यतः विटामिन 'सी' ची कमतरता शरीरात असते, कमजोर हड्ड्या हा विटामिन 'डी' ची कमतरता शरीरात असते आणि अंधारात खाली बघण्याची खराब दृष्टी हा विटामिन 'ए' ची कमतरता शरीरात असते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for vitamins and symptoms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses vitamin C deficiency with vitamin B deficiency",
-        "refers to a symptom of vitamin C deficiency",
-        "refers to a symptom of vitamin D deficiency"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0 (Fatigue or tiredness), as per the author's solution. The other options correspond to deficiencies of other vitamins, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "critique": "The correct answer is 3, as cutting after washing and cooking immediately prevents nutrient loss. The author's reasoning aligns with scientific understanding, and the misconceptions listed for the wrong options are plausible for students.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
@@ -203,49 +496,49 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T05:06:55.747Z",
+      "generatedAt": "2026-11-01T17:53:48.999Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "Which of the following is a remedy for a deficiency of vitamin A?",
+      "stem": "What is the main source of energy for the body?",
       "choices": [
-        "Sitting in morning sunlight",
-        "Eating citrus fruits",
-        "Including carrots in diet",
-        "Using iodized salt"
+        "Proteins",
+        "Fats",
+        "Carbohydrates",
+        "Vitamins"
       ],
       "answerIndex": 2,
-      "solution": "Including carrots in diet is a remedy for a deficiency of vitamin A. Sitting in morning sunlight helps with vitamin D deficiency. Eating citrus fruits helps with vitamin C deficiency. Using iodized salt helps with iodine deficiency.",
+      "solution": "Carbohydrates are the body's primary source of energy because they are easily broken down into glucose, which cells use for fuel. Proteins and fats can also provide energy, but they are not the main source. Vitamins are important for bodily functions but do not serve as an energy source.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन विटामिन ए की कमी के उपाय है?",
+          "stem": "शरीर के लिए ऊर्जा का मुख्य स्रोत क्या है?",
           "choices": [
-            "सुबह के सूर्य के तेज में बैठना",
-            "नींबू के फल खाना",
-            "आहार में गाजर शामिल करना",
-            "आयोडीन युक्त नमक का उपयोग करना"
+            "प्रोटीन",
+            "वसा",
+            "कार्बोहाइड्रेट",
+            "विटामिन"
           ],
-          "solution": "आहार में गाजर शामिल करना विटामिन ए की कमी के उपाय है। सुबह के सूर्य के तेज में बैठना विटामिन डी की कमी के लिए सहायक होता है। नींबू के फल खाना विटामिन सी की कमी के लिए सहायक होता है। आयोडीन युक्त नमक का उपयोग आयोडीन की कमी के लिए सहायक होता है।",
+          "solution": "कार्बोहाइड्रेट शरीर के प्राथमिक ऊर्जा स्रोत होते हैं क्योंकि वे ग्लूकोज में आसानी से टूट जाते हैं, जिसका उपयोग कोशिकाएं ईंधन के रूप में करती हैं। प्रोटीन और वसा भी ऊर्जा प्रदान कर सकते हैं, लेकिन वे मुख्य स्रोत नहीं हैं। विटामिन शरीर के कार्यों के लिए महत्वपूर्ण होते हैं लेकिन ऊर्जा के स्रोत के रूप में काम नहीं करते।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated, and the correct answer remains option 2.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard terminology used in Hindi science textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते व्हिटॅमिन ए च्या कमतरतेचे उपाय आहे?",
+          "stem": "शरीराच्या ऊर्जेचा मुख्य स्रोत कोणता आहे?",
           "choices": [
-            "सकाळी तेजस्वी शेजारी बसणे",
-            "नारंगी फळे खाणे",
-            "आहारात गाजर घालणे",
-            "आयोडीनीकृत लवण वापरणे"
+            "प्रोटीन",
+            "तेल",
+            "कार्बोहायड्रेट",
+            "व्हिटॅमिन"
           ],
-          "solution": "आहारात गाजर घालणे हे व्हिटॅमिन ए च्या कमतरतेचे उपाय आहे. सकाळी तेजस्वी शेजारी बसणे हे व्हिटॅमिन डी च्या कमतरतेचे उपाय आहे. नारंगी फळे खाणे हे व्हिटॅमिन सी च्या कमतरतेचे उपाय आहे. आयोडीनीकृत लवण वापरणे हे आयोडीन च्या कमतरतेचे उपाय आहे.",
+          "solution": "कार्बोहायड्रेट शरीराच्या प्राथमिक ऊर्जा स्रोत आहेत कारण ते ग्लुकोज मध्ये सोपे तोडले जातात, जे कोशिका ऊर्जेसाठी वापरतात. प्रोटीन आणि तेल ऊर्जा पुरवू शकतात, परंतु ते मुख्य स्रोत नाहीत. व्हिटॅमिन शरीराच्या कार्यासाठी महत्वपूर्ण आहेत परंतु ऊर्जा स्रोत म्हणून काम करत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for vitamins and nutrients.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology as used in standard textbooks.",
           "flag": null
         }
       },
@@ -254,10 +547,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses vitamin D deficiency with vitamin A deficiency",
-        "Confuses vitamin C deficiency with vitamin A deficiency",
+        "Confuses proteins with the main source of energy",
+        "Confuses fats with the main source of energy",
         null,
-        "Confusing iodine deficiency remedy with vitamin A deficiency"
+        "Confuses vitamins with the main source of energy"
       ],
       "solverAnswers": [
         2,
@@ -267,7 +560,7 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 2 (including carrots in diet), as carrots are rich in vitamin A. The other options correspond to different deficiencies, and the author's reasoning for the wrong options reflects common misconceptions.",
+      "critique": "The solution is correct and aligns with the scientific understanding that carbohydrates are the primary source of energy for the body.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
@@ -290,49 +583,49 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T05:06:55.747Z",
+      "generatedAt": "2026-11-01T17:53:48.999Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 4,
-      "stem": "Which of the following is a preventive measure for goitre?",
+      "stem": "Which of the following is a correct test for identifying starch in food?",
       "choices": [
-        "Using iodized salt",
-        "Eating citrus fruits",
-        "Eating fruits rich in vitamin C",
-        "Eating dairy products"
+        "Adding iodine indicator and looking for a blue colour",
+        "Looking for oily stains on paper",
+        "Using sodium hydroxide and copper sulphate",
+        "Pressing the food on a piece of paper"
       ],
       "answerIndex": 0,
-      "solution": "Goitre is caused by a lack of iodine, and using iodized salt provides the necessary iodine to prevent it. The other options, such as eating citrus fruits or dairy products, do not directly address iodine deficiency. Vitamin C, while beneficial for health, is not specifically linked to preventing goitre.",
+      "solution": "The correct test for identifying starch is adding iodine indicator and looking for a blue colour, as iodine reacts with starch to produce this distinct color change. Oily stains on paper indicate the presence of fats, not starch. Sodium hydroxide and copper sulphate are used in the biuret test for proteins, and pressing food on paper is also a method for detecting fats.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा गायटर के रोकथाम का उपाय है?",
+          "stem": "निम्नलिखित में से कौन-सा खाद्य पदार्थ में स्टार्च की पहचान करने के लिए सही परीक्षण है?",
           "choices": [
-            "आयोडीन युक्त नमक का उपयोग करना",
-            "नींबू फल खाना",
-            "विटामिन सी से भरपूर फल खाना",
-            "दूध उत्पाद खाना"
+            "आयोडीन संकेतक मिलाकर नीला रंग देखना",
+            "कागज पर तेलीय धब्बे देखना",
+            "सोडियम हाइड्रॉक्साइड और कॉपर सल्फेट का उपयोग करना",
+            "खाद्य पदार्थ को कागज के एक टुकड़े पर दबाना"
           ],
-          "solution": "गायटर के कारण आयोडीन की कमी होती है और आयोडीन युक्त नमक आवश्यक आयोडीन प्रदान करता है जो इसकी रोकथाम करता है। अन्य विकल्प जैसे नींबू फल या दूध उत्पाद आयोडीन की कमी के सीधे सामना नहीं करते। विटामिन सी, जबकि स्वास्थ्य के लिए लाभदायक है, गायटर की रोकथाम के साथ विशेष रूप से जुड़ा नहीं है।",
+          "solution": "स्टार्च की पहचान करने के लिए सही परीक्षण आयोडीन संकेतक मिलाकर नीला रंग देखना है, क्योंकि आयोडीन स्टार्च के साथ अभिक्रिया करके इस विशिष्ट रंग परिवर्तन का कारण बनता है। कागज पर तेलीय धब्बे वसा की उपस्थिति को दर्शाते हैं, स्टार्च के बजाय। सोडियम हाइड्रॉक्साइड और कॉपर सल्फेट का उपयोग प्रोटीन के लिए बियूरेट परीक्षण में किया जाता है, और खाद्य पदार्थ को कागज के एक टुकड़े पर दबाना भी वसा की पहचान के लिए एक विधि है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate medical terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते गॉइटरचे रोखक उपाय आहे?",
+          "stem": "खालीलपैकी कोणता खाद्य पदार्थात स्टार्च ओळखण्याचा योग्य चाचणी आहे?",
           "choices": [
-            "आयोडीनयुक्त लवंग वापरणे",
-            "नारिंगी फळे खाणे",
-            "व्हिटॅमिन सी युक्त फळे खाणे",
-            "दूध उत्पादने खाणे"
+            "आयोडीन संकेतक जोडून नील रंगाची तपासणी करणे",
+            "कागदावर तेलाचे दाग बघणे",
+            "सोडियम हायड्रॉक्साइड आणि कॉपर सल्फेट वापरणे",
+            "खाद्य पदार्थाला कागदाच्या एका तुकड्यावर दाबणे"
           ],
-          "solution": "गॉइटर आयोडीनच्या कमतरतेमुळे होतो आणि आयोडीनयुक्त लवंग आयोडीनची आवश्यक मात्रा पुरवतो आणि त्यामुळे त्याचा रोख होतो. इतर विकल्प, नारिंगी फळे किंवा दूध उत्पादने खाणे, आयोडीनच्या कमतरतेला सीधा उत्तर देत नाहीत. व्हिटॅमिन सी, जरी आरोग्यासाठी फायदेशीर असले तरी, गॉइटर रोखण्यासाठी विशिष्टपणे जोडले जात नाही.",
+          "solution": "खाद्य पदार्थात स्टार्च ओळखण्याची योग्य चाचणी आयोडीन संकेतक जोडून नील रंगाची तपासणी करणे आहे, कारण आयोडीन स्टार्चशी अभिक्रिया करून हा विशिष्ट रंग बदल उत्पन्न करतो. कागदावर तेलाचे दाग तेलाच्या उपस्थितीची दर्शवतात, स्टार्च नाही. सोडियम हायड्रॉक्साइड आणि कॉपर सल्फेट वापरून बियुरेट चाचणी वापरली जाते प्रोटीनची तपासणीसाठी, आणि खाद्य पदार्थाला कागदाच्या एका तुकड्यावर दाबणे हा तेलाची तपासणी करण्याचा देखील एक पद्धत आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for medical concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
         }
       },
@@ -342,9 +635,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Believes vitamin C prevents goitre instead of iodine",
-        "Believing that vitamin C prevents goitre instead of iodine deficiency",
-        "Believing dairy products are a source of iodine, not realizing they are primarily a source of calcium and vitamin D"
+        "confuses starch test with fat test",
+        "thinks chemical test is for proteins",
+        "mixes up fat test with starch test"
       ],
       "solverAnswers": [
         0,
@@ -354,7 +647,7 @@
         0
       ],
       "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0 (using iodized salt), as goitre is caused by iodine deficiency. The other options are incorrect because they relate to vitamin C or calcium, not iodine. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "critique": "The correct answer is option 0, as iodine turns blue in the presence of starch. The other options correspond to valid tests for fats and proteins, but not starch. The author's reasoning for the distractors is accurate and reflects common student misconceptions.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
@@ -385,49 +678,49 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T05:06:55.747Z",
+      "generatedAt": "2026-11-01T17:53:48.999Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 4,
-      "stem": "If a person is suffering from constipation, which of the following changes should they make in their diet?",
+      "stem": "Which disease is caused due to the deficiency of iodine?",
       "choices": [
-        "Eat more noodles and biscuits",
-        "Eat more leafy vegetables and fruits",
-        "Eat more bread and milk",
-        "Eat more oily food"
+        "Scurvy",
+        "Rickets",
+        "Goitre",
+        "Anaemia"
       ],
-      "answerIndex": 1,
-      "solution": "Eating more leafy vegetables and fruits can help reduce constipation as they are rich in fiber. Noodles, biscuits, and bread are not high in fiber. Oily food does not help with constipation.",
+      "answerIndex": 2,
+      "solution": "Goitre is caused by a deficiency of iodine, which affects the thyroid gland, leading to its enlargement. Scurvy results from a lack of vitamin C, rickets from a lack of vitamin D, and anaemia from a lack of iron. Therefore, the correct answer is Goitre.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि कोई व्यक्ति अपच के कारण पीड़ित है, तो उन्हें अपने आहार में निम्नलिखित में से कौन-सा परिवर्तन करना चाहिए?",
+          "stem": "आयोडीन की कमी के कारण कौन-सा रोग होता है?",
           "choices": [
-            "अधिक नूडल्स और बिस्किट खाएं",
-            "अधिक पत्तेदार सब्जियां और फल खाएं",
-            "अधिक रोटी और दूध खाएं",
-            "अधिक तेल वाला भोजन खाएं"
+            "स्कर्वी",
+            "रिकेट्स",
+            "गॉइटर",
+            "एनीमिया"
           ],
-          "solution": "पत्तेदार सब्जियां और फल फाइबर में समृद्ध होते हैं इसलिए अपच को कम करने में मदद कर सकते हैं। नूडल्स, बिस्किट और रोटी फाइबर में उच्च नहीं होते। तेल वाला भोजन अपच में मदद नहीं करता।",
+          "solution": "गॉइटर आयोडीन की कमी के कारण होता है, जो थायरॉयड ग्रंथि को प्रभावित करता है, जिसके कारण इसका आकार बढ़ जाता है। स्कर्वी विटामिन सी की कमी के कारण होती है, रिकेट्स विटामिन डी की कमी के कारण होती है, और एनीमिया लौह की कमी के कारण होती है। इसलिए सही उत्तर गॉइटर है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate terminology used for dietary items and medical condition.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard medical terminology in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "जर एखादा माणूस अपच झालेला असेल, तर खाण्याच्या आहारात खालीलपैकी कोणती बदलत करायला हवा?",
+          "stem": "आयोडीनच्या अभावामुळे कोणता आजार होतो?",
           "choices": [
-            "अधिक नूडल्स आणि बिस्किट खावे",
-            "अधिक पालेभाज्या आणि फळे खावीत",
-            "अधिक रोटी आणि दूध खावे",
-            "अधिक तेलयुक्त खाद्य पदार्थ खावे"
+            "स्कर्वी",
+            "रिकेट्स",
+            "गॉइटर",
+            "एनेमिया"
           ],
-          "solution": "पालेभाज्या आणि फळे फायबरमध्ये समृद्ध असल्यामुळे अपच घटवण्यास मदत होते. नूडल्स, बिस्किट आणि रोटी फायबरमध्ये उच्च नाहीत. तेलयुक्त खाद्य पदार्थ अपच घटवत नाहीत.",
+          "solution": "आयोडीनच्या अभावामुळे गॉइटर होतो, जो थायरॉईड ग्रंथीला प्रभावित करतो आणि त्यामुळे ती वाढते. स्कर्वी हा व्हिटॅमिन सीच्या अभावामुळे होतो, रिकेट्स हा व्हिटॅमिन डीच्या अभावामुळे होतो आणि एनेमिया हा लोहाच्या अभावामुळे होतो. म्हणून, योग्य उत्तर गॉइटर आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for dietary and medical concepts.",
+          "critique": "The translation is accurate, with appropriate Marathi medical terminology used. The structure and meaning match the original English question.",
           "flag": null
         }
       },
@@ -436,172 +729,93 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Thinks noodles and biscuits help with constipation",
+        "Confuses vitamin C deficiency with iodine deficiency",
+        "Confuses vitamin D deficiency with iodine deficiency, thinking both are related to bone health",
         null,
-        "Thinks bread and milk help with constipation",
-        "Thinks oily food helps with constipation"
+        "Confuses iodine deficiency with iron deficiency, which causes anaemia"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as leafy vegetables and fruits are high in fiber and help with constipation. The other options are incorrect because they do not provide sufficient fiber and may even worsen the condition.",
+      "critique": "The question is well-constructed, with a clear correct answer and reasonable distractors that reflect common misconceptions about nutrient deficiencies.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 88,
-          "pageStart": 100,
-          "pageEnd": 101,
+          "ordinal": 85,
+          "pageStart": 97,
+          "pageEnd": 98,
           "headingPath": [
             "9. From Diet to Health"
           ]
         },
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 89,
-          "pageStart": 101,
-          "pageEnd": 101,
-          "headingPath": [
-            "9. From Diet to Health",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T05:06:55.747Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "Which of the following statements is correct about the role of fiber in the diet?",
-      "choices": [
-        "It provides energy to the body",
-        "It helps in the removal of waste from the body",
-        "It is necessary for the growth and repair of the body",
-        "It enhances the immunity of the body"
-      ],
-      "answerIndex": 1,
-      "solution": "Fiber helps in the removal of waste from the body by aiding digestion. It does not provide energy, nor is it necessary for growth and repair, nor does it enhance immunity directly.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा कथन आहार में फाइबर के कार्य के बारे में सही है?",
-          "choices": [
-            "यह शरीर को ऊर्जा प्रदान करता है",
-            "यह शरीर से अपशिष्ट के निष्कासन में सहायता करता है",
-            "यह शरीर के वृद्धि एवं मरम्मत के लिए आवश्यक है",
-            "यह प्रतिरोधक क्षमता को बढ़ाता है"
-          ],
-          "solution": "फाइबर पाचन में सहायता करके शरीर से अपशिष्ट के निष्कासन में सहायता करता है। यह ऊर्जा प्रदान नहीं करता, न ही वृद्धि एवं मरम्मत के लिए आवश्यक है, न ही प्रतिरोधक क्षमता को सीधे बढ़ाता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता विधान आहारातील फायबरच्या भूमिकेबद्दल बरोबर आहे?",
-          "choices": [
-            "ते शरीराला ऊर्जा पुरवते",
-            "ते शरीरातून कचरा काढण्यात मदत करते",
-            "ते शरीराच्या वाढी आणि दुरुस्तीसाठी आवश्यक आहे",
-            "ते शरीराच्या प्रतिकारशक्तीला वाढवते"
-          ],
-          "solution": "फायबर खाद्यप्रक्रियेमध्ये मदत करून शरीरातून कचरा काढण्यात मदत करते. ते ऊर्जा पुरवत नाही, शरीराच्या वाढी आणि दुरुस्तीसाठी आवश्यक नाही, आणि प्रतिकारशक्तीला थेट वाढवत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for dietary fiber and related concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses fiber with carbohydrates",
-        null,
-        "Confuses fiber with proteins",
-        "Confuses fiber with vitamins"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as fiber aids in digestion and waste removal. The other options reflect common misconceptions about the roles of carbohydrates, proteins, and vitamins.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 88,
-          "pageStart": 100,
-          "pageEnd": 101,
+          "ordinal": 86,
+          "pageStart": 98,
+          "pageEnd": 99,
           "headingPath": [
             "9. From Diet to Health"
           ]
         },
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 89,
-          "pageStart": 101,
-          "pageEnd": 101,
+          "ordinal": 87,
+          "pageStart": 99,
+          "pageEnd": 99,
           "headingPath": [
-            "9. From Diet to Health",
-            "Exercises"
+            "9. From Diet to Health"
           ]
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T05:06:55.747Z",
+      "generatedAt": "2026-11-01T17:53:48.999Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 6,
-      "stem": "Which of the following food items is most likely to be rich in nutrients and should be an essential part of the diet?",
+      "stem": "If the water used for boiling vegetables is thrown away, what is the likely consequence?",
       "choices": [
-        "Noodles",
-        "Biscuits",
-        "Millets",
-        "Bread"
+        "Loss of nutrients",
+        "Better taste",
+        "Increased fibre",
+        "More energy"
       ],
-      "answerIndex": 2,
-      "solution": "Millets are rich in nutrients and should be an essential part of the diet because they contain high levels of vitamins, minerals, and fiber. Noodles, biscuits, and bread are typically lower in essential nutrients and higher in simple carbohydrates. Millets provide a more balanced and nourishing option for a healthy diet.",
+      "answerIndex": 0,
+      "solution": "When vegetables are boiled, some nutrients dissolve into the water. If the water is discarded, those nutrients are lost. The other options are incorrect because taste, fibre, and energy are not typically affected by discarding boiling water.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित खाद्य वस्तुओं में से कौन-सी अधिकतर पोषक तत्वों में समृद्ध होने की संभावना है और आहार का आवश्यक हिस्सा होनी चाहिए?",
+          "stem": "यदि सब्जियों को उबालने के लिए उपयोग की गई पानी को फेंक दिया जाए, तो संभावित परिणाम क्या होगा?",
           "choices": [
-            "नूडल्स",
-            "बिस्कुट",
-            "मिलेट्स",
-            "ब्रेड"
+            "पोषक तत्वों की हानि",
+            "अच्छी स्वाद",
+            "बढ़ा हुआ फाइबर",
+            "अधिक ऊर्जा"
           ],
-          "solution": "मिलेट्स पोषक तत्वों में समृद्ध होते हैं और आहार का आवश्यक हिस्सा होने चाहिए क्योंकि वे विटामिन, खनिज और फाइबर के उच्च स्तर रखते हैं। नूडल्स, बिस्कुट और ब्रेड आमतौर पर आवश्यक पोषक तत्वों में कम और सरल कार्बोहाइड्रेट में अधिक होते हैं। मिलेट्स एक संतुलित और पोषक वाला विकल्प होता है जो स्वस्थ आहार के लिए उपयुक्त है।",
+          "solution": "जब सब्जियां उबाली जाती हैं, तो कुछ पोषक तत्व पानी में घुल जाते हैं। यदि पानी को फेंक दिया जाता है, तो उन पोषक तत्वों की हानि हो जाती है। अन्य विकल्प गलत हैं क्योंकि स्वाद, फाइबर और ऊर्जा आमतौर पर उबाले गए पानी के फेंक देने से प्रभावित नहीं होते।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology. The correct answer (option 2) is correctly placed. All distractors remain incorrect as in the original.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology commonly found in textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता खाद्य पदार्थ अधिक अनुप्रास आहे आणि आहाराचा आवश्यक भाग असणे अपेक्षित आहे?",
+          "stem": "शाकूचे शिजविण्यासाठी वापरलेले पाणी फेकून दिल्यास, त्याचा अपेक्षित परिणाम काय असेल?",
           "choices": [
-            "नूडल्स",
-            "बिस्किट्स",
-            "मिलेट्स",
-            "ब्रेड"
+            "पोषक घटकांचा गुंता",
+            "चांगला स्वाद",
+            "अधिक फायबर",
+            "अधिक ऊर्जा"
           ],
-          "solution": "मिलेट्स अनुप्रासांनी भरलेले असतात आणि आहाराचा आवश्यक भाग असणे अपेक्षित आहे कारण त्यांमध्ये उच्च पातळीवर व्हिटॅमिन्स, खनिजे आणि फायबर असते. नूडल्स, बिस्किट्स आणि ब्रेड अक्सर आवश्यक पोषक घटकांमध्ये कमी असतात आणि साधे कार्बोहायड्रेटमध्ये जास्त असतात. मिलेट्स हा आरोग्यकर आहारासाठी अधिक संतुलित आणि पोषक विकल्प असतो.",
+          "solution": "जेव्हा शाकू शिजवले जातात तेव्हा काही पोषक घटक पाण्यात विरघळतात. जर पाणी फेकून दिले जाते तर ते पोषक घटक गमावले जातात. इतर विकल्प चुकीचे आहेत कारण स्वाद, फायबर आणि ऊर्जा शिजविण्याच्या पाण्याच्या फेकण्यामुळे बदलत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for food items and nutritional concepts.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for nutritional concepts.",
           "flag": null
         }
       },
@@ -610,20 +824,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Thinks noodles are nutrient-rich",
-        "Thinks biscuits are nutrient-rich",
         null,
-        "Thinks bread is nutrient-rich"
+        "Believes that throwing water improves taste",
+        "Believes that throwing water increases fibre",
+        "Believes that throwing water increases energy"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2 (Millets), as they are indeed more nutrient-dense than the other options. The reasoning provided by the author is accurate and aligns with nutritional knowledge.",
+      "critique": "The solution correctly identifies that nutrients leach into boiling water and are lost when the water is discarded. The reasoning aligns with scientific understanding and the author's explanation.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
@@ -646,7 +860,7 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T05:06:55.747Z",
+      "generatedAt": "2026-11-01T17:53:48.999Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

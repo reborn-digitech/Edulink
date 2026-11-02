@@ -21,144 +21,49 @@
   "board": "BALBHARATI",
   "book": "८ वी सामान्य विज्ञान इंग्रजी",
   "edition": "First Edition 2018",
-  "generatedAt": "2026-10-29T20:35:48.926Z",
+  "generatedAt": "2026-11-02T11:25:40.080Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 2,
-      "stem": "Which of the following is an example of a natural pollutant?",
+      "stem": "What is the main cause of the greenhouse effect?",
       "choices": [
-        "Pesticides",
-        "Vehicle exhaust",
-        "Volcanic ash",
-        "Industrial smoke"
-      ],
-      "answerIndex": 2,
-      "solution": "Volcanic ash is a natural pollutant because it is produced by natural geological processes. Pesticides, vehicle exhaust, and industrial smoke result from human activities and are classified as man-made pollutants. Therefore, volcanic ash is the correct example of a natural pollutant.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन एक प्राकृतिक प्रदूषक का उदाहरण है?",
-          "choices": [
-            "कीटनाशक",
-            "वाहन उत्सर्जन",
-            "ज्वालामुखी राख",
-            "औद्योगिक धुआं"
-          ],
-          "solution": "ज्वालामुखी राख एक प्राकृतिक प्रदूषक है क्योंकि यह प्राकृतिक भूविज्ञानी प्रक्रियाओं द्वारा उत्पन्न होती है। कीटनाशक, वाहन उत्सर्जन और औद्योगिक धुआं मानव गतिविधियों से उत्पन्न होते हैं और इन्हें मानव निर्मित प्रदूषक कहा जाता है। इसलिए, ज्वालामुखी राख एक प्राकृतिक प्रदूषक का सही उदाहरण है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology as found in standard textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते एक प्राकृतिक दूषकाचे उदाहरण आहे?",
-          "choices": [
-            "कीटकनाशक",
-            "वाहनांचा धूर",
-            "ज्वालामुखीचा राख",
-            "औद्योगिक धूर"
-          ],
-          "solution": "ज्वालामुखीचा राख हा प्राकृतिक दूषक आहे कारण तो प्राकृतिक भूविज्ञानी प्रक्रियांमुळे तयार होतो. कीटकनाशक, वाहनांचा धूर आणि औद्योगिक धूर मानवी क्रियाकलापांमुळे तयार होतात आणि त्यांना मानव निर्मित दूषक म्हणतात. म्हणून ज्वालामुखीचा राख हा प्राकृतिक दूषकाचे योग्य उदाहरण आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for environmental science concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses man-made and natural pollutants",
-        "Incorrectly assumes all pollutants are man-made",
-        null,
-        "Fails to differentiate between natural and man-made sources"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies volcanic ash as a natural pollutant, while the other options are man-made. The reasoning aligns with standard environmental science definitions.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 74,
-          "pageStart": 64,
-          "pageEnd": 65,
-          "headingPath": [
-            "8. Pollution"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 75,
-          "pageStart": 65,
-          "pageEnd": 66,
-          "headingPath": [
-            "8. Pollution"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 76,
-          "pageStart": 66,
-          "pageEnd": 67,
-          "headingPath": [
-            "8. Pollution"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T20:35:48.926Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is one of the reasons for water pollution?",
-      "choices": [
-        "Natural reasons like soil erosion",
-        "Decreased oxygen content in the atmosphere",
-        "Increased temperature of the earth",
-        "Reduction in the number of algae in water"
+        "Burning of fossil fuels",
+        "Deforestation",
+        "Natural volcanic activity",
+        "Increase in the number of animals"
       ],
       "answerIndex": 0,
-      "solution": "Soil erosion is a natural reason for water pollution, as it adds biotic and abiotic factors to water. The other options are incorrect because they do not directly relate to the causes of water pollution.",
+      "solution": "The main cause of the greenhouse effect is the burning of fossil fuels, which releases greenhouse gases like carbon dioxide into the atmosphere. The other options are not the primary causes of the greenhouse effect.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "जल प्रदूषण के कारणों में से एक क्या है?",
+          "stem": "ग्रीनहाउस प्रभाव का मुख्य कारण क्या है?",
           "choices": [
-            "भूमि अपरदन जैसे प्राकृतिक कारण",
-            "वायुमंडल में ऑक्सीजन की मात्रा में कमी",
-            "पृथ्वी के तापमान में वृद्धि",
-            "जल में शैवाल की संख्या में कमी"
+            "ज्वालामुखीय गतिविधि",
+            "वनों की कटाई",
+            "जीवाश्म ईंधन के जलना",
+            "जानवरों की संख्या में वृद्धि"
           ],
-          "solution": "भूमि अपरदन जल प्रदूषण के लिए एक प्राकृतिक कारण है, क्योंकि यह जल में जैविक और अजैविक कारकों को जोड़ता है। अन्य विकल्प गलत हैं क्योंकि वे जल प्रदूषण के कारणों से सीधे संबंधित नहीं हैं।",
+          "solution": "ग्रीनहाउस प्रभाव का मुख्य कारण जीवाश्म ईंधन का जलना है, जो वातावरण में कार्बन डाइऑक्साइड जैसी ग्रीनहाउस गैसों के उत्सर्जन के कारण होता है। अन्य विकल्प ग्रीनहाउस प्रभाव के प्रमुख कारण नहीं हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "critique": "Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated and maintain their original intent. The correct answer is in the same position (option 3) as in the English version.",
           "flag": null
         },
         "mr": {
-          "stem": "जल प्रदूषणाचे एक कारण काय आहे?",
+          "stem": "हरितगृह प्रभावाचे मुख्य कारण काय आहे?",
           "choices": [
-            "भूकंपासारख्या प्राकृतिक कारणांमुळे जमीन खोदली जाणे",
-            "वातावरणात ऑक्सीजनची कमतरता",
-            "भूमीचे तापमान वाढणे",
-            "जलात शैवालांची संख्या कमी होणे"
+            "ज्वलनशील खनिज इंधनांचे जाळे",
+            "वन विनाश",
+            "प्राकृतिक ज्वालामुखी क्रियाकलाप",
+            "प्राण्यांची संख्या वाढ"
           ],
-          "solution": "जमीन खोदली जाणे हे जल प्रदूषणाचे प्राकृतिक कारण आहे, कारण ते जलात जैविक आणि अजैविक घटक जोडते. इतर विकल्प अयोग्य आहेत कारण ते जल प्रदूषणाच्या कारणांशी सीधा संबंध ठेवत नाहीत.",
+          "solution": "हरितगृह प्रभावाचे मुख्य कारण ज्वलनशील खनिज इंधनांचे जाळे आहे, जे वातावरणात कार्बन डायऑक्साइड अशा हरितगृह वायू निर्माण करते. इतर विकल्प हरितगृह प्रभावाचे प्रमुख कारण नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with textbook language.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
           "flag": null
         }
       },
@@ -168,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "confuses natural causes of pollution with other environmental issues",
-        "mistakenly relates decreased oxygen to atmospheric changes",
-        "incorrectly attributes temperature change to water pollution"
+        "Confuses the main cause of the greenhouse effect with other factors",
+        "Incorrectly attributes the greenhouse effect to deforestation",
+        "Misunderstands the causes of the greenhouse effect"
       ],
       "solverAnswers": [
         0,
@@ -180,7 +85,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 0, as soil erosion is a natural cause of water pollution. The other options are incorrect, and the author's reasoning for why they are wrong aligns with common misconceptions.",
+      "critique": "The solution is correct. The burning of fossil fuels is the primary cause of the greenhouse effect due to the release of carbon dioxide and other greenhouse gases. The other options are not the main causes.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -211,49 +116,49 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T20:35:48.926Z",
+      "generatedAt": "2026-11-02T11:25:40.080Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "If a city has a high concentration of sulphur dioxide in the air, what is the most likely source of this pollution?",
+      "stem": "Which of the following is an effect of air pollution on plants?",
       "choices": [
-        "Forest fires",
-        "Volcanic eruptions",
-        "Burning of fossil fuels",
-        "Dust storms"
+        "Irritation of eyes",
+        "Respiration is adversely affected",
+        "Leaves fall off or become yellow",
+        "Skin cancer"
       ],
       "answerIndex": 2,
-      "solution": "Burning of fossil fuels releases sulphur dioxide when the fuels, which often contain sulphur, are combusted. This is a common source of air pollution in urban areas. Forest fires, volcanic eruptions, and dust storms may release some sulphur dioxide, but they are not the primary source in a city.",
+      "solution": "Leaves falling off or becoming yellow is an effect of air pollution on plants because pollutants can damage plant tissues and interfere with photosynthesis. Irritation of eyes and skin cancer are effects on humans, not plants. Respiration being adversely affected is also a human health issue, not a direct effect on plants.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि किसी शहर में वायु में सल्फर डाइऑक्साइड की उच्च सांद्रता है, तो इस प्रदूषण का सबसे संभावित स्रोत क्या है?",
+          "stem": "निम्नलिखित में से कौन-सा वायु प्रदूषण का पौधों पर प्रभाव है?",
           "choices": [
-            "जंगल के अग्निकांड",
-            "ज्वालामुखी के उद्गार",
-            "ज्वलनशील ईंधन के जलना",
-            "रेत के तूफान"
+            "आंखों की जलन",
+            "श्वसन में असामान्य प्रभाव",
+            "पत्तियां झड़ जाती हैं या पीली हो जाती हैं",
+            "त्वचा का कैंसर"
           ],
-          "solution": "ज्वलनशील ईंधन के जलने से सल्फर डाइऑक्साइड उत्सर्जित होता है, जबकि ईंधन में अक्सर सल्फर होता है। यह शहरी क्षेत्रों में हवा के प्रदूषण का सामान्य स्रोत है। जंगल के अग्निकांड, ज्वालामुखी के उद्गार और रेत के तूफान कुछ सल्फर डाइऑक्साइड उत्सर्जित कर सकते हैं, लेकिन वे शहर में मुख्य स्रोत नहीं हैं।",
+          "solution": "पत्तियां झड़ जाना या पीली हो जाना पौधों पर वायु प्रदूषण का प्रभाव है क्योंकि प्रदूषक पौधे के ऊतकों को नुकसान पहुंचा सकते हैं और प्रकाश संश्लेषण में बाधा डाल सकते हैं। आंखों की जलन और त्वचा का कैंसर मनुष्यों पर प्रभाव है, पौधों पर नहीं। श्वसन में असामान्य प्रभाव भी मनुष्यों के स्वास्थ्य का मुद्दा है, पौधों पर सीधा प्रभाव नहीं है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms common in Hindi-medium science textbooks.",
+          "critique": "Translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for a textbook context.",
           "flag": null
         },
         "mr": {
-          "stem": "एका शहरात हवेत सल्फर डायऑक्साइडची उच्च एकाग्रता असल्यास, ही दूषणाची सर्वात शक्य स्रोत काय आहे?",
+          "stem": "खालीलपैकी वायू दूषणाचे वनस्पतींवर कोणते परिणाम आहेत?",
           "choices": [
-            "जंगलांतले आगी",
-            "ज्वालामुखींचे उद्रेक",
-            "ज्वलित खनिज इंधनांचे जाळणे",
-            "मातीच्या वादळां"
+            "नेत्रांची जळजळ",
+            "श्वासोच्छ्वास अवरोधित होतो",
+            "पाने खाली पडतात किंवा पांढरी होतात",
+            "त्वचा कर्करोग"
           ],
-          "solution": "ज्वलित खनिज इंधनांचे जाळणे ज्वलित इंधनांमध्ये असलेल्या सल्फर चे जाळणे वेळी सल्फर डायऑक्साइड जास्तीत जास्त निर्माण करते. हे शहरी क्षेत्रांमध्ये हवेच्या दूषणाचे सामान्य स्रोत आहे. जंगलांतल्या आगी, ज्वालामुखींचे उद्रेक आणि मातीच्या वादळांमुळे काही सल्फर डायऑक्साइड निर्माण होऊ शकते, परंतु ते शहरात प्राथमिक स्रोत नाहीत.",
+          "solution": "वायू दूषणामुळे पाने खाली पडतात किंवा पांढरी होतात, कारण दूषित पदार्थ वनस्पतींच्या ऊतींना नुकसान पोहोचवू शकतात आणि प्रकाशसंश्लेषणाला अडथळा निर्माण करू शकतात. नेत्रांची जळजळ आणि त्वचा कर्करोग हे मानवांवरील परिणाम आहेत, वनस्पतींवर नाही. श्वासोच्छ्वास अवरोधित होणे हे मानवांच्या आरोग्याचे एक विषय आहे, वनस्पतींवरील सीधा परिणाम नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for environmental science.",
           "flag": null
         }
       },
@@ -262,10 +167,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses natural sources with man-made ones",
-        "Incorrectly attributes the source of sulphur dioxide to volcanic activity",
+        "Confuses effects on humans and plants",
+        "Confuses effects on humans and plants",
         null,
-        "Fails to recognize that burning of fossil fuels is the main source of sulphur dioxide in urban areas"
+        "Confuses effects on humans and plants"
       ],
       "solverAnswers": [
         2,
@@ -275,7 +180,7 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 2 (Burning of fossil fuels), as sulphur dioxide is primarily emitted from the combustion of fossil fuels like coal and diesel. The other options are natural sources and not the main cause of urban sulphur dioxide pollution.",
+      "critique": "The correct answer is 2, as leaf discoloration and falling are well-documented effects of air pollution on plants. The other options are indeed effects on humans, making the author's reasoning sound.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -306,47 +211,47 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T20:35:48.926Z",
+      "generatedAt": "2026-11-02T11:25:40.080Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "A city has high levels of particulate matter in the air. Which of the following is the most likely reason for this pollution?",
+      "difficulty": 4,
+      "stem": "Which of the following is a man-made pollutant that does not get destroyed by natural processes?",
       "choices": [
-        "Burning of fossil fuels",
-        "Natural forest fires",
-        "Use of pesticides",
-        "Release of methane"
+        "Sulphur dioxide",
+        "Dust from cyclones",
+        "Smoke from forest fires",
+        "Microbes in air"
       ],
       "answerIndex": 0,
-      "solution": "Burning of fossil fuels releases large amounts of particulate matter into the air, especially in urban areas with high vehicle and industrial activity. Natural forest fires and pesticide use can contribute to air pollution, but they are less common and not as directly linked to urban particulate matter. Methane, while a greenhouse gas, does not primarily contribute to particulate matter.",
+      "solution": "Sulphur dioxide is a man-made pollutant created by human activities like burning fossil fuels and does not break down easily in the environment. Dust from cyclones and smoke from forest fires are naturally occurring, while microbes in air are part of the natural ecosystem. Therefore, sulphur dioxide is the correct answer because it is both man-made and persists in the environment without natural destruction.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक शहर में हवा में कणीय पदार्थ के उच्च स्तर हैं। इस प्रदूषण के लिए निम्नलिखित में से कौन सा सबसे संभावित कारण है?",
+          "stem": "निम्नलिखित में से कौन-सा मनुष्य द्वारा बनाया गया प्रदूषक है जो प्राकृतिक प्रक्रियाओं द्वारा नष्ट नहीं होता है?",
           "choices": [
-            "ज्वलनशील ईंधन के जलना",
-            "प्राकृतिक वन अग्निकांड",
-            "कीटनाशकों के उपयोग",
-            "मीथेन के उत्सर्जन"
+            "सल्फर डाइऑक्साइड",
+            "चक्रवातों से धूल",
+            "जंगल के अग्निकांड से धुआं",
+            "हवा में जीवाणु"
           ],
-          "solution": "ज्वलनशील ईंधन के जलने से हवा में बड़ी मात्रा में कणीय पदार्थ छोड़े जाते हैं, विशेष रूप से वाहन और औद्योगिक गतिविधि के उच्च स्तर वाले शहरों में। प्राकृतिक वन अग्निकांड और कीटनाशकों के उपयोग हवा के प्रदूषण में योगदान कर सकते हैं, लेकिन वे कम सामान्य हैं और शहरी कणीय पदार्थ के साथ अप्रत्यक्ष रूप से जुड़े हुए हैं। मीथेन, ग्रीनहाउस गैस होने के बावजूद, कणीय पदार्थ के मुख्य योगदानकर्ता नहीं है।",
+          "solution": "सल्फर डाइऑक्साइड मनुष्य द्वारा बनाया गया प्रदूषक है जो ईंधन के जलने जैसी मानवीय गतिविधियों द्वारा बनता है और पर्यावरण में आसानी से टूट नहीं जाता है। चक्रवातों से धूल और जंगल के अग्निकांड से धुआं प्राकृतिक रूप से उत्पन्न होते हैं, जबकि हवा में जीवाणु प्राकृतिक पारिस्थितिकी तंत्र का हिस्सा हैं। इसलिए, सल्फर डाइऑक्साइड सही उत्तर है क्योंकि यह दोनों मनुष्य द्वारा बनाया गया है और पर्यावरण में प्राकृतिक नष्ट होने के बिना रहता है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology.",
+          "critique": "Translation accurately reflects the original meaning, technical terms are appropriate for Hindi curriculum, and the correct answer remains consistent.",
           "flag": null
         },
         "mr": {
-          "stem": "एका शहरात हवेत उच्च पातळीचे कणीय पदार्थ आहेत. खालीलपैकी कोणते ही दूषणाचे सर्वात शक्य कारण आहे?",
+          "stem": "खालीलपैकी कोणते एक मानव निर्मित प्रदूषक आहे जे प्राकृतिक प्रक्रियांमुळे नाश होत नाही?",
           "choices": [
-            "ज्वलनीय इंधनांचा वापर",
-            "प्राकृतिक वनांधकांचा अंडर",
-            "कीटकनाशकांचा वापर",
-            "मीथेनचा निर्मोचन"
+            "सल्फर डायऑक्साइड",
+            "चक्रीवादळांमधून येणारा धूल",
+            "जंगलांतील आगींमधून येणारा धूम",
+            "हवेतील जीवाणू"
           ],
-          "solution": "ज्वलनीय इंधनांचा वापर हवेत मोठ्या प्रमाणात कणीय पदार्थ निर्मुक्त करतो, विशेषतः वाहन आणि औद्योगिक गतिविधी असलेल्या शहरांमध्ये. प्राकृतिक वनांधकांचा अंडर आणि कीटकनाशकांचा वापर हवा दूषणास प्रेरित करू शकतो, परंतु ते अतिशय नाहीत आणि शहरी कणीय पदार्थाशी सीधा संबंध नाही. मीथेन, तर ग्रीनहाऊस गॅस असल्याने, कणीय पदार्थांच्या निर्मितीला मुख्यतः योगदान देत नाही.",
+          "solution": "सल्फर डायऑक्साइड हा मानवी क्रियाकलापांमुळे निर्माण होणारा मानव निर्मित प्रदूषक आहे जसे की खाणाखर्च इंधनाचे जाळणे आणि पर्यावरणात सहज विघटित होत नाही. चक्रीवादळांमधून येणारा धूल आणि जंगलांतील आगींमधून येणारा धूम हे प्राकृतिकरित्या उत्पन्न होणारे आहेत, तर हवेतील जीवाणू प्राकृतिक परिसंस्थेचा भाग आहेत. त्यामुळे सल्फर डायऑक्साइड हा योग्य उत्तर आहे कारण तो मानव निर्मित आहे आणि प्राकृतिक नाश न करता पर्यावरणात टिकून राहतो.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
           "flag": null
@@ -358,9 +263,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses natural causes with urban pollution sources",
-        "Fails to recognize that fossil fuels are the primary source of particulate matter in cities",
-        "Incorrectly identifies pesticide use as the main source of particulate matter"
+        "Confuses natural and man-made pollutants",
+        "Confuses natural and man-made pollutants",
+        "Confuses natural and man-made pollutants"
       ],
       "solverAnswers": [
         0,
@@ -369,8 +274,8 @@
         0,
         0
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0, as burning of fossil fuels is the most common and direct source of particulate matter in urban areas. The author's reasoning is sound and aligns with scientific understanding.",
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0 (Sulphur dioxide), as it is a man-made pollutant that persists in the environment. The other options are natural pollutants, and the reasoning provided by the author is accurate.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -401,144 +306,49 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T20:35:48.926Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If a city is known for its high levels of industrial waste, which of the following is most likely to be a consequence?",
-      "choices": [
-        "An increase in the number of healthy plants",
-        "An increase in the number of fish",
-        "A decrease in the amount of toxic materials in water",
-        "A decrease in the fertility of soil"
-      ],
-      "answerIndex": 3,
-      "solution": "Industrial waste can lead to soil pollution, which decreases soil fertility. The other options are incorrect as industrial waste typically harms rather than helps the environment.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक शहर के औद्योगिक अपशिष्ट के उच्च स्तर के लिए जाना जाता है, तो निम्नलिखित में से कौन-सा सबसे अधिक संभावित परिणाम हो सकता है?",
-          "choices": [
-            "स्वस्थ पौधों की संख्या में वृद्धि",
-            "मछलियों की संख्या में वृद्धि",
-            "जल में जहरीले पदार्थों की मात्रा में कमी",
-            "मिट्टी की उर्वरक क्षमता में कमी"
-          ],
-          "solution": "औद्योगिक अपशिष्ट मिट्टी के प्रदूषण का कारण बन सकता है, जो मिट्टी की उर्वरक क्षमता को कम कर देता है। अन्य विकल्प गलत हैं क्योंकि औद्योगिक अपशिष्ट आमतौर पर पर्यावरण को नुकसान पहुंचाता है न कि लाभ।",
-          "imageAlt": null,
-          "critique": "Translation accurately reflects the original meaning with appropriate Hindi terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका शहराला उद्योगी अपशिष्टाच्या उच्च पातळीमुळे ओळखले जाते, तर खालीलपैकी कोणते असणे शक्य आहे?",
-          "choices": [
-            "आरोग्यवान वनस्पतींची संख्या वाढणे",
-            "मासांची संख्या वाढणे",
-            "पाण्यात विषारी पदार्थांची रक्कम कमी होणे",
-            "मातीची उपजाडता कमी होणे"
-          ],
-          "solution": "उद्योगी अपशिष्ट मातीच्या प्रदूषणाला कारणीभूत होऊ शकते, जे मातीच्या उपजाडतेला कमी करते. इतर विकल्प चुकीचे आहेत कारण उद्योगी अपशिष्ट वातावरणाला नुकसान पोहोचवते नाही तर त्याला फायदा होत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The correct answer remains option 4, and the distractors are still incorrect.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "incorrectly assumes industrial waste benefits plants",
-        "mistakenly thinks industrial waste increases fish populations",
-        "confuses toxic materials with their reduction",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is sound and correctly identifies the consequence of industrial waste on soil fertility. The reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 77,
-          "pageStart": 67,
-          "pageEnd": 68,
-          "headingPath": [
-            "8. Pollution"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 78,
-          "pageStart": 68,
-          "pageEnd": 69,
-          "headingPath": [
-            "8. Pollution"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 79,
-          "pageStart": 69,
-          "pageEnd": 70,
-          "headingPath": [
-            "8. Pollution"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T20:35:48.926Z",
+      "generatedAt": "2026-11-02T11:25:40.080Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 6,
-      "stem": "Why is it important to know the air quality index in a city?",
+      "stem": "Why is it important to monitor the air quality index in cities?",
       "choices": [
-        "To determine the number of plants in the city",
-        "To monitor the level of noise pollution",
-        "To assess the extent of air pollution",
-        "To calculate the amount of sunlight in the city"
+        "To determine the number of factories in the city",
+        "To assess the health of the local wildlife",
+        "To inform citizens about the level of air pollution",
+        "To reduce the number of vehicles on the road"
       ],
       "answerIndex": 2,
-      "solution": "The air quality index is used to assess the extent of air pollution, which directly relates to public health and environmental conditions. The other options, such as counting plants or measuring sunlight, are unrelated to the purpose of the index. Noise pollution is also not measured by the air quality index.",
+      "solution": "Monitoring the air quality index is important to inform citizens about the level of air pollution in their city so they can take necessary precautions. The other options are not directly related to the purpose of monitoring the air quality index.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक शहर में हवा की गुणवत्ता सूचकांक के बारे में जानना क्यों महत्वपूर्ण है?",
+          "stem": "शहरों में वायु गुणवत्ता सूचकांक के अवलोकन क्यों महत्वपूर्ण है?",
           "choices": [
-            "शहर में पौधों की संख्या निर्धारित करने के लिए",
-            "शोर प्रदूषण के स्तर की निगरानी करने के लिए",
-            "हवा प्रदूषण के विस्तार का आकलन करने के लिए",
-            "शहर में सूर्य के प्रकाश की मात्रा की गणना करने के लिए"
+            "शहर में कारखानों की संख्या निर्धारित करने के लिए",
+            "स्थानीय वन्यजीव के स्वास्थ्य का आकलन करने के लिए",
+            "नागरिकों को वायु प्रदूषण के स्तर के बारे में बताने के लिए",
+            "सड़कों पर वाहनों की संख्या कम करने के लिए"
           ],
-          "solution": "हवा की गुणवत्ता सूचकांक का उपयोग हवा प्रदूषण के विस्तार का आकलन करने के लिए किया जाता है, जो सीधे जनस्वास्थ्य और पर्यावरणीय स्थिति से संबंधित है। अन्य विकल्प, जैसे पौधों की गिनती या सूर्य के प्रकाश की मात्रा का मापन, सूचकांक के उद्देश्य से असंबंधित हैं। शोर प्रदूषण को भी हवा की गुणवत्ता सूचकांक द्वारा मापा नहीं जाता है।",
+          "solution": "वायु गुणवत्ता सूचकांक के अवलोकन के महत्व के लिए नागरिकों को अपने शहर में वायु प्रदूषण के स्तर के बारे में बताना होता है ताकि वे आवश्यक उपाय कर सकें। अन्य विकल्प वायु गुणवत्ता सूचकांक के अवलोकन के उद्देश्य से सीधे संबंधित नहीं हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology commonly found in textbooks.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "एका शहरातील हवा गुणवत्ता सूचकाचे ज्ञान का महत्वपूर्ण आहे?",
+          "stem": "शहरांमध्ये हवामान गुणवत्ता सूचकांचे निरीक्षण करणे का महत्वपूर्ण आहे?",
           "choices": [
-            "शहरातील वृक्षांची संख्या ठरवणे",
-            "ध्वनी प्रदूषणाच्या पातळीचे निरीक्षण करणे",
-            "हवा प्रदूषणाच्या विस्ताराचे आकलन करणे",
-            "शहरातील सूर्यप्रकाशाच्या प्रमाणाची गणना करणे"
+            "शहरातील कारखान्यांची संख्या ठरवण्यासाठी",
+            "स्थानिक जीवजंतूंच्या आरोग्याचे मूल्यांकन करण्यासाठी",
+            "नागरिकांना हवामान प्रदूषणाच्या पातळीबद्दल माहिती देण्यासाठी",
+            "रस्त्यावरील वाहनांची संख्या कमी करण्यासाठी"
           ],
-          "solution": "हवा गुणवत्ता सूचकाचा उपयोग हवा प्रदूषणाच्या विस्ताराचे आकलन करण्यासाठी केला जातो, जे लोकांच्या आरोग्यावर आणि पर्यावरणीय अवस्थांवर सीधा संबंध ठेवतो. इतर विकल्प, जसे की वृक्षांची गणना करणे किंवा सूर्यप्रकाश मोजणे, या सूचकाच्या उद्देशाशी असंबंधित आहेत. ध्वनी प्रदूषणाचे मोजमाप हवा गुणवत्ता सूचकाद्वारे केले जात नाही.",
+          "solution": "हवामान गुणवत्ता सूचकांचे निरीक्षण करणे नागरिकांना त्यांच्या शहरातील हवामान प्रदूषणाच्या पातळीबद्दल माहिती देण्यासाठी महत्वपूर्ण आहे, जेणेकरून त्यांना आवश्यक उपाय घ्यावे लागतील. इतर विकल्प हवामान गुणवत्ता सूचकांच्या उद्देशाशी सीधा संबंधित नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for environmental concepts.",
           "flag": null
         }
       },
@@ -547,10 +357,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "confuses air quality with plant count",
-        "incorrectly relates air quality to noise",
+        "A student might confuse air quality monitoring with industrial counting",
+        "Incorrectly assumes that the air quality index is used for wildlife conservation",
         null,
-        "mistakenly associates it with sunlight"
+        "Believing that monitoring air quality directly controls vehicle numbers rather than informing people about pollution levels"
       ],
       "solverAnswers": [
         2,
@@ -560,7 +370,7 @@
         2
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2, as the air quality index directly relates to assessing air pollution. The other options are unrelated and represent common misconceptions.",
+      "critique": "The correct answer is 2, as monitoring the air quality index directly informs citizens about pollution levels. The other options are not valid purposes of air quality monitoring, and the author's explanations for the wrong options reflect common misconceptions.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -591,7 +401,7 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T20:35:48.926Z",
+      "generatedAt": "2026-11-02T11:25:40.080Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

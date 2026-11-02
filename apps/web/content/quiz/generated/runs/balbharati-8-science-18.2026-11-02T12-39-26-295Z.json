@@ -1,0 +1,589 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T12:39:26.295Z",
+  "finishedAt": "2026-11-02T12:49:40.969Z",
+  "seconds": 615,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 18 — Ecosystems",
+    "edition": "First Edition 2018",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2020 — question paper]\n24. An ecological pyramid is a diagrammatic representation of the relationship between various\norganisms in an ecosystem. These pyramids can be drawn to represent the organic material\n(biomass), or number, or energy at each trophic level.\nWe list here four different ecosystems (i to iv) and five different ecological pyramids (P to T).\nMatch the ecosystems with the correct pyramids.\nEcosystems:\ni. Number pyramid of an ecosystem consisting of grasses, snails and mice.\nii. Number pyramid of an ecosystem consisting of a tree, caterpillars and mynas.\niii. Biomass pyramid of an ecosystem consisting of a tree, caterpillars and mynas.\niv. Number pyramid of an ecosystem consisting of a rose bush, aph",
+      "[INJSO 2020 — solutions or answer key]\n24. An ecological pyramid is a diagrammatic representation of the relationship between various\norganisms in an ecosystem. These pyramids can be drawn to represent the organic material\n(biomass), or number, or energy at each trophic level.\nWe list here four different ecosystems (i to iv) and five different ecological pyramids (P to T).\nMatch the ecosystems with the correct pyramids.\nEcosystems:\ni. Number pyramid of an ecosystem consisting of grasses, snails and mice.\nii. Number pyramid of an ecosystem consisting of a tree, caterpillars and mynas.\niii. Biomass pyramid of an ecosystem consisting of a tree, caterpillars and mynas.\niv. Number pyramid of an ecosystem consisting of a rose bush, aph",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n12. About 100 acres of forest land was declared as Natural reserve park. The 2\nfollowing organisms were predominant in the Natural reserve park:\nrabbit, frog, grass, fish, fox, water insects, zebra, peacock, snake, trees, bird,\nowl, insects, tiger, vulture, duck.\nCreate a food web comprising two separate food chains with different\nproducers by using the above data.",
+      "[INJSO 2023 — solutions or answer key]\n16. A food chain and a food web from ecosystems 1 and 2 are represented below. HBCSE 8\nEagle Eagle\nSnake Snake\nFrog Sparrow\nLocust Locust\nTiger\nOwls Mongoose Fox\nMoles Rabbit\nCorn Plants Corn Plants Shrubs\nEcosystem I Ecosystem II\nConsider the two pyramids shown below and from the options, identify what they would\nrepresent:\nM N\nA. M could be the number pyramid of food web 2 while N could be the number pyramid\nof food chain 1\nB. M could be the energy pyramid of food web 2 and N could be the energy pyramid\nof food chain 1.\nC. M could be the number pyramid as well as energy pyramid for food chain\n1.\nD. M could be the number pyramid as well as energy pyramid of food web\n2.\nSolution:\nRef: Class "
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 5,
+      "ms": 134606,
+      "in": 30,
+      "out": 28,
+      "rejects": 3,
+      "promptTokens": 20994,
+      "completionTokens": 5906
+    },
+    "critique": {
+      "calls": 34,
+      "ms": 296812,
+      "in": 28,
+      "out": 19,
+      "rejects": 9,
+      "promptTokens": 14570,
+      "completionTokens": 5860
+    },
+    "solver": {
+      "calls": 129,
+      "ms": 90489,
+      "in": 19,
+      "out": 16,
+      "rejects": 3,
+      "promptTokens": 21723,
+      "completionTokens": 1359
+    },
+    "form": {
+      "calls": 4,
+      "ms": 23394,
+      "in": 16,
+      "out": 9,
+      "rejects": 7,
+      "promptTokens": 2699,
+      "completionTokens": 546
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 61,
+      "ms": 10997,
+      "in": 9,
+      "out": 7,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 292813,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 13630,
+      "completionTokens": 6594
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a biotic factor in an ecosystem?",
+      "ms": {
+        "draft": 4173,
+        "critique": 9213
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the role of decomposers in an ecosystem?",
+      "ms": {
+        "draft": 4173,
+        "critique": 8788,
+        "solver": 2417,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observed that in a grassland ecosystem, the number of producers is less than the number of primary consumers. Which type of ecological pyramid would this situation represent?",
+      "ms": {
+        "draft": 4173,
+        "critique": 11322
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an abiotic factor in an ecosystem?",
+      "ms": {
+        "draft": 4173,
+        "critique": 9937
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a producer in an aquatic ecosystem?",
+      "ms": {
+        "draft": 6918,
+        "critique": 10417,
+        "solver": 3301,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a human activity that can cause the destruction of an ecosystem?",
+      "ms": {
+        "draft": 6918,
+        "critique": 10442,
+        "solver": 2382,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an aquatic ecosystem?",
+      "ms": {
+        "draft": 6918,
+        "critique": 11092,
+        "solver": 17790,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In an ecosystem, what is the role of decomposers?",
+      "ms": {
+        "draft": 6918,
+        "critique": 11387,
+        "solver": 1280,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best describes the relationship between biotic and abiotic factors in an ecosystem?",
+      "ms": {
+        "draft": 3565,
+        "critique": 12361,
+        "solver": 2036,
+        "form": 5018
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a factor of an ecosystem?",
+      "ms": {
+        "draft": 3565,
+        "critique": 9875,
+        "solver": 19250
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a large dam is built in a river, which of the following is most likely to happen to the ecosystem?",
+      "ms": {
+        "draft": 3565,
+        "critique": 5974,
+        "solver": 2127,
+        "form": 3109
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of a food chain in an ecosystem?",
+      "ms": {
+        "draft": 3565,
+        "critique": 6341,
+        "solver": 10027
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What type of ecosystem includes rivers and ponds?",
+      "ms": {
+        "draft": 4146,
+        "critique": 6370
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What role does a man play in an ecosystem?",
+      "ms": {
+        "draft": 4146,
+        "critique": 6914
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What can be inferred about an ecosystem if the number of producers is less than the number of consumers?",
+      "ms": {
+        "draft": 4146,
+        "critique": 8239
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of an interaction among the factors of an ecosystem?",
+      "ms": {
+        "draft": 4146,
+        "critique": 10940,
+        "solver": 2251
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an ecosystem, if the number of producers is greater than the number of primary consumers, what type of ecological pyramid would this represent?",
+      "ms": {
+        "draft": 4146,
+        "critique": 10384
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a biotic factor in an ecosystem?",
+      "ms": {
+        "draft": 15747,
+        "critique": 9148
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a grassland ecosystem has more rain than usual, which of the following is most likely to happen?",
+      "ms": {
+        "draft": 15747,
+        "critique": 8371
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a forest ecosystem, which of the following is a primary consumer?",
+      "ms": {
+        "draft": 6918,
+        "critique": 10935,
+        "solver": 21188,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the role of decomposers in an ecosystem?",
+      "ms": {
+        "draft": 15747,
+        "critique": 9044,
+        "solver": 14806,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for the variety of plants, animals, and abiotic factors in an ecosystem?",
+      "ms": {
+        "draft": 6918,
+        "critique": 10424,
+        "solver": 20016,
+        "form": 1,
+        "translation": 45459
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a factor of an ecosystem?",
+      "ms": {
+        "draft": 4146,
+        "critique": 6094,
+        "solver": 1734,
+        "form": 3385,
+        "translation": 44483
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which of the following ecosystems would you expect to find a large number of decomposers?",
+      "ms": {
+        "draft": 4173,
+        "critique": 8565,
+        "solver": 1379,
+        "form": 0,
+        "translation": 36623
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given diagram, which part represents the decomposers in an ecosystem?",
+      "ms": {
+        "draft": 15747,
+        "critique": 8638,
+        "solver": 1616,
+        "form": 0,
+        "translation": 45088
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a grassland ecosystem, if the number of decomposers decreases, what is the most likely effect on the ecosystem?",
+      "ms": {
+        "draft": 15747,
+        "critique": 8651,
+        "solver": 1941,
+        "form": 0,
+        "translation": 41698
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a certain ecosystem has a very low number of decomposers, what is the most likely effect on the ecosystem?",
+      "ms": {
+        "draft": 4173,
+        "critique": 10290,
+        "solver": 1636,
+        "form": 0,
+        "translation": 51559
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In an ecosystem, which of the following is most directly responsible for recycling nutrients back into the soil?",
+      "ms": {
+        "draft": 15747,
+        "critique": 5952,
+        "solver": 725,
+        "form": 0,
+        "translation": 23283
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a type of ecosystem?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What role does a man play in an ecosystem?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a biotic factor in an ecosystem?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the role of decomposers in an ecosystem?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student observed that in a grassland ecosystem, the number of producers is less than the number of primary consumers. Which type of ecological pyramid would this situation represent?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of an abiotic factor in an ecosystem?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a producer in an aquatic ecosystem?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Confuses consumers with producers, and snails are not produc…\"); distractor 1's reason is not a one-line misconception (\"Confuses consumers with producers, and fish are not producer…\"); distractor 3's reason is not a one-line misconception (\"Correct choice, no reason needed for distractor, but only on…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is an example of a human activity that can cause the destruction of an ecosystem?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Confuses conservation efforts with harmful activities. Plant…\"); distractor 1's reason is not a one-line misconception (\"Confuses conservation efforts with harmful activities. Prote…\"); distractor 3's reason is not a one-line misconception (\"Correct choice, no reason needed for distractor, but only on…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of an aquatic ecosystem?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In an ecosystem, what is the role of decomposers?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Confuses producers with decomposers. Producers make their ow…\"); distractor 1's reason is not a one-line misconception (\"Confuses consumers with decomposers. Consumers eat other org…\"); distractor 3's reason is not a one-line misconception (\"Correct choice, no reason needed for distractor, but only on…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following best describes the relationship between biotic and abiotic factors in an ecosystem?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misinterprets the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a factor of an ecosystem?",
+      "reason": "after redrafting distractors 0, 1, 2: the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a large dam is built in a river, which of the following is most likely to happen to the ecosystem?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Misinterprets the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is an example of a food chain in an ecosystem?",
+      "reason": "after redrafting distractors 0, 1, 2: the solution's working is not sound; option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":2,\"stem\":\"Which of the following is an example of a natural ecosystem?\",\"options\":[\"A tree in a "
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What type of ecosystem includes rivers and ponds?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What role does a man play in an ecosystem?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What can be inferred about an ecosystem if the number of producers is less than the number of consumers?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is an example of an interaction among the factors of an ecosystem?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In an ecosystem, if the number of producers is greater than the number of primary consumers, what type of ecological pyramid would this represent?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is an example of a biotic factor in an ecosystem?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a grassland ecosystem has more rain than usual, which of the following is most likely to happen?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "In a forest ecosystem, which of the following is a primary consumer?",
+      "reason": "near-duplicate of served question cmvja55ao0g5kgpfh7bdchmp8 (cosine 0.916 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the role of decomposers in an ecosystem?",
+      "reason": "near-duplicate of served question cmvja55ag0g52gpfhlbn3swqn (cosine 0.921 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

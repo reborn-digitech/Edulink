@@ -1,0 +1,430 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T16:54:35.089Z",
+  "finishedAt": "2026-11-02T17:03:33.982Z",
+  "seconds": 539,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "९ वी गणित भाग-२ इंग्रजी",
+    "bookCode": "903000609",
+    "document": "balbharati/9/mathematics/903000609.pdf",
+    "classLevel": 9,
+    "subject": "Mathematics",
+    "chapter": "Chapter 9 — Parallel Lines",
+    "edition": "2026 edition",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n4. (b) Parallel.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2025-26]\n33. Correct given, figure and construction\nCorrect Proof\nsince LM is parallel to QR\nLet PM= 𝑥\n௉௅ ௉ெ\n௉ொ = ௉ோ\nହ.଻ ௫\nଵହ.ଶ = ௫ାହ.ହ\n𝑥 =PM=3.3cm\n½\n½",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2022-23]\n33. Prove that if a line is drawn parallel to one side of a triangle intersecting the other 5\ntwo sides in distinct points, then the other two sides are divided in the same ratio.\nUsing the above theorem prove that a line through the point of intersection of the\ndiagonals and parallel to the base of the trapezium divides the non parallel sides in\nthe same ratio.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n32. Prove that a line drawn parallel to one side of a triangle intersecting other two sides 5\nin distinct points, divides the other two sides in the same ratio."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 147985,
+      "in": 18,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 13718,
+      "completionTokens": 5609
+    },
+    "critique": {
+      "calls": 26,
+      "ms": 274101,
+      "in": 18,
+      "out": 13,
+      "rejects": 5,
+      "promptTokens": 13583,
+      "completionTokens": 4695
+    },
+    "solver": {
+      "calls": 119,
+      "ms": 96298,
+      "in": 13,
+      "out": 10,
+      "rejects": 3,
+      "promptTokens": 26616,
+      "completionTokens": 1410
+    },
+    "form": {
+      "calls": 10,
+      "ms": 83449,
+      "in": 10,
+      "out": 2,
+      "rejects": 8,
+      "promptTokens": 6531,
+      "completionTokens": 1712
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 6,
+      "ms": 1482,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 110210,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 5492,
+      "completionTokens": 3074
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "If two parallel lines are intersected by a transversal, what is the sum of the interior angles on one side of the transversal?",
+      "ms": {
+        "draft": 8681,
+        "critique": 11684
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a triangle, if a line is drawn parallel to one side, what happens to the other two sides?",
+      "ms": {
+        "draft": 8681,
+        "critique": 9539,
+        "solver": 2394,
+        "form": 5907
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of parallel lines?",
+      "ms": {
+        "draft": 8681,
+        "critique": 10724,
+        "solver": 2704,
+        "form": 4866
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two parallel lines are intersected by a transversal, what can be said about the corresponding angles?",
+      "ms": {
+        "draft": 8681,
+        "critique": 11789
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If two lines are cut by a transversal such that the sum of two interior angles on one side of the transversal is less than 180 degrees, what can be concluded about the lines?",
+      "ms": {
+        "draft": 8681,
+        "critique": 10258,
+        "solver": 2968,
+        "form": 5527
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a condition for two lines to be parallel according to the passage?",
+      "ms": {
+        "draft": 8291,
+        "critique": 11094
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the correct statement about the relationship between alternate angles and parallel lines?",
+      "ms": {
+        "draft": 8291,
+        "critique": 9502,
+        "solver": 2110,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the given passage, what is the conclusion of the proof that if the interior angles formed by a transversal are supplementary, then the lines are parallel?",
+      "ms": {
+        "draft": 8291,
+        "critique": 9912,
+        "solver": 18655,
+        "form": 5980
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the given passage, which of the following is a correct way to prove that two lines are parallel?",
+      "ms": {
+        "draft": 8291,
+        "critique": 11895,
+        "solver": 20281
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following statements is true about the relationship between parallel lines and transversals?",
+      "ms": {
+        "draft": 8291,
+        "critique": 11871,
+        "solver": 17792
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, what is the sum of the interior angles on the same side of a transversal if the lines are parallel?",
+      "ms": {
+        "draft": 8291,
+        "critique": 10582,
+        "solver": 10109,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the definition of parallel lines according to the passage?",
+      "ms": {
+        "draft": 7693,
+        "critique": 10472
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two parallel lines are cut by a transversal, what is the sum of the measures of any pair of interior angles on the same side of the transversal?",
+      "ms": {
+        "draft": 7693,
+        "critique": 11499
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, line RP is parallel to line MS and line DK is a transversal. If DHP is 85°, what is the measure of angle RHD?",
+      "ms": {
+        "draft": 7693,
+        "critique": 11693,
+        "solver": 2316
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a line is drawn parallel to one side of a triangle, intersecting the other two sides at distinct points, what can be said about the ratio in which the other two sides are divided?",
+      "ms": {
+        "draft": 7693,
+        "critique": 11634,
+        "solver": 20781,
+        "form": 2749
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a trapezium, a line is drawn through the point of intersection of the diagonals and parallel to the base. What can be said about the division of the non-parallel sides?",
+      "ms": {
+        "draft": 7693,
+        "critique": 13652,
+        "solver": 24102,
+        "form": 3045
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a pair of corresponding angles formed by a transversal of two parallel lines?",
+      "ms": {
+        "draft": 7693,
+        "critique": 10874,
+        "solver": 18736,
+        "form": 4397,
+        "translation": 50073
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a line is drawn parallel to the base of a trapezium through the point of intersection of its diagonals, what happens to the non-parallel sides?",
+      "ms": {
+        "draft": 8681,
+        "critique": 11021,
+        "solver": 16977,
+        "form": 4698,
+        "translation": 53480
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If two parallel lines are intersected by a transversal, what is the sum of the interior angles on one side of the transversal?",
+      "reason": "option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In a triangle, if a line is drawn parallel to one side, what happens to the other two sides?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Assumes that the sides will be equal in length, which is not…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a property of parallel lines?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"None, this is the correct answer, not a distractor, so no re…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If two parallel lines are intersected by a transversal, what can be said about the corresponding angles?",
+      "reason": "the critic finds option 0 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If two lines are cut by a transversal such that the sum of two interior angles on one side of the transversal is less than 180 degrees, what can be concluded about the lines?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Assumes that the lines are perpendicular, which is not suppo…\"); distractor 3's reason is not a one-line misconception (\"Believes that all lines are coplanar, which is not stated in…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a condition for two lines to be parallel according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the correct statement about the relationship between alternate angles and parallel lines?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 2 say the same thing (\"Alternate angles are not congruent when lines are parallel\" / \"Alternate angles are congruent when lines are parallel\"); distractor 1's reason is not a one-line misconception (\"Misinterprets the passage, thinking alternate angles are not…\"); distractor 3's reason is not a one-line misconception (\"Correct, as the passage explicitly states that if a pair of …\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In the given passage, what is the conclusion of the proof that if the interior angles formed by a transversal are supplementary, then the lines are parallel?",
+      "reason": "options 1 and 2 say the same thing (\"The lines are not parallel\" / \"The lines are parallel\"); option 2 repeats the stem's wording (\"The lines are parallel\"); distractor 0's reason is not a one-line misconception (\"A fact stated in the passage but not the conclusion of the p…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In the given passage, which of the following is a correct way to prove that two lines are parallel?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "According to the passage, which of the following statements is true about the relationship between parallel lines and transversals?",
+      "reason": "after redraft: the solver picked option 1 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "According to the passage, what is the sum of the interior angles on the same side of a transversal if the lines are parallel?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":2,\"stem\":\"According to the passage, which of the following is a condition for two lines to be pa"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the definition of parallel lines according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If two parallel lines are cut by a transversal, what is the sum of the measures of any pair of interior angles on the same side of the transversal?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the given figure, line RP is parallel to line MS and line DK is a transversal. If DHP is 85°, what is the measure of angle RHD?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a line is drawn parallel to one side of a triangle, intersecting the other two sides at distinct points, what can be said about the ratio in which the other two sides are divided?",
+      "reason": "figure: figure spec refused: spec: Unrecognized key(s) in object: 'arrows'"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a trapezium, a line is drawn through the point of intersection of the diagonals and parallel to the base. What can be said about the division of the non-parallel sides?",
+      "reason": "figure: figure spec refused: spec.segments: segments names point E, which is not defined"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

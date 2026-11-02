@@ -1,0 +1,607 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T17:46:52.802Z",
+  "finishedAt": "2026-11-01T17:53:46.623Z",
+  "seconds": 414,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "603050012",
+    "document": "balbharati/6/science/603050012.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 8 — Beyond the Sky",
+    "edition": "First Edition 2026",
+    "chunks": 11,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2026-27]\nthe inference he draws on the basis of his experiment be correct? Justify\nyour answer.",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n6. B. (ii), (iii), (iv)",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n31. A. As sunlight passes through the atmosphere, Rayleigh scattering causes 1\nshorter wavelengths, such as blue and violet, to scatter more than other\ncolors, but our eyes are more sensitive to blue than violet.",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n31. Choose the correct option from the below which explains the reason for us to 1\nperceive the day sky as blue.\nA. As sunlight passes through the atmosphere, shorter wavelengths, such\nas blue are scattered more than other colors.\nB. The sky appears blue because all colors are scattered equally, but\nblue light is stronger and more visible to the human eye.\nC. The blue color of the sky is due to longer wavelengths like red and\norange scattering more than shorter wavelengths, making blue stand\nout more.\nD. The atmosphere contains blue-colored particles that give the sky its\nblue appearance.\nThe following question consists of two statements – Assertion (A) and Reason (R). Answer\nthese questions"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 143984,
+      "in": 34,
+      "out": 27,
+      "rejects": 7,
+      "promptTokens": 26322,
+      "completionTokens": 6287
+    },
+    "critique": {
+      "calls": 31,
+      "ms": 233054,
+      "in": 27,
+      "out": 19,
+      "rejects": 8,
+      "promptTokens": 13310,
+      "completionTokens": 5337
+    },
+    "solver": {
+      "calls": 119,
+      "ms": 63933,
+      "in": 19,
+      "out": 16,
+      "rejects": 3,
+      "promptTokens": 16532,
+      "completionTokens": 1063
+    },
+    "form": {
+      "calls": 10,
+      "ms": 31912,
+      "in": 16,
+      "out": 7,
+      "rejects": 9,
+      "promptTokens": 2382,
+      "completionTokens": 671
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 21,
+      "ms": 4448,
+      "in": 7,
+      "out": 5,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 199989,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 10806,
+      "completionTokens": 5266
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 2,
+    "2": 0,
+    "3": 2,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "Which of the following is NOT a celestial object?",
+      "ms": {
+        "draft": 3653,
+        "critique": 6155
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason the sky appears blue during the day?",
+      "ms": {
+        "draft": 3653,
+        "critique": 6509
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the main reason humans in the past used to observe the stars?",
+      "ms": {
+        "draft": 3653,
+        "critique": 7049
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a constellation?",
+      "ms": {
+        "draft": 3653,
+        "critique": 6389
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main purpose of sending spacecraft like Chandrayaan and Mangalyaan?",
+      "ms": {
+        "draft": 3653,
+        "critique": 7298
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do we see constellations change their position in the sky over time?",
+      "ms": {
+        "draft": 3653,
+        "critique": 7296
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a correct inference from the passage about the size of the Sun compared to other stars?",
+      "ms": {
+        "draft": 16055,
+        "critique": 6396,
+        "solver": 1800
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following explains why the sky appears blue during the day?",
+      "ms": {
+        "draft": 16055,
+        "critique": 7691,
+        "solver": 2684,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is true about the visibility of stars and constellations from different parts of the Earth?",
+      "ms": {
+        "draft": 16055,
+        "critique": 6913,
+        "solver": 2031,
+        "form": 5307
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is stated in the passage about the shape of the Earth?",
+      "ms": {
+        "draft": 16055,
+        "critique": 6891,
+        "solver": 1676,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the name of the band of stars that looks like a river in the sky?",
+      "ms": {
+        "draft": 16055,
+        "critique": 8816,
+        "solver": 1630,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which organization is well known for conducting space missions?",
+      "ms": {
+        "draft": 3134,
+        "critique": 8182
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a comet were to hit the Earth, what would be the most likely consequence according to the passage?",
+      "ms": {
+        "draft": 16055,
+        "critique": 9490,
+        "solver": 11822
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why can people in the southern hemisphere not see the pole star?",
+      "ms": {
+        "draft": 6408,
+        "critique": 9935
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which organization is known for conducting space missions in India?",
+      "ms": {
+        "draft": 3521,
+        "critique": 10565,
+        "solver": 13662,
+        "form": 3429
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What can be inferred about the distance between stars from the passage?",
+      "ms": {
+        "draft": 6408,
+        "critique": 8627,
+        "solver": 2277,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What can be concluded about the size of the universe from the passage?",
+      "ms": {
+        "draft": 6408,
+        "critique": 7928,
+        "solver": 1826,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the main reason for the night sky appearing dark in cities?",
+      "ms": {
+        "draft": 6408,
+        "critique": 9598,
+        "solver": 15549
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the main reason for the sky appearing blue during the day?",
+      "ms": {
+        "draft": 5014,
+        "critique": 8029,
+        "solver": 2214,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why did early humans draw paintings on cave walls?",
+      "ms": {
+        "draft": 5014,
+        "critique": 7646,
+        "solver": 1007,
+        "form": 1171
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which mission of ISRO discovered water on the Moon?",
+      "ms": {
+        "draft": 3521,
+        "critique": 8917,
+        "solver": 1890,
+        "form": 6757
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the thick envelope of air around the Earth called?",
+      "ms": {
+        "draft": 5014,
+        "critique": 7919,
+        "solver": 2434,
+        "form": 2974
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the name of the mission that discovered water on the Moon?",
+      "ms": {
+        "draft": 3134,
+        "critique": 5456,
+        "solver": 5727,
+        "form": 1430,
+        "translation": 38762
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which satellite is jointly developed by NASA and ISRO?",
+      "ms": {
+        "draft": 3521,
+        "critique": 8957,
+        "solver": 2581,
+        "form": 4464,
+        "translation": 39989
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why do the stars appear to change their positions from east to west over time?",
+      "ms": {
+        "draft": 5014,
+        "critique": 8041,
+        "solver": 2187,
+        "form": 3988,
+        "translation": 35451
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to a comet when it comes closer to the sun?",
+      "ms": {
+        "draft": 6408,
+        "critique": 7618,
+        "solver": 1513,
+        "form": 4650,
+        "translation": 54839
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is not a celestial object?",
+      "ms": {
+        "draft": 5014,
+        "critique": 7607,
+        "solver": 1292,
+        "form": 2133,
+        "translation": 26443
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is a space telescope?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the name of the galaxy closer to Akashganga?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is the closest star to the Earth?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the name of the celestial object made of rocks, dust and frozen material?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is NOT a celestial object?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main reason the sky appears blue during the day?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What was the main reason humans in the past used to observe the stars?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is an example of a constellation?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the main purpose of sending spacecraft like Chandrayaan and Mangalyaan?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why do we see constellations change their position in the sky over time?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following is a correct inference from the passage about the size of the Sun compared to other stars?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following explains why the sky appears blue during the day?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is true about the visibility of stars and constellations from different parts of the Earth?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct option, so no reason needed for this one, but others…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is stated in the passage about the shape of the Earth?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what is the name of the band of stars that looks like a river in the sky?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which organization is well known for conducting space missions?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a comet were to hit the Earth, what would be the most likely consequence according to the passage?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the name of the galaxy closer to Akashganga?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Who is considered the father of Indian Astronomy?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which star is closest to the Earth?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why can people in the southern hemisphere not see the pole star?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which organization is known for conducting space missions in India?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What can be inferred about the distance between stars from the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misunderstands the description of stars' positions\",\"Misinte…\"); distractor 3's reason is not a one-line misconception (\":5, \"stem\": \"What is the main reason for the night sky appea…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What can be concluded about the size of the universe from the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misunderstands the passage's information…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What is the main reason for the night sky appearing dark in cities?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the main reason for the sky appearing blue during the day?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why did early humans draw paintings on cave walls?",
+      "reason": "the key is far longer than every distractor (60 vs 34 characters); distractor 1's reason is not a one-line misconception (\"Believes the paintings were for decoration, ignoring the pas…\"); distractor 2's reason is not a one-line misconception (\"Assumes the paintings were for scaring animals, which is not…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which mission of ISRO discovered water on the Moon?",
+      "reason": "near-duplicate of served question cmvvxvlgn00v00rem6ai7lqqp (cosine 0.940 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the thick envelope of air around the Earth called?",
+      "reason": "near-duplicate of served question cmvveqjon012n0rgn5s7oujys (cosine 0.936 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

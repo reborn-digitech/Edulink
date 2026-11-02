@@ -1,0 +1,844 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T08:23:44.551Z",
+  "finishedAt": "2026-11-02T08:32:26.100Z",
+  "seconds": 522,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash Part-I",
+    "bookCode": "hegp1",
+    "document": "ncert/8/mathematics/hegp103.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 3 — A Story of Numbers",
+    "edition": "Reprint 2026-27",
+    "chunks": 27,
+    "groups": 9
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n8. B) 8𝑥 - 20 2",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n5. (d) 0,8",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n14. B) 3 8",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n8. (b) 5 : 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 173830,
+      "in": 44,
+      "out": 44,
+      "rejects": 0,
+      "promptTokens": 41244,
+      "completionTokens": 9518
+    },
+    "critique": {
+      "calls": 49,
+      "ms": 324278,
+      "in": 44,
+      "out": 31,
+      "rejects": 13,
+      "promptTokens": 21942,
+      "completionTokens": 8560
+    },
+    "solver": {
+      "calls": 190,
+      "ms": 86440,
+      "in": 31,
+      "out": 21,
+      "rejects": 10,
+      "promptTokens": 30254,
+      "completionTokens": 1853
+    },
+    "form": {
+      "calls": 18,
+      "ms": 60281,
+      "in": 21,
+      "out": 9,
+      "rejects": 12,
+      "promptTokens": 4898,
+      "completionTokens": 1478
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 51,
+      "ms": 10007,
+      "in": 9,
+      "out": 7,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 318789,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 17780,
+      "completionTokens": 9310
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 2,
+    "2": 0,
+    "3": 2,
+    "4": 1,
+    "5": 0,
+    "6": 2
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which Indian mathematician was the first to fully explain and do elaborate scientific computations with the Indian system of 10 symbols?",
+      "ms": {
+        "draft": 3723,
+        "critique": 5079
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the ancient Indian text that mentions names of numbers based on powers of 10?",
+      "ms": {
+        "draft": 3723,
+        "critique": 5475
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which civilisation is mentioned in the passage as being in the western part of Asia, containing a major part of the present-day Iraq?",
+      "ms": {
+        "draft": 3723,
+        "critique": 5752
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person in Europe wanted to adopt the Indian numeral system during the 17th century, what would be the most likely reason?",
+      "ms": {
+        "draft": 3723,
+        "critique": 5493
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the term 'Arabic numerals'?",
+      "ms": {
+        "draft": 3723,
+        "critique": 6072,
+        "solver": 1661,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which of the following is NOT a method used to represent numbers?",
+      "ms": {
+        "draft": 3856,
+        "critique": 9181
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a group of people used the Roman number system, how would they represent the number 27?",
+      "ms": {
+        "draft": 3856,
+        "critique": 8625
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the main challenge in creating a number system?",
+      "ms": {
+        "draft": 3856,
+        "critique": 6951
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the Indian numeral system was not adopted in Europe, what could be the most likely consequence?",
+      "ms": {
+        "draft": 3723,
+        "critique": 5183,
+        "solver": 16199
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used for the symbols in a written number system?",
+      "ms": {
+        "draft": 3856,
+        "critique": 8155
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the oldest known mathematical artefact?",
+      "ms": {
+        "draft": 3512,
+        "critique": 6122,
+        "solver": 1695
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How did the Gumulgal people represent the number 5?",
+      "ms": {
+        "draft": 3512,
+        "critique": 6260,
+        "solver": 1797
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a group of people uses a number system based on the English alphabet, how many numbers can they represent without using any additional symbols?",
+      "ms": {
+        "draft": 3856,
+        "critique": 7140,
+        "solver": 13465,
+        "form": 4662
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, what might have been a reason for the development of number systems that use different group sizes?",
+      "ms": {
+        "draft": 3512,
+        "critique": 7259,
+        "solver": 1493,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number system counts only in groups of 5, how would the number 1345 be represented?",
+      "ms": {
+        "draft": 3512,
+        "critique": 6011,
+        "solver": 12606
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the sum of the numbers 125 + 5 + 5 + 5 + 1 + 1 + 1 in a base-5 number system?",
+      "ms": {
+        "draft": 3732,
+        "critique": 10386,
+        "solver": 1300
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which number system uses landmark numbers that are all powers of a number?",
+      "ms": {
+        "draft": 3732,
+        "critique": 6633,
+        "solver": 16444,
+        "form": 3472
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number system is based on a base of 7, what is the fifth landmark number?",
+      "ms": {
+        "draft": 3732,
+        "critique": 7346,
+        "solver": 2041
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the Hindu number system more efficient than the Roman number system for arithmetic operations?",
+      "ms": {
+        "draft": 3732,
+        "critique": 5832,
+        "solver": 1324,
+        "form": 2775
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the passage, it is mentioned that the Mesopotamian number system used the symbols for 1 and 10. If a number is represented as '10 40' in this system, what is the decimal value of this number?",
+      "ms": {
+        "draft": 59718,
+        "critique": 3695,
+        "solver": 625
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person had 8 fingers instead of 10, what base number system would they likely use?",
+      "ms": {
+        "draft": 5054,
+        "critique": 5594,
+        "solver": 1049,
+        "form": 5002
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the base-8 representation of the base-10 number 25?",
+      "ms": {
+        "draft": 5054,
+        "critique": 5620,
+        "solver": 1984,
+        "form": 4526
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the base-10 number 25 is written in base-8, what would be the value of the digit in the 'eights' place?",
+      "ms": {
+        "draft": 5054,
+        "critique": 7094,
+        "solver": 1295
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why the Hindu numeral system and the concept of 0 are fundamental to modern life?",
+      "ms": {
+        "draft": 5054,
+        "critique": 7002,
+        "solver": 1769,
+        "form": 3361
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a key difference between the Base-2 system and the Gumulgal system?",
+      "ms": {
+        "draft": 5054,
+        "critique": 6643,
+        "solver": 13056,
+        "form": 5382
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a true statement about the Base-2 and Gumulgal systems?",
+      "ms": {
+        "draft": 5054,
+        "critique": 7632,
+        "solver": 1484
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which number system uses a base-5 system for representing numbers?",
+      "ms": {
+        "draft": 3311,
+        "critique": 6774,
+        "solver": 1619
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which number system uses a place value system and a symbol for zero?",
+      "ms": {
+        "draft": 3311,
+        "critique": 6410,
+        "solver": 1587,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the Hindu number system, what is the result of multiplying any landmark number by 10?",
+      "ms": {
+        "draft": 3311,
+        "critique": 6542,
+        "solver": 1802,
+        "form": 2865
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the number system that is used throughout the world today?",
+      "ms": {
+        "draft": 3767,
+        "critique": 7411
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main advantage of the Hindu number system over other ancient number systems?",
+      "ms": {
+        "draft": 3767,
+        "critique": 7030
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT a feature of a place value system?",
+      "ms": {
+        "draft": 3767,
+        "critique": 7127
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number system uses base 8, how many digits will it have?",
+      "ms": {
+        "draft": 3767,
+        "critique": 5800
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the invention of 0 considered a breakthrough in mathematics?",
+      "ms": {
+        "draft": 3767,
+        "critique": 6390
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the result of multiplying a landmark number by 10 in the Egyptian number system?",
+      "ms": {
+        "draft": 6180,
+        "critique": 5654,
+        "solver": 1105,
+        "form": 2439
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a base-5 number system, what is the third landmark number?",
+      "ms": {
+        "draft": 3732,
+        "critique": 8443,
+        "solver": 1469,
+        "form": 3594
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which number system uses a base-60 system?",
+      "ms": {
+        "draft": 4177,
+        "critique": 6352,
+        "solver": 1438,
+        "form": 2853
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main feature of a positional number system?",
+      "ms": {
+        "draft": 4177,
+        "critique": 5739,
+        "solver": 1792,
+        "form": 3317,
+        "translation": 28084
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which number system uses symbols like I, V, X, L, C, D, and M?",
+      "ms": {
+        "draft": 3311,
+        "critique": 6551,
+        "solver": 1575,
+        "form": 3820,
+        "translation": 41633
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the Hindu number system, which feature helps in easily performing arithmetic operations like addition, subtraction, multiplication, and division?",
+      "ms": {
+        "draft": 3311,
+        "critique": 7390,
+        "solver": 1502,
+        "form": 2653,
+        "translation": 48191
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a reason for the development of number systems that count in groups of a certain size?",
+      "ms": {
+        "draft": 3512,
+        "critique": 6624,
+        "solver": 1464,
+        "form": 2992,
+        "translation": 51830
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements best explains how the Roman numeral system differs from the tally system?",
+      "ms": {
+        "draft": 3512,
+        "critique": 6372,
+        "solver": 1576,
+        "form": 4709,
+        "translation": 54905
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a number system is based on base-4, what is the maximum number that can be represented using only one digit?",
+      "ms": {
+        "draft": 3311,
+        "critique": 7790,
+        "solver": 1024,
+        "form": 3629,
+        "translation": 40399
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Suppose you are creating a number system using a sequence of symbols. Which of the following must be true for the system to be effective?",
+      "ms": {
+        "draft": 3856,
+        "critique": 7069,
+        "solver": 1078,
+        "form": 3127,
+        "translation": 49125
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which Indian mathematician was the first to fully explain and do elaborate scientific computations with the Indian system of 10 symbols?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the name of the ancient Indian text that mentions names of numbers based on powers of 10?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which civilisation is mentioned in the passage as being in the western part of Asia, containing a major part of the present-day Iraq?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person in Europe wanted to adopt the Indian numeral system during the 17th century, what would be the most likely reason?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the term 'Arabic numerals'?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 2 and 3 say the same thing (\"It was used by the European scholars to describe the Indian system\" / \"It was used by the Arab scholars to describe the Indian system\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "According to the passage, which of the following is NOT a method used to represent numbers?",
+      "reason": "the critic finds option 3 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a group of people used the Roman number system, how would they represent the number 27?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, what is the main challenge in creating a number system?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the Indian numeral system was not adopted in Europe, what could be the most likely consequence?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the term used for the symbols in a written number system?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is the oldest known mathematical artefact?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "How did the Gumulgal people represent the number 5?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a group of people uses a number system based on the English alphabet, how many numbers can they represent without using any additional symbols?",
+      "reason": "checkExpr \"26\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, what might have been a reason for the development of number systems that use different group sizes?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a number system counts only in groups of 5, how would the number 1345 be represented?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the sum of the numbers 125 + 5 + 5 + 5 + 1 + 1 + 1 in a base-5 number system?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which number system uses landmark numbers that are all powers of a number?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a number system is based on a base of 7, what is the fifth landmark number?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is the Hindu number system more efficient than the Roman number system for arithmetic operations?",
+      "reason": "the key is far longer than every distractor (72 vs 32 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In the passage, it is mentioned that the Mesopotamian number system used the symbols for 1 and 10. If a number is represented as '10 40' in this system, what is the decimal value of this number?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person had 8 fingers instead of 10, what base number system would they likely use?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misunderstands the reasoning given in the passage about the …\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the base-8 representation of the base-10 number 25?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Fails to understand the conversion process described in the …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the base-10 number 25 is written in base-8, what would be the value of the digit in the 'eights' place?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best explains why the Hindu numeral system and the concept of 0 are fundamental to modern life?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misunderstands the passage's emphasis on the significance of…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a key difference between the Base-2 system and the Gumulgal system?",
+      "reason": "options 0 and 1 say the same thing (\"The Base-2 system uses only one symbol, while the Gumulgal system uses two\" / \"The Base-2 system uses two symbols, while the Gumulgal system uses only one\"); options 0 and 3 say the same thing (\"The Base-2 system uses only one symbol, while the Gumulgal system uses two\" / \"The Gumulgal system uses two symbols, while the Base-2 system uses only one\"); options 1 and 3 say the same thing (\"The Base-2 system uses two symbols, while the Gumulgal system uses only one\" / \"The Gumulgal system uses two symbols, while the Base-2 system uses only one\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a true statement about the Base-2 and Gumulgal systems?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which number system uses a base-5 system for representing numbers?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which number system uses a place value system and a symbol for zero?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the Hindu number system, what is the result of multiplying any landmark number by 10?",
+      "reason": "option 3 is a catch-all (\"None of the above\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the name of the number system that is used throughout the world today?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main advantage of the Hindu number system over other ancient number systems?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is NOT a feature of a place value system?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a number system uses base 8, how many digits will it have?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is the invention of 0 considered a breakthrough in mathematics?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What is the result of multiplying a landmark number by 10 in the Egyptian number system?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Fails to understand that multiplying by 10 changes the power…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "In a base-5 number system, what is the third landmark number?",
+      "reason": "near-duplicate of served question cmvj1hyar0f7cgpfhfjp223w9 (cosine 0.952 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which number system uses a base-60 system?",
+      "reason": "near-duplicate of served question cmvql2om00bgxgp21bn8ctujh (cosine 0.938 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,854 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T20:59:24.186Z",
+  "finishedAt": "2026-11-01T21:08:55.525Z",
+  "seconds": 571,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "fecu1",
+    "document": "ncert/6/science/fecu112.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 12 — Beyond Earth",
+    "edition": "Reprint 2026-27",
+    "chunks": 15,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2026-27]\nthe inference he draws on the basis of his experiment be correct? Justify\nyour answer.",
+      "[CBSE Class X Science, marking scheme, 2026-27]\n24. B. Both A and R are true, and R is not the correct explanation of A. 1",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n8. D. carbon dioxide in human cells",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n16. B. Enrichment of oxygen in the atmosphere. 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 205637,
+      "in": 44,
+      "out": 43,
+      "rejects": 1,
+      "promptTokens": 40318,
+      "completionTokens": 10203
+    },
+    "critique": {
+      "calls": 62,
+      "ms": 469268,
+      "in": 43,
+      "out": 39,
+      "rejects": 4,
+      "promptTokens": 26333,
+      "completionTokens": 10519
+    },
+    "solver": {
+      "calls": 316,
+      "ms": 186035,
+      "in": 39,
+      "out": 33,
+      "rejects": 6,
+      "promptTokens": 59755,
+      "completionTokens": 3454
+    },
+    "form": {
+      "calls": 29,
+      "ms": 110492,
+      "in": 33,
+      "out": 11,
+      "rejects": 22,
+      "promptTokens": 10707,
+      "completionTokens": 2486
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 64,
+      "ms": 12211,
+      "in": 11,
+      "out": 7,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 255341,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 16152,
+      "completionTokens": 7975
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 3,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the main reason the night sky in Nubra is clearly visible?",
+      "ms": {
+        "draft": 4128,
+        "critique": 8116,
+        "solver": 19721
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage say about the use of star patterns in the past?",
+      "ms": {
+        "draft": 4128,
+        "critique": 7658,
+        "solver": 13063,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What does the passage imply about the story of the Big Dipper as a 'grandmother's cot'?",
+      "ms": {
+        "draft": 4128,
+        "critique": 9247,
+        "solver": 14102,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the significance of the Pole Star according to the passage?",
+      "ms": {
+        "draft": 4128,
+        "critique": 7637,
+        "solver": 18999,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about the visibility of stars in the night sky?",
+      "ms": {
+        "draft": 4897,
+        "critique": 8530,
+        "solver": 17597,
+        "form": 2868
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student wants to identify the Pole Star, which of the following steps should they follow?",
+      "ms": {
+        "draft": 4897,
+        "critique": 8144,
+        "solver": 1638,
+        "form": 5967
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why is the Sun the only star that appears big in the sky, while other stars appear as small points?",
+      "ms": {
+        "draft": 4897,
+        "critique": 8879,
+        "solver": 1602,
+        "form": 3247
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student wants to find the constellation Orion, which of the following is the most effective method?",
+      "ms": {
+        "draft": 4897,
+        "critique": 6206,
+        "solver": 1931
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a reason for light pollution as described in the passage?",
+      "ms": {
+        "draft": 4897,
+        "critique": 6925,
+        "solver": 1591,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student in a city wants to observe the night sky, which of the following is the best choice?",
+      "ms": {
+        "draft": 4897,
+        "critique": 6938,
+        "solver": 1823,
+        "form": 4476
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following planets is known as the Red Planet?",
+      "ms": {
+        "draft": 4024,
+        "critique": 6483,
+        "solver": 12058,
+        "form": 4311
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a planet that revolves around the Sun?",
+      "ms": {
+        "draft": 4024,
+        "critique": 7661,
+        "solver": 14539,
+        "form": 3628
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a natural satellite of a planet?",
+      "ms": {
+        "draft": 4024,
+        "critique": 8219,
+        "solver": 13384,
+        "form": 2695
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a false statement according to the passage?",
+      "ms": {
+        "draft": 4024,
+        "critique": 6431
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If an object is seen shining brightly at dawn and dusk, which of the following is it most likely to be?",
+      "ms": {
+        "draft": 4024,
+        "critique": 7436,
+        "solver": 13017,
+        "form": 3955
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is most likely to be a planet based on its characteristics?",
+      "ms": {
+        "draft": 4024,
+        "critique": 8629,
+        "solver": 14635,
+        "form": 3605
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which planet is known to have a ring system?",
+      "ms": {
+        "draft": 3641,
+        "critique": 9088,
+        "solver": 12291,
+        "form": 3074
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is not a member of our Solar System?",
+      "ms": {
+        "draft": 5078,
+        "critique": 10695,
+        "solver": 1533
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a part of the Solar System?",
+      "ms": {
+        "draft": 3641,
+        "critique": 8619,
+        "solver": 19868
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is not a planet of the Sun?",
+      "ms": {
+        "draft": 4755,
+        "critique": 6974
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In Fig. 12.12, which planet is shown in the correct order?",
+      "ms": {
+        "draft": 4755,
+        "critique": 8354,
+        "solver": 1922,
+        "form": 3741
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, which of the following is a reason for the Indian Institute of Astrophysics to choose Hanle, Ladakh for the observatory?",
+      "ms": {
+        "draft": 4755,
+        "critique": 6153,
+        "solver": 19037
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student observes the Big Dipper and the Pole Star over several hours, what would they notice?",
+      "ms": {
+        "draft": 4755,
+        "critique": 6796,
+        "solver": 18635,
+        "form": 3063
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Why are comets often seen as signs of bad luck in some cultures?",
+      "ms": {
+        "draft": 3839,
+        "critique": 6625,
+        "solver": 1835
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a planet in our Solar System?",
+      "ms": {
+        "draft": 7649,
+        "critique": 7605
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is a reason why Venus is hotter than Mercury despite being farther from the Sun?",
+      "ms": {
+        "draft": 7649,
+        "critique": 7206,
+        "solver": 12503,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the Earth called the Blue Planet?",
+      "ms": {
+        "draft": 7649,
+        "critique": 8768,
+        "solver": 11653,
+        "form": 4619
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student uses an app to locate Venus, when should they look for it in the sky?",
+      "ms": {
+        "draft": 7649,
+        "critique": 7126,
+        "solver": 12382,
+        "form": 2321
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason why we cannot see many stars in a big city at night?",
+      "ms": {
+        "draft": 5446,
+        "critique": 8483,
+        "solver": 11554,
+        "form": 3190
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How can we identify the Pole Star according to the passage?",
+      "ms": {
+        "draft": 5446,
+        "critique": 7761,
+        "solver": 1690,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is NOT a reason given in the passage for why people in the past used star patterns?",
+      "ms": {
+        "draft": 5567,
+        "critique": 6447
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the Sun appear much bigger than other stars in the sky?",
+      "ms": {
+        "draft": 5446,
+        "critique": 6197,
+        "solver": 1007,
+        "form": 2631
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the region in Ladakh where Yangdol and Dorjay live?",
+      "ms": {
+        "draft": 4128,
+        "critique": 7311,
+        "solver": 1708,
+        "form": 5484
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the natural satellite of the Earth?",
+      "ms": {
+        "draft": 3641,
+        "critique": 7845,
+        "solver": 1326,
+        "form": 1667
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which planet is known as the Red Planet?",
+      "ms": {
+        "draft": 4755,
+        "critique": 6819,
+        "solver": 1162,
+        "form": 3635
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which star is brighter, the Pole Star or Sirius?",
+      "ms": {
+        "draft": 4755,
+        "critique": 6949,
+        "solver": 1957,
+        "form": 3763
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the name of India's first mission to the Moon?",
+      "ms": {
+        "draft": 3839,
+        "critique": 9060,
+        "solver": 1493,
+        "form": 3109,
+        "translation": 31856
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason why comets have tails?",
+      "ms": {
+        "draft": 3839,
+        "critique": 7043,
+        "solver": 2277,
+        "form": 2910,
+        "translation": 42929
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What did the elders in Nubra tell Yangdol and Dorjay about stars?",
+      "ms": {
+        "draft": 4128,
+        "critique": 8419,
+        "solver": 14533,
+        "form": 3899,
+        "translation": 40787
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a comet is observed near the Sun, what would happen to its tail?",
+      "ms": {
+        "draft": 3641,
+        "critique": 7749,
+        "solver": 1118,
+        "form": 5318,
+        "translation": 38154
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a correct statement about the Moon?",
+      "ms": {
+        "draft": 3839,
+        "critique": 7698,
+        "solver": 1519,
+        "form": 2933,
+        "translation": 36422
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is true about the Milky Way Galaxy?",
+      "ms": {
+        "draft": 3839,
+        "critique": 6711,
+        "solver": 1660,
+        "form": 2096,
+        "translation": 23177
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a spacecraft lands on the Moon, which of the following is most likely to be true about the Moon’s surface?",
+      "ms": {
+        "draft": 3641,
+        "critique": 9900,
+        "solver": 1896,
+        "form": 2333,
+        "translation": 38350
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main reason the night sky in Nubra is clearly visible?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage say about the use of star patterns in the past?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Assumes an unrelated use not mentioned in the passage…\"); distractor 3's reason is not a one-line misconception (\"Assumes a use not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What does the passage imply about the story of the Big Dipper as a 'grandmother's cot'?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the significance of the Pole Star according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is true about the visibility of stars in the night sky?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student wants to identify the Pole Star, which of the following steps should they follow?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Assumes the Pole Star is the brightest, which the passage co…\"); distractor 3's reason is not a one-line misconception (\"Believes the three stars in a straight line point towards th…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Why is the Sun the only star that appears big in the sky, while other stars appear as small points?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Misinterprets the passage's statement that the Sun is the cl…\"); distractor 3's reason is not a one-line misconception (\"Believes the Sun is the only star that provides light and he…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a student wants to find the constellation Orion, which of the following is the most effective method?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a reason for light pollution as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Misinterprets the passage's explanation of how buildings and…\"); distractor 3's reason is not a one-line misconception (\"Believes the movement of stars is a cause of light pollution…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a student in a city wants to observe the night sky, which of the following is the best choice?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Chooses a location with partial obstructions, which the pass…\"); distractor 3's reason is not a one-line misconception (\"Believes a location with rain and clouds is suitable, which …\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following planets is known as the Red Planet?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a planet that revolves around the Sun?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a natural satellite of a planet?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is a false statement according to the passage?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If an object is seen shining brightly at dawn and dusk, which of the following is it most likely to be?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is most likely to be a planet based on its characteristics?",
+      "reason": "options 2 and 3 are the same (\"An object that is not a star and is always seen in the night sky.\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which planet is known to have a ring system?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following is not a member of our Solar System?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a part of the Solar System?",
+      "reason": "after redrafting distractors 0, 1, 3: option 1 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is the name of the rover that landed on the Moon in 2023?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is not a planet of the Sun?",
+      "reason": "option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In Fig. 12.12, which planet is shown in the correct order?",
+      "reason": "options 0 and 1 say the same thing (\"Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune\" / \"Mercury, Venus, Earth, Mars, Saturn, Jupiter, Uranus, Neptune\"); options 0 and 2 say the same thing (\"Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune\" / \"Mercury, Venus, Earth, Jupiter, Mars, Saturn, Uranus, Neptune\"); options 0 and 3 say the same thing (\"Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune\" / \"Mercury, Venus, Earth, Mars, Jupiter, Uranus, Saturn, Neptune\"); options 1 and 2 say the same thing (\"Mercury, Venus, Earth, Mars, Saturn, Jupiter, Uranus, Neptune\" / \"Mercury, Venus, Earth, Jupiter, Mars, Saturn, Uranus, Neptune\"); options 1 and 3 say the same thing (\"Mercury, Venus, Earth, Mars, Saturn, Jupiter, Uranus, Neptune\" / \"Mercury, Venus, Earth, Mars, Jupiter, Uranus, Saturn, Neptune\"); options 2 and 3 say the same thing (\"Mercury, Venus, Earth, Jupiter, Mars, Saturn, Uranus, Neptune\" / \"Mercury, Venus, Earth, Mars, Jupiter, Uranus, Saturn, Neptune\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Based on the passage, which of the following is a reason for the Indian Institute of Astrophysics to choose Hanle, Ladakh for the observatory?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a student observes the Big Dipper and the Pole Star over several hours, what would they notice?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Why are comets often seen as signs of bad luck in some cultures?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is NOT a planet in our Solar System?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is a reason why Venus is hotter than Mercury despite being farther from the Sun?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is the Earth called the Blue Planet?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'planet'"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a student uses an app to locate Venus, when should they look for it in the sky?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'planet'"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main reason why we cannot see many stars in a big city at night?",
+      "reason": "options 0 and 3 are the same (\"Because the Moon is too bright\"); distractor 1's reason is not a one-line misconception (\"Mistakenly believes trees are the main cause, while the pass…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "How can we identify the Pole Star according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Believes the Pole Star is the brightest, but the passage say…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following is NOT a reason given in the passage for why people in the past used star patterns?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the Sun appear much bigger than other stars in the sky?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Confuses brightness with size, but the passage highlights di…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly assumes the Sun is the largest star, while the p…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the region in Ladakh where Yangdol and Dorjay live?",
+      "reason": "near-duplicate of served question cmveobtc300vkgod85yzks6xd (cosine 0.923 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the natural satellite of the Earth?",
+      "reason": "near-duplicate of served question cmvmfjnmj00qhgp21xmnr37tp (cosine 0.929 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which planet is known as the Red Planet?",
+      "reason": "near-duplicate of served question cmveobtcb00w2god8yjh8hgbk (cosine 0.937 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Which star is brighter, the Pole Star or Sirius?",
+      "reason": "near-duplicate of served question cmvitat2r0ee4gpfhu9wejqzk (cosine 0.976 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

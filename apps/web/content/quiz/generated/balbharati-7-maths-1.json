@@ -21,49 +21,49 @@
   "board": "BALBHARATI",
   "book": "७ वी गणित इंग्रजी",
   "edition": "2026 edition",
-  "generatedAt": "2026-10-31T10:18:02.875Z",
+  "generatedAt": "2026-11-01T21:08:57.679Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 2,
-      "stem": "Which property is used to find the third angle of a triangle when two angles are known?",
+      "difficulty": 3,
+      "stem": "If two line segments are congruent, what can be said about their lengths?",
       "choices": [
-        "Angle sum property",
-        "Pythagoras theorem",
-        "Congruence property",
-        "Similarity property"
+        "They are equal",
+        "They are different",
+        "They are perpendicular",
+        "They are parallel"
       ],
       "answerIndex": 0,
-      "solution": "The angle sum property of a triangle states that the sum of all the angles in a triangle is 180°. This is used to find the third angle when two angles are known. The other options are not related to finding the third angle.",
+      "solution": "If two line segments are congruent, their lengths are equal. The option different is incorrect because congruent segments have the same length. The option perpendicular refers to the angle between two lines, not the length. The option parallel refers to the direction of lines, not the length.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "जब दो कोण ज्ञात हों तो एक त्रिभुज के तीसरे कोण को ज्ञात करने के लिए कौन-से गुण का उपयोग किया जाता है?",
+          "stem": "यदि दो रेखाखंड सर्वांगसम हैं, तो उनकी लंबाइयों के बारे में क्या कहा जा सकता है?",
           "choices": [
-            "कोण योग गुण",
-            "पाइथागोरस प्रमेय",
-            "सर्वांगसमता गुण",
-            "समरूपता गुण"
+            "उनकी लंबाई समान है",
+            "उनकी लंबाई अलग है",
+            "उनकी लंबाई लंबवत है",
+            "उनकी लंबाई समांतर है"
           ],
-          "solution": "त्रिभुज के कोण योग गुण कहता है कि एक त्रिभुज में सभी कोणों का योग 180° होता है। जब दो कोण ज्ञात हों तो इस गुण का उपयोग तीसरे कोण को ज्ञात करने के लिए किया जाता है। अन्य विकल्प तीसरे कोण को ज्ञात करने से संबंधित नहीं हैं।",
+          "solution": "यदि दो रेखाखंड सर्वांगसम हैं, तो उनकी लंबाई समान होती है। विकल्प अलग गलत है क्योंकि सर्वांगसम खंड समान लंबाई रखते हैं। विकल्प लंबवत दो रेखाओं के बीच कोण को दर्शाता है, लंबाई के बजाय। विकल्प समांतर रेखाओं की दिशा को दर्शाता है, लंबाई के बजाय।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard mathematical terminology as found in Hindi textbooks.",
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "तीन कोनांचा तिसरा कोन शोधण्यासाठी ज्या गुणधर्माचा वापर केला जातो तो कोणता आहे?",
+          "stem": "जर दोन रेखाखंड एकरूप असतील, तर त्यांच्या लांबीबद्दल काय म्हणायला शकता?",
           "choices": [
-            "कोन बेरीज गुणधर्म",
-            "पायथागोरसचा नियम",
-            "एकरूपता गुणधर्म",
-            "समरूपता गुणधर्म"
+            "त्यांच्या लांबी समान असतात",
+            "त्यांच्या लांबी वेगळ्या असतात",
+            "त्यांच्या लांबी लंब असतात",
+            "त्यांच्या लांबी समांतर असतात"
           ],
-          "solution": "त्रिकोणाचा कोन बेरीज गुणधर्म सांगतो की त्रिकोणातील सर्व कोनांची बेरीज 180° असते. जेव्हा दोन कोन ओळखले जातात तेव्हा हा गुणधर्म तिसरा कोन शोधण्यासाठी वापरला जातो. इतर विकल्प तिसरा कोन शोधण्याशी संबंधित नाहीत.",
+          "solution": "जर दोन रेखाखंड एकरूप असतील, तर त्यांच्या लांबी समान असतात. विकल्प वेगळे असे चुकीचे आहे कारण एकरूप रेखाखंडांच्या लांबी समान असतात. विकल्प लंब हा दोन रेषांमधील कोनाबद्दल असतो, लांबीबद्दल नाही. विकल्प समांतर हा रेषांच्या दिशेबद्दल असतो, लांबीबद्दल नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -73,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses the property with the sum of angles",
-        "Misunderstands the theorem",
-        "Misunderstands the concept of congruence in triangles"
+        "incorrectly assumes congruence implies difference",
+        "confuses perpendicularity with congruence",
+        "confuses parallelism with congruence"
       ],
       "solverAnswers": [
         0,
@@ -85,7 +85,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed. The correct answer is clearly 0, as the angle sum property is the only one that applies to finding the third angle of a triangle when two are known. The author's explanations for the distractors are valid misconceptions.",
+      "critique": "The question is clear and the solution correctly identifies that congruent line segments have equal lengths. The reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "balbharati/7/mathematics/703020004.pdf",
@@ -129,447 +129,49 @@
         }
       ],
       "edition": "2026 edition",
-      "generatedAt": "2026-10-31T10:18:02.875Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "In a right-angled triangle, what is the name of the side opposite the right angle?",
-      "choices": [
-        "Base",
-        "Height",
-        "Hypotenuse",
-        "Vertex"
-      ],
-      "answerIndex": 2,
-      "solution": "In a right-angled triangle, the side opposite the right angle is called the hypotenuse. The base and height are the other two sides that form the right angle. A vertex is a point where two sides meet.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक समकोण त्रिभुज में, समकोण के सामने वाली भुजा का नाम क्या है?",
-          "choices": [
-            "आधार",
-            "ऊंचाई",
-            "कर्ण",
-            "शीर्ष"
-          ],
-          "solution": "एक समकोण त्रिभुज में, समकोण के सामने वाली भुजा कर्ण कहलाती है। आधार और ऊंचाई समकोण बनाने वाली अन्य दो भुजाएं होती हैं। शीर्ष दो भुजाओं के मिलने वाले बिंदु को कहते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All options and the solution are correctly translated and maintain their original intent.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "समकोन त्रिकोणात, समकोनाच्या समोरच्या बाजूचे नाव काय आहे?",
-          "choices": [
-            "आधार",
-            "उंची",
-            "कर्ण",
-            "शिरोबिंदू"
-          ],
-          "solution": "समकोन त्रिकोणात, समकोनाच्या समोरच्या बाजूला कर्ण म्हणतात. आधार आणि उंची ही दुसरी दोन बाजू आहेत ज्या समकोन तयार करतात. शिरोबिंदू हा दोन बाजूंच्या भेटीचा बिंदू आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the term with the side forming the right angle",
-        "Confuses the term with a side forming the right angle",
-        null,
-        "Does not understand the definition of a vertex"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct and aligns with standard geometric definitions. The hypotenuse is indeed the side opposite the right angle in a right-angled triangle.",
-      "sources": [
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 10,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "1. Geometrical Constructions",
-            "Part One"
-          ]
-        },
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 11,
-          "pageStart": 17,
-          "pageEnd": 18,
-          "headingPath": [
-            "1. Geometrical Constructions",
-            "Part One"
-          ]
-        },
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 12,
-          "pageStart": 18,
-          "pageEnd": 20,
-          "headingPath": [
-            "1. Geometrical Constructions",
-            "Part One"
-          ]
-        },
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 13,
-          "pageStart": 20,
-          "pageEnd": 20,
-          "headingPath": [
-            "1. Geometrical Constructions",
-            "Part One"
-          ]
-        }
-      ],
-      "edition": "2026 edition",
-      "generatedAt": "2026-10-31T10:18:02.875Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a triangle has angles of 60°, 40°, and 80°, what is the measure of the third angle?",
-      "choices": [
-        "60°",
-        "40°",
-        "80°",
-        "100°"
-      ],
-      "answerIndex": 3,
-      "solution": "The sum of the angles in a triangle is 180°. Adding the given angles, 60° + 40° + 80° = 180°. So, the third angle is 100°. The other options do not add up to 180°.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक त्रिभुज के कोण 60°, 40°, और 80° हैं, तो तीसरे कोण की माप क्या है?",
-          "choices": [
-            "60°",
-            "40°",
-            "80°",
-            "100°"
-          ],
-          "solution": "त्रिभुज के कोणों का योग 180° होता है। दिए गए कोणों को जोड़ने पर, 60° + 40° + 80° = 180°। अतः तीसरा कोण 100° है। अन्य विकल्प 180° के बराबर नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एका त्रिकोणाचे कोन 60°, 40° आणि 80° असतील, तर तिसरा कोन किती मापाचा असेल?",
-          "choices": [
-            "60°",
-            "40°",
-            "80°",
-            "100°"
-          ],
-          "solution": "त्रिकोणाच्या कोनांची बेरीज 180° असते. दिलेल्या कोनांची बेरीज 60° + 40° + 80° = 180°. म्हणून, तिसरा कोन 100° असेल. इतर विकल्प 180° ची बेरीज करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology for geometry.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Chooses one of the given angles",
-        "Chooses another given angle",
-        "Chooses the sum of two given angles",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The question is flawed because it asks for the 'third angle' when three angles are already given. The sum of the angles in a triangle is 180°, and the given angles already add up to 180°, so there is no third angle. The correct answer is not among the options, but the author's key assumes the question is asking for a missing angle when only two are given.",
-      "sources": [
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 10,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "1. Geometrical Constructions",
-            "Part One"
-          ]
-        },
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 11,
-          "pageStart": 17,
-          "pageEnd": 18,
-          "headingPath": [
-            "1. Geometrical Constructions",
-            "Part One"
-          ]
-        },
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 12,
-          "pageStart": 18,
-          "pageEnd": 20,
-          "headingPath": [
-            "1. Geometrical Constructions",
-            "Part One"
-          ]
-        },
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 13,
-          "pageStart": 20,
-          "pageEnd": 20,
-          "headingPath": [
-            "1. Geometrical Constructions",
-            "Part One"
-          ]
-        }
-      ],
-      "edition": "2026 edition",
-      "generatedAt": "2026-10-31T10:18:02.875Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "In a triangle, if the perpendicular bisectors of the sides meet at a single point, what is the name of that point?",
-      "choices": [
-        "Incentre",
-        "Centroid",
-        "Orthocentre",
-        "Circumcentre"
-      ],
-      "answerIndex": 3,
-      "solution": "The point where the perpendicular bisectors of a triangle's sides meet is called the circumcentre. This is because the circumcentre is equidistant from all the vertices of the triangle. The incenter is where angle bisectors meet, the centroid is where medians meet, and the orthocenter is where altitudes meet.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक त्रिभुज में, यदि भुजाओं के लंब समद्विभाजक एक ही बिंदु पर मिलते हैं, तो उस बिंदु का नाम क्या है?",
-          "choices": [
-            "अंतःकेंद्र",
-            "केन्द्रक",
-            "लंबकेंद्र",
-            "परिकेंद्र"
-          ],
-          "solution": "एक त्रिभुज की भुजाओं के लंब समद्विभाजक जिस बिंदु पर मिलते हैं, उसे परिकेंद्र कहते हैं। ऐसा इसलिए क्योंकि परिकेंद्र त्रिभुज के सभी शीर्षों से समान दूरी पर होता है। अंतःकेंद्र कोण समद्विभाजकों के काटने बिंदु पर होता है, केन्द्रक माध्यिकाओं के काटने बिंदु पर होता है और लंबकेंद्र ऊंचाइयों के काटने बिंदु पर होता है।",
-          "imageAlt": "एक त्रिभुज ABC जिसके शीर्ष A, B और C हैं।",
-          "critique": "All terms are standard Hindi geometry terms used in Indian textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "त्रिकोणात, जर बाजूंच्या लंब समद्विभाजक एका बिंदूवर भेटतात, तर त्या बिंदूचे नाव काय असते?",
-          "choices": [
-            "अंतःकेंद्र",
-            "भारकेंद्र",
-            "लंबकेंद्र",
-            "परिकेंद्र"
-          ],
-          "solution": "त्रिकोणाच्या बाजूंच्या लंब समद्विभाजक एका बिंदूवर भेटतात त्याला परिकेंद्र म्हणतात. हे कारण असे आहे की परिकेंद्र त्रिकोणाच्या सर्व शिरोबिंदूंपासून समान अंतरावर असतो. अंतःकेंद्र हे कोन समद्विभाजक भेटतात त्याचा बिंदू असतो, भारकेंद्र हे माध्यिकांचा बिंदू असतो आणि लंबकेंद्र हे लंबांचा बिंदू असतो.",
-          "imageAlt": "एक त्रिकोण ABC ज्याचे शिरोबिंदू A, B आणि C आहेत.",
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi geometry terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "A triangle ABC with vertices A, B, and C.",
-      "figure": {
-        "kind": "geometry",
-        "spec": {
-          "frame": {
-            "xMin": 0,
-            "xMax": 10,
-            "yMin": 0,
-            "yMax": 7,
-            "unit": "cm"
-          },
-          "points": [
-            {
-              "id": "A",
-              "x": 2,
-              "y": 2,
-              "label": "A"
-            },
-            {
-              "id": "B",
-              "x": 6,
-              "y": 2,
-              "label": "B"
-            },
-            {
-              "id": "C",
-              "x": 4,
-              "y": 5,
-              "label": "C"
-            }
-          ],
-          "segments": [
-            {
-              "from": "A",
-              "to": "B",
-              "label": "AB"
-            },
-            {
-              "from": "B",
-              "to": "C",
-              "label": "BC"
-            },
-            {
-              "from": "C",
-              "to": "A",
-              "label": "CA"
-            }
-          ],
-          "polygons": [
-            {
-              "vertices": [
-                "A",
-                "B",
-                "C"
-              ],
-              "shade": true
-            }
-          ]
-        },
-        "labels": {
-          "A": {
-            "en": "Vertex A"
-          },
-          "B": {
-            "en": "Vertex B"
-          },
-          "C": {
-            "en": "Vertex C"
-          },
-          "AB": {
-            "en": "Side AB",
-            "hi": "भुजा AB",
-            "mr": "बाजू AB"
-          },
-          "BC": {
-            "en": "Side BC",
-            "hi": "भुजा BC",
-            "mr": "बाजू BC"
-          },
-          "CA": {
-            "en": "Side CA",
-            "hi": "भुजा CA",
-            "mr": "बाजू CA"
-          }
-        }
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        "Confuses the definition of the incentre with the circumcentre",
-        "Refers to the centroid, which is the intersection of medians",
-        "Refers to the orthocentre, which is the intersection of altitudes",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is Circumcentre, as the perpendicular bisectors of the sides of a triangle meet at the circumcentre. The author's reasoning for the distractors is accurate and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 7,
-          "pageStart": 11,
-          "pageEnd": 12,
-          "headingPath": [
-            "1. Geometrical Constructions",
-            "Part One"
-          ]
-        },
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 8,
-          "pageStart": 12,
-          "pageEnd": 13,
-          "headingPath": [
-            "1. Geometrical Constructions",
-            "Part One"
-          ]
-        },
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 9,
-          "pageStart": 13,
-          "pageEnd": 15,
-          "headingPath": [
-            "1. Geometrical Constructions",
-            "Part One"
-          ]
-        }
-      ],
-      "edition": "2026 edition",
-      "generatedAt": "2026-10-31T10:18:02.875Z",
+      "generatedAt": "2026-11-01T21:08:57.679Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 6,
-      "stem": "In a triangle, if two angles are equal, what can be said about the sides opposite those angles?",
+      "stem": "In a triangle, if two angles are 30° and 60°, and the side opposite the 30° angle is 4 cm, what is the length of the hypotenuse?",
       "choices": [
-        "They are perpendicular",
-        "They are parallel",
-        "They are congruent",
-        "They are unequal"
+        "8 cm",
+        "6 cm",
+        "4 cm",
+        "12 cm"
       ],
-      "answerIndex": 2,
-      "solution": "In a triangle, if two angles are equal, the sides opposite those angles are congruent. This is a property of isosceles triangles. The other options are incorrect based on geometric principles.",
-      "checkExpr": null,
+      "answerIndex": 0,
+      "solution": "In a 30-60-90 triangle, the side opposite the 30° angle is half the hypotenuse. If this side is 4 cm, the hypotenuse must be twice that, which is 8 cm. The option 6 cm is incorrect because it is not twice the side opposite the 30° angle. The option 4 cm is the side opposite the 30° angle, not the hypotenuse. The option 12 cm is incorrect because it is not twice the side opposite the 30° angle.",
+      "checkExpr": "4*2",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक त्रिभुज में, यदि दो कोण बराबर हैं, तो उन कोणों के सम्मुख भुजाओं के बारे में क्या कहा जा सकता है?",
+          "stem": "एक त्रिभुज में, यदि दो कोण 30° और 60° हैं, और 30° के कोण के सामने वाली भुजा 4 सेमी है, तो कर्ण की लंबाई क्या है?",
           "choices": [
-            "वे लंब हैं",
-            "वे समांतर हैं",
-            "वे सर्वांगसम हैं",
-            "वे असमान हैं"
+            "8 सेमी",
+            "6 सेमी",
+            "4 सेमी",
+            "12 सेमी"
           ],
-          "solution": "एक त्रिभुज में, यदि दो कोण बराबर हैं, तो उन कोणों के सम्मुख भुजाएं सर्वांगसम होती हैं। यह समद्विबाहु त्रिभुज का गुण है। अन्य विकल्प ज्यामितीय सिद्धांतों के आधार पर गलत हैं।",
+          "solution": "30-60-90 त्रिभुज में, 30° के कोण के सामने वाली भुजा कर्ण की आधी होती है। यदि यह भुजा 4 सेमी है, तो कर्ण की लंबाई इसकी दोगुनी होनी चाहिए, जो 8 सेमी है। 6 सेमी विकल्प गलत है क्योंकि यह 30° के कोण के सामने वाली भुजा की दोगुनी नहीं है। 4 सेमी विकल्प गलत है क्योंकि यह 30° के कोण के सामने वाली भुजा है, न कि कर्ण। 12 सेमी विकल्प गलत है क्योंकि यह 30° के कोण के सामने वाली भुजा की दोगुनी नहीं है।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate use of standard Hindi mathematical terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms for a textbook context.",
           "flag": null
         },
         "mr": {
-          "stem": "त्रिकोणात जर दोन कोन बराबर असतील, तर त्या कोनांच्या विरुद्ध बाजूबद्दल काय म्हणायला शकता?",
+          "stem": "त्रिकोणात जर दोन कोन 30° आणि 60° असतील, आणि 30° कोनाच्या विरुद्ध बाजू 4 सेमी असेल, तर कर्णाची लांबी किती असेल?",
           "choices": [
-            "त्या लंब असतात",
-            "त्या समांतर असतात",
-            "त्या सर्वसम असतात",
-            "त्या असमान असतात"
+            "8 सेमी",
+            "6 सेमी",
+            "4 सेमी",
+            "12 सेमी"
           ],
-          "solution": "त्रिकोणात जर दोन कोन बराबर असतील, तर त्या कोनांच्या विरुद्ध बाजू सर्वसम असतात. हे समद्विभुज त्रिकोणाचे गुणधर्म आहे. इतर विकल्प भौमितिक नियमांवर आधारित असल्यामुळे चुकीचे आहेत.",
+          "solution": "30-60-90 त्रिकोणात, 30° कोनाच्या विरुद्ध बाजू कर्णाच्या अर्ध्या असते. जर ही बाजू 4 सेमी असेल, तर कर्ण त्याच्या दुप्पट असेल, जो 8 सेमी असेल. 6 सेमी चूक असेल कारण ही 30° कोनाच्या विरुद्ध बाजूच्या दुप्पट नाही. 4 सेमी ही 30° कोनाच्या विरुद्ध बाजू आहे, कर्ण नाही. 12 सेमी चूक असेल कारण ही 30° कोनाच्या विरुद्ध बाजूच्या दुप्पट नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for geometry.",
           "flag": null
         }
       },
@@ -578,20 +180,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the properties of perpendicular lines",
-        "Confuses the properties of parallel lines",
         null,
-        "Does not understand the concept of congruence"
+        "confuses the side opposite the 60° angle with the hypotenuse",
+        "mistakenly takes the given side as the hypotenuse",
+        "incorrectly multiplies by 3 instead of 2"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question correctly identifies that equal angles in a triangle imply congruent opposite sides, which is a fundamental property of isosceles triangles. The distractors reflect common misconceptions about perpendicularity, parallelism, and congruence.",
+      "critique": "The question correctly identifies a 30-60-90 triangle and applies the known property that the side opposite the 30° angle is half the hypotenuse. The solution is sound and matches the key.",
       "sources": [
         {
           "document": "balbharati/7/mathematics/703020004.pdf",
@@ -635,7 +237,7 @@
         }
       ],
       "edition": "2026 edition",
-      "generatedAt": "2026-10-31T10:18:02.875Z",
+      "generatedAt": "2026-11-01T21:08:57.679Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

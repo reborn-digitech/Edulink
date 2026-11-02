@@ -21,49 +21,49 @@
   "board": "BALBHARATI",
   "book": "८ वी गणित इंग्रजी",
   "edition": "First Edition 2018",
-  "generatedAt": "2026-11-01T01:00:05.668Z",
+  "generatedAt": "2026-11-02T07:44:34.984Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 3,
-      "stem": "Which test is used to determine the congruence of two right-angled triangles if the hypotenuse and one side of one triangle are congruent with the hypotenuse and the corresponding side of the other triangle?",
+      "difficulty": 1,
+      "stem": "What is the term used to describe two triangles that have exactly the same shape and size?",
       "choices": [
-        "SAS test",
-        "SSS test",
-        "ASA test",
-        "Hypotenuse - side test"
+        "Similar",
+        "Congruent",
+        "Identical",
+        "Equivalent"
       ],
-      "answerIndex": 3,
-      "solution": "The correct answer is Hypotenuse - side test. This is because when the hypotenuse and one side of a right-angled triangle are congruent to the hypotenuse and corresponding side of another right-angled triangle, the triangles are guaranteed to be congruent by this specific test. The SAS test requires two sides and the included angle, the SSS test requires all three sides to be congruent, and the ASA test requires two angles and the included side, none of which match the given conditions.",
+      "answerIndex": 1,
+      "solution": "Congruent is the term used to describe two triangles that have exactly the same shape and size. Similar triangles have the same shape but not necessarily the same size. Identical and equivalent are not specific terms used for triangles in geometry.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "दो समकोण त्रिभुजों के अनुरूपता की जांच करने के लिए कौन सा परीक्षण उपयोग किया जाता है यदि एक त्रिभुज की कर्ण और एक भुजा दूसरे त्रिभुज की कर्ण और संगत भुजा के अनुरूप होती है?",
+          "stem": "दो त्रिभुजों के लिए कौन सा शब्द प्रयोग किया जाता है जिनके ठीक एक ही आकार और आकृति होते हैं?",
           "choices": [
-            "SAS परीक्षण",
-            "SSS परीक्षण",
-            "ASA परीक्षण",
-            "कर्ण-भुजा परीक्षण"
+            "समरूप",
+            "सर्वांगसम",
+            "एकसमान",
+            "समतुल्य"
           ],
-          "solution": "सही उत्तर कर्ण-भुजा परीक्षण है। इसका कारण यह है कि यदि एक समकोण त्रिभुज की कर्ण और एक भुजा दूसरे समकोण त्रिभुज की कर्ण और संगत भुजा के अनुरूप होती है, तो इस विशिष्ट परीक्षण द्वारा त्रिभुजों के अनुरूप होने की गारंटी होती है। SAS परीक्षण में दो भुजाएं और समावेशित कोण की आवश्यकता होती है, SSS परीक्षण में सभी तीन भुजाओं के अनुरूप होने की आवश्यकता होती है, और ASA परीक्षण में दो कोण और समावेशित भुजा की आवश्यकता होती है, जिनमें से कोई भी दिए गए शर्तों के अनुरूप नहीं होता है।",
+          "solution": "सर्वांगसम शब्द का प्रयोग दो त्रिभुजों के लिए किया जाता है जिनके ठीक एक ही आकार और आकृति होते हैं। समरूप त्रिभुजों के ठीक एक ही आकार होता है लेकिन आवश्यक नहीं है कि उनका आकृति एक ही हो। एकसमान और समतुल्य शब्द ज्यामिति में त्रिभुजों के लिए विशिष्ट शब्द नहीं हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard mathematical terminology in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "दोन समकोन त्रिकोणांच्या एकरूपतेचा निर्धार करण्यासाठी कोणता चाचणी वापरली जाते जेव्हा एका त्रिकोणाच्या कर्ण आणि एका बाजूची लांबी दुसऱ्या त्रिकोणाच्या कर्ण आणि त्याच्या संगत बाजूच्या लांबीसोबत एकरूप असते?",
+          "stem": "दोन त्रिकोणांच्या एकसारख्या आकाराच्या आणि आकाराच्या वर्णनासाठी वापरलेला शब्द कोणता आहे?",
           "choices": [
-            "SAS चाचणी",
-            "SSS चाचणी",
-            "ASA चाचणी",
-            "कर्ण-बाजू चाचणी"
+            "समरूप",
+            "सर्वसम",
+            "एकसारखे",
+            "समतुल्य"
           ],
-          "solution": "योग्य उत्तर कर्ण-बाजू चाचणी आहे. कारण जेव्हा एका समकोन त्रिकोणाच्या कर्ण आणि एका बाजूची लांबी दुसऱ्या समकोन त्रिकोणाच्या कर्ण आणि संगत बाजूच्या लांबीसोबत एकरूप असते, तेव्हा ते त्रिकोण या विशिष्ट चाचणीद्वारे निश्चितपणे एकरूप असतात. SAS चाचणीमध्ये दोन बाजू आणि त्यांच्यातील समाविष्ट कोन आवश्यक असतात, SSS चाचणीमध्ये तीनही बाजू एकरूप असाव्यात आणि ASA चाचणीमध्ये दोन कोन आणि त्यांच्यातील समाविष्ट बाजू आवश्यक असतात, ज्यापैकी कोणताही अटी मागील अटींना जुमानत नाही.",
+          "solution": "सर्वसम हा दोन त्रिकोणांच्या एकसारख्या आकाराच्या आणि आकाराच्या वर्णनासाठी वापरलेला शब्द आहे. समरूप त्रिकोणांचा आकार एकसारखा असतो परंतु आकार एकसारखा असेल याची खात्री नसते. एकसारखे आणि समतुल्य हे ज्योमितीत त्रिकोणांसाठी वापरलेले विशिष्ट शब्द नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi geometry terminology used.",
           "flag": null
         }
       },
@@ -72,9 +72,199 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the hypotenuse - side test with the SAS test, which involves two sides and the included angle.",
-        "Confuses the hypotenuse - side test with the SSS test, which involves three sides.",
-        "Confuses the hypotenuse - side test with the ASA test, which involves two angles and the included side.",
+        "Refers to triangles with same shape but not size",
+        null,
+        "Does not understand the difference between congruence and identity",
+        "Does not know the correct terminology for triangles with same shape and size"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 'Congruent' as it is the standard geometric term for triangles with the same shape and size. The other options are either incorrect or not standard terminology in this context.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 56,
+          "pageStart": 91,
+          "pageEnd": 92,
+          "headingPath": [
+            "13. Congruence of triangles"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 57,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "13. Congruence of triangles"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 58,
+          "pageStart": 93,
+          "pageEnd": 95,
+          "headingPath": [
+            "13. Congruence of triangles"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T07:44:34.984Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "If two triangles are congruent, which of the following is true?",
+      "choices": [
+        "All corresponding sides are equal",
+        "All corresponding angles are equal",
+        "Both corresponding sides and angles are equal",
+        "Only corresponding sides are equal"
+      ],
+      "answerIndex": 2,
+      "solution": "If two triangles are congruent, both corresponding sides and angles are equal. This is because congruence means the triangles are identical in shape and size, which includes all corresponding parts. Only sides or only angles being equal would not guarantee congruence.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि दो त्रिभुज सर्वांगसम हैं, तो निम्नलिखित में से कौन सा सत्य है?",
+          "choices": [
+            "सभी संगत भुजाएं बराबर हैं",
+            "सभी संगत कोण बराबर हैं",
+            "सभी संगत भुजाएं और कोण बराबर हैं",
+            "केवल संगत भुजाएं बराबर हैं"
+          ],
+          "solution": "यदि दो त्रिभुज सर्वांगसम हैं, तो दोनों संगत भुजाएं और कोण बराबर होते हैं। इसका कारण यह है कि सर्वांगसमता का अर्थ है कि त्रिभुज आकृति और आकार में समान हैं, जिसमें सभी संगत भाग शामिल हैं। केवल भुजाएं या केवल कोण बराबर होने से सर्वांगसमता सुनिश्चित नहीं होती।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर दोन त्रिकोण सर्वसम असतील, तर खालीलपैकी कोणते खरे असते?",
+          "choices": [
+            "सर्व संगत बाजू बरोबर असतात",
+            "सर्व संगत कोन बरोबर असतात",
+            "संगत बाजू आणि कोन दोन्ही बरोबर असतात",
+            "केवळ संगत बाजू बरोबर असतात"
+          ],
+          "solution": "जर दोन त्रिकोण सर्वसम असतील, तर दोन्ही संगत बाजू आणि कोन बरोबर असतात. हे कारण असे आहे की सर्वसमता म्हणजे त्रिकोणांचा आकार आणि आकृती एकसारखी असणे, ज्यामुळे सर्व संगत भाग बरोबर असतात. केवळ बाजू वा केवळ कोन बरोबर असल्याने सर्वसमता खात्री करता येत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for geometry.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks congruence only involves sides",
+        "Thinks congruence only involves angles",
+        null,
+        "Does not understand that congruence involves all corresponding parts"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as congruent triangles have both corresponding sides and angles equal. The author's reasoning is sound and matches the standard definition of congruence.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 56,
+          "pageStart": 91,
+          "pageEnd": 92,
+          "headingPath": [
+            "13. Congruence of triangles"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 57,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "13. Congruence of triangles"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 58,
+          "pageStart": 93,
+          "pageEnd": 95,
+          "headingPath": [
+            "13. Congruence of triangles"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T07:44:34.984Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a test for congruence of triangles?",
+      "choices": [
+        "SSA",
+        "AAA",
+        "SAA",
+        "SSS"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct answer is SSS. The SSS test states that if three sides of one triangle are congruent to three sides of another triangle, then the triangles are congruent. SSA is not a valid test for congruence, AAA only proves similarity, and SAA is another name for ASA, which is a valid test but not the one being asked here.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा त्रिभुजों के अनुलोमन का परीक्षण है?",
+          "choices": [
+            "SSA",
+            "AAA",
+            "SAA",
+            "SSS"
+          ],
+          "solution": "सही उत्तर SSS है। SSS परीक्षण कहता है कि यदि एक त्रिभुज की तीन भुजाएं दूसरे त्रिभुज की तीन भुजाओं के अनुलोमी होती हैं, तो त्रिभुज अनुलोमी होते हैं। SSA अनुलोमन का वैध परीक्षण नहीं है, AAA केवल समरूपता साबित करता है, और SAA ASA का एक अन्य नाम है, जो एक वैध परीक्षण है लेकिन यहां पूछे गए परीक्षण के बराबर नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All technical terms like 'अनुलोमन' (congruence), 'समरूपता' (similarity), and the test names (SSA, AAA, SAA, SSS) are appropriately used and match standard Hindi textbook terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते त्रिकोणांच्या एकरूपतेचे परीक्षण आहे?",
+          "choices": [
+            "SSA",
+            "AAA",
+            "SAA",
+            "SSS"
+          ],
+          "solution": "बरोबर उत्तर SSS आहे. SSS परीक्षण सांगते की जर एका त्रिकोणाच्या तीन बाजू दुसऱ्या त्रिकोणाच्या तीन बाजूंसारख्या असतील तर त्रिकोण एकरूप असतात. SSA एकरूपतेचे वैध परीक्षण नाही, AAA केवळ समरूपता सिद्ध करते आणि SAA हे ASA चे दुसरे नाव आहे, जे वैध परीक्षण आहे परंतु जे विचारले जात नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses SSA with a valid test",
+        "Thinks AAA proves congruence",
+        "Confuses SAA with a valid test",
         null
       ],
       "solverAnswers": [
@@ -85,69 +275,78 @@
         3
       ],
       "levelFlag": null,
-      "critique": "The correct answer is the Hypotenuse-side test, which is specifically used for right-angled triangles. The author's reasoning is accurate and matches the standard geometric congruence criteria.",
+      "critique": "The correct answer is SSS. The author's solution is accurate, and the reasoning for the distractors reflects common misconceptions among students.",
       "sources": [
         {
           "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 59,
-          "pageStart": 95,
-          "pageEnd": 96,
+          "ordinal": 56,
+          "pageStart": 91,
+          "pageEnd": 92,
           "headingPath": [
             "13. Congruence of triangles"
           ]
         },
         {
           "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 60,
-          "pageStart": 96,
-          "pageEnd": 97,
+          "ordinal": 57,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "13. Congruence of triangles"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 58,
+          "pageStart": 93,
+          "pageEnd": 95,
           "headingPath": [
             "13. Congruence of triangles"
           ]
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T01:00:05.668Z",
+      "generatedAt": "2026-11-02T07:44:34.984Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "Two triangles are congruent by the SSS test. What must be true about the triangles?",
+      "difficulty": 2,
+      "stem": "If two triangles are congruent, what can be said about their corresponding angles?",
       "choices": [
-        "They have three sides equal",
-        "They have two sides and one angle equal",
-        "They have two angles and one side equal",
-        "They have two angles and two sides equal"
+        "They are not congruent",
+        "They are congruent",
+        "They are supplementary",
+        "They are complementary"
       ],
-      "answerIndex": 0,
-      "solution": "The SSS test states that if three sides of one triangle are congruent to the corresponding sides of another triangle, the triangles are congruent. The correct option directly states this condition. The second option refers to the SAS test, not SSS. The third option refers to the ASA or AAS test. The fourth option is incorrect because it refers to two angles and two sides, which is not the SSS test.",
+      "answerIndex": 1,
+      "solution": "The correct answer is They are congruent. If two triangles are congruent, their corresponding angles are congruent because congruence implies that all corresponding parts (angles and sides) are equal in measure. The other options are incorrect because congruent triangles do not have supplementary or complementary angles, and they are not non-congruent.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "दो त्रिभुज SSS परीक्षण द्वारा सर्वांगसम हैं। त्रिभुजों के बारे में क्या आवश्यक रूप से सत्य होना चाहिए?",
+          "stem": "यदि दो त्रिभुज सर्वांगसम हैं, तो उनके संगत कोणों के बारे में क्या कहा जा सकता है?",
           "choices": [
-            "उनके तीन भुजाएं समान हैं",
-            "उनके दो भुजाएं और एक कोण समान हैं",
-            "उनके दो कोण और एक भुजा समान हैं",
-            "उनके दो कोण और दो भुजाएं समान हैं"
+            "वे सर्वांगसम नहीं हैं",
+            "वे सर्वांगसम हैं",
+            "वे संपूरक हैं",
+            "वे पूरक हैं"
           ],
-          "solution": "SSS परीक्षण कहता है कि यदि एक त्रिभुज की तीन भुजाएं दूसरे त्रिभुज की संगत भुजाओं के सर्वांगसम होती हैं, तो त्रिभुज सर्वांगसम होते हैं। सही विकल्प इस स्थिति को सीधे बताता है। दूसरा विकल्प SAS परीक्षण को संदर्भित करता है, न कि SSS। तीसरा विकल्प ASA या AAS परीक्षण को संदर्भित करता है। चौथा विकल्प गलत है क्योंकि यह दो कोण और दो भुजाओं को संदर्भित करता है, जो SSS परीक्षण नहीं है।",
+          "solution": "सही उत्तर वे सर्वांगसम हैं। यदि दो त्रिभुज सर्वांगसम हैं, तो उनके संगत कोण सर्वांगसम होते हैं क्योंकि सर्वांगसमता का अर्थ है कि सभी संगत भाग (कोण और भुजाएं) माप में समान होते हैं। अन्य विकल्प गलत हैं क्योंकि सर्वांगसम त्रिभुजों के कोण संपूरक या पूरक नहीं होते हैं, और वे असर्वांगसम नहीं होते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, uses standard technical terms, and preserves the structure and logic of the original question.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All options are correctly translated, and the correct answer remains in the same position. The distractors remain incorrect, and the technical terms used are standard in Hindi mathematics textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "तीन बाजू चाचणीनुसार दोन त्रिकोण एकरूप आहेत. त्रिकोणांबद्दल काय खात्री असावी?",
+          "stem": "जर दोन त्रिकोण सर्वसम असतील, तर त्यांच्या संगत कोनांबद्दल काय म्हणता येईल?",
           "choices": [
-            "त्यांच्या तीन बाजू बरोबर आहेत",
-            "त्यांच्या दोन बाजू आणि एक कोन बरोबर आहेत",
-            "त्यांच्या दोन कोन आणि एक बाजू बरोबर आहेत",
-            "त्यांच्या दोन कोन आणि दोन बाजू बरोबर आहेत"
+            "ते सर्वसम नाहीत",
+            "ते सर्वसम आहेत",
+            "ते पूरक आहेत",
+            "ते संपूरक आहेत"
           ],
-          "solution": "SSS चाचणीनुसार, जर एका त्रिकोणाच्या तीन बाजू दुसऱ्या त्रिकोणाच्या संगत बाजूंच्या बरोबर असतील, तर त्रिकोण एकरूप असतात. बरोबर विकल्प ही अट स्पष्टपणे सांगतो. दुसरा विकल्प SAS चाचणीला संदर्भित करतो, SSS ला नाही. तिसरा विकल्प ASA किंवा AAS चाचणीला संदर्भित करतो. चौथा विकल्प चुकीचा आहे कारण तो दोन कोन आणि दोन बाजूंच्या बरोबर असण्याच्या बाबतीत बोलतो, जे SSS चाचणी नाही.",
+          "solution": "बरोबर उत्तर ते सर्वसम आहेत. जर दोन त्रिकोण सर्वसम असतील, तर त्यांच्या संगत कोन सर्वसम असतात कारण सर्वसमता असल्यास सर्व संगत भाग (कोन आणि बाजू) एकसारख्या मापात असतात. उरलेल्या विकल्पांमध्ये चूक आहे कारण सर्वसम त्रिकोणांचे कोन पूरक किंवा संपूरक नसतात आणि ते सर्वसम नसतात.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -158,20 +357,210 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Thinks congruent triangles have non-congruent angles",
         null,
-        "confuses SAS with SSS",
-        "confuses ASA or AAS with SSS",
-        "confuses AAS with SSS"
+        "Thinks congruent angles are supplementary",
+        "Thinks congruent angles are complementary"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed. The correct answer is clearly option 0, and the author's reasoning for the distractors aligns with common misconceptions about triangle congruence tests.",
+      "critique": "The question is well-constructed and the solution is logically sound. The correct answer is 1, and the reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 56,
+          "pageStart": 91,
+          "pageEnd": 92,
+          "headingPath": [
+            "13. Congruence of triangles"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 57,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "13. Congruence of triangles"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 58,
+          "pageStart": 93,
+          "pageEnd": 95,
+          "headingPath": [
+            "13. Congruence of triangles"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T07:44:34.984Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "In the given figure, if AB = PQ, BC = QR, and AC = PR, which congruence test can be used to prove that the triangles are congruent?",
+      "choices": [
+        "SAS",
+        "ASA",
+        "AAS",
+        "SSS"
+      ],
+      "answerIndex": 3,
+      "solution": "The SSS (Side-Side-Side) congruence test states that if all three sides of one triangle are equal to the corresponding sides of another triangle, then the triangles are congruent. In this case, all three sides of triangle ABC are equal to the corresponding sides of triangle PQR, so the SSS test applies.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "दिए गए चित्र में, यदि AB = PQ, BC = QR और AC = PR, तो त्रिभुजों के सर्वांगसम होने के लिए कौन सा सर्वांगसमता का परीक्षण उपयोग किया जा सकता है?",
+          "choices": [
+            "SAS",
+            "ASA",
+            "AAS",
+            "SSS"
+          ],
+          "solution": "SSS (भुजा-भुजा-भुजा) सर्वांगसमता के परीक्षण के अनुसार, यदि एक त्रिभुज की तीनों भुजाएं दूसरे त्रिभुज की संगत भुजाओं के बराबर होती हैं, तो त्रिभुज सर्वांगसम होते हैं। इस मामले में त्रिभुज ABC की तीनों भुजाएं त्रिभुज PQR की संगत भुजाओं के बराबर हैं, इसलिए SSS परीक्षण लागू होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard mathematical terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "दिलेल्या आकृतीत, जर AB = PQ, BC = QR आणि AC = PR, तर त्रिकोणांच्या एकरूपतेचा तपासण्यासाठी कोणता एकरूपतेचा परीक्षण वापरता येईल?",
+          "choices": [
+            "SAS",
+            "ASA",
+            "AAS",
+            "SSS"
+          ],
+          "solution": "SSS (बाजू-बाजू-बाजू) एकरूपतेच्या परीक्षणाचा अर्थ असा आहे की जर एका त्रिकोणाच्या तीन बाजू दुसऱ्या त्रिकोणाच्या संगत बाजूंसोबत बरोबर असतील, तर त्रिकोण एकरूप असतात. या प्रकरणात, त्रिकोण ABC च्या तीन बाजू त्रिकोण PQR च्या संगत बाजूंसोबत बरोबर असतात, म्हणून SSS परीक्षण लागू होते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for geometric concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses SSS with SAS",
+        "Thinks ASA is applicable when only sides are given",
+        "Thinks AAS is applicable when only sides are given",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is correctly formulated. The correct answer is SSS, as all three sides of one triangle are equal to the corresponding sides of the other triangle. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 56,
+          "pageStart": 91,
+          "pageEnd": 92,
+          "headingPath": [
+            "13. Congruence of triangles"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 57,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "13. Congruence of triangles"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 58,
+          "pageStart": 93,
+          "pageEnd": 95,
+          "headingPath": [
+            "13. Congruence of triangles"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T07:44:34.984Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "In a right-angled triangle, if the hypotenuse and one side are congruent to the hypotenuse and one side of another right-angled triangle, which test is used to prove congruence?",
+      "choices": [
+        "SSS test",
+        "ASA test",
+        "SAS test",
+        "Hypotenuse-side test"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct answer is the Hypotenuse-side test, which states that if the hypotenuse and a side of a right-angled triangle are congruent to the hypotenuse and corresponding side of another right-angled triangle, the triangles are congruent. The other tests do not specifically apply to right-angled triangles.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक समकोण त्रिभुज में, यदि कर्ण एवं एक भुजा दूसरे समकोण त्रिभुज के कर्ण एवं एक भुजा के सर्वांगसम होती हैं, तो सर्वांगसमता सिद्ध करने के लिए कौन-सा परीक्षण प्रयोग किया जाता है?",
+          "choices": [
+            "SSS परीक्षण",
+            "ASA परीक्षण",
+            "SAS परीक्षण",
+            "कर्ण-भुजा परीक्षण"
+          ],
+          "solution": "सही उत्तर कर्ण-भुजा परीक्षण है, जो कहता है कि यदि एक समकोण त्रिभुज के कर्ण एवं एक भुजा दूसरे समकोण त्रिभुज के कर्ण एवं संगत भुजा के सर्वांगसम होती हैं, तो त्रिभुज सर्वांगसम होते हैं। अन्य परीक्षण समकोण त्रिभुजों के लिए विशिष्ट रूप से लागू नहीं होते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the technical terms used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "समकोन त्रिकोणात, जर कर्ण आणि एक बाजू दुसऱ्या समकोन त्रिकोणाच्या कर्ण आणि एका बाजूशी एकरूप असतील, तर एकरूपता सिद्ध करण्यासाठी कोणता परीक्षण वापरला जातो?",
+          "choices": [
+            "SSS परीक्षण",
+            "ASA परीक्षण",
+            "SAS परीक्षण",
+            "कर्ण-बाजू परीक्षण"
+          ],
+          "solution": "योग्य उत्तर कर्ण-बाजू परीक्षण आहे, जे सांगते की जर समकोन त्रिकोणाच्या कर्ण आणि एका बाजूची दुसऱ्या समकोन त्रिकोणाच्या कर्ण आणि अनुरूप बाजूशी एकरूपता असेल तर त्रिकोण एकरूप असतात. इतर परीक्षणे समकोन त्रिकोणांसाठी विशिष्टपणे लागू होत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses SSS with Hypotenuse-side",
+        "Confuses ASA with Hypotenuse-side",
+        "Confuses SAS with Hypotenuse-side",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is the Hypotenuse-side test, which is a specific case for right-angled triangles. The other options are general congruence tests that do not apply in this context. The author's reasoning for the distractors is valid, as students may confuse these tests.",
       "sources": [
         {
           "document": "balbharati/8/mathematics/803020004.pdf",
@@ -193,49 +582,49 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T01:00:05.668Z",
+      "generatedAt": "2026-11-02T07:44:34.984Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 4,
-      "stem": "In the given figure, if segments AB and CB are congruent, segments DA and DC are congruent, and segment AC is common, which test is used to prove that triangles ABD and CBD are congruent?",
+      "stem": "In a figure, two triangles have their corresponding sides marked as congruent. What is the test and the correspondence of vertices that can be used to prove their congruence?",
       "choices": [
-        "SAS test",
-        "SSS test",
-        "ASA test",
-        "AAS test"
+        "SAS test, ABC « DEF",
+        "SSS test, ABC « DEF",
+        "ASA test, ABC « DEF",
+        "AAS test, ABC « DEF"
       ],
       "answerIndex": 1,
-      "solution": "The correct answer is SSS test. This is because three sides of triangle ABD are congruent to three corresponding sides of triangle CBD: AB is congruent to CB, DA is congruent to DC, and AC is common to both triangles. The SAS test requires two sides and the included angle, the ASA test requires two angles and the included side, and the AAS test requires two angles and a non-included side, none of which are provided in this scenario.",
+      "solution": "The SSS test states that if three sides of one triangle are congruent to three sides of another triangle, then the triangles are congruent. Since the figure shows all corresponding sides as congruent, the SSS test applies, and the correspondence ABC « DEF is correct. The other options, like SAS, ASA, and AAS, require different combinations of sides and angles, which are not provided here.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "दिए गए आकृति में, यदि खंड AB और CB सर्वांगसम हैं, खंड DA और DC सर्वांगसम हैं, और खंड AC उभयनिष्ठ है, तो त्रिभुज ABD और CBD के सर्वांगसम होने के लिए किस परीक्षण का उपयोग किया जाता है?",
+          "stem": "एक आकृति में, दो त्रिभुजों की संगत भुजाएं अंकित की गई हैं। उनके सर्वांगसमता सिद्ध करने के लिए कौन सा परीक्षण और शीर्षों की संगति का उपयोग किया जा सकता है?",
           "choices": [
-            "SAS परीक्षण",
-            "SSS परीक्षण",
-            "ASA परीक्षण",
-            "AAS परीक्षण"
+            "SAS परीक्षण, ABC « DEF",
+            "SSS परीक्षण, ABC « DEF",
+            "ASA परीक्षण, ABC « DEF",
+            "AAS परीक्षण, ABC « DEF"
           ],
-          "solution": "सही उत्तर SSS परीक्षण है। इसका कारण त्रिभुज ABD की तीन भुजाएं त्रिभुज CBD की तीन संगत भुजाओं के सर्वांगसम हैं: AB, CB के सर्वांगसम है, DA, DC के सर्वांगसम है, और AC दोनों त्रिभुजों के लिए उभयनिष्ठ है। SAS परीक्षण में दो भुजाएं और उनके बीच का कोण की आवश्यकता होती है, ASA परीक्षण में दो कोण और उनके बीच की भुजा की आवश्यकता होती है, और AAS परीक्षण में दो कोण और एक अनुप्रयुक्त भुजा की आवश्यकता होती है, जिनमें से कोई भी इस परिस्थिति में उपलब्ध नहीं है।",
+          "solution": "SSS परीक्षण कहता है कि यदि एक त्रिभुज की तीन भुजाएं दूसरे त्रिभुज की तीन भुजाओं के सर्वांगसम होती हैं, तो त्रिभुज सर्वांगसम होते हैं। चूंकि आकृति में सभी संगत भुजाएं सर्वांगसम दिखाई देती हैं, SSS परीक्षण लागू होता है, और संगति ABC « DEF सही है। अन्य विकल्प, जैसे SAS, ASA और AAS, जिनमें भुजाओं और कोणों के अलग-अलग संयोजन की आवश्यकता होती है, जो यहां उपलब्ध नहीं हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard Indian curriculum terminology for triangle congruence tests.",
           "flag": null
         },
         "mr": {
-          "stem": "दिलेल्या आकृतीत, जर खुंटी AB आणि CB समान असतील, खुंटी DA आणि DC समान असतील, आणि खुंटी AC सामायिक असेल, तर त्रिकोण ABD आणि CBD च्या सर्वसमतेचे परीक्षण कोणते वापरले जाते?",
+          "stem": "एका आकृतीत, दोन त्रिकोणांच्या संगत बाजू एकरूप असल्याचे चिन्हित केले आहेत. त्यांच्या एकरूपतेची चाचणी आणि शीर्षकांची संगती कोणती वापरता येईल?",
           "choices": [
-            "SAS परीक्षण",
-            "SSS परीक्षण",
-            "ASA परीक्षण",
-            "AAS परीक्षण"
+            "SAS चाचणी, ABC « DEF",
+            "SSS चाचणी, ABC « DEF",
+            "ASA चाचणी, ABC « DEF",
+            "AAS चाचणी, ABC « DEF"
           ],
-          "solution": "योग्य उत्तर SSS परीक्षण आहे. हे कारण त्रिकोण ABD च्या तीन बाजू त्रिकोण CBD च्या तीन संगत बाजूंशी समान असतात: AB, CB शी समान आहे, DA, DC शी समान आहे, आणि AC दोन्ही त्रिकोणांसाठी सामायिक आहे. SAS परीक्षणमध्ये दोन बाजू आणि त्यांच्यातील कोन आवश्यक असतात, ASA परीक्षणमध्ये दोन कोन आणि त्यांच्यातील बाजू आवश्यक असतात, आणि AAS परीक्षणमध्ये दोन कोन आणि एक असंगत बाजू आवश्यक असतात, ज्यापैकी कोणतेही या परिस्थितीत उपलब्ध नाही.",
+          "solution": "SSS चाचणी सांगते की जर एका त्रिकोणाच्या तीन बाजू दुसऱ्या त्रिकोणाच्या तीन बाजूंसह एकरूप असतील तर त्रिकोण एकरूप असतात. आकृतीत सर्व संगत बाजू एकरूप असल्याने SSS चाचणी लागू होते आणि ABC « DEF संगती बरोबर आहे. इतर विकल्प, जसे की SAS, ASA आणि AAS, ज्यांना बाजू आणि कोनांच्या विविध संयोजनांची आवश्यकता असते, जे येथे उपलब्ध नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for congruence tests.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -244,10 +633,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the SSS test with the SAS test, which involves two sides and the included angle.",
+        "Refers to SAS test which involves two sides and an included angle",
         null,
-        "Confuses the SSS test with the ASA test, which involves two angles and the included side.",
-        "Confuses the SSS test with the AAS test, which involves two angles and a non-included side."
+        "Refers to ASA test which involves two angles and an included side",
+        "Refers to AAS test which involves two angles and a non-included side"
       ],
       "solverAnswers": [
         1,
@@ -257,7 +646,7 @@
         1
       ],
       "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. The triangles ABD and CBD share side AC, and AB = CB, DA = DC, so all three sides of each triangle are congruent, satisfying the SSS test.",
+      "critique": "The question is well-posed and the solution correctly identifies SSS as the appropriate test when three corresponding sides are congruent. The reasoning for the distractors is accurate and reflects common misconceptions.",
       "sources": [
         {
           "document": "balbharati/8/mathematics/803020004.pdf",
@@ -279,61 +668,175 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T01:00:05.668Z",
+      "generatedAt": "2026-11-02T07:44:34.984Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "In the given figure, if two sides and the included angle of one triangle are congruent with the corresponding parts of the other triangle, which test is used to prove the congruence of the triangles?",
+      "stem": "In the given figure, AB is congruent to PQ, BC is congruent to QR, and AC is congruent to PR. Which of the following statements is correct?",
       "choices": [
-        "SAS test",
-        "SSS test",
-        "ASA test",
-        "AAS test"
+        "DABC @ DPQR",
+        "DABC @ DQPR",
+        "DBAC @ DQPR",
+        "DABC @ DQRP"
       ],
       "answerIndex": 0,
-      "solution": "The correct answer is SAS test. This is because when two sides and the included angle of one triangle are congruent to the corresponding parts of another triangle, the triangles are congruent by the SAS (Side-Angle-Side) test. The SSS test requires all three sides to be congruent, the ASA test involves two angles and the included side, and the AAS test involves two angles and a non-included side.",
+      "solution": "The correct answer is DABC @ DPQR. Since all three sides of triangle ABC are congruent to the corresponding sides of triangle PQR, the triangles are congruent by the SSS test. The order of the vertices in the congruence statement must match the corresponding sides. DABC @ DPQR correctly represents this correspondence. The other options show incorrect vertex orderings that do not match the congruent sides.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "दिए गए आकृति में, यदि एक त्रिभुज के दो भुजाएं और उनके अंतर्गत कोण दूसरे त्रिभुज के संगत भागों के बराबर हैं, तो त्रिभुजों के सर्वांगसम होने के लिए कौन सा परीक्षण उपयोग किया जाता है?",
+          "stem": "दिए गए आकृति में, AB, PQ के सर्वांगसम है, BC, QR के सर्वांगसम है, और AC, PR के सर्वांगसम है। निम्नलिखित में से कौन सा कथन सही है?",
           "choices": [
-            "SAS परीक्षण",
-            "SSS परीक्षण",
-            "ASA परीक्षण",
-            "AAS परीक्षण"
+            "DABC @ DPQR",
+            "DABC @ DQPR",
+            "DBAC @ DQPR",
+            "DABC @ DQRP"
           ],
-          "solution": "सही उत्तर SAS परीक्षण है। इसका कारण यह है कि जब एक त्रिभुज की दो भुजाएं और उनके अंतर्गत कोण दूसरे त्रिभुज के संगत भागों के बराबर होते हैं, तो त्रिभुज SAS (भुजा-कोण-भुजा) परीक्षण द्वारा सर्वांगसम होते हैं। SSS परीक्षण में सभी तीन भुजाएं बराबर होनी चाहिए, ASA परीक्षण में दो कोण और अंतर्गत भुजा शामिल होती है, और AAS परीक्षण में दो कोण और अंतर्गत नहीं वाली भुजा शामिल होती है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology as found in Hindi textbooks.",
+          "solution": "सही उत्तर DABC @ DPQR है। क्योंकि त्रिभुज ABC की सभी तीन भुजाएं त्रिभुज PQR की संगत भुजाओं के सर्वांगसम हैं, त्रिभुज सर्वांगसम हैं। सर्वांगसमता कथन में शीर्षों का क्रम संगत भुजाओं के साथ मेल खाना चाहिए। DABC @ DPQR सही संगति का प्रतिनिधित्व करता है। अन्य विकल्प गलत शीर्ष क्रमों को दर्शाते हैं जो सर्वांगसम भुजाओं के साथ मेल नहीं खाते।",
+          "imageAlt": "दो त्रिभुज, ABC और PQR, जिनकी संगत भुजाएं AB = PQ, BC = QR, और AC = PR हैं।",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, with the correct answer in the same position. The technical terms like 'सर्वांगसम' (congruent) and 'त्रिभुज' (triangle) are standard in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "आकृतीत, जर एका त्रिकोणाच्या दोन बाजू आणि त्यांचा समावेश करणारा कोन दुसऱ्या त्रिकोणाच्या संगत भागांशी एकरूप असतील, तर त्रिकोणांच्या एकरूपतेचे पुष्टीकरण करण्यासाठी कोणता परीक्षण वापरला जातो?",
+          "stem": "दिलेल्या आकृतीत, AB हा PQ ला अनुलोम, BC हा QR ला अनुलोम आणि AC हा PR ला अनुलोम आहे. खालीलपैकी कोणता विधान बरोबर आहे?",
           "choices": [
-            "SAS परीक्षण",
-            "SSS परीक्षण",
-            "ASA परीक्षण",
-            "AAS परीक्षण"
+            "DABC @ DPQR",
+            "DABC @ DQPR",
+            "DBAC @ DQPR",
+            "DABC @ DQRP"
           ],
-          "solution": "सही उत्तर SAS परीक्षण आहे. कारण जेव्हा एका त्रिकोणाच्या दोन बाजू आणि त्यांचा समावेश करणारा कोन दुसऱ्या त्रिकोणाच्या संगत भागांशी एकरूप असतात, तेव्हा ते त्रिकोण SAS (बाजू-कोन-बाजू) परीक्षणाने एकरूप असतात. SSS परीक्षणासाठी तीन बाजू एकरूप असणे आवश्यक असते, ASA परीक्षणात दोन कोन आणि त्यांचा समावेश करणारी बाजू असते आणि AAS परीक्षणात दोन कोन आणि असमावेश करणारी बाजू असते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "solution": "बरोबर उत्तर DABC @ DPQR आहे. कारण त्रिकोण ABC च्या तीन बाजू त्रिकोण PQR च्या संगत बाजूंशी अनुलोम आहेत, त्यामुळे त्रिकोण SSS चाचणीनुसार अनुलोम आहेत. अनुलोम विधानात शिरोबिंदूंची क्रमानुसार नोंद करावी लागते. DABC @ DPQR हे या संगतीचे योग्य प्रतिनिधित्व करते. इतर विकल्पांमध्ये अनुलोम बाजूंशी जुळत नसलेल्या शिरोबिंदूंची चुकीची क्रमानुसार नोंद करण्यात आली आहे.",
+          "imageAlt": "दोन त्रिकोण, ABC आणि PQR, ज्यांच्या संगत बाजू AB = PQ, BC = QR आणि AC = PR आहेत.",
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate geometric terminology.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
+      "imageAlt": "Two triangles, ABC and PQR, with corresponding sides AB = PQ, BC = QR, and AC = PR.",
+      "figure": {
+        "kind": "geometry",
+        "spec": {
+          "frame": {
+            "xMin": 0,
+            "xMax": 100,
+            "yMin": 0,
+            "yMax": 70,
+            "unit": "units"
+          },
+          "points": [
+            {
+              "id": "A",
+              "x": 10,
+              "y": 20,
+              "label": "A"
+            },
+            {
+              "id": "B",
+              "x": 30,
+              "y": 20,
+              "label": "B"
+            },
+            {
+              "id": "C",
+              "x": 15,
+              "y": 40,
+              "label": "C"
+            },
+            {
+              "id": "P",
+              "x": 60,
+              "y": 20,
+              "label": "P"
+            },
+            {
+              "id": "Q",
+              "x": 80,
+              "y": 20,
+              "label": "Q"
+            },
+            {
+              "id": "R",
+              "x": 65,
+              "y": 40,
+              "label": "R"
+            }
+          ],
+          "segments": [
+            {
+              "from": "A",
+              "to": "B",
+              "label": "AB"
+            },
+            {
+              "from": "B",
+              "to": "C",
+              "label": "BC"
+            },
+            {
+              "from": "A",
+              "to": "C",
+              "label": "AC"
+            },
+            {
+              "from": "P",
+              "to": "Q",
+              "label": "PQ"
+            },
+            {
+              "from": "Q",
+              "to": "R",
+              "label": "QR"
+            },
+            {
+              "from": "P",
+              "to": "R",
+              "label": "PR"
+            }
+          ],
+          "texts": []
+        },
+        "labels": {
+          "AB": {
+            "en": "AB",
+            "hi": "AB",
+            "mr": "AB"
+          },
+          "BC": {
+            "en": "BC",
+            "hi": "BC",
+            "mr": "BC"
+          },
+          "AC": {
+            "en": "AC",
+            "hi": "AC",
+            "mr": "AC"
+          },
+          "PQ": {
+            "en": "PQ",
+            "hi": "PQ",
+            "mr": "PQ"
+          },
+          "QR": {
+            "en": "QR",
+            "hi": "QR",
+            "mr": "QR"
+          },
+          "PR": {
+            "en": "PR",
+            "hi": "PR",
+            "mr": "PR"
+          }
+        }
+      },
+      "needsFigure": true,
       "distractorReason": [
         null,
-        "Confuses the condition of two sides and an included angle with three sides being congruent",
-        "Student confuses included angle with non-included side in congruence tests",
-        "Confuses AAS with SAS due to similar wording about two angles and a side"
+        "Confuses the order of vertices in the congruence statement, thinking that the order of the second triangle can be rearranged without considering the one-to-one correspondence",
+        "Confuses the order of vertices in the triangle congruence notation",
+        "Confuses the order of vertices in the congruence statement, thinking that the last letters correspond regardless of the triangle's orientation"
       ],
       "solverAnswers": [
         0,
@@ -343,336 +846,38 @@
         0
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is clear and the correct answer is SAS. The reasoning provided by the author is accurate and matches the standard congruence criteria for triangles.",
+      "critique": "The solution is correct. The congruence is based on SSS, and the order of the vertices in the congruence statement must match the corresponding sides. Option 0 correctly reflects this.",
       "sources": [
         {
           "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 59,
-          "pageStart": 95,
-          "pageEnd": 96,
+          "ordinal": 56,
+          "pageStart": 91,
+          "pageEnd": 92,
           "headingPath": [
             "13. Congruence of triangles"
           ]
         },
         {
           "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 60,
-          "pageStart": 96,
-          "pageEnd": 97,
+          "ordinal": 57,
+          "pageStart": 92,
+          "pageEnd": 93,
+          "headingPath": [
+            "13. Congruence of triangles"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 58,
+          "pageStart": 93,
+          "pageEnd": 95,
           "headingPath": [
             "13. Congruence of triangles"
           ]
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T01:00:05.668Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "In the given figure, two triangles have two sides and a non-included angle congruent. Can these triangles be congruent?",
-      "choices": [
-        "Yes, by ASA test",
-        "No, because the angle is not included",
-        "Yes, by AAS test",
-        "No, because the side is not congruent"
-      ],
-      "answerIndex": 1,
-      "solution": "The AAS test requires two angles and a non-included side, not two sides and a non-included angle. The figure shows two sides and a non-included angle, which does not satisfy the AAS or ASA conditions. The correct answer is that the triangles cannot be proven congruent because the angle is not included between the sides. The first option is incorrect because it refers to ASA. The third option is incorrect because it refers to AAS, which is not applicable here. The fourth option is incorrect because the sides are congruent, as shown in the figure.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "दिए गए चित्र में, दो त्रिभुजों में दो भुजाएं और एक अंतर्गत कोण सर्वांगसम हैं। क्या ये त्रिभुज सर्वांगसम हो सकते हैं?",
-          "choices": [
-            "हाँ, ASA परीक्षण द्वारा",
-            "नहीं, क्योंकि कोण अंतर्गत नहीं है",
-            "हाँ, AAS परीक्षण द्वारा",
-            "नहीं, क्योंकि भुजा सर्वांगसम नहीं है"
-          ],
-          "solution": "AAS परीक्षण दो कोणों और एक अंतर्गत भुजा की आवश्यकता होती है, न कि दो भुजाओं और एक अंतर्गत कोण की। चित्र में दो भुजाएं और एक अंतर्गत कोण दिखाया गया है, जो AAS या ASA की शर्तों को पूरा नहीं करता। सही उत्तर यह है कि त्रिभुजों को सर्वांगसम साबित नहीं किया जा सकता क्योंकि कोण भुजाओं के बीच नहीं है। पहला विकल्प गलत है क्योंकि यह ASA के संदर्भ में है। तीसरा विकल्प गलत है क्योंकि यह AAS के संदर्भ में है, जो यहां लागू नहीं होता। चौथा विकल्प गलत है क्योंकि भुजाएं सर्वांगसम हैं, जैसा कि चित्र में दिखाया गया है।",
-          "imageAlt": "दो त्रिभुज जिनमें दो भुजाएं और एक अंतर्गत कोण चिह्नित रूप से सर्वांगसम हैं।",
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a Hindi-medium math context.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "दिलेल्या आकृतीत, दोन त्रिकोणांमध्ये दोन बाजू आणि एक असमावेशित कोन समान आहेत. या त्रिकोणांना सर्वसम मानता येईल का?",
-          "choices": [
-            "होय, कारण ASA परीक्षणाने",
-            "नाही, कारण कोन असमावेशित आहे",
-            "होय, कारण AAS परीक्षणाने",
-            "नाही, कारण बाजू समान नाहीत"
-          ],
-          "solution": "AAS परीक्षणासाठी दोन कोन आणि एक असमावेशित बाजू आवश्यक असते, दोन बाजू आणि एक असमावेशित कोन नाही. आकृतीत दोन बाजू आणि एक असमावेशित कोन दाखवला आहे, जो AAS किंवा ASA च्या अटी निर्दिष्ट करत नाही. योग्य उत्तर असे आहे की त्रिकोण सर्वसम दाखवता येत नाहीत कारण कोन बाजूंमध्ये असमावेशित आहे. पहिला विकल्प अशा कारणामुळे चूक आहे कारण तो ASA वर उल्लेख करतो. तिसरा विकल्प अशा कारणामुळे चूक आहे कारण तो AAS वर उल्लेख करतो, जो येथे लागू होत नाही. चौथा विकल्प अशा कारणामुळे चूक आहे कारण बाजू समान आहेत, जे आकृतीत दाखवले आहे.",
-          "imageAlt": "दोन त्रिकोण ज्यांमध्ये दोन बाजू आणि एक असमावेशित कोन चिन्हांकित केले आहेत.",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for geometry.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "Two triangles with two sides and a non-included angle marked as congruent.",
-      "figure": {
-        "kind": "geometry",
-        "spec": {
-          "frame": {
-            "xMin": 0,
-            "xMax": 100,
-            "yMin": 0,
-            "yMax": 70,
-            "unit": "cm"
-          },
-          "points": [
-            {
-              "id": "A",
-              "x": 20,
-              "y": 30,
-              "label": "A"
-            },
-            {
-              "id": "B",
-              "x": 40,
-              "y": 30,
-              "label": "B"
-            },
-            {
-              "id": "C",
-              "x": 20,
-              "y": 50,
-              "label": "C"
-            },
-            {
-              "id": "D",
-              "x": 60,
-              "y": 30,
-              "label": "D"
-            },
-            {
-              "id": "E",
-              "x": 80,
-              "y": 30,
-              "label": "E"
-            },
-            {
-              "id": "F",
-              "x": 60,
-              "y": 50,
-              "label": "F"
-            }
-          ],
-          "segments": [
-            {
-              "from": "A",
-              "to": "B",
-              "label": "side1",
-              "length": {
-                "value": 5,
-                "unit": "cm"
-              }
-            },
-            {
-              "from": "A",
-              "to": "C",
-              "label": "side2",
-              "length": {
-                "value": 7,
-                "unit": "cm"
-              }
-            },
-            {
-              "from": "B",
-              "to": "C",
-              "label": "hyp"
-            },
-            {
-              "from": "D",
-              "to": "E",
-              "label": "side1",
-              "length": {
-                "value": 5,
-                "unit": "cm"
-              }
-            },
-            {
-              "from": "D",
-              "to": "F",
-              "label": "side2",
-              "length": {
-                "value": 7,
-                "unit": "cm"
-              }
-            },
-            {
-              "from": "E",
-              "to": "F",
-              "label": "hyp"
-            }
-          ],
-          "angles": [
-            {
-              "vertex": "A",
-              "from": "B",
-              "to": "C",
-              "measure": 45,
-              "label": "angle1"
-            },
-            {
-              "vertex": "D",
-              "from": "E",
-              "to": "F",
-              "measure": 45,
-              "label": "angle1"
-            }
-          ]
-        },
-        "labels": {
-          "side1": {
-            "en": "side",
-            "hi": "भुजा",
-            "mr": "बाजू"
-          },
-          "side2": {
-            "en": "side",
-            "hi": "भुजा",
-            "mr": "बाजू"
-          },
-          "angle1": {
-            "en": "angle",
-            "hi": "कोण",
-            "mr": "कोन"
-          },
-          "hyp": {
-            "en": "hypotenuse",
-            "hi": "कर्ण",
-            "mr": "कर्ण"
-          }
-        }
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        "refers to ASA test",
-        null,
-        "refers to AAS test",
-        "refers to side not being congruent"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question correctly identifies that SSA (or AAS with incorrect interpretation) is not a valid congruence criterion. The author's reasoning aligns with standard geometric principles, and the key is correct. The distractors reflect common misconceptions about congruence criteria.",
-      "sources": [
-        {
-          "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 59,
-          "pageStart": 95,
-          "pageEnd": 96,
-          "headingPath": [
-            "13. Congruence of triangles"
-          ]
-        },
-        {
-          "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 60,
-          "pageStart": 96,
-          "pageEnd": 97,
-          "headingPath": [
-            "13. Congruence of triangles"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T01:00:05.668Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "If in two triangles, two angles and a non-included side are congruent, which test can be used to prove the triangles are congruent?",
-      "choices": [
-        "SAS test",
-        "SSS test",
-        "ASA test",
-        "AAS test"
-      ],
-      "answerIndex": 3,
-      "solution": "The correct answer is AAS test. This is because when two angles and a non-included side of one triangle are congruent to the corresponding parts of another triangle, the triangles must be congruent due to the properties of triangle angles and sides. The SAS test requires two sides and the included angle, the SSS test requires all three sides, and the ASA test requires two angles and the included side, none of which match the given condition.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि दो त्रिभुजों में दो कोण और एक अन्तर्गत भुजा सर्वांगसम होती है, तो त्रिभुजों के सर्वांगसम होने के लिए कौन सा परीक्षण उपयोग किया जा सकता है?",
-          "choices": [
-            "SAS परीक्षण",
-            "SSS परीक्षण",
-            "ASA परीक्षण",
-            "AAS परीक्षण"
-          ],
-          "solution": "सही उत्तर AAS परीक्षण है। इसका कारण यह है कि जब एक त्रिभुज के दो कोण और एक अन्तर्गत भुजा दूसरे त्रिभुज के संगत भागों के समान होते हैं, तो त्रिभुज आवश्यक रूप से सर्वांगसम होते हैं क्योंकि त्रिभुज के कोणों और भुजाओं के गुणों के कारण। SAS परीक्षण में दो भुजाएं और उनके बीच का कोण की आवश्यकता होती है, SSS परीक्षण में तीनों भुजाओं की आवश्यकता होती है, और ASA परीक्षण में दो कोण और उनके बीच की भुजा की आवश्यकता होती है, जो कि दिए गए स्थिति के अनुरूप नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर दोन त्रिकोणांमध्ये दोन कोन आणि एक असमावेशित बाजू समान असतील, तर त्रिकोण समान असतील असे सिद्ध करण्यासाठी कोणता परीक्षण वापरता येईल?",
-          "choices": [
-            "SAS परीक्षण",
-            "SSS परीक्षण",
-            "ASA परीक्षण",
-            "AAS परीक्षण"
-          ],
-          "solution": "बरोबर उत्तर AAS परीक्षण आहे. हे कारण असे आहे की जर एका त्रिकोणाचे दोन कोन आणि असमावेशित बाजू दुसऱ्या त्रिकोणाच्या संगत भागांशी समान असतील, तर त्रिकोण निश्चितपणे समान असतील, कारण त्रिकोणाच्या कोन आणि बाजूंच्या गुणधर्मांमुळे. SAS परीक्षणमध्ये दोन बाजू आणि अंतर्गत कोन आवश्यक असतात, SSS परीक्षणमध्ये तीनही बाजू आवश्यक असतात, आणि ASA परीक्षणमध्ये दोन कोन आणि अंतर्गत बाजू आवश्यक असतात, ज्यापैकी कोणाचेही वर्णन दिलेल्या परिस्थितीशी जुळत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for triangle congruence tests.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the AAS test with the SAS test, which involves two sides and the included angle.",
-        "Confuses the AAS test with the SSS test, which involves three sides.",
-        "Confuses the AAS test with the ASA test, which involves two angles and the included side.",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question correctly identifies AAS as the appropriate test for two angles and a non-included side. The author's reasoning is accurate and aligns with standard geometric principles.",
-      "sources": [
-        {
-          "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 59,
-          "pageStart": 95,
-          "pageEnd": 96,
-          "headingPath": [
-            "13. Congruence of triangles"
-          ]
-        },
-        {
-          "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 60,
-          "pageStart": 96,
-          "pageEnd": 97,
-          "headingPath": [
-            "13. Congruence of triangles"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T01:00:05.668Z",
+      "generatedAt": "2026-11-02T07:44:34.984Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

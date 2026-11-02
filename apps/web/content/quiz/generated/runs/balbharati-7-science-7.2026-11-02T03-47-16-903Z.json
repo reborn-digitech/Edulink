@@ -1,0 +1,516 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T03:47:16.903Z",
+  "finishedAt": "2026-11-02T03:51:36.033Z",
+  "seconds": 259,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "703020012",
+    "document": "balbharati/7/science/703020012.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 7 — Motion, Force and Work",
+    "edition": "First Edition 2017",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2011 — question paper]\n62. a) Momentum of a ball is changed to 3 times its initial value by an application of a force \ncausing it to deflect by 90°. Calculate the angle between the direction of force and the initial\nmomentum.\n(3 Marks)\nb) In a specially designed device, force varies linearly from zero to a max. value of 10 N, over a\ndistance of 8m. The force remains constant for next 4m and then reduces linearly to zero over\nanother distance of 2m. Draw a F vs. x (distance) graph and hence calculate work done by the force\nover this distance of 2m. Use the attached graph sheet at the end of the answer booklet.\n(2 Marks)",
+      "[INJSO 2009 — question paper]\n1. Which one of the following expressions has the same units as power?\na) Force x distance\nb) Work x time\n¢) Force x acceleration\nd) Force x velocity",
+      "[INJSO 2009 — question paper]\n61. A) A tortoise is crawling Eastward with velocity V3 km/hr and a lazy rabbit is\ntravelling southward with velocity 1 km/hr. With the help of a diagram, find the magnitude\nand direction of the velocity of the tortoise as observed by the rabbit. Show your working\nclearly. (2 marks)\nB) A force F varies with time according to F = 4+12t, where F is in Newton and t in seconds.\nThe force acts on a block of mass m = 2.00 kg, which is‘initially at rest on a frictionless\nhorizontal surface. F makes an angle of 30° with the horizontal, When will the force lift the\nbody from the surface? What will the velocity of the body be at that instant? (3 marks)",
+      "[NSEJS 2015 — question paper]\n37. If a force acting is conservative only when\na) work done by this force is zero when the particle moves once around any closed path\nb) it obeys Newton’s third law\nc) its work is the change in the K.E of the particle\nd) it is not a frictional force"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 77003,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 17680,
+      "completionTokens": 4692
+    },
+    "critique": {
+      "calls": 31,
+      "ms": 177767,
+      "in": 24,
+      "out": 17,
+      "rejects": 7,
+      "promptTokens": 12959,
+      "completionTokens": 5347
+    },
+    "solver": {
+      "calls": 137,
+      "ms": 73574,
+      "in": 17,
+      "out": 12,
+      "rejects": 5,
+      "promptTokens": 27984,
+      "completionTokens": 1483
+    },
+    "form": {
+      "calls": 2,
+      "ms": 5276,
+      "in": 12,
+      "out": 6,
+      "rejects": 6,
+      "promptTokens": 419,
+      "completionTokens": 127
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 16,
+      "ms": 2451,
+      "in": 6,
+      "out": 4,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 102201,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 8056,
+      "completionTokens": 3473
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a person walks 3 km north and then 4 km east, what is their displacement from the starting point?",
+      "ms": {
+        "draft": 3636,
+        "critique": 5862,
+        "solver": 1610,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main difference between distance and displacement?",
+      "ms": {
+        "draft": 3636,
+        "critique": 6229,
+        "solver": 1953,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A bus travels a distance of 240 km in 4 hours. What is its average velocity?",
+      "ms": {
+        "draft": 3636,
+        "critique": 8113,
+        "solver": 13948
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the unit of velocity?",
+      "ms": {
+        "draft": 3636,
+        "critique": 6831,
+        "solver": 14670
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A force of 2 N is applied to a 1 kg object on a frictionless surface. What is the acceleration of the object?",
+      "ms": {
+        "draft": 3629,
+        "critique": 5896
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given scenario, a force is applied to a block, and it moves on a table. Which of the following is necessary for work to be done?",
+      "ms": {
+        "draft": 3629,
+        "critique": 6265,
+        "solver": 1306
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the unit of work in the SI system?",
+      "ms": {
+        "draft": 3629,
+        "critique": 6334,
+        "solver": 9875,
+        "form": 3983
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A ball rolls from A to D on a flat surface, speed is 2 cm/s. It is pushed from B to C, and its speed increases to 4 cm/s in 2 seconds. What is the acceleration of the ball from B to C?",
+      "ms": {
+        "draft": 3629,
+        "critique": 7010,
+        "solver": 826
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A car is moving with a constant velocity. A force of 1000 N is applied to stop it, and it moves 10 m before stopping. What is the work done by the force?",
+      "ms": {
+        "draft": 3629,
+        "critique": 5586,
+        "solver": 9501
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A force of 1N is applied to a 1kg object on a frictionless surface. What will be the acceleration of the object?",
+      "ms": {
+        "draft": 10911,
+        "critique": 6359
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given scenario, a block moves forward on a table when a force is applied. What can be said about the work done by the force?",
+      "ms": {
+        "draft": 10911,
+        "critique": 6006,
+        "solver": 568,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the unit of work in the SI system?",
+      "ms": {
+        "draft": 10911,
+        "critique": 6082
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A bird flies in a circular path and returns to its starting point. What is the displacement of the bird?",
+      "ms": {
+        "draft": 10911,
+        "critique": 7282
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the definition of displacement?",
+      "ms": {
+        "draft": 2662,
+        "critique": 5713
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, it is mentioned that if no force acts on a body, its velocity does not change. What is this principle called?",
+      "ms": {
+        "draft": 2662,
+        "critique": 8365
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A truck travels different segments of a road with different velocities. What is the term used to describe the velocity at a particular moment of time?",
+      "ms": {
+        "draft": 2662,
+        "critique": 4473
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Ranjit travels from his house to school by taking a path that is not straight. What can be said about his velocity compared to his speed?",
+      "ms": {
+        "draft": 2662,
+        "critique": 4550,
+        "solver": 14495,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the passage, it is mentioned that a change in velocity leads to acceleration. What is the correct formula for acceleration?",
+      "ms": {
+        "draft": 2662,
+        "critique": 3655,
+        "solver": 683,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a scalar quantity?",
+      "ms": {
+        "draft": 3629,
+        "critique": 6792,
+        "solver": 1010,
+        "form": 1860
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a scalar quantity?",
+      "ms": {
+        "draft": 10911,
+        "critique": 6006,
+        "solver": 1298,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the unit of measurement for distance and displacement?",
+      "ms": {
+        "draft": 2662,
+        "critique": 6113,
+        "solver": 12495,
+        "form": 0,
+        "translation": 10558
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A car travels 10 km in 10 minutes. What is its speed in km/h?",
+      "ms": {
+        "draft": 3636,
+        "critique": 5570,
+        "solver": 1127,
+        "form": 0,
+        "translation": 28148
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A force of 2N is applied to a 1kg object for 3 seconds. What is the change in velocity of the object?",
+      "ms": {
+        "draft": 10911,
+        "critique": 6575,
+        "solver": 1340,
+        "form": 0,
+        "translation": 27650
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A ball is thrown vertically upwards with an initial velocity of 20 m/s. What is the time taken to reach the maximum height? (Take g = 10 m/s²)",
+      "ms": {
+        "draft": 3636,
+        "critique": 6276,
+        "solver": 12350,
+        "form": 0,
+        "translation": 32186
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person walks 3 km north and then 4 km east, what is their displacement from the starting point?",
+      "reason": "checkExpr \"sqrt(3^2+4^2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main difference between distance and displacement?",
+      "reason": "options 1 and 3 say the same thing (\"Distance is the shortest path between two points, displacement is the actual path taken.\" / \"Distance is the actual path taken, displacement is the shortest path between two points.\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A bus travels a distance of 240 km in 4 hours. What is its average velocity?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the unit of velocity?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A force of 2 N is applied to a 1 kg object on a frictionless surface. What is the acceleration of the object?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the given scenario, a force is applied to a block, and it moves on a table. Which of the following is necessary for work to be done?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the unit of work in the SI system?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A ball rolls from A to D on a flat surface, speed is 2 cm/s. It is pushed from B to C, and its speed increases to 4 cm/s in 2 seconds. What is the acceleration of the ball from B to C?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A car is moving with a constant velocity. A force of 1000 N is applied to stop it, and it moves 10 m before stopping. What is the work done by the force?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A force of 1N is applied to a 1kg object on a frictionless surface. What will be the acceleration of the object?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given scenario, a block moves forward on a table when a force is applied. What can be said about the work done by the force?",
+      "reason": "options 0 and 2 say the same thing (\"Work is done only if the block moves in the opposite direction of the force\" / \"Work is done if the block moves in the direction of the force\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the unit of work in the SI system?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A bird flies in a circular path and returns to its starting point. What is the displacement of the bird?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the definition of displacement?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the passage, it is mentioned that if no force acts on a body, its velocity does not change. What is this principle called?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A truck travels different segments of a road with different velocities. What is the term used to describe the velocity at a particular moment of time?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Ranjit travels from his house to school by taking a path that is not straight. What can be said about his velocity compared to his speed?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In the passage, it is mentioned that a change in velocity leads to acceleration. What is the correct formula for acceleration?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a scalar quantity?",
+      "reason": "near-duplicate of served question cmvwm142z02k10reme024d4kx (cosine 0.925 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a scalar quantity?",
+      "reason": "near-duplicate of served question cmvwm142z02k10reme024d4kx (cosine 0.925 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,496 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T13:11:01.204Z",
+  "finishedAt": "2026-11-01T13:27:07.711Z",
+  "seconds": 967,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 7 — Ratio and Proportion",
+    "edition": "First Edition 2026",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n8. In which ratio the y-axis divides the line segment joining the points (5, – 6) and (–1, – 4)?. 1\n(a) 1 : 5 (b) 5 : 1 (c) 1 : 1 (d) 1 : 2",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2025-26]\n1. In what ratio must a grocer mix two varieties of tea worth ₹ 60 per kg and ₹ 65 1\nper kg so that by selling the mixture at ₹ 68.20 per kg the gain is 10%?\n(A) 3 : 2 (B) 2 : 3 (C) 2 : 5 (D) 3 : 5",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n8. 1\nratio 3 : 1, then the value of 𝒚 is\n(A) 4 (B) 3 (C) 2 (D) 1\nA letter from the word INDEPENDENCE is selected at random. What is the"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 340737,
+      "in": 23,
+      "out": 22,
+      "rejects": 1,
+      "promptTokens": 16928,
+      "completionTokens": 4685
+    },
+    "critique": {
+      "calls": 32,
+      "ms": 847477,
+      "in": 22,
+      "out": 19,
+      "rejects": 3,
+      "promptTokens": 14352,
+      "completionTokens": 5689
+    },
+    "solver": {
+      "calls": 164,
+      "ms": 366935,
+      "in": 19,
+      "out": 11,
+      "rejects": 8,
+      "promptTokens": 34405,
+      "completionTokens": 1830
+    },
+    "form": {
+      "calls": 3,
+      "ms": 37100,
+      "in": 11,
+      "out": 5,
+      "rejects": 6,
+      "promptTokens": 743,
+      "completionTokens": 195
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 18,
+      "ms": 16769,
+      "in": 5,
+      "out": 3,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 452856,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6575,
+      "completionTokens": 3108
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a picture's length and width are 30 mm and 20 mm respectively, what is the simplest form of the ratio of length to width?",
+      "ms": {
+        "draft": 14651,
+        "critique": 32062,
+        "solver": 56084
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the length and width of a picture are 60 mm and 40 mm respectively, what is the ratio of length to width?",
+      "ms": {
+        "draft": 14651,
+        "critique": 28248,
+        "solver": 64047
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Suresh walks 1700 meters every morning, and Ramesh walks 2 kilometers every day. What is the ratio of the distance covered by Suresh to the distance covered by Ramesh?",
+      "ms": {
+        "draft": 14651,
+        "critique": 23960,
+        "solver": 6268
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given diagram, there are 20 shaded cells and 30 unshaded cells. What is the ratio of shaded cells to unshaded cells?",
+      "ms": {
+        "draft": 14651,
+        "critique": 22865,
+        "solver": 6525
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the method called where the price of one item is found from the price of many items using division and then the price of many items is found using multiplication?",
+      "ms": {
+        "draft": 14814,
+        "critique": 29968,
+        "solver": 5766,
+        "form": 16013
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a class of 45 students, 15 play hockey, 20 play kabaddi, and the rest play kho-kho. What is the ratio of the number of students playing hockey to the number of students playing kho-kho?",
+      "ms": {
+        "draft": 14814,
+        "critique": 29252
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a goods train covers 240 km in 4 hours, how much distance will it cover in 7 hours at the same speed?",
+      "ms": {
+        "draft": 14814,
+        "critique": 27832,
+        "solver": 65449,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A school purchased 35 saplings from 'Yashoda' nursery for ₹ 455 and the remaining 15 saplings from 'Amol' nursery for ₹240. Which nursery provides saplings at a lower price per sapling?",
+      "ms": {
+        "draft": 14814,
+        "critique": 22983,
+        "solver": 5575,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the ratio of 2 kg to 800 grams?",
+      "ms": {
+        "draft": 12671,
+        "critique": 26635
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the ratio of the proportion 5 : 7?",
+      "ms": {
+        "draft": 12671,
+        "critique": 21448,
+        "solver": 8890,
+        "form": 17128
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Find the ratio of the number of students playing hockey to the number of students playing kho-kho in a class of 45 students, where 15 play hockey, 20 play kabaddi, and the rest play kho-kho.",
+      "ms": {
+        "draft": 12671,
+        "critique": 33006
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the simplest form of the ratio 12 : 18?",
+      "ms": {
+        "draft": 12671,
+        "critique": 28341,
+        "solver": 63964
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Find the ratio of the number of students playing hockey to the total number of students in a class of 45 students, where 15 students play hockey.",
+      "ms": {
+        "draft": 12671,
+        "critique": 29938,
+        "solver": 43856,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the definition of a ratio?",
+      "ms": {
+        "draft": 17584,
+        "critique": 28487,
+        "solver": 5049,
+        "form": 11633
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the length of a wall built by Anil is 50 feet and Sandeep is 25 feet, what is the ratio of their lengths?",
+      "ms": {
+        "draft": 17584,
+        "critique": 31828,
+        "solver": 4167
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the distance covered by Suresh is 1700 meters and Ramesh is 2 kilometers, what is the ratio of their distances?",
+      "ms": {
+        "draft": 17584,
+        "critique": 32718,
+        "solver": 8078
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the simplest form of the ratio 60:40?",
+      "ms": {
+        "draft": 17584,
+        "critique": 37105,
+        "solver": 34493
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the ratio of 2 kg to 800 grams?",
+      "ms": {
+        "draft": 14814,
+        "critique": 34091,
+        "solver": 46316,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A cook prepares 10 kg of rice for 100 students every day. If only 80 students are present one day, how much rice should be cooked?",
+      "ms": {
+        "draft": 14814,
+        "critique": 20129,
+        "solver": 20387,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Find the ratio of the number of students playing kabaddi to the total number of students in a class of 45 students, where 20 students play kabaddi.",
+      "ms": {
+        "draft": 12671,
+        "critique": 33383,
+        "solver": 48908,
+        "form": 1,
+        "translation": 150480
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a factory, 320 workers are employed, out of which 200 are male. What is the ratio of male workers to the total number of workers?",
+      "ms": {
+        "draft": 14651,
+        "critique": 35520,
+        "solver": 48822,
+        "form": 0,
+        "translation": 148106
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A florist uses 20 yellow flowers and 12 orange flowers to make a garland. What is the ratio of yellow flowers to orange flowers in its simplest form?",
+      "ms": {
+        "draft": 14651,
+        "critique": 27006,
+        "solver": 4813,
+        "form": 0,
+        "translation": 136421
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a picture's length and width are 30 mm and 20 mm respectively, what is the simplest form of the ratio of length to width?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If the length and width of a picture are 60 mm and 40 mm respectively, what is the ratio of length to width?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Suresh walks 1700 meters every morning, and Ramesh walks 2 kilometers every day. What is the ratio of the distance covered by Suresh to the distance covered by Ramesh?",
+      "reason": "the solver picked option 1 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the given diagram, there are 20 shaded cells and 30 unshaded cells. What is the ratio of shaded cells to unshaded cells?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the method called where the price of one item is found from the price of many items using division and then the price of many items is found using multiplication?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Confuses the method with cross multiplication, which is not …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a class of 45 students, 15 play hockey, 20 play kabaddi, and the rest play kho-kho. What is the ratio of the number of students playing hockey to the number of students playing kho-kho?",
+      "reason": "the critic finds option 3 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a goods train covers 240 km in 4 hours, how much distance will it cover in 7 hours at the same speed?",
+      "reason": "options 0 and 2 are the same (\"420 km\"); options 0 and 2 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A school purchased 35 saplings from 'Yashoda' nursery for ₹ 455 and the remaining 15 saplings from 'Amol' nursery for ₹240. Which nursery provides saplings at a lower price per sapling?",
+      "reason": "checkExpr \"455/35,240/15\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "If the number of cement bags used by Anil is 10 and Sandeep is 5, what is the ratio of the number of cement bags used by Anil to Sandeep?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the ratio of 2 kg to 800 grams?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the ratio of the proportion 5 : 7?",
+      "reason": "options 0 and 2 are the same (\"5:7\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Find the ratio of the number of students playing hockey to the number of students playing kho-kho in a class of 45 students, where 15 play hockey, 20 play kabaddi, and the rest play kho-kho.",
+      "reason": "the critic finds option 1 correct, the key is 2"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the simplest form of the ratio 12 : 18?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Find the ratio of the number of students playing hockey to the total number of students in a class of 45 students, where 15 students play hockey.",
+      "reason": "options 0 and 1 are the same (\"1:3\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the definition of a ratio?",
+      "reason": "options 0 and 1 say the same thing (\"A comparison of two quantities in terms of their difference\" / \"A comparison of two quantities in terms of their product\"); options 0 and 2 say the same thing (\"A comparison of two quantities in terms of their difference\" / \"A comparison of two quantities in terms of their quotient\"); options 0 and 3 say the same thing (\"A comparison of two quantities in terms of their difference\" / \"A comparison of two quantities in terms of their sum\"); options 1 and 2 say the same thing (\"A comparison of two quantities in terms of their product\" / \"A comparison of two quantities in terms of their quotient\"); options 1 and 3 say the same thing (\"A comparison of two quantities in terms of their product\" / \"A comparison of two quantities in terms of their sum\"); options 2 and 3 say the same thing (\"A comparison of two quantities in terms of their quotient\" / \"A comparison of two quantities in terms of their sum\"); distractor 3's reason is not a one-line misconception (\"Correct option, no reason given for being wrong here because…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If the length of a wall built by Anil is 50 feet and Sandeep is 25 feet, what is the ratio of their lengths?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If the distance covered by Suresh is 1700 meters and Ramesh is 2 kilometers, what is the ratio of their distances?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the simplest form of the ratio 60:40?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the ratio of 2 kg to 800 grams?",
+      "reason": "near-duplicate of served question cmvvkg29n00500rndmt8stqwg (cosine 0.930 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "A cook prepares 10 kg of rice for 100 students every day. If only 80 students are present one day, how much rice should be cooked?",
+      "reason": "near-duplicate of served question cmvvkg2b0005i0rndz59gqgyh (cosine 0.923 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

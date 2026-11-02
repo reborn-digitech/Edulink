@@ -21,144 +21,49 @@
   "board": "BALBHARATI",
   "book": "७ वी गणित इंग्रजी",
   "edition": "2026 edition",
-  "generatedAt": "2026-10-31T10:29:42.802Z",
+  "generatedAt": "2026-11-01T21:12:42.876Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the product of two negative integers?",
+      "stem": "What is the product of (-7) × 0?",
       "choices": [
-        "Positive integer",
-        "Negative integer",
-        "Zero",
-        "Fraction"
-      ],
-      "answerIndex": 0,
-      "solution": "The product of two negative integers is a positive integer because multiplying two negative numbers results in a positive number due to the rules of sign multiplication. A negative integer is incorrect because the negatives cancel each other out. Zero and fractions are not possible because the product of two integers is always an integer, and two negatives cannot result in zero.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "दो ऋणात्मक पूर्णांकों का गुणनफल क्या होता है?",
-          "choices": [
-            "धनात्मक पूर्णांक",
-            "ऋणात्मक पूर्णांक",
-            "शून्य",
-            "भिन्न"
-          ],
-          "solution": "दो ऋणात्मक पूर्णांकों का गुणनफल एक धनात्मक पूर्णांक होता है क्योंकि दो ऋणात्मक संख्याओं को गुणा करने पर धनात्मक संख्या प्राप्त होती है क्योंकि चिन्ह गुणन के नियमों के अनुसार ऋणात्मक एक दूसरे को निरस्त कर देते हैं। ऋणात्मक पूर्णांक गलत है क्योंकि ऋणात्मक एक दूसरे को निरस्त कर देते हैं। शून्य और भिन्न संभव नहीं हैं क्योंकि दो पूर्णांकों का गुणनफल हमेशा एक पूर्णांक होता है, और दो ऋणात्मक संख्याएं शून्य नहीं दे सकतीं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "दोन ऋण पूर्णांकांचा गुणाकार किती असतो?",
-          "choices": [
-            "धन पूर्णांक",
-            "ऋण पूर्णांक",
-            "शून्य",
-            "अपूर्णांक"
-          ],
-          "solution": "दोन ऋण पूर्णांकांचा गुणाकार धन पूर्णांक असतो कारण दोन ऋण संख्यांचा गुणाकार चिन्हांच्या नियमांमुळे धन संख्या असते. ऋण पूर्णांक अयोग्य आहे कारण ऋण चिन्ह एकमेकांना रद्द करतात. शून्य आणि अपूर्णांक शक्य नाहीत कारण दोन पूर्णांकांचा गुणाकार हमेशा एक पूर्णांक असतो आणि दोन ऋण चिन्हांमुळे शून्य मिळू शकत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the rule for positive and negative products",
-        "Believes that negative numbers always result in negative products",
-        "Thinks that multiplying two numbers always results in zero or a fraction"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0 (positive integer), as the product of two negative integers is always positive. The author's solution and reasoning are accurate.",
-      "sources": [
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 14,
-          "pageStart": 21,
-          "pageEnd": 22,
-          "headingPath": [
-            "2. Multiplication and Division of Integers"
-          ]
-        },
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 15,
-          "pageStart": 22,
-          "pageEnd": 24,
-          "headingPath": [
-            "2. Multiplication and Division of Integers"
-          ]
-        },
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 16,
-          "pageStart": 24,
-          "pageEnd": 24,
-          "headingPath": [
-            "2. Multiplication and Division of Integers"
-          ]
-        }
-      ],
-      "edition": "2026 edition",
-      "generatedAt": "2026-10-31T10:29:42.802Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is an example of the product of a positive and a negative integer?",
-      "choices": [
-        "(−5) × (−3)",
-        "6 × 4",
-        "(−7) × 2",
-        "8 × (−3)"
+        "-7",
+        "7",
+        "0",
+        "1"
       ],
       "answerIndex": 2,
-      "solution": "The product of a positive and a negative integer is always negative. (−7) × 2 results in a negative number, making it the correct example. (−5) × (−3) and 6 × 4 result in positive numbers, while 8 × (−3) is also a valid example of a negative product, but (−7) × 2 is explicitly the correct choice here.",
+      "solution": "The product of any number multiplied by zero is always zero. This is a fundamental rule in mathematics. Choosing -7 or 7 would be incorrect because they do not follow this rule. Selecting 1 is also wrong because it does not represent the result of multiplying by zero.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा एक धनात्मक और एक ऋणात्मक पूर्णांक के गुणन का उदाहरण है?",
+          "stem": "(-7) × 0 का गुणनफल क्या है?",
           "choices": [
-            "(−5) × (−3)",
-            "6 × 4",
-            "(−7) × 2",
-            "8 × (−3)"
+            "-7",
+            "7",
+            "0",
+            "1"
           ],
-          "solution": "एक धनात्मक और एक ऋणात्मक पूर्णांक का गुणन हमेशा ऋणात्मक होता है। (−7) × 2 एक ऋणात्मक संख्या देता है, जो सही उदाहरण बन जाता है। (−5) × (−3) और 6 × 4 धनात्मक संख्याएं देते हैं, जबकि 8 × (−3) भी एक ऋणात्मक गुणन का वैध उदाहरण है, लेकिन (−7) × 2 यहां स्पष्ट रूप से सही चयन है।",
+          "solution": "किसी भी संख्या का शून्य से गुणनफल हमेशा शून्य होता है। यह गणित का एक मूलभूत नियम है। -7 या 7 चुनना गलत होगा क्योंकि ये इस नियम का अनुसरण नहीं करते हैं। शून्य से गुणा करने के परिणाम के रूप में 1 चुनना भी गलत है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate mathematical terminology in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते एक धनात्मक आणि ऋणात्मक पूर्णांकाच्या गुणाकाराचे उदाहरण आहे?",
+          "stem": "(-7) × 0 चा गुणाकार किती आहे?",
           "choices": [
-            "(−5) × (−3)",
-            "6 × 4",
-            "(−7) × 2",
-            "8 × (−3)"
+            "-7",
+            "7",
+            "0",
+            "1"
           ],
-          "solution": "एक धनात्मक आणि ऋणात्मक पूर्णांकाचा गुणाकार हमेशा ऋणात्मक असतो. (−7) × 2 चा गुणाकार ऋणात्मक असतो, जे योग्य उदाहरण बनतो. (−5) × (−3) आणि 6 × 4 चा गुणाकार धनात्मक असतो, तर 8 × (−3) हा देखील ऋणात्मक गुणाकाराचा योग्य उदाहरण आहे, परंतु (−7) × 2 हा येथे स्पष्टपणे योग्य निवड आहे.",
+          "solution": "कोणत्याही संख्येचा शून्यशी गुणाकार केल्यास नेहमी शून्य येते. हे गणितातील एक मूलभूत नियम आहे. -7 किंवा 7 निवडणे चूक आहे कारण ते या नियमाचे अनुसरण करत नाहीत. शून्यशी गुणाकार करण्याचा परिणाम दर्शविणारा 1 निवडणे देखील चूक आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         }
       },
@@ -167,10 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Chooses the product of two negative numbers",
-        "Chooses the product of two positive numbers",
+        "Thinks the product of a negative and zero is the same as the negative number",
+        "Thinks the product of a negative and zero is the positive counterpart of the negative number",
         null,
-        "Chooses the product of two negative numbers"
+        "Believes that multiplying by zero gives 1"
       ],
       "solverAnswers": [
         2,
@@ -180,7 +85,7 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 2, as it is the product of a positive and a negative integer. The solution correctly identifies this and explains the other options as being products of two positives or two negatives.",
+      "critique": "The question is straightforward and tests a basic rule of arithmetic: any number multiplied by zero is zero. The correct answer is 2 (0), and the author's reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "balbharati/7/mathematics/703020004.pdf",
@@ -211,49 +116,49 @@
         }
       ],
       "edition": "2026 edition",
-      "generatedAt": "2026-10-31T10:29:42.802Z",
+      "generatedAt": "2026-11-01T21:12:42.876Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "If (−6) × x = −18, what is the value of x?",
+      "difficulty": 2,
+      "stem": "What is the product of a positive integer and a negative integer?",
       "choices": [
-        "−3",
-        "3",
-        "6",
-        "−6"
+        "Positive integer",
+        "Zero",
+        "Negative integer",
+        "Cannot be determined"
       ],
-      "answerIndex": 1,
-      "solution": "To solve (−6) × x = −18, divide both sides by −6, which gives x = 3. This is correct because multiplying −6 by 3 results in −18. Choosing −3 would result in a positive 18, 6 would result in −36, and −6 would result in 36, none of which match the equation.",
-      "checkExpr": "(-18)/(-6)",
+      "answerIndex": 2,
+      "solution": "The product of a positive integer and a negative integer is always a negative integer because multiplying numbers with opposite signs results in a negative product. A positive integer multiplied by a negative integer cannot be positive or zero, as neither of those outcomes follows from the rules of sign multiplication. The product is always determined, so it cannot be classified as undetermined.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि (−6) × x = −18, तो x का मान क्या है?",
+          "stem": "एक धनात्मक पूर्णांक और एक ऋणात्मक पूर्णांक का गुणन क्या होता है?",
           "choices": [
-            "−3",
-            "3",
-            "6",
-            "−6"
+            "धनात्मक पूर्णांक",
+            "शून्य",
+            "ऋणात्मक पूर्णांक",
+            "निर्धारित नहीं किया जा सकता"
           ],
-          "solution": "समीकरण (−6) × x = −18 को हल करने के लिए दोनों ओर −6 से भाग देते हैं, जिससे x = 3 प्राप्त होता है। यह सही है क्योंकि −6 को 3 से गुणा करने पर −18 प्राप्त होता है। −3 चुनने पर धनात्मक 18 प्राप्त होता है, 6 चुनने पर −36 प्राप्त होता है और −6 चुनने पर 36 प्राप्त होता है, जो कोई भी समीकरण के साथ मेल नहीं खाता।",
+          "solution": "एक धनात्मक पूर्णांक और एक ऋणात्मक पूर्णांक का गुणन हमेशा ऋणात्मक पूर्णांक होता है क्योंकि विपरीत चिह्न वाली संख्याओं का गुणन ऋणात्मक गुणन परिणाम देता है। एक धनात्मक पूर्णांक का ऋणात्मक पूर्णांक से गुणन धनात्मक या शून्य नहीं हो सकता, क्योंकि इन परिणामों में से कोई भी चिह्न गुणन के नियमों के अनुसार नहीं होता। गुणन हमेशा निर्धारित होता है, इसलिए इसे अनिर्धारित वर्गीकृत नहीं किया जा सकता।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
           "flag": null
         },
         "mr": {
-          "stem": "जर (−6) × x = −18, तर x ची किंमत काय आहे?",
+          "stem": "एक धनात्मक पूर्णांक आणि एक ऋणात्मक पूर्णांक यांचा गुणाकार काय असतो?",
           "choices": [
-            "−3",
-            "3",
-            "6",
-            "−6"
+            "धनात्मक पूर्णांक",
+            "शून्य",
+            "ऋणात्मक पूर्णांक",
+            "निश्चित करता येत नाही"
           ],
-          "solution": "जर (−6) × x = −18 तर दोन्ही बाजूंना −6 ने भागल्यास x = 3 मिळतो. हे बरोबर आहे कारण −6 ला 3 ने गुणल्यास −18 मिळतो. −3 ने गुणल्यास धनात्मक 18 मिळेल, 6 ने गुणल्यास −36 मिळेल आणि −6 ने गुणल्यास 36 मिळेल, जे समीकरणाशी जुळत नाही.",
+          "solution": "एक धनात्मक पूर्णांक आणि एक ऋणात्मक पूर्णांक यांचा गुणाकार नेहमी ऋणात्मक पूर्णांक असतो, कारण विरुद्ध चिन्हांच्या संख्यांचा गुणाकार ऋणात्मक असतो. धनात्मक पूर्णांक आणि ऋणात्मक पूर्णांक यांचा गुणाकार धनात्मक किंवा शून्य असू शकत नाही, कारण ते चिन्ह गुणाकाराच्या नियमांपासून निर्माण होत नाहीत. गुणाकार नेहमी निश्चित असतो, म्हणून त्याला अनिश्चित म्हणता येत नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terms for 'divide', 'multiply', and 'equation'.",
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -262,20 +167,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Fails to consider the sign of the result",
+        "Confuses the sign of the product of a positive and a negative number",
+        "Incorrectly assumes the product of a positive and a negative number is zero",
         null,
-        "Chooses the negative of the correct value",
-        "Chooses the absolute value without considering the sign"
+        "Incorrectly assumes the product of a positive and a negative number is indeterminate"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        2,
+        2,
+        2,
+        2,
+        2
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. Dividing both sides of the equation (−6) × x = −18 by −6 gives x = 3. The author's reasoning is sound and matches the correct answer.",
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with mathematical principles. The product of a positive and a negative integer is always negative.",
       "sources": [
         {
           "document": "balbharati/7/mathematics/703020004.pdf",
@@ -306,47 +211,47 @@
         }
       ],
       "edition": "2026 edition",
-      "generatedAt": "2026-10-31T10:29:42.802Z",
+      "generatedAt": "2026-11-01T21:12:42.876Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "If (−4) × (−7) = 28, which of the following is also true?",
+      "difficulty": 2,
+      "stem": "What is the product of two positive integers?",
       "choices": [
-        "(−7) × (−4) = −28",
-        "(−7) × (−4) = 28",
-        "(−7) × 4 = 28",
-        "(−7) × 4 = −28"
+        "Positive integer",
+        "Zero",
+        "Negative integer",
+        "Cannot be determined"
       ],
-      "answerIndex": 1,
-      "solution": "The commutative property of multiplication states that changing the order of the numbers does not change the product, so (−7) × (−4) = 28, just like (−4) × (−7) = 28. The other options incorrectly change the sign of the product or the order of the numbers, which would alter the result.",
+      "answerIndex": 0,
+      "solution": "The product of two positive integers is always a positive integer because multiplying two numbers greater than zero results in a number greater than zero. Zero is incorrect because the product cannot be zero unless one of the numbers is zero, which is not the case here. A negative integer is incorrect because the product of two positive numbers is never negative. There is no uncertainty in this mathematical operation, so 'cannot be determined' is also incorrect.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि (−4) × (−7) = 28, तो निम्नलिखित में से कौन-सा सत्य है?",
+          "stem": "दो धनात्मक पूर्णांकों का गुणनफल क्या होता है?",
           "choices": [
-            "(−7) × (−4) = −28",
-            "(−7) × (−4) = 28",
-            "(−7) × 4 = 28",
-            "(−7) × 4 = −28"
+            "धनात्मक पूर्णांक",
+            "शून्य",
+            "ऋणात्मक पूर्णांक",
+            "निर्धारित नहीं किया जा सकता"
           ],
-          "solution": "गुणन के क्रमविनिमेय गुण के अनुसार, संख्याओं के क्रम को बदलने से गुणनफल में कोई परिवर्तन नहीं होता, अतः (−7) × (−4) = 28, जैसा कि (−4) × (−7) = 28 है। अन्य विकल्प गुणनफल के चिह्न या संख्याओं के क्रम को गलत तरीके से बदल देते हैं, जिससे परिणाम बदल जाएगा।",
+          "solution": "दो धनात्मक पूर्णांकों का गुणनफल हमेशा एक धनात्मक पूर्णांक होता है क्योंकि शून्य से बड़े दो संख्याओं को गुणा करने पर शून्य से बड़ी संख्या प्राप्त होती है। शून्य गलत है क्योंकि गुणनफल शून्य तभी हो सकता है जब कम से कम एक संख्या शून्य हो, जो यहां नहीं है। ऋणात्मक पूर्णांक गलत है क्योंकि दो धनात्मक संख्याओं का गुणनफल कभी भी ऋणात्मक नहीं होता। इस गणितीय संक्रिया में कोई अनिश्चितता नहीं है, इसलिए 'निर्धारित नहीं किया जा सकता' भी गलत है।",
           "imageAlt": null,
           "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "जर (−4) × (−7) = 28, तर खालीलपैकी कोणते बरोबर आहे?",
+          "stem": "दोन धनात्मक पूर्णांकांचा गुणाकार किती असतो?",
           "choices": [
-            "(−7) × (−4) = −28",
-            "(−7) × (−4) = 28",
-            "(−7) × 4 = 28",
-            "(−7) × 4 = −28"
+            "धनात्मक पूर्णांक",
+            "शून्य",
+            "ऋणात्मक पूर्णांक",
+            "निश्चित करता येत नाही"
           ],
-          "solution": "गुणनाच्या क्रमविनिमय गुणधर्मामुळे संख्यांच्या क्रमात बदल केल्याने गुणाकार बदलत नाही, त्यामुळे (−7) × (−4) = 28, जसे की (−4) × (−7) = 28. इतर विकल्पांमध्ये गुणाकाराचा चिन्ह किंवा संख्यांचा क्रम चुकीचा बदलला आहे, जेणेकरून फलितात बदल होतो.",
+          "solution": "दोन धनात्मक पूर्णांकांचा गुणाकार हमेशा एक धनात्मक पूर्णांक असतो कारण शून्यापेक्षा मोठ्या संख्यांचा गुणाकार शून्यापेक्षा मोठा असतो. शून्य अयोग्य आहे कारण गुणाकार शून्य असेल तर एका संख्या शून्य असावी, जे येथे नाही. ऋणात्मक पूर्णांक अयोग्य आहे कारण दोन धनात्मक संख्यांचा गुणाकार कधीही ऋणात्मक असत नाही. ह्या गणितीय क्रियेत अनिश्चितता नसते, म्हणून 'निश्चित करता येत नाही' हेही अयोग्य आहे.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -357,20 +262,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Believes the commutative property does not hold for negative numbers",
         null,
-        "Chooses the wrong sign for the product",
-        "Confuses the sign of the second factor"
+        "Incorrectly assumes the product of two positive numbers is zero",
+        "Confuses the sign of the product of two positive numbers",
+        "Incorrectly assumes the product of two positive numbers is indeterminate"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question correctly applies the commutative property of multiplication, and the author's reasoning aligns with standard mathematical principles. The distractors reflect common misconceptions about sign rules and the commutative property.",
+      "levelFlag": null,
+      "critique": "The question is clear and the solution correctly identifies that the product of two positive integers is always a positive integer. The reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "balbharati/7/mathematics/703020004.pdf",
@@ -401,7 +306,197 @@
         }
       ],
       "edition": "2026 edition",
-      "generatedAt": "2026-10-31T10:29:42.802Z",
+      "generatedAt": "2026-11-01T21:12:42.876Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "If the product of two integers is positive, which of the following must be true?",
+      "choices": [
+        "Both integers are positive",
+        "Both integers are negative",
+        "One integer is positive and one is negative",
+        "Both integers are non-zero"
+      ],
+      "answerIndex": 3,
+      "solution": "If the product of two integers is positive, both integers must be non-zero because zero multiplied by any number is zero, not positive. Both integers could be positive or both could be negative, but they cannot include zero. Options A and B are possible but not guaranteed, and option C is incorrect because a positive product cannot result from one positive and one negative integer.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि दो पूर्णांकों का गुणनफल धनात्मक है, तो निम्नलिखित में से कौन-सा अवश्य सत्य होना चाहिए?",
+          "choices": [
+            "दोनों पूर्णांक धनात्मक हैं",
+            "दोनों पूर्णांक ऋणात्मक हैं",
+            "एक पूर्णांक धनात्मक और एक ऋणात्मक है",
+            "दोनों पूर्णांक शून्येतर हैं"
+          ],
+          "solution": "यदि दो पूर्णांकों का गुणनफल धनात्मक है, तो दोनों पूर्णांक शून्येतर होने चाहिए क्योंकि शून्य के किसी भी संख्या से गुणा शून्य होता है, धनात्मक नहीं। दोनों पूर्णांक धनात्मक हो सकते हैं या दोनों ऋणात्मक हो सकते हैं, लेकिन शून्य शामिल नहीं हो सकता। विकल्प A और B संभावित हैं लेकिन आवश्यक नहीं हैं, और विकल्प C गलत है क्योंकि एक धनात्मक और एक ऋणात्मक पूर्णांक से धनात्मक गुणनफल नहीं हो सकता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर दोन पूर्णांकांचा गुणाकार धनात्मक असेल, तर खालीलपैकी कोणते खात्रीने खरे असेल?",
+          "choices": [
+            "दोन्ही पूर्णांक धनात्मक आहेत",
+            "दोन्ही पूर्णांक ऋणात्मक आहेत",
+            "एक पूर्णांक धनात्मक आहे आणि एक ऋणात्मक आहे",
+            "दोन्ही पूर्णांक शून्यापासून भिन्न आहेत"
+          ],
+          "solution": "जर दोन पूर्णांकांचा गुणाकार धनात्मक असेल, तर दोन्ही पूर्णांक शून्यापासून भिन्न असावेत कारण शून्यला कोणत्याही संख्येने गुणल्यास शून्य मिळतो, धनात्मक नव्हे. दोन्ही पूर्णांक धनात्मक असू शकतात किंवा दोन्ही ऋणात्मक असू शकतात, परंतु त्यांमध्ये शून्य असू शकत नाही. विकल्प A आणि B संभाव्य आहेत परंतु खात्रीने नाहीत, आणि विकल्प C अयोग्य आहे कारण एक धनात्मक आणि एक ऋणात्मक पूर्णांकामुळे धनात्मक गुणाकार मिळू शकत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Overlooks the possibility of both integers being negative",
+        "Overlooks the possibility of both integers being positive",
+        "Misunderstands the rule for the product of a positive and a negative integer",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3 because if the product of two integers is positive, both integers must be non-zero (either both positive or both negative). Options 0 and 1 are incorrect because they exclude the possibility of the other sign combination. Option 2 is incorrect because a positive and negative integer would produce a negative product.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 14,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "2. Multiplication and Division of Integers"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 15,
+          "pageStart": 22,
+          "pageEnd": 24,
+          "headingPath": [
+            "2. Multiplication and Division of Integers"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 16,
+          "pageStart": 24,
+          "pageEnd": 24,
+          "headingPath": [
+            "2. Multiplication and Division of Integers"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-01T21:12:42.876Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a and b are integers such that a × b is positive, which of the following must be true?",
+      "choices": [
+        "a is positive",
+        "b is negative",
+        "a and b have the same sign",
+        "a and b have different signs"
+      ],
+      "answerIndex": 2,
+      "solution": "The product of two integers is positive if both are positive or both are negative, meaning they have the same sign. Option A is not always true because a could be negative. Option B is incorrect because b being negative would make the product negative. Option D is wrong because different signs result in a negative product.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि a और b पूर्णांक इस प्रकार हैं कि a × b धनात्मक है, तो निम्नलिखित में से कौन-सा आवश्यक रूप से सत्य होगा?",
+          "choices": [
+            "a धनात्मक है",
+            "b ऋणात्मक है",
+            "a और b एक ही चिह्न वाले हैं",
+            "a और b अलग-अलग चिह्न वाले हैं"
+          ],
+          "solution": "दो पूर्णांकों का गुणन धनात्मक होता है यदि दोनों धनात्मक हों या दोनों ऋणात्मक हों, जिसका अर्थ है कि उनका चिह्न एक समान होता है। विकल्प A हमेशा सत्य नहीं होता क्योंकि a ऋणात्मक हो सकता है। विकल्प B गलत है क्योंकि b ऋणात्मक होने पर गुणन ऋणात्मक हो जाएगा। विकल्प D गलत है क्योंकि अलग-अलग चिह्न वाले गुणन के परिणाम के रूप में ऋणात्मक परिणाम प्राप्त होता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the logical structure, and uses standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर a आणि b पूर्णांक असतील आणि a × b धनात्मक असेल, तर खालीलपैकी कोणते खात्रीने खरे असेल?",
+          "choices": [
+            "a धनात्मक आहे",
+            "b ऋणात्मक आहे",
+            "a आणि b एकसारखे चिन्ह असतात",
+            "a आणि b विरुद्ध चिन्ह असतात"
+          ],
+          "solution": "दोन पूर्णांकांचा गुणाकार धनात्मक असतो जर दोन्ही धनात्मक असतील किंवा दोन्ही ऋणात्मक असतील, जे अर्थात त्यांचे चिन्ह एकसारखे असते. ऑप्शन A नेहमी खरे नसते कारण a ऋणात्मक असू शकतो. ऑप्शन B अयोग्य आहे कारण b ऋणात्मक असल्यास गुणाकार ऋणात्मक होईल. ऑप्शन D अयोग्य आहे कारण विरुद्ध चिन्हांमुळे गुणाकार ऋणात्मक होतो.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately preserves the meaning, structure, and technical terms of the original English question. All options and the solution are correctly translated and maintain their logical relationships.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Overlooks the possibility of both integers being negative",
+        "Misapplies the rule for the product of a positive and a negative integer",
+        null,
+        "Confuses the rule for the product of a positive and a negative integer"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is option 2, as the product of two integers is positive only if they have the same sign. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 14,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "2. Multiplication and Division of Integers"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 15,
+          "pageStart": 22,
+          "pageEnd": 24,
+          "headingPath": [
+            "2. Multiplication and Division of Integers"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 16,
+          "pageStart": 24,
+          "pageEnd": 24,
+          "headingPath": [
+            "2. Multiplication and Division of Integers"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-01T21:12:42.876Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

@@ -21,49 +21,49 @@
   "board": "BALBHARATI",
   "book": "६ वी गणित इंग्रजी",
   "edition": "First Edition 2026",
-  "generatedAt": "2026-10-30T23:35:41.493Z",
+  "generatedAt": "2026-11-01T12:38:37.118Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 2,
-      "stem": "What is the name of a three-dimensional shape that has two triangular faces and three rectangular faces?",
+      "stem": "What is the shape of a ball?",
       "choices": [
-        "Cuboid",
         "Cone",
-        "Triangular Prism",
-        "Cube"
+        "Cylinder",
+        "Sphere",
+        "Pyramid"
       ],
       "answerIndex": 2,
-      "solution": "A triangular prism is a three-dimensional shape that has two triangular faces and three rectangular faces. This matches the description given in the question. A cuboid and a cube have only rectangular faces, while a cone has a circular base and a curved surface, which do not fit the description.",
+      "solution": "A ball is a sphere, which is a three-dimensional shape with a curved surface. Cone, cylinder, and pyramid are different three-dimensional shapes.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक त्रि-आयामी आकृति का नाम क्या है जिसमें दो त्रिभुजाकार फलक और तीन आयताकार फलक होते हैं?",
+          "stem": "एक गेंद का आकार क्या होता है?",
           "choices": [
-            "घनाभ",
             "शंकु",
-            "त्रिभुजाकार प्रिज्म",
-            "घन"
+            "बेलन",
+            "गोला",
+            "पिरामिड"
           ],
-          "solution": "एक त्रिभुजाकार प्रिज्म एक त्रि-आयामी आकृति है जिसमें दो त्रिभुजाकार फलक और तीन आयताकार फलक होते हैं। यह प्रश्न में दिए गए वर्णन के अनुरूप है। एक घनाभ और एक घन के केवल आयताकार फलक होते हैं, जबकि एक शंकु के एक वृत्ताकार आधार और वक्र सतह होती है, जो वर्णन के अनुरूप नहीं है।",
+          "solution": "एक गेंद एक गोला होती है, जो एक त्रिआयामी आकृति है जिसका वक्र पृष्ठ होता है। शंकु, बेलन और पिरामिड अलग-अलग त्रिआयामी आकृतियां हैं।",
           "imageAlt": null,
-          "critique": "The translation accurately preserves the meaning, technical terms, and logical structure of the original question.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All technical terms are standard in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "तीन आकृतीच्या आकृतीचे नाव काय आहे ज्यामध्ये दोन त्रिकोणी चेंडू आणि तीन आयताकृती चेंडू आहेत?",
+          "stem": "गोला कोणत्या आकृतीचा आहे?",
           "choices": [
-            "क्यूबॉइड",
             "शंकू",
-            "त्रिकोणी घन",
-            "क्यूब"
+            "सिलेंडर",
+            "गोल",
+            "पिरामिड"
           ],
-          "solution": "त्रिकोणी घन ही तीन आकृतीच्या आकृतीची आहे ज्यामध्ये दोन त्रिकोणी चेंडू आणि तीन आयताकृती चेंडू आहेत. हे प्रश्नात दिलेल्या वर्णनाशी जुळते. क्यूबॉइड आणि क्यूब मात्र आयताकृती चेंडू असतात, तर शंकूला वर्तुळाकृती आधार आणि वक्र सतह असते, जे वर्णनाशी जुळत नाही.",
+          "solution": "एक गोला गोल आहे, जो तीन आयामी आकृती आहे ज्याचा वक्र पृष्ठ आहे. शंकू, सिलेंडर आणि पिरामिड ही वेगळ्या तीन आयामी आकृती आहेत.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for geometric shapes.",
+          "critique": "The translation is accurate and maintains the original meaning. The terms used are standard in Marathi textbooks.",
           "flag": null
         }
       },
@@ -72,10 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses a triangular prism with a cuboid, thinking all prisms are rectangular.",
-        "Student confuses cone with a prism due to similar 3D appearance",
+        "Confuses the shape of a ball with a cone",
+        "Confuses the shape of a ball with a cylinder",
         null,
-        "Confuses the shape with a cube"
+        "Confuses the shape of a ball with a pyramid"
       ],
       "solverAnswers": [
         2,
@@ -85,7 +85,7 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed. The correct answer is 'Triangular Prism' with a clear and accurate explanation. The distractors are plausible misconceptions for students at this level.",
+      "critique": "The question is straightforward and the correct answer is clearly 2 (Sphere). The distractors are common misconceptions about 3D shapes.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
@@ -125,215 +125,7 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T23:35:41.493Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If we stack 10 circular cards on top of each other, what three-dimensional shape is formed?",
-      "choices": [
-        "Cuboid",
-        "Cylinder",
-        "Sphere",
-        "Cone"
-      ],
-      "answerIndex": 1,
-      "solution": "Stacking circular cards on top of each other results in a shape with two circular ends and a curved surface in between. This matches the definition of a cylinder. A cuboid has rectangular faces, a sphere is perfectly round in all directions, and a cone has a single circular base and a pointed top, none of which fit the description of stacked circles.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि हम 10 वृत्ताकार कार्ड एक दूसरे के ऊपर रखते हैं, तो कौन-सा त्रिआयामी आकृति बनती है?",
-          "choices": [
-            "घनाभ",
-            "बेलन",
-            "गोला",
-            "शंकु"
-          ],
-          "solution": "वृत्ताकार कार्ड एक दूसरे के ऊपर रखने से एक आकृति बनती है जिसके दो वृत्ताकार सिरे होते हैं और बीच में वक्र सतह होती है। यह बेलन के परिभाषा के अनुरूप होता है। घनाभ के आयताकार फलक होते हैं, गोला सभी दिशाओं में पूरी तरह से गोल होता है, और शंकु के एक वृत्ताकार आधार और एक नुकीला शीर्ष होता है, जो कि वृत्तों के ढेर के विवरण के अनुरूप नहीं होता है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi geometry terms.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "10 वर्तुळाकार कार्ड एकमेकांवर ठेवल्यास कोणता त्रिविमीय आकृती तयार होते?",
-          "choices": [
-            "क्यूबॉइड",
-            "सिलिंडर",
-            "गोला",
-            "शंकू"
-          ],
-          "solution": "वर्तुळाकार कार्ड एकमेकांवर ठेवल्यास दोन वर्तुळाकार अंत आणि त्यांच्यात वक्र पृष्ठ असलेली आकृती तयार होते. हे सिलिंडर च्या व्याख्येस अनुरूप आहे. क्यूबॉइड च्या चौरस फलक असतात, गोला सर्व दिशांमध्ये पूर्णपणे गोल असतो आणि शंकू च्या एका वर्तुळाकार तळावर एक शिकार असते, जे वर्तुळांच्या ठेवलेल्या वर्णनास अनुरूप नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Student mistakes stacking cards as forming a cuboid instead of a cylinder due to confusion between stacked flat shapes and rectangular prisms.",
-        null,
-        "Confuses the shape with a sphere",
-        "Confuses stacking circles with a shape that tapers to a point"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is well-posed and the solution is correct. Stacking circular cards forms a cylinder, and the reasons for the distractors are plausible misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 14,
-          "pageStart": 15,
-          "pageEnd": 17,
-          "headingPath": [
-            "1. Three-Dimensional Shapes"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 15,
-          "pageStart": 17,
-          "pageEnd": 19,
-          "headingPath": [
-            "1. Three-Dimensional Shapes"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 16,
-          "pageStart": 19,
-          "pageEnd": 21,
-          "headingPath": [
-            "1. Three-Dimensional Shapes"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 17,
-          "pageStart": 22,
-          "pageEnd": 22,
-          "headingPath": [
-            "1. Three-Dimensional Shapes"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T23:35:41.493Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "If a three-dimensional shape has a curved surface and no vertices, what is the shape?",
-      "choices": [
-        "Cuboid",
-        "Cylinder",
-        "Sphere",
-        "Cone"
-      ],
-      "answerIndex": 2,
-      "solution": "A sphere is a three-dimensional shape that has a completely curved surface and no sharp corners or vertices. Unlike a cuboid, cylinder, or cone, which all have flat faces or pointed ends, a sphere is smooth and round in all directions. Therefore, the correct answer is 'Sphere'.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक त्रि-आयामी आकृति में वक्र सतह हो और कोई शीर्ष न हो, तो आकृति क्या है?",
-          "choices": [
-            "घनाभ",
-            "बेलन",
-            "गोला",
-            "शंकु"
-          ],
-          "solution": "एक गोला एक त्रि-आयामी आकृति है जिसमें पूरी तरह से वक्र सतह होती है और कोई तीखे कोने या शीर्ष नहीं होते। घनाभ, बेलन या शंकु के विपरीत, जिनमें सभी में समतल सतह या नुकीले सिरे होते हैं, गोला सभी दिशाओं में चिकना और गोल होता है। इसलिए, सही उत्तर 'गोला' है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are standard in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "त्रिविमीय आकृतीच्या वक्र पृष्ठभाग आणि शिरोबिंदू नसल्यास, आकृती कोणती असते?",
-          "choices": [
-            "चौरसाचे बेल्ले",
-            "बेलून",
-            "गोल",
-            "शंकू"
-          ],
-          "solution": "गोल ही त्रिविमीय आकृती आहे जी पूर्णपणे वक्र पृष्ठभाग असतो आणि तिच्याकडे तीक्ष्ण कोन किंवा शिरोबिंदू नसतात. चौरसाचे बेल्ले, बेलून किंवा शंकू सारख्या आकृतींच्या तलावर तले असतात किंवा शिरोबिंदू असतात, परंतु गोल ही सर्व दिशांमध्ये चक्रीय आणि चक्कर घालणारी असते. म्हणूनच योग्य उत्तर 'गोल' आहे.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate and maintains the original meaning, with appropriate terminology used in Marathi textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses a cuboid with a curved surface shape due to its box-like appearance",
-        "Student thinks a cylinder has no vertices because it has a curved surface, ignoring that it has circular bases with edges",
-        null,
-        "Confuses the shape with a cone"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is Sphere (option 2), as it has a curved surface and no vertices. The other options all have vertices or are not fully curved. The author's reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 14,
-          "pageStart": 15,
-          "pageEnd": 17,
-          "headingPath": [
-            "1. Three-Dimensional Shapes"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 15,
-          "pageStart": 17,
-          "pageEnd": 19,
-          "headingPath": [
-            "1. Three-Dimensional Shapes"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 16,
-          "pageStart": 19,
-          "pageEnd": 21,
-          "headingPath": [
-            "1. Three-Dimensional Shapes"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 17,
-          "pageStart": 22,
-          "pageEnd": 22,
-          "headingPath": [
-            "1. Three-Dimensional Shapes"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T23:35:41.493Z",
+      "generatedAt": "2026-11-01T12:38:37.118Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

@@ -1,0 +1,310 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T17:15:19.843Z",
+  "finishedAt": "2026-11-02T17:19:32.721Z",
+  "seconds": 253,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "९ वी गणित भाग-२ इंग्रजी",
+    "bookCode": "903000609",
+    "document": "balbharati/9/mathematics/903000609.pdf",
+    "classLevel": 9,
+    "subject": "Mathematics",
+    "chapter": "Chapter 11 — Constructions of Triangles",
+    "edition": "2026 edition",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n37.\nA\nD\nP Q\nB C\nE F\nTriangle is a very popular shape used in interior designing. The picture given above\nshows a cabinet designed by a famous interior designer.\nHere the largest triangle is represented by △ ABC and smallest one with shelf is\nrepresented by △ DEF. PQ is parallel to EF.\n(i) Show that △ DPQ ∼ △ DEF.\n𝑃𝑄\n(ii) If DP= 50 cm and PE = 70 cm then find .\n𝐸𝐹 1\n𝑝𝑒𝑟𝑖𝑚𝑒𝑡𝑒𝑟 𝑜𝑓 △𝐴𝐵𝐶\n(iii) (A) If 2AB = 5DE and △ ABC ∼ △ DEF then show that 𝑝𝑒𝑟𝑖𝑚𝑒𝑡𝑒𝑟 𝑜𝑓 △𝐷𝐸𝐹 is constant.\nOR 2\n(iii) (B) If AM and DN are medians of triangles ABC and DEF respectively then prove\nthat △ ABM ∼ △ DEN.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n25. Show that the points A(-5,6), B(3, 0) and C( 9, 8) are the vertices of an isosceles 2\ntriangle.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n33. If a line is drawn parallel to one side of a triangle to intersect the other two sides 5\nin distinct points, then prove that the other two sides are divided in the same\nratio.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n33. Correct given, to prove, construction, figure 1\nCorrect proof 2\nAR = AQ = 7cm ½\nBP = BR = AB-AR = 3cm ½\nCP =CQ = 5cm ½\nBC = BP+PC = 3+5 = 8 cm ½"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 60678,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 10284,
+      "completionTokens": 3206
+    },
+    "critique": {
+      "calls": 12,
+      "ms": 74829,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 6204,
+      "completionTokens": 2139
+    },
+    "solver": {
+      "calls": 60,
+      "ms": 30409,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 11380,
+      "completionTokens": 480
+    },
+    "form": {
+      "calls": 5,
+      "ms": 15446,
+      "in": 12,
+      "out": 10,
+      "rejects": 2,
+      "promptTokens": 1687,
+      "completionTokens": 426
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 7,
+      "ms": 1378,
+      "in": 10,
+      "out": 7,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 27,
+      "ms": 326336,
+      "in": 14,
+      "out": 13,
+      "rejects": 1,
+      "promptTokens": 20057,
+      "completionTokens": 10373
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 3,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 7,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "To construct a triangle when its base, angle adjacent to the base, and the difference of the remaining sides are given, which of the following is the correct approach?",
+      "ms": {
+        "draft": 4432,
+        "critique": 5459,
+        "solver": 2285,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A triangle is to be constructed with base BC = 6.3 cm, angle at B = 75°, and AB + AC = 9 cm. Which of the following steps is used to locate point A?",
+      "ms": {
+        "draft": 4432,
+        "critique": 6608,
+        "solver": 1941,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "To construct a triangle with a given base, an angle adjacent to the base, and the sum of the lengths of the other two sides, a student first draws the base and a ray making the given angle with the base. What should the student do next?",
+      "ms": {
+        "draft": 5681,
+        "critique": 7418,
+        "solver": 2012,
+        "form": 5029
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "When constructing a triangle with a given base, an angle adjacent to the base, and the difference of the lengths of the other two sides, the student first draws the base and a ray making the given angle. The next step is to mark a point on the ray such that the distance from the base is equal to the difference. What is the purpose of this step?",
+      "ms": {
+        "draft": 5681,
+        "critique": 5590,
+        "solver": 1755,
+        "form": 2546
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is constructing a triangle with a given base, an angle adjacent to the base, and the sum of the lengths of the other two sides. After drawing the base and the ray, the student marks a point on the ray such that the distance from the base is equal to the sum. What is the next step in the construction?",
+      "ms": {
+        "draft": 5681,
+        "critique": 6984,
+        "solver": 1705,
+        "form": 2071
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the construction of a triangle where the base, an angle adjacent to the base, and the difference between the lengths of the other two sides are given, the student first draws the base and a ray making the given angle. What is the next step?",
+      "ms": {
+        "draft": 5681,
+        "critique": 7418,
+        "solver": 2660,
+        "form": 2947,
+        "translation": 49607
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In the construction of a triangle with base BC = 6.3 cm, angle at B = 75°, and AB + AC = 9 cm, what is the reason for drawing the perpendicular bisector of segment CD?",
+      "ms": {
+        "draft": 4432,
+        "critique": 5434,
+        "solver": 1453,
+        "form": 0,
+        "translation": 40278
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "To construct a triangle with base BC = 7.5 cm, angle at B = 40°, and AB - AC = 3 cm, which of the following is the correct step to locate point A?",
+      "ms": {
+        "draft": 4432,
+        "critique": 6103,
+        "solver": 1850,
+        "form": 0,
+        "translation": 38989
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In the construction of a triangle with a given base, an angle adjacent to the base, and the sum of the other two sides, the student draws the base and a ray making the given angle. The student then marks a point on the ray such that the distance from the base is equal to the sum of the other two sides. What should the student do next?",
+      "ms": {
+        "draft": 5681,
+        "critique": 7241,
+        "solver": 1318,
+        "form": 5236,
+        "translation": 64284
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a triangle ABC, BC = 6.3 cm, B = 75°, and AB + AC = 9 cm. If a student draws a ray making 75° with BC and marks point D such that BD = 9 cm, then draws a perpendicular bisector of CD to find point A, which of the following is the correct reason for this method?",
+      "ms": {
+        "draft": 4432,
+        "critique": 6676,
+        "solver": 1554,
+        "form": 0,
+        "translation": 43998
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a triangle construction problem where the base, an angle adjacent to the base, and the difference of the lengths of the other two sides are given, the student draws the base and a ray making the given angle. The student then takes a point on the ray such that the distance from the base is equal to the difference. What is the key geometric principle that allows the student to locate the third vertex of the triangle?",
+      "ms": {
+        "draft": 5681,
+        "critique": 5578,
+        "solver": 1974,
+        "form": 0,
+        "translation": 65042
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In the construction of a triangle with base BC, an angle adjacent to the base, and the sum of the other two sides, why is the perpendicular bisector of CD used to locate point A?",
+      "ms": {
+        "draft": 4432,
+        "critique": 6452,
+        "solver": 1683,
+        "form": 1,
+        "translation": 81670
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "To construct a triangle when its base, angle adjacent to the base, and the difference of the remaining sides are given, which of the following is the correct approach?",
+      "reason": "options 0 and 1 say the same thing (\"Draw the base and the given angle, then mark a point such that the sum of the remaining sides is known\" / \"Draw the base and the given angle, then mark a point such that the difference of the remaining sides is known\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A triangle is to be constructed with base BC = 6.3 cm, angle at B = 75°, and AB + AC = 9 cm. Which of the following steps is used to locate point A?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct step, so not a distractor (no reason needed for the …\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "To construct a triangle with a given base, an angle adjacent to the base, and the sum of the lengths of the other two sides, a student first draws the base and a ray making the given angle with the base. What should the student do next?",
+      "reason": "near-duplicate of batch item \"In the construction of a triangle where the base, …\" (cosine 0.916 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "When constructing a triangle with a given base, an angle adjacent to the base, and the difference of the lengths of the other two sides, the student first draws the base and a ray making the given angle. The next step is to mark a point on the ray such that the distance from the base is equal to the difference. What is the purpose of this step?",
+      "reason": "near-duplicate of batch item \"In the construction of a triangle where the base, …\" (cosine 0.935 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A student is constructing a triangle with a given base, an angle adjacent to the base, and the sum of the lengths of the other two sides. After drawing the base and the ray, the student marks a point on the ray such that the distance from the base is equal to the sum. What is the next step in the construction?",
+      "reason": "near-duplicate of batch item \"In the construction of a triangle with a given bas…\" (cosine 0.966 ≥ 0.9)"
+    },
+    {
+      "stage": "translation",
+      "level": 6,
+      "stem": "In the construction of a triangle with base BC, an angle adjacent to the base, and the sum of the other two sides, why is the perpendicular bisector of CD used to locate point A?",
+      "reason": "mr: the model's answer was not JSON (finish: length): {\n  \"stem\": \"त्रिकोणाच्या बेस BC च्या निर्मितीमध्ये, बेसशी जावलेला कोन आणि इतर दोन बाजूंची बेरीज, त्याच्या बाजूंची बेरीज"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

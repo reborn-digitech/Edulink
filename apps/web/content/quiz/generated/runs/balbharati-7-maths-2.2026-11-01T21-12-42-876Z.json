@@ -1,0 +1,310 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T21:12:42.876Z",
+  "finishedAt": "2026-11-01T21:15:55.047Z",
+  "seconds": 192,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी गणित इंग्रजी",
+    "bookCode": "703020004",
+    "document": "balbharati/7/mathematics/703020004.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 2 — Multiplication and Division of Integers",
+    "edition": "2026 edition",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2026-27]\n1. Given two integers 𝑎, 𝑏 such that 𝑎 < 𝑏 and 𝑐 be any non-zero integer then 1\nwhich of the following always holds true:\n(A) 𝑎 − 𝑐 > 𝑏 − 𝑐 (B) 𝑎𝑐 < 𝑏𝑐\n(C) 𝑎𝑐 > 𝑏𝑐 (D) 𝑎 + 𝑐 < 𝑏 + 𝑐",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n1. If two positive integers a and b are written as a = x y and b = xy , where x, y are prime 1 3 2 3\nnumbers, then the result obtained by dividing the product of the positive integers by the\nLCM (a, b) is\n(a) xy (b) xy 2",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2023-24]\n1. Option (c) Here X < 0 and Y > 0 , hence -70 mod 13 is 8 ∵ 8 > 0. 1 Mark",
+      "[INMO 2007 — question paper]\n3. Let m and n be positive integers such that the equation 72 — mz +n = 0 has\nreal roots « and 3. Prove that o and 8 are integers if and only if [ma] + [mf]\nis the square of an integer. (Here [z] denotes the largest integer not exceeding\nx.)\nSolution: If « and 8 are both integers, then\n[ma] + [mB] = ma+mp = m(a+ 8) =m?\nThis proves one implication.\nObserve that a+ f = m and aff = n. We use the property of integer function:\n2 —1 < [z] < x for any real number x. Thus\nm*=2=m(a+p) —2=ma—1+mp—1< [ma] + [mp] <m(a+p) =m’\nSince m and n are positive integers, both a and 8 must be positive. If m > 2,\nwe observe that there is no square between m? — 2 and m?. Hence, either m = 1\nor [ma] + [mB] =m? If m= "
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 47723,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 9454,
+      "completionTokens": 2731
+    },
+    "critique": {
+      "calls": 17,
+      "ms": 103264,
+      "in": 12,
+      "out": 11,
+      "rejects": 1,
+      "promptTokens": 7390,
+      "completionTokens": 2883
+    },
+    "solver": {
+      "calls": 87,
+      "ms": 47301,
+      "in": 11,
+      "out": 9,
+      "rejects": 2,
+      "promptTokens": 16121,
+      "completionTokens": 875
+    },
+    "form": {
+      "calls": 9,
+      "ms": 24569,
+      "in": 9,
+      "out": 5,
+      "rejects": 4,
+      "promptTokens": 2187,
+      "completionTokens": 658
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 6,
+      "ms": 1046,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 200874,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 11680,
+      "completionTokens": 6024
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 0,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the product of two negative integers?",
+      "ms": {
+        "draft": 4062,
+        "critique": 8340,
+        "solver": 2049,
+        "form": 2791
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the result of multiplying (-7) by (-2)?",
+      "ms": {
+        "draft": 4062,
+        "critique": 6246
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the result of multiplying 6 by (-4)?",
+      "ms": {
+        "draft": 4062,
+        "critique": 6361,
+        "solver": 9539
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the result of multiplying (-5) by 3?",
+      "ms": {
+        "draft": 4062,
+        "critique": 6683,
+        "solver": 10765,
+        "form": 781
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If (-4) × 3 = -12, then what is the value of (-4) × (-3)?",
+      "ms": {
+        "draft": 3892,
+        "critique": 6629,
+        "solver": 11914,
+        "form": 3337
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the product of a positive integer and a negative integer?",
+      "ms": {
+        "draft": 3892,
+        "critique": 7180,
+        "solver": 12297,
+        "form": 4009
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a × b is negative, and b is positive, what can be said about a?",
+      "ms": {
+        "draft": 3892,
+        "critique": 4370,
+        "solver": 7043
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the product of (-7) × 0?",
+      "ms": {
+        "draft": 3892,
+        "critique": 4893,
+        "solver": 889,
+        "form": 1952,
+        "translation": 21737
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the product of a positive integer and a negative integer?",
+      "ms": {
+        "draft": 4062,
+        "critique": 7476,
+        "solver": 1382,
+        "form": 4616,
+        "translation": 45290
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the product of two positive integers?",
+      "ms": {
+        "draft": 4062,
+        "critique": 7988,
+        "solver": 1740,
+        "form": 4403,
+        "translation": 46655
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the product of two integers is positive, which of the following must be true?",
+      "ms": {
+        "draft": 3892,
+        "critique": 7398,
+        "solver": 3306,
+        "form": 3128,
+        "translation": 53785
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a and b are integers such that a × b is positive, which of the following must be true?",
+      "ms": {
+        "draft": 3892,
+        "critique": 5623,
+        "solver": 1080,
+        "form": 2610,
+        "translation": 29554
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the product of two negative integers?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed for this option as it is th…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the result of multiplying (-7) by (-2)?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the result of multiplying 6 by (-4)?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the result of multiplying (-5) by 3?",
+      "reason": "options 2 and 3 are the same (\"-5\"); options 2 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If (-4) × 3 = -12, then what is the value of (-4) × (-3)?",
+      "reason": "options 0 and 2 are the same (\"-12\"); options 0 and 2 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the product of a positive integer and a negative integer?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a × b is negative, and b is positive, what can be said about a?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

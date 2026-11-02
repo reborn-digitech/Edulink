@@ -1,0 +1,918 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T16:02:32.552Z",
+  "finishedAt": "2026-11-01T16:17:57.177Z",
+  "seconds": 925,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "fegp1",
+    "document": "ncert/6/mathematics/fegp109.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 9 — Symmetry",
+    "edition": "Reprint 2026-27",
+    "chunks": 14,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n10. B) isosceles and similar",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2026-27]\n3. (B) 64\n5 5\n5+4 = 9\n= 5 ∶ 2\nA 3 × 3 symmetric matrix will be of the form\n𝑎 𝑏 𝑐\n[𝑏 𝑑 𝑒]\n𝑐 𝑒 𝑓\nThere are 6 unique entries in this matrix: 𝑎, 𝑏, 𝑐, 𝑑, 𝑒, 𝑓. Each of these entries\ncan be either 1 or -1.\n∴ Number of symmetric matrices will be 2 = 64 6",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class XII Mathematics, sample question paper, 2026-27]\n4. 2 1 −2\n𝜋\n(B) [0, 𝜋] − { } 2\n𝜋 3𝜋\n(D) [ , 2 2 ] − {𝜋}\n(B) (− , ) 1 1 2 2\n(D) (−∞, − ] ∪ [ , ∞) 1 2 1 2\n(C) π 3 (D) 𝜋 2\nIf 𝐴 = [3𝑎 0 4 ] is a symmetric matrix, then value of √6𝑎 + 2𝑏 + 3𝑐 is:\n𝑏 2𝑐 1\n(A) −2 (B) 2 (C) ±2 (D) 4"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 329953,
+      "in": 49,
+      "out": 45,
+      "rejects": 4,
+      "promptTokens": 41961,
+      "completionTokens": 12925
+    },
+    "critique": {
+      "calls": 57,
+      "ms": 776905,
+      "in": 45,
+      "out": 32,
+      "rejects": 13,
+      "promptTokens": 27283,
+      "completionTokens": 10447
+    },
+    "solver": {
+      "calls": 235,
+      "ms": 240638,
+      "in": 32,
+      "out": 24,
+      "rejects": 8,
+      "promptTokens": 44371,
+      "completionTokens": 2613
+    },
+    "form": {
+      "calls": 7,
+      "ms": 218798,
+      "in": 24,
+      "out": 9,
+      "rejects": 15,
+      "promptTokens": 8872,
+      "completionTokens": 2073
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 56,
+      "ms": 16444,
+      "in": 9,
+      "out": 1,
+      "rejects": 8,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 22242,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 1932,
+      "completionTokens": 994
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "Which of the following shapes has exactly two lines of symmetry?",
+      "ms": {
+        "draft": 11801,
+        "critique": 10504
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a definition of symmetry according to the passage?",
+      "ms": {
+        "draft": 11801,
+        "critique": 11873
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes a line of symmetry?",
+      "ms": {
+        "draft": 11801,
+        "critique": 8983,
+        "solver": 3750,
+        "form": 7835
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements best explains the concept of symmetry as described in the passage?",
+      "ms": {
+        "draft": 11801,
+        "critique": 12690,
+        "solver": 2050,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following is a key insight about symmetry that is not explicitly stated but can be inferred?",
+      "ms": {
+        "draft": 11801,
+        "critique": 12991,
+        "solver": 2870,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many lines of symmetry does a regular hexagon have?",
+      "ms": {
+        "draft": 6263,
+        "critique": 10413
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of reflection symmetry?",
+      "ms": {
+        "draft": 11801,
+        "critique": 15052,
+        "solver": 22670
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A square is rotated about its centre. After how many degrees will the square look exactly the same as the original?",
+      "ms": {
+        "draft": 6263,
+        "critique": 12102
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A figure is made with three radial arms. The angle between the arms is 120°. How many angles of symmetry does this figure have?",
+      "ms": {
+        "draft": 6263,
+        "critique": 14327
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A figure has rotational symmetry with the smallest angle of symmetry as 60°. Which of the following could be the angles of symmetry of this figure?",
+      "ms": {
+        "draft": 7085,
+        "critique": 9984,
+        "solver": 3209,
+        "form": 14
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The windmill shown has rotational symmetry. After how many degrees will it look exactly the same as the original?",
+      "ms": {
+        "draft": 6263,
+        "critique": 10998,
+        "solver": 2112,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of these shapes has exactly one line of symmetry?",
+      "ms": {
+        "draft": 6263,
+        "critique": 10194,
+        "solver": 1504,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A figure has rotational symmetry with the smallest angle of symmetry as 30°. What is the number of angles of symmetry the figure has, excluding the 360° angle?",
+      "ms": {
+        "draft": 7085,
+        "critique": 34072
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a line of symmetry for a square?",
+      "ms": {
+        "draft": 7075,
+        "critique": 27020,
+        "solver": 6173,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A figure has rotational symmetry with the smallest angle of symmetry as 17°. Is it possible for the figure to have rotational symmetry?",
+      "ms": {
+        "draft": 7085,
+        "critique": 37298,
+        "solver": 39407
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is not possible for a triangle?",
+      "ms": {
+        "draft": 7075,
+        "critique": 12921,
+        "solver": 45283
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A figure has rotational symmetry with the smallest angle of 60°. What is the total number of angles of symmetry it has?",
+      "ms": {
+        "draft": 7075,
+        "critique": 20925,
+        "solver": 52953
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A square is folded along its diagonal. How many holes will be created if a single hole is punched in the folded square?",
+      "ms": {
+        "draft": 7075,
+        "critique": 27208,
+        "solver": 6693,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the number of angles of rotational symmetry for a shape that looks the same after a rotation of 120°?",
+      "ms": {
+        "draft": 6332,
+        "critique": 7200
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the number of lines of symmetry of a regular polygon with 5 sides?",
+      "ms": {
+        "draft": 6332,
+        "critique": 26641,
+        "solver": 15439
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A figure has rotational symmetry with an order of 4. What is the smallest angle of symmetry of the figure?",
+      "ms": {
+        "draft": 7075,
+        "critique": 27671,
+        "solver": 6058,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which shape has 24 lines of symmetry?",
+      "ms": {
+        "draft": 14995,
+        "critique": 11501
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the number sequence for lines of symmetry in regular polygons?",
+      "ms": {
+        "draft": 14995,
+        "critique": 12664
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the number of angles of symmetry for the Koch Snowflake sequence?",
+      "ms": {
+        "draft": 14995,
+        "critique": 10727,
+        "solver": 2047
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A shape has rotational symmetry with angles 120° and 240°. What is the order of rotational symmetry?",
+      "ms": {
+        "draft": 14995,
+        "critique": 11981,
+        "solver": 17530,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a figure has rotational symmetry with a smallest angle of 60°, which of the following is not a possible angle of symmetry for the figure?",
+      "ms": {
+        "draft": 18573,
+        "critique": 9294,
+        "solver": 24938
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A figure is folded and a hole is punched in the folded paper. When unfolded, the hole appears in the center of the paper. Which of the following could be the way the paper was folded?",
+      "ms": {
+        "draft": 18573,
+        "critique": 13308,
+        "solver": 22940,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A figure has exactly one line of symmetry and rotational symmetry. Which of the following could be this figure?",
+      "ms": {
+        "draft": 18573,
+        "critique": 12166
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the definition of a line of symmetry?",
+      "ms": {
+        "draft": 18573,
+        "critique": 9849,
+        "solver": 2017,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements is true about the angles of symmetry for a figure?",
+      "ms": {
+        "draft": 6759,
+        "critique": 9282
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A figure has rotational symmetry with the smallest angle of symmetry being 72 degrees. What is the order of rotational symmetry for this figure?",
+      "ms": {
+        "draft": 6759,
+        "critique": 9279
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A figure has rotational symmetry with the smallest angle of symmetry being 90 degrees. What are the other angles of symmetry for this figure?",
+      "ms": {
+        "draft": 6759,
+        "critique": 10350,
+        "solver": 1826
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A figure has rotational symmetry with angles of symmetry 60°, 120°, 180°, 240°, 300°, and 360°. What is the smallest angle of symmetry for this figure?",
+      "ms": {
+        "draft": 6759,
+        "critique": 8422
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a line of symmetry for a square?",
+      "ms": {
+        "draft": 4454,
+        "critique": 7910,
+        "solver": 3390,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A figure has rotational symmetry with the smallest angle of symmetry being 45 degrees. Is it possible for such a figure to exist?",
+      "ms": {
+        "draft": 6759,
+        "critique": 8580,
+        "solver": 19004,
+        "form": 4558
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following figures has exactly two lines of symmetry?",
+      "ms": {
+        "draft": 5250,
+        "critique": 8839,
+        "solver": 16495,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A square is folded vertically and then horizontally. If a single straight cut is made, which of the following shapes could appear when the paper is unfolded?",
+      "ms": {
+        "draft": 6263,
+        "critique": 14554,
+        "solver": 2138,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A figure has rotational symmetry with the smallest angle of symmetry as 72°. What is the order of rotational symmetry of the figure?",
+      "ms": {
+        "draft": 7085,
+        "critique": 28463,
+        "solver": 8590,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a figure with exactly three lines of symmetry?",
+      "ms": {
+        "draft": 18573,
+        "critique": 10500,
+        "solver": 1957,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a shape has 3 lines of symmetry and 120° as one of its angles of rotational symmetry, what is the order of rotational symmetry?",
+      "ms": {
+        "draft": 14995,
+        "critique": 13423,
+        "solver": 19199,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a shape has 24 lines of symmetry, what is the maximum possible number of angles of symmetry?",
+      "ms": {
+        "draft": 14995,
+        "critique": 12469,
+        "solver": 20200,
+        "form": 5045
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A figure has rotational symmetry with a smallest angle of 45°. Which of the following is a valid statement about this figure?",
+      "ms": {
+        "draft": 18573,
+        "critique": 11101,
+        "solver": 1458,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following shapes has exactly one line of symmetry?",
+      "ms": {
+        "draft": 4454,
+        "critique": 11497,
+        "solver": 1657,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A figure is folded along a line and the two parts exactly match. What is this line called?",
+      "ms": {
+        "draft": 5250,
+        "critique": 10666,
+        "solver": 1517,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many lines of symmetry does a circle have?",
+      "ms": {
+        "draft": 4454,
+        "critique": 6257,
+        "solver": 1783,
+        "form": 0,
+        "translation": 17308
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A figure has rotational symmetry with the smallest angle of symmetry as 90°. How many angles of symmetry does the figure have?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A figure has rotational symmetry with the smallest angle of symmetry as 90°. What is the order of rotational symmetry of the figure?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following shapes has exactly two lines of symmetry?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a definition of symmetry according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes a line of symmetry?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"correct answer…\"); distractor 3's reason is not a one-line misconception (\"misunderstands the definition of a line of symmetry as not o…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following statements best explains the concept of symmetry as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"correct answer: the passage states that symmetry refers to p…\"); distractor 3's reason is not a one-line misconception (\"misunderstands symmetry as a division into three equal parts…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following is a key insight about symmetry that is not explicitly stated but can be inferred?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"misunderstands symmetry as being limited to a single line of…\"); distractor 1's reason is not a one-line misconception (\"misunderstands symmetry as being limited to natural objects,…\"); distractor 3's reason is not a one-line misconception (\"correct answer: the passage describes how symmetry can be ge…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "How many lines of symmetry does a regular hexagon have?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of reflection symmetry?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A square is rotated about its centre. After how many degrees will the square look exactly the same as the original?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A figure is made with three radial arms. The angle between the arms is 120°. How many angles of symmetry does this figure have?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A figure has rotational symmetry with the smallest angle of symmetry as 60°. Which of the following could be the angles of symmetry of this figure?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Ignores the smallest angle and only selects every second mul…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The windmill shown has rotational symmetry. After how many degrees will it look exactly the same as the original?",
+      "reason": "figure: figure spec refused: spec.segments: segments names point A, which is not defined"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of these shapes has exactly one line of symmetry?",
+      "reason": "figure: figure spec refused: spec: Unrecognized key(s) in object: 'labels'"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A figure has rotational symmetry with the smallest angle of symmetry as 30°. What is the number of angles of symmetry the figure has, excluding the 360° angle?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a line of symmetry for a square?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A figure has rotational symmetry with the smallest angle of symmetry as 17°. Is it possible for the figure to have rotational symmetry?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is not possible for a triangle?",
+      "reason": "after redrafting distractors 0, 2, 3: the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound; option 0 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A figure has rotational symmetry with the smallest angle of 60°. What is the total number of angles of symmetry it has?",
+      "reason": "after redrafting distractors 0, 1, 2: the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A square is folded along its diagonal. How many holes will be created if a single hole is punched in the folded square?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the number of angles of rotational symmetry for a shape that looks the same after a rotation of 120°?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is the number of lines of symmetry of a regular polygon with 5 sides?",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A figure has rotational symmetry with an order of 4. What is the smallest angle of symmetry of the figure?",
+      "reason": "figure: figure spec refused: spec.angles.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A figure has rotational symmetry. What is the order of rotational symmetry if the smallest angle of symmetry is 60°?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following shapes has no lines of symmetry?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which shape has 24 lines of symmetry?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the number sequence for lines of symmetry in regular polygons?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the number of angles of symmetry for the Koch Snowflake sequence?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A shape has rotational symmetry with angles 120° and 240°. What is the order of rotational symmetry?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a figure has rotational symmetry with a smallest angle of 60°, which of the following is not a possible angle of symmetry for the figure?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A figure is folded and a hole is punched in the folded paper. When unfolded, the hole appears in the center of the paper. Which of the following could be the way the paper was folded?",
+      "reason": "options 0 and 3 say the same thing (\"Vertically and then horizontally\" / \"Only horizontally and then vertically\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A figure has exactly one line of symmetry and rotational symmetry. Which of the following could be this figure?",
+      "reason": "the critic finds option 1 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound; option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the definition of a line of symmetry?",
+      "reason": "options 0 and 2 say the same thing (\"A line that divides a figure into two equal parts\" / \"A line that divides a figure into two identical parts\"); options 0 and 3 say the same thing (\"A line that divides a figure into two equal parts\" / \"A line that divides a figure into two different parts\"); options 2 and 3 say the same thing (\"A line that divides a figure into two identical parts\" / \"A line that divides a figure into two different parts\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following statements is true about the angles of symmetry for a figure?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A figure has rotational symmetry with the smallest angle of symmetry being 72 degrees. What is the order of rotational symmetry for this figure?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A figure has rotational symmetry with the smallest angle of symmetry being 90 degrees. What are the other angles of symmetry for this figure?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A figure has rotational symmetry with angles of symmetry 60°, 120°, 180°, 240°, 300°, and 360°. What is the smallest angle of symmetry for this figure?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a line of symmetry for a square?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A figure has rotational symmetry with the smallest angle of symmetry being 45 degrees. Is it possible for such a figure to exist?",
+      "reason": "options 1 and 3 say the same thing (\"No, because 45° is not a factor of 360°\" / \"No, because 45° is a factor of 360°\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following figures has exactly two lines of symmetry?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "A square is folded vertically and then horizontally. If a single straight cut is made, which of the following shapes could appear when the paper is unfolded?",
+      "reason": "near-duplicate of served question cmvek5o0w00btgod85egr8ibm (cosine 0.977 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "A figure has rotational symmetry with the smallest angle of symmetry as 72°. What is the order of rotational symmetry of the figure?",
+      "reason": "near-duplicate of served question cmvek5o1000c5god85cieko1f (cosine 0.989 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is an example of a figure with exactly three lines of symmetry?",
+      "reason": "near-duplicate of served question cmvek5o0t00bhgod8rpk6znoj (cosine 0.965 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If a shape has 3 lines of symmetry and 120° as one of its angles of rotational symmetry, what is the order of rotational symmetry?",
+      "reason": "near-duplicate of served question cmvek5o1300chgod8qjwc2nih (cosine 0.983 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If a shape has 24 lines of symmetry, what is the maximum possible number of angles of symmetry?",
+      "reason": "near-duplicate of served question cmvek5o1600ctgod84czd6ypo (cosine 0.984 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A figure has rotational symmetry with a smallest angle of 45°. Which of the following is a valid statement about this figure?",
+      "reason": "near-duplicate of served question cmvek5o1100cbgod8m43j4xm7 (cosine 0.937 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following shapes has exactly one line of symmetry?",
+      "reason": "near-duplicate of served question cmvek5o0u00bngod8436q3r15 (cosine 0.956 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "A figure is folded along a line and the two parts exactly match. What is this line called?",
+      "reason": "near-duplicate of served question cmvek5o1400cngod825nwiwvr (cosine 0.929 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

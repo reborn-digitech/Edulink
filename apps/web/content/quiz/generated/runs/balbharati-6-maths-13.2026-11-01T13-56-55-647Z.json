@@ -1,0 +1,511 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T13:56:55.647Z",
+  "finishedAt": "2026-11-01T14:03:23.479Z",
+  "seconds": 388,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 13 — Percentage",
+    "edition": "First Edition 2026",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2022-23]\n14. [( 10000 ) − 1] × 100 = [ √ 6 − 1] × 100\n(C) option",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2023-24]\n12. Option (c)\n௥ ௠\n𝑟 ௘௙௙ = ቂቀ1 + ௠ ቁ − 1ቃ × 100\n𝑟 ௘௙௙ = [(1.03) − 1] × 100 = (1.0609 − 1) × 100 = 6.09% ଶ",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2025-26]\n1. In what ratio must a grocer mix two varieties of tea worth ₹ 60 per kg and ₹ 65 1\nper kg so that by selling the mixture at ₹ 68.20 per kg the gain is 10%?\n(A) 3 : 2 (B) 2 : 3 (C) 2 : 5 (D) 3 : 5"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 126925,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 16396,
+      "completionTokens": 5781
+    },
+    "critique": {
+      "calls": 39,
+      "ms": 348593,
+      "in": 24,
+      "out": 20,
+      "rejects": 4,
+      "promptTokens": 17647,
+      "completionTokens": 7134
+    },
+    "solver": {
+      "calls": 205,
+      "ms": 167612,
+      "in": 20,
+      "out": 9,
+      "rejects": 11,
+      "promptTokens": 42313,
+      "completionTokens": 2813
+    },
+    "form": {
+      "calls": 5,
+      "ms": 17924,
+      "in": 9,
+      "out": 6,
+      "rejects": 3,
+      "promptTokens": 1237,
+      "completionTokens": 394
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 19,
+      "ms": 4275,
+      "in": 6,
+      "out": 5,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 181814,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 10351,
+      "completionTokens": 4562
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 2,
+    "2": 0,
+    "3": 0,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the symbol used to represent percent?",
+      "ms": {
+        "draft": 5893,
+        "critique": 6119
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a dress costs ₹100 and there is a 40% discount, what is the final price?",
+      "ms": {
+        "draft": 5893,
+        "critique": 7179
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is 1.3 expressed as a percentage?",
+      "ms": {
+        "draft": 5893,
+        "critique": 7714,
+        "solver": 15109
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A shopkeeper sells 100 articles at a 10% discount and earns the same profit as when selling 120 articles without any discount. What is the ratio of the cost price to the marked price?",
+      "ms": {
+        "draft": 5893,
+        "critique": 7930,
+        "solver": 2177
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If 40% of 20 matches were lost, how many matches were won?",
+      "ms": {
+        "draft": 5579,
+        "critique": 9330
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 700 out of 14000 sugarcane seedlings were bad, what percentage were good?",
+      "ms": {
+        "draft": 5579,
+        "critique": 9367,
+        "solver": 22796
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Meena needs 25gm of protein daily and gets 8gm from one glass of milk. What percentage of her daily requirement does she get?",
+      "ms": {
+        "draft": 5579,
+        "critique": 9544,
+        "solver": 21867
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an election, Deepti got 44% of the votes and Trupti got 26%. How many people did not vote for either of them?",
+      "ms": {
+        "draft": 5579,
+        "critique": 9863,
+        "solver": 18991
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the symbol for percent?",
+      "ms": {
+        "draft": 4003,
+        "critique": 6378,
+        "solver": 3083,
+        "form": 3760
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What percent of the seedlings were bad if 700 out of 14000 were bad?",
+      "ms": {
+        "draft": 4003,
+        "critique": 6338,
+        "solver": 24674
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an election, Deepti got 44% of the votes and Trupti got 26%. How many people did not vote for either of them?",
+      "ms": {
+        "draft": 4003,
+        "critique": 9061,
+        "solver": 21209,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Meena gets 8gm protein from one glass of milk and needs 25gm per day, what percent of her daily protein requirement does she get from one glass?",
+      "ms": {
+        "draft": 4003,
+        "critique": 8766,
+        "solver": 23672
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the symbol used to represent percent?",
+      "ms": {
+        "draft": 5679,
+        "critique": 9102
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A cricket team played 20 matches and lost 40% of them. How many matches did it win?",
+      "ms": {
+        "draft": 4003,
+        "critique": 9284,
+        "solver": 22110
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a student scores 45 marks out of 100, what is the percentage of marks obtained?",
+      "ms": {
+        "draft": 5679,
+        "critique": 8671,
+        "solver": 19188
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Convert 0.25 into a percentage.",
+      "ms": {
+        "draft": 5679,
+        "critique": 8739,
+        "solver": 16285,
+        "form": 3628
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Rohit bought a book for ₹500 and got a discount of ₹125. What is the percentage of discount given?",
+      "ms": {
+        "draft": 5679,
+        "critique": 10001,
+        "solver": 22858
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A shopkeeper gives a 30% discount on a ₹500 item. What is the final price of the item after the discount?",
+      "ms": {
+        "draft": 5679,
+        "critique": 12768,
+        "solver": 16089
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In an election, 63% of the voters cast their votes. If 1,00,000 people were eligible to vote, how many people did not cast their votes?",
+      "ms": {
+        "draft": 5679,
+        "critique": 9947,
+        "solver": 12229,
+        "form": 1651
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the symbol % mean?",
+      "ms": {
+        "draft": 5579,
+        "critique": 9718,
+        "solver": 1904,
+        "form": 5531,
+        "translation": 43911
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the word 'percent' mean?",
+      "ms": {
+        "draft": 4003,
+        "critique": 6043,
+        "solver": 1630,
+        "form": 4829,
+        "translation": 27676
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Rohit bought a book for ₹200 and sold it for ₹240. What is the percentage profit?",
+      "ms": {
+        "draft": 5893,
+        "critique": 8441,
+        "solver": 16958,
+        "form": 0,
+        "translation": 29366
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In an election, 63% of the voters cast their votes. If the total number of voters is 10,000, how many voters did not cast their votes?",
+      "ms": {
+        "draft": 5893,
+        "critique": 8472,
+        "solver": 19749,
+        "form": 0,
+        "translation": 40756
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a cricket team played 20 matches and lost 40%, how many matches did it win?",
+      "ms": {
+        "draft": 5579,
+        "critique": 8071,
+        "solver": 1015,
+        "form": 0,
+        "translation": 34507
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the symbol used to represent percent?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a dress costs ₹100 and there is a 40% discount, what is the final price?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is 1.3 expressed as a percentage?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A shopkeeper sells 100 articles at a 10% discount and earns the same profit as when selling 120 articles without any discount. What is the ratio of the cost price to the marked price?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If 40% of 20 matches were lost, how many matches were won?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 700 out of 14000 sugarcane seedlings were bad, what percentage were good?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Meena needs 25gm of protein daily and gets 8gm from one glass of milk. What percentage of her daily requirement does she get?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In an election, Deepti got 44% of the votes and Trupti got 26%. How many people did not vote for either of them?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the symbol for percent?",
+      "reason": "options 0 and 2 are the same (\"%\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What percent of the seedlings were bad if 700 out of 14000 were bad?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In an election, Deepti got 44% of the votes and Trupti got 26%. How many people did not vote for either of them?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If Meena gets 8gm protein from one glass of milk and needs 25gm per day, what percent of her daily protein requirement does she get from one glass?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the symbol used to represent percent?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A cricket team played 20 matches and lost 40% of them. How many matches did it win?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If a student scores 45 marks out of 100, what is the percentage of marks obtained?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Convert 0.25 into a percentage.",
+      "reason": "options are written to different precisions (0 and 1 and 2 decimals)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Rohit bought a book for ₹500 and got a discount of ₹125. What is the percentage of discount given?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A shopkeeper gives a 30% discount on a ₹500 item. What is the final price of the item after the discount?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "In an election, 63% of the voters cast their votes. If 1,00,000 people were eligible to vote, how many people did not cast their votes?",
+      "reason": "near-duplicate of batch item \"In an election, 63% of the voters cast their votes…\" (cosine 0.926 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

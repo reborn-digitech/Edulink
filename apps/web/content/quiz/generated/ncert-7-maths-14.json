@@ -21,548 +21,47 @@
   "board": "NCERT",
   "book": "Ganita Prakash-II",
   "edition": "2025 edition (the site's Last-Modified)",
-  "generatedAt": "2026-10-31T15:19:19.943Z",
+  "generatedAt": "2026-11-02T02:54:59.106Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the primary tool used in the construction methods described in the Śulba-Sūtras?",
+      "stem": "What is the total sum of the angles around a single point in a regular hexagon?",
       "choices": [
-        "Ruler",
-        "Compass",
-        "Rope",
-        "Square"
+        "180°",
+        "270°",
+        "360°",
+        "450°"
       ],
       "answerIndex": 2,
-      "solution": "The primary tool used in the construction methods described is a rope, as it was historically used to create precise geometric shapes and measurements. A rope allows for drawing circles, arcs, and straight lines, which are essential in these techniques. A compass, ruler, or square are not the main tools described in this context.",
+      "solution": "The total sum of the angles around a single point in a regular hexagon is 360° because, in geometry, the angles around any point always add up to 360° regardless of the shape. The other options do not represent the full circle around a point. 180° is a straight line, 270° is three-quarters of a circle, and 450° exceeds a full circle.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "शुल्ब-सूत्र में वर्णित निर्माण विधियों में प्राथमिक उपकरण क्या है?",
+          "stem": "एक नियमित षट्भुज में एक बिंदु के चारों ओर के कोणों का कुल योग क्या है?",
           "choices": [
-            "रूलर",
-            "कम्पास",
-            "रस्सी",
-            "वर्ग"
+            "180°",
+            "270°",
+            "360°",
+            "450°"
           ],
-          "solution": "शुल्ब-सूत्र में वर्णित निर्माण विधियों में प्राथमिक उपकरण रस्सी है, क्योंकि इसका ऐतिहासिक रूप से ठीक ज्यामितीय आकृतियों और माप के निर्माण के लिए उपयोग किया गया है। रस्सी के द्वारा वृत्त, चाप और सीधी रेखाएं खींची जा सकती हैं, जो इन तकनीकों में आवश्यक हैं। कम्पास, रूलर या वर्ग इस संदर्भ में मुख्य उपकरण नहीं हैं।",
+          "solution": "एक नियमित षट्भुज में एक बिंदु के चारों ओर के कोणों का कुल योग 360° होता है क्योंकि ज्यामिति में किसी भी बिंदु के चारों ओर के कोण हमेशा 360° के बराबर होते हैं चाहे आकृति क्यों न हो। अन्य विकल्प बिंदु के चारों ओर पूरी गोलाकार दृश्य के बराबर नहीं होते। 180° एक सीधी रेखा है, 270° एक गोले के तीन-चौथाई हैं और 450° एक पूरी गोलाकार दृश्य से अधिक है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains option (3) 'रस्सी' (rope), as in the English version. The distractors remain incorrect, and technical terms like 'कम्पास' (compass), 'रूलर' (ruler), and 'वर्ग' (square) are the standard Hindi terms used in textbooks.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "शूलबा-सूत्रांमध्ये वर्णिलेल्या रचना पद्धतीत कोणता मुख्य उपकरण वापरला जातो?",
+          "stem": "एका एकल बिंदू जवळील कोनांची एकूण बेरीज एका सामान्य षट्कोनामध्ये किती असते?",
           "choices": [
-            "रूलर",
-            "कॉम्पास",
-            "स्ट्रिंग",
-            "चौरस"
+            "180°",
+            "270°",
+            "360°",
+            "450°"
           ],
-          "solution": "शूलबा-सूत्रांमध्ये वर्णिलेल्या रचना पद्धतीत मुख्य उपकरण रस्सी आहे, कारण तिचा ऐतिहासिक रीतीने चक्र, वक्र आणि सरळ रेषा आखण्यासाठी वापर केला जात होता, जे या तंत्रांमध्ये आवश्यक आहे. कॉम्पास, रूलर किंवा चौरस हे या संदर्भात वर्णिलेले मुख्य उपकरण नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, with appropriate Marathi terms (e.g., 'रस्सी' for 'rope') and maintains the original meaning and structure.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the tool with a ruler",
-        "Misunderstands the role of a compass",
-        null,
-        "Misinterprets the tool as a square"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed and the correct answer is clearly supported by the historical context of the Śulba-Sūtras, which used ropes for geometric constructions. The distractors reflect common misconceptions about ancient construction tools.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp206.pdf",
-          "ordinal": 3,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 6: Constructions and Tilings",
-            "6.1 Geometric Constructions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp206.pdf",
-          "ordinal": 4,
-          "pageStart": 8,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 6: Constructions and Tilings",
-            "6.1 Geometric Constructions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp206.pdf",
-          "ordinal": 5,
-          "pageStart": 10,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 6: Constructions and Tilings",
-            "6.1 Geometric Constructions"
-          ]
-        }
-      ],
-      "edition": "2025 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-31T15:19:19.943Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "Which of the following is a property of a regular hexagon?",
-      "choices": [
-        "It has 5 sides",
-        "It has 7 sides",
-        "All its angles are equal",
-        "It has unequal sides"
-      ],
-      "answerIndex": 2,
-      "solution": "A regular hexagon has all its angles equal and all its sides equal. The option 'All its angles are equal' correctly describes this property. The other options are incorrect because a hexagon has 6 sides, not 5 or 7, and it cannot have unequal sides and still be regular.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा एक नियमित षट्भुज का गुण है?",
-          "choices": [
-            "इसके 5 भुजाएँ हैं",
-            "इसके 7 भुजाएँ हैं",
-            "इसके सभी कोण बराबर हैं",
-            "इसकी असमान भुजाएँ हैं"
-          ],
-          "solution": "एक नियमित षट्भुज के सभी कोण बराबर होते हैं और सभी भुजाएँ बराबर होती हैं। विकल्प 'इसके सभी कोण बराबर हैं' इस गुण को सही ढंग से वर्णित करता है। अन्य विकल्प गलत हैं क्योंकि एक षट्भुज के 6 भुजाएँ होती हैं, 5 या 7 नहीं, और इसकी भुजाएँ असमान नहीं हो सकतीं और फिर भी नियमित रह सकती हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते एक सामान्य षट्कोनाचे गुणधर्म आहे?",
-          "choices": [
-            "त्याला 5 बाजू आहेत",
-            "त्याला 7 बाजू आहेत",
-            "त्याचे सर्व कोन समान आहेत",
-            "त्याला असमान बाजू आहेत"
-          ],
-          "solution": "एका सामान्य षट्कोनाला सर्व कोन समान आहेत आणि सर्व बाजू समान असतात. विकल्प 'त्याचे सर्व कोन समान आहेत' हा या गुणधर्माचे योग्य वर्णन करतो. इतर विकल्प अयोग्य आहेत कारण षट्कोनाला 6 बाजू असतात, 5 किंवा 7 नाहीत, आणि तो सामान्य असेल तर असमान बाजू असू शकत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for geometric terms like 'षट्कोन' (hexagon) and 'कोन' (angle).",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the number of sides of a hexagon",
-        "Confuses the number of sides of a hexagon",
-        null,
-        "Misunderstands the definition of a regular hexagon"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is option 2, as a regular hexagon has all angles equal. The other options are incorrect due to misconceptions about the number of sides or the definition of a regular polygon.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp206.pdf",
-          "ordinal": 6,
-          "pageStart": 13,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 6: Constructions and Tilings",
-            "6.1 Geometric Constructions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp206.pdf",
-          "ordinal": 7,
-          "pageStart": 16,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 6: Constructions and Tilings",
-            "6.1 Geometric Constructions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp206.pdf",
-          "ordinal": 8,
-          "pageStart": 18,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 6: Constructions and Tilings",
-            "6.1 Geometric Constructions"
-          ]
-        }
-      ],
-      "edition": "2025 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-31T15:19:19.943Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is the correct method to construct a 60° angle?",
-      "choices": [
-        "By constructing an isosceles triangle",
-        "By constructing a right-angled triangle",
-        "By constructing an equilateral triangle",
-        "By constructing a scalene triangle"
-      ],
-      "answerIndex": 2,
-      "solution": "A 60° angle can be constructed by constructing an equilateral triangle, as all angles in an equilateral triangle are 60°. The other options are incorrect because they do not produce a 60° angle.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सी विधि 60° के कोण के निर्माण के लिए सही है?",
-          "choices": [
-            "एक समद्विबाहु त्रिभुज के निर्माण द्वारा",
-            "एक समकोण त्रिभुज के निर्माण द्वारा",
-            "एक समबाहु त्रिभुज के निर्माण द्वारा",
-            "एक विषमबाहु त्रिभुज के निर्माण द्वारा"
-          ],
-          "solution": "60° के कोण को समबाहु त्रिभुज के निर्माण द्वारा बनाया जा सकता है, क्योंकि समबाहु त्रिभुज में सभी कोण 60° होते हैं। अन्य विकल्प गलत हैं क्योंकि वे 60° के कोण नहीं बनाते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard geometric terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता एक 60° कोन बनवण्याचा योग्य पद्धत आहे?",
-          "choices": [
-            "समद्विभुज त्रिकोण बनवून",
-            "समकोनी त्रिकोण बनवून",
-            "समभुज त्रिकोण बनवून",
-            "विषमभुज त्रिकोण बनवून"
-          ],
-          "solution": "60° कोन समभुज त्रिकोण बनवून बनवता येतो, कारण समभुज त्रिकोणाचे सर्व कोन 60° असतात. इतर पर्याय अयोग्य आहेत कारण ते 60° कोन तयार करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for triangle types.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the properties of an isosceles triangle",
-        "Confuses the properties of a right-angled triangle",
-        null,
-        "Misunderstands the construction of a 60° angle"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is option 2, as an equilateral triangle has all angles equal to 60°. The other options are incorrect because isosceles triangles can have a 60° angle but are not guaranteed, right-angled triangles have a 90° angle, and scalene triangles do not inherently have 60° angles.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp206.pdf",
-          "ordinal": 6,
-          "pageStart": 13,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 6: Constructions and Tilings",
-            "6.1 Geometric Constructions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp206.pdf",
-          "ordinal": 7,
-          "pageStart": 16,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 6: Constructions and Tilings",
-            "6.1 Geometric Constructions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp206.pdf",
-          "ordinal": 8,
-          "pageStart": 18,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 6: Constructions and Tilings",
-            "6.1 Geometric Constructions"
-          ]
-        }
-      ],
-      "edition": "2025 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-31T15:19:19.943Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the term used to describe covering a region using a set of shapes, without gaps or overlaps?",
-      "choices": [
-        "Tessellation",
-        "Bisection",
-        "Rotation",
-        "Symmetry"
-      ],
-      "answerIndex": 0,
-      "solution": "Tessellation is the term used to describe covering a region with shapes that fit together perfectly without gaps or overlaps. Bisection refers to dividing something into two parts, rotation involves turning a shape around a point, and symmetry relates to balanced proportions. Tessellation specifically involves repeated patterns of shapes filling a space completely.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "किसी क्षेत्र को आकृतियों के एक समूह द्वारा कवर करने के लिए प्रयुक्त शब्द क्या है, बिना अंतराल या ओवरलैप के?",
-          "choices": [
-            "टेसेलेशन",
-            "बाइसेक्शन",
-            "रोटेशन",
-            "सममिति"
-          ],
-          "solution": "टेसेलेशन किसी क्षेत्र को आकृतियों के एक समूह द्वारा कवर करने के लिए प्रयुक्त शब्द है, जो बिना अंतराल या ओवरलैप के एक दूसरे के साथ पूरी तरह से फिट होते हैं। बाइसेक्शन का अर्थ कुछ चीज को दो भागों में विभाजित करना होता है, रोटेशन किसी आकृति को एक बिंदु के चारों ओर घुमाना होता है, और सममिति संतुलित अनुपात से संबंधित होता है। टेसेलेशन विशेष रूप से अंतराल बिना आकृतियों के द्वारा एक स्थान को पूरी तरह से भरने के द्वारा दोहराए गए पैटर्न के साथ संबंधित होता है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for mathematical concepts.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "कोणत्या शब्दाने एका प्रदेशाला अंतर्गत आकृत्यांच्या सेट वापरून खालीलप्रमाणे ढकलण्याचा विचार केला जातो की खालीलप्रमाणे अंतर नाही किंवा ओव्हरलॅप नाही?",
-          "choices": [
-            "टेसेलेशन",
-            "बायसेक्शन",
-            "रोटेशन",
-            "सममिती"
-          ],
-          "solution": "टेसेलेशन हा शब्द एका प्रदेशाला आकृत्यांच्या सेट वापरून ढकलण्याच्या विचाराला संबोधित करतो ज्यामुळे खालीलप्रमाणे अंतर नाही किंवा ओव्हरलॅप नाही. बायसेक्शन हा एक गोष्ट दोन भागांमध्ये विभाजित करण्याच्या विचाराला संबोधित करतो, रोटेशन हा एका आकृतीला एका बिंदू भोवती फिरवण्याच्या विचाराला संबोधित करतो आणि सममिती हा संतुलित अनुपाताशी संबंधित आहे. टेसेलेशन हा विशिष्ट आकृतींच्या पुनरावृत्ती वापरून एका जागेचा पूर्णपणे भरण्याच्या विचाराला संबोधित करतो.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning. Technical terms like 'टेसेलेशन' (tessellation) are correctly used as per Marathi educational terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses tiling with tessellation",
-        "Does not understand the definition of tiling",
-        "Thinks tiling involves movement of shapes like rotation, which it does not, and symmetry is unrelated"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 'Tessellation' (option 0), which is the term used to describe covering a region with shapes without gaps or overlaps. The author's solution is slightly misleading, as 'tessellation' and 'tiling' are often used interchangeably, but the question specifically asks for the term used in the passage. The explanation for option 1 is a valid misconception, as some students may confuse 'tiling' and 'tessellation'.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp206.pdf",
-          "ordinal": 9,
-          "pageStart": 20,
-          "pageEnd": 24,
-          "headingPath": [
-            "Chapter 6: Constructions and Tilings",
-            "6.2 Tiling"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp206.pdf",
-          "ordinal": 10,
-          "pageStart": 24,
-          "pageEnd": 27,
-          "headingPath": [
-            "Chapter 6: Constructions and Tilings",
-            "6.2 Tiling"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp206.pdf",
-          "ordinal": 11,
-          "pageStart": 27,
-          "pageEnd": 27,
-          "headingPath": [
-            "Chapter 6: Constructions and Tilings",
-            "6.2 Tiling"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp206.pdf",
-          "ordinal": 12,
-          "pageStart": 28,
-          "pageEnd": 28,
-          "headingPath": [
-            "Chapter 6: Constructions and Tilings",
-            "6.2 Tiling",
-            "SUMMARY"
-          ]
-        }
-      ],
-      "edition": "2025 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-31T15:19:19.943Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Which of the following is a method to construct a regular hexagon?",
-      "choices": [
-        "Drawing a circle and marking six equal points on it",
-        "Drawing a triangle and extending its sides to form six sides",
-        "Drawing a square and connecting its sides to form six sides",
-        "Drawing a pentagon and adjusting its sides to make six sides"
-      ],
-      "answerIndex": 0,
-      "solution": "A regular hexagon can be constructed by drawing a circle and marking six equal points on its circumference, as each side of the hexagon will be equal to the radius of the circle. The other options involve shapes that cannot naturally form six equal sides without distortion or additional steps not aligned with geometric principles.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सी एक विधि एक समषट्भुज के निर्माण के लिए है?",
-          "choices": [
-            "एक वृत्त खींचना और उस पर छह समान बिंदु चिह्नित करना",
-            "एक त्रिभुज खींचना और उसके भुजाओं को छह भुजाएँ बनाने के लिए बढ़ाना",
-            "एक वर्ग खींचना और उसकी भुजाओं को छह भुजाएँ बनाने के लिए जोड़ना",
-            "एक पंचभुज खींचना और उसकी भुजाओं को छह भुजाएँ बनाने के लिए समायोजित करना"
-          ],
-          "solution": "एक समषट्भुज को एक वृत्त खींचकर उसकी परिधि पर छह समान बिंदु चिह्नित करके निर्मित किया जा सकता है, क्योंकि षट्भुज की प्रत्येक भुजा वृत्त की त्रिज्या के बराबर होती है। अन्य विकल्पों में ऐसे आकृतियाँ शामिल हैं जो विकृति या ज्यामितीय सिद्धांतों के अनुरूप अतिरिक्त कदमों के बिना छह समान भुजाएँ निर्मित करने में असमर्थ हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and maintains the same meaning, correct answer, and technical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता एक सामान्य षट्कोन बनविण्याचा पद्धत आहे?",
-          "choices": [
-            "एका वर्तुळाचा आखर आणि त्यावर छह समान बिंदू नोंदविणे",
-            "एका त्रिकोणाचा आखर आणि त्याच्या बाजू वाढवून छह बाजू बनविणे",
-            "एका चौरसाचा आखर आणि त्याच्या बाजू जोडून छह बाजू बनविणे",
-            "एका पंचभुजाचा आखर आणि त्याच्या बाजू बदलून छह बाजू बनविणे"
-          ],
-          "solution": "सामान्य षट्कोन वर्तुळ आखून त्याच्या परिघावर छह समान बिंदू नोंदवून बनविता येतो, कारण षट्कोनाच्या प्रत्येक बाजू वर्तुळाच्या त्रिज्येइतकी असते. इतर विकल्पांमध्ये बदल न करता छह समान बाजू तयार करणे शक्य नाही किंवा त्यासाठी भूमितीच्या तत्वांशी जुळत नसलेल्या अतिरिक्त कृती आवश्यक असतात.",
-          "imageAlt": null,
-          "critique": "Translation accurately conveys the original meaning with appropriate Marathi geometric terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Believes extending sides of a triangle can generate a hexagon by some geometric transformation",
-        "Believes that adding sides to a square can create a hexagon without understanding the geometric properties required",
-        "Student mistakenly believes that modifying a pentagon can create a hexagon by simply adding a side."
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct method is to draw a circle and mark six equal points on it, which aligns with the construction of a regular hexagon. The other options represent common misconceptions about how polygons can be constructed.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp206.pdf",
-          "ordinal": 6,
-          "pageStart": 13,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 6: Constructions and Tilings",
-            "6.1 Geometric Constructions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp206.pdf",
-          "ordinal": 7,
-          "pageStart": 16,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 6: Constructions and Tilings",
-            "6.1 Geometric Constructions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp206.pdf",
-          "ordinal": 8,
-          "pageStart": 18,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 6: Constructions and Tilings",
-            "6.1 Geometric Constructions"
-          ]
-        }
-      ],
-      "edition": "2025 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-31T15:19:19.943Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "In the figure, if ∠CAX is 60°, what type of triangle is triangle ACX?",
-      "choices": [
-        "Isosceles triangle",
-        "Right-angled triangle",
-        "Scalene triangle (with two equal sides)",
-        "Equilateral triangle"
-      ],
-      "answerIndex": 3,
-      "solution": "If ∠CAX is 60°, and the triangle is formed by two equal arcs, then triangle ACX is equilateral. This is because all angles in an equilateral triangle are 60°. The other options are incorrect as they do not match the properties of the triangle described.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "आकृति में, यदि ∠CAX 60° है, तो त्रिभुज ACX किस प्रकार का त्रिभुज है?",
-          "choices": [
-            "समद्विबाहु त्रिभुज",
-            "समकोण त्रिभुज",
-            "विषमबाहु त्रिभुज (दो समान भुजाओं वाला)",
-            "समबाहु त्रिभुज"
-          ],
-          "solution": "यदि ∠CAX 60° है, और त्रिभुज दो समान चापों द्वारा बना है, तो त्रिभुज ACX समबाहु है। इसका कारण यह है कि समबाहु त्रिभुज में सभी कोण 60° होते हैं। अन्य विकल्प गलत हैं क्योंकि वे वर्णित त्रिभुज के गुणों के अनुरूप नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "आकृतीत, जर ∠CAX 60° असेल, तर त्रिकोण ACX कोणत्या प्रकारचा असेल?",
-          "choices": [
-            "समद्विभुज त्रिकोण",
-            "समकोनी त्रिकोण",
-            "विषमभुज त्रिकोण (दोन समान बाजू असलेला)",
-            "समभुज त्रिकोण"
-          ],
-          "solution": "जर ∠CAX 60° असेल, आणि त्रिकोण दोन समान चापांद्वारे तयार होत असेल, तर त्रिकोण ACX समभुज असेल. हे कारण आहे की समभुज त्रिकोणात सर्व कोन 60° असतात. इतर विकल्प चुकीचे आहेत कारण ते वर्णन केलेल्या त्रिकोणच्या गुणधर्मांसोबत मेळ बसत नाहीत.",
+          "solution": "एका एकल बिंदू जवळील कोनांची एकूण बेरीज एका सामान्य षट्कोनामध्ये 360° असते कारण भूमितीमध्ये कोणत्याही बिंदू जवळील कोन नेहमी 360° ची बेरीज देतात ते आकृती अवलंबून राहत नाही. इतर विकल्प बिंदू जवळील पूर्ण वर्तुळाचे प्रतिनिधित्व करत नाहीत. 180° एका सरळ रेषेचे आहे, 270° वर्तुळाच्या तीन-चौथाई आहे आणि 450° वर्तुळाच्या एका पूर्ण वर्तुळापेक्षा जास्त आहे.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -573,108 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Believes that any triangle with one 60° angle must be isosceles",
-        "Believes that a 60° angle automatically makes a triangle right-angled",
-        "Student assumes that a triangle with one 60° angle must have two equal sides, confusing isosceles with equilateral",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct, as an equilateral triangle has all angles equal to 60°. However, the question lacks sufficient information to definitively conclude that triangle ACX is equilateral, as the figure is not provided and the construction details are unclear.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp206.pdf",
-          "ordinal": 6,
-          "pageStart": 13,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 6: Constructions and Tilings",
-            "6.1 Geometric Constructions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp206.pdf",
-          "ordinal": 7,
-          "pageStart": 16,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 6: Constructions and Tilings",
-            "6.1 Geometric Constructions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp206.pdf",
-          "ordinal": 8,
-          "pageStart": 18,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 6: Constructions and Tilings",
-            "6.1 Geometric Constructions"
-          ]
-        }
-      ],
-      "edition": "2025 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-31T15:19:19.943Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "A craftsman is creating a floor pattern using regular octagons, squares, and triangles. If the side length of each octagon is 2 cm, what is the total perimeter of one octagon?",
-      "choices": [
-        "12 cm",
-        "14 cm",
-        "16 cm",
-        "18 cm"
-      ],
-      "answerIndex": 2,
-      "solution": "A regular octagon has 8 equal sides. If the side length is 2 cm, the total perimeter is 8 × 2 cm = 16 cm. The other options are incorrect as they do not match the calculation.",
-      "checkExpr": "8*2",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक कलाकार नियमित अष्टभुज, वर्ग और त्रिभुज का उपयोग करके फर्श के पैटर्न बना रहा है। यदि प्रत्येक अष्टभुज की भुजा की लंबाई 2 सेमी है, तो एक अष्टभुज का कुल परिमाप क्या है?",
-          "choices": [
-            "12 सेमी",
-            "14 सेमी",
-            "16 सेमी",
-            "18 सेमी"
-          ],
-          "solution": "एक नियमित अष्टभुज में 8 समान भुजाएं होती हैं। यदि भुजा की लंबाई 2 सेमी है, तो कुल परिमाप 8 × 2 सेमी = 16 सेमी है। अन्य विकल्प गलत हैं क्योंकि वे गणना के साथ मेल नहीं खाते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एक शिल्पकार सामान्य अष्टभुज, चौरस आणि त्रिकोण वापरून फ्लोर पॅटर्न तयार करत आहे. जर प्रत्येक अष्टभुजाच्या बाजूची लांबी 2 सें.मी. असेल, तर एका अष्टभुजाचा एकूण परिमाण किती असेल?",
-          "choices": [
-            "12 सें.मी.",
-            "14 सें.मी.",
-            "16 सें.मी.",
-            "18 सें.मी."
-          ],
-          "solution": "एक सामान्य अष्टभुजाच्या 8 समान बाजू असतात. जर बाजूची लांबी 2 सें.मी. असेल, तर एकूण परिमाण 8 × 2 सें.मी. = 16 सें.मी. असेल. इतर विकल्प चुकीचे आहेत कारण ते गणनेशी जुळत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Incorrectly counts the number of sides of the octagon",
-        "Adds the side length incorrectly",
+        "Confuses the sum of angles in a triangle",
+        "Confuses the sum of angles in a quadrilateral",
         null,
-        "Confuses the side length with another value"
+        "Does not understand the concept of angles around a point"
       ],
       "solverAnswers": [
         2,
@@ -683,8 +84,8 @@
         2,
         2
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is straightforward and the solution is correct. The perimeter of a regular octagon with 8 sides of 2 cm each is indeed 16 cm.",
+      "levelFlag": null,
+      "critique": "The correct answer is 360°, as the sum of angles around a point is always 360°, regardless of the polygon. The author's reasoning is sound, and the misconceptions listed for the wrong options are plausible for students at this level.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp206.pdf",
@@ -718,49 +119,49 @@
         }
       ],
       "edition": "2025 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-31T15:19:19.943Z",
+      "generatedAt": "2026-11-02T02:54:59.106Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "If six congruent equilateral triangles are placed together with a common vertex, what is the total angle around that vertex?",
+      "difficulty": 1,
+      "stem": "What is the shape of a regular polygon with 6 sides?",
       "choices": [
-        "180°",
-        "240°",
-        "300°",
-        "360°"
+        "Triangle",
+        "Square",
+        "Pentagon",
+        "Hexagon"
       ],
       "answerIndex": 3,
-      "solution": "When six congruent equilateral triangles are placed together with a common vertex, their angles add up to 360°, as the total angle around a point is 360°. The other options are incorrect as they do not match this geometric principle.",
+      "solution": "A regular polygon with 6 sides is called a hexagon. A triangle has 3 sides, a square has 4 sides, and a pentagon has 5 sides, so none of those options match a 6-sided polygon. The term 'hexagon' specifically refers to a 6-sided regular polygon.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि छह सर्वांगसम समबाहु त्रिभुज एक ही शीर्ष के साथ एक साथ रखे जाते हैं, तो उस शीर्ष पर कुल कोण क्या होता है?",
+          "stem": "एक नियमित बहुभुज के 6 भुजाओं का आकार क्या है?",
           "choices": [
-            "180°",
-            "240°",
-            "300°",
-            "360°"
+            "त्रिभुज",
+            "वर्ग",
+            "पंचभुज",
+            "षट्भुज"
           ],
-          "solution": "जब छह सर्वांगसम समबाहु त्रिभुज एक ही शीर्ष के साथ एक साथ रखे जाते हैं, तो उनके कोण एक साथ जुड़कर 360° बनाते हैं, क्योंकि एक बिंदु पर कुल कोण 360° होता है। अन्य विकल्प गलत हैं क्योंकि वे इस ज्यामितीय सिद्धांत के अनुरूप नहीं हैं।",
+          "solution": "6 भुजाओं वाला एक नियमित बहुभुज षट्भुज कहलाता है। एक त्रिभुज में 3 भुजाएं होती हैं, एक वर्ग में 4 भुजाएं होती हैं, और एक पंचभुज में 5 भुजाएं होती हैं, इसलिए इनमें से कोई भी विकल्प 6 भुजाओं वाले बहुभुज के अनुरूप नहीं है। शब्द 'षट्भुज' विशेष रूप से 6 भुजाओं वाले नियमित बहुभुज को संदर्भित करता है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "सहा सर्वसम एकसारखे त्रिकोण एकाच शिरोबिंदू एकत्र ठेवल्यास त्या शिरोबिंदू भोवती एकूण कोन किती असेल?",
+          "stem": "सहा बाजू असलेल्या नियमित बहुभुजाची आकृती काय आहे?",
           "choices": [
-            "180°",
-            "240°",
-            "300°",
-            "360°"
+            "त्रिकोण",
+            "चौरस",
+            "पंचभुज",
+            "षट्भुज"
           ],
-          "solution": "सहा सर्वसम एकसारखे त्रिकोण एकाच शिरोबिंदू एकत्र ठेवल्यास त्यांचे कोन 360° च्या बेरजेने जमतात, कारण बिंदू भोवतीचा एकूण कोन 360° असतो. इतर विकल्प चूकीचे आहेत कारण ते या भौमितिक तत्वाशी जुमानत नाहीत.",
+          "solution": "सहा बाजू असलेला नियमित बहुभुज षट्भुज म्हणतात. त्रिकोणाला 3 बाजू असतात, चौरसाला 4 बाजू असतात आणि पंचभुजाला 5 बाजू असतात, म्हणून या पर्यायांपैकी कोणाचीही 6 बाजू असलेल्या बहुभुजाशी जुळत नाही. 'षट्भुज' हा शब्द विशेषतः 6 बाजू असलेल्या नियमित बहुभुजाला संबोधतो.",
           "imageAlt": null,
-          "critique": "The translation accurately reflects the original English question and maintains the correct answer and distractors. Technical terms like 'सर्वसम' (congruent) and 'एकसारखे' (equilateral) are appropriately used in Marathi.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -769,9 +170,9 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Misunderstands the total angle around a point",
-        "Confuses the properties of the triangles",
-        "Misinterprets the arrangement of the triangles",
+        "Confuses the number of sides with a triangle",
+        "Confuses the number of sides with a square",
+        "Confuses the number of sides with a pentagon",
         null
       ],
       "solverAnswers": [
@@ -781,8 +182,8 @@
         3,
         3
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 360°, as the total angle around a point is always 360°, regardless of the number of shapes meeting at that point. The author's reasoning is sound and matches the geometric principle.",
+      "levelFlag": null,
+      "critique": "The question is straightforward and tests recall of polygon names. The correct answer is clearly 'Hexagon' (option 3), and the reasoning for the other options aligns with common misconceptions about the number of sides in polygons.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp206.pdf",
@@ -816,71 +217,126 @@
         }
       ],
       "edition": "2025 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-31T15:19:19.943Z",
+      "generatedAt": "2026-11-02T02:54:59.106Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "If a 5 × 3 grid has one unit square removed, making it have an even number of squares, can it still be tileable with 2 × 1 tiles?",
+      "difficulty": 2,
+      "stem": "What is the name of the line that divides a line segment into two equal parts?",
       "choices": [
-        "Yes, because the number of squares is even.",
-        "No, because the black-and-white pattern is unbalanced.",
-        "Yes, because the grid is now even in size.",
-        "No, because the grid is still odd in both dimensions."
+        "Perpendicular bisector",
+        "Angle bisector",
+        "Median",
+        "Altitude"
       ],
-      "answerIndex": 1,
-      "solution": "The correct answer is 'No, because the black-and-white pattern is unbalanced.' A 5 × 3 grid has 15 squares, and removing one leaves 14. However, the checkerboard pattern results in an unequal number of black and white squares, making it impossible for 2 × 1 tiles to cover them all. The other options incorrectly assume that evenness alone determines tileability, ignoring the color balance required for tiling.",
+      "answerIndex": 0,
+      "solution": "The line that divides a line segment into two equal parts is called a perpendicular bisector because it intersects the segment at a right angle and splits it into two congruent halves. An angle bisector divides an angle, a median connects a vertex of a triangle to the midpoint of the opposite side, and an altitude is a perpendicular segment from a vertex to the opposite side.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि 5 × 3 ग्रिड में एक इकाई वर्ग हटा दिया जाता है, जिससे इसके वर्गों की संख्या सम हो जाती है, तो क्या इसे 2 × 1 टाइल्स से ढका जा सकता है?",
+          "stem": "एक रेखा खंड को दो समान भागों में विभाजित करने वाली रेखा का नाम क्या है?",
           "choices": [
-            "हाँ, क्योंकि वर्गों की संख्या सम है।",
-            "नहीं, क्योंकि काले-सफेद पैटर्न असंतुलित है।",
-            "हाँ, क्योंकि ग्रिड अब सम आकार में है।",
-            "नहीं, क्योंकि ग्रिड अब भी दोनों आयामों में विषम है।"
+            "लंब समद्विभाजक",
+            "कोण समद्विभाजक",
+            "माध्यिका",
+            "ऊंचाई"
           ],
-          "solution": "सही उत्तर 'नहीं, क्योंकि काले-सफेद पैटर्न असंतुलित है।' एक 5 × 3 ग्रिड में 15 वर्ग होते हैं, और एक को हटाने से 14 बच जाते हैं। हालांकि, चेसबोर्ड पैटर्न के कारण काले और सफेद वर्गों की संख्या असमान हो जाती है, जिसके कारण 2 × 1 टाइल्स इन्हें पूरी तरह से ढक नहीं सकते। अन्य विकल्प गलत ढंग से यह मान लेते हैं कि समता अकेले टाइलिंग के निर्धारण में निर्णायक है, जबकि टाइलिंग के लिए रंग के संतुलन की आवश्यकता होती है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question, with appropriate terminology and logical structure.",
+          "solution": "एक रेखा खंड को दो समान भागों में विभाजित करने वाली रेखा को लंब समद्विभाजक कहा जाता है क्योंकि यह खंड के साथ समकोण पर काटती है और इसे दो सर्वांगसम भागों में विभाजित करती है। कोण समद्विभाजक एक कोण को विभाजित करता है, माध्यिका एक त्रिभुज के शीर्ष को विपरीत भुजा के मध्य बिंदु से जोड़ती है और ऊंचाई एक शीर्ष से विपरीत भुजा पर लंब खंड होती है।",
+          "imageAlt": "एक रेखा खंड AB जिसमें एक बिंदु O है जो इसे दो समान भागों में विभाजित करता है, जो लंब समद्विभाजक को दर्शाता है।",
+          "critique": "Translation accurately preserves meaning, technical terms match standard Hindi curriculum, and the correct answer remains in the same position (option 1).",
           "flag": null
         },
         "mr": {
-          "stem": "5 × 3 जाळीमधून एक एकक चौरस काढून टाकल्यास, ज्यामुळे ती सम चौरस बनते, तर ती 2 × 1 टाइल्स ने टाइल करता येईल का?",
+          "stem": "एका रेखाखंडाला दोन समान भागांमध्ये विभागणाऱ्या रेषेचे नाव काय आहे?",
           "choices": [
-            "होय, कारण चौरसांची संख्या सम आहे.",
-            "नाही, कारण काळा-कांदा पॅटर्न असंतुलित आहे.",
-            "होय, कारण जाळी आता सम आकारात आहे.",
-            "नाही, कारण जाळी अजूनही दोन्ही आकारात विषम आहे."
+            "लंब समद्विभाजक",
+            "कोन समद्विभाजक",
+            "मध्यगा",
+            "ऊंची"
           ],
-          "solution": "हे बरोबर उत्तर 'नाही, कारण काळा-कांदा पॅटर्न असंतुलित आहे.' आहे. 5 × 3 जाळीमध्ये 15 चौरस असतात, आणि एक काढून टाकल्याने 14 बरोबर राहतात. मात्र, चेसबोर्ड पॅटर्नमुळे काळा आणि कांदा चौरसांची संख्या असमान असते, ज्यामुळे 2 × 1 टाइल्स त्यांना पूर्णपणे झाकू शकत नाहीत. इतर विकल्प सम असल्याने टाइल करता येईल असे चुकीचे मानतात, जे टाइलिंगसाठी आवश्यक रंग संतुलन नकारतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for the checkerboard pattern ('काळा-कांदा पॅटर्न').",
+          "solution": "एका रेखाखंडाला दोन समान भागांमध्ये विभागणाऱ्या रेषेला लंब समद्विभाजक म्हणतात कारण ती रेखाखंडाला लंबरूपाने छेदते आणि त्याला दोन सर्वसम भागांमध्ये विभागते. कोन समद्विभाजक कोनाला विभागतो, मध्यगा त्रिकोणाच्या एका शिरोबिंदूला विरुद्ध बाजूच्या मध्यबिंदूशी जोडते आणि ऊंची एका शिरोबिंदूपासून विरुद्ध बाजूवरील लंब रेषा आहे.",
+          "imageAlt": "एका रेखाखंडाचे AB आहे आणि बिंदू O हा त्याला दोन समान भागांमध्ये विभागतो, जे लंब समद्विभाजक दर्शवतो.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
+      "imageAlt": "A line segment AB with a point O that divides it into two equal parts, showing the perpendicular bisector.",
+      "figure": {
+        "kind": "geometry",
+        "spec": {
+          "frame": {
+            "xMin": 0,
+            "xMax": 10,
+            "yMin": 0,
+            "yMax": 7,
+            "unit": "units"
+          },
+          "points": [
+            {
+              "id": "A",
+              "x": 2,
+              "y": 3
+            },
+            {
+              "id": "B",
+              "x": 8,
+              "y": 3
+            },
+            {
+              "id": "O",
+              "x": 5,
+              "y": 3
+            }
+          ],
+          "segments": [
+            {
+              "from": "A",
+              "to": "B",
+              "kind": "segment",
+              "label": "AB"
+            },
+            {
+              "from": "O",
+              "to": "A",
+              "kind": "segment",
+              "dashed": true
+            },
+            {
+              "from": "O",
+              "to": "B",
+              "kind": "segment",
+              "dashed": true
+            }
+          ]
+        },
+        "labels": {
+          "AB": {
+            "en": "AB",
+            "hi": "AB",
+            "mr": "AB"
+          }
+        }
+      },
+      "needsFigure": true,
       "distractorReason": [
-        "Overlooks the effect of the black-and-white pattern on tiling",
         null,
-        "Believes that any even number of squares is sufficient for tiling",
-        "Misunderstands the dimensions of the grid after a square is removed"
+        "Confuses line that splits a segment with line that splits an angle",
+        "Students often confuse median with a line that divides a segment into two equal parts, not realizing it connects a vertex to the midpoint of the opposite side.",
+        "Confuses perpendicular bisector with altitude, thinking it divides a segment into two equal parts"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that the checkerboard pattern is the key factor, not just the number of squares or grid dimensions. The reasoning aligns with standard tiling theory.",
+      "levelFlag": null,
+      "critique": "The question is well-constructed. The correct answer is 'Perpendicular bisector,' and the author's reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp206.pdf",
@@ -925,7 +381,1455 @@
         }
       ],
       "edition": "2025 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-31T15:19:19.943Z",
+      "generatedAt": "2026-11-02T02:54:59.106Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the purpose of the line XY in the construction of an eye?",
+      "choices": [
+        "It is the final line of the eye",
+        "It is used to determine the shape of the eye",
+        "It is a line of symmetry for the eye",
+        "It is used to measure the size of the eye"
+      ],
+      "answerIndex": 2,
+      "solution": "The line XY acts as a line of symmetry for the eye. The construction relies on this line to ensure that the upper and lower arcs of the eye are symmetrical. The other options are incorrect because the line XY is not the final part of the eye, it does not determine the shape directly, and it is not used for measuring size.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "आंख के निर्माण में XY रेखा का उद्देश्य क्या है?",
+          "choices": [
+            "यह आंख की अंतिम रेखा है",
+            "इसका उपयोग आंख के आकार का निर्धारण करने के लिए किया जाता है",
+            "यह आंख के लिए एक सममिति रेखा है",
+            "इसका उपयोग आंख के आकार को मापने के लिए किया जाता है"
+          ],
+          "solution": "XY रेखा आंख के लिए एक सममिति रेखा के रूप में कार्य करती है। निर्माण इस रेखा पर निर्भर करता है ताकि आंख के ऊपरी और निचले चाप सममित हों। अन्य विकल्प गलत हैं क्योंकि XY रेखा आंख का अंतिम हिस्सा नहीं है, यह सीधे आंख के आकार का निर्धारण नहीं करती है, और इसका उपयोग आकार मापने के लिए नहीं किया जाता है।",
+          "imageAlt": "आंख के निर्माण के साथ XY रेखा के रूप में सममिति रेखा के साथ एक आरेख।",
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate technical terms in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आंख बनविण्यात रेषा XY चा उद्देश काय आहे?",
+          "choices": [
+            "ती आंखाची अंतिम रेषा आहे",
+            "ती आंखाच्या आकृती निश्चित करण्यासाठी वापरली जाते",
+            "ती आंखाच्या सममितीची रेषा आहे",
+            "ती आंखाच्या आकाराचे मोजण्यासाठी वापरली जाते"
+          ],
+          "solution": "रेषा XY आंखाच्या सममितीची रेषा आहे. आंखाच्या बनावटीत ही रेषा आंखाच्या वरच्या आणि खालच्या चापांची सममिती खात्री करण्यासाठी वापरली जाते. इतर विकल्प अयोग्य आहेत कारण रेषा XY आंखाची अंतिम भाग नाही, ती आकृती थेट निश्चित करत नाही आणि ती आकार मोजण्यासाठी वापरली जात नाही.",
+          "imageAlt": "आंखाच्या बनावटीचा आरेख ज्यात रेषा XY सममितीची रेषा आहे.",
+          "critique": "The translation accurately preserves the meaning, technical terms, and logical structure of the original question.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A diagram showing the construction of an eye with line XY as the line of symmetry.",
+      "figure": {
+        "kind": "geometry",
+        "spec": {
+          "frame": {
+            "xMin": -5,
+            "xMax": 5,
+            "yMin": -5,
+            "yMax": 5,
+            "unit": "units"
+          },
+          "points": [
+            {
+              "id": "X",
+              "x": -2,
+              "y": 0,
+              "label": "X"
+            },
+            {
+              "id": "Y",
+              "x": 2,
+              "y": 0,
+              "label": "Y"
+            },
+            {
+              "id": "A",
+              "x": 0,
+              "y": 2,
+              "label": "A"
+            },
+            {
+              "id": "B",
+              "x": 0,
+              "y": -2,
+              "label": "B"
+            }
+          ],
+          "segments": [
+            {
+              "from": "A",
+              "to": "X",
+              "label": "AX"
+            },
+            {
+              "from": "A",
+              "to": "Y",
+              "label": "AY"
+            },
+            {
+              "from": "B",
+              "to": "X",
+              "label": "BX"
+            },
+            {
+              "from": "B",
+              "to": "Y",
+              "label": "BY"
+            }
+          ],
+          "polygons": [
+            {
+              "vertices": [
+                "A",
+                "X",
+                "B",
+                "Y"
+              ],
+              "shade": false
+            }
+          ],
+          "texts": [
+            {
+              "x": 0,
+              "y": 3,
+              "label": "XY"
+            }
+          ]
+        },
+        "labels": {
+          "X": {
+            "en": "X"
+          },
+          "Y": {
+            "en": "Y"
+          },
+          "A": {
+            "en": "A"
+          },
+          "B": {
+            "en": "B"
+          },
+          "AX": {
+            "en": "AX",
+            "hi": "AX",
+            "mr": "AX"
+          },
+          "AY": {
+            "en": "AY",
+            "hi": "AY",
+            "mr": "AY"
+          },
+          "BX": {
+            "en": "BX",
+            "hi": "BX",
+            "mr": "BX"
+          },
+          "BY": {
+            "en": "BY",
+            "hi": "BY",
+            "mr": "BY"
+          },
+          "XY": {
+            "en": "XY",
+            "hi": "XY",
+            "mr": "XY"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Confuses the role of supporting lines with final lines",
+        "Thinks the line determines the shape directly",
+        null,
+        "Believes the line is used for measurement"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, with a clear correct answer and plausible misconceptions in the distractors. The solution correctly identifies the role of line XY as a line of symmetry.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 2,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-11-02T02:54:59.106Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following is true about the arcs drawn from X and Y in the construction of the perpendicular bisector?",
+      "choices": [
+        "They must be drawn with different radii",
+        "They must be drawn with the same radius",
+        "They must be drawn only above XY",
+        "They must be drawn only below XY"
+      ],
+      "answerIndex": 1,
+      "solution": "The arcs must be drawn with the same radius to ensure that points A and B are equidistant from X and Y. This ensures that AB is the perpendicular bisector of XY. The other options are incorrect because the arcs should not be drawn with different radii, and they should be drawn both above and below XY.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा लंबवत द्विभाजक के निर्माण में X और Y से खींचे गए चापों के बारे में सही है?",
+          "choices": [
+            "उन्हें विभिन्न त्रिज्या के साथ खींचा जाना चाहिए",
+            "उन्हें समान त्रिज्या के साथ खींचा जाना चाहिए",
+            "उन्हें केवल XY के ऊपर खींचा जाना चाहिए",
+            "उन्हें केवल XY के नीचे खींचा जाना चाहिए"
+          ],
+          "solution": "चापों को समान त्रिज्या के साथ खींचा जाना चाहिए ताकि बिंदु A और B, X और Y से समान दूरी पर हों। इससे यह सुनिश्चित होता है कि AB, XY का लंबवत द्विभाजक है। अन्य विकल्प गलत हैं क्योंकि चापों को विभिन्न त्रिज्या के साथ नहीं खींचा जाना चाहिए, और उन्हें XY के ऊपर और नीचे दोनों ओर खींचा जाना चाहिए।",
+          "imageAlt": "एक आंख के निर्माण का आरेख जिसमें रेखा XY सममिति की रेखा है।",
+          "critique": "Translation is accurate, maintains original meaning, and uses standard geometric terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते लक्षण लंब समद्विभाजक बांधकामात X आणि Y पासून चाप असलेल्या वर्तुळाच्या विषयी खरे आहे?",
+          "choices": [
+            "त्यांना वेगवेगळ्या त्रिज्येने असावे",
+            "त्यांना एकसारख्या त्रिज्येने असावे",
+            "त्यांना केवळ XY वर असावे",
+            "त्यांना केवळ XY खाली असावे"
+          ],
+          "solution": "त्यांना एकसारख्या त्रिज्येने असावे जेणेकरून बिंदू A आणि B च्या X आणि Y पासून अंतर समान राहील. हे खात्री करते की AB, XY चा लंब समद्विभाजक आहे. इतर विकल्प चुकीचे आहेत कारण चाप वेगवेगळ्या त्रिज्येने असू नयेत आणि ते XY वर आणि खाली दोन्ही बाजूंनी असावेत.",
+          "imageAlt": "एक आकृती जी XY च्या सममितीच्या रेषेसह डोळ्याच्या बांधकामाचे दर्शन करते.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A diagram showing the construction of an eye with line XY as the line of symmetry.",
+      "figure": {
+        "kind": "geometry",
+        "spec": {
+          "frame": {
+            "xMin": -5,
+            "xMax": 5,
+            "yMin": -5,
+            "yMax": 5,
+            "unit": "units"
+          },
+          "points": [
+            {
+              "id": "X",
+              "x": -2,
+              "y": 0,
+              "label": "X"
+            },
+            {
+              "id": "Y",
+              "x": 2,
+              "y": 0,
+              "label": "Y"
+            },
+            {
+              "id": "A",
+              "x": 0,
+              "y": 2,
+              "label": "A"
+            },
+            {
+              "id": "B",
+              "x": 0,
+              "y": -2,
+              "label": "B"
+            }
+          ],
+          "segments": [
+            {
+              "from": "A",
+              "to": "X",
+              "label": "AX"
+            },
+            {
+              "from": "A",
+              "to": "Y",
+              "label": "AY"
+            },
+            {
+              "from": "B",
+              "to": "X",
+              "label": "BX"
+            },
+            {
+              "from": "B",
+              "to": "Y",
+              "label": "BY"
+            }
+          ],
+          "polygons": [
+            {
+              "vertices": [
+                "A",
+                "X",
+                "B",
+                "Y"
+              ],
+              "shade": false
+            }
+          ],
+          "texts": [
+            {
+              "x": 0,
+              "y": 3,
+              "label": "XY"
+            }
+          ]
+        },
+        "labels": {
+          "X": {
+            "en": "X"
+          },
+          "Y": {
+            "en": "Y"
+          },
+          "A": {
+            "en": "A"
+          },
+          "B": {
+            "en": "B"
+          },
+          "AX": {
+            "en": "AX",
+            "hi": "AX",
+            "mr": "AX"
+          },
+          "AY": {
+            "en": "AY",
+            "hi": "AY",
+            "mr": "AY"
+          },
+          "BX": {
+            "en": "BX",
+            "hi": "BX",
+            "mr": "BX"
+          },
+          "BY": {
+            "en": "BY",
+            "hi": "BY",
+            "mr": "BY"
+          },
+          "XY": {
+            "en": "XY",
+            "hi": "XY",
+            "mr": "XY"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Thinks the radii should be different",
+        null,
+        "Believes arcs are only drawn above",
+        "Believes arcs are only drawn below"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as arcs must be drawn with the same radius to ensure equidistance from X and Y, forming the perpendicular bisector. The other options reflect common misconceptions about the construction process.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 2,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-11-02T02:54:59.106Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a regular hexagon is divided into six equilateral triangles, what is the measure of each angle in the triangles?",
+      "choices": [
+        "30°",
+        "60°",
+        "90°",
+        "120°"
+      ],
+      "answerIndex": 1,
+      "solution": "Each angle in an equilateral triangle is 60° because all sides and angles in such a triangle are equal. A regular hexagon can be divided into six equilateral triangles, meaning each angle in those triangles must measure 60°. Other options do not match the definition of an equilateral triangle, which requires all angles to be equal.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक नियमित षट्भुज को छह समबाहु त्रिभुजों में विभाजित किया जाता है, तो त्रिभुजों में प्रत्येक कोण का माप क्या होगा?",
+          "choices": [
+            "30°",
+            "60°",
+            "90°",
+            "120°"
+          ],
+          "solution": "समबाहु त्रिभुज में प्रत्येक कोण 60° होता है क्योंकि ऐसे त्रिभुज में सभी भुजाएं और कोण समान होते हैं। एक नियमित षट्भुज को छह समबाहु त्रिभुजों में विभाजित किया जा सकता है, जिसका अर्थ है कि उन त्रिभुजों में प्रत्येक कोण 60° मापता है। अन्य विकल्प समबाहु त्रिभुज की परिभाषा के अनुरूप नहीं हैं, जिसमें सभी कोण समान होने की आवश्यकता होती है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक सामान्य षट्कोन छह समभुज त्रिकोणांमध्ये विभागला गेला असता, त्रिकोणांमधील प्रत्येक कोनाचा माप किती असेल?",
+          "choices": [
+            "30°",
+            "60°",
+            "90°",
+            "120°"
+          ],
+          "solution": "समभुज त्रिकोणात प्रत्येक कोन 60° असतो कारण अशा त्रिकोणात सर्व बाजू आणि कोन समान असतात. एक सामान्य षट्कोन छह समभुज त्रिकोणांमध्ये विभागता येतो, म्हणजे त्या त्रिकोणांमधील प्रत्येक कोनाचा माप 60° असेल. इतर विकल्प समभुज त्रिकोणाच्या व्याख्येशी जुमानत नाहीत, ज्यामध्ये सर्व कोन समान असावेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the angles of a different type of triangle",
+        null,
+        "Does not understand the properties of equilateral triangles",
+        "Confuses the angles of a different polygon"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-posed and the solution is correct. The measure of each angle in an equilateral triangle is indeed 60°, and the reasoning provided by the author is sound.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 6,
+          "pageStart": 13,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 7,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 8,
+          "pageStart": 18,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-11-02T02:54:59.106Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A 4 × 6 grid is to be tiled using 2 × 1 tiles. How many tiles are needed to cover the entire grid?",
+      "choices": [
+        "12",
+        "24",
+        "36",
+        "48"
+      ],
+      "answerIndex": 0,
+      "solution": "The grid has 4 rows and 6 columns, giving a total of 4 × 6 = 24 unit squares. Each tile covers 2 unit squares, so 24 ÷ 2 = 12 tiles are needed. The other options are incorrect because they do not divide evenly by 2 or miscalculate the total number of squares.",
+      "checkExpr": "(4*6)/2",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "4 × 6 ग्रिड को 2 × 1 टाइल्स के साथ ढका जाना है। पूरे ग्रिड को कवर करने के लिए कितने टाइल्स की आवश्यकता होती है?",
+          "choices": [
+            "12",
+            "24",
+            "36",
+            "48"
+          ],
+          "solution": "ग्रिड में 4 पंक्तियां और 6 स्तंभ हैं, जो कुल 4 × 6 = 24 इकाई वर्ग देते हैं। प्रत्येक टाइल 2 इकाई वर्ग को कवर करती है, इसलिए 24 ÷ 2 = 12 टाइल्स की आवश्यकता होती है। अन्य विकल्प गलत हैं क्योंकि वे 2 से बराबर भाग नहीं देते या वर्गों की कुल संख्या गलत ढंग से गणना करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "4 × 6 चा जाळा 2 × 1 च्या टाइल्स वापरून टाइल करायचा आहे. पूर्ण जाळा झाकण्यासाठी किती टाइल्स आवश्यक आहेत?",
+          "choices": [
+            "12",
+            "24",
+            "36",
+            "48"
+          ],
+          "solution": "जाळ्यामध्ये 4 ओळी आणि 6 स्तंभ आहेत, ज्यामुळे एकूण 4 × 6 = 24 एकक चौरस बनतात. प्रत्येक टाइल 2 एकक चौरस कव्हर करते, म्हणून 24 ÷ 2 = 12 टाइल्स आवश्यक आहेत. इतर विकल्प चूक आहेत कारण ते 2 ने बरोबर भाग जात नाहीत किंवा एकूण चौरसांची संख्या चुकीची मांडतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "divides 4 × 6 by 1 instead of 2",
+        "multiplies 4 × 6 × 2 instead of dividing",
+        "counts the number of squares instead of tiles"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and logically sound. The total number of squares is 24, and each tile covers 2 squares, so 12 tiles are needed. The reasoning for the distractors matches common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 9,
+          "pageStart": 20,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.2 Tiling"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 10,
+          "pageStart": 24,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.2 Tiling"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 11,
+          "pageStart": 27,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.2 Tiling"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 12,
+          "pageStart": 28,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.2 Tiling",
+            "SUMMARY"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-11-02T02:54:59.106Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In the construction of the perpendicular bisector of XY, what is the significance of points A and B?",
+      "choices": [
+        "They are the endpoints of the line segment XY",
+        "They are the points where the arcs intersect above and below XY",
+        "They are the midpoints of the line segment XY",
+        "They are the centers of the circles used to construct the arcs"
+      ],
+      "answerIndex": 1,
+      "solution": "Points A and B are the points where the arcs intersect above and below the line segment XY. These points are used to draw the perpendicular bisector AB. The other options are incorrect because A and B are not the endpoints of XY, they are not the midpoints, and they are not the centers of circles but the intersection points of arcs.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "XY के लंबवत द्विभाजक के निर्माण में, बिंदु A और B का क्या महत्व है?",
+          "choices": [
+            "वे रेखाखंड XY के अंत बिंदु हैं",
+            "वे रेखाखंड XY के ऊपर और नीचे चापों के प्रतिच्छेद बिंदु हैं",
+            "वे रेखाखंड XY के मध्य बिंदु हैं",
+            "वे चापों के निर्माण के लिए वृत्तों के केंद्र हैं"
+          ],
+          "solution": "बिंदु A और B रेखाखंड XY के ऊपर और नीचे चापों के प्रतिच्छेद बिंदु हैं। इन बिंदुओं का उपयोग लंबवत द्विभाजक AB खींचने के लिए किया जाता है। अन्य विकल्प गलत हैं क्योंकि A और B रेखाखंड XY के अंत बिंदु नहीं हैं, वे मध्य बिंदु नहीं हैं और वे वृत्तों के केंद्र नहीं हैं बल्कि चापों के प्रतिच्छेद बिंदु हैं।",
+          "imageAlt": "XY रेखा के सममिति रेखा के साथ एक आंख के निर्माण का आरेख।",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, with no ambiguity or distortion.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "XY च्या लंब समद्विभाजक बाजूच्या बांधकामात, A आणि B बिंदूंचा अर्थ काय आहे?",
+          "choices": [
+            "ते XY रेषाखंडाचे अंत बिंदू आहेत",
+            "ते XY वर आणि खाली चापांच्या छेदन बिंदू आहेत",
+            "ते XY रेषाखंडाचे मध्य बिंदू आहेत",
+            "ते चाप बाजूच्या वर्तुळांचे केंद्र आहेत"
+          ],
+          "solution": "A आणि B बिंदू रेषाखंड XY वर आणि खाली चापांच्या छेदन बिंदू आहेत. या बिंदू वापरून A आणि B चा लंब समद्विभाजक आखला जातो. इतर विकल्प चूक आहेत कारण A आणि B रेषाखंड XY चे अंत बिंदू नाहीत, ते मध्य बिंदू नाहीत आणि ते वर्तुळांचे केंद्र नाहीत परंतु चापांचे छेदन बिंदू आहेत.",
+          "imageAlt": "XY रेषाखंडाच्या सममिती रेषेच्या बाजूच्या आखलेल्या डायग्राममध्ये एक डायग्राम दाखवला आहे.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A diagram showing the construction of an eye with line XY as the line of symmetry.",
+      "figure": {
+        "kind": "geometry",
+        "spec": {
+          "frame": {
+            "xMin": -5,
+            "xMax": 5,
+            "yMin": -5,
+            "yMax": 5,
+            "unit": "units"
+          },
+          "points": [
+            {
+              "id": "X",
+              "x": -2,
+              "y": 0,
+              "label": "X"
+            },
+            {
+              "id": "Y",
+              "x": 2,
+              "y": 0,
+              "label": "Y"
+            },
+            {
+              "id": "A",
+              "x": 0,
+              "y": 2,
+              "label": "A"
+            },
+            {
+              "id": "B",
+              "x": 0,
+              "y": -2,
+              "label": "B"
+            }
+          ],
+          "segments": [
+            {
+              "from": "A",
+              "to": "X",
+              "label": "AX"
+            },
+            {
+              "from": "A",
+              "to": "Y",
+              "label": "AY"
+            },
+            {
+              "from": "B",
+              "to": "X",
+              "label": "BX"
+            },
+            {
+              "from": "B",
+              "to": "Y",
+              "label": "BY"
+            }
+          ],
+          "polygons": [
+            {
+              "vertices": [
+                "A",
+                "X",
+                "B",
+                "Y"
+              ],
+              "shade": false
+            }
+          ],
+          "texts": [
+            {
+              "x": 0,
+              "y": 3,
+              "label": "XY"
+            }
+          ]
+        },
+        "labels": {
+          "X": {
+            "en": "X"
+          },
+          "Y": {
+            "en": "Y"
+          },
+          "A": {
+            "en": "A"
+          },
+          "B": {
+            "en": "B"
+          },
+          "AX": {
+            "en": "AX",
+            "hi": "AX",
+            "mr": "AX"
+          },
+          "AY": {
+            "en": "AY",
+            "hi": "AY",
+            "mr": "AY"
+          },
+          "BX": {
+            "en": "BX",
+            "hi": "BX",
+            "mr": "BX"
+          },
+          "BY": {
+            "en": "BY",
+            "hi": "BY",
+            "mr": "BY"
+          },
+          "XY": {
+            "en": "XY",
+            "hi": "XY",
+            "mr": "XY"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Confuses endpoints with intersection points",
+        null,
+        "Thinks the points are midpoints",
+        "Believes the points are centers of circles"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that points A and B are the intersection points of arcs used to construct the perpendicular bisector. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 2,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-11-02T02:54:59.106Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If the arcs drawn from X and Y with the same radius intersect at points A and B, what is the relationship between the line AB and the line XY?",
+      "choices": [
+        "AB is parallel to XY",
+        "AB is perpendicular to XY",
+        "AB is a part of XY",
+        "AB is a line segment of the same length as XY"
+      ],
+      "answerIndex": 1,
+      "solution": "The line AB is perpendicular to the line XY. This is because points A and B are located such that they are equidistant from X and Y, and the line AB is the perpendicular bisector of XY. The other options are incorrect because AB is not parallel to XY, it is not a part of XY, and it is not of the same length as XY.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि X और Y से एक ही त्रिज्या वाले चाप बिंदुओं A और B पर प्रतिच्छेद करते हैं, तो रेखा AB और रेखा XY के बीच क्या संबंध है?",
+          "choices": [
+            "AB, XY के समांतर है",
+            "AB, XY के लंबवत है",
+            "AB, XY के एक भाग है",
+            "AB, XY के समान लंबाई का एक रेखाखंड है"
+          ],
+          "solution": "रेखा AB, रेखा XY के लंबवत है। ऐसा इसलिए है क्योंकि बिंदु A और B इस प्रकार स्थित हैं कि वे X और Y से समान दूरी पर हैं, और रेखा AB, XY के लंबवत द्विभाजक है। अन्य विकल्प गलत हैं क्योंकि AB, XY के समांतर नहीं है, यह XY के एक भाग नहीं है, और यह XY के समान लंबाई का नहीं है।",
+          "imageAlt": "एक आंख के निर्माण का आरेख जिसमें XY एक सममिति रेखा है।",
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर X आणि Y या बिंदूंपासून एकसारखा त्रिज्या असलेले चाप बिंदूंवर A आणि B वर छेदत असतील, तर AB आणि XY रेषांमधील संबंध काय असेल?",
+          "choices": [
+            "AB, XY ला समांतर आहे",
+            "AB, XY ला लंब आहे",
+            "AB, XY चा भाग आहे",
+            "AB, XY इतकाच लांबीचा रेषाखंड आहे"
+          ],
+          "solution": "AB रेषा XY ला लंब आहे. हे कारण बिंदू A आणि B असे स्थानावर असतात की ते X आणि Y पासून समान अंतरावर असतात आणि AB रेषा XY च्या लंब समद्विभाजक असते. इतर विकल्प चुकीचे आहेत कारण AB, XY ला समांतर नाही, तो XY चा भाग नाही आणि XY इतकाच लांबीचा नाही.",
+          "imageAlt": "एक डायग्राम ज्यात XY रेषा सममितीच्या रेषेच्या रूपात दाखवली आहे.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A diagram showing the construction of an eye with line XY as the line of symmetry.",
+      "figure": {
+        "kind": "geometry",
+        "spec": {
+          "frame": {
+            "xMin": -5,
+            "xMax": 5,
+            "yMin": -5,
+            "yMax": 5,
+            "unit": "units"
+          },
+          "points": [
+            {
+              "id": "X",
+              "x": -2,
+              "y": 0,
+              "label": "X"
+            },
+            {
+              "id": "Y",
+              "x": 2,
+              "y": 0,
+              "label": "Y"
+            },
+            {
+              "id": "A",
+              "x": 0,
+              "y": 2,
+              "label": "A"
+            },
+            {
+              "id": "B",
+              "x": 0,
+              "y": -2,
+              "label": "B"
+            }
+          ],
+          "segments": [
+            {
+              "from": "A",
+              "to": "X",
+              "label": "AX"
+            },
+            {
+              "from": "A",
+              "to": "Y",
+              "label": "AY"
+            },
+            {
+              "from": "B",
+              "to": "X",
+              "label": "BX"
+            },
+            {
+              "from": "B",
+              "to": "Y",
+              "label": "BY"
+            }
+          ],
+          "polygons": [
+            {
+              "vertices": [
+                "A",
+                "X",
+                "B",
+                "Y"
+              ],
+              "shade": false
+            }
+          ],
+          "texts": [
+            {
+              "x": 0,
+              "y": 3,
+              "label": "XY"
+            }
+          ]
+        },
+        "labels": {
+          "X": {
+            "en": "X"
+          },
+          "Y": {
+            "en": "Y"
+          },
+          "A": {
+            "en": "A"
+          },
+          "B": {
+            "en": "B"
+          },
+          "AX": {
+            "en": "AX",
+            "hi": "AX",
+            "mr": "AX"
+          },
+          "AY": {
+            "en": "AY",
+            "hi": "AY",
+            "mr": "AY"
+          },
+          "BX": {
+            "en": "BX",
+            "hi": "BX",
+            "mr": "BX"
+          },
+          "BY": {
+            "en": "BY",
+            "hi": "BY",
+            "mr": "BY"
+          },
+          "XY": {
+            "en": "XY",
+            "hi": "XY",
+            "mr": "XY"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Thinks the lines are parallel",
+        null,
+        "Believes the line is a part of XY",
+        "Assumes the lengths are the same"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. AB is the perpendicular bisector of XY, making it perpendicular to XY. The reasoning for the other options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 2,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-11-02T02:54:59.106Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If six congruent equilateral triangles are placed together, what shape is formed?",
+      "choices": [
+        "A square",
+        "A pentagon",
+        "A hexagon",
+        "A triangle"
+      ],
+      "answerIndex": 2,
+      "solution": "Six congruent equilateral triangles can be arranged to form a regular hexagon because each triangle has angles of 60°, and when six are put together, their angles add up to 360°, creating a flat, symmetrical shape with six sides. A square has four sides, a pentagon has five, and a single triangle has three, so none of these options match the structure formed by six triangles.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि छह सर्वांगसम समबाहु त्रिभुज एक साथ रखे जाएं, तो कौन सी आकृति बनती है?",
+          "choices": [
+            "एक वर्ग",
+            "एक पंचभुज",
+            "एक षट्भुज",
+            "एक त्रिभुज"
+          ],
+          "solution": "छह सर्वांगसम समबाहु त्रिभुज एक नियमित षट्भुज बनाने के लिए व्यवस्थित किए जा सकते हैं क्योंकि प्रत्येक त्रिभुज के कोण 60° होते हैं, और छह को एक साथ रखे जाने पर उनके कोण 360° तक जुड़ जाते हैं, जिससे छह भुजाओं वाली एक तली और सममित आकृति बनती है। एक वर्ग में चार भुजाएं होती हैं, एक पंचभुज में पांच होती हैं, और एक त्रिभुज में तीन होती हैं, इसलिए इनमें से कोई भी विकल्प छह त्रिभुजों द्वारा बनाई गई संरचना के साथ मेल नहीं खाता।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सहा सारखे समभुज त्रिकोण एकत्र ठेवले असताना, कोणता आकृती तयार होतो?",
+          "choices": [
+            "एक चौरस",
+            "एक पंचभुज",
+            "एक षट्भुज",
+            "एक त्रिकोण"
+          ],
+          "solution": "सहा सारखे समभुज त्रिकोण एकत्र ठेवल्यास एक सामान्य षट्भुज तयार होतो, कारण प्रत्येक त्रिकोणाचे कोन 60° असतात, आणि सहा त्रिकोण एकत्र ठेवल्यास त्यांचे कोन 360° पर्यंत जमतात, ज्यामुळे एक तल, सममित आकृती तयार होते जी छह बाजू असतात. एक चौरसाला चार बाजू असतात, पंचभुजाला पाच आहेत, आणि एक त्रिकोणाला तीन बाजू असतात, म्हणून या विकल्पांपैकी कोणाचेही बाजू छह त्रिकोणांमुळे तयार होणाऱ्या आकृतीशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the number of sides with a square",
+        "Confuses the number of sides with a pentagon",
+        null,
+        "Confuses the number of sides with a triangle"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Six equilateral triangles can be arranged to form a regular hexagon, as each internal angle of an equilateral triangle is 60°, and six of them sum to 360°, forming a regular hexagon. The other options are incorrect because they have different numbers of sides.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 6,
+          "pageStart": 13,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 7,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 8,
+          "pageStart": 18,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-11-02T02:54:59.106Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why are the lines AOD, BOE, and COF straight lines in the figure?",
+      "choices": [
+        "Because they form a triangle",
+        "Because they form a hexagon",
+        "Because they are perpendicular",
+        "Because the angles around the point add up to 360°"
+      ],
+      "answerIndex": 3,
+      "solution": "The angles around a point must add up to 360°, which is why the lines AOD, BOE, and COF are straight. A triangle or hexagon does not explain why the lines are straight, and being perpendicular is not a requirement for lines to be straight in this context.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "चित्र में रेखाएँ AOD, BOE और COF क्यों सीधी रेखाएँ हैं?",
+          "choices": [
+            "क्योंकि वे एक त्रिभुज बनाते हैं",
+            "क्योंकि वे एक षट्भुज बनाते हैं",
+            "क्योंकि वे लंबवत हैं",
+            "क्योंकि बिंदु के चारों ओर के कोण 360° के बराबर होते हैं"
+          ],
+          "solution": "एक बिंदु के चारों ओर के कोण 360° के बराबर होते हैं, इसलिए रेखाएँ AOD, BOE और COF सीधी रेखाएँ हैं। एक त्रिभुज या षट्भुज रेखाओं के सीधे होने की व्याख्या नहीं करता है, और लंबवत होना इस संदर्भ में सीधी रेखाओं के लिए आवश्यकता नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately preserves the meaning, structure, and technical terms of the original English question. All options and the solution are correctly translated, and the correct answer remains option 3.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आकृतीत रेषा AOD, BOE आणि COF का सरळ रेषा आहेत?",
+          "choices": [
+            "कारण त्या त्रिकोण तयार करतात",
+            "कारण त्या षटकोण तयार करतात",
+            "कारण त्या लंब आहेत",
+            "कारण बिंदू आजूबाजूचे कोन 360° च्या बरोबर असतात"
+          ],
+          "solution": "एका बिंदू आजूबाजूचे कोन 360° च्या बरोबर असतात, ज्यामुळे रेषा AOD, BOE आणि COF सरळ असतात. त्रिकोण किंवा षटकोण रेषा सरळ का असतात याचे व्याख्यान देत नाहीत, आणि लंब असणे हे या संदर्भात रेषा सरळ असण्यासाठी आवश्यक नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the reason with a triangle",
+        "Confuses the reason with a hexagon",
+        "Confuses the reason with perpendicular lines",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3 because the angles around a point adding up to 360° is the geometric principle that makes the lines straight. The other options are incorrect and represent common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 6,
+          "pageStart": 13,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 7,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 8,
+          "pageStart": 18,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.1 Geometric Constructions"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-11-02T02:54:59.106Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A region is to be tiled using 2 × 1 tiles. The region is a 5 × 5 square grid with one unit square removed. A black and white colouring of the grid is used to check if it can be tiled. The grid has 25 unit squares. After removing one square, there are 24 unit squares, which is even. However, the number of black and white squares is not equal. Why can this region not be tiled with 2 × 1 tiles?",
+      "choices": [
+        "Because the number of black and white squares is not equal",
+        "Because the total number of squares is odd",
+        "Because the region is not a rectangle",
+        "Because the tiles cannot be rotated"
+      ],
+      "answerIndex": 0,
+      "solution": "Even though the total number of squares is even (24), the black and white squares are not equal. A 5 × 5 grid has 13 squares of one colour and 12 of the other. Removing one square leaves 12 and 12, but only if the removed square is of the more frequent colour. The key issue is that the tile must cover one black and one white square, and if the counts are unequal, tiling is not possible. The other options are incorrect because they ignore the colour balance, which is crucial for tiling.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक क्षेत्र को 2 × 1 टाइलों के उपयोग से टाइल किया जाना है। क्षेत्र एक 5 × 5 वर्ग ग्रिड है जिसमें एक इकाई वर्ग हटा दिया गया है। एक काले और सफेद रंग के ग्रिड का उपयोग यह जांचने के लिए किया जाता है कि क्या इसे टाइल किया जा सकता है। ग्रिड में 25 इकाई वर्ग हैं। एक वर्ग हटाने के बाद, 24 इकाई वर्ग बचते हैं, जो सम है। हालांकि, काले और सफेद वर्गों की संख्या समान नहीं है। इस क्षेत्र को 2 × 1 टाइलों के साथ क्यों टाइल नहीं किया जा सकता?",
+          "choices": [
+            "काले और सफेद वर्गों की संख्या समान नहीं है कारण",
+            "कुल वर्गों की संख्या विषम है कारण",
+            "क्षेत्र एक आयत नहीं है कारण",
+            "टाइलें घूमाई नहीं जा सकती कारण"
+          ],
+          "solution": "हालांकि कुल वर्गों की संख्या सम (24) है, काले और सफेद वर्ग समान नहीं हैं। 5 × 5 ग्रिड में एक रंग के 13 वर्ग और दूसरे रंग के 12 वर्ग होते हैं। एक वर्ग हटाने के बाद 12 और 12 बचते हैं, लेकिन केवल तभी जब हटाए गए वर्ग अधिक आवृत्ति वाले रंग का हो। मुख्य समस्या यह है कि टाइल एक काला और एक सफेद वर्ग को कवर करती है, और यदि गिनती असमान है, तो टाइलिंग संभव नहीं है। अन्य विकल्प गलत हैं क्योंकि वे रंग के संतुलन को अनदेखा करते हैं, जो टाइलिंग के लिए आवश्यक है।",
+          "imageAlt": "एक 5 × 5 ग्रिड जिसमें एक वर्ग हटा दिया गया है",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology. The correct answer (option 1) is in the same position as in the English version. All distractors remain incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक विस्तार 2 × 1 टाइल वापरून टाइल करायचा आहे. विस्तार हा 5 × 5 चौरस ग्रिड असून एक एकक चौरस काढून टाकला गेला आहे. ग्रिड च्या ब्लॅक आणि व्हाईट रंगाच्या चौरस ची तपासणी करून टाइलिंग शक्य आहे की नाही हे पाहिले जाते. ग्रिड मध्ये 25 एकक चौरस आहेत. एक चौरस काढून टाकल्यानंतर 24 एकक चौरस राहतात, जे सम आहे. मात्र, ब्लॅक आणि व्हाईट चौरस ची संख्या समान नाही. हा विस्तार 2 × 1 टाइल वापरून टाइल करता येणार नाही का? कारण?",
+          "choices": [
+            "कारण ब्लॅक आणि व्हाईट चौरस ची संख्या समान नाही",
+            "कारण एकूण चौरस ची संख्या विषम आहे",
+            "कारण विस्तार आयत नाही",
+            "कारण टाइल फिरवता येत नाहीत"
+          ],
+          "solution": "एकूण चौरस ची संख्या सम (24) असली तरी, ब्लॅक आणि व्हाईट चौरस ची संख्या समान नाही. 5 × 5 ग्रिड मध्ये एका रंगाचे 13 आणि दुसऱ्या रंगाचे 12 चौरस असतात. एक चौरस काढून टाकल्यानंतर 12 आणि 12 राहतात, परंतु फक्त जर काढून टाकलेला चौरस जास्त वेळा असलेल्या रंगाचा असेल. मुख्य अडचण ही आहे की टाइल एक ब्लॅक आणि एक व्हाईट चौरस आवरू शकते, आणि जर गणना असमान असेल तर टाइलिंग शक्य नाही. इतर विकल्प चूक आहेत कारण ते रंग संतुलन टाळतात, जे टाइलिंग साठी महत्वाचे आहे.",
+          "imageAlt": "5 × 5 चौरस ग्रिड ज्यात एक चौरस काढून टाकला गेला आहे",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for a textbook context.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A 5 × 5 grid with one square removed",
+      "figure": {
+        "kind": "geometry",
+        "spec": {
+          "frame": {
+            "xMin": 0,
+            "xMax": 5,
+            "yMin": 0,
+            "yMax": 5,
+            "unit": "units"
+          },
+          "points": [
+            {
+              "id": "A",
+              "x": 0,
+              "y": 0
+            },
+            {
+              "id": "B",
+              "x": 5,
+              "y": 0
+            },
+            {
+              "id": "C",
+              "x": 5,
+              "y": 5
+            },
+            {
+              "id": "D",
+              "x": 0,
+              "y": 5
+            }
+          ],
+          "segments": [
+            {
+              "from": "A",
+              "to": "B",
+              "kind": "segment"
+            },
+            {
+              "from": "B",
+              "to": "C",
+              "kind": "segment"
+            },
+            {
+              "from": "C",
+              "to": "D",
+              "kind": "segment"
+            },
+            {
+              "from": "D",
+              "to": "A",
+              "kind": "segment"
+            }
+          ],
+          "polygons": [
+            {
+              "vertices": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "shade": false
+            }
+          ],
+          "texts": [
+            {
+              "x": 2.5,
+              "y": 2.5,
+              "label": "removed"
+            }
+          ]
+        },
+        "labels": {
+          "removed": {
+            "en": "One square removed",
+            "hi": "एक वर्ग हटा दिया गया",
+            "mr": "एक चौरस काढून टाकला गेला"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        null,
+        "thinks the total number of squares is the only factor",
+        "thinks the shape of the region is the issue",
+        "thinks the rotation of the tiles is the problem"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as the imbalance in black and white squares prevents tiling with 2×1 dominoes. The other options reflect common misconceptions about tiling, such as focusing on total area, shape, or tile rotation.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 9,
+          "pageStart": 20,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.2 Tiling"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 10,
+          "pageStart": 24,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.2 Tiling"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 11,
+          "pageStart": 27,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.2 Tiling"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp206.pdf",
+          "ordinal": 12,
+          "pageStart": 28,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 6: Constructions and Tilings",
+            "6.2 Tiling",
+            "SUMMARY"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-11-02T02:54:59.106Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

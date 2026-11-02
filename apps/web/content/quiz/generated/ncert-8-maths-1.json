@@ -21,47 +21,47 @@
   "board": "NCERT",
   "book": "Ganita Prakash Part-I",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-11-01T01:31:35.014Z",
+  "generatedAt": "2026-11-02T08:06:47.378Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the cube root of 64?",
+      "stem": "What is the square of 12?",
       "choices": [
-        "4",
-        "8",
-        "16",
-        "64"
+        "121",
+        "144",
+        "169",
+        "196"
       ],
-      "answerIndex": 0,
-      "solution": "The cube root of 64 is 4 because 4 × 4 × 4 = 64. A student might mistakenly think the cube root of 64 is 8, as 8 × 8 = 64. Others might confuse it with 16, thinking 16 × 4 = 64, or pick 64, thinking the number itself is the cube root.",
+      "answerIndex": 1,
+      "solution": "The square of 12 is 144 because 12 × 12 = 144. The other options are squares of different numbers: 11² = 121, 13² = 169, and 14² = 196.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "64 का घनमूल क्या है?",
+          "stem": "12 का वर्ग क्या है?",
           "choices": [
-            "4",
-            "8",
-            "16",
-            "64"
+            "121",
+            "144",
+            "169",
+            "196"
           ],
-          "solution": "64 का घनमूल 4 है क्योंकि 4 × 4 × 4 = 64। एक छात्र 64 के घनमूल को 8 सोच सकता है क्योंकि 8 × 8 = 64। अन्य लोग 16 सोच सकते हैं, क्योंकि 16 × 4 = 64, या 64 चुन सकते हैं, क्योंकि वे सोच सकते हैं कि संख्या स्वयं घनमूल है।",
+          "solution": "12 का वर्ग 144 है क्योंकि 12 × 12 = 144। अन्य विकल्प अलग-अलग संख्याओं के वर्ग हैं: 11² = 121, 13² = 169, और 14² = 196।",
           "imageAlt": null,
           "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "64 चे घन मूळ किती आहे?",
+          "stem": "12 चा वर्ग किती आहे?",
           "choices": [
-            "4",
-            "8",
-            "16",
-            "64"
+            "121",
+            "144",
+            "169",
+            "196"
           ],
-          "solution": "64 चे घन मूळ 4 आहे कारण 4 × 4 × 4 = 64. एका विद्यार्थीला 64 चे घन मूळ 8 असेल असे वाटू शकते, कारण 8 × 8 = 64. इतर लोक 16 शी गुंतलेले असतील, जे 16 × 4 = 64 असे वाटते, किंवा 64 निवडतील, जे संख्या स्वतः घन मूळ असेल असे वाटते.",
+          "solution": "12 चा वर्ग 144 आहे कारण 12 × 12 = 144. इतर विकल्पांमध्ये वेगवेगळ्या संख्यांचे वर्ग आहेत: 11² = 121, 13² = 169 आणि 14² = 196.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -72,99 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "square of 11",
         null,
-        "confuses square root with cube root",
-        "confuses square root with cube root",
-        "confuses multiplication with cube root"
+        "square of 13",
+        "square of 14"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": null,
-      "critique": "The solution is correct. The cube root of 64 is indeed 4, as 4 × 4 × 4 = 64. The explanations for the distractors are reasonable and reflect common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 14,
-          "pageStart": 20,
-          "pageEnd": 22,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "SUMMARY",
-            "Square Pairs!"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-11-01T01:31:35.014Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "What is the square of 15?",
-      "choices": [
-        "225",
-        "230",
-        "235",
-        "240"
-      ],
-      "answerIndex": 0,
-      "solution": "The square of 15 is 225 because 15 × 15 = 225. The other options are not correct as they do not match the result of squaring 15.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "15 का वर्ग क्या है?",
-          "choices": [
-            "225",
-            "230",
-            "235",
-            "240"
-          ],
-          "solution": "15 का वर्ग 225 है क्योंकि 15 × 15 = 225। अन्य विकल्प गलत हैं क्योंकि वे 15 के वर्ग के परिणाम के बराबर नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "15 चा वर्ग किती आहे?",
-          "choices": [
-            "225",
-            "230",
-            "235",
-            "240"
-          ],
-          "solution": "15 चा वर्ग 225 आहे कारण 15 × 15 = 225. इतर विकल्प बरोबर नाहीत कारण ते 15 च्या वर्गाच्या निकालाशी जुळत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "adds 15 to 210",
-        "adds 15 to 220",
-        "adds 15 to 225"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 225, and the distractors are plausible errors that a student might make, such as adding 15 to a nearby number.",
+      "critique": "The question is straightforward and tests basic recall of squares. The correct answer is 144, and the distractors are correctly identified as squares of 11, 13, and 14.",
       "sources": [
         {
           "document": "ncert/8/mathematics/hegp101.pdf",
@@ -208,49 +129,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-11-01T01:31:35.014Z",
+      "generatedAt": "2026-11-02T08:06:47.378Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "What is the square of 7?",
+      "stem": "Which locker numbers remain open at the end of the process?",
       "choices": [
-        "14",
-        "21",
-        "49",
-        "63"
+        "1, 2, 4, 8, 16",
+        "1, 4, 9, 16, 25",
+        "1, 3, 5, 7, 9",
+        "2, 4, 6, 8, 10"
       ],
-      "answerIndex": 2,
-      "solution": "The square of 7 is 49. The other options (14, 21, 63) are not the square of 7.",
+      "answerIndex": 1,
+      "solution": "A locker remains open if it is toggled an odd number of times, which occurs when the locker number has an odd number of factors. Only square numbers have an odd number of factors because one of their factors is repeated (e.g., 4 = 2×2). The correct answer is 1, 4, 9, 16, 25. Other options include numbers with even numbers of factors, which would leave the lockers closed.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "7 का वर्ग क्या है?",
+          "stem": "प्रक्रिया के अंत में कौन सी लॉकर संख्याएं खुली रहती हैं?",
           "choices": [
-            "14",
-            "21",
-            "49",
-            "63"
+            "1, 2, 4, 8, 16",
+            "1, 4, 9, 16, 25",
+            "1, 3, 5, 7, 9",
+            "2, 4, 6, 8, 10"
           ],
-          "solution": "7 का वर्ग 49 है। अन्य विकल्प (14, 21, 63) 7 के वर्ग नहीं हैं।",
+          "solution": "एक लॉकर तभी खुली रहती है जब इसे विषम संख्या में बदला जाता है, जो तब होता है जब लॉकर संख्या के विभाजकों की संख्या विषम होती है। केवल वर्ग संख्याएं विषम संख्या में विभाजक रखती हैं क्योंकि उनके एक विभाजक की पुनरावृत्ति होती है (उदाहरण के लिए, 4 = 2×2)। सही उत्तर 1, 4, 9, 16, 25 है। अन्य विकल्प विषम संख्या में विभाजक रखने वाली संख्याओं के साथ आते हैं, जो लॉकर को बंद रखते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question with correct mathematical terminology and maintains the same answer structure.",
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate mathematical terminology used in a Hindi-medium context.",
           "flag": null
         },
         "mr": {
-          "stem": "7 चा वर्ग किती आहे?",
+          "stem": "कोणती लॉकर संख्या प्रक्रियेच्या अखेरीस खुली राहतील?",
           "choices": [
-            "14",
-            "21",
-            "49",
-            "63"
+            "1, 2, 4, 8, 16",
+            "1, 4, 9, 16, 25",
+            "1, 3, 5, 7, 9",
+            "2, 4, 6, 8, 10"
           ],
-          "solution": "7 चा वर्ग 49 आहे. इतर विकल्प (14, 21, 63) 7 चा वर्ग नाहीत.",
+          "solution": "लॉकर खुला राहतो जेव्हा त्याला विषम संख्येने टॉगल केले जाते, जे तेव्हा होते जेव्हा लॉकर संख्येला विषम संख्येने अपवर्तक असतात. वर्ग संख्या असलेल्या संख्यांना विषम संख्येने अपवर्तक असतात कारण त्यांच्या अपवर्तकांपैकी एक पुनरावृत्ती असते (उदा., 4 = 2×2). योग्य उत्तर 1, 4, 9, 16, 25 आहे. इतर विकल्पांमध्ये सम संख्येने अपवर्तक असलेल्या संख्या असतात, ज्यामुळे लॉकर बंद राहतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
+          "critique": "The Marathi translation accurately reflects the English question and solution, with appropriate mathematical terminology used in Marathi.",
           "flag": null
         }
       },
@@ -259,20 +180,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Multiplies 7 by 2",
-        "Multiplies 7 by 3",
+        "Student thinks only powers of 2 have odd number of factors",
         null,
-        "Multiplies 7 by 9"
+        "Thinks only odd numbers have an odd number of factors",
+        "Believes even numbers have an odd number of factors"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": null,
-      "critique": "The question is straightforward. The correct answer is 49, and the author's reasoning for the distractors is accurate and reflects common misconceptions.",
+      "critique": "The correct answer is option 1, as square numbers have an odd number of factors, which is the condition for a locker to remain open. The author's reasoning and misconceptions for the other options are valid.",
       "sources": [
         {
           "document": "ncert/8/mathematics/hegp101.pdf",
@@ -304,49 +225,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-11-01T01:31:35.014Z",
+      "generatedAt": "2026-11-02T08:06:47.378Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "What is the cube root of 27000?",
+      "stem": "What is the cube root of 1728?",
       "choices": [
-        "27",
-        "30",
-        "35",
-        "50"
+        "12",
+        "14",
+        "16",
+        "18"
       ],
-      "answerIndex": 1,
-      "solution": "The cube root of 27000 is 30 because 30 × 30 × 30 = 27000. A student might choose 20, thinking 20 × 20 × 20 = 8000, or 40, thinking 40 × 40 × 40 = 64000, or 50, thinking 50 × 50 × 50 = 125000.",
+      "answerIndex": 0,
+      "solution": "The cube root of 1728 is 12, as 12 × 12 × 12 = 1728. The other options are incorrect because they do not satisfy the condition of being the cube root of 1728.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "27000 का घनमूल क्या है?",
+          "stem": "1728 का घनमूल क्या है?",
           "choices": [
-            "27",
-            "30",
-            "35",
-            "50"
+            "12",
+            "14",
+            "16",
+            "18"
           ],
-          "solution": "27000 का घनमूल 30 है क्योंकि 30 × 30 × 30 = 27000। एक छात्र 20 चुन सकता है, क्योंकि 20 × 20 × 20 = 8000, या 40, क्योंकि 40 × 40 × 40 = 64000, या 50, क्योंकि 50 × 50 × 50 = 125000।",
+          "solution": "1728 का घनमूल 12 है क्योंकि 12 × 12 × 12 = 1728। अन्य विकल्प गलत हैं क्योंकि वे 1728 के घनमूल होने की शर्त को पूरा नहीं करते।",
           "imageAlt": null,
           "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "27000 चे घन मूळ किती आहे?",
+          "stem": "1728 चे घन मूळ किती आहे?",
           "choices": [
-            "27",
-            "30",
-            "35",
-            "50"
+            "12",
+            "14",
+            "16",
+            "18"
           ],
-          "solution": "27000 चे घन मूळ 30 आहे कारण 30 × 30 × 30 = 27000. एका विद्यार्थीने 20 निवडला असेल, जो 20 × 20 × 20 = 8000 असे विचार करत असेल, किंवा 40 निवडला असेल, जो 40 × 40 × 40 = 64000 असे विचार करत असेल, किंवा 50 निवडला असेल, जो 50 × 50 × 50 = 125000 असे विचार करत असेल.",
+          "solution": "1728 चे घन मूळ 12 आहे, कारण 12 × 12 × 12 = 1728. इतर विकल्प चुकीचे आहेत कारण ते 1728 चे घन मूळ असण्याच्या अटीला पूर्ण करत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -355,26 +276,56 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Student incorrectly believes cube root of 27000 is the same as cube root of 27",
         null,
-        "Confuses cube root with square root or adds digits incorrectly",
-        "Confuses the cube root with a square root or multiplies 27 by 10 instead of taking the cube root"
+        "Confuses cube root with square root of a similar number",
+        "Confuses cube root with square root of a similar number",
+        "Confuses the cube root with the square root of a related number"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 30, as 30³ = 27000. The author's reasoning for the distractors aligns with common misconceptions, such as confusing cube roots with square roots or misapplying the cube of smaller numbers.",
+      "critique": "The correct answer is 12, as 12³ = 1728. The other options are incorrect, and the author's reasoning about misconceptions (confusing cube root with square root) is valid.",
       "sources": [
         {
           "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 14,
-          "pageStart": 20,
-          "pageEnd": 22,
+          "ordinal": 10,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 1: A Square and a Cube",
+            "1.2 Cubic Numbers"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp101.pdf",
+          "ordinal": 11,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 1: A Square and a Cube",
+            "1.3 A Pinch of History"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp101.pdf",
+          "ordinal": 12,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 1: A Square and a Cube",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp101.pdf",
+          "ordinal": 13,
+          "pageStart": 18,
+          "pageEnd": 20,
           "headingPath": [
             "Chapter 1: A Square and a Cube",
             "SUMMARY",
@@ -383,143 +334,47 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-11-01T01:31:35.014Z",
+      "generatedAt": "2026-11-02T08:06:47.378Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 4,
-      "stem": "If a locker is toggled an odd number of times, what will be its final state?",
+      "stem": "If a number is a perfect cube, how many times does each prime factor appear in its prime factorisation?",
       "choices": [
-        "Closed",
-        "Open",
-        "Partially Open",
-        "Unchanged"
-      ],
-      "answerIndex": 1,
-      "solution": "If a locker is toggled an odd number of times, it will be open. This is because each toggle changes the state of the locker, and an odd number of toggles results in the locker being open at the end.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक लॉकर को विषम संख्या में बार टॉगल किया जाता है, तो इसकी अंतिम स्थिति क्या होगी?",
-          "choices": [
-            "बंद",
-            "खुला",
-            "आंशिक रूप से खुला",
-            "अपरिवर्तित"
-          ],
-          "solution": "यदि एक लॉकर को विषम संख्या में बार टॉगल किया जाता है, तो यह खुला रहेगा। इसका कारण यह है कि प्रत्येक टॉगल लॉकर की स्थिति को बदल देता है, और विषम संख्या में टॉगल करने से अंत में लॉकर खुला रहता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms. The correct answer remains in the same position (option 1), and the distractors are still incorrect.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एका लॉकरला विषम संख्येने टॉगल केले जाते, तर त्याची अंतिम अवस्था काय असेल?",
-          "choices": [
-            "बंद",
-            "खुले",
-            "अर्धवट खुले",
-            "अपरिवर्तित"
-          ],
-          "solution": "जर एका लॉकरला विषम संख्येने टॉगल केले जाते, तर तो खुला राहील. हे कारण एका टॉगलने लॉकरची अवस्था बदलते आणि विषम संख्येने टॉगल केल्याने लॉकर अंततः खुला राहतो.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for 'toggle' and 'locker'.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses odd and even toggles",
-        null,
-        "Confuses odd and even toggles",
-        "Confuses odd and even toggles"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and logically sound. Toggling a locker an odd number of times changes its state from closed to open, making option 1 the correct answer. The author's reasoning for the distractors is valid, as all are based on the common misconception of confusing odd and even numbers of toggles.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.1 Square Numbers"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-11-01T01:31:35.014Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "Which of the following numbers has 6 in the units place when squared?",
-      "choices": [
-        "12",
-        "14",
-        "16",
-        "18"
+        "Once",
+        "Twice",
+        "Three times",
+        "Four times"
       ],
       "answerIndex": 2,
-      "solution": "The square of 16 is 256, which ends with 6. The other options do not have 6 in the units place when squared. 12² = 144, 14² = 196, and 18² = 324, none of which end with 6.",
+      "solution": "Each prime factor of a number appears three times in the prime factorisation of its cube. This is because a cube is formed by multiplying a number by itself three times, so each prime factor in the original number also appears three times. The other options are incorrect because they do not match the definition of a cube's prime factorisation.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सी संख्या के वर्ग में इकाई के स्थान पर 6 होता है?",
+          "stem": "यदि कोई संख्या एक पूर्ण घन है, तो इसके अभाज्य गुणनखंडन में प्रत्येक अभाज्य गुणनखंड कितनी बार आता है?",
           "choices": [
-            "12",
-            "14",
-            "16",
-            "18"
+            "एक बार",
+            "दो बार",
+            "तीन बार",
+            "चार बार"
           ],
-          "solution": "16 का वर्ग 256 होता है, जो 6 पर समाप्त होता है। अन्य विकल्पों में वर्ग में इकाई के स्थान पर 6 नहीं होता। 12² = 144, 14² = 196, और 18² = 324, जिनमें से कोई भी 6 पर समाप्त नहीं होता।",
+          "solution": "किसी संख्या के घन के अभाज्य गुणनखंडन में प्रत्येक अभाज्य गुणनखंड तीन बार आता है। इसका कारण यह है कि घन एक संख्या को खुद से तीन बार गुणा करके बनाया जाता है, इसलिए मूल संख्या में प्रत्येक अभाज्य गुणनखंड तीन बार आता है। अन्य विकल्प गलत हैं क्योंकि वे घन के अभाज्य गुणनखंडन की परिभाषा के अनुरूप नहीं हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology commonly found in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणत्या संख्येचा वर्ग घेतल्यास एकक स्थानी 6 असतो?",
+          "stem": "जर एक संख्या एक पूर्ण घन असेल, तर तिच्या अभाज्य अपघटनात प्रत्येक अभाज्य घटक किती वेळा आढळतो?",
           "choices": [
-            "12",
-            "14",
-            "16",
-            "18"
+            "एकदा",
+            "दुसेरा",
+            "तीन वेळा",
+            "चार वेळा"
           ],
-          "solution": "16 चा वर्ग 256 असतो, जो 6 ने संपतो. इतर विकल्पांचा वर्ग घेतल्यास एकक स्थानी 6 नसतो. 12² = 144, 14² = 196, आणि 18² = 324, ज्यांपैकी कोणताही 6 ने संपत नाही.",
+          "solution": "कोणत्याही संख्येच्या घनाच्या अभाज्य अपघटनात प्रत्येक अभाज्य घटक तीन वेळा आढळतो. हे असे कारण आहे की घन म्हणजे एका संख्येला तिन्ही वेळा गुणणे असते, म्हणूनच मूळ संख्येतील प्रत्येक अभाज्य घटक तीन वेळा आढळतो. इतर विकल्प चुकीचे आहेत कारण ते घनाच्या अभाज्य अपघटनाच्या व्याख्येशी जुळत नाहीत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -530,10 +385,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the units digit of the number with the units digit of its square",
-        "A student might think that 14 squared ends in 6 because 4 squared ends in 6 and forget that 14 squared is 196, which ends in 6 but not because of the units digit of 14.",
+        "incorrectly assumes the number of times factors appear is the same as in the original number",
+        "confuses the concept of square with cube",
         null,
-        "Student thinks squaring a number with 8 in the units place will result in 6 in the units place"
+        "miscalculates the number of times factors appear"
       ],
       "solverAnswers": [
         2,
@@ -543,131 +398,13 @@
         2
       ],
       "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 16, as 16² = 256 ends in 6. The author's solution is accurate, and the reasoning for the distractors reflects common misconceptions.",
+      "critique": "The solution is correct. A perfect cube has each prime factor appearing three times in its prime factorization, as the cube of a number involves multiplying the number by itself three times, which triples the exponents in the prime factorization.",
       "sources": [
         {
           "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 3,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.1 Square Numbers"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 4,
-          "pageStart": 6,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.1 Square Numbers"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 5,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.1 Square Numbers"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-11-01T01:31:35.014Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "What is the approximate square root of 250?",
-      "choices": [
-        "15",
-        "16",
-        "17",
-        "18"
-      ],
-      "answerIndex": 1,
-      "solution": "The square of 15 is 225 and the square of 16 is 256. Since 250 is closer to 256 than to 225, the approximate square root of 250 is 16. The other options are not close to the actual square root of 250.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "250 का लगभग वर्गमूल क्या है?",
-          "choices": [
-            "15",
-            "16",
-            "17",
-            "18"
-          ],
-          "solution": "15 का वर्ग 225 है और 16 का वर्ग 256 है। चूंकि 250, 225 के मुकाबले 256 के निकट है, इसलिए 250 का लगभग वर्गमूल 16 है। अन्य विकल्प 250 के वास्तविक वर्गमूल के निकट नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "250 चा अंदाजे वर्गमूळ किती आहे?",
-          "choices": [
-            "15",
-            "16",
-            "17",
-            "18"
-          ],
-          "solution": "15 चा वर्ग 225 आहे आणि 16 चा वर्ग 256 आहे. 250 हा 256 जवळ असल्याने 250 चा अंदाजे वर्गमूळ 16 आहे. इतर विकल्प 250 च्या खर्या वर्गमूळापासून जास्त दूर आहेत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Chooses the lower square root",
-        null,
-        "Chooses the upper square root",
-        "Chooses the next higher square root"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct. 15² = 225 and 16² = 256, and 250 is closer to 256, so 16 is the best approximation. The reasoning for the distractors is reasonable and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 6,
-          "pageStart": 9,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.1 Square Numbers"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 7,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.1 Square Numbers"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 8,
-          "pageStart": 11,
-          "pageEnd": 13,
+          "ordinal": 10,
+          "pageStart": 14,
+          "pageEnd": 15,
           "headingPath": [
             "Chapter 1: A Square and a Cube",
             "1.2 Cubic Numbers"
@@ -675,59 +412,80 @@
         },
         {
           "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 9,
-          "pageStart": 13,
-          "pageEnd": 14,
+          "ordinal": 11,
+          "pageStart": 15,
+          "pageEnd": 16,
           "headingPath": [
             "Chapter 1: A Square and a Cube",
-            "1.2 Cubic Numbers"
+            "1.3 A Pinch of History"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp101.pdf",
+          "ordinal": 12,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 1: A Square and a Cube",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp101.pdf",
+          "ordinal": 13,
+          "pageStart": 18,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 1: A Square and a Cube",
+            "SUMMARY",
+            "Square Pairs!"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-11-01T01:31:35.014Z",
+      "generatedAt": "2026-11-02T08:06:47.378Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "Which of the following numbers is both a perfect square and a perfect cube?",
+      "stem": "What is the probability that a randomly chosen locker number from 1 to 100 is a perfect square?",
       "choices": [
-        "1",
-        "8",
-        "16",
-        "64"
+        "1/10",
+        "1/100",
+        "10/100",
+        "20/100"
       ],
-      "answerIndex": 3,
-      "solution": "The correct answer is 64. A number that is both a perfect square and a perfect cube is a perfect sixth power. 64 is 8 squared (8 × 8 = 64) and 4 cubed (4 × 4 × 4 = 64). 1 is a perfect square and a perfect cube but is not the answer as the question asks for the number that is both a perfect square and a perfect cube. 8 is a perfect cube but not a perfect square. 16 is a perfect square but not a perfect cube.",
+      "answerIndex": 2,
+      "solution": "There are 10 perfect squares between 1 and 100 (1, 4, 9, 16, 25, 36, 49, 64, 81, 100). Therefore, the probability of randomly selecting one is 10/100. The option 1/10 is equivalent but less precise, 1/100 is too small, and 20/100 is too large.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सी संख्या एक पूर्ण वर्ग और एक पूर्ण घन दोनों है?",
+          "stem": "1 से 100 तक के यादृच्छिक चुने गए लॉकर संख्या के एक पूर्ण वर्ग होने की प्रायिकता क्या है?",
           "choices": [
-            "1",
-            "8",
-            "16",
-            "64"
+            "1/10",
+            "1/100",
+            "10/100",
+            "20/100"
           ],
-          "solution": "सही उत्तर 64 है। एक संख्या जो एक पूर्ण वर्ग और एक पूर्ण घन दोनों हो, वह एक पूर्ण छठवां घात होती है। 64 आठ के वर्ग (8 × 8 = 64) है और चार के घन (4 × 4 × 4 = 64) है। 1 एक पूर्ण वर्ग और एक पूर्ण घन है लेकिन प्रश्न ऐसी संख्या के लिए पूछ रहा है जो दोनों हो। 8 एक पूर्ण घन है लेकिन पूर्ण वर्ग नहीं है। 16 एक पूर्ण वर्ग है लेकिन पूर्ण घन नहीं है।",
+          "solution": "1 से 100 के बीच 10 पूर्ण वर्ग होते हैं (1, 4, 9, 16, 25, 36, 49, 64, 81, 100)। इसलिए, एक के यादृच्छिक चयन की प्रायिकता 10/100 है। विकल्प 1/10 तुल्य है लेकिन कम सटीक है, 1/100 बहुत छोटा है और 20/100 बहुत बड़ा है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता संख्या एक पूर्ण वर्ग आणि एक पूर्ण घन देखील आहे?",
+          "stem": "1 ते 100 च्या लॉकर क्रमांकांपैकी एका यादृच्छिक निवडलेल्या लॉकर क्रमांकाच्या एक पूर्ण वर्ग असण्याची शक्यता किती आहे?",
           "choices": [
-            "1",
-            "8",
-            "16",
-            "64"
+            "1/10",
+            "1/100",
+            "10/100",
+            "20/100"
           ],
-          "solution": "सही उत्तर 64 आहे. एक संख्या जी पूर्ण वर्ग आणि पूर्ण घन देखील असेल ती पूर्ण छक्का शक्ती असते. 64 हा 8 चा वर्ग (8 × 8 = 64) आहे आणि 4 चा घन (4 × 4 × 4 = 64) आहे. 1 ही एक पूर्ण वर्ग आणि पूर्ण घन आहे परंतु विचारणा संख्या जी पूर्ण वर्ग आणि पूर्ण घन देखील असेल ती नाही त्यामुळे ती उत्तर नाही. 8 ही पूर्ण घन आहे परंतु पूर्ण वर्ग नाही. 16 ही पूर्ण वर्ग आहे परंतु पूर्ण घन नाही.",
+          "solution": "1 ते 100 च्या दरम्यान 10 पूर्ण वर्ग आहेत (1, 4, 9, 16, 25, 36, 49, 64, 81, 100). त्यामुळे यादृच्छिकरित्या एका पूर्ण वर्गाची निवड करण्याची शक्यता 10/100 आहे. विकल्प 1/10 तुलनेने कमी तपशीलवार आहे, 1/100 खूप लहान आहे आणि 20/100 खूप मोठा आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -736,20 +494,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Is a perfect square and a perfect cube, but not the answer as the question asks for the number that is both a perfect square and a perfect cube",
-        "Is a perfect cube but not a perfect square",
-        "Is a perfect square but not a perfect cube",
-        null
+        "Chooses a single square number",
+        "Thinks only one number is a perfect square",
+        null,
+        "Miscalculates the total number of perfect squares"
       ],
       "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. 64 is both a perfect square (8²) and a perfect cube (4³), making it a perfect sixth power. The explanation for the other options is also accurate.",
+      "critique": "The solution correctly identifies 10 perfect squares between 1 and 100, leading to the correct probability of 10/100. The author's reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/8/mathematics/hegp101.pdf",
@@ -781,49 +539,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-11-01T01:31:35.014Z",
+      "generatedAt": "2026-11-02T08:06:47.378Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "Using the pattern of odd numbers, find the value of 36^2, given that 35^2 = 1225.",
+      "difficulty": 5,
+      "stem": "The square of a number is 1936. What is the square root of 1936?",
       "choices": [
-        "1296",
-        "1369",
-        "1225",
-        "1281"
+        "34",
+        "44",
+        "54",
+        "64"
       ],
-      "answerIndex": 0,
-      "solution": "The correct answer is 1296. According to the pattern, the square of a number is the sum of the first n odd numbers. The 36th odd number is 71. Adding 71 to 1225 gives 1296. 1369 is 37^2, 1225 is 35^2, and 1281 is not a perfect square.",
+      "answerIndex": 1,
+      "solution": "The correct answer is 44. The square of 44 is 1936. The other options are incorrect: 34² = 1156, 54² = 2916, and 64² = 4096. The question requires identifying the square root based on the knowledge of square numbers.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "अजीब संख्याओं के पैटर्न का उपयोग करके, 35^2 = 1225 दिया गया है, 36^2 का मान ज्ञात कीजिए।",
+          "stem": "एक संख्या का वर्ग 1936 है। 1936 का वर्गमूल क्या है?",
           "choices": [
-            "1296",
-            "1369",
-            "1225",
-            "1281"
+            "34",
+            "44",
+            "54",
+            "64"
           ],
-          "solution": "सही उत्तर 1296 है। पैटर्न के अनुसार, किसी संख्या का वर्ग पहले n अजीब संख्याओं के योग के बराबर होता है। 36वीं अजीब संख्या 71 है। 1225 में 71 जोड़ने पर 1296 प्राप्त होता है। 1369 एक 37^2 है, 1225 35^2 है और 1281 एक पूर्ण वर्ग नहीं है।",
+          "solution": "सही उत्तर 44 है। 44 का वर्ग 1936 है। अन्य विकल्प गलत हैं: 34² = 1156, 54² = 2916, और 64² = 4096। प्रश्न में वर्ग संख्याओं के ज्ञान के आधार पर वर्गमूल की पहचान करना आवश्यक है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "अजिबात संख्यांच्या अनुक्रमाचा वापर करून, 35^2 = 1225 दिल्यास 36^2 ची किंमत शोधा.",
+          "stem": "एका संख्येचा वर्ग 1936 आहे. 1936 चा वर्गमूळ किती आहे?",
           "choices": [
-            "1296",
-            "1369",
-            "1225",
-            "1281"
+            "34",
+            "44",
+            "54",
+            "64"
           ],
-          "solution": "बरोबर उत्तर 1296 आहे. अनुक्रमानुसार, एका संख्येचा वर्ग प्रथम n अजिबात संख्यांच्या बेरजेसारखा असतो. 36 वी अजिबात संख्या 71 आहे. 1225 मध्ये 71 जोडल्यास 1296 मिळतो. 1369 हा 37^2 आहे, 1225 हा 35^2 आहे आणि 1281 हा एक पूर्ण वर्ग नाही.",
+          "solution": "बरोबर उत्तर 44 आहे. 44 चा वर्ग 1936 आहे. इतर विकल्प चुकीचे आहेत: 34² = 1156, 54² = 2916, आणि 64² = 4096. प्रश्नामध्ये वर्ग संख्यांच्या ज्ञानावर आधारित वर्गमूळ ओळखणे आवश्यक आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for 'odd numbers' and 'perfect square'.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -832,20 +590,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Chooses a number that is too small",
         null,
-        "confuses 36^2 with 37^2",
-        "mistakes the pattern of odd numbers",
-        "does not know how to calculate the nth odd number"
+        "Chooses a number that is too large",
+        "Confuses 54 with 44"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. The pattern of squares as the sum of odd numbers is valid, and 36^2 is indeed 1296. The reasoning for the distractors is also valid.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct, and the key is accurate. The square of 44 is indeed 1936, and the other options are incorrect. The reasons for the distractors are plausible misconceptions.",
       "sources": [
         {
           "document": "ncert/8/mathematics/hegp101.pdf",
@@ -879,7 +637,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-11-01T01:31:35.014Z",
+      "generatedAt": "2026-11-02T08:06:47.378Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

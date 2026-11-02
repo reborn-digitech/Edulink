@@ -21,47 +21,47 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-31T03:39:49.183Z",
+  "generatedAt": "2026-11-01T16:18:01.707Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "Which of the following is a rule given by Brahmagupta for adding two negative numbers?",
+      "stem": "What is the number that comes before 1 and is less than 1?",
       "choices": [
-        "Add the numbers and place a plus sign",
-        "Subtract the numbers and place a minus sign",
-        "Add the numbers and place a minus sign",
-        "Subtract the numbers and place a plus sign"
+        "0",
+        "1",
+        "2",
+        "3"
       ],
-      "answerIndex": 2,
-      "solution": "Brahmagupta's rule for adding two negative numbers is to add the numbers without the signs and then place a minus sign. This is exactly what the correct option states. The other options contradict the rule by either placing a plus sign or suggesting subtraction instead of addition.",
+      "answerIndex": 0,
+      "solution": "The number that comes before 1 and is less than 1 is 0, as it is the immediate predecessor of 1 on the number line. The number 1 is not less than 1, and 2 and 3 are greater than 1, so they do not meet the condition.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा नियम ब्रह्मगुप्ता द्वारा दो ऋणात्मक संख्याओं के जोड़ने के लिए दिया गया है?",
+          "stem": "1 के पहले आने वाली और 1 से कम संख्या कौन सी है?",
           "choices": [
-            "संख्याओं को जोड़ें और एक धन चिह्न रखें",
-            "संख्याओं को घटाएं और एक ऋण चिह्न रखें",
-            "संख्याओं को जोड़ें और एक ऋण चिह्न रखें",
-            "संख्याओं को घटाएं और एक धन चिह्न रखें"
+            "0",
+            "1",
+            "2",
+            "3"
           ],
-          "solution": "ब्रह्मगुप्ता का नियम दो ऋणात्मक संख्याओं के जोड़ने के लिए चिह्नों के बिना संख्याओं को जोड़ना और फिर एक ऋण चिह्न रखना है। यह सही विकल्प द्वारा ठीक तरह से कहा गया है। अन्य विकल्प धन चिह्न रखने या जोड़ के बजाय घटाने के विचार से नियम के विरोध में हैं।",
+          "solution": "संख्या रेखा पर 1 के तुरंत पहले आने वाली और 1 से कम संख्या 0 है। संख्या 1, 1 से कम नहीं है और 2 और 3, 1 से बड़ी हैं, इसलिए वे शर्त पूरी नहीं करती हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses appropriate mathematical terminology in Hindi.",
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate mathematical terminology used in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता नियम ब्रह्मगुप्ताने दोन ऋण संख्यांच्या बेरजेसाठी दिला आहे?",
+          "stem": "1 च्या आधी येणारा आणि 1 पेक्षा लहान असलेला नंबर कोणता आहे?",
           "choices": [
-            "संख्या बेरीज करा आणि धन चिन्ह ठेवा",
-            "संख्या वजा करा आणि ऋण चिन्ह ठेवा",
-            "संख्या बेरीज करा आणि ऋण चिन्ह ठेवा",
-            "संख्या वजा करा आणि धन चिन्ह ठेवा"
+            "0",
+            "1",
+            "2",
+            "3"
           ],
-          "solution": "ब्रह्मगुप्तांचा दोन ऋण संख्यांच्या बेरजेसाठी नियम म्हणजे संख्या चिन्हांशिवाय बेरीज करणे आणि नंतर ऋण चिन्ह ठेवणे. हे बरोबर विकल्पाने ठाऊक केले आहे. इतर विकल्पांमध्ये धन चिन्ह ठेवणे किंवा बेरजेच्या बजाय वजा करण्याचा उल्लेख करून नियमाशी विरोध केला आहे.",
+          "solution": "1 च्या आधी येणारा आणि 1 पेक्षा लहान असलेला नंबर 0 आहे, कारण तो संख्या रेषेवर 1 चा तात्काळ पूर्ववर्ती आहे. संख्या 1 1 पेक्षा लहान नाही, आणि 2 आणि 3 1 पेक्षा मोठे आहेत, त्यामुळे ते शर्त पूर्ण करत नाहीत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -72,109 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the sign placement for addition of negatives",
-        "Suggests subtraction instead of addition",
         null,
-        "Believes subtracting negatives is the same as adding them"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 2, as Brahmagupta's rule for adding two negative numbers is to add their absolute values and place a minus sign. The author's solution and reasoning are accurate.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 15,
-          "pageStart": 25,
-          "pageEnd": 26,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "10.5 A Pinch of History"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 16,
-          "pageStart": 27,
-          "pageEnd": 28,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "10.5 A Pinch of History"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 17,
-          "pageStart": 28,
-          "pageEnd": 29,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "10.5 A Pinch of History",
-            "S u m m a r y"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T03:39:49.183Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "Which of the following represents moving four floors up in the Building of Fun?",
-      "choices": [
-        "+ 4",
-        "- 4",
-        "+ 5",
-        "- 5"
-      ],
-      "answerIndex": 0,
-      "solution": "Moving four floors up is represented by +4 because a positive number indicates an upward movement. The other options either show a negative direction or a different number of floors. +5 and -4 would represent different movements than moving up four floors.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन फन बिल्डिंग में चार मंजिल ऊपर जाने का प्रतिनिधित्व करता है?",
-          "choices": [
-            "+ 4",
-            "4",
-            "+ 5",
-            "5"
-          ],
-          "solution": "चार मंजिल ऊपर जाना +4 द्वारा प्रतिनिधित्व किया जाता है क्योंकि एक धनात्मक संख्या ऊपर की दिशा को दर्शाती है। अन्य विकल्प या तो ऋणात्मक दिशा को दर्शाते हैं या अलग संख्या में मंजिलें। +5 और -4 चार मंजिल ऊपर जाने के बजाय अलग गति का प्रतिनिधित्व करते हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology for mathematical concepts.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते फंक बिल्डिंगमध्ये चार मजले वर जाण्याचे प्रतिनिधित्व करते?",
-          "choices": [
-            "+ 4",
-            "4",
-            "+ 5",
-            "5"
-          ],
-          "solution": "चार मजले वर जाणे हे +4 ने प्रतिनिधित्व केले जाते कारण धनात्मक संख्या वरच्या दिशेचे सूचित करते. इतर विकल्प किंवा ऋणात्मक दिशा दर्शवतात किंवा मजल्यांची वेगळी संख्या दर्शवतात. +5 आणि -4 हे चार मजले वर जाण्यापेक्षा वेगळ्या गतीचे प्रतिनिधित्व करतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for mathematical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the direction of movement",
-        "Confuses the number of floors",
-        "Adds an extra floor to the movement"
+        "confuses the position of 0 with 1",
+        "does not recognize that 1 is not less than 1",
+        "does not understand the sequence of numbers after 1"
       ],
       "solverAnswers": [
         0,
@@ -184,217 +85,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The question is clear and the solution is correct. The correct answer is +4, as moving up is represented by a positive number. The other options are either incorrect in sign or value, and the author's reasoning for the distractors is valid.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 18,
-          "pageStart": 30,
-          "pageEnd": 30,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "10.5 A Pinch of History",
-            "Integers: Snakes and Ladders"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 19,
-          "pageStart": 32,
-          "pageEnd": 45,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "FracTion Wall",
-            "Notes"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 20,
-          "pageStart": 45,
-          "pageEnd": 48,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "FracTion Wall",
-            "Notes"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 21,
-          "pageStart": 48,
-          "pageEnd": 49,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "FracTion Wall",
-            "Notes"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T03:39:49.183Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is equal to 9–(–6)?",
-      "choices": [
-        "9+6",
-        "9–6",
-        "–9+6",
-        "–9–6"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct answer is 9+6. Subtracting a negative number is the same as adding the corresponding positive number, so 9–(–6) becomes 9+6. The option 9–6 is incorrect because it subtracts a positive number instead of adding. The option –9+6 is incorrect because it uses a negative number in the wrong place. The option –9–6 is incorrect because it subtracts both numbers instead of adding.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में कौन 9–(–6) के बराबर है?",
-          "choices": [
-            "9+6",
-            "9–6",
-            "–9+6",
-            "–9–6"
-          ],
-          "solution": "सही उत्तर 9+6 है। एक ऋणात्मक संख्या को घटाना उस संख्या के संगत धनात्मक संख्या को जोड़ने के समान होता है अतः 9–(–6) को 9+6 में बदल दिया जाता है। विकल्प 9–6 गलत है क्योंकि इसमें एक धनात्मक संख्या घटाई जाती है बजाय जोड़ने के। विकल्प –9+6 गलत है क्योंकि इसमें ऋणात्मक संख्या गलत स्थान पर उपयोग की जाती है। विकल्प –9–6 गलत है क्योंकि इसमें दोनों संख्याओं को घटाया जाता है बजाय जोड़ने के।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते 9–(–6) बरोबर आहे?",
-          "choices": [
-            "9+6",
-            "9–6",
-            "–9+6",
-            "–9–6"
-          ],
-          "solution": "सही उत्तर 9+6 आहे. ऋण संख्या वजा करणे हे त्या संख्येच्या धन संख्या जोडण्यासारखे आहे, म्हणून 9–(–6) हे 9+6 बरोबर येते. 9–6 हे चूक आहे कारण ते धन संख्या वजा करते बरोबर जोडत नाही. –9+6 हे चूक आहे कारण ते ऋण संख्या चुकीच्या जागी वापरते. –9–6 हे चूक आहे कारण ते दोन्ही संख्या वजा करते बरोबर जोडत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terminology for negative numbers and operations.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "subtracts a positive number instead of adding",
-        "uses a negative number in the wrong place",
-        "subtracts both numbers instead of adding"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is clear and the solution is mathematically sound. The correct answer is 9+6, and the author's reasoning for the incorrect options aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 6,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "10.1 Bela’s Building of Fun"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 7,
-          "pageStart": 11,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "10.1 Bela’s Building of Fun"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 8,
-          "pageStart": 13,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "10.1 Bela’s Building of Fun"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T03:39:49.183Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "Gurmit was in the Toy Store (Floor –1) and pressed the ‘+’ button 2 times by mistake. He then pressed the ‘–’ button 3 times. Where will he end up?",
-      "choices": [
-        "Floor +2",
-        "Floor –2",
-        "Floor –3",
-        "Floor +1"
-      ],
-      "answerIndex": 1,
-      "solution": "Gurmit starts at Floor –1. Pressing the ‘+’ button 2 times moves him up 2 floors, reaching Floor +1. Then pressing the ‘–’ button 3 times moves him down 3 floors, ending at Floor –2. The other options are incorrect because they don't match this calculation.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "गुरमीत टॉय स्टोर (मंजिल -1) में था और गलती से '+ ' बटन को 2 बार दबाया। फिर उसने '- ' बटन को 3 बार दबाया। वह कहाँ खत्म होगा?",
-          "choices": [
-            "मंजिल +2",
-            "मंजिल -2",
-            "मंजिल -3",
-            "मंजिल +1"
-          ],
-          "solution": "गुरमीत मंजिल -1 पर शुरू होता है। '+ ' बटन को 2 बार दबाने से वह 2 मंजिल ऊपर जाता है, जिससे मंजिल +1 पर पहुंच जाता है। फिर '- ' बटन को 3 बार दबाने से वह 3 मंजिल नीचे जाता है, जिससे मंजिल -2 पर खत्म हो जाता है। अन्य विकल्प गलत हैं क्योंकि वे इस गणना के अनुरूप नहीं हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains the mathematical logic, and uses appropriate Hindi terms for floors and operations.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "गुरमीट टॉय स्टोअरमध्ये (मजला –1) होता आणि चूकने ' +' बटण दोन वेळा दाबले. नंतर त्याने ' –' बटण तीन वेळा दाबले. तो अखेर कुठे पोहोचेल?",
-          "choices": [
-            "मजला +2",
-            "मजला –2",
-            "मजला –3",
-            "मजला +1"
-          ],
-          "solution": "गुरमीट सुरुवातीला मजला –1 वर होता. ' +' बटण दोन वेळा दाबल्याने तो दोन मजले वर जातो, मजला +1 वर पोहोचतो. नंतर ' –' बटण तीन वेळा दाबल्याने तो तीन मजले खाली जातो, मजला –2 वर जातो. इतर विकल्प चुकीचे आहेत कारण ते या गणनेशी मेळ नाही खात.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains in the same position (option 1), and the distractors are still incorrect.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the direction of button presses, thinking that '+' always increases the floor number but counts the presses incorrectly.",
-        null,
-        "Confuses the number of button presses with the final floor value",
-        "Confuses the net effect of pressing '+' twice and '-' three times as +1 instead of -1"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly calculates Gurmit's final position as Floor –2 after moving up 2 and then down 3 from Floor –1. The reasoning for the distractors reflects plausible student misconceptions.",
+      "critique": "The question is straightforward, and the correct answer is 0. The author's solution is correct, and the reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp110.pdf",
@@ -429,49 +120,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T03:39:49.183Z",
+      "generatedAt": "2026-11-01T16:18:01.707Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "Which of the following is equivalent to 5 - (-3)?",
+      "difficulty": 1,
+      "stem": "What is the name given to numbers with a '+' sign in front of them?",
       "choices": [
-        "5 - 3",
-        "5 + 3",
-        "5 + (-3)",
-        "-5 + 3"
+        "Negative numbers",
+        "Positive numbers",
+        "Zero numbers",
+        "Whole numbers"
       ],
       "answerIndex": 1,
-      "solution": "Subtracting a negative number is the same as adding the corresponding positive number, according to Brahmagupta’s rules. Therefore, 5 - (-3) is equivalent to 5 + 3. The other options incorrectly represent the operation as subtraction or addition of a negative number.",
+      "solution": "Numbers with a '+' sign in front of them are called positive numbers because the '+' indicates a value greater than zero. Negative numbers have a '-' sign and are less than zero, zero numbers refer to the number 0 itself, and whole numbers include all positive integers and zero but do not specifically refer to numbers with a '+' sign.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन 5 - (-3) के बराबर है?",
+          "stem": "उन संख्याओं का क्या नाम है जिनके आगे '+' चिह्न होता है?",
           "choices": [
-            "5 - 3",
-            "5 + 3",
-            "5 + (-3)",
-            "-5 + 3"
+            "ऋणात्मक संख्याएँ",
+            "धनात्मक संख्याएँ",
+            "शून्य संख्याएँ",
+            "पूर्ण संख्याएँ"
           ],
-          "solution": "ब्रह्मगुप्त के नियमों के अनुसार एक ऋणात्मक संख्या को घटाना उस संख्या के संगत धनात्मक संख्या को जोड़ने के बराबर होता है। अतः 5 - (-3) के बराबर 5 + 3 है। अन्य विकल्प गलत रूप से संक्रिया को घटाव या ऋणात्मक संख्या के जोड़ के रूप में प्रस्तुत करते हैं।",
+          "solution": "उन संख्याओं को धनात्मक संख्याएँ कहा जाता है जिनके आगे '+' चिह्न होता है क्योंकि '+' चिह्न शून्य से बड़ा मान दर्शाता है। ऋणात्मक संख्याओं के आगे '-' चिह्न होता है और वे शून्य से कम होती हैं, शून्य संख्याएँ शून्य के अर्थ को दर्शाती हैं और पूर्ण संख्याएँ सभी धनात्मक पूर्णांक और शून्य को शामिल करती हैं लेकिन विशेष रूप से '+' चिह्न वाली संख्याओं का संदर्भ नहीं देती हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Hindi terminology for arithmetic operations.",
+          "critique": "Translation is accurate, technical terms match standard Hindi textbook usage, and the logic of the solution aligns with the original.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते 5 - (-3) च्या समान आहे?",
+          "stem": "संख्यांच्या आगल्याबागल्यात '+' चिन्हाची असलेल्या संख्यांना काय म्हणतात?",
           "choices": [
-            "5 - 3",
-            "5 + 3",
-            "5 + (-3)",
-            "-5 + 3"
+            "ऋण संख्या",
+            "धन संख्या",
+            "शून्य संख्या",
+            "पूर्ण संख्या"
           ],
-          "solution": "ब्रह्मगुप्तांच्या नियमानुसार, ऋण संख्या वजा करणे हे त्याच्या संगत धन संख्या जोडण्यासारखे आहे. म्हणून, 5 - (-3) हे 5 + 3 च्या समान आहे. इतर विकल्प चुकीचे रूपाने ऑपरेशन वजा किंवा ऋण संख्या जोडण्याच्या रूपात दर्शवतात.",
+          "solution": "संख्यांच्या आगल्याबागल्यात '+' चिन्हाची असलेल्या संख्यांना धन संख्या म्हणतात कारण '+' चिन्ह शून्यापेक्षा मोठ्या मूल्याचा दाखवते. ऋण संख्यांमध्ये '-' चिन्ह असते आणि ते शून्यापेक्षा कमी असतात, शून्य संख्या म्हणजे फक्त संख्या 0 आहे आणि पूर्ण संख्या धन पूर्णांक आणि शून्यचा समावेश करतात परंतु फक्त '+' चिन्हाची असलेल्या संख्यांचा विशेष उल्लेख करत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for mathematical operations.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -480,10 +171,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Treats the subtraction of a negative as regular subtraction",
+        "confuses positive with negative",
         null,
-        "Confuses subtraction of a negative with addition of a negative",
-        "Adds a negative number instead of a positive"
+        "does not recognize the term for numbers with a '+' sign",
+        "does not understand the classification of numbers"
       ],
       "solverAnswers": [
         1,
@@ -492,85 +183,184 @@
         1,
         1
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly applies the rule that subtracting a negative is equivalent to adding a positive. The reasoning for the distractors aligns with common misconceptions.",
+      "levelFlag": null,
+      "critique": "The correct answer is 'Positive numbers' (option 1). The other options are incorrect: negative numbers have a '-' sign, zero numbers is not a standard term, and whole numbers include both positive and zero, not just positive numbers with a '+' sign.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 15,
-          "pageStart": 25,
-          "pageEnd": 26,
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
           "headingPath": [
             "Chapter 10: The Other Side of Zero",
-            "10.5 A Pinch of History"
+            "ZERO",
+            "Integers"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 16,
-          "pageStart": 27,
-          "pageEnd": 28,
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
           "headingPath": [
             "Chapter 10: The Other Side of Zero",
-            "10.5 A Pinch of History"
+            "10.1 Bela’s Building of Fun"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 17,
-          "pageStart": 28,
-          "pageEnd": 29,
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
           "headingPath": [
             "Chapter 10: The Other Side of Zero",
-            "10.5 A Pinch of History",
-            "S u m m a r y"
+            "10.1 Bela’s Building of Fun"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T03:39:49.183Z",
+      "generatedAt": "2026-11-01T16:18:01.707Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "If a number and its inverse are added together, what is the result?",
+      "difficulty": 1,
+      "stem": "What is the name given to numbers with a '-' sign in front of them?",
       "choices": [
-        "0",
-        "1",
-        "–1",
-        "2"
+        "Positive numbers",
+        "Negative numbers",
+        "Zero numbers",
+        "Whole numbers"
       ],
-      "answerIndex": 0,
-      "solution": "The inverse of a number is the number that, when added to it, results in zero. So, if a number and its inverse are added, the result is 0. The other options are incorrect because they do not represent the correct result of adding a number and its inverse.",
+      "answerIndex": 1,
+      "solution": "Numbers with a '-' sign in front of them are called negative numbers because the minus sign indicates a value less than zero. Positive numbers are greater than zero, zero numbers are neither positive nor negative, and whole numbers include only non-negative integers.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि किसी संख्या और उसके व्युत्क्रम को एक साथ जोड़ा जाता है, तो परिणाम क्या होता है?",
+          "stem": "इन संख्याओं के लिए क्या नाम दिया जाता है जिनके आगे '-' चिह्न होता है?",
           "choices": [
-            "0",
-            "1",
-            "–1",
-            "2"
+            "धनात्मक संख्याएँ",
+            "ऋणात्मक संख्याएँ",
+            "शून्य संख्याएँ",
+            "पूर्ण संख्याएँ"
           ],
-          "solution": "किसी संख्या का व्युत्क्रम वह संख्या होती है जिसे उस संख्या में जोड़ने पर शून्य प्राप्त होता है। अतः यदि किसी संख्या और उसके व्युत्क्रम को जोड़ा जाता है, तो परिणाम 0 होता है। अन्य विकल्प गलत हैं क्योंकि वे किसी संख्या और उसके व्युत्क्रम के जोड़ के सही परिणाम का प्रतिनिधित्व नहीं करते।",
+          "solution": "जिन संख्याओं के आगे '-' चिह्न होता है, उन्हें ऋणात्मक संख्याएँ कहा जाता है क्योंकि ऋणात्मक चिह्न शून्य से कम मान को दर्शाता है। धनात्मक संख्याएँ शून्य से अधिक होती हैं, शून्य संख्याएँ न तो धनात्मक होती हैं और न ऋणात्मक, और पूर्ण संख्याएँ केवल गैर-ऋणात्मक पूर्णांक शामिल करती हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated and maintain their original logical status. The term 'व्युत्क्रम' is the standard mathematical term used in Hindi textbooks for 'inverse'.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "एका संख्या आणि तिच्या व्यत्यासाची बेरीज केली असता निकाल काय असतो?",
+          "stem": "कोणत्या संख्यांच्या आगल्याशी '-' चिन्ह असते?",
           "choices": [
-            "0",
-            "1",
-            "–1",
-            "2"
+            "धन संख्या",
+            "ऋण संख्या",
+            "शून्य संख्या",
+            "पूर्ण संख्या"
           ],
-          "solution": "एका संख्येचा व्यत्यास ही संख्या आहे जी तिच्याशी बेरीज केल्यास शून्य मिळते. त्यामुळे जर एका संख्या आणि तिच्या व्यत्यासाची बेरीज केली जाते तर निकाल 0 असतो. इतर विकल्प चुकीचे आहेत कारण ते एका संख्या आणि तिच्या व्यत्यासाची बेरीज केल्याने मिळणारा योग्य निकाल दर्शवत नाहीत.",
+          "solution": "कोणत्या संख्यांच्या आगल्याशी '-' चिन्ह असते? ह्या प्रश्नाचे उत्तर ऋण संख्या असते कारण ऋण चिन्ह शून्यापेक्षा कमी मूल्याचे दर्शवते. धन संख्या शून्यापेक्षा जास्त असतात, शून्य संख्या धन आहेत की ऋण नाहीत, आणि पूर्ण संख्या केवळ अऋण पूर्णांकांचा समावेश करतात.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses negative with positive",
+        null,
+        "does not recognize the term for numbers with a '-' sign",
+        "does not understand the classification of numbers"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and tests recall of basic number terminology. The correct answer is clearly 'Negative numbers' (option 1), and the author's reasoning aligns with standard mathematical definitions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp110.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 10: The Other Side of Zero",
+            "ZERO",
+            "Integers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp110.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 10: The Other Side of Zero",
+            "10.1 Bela’s Building of Fun"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp110.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 10: The Other Side of Zero",
+            "10.1 Bela’s Building of Fun"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-01T16:18:01.707Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following expressions is equivalent to +105 – (–55) on the number line?",
+      "choices": [
+        "+105 + (+55)",
+        "+105 + (–55)",
+        "+105 – (+55)",
+        "+105 – (–55)"
+      ],
+      "answerIndex": 0,
+      "solution": "Subtracting a negative number is the same as adding its positive counterpart. Therefore, +105 – (–55) is equivalent to +105 + (+55). The other options are incorrect because they either keep the subtraction of a negative or incorrectly change the sign of the number being added.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा व्यंजक संख्या रेखा पर +105 – (–55) के बराबर है?",
+          "choices": [
+            "+105 + (+55)",
+            "+105 + (–55)",
+            "+105 – (+55)",
+            "+105 – (–55)"
+          ],
+          "solution": "एक ऋणात्मक संख्या को घटाना उसके धनात्मक समकक्ष के जोड़ने के बराबर होता है। अतः +105 – (–55) के बराबर है +105 + (+55)। अन्य विकल्प गलत हैं क्योंकि वे ऋणात्मक संख्या के घटाने को बरकरार रखते हैं या संख्या के चिह्न को गलती से बदल देते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालील प्रस्तावना नंबर लाइनवर +105 – (–55) च्या बरोबर आहे?",
+          "choices": [
+            "+105 + (+55)",
+            "+105 + (–55)",
+            "+105 – (+55)",
+            "+105 – (–55)"
+          ],
+          "solution": "ऋणात्मक संख्या वजा करणे हे त्याच्या धनात्मक प्रतिमानाच्या बरोबर आहे. म्हणून +105 – (–55) हे +105 + (+55) च्या बरोबर आहे. इतर पर्याय चूक आहेत कारण ते ऋणात्मक संख्या वजा करणे ठेवतात किंवा जोडल्या जाणारी संख्या चूकीने चिन्ह बदलतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -580,9 +370,233 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "thinks the result is 1",
-        "thinks the result is –1",
-        "thinks the result is 2"
+        "Confuses the subtraction of a negative with the addition of a negative",
+        "Incorrectly assumes subtraction of a positive number",
+        "Takes the original expression as the answer"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Subtracting a negative number is equivalent to adding its positive counterpart, so +105 – (–55) is indeed equivalent to +105 + (+55). The author's reasoning for the distractors is also valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp110.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 10: The Other Side of Zero",
+            "10.1 Bela’s Building of Fun"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp110.pdf",
+          "ordinal": 7,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 10: The Other Side of Zero",
+            "10.1 Bela’s Building of Fun"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp110.pdf",
+          "ordinal": 8,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 10: The Other Side of Zero",
+            "10.1 Bela’s Building of Fun"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-01T16:18:01.707Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A temperature is recorded as -8°C in Leh. If the temperature rises by 15°C, what will be the new temperature?",
+      "choices": [
+        "7°C",
+        "15°C",
+        "-7°C",
+        "23°C"
+      ],
+      "answerIndex": 0,
+      "solution": "Starting at -8°C and adding 15°C gives -8 + 15 = 7°C. 15°C is the amount of increase, not the final temperature. -7°C is incorrect because it would be the result of a temperature increase of 1°C. 23°C is incorrect because it would be the result of an increase of 31°C.",
+      "checkExpr": "-8+15",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "लेह में एक तापमान -8°C के रूप में दर्ज किया गया है। यदि तापमान 15°C बढ़ जाता है, तो नया तापमान क्या होगा?",
+          "choices": [
+            "7°C",
+            "15°C",
+            "-7°C",
+            "23°C"
+          ],
+          "solution": "शुरू में -8°C और 15°C जोड़ने से -8 + 15 = 7°C प्राप्त होता है। 15°C वृद्धि की मात्रा है, न कि अंतिम तापमान। -7°C गलत है क्योंकि यह 1°C के वृद्धि के परिणाम के रूप में होगा। 23°C गलत है क्योंकि यह 31°C के वृद्धि के परिणाम के रूप में होगा।",
+          "imageAlt": "एक संख्या रेखा जिस पर -8 पर एक बिंदु है और 7 तक एक कूद है।",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains in the same position (option 1), and all distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "लेहमध्ये तापमान -8°C असे नोंदवले गेले. जर तापमान 15°C ने वाढले, तर नवीन तापमान काय असेल?",
+          "choices": [
+            "7°C",
+            "15°C",
+            "-7°C",
+            "23°C"
+          ],
+          "solution": "प्रारंभी -8°C असलेले तापमान 15°C ने वाढल्याने -8 + 15 = 7°C होते. 15°C हे वाढीचे प्रमाण आहे, तापमानाचा अंतिम बिंदू नाही. -7°C चूक असेल कारण ते 1°C च्या वाढीचे निकाल असेल. 23°C चूक असेल कारण ते 31°C च्या वाढीचे निकाल असेल.",
+          "imageAlt": "एक संख्या रेषा ज्यावर -8 वर एक बिंदू आहे आणि 7 पर्यंत एक जंप आहे.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for temperature and arithmetic.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A number line showing a point at -8 and a jump to 7.",
+      "figure": {
+        "kind": "numberline",
+        "spec": {
+          "min": -10,
+          "max": 10,
+          "step": 1,
+          "points": [
+            {
+              "value": -8,
+              "label": "A",
+              "open": true
+            }
+          ],
+          "jumps": [
+            {
+              "from": -8,
+              "to": 7,
+              "label": "rise"
+            }
+          ]
+        },
+        "labels": {
+          "rise": {
+            "en": "rise by 15°C",
+            "hi": "15°C तक बढ़े",
+            "mr": "15°C ने वाढ"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        null,
+        "confuses the increase with the final temperature",
+        "adds incorrectly by not considering the negative value",
+        "subtracts instead of adding"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 7°C, as -8 + 15 = 7. The author's solution and reasoning are accurate, and the misconceptions listed for the wrong options are plausible for students.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp110.pdf",
+          "ordinal": 12,
+          "pageStart": 20,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 10: The Other Side of Zero",
+            "10.3 Integers in Other Places"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp110.pdf",
+          "ordinal": 13,
+          "pageStart": 22,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 10: The Other Side of Zero",
+            "10.4 Explorations with Integers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp110.pdf",
+          "ordinal": 14,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 10: The Other Side of Zero",
+            "10.4 Explorations with Integers"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-01T16:18:01.707Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A lift attendant has 10 positive tokens and 15 negative tokens. He then removes 5 zero pairs. What is the final floor number?",
+      "choices": [
+        "-5",
+        "-10",
+        "-15",
+        "-20"
+      ],
+      "answerIndex": 0,
+      "solution": "The lift attendant starts with 10 positive and 15 negative tokens, which gives a net of -5. Removing 5 zero pairs (5 positive and 5 negative tokens) leaves 5 negative tokens. The final floor is -5. The option '-10' is incorrect because it subtracts the total tokens instead of removing the zero pairs. The options '-15' and '-20' are also incorrect because they do not account for the net after removing the zero pairs.",
+      "checkExpr": "-5",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक लिफ्ट अधिकारी के पास 10 सकारात्मक टोकन और 15 ऋणात्मक टोकन हैं। वह फिर 5 शून्य जोड़े हटा देता है। अंतिम मंजिल की संख्या क्या है?",
+          "choices": [
+            "-5",
+            "-10",
+            "-15",
+            "-20"
+          ],
+          "solution": "लिफ्ट अधिकारी के पास 10 सकारात्मक और 15 ऋणात्मक टोकन हैं, जो एक शुद्ध मान -5 देता है। 5 शून्य जोड़े हटा देने से 5 ऋणात्मक टोकन बच जाते हैं। अंतिम मंजिल -5 है। विकल्प '-10' गलत है क्योंकि यह कुल टोकन को घटा देता है बजाय शून्य जोड़े हटाने के। विकल्प '-15' और '-20' भी गलत हैं क्योंकि वे शून्य जोड़े हटाने के बाद शुद्ध मान को ध्यान में नहीं रखते।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning, technical terms are appropriate for Hindi-medium curriculum, and the correct answer remains in the same position.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका लिफ्ट अटेंडंटला 10 धनात्मक टोकन्स आणि 15 ऋणात्मक टोकन्स आहेत. नंतर तो 5 शून्य जोड्या काढतो. अंतिम मजला संख्या काय आहे?",
+          "choices": [
+            "-5",
+            "-10",
+            "-15",
+            "-20"
+          ],
+          "solution": "लिफ्ट अटेंडंटला 10 धनात्मक आणि 15 ऋणात्मक टोकन्स असतात, जे एकूण -5 चे नेट देतात. 5 शून्य जोड्या काढणे (5 धनात्मक आणि 5 ऋणात्मक टोकन्स) नंतर 5 ऋणात्मक टोकन्स उरतात. अंतिम मजला -5 आहे. ऑप्शन '-10' अयोग्य आहे कारण ते टोकन्सची एकूण बेरीज वजा करते आणि शून्य जोड्या काढत नाही. '-15' आणि '-20' ऑप्शन देखील अयोग्य आहेत कारण ते शून्य जोड्या काढल्यानंतर नेट गणना करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate use of Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "subtracts the total tokens instead of removing zero pairs",
+        "does not account for the net after removing zero pairs",
+        "does not account for the net after removing zero pairs"
       ],
       "solverAnswers": [
         0,
@@ -592,41 +606,41 @@
         0
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is well-posed and the solution is correct. The term 'inverse' is correctly interpreted as the additive inverse, which when added to the original number yields zero.",
+      "critique": "The solution is correct. The net value of 10 positive and 15 negative tokens is -5. Removing 5 zero pairs (5 positive and 5 negative) leaves 5 negative tokens, resulting in a final floor of -5.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 3,
-          "pageStart": 5,
-          "pageEnd": 6,
+          "ordinal": 9,
+          "pageStart": 15,
+          "pageEnd": 16,
           "headingPath": [
             "Chapter 10: The Other Side of Zero",
-            "10.1 Bela’s Building of Fun"
+            "10.2 The Token Model"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 4,
-          "pageStart": 6,
-          "pageEnd": 8,
+          "ordinal": 10,
+          "pageStart": 17,
+          "pageEnd": 18,
           "headingPath": [
             "Chapter 10: The Other Side of Zero",
-            "10.1 Bela’s Building of Fun"
+            "10.2 The Token Model"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 5,
-          "pageStart": 8,
-          "pageEnd": 9,
+          "ordinal": 11,
+          "pageStart": 18,
+          "pageEnd": 19,
           "headingPath": [
             "Chapter 10: The Other Side of Zero",
-            "10.1 Bela’s Building of Fun"
+            "10.3 Integers in Other Places"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T03:39:49.183Z",
+      "generatedAt": "2026-11-01T16:18:01.707Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

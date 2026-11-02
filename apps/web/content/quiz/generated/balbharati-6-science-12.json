@@ -21,49 +21,49 @@
   "board": "BALBHARATI",
   "book": "६ वी सामान्य विज्ञान इंग्रजी",
   "edition": "First Edition 2026",
-  "generatedAt": "2026-10-31T06:42:10.693Z",
+  "generatedAt": "2026-11-01T18:19:40.600Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "Which of the following is an example of linear motion?",
+      "difficulty": 2,
+      "stem": "When an object's position keeps changing, what is it said to be?",
       "choices": [
-        "A ball rolling on the ground",
-        "A pendulum swinging",
-        "A car moving on a curved road",
-        "A fruit falling from a tree"
+        "At rest",
+        "In motion",
+        "In rotation",
+        "In vibration"
       ],
-      "answerIndex": 3,
-      "solution": "A fruit falling from a tree is an example of linear motion because it moves in a straight line. A ball rolling on the ground may not always move in a straight line, a pendulum swings in a circular arc, and a car moving on a curved road follows a non-linear path.",
+      "answerIndex": 1,
+      "solution": "When an object's position keeps changing, it is said to be in motion because motion is defined as a change in position over time. 'At rest' means there is no change in position, 'in rotation' refers to movement around an axis, and 'in vibration' refers to back-and-forth movement about a central position.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन रेखीय गति का उदाहरण है?",
+          "stem": "जब किसी वस्तु की स्थिति बदलती रहती है, तो इसे कहा जाता है?",
           "choices": [
-            "जमीन पर लुढ़कती गेंद",
-            "एक पेंडुलम के झूलना",
-            "एक कार एक वक्र मार्ग पर चलना",
-            "एक फल एक पेड़ से गिरना"
+            "आराम में",
+            "गति में",
+            "घूर्णन में",
+            "दोलन में"
           ],
-          "solution": "एक फल एक पेड़ से गिरना रेखीय गति का उदाहरण है क्योंकि यह एक सीधी रेखा में गति करता है। जमीन पर लुढ़कती गेंद हमेशा एक सीधी रेखा में नहीं गति करती है, एक पेंडुलम एक वृत्ताकार चाप में झूलता है और एक कार एक वक्र मार्ग पर चलते समय एक अरेखीय पथ का अनुसरण करती है।",
+          "solution": "जब किसी वस्तु की स्थिति बदलती रहती है, तो इसे गति में कहा जाता है क्योंकि गति को समय के साथ स्थिति में परिवर्तन के रूप में परिभाषित किया जाता है। 'आराम में' का अर्थ है कि स्थिति में कोई परिवर्तन नहीं होता है, 'घूर्णन में' अक्ष के चारों ओर गति को संदर्भित करता है और 'दोलन में' केंद्रीय स्थिति के आसपास आगे-पीछे गति को संदर्भित करता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains option (2). The distractors are still incorrect in the Hindi version, and the technical terms used are standard in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते रेषीय गतीचे उदाहरण आहे?",
+          "stem": "एका वस्तूच्या स्थानात बदल होत राहतो तेव्हा तिला काय म्हणतात?",
           "choices": [
-            "जमिनीवर फिरणारा गोला",
-            "एका दोरीला बांधलेला गुडगुडा झुलत आहे",
-            "वक्र मार्गावर चालणारी गाडी",
-            "एका झाडावरून खाली पडणारा फळ"
+            "विरामात",
+            "गतीत",
+            "घूर्णनात",
+            "कंपनात"
           ],
-          "solution": "एका झाडावरून खाली पडणारा फळ हा रेषीय गतीचा उदाहरण आहे कारण तो सरळ रेषेत गती करतो. जमिनीवर फिरणारा गोला सदैव सरळ रेषेत गती करत नाही, गुडगुडा वर्तुळाकार वक्रात झुलतो आणि वक्र मार्गावर चालणारी गाडी नियमित नसलेल्या मार्गावर जाते.",
+          "solution": "एका वस्तूच्या स्थानात बदल होत राहतो तेव्हा तिला गतीत म्हणतात कारण गती म्हणजे वेळात स्थानाचा बदल असतो. 'विरामात' म्हणजे स्थानात बदल नसणे, 'घूर्णनात' म्हणजे अक्षाभोवती गती, आणि 'कंपनात' म्हणजे मध्य स्थानाभोवती आगळ्या-वळगळ्या गती.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for physics concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with textbook usage.",
           "flag": null
         }
       },
@@ -72,9 +72,104 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses linear motion with general motion",
-        "Identifies circular motion as linear",
-        "Thinks curved motion is linear",
+        "Confuses motion with rest",
+        null,
+        "Incorrectly associates motion with rotation",
+        "Incorrectly associates motion with vibration"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors that reflect common misconceptions about motion.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 104,
+          "pageStart": 120,
+          "pageEnd": 121,
+          "headingPath": [
+            "12. Motion and Types of Motion"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 105,
+          "pageStart": 121,
+          "pageEnd": 122,
+          "headingPath": [
+            "12. Motion and Types of Motion"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 106,
+          "pageStart": 122,
+          "pageEnd": 124,
+          "headingPath": [
+            "12. Motion and Types of Motion"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T18:19:40.600Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A person is sitting inside a moving bus. What type of motion does the person experience relative to the bus?",
+      "choices": [
+        "Circular motion",
+        "Oscillatory motion",
+        "Linear motion",
+        "No motion"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct answer is 'No motion' because the person is stationary relative to the bus. The bus and the person are moving together, so the person’s position relative to the bus does not change.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक व्यक्ति एक गतिशील बस के अंदर बैठा हुआ है। बस के संदर्भ में व्यक्ति किस प्रकार की गति का अनुभव करता है?",
+          "choices": [
+            "चक्रीय गति",
+            "दोलनी गति",
+            "रैखिक गति",
+            "कोई गति नहीं"
+          ],
+          "solution": "सही उत्तर 'कोई गति नहीं' है क्योंकि व्यक्ति बस के सापेक्ष स्थिर है। बस और व्यक्ति एक साथ गतिशील हैं, इसलिए बस के सापेक्ष व्यक्ति की स्थिति बदल नहीं रही है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक व्यक्ती चालत्या बसमध्ये बसलेली आहे. बसच्या संदर्भात व्यक्तीला कोणत्या प्रकारचा गती अनुभव होतो?",
+          "choices": [
+            "वृत्तीय गती",
+            "दोलनीय गती",
+            "रेखीय गती",
+            "कोणतीही गती नाही"
+          ],
+          "solution": "हे बरोबर उत्तर 'कोणतीही गती नाही' आहे कारण व्यक्ती बसच्या संदर्भात थांबलेली आहे. बस आणि व्यक्ती एकत्र चालत असल्यामुळे बसच्या संदर्भात व्यक्तीचे स्थान बदलत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for motion types.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the motion of the bus with rotational movement",
+        "Student thinks motion in a bus is back-and-forth like a pendulum",
+        "Student believes motion relative to the bus must be linear, not recognizing that the person is stationary relative to the bus",
         null
       ],
       "solverAnswers": [
@@ -85,7 +180,7 @@
         3
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 3, as a fruit falling from a tree moves in a straight line. The other options involve curved or circular motion, which are not linear. The author's reasoning for the distractors aligns with common misconceptions.",
+      "critique": "The solution is correct. The person is stationary relative to the bus, so the correct answer is 'No motion.' The distractors reflect common misconceptions about motion types.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
@@ -116,144 +211,49 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T06:42:10.693Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What determines whether an object is in motion or at rest?",
-      "choices": [
-        "The size of the object",
-        "The position of the observer",
-        "The color of the object",
-        "The temperature of the object"
-      ],
-      "answerIndex": 1,
-      "solution": "The position of the observer determines whether an object is in motion or at rest. An object may appear to be moving to one observer but stationary to another, depending on their position and reference point.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "क्या तय करता है कि एक वस्तु गतिशील है या विराम में है?",
-          "choices": [
-            "वस्तु का आकार",
-            "अवलोकक की स्थिति",
-            "वस्तु का रंग",
-            "वस्तु का तापमान"
-          ],
-          "solution": "अवलोकक की स्थिति तय करती है कि एक वस्तु गतिशील है या विराम में है। एक वस्तु एक अवलोकक के लिए गतिशील लग सकती है लेकिन दूसरे अवलोकक के लिए स्थिर लग सकती है, जो उनकी स्थिति और संदर्भ बिंदु पर निर्भर करता है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "कोणते वस्तु गतीत आहे किंवा विश्रांतीत आहे याचे निर्धारण करते?",
-          "choices": [
-            "वस्तुचे आकार",
-            "अवलोककाचे स्थान",
-            "वस्तुचे रंग",
-            "वस्तुचे तापमान"
-          ],
-          "solution": "अवलोककाचे स्थान वस्तु गतीत आहे किंवा विश्रांतीत आहे याचे निर्धारण करते. एका अवलोककाला वस्तु गतीत दिसू शकते तर दुसऱ्या अवलोककाला विश्रांतीत दिसू शकते, जे त्यांच्या स्थान आणि संदर्भावर अवलंबून असते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Focuses on physical attributes of the object",
-        null,
-        "Mistakenly believes motion is independent of observation",
-        "Confuses motion with environmental factors"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed. The correct answer is 1, and the reasoning aligns with the concept of relative motion. The distractors reflect common misconceptions about motion.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 104,
-          "pageStart": 120,
-          "pageEnd": 121,
-          "headingPath": [
-            "12. Motion and Types of Motion"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 105,
-          "pageStart": 121,
-          "pageEnd": 122,
-          "headingPath": [
-            "12. Motion and Types of Motion"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 106,
-          "pageStart": 122,
-          "pageEnd": 124,
-          "headingPath": [
-            "12. Motion and Types of Motion"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T06:42:10.693Z",
+      "generatedAt": "2026-11-01T18:19:40.600Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "If an object moves in a straight line, what type of motion is it exhibiting?",
+      "stem": "A person inside a moving bus feels that the bag near their feet is not moving. What is the reason for this?",
       "choices": [
-        "Circular motion",
-        "Oscillatory motion",
-        "Linear motion",
-        "Random motion"
+        "The bag is not in motion",
+        "The bag is in motion but the observer is moving with it",
+        "The bag is stationary with respect to the observer",
+        "The bag is at rest with respect to the ground"
       ],
       "answerIndex": 2,
-      "solution": "If an object moves in a straight line, it is exhibiting linear motion. Circular motion follows a curved path, oscillatory motion is back and forth, and random motion is unpredictable.",
+      "solution": "The bag is stationary with respect to the observer because both the bag and the observer are moving at the same speed and direction inside the bus. The other options fail to account for the idea that motion is relative to the observer's frame of reference.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि कोई वस्तु सीधी रेखा में गतिमान है, तो यह किस प्रकार की गति का अनुभव कर रहा है?",
+          "stem": "एक व्यक्ति एक गतिशील बस में अपने पैरों के पास के बैग को गतिशील नहीं देखता है। इसका कारण क्या है?",
           "choices": [
-            "वृत्तीय गति",
-            "दोलनी गति",
-            "रैखिक गति",
-            "यादृच्छिक गति"
+            "बैग गतिशील नहीं है",
+            "बैग गतिशील है लेकिन अवलोकक इसके साथ गतिशील है",
+            "बैग अवलोकक के सापेक्ष स्थिर है",
+            "बैग जमीन के सापेक्ष विरामावस्था में है"
           ],
-          "solution": "यदि कोई वस्तु सीधी रेखा में गतिमान है, तो यह रैखिक गति का अनुभव कर रहा है। वृत्तीय गति एक वक्र पथ का अनुसरण करती है, दोलनी गति आगे-पीछे होती है और यादृच्छिक गति अनुमानित नहीं होती है।",
+          "solution": "बैग अवलोकक के सापेक्ष स्थिर है क्योंकि बैग और अवलोकक दोनों बस के भीतर समान गति और दिशा में गतिशील हैं। अन्य विकल्प गति के अवलोकक के दृष्टिकोण के आधार पर सापेक्ष होने के विचार को ध्यान में नहीं रखते हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
+          "critique": "The Hindi translation accurately reflects the English question, with appropriate terminology used in a Hindi-medium educational context.",
           "flag": null
         },
         "mr": {
-          "stem": "एका वस्तूने सीधा रेषेत गती केल्यास ती कोणत्या प्रकारची गती दर्शवित आहे?",
+          "stem": "एका गतिमान बसमधील व्यक्तीला त्यांच्या पायाजवळ असलेल्या बॅगेचा असा अनुभव होतो की बॅग गतीमुक्त आहे. ह्याचे कारण काय आहे?",
           "choices": [
-            "वर्तुळाकार गती",
-            "दोलनशील गती",
-            "रेषीय गती",
-            "अनियमित गती"
+            "बॅग गतीमुक्त आहे",
+            "बॅग गतीमुक्त आहे परंतु निरीक्षक त्यासह गतीमुक्त आहे",
+            "बॅग निरीक्षकाशी संबंधित गतीमुक्त आहे",
+            "बॅग जमिनीशी संबंधित गतीमुक्त आहे"
           ],
-          "solution": "जर एका वस्तूने सीधा रेषेत गती केली तर ती रेषीय गती दर्शवित आहे. वर्तुळाकार गती वक्र मार्गावर असते, दोलनशील गती आगला-पाछला असते आणि अनियमित गती अनिश्चित असते.",
+          "solution": "बॅग निरीक्षकाशी संबंधित गतीमुक्त आहे कारण बॅग आणि निरीक्षक दोन्ही बसमध्ये एकाच वेगाने आणि दिशेने गतीमुक्त आहेत. इतर विकल्प निरीक्षकाच्या फ्रेम ऑफ रेफरन्सशी संबंधित गतीच्या विचाराला नाकारतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology as used in standard textbooks.",
+          "critique": "The translation is accurate and maintains the scientific meaning. Technical terms like 'गतीमुक्त' (stationary) and 'फ्रेम ऑफ रेफरन्स' (frame of reference) are appropriately used in Marathi scientific context.",
           "flag": null
         }
       },
@@ -262,10 +262,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses circular motion with linear",
-        "Associates motion with periodic movement",
+        "Incorrectly assumes the bag is not moving",
+        "Fails to consider the reference point",
         null,
-        "Misinterprets unpredictable motion as linear"
+        "Confuses rest with motion"
       ],
       "solverAnswers": [
         2,
@@ -275,7 +275,7 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The question is clear and the solution correctly identifies linear motion as the answer. The distractors are based on common misconceptions about motion types.",
+      "critique": "The correct answer is 2, as the bag is stationary relative to the observer inside the moving bus. The other options reflect common misconceptions about reference frames and relative motion.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
@@ -306,49 +306,49 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T06:42:10.693Z",
+      "generatedAt": "2026-11-01T18:19:40.600Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "A child is sitting in a moving bus. According to the child, the bag next to them is stationary. What would an observer outside the bus say?",
+      "stem": "A car moves forward and the driver suddenly applies the brakes. What kind of motion does the car undergo during this time?",
       "choices": [
-        "The bag is moving",
-        "The bag is stationary",
-        "The bag is accelerating",
-        "The bag is in circular motion"
+        "Linear motion",
+        "Oscillatory motion",
+        "Circular motion",
+        "Random motion"
       ],
       "answerIndex": 0,
-      "solution": "An observer outside the bus would say the bag is moving because the bus itself is in motion. The child perceives the bag as stationary because they are moving with the bus and use the bus as a reference point.",
+      "solution": "The correct answer is 'Linear motion' because the car is moving in a straight line, even though its speed is decreasing. Oscillatory, circular, and random motions involve more complex paths.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक बच्चा एक गतिशील बस में बैठा हुआ है। बच्चे के अनुसार, उनके पास वाला बैग स्थिर है। बस के बाहर के एक अवलोकनकर्ता क्या कहेगा?",
+          "stem": "एक कार आगे बढ़ रही है और ड्राइवर अचानक ब्रेक लगा देता है। इस समय कार किस प्रकार की गति के अधीन होती है?",
           "choices": [
-            "बैग गतिशील है",
-            "बैग स्थिर है",
-            "बैग त्वरित है",
-            "बैग वृत्ताकार गति में है"
+            "रैखिक गति",
+            "दोलनी गति",
+            "वृत्तीय गति",
+            "यादृच्छिक गति"
           ],
-          "solution": "बस के बाहर के अवलोकनकर्ता बैग गतिशील है कहेगा क्योंकि बस स्वयं गतिशील है। बच्चा बैग को स्थिर इसलिए प्रतीत करता है क्योंकि वह बस के साथ गतिशील है और बस को संदर्भ बिंदु के रूप में उपयोग करता है।",
+          "solution": "सही उत्तर 'रैखिक गति' है क्योंकि कार सीधी रेखा में गति कर रही है, भले ही इसकी गति घट रही हो। दोलनी, वृत्तीय और यादृच्छिक गतियाँ अधिक जटिल पथों के साथ होती हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi physics terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "एका बालकाचे एका चालू बसमध्ये बसलेले आहे. बालकाच्या दृष्टीने, त्याच्या जवळ असलेला बॅग स्थिर आहे. बसबाहेर असलेला निरीक्षक काय म्हणेल?",
+          "stem": "एक गाडी आगला जात आहे आणि ड्रायव्हर अचानक ब्रेक मारतो. या काळात गाडी कोणत्या प्रकारच्या गतीत असते?",
           "choices": [
-            "बॅग चालू आहे",
-            "बॅग स्थिर आहे",
-            "बॅग त्वरित आहे",
-            "बॅग वर्तुळाकार गतीत आहे"
+            "रेषीय गती",
+            "दोलनी गती",
+            "वर्तुळाकार गती",
+            "अनियमित गती"
           ],
-          "solution": "बसबाहेर असलेला निरीक्षक बॅग चालू आहे असे म्हणेल कारण बस स्वतः गतीत आहे. बालकाच्या दृष्टीने बॅग स्थिर आहे कारण तो बससह गतीत आहे आणि बसला आधार मानतो.",
+          "solution": "बरोबर उत्तर 'रेषीय गती' आहे कारण गाडी सरळ रेषेत जात आहे, तरी तिचा वेग कमी होत आहे. दोलनी, वर्तुळाकार आणि अनियमित गतीमध्ये अधिक जटिल मार्ग असतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for physics concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
           "flag": null
         }
       },
@@ -358,9 +358,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Believes motion is absolute and does not depend on the observer's frame of reference",
-        "Student thinks motion always involves speeding up, not just moving at constant speed",
-        "Believes motion is always circular due to Earth's rotation"
+        "Student thinks motion in a straight line is a back-and-forth movement",
+        "Student thinks motion in a straight line is circular due to confusion between linear and circular paths",
+        "Believes motion is random if it is not steady or predictable"
       ],
       "solverAnswers": [
         0,
@@ -370,7 +370,7 @@
         0
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that motion is relative and depends on the observer's frame of reference. The author's reasoning for the wrong options reflects common misconceptions among students.",
+      "critique": "The solution is correct. The car is moving in a straight line, even though it is decelerating, so it undergoes linear motion. The reasons for the wrong options are valid misconceptions.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
@@ -401,49 +401,49 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T06:42:10.693Z",
+      "generatedAt": "2026-11-01T18:19:40.600Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "Which of the following is an example of non-linear motion?",
+      "difficulty": 5,
+      "stem": "A car is moving on a straight road, and its speed is decreasing. Which of the following best describes the motion of the car?",
       "choices": [
-        "A train moving on a straight track",
-        "A ball rolling on the ground",
-        "A car moving on a circular road",
-        "A stone falling from a height"
+        "Uniform motion",
+        "Non-uniform motion",
+        "Circular motion",
+        "Oscillatory motion"
       ],
-      "answerIndex": 2,
-      "solution": "A car moving on a circular road is an example of non-linear motion because it follows a curved path. A train, a ball, and a stone in free fall exhibit linear motion.",
+      "answerIndex": 1,
+      "solution": "Non-uniform motion occurs when the speed of an object changes, which is the case here as the car's speed is decreasing. Uniform motion requires constant speed, which is not happening. Circular motion involves movement along a circular path, and oscillatory motion involves repetitive back-and-forth movement, neither of which applies to the car's situation.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा असीधी गति का उदाहरण है?",
+          "stem": "एक कार सीधी सड़क पर चल रही है, और इसकी गति घट रही है। निम्नलिखित में से कौन-सा कार की गति का सबसे अच्छा वर्णन करता है?",
           "choices": [
-            "एक सीधे ट्रैक पर चल रही ट्रेन",
-            "जमीन पर लुढ़क रहा एक गेंद",
-            "एक वृत्ताकार सड़क पर चल रहा एक कार",
-            "ऊंचाई से गिर रहा एक पत्थर"
+            "समान गति",
+            "असमान गति",
+            "वृत्तीय गति",
+            "दोलनी गति"
           ],
-          "solution": "एक वृत्ताकार सड़क पर चल रहा एक कार असीधी गति का उदाहरण है क्योंकि यह एक वक्र पथ का अनुसरण करता है। एक ट्रेन, एक गेंद और एक पत्थर मुक्त पतन में सीधी गति प्रदर्शित करता है।",
+          "solution": "असमान गति तब होती है जब किसी वस्तु की गति बदलती है, जो यहां हो रहा है क्योंकि कार की गति घट रही है। समान गति के लिए नियत गति की आवश्यकता होती है, जो नहीं हो रही है। वृत्तीय गति एक वृत्ताकार पथ के साथ गति को कहते हैं, और दोलनी गति दोहराए जाने वाली आगे-पीछे गति को कहते हैं, जो कार की स्थिति के लिए लागू नहीं होती।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and technical terms. All options are correctly translated, and the correct answer remains option 2. The solution is also properly translated and maintains the same reasoning.",
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi physics terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते अरेषीय गतीचे उदाहरण आहे?",
+          "stem": "एक गाडी सीधा रस्ता चालत आहे आणि तिचा वेग घटत आहे. खालीलपैकी कोणते गाडीच्या गतीचे सर्वोत्तम वर्णन करते?",
           "choices": [
-            "सीध्या मार्गावर चालणारा रेल्वे गाडी",
-            "जमिनीवर फिरणारा गोला",
-            "वर्तुळाकार मार्गावर चालणारा गाडी",
-            "उंचीवरून खाली पडणारा दगड"
+            "सम गती",
+            "असम गती",
+            "वर्तुळाकार गती",
+            "दोलनी गती"
           ],
-          "solution": "वर्तुळाकार मार्गावर चालणारा गाडी ही अरेषीय गतीचे उदाहरण आहे कारण तो वक्र मार्गावर जातो. रेल्वे गाडी, गोला आणि मुक्त पाडलेला दगड रेषीय गती दर्शवतात.",
+          "solution": "असम गती होतो जेव्हा कोणत्याही वस्तूचा वेग बदलतो, जे येथे आहे कारण गाडीचा वेग घटत आहे. सम गतीची आवश्यकता अचल वेगाची असते, जे घडत नाही. वर्तुळाकार गती ही वर्तुळाकार मार्गावर चालण्याची गती आहे आणि दोलनी गती ही पुनरावृत्ती आधारित आगळ्या-वागळ्या गती आहे, ज्यापैकी कोणाचाही गाडीच्या स्थितीशी संबंध नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for physics concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi scientific terminology.",
           "flag": null
         }
       },
@@ -452,20 +452,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses circular motion with linear",
-        "Thinks any motion is linear",
+        "Confuses uniform motion with non-uniform",
         null,
-        "Mistakenly classifies falling motion as non-linear"
+        "Confuses circular motion with non-uniform",
+        "Confuses oscillatory motion with non-uniform"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2, as a car moving on a circular road follows a curved path, which is non-linear motion. The other options describe linear motion, and the author's reasoning for the wrong options aligns with common misconceptions.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that non-uniform motion occurs when speed changes, which matches the car's decreasing speed. The reasons for the wrong options align with common misconceptions.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
@@ -496,7 +496,7 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T06:42:10.693Z",
+      "generatedAt": "2026-11-01T18:19:40.600Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

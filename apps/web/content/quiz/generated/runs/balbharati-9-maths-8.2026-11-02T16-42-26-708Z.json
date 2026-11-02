@@ -1,0 +1,601 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T16:42:26.708Z",
+  "finishedAt": "2026-11-02T16:54:33.702Z",
+  "seconds": 727,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "९ वी गणित भाग-२ इंग्रजी",
+    "bookCode": "903000609",
+    "document": "balbharati/9/mathematics/903000609.pdf",
+    "classLevel": 9,
+    "subject": "Mathematics",
+    "chapter": "Chapter 8 — Basic Concepts in Geometry",
+    "edition": "2026 edition",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n9. Draw neat and clean figures wherever required.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 22 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not\nstated."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 161543,
+      "in": 31,
+      "out": 31,
+      "rejects": 0,
+      "promptTokens": 26603,
+      "completionTokens": 5777
+    },
+    "critique": {
+      "calls": 45,
+      "ms": 438172,
+      "in": 31,
+      "out": 29,
+      "rejects": 2,
+      "promptTokens": 19660,
+      "completionTokens": 7783
+    },
+    "solver": {
+      "calls": 245,
+      "ms": 217516,
+      "in": 29,
+      "out": 18,
+      "rejects": 11,
+      "promptTokens": 50334,
+      "completionTokens": 2791
+    },
+    "form": {
+      "calls": 9,
+      "ms": 36941,
+      "in": 18,
+      "out": 14,
+      "rejects": 4,
+      "promptTokens": 2214,
+      "completionTokens": 624
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 6,
+      "ms": 1429,
+      "in": 14,
+      "out": 13,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 57,
+      "ms": 701033,
+      "in": 26,
+      "out": 26,
+      "rejects": 2,
+      "promptTokens": 29373,
+      "completionTokens": 13282
+    }
+  },
+  "kept": 13,
+  "keptByLevel": {
+    "1": 4,
+    "2": 2,
+    "3": 3,
+    "4": 2,
+    "5": 0,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the meaning of 'betweenness' in geometry ?",
+      "ms": {
+        "draft": 5200,
+        "critique": 10473,
+        "solver": 19851
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If d(P, R) = 7, d(P, Q) = 10, and d(Q, R) = 3, which point is between the other two ?",
+      "ms": {
+        "draft": 5200,
+        "critique": 11092
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the coordinates of A is 5 and the distance between A and another point is 13, what are the possible coordinates of the other point ?",
+      "ms": {
+        "draft": 5200,
+        "critique": 10047,
+        "solver": 26708
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If d(A, C) = 10 and d(C, B) = 8, what are the possible values of d(A, B) ?",
+      "ms": {
+        "draft": 5200,
+        "critique": 11763,
+        "solver": 24489
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If R - S - T and l(ST) = 3.7, what is the relationship between l(RS) and l(RT)?",
+      "ms": {
+        "draft": 5032,
+        "critique": 9188,
+        "solver": 1952,
+        "form": 6013
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If A - B - C and l(AC) = 11, what is the relationship between l(AB) and l(BC)?",
+      "ms": {
+        "draft": 5032,
+        "critique": 12311,
+        "solver": 3163,
+        "form": 5388
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If X - Y - Z and l(XZ) = 6.5, what is l(XY) if l(YZ) = 3?",
+      "ms": {
+        "draft": 5032,
+        "critique": 10945,
+        "solver": 18822
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If l(RS) = 2.5 and l(RT) = 5, what is l(ST)?",
+      "ms": {
+        "draft": 5032,
+        "critique": 9584,
+        "solver": 17330
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the coordinates of point A are 1 and a point is 7 units away from A, what are the possible coordinates of that point?",
+      "ms": {
+        "draft": 5124,
+        "critique": 11591,
+        "solver": 2094
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "On a number line, the coordinates of points P, Q, and R are 3, -5, and 6 respectively. Which of the following statements is true?",
+      "ms": {
+        "draft": 20993,
+        "critique": 12337
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The coordinates of point A on a number line are 1. What are the coordinates of the points on the number line that are 7 units away from A?",
+      "ms": {
+        "draft": 20993,
+        "critique": 10141,
+        "solver": 27810
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If R - S - T and l(RT) = 10, and l(RS) = 2.5, what is l(ST)?",
+      "ms": {
+        "draft": 5547,
+        "critique": 9123,
+        "solver": 2553,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a basic concept in geometry according to the passage?",
+      "ms": {
+        "draft": 5419,
+        "critique": 9315,
+        "solver": 2139,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If X - Y - Z and l(XZ) = 6.5, and l(XY) = 2.5, what is l(YZ)?",
+      "ms": {
+        "draft": 5547,
+        "critique": 9268,
+        "solver": 20557
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How is the distance between two points on a number line calculated according to the passage?",
+      "ms": {
+        "draft": 5419,
+        "critique": 11350,
+        "solver": 18222
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "On a number line, the coordinates of points A and B are -5 and -3 respectively. What is the distance between them?",
+      "ms": {
+        "draft": 5419,
+        "critique": 9839,
+        "solver": 19781
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "On a number line, the coordinates of points A and B are 5 and -8 respectively. What is the distance between them?",
+      "ms": {
+        "draft": 5419,
+        "critique": 9100,
+        "solver": 13630
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a prime number is greater than 2, which of the following must be true about it?",
+      "ms": {
+        "draft": 20993,
+        "critique": 8165,
+        "solver": 3129,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the measure of an angle formed by two intersecting lines that are opposite to each other?",
+      "ms": {
+        "draft": 5124,
+        "critique": 9123,
+        "solver": 3565,
+        "form": 4605,
+        "translation": 55833
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the origin of the word 'Geometry' ?",
+      "ms": {
+        "draft": 5200,
+        "critique": 11052,
+        "solver": 21066,
+        "form": 4843,
+        "translation": 45753
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the distance between the endpoints of a segment?",
+      "ms": {
+        "draft": 5032,
+        "critique": 12038,
+        "solver": 3170,
+        "form": 3849,
+        "translation": 81065
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe a segment that has the same length as another segment?",
+      "ms": {
+        "draft": 5032,
+        "critique": 8476,
+        "solver": 2595,
+        "form": 4119,
+        "translation": 85606
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the name of the proof that starts by assuming the opposite of what is to be proved?",
+      "ms": {
+        "draft": 5124,
+        "critique": 7855,
+        "solver": 2596,
+        "form": 5222,
+        "translation": 61351
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If points X, Y, Z are collinear and d(X,Y) = 17, d(Y,Z) = 8, what is d(X,Z)?",
+      "ms": {
+        "draft": 5547,
+        "critique": 12869,
+        "solver": 17127,
+        "form": 0,
+        "translation": 29518
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a prime number is greater than 2, what can be said about it?",
+      "ms": {
+        "draft": 5124,
+        "critique": 10712,
+        "solver": 2743,
+        "form": 3656,
+        "translation": 57551
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Two lines AB and CD intersect at point O. If angle AOC is 50 degrees, what is the measure of angle BOD?",
+      "ms": {
+        "draft": 20993,
+        "critique": 7171,
+        "solver": 22960,
+        "form": 0,
+        "translation": 47225
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the coordinates of two points on a number line are -5 and -3, what is the distance between them ?",
+      "ms": {
+        "draft": 5200,
+        "critique": 9851,
+        "solver": 23906,
+        "form": 0,
+        "translation": 45337
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the coordinates of point P are -2 and the coordinates of point Q are 5, what is the distance between P and Q?",
+      "ms": {
+        "draft": 5124,
+        "critique": 9709,
+        "solver": 2297,
+        "form": 4670,
+        "translation": 52325
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "If A - B - C and l(AC) = 11, what is l(AB) if l(BC) = 4?",
+      "ms": {
+        "draft": 5547,
+        "critique": 9838,
+        "solver": 1975,
+        "form": 0,
+        "translation": 37585
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If P - Q - R and d(P,Q) = 2, d(P,R) = 10, what is d(Q,R)?",
+      "ms": {
+        "draft": 5124,
+        "critique": 9057,
+        "solver": 873,
+        "form": 0,
+        "translation": 43460
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If two lines intersect at a point, what is the sum of the measures of the four angles formed?",
+      "ms": {
+        "draft": 20993,
+        "critique": 10448,
+        "solver": 3302,
+        "form": 0,
+        "translation": 51978
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the meaning of 'betweenness' in geometry ?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If d(P, R) = 7, d(P, Q) = 10, and d(Q, R) = 3, which point is between the other two ?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the coordinates of A is 5 and the distance between A and another point is 13, what are the possible coordinates of the other point ?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If d(A, C) = 10 and d(C, B) = 8, what are the possible values of d(A, B) ?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If R - S - T and l(ST) = 3.7, what is the relationship between l(RS) and l(RT)?",
+      "reason": "options 0 and 1 say the same thing (\"l(RS) + l(ST) = l(RT)\" / \"l(RS) - l(ST) = l(RT)\"); option 0 repeats the stem's wording (\"l(RS) + l(ST) = l(RT)\"); option 1 repeats the stem's wording (\"l(RS) - l(ST) = l(RT)\"); option 2 repeats the stem's wording (\"l(RS) = l(ST)\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If A - B - C and l(AC) = 11, what is the relationship between l(AB) and l(BC)?",
+      "reason": "options 0 and 1 say the same thing (\"l(AB) + l(BC) = 11\" / \"l(AB) - l(BC) = 11\"); option 0 repeats the stem's wording (\"l(AB) + l(BC) = 11\"); option 1 repeats the stem's wording (\"l(AB) - l(BC) = 11\"); option 2 repeats the stem's wording (\"l(AB) = l(BC)\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If X - Y - Z and l(XZ) = 6.5, what is l(XY) if l(YZ) = 3?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If l(RS) = 2.5 and l(RT) = 5, what is l(ST)?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the coordinates of point A are 1 and a point is 7 units away from A, what are the possible coordinates of that point?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "On a number line, the coordinates of points P, Q, and R are 3, -5, and 6 respectively. Which of the following statements is true?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "The coordinates of point A on a number line are 1. What are the coordinates of the points on the number line that are 7 units away from A?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If R - S - T and l(RT) = 10, and l(RS) = 2.5, what is l(ST)?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a basic concept in geometry according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If X - Y - Z and l(XZ) = 6.5, and l(XY) = 2.5, what is l(YZ)?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "How is the distance between two points on a number line calculated according to the passage?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "On a number line, the coordinates of points A and B are -5 and -3 respectively. What is the distance between them?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "On a number line, the coordinates of points A and B are 5 and -8 respectively. What is the distance between them?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a prime number is greater than 2, which of the following must be true about it?",
+      "reason": "near-duplicate of batch item \"If a prime number is greater than 2, what can be s…\" (cosine 0.943 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,511 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T21:35:10.304Z",
+  "finishedAt": "2026-11-01T21:50:44.839Z",
+  "seconds": 935,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी गणित इंग्रजी",
+    "bookCode": "703020004",
+    "document": "balbharati/7/mathematics/703020004.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 6 — Indices",
+    "edition": "2026 edition",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Mathematics, marking scheme, 2022-23]\n9. (c) ଷ ௫ ଵ ଶ\n଻\n= √ଵସ\nଷ ଵ ଵ ଵ଴\n∫ ଶ ௫ ାଵ మ = [𝑙𝑜𝑔(𝑥 + 1)] ଶ ଶ = (𝑙𝑜𝑔10 − 𝑙𝑜𝑔5) = 𝑙𝑜𝑔 ቀ ቁ\n= 𝑙𝑜𝑔2 ଵ ଶ",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n7. B 210 = 21 + (𝑛 − 1)21 ⇒ 𝑛 = 10\n(B) 𝟏𝟎 𝒕𝒉",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 22 7 wherever required if not stated."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 308310,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 18690,
+      "completionTokens": 5478
+    },
+    "critique": {
+      "calls": 36,
+      "ms": 846120,
+      "in": 24,
+      "out": 19,
+      "rejects": 5,
+      "promptTokens": 15431,
+      "completionTokens": 6379
+    },
+    "solver": {
+      "calls": 183,
+      "ms": 289749,
+      "in": 19,
+      "out": 15,
+      "rejects": 4,
+      "promptTokens": 40104,
+      "completionTokens": 2140
+    },
+    "form": {
+      "calls": 10,
+      "ms": 101365,
+      "in": 15,
+      "out": 7,
+      "rejects": 8,
+      "promptTokens": 2595,
+      "completionTokens": 826
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 7,
+      "ms": 1396,
+      "in": 7,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 494063,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 11300,
+      "completionTokens": 4354
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 1,
+    "6": 3
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the term used for the number that is multiplied by itself multiple times in an index form?",
+      "ms": {
+        "draft": 3883,
+        "critique": 4541
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the value of 5^4 according to the passage?",
+      "ms": {
+        "draft": 3883,
+        "critique": 6032
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the value of (-1)^5 according to the passage?",
+      "ms": {
+        "draft": 3883,
+        "critique": 8961
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If (2^3)^2 is simplified, what is the result?",
+      "ms": {
+        "draft": 3883,
+        "critique": 8577
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 2^3 × 2^4 is simplified, what is the result?",
+      "ms": {
+        "draft": 3883,
+        "critique": 5228,
+        "solver": 16434
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the symbol used for 'square root'?",
+      "ms": {
+        "draft": 3192,
+        "critique": 5668,
+        "solver": 23281,
+        "form": 14064
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the square root of 49?",
+      "ms": {
+        "draft": 3192,
+        "critique": 9166,
+        "solver": 67028,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If x is a positive number, how many square roots does it have?",
+      "ms": {
+        "draft": 3192,
+        "critique": 21199
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the approximate value of √139.24?",
+      "ms": {
+        "draft": 3192,
+        "critique": 38133,
+        "solver": 44410,
+        "form": 25338
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the square root of 64?",
+      "ms": {
+        "draft": 19179,
+        "critique": 34815,
+        "solver": 45375
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 9801 = 99, then what is the square root of 9801?",
+      "ms": {
+        "draft": 19179,
+        "critique": 24722,
+        "solver": 70352
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the number that is multiplied by itself multiple times in the expression 5 × 5 × 5 × 5?",
+      "ms": {
+        "draft": 25131,
+        "critique": 32856,
+        "solver": 2987,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which number is the square root of 81?",
+      "ms": {
+        "draft": 19179,
+        "critique": 26266,
+        "solver": 58028
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the value of 3^4?",
+      "ms": {
+        "draft": 25131,
+        "critique": 30145,
+        "solver": 7527,
+        "form": 5085
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the value of (-2)^3?",
+      "ms": {
+        "draft": 25131,
+        "critique": 30543,
+        "solver": 7527,
+        "form": 5576
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the simplified form of (2 × 3)^2?",
+      "ms": {
+        "draft": 25131,
+        "critique": 36433,
+        "solver": 1878,
+        "form": 5113
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the value of 3^0?",
+      "ms": {
+        "draft": 25131,
+        "critique": 23431,
+        "solver": 7337,
+        "form": 6905
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the square root of 144 using the factors method?",
+      "ms": {
+        "draft": 19179,
+        "critique": 34450,
+        "solver": 50302,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the square root of 9?",
+      "ms": {
+        "draft": 19179,
+        "critique": 33873,
+        "solver": 2206,
+        "form": 0,
+        "translation": 93506
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the square root of 144 using the factors method?",
+      "ms": {
+        "draft": 3192,
+        "critique": 45295,
+        "solver": 54700,
+        "form": 14695,
+        "translation": 74162
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the square root of 324?",
+      "ms": {
+        "draft": 19179,
+        "critique": 27817,
+        "solver": 59913,
+        "form": 0,
+        "translation": 78117
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is the correct representation of 3^2 × 3^5?",
+      "ms": {
+        "draft": 3883,
+        "critique": 4976,
+        "solver": 12774,
+        "form": 24402,
+        "translation": 107290
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the simplified form of (2^3)^2?",
+      "ms": {
+        "draft": 25131,
+        "critique": 27625,
+        "solver": 5254,
+        "form": 3639,
+        "translation": 58302
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the square root of 324 using the factors method?",
+      "ms": {
+        "draft": 3192,
+        "critique": 54969,
+        "solver": 5167,
+        "form": 1908,
+        "translation": 52645
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for the number that is multiplied by itself multiple times in an index form?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the value of 5^4 according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the value of (-1)^5 according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If (2^3)^2 is simplified, what is the result?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 2^3 × 2^4 is simplified, what is the result?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the symbol used for 'square root'?",
+      "reason": "options 0 and 1 are the same (\"√\"); options 0 and 2 are the same (\"√\"); options 0 and 3 are the same (\"√\"); options 1 and 2 are the same (\"√\"); options 1 and 3 are the same (\"√\"); options 2 and 3 are the same (\"√\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the square root of 49?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If x is a positive number, how many square roots does it have?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the approximate value of √139.24?",
+      "reason": "options are written to different precisions (0 and 1 decimals); distractor 2's reason is not a one-line misconception (\"incorrect value from the passage…\"); distractor 3's reason is not a one-line misconception (\"incorrect estimation based on the passage's data,…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is the square root of 64?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If 9801 = 99, then what is the square root of 9801?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used to describe the number that is multiplied by itself multiple times in the expression 5 × 5 × 5 × 5?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer: the base is the number being multiplied repe…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which number is the square root of 81?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the value of 3^4?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer: 3 × 3 × 3 × 3 = 81. This is the value of 3^4…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the value of (-2)^3?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer: (-2) × (-2) × (-2) = -8. This is the value o…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the simplified form of (2 × 3)^2?",
+      "reason": "options 1 and 3 are the same (\"2^2 × 3^2\"); option 1 repeats the stem's wording (\"2^2 × 3^2\"); option 3 repeats the stem's wording (\"2^2 + 3^2\"); distractor 2's reason is not a one-line misconception (\"Chooses the simplified form of (2 × 3)^2 as 6^2, which is co…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What is the value of 3^0?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer: 3^0 = 1. This is explicitly stated in the pa…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What is the square root of 144 using the factors method?",
+      "reason": "near-duplicate of batch item \"What is the square root of 144 using the factors m…\" (cosine 1.000 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

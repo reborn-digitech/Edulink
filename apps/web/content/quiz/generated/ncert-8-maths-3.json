@@ -21,546 +21,47 @@
   "board": "NCERT",
   "book": "Ganita Prakash Part-I",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-29T18:24:21.545Z",
+  "generatedAt": "2026-11-02T08:23:44.551Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the main advantage of the Hindu number system over the Roman number system?",
+      "stem": "What is the main feature of a positional number system?",
       "choices": [
-        "It uses a symbol for each number",
-        "It has a symbol for zero",
-        "It uses a symbol for every number",
-        "It is based on a base-10 system"
+        "It uses a base-10 system",
+        "It uses symbols for all landmark numbers",
+        "It determines the value of a symbol based on its position",
+        "It uses a seashell as a placeholder"
       ],
-      "answerIndex": 1,
-      "solution": "The Hindu number system has a symbol for zero, which is a key advantage over the Roman number system that does not have a symbol for zero. The other options are incorrect because the Roman system also uses letters, the Hindu system uses multiple symbols, and both systems are based on a base-10 system.",
+      "answerIndex": 2,
+      "solution": "The main feature of a positional number system is that it determines the value of a symbol based on its position. This is because the same symbol can represent different values depending on where it is placed in the number. The other options are incorrect because not all positional systems use base-10, they do not necessarily use symbols for all landmark numbers, and while placeholders like a seashell might be used, they are not the defining characteristic.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "हिंदू संख्या प्रणाली का मुख्य लाभ रोमन संख्या प्रणाली की तुलना में क्या है?",
+          "stem": "एक स्थानीय संख्या प्रणाली की मुख्य विशेषता क्या है?",
           "choices": [
-            "इसमें प्रत्येक संख्या के लिए एक प्रतीक होता है",
-            "इसमें शून्य के लिए एक प्रतीक होता है",
-            "इसमें प्रत्येक संख्या के लिए एक प्रतीक होता है",
-            "इसमें 10 के आधार पर बनाया गया है"
+            "यह एक आधार-10 प्रणाली का उपयोग करता है",
+            "यह सभी स्थानांकित संख्याओं के लिए प्रतीकों का उपयोग करता है",
+            "यह एक प्रतीक के मूल्य को इसकी स्थिति पर निर्भर करता है",
+            "यह एक खाली शेल के रूप में स्थानभरत का उपयोग करता है"
           ],
-          "solution": "हिंदू संख्या प्रणाली में शून्य के लिए एक प्रतीक होता है, जो रोमन संख्या प्रणाली की तुलना में एक मुख्य लाभ है, क्योंकि रोमन प्रणाली में शून्य के लिए कोई प्रतीक नहीं होता। अन्य विकल्प गलत हैं क्योंकि रोमन प्रणाली भी अक्षरों का उपयोग करती है, हिंदू प्रणाली बहुत सारे प्रतीकों का उपयोग करती है, और दोनों प्रणालियाँ 10 के आधार पर बनी हुई हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "हिंदू संख्या पद्धतीचा रोमन संख्या पद्धतीवर कोणता मुख्य फायदा आहे?",
-          "choices": [
-            "ती प्रत्येक संख्येसाठी एक प्रतीक वापरते",
-            "ती शून्यासाठी प्रतीक असते",
-            "ती प्रत्येक संख्येसाठी एक प्रतीक वापरते",
-            "ती दहा आधारावर आधारित असते"
-          ],
-          "solution": "हिंदू संख्या पद्धतीला शून्यासाठी प्रतीक असते, जो रोमन संख्या पद्धतीवर एक महत्वपूर्ण फायदा आहे, ज्याला शून्यासाठी प्रतीक नसते. इतर विकल्प चुकीचे आहेत कारण रोमन पद्धती अक्षरांचा वापर करते, हिंदू पद्धती अनेक प्रतीकांचा वापर करते आणि दोन्ही पद्धती दहा आधारावर आधारित असतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology. The duplicate options (1) and (3) are a minor issue but do not affect the correctness of the answer.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Students may confuse the idea of having a unique symbol for each number with the efficiency of the Hindu system, not realizing that Roman numerals also have unique symbols for certain values.",
-        null,
-        "Believes each number has its own unique symbol, not realizing the place-value system's efficiency",
-        "Students often confuse the base-10 system with the Hindu numeral system, thinking that the base-10 is the main advantage rather than the concept of zero"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as the Hindu number system introduced the concept of zero, which was a major advancement over the Roman system. The author's reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp103.pdf",
-          "ordinal": 22,
-          "pageStart": 35,
-          "pageEnd": 36,
-          "headingPath": [
-            "Chapter 3: A Story of Numbers",
-            "3.4. Place Value Representation",
-            "A STORY OF NUMBERS"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp103.pdf",
-          "ordinal": 23,
-          "pageStart": 36,
-          "pageEnd": 41,
-          "headingPath": [
-            "Chapter 3: A Story of Numbers",
-            "3.4. Place Value Representation",
-            "A STORY OF NUMBERS"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp103.pdf",
-          "ordinal": 24,
-          "pageStart": 41,
-          "pageEnd": 44,
-          "headingPath": [
-            "Chapter 3: A Story of Numbers",
-            "3.4. Place Value Representation",
-            "A STORY OF NUMBERS"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T18:24:21.545Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is a landmark number in a base-7 number system?",
-      "choices": [
-        "7",
-        "14",
-        "21",
-        "28"
-      ],
-      "answerIndex": 0,
-      "solution": "In a base-7 number system, 7 is a landmark number because it is the base itself. The other options are multiples of 7 but are not the primary landmark numbers in the system.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन एक आधार-7 संख्या प्रणाली में एक अंकीय संख्या है?",
-          "choices": [
-            "7",
-            "14",
-            "21",
-            "28"
-          ],
-          "solution": "आधार-7 संख्या प्रणाली में, 7 एक अंकीय संख्या है क्योंकि यह आधार ही है। अन्य विकल्प 7 के गुणज हैं लेकिन इस प्रणाली में मुख्य अंकीय संख्याएं नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately conveys the meaning of the original English question. The term 'अंकीय संख्या' (landmark number) is appropriate and matches the technical usage in Hindi textbooks. The correct answer (7) is in the same position (option 1) as in the English version. All distractors remain incorrect in the Hindi version.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते आधार-7 संख्या पद्धतीत एक अनोखी संख्या आहे?",
-          "choices": [
-            "7",
-            "14",
-            "21",
-            "28"
-          ],
-          "solution": "आधार-7 संख्या पद्धतीत 7 ही अनोखी संख्या आहे कारण ती आधार आहे. इतर विकल्प 7 चे गुणक आहेत परंतु त्या पद्धतीत प्राथमिक अनोख्या संख्या नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation accurately reflects the original meaning, with appropriate Marathi terminology for 'base' and 'landmark number'.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses landmark numbers with multiples of the base",
-        "Mistakenly considers 14 as the primary landmark number",
-        "Misunderstands the definition of landmark numbers"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0 (7), as 7 is the base of the number system and thus a landmark number. The other options are multiples of 7 but not the primary landmark number in base-7.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp103.pdf",
-          "ordinal": 22,
-          "pageStart": 35,
-          "pageEnd": 36,
-          "headingPath": [
-            "Chapter 3: A Story of Numbers",
-            "3.4. Place Value Representation",
-            "A STORY OF NUMBERS"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp103.pdf",
-          "ordinal": 23,
-          "pageStart": 36,
-          "pageEnd": 41,
-          "headingPath": [
-            "Chapter 3: A Story of Numbers",
-            "3.4. Place Value Representation",
-            "A STORY OF NUMBERS"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp103.pdf",
-          "ordinal": 24,
-          "pageStart": 41,
-          "pageEnd": 44,
-          "headingPath": [
-            "Chapter 3: A Story of Numbers",
-            "3.4. Place Value Representation",
-            "A STORY OF NUMBERS"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T18:24:21.545Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the main limitation of using the English letters ‘a’ to ‘z’ to represent numbers?",
-      "choices": [
-        "It can only represent numbers up to 26",
-        "It can only represent even numbers",
-        "It can only represent odd numbers",
-        "It can only represent prime numbers"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct option is right because there are only 26 letters in the English alphabet, so they can only represent numbers from 1 to 26. The other options are incorrect because there is no inherent restriction to even, odd, or prime numbers when using letters to represent numbers.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "अंग्रेजी अक्षरों 'a' से 'z' का उपयोग संख्याओं के प्रतिनिधित्व के लिए करने की मुख्य सीमा क्या है?",
-          "choices": [
-            "यह केवल 26 तक संख्याओं का प्रतिनिधित्व कर सकता है",
-            "यह केवल सम संख्याओं का प्रतिनिधित्व कर सकता है",
-            "यह केवल विषम संख्याओं का प्रतिनिधित्व कर सकता है",
-            "यह केवल अभाज्य संख्याओं का प्रतिनिधित्व कर सकता है"
-          ],
-          "solution": "सही विकल्प सही है क्योंकि अंग्रेजी वर्णमाला में केवल 26 अक्षर होते हैं, इसलिए वे केवल 1 से 26 तक की संख्याओं का प्रतिनिधित्व कर सकते हैं। अन्य विकल्प गलत हैं क्योंकि अक्षरों का उपयोग संख्याओं के प्रतिनिधित्व के लिए करने पर सम, विषम या अभाज्य संख्याओं के लिए कोई आंतरिक सीमा नहीं होती है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "संख्या दर्शविण्यासाठी इंग्रजी अक्षरांचा 'a' ते 'z' वापर करण्याचा मुख्य मर्यादा काय आहे?",
-          "choices": [
-            "ते केवळ 26 पर्यंत संख्या दर्शवू शकतात",
-            "ते केवळ सम संख्या दर्शवू शकतात",
-            "ते केवळ विषम संख्या दर्शवू शकतात",
-            "ते केवळ अभाज्य संख्या दर्शवू शकतात"
-          ],
-          "solution": "सही विकल्प खरा आहे कारण इंग्रजी वर्णमालेत 26 अक्षर आहेत, म्हणून ते 1 ते 26 पर्यंतच्या संख्या दर्शवू शकतात. इतर विकल्प चुकीचे आहेत कारण अक्षरांचा वापर करून संख्या दर्शविल्यास सम, विषम किंवा अभाज्य संख्यांवर कोणतीही अंतर्गत मर्यादा नसते.",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated for Marathi-medium context.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Misunderstands the limit of the alphabet",
-        "Incorrectly assumes only even numbers can be represented",
-        "Incorrectly assumes only odd numbers can be represented\",\"Incorrectly assumes only prime numbers can be represented"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0, as the English alphabet has 26 letters, so using them to represent numbers would only allow for 26 distinct values. The other options reflect misconceptions about number properties that are not supported by the question.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp103.pdf",
-          "ordinal": 3,
-          "pageStart": 3,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 3: A Story of Numbers",
-            "3.1 Reema’s Curiosity"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp103.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 3: A Story of Numbers",
-            "3.1 Reema’s Curiosity"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp103.pdf",
-          "ordinal": 5,
-          "pageStart": 7,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 3: A Story of Numbers",
-            "3.1 Reema’s Curiosity"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T18:24:21.545Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "In the Egyptian number system, how would the number 1000 be represented?",
-      "choices": [
-        "A single symbol for 1000",
-        "Multiple symbols for 100",
-        "Multiple symbols for 10",
-        "Multiple symbols for 1"
-      ],
-      "answerIndex": 0,
-      "solution": "In the Egyptian number system, the number 1000 is represented by a single symbol. The other options are incorrect because the system uses different symbols for different landmark numbers, and 1000 is a landmark number.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "मिस्री संख्या प्रणाली में, संख्या 1000 कैसे प्रस्तुत की जाएगी?",
-          "choices": [
-            "1000 के लिए एक चिह्न",
-            "100 के लिए कई चिह्न",
-            "10 के लिए कई चिह्न",
-            "1 के लिए कई चिह्न"
-          ],
-          "solution": "मिस्री संख्या प्रणाली में, संख्या 1000 एक चिह्न द्वारा प्रस्तुत की जाती है। अन्य विकल्प गलत हैं क्योंकि प्रणाली विभिन्न अंकों के लिए अलग-अलग चिह्नों का उपयोग करती है, और 1000 एक अंक है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology. The correct answer is in the same position (option 1), and the distractors remain incorrect.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "ईजिप्शियन संख्या पद्धतीत 1000 ची संख्या कशी दर्शविली जाईल?",
-          "choices": [
-            "1000 चा एक चिन्ह",
-            "100 चे अनेक चिन्हे",
-            "10 चे अनेक चिन्हे",
-            "1 चे अनेक चिन्हे"
-          ],
-          "solution": "ईजिप्शियन संख्या पद्धतीत 1000 एका चिन्हाने दर्शविला जातो. इतर विकल्प अयोग्य आहेत कारण पद्धतीत विविध महत्त्वाच्या संख्यांसाठी वेगवेगळे चिन्ह वापरले जातात आणि 1000 ही एक महत्त्वाची संख्या आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for the Egyptian number system.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Misunderstands how the Egyptian system represents numbers",
-        "Confuses the representation of 100 with 1000",
-        "Incorrectly assumes that the system uses multiple symbols for 1000"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct and aligns with historical knowledge of the Egyptian numeral system, which used a single symbol for 1000. The reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp103.pdf",
-          "ordinal": 22,
-          "pageStart": 35,
-          "pageEnd": 36,
-          "headingPath": [
-            "Chapter 3: A Story of Numbers",
-            "3.4. Place Value Representation",
-            "A STORY OF NUMBERS"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp103.pdf",
-          "ordinal": 23,
-          "pageStart": 36,
-          "pageEnd": 41,
-          "headingPath": [
-            "Chapter 3: A Story of Numbers",
-            "3.4. Place Value Representation",
-            "A STORY OF NUMBERS"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp103.pdf",
-          "ordinal": 24,
-          "pageStart": 41,
-          "pageEnd": 44,
-          "headingPath": [
-            "Chapter 3: A Story of Numbers",
-            "3.4. Place Value Representation",
-            "A STORY OF NUMBERS"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T18:24:21.545Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If you are using the number system that uses sticks to represent numbers, what would you do to find out if you have the same number of cows as your neighbour?",
-      "choices": [
-        "Count the sticks and compare",
-        "Count the cows and compare",
-        "Count the sticks and add them",
-        "Count the cows and subtract them"
-      ],
-      "answerIndex": 0,
-      "solution": "Counting the sticks and comparing them directly shows if the number of cows is the same, as sticks represent the cows. Counting the cows and comparing would require knowing the actual number, which is not necessary when using sticks. Adding or subtracting sticks does not determine equality between two sets.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि आप उस संख्या प्रणाली का उपयोग कर रहे हैं जो संख्याओं का प्रतिनिधित्व छड़ियों के उपयोग से करती है, तो आप अपने पड़ोसी के समान संख्या में गायें हैं या नहीं जांचने के लिए क्या करेंगे?",
-          "choices": [
-            "छड़ियों की गणना करें और तुलना करें",
-            "गायों की गणना करें और तुलना करें",
-            "छड़ियों की गणना करें और जोड़ें",
-            "गायों की गणना करें और घटाएं"
-          ],
-          "solution": "छड़ियों की गणना करके तुलना करना सीधे तौर पर बताता है कि गायों की संख्या समान है, क्योंकि छड़ियां गायों का प्रतिनिधित्व करती हैं। गायों की गणना करके तुलना करना वास्तविक संख्या जानने की आवश्यकता होती है, जो छड़ियों के उपयोग में आवश्यक नहीं है। छड़ियों को जोड़ना या घटाना दो सेटों के बराबर होने का निर्धारण नहीं करता है।",
+          "solution": "एक स्थानीय संख्या प्रणाली की मुख्य विशेषता यह है कि यह एक प्रतीक के मूल्य को इसकी स्थिति पर निर्भर करता है। इसका कारण यह है कि एक ही प्रतीक संख्या में जहां रखा जाता है, उसके आधार पर अलग-अलग मूल्य प्रस्तुत कर सकता है। अन्य विकल्प गलत हैं क्योंकि सभी स्थानीय प्रणालियां आधार-10 का उपयोग नहीं करती हैं, वे आवश्यक रूप से सभी स्थानांकित संख्याओं के लिए प्रतीकों का उपयोग नहीं करती हैं, और यहां तक कि स्थानभरत के रूप में खाली शेल का उपयोग किया जा सकता है, लेकिन यह इसकी परिभाषा विशेषता नहीं है।",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for a textbook context.",
           "flag": null
         },
         "mr": {
-          "stem": "संख्या पद्धती वापरत असताना जी संख्या दर्शविण्यासाठी छड्या वापरते, तर तुम्हाला तुमच्या गावकऱ्याच्या गायींच्या संख्येच्या बरोबरीत असल्याचे कसे जाणायचे?",
+          "stem": "स्थानिक संख्या पद्धतीचा मुख्य लक्षण काय आहे?",
           "choices": [
-            "छड्या गणना करा आणि तुलना करा",
-            "गायी गणना करा आणि तुलना करा",
-            "छड्या गणना करा आणि जोडा",
-            "गायी गणना करा आणि वजा करा"
+            "ती बेस-10 पद्धती वापरते",
+            "ती सर्व महत्त्वपूर्ण संख्यांसाठी प्रतीके वापरते",
+            "ती एका प्रतीकाच्या किंमतीचे त्याच्या स्थानावर आधारित ठरवते",
+            "ती शेल एक शून्यस्थानक म्हणून वापरते"
           ],
-          "solution": "छड्या गणना करून तुलना करणे दोन गटांमध्ये समानता ठरविण्यास मदत करते, कारण छड्या गायींच्या संख्येचे प्रतिनिधित्व करतात. गायी गणना करून तुलना करणे वास्तविक संख्या जाण्याची आवश्यकता असते, जी छड्यांच्या वापरामुळे आवश्यक नसते. छड्यांची जोड किंवा वजा करणे दोन गटांमध्ये समानता ठरविण्यास मदत करत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for mathematical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the method of comparing sticks with counting cows",
-        "Incorrectly suggests counting cows directly",
-        "Incorrectly suggests adding sticks instead of comparing them\",\"Incorrectly suggests subtracting cows instead of comparing them"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed, and the correct answer (0) logically follows from the premise. The reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp103.pdf",
-          "ordinal": 3,
-          "pageStart": 3,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 3: A Story of Numbers",
-            "3.1 Reema’s Curiosity"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp103.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 3: A Story of Numbers",
-            "3.1 Reema’s Curiosity"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp103.pdf",
-          "ordinal": 5,
-          "pageStart": 7,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 3: A Story of Numbers",
-            "3.1 Reema’s Curiosity"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T18:24:21.545Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "In the Mesopotamian number system, what does the representation 1 × 60 + 3 stand for?",
-      "choices": [
-        "60",
-        "63",
-        "3",
-        "160"
-      ],
-      "answerIndex": 1,
-      "solution": "In the Mesopotamian number system, 1 × 60 + 3 equals 63. The other options are incorrect because they do not match the calculation based on the base-60 system.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "मेसोपोटामियाई संख्या प्रणाली में, प्रतीक 1 × 60 + 3 क्या दर्शाता है?",
-          "choices": [
-            "60",
-            "63",
-            "3",
-            "160"
-          ],
-          "solution": "मेसोपोटामियाई संख्या प्रणाली में, 1 × 60 + 3 बराबर 63 होता है। अन्य विकल्प गलत हैं क्योंकि वे बेस-60 प्रणाली के आधार पर गणना के अनुरूप नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology consistent with Indian educational materials.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "मेसोपोटामियन संख्या पद्धतीत, प्रतीक 1 × 60 + 3 काय दर्शवितो?",
-          "choices": [
-            "60",
-            "63",
-            "3",
-            "160"
-          ],
-          "solution": "मेसोपोटामियन संख्या पद्धतीत, 1 × 60 + 3 चे मूल्य 63 आहे. इतर विकल्प चुकीचे आहेत कारण ते आधार-60 पद्धतीवर आधारित गणनेशी जुळत नाहीत.",
+          "solution": "स्थानिक संख्या पद्धतीचा मुख्य लक्षण असा आहे की ती एका प्रतीकाच्या किंमतीचे त्याच्या स्थानावर आधारित ठरवते. हे कारण आहे की एकाच प्रतीकाची विविध किंमत असू शकते जी ती संख्येत कुठे असेल यावर अवलंबून असते. इतर विकल्प चुकीचे आहेत कारण सर्व स्थानिक पद्धती बेस-10 वापरत नाहीत, त्यांना सर्व महत्त्वपूर्ण संख्यांसाठी प्रतीके वापरणे आवश्यक नाही आणि जरी शेल यासारखे शून्यस्थानक वापरले जाऊ शकतात, तरी ते निर्णायक लक्षण नाहीत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
           "flag": null
@@ -571,10 +72,108 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Misinterprets the multiplication in the base-60 system",
+        "Incorrectly identifies the base as the main feature",
+        "Mistakenly believes the system uses symbols for all numbers",
         null,
-        "Confuses the representation of 1 × 60 with 60",
-        "Incorrectly assumes the system is base-10"
+        "Confuses the seashell placeholder with the main feature"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as the main feature of a positional number system is that the value of a symbol depends on its position. The other options represent common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp103.pdf",
+          "ordinal": 16,
+          "pageStart": 25,
+          "pageEnd": 26,
+          "headingPath": [
+            "Chapter 3: A Story of Numbers",
+            "3.4. Place Value Representation"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp103.pdf",
+          "ordinal": 17,
+          "pageStart": 26,
+          "pageEnd": 29,
+          "headingPath": [
+            "Chapter 3: A Story of Numbers",
+            "3.4. Place Value Representation"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp103.pdf",
+          "ordinal": 18,
+          "pageStart": 29,
+          "pageEnd": 31,
+          "headingPath": [
+            "Chapter 3: A Story of Numbers",
+            "3.4. Place Value Representation"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T08:23:44.551Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which number system uses symbols like I, V, X, L, C, D, and M?",
+      "choices": [
+        "Hindu number system",
+        "Roman number system",
+        "Egyptian number system",
+        "Gumulgal number system"
+      ],
+      "answerIndex": 1,
+      "solution": "The Roman number system uses symbols like I, V, X, L, C, D, and M. These symbols are specifically associated with the Roman system, while the Hindu system uses digits 0-9, the Egyptian system uses hieroglyphs, and the Gumulgal system uses words to represent numbers.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन सी संख्या प्रणाली में I, V, X, L, C, D और M जैसे प्रतीक प्रयोग किए जाते हैं?",
+          "choices": [
+            "हिंदू संख्या प्रणाली",
+            "रोमन संख्या प्रणाली",
+            "मिस्री संख्या प्रणाली",
+            "गुमुलगल संख्या प्रणाली"
+          ],
+          "solution": "रोमन संख्या प्रणाली में I, V, X, L, C, D और M जैसे प्रतीक प्रयोग किए जाते हैं। ये प्रतीक विशेष रूप से रोमन प्रणाली से जुड़े हुए हैं, जबकि हिंदू प्रणाली में 0-9 अंक प्रयोग किए जाते हैं, मिस्री प्रणाली में हिरोग्लिफ्स प्रयोग किए जाते हैं और गुमुलगल प्रणाली में संख्याओं को शब्दों द्वारा दर्शाया जाता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणत्या संख्या पद्धतीमध्ये I, V, X, L, C, D आणि M अशा प्रतीकांचा वापर होतो?",
+          "choices": [
+            "हिंदू संख्या पद्धती",
+            "रोमन संख्या पद्धती",
+            "मिस्री संख्या पद्धती",
+            "गुमुलगल संख्या पद्धती"
+          ],
+          "solution": "रोमन संख्या पद्धतीमध्ये I, V, X, L, C, D आणि M अशा प्रतीकांचा वापर होतो. हे प्रतीक विशिष्टरित्या रोमन पद्धतीशी जोडलेले आहेत, तर हिंदू पद्धतीमध्ये 0-9 अशा अंकांचा वापर होतो, मिस्री पद्धतीमध्ये हिरोग्लिफ्सचा वापर होतो आणि गुमुलगल पद्धतीमध्ये संख्या दर्शविण्यासाठी शब्दांचा वापर होतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for number systems.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the Roman system with the Hindu system.",
+        null,
+        "Incorrectly identifies the Egyptian system.",
+        "Misunderstands the Gumulgal system."
       ],
       "solverAnswers": [
         1,
@@ -583,8 +182,8 @@
         1,
         1
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is correctly formulated and the solution is accurate. The Mesopotamian number system was a base-60 (sexagesimal) system, so 1 × 60 + 3 = 63. The distractors reflect common misconceptions about positional notation and base systems.",
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is accurate. The correct answer is clearly 1 (Roman number system), and the reasoning for the other options aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/8/mathematics/hegp103.pdf",
@@ -621,49 +220,346 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T18:24:21.545Z",
+      "generatedAt": "2026-11-02T08:23:44.551Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "Which number system was used in Europe before it got replaced by the Hindu number system?",
+      "difficulty": 3,
+      "stem": "In the Hindu number system, which feature helps in easily performing arithmetic operations like addition, subtraction, multiplication, and division?",
       "choices": [
-        "Roman numeral system",
-        "Greek numeral system",
-        "Arabic numeral system",
-        "Chinese numeral system"
+        "Fixed value of symbols",
+        "Use of zero",
+        "No place value system",
+        "No symbol for zero"
       ],
-      "answerIndex": 0,
-      "solution": "The Roman numeral system was used in Europe before the Hindu number system. The Greek numeral system was used in ancient Greece, not Europe. The Arabic numeral system is the same as the Hindu number system. The Chinese numeral system was used in China, not Europe.",
+      "answerIndex": 1,
+      "solution": "The use of zero in the Hindu number system allows for a place value system, which simplifies arithmetic operations like addition, subtraction, multiplication, and division. Without zero, it would be difficult to represent and calculate numbers efficiently. The other options either describe features of different number systems or are incorrect in relation to the Hindu system.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यूरोप में हिंदू संख्या प्रणाली द्वारा बदले जाने से पहले किस संख्या प्रणाली का उपयोग किया जाता था?",
+          "stem": "हिंदू संख्या प्रणाली में, जो विशेषता जोड़, घटाव, गुणा और भाग जैसे अंकगणितीय संचालनों को आसानी से करने में सहायता करती है?",
           "choices": [
-            "रोमन संख्या प्रणाली",
-            "ग्रीक संख्या प्रणाली",
-            "अरबी संख्या प्रणाली",
-            "चीनी संख्या प्रणाली"
+            "प्रतीकों का निश्चित मूल्य",
+            "शून्य का उपयोग",
+            "कोई स्थानीय मूल्य प्रणाली नहीं",
+            "शून्य के लिए कोई प्रतीक नहीं"
           ],
-          "solution": "यूरोप में हिंदू संख्या प्रणाली द्वारा बदले जाने से पहले रोमन संख्या प्रणाली का उपयोग किया जाता था। ग्रीक संख्या प्रणाली प्राचीन ग्रीस में उपयोग की जाती थी, न कि यूरोप में। अरबी संख्या प्रणाली हिंदू संख्या प्रणाली के समान है। चीनी संख्या प्रणाली चीन में उपयोग की जाती थी, न कि यूरोप में।",
+          "solution": "हिंदू संख्या प्रणाली में शून्य के उपयोग से स्थानीय मूल्य प्रणाली का उपयोग करना संभव हो जाता है, जो जोड़, घटाव, गुणा और भाग जैसे अंकगणितीय संचालनों को सरल बना देता है। शून्य के बिना संख्याओं के प्रतिनिधित्व और गणना करना कठिन हो जाता। अन्य विकल्प या तो अन्य संख्या प्रणालियों की विशेषताओं का वर्णन करते हैं या हिंदू प्रणाली के संबंध में गलत हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate use of Hindi terminology for numeral systems.",
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology for mathematical concepts.",
           "flag": null
         },
         "mr": {
-          "stem": "युरोपमध्ये हिंदू संख्यापद्धतीने बदलल्यापूर्वी कोणती संख्यापद्धती वापरली जात होती?",
+          "stem": "हिंदू संख्या पद्धतीत, जोडणे, बाजावणे, गुणाकार आणि भागाकार अशा अंकगणितीय क्रियांच्या सोप्पाच्या करण्यास कोणती वैशिष्ट्ये मदत करते?",
           "choices": [
-            "रोमन अंक पद्धती",
-            "ग्रीक अंक पद्धती",
-            "अरबी अंक पद्धती",
-            "चीनी अंक पद्धती"
+            "चिन्हांचे निश्चित मूल्य",
+            "शून्याचा वापर",
+            "कोणताही स्थान मूल्य पद्धती नाही",
+            "शून्याचे चिन्ह नाही"
           ],
-          "solution": "युरोपमध्ये हिंदू संख्यापद्धतीने बदलल्यापूर्वी रोमन अंक पद्धती वापरली जात होती. ग्रीक अंक पद्धती जुन्या ग्रीसमध्ये वापरली जात होती, युरोपमध्ये नव्हे. अरबी अंक पद्धती हिंदू संख्यापद्धतीच आहे. चीनी अंक पद्धती चीनमध्ये वापरली जात होती, युरोपमध्ये नव्हे.",
+          "solution": "हिंदू संख्या पद्धतीत शून्याचा वापर करून स्थान मूल्य पद्धती असते, जी जोडणे, बाजावणे, गुणाकार आणि भागाकार अशा अंकगणितीय क्रियांच्या सोप्पाच्या करण्यास मदत करते. शून्य नसल्यास संख्यांचे प्रतिनिधित्व आणि गणना अत्यंत कठीण होते. इतर विकल्प इतर संख्या पद्धतींचे वैशिष्ट्ये वर्णन करतात किंवा हिंदू पद्धतीशी असमायुक्त असतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for numeral systems.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the Roman system with the Hindu system.",
+        null,
+        "Misunderstands the role of zero in the Hindu system.",
+        "Incorrectly identifies features of the Roman system."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1 (Use of zero), as the Hindu number system's inclusion of zero enables efficient arithmetic operations. The other options either describe the Roman system or misunderstand the role of zero in the Hindu system.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp103.pdf",
+          "ordinal": 22,
+          "pageStart": 35,
+          "pageEnd": 36,
+          "headingPath": [
+            "Chapter 3: A Story of Numbers",
+            "3.4. Place Value Representation",
+            "A STORY OF NUMBERS"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp103.pdf",
+          "ordinal": 23,
+          "pageStart": 36,
+          "pageEnd": 41,
+          "headingPath": [
+            "Chapter 3: A Story of Numbers",
+            "3.4. Place Value Representation",
+            "A STORY OF NUMBERS"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp103.pdf",
+          "ordinal": 24,
+          "pageStart": 41,
+          "pageEnd": 44,
+          "headingPath": [
+            "Chapter 3: A Story of Numbers",
+            "3.4. Place Value Representation",
+            "A STORY OF NUMBERS"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T08:23:44.551Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following is a reason for the development of number systems that count in groups of a certain size?",
+      "choices": [
+        "To make counting more difficult",
+        "To make it easier to represent larger numbers",
+        "To replace the tally system completely",
+        "To avoid using any symbols"
+      ],
+      "answerIndex": 1,
+      "solution": "Number systems that count in groups of a certain size make it easier to represent larger numbers by organizing quantities into manageable units. This method simplifies the process of counting and recording numbers compared to a simple tally system. The other options are incorrect because they either contradict the purpose of such systems or misrepresent their function.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा संख्या प्रणाली के विकास का कारण है जो कुछ निश्चित आकार के समूहों में गिनती करती है?",
+          "choices": [
+            "गिनती को अधिक कठिन बनाने के लिए",
+            "बड़ी संख्याओं को आसानी से प्रस्तुत करने के लिए",
+            "पूरी तरह से टैली प्रणाली को बदल देने के लिए",
+            "किसी भी प्रतीक का उपयोग करने से बचने के लिए"
+          ],
+          "solution": "कुछ निश्चित आकार के समूहों में गिनती करने वाली संख्या प्रणाली बड़ी संख्याओं को प्रस्तुत करने में आसानी करती है क्योंकि इसमें मापनीय इकाइयों में मात्रा को व्यवस्थित किया जाता है। इस विधि से टैली प्रणाली की तुलना में गिनती और संख्याओं के रिकॉर्ड करने की प्रक्रिया सरल हो जाती है। अन्य विकल्प गलत हैं क्योंकि ये ऐसी प्रणालियों के उद्देश्य के विरोधी हैं या उनके कार्य को गलत तरीके से प्रस्तुत करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for mathematical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते संख्या पद्धतीच्या विकासाचे कारण आहे जी निश्चित मूल्यांच्या समूहांमध्ये गणना करतात?",
+          "choices": [
+            "गणना अधिक कठीण करण्यासाठी",
+            "मोठ्या संख्यांचे प्रतिनिधित्व करणे सोपे करण्यासाठी",
+            "ताली पद्धती बदलण्यासाठी पूर्णपणे",
+            "कोणतेही प्रतीक वापरणे टाळण्यासाठी"
+          ],
+          "solution": "निश्चित मूल्यांच्या समूहांमध्ये गणना करणार्या संख्या पद्धती मोठ्या संख्यांचे प्रतिनिधित्व करणे सोपे करतात जेणेकरून विस्तारित रकमा व्यवस्थित एककांमध्ये संग्रहित केल्या जातात. हा पद्धती ताली पद्धतीच्या तुलनेत गणना आणि संख्यांचे नोंदवणे सोपे करते. इतर विकल्प अयोग्य आहेत कारण ते अशा पद्धतीच्या उद्देशाच्या विरोधात आहेत किंवा त्यांचे कार्य चुकीचे दर्शवतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the purpose of grouping",
+        null,
+        "Believes the tally system should be replaced",
+        "Fails to understand the role of symbols in number systems"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as grouping numbers makes it easier to represent larger numbers, which aligns with the author's explanation. The other options reflect common misconceptions about the purpose of number systems.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp103.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 3: A Story of Numbers",
+            "3.2 Some Early Number Systems"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp103.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 3: A Story of Numbers",
+            "3.2 Some Early Number Systems"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp103.pdf",
+          "ordinal": 8,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 3: A Story of Numbers",
+            "3.2 Some Early Number Systems"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T08:23:44.551Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following statements best explains how the Roman numeral system differs from the tally system?",
+      "choices": [
+        "It uses more symbols",
+        "It is more efficient for representing larger numbers",
+        "It is based on counting in groups of 2",
+        "It does not use any symbols"
+      ],
+      "answerIndex": 1,
+      "solution": "The Roman numeral system is more efficient for representing larger numbers because it uses specific symbols for key values, allowing for shorter and more structured representations. The tally system, by contrast, requires repeated marks for each unit, making it less efficient. The other options are incorrect because the Roman system does use symbols and is not based on counting in groups of 2.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा कथन रोमन अंक प्रणाली और टैली प्रणाली में अंतर को सबसे अच्छा समझाता है?",
+          "choices": [
+            "इसमें अधिक प्रतीकों का उपयोग किया जाता है",
+            "इसमें बड़ी संख्याओं के निरूपण के लिए अधिक कुशल है",
+            "इसमें 2 के समूहों में गणना करने पर आधारित है",
+            "इसमें कोई प्रतीक नहीं उपयोग किया जाता है"
+          ],
+          "solution": "रोमन अंक प्रणाली बड़ी संख्याओं के निरूपण के लिए अधिक कुशल है क्योंकि इसमें महत्वपूर्ण मूल्यों के लिए विशिष्ट प्रतीकों का उपयोग किया जाता है, जिससे छोटे और अधिक संरचित निरूपण संभव हो जाते हैं। टैली प्रणाली के विपरीत, इसमें प्रत्येक इकाई के लिए दोहराए गए चिह्नों की आवश्यकता होती है, जिससे यह कम कुशल हो जाती है। अन्य विकल्प गलत हैं क्योंकि रोमन प्रणाली प्रतीकों का उपयोग करती है और 2 के समूहों में गणना करने पर आधारित नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for mathematical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता विधान रोमन अंक पद्धती आणि टॅली पद्धतीमध्ये कशामुळे भिन्न आहे याचे सर्वात चांगले स्पष्टीकरण देते?",
+          "choices": [
+            "त्याला जास्त प्रतीक वापरते",
+            "मोठ्या संख्यांचे प्रतिनिधित्व करण्यासाठी ते अधिक दक्ष आहे",
+            "त्याला 2 च्या गटांमध्ये गणना आधारित आहे",
+            "त्याला कोणतेही प्रतीक वापरत नाही"
+          ],
+          "solution": "रोमन अंक पद्धती मोठ्या संख्यांचे प्रतिनिधित्व करण्यासाठी अधिक दक्ष आहे कारण ती महत्वाच्या मूल्यांसाठी विशिष्ट प्रतीक वापरते, जे लहान आणि संरचित प्रतिनिधित्वास परवानगी देते. टॅली पद्धतीच्या बरोबरीत, त्याला प्रत्येक एककासाठी पुनरावृत्ती चिन्हांची आवश्यकता असते, जे त्याला कमी दक्ष बनवते. इतर विकल्प चुकीचे आहेत कारण रोमन पद्धती प्रतीक वापरते आणि 2 च्या गटांमध्ये गणना आधारित नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Focuses on the number of symbols",
+        null,
+        "Misunderstands the basis of the Roman system",
+        "Fails to recognize the efficiency of the Roman system"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as the Roman numeral system is more efficient for larger numbers due to its use of symbols for landmark values. The other options reflect common misconceptions about the number of symbols, the base of the system, and the use of symbols altogether.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp103.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 3: A Story of Numbers",
+            "3.2 Some Early Number Systems"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp103.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 3: A Story of Numbers",
+            "3.2 Some Early Number Systems"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp103.pdf",
+          "ordinal": 8,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 3: A Story of Numbers",
+            "3.2 Some Early Number Systems"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T08:23:44.551Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a number system is based on base-4, what is the maximum number that can be represented using only one digit?",
+      "choices": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "answerIndex": 0,
+      "solution": "In a base-4 number system, each digit can only represent values from 0 to 3. Therefore, the maximum number that can be represented with a single digit is 3. The option 4 is incorrect because it is not a valid single digit in base-4. The options 5 and 6 are also invalid as they exceed the range of possible single digits in this system.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक संख्या प्रणाली चार-आधार पर है, तो केवल एक अंक का उपयोग करके अधिकतम कौन-सी संख्या प्रदर्शित की जा सकती है?",
+          "choices": [
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "solution": "चार-आधार वाली संख्या प्रणाली में, प्रत्येक अंक केवल 0 से 3 तक के मान दर्शा सकता है। इसलिए, एक अक्षर के उपयोग से अधिकतम संख्या 3 है। विकल्प 4 गलत है क्योंकि यह चार-आधार में एक वैध अंक नहीं है। 5 और 6 के विकल्प भी अमान्य हैं क्योंकि ये इस प्रणाली में संभावित अक्षरों की सीमा को पार कर जाते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a Hindi-medium math context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका संख्या प्रणालीचे आधार 4 असेल, तर फक्त एका अंकाचा वापर करून प्रतिनिधित्व करता येणारा महागत अंक किती असेल?",
+          "choices": [
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "solution": "आधार-4 संख्या प्रणालीमध्ये, प्रत्येक अंक 0 ते 3 च्या मूल्यांना प्रतिनिधित्व करू शकतो. त्यामुळे फक्त एका अंकाचा वापर करून प्रतिनिधित्व करता येणारा महागत अंक 3 असेल. 4 हा अंक चुकीचा आहे कारण तो आधार-4 मध्ये वैध एकक अंक नाही. 5 आणि 6 हे अंक देखील चुकीचे आहेत कारण ते या प्रणालीमध्ये संभाव्य एकक अंकांच्या मर्यादेच्या बाहेर आहेत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms.",
           "flag": null
         }
       },
@@ -673,9 +569,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses Roman with Greek numerals",
-        "Confuses Roman with Arabic numerals",
-        "Confuses Roman with Chinese numerals"
+        "Chooses the base value instead of the maximum digit.",
+        "Includes the base value as a digit.",
+        "Adds the base and maximum digit incorrectly."
       ],
       "solverAnswers": [
         0,
@@ -684,8 +580,109 @@
         0,
         0
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is well-constructed and the correct answer is clearly supported by the author's solution. The distractors are plausible misconceptions that students might have.",
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed and the solution is correct. The correct answer is 3, as base-4 digits range from 0 to 3. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp103.pdf",
+          "ordinal": 22,
+          "pageStart": 35,
+          "pageEnd": 36,
+          "headingPath": [
+            "Chapter 3: A Story of Numbers",
+            "3.4. Place Value Representation",
+            "A STORY OF NUMBERS"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp103.pdf",
+          "ordinal": 23,
+          "pageStart": 36,
+          "pageEnd": 41,
+          "headingPath": [
+            "Chapter 3: A Story of Numbers",
+            "3.4. Place Value Representation",
+            "A STORY OF NUMBERS"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp103.pdf",
+          "ordinal": 24,
+          "pageStart": 41,
+          "pageEnd": 44,
+          "headingPath": [
+            "Chapter 3: A Story of Numbers",
+            "3.4. Place Value Representation",
+            "A STORY OF NUMBERS"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T08:23:44.551Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Suppose you are creating a number system using a sequence of symbols. Which of the following must be true for the system to be effective?",
+      "choices": [
+        "It must be easy to count with",
+        "It must have a fixed order",
+        "It must have a limited number of symbols",
+        "It must be based on the Hindu number system"
+      ],
+      "answerIndex": 1,
+      "solution": "A number system must have a fixed order to ensure consistent interpretation of values. While ease of counting is beneficial, it is not essential for functionality. A limited number of symbols would restrict the system's ability to represent large numbers, and there is no requirement for it to be based on the Hindu number system.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मान लीजिए आप एक प्रतीकों के अनुक्रम का उपयोग करके एक संख्या प्रणाली बना रहे हैं। निम्नलिखित में से कौन सी बात संख्या प्रणाली के प्रभावी होने के लिए आवश्यक होनी चाहिए?",
+          "choices": [
+            "इसे गिनने में आसान होना चाहिए",
+            "इसका एक निश्चित क्रम होना चाहिए",
+            "इसमें सीमित संख्या में प्रतीक होने चाहिए",
+            "इसका हिंदू संख्या प्रणाली पर आधारित होना चाहिए"
+          ],
+          "solution": "एक संख्या प्रणाली के संगत मानों के अर्थ को सुनिश्चित करने के लिए इसका एक निश्चित क्रम होना आवश्यक है। गिनने में आसान होना लाभदायक हो सकता है, लेकिन इसकी कार्यक्षमता के लिए आवश्यक नहीं है। सीमित संख्या में प्रतीक होने से प्रणाली के बड़ी संख्याओं का प्रतिनिधित्व करने की क्षमता सीमित हो जाएगी, और इसके हिंदू संख्या प्रणाली पर आधारित होने की कोई आवश्यकता नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "संख्या पद्धती तयार करत असताना तुम्ही चिन्हांच्या क्रमाने वापर करत असाल. खालीलपैकी कोणते आवश्यक असेल की पद्धती अस्तित्वात असेल?",
+          "choices": [
+            "त्याला गणना करण्यास सोपे असावे",
+            "त्याला निश्चित क्रम असावा",
+            "त्याला मर्यादित चिन्हांची संख्या असावी",
+            "त्याला हिंदू संख्या पद्धतीवर आधारित असावे"
+          ],
+          "solution": "एक संख्या पद्धतीला निश्चित क्रम असावा जेणेकरून मूल्यांचे संगत अर्थ असेल. गणना करण्यास सोपे असणे फायदेशीर असू शकते, परंतु कार्यक्षमतेसाठी आवश्यक नाही. मर्यादित चिन्हांची संख्या पद्धतीच्या मोठ्या संख्या दर्शविण्याच्या क्षमतेला बाधित करेल आणि त्याला हिंदू संख्या पद्धतीवर आधारित असणे आवश्यक नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with educational materials.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Focuses on ease of use, not the essential requirement",
+        null,
+        "Incorrectly identifies a secondary feature as essential",
+        "Incorrectly assumes the system must be based on the Hindu number system"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as a fixed order is essential for a number system to function. The author's reasoning is sound and aligns with the solution.",
       "sources": [
         {
           "document": "ncert/8/mathematics/hegp103.pdf",
@@ -719,306 +716,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T18:24:21.545Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Why is the discovery of 0 considered a major breakthrough in mathematics?",
-      "choices": [
-        "It made counting easier",
-        "It allowed for the representation of all numbers using a limited set of symbols",
-        "It allowed for the development of algebraic equations",
-        "It simplified the use of negative numbers"
-      ],
-      "answerIndex": 1,
-      "solution": "The discovery of 0 allowed for the representation of all numbers using a limited set of symbols, which is essential for the place-value system. This made it possible to express large numbers efficiently and clearly. The other options, while related to mathematics, are not the primary reason for the significance of 0.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "0 की खोज गणित में एक महान अभियान क्यों मानी जाती है?",
-          "choices": [
-            "इसने गिनती सरल बना दी",
-            "इसने सीमित संकेतों के उपयोग से सभी संख्याओं के प्रतिनिधित्व की अनुमति दी",
-            "इसने बीजगणितीय समीकरणों के विकास की अनुमति दी",
-            "इसने ऋणात्मक संख्याओं के उपयोग को सरल बना दिया"
-          ],
-          "solution": "0 की खोज सीमित संकेतों के उपयोग से सभी संख्याओं के प्रतिनिधित्व की अनुमति दी, जो स्थान-मूल्य प्रणाली के लिए आवश्यक है। इससे बड़ी संख्याओं को दक्ष और स्पष्ट ढंग से व्यक्त करना संभव हो गया। अन्य विकल्प, गणित से संबंधित हैं, लेकिन 0 के महत्व के प्रमुख कारण नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology consistent with Indian curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "0 ची शोधाची गणितात महत्वाची विक्रम का मानली जाते?",
-          "choices": [
-            "त्याने गणना सोपी केली",
-            "त्याने सीमित प्रतीकांच्या वापराद्वारे सर्व संख्यांचे प्रतिनिधित्व करण्यास परवानगी दिली",
-            "त्याने बीजगणितीय समीकरणांच्या विकासास परवानगी दिली",
-            "त्याने ऋण संख्यांच्या वापराची सोपी केली"
-          ],
-          "solution": "0 च्या शोधामुळे सीमित प्रतीकांच्या वापराद्वारे सर्व संख्यांचे प्रतिनिधित्व करण्यास परवानगी दिली गेली, जे स्थान मूल्य प्रणालीसाठी आवश्यक आहे. यामुळे मोठ्या संख्यांचे अत्यंत प्रभावी आणि स्पष्टपणे व्यक्त करणे शक्य झाले. इतर विकल्प, गणिताशी संबंधित असले तरी, 0 च्या महत्वाच्या अर्थासाठी प्राथमिक कारण नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "overlooks the role of 0 in the system",
-        null,
-        "Students often confuse the role of zero with the development of algebra, thinking it enabled algebra rather than just facilitating its notation and operations.",
-        "refers to the abacus, which is not directly related to 0"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as 0 enabled the positional number system, allowing all numbers to be represented with a limited set of symbols. The author's reasoning for the other options aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp103.pdf",
-          "ordinal": 19,
-          "pageStart": 31,
-          "pageEnd": 32,
-          "headingPath": [
-            "Chapter 3: A Story of Numbers",
-            "3.4. Place Value Representation",
-            "Hindu Number System"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp103.pdf",
-          "ordinal": 20,
-          "pageStart": 32,
-          "pageEnd": 34,
-          "headingPath": [
-            "Chapter 3: A Story of Numbers",
-            "3.4. Place Value Representation",
-            "Hindu Number System"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp103.pdf",
-          "ordinal": 21,
-          "pageStart": 34,
-          "pageEnd": 34,
-          "headingPath": [
-            "Chapter 3: A Story of Numbers",
-            "3.4. Place Value Representation",
-            "SUMMARY"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T18:24:21.545Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "If a number is written as 100 in base-5, which of the following is true about its representation in base-10?",
-      "choices": [
-        "It is equal to 25 in base-10",
-        "It is equal to 100 in base-10",
-        "It is equal to 250 in base-10",
-        "It is equal to 500 in base-10"
-      ],
-      "answerIndex": 0,
-      "solution": "In base-5, 100 means (1) × 5² + (0) × 5¹ + (0) × 5⁰ = 25 in base-10. This requires understanding the place value of each digit in the base-5 system. The other options incorrectly assume the value without applying the base conversion rules.",
-      "checkExpr": "5^2",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि कोई संख्या आधार-5 में 100 के रूप में लिखी गई है, तो निम्नलिखित में से कौन-सा आधार-10 में इसके प्रतिनिधित्व के बारे में सही है?",
-          "choices": [
-            "यह आधार-10 में 25 के बराबर है",
-            "यह आधार-10 में 100 के बराबर है",
-            "यह आधार-10 में 250 के बराबर है",
-            "यह आधार-10 में 500 के बराबर है"
-          ],
-          "solution": "आधार-5 में, 100 का अर्थ (1) × 5² + (0) × 5¹ + (0) × 5⁰ = 25 आधार-10 है। इसके लिए आधार-5 प्रणाली में प्रत्येक अंक के स्थानीय मान की समझ आवश्यक है। अन्य विकल्प आधार परिवर्तन के नियमों का उपयोग किए बिना मान को गलत ढंग से मान लेते हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एक संख्या 5-आधारावर 100 असे लिहिली गेली असेल, तर तिच्या आधार-10 मधील प्रतिनिधित्व बद्दल खालीलपैकी काय खरे आहे?",
-          "choices": [
-            "ती आधार-10 मध्ये 25 इतकी आहे",
-            "ती आधार-10 मध्ये 100 इतकी आहे",
-            "ती आधार-10 मध्ये 250 इतकी आहे",
-            "ती आधार-10 मध्ये 500 इतकी आहे"
-          ],
-          "solution": "आधार-5 मध्ये 100 म्हणजे (1) × 5² + (0) × 5¹ + (0) × 5⁰ = 25 आधार-10 मध्ये. हे आधार-5 प्रणालीमधील प्रत्येक अंकाच्या स्थान मूल्याच्या समजाच्या आवश्यकतेसह आहे. इतर विकल्प आधार रूपांतरण नियमांचा अवलंब करण्याच्या बदल बरोबर त्यांच्या मूल्याचा अंदाज घेतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, retains the original meaning, and uses appropriate Marathi technical terms for base systems and place value.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Takes the base-5 number as a base-10 number",
-        "Misinterprets the value of base-5 digits",
-        "Adds the digits instead of multiplying by powers of 5"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly converts the base-5 number 100 to base-10 by using place values (5², 5¹, 5⁰). The reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp103.pdf",
-          "ordinal": 25,
-          "pageStart": 44,
-          "pageEnd": 46,
-          "headingPath": [
-            "Chapter 3: A Story of Numbers",
-            "3.4. Place Value Representation",
-            "A STORY OF NUMBERS"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp103.pdf",
-          "ordinal": 26,
-          "pageStart": 46,
-          "pageEnd": 46,
-          "headingPath": [
-            "Chapter 3: A Story of Numbers",
-            "3.4. Place Value Representation",
-            "A STORY OF NUMBERS"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T18:24:21.545Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "In a base-7 number system, what is the value of the landmark number that is equivalent to 10 in the Hindu-Arabic system?",
-      "choices": [
-        "7",
-        "10",
-        "49",
-        "70"
-      ],
-      "answerIndex": 0,
-      "solution": "In a base-7 system, the first landmark number is 1, then 7, then 49, and so on. The landmark number that is equivalent to 10 in the Hindu-Arabic system is 7, since 7 is the second landmark number in base-7. The option '10' is the Hindu-Arabic value, '49' is the third landmark number, and '70' is not a landmark number. Therefore, the correct answer is 7.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक आधार-7 संख्या प्रणाली में, हिंदू-अरबी प्रणाली में 10 के बराबर आंकड़ा संख्या क्या है?",
-          "choices": [
-            "7",
-            "10",
-            "49",
-            "70"
-          ],
-          "solution": "आधार-7 प्रणाली में पहला आंकड़ा संख्या 1 है, फिर 7, फिर 49 आदि होता है। हिंदू-अरबी प्रणाली में 10 के बराबर आंकड़ा संख्या 7 है, क्योंकि आधार-7 में 7 दूसरा आंकड़ा संख्या है। विकल्प '10' हिंदू-अरबी मान है, '49' तीसरा आंकड़ा संख्या है, और '70' आंकड़ा संख्या नहीं है। इसलिए सही उत्तर 7 है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "आधार-7 संख्या पद्धतीत, हिंदू-अरबी पद्धतीतील 10 च्या बरोबरीचा आदर्श संख्या मूल्य काय आहे?",
-          "choices": [
-            "7",
-            "10",
-            "49",
-            "70"
-          ],
-          "solution": "आधार-7 पद्धतीत, पहिली आदर्श संख्या 1 असते, नंतर 7, नंतर 49 आणि अशाप्रकारे जाते. हिंदू-अरबी पद्धतीतील 10 च्या बरोबरीचा आदर्श संख्या मूल्य 7 आहे, कारण 7 आधार-7 मध्ये दुसरी आदर्श संख्या आहे. पर्याय '10' हिंदू-अरबी मूल्य आहे, '49' ही तिसरी आदर्श संख्या आहे आणि '70' आदर्श संख्या नाही. म्हणून, योग्य उत्तर 7 आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for number systems.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the Hindu-Arabic value with the landmark number",
-        "Confuses the third landmark number with the second",
-        "Confuses the next multiple with the landmark number"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is well-posed and the solution is correct. The correct answer is 7, which is the second landmark number in base-7, corresponding to the Hindu-Arabic number 10.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp103.pdf",
-          "ordinal": 9,
-          "pageStart": 12,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 3: A Story of Numbers",
-            "3.2 Some Early Number Systems"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp103.pdf",
-          "ordinal": 10,
-          "pageStart": 13,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 3: A Story of Numbers",
-            "3.2 Some Early Number Systems"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp103.pdf",
-          "ordinal": 11,
-          "pageStart": 14,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 3: A Story of Numbers",
-            "3.3 The Idea of a Base"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp103.pdf",
-          "ordinal": 12,
-          "pageStart": 16,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 3: A Story of Numbers",
-            "3.3 The Idea of a Base"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T18:24:21.545Z",
+      "generatedAt": "2026-11-02T08:23:44.551Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

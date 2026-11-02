@@ -1,0 +1,319 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T07:41:46.993Z",
+  "finishedAt": "2026-11-02T07:44:33.843Z",
+  "seconds": 167,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी गणित इंग्रजी",
+    "bookCode": "803020004",
+    "document": "balbharati/8/mathematics/803020004.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 12 — Equations in one variable",
+    "edition": "First Edition 2018",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2025-26]\n4. Answer – C 1\nOn simplification, given equations reduce to\n(𝐴) 𝑥 + 2𝑥 − 2 = 0 (𝐐𝐮𝐚𝐝𝐫𝐚𝐭𝐢𝐜 𝐄𝐪𝐮𝐚𝐭𝐢𝐨𝐧) 2\n(𝐵) 2𝒙 − 3𝑥 − 1 = 0 (𝐐𝐮𝐚𝐝𝐫𝐚𝐭𝐢𝐜 𝐄𝐪𝐮𝐚𝐭𝐢𝐨𝐧) 2\n(C) 3𝑥 + 1 = 0 (𝑵𝑶𝑻 𝒂 𝐐𝐮𝐚𝐝𝐫𝐚𝐭𝐢𝐜 𝐄𝐪𝐮𝐚𝐭𝐢𝐨𝐧)\n(D) 4𝒙 + 𝒙 = 0 (𝐐𝐮𝐚𝐝𝐫𝐚𝐭𝐢𝐜 𝐄𝐪𝐮𝐚𝐭𝐢𝐨𝐧) 2",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n21. Find whether the following pair of linear equations is consistent or inconsistent:\n3x + 2y = 8\n6x – 4y = 9",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n21. Adding the two equations and dividing by 10, we get : x+y = 10 ½\nSubtracting the two equations and dividing by -2, we get : x-y =1 ½\nSolving these two new equations, we get, x = 11/2 ½",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2025-26]\n8. Answer: (C)\n𝑥 + 2 = 1 4 (4𝑥 + 6) + 1 2 so, 𝑃 = 1 4"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 49243,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 10912,
+      "completionTokens": 2876
+    },
+    "critique": {
+      "calls": 21,
+      "ms": 131272,
+      "in": 12,
+      "out": 10,
+      "rejects": 2,
+      "promptTokens": 10182,
+      "completionTokens": 3673
+    },
+    "solver": {
+      "calls": 110,
+      "ms": 95449,
+      "in": 10,
+      "out": 4,
+      "rejects": 6,
+      "promptTokens": 34519,
+      "completionTokens": 1497
+    },
+    "form": {
+      "calls": 3,
+      "ms": 6611,
+      "in": 4,
+      "out": 2,
+      "rejects": 2,
+      "promptTokens": 746,
+      "completionTokens": 197
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 9,
+      "ms": 1603,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 64441,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 5567,
+      "completionTokens": 2773
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following operations is NOT mentioned in the passage as a way to solve an equation?",
+      "ms": {
+        "draft": 3128,
+        "critique": 6838,
+        "solver": 17039
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does solving an equation mean?",
+      "ms": {
+        "draft": 3128,
+        "critique": 6519,
+        "solver": 15140,
+        "form": 2446
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the value of the variable that satisfies the given equation?",
+      "ms": {
+        "draft": 3128,
+        "critique": 6323,
+        "solver": 16317,
+        "form": 3135
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Solve the equation 4x = 24 and select the correct value of x.",
+      "ms": {
+        "draft": 3128,
+        "critique": 6013,
+        "solver": 14824
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Solve the equation x - 2 = 7 and select the correct value of x.",
+      "ms": {
+        "draft": 3128,
+        "critique": 5838,
+        "solver": 14167
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A rectangle has a perimeter of 40 cm and its length is 3 times its breadth. What is the length of the rectangle?",
+      "ms": {
+        "draft": 5079,
+        "critique": 6872,
+        "solver": 16014
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Solve the equation 2(x - 3) = 3(x + 4).",
+      "ms": {
+        "draft": 5079,
+        "critique": 5969,
+        "solver": 19266
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the solution to the equation x + 4 = 9?",
+      "ms": {
+        "draft": 5079,
+        "critique": 6150,
+        "solver": 19992
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Raju sold a bicycle to Amit at a profit of 25%. Amit repaired it spending Rs 200, then sold it to Nikhil for Rs 1200 with no loss and no profit. What was the cost price of the bicycle for Raju?",
+      "ms": {
+        "draft": 5079,
+        "critique": 6361
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The ratio of weights of copper and zinc in brass is 13:7. If a brass utensil weighs 700 grams, what is the weight of zinc in it?",
+      "ms": {
+        "draft": 5079,
+        "critique": 7294
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of performing the same operation on both sides of an equation?",
+      "ms": {
+        "draft": 3128,
+        "critique": 7062,
+        "solver": 13098,
+        "form": 2160,
+        "translation": 27165
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a two-digit number, the digit at the ten's place is twice the digit at the unit's place. If the number obtained by interchanging the digits is added to the original number, the sum is 132. What is the original number?",
+      "ms": {
+        "draft": 5079,
+        "critique": 6344,
+        "solver": 1456,
+        "form": 0,
+        "translation": 34103
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following operations is NOT mentioned in the passage as a way to solve an equation?",
+      "reason": "after redrafting distractors 0, 1, 2: the critic finds option 0 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What does solving an equation mean?",
+      "reason": "the key is far longer than every distractor (61 vs 37 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used for the value of the variable that satisfies the given equation?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Solve the equation 4x = 24 and select the correct value of x.",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Solve the equation x - 2 = 7 and select the correct value of x.",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A rectangle has a perimeter of 40 cm and its length is 3 times its breadth. What is the length of the rectangle?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Solve the equation 2(x - 3) = 3(x + 4).",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the solution to the equation x + 4 = 9?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Raju sold a bicycle to Amit at a profit of 25%. Amit repaired it spending Rs 200, then sold it to Nikhil for Rs 1200 with no loss and no profit. What was the cost price of the bicycle for Raju?",
+      "reason": "the critic finds option 0 correct, the key is 2; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "The ratio of weights of copper and zinc in brass is 13:7. If a brass utensil weighs 700 grams, what is the weight of zinc in it?",
+      "reason": "the solution's working is not sound"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

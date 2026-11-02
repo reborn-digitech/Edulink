@@ -1,0 +1,427 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T04:32:13.470Z",
+  "finishedAt": "2026-11-02T04:36:45.826Z",
+  "seconds": 272,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "703020012",
+    "document": "balbharati/7/science/703020012.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 15 — Materials we Use",
+    "edition": "First Edition 2017",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2025-26]\n7. C. Use of plastic as packaging material. 1",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n7. B. Cooking of food",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n25. The following activity is set-up in the science lab by the teacher. 2\nHe clamped an aluminium wire on a stand and fixed a pin to the free end of\nthe wire using wax. Then he heated the wire with a burner from the end where\nthe wire is clamped. Students observed the pin fall off.\nA. If the teacher replaces aluminium wire by silver wire, will the students’\nobservation change? Justify your answer.\nB. Will the aluminium wire melt? Give reason for your answer.",
+      "[INJSO 2021 — solutions or answer key]\n4. C. Paper is made of cellulose and hence is a good source of carbon while buttermilk contain lactobacilli\nwhich help in aerobic decomposition."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 58320,
+      "in": 18,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 12148,
+      "completionTokens": 3652
+    },
+    "critique": {
+      "calls": 27,
+      "ms": 149343,
+      "in": 18,
+      "out": 11,
+      "rejects": 7,
+      "promptTokens": 11151,
+      "completionTokens": 4636
+    },
+    "solver": {
+      "calls": 110,
+      "ms": 52126,
+      "in": 11,
+      "out": 9,
+      "rejects": 2,
+      "promptTokens": 18944,
+      "completionTokens": 1168
+    },
+    "form": {
+      "calls": 7,
+      "ms": 13312,
+      "in": 9,
+      "out": 3,
+      "rejects": 6,
+      "promptTokens": 1643,
+      "completionTokens": 481
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 20,
+      "ms": 2838,
+      "in": 3,
+      "out": 2,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 68667,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 5178,
+      "completionTokens": 2918
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is a natural detergent?",
+      "ms": {
+        "draft": 3110,
+        "critique": 6418,
+        "solver": 12301,
+        "form": 1707
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of a detergent?",
+      "ms": {
+        "draft": 3110,
+        "critique": 6277,
+        "solver": 11731,
+        "form": 2635
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is soap not used as much as synthetic detergents nowadays?",
+      "ms": {
+        "draft": 3110,
+        "critique": 6687
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student uses a natural detergent like soap nut, what is a likely advantage?",
+      "ms": {
+        "draft": 3110,
+        "critique": 6108,
+        "solver": 7288
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a man-made detergent?",
+      "ms": {
+        "draft": 3110,
+        "critique": 6553,
+        "solver": 7812,
+        "form": 984
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a use of cement mentioned in the passage?",
+      "ms": {
+        "draft": 3125,
+        "critique": 4373
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student wants to make a strong and leak-proof slab, which of the following would they need to add to the concrete?",
+      "ms": {
+        "draft": 3125,
+        "critique": 4967
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a sample of cement and asked to identify its main component. Based on the passage, which of the following is the main component of Portland cement?",
+      "ms": {
+        "draft": 3125,
+        "critique": 6085
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of cement mentioned in the passage?",
+      "ms": {
+        "draft": 3125,
+        "critique": 4352,
+        "solver": 9629,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student is told that ancient Romans used a type of cement that was very durable. Based on the passage, what can be inferred about the durability of this cement?",
+      "ms": {
+        "draft": 3125,
+        "critique": 7316
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, why was the art of making cement forgotten after the decline of the Roman Empire?",
+      "ms": {
+        "draft": 3125,
+        "critique": 6234,
+        "solver": 10142,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student uses a synthetic detergent instead of a natural detergent, what might happen?",
+      "ms": {
+        "draft": 3485,
+        "critique": 7408,
+        "solver": 1576
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a natural detergent?",
+      "ms": {
+        "draft": 3485,
+        "critique": 5929,
+        "solver": 10701,
+        "form": 2214
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct statement about soap?",
+      "ms": {
+        "draft": 3485,
+        "critique": 5906
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is using a new soap that does not form lather in hard water. What could be the reason?",
+      "ms": {
+        "draft": 3485,
+        "critique": 6287
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of fluoride in toothpaste?",
+      "ms": {
+        "draft": 3485,
+        "critique": 6180,
+        "solver": 1297,
+        "form": 2285
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main reason soap does not work well in hard water?",
+      "ms": {
+        "draft": 3110,
+        "critique": 6277,
+        "solver": 10872,
+        "form": 3910,
+        "translation": 30153
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it better to use a natural detergent like soap nut over synthetic detergents?",
+      "ms": {
+        "draft": 3485,
+        "critique": 3799,
+        "solver": 4935,
+        "form": 1153,
+        "translation": 34453
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"Which of the following is a property of cement mentioned in t"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a natural detergent?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a property of a detergent?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is soap not used as much as synthetic detergents nowadays?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a student uses a natural detergent like soap nut, what is a likely advantage?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a man-made detergent?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a use of cement mentioned in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a student wants to make a strong and leak-proof slab, which of the following would they need to add to the concrete?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student is given a sample of cement and asked to identify its main component. Based on the passage, which of the following is the main component of Portland cement?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a property of cement mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A student is told that ancient Romans used a type of cement that was very durable. Based on the passage, what can be inferred about the durability of this cement?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, why was the art of making cement forgotten after the decline of the Roman Empire?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Pupils may think the Romans intentionally kept their knowled…\"); distractor 3's reason is not a one-line misconception (\"Pupils may assume materials became scarce, but the passage d…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a student uses a synthetic detergent instead of a natural detergent, what might happen?",
+      "reason": "the solver picked option 3 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a natural detergent?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct statement about soap?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student is using a new soap that does not form lather in hard water. What could be the reason?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the main function of fluoride in toothpaste?",
+      "reason": "near-duplicate of served question cmvwpgskm02yg0remgxmuh897 (cosine 0.911 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

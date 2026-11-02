@@ -21,133 +21,47 @@
   "board": "BALBHARATI",
   "book": "६ वी गणित इंग्रजी",
   "edition": "First Edition 2026",
-  "generatedAt": "2026-10-31T00:29:04.382Z",
+  "generatedAt": "2026-11-01T13:40:57.666Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 2,
-      "stem": "What is the sum of the measures of all the angles of a pentagon?",
+      "stem": "What is the total number of angles in a pentagon?",
       "choices": [
-        "540°",
-        "720°",
-        "360°",
-        "180°"
-      ],
-      "answerIndex": 0,
-      "solution": "The sum of the measures of all the angles of a pentagon can be calculated by the formula (n-2) × 180°, where n is the number of sides. For a pentagon, n = 5. So, (5-2) × 180° = 3 × 180° = 540°. The other options are incorrect because they do not follow the formula correctly.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक पंचभुज के सभी कोणों के मापों का योग क्या है?",
-          "choices": [
-            "540°",
-            "720°",
-            "360°",
-            "180°"
-          ],
-          "solution": "एक पंचभुज के सभी कोणों के मापों का योग सूत्र (n-2) × 180° द्वारा गणना की जा सकती है, जहां n भुजाओं की संख्या है। पंचभुज के लिए, n = 5। इसलिए, (5-2) × 180° = 3 × 180° = 540°। अन्य विकल्प गलत हैं क्योंकि वे सूत्र का सही तरीके से अनुसरण नहीं करते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका पेंटागॉनच्या सर्व कोनांच्या मापांची बेरीज किती आहे?",
-          "choices": [
-            "540°",
-            "720°",
-            "360°",
-            "180°"
-          ],
-          "solution": "एका पेंटागॉनच्या सर्व कोनांच्या मापांची बेरीज सूत्र (n-2) × 180° वापरून काढता येते, जेथे n बाजूंची संख्या आहे. पेंटागॉनसाठी, n = 5. म्हणून, (5-2) × 180° = 3 × 180° = 540°. इतर विकल्प चूक आहेत कारण ते सूत्राच्या योग्य पद्धतीने अनुसरण करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains option (1) and the distractors are still incorrect.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the formula for the sum of angles in a polygon",
-        "Adds 180° for each side instead of subtracting 2",
-        "Assumes the sum is the same as for a triangle"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct and matches the formula for the sum of interior angles of a polygon. The reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 59,
-          "pageStart": 89,
-          "pageEnd": 91,
-          "headingPath": [
-            "10. Magical Mathematics-1"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 60,
-          "pageStart": 91,
-          "pageEnd": 91,
-          "headingPath": [
-            "10. Magical Mathematics-1"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T00:29:04.382Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the sum of the measures of all the angles of a triangle?",
-      "choices": [
-        "120°",
-        "180°",
-        "270°",
-        "360°"
+        "4",
+        "5",
+        "6",
+        "7"
       ],
       "answerIndex": 1,
-      "solution": "The sum of the measures of all the angles of a triangle is always 180°, which is a fundamental property of triangles in Euclidean geometry. 120° is too small, as it does not account for all three angles. 270° and 360° are too large, as they exceed the total angle sum for any triangle.",
+      "solution": "A pentagon has 5 sides and therefore 5 angles. The other options are incorrect because they represent the number of sides or angles in other polygons, not a pentagon.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक त्रिभुज के सभी कोणों के मापों का योग क्या है?",
+          "stem": "एक पंचभुज में कुल कितने कोण होते हैं?",
           "choices": [
-            "120°",
-            "180°",
-            "270°",
-            "360°"
+            "4",
+            "5",
+            "6",
+            "7"
           ],
-          "solution": "एक त्रिभुज के सभी कोणों के मापों का योग हमेशा 180° होता है, जो यूक्लिडियन ज्यामिति में त्रिभुजों का एक मूलभूत गुण है। 120° बहुत कम है, क्योंकि यह सभी तीन कोणों को ध्यान में नहीं रखता है। 270° और 360° बहुत अधिक हैं, क्योंकि ये किसी भी त्रिभुज के कुल कोण योग के अतिरिक्त हैं।",
+          "solution": "एक पंचभुज में 5 भुजाएं होती हैं और इसलिए 5 कोण होते हैं। अन्य विकल्प गलत हैं क्योंकि वे अन्य बहुभुजों की भुजाओं या कोणों की संख्या का प्रतिनिधित्व करते हैं, एक पंचभुज के नहीं।",
           "imageAlt": null,
           "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "त्रिकोणाच्या सर्व कोनांच्या मापांची बेरीज किती आहे?",
+          "stem": "पंचभुजाच्या एकूण कोनांची संख्या किती आहे?",
           "choices": [
-            "120°",
-            "180°",
-            "270°",
-            "360°"
+            "4",
+            "5",
+            "6",
+            "7"
           ],
-          "solution": "त्रिकोणाच्या सर्व कोनांच्या मापांची बेरीज नेहमी 180° असते, हे युक्लिडियन ज्यामितीतील त्रिकोणांचे एक मूलभूत गुणधर्म आहे. 120° खूप लहान आहे, कारण ते सर्व तीन कोनांचा विचार करत नाही. 270° आणि 360° खूप मोठे आहेत, कारण ते कोणत्याही त्रिकोणाच्या एकूण कोनांच्या बेरजेच्या जास्तीत जास्त असतात.",
+          "solution": "पंचभुजामध्ये 5 बाजू असतात आणि म्हणूनच 5 कोन असतात. इतर विकल्प चुकीचे आहेत कारण ते इतर बहुभुजांच्या बाजू किंवा कोनांची संख्या दर्शवतात, पंचभुजाची नाही.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -158,10 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "uses the angle measure of a quadrilateral",
+        "counts the number of sides incorrectly",
         null,
-        "uses the angle measure of a pentagon",
-        "uses the angle measure of a full circle"
+        "assumes the number of angles is the same as a hexagon",
+        "confuses the number of angles with the number of sides in a different polygon"
       ],
       "solverAnswers": [
         1,
@@ -171,7 +85,7 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 180°, which is a well-established geometric fact. The author's reasoning for the distractors is based on common misconceptions, such as confusing triangle angles with those of quadrilaterals, pentagons, and full circles.",
+      "critique": "The question is straightforward. A pentagon has 5 sides and 5 angles, so the correct answer is 5. The author's reasoning is sound and matches the correct solution.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
@@ -193,219 +107,47 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T00:29:04.382Z",
+      "generatedAt": "2026-11-01T13:40:57.666Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "If a five-pointed star has a regular pentagon inside it, and one angle of the star is 36°, what is the measure of each angle in the pentagon?",
+      "stem": "If a star has six points, what would be the difference in the measures of its angles compared to a five-pointed star?",
       "choices": [
-        "108°",
-        "72°",
-        "120°",
-        "90°"
+        "No difference",
+        "Angles are larger",
+        "Angles are smaller",
+        "Angles are same as a pentagon"
       ],
-      "answerIndex": 0,
-      "solution": "In a regular pentagon, each interior angle is 108°. This is calculated using the formula (n-2) × 180° / n, where n = 5. For a pentagon, (5-2) × 180° / 5 = 540° / 5 = 108°. The other options do not match the correct calculation.",
+      "answerIndex": 2,
+      "solution": "If a star has six points, the measure of each angle would be smaller compared to a five-pointed star. This is because more points mean the angles are distributed more evenly, making each angle smaller. The other options are incorrect because they do not account for the change in number of points affecting the angle sizes.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक पांच कोने वाला तारा उसके अंदर एक नियमित पंचभुज हो, और तारे का एक कोण 36° हो, तो पंचभुज के प्रत्येक कोण का माप क्या होगा?",
+          "stem": "यदि एक तारा में छह कोने हैं, तो इसके कोणों के माप में पांच-कोने वाले तारे के कोणों की तुलना में क्या अंतर होगा?",
           "choices": [
-            "108°",
-            "72°",
-            "120°",
-            "90°"
+            "कोई अंतर नहीं",
+            "कोण बड़े होते हैं",
+            "कोण छोटे होते हैं",
+            "कोण एक पंचभुज के बराबर होते हैं"
           ],
-          "solution": "एक नियमित पंचभुज में, प्रत्येक आंतरिक कोण 108° होता है। इसकी गणना सूत्र (n-2) × 180° / n के प्रयोग से की जाती है, जहां n = 5। पंचभुज के लिए, (5-2) × 180° / 5 = 540° / 5 = 108°। अन्य विकल्प सही गणना के अनुरूप नहीं हैं।",
+          "solution": "यदि एक तारा में छह कोने हैं, तो प्रत्येक कोण के माप एक पांच-कोने वाले तारे के कोणों की तुलना में छोटे होंगे। इसका कारण यह है कि अधिक कोने होने से कोण अधिक समान रूप से वितरित होते हैं, जिससे प्रत्येक कोण छोटा हो जाता है। अन्य विकल्प गलत हैं क्योंकि वे कोनों की संख्या में परिवर्तन के कारण कोणों के माप में परिवर्तन को ध्यान में नहीं रखते।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi technical terms for geometry.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for geometry.",
           "flag": null
         },
         "mr": {
-          "stem": "जर एक पाच-कोनी तारा तिच्या आत नियमित पंचभुज असेल आणि ताराचा एक कोन 36° असेल, तर पंचभुजाच्या प्रत्येक कोनाचे माप किती असेल?",
+          "stem": "जर तारा छह टोके असतील, तर त्याच्या कोनांच्या मापात काय फरक असेल ते पाच-टोकदार ताराशी तुलना केल्यास?",
           "choices": [
-            "108°",
-            "72°",
-            "120°",
-            "90°"
+            "कोणताही फरक नाही",
+            "कोन जास्त असतील",
+            "कोन लहान असतील",
+            "कोन पंचभुजाशी सारखे असतील"
           ],
-          "solution": "नियमित पंचभुजात प्रत्येक आंतरिक कोन 108° असतो. हे सूत्र (n-2) × 180° / n वापरून गणित केले जाते, जेथे n = 5. पंचभुजासाठी, (5-2) × 180° / 5 = 540° / 5 = 108°. इतर विकल्प योग्य गणनेशी जुळत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi technical terms for geometric shapes and angles.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Uses the angle of the star instead of the pentagon",
-        "Assumes the pentagon is a different type of polygon",
-        "Calculates the exterior angle instead of the interior angle"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is somewhat ambiguous. The 36° angle mentioned is likely the tip of the star's point, not an interior angle of the pentagon. The correct answer is 108°, which is the interior angle of a regular pentagon. The author's solution is correct, but the question could be clearer about which angle is being referred to.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 59,
-          "pageStart": 89,
-          "pageEnd": 91,
-          "headingPath": [
-            "10. Magical Mathematics-1"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 60,
-          "pageStart": 91,
-          "pageEnd": 91,
-          "headingPath": [
-            "10. Magical Mathematics-1"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T00:29:04.382Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "If a star has six points and a regular hexagon is formed inside it, what will be the measure of each angle in the hexagon?",
-      "choices": [
-        "120°",
-        "90°",
-        "60°",
-        "150°"
-      ],
-      "answerIndex": 0,
-      "solution": "In a regular hexagon, each interior angle is 120°. This is calculated using the formula (n-2) × 180° / n, where n = 6. For a hexagon, (6-2) × 180° / 6 = 720° / 6 = 120°. The other options do not match the correct calculation.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक तारा में छह कोने हैं और इसके अंदर एक नियमित षट्भुज बनाया जाता है, तो षट्भुज के प्रत्येक कोण का माप क्या होगा?",
-          "choices": [
-            "120°",
-            "90°",
-            "60°",
-            "150°"
-          ],
-          "solution": "एक नियमित षट्भुज में प्रत्येक आंतरिक कोण 120° होता है। इसे सूत्र (n-2) × 180° / n, जहां n = 6 का उपयोग करके गणना की जाती है। षट्भुज के लिए, (6-2) × 180° / 6 = 720° / 6 = 120°। अन्य विकल्प सही गणना के अनुरूप नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका ताराच्या छह टोका असून त्यामध्ये एक सामान्य षट्कोन तयार होतो, तर षट्कोनाच्या प्रत्येक कोनाचे माप किती असेल?",
-          "choices": [
-            "120°",
-            "90°",
-            "60°",
-            "150°"
-          ],
-          "solution": "सामान्य षट्कोनामध्ये प्रत्येक आंतरिक कोन 120° असतो. हे सूत्र (n-2) × 180° / n वापरून गणले जाते, जेथे n = 6. षट्कोनासाठी, (6-2) × 180° / 6 = 720° / 6 = 120°. इतर विकल्प योग्य गणनेशी जुळत नाहीत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the formula for the sum of angles in a polygon",
-        "Assumes the hexagon is a different type of polygon",
-        "Calculates the exterior angle instead of the interior angle"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly calculates the interior angle of a regular hexagon using the standard formula. The reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 59,
-          "pageStart": 89,
-          "pageEnd": 91,
-          "headingPath": [
-            "10. Magical Mathematics-1"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 60,
-          "pageStart": 91,
-          "pageEnd": 91,
-          "headingPath": [
-            "10. Magical Mathematics-1"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T00:29:04.382Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If a star has 10 points and a regular decagon is formed inside it, what will be the measure of each angle in the decagon?",
-      "choices": [
-        "144°",
-        "120°",
-        "108°",
-        "150°"
-      ],
-      "answerIndex": 0,
-      "solution": "In a regular decagon, each interior angle is 144°. This is calculated using the formula (n-2) × 180° / n, where n = 10. For a decagon, (10-2) × 180° / 10 = 1440° / 10 = 144°. The other options do not match the correct calculation.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक तारा में 10 बिंदु हैं और इसके अंदर एक नियमित दशभुज बनाया जाता है, तो दशभुज में प्रत्येक कोण का माप क्या होगा?",
-          "choices": [
-            "144°",
-            "120°",
-            "108°",
-            "150°"
-          ],
-          "solution": "एक नियमित दशभुज में प्रत्येक आंतरिक कोण 144° होता है। इसे सूत्र (n-2) × 180° / n, जहां n = 10 के उपयोग से गणना की जाती है। दशभुज के लिए, (10-2) × 180° / 10 = 1440° / 10 = 144°। अन्य विकल्प सही गणना के अनुरूप नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एका तारामध्ये 10 बिंदू असतील आणि त्यामध्ये एक सामान्य दशभुज तयार होत असेल, तर दशभुजातील प्रत्येक कोनाचे माप किती असेल?",
-          "choices": [
-            "144°",
-            "120°",
-            "108°",
-            "150°"
-          ],
-          "solution": "सामान्य दशभुजामध्ये प्रत्येक आंतरिक कोन 144° असतो. हे सूत्र (n-2) × 180° / n वापरून गणले जाते, जेथे n = 10. दशभुजासाठी, (10-2) × 180° / 10 = 1440° / 10 = 144°. इतर विकल्प योग्य गणनेशी जुळत नाहीत.",
+          "solution": "जर तारा छह टोके असतील, तर प्रत्येक कोनाचे माप पाच-टोकदार ताराशी तुलना केल्यास लहान असेल. हे कारण असे आहे की टोकांची संख्या जास्त असल्याने कोन जास्त समानरूपे वितरित होतात, ज्यामुळे प्रत्येक कोन लहान असतो. इतर विकल्प अयोग्य आहेत कारण ते टोकांच्या संख्येमध्ये होणारा बदल कोनांच्या मापावर परिणाम करत नाहीत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -416,20 +158,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Assumes the angle measure remains the same regardless of the number of points",
+        "Incorrectly believes more points result in larger angles",
         null,
-        "Confuses the formula for the sum of angles in a polygon",
-        "Assumes the decagon is a different type of polygon",
-        "Calculates the exterior angle instead of the interior angle"
+        "Confuses the properties of a star with those of a pentagon"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        1,
+        2,
+        2
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly applies the formula for the interior angle of a regular polygon. The correct answer is 144°, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "levelFlag": null,
+      "critique": "The solution is sound and correctly identifies that more points in a star lead to smaller angles. The reasoning aligns with geometric principles.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
@@ -451,47 +193,47 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T00:29:04.382Z",
+      "generatedAt": "2026-11-01T13:40:57.666Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "In a 6×10 grid, 12 pentominoes are used to complete the rectangle. What will be the number of pentominoes required to complete a 5×12 grid?",
+      "difficulty": 3,
+      "stem": "If a 5×12 rectangle is completely covered by pentominoes without any gaps or overlaps, what is the total area covered by the pentominoes?",
       "choices": [
-        "10",
-        "12",
-        "15",
-        "20"
+        "20",
+        "30",
+        "40",
+        "60"
       ],
-      "answerIndex": 1,
-      "solution": "Each pentomino covers 5 squares. A 6×10 grid has 60 squares, and 60 ÷ 5 = 12 pentominoes. A 5×12 grid also has 60 squares, so 60 ÷ 5 = 12 pentominoes. The option '10' is incorrect because it assumes a different number of squares. '15' and '20' are incorrect as they suggest more pentominoes than needed.",
-      "checkExpr": "60/5",
+      "answerIndex": 3,
+      "solution": "A pentomino is made up of 5 squares. If the 5×12 rectangle is completely covered by pentominoes, the total area is 5×12 = 60. The other options are incorrect because they represent smaller or incorrect areas for the given rectangle.",
+      "checkExpr": "5*12",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "6×10 ग्रिड में आयत को पूरा करने के लिए 12 पेंटोमिनो का उपयोग किया जाता है। 5×12 ग्रिड को पूरा करने के लिए आवश्यक पेंटोमिनो की संख्या क्या होगी?",
+          "stem": "यदि 5×12 आयत को पेंटोमिनो द्वारा कोई अंतराल या अतिव्यापन बिना पूरी तरह से ढक दिया जाता है, तो पेंटोमिनो द्वारा ढके कुल क्षेत्रफल क्या है?",
           "choices": [
-            "10",
-            "12",
-            "15",
-            "20"
+            "20",
+            "30",
+            "40",
+            "60"
           ],
-          "solution": "प्रत्येक पेंटोमिनो 5 वर्गों को कवर करता है। एक 6×10 ग्रिड में 60 वर्ग होते हैं और 60 ÷ 5 = 12 पेंटोमिनो की आवश्यकता होती है। एक 5×12 ग्रिड में भी 60 वर्ग होते हैं, इसलिए 60 ÷ 5 = 12 पेंटोमिनो की आवश्यकता होती है। विकल्प '10' गलत है क्योंकि यह विभिन्न संख्या के वर्गों की धारणा करता है। '15' और '20' गलत हैं क्योंकि यह आवश्यकता से अधिक पेंटोमिनो के सुझाव देते हैं।",
+          "solution": "एक पेंटोमिनो में 5 वर्ग होते हैं। यदि 5×12 आयत को पेंटोमिनो द्वारा पूरी तरह से ढक दिया जाता है, तो कुल क्षेत्रफल 5×12 = 60 होता है। अन्य विकल्प गलत हैं क्योंकि वे दिए गए आयत के लिए छोटा या गलत क्षेत्रफल दर्शाते हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate terminology.",
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi terminology for mathematical concepts.",
           "flag": null
         },
         "mr": {
-          "stem": "6×10 चौकोनी जाळ्यामध्ये 12 पेंटोमिनो वापरून आयत पूर्ण केला जातो. 5×12 चौकोनी जाळ्यामध्ये पूर्ण करण्यासाठी किती पेंटोमिनो आवश्यक असतील?",
+          "stem": "जर 5×12 चौरस आकाराचे आयत पेन्टोमिनो वापरून खालील त्रुटी न ठेवता पूर्णतः झाकलेले असेल, तर पेन्टोमिनो द्वारे झाकलेले एकूण क्षेत्रफळ किती असेल?",
           "choices": [
-            "10",
-            "12",
-            "15",
-            "20"
+            "20",
+            "30",
+            "40",
+            "60"
           ],
-          "solution": "प्रत्येक पेंटोमिनो 5 चौरस व्हायला जातो. 6×10 जाळ्यामध्ये 60 चौरस असतात आणि 60 ÷ 5 = 12 पेंटोमिनो. 5×12 जाळ्यामध्ये देखील 60 चौरस असतात, म्हणून 60 ÷ 5 = 12 पेंटोमिनो. '10' अपयश आहे कारण ते वेगळ्या चौरसांची संख्या असल्याचा अंदाज घेते. '15' आणि '20' अपयश आहेत कारण ते आवश्यक पेंटोमिनोंच्या संख्येपेक्षा जास्त दर्शवतात.",
+          "solution": "एक पेन्टोमिनो 5 चौरसांनी बनलेला असतो. जर 5×12 चौरस आकाराचे आयत पेन्टोमिनो वापरून पूर्णतः झाकलेले असेल, तर एकूण क्षेत्रफळ 5×12 = 60 असते. इतर विकल्प चूकीचे असतात कारण ते दिलेल्या आयतासाठी लहान किंवा अयोग्य क्षेत्रफळ दर्शवतात.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
           "flag": null
@@ -502,95 +244,9 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "uses the number of rows instead of the area",
-        null,
-        "uses the number of columns instead of the area",
-        "multiplies the dimensions instead of dividing by 5"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is well-constructed. The correct answer is 12, as both grids have the same area (60 squares) and each pentomino covers 5 squares. The author's reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 59,
-          "pageStart": 89,
-          "pageEnd": 91,
-          "headingPath": [
-            "10. Magical Mathematics-1"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 60,
-          "pageStart": 91,
-          "pageEnd": 91,
-          "headingPath": [
-            "10. Magical Mathematics-1"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T00:29:04.382Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "A pentomino is formed by connecting 5 squares side-by-side. If each square has an area of 1 unit, what is the total area of a pentomino?",
-      "choices": [
-        "2 units",
-        "3 units",
-        "4 units",
-        "5 units"
-      ],
-      "answerIndex": 3,
-      "solution": "Since a pentomino is made of 5 squares, and each square has an area of 1 unit, the total area is 5 × 1 = 5 units. The option '2 units' is incorrect as it assumes fewer squares. '3 units' and '4 units' are also incorrect because they do not account for all 5 squares in a pentomino.",
-      "checkExpr": "5*1",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक पेंटोमिनो 5 वर्गों के साथ-साथ जुड़ा हुआ है। यदि प्रत्येक वर्ग का क्षेत्रफल 1 इकाई है, तो एक पेंटोमिनो का कुल क्षेत्रफल क्या है?",
-          "choices": [
-            "2 इकाई",
-            "3 इकाई",
-            "4 इकाई",
-            "5 इकाई"
-          ],
-          "solution": "क्योंकि एक पेंटोमिनो 5 वर्गों से बना हुआ है, और प्रत्येक वर्ग का क्षेत्रफल 1 इकाई है, तो कुल क्षेत्रफल 5 × 1 = 5 इकाई है। विकल्प '2 इकाई' गलत है क्योंकि यह कम वर्गों के अनुमान के आधार पर है। '3 इकाई' और '4 इकाई' भी गलत हैं क्योंकि ये पेंटोमिनो में 5 वर्गों की गणना नहीं करते हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for mathematical concepts.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "पेंटोमिनो हा 5 चौरसांच्या बाजूला जोडून बनवला जातो. जर प्रत्येक चौरसाचे क्षेत्रफळ 1 एकक असेल, तर पेंटोमिनोचे एकूण क्षेत्रफळ किती असेल?",
-          "choices": [
-            "2 एकक",
-            "3 एकक",
-            "4 एकक",
-            "5 एकक"
-          ],
-          "solution": "पेंटोमिनो 5 चौरसांपासून बनलेला असतो, आणि प्रत्येक चौरसाचे क्षेत्रफळ 1 एकक असते, म्हणून एकूण क्षेत्रफळ 5 × 1 = 5 एकक असते. '2 एकक' अपयशी असतो कारण ते कमी चौरसांचा अंदाज घेते. '3 एकक' आणि '4 एकक' देखील अपयशी असतात कारण ते पेंटोमिनोमधील 5 चौरसांचा विचार करत नाहीत.",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are correctly used in Marathi.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "counts only 2 squares",
-        "counts only 3 squares",
-        "counts only 4 squares",
+        "multiplies 5 by 4 instead of 12",
+        "multiplies 5 by 6 instead of 12",
+        "multiplies 5 by 8 instead of 12",
         null
       ],
       "solverAnswers": [
@@ -600,8 +256,8 @@
         3,
         3
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is straightforward, and the correct answer is clearly 5 units. The author's solution is correct, and the reasoning for the distractors is valid and reflects common misconceptions.",
+      "levelFlag": null,
+      "critique": "The question is straightforward. The area of the rectangle is 5×12 = 60, and since pentominoes cover the entire area without gaps or overlaps, the total area covered by the pentominoes is 60. The distractors suggest incorrect multiplications of 5 with smaller numbers, which is a reasonable misconception for students.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
@@ -623,7 +279,179 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T00:29:04.382Z",
+      "generatedAt": "2026-11-01T13:40:57.666Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "A star has six points, and a regular hexagon is formed inside it. If the sum of the angles in a pentagon is 540°, what is the sum of the angles in the hexagon?",
+      "choices": [
+        "450°",
+        "540°",
+        "720°",
+        "600°"
+      ],
+      "answerIndex": 2,
+      "solution": "The sum of the angles in a polygon with n sides is (n-2)×180°. For a hexagon, n=6, so (6-2)×180° = 720°. The other options are incorrect because they represent the sum of angles for different polygons, not a hexagon.",
+      "checkExpr": "(6-2)*180",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक तारा के छह कोने हैं, और इसके अंदर एक समषट्भुज बना हुआ है। यदि पंचभुज के कोणों का योग 540° है, तो समषट्भुज के कोणों का योग क्या है?",
+          "choices": [
+            "450°",
+            "540°",
+            "720°",
+            "600°"
+          ],
+          "solution": "n भुजाओं वाले बहुभुज के कोणों का योग (n-2)×180° होता है। समषट्भुज के लिए n=6, इसलिए (6-2)×180° = 720°। अन्य विकल्प गलत हैं क्योंकि वे अलग-अलग बहुभुज के कोणों के योग को दर्शाते हैं, न कि समषट्भुज के।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका तारेच्या छह शिरोबिंदू असून त्यामध्ये एक सामान्य षट्कोन तयार होतो. जर पंचभुजाच्या कोनांची बेरीज 540° असेल, तर षट्कोनाच्या कोनांची बेरीज किती असेल?",
+          "choices": [
+            "450°",
+            "540°",
+            "720°",
+            "600°"
+          ],
+          "solution": "n बाजू असलेल्या बहुभुजाच्या कोनांची बेरीज (n-2)×180° असते. षट्कोनासाठी, n=6, म्हणून (6-2)×180° = 720°. इतर विकल्प चुकीचे असतात कारण ते वेगवेगळ्या बहुभुजांच्या कोनांची बेरीज दर्शवतात, षट्कोनाची नव्हे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the angle sum of a pentagon with that of a hexagon by subtracting 90° instead of adding 180°",
+        "uses the formula for a pentagon instead of a hexagon",
+        null,
+        "Confuses the formula for the sum of interior angles with the formula for the sum of exterior angles"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is straightforward, and the correct answer is 720°, as calculated by the formula (n-2)×180°. The author's solution is correct, and the reasoning for the distractors is plausible for common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 59,
+          "pageStart": 89,
+          "pageEnd": 91,
+          "headingPath": [
+            "10. Magical Mathematics-1"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 60,
+          "pageStart": 91,
+          "pageEnd": 91,
+          "headingPath": [
+            "10. Magical Mathematics-1"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T13:40:57.666Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a pentagon is formed inside a star, and the sum of the angles of the pentagon is 540°, what is the measure of each angle in the star?",
+      "choices": [
+        "54°",
+        "72°",
+        "108°",
+        "144°"
+      ],
+      "answerIndex": 1,
+      "solution": "If the sum of the angles of the pentagon is 540°, and all angles are equal, then each angle in the pentagon is 108°. In a five-pointed star, the measure of each angle is 72°. This is derived from the geometry of the star and the relationship between the pentagon and the star. The other options are incorrect as they do not match this relationship.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक पंचभुज एक ताराकार आकृति के अंदर बनाई जाती है, और पंचभुज के कोणों का योग 540° है, तो ताराकार आकृति के प्रत्येक कोण का माप क्या है?",
+          "choices": [
+            "54°",
+            "72°",
+            "108°",
+            "144°"
+          ],
+          "solution": "यदि पंचभुज के कोणों का योग 540° है, और सभी कोण बराबर हैं, तो पंचभुज का प्रत्येक कोण 108° होगा। पांच-किनारे वाले ताराकार आकृति में प्रत्येक कोण का माप 72° होता है। इसे ताराकार आकृति के ज्यामिति और पंचभुज और ताराकार आकृति के बीच संबंध से व्युत्पन्न किया गया है। अन्य विकल्प गलत हैं क्योंकि वे इस संबंध के साथ मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक पंचभुज तारेमध्ये तयार केला जातो आणि पंचभुजाच्या कोनांची बेरीज 540° असेल, तर तारेच्या प्रत्येक कोनाचे माप किती असेल?",
+          "choices": [
+            "54°",
+            "72°",
+            "108°",
+            "144°"
+          ],
+          "solution": "जर पंचभुजाच्या कोनांची बेरीज 540° असेल आणि सर्व कोन समान असतील, तर पंचभुजाच्या प्रत्येक कोनाचे माप 108° असेल. पाच-बिंदू असलेल्या तारेमध्ये, प्रत्येक कोनाचे माप 72° असते. हे तारेच्या भूमिती आणि पंचभुज आणि तारेच्या संबंधावरून मिळते. इतर विकल्प चुकीचे असतात कारण ते या संबंधाशी जुमानत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Uses the angle measure of the pentagon instead of the star",
+        null,
+        "Confuses the formula for the sum of angles in a star",
+        "Fails to account for the relationship between the pentagon and the star"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct: a regular pentagon has interior angles of 108°, and a five-pointed star (pentagram) has tip angles of 36°, but the question seems to refer to the angle formed at the intersection of the star's lines, which is 72°. The author's reasoning is sound, and the distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 59,
+          "pageStart": 89,
+          "pageEnd": 91,
+          "headingPath": [
+            "10. Magical Mathematics-1"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 60,
+          "pageStart": 91,
+          "pageEnd": 91,
+          "headingPath": [
+            "10. Magical Mathematics-1"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T13:40:57.666Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

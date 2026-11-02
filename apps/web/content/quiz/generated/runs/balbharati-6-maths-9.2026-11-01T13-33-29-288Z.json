@@ -1,0 +1,672 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T13:33:29.288Z",
+  "finishedAt": "2026-11-01T13:40:55.352Z",
+  "seconds": 446,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 9 — Equations",
+    "edition": "First Edition 2026",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2025-26]\n6. (D) (𝑥 +2) ( 𝑥 +1) = 𝑥 +2 𝑥 +3, so, 𝑥 +3 𝑥 +2= 𝑥 +2 𝑥 +3 gives 𝑥 -1=0 2 2 2 1\nIt’s not a quadratic equation.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n21. Adding the two equations and dividing by 10, we get : x+y = 10 ½\nSubtracting the two equations and dividing by -2, we get : x-y =1 ½\nSolving these two new equations, we get, x = 11/2 ½",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2025-26]\n4. Answer – C 1\nOn simplification, given equations reduce to\n(𝐴) 𝑥 + 2𝑥 − 2 = 0 (𝐐𝐮𝐚𝐝𝐫𝐚𝐭𝐢𝐜 𝐄𝐪𝐮𝐚𝐭𝐢𝐨𝐧) 2\n(𝐵) 2𝒙 − 3𝑥 − 1 = 0 (𝐐𝐮𝐚𝐝𝐫𝐚𝐭𝐢𝐜 𝐄𝐪𝐮𝐚𝐭𝐢𝐨𝐧) 2\n(C) 3𝑥 + 1 = 0 (𝑵𝑶𝑻 𝒂 𝐐𝐮𝐚𝐝𝐫𝐚𝐭𝐢𝐜 𝐄𝐪𝐮𝐚𝐭𝐢𝐨𝐧)\n(D) 4𝒙 + 𝒙 = 0 (𝐐𝐮𝐚𝐝𝐫𝐚𝐭𝐢𝐜 𝐄𝐪𝐮𝐚𝐭𝐢𝐨𝐧) 2",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n21. 3𝑥+2𝑦 = 8\n6𝑥- 4𝑦 = 9\n𝑎 =3, ଵ 𝑏 =2, ଵ 𝑐 = 8 ଵ\n𝑎 =6, ଶ 𝑏 =-4, ଶ 𝑐 = 9 ଶ\n௔ ௔ భ మ = ଷ ଺ = ଵ ଶ ௕ ௕ భ మ = ସ ଶି = ିଵ ଶ ௖ ௖ భ మ = ଼ ଽ\n௔ ௔ భ మ ≠ ௕ ௕ భ మ\nThe given pair of linear equations are consistent."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 205033,
+      "in": 34,
+      "out": 32,
+      "rejects": 2,
+      "promptTokens": 27986,
+      "completionTokens": 8277
+    },
+    "critique": {
+      "calls": 42,
+      "ms": 376667,
+      "in": 32,
+      "out": 24,
+      "rejects": 8,
+      "promptTokens": 20114,
+      "completionTokens": 7499
+    },
+    "solver": {
+      "calls": 183,
+      "ms": 122842,
+      "in": 24,
+      "out": 16,
+      "rejects": 8,
+      "promptTokens": 31837,
+      "completionTokens": 1893
+    },
+    "form": {
+      "calls": 3,
+      "ms": 13334,
+      "in": 16,
+      "out": 9,
+      "rejects": 7,
+      "promptTokens": 759,
+      "completionTokens": 228
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 18,
+      "ms": 4165,
+      "in": 9,
+      "out": 3,
+      "rejects": 6,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 141855,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6852,
+      "completionTokens": 3063
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "What is the correct value of the expression 8 + 4 × 2 – 6 according to the rules in the passage?",
+      "ms": {
+        "draft": 4990,
+        "critique": 8545,
+        "solver": 2612,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an 'expression' as defined in the passage?",
+      "ms": {
+        "draft": 4990,
+        "critique": 9232,
+        "solver": 3068,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which symbol is used to show that two expressions are not equal?",
+      "ms": {
+        "draft": 4990,
+        "critique": 8229,
+        "solver": 1838,
+        "form": 4240
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the value of the expression 210 ÷ {125 - [5 + 3 (14-9)]} according to the rules in the passage?",
+      "ms": {
+        "draft": 4990,
+        "critique": 7279,
+        "solver": 3165
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for a letter that represents an unknown number in an equation?",
+      "ms": {
+        "draft": 7970,
+        "critique": 9813
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a single-variable equation?",
+      "ms": {
+        "draft": 7970,
+        "critique": 9231
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the correct value of the expression 4 + {100 ÷ [3 (7- 5) + 4]} according to the rules in the passage?",
+      "ms": {
+        "draft": 4990,
+        "critique": 9786,
+        "solver": 15793,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 3 times a number is 24, what is the number?",
+      "ms": {
+        "draft": 7970,
+        "critique": 8500,
+        "solver": 2359,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a solution to the equation x + 6 = 7?",
+      "ms": {
+        "draft": 7970,
+        "critique": 8897
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number is tripled and the result is 75, what is the number?",
+      "ms": {
+        "draft": 7970,
+        "critique": 7483
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the sum of two consecutive natural numbers is 131, what is the smaller number?",
+      "ms": {
+        "draft": 7970,
+        "critique": 8525
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "If x + 12 = 27, what is the value of x?",
+      "ms": {
+        "draft": 5104,
+        "critique": 8365,
+        "solver": 17074
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "If 23 - n = 12, what is the value of n?",
+      "ms": {
+        "draft": 5104,
+        "critique": 8381,
+        "solver": 16758
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following pairs shows an equality?",
+      "ms": {
+        "draft": 5104,
+        "critique": 8788
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the value of 24 ÷ (3 + 5) - 2?",
+      "ms": {
+        "draft": 5531,
+        "critique": 11234
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 4 times a number is 24, what is the number?",
+      "ms": {
+        "draft": 6669,
+        "critique": 15055
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the sum of a number and its triple is 24, what is the number?",
+      "ms": {
+        "draft": 5531,
+        "critique": 9470,
+        "solver": 21194
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a variable?",
+      "ms": {
+        "draft": 6669,
+        "critique": 10087,
+        "solver": 18968
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the equation 3x = 75, what is the value of x?",
+      "ms": {
+        "draft": 6669,
+        "critique": 12073,
+        "solver": 17904
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an 'expression' as defined in the passage?",
+      "ms": {
+        "draft": 6025,
+        "critique": 8692,
+        "solver": 2470,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following expressions is equal to 21?",
+      "ms": {
+        "draft": 6025,
+        "critique": 9446,
+        "solver": 1779
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Evaluate the expression: 8 + 4 × 2 – 6 using the rules from the passage.",
+      "ms": {
+        "draft": 6025,
+        "critique": 8981,
+        "solver": 12940,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following expressions shows the property of equality where the same number is added to both sides of an equation?",
+      "ms": {
+        "draft": 6025,
+        "critique": 7483,
+        "solver": 10388
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What number should replace the blank in the expression 16 + 4 = ___ + 8 to make the left and right sides equal?",
+      "ms": {
+        "draft": 4990,
+        "critique": 6901,
+        "solver": 2383,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "If 12a = 96, what is the value of a?",
+      "ms": {
+        "draft": 5104,
+        "critique": 9054,
+        "solver": 2342,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of a if 12a = 96?",
+      "ms": {
+        "draft": 5531,
+        "critique": 5979,
+        "solver": 1694,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of x if x + 12 = 27?",
+      "ms": {
+        "draft": 5531,
+        "critique": 6335,
+        "solver": 2403,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of n if 23 - n = 12?",
+      "ms": {
+        "draft": 5531,
+        "critique": 7216,
+        "solver": 2825,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The price of a pant is Rs. 250 more than the price of a shirt, and the total price of both is Rs. 1250. What is the price of the shirt?",
+      "ms": {
+        "draft": 6669,
+        "critique": 11806,
+        "solver": 14987,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following pairs has an equality?",
+      "ms": {
+        "draft": 5531,
+        "critique": 13734,
+        "solver": 2591,
+        "form": 0,
+        "translation": 34726
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which rule is used first while evaluating an expression with multiple operations?",
+      "ms": {
+        "draft": 6025,
+        "critique": 8295,
+        "solver": 2418,
+        "form": 5523,
+        "translation": 53096
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the sum of two consecutive natural numbers is 131, what is the larger number?",
+      "ms": {
+        "draft": 6669,
+        "critique": 10088,
+        "solver": 18063,
+        "form": 6987,
+        "translation": 50099
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the value of 24 ÷ (3 + 5) - 2?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "If the sum of a number and its triple is 24, what is the number?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the correct value of the expression 8 + 4 × 2 – 6 according to the rules in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of an 'expression' as defined in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which symbol is used to show that two expressions are not equal?",
+      "reason": "options 0 and 1 are the same (\"=\"); options 0 and 2 are the same (\"=\"); options 0 and 3 are the same (\"=\"); options 1 and 2 are the same (\"≠\"); options 1 and 3 are the same (\"≠\"); options 2 and 3 are the same (\">\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What is the value of the expression 210 ÷ {125 - [5 + 3 (14-9)]} according to the rules in the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for a letter that represents an unknown number in an equation?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a single-variable equation?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the correct value of the expression 4 + {100 ÷ [3 (7- 5) + 4]} according to the rules in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If 3 times a number is 24, what is the number?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, but the student may have thought that 3 × 8 …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is a solution to the equation x + 6 = 7?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a number is tripled and the result is 75, what is the number?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the sum of two consecutive natural numbers is 131, what is the smaller number?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "If x + 12 = 27, what is the value of x?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "If 23 - n = 12, what is the value of n?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following pairs shows an equality?",
+      "reason": "the critic finds option 2 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the value of 24 ÷ (3 + 5) - 2?",
+      "reason": "the critic finds option 3 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If 4 times a number is 24, what is the number?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the sum of a number and its triple is 24, what is the number?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a variable?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the equation 3x = 75, what is the value of x?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of an 'expression' as defined in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following expressions is equal to 21?",
+      "reason": "the solver picked option 2 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Evaluate the expression: 8 + 4 × 2 – 6 using the rules from the passage.",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following expressions shows the property of equality where the same number is added to both sides of an equation?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "What number should replace the blank in the expression 16 + 4 = ___ + 8 to make the left and right sides equal?",
+      "reason": "near-duplicate of served question cmvvlxe1s007o0rndgiqo1vky (cosine 0.916 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "If 12a = 96, what is the value of a?",
+      "reason": "near-duplicate of served question cmvvlxe1f00760rndmq9pl9cv (cosine 0.968 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the value of a if 12a = 96?",
+      "reason": "near-duplicate of served question cmvvlxe1f00760rndmq9pl9cv (cosine 0.907 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the value of x if x + 12 = 27?",
+      "reason": "near-duplicate of served question cmvvlxe14006u0rndo95poqb0 (cosine 0.924 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the value of n if 23 - n = 12?",
+      "reason": "near-duplicate of served question cmvvlxe1c00700rndtnzz9ue5 (cosine 0.941 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "The price of a pant is Rs. 250 more than the price of a shirt, and the total price of both is Rs. 1250. What is the price of the shirt?",
+      "reason": "near-duplicate of served question cmvvlxe1x007u0rndkagyhb4t (cosine 0.975 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

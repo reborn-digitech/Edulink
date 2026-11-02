@@ -1,0 +1,814 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T06:00:31.601Z",
+  "finishedAt": "2026-11-02T06:12:22.691Z",
+  "seconds": 711,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "gecu1",
+    "document": "ncert/7/science/gecu107.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 7 — Heat Transfer in Nature",
+    "edition": "Reprint 2026-27",
+    "chunks": 16,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2021 — solutions or answer key]\n7. D. Water will lose more amount of energy while first converting to ice and releasing heat equivalent to\nthe latent heat.",
+      "[INJSO 2022 — solutions or answer key]\n5. C. Aluminium being a metal is a good conductor of heat, hence heat flow through conduction cannot be low.\nBecause of highly reflective surface and non-porous nature, heat loss through radiation and convection is low.",
+      "[INJSO 2022 — question paper]\n5. A thin aluminium foil is often placed on a bowl of food to keep the food warm. The foil does this by\npreventing heat flow through\nA. radiation only B. convection only\nC. radiation and convection only D. radiation, conduction, and convection",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n7. B. Cooking of food"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 192502,
+      "in": 43,
+      "out": 41,
+      "rejects": 3,
+      "promptTokens": 32265,
+      "completionTokens": 11831
+    },
+    "critique": {
+      "calls": 59,
+      "ms": 354716,
+      "in": 41,
+      "out": 32,
+      "rejects": 9,
+      "promptTokens": 26062,
+      "completionTokens": 10211
+    },
+    "solver": {
+      "calls": 272,
+      "ms": 136032,
+      "in": 32,
+      "out": 30,
+      "rejects": 2,
+      "promptTokens": 52034,
+      "completionTokens": 2875
+    },
+    "form": {
+      "calls": 13,
+      "ms": 43159,
+      "in": 30,
+      "out": 15,
+      "rejects": 15,
+      "promptTokens": 7038,
+      "completionTokens": 1412
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 59,
+      "ms": 9308,
+      "in": 15,
+      "out": 9,
+      "rejects": 6,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 346778,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 22197,
+      "completionTokens": 11769
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 2,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which process is described in the passage as the transfer of heat from the hotter end of an object to the colder end?",
+      "ms": {
+        "draft": 5820,
+        "critique": 4506
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why are woollen clothes preferred in winters, as explained in the passage?",
+      "ms": {
+        "draft": 5820,
+        "critique": 5210,
+        "solver": 10981,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a poor conductor of heat, as described in the passage?",
+      "ms": {
+        "draft": 5820,
+        "critique": 5470,
+        "solver": 11013,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the experiment in the passage, which pin is expected to fall first when the metal strip is heated?",
+      "ms": {
+        "draft": 5820,
+        "critique": 6607,
+        "solver": 15628,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is air considered an effective insulator in the context of heat transfer, as mentioned in the passage?",
+      "ms": {
+        "draft": 5820,
+        "critique": 7154,
+        "solver": 12994,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do we feel more comfortable wearing light-coloured clothes in summers?",
+      "ms": {
+        "draft": 4194,
+        "critique": 5077
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which process of heat transfer does not require a medium?",
+      "ms": {
+        "draft": 4194,
+        "critique": 6832,
+        "solver": 11167,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A person is sitting near a fire and feels warm. Which process of heat transfer is primarily responsible for this?",
+      "ms": {
+        "draft": 4194,
+        "critique": 6017,
+        "solver": 1324,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which process does heat transfer occur due to the actual movement of particles?",
+      "ms": {
+        "draft": 4194,
+        "critique": 4794,
+        "solver": 10926,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best explains why water seeps fastest through gravel compared to sand and clay?",
+      "ms": {
+        "draft": 6906,
+        "critique": 6192
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a bukhari, which process of heat transfer is responsible for warming the room?",
+      "ms": {
+        "draft": 4194,
+        "critique": 6678,
+        "solver": 1328,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the process of infiltration as mentioned in the passage?",
+      "ms": {
+        "draft": 6906,
+        "critique": 7779
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the water cycle diagram, which process involves the transformation of liquid water into water vapour?",
+      "ms": {
+        "draft": 4194,
+        "critique": 8230,
+        "solver": 12329,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a saucepan is made of two different materials, one for the body and one for the handle, which of the following is likely true?",
+      "ms": {
+        "draft": 6906,
+        "critique": 7284,
+        "solver": 10981,
+        "form": 3245
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student conducted an experiment to find out the rate of seepage through different materials. She filled a container with a material and poured water on top. She observed that water took a long time to reach the bottom. Which of the following materials is she most likely using?",
+      "ms": {
+        "draft": 6906,
+        "critique": 7130
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the activity described in the passage, what would happen if the bottles were filled with materials that have very small spaces between the particles?",
+      "ms": {
+        "draft": 6906,
+        "critique": 7016,
+        "solver": 12141,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is NOT a method of heat transfer according to the passage?",
+      "ms": {
+        "draft": 6906,
+        "critique": 5810,
+        "solver": 11879
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A shopkeeper serves you cold lassi in a tumbler. By chance, the tumbler had a small leak. You were given another tumbler by the shopkeeper to put the leaky tumbler in it. Will this arrangement help to keep the lassi cold for a longer time?",
+      "ms": {
+        "draft": 3003,
+        "critique": 6672,
+        "solver": 1884,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a heat transfer experiment, pins are placed on a metal strip and a candle is lit below it. Which pins are likely to fall first?",
+      "ms": {
+        "draft": 12830,
+        "critique": 6451
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following materials is a good conductor of heat?",
+      "ms": {
+        "draft": 12830,
+        "critique": 6336,
+        "solver": 1283,
+        "form": 2584
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is water able to seep through gravel faster than through clay?",
+      "ms": {
+        "draft": 12830,
+        "critique": 6190,
+        "solver": 2165,
+        "form": 2363
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of heat transfer by convection?",
+      "ms": {
+        "draft": 12830,
+        "critique": 5273,
+        "solver": 10877,
+        "form": 3558
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which process of heat transfer does not require a medium?",
+      "ms": {
+        "draft": 13453,
+        "critique": 5722
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which type of clothing would be most suitable to wear in winter to stay warm?",
+      "ms": {
+        "draft": 13453,
+        "critique": 6824
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student places a metal bowl and a plastic bowl of the same size and shape in the sun. Which bowl will heat up faster and why?",
+      "ms": {
+        "draft": 13453,
+        "critique": 7090
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a pan being heated on a stove, which process of heat transfer is responsible for the water at the bottom of the pan warming up?",
+      "ms": {
+        "draft": 13453,
+        "critique": 7003,
+        "solver": 11099
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Where do ice cubes get heat from to melt into water?",
+      "ms": {
+        "draft": 2868,
+        "critique": 5823,
+        "solver": 1968,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main reason for using hollow bricks in the outer walls of houses in hot regions?",
+      "ms": {
+        "draft": 2868,
+        "critique": 6236,
+        "solver": 7989,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is the best reason for using hollow bricks to construct the outer walls of houses in hot regions?",
+      "ms": {
+        "draft": 3003,
+        "critique": 5585,
+        "solver": 1564,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A thin aluminium foil is often placed on a bowl of food to keep the food warm. The foil does this by preventing heat flow through",
+      "ms": {
+        "draft": 3003,
+        "critique": 6858,
+        "solver": 2075,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the process of surface water seeping through soil and rocks?",
+      "ms": {
+        "draft": 12830,
+        "critique": 6876,
+        "solver": 10444,
+        "form": 2392
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do houses in the Himalayas have walls made of two wooden layers filled with cow dung and mud?",
+      "ms": {
+        "draft": 3997,
+        "critique": 6145,
+        "solver": 10516,
+        "form": 2927
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a method of heat transfer in solids?",
+      "ms": {
+        "draft": 3003,
+        "critique": 5988,
+        "solver": 1548,
+        "form": 0,
+        "translation": 30306
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of convection?",
+      "ms": {
+        "draft": 3003,
+        "critique": 5829,
+        "solver": 1171,
+        "form": 0,
+        "translation": 34322
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the air around a candle flame when it is placed below a paper cup in Activity 7.2?",
+      "ms": {
+        "draft": 3997,
+        "critique": 6407,
+        "solver": 1560,
+        "form": 1849,
+        "translation": 33846
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements is true about heat transfer in solids?",
+      "ms": {
+        "draft": 3003,
+        "critique": 6780,
+        "solver": 1188,
+        "form": 0,
+        "translation": 34641
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In the activity with the beaker and potassium permanganate, why does the coloured streak move up in the middle and then come down from the sides?",
+      "ms": {
+        "draft": 3997,
+        "critique": 5734,
+        "solver": 807,
+        "form": 2802,
+        "translation": 38492
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a metal pan and a clay pot are both used to boil water, which one will transfer heat more efficiently, and why?",
+      "ms": {
+        "draft": 5820,
+        "critique": 7036,
+        "solver": 11119,
+        "form": 3028,
+        "translation": 42620
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a region with limited rainfall, a farmer uses a thin aluminum foil on a bowl of food to keep it warm. Which type of heat transfer is the foil primarily preventing?",
+      "ms": {
+        "draft": 12830,
+        "critique": 7419,
+        "solver": 11427,
+        "form": 2627,
+        "translation": 43712
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why does the sea breeze occur during the day in coastal areas?",
+      "ms": {
+        "draft": 3997,
+        "critique": 4871,
+        "solver": 1055,
+        "form": 2174,
+        "translation": 41305
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why does the water cycle help in redistributing water across the Earth?",
+      "ms": {
+        "draft": 13453,
+        "critique": 7279,
+        "solver": 10574,
+        "form": 1,
+        "translation": 42253
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"Why does smoke rise up when something burns?\",\n      \"options"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Why does the movement of cooler air from land to sea happen?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is not a method of heat transfer?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which process is described in the passage as the transfer of heat from the hotter end of an object to the colder end?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Why are woollen clothes preferred in winters, as explained in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a poor conductor of heat, as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the experiment in the passage, which pin is expected to fall first when the metal strip is heated?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is air considered an effective insulator in the context of heat transfer, as mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why do we feel more comfortable wearing light-coloured clothes in summers?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which process of heat transfer does not require a medium?",
+      "reason": "option 3 is a catch-all (\"3: None of the above\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A person is sitting near a fire and feels warm. Which process of heat transfer is primarily responsible for this?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In which process does heat transfer occur due to the actual movement of particles?",
+      "reason": "option 3 is a catch-all (\"All of the above\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best explains why water seeps fastest through gravel compared to sand and clay?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a bukhari, which process of heat transfer is responsible for warming the room?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best describes the process of infiltration as mentioned in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the water cycle diagram, which process involves the transformation of liquid water into water vapour?",
+      "reason": "figure: figure spec refused: spec.parts: waterCycle has no label \"transpiration\" (it has sun, evaporation, condensation, precipitation, water)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a saucepan is made of two different materials, one for the body and one for the handle, which of the following is likely true?",
+      "reason": "options 0 and 1 say the same thing (\"The body is a poor conductor and the handle is a good conductor\" / \"The body is a good conductor and the handle is a poor conductor\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student conducted an experiment to find out the rate of seepage through different materials. She filled a container with a material and poured water on top. She observed that water took a long time to reach the bottom. Which of the following materials is she most likely using?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the activity described in the passage, what would happen if the bottles were filled with materials that have very small spaces between the particles?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is NOT a method of heat transfer according to the passage?",
+      "reason": "after redrafting distractors 0, 1, 2: the critic finds option 2 correct, the key is 3"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A shopkeeper serves you cold lassi in a tumbler. By chance, the tumbler had a small leak. You were given another tumbler by the shopkeeper to put the leaky tumbler in it. Will this arrangement help to keep the lassi cold for a longer time?",
+      "reason": "options 0 and 2 say the same thing (\"Yes, because the outer tumbler will reduce heat transfer\" / \"Yes, because the outer tumbler will increase heat transfer\"); options 0 and 3 say the same thing (\"Yes, because the outer tumbler will reduce heat transfer\" / \"No, because the outer tumbler will reduce heat transfer\"); options 1 and 2 say the same thing (\"No, because the outer tumbler will increase heat transfer\" / \"Yes, because the outer tumbler will increase heat transfer\"); options 1 and 3 say the same thing (\"No, because the outer tumbler will increase heat transfer\" / \"No, because the outer tumbler will reduce heat transfer\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In a heat transfer experiment, pins are placed on a metal strip and a candle is lit below it. Which pins are likely to fall first?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following materials is a good conductor of heat?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is copper, not wood, plastic, or glass. The p…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is water able to seep through gravel faster than through clay?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is that gravel has larger spaces between part…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is an example of heat transfer by convection?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which process of heat transfer does not require a medium?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which type of clothing would be most suitable to wear in winter to stay warm?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student places a metal bowl and a plastic bowl of the same size and shape in the sun. Which bowl will heat up faster and why?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In a pan being heated on a stove, which process of heat transfer is responsible for the water at the bottom of the pan warming up?",
+      "reason": "after redraft: the solver picked option 1 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Where do ice cubes get heat from to melt into water?",
+      "reason": "near-duplicate of served question cmvethxcq01lmgod8t8kqi4gx (cosine 0.947 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the main reason for using hollow bricks in the outer walls of houses in hot regions?",
+      "reason": "near-duplicate of served question cmvfzt63301itgpfhm0ezrah8 (cosine 0.936 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Which of the following is the best reason for using hollow bricks to construct the outer walls of houses in hot regions?",
+      "reason": "near-duplicate of served question cmvfzt63301itgpfhm0ezrah8 (cosine 0.932 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A thin aluminium foil is often placed on a bowl of food to keep the food warm. The foil does this by preventing heat flow through",
+      "reason": "near-duplicate of served question cmvfzt63101ingpfh9g16m6s4 (cosine 0.946 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the term used to describe the process of surface water seeping through soil and rocks?",
+      "reason": "near-duplicate of served question cmviye6m70eucgpfh4fc5sf66 (cosine 0.931 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Why do houses in the Himalayas have walls made of two wooden layers filled with cow dung and mud?",
+      "reason": "near-duplicate of served question cmviye6m20eu6gpfh8wi5ee4i (cosine 0.969 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

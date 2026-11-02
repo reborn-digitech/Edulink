@@ -21,241 +21,49 @@
   "board": "BALBHARATI",
   "book": "७ वी सामान्य विज्ञान इंग्रजी",
   "edition": "First Edition 2017",
-  "generatedAt": "2026-10-31T16:23:03.717Z",
+  "generatedAt": "2026-11-02T03:47:16.903Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "What is the SI unit of speed and velocity?",
-      "choices": [
-        "km/h",
-        "m/s",
-        "cm/s",
-        "km/s"
-      ],
-      "answerIndex": 1,
-      "solution": "The SI unit of speed and velocity is metres per second (m/s) because it is derived from the base SI units of length (metre) and time (second). Other options like km/h or cm/s are commonly used but are not the standard SI units. km/s is also not the SI unit as it uses kilometre instead of metre.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "गति और वेग का एसआई मात्रक क्या है?",
-          "choices": [
-            "किमी/घंटा",
-            "मी/से",
-            "सेमी/से",
-            "किमी/से"
-          ],
-          "solution": "गति और वेग का एसआई मात्रक मीटर प्रति सेकंड (मी/से) है क्योंकि यह लंबाई (मीटर) और समय (सेकंड) के मूल एसआई मात्रकों से व्युत्पन्न है। अन्य विकल्प जैसे किमी/घंटा या सेमी/से आमतौर पर उपयोग में लाए जाते हैं लेकिन एसआई मात्रक नहीं हैं। किमी/से भी एसआई मात्रक नहीं है क्योंकि यह मीटर के स्थान पर किलोमीटर का उपयोग करता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "वेग आणि वेगाचे एसआय एकक काय आहे?",
-          "choices": [
-            "किमी/तास",
-            "मी/सेकंद",
-            "सेमी/सेकंद",
-            "किमी/सेकंद"
-          ],
-          "solution": "वेग आणि वेगाचे एसआय एकक मीटर प्रति सेकंद (मी/सेकंद) आहे कारण ते लांबी (मीटर) आणि वेळ (सेकंद) या मूलभूत एसआय एककांपासून विकसित केले गेले आहे. किमी/तास किंवा सेमी/सेकंद या इतर विकल्प जास्तीत जास्त वापरले जातात परंतु ते मानक एसआय एकक नाहीत. किमी/सेकंद देखील एसआय एकक नाही कारण ते मीटर ऐवजी किमी वापरते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for SI units.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Uses a common non-SI unit",
-        null,
-        "Confuses with other units of speed",
-        "Uses an incorrect unit for velocity"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The question is straightforward and correctly answered with option 1 (m/s). The author's reasoning aligns with the correct SI unit for speed and velocity.",
-      "sources": [
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 53,
-          "pageStart": 56,
-          "pageEnd": 56,
-          "headingPath": [
-            "7. Motion, Force and Work"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 54,
-          "pageStart": 57,
-          "pageEnd": 57,
-          "headingPath": [
-            "7. Motion, Force and Work"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 55,
-          "pageStart": 57,
-          "pageEnd": 58,
-          "headingPath": [
-            "7. Motion, Force and Work"
-          ]
-        }
-      ],
-      "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T16:23:03.717Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "What is the unit of force in the SI system?",
-      "choices": [
-        "dyne",
-        "erg",
-        "Joule",
-        "Newton"
-      ],
-      "answerIndex": 3,
-      "solution": "The correct unit of force in the SI system is the Newton. Dyne and erg are units from the CGS system, which is not used in the SI system. Joule is a unit of energy or work, not force.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "SI प्रणाली में बल का मात्रक क्या है?",
-          "choices": [
-            "डाइन",
-            "अर्ग",
-            "जूल",
-            "न्यूटन"
-          ],
-          "solution": "SI प्रणाली में बल का सही मात्रक न्यूटन है। डाइन और अर्ग CGS प्रणाली के मात्रक हैं, जो SI प्रणाली में उपयोग नहीं किए जाते हैं। जूल ऊर्जा या कार्य का मात्रक है, बल का नहीं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "SI प्रणालीमध्ये बलाचे एकक कोणते आहे?",
-          "choices": [
-            "डायन",
-            "अर्ग",
-            "जूल",
-            "न्यूटन"
-          ],
-          "solution": "SI प्रणालीमध्ये बलाचे योग्य एकक न्यूटन आहे. डायन आणि अर्ग हे CGS प्रणालीमधील एकक आहेत, जे SI प्रणालीत वापरले जात नाहीत. जूल हे ऊर्जा किंवा कार्याचे एकक आहे, बलाचे नव्हे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses SI unit with CGS unit for force",
-        "confuses CGS unit with SI unit",
-        "confuses unit of work with unit of force",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is Newton, as it is the SI unit of force. The other options are from the CGS system or are units of energy/work, which matches the author's reasoning.",
-      "sources": [
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 56,
-          "pageStart": 58,
-          "pageEnd": 59,
-          "headingPath": [
-            "7. Motion, Force and Work"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 57,
-          "pageStart": 59,
-          "pageEnd": 60,
-          "headingPath": [
-            "7. Motion, Force and Work",
-            "t t t"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 58,
-          "pageStart": 60,
-          "pageEnd": 60,
-          "headingPath": [
-            "7. Motion, Force and Work",
-            "t t t"
-          ]
-        }
-      ],
-      "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T16:23:03.717Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
       "difficulty": 2,
-      "stem": "What is the unit of work in the SI system?",
+      "stem": "What is the unit of measurement for distance and displacement?",
       "choices": [
-        "Erg",
-        "Dyne",
-        "Joule",
-        "Newton"
+        "Kilometre",
+        "Hour",
+        "Metre",
+        "Second"
       ],
       "answerIndex": 2,
-      "solution": "The unit of work in the SI system is Joule. Erg and dyne are units of work and force in the CGS system, while Newton is the unit of force.",
+      "solution": "The unit of measurement for distance and displacement is the metre. The other options are units for other quantities like speed, time, or distance in different contexts.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "SI प्रणाली में कार्य का मात्रक क्या है?",
+          "stem": "दूरी और विस्थापन के मापन की इकाई क्या है?",
           "choices": [
-            "अर्ग",
-            "डाइन",
-            "जूल",
-            "न्यूटन"
+            "किलोमीटर",
+            "घंटा",
+            "मीटर",
+            "सेकंड"
           ],
-          "solution": "SI प्रणाली में कार्य का मात्रक जूल है। अर्ग और डाइन CGS प्रणाली में कार्य और बल के मात्रक हैं, जबकि न्यूटन बल का मात्रक है।",
+          "solution": "दूरी और विस्थापन के मापन की इकाई मीटर है। अन्य विकल्प अन्य मात्राओं जैसे गति, समय या अलग-अलग संदर्भ में दूरी के लिए इकाइयाँ हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, with correct technical terms and logical structure. The solution clearly explains why the other options are incorrect.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi technical terms used for units of measurement.",
           "flag": null
         },
         "mr": {
-          "stem": "कार्याची एकके SI प्रणालीत काय आहे?",
+          "stem": "अंतर आणि विस्थापनाचे मोजमापाचे एकक कोणते आहे?",
           "choices": [
-            "अर्ग",
-            "डायन",
-            "जूल",
-            "न्यूटन"
+            "किलोमीटर",
+            "तास",
+            "मीटर",
+            "सेकंद"
           ],
-          "solution": "SI प्रणालीत कार्याची एकके जूल आहे. अर्ग आणि डायन ही कार्य आणि बलाची एकके CGS प्रणालीत आहेत, तर न्यूटन बलाची एकके आहे.",
+          "solution": "अंतर आणि विस्थापनाचे मोजमापाचे एकक मीटर आहे. इतर विकल्पांमध्ये वेग, वेळ किंवा इतर संदर्भांमध्ये अंतराचे एकक असतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the technical terminology used in Marathi textbooks.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for units of measurement.",
           "flag": null
         }
       },
@@ -264,10 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses CGS system units with SI system units",
-        "Confuses CGS system units with SI system units",
+        "Confuses distance units with larger measurements, thinking km is the standard SI unit for displacement",
+        "Confuses time units with distance units",
         null,
-        "Confuses unit of force with unit of work"
+        "Confuses time unit with distance unit"
       ],
       "solverAnswers": [
         2,
@@ -277,104 +85,7 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is Joule, as it is the SI unit of work. The other options are either CGS units (erg, dyne) or units of force (Newton), which aligns with the author's reasoning.",
-      "sources": [
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 56,
-          "pageStart": 58,
-          "pageEnd": 59,
-          "headingPath": [
-            "7. Motion, Force and Work"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 57,
-          "pageStart": 59,
-          "pageEnd": 60,
-          "headingPath": [
-            "7. Motion, Force and Work",
-            "t t t"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 58,
-          "pageStart": 60,
-          "pageEnd": 60,
-          "headingPath": [
-            "7. Motion, Force and Work",
-            "t t t"
-          ]
-        }
-      ],
-      "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T16:23:03.717Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Ranjit travels from his house to school via points A, B, and C. If AB = 500 m, BC = 700 m, and CD = 300 m, what is the total distance he covers?",
-      "choices": [
-        "1300 m",
-        "1500 m",
-        "1700 m",
-        "1200 m"
-      ],
-      "answerIndex": 1,
-      "solution": "The total distance Ranjit covers is the sum of the individual segments: AB + BC + CD = 500 m + 700 m + 300 m = 1500 m. The correct option states 1500 m, which is the total distance. The other options give incorrect sums of the distances.",
-      "checkExpr": "500+700+300",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "रंजीत अपने घर से स्कूल तक बिंदुओं A, B, और C के माध्यम से जाता है। यदि AB = 500 मी, BC = 700 मी, और CD = 300 मी है, तो वह कुल कितनी दूरी तय करता है?",
-          "choices": [
-            "1300 मी",
-            "1500 मी",
-            "1700 मी",
-            "1200 मी"
-          ],
-          "solution": "रंजीत द्वारा तय की गई कुल दूरी व्यक्तिगत खंडों के योग है: AB + BC + CD = 500 मी + 700 मी + 300 मी = 1500 मी। सही विकल्प 1500 मी बताता है, जो कुल दूरी है। अन्य विकल्प दूरियों के गलत योग देते हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, technical terms are appropriate for Hindi-medium curriculum, and the question structure matches the original.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "राजीत घरापासून शाळेसाठी बिंदूं A, B आणि C मार्गे जातो. जर AB = 500 मी, BC = 700 मी आणि CD = 300 मी असेल, तर तो कापलेला एकूण अंतर किती असेल?",
-          "choices": [
-            "1300 मी",
-            "1500 मी",
-            "1700 मी",
-            "1200 मी"
-          ],
-          "solution": "राजीत जाऊन कापलेला एकूण अंतर विशिष्ट खंडांच्या बेरजेने असतो: AB + BC + CD = 500 मी + 700 मी + 300 मी = 1500 मी. सही विकल्प 1500 मी दर्शवतो, जो एकूण अंतर आहे. इतर विकल्प अंतरांच्या चुकीच्या बेरजेने दर्शवतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for distances and mathematical operations.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Adds AB + BC but forgets to include CD",
-        null,
-        "Adding AB + BC + CD but subtracting CD instead of adding it",
-        "Confuses total distance with displacement by adding only AB + CD instead of all segments"
-      ],
-      "solverAnswers": [
-        2,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1500 m (option 1), as the total distance is the sum of AB + BC + CD. The author's reasoning for the distractors is mostly accurate, though the reason for option 2 is not a real misconception.",
+      "critique": "The correct answer is 'Metre' as it is the SI unit for both distance and displacement. The other options are units for time (hour, second) and a larger unit of distance (kilometre), which are common misconceptions.",
       "sources": [
         {
           "document": "balbharati/7/science/703020012.pdf",
@@ -405,239 +116,47 @@
         }
       ],
       "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T16:23:03.717Z",
+      "generatedAt": "2026-11-02T03:47:16.903Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "A force of 2N is applied to a block, causing it to be displaced by 3m in the direction of the force. What is the work done?",
+      "difficulty": 4,
+      "stem": "A car travels 10 km in 10 minutes. What is its speed in km/h?",
       "choices": [
-        "1J",
-        "2J",
-        "3J",
-        "6J"
-      ],
-      "answerIndex": 3,
-      "solution": "Work done is calculated as force multiplied by displacement. Here, 2N × 3m = 6J. The other options do not correctly apply the formula for work.",
-      "checkExpr": "2*3",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "2 न्यूटन का बल एक ब्लॉक पर लगाया जाता है, जिसके कारण बल की दिशा में 3 मीटर का विस्थापन होता है। किया गया कार्य क्या है?",
-          "choices": [
-            "1 जूल",
-            "2 जूल",
-            "3 जूल",
-            "6 जूल"
-          ],
-          "solution": "किया गया कार्य बल के गुणनफल द्वारा गणना किया जाता है। यहां, 2 न्यूटन × 3 मीटर = 6 जूल। अन्य विकल्प सही सूत्र का सही ढंग से उपयोग नहीं करते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard physics terminology as taught in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "2N बल एका ब्लॉकवर लावला जातो, ज्यामुळे बलाच्या दिशेत 3m अंतर विस्थापित होते. कार्य किती असेल?",
-          "choices": [
-            "1J",
-            "2J",
-            "3J",
-            "6J"
-          ],
-          "solution": "कार्य केले जाते बल गुणिले विस्थापन. इथे, 2N × 3m = 6J. इतर विकल्प सहीपणे कार्याच्या सूत्राचा अवलंब करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi-medium textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Incorrectly adds the values instead of multiplying",
-        "Incorrectly uses one of the values as the result",
-        "Incorrectly uses the displacement as the result",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly applies the formula for work (W = F × d) and arrives at the correct answer of 6J. The distractors reflect common misconceptions such as addition, using one value directly, or using displacement alone.",
-      "sources": [
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 56,
-          "pageStart": 58,
-          "pageEnd": 59,
-          "headingPath": [
-            "7. Motion, Force and Work"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 57,
-          "pageStart": 59,
-          "pageEnd": 60,
-          "headingPath": [
-            "7. Motion, Force and Work",
-            "t t t"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 58,
-          "pageStart": 60,
-          "pageEnd": 60,
-          "headingPath": [
-            "7. Motion, Force and Work",
-            "t t t"
-          ]
-        }
-      ],
-      "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T16:23:03.717Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If a car travels a distance of 100 km in 2 hours, what is its average speed?",
-      "choices": [
-        "20 km/h",
-        "50 km/h",
+        "10 km/h",
+        "60 km/h",
         "100 km/h",
-        "200 km/h"
+        "600 km/h"
       ],
       "answerIndex": 1,
-      "solution": "Average speed is calculated by dividing the total distance by the total time. The car travels 100 km in 2 hours, so the average speed is 100 km ÷ 2 hours = 50 km/h. The correct option is 50 km/h. The other options result from incorrect calculations or misunderstandings of the formula.",
-      "checkExpr": "100/2",
+      "solution": "Speed is calculated as distance divided by time. Since 10 minutes is 1/6 of an hour, the speed is 10 km / (10/60) h = 60 km/h. The other options are incorrect calculations based on misinterpreting the time unit.",
+      "checkExpr": "10/(10/60)",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक कार 2 घंटे में 100 किमी की दूरी तय करती है, तो इसकी औसत गति क्या है?",
+          "stem": "एक कार 10 मिनट में 10 किमी यात्रा करती है। इसकी गति किमी/घंटा में क्या है?",
           "choices": [
-            "20 किमी/घंटा",
-            "50 किमी/घंटा",
+            "10 किमी/घंटा",
+            "60 किमी/घंटा",
             "100 किमी/घंटा",
-            "200 किमी/घंटा"
+            "600 किमी/घंटा"
           ],
-          "solution": "औसत गति कुल दूरी को कुल समय से विभाजित करके निकाली जाती है। कार 2 घंटे में 100 किमी दूरी तय करती है, इसलिए औसत गति 100 किमी ÷ 2 घंटा = 50 किमी/घंटा है। सही विकल्प 50 किमी/घंटा है। अन्य विकल्प गलत गणना या सूत्र के गलत समझ के कारण हैं।",
+          "solution": "गति की गणना दूरी को समय से विभाजित करके की जाती है। चूंकि 10 मिनट एक घंटे के 1/6 होता है, इसलिए गति 10 किमी / (10/60) घंटा = 60 किमी/घंटा है। अन्य विकल्प समय इकाई के गलत अर्थात्व के कारण गलत हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard Hindi technical terms for speed and units.",
           "flag": null
         },
         "mr": {
-          "stem": "एक गाडी 2 तासात 100 किमी अंतर जाते, तर तिची सरासरी वेग किती असेल?",
+          "stem": "एक गाडी 10 मिनिटांमध्ये 10 किमी चालते. तिची गती किमी/तास मध्ये किती असेल?",
           "choices": [
-            "20 किमी/तास",
-            "50 किमी/तास",
+            "10 किमी/तास",
+            "60 किमी/तास",
             "100 किमी/तास",
-            "200 किमी/तास"
+            "600 किमी/तास"
           ],
-          "solution": "सरासरी वेग एकूण अंतर भागिले एकूण वेळ असा गणला जातो. गाडी 2 तासात 100 किमी जाते, म्हणून सरासरी वेग 100 किमी ÷ 2 तास = 50 किमी/तास असेल. योग्य पर्याय 50 किमी/तास आहे. इतर पर्याय अपयश गणना किंवा सूत्राच्या चुकीच्या समजुतीमुळे येतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms for 'average speed' and 'distance'.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Multiplies distance by time instead of dividing",
-        null,
-        "Fails to divide properly",
-        "Incorrectly assumes the total time is 1 hour"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and matches the key. The calculation of average speed as distance divided by time is accurate, and the reasoning for the distractors aligns with common student misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 53,
-          "pageStart": 56,
-          "pageEnd": 56,
-          "headingPath": [
-            "7. Motion, Force and Work"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 54,
-          "pageStart": 57,
-          "pageEnd": 57,
-          "headingPath": [
-            "7. Motion, Force and Work"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 55,
-          "pageStart": 57,
-          "pageEnd": 58,
-          "headingPath": [
-            "7. Motion, Force and Work"
-          ]
-        }
-      ],
-      "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T16:23:03.717Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "A car moving at a constant velocity is stopped by applying a force of 1000N. It stops after moving 10m. What is the work done by the force?",
-      "choices": [
-        "10000J",
-        "100J",
-        "1000J",
-        "10J"
-      ],
-      "answerIndex": 0,
-      "solution": "Work done is calculated as force multiplied by displacement. Here, 1000N × 10m = 10000J. The other options do not correctly apply the formula for work.",
-      "checkExpr": "1000*10",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक कार एक स्थिर वेग से चल रही है जिसे 1000 न्यूटन के बल लगाकर रोक दिया जाता है। यह 10 मीटर चलने के बाद रुक जाती है। बल द्वारा किया गया कार्य क्या है?",
-          "choices": [
-            "10000 जूल",
-            "100 जूल",
-            "1000 जूल",
-            "10 जूल"
-          ],
-          "solution": "कार्य की गणना बल गुणा विस्थापन द्वारा की जाती है। यहां, 1000 न्यूटन × 10 मीटर = 10000 जूल। अन्य विकल्प सही सूत्र का सही उपयोग नहीं करते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard physics terminology as taught in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एक गाडी स्थिर वेगाने चालत असताना 1000 न्यूटन बल लावून थांबवली जाते. ती 10 मीटर चालून थांबते. बलाने केलेले कार्य किती आहे?",
-          "choices": [
-            "10000 ज्यूल",
-            "100 ज्यूल",
-            "1000 ज्यूल",
-            "10 ज्यूल"
-          ],
-          "solution": "कार्य केले जाते बल गुणिले विस्थापन. इथे, 1000 न्यूटन × 10 मीटर = 10000 ज्यूल. इतर विकल्प योग्यरित्या कार्याच्या सूत्राचा अवलंब करत नाहीत.",
+          "solution": "गती अंतराचे वेळेने भागाकार करून मोजली जाते. 10 मिनिटे एका तासाच्या 1/6 असतात, म्हणून गती 10 किमी / (10/60) तास = 60 किमी/तास असेल. इतर विकल्प वेळेच्या एककाच्या चुकीच्या अर्थाने गणित करून मिळालेल्या असतात.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
           "flag": null
@@ -648,20 +167,115 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Uses the distance directly without converting time to hours.",
         null,
-        "Incorrectly multiplies by 1 instead of 10",
-        "Incorrectly multiplies by 0.1 instead of 10",
-        "Incorrectly multiplies by 0.01 instead of 10"
+        "Multiplies the distance by the time instead of dividing.",
+        "Divides the time by the distance instead of the other way around."
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the key. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 53,
+          "pageStart": 56,
+          "pageEnd": 56,
+          "headingPath": [
+            "7. Motion, Force and Work"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 54,
+          "pageStart": 57,
+          "pageEnd": 57,
+          "headingPath": [
+            "7. Motion, Force and Work"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 55,
+          "pageStart": 57,
+          "pageEnd": 58,
+          "headingPath": [
+            "7. Motion, Force and Work"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T03:47:16.903Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A force of 2N is applied to a 1kg object for 3 seconds. What is the change in velocity of the object?",
+      "choices": [
+        "3 m/s",
+        "4 m/s",
+        "6 m/s",
+        "12 m/s"
+      ],
+      "answerIndex": 2,
+      "solution": "Using the formula F = ma, the acceleration is 2 m/s². Then, using v = u + at, the change in velocity is 2 * 3 = 6 m/s. The other options are incorrect due to miscalculations or misunderstanding the relationship between force, mass, and time.",
+      "checkExpr": "2*3",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "2N के बल को 1 किग्रा वस्तु पर 3 सेकंड के लिए लगाया जाता है। वस्तु के वेग में परिवर्तन क्या है?",
+          "choices": [
+            "3 मी/से",
+            "4 मी/से",
+            "6 मी/से",
+            "12 मी/से"
+          ],
+          "solution": "सूत्र F = ma का उपयोग करके त्वरण 2 मी/से² है। फिर v = u + at का उपयोग करके वेग में परिवर्तन 2 × 3 = 6 मी/से है। अन्य विकल्प गलत गणना या बल, द्रव्यमान और समय के बीच संबंध के अंजान होने के कारण गलत हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard physics terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "1 किग्रॅ वस्तूवर 2 न्यूटन बल 3 सेकंदासाठी लावले गेले. वस्तूच्या वेगातील बदल किती आहे?",
+          "choices": [
+            "3 मी/से",
+            "4 मी/से",
+            "6 मी/से",
+            "12 मी/से"
+          ],
+          "solution": "सूत्र F = ma वापरून, त्वरण 2 मी/से² आहे. नंतर v = u + at वापरून, वेगातील बदल 2 × 3 = 6 मी/से आहे. इतर विकल्प चुकीच्या गणना किंवा बल, द्रव्यमान आणि वेळेच्या संबंधाच्या चुकीच्या समजमुळे अयोग्य आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly multiplies force by time",
+        "Incorrectly divides force by time",
+        null,
+        "Confuses acceleration with force"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. Work done is force multiplied by displacement, which is 1000N × 10m = 10000J. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "critique": "The solution correctly applies F = ma to find acceleration and then v = u + at to find the change in velocity. The reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "balbharati/7/science/703020012.pdf",
@@ -694,7 +308,102 @@
         }
       ],
       "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T16:23:03.717Z",
+      "generatedAt": "2026-11-02T03:47:16.903Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A ball is thrown vertically upwards with an initial velocity of 20 m/s. What is the time taken to reach the maximum height? (Take g = 10 m/s²)",
+      "choices": [
+        "10 s",
+        "2 s",
+        "3 s",
+        "4 s"
+      ],
+      "answerIndex": 1,
+      "solution": "At maximum height, the final velocity is 0. Using the equation v = u - gt, where v is the final velocity, u is the initial velocity, g is the acceleration due to gravity, and t is the time, we get 0 = 20 - 10t. Solving for t gives t = 2 s. The other options are incorrect calculations based on misapplying the formula.",
+      "checkExpr": "(20)/10",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक गेंद को 20 मी/से के प्रारंभिक वेग से ऊर्ध्वाधर ऊपर की ओर फेंका जाता है। अधिकतम ऊंचाई तक पहुंचने में कितना समय लगता है? (g = 10 मी/से² लें)",
+          "choices": [
+            "10 से",
+            "2 से",
+            "3 से",
+            "4 से"
+          ],
+          "solution": "अधिकतम ऊंचाई पर अंतिम वेग 0 होता है। समीकरण v = u - gt का उपयोग करके, जहां v अंतिम वेग, u प्रारंभिक वेग, g गुरुत्वीय त्वरण और t समय है, हमें 0 = 20 - 10t मिलता है। t के लिए हल करने पर t = 2 से प्राप्त होता है। अन्य विकल्प फॉर्मूले के गलत उपयोग पर आधारित गलत गणनाएं हैं।",
+          "imageAlt": null,
+          "critique": "Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as per Indian curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका गोलीला 20 मी/से प्रारंभिक वेगाने उर्ध्वाकाशात फेकला जातो. महागामी उंची प्राप्त करण्यासाठी लागणारा वेळ किती असेल? (g = 10 मी/से² घ्या)",
+          "choices": [
+            "10 से",
+            "2 से",
+            "3 से",
+            "4 से"
+          ],
+          "solution": "महागामी उंचीवर अंतिम वेग 0 असतो. समीकरण v = u - gt वापरून, जेथे v अंतिम वेग, u प्रारंभिक वेग, g गुरुत्वीय त्वरण आहे आणि t वेळ आहे, आपल्याला 0 = 20 - 10t मिळतो. t चे मूल्य काढल्यास t = 2 से मिळते. इतर विकल्प अपयशी फॉर्म्युला वापरून चुकीचे गणना आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, technical terms are appropriately used in Marathi, and the structure matches the English version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the time to reach max height with the total time of flight",
+        null,
+        "Divides the initial velocity by twice the acceleration due to gravity.",
+        "Multiplies the initial velocity by the acceleration due to gravity instead of dividing."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and matches the key. The reasoning for the distractors is based on plausible student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 53,
+          "pageStart": 56,
+          "pageEnd": 56,
+          "headingPath": [
+            "7. Motion, Force and Work"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 54,
+          "pageStart": 57,
+          "pageEnd": 57,
+          "headingPath": [
+            "7. Motion, Force and Work"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 55,
+          "pageStart": 57,
+          "pageEnd": 58,
+          "headingPath": [
+            "7. Motion, Force and Work"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T03:47:16.903Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

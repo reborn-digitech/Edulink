@@ -1,0 +1,783 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T15:35:21.268Z",
+  "finishedAt": "2026-11-01T15:47:04.194Z",
+  "seconds": 703,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "fegp1",
+    "document": "ncert/6/mathematics/fegp106.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 6 — Perimeter and Area",
+    "edition": "Reprint 2026-27",
+    "chunks": 17,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n13. If the perimeter of a circle is equal to that of a square, then the ratio of their areas is 1\n(a) 22 : 7 (b) 14 : 11 (c) 7 : 22 (d) 11: 14",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n14. If ∆ABC ~∆DEF, AB=6cm, DE=9cm, EF=6cm and FD=12cm, then the perimeter of 1\n∆ABC is\n(A) 28cm (B) 28.5cm (C) 18cm (D) 23cm",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n6. The perimeter of a triangle with vertices (0, 4), (0, 0) and (3, 0) is 1\n(a) 5 units (b) 12 units (c) 11 units (d) (7 + √5) units",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n14. If the perimeter and the area of a circle are numerically equal, then the radius of the circle 1\nis\n(a) 2 units (b) π units (c) 4 units (d) 7 units"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 272915,
+      "in": 42,
+      "out": 38,
+      "rejects": 4,
+      "promptTokens": 44917,
+      "completionTokens": 9104
+    },
+    "critique": {
+      "calls": 55,
+      "ms": 590335,
+      "in": 38,
+      "out": 33,
+      "rejects": 5,
+      "promptTokens": 25290,
+      "completionTokens": 9591
+    },
+    "solver": {
+      "calls": 284,
+      "ms": 285410,
+      "in": 33,
+      "out": 20,
+      "rejects": 13,
+      "promptTokens": 61554,
+      "completionTokens": 3213
+    },
+    "form": {
+      "calls": 3,
+      "ms": 14173,
+      "in": 20,
+      "out": 11,
+      "rejects": 9,
+      "promptTokens": 754,
+      "completionTokens": 231
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 55,
+      "ms": 14085,
+      "in": 11,
+      "out": 5,
+      "rejects": 6,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 273024,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 11675,
+      "completionTokens": 5421
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 2,
+    "4": 0,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the formula for the perimeter of a rectangle?",
+      "ms": {
+        "draft": 4711,
+        "critique": 8655,
+        "solver": 23577
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the perimeter of a square?",
+      "ms": {
+        "draft": 4711,
+        "critique": 9330,
+        "solver": 24574
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for the distance covered along the boundary of a closed plane figure when you go around it once?",
+      "ms": {
+        "draft": 4711,
+        "critique": 7789,
+        "solver": 23127,
+        "form": 5228
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the perimeter of a triangle with sides 4 cm, 5 cm, and 7 cm?",
+      "ms": {
+        "draft": 4711,
+        "critique": 13228
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the perimeter of a square is 20 cm, what is the length of each side?",
+      "ms": {
+        "draft": 4711,
+        "critique": 9843,
+        "solver": 16419,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a tangram puzzle, the area of Shape C is 1 square unit. What is the area of the big square formed using all seven pieces?",
+      "ms": {
+        "draft": 7157,
+        "critique": 8489
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A rectangular paper chit of dimension 6 cm × 4 cm is cut into two equal pieces. These two pieces are joined in different ways. What is the perimeter of the figure formed when the two pieces are arranged to form a square?",
+      "ms": {
+        "draft": 7157,
+        "critique": 14868
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the perimeter of a circle is equal to that of a square, what is the ratio of their areas?",
+      "ms": {
+        "draft": 7157,
+        "critique": 9528,
+        "solver": 18037
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A rectangular garden is 25 m long and has an area of 300 sq m. What is the width of the garden?",
+      "ms": {
+        "draft": 7157,
+        "critique": 9472,
+        "solver": 25591
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the perimeter of a circle is equal to the perimeter of a square, what is the ratio of their areas?",
+      "ms": {
+        "draft": 6721,
+        "critique": 11795,
+        "solver": 3104
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the area of a rectangle is 24 square units, which of the following could be its length and width?",
+      "ms": {
+        "draft": 6721,
+        "critique": 13533,
+        "solver": 28077
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A figure is made up of a rectangle and two triangles. The rectangle has an area of 20 square units, and each triangle has an area of 5 square units. What is the total area of the figure?",
+      "ms": {
+        "draft": 6721,
+        "critique": 11841,
+        "solver": 20327,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A rectangle is divided into two triangles by one of its diagonals. What is the relationship between the areas of the two triangles?",
+      "ms": {
+        "draft": 6721,
+        "critique": 12044,
+        "solver": 2341,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the perimeter of a rectangle?",
+      "ms": {
+        "draft": 5535,
+        "critique": 11106,
+        "solver": 3228,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A square has a perimeter of 32 cm. What is the length of one of its sides?",
+      "ms": {
+        "draft": 5535,
+        "critique": 13650,
+        "solver": 27300
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A square of side 10 cm is folded in half and then cut into two rectangles. What is the total perimeter of the two rectangles?",
+      "ms": {
+        "draft": 7742,
+        "critique": 14278
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A square paper of side 6 cm is folded in half. What is the area of each resulting rectangle?",
+      "ms": {
+        "draft": 7742,
+        "critique": 19520
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A garden is 15 m long and 12 m wide. Four flower beds of 2 m × 1 m are dug at the corners. What is the remaining area for the lawn?",
+      "ms": {
+        "draft": 7742,
+        "critique": 12680,
+        "solver": 27665
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A rectangular field is 20 m long and 15 m wide. What is the area of the field?",
+      "ms": {
+        "draft": 7742,
+        "critique": 13676,
+        "solver": 29882
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the area of a square?",
+      "ms": {
+        "draft": 6244,
+        "critique": 11986,
+        "solver": 19286,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the perimeter of a rectangle?",
+      "ms": {
+        "draft": 6244,
+        "critique": 10859,
+        "solver": 28808
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the perimeter of a square is 20 cm, what is the length of each side?",
+      "ms": {
+        "draft": 6244,
+        "critique": 13057,
+        "solver": 20806
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main reason given in the passage for using squares to measure area?",
+      "ms": {
+        "draft": 6011,
+        "critique": 9265,
+        "solver": 3777,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A square is cut into two rectangles along its fold. What is the relationship between the perimeters of the two rectangles and the perimeter of the square?",
+      "ms": {
+        "draft": 6244,
+        "critique": 10484,
+        "solver": 20382,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A square is made by joining 9 unit squares. What is the smallest possible perimeter of such a figure?",
+      "ms": {
+        "draft": 6011,
+        "critique": 10575,
+        "solver": 2281,
+        "form": 4888
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a new square is attached to a figure with a perimeter of 24 units, under what condition will the perimeter remain unchanged?",
+      "ms": {
+        "draft": 6011,
+        "critique": 11087,
+        "solver": 2683
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "A rectangular floor is 5 m long and 4 m wide. A square carpet of sides 3 m is laid on the floor. What is the area of the floor that is not covered by the carpet?",
+      "ms": {
+        "draft": 6991,
+        "critique": 8417,
+        "solver": 2099
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the perimeter of a regular polygon with 6 sides, if each side is 5 units long?",
+      "ms": {
+        "draft": 7157,
+        "critique": 9227,
+        "solver": 3276,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the perimeter of a rectangle is 14 cm and its breadth is 2 cm, what is the length?",
+      "ms": {
+        "draft": 4711,
+        "critique": 11776,
+        "solver": 19732,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A rectangle has a length of 10 cm and a breadth of 5 cm. What is its perimeter?",
+      "ms": {
+        "draft": 5535,
+        "critique": 11640,
+        "solver": 2550,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a rectangle is divided into two triangles by a diagonal, what can be said about the area of the two triangles?",
+      "ms": {
+        "draft": 6011,
+        "critique": 9928,
+        "solver": 2950,
+        "form": 4885
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the perimeter of an equilateral triangle with a side length of 3 units?",
+      "ms": {
+        "draft": 6991,
+        "critique": 8475,
+        "solver": 2452,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the perimeter of a circle is equal to that of a square, then the ratio of their areas is",
+      "ms": {
+        "draft": 11391,
+        "critique": 7330,
+        "solver": 1269,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the perimeter of an equilateral triangle if one side is 7 units?",
+      "ms": {
+        "draft": 7157,
+        "critique": 10319,
+        "solver": 2626,
+        "form": 0,
+        "translation": 44036
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A rectangle has an area of 32 square cm. If its length is 8 cm, what is its width?",
+      "ms": {
+        "draft": 6721,
+        "critique": 9662,
+        "solver": 3644,
+        "form": 0,
+        "translation": 60066
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A square is divided into two rectangles by a straight cut. If the area of the square is 64 sq cm, what is the area of each rectangle?",
+      "ms": {
+        "draft": 5535,
+        "critique": 11592,
+        "solver": 2161,
+        "form": 0,
+        "translation": 62360
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "The perimeter of a square is 40 cm. What is the area of the square?",
+      "ms": {
+        "draft": 6810,
+        "critique": 14894,
+        "solver": 18435,
+        "form": 1,
+        "translation": 43865
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Two rectangles have the same area. One rectangle has dimensions 4 cm × 5 cm, and the other has dimensions 2 cm × 10 cm. Which rectangle has a longer perimeter?",
+      "ms": {
+        "draft": 5535,
+        "critique": 12839,
+        "solver": 3266,
+        "form": 0,
+        "translation": 56472
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "If a square has an area of 25 square units, what is the length of its side?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "A rectangle has a length of 12 m and a width of 8 m. What is its area?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the formula for the perimeter of a rectangle?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the formula for the perimeter of a square?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term for the distance covered along the boundary of a closed plane figure when you go around it once?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the perimeter of a triangle with sides 4 cm, 5 cm, and 7 cm?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If the perimeter of a square is 20 cm, what is the length of each side?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In a tangram puzzle, the area of Shape C is 1 square unit. What is the area of the big square formed using all seven pieces?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A rectangular paper chit of dimension 6 cm × 4 cm is cut into two equal pieces. These two pieces are joined in different ways. What is the perimeter of the figure formed when the two pieces are arranged to form a square?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the perimeter of a circle is equal to that of a square, what is the ratio of their areas?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A rectangular garden is 25 m long and has an area of 300 sq m. What is the width of the garden?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the perimeter of a circle is equal to the perimeter of a square, what is the ratio of their areas?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If the area of a rectangle is 24 square units, which of the following could be its length and width?",
+      "reason": "after redraft: the solver picked option 1 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A figure is made up of a rectangle and two triangles. The rectangle has an area of 20 square units, and each triangle has an area of 5 square units. What is the total area of the figure?",
+      "reason": "option 0 repeats the stem's wording (\"20 square units\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A rectangle is divided into two triangles by one of its diagonals. What is the relationship between the areas of the two triangles?",
+      "reason": "option 3 is a catch-all (\"None of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula for the perimeter of a rectangle?",
+      "reason": "options 0 and 2 are the same (\"Perimeter = length + width\"); options 1 and 3 are the same (\"Perimeter = 2 × (length + width)\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A square has a perimeter of 32 cm. What is the length of one of its sides?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "A rectangle has an area of 18 sq. units and a perimeter of 18 units. What are the possible dimensions of the rectangle?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the formula for the area of a rectangle?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A square of side 10 cm is folded in half and then cut into two rectangles. What is the total perimeter of the two rectangles?",
+      "reason": "the critic finds option 3 correct, the key is 2; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A square paper of side 6 cm is folded in half. What is the area of each resulting rectangle?",
+      "reason": "the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A garden is 15 m long and 12 m wide. Four flower beds of 2 m × 1 m are dug at the corners. What is the remaining area for the lawn?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A rectangular field is 20 m long and 15 m wide. What is the area of the field?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula for the area of a square?",
+      "reason": "options 1 and 3 are the same (\"Area = side × side\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the formula for the perimeter of a rectangle?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If the perimeter of a square is 20 cm, what is the length of each side?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main reason given in the passage for using squares to measure area?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Does not relate the question to the passage's explanation of…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A square is cut into two rectangles along its fold. What is the relationship between the perimeters of the two rectangles and the perimeter of the square?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A square is made by joining 9 unit squares. What is the smallest possible perimeter of such a figure?",
+      "reason": "figure is set without imageAlt; checkExpr \"12\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a new square is attached to a figure with a perimeter of 24 units, under what condition will the perimeter remain unchanged?",
+      "reason": "the solver picked option 1 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "A rectangular floor is 5 m long and 4 m wide. A square carpet of sides 3 m is laid on the floor. What is the area of the floor that is not covered by the carpet?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What is the perimeter of a regular polygon with 6 sides, if each side is 5 units long?",
+      "reason": "near-duplicate of served question cmvv9wjiz00lj0rgnotr8y38a (cosine 0.970 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "If the perimeter of a rectangle is 14 cm and its breadth is 2 cm, what is the length?",
+      "reason": "near-duplicate of served question cmveh0n5u00i1go639duku22a (cosine 0.987 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "A rectangle has a length of 10 cm and a breadth of 5 cm. What is its perimeter?",
+      "reason": "near-duplicate of served question cmveh0n5m00hdgo63jk7x6299 (cosine 0.944 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "If a rectangle is divided into two triangles by a diagonal, what can be said about the area of the two triangles?",
+      "reason": "near-duplicate of served question cmveh0n6200ipgo63u1r1k1f4 (cosine 0.922 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the perimeter of an equilateral triangle with a side length of 3 units?",
+      "reason": "near-duplicate of served question cmv3n3i4q009jgnjuj1xy9hu8 (cosine 0.959 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If the perimeter of a circle is equal to that of a square, then the ratio of their areas is",
+      "reason": "near-duplicate of served question cmveh0n6000ijgo630lt9kfmv (cosine 0.917 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

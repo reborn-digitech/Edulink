@@ -1,0 +1,767 @@
+{
+  "subject": "MATHS",
+  "classLevel": 9,
+  "chapter": "Chapter 5 — Linear Equations in Two Variables",
+  "name": "Linear Equations in Two Variables",
+  "slug": "balbharati-maths-9-linear-equations-in-two-variables",
+  "summary": "This chapter teaches how to solve linear equations in two variables using different methods.",
+  "position": 5,
+  "source": "generated against Balbharati Mathematics, Class 9, chapter 5 (\"९ वी गणित भाग-१ इंग्रजी\", chapter 5) (2026 edition)",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {
+    "hi": {
+      "name": "अध्याय 5 - दो चरों वाले रैखिक समीकरण",
+      "summary": "इस अध्याय में दो चरों वाले रैखिक समीकरणों को हल करने के विभिन्न विधियों के बारे में सीखा जाता है।"
+    },
+    "mr": {
+      "name": "अध्याय 5 - दो चलांमधील रेषीय समीकरणे",
+      "summary": "हे अध्याय दो चलांमधील रेषीय समीकरणे सोडवण्याच्या विविध पद्धतींचे शिक्षण देते."
+    }
+  },
+  "board": "BALBHARATI",
+  "book": "९ वी गणित भाग-१ इंग्रजी",
+  "edition": "2026 edition",
+  "generatedAt": "2026-11-02T16:05:53.316Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": true,
+  "questions": [
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a linear equation in two variables?",
+      "choices": [
+        "x + 5 = 10",
+        "x^2 + y = 5",
+        "3x + 2y = 7",
+        "x + y = 4"
+      ],
+      "answerIndex": 2,
+      "solution": "A linear equation in two variables has both variables with an exponent of 1. The equation 3x + 2y = 7 satisfies this condition. The other options either have a variable with an exponent higher than 1 or are not equations in two variables.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा दो चरों का रैखिक समीकरण है?",
+          "choices": [
+            "x + 5 = 10",
+            "x^2 + y = 5",
+            "3x + 2y = 7",
+            "x + y = 4"
+          ],
+          "solution": "दो चरों का रैखिक समीकरण दोनों चरों के घात 1 होते हैं। समीकरण 3x + 2y = 7 इस शर्त को पूरा करता है। अन्य विकल्पों में या तो चर की घात 1 से अधिक है या ये दो चरों के समीकरण नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate mathematical terminology used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते दोन चलांत रेषीय समीकरण आहे?",
+          "choices": [
+            "x + 5 = 10",
+            "x^2 + y = 5",
+            "3x + 2y = 7",
+            "x + y = 4"
+          ],
+          "solution": "दोन चलांत रेषीय समीकरणात दोन्ही चलांचा घात 1 असतो. 3x + 2y = 7 हे अटी पूर्ण करते. इतर विकल्पांमध्ये चलाचा घात 1 पेक्षा जास्त असतो किंवा ते दोन चलांत असलेले समीकरण नसते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses an equation with one variable",
+        "includes a variable with an exponent higher than 1",
+        null,
+        "Confuses linear equation in two variables with a simple equation in one variable"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2 (3x + 2y = 7), as it is a linear equation in two variables. The other options are either not in two variables or contain non-linear terms.",
+      "sources": [
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 49,
+          "pageStart": 90,
+          "pageEnd": 91,
+          "headingPath": [
+            "5. Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 50,
+          "pageStart": 91,
+          "pageEnd": 93,
+          "headingPath": [
+            "5. Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 51,
+          "pageStart": 93,
+          "pageEnd": 95,
+          "headingPath": [
+            "5. Linear Equations in Two Variables",
+            "(iii) Their sum is 54 and difference is 20 (iv) Their sum is ... and difference is ..."
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-02T16:05:53.316Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the general form of a linear equation in two variables?",
+      "choices": [
+        "ax + by = c",
+        "ax^2 + by = c",
+        "ax + b = c",
+        "a + b = c"
+      ],
+      "answerIndex": 0,
+      "solution": "The general form of a linear equation in two variables is ax + by = c, where a and b are not both zero. The other options either include a variable with a higher exponent or are not equations in two variables.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "दो चरों में रैखिक समीकरण का सामान्य रूप क्या है?",
+          "choices": [
+            "ax + by = c",
+            "ax^2 + by = c",
+            "ax + b = c",
+            "a + b = c"
+          ],
+          "solution": "दो चरों में रैखिक समीकरण का सामान्य रूप ax + by = c होता है, जहां a और b दोनों शून्य नहीं होते। अन्य विकल्पों में चर के उच्च घात के साथ या दो चरों में समीकरण न होने के कारण गलत हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "दोन चलांमधील रेषीय समीकरणाचे सामान्य रूप काय आहे?",
+          "choices": [
+            "ax + by = c",
+            "ax^2 + by = c",
+            "ax + b = c",
+            "a + b = c"
+          ],
+          "solution": "दोन चलांमधील रेषीय समीकरणाचे सामान्य रूप ax + by = c आहे, जेथे a आणि b दोन्ही शून्य नाहीत. इतर विकल्पांमध्ये चलाचा उच्च घात असतो किंवा ते दोन चलांमधील समीकरण नसतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "includes a variable with a higher exponent",
+        "uses only one variable",
+        "uses only constants"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is ax + by = c, which is the standard general form of a linear equation in two variables. The other options are incorrect due to either higher exponents, only one variable, or no variables at all.",
+      "sources": [
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 49,
+          "pageStart": 90,
+          "pageEnd": 91,
+          "headingPath": [
+            "5. Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 50,
+          "pageStart": 91,
+          "pageEnd": 93,
+          "headingPath": [
+            "5. Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 51,
+          "pageStart": 93,
+          "pageEnd": 95,
+          "headingPath": [
+            "5. Linear Equations in Two Variables",
+            "(iii) Their sum is 54 and difference is 20 (iv) Their sum is ... and difference is ..."
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-02T16:05:53.316Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "If x = 2 and y = 3 is a solution to the equation 2x + 3y = k, what is the value of k?",
+      "choices": [
+        "10",
+        "12",
+        "13",
+        "15"
+      ],
+      "answerIndex": 2,
+      "solution": "Substituting x = 2 and y = 3 into the equation 2x + 3y = k gives k = 2*2 + 3*3 = 4 + 9 = 13. The other options result from incorrect substitution or arithmetic.",
+      "checkExpr": "2*2+3*3",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि x = 2 और y = 3 समीकरण 2x + 3y = k का हल है, तो k का मान क्या है?",
+          "choices": [
+            "10",
+            "12",
+            "13",
+            "15"
+          ],
+          "solution": "x = 2 और y = 3 को समीकरण 2x + 3y = k में प्रतिस्थापित करने पर k = 2*2 + 3*3 = 4 + 9 = 13 प्राप्त होता है। अन्य विकल्प गलत प्रतिस्थापन या गणना से प्राप्त होते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर x = 2 आणि y = 3 समीकरण 2x + 3y = k चे उकल असेल, तर k ची किंमत काय असेल?",
+          "choices": [
+            "10",
+            "12",
+            "13",
+            "15"
+          ],
+          "solution": "x = 2 आणि y = 3 ची समीकरण 2x + 3y = k मध्ये ठिकाणी ठेवल्यास k = 2*2 + 3*3 = 4 + 9 = 13 मिळते. इतर विकल्प चुकीच्या स्थानांवर ठेवल्यामुळे किंवा गणितातील चूकीमुळे मिळतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "This is the result of adding 2 and 3 instead of multiplying.",
+        "This is the result of multiplying 2 and 3 and adding 10.",
+        null,
+        "Confuses multiplying 2x and 3y with adding them directly without substitution"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 13, as substituting x = 2 and y = 3 into 2x + 3y gives 4 + 9 = 13. The author's reasoning for the distractors is plausible and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 52,
+          "pageStart": 95,
+          "pageEnd": 96,
+          "headingPath": [
+            "5. Linear Equations in Two Variables",
+            "(iii) Their sum is 54 and difference is 20 (iv) Their sum is ... and difference is ..."
+          ]
+        },
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 53,
+          "pageStart": 97,
+          "pageEnd": 98,
+          "headingPath": [
+            "5. Linear Equations in Two Variables",
+            "(iii) Their sum is 54 and difference is 20 (iv) Their sum is ... and difference is ..."
+          ]
+        },
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 54,
+          "pageStart": 98,
+          "pageEnd": 100,
+          "headingPath": [
+            "5. Linear Equations in Two Variables",
+            "(iii) Their sum is 54 and difference is 20 (iv) Their sum is ... and difference is ..."
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-02T16:05:53.316Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If x + y = 10 and x - y = 2, what is the value of x?",
+      "choices": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "answerIndex": 2,
+      "solution": "Adding the two equations gives 2x = 12, so x = 6. The other options result from incorrect addition or solving steps.",
+      "checkExpr": "12/2",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि x + y = 10 और x - y = 2, तो x का मान क्या है?",
+          "choices": [
+            "4",
+            "5",
+            "6",
+            "7"
+          ],
+          "solution": "दोनों समीकरणों को जोड़ने पर 2x = 12 प्राप्त होता है, अतः x = 6। अन्य विकल्प गलत जोड़ या हल करने की गलती के कारण प्राप्त होते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर x + y = 10 आणि x - y = 2, तर x ची किंमत काय आहे?",
+          "choices": [
+            "4",
+            "5",
+            "6",
+            "7"
+          ],
+          "solution": "दोन समीकरणांच्या बेरजेने 2x = 12 मिळते, म्हणून x = 6. इतर विकल्प चुकीच्या बेरजा किंवा सोडवण्याच्या टप्प्यांमुळे मिळतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes that solving x + y = 10 and x - y = 2 requires subtracting the equations instead of adding them",
+        "Believes that x and y must be the same number in the equations",
+        null,
+        "Believes that x is the smaller number in the equation x - y = 2"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and logically leads to x = 6. The distractors are based on plausible misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 49,
+          "pageStart": 90,
+          "pageEnd": 91,
+          "headingPath": [
+            "5. Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 50,
+          "pageStart": 91,
+          "pageEnd": 93,
+          "headingPath": [
+            "5. Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 51,
+          "pageStart": 93,
+          "pageEnd": 95,
+          "headingPath": [
+            "5. Linear Equations in Two Variables",
+            "(iii) Their sum is 54 and difference is 20 (iv) Their sum is ... and difference is ..."
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-02T16:05:53.316Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If the price of 3 chairs and 2 tables is Rs. 4500 and the price of 5 chairs and 3 tables is Rs. 7000, what is the total price of 2 chairs and 2 tables?",
+      "choices": [
+        "2000",
+        "2500",
+        "3000",
+        "3500"
+      ],
+      "answerIndex": 2,
+      "solution": "The total price of 2 chairs and 2 tables is Rs. 3000. By solving the system of equations, we find that 1 chair costs Rs. 500 and 1 table costs Rs. 1500. Adding 2 chairs and 2 tables gives 2*500 + 2*1500 = 3000. The other options do not satisfy the given conditions. 2000 would mean the chairs and tables are cheaper, 2500 is not a multiple of the individual prices, and 3500 is more than the total of 5 chairs and 3 tables.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि 3 कुर्सियों और 2 मेजों की कीमत 4500 रुपए है और 5 कुर्सियों और 3 मेजों की कीमत 7000 रुपए है, तो 2 कुर्सियों और 2 मेजों की कुल कीमत क्या है?",
+          "choices": [
+            "2000",
+            "2500",
+            "3000",
+            "3500"
+          ],
+          "solution": "2 कुर्सियों और 2 मेजों की कुल कीमत 3000 रुपए है। समीकरणों के प्रणाली को हल करने पर हम पाते हैं कि 1 कुर्सी की कीमत 500 रुपए और 1 मेज की कीमत 1500 रुपए है। 2 कुर्सियों और 2 मेजों को जोड़ने पर 2*500 + 2*1500 = 3000 प्राप्त होता है। अन्य विकल्प दिए गए शर्तों को संतुष्ट नहीं करते हैं। 2000 का अर्थ है कि कुर्सियां और मेजें सस्ती हैं, 2500 व्यक्तिगत कीमतों के गुणज नहीं है, और 3500 पांच कुर्सियों और तीन मेजों के कुल कीमत से अधिक है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "3 खुर्च्या आणि 2 मेज च्या किंमती 4500 रुपये आहेत आणि 5 खुर्च्या आणि 3 मेज च्या किंमती 7000 रुपये आहेत, तर 2 खुर्च्या आणि 2 मेज च्या किंमतीचा एकूण एकूण रक्कम किती असेल?",
+          "choices": [
+            "2000",
+            "2500",
+            "3000",
+            "3500"
+          ],
+          "solution": "2 खुर्च्या आणि 2 मेज च्या किंमतीचा एकूण रक्कम 3000 रुपये आहे. समीकरणांच्या प्रणालीचे उपाय करून, आम्ही शोधू शकतो की 1 खुर्ची 500 रुपये आणि 1 मेज 1500 रुपये खर्च करते. 2 खुर्च्या आणि 2 मेज जोडल्याने 2*500 + 2*1500 = 3000 मिळते. इतर विकल्प दिलेल्या अटींचे अनुसरण करत नाहीत. 2000 हा खुर्च्या आणि मेज अस्सल असल्याचा अर्थ असतो, 2500 हा विचलित असतो आणि 3500 हा 5 खुर्च्या आणि 3 मेज च्या एकूण किंमतीपेक्षा जास्त असतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Adds the prices of 3 chairs and 2 tables directly",
+        "Fails to calculate the correct values of chairs and tables",
+        null,
+        "Uses an incorrect total for 5 chairs and 3 tables"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly sets up and solves the system of equations, leading to the correct answer of 3000. The reasoning for the distractors is plausible and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 55,
+          "pageStart": 100,
+          "pageEnd": 101,
+          "headingPath": [
+            "5. Linear Equations in Two Variables",
+            "(iii) Their sum is 54 and difference is 20 (iv) Their sum is ... and difference is ..."
+          ]
+        },
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 56,
+          "pageStart": 101,
+          "pageEnd": 102,
+          "headingPath": [
+            "5. Linear Equations in Two Variables",
+            "Problem set 5"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-02T16:05:53.316Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If 5 times a number is 25, what is the number?",
+      "choices": [
+        "5",
+        "10",
+        "15",
+        "20"
+      ],
+      "answerIndex": 0,
+      "solution": "If 5 times a number is 25, then the number can be found by dividing 25 by 5. This gives 5. Choosing 10 would be incorrect because it is double the correct answer, 15 would be incorrect because it is three times the correct answer, and 20 would be incorrect because it is four times the correct answer.",
+      "checkExpr": "25/5",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी संख्या का 5 गुना 25 है, तो संख्या क्या है?",
+          "choices": [
+            "5",
+            "10",
+            "15",
+            "20"
+          ],
+          "solution": "यदि किसी संख्या का 5 गुना 25 है, तो संख्या को 25 को 5 से विभाजित करके ज्ञात किया जा सकता है। इससे 5 प्राप्त होता है। 10 चुनना गलत होगा क्योंकि यह सही उत्तर का दोगुना है, 15 गलत होगा क्योंकि यह सही उत्तर का तीन गुना है और 20 गलत होगा क्योंकि यह सही उत्तर का चार गुना है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "5 एका संख्येच्या वेळा 25 असतील तर ती संख्या काय आहे?",
+          "choices": [
+            "5",
+            "10",
+            "15",
+            "20"
+          ],
+          "solution": "जर 5 एका संख्येच्या वेळा 25 असतील तर संख्या 25 ला 5 ने भागल्याने मिळते. यामुळे 5 मिळते. 10 निवडल्यास चूक होईल कारण ती योग्य उत्तराच्या दुप्पट आहे, 15 निवडल्यास चूक होईल कारण ती योग्य उत्तराच्या तीन पट आहे आणि 20 निवडल्यास चूक होईल कारण ती योग्य उत्तराच्या चार पट आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "doubles the correct answer",
+        "triples the correct answer",
+        "quadruples the correct answer"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and the solution is correct. The reasoning for the distractors aligns with common misconceptions where students might multiply the correct answer instead of dividing.",
+      "sources": [
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 55,
+          "pageStart": 100,
+          "pageEnd": 101,
+          "headingPath": [
+            "5. Linear Equations in Two Variables",
+            "(iii) Their sum is 54 and difference is 20 (iv) Their sum is ... and difference is ..."
+          ]
+        },
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 56,
+          "pageStart": 101,
+          "pageEnd": 102,
+          "headingPath": [
+            "5. Linear Equations in Two Variables",
+            "Problem set 5"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-02T16:05:53.316Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "If the total number of lions and peacocks in a zoo is 50 and their total legs is 140, how many lions are there?",
+      "choices": [
+        "20",
+        "30",
+        "40",
+        "50"
+      ],
+      "answerIndex": 1,
+      "solution": "There are 30 lions. Each lion has 4 legs and each peacock has 2 legs. If there are x lions and y peacocks, then x + y = 50 and 4x + 2y = 140. Solving these equations, we find x = 30. The other options do not satisfy both equations. 20 lions would give 20*4 = 80 legs and 30 peacocks would give 60 legs, totaling 140. 40 lions would give 160 legs, which is too many. 50 lions would give 200 legs, which is too many.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक चिड़ियाघर में शेर और तोते की कुल संख्या 50 है और उनके कुल पैर 140 हैं, तो वहां कितने शेर हैं?",
+          "choices": [
+            "20",
+            "30",
+            "40",
+            "50"
+          ],
+          "solution": "30 शेर हैं। प्रत्येक शेर के 4 पैर और प्रत्येक तोते के 2 पैर होते हैं। यदि x शेर और y तोते हैं, तो x + y = 50 और 4x + 2y = 140। इन समीकरणों को हल करने पर, हम ज्ञात करते हैं कि x = 30। अन्य विकल्प दोनों समीकरणों को संतुष्ट नहीं करते हैं। 20 शेर के 20*4 = 80 पैर होंगे और 30 तोते के 60 पैर होंगे, जो कुल 140 पैर होंगे। 40 शेर के 160 पैर होंगे, जो बहुत अधिक है। 50 शेर के 200 पैर होंगे, जो बहुत अधिक है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical logic, and uses appropriate Hindi terms for animals and mathematical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका बागेमध्ये शिंगाड्यांची आणि गुलाबींची एकूण संख्या 50 असेल आणि त्यांच्या एकूण पायांची संख्या 140 असेल, तर त्यामध्ये किती शिंगाडे आहेत?",
+          "choices": [
+            "20",
+            "30",
+            "40",
+            "50"
+          ],
+          "solution": "शिंगाड्यांची संख्या 30 आहे. प्रत्येक शिंगाड्याला 4 पाय असतात आणि प्रत्येक गुलाबीला 2 पाय असतात. जर x शिंगाड्या आणि y गुलाबी असतील, तर x + y = 50 आणि 4x + 2y = 140. ह्या समीकरणांचे उपाय करून, आम्ही x = 30 शोधून काढतो. इतर विकल्प दोन्ही समीकरणांना अनुरूप नाहीत. 20 शिंगाड्यांमुळे 20*4 = 80 पाय असतील आणि 30 गुलाबींमुळे 60 पाय असतील, जे एकूण 140 असतील. 40 शिंगाड्यांमुळे 160 पाय असतील, जे जास्त आहे. 50 शिंगाड्यांमुळे 200 पाय असतील, जे जास्त आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical logic, and uses appropriate Marathi terms for animals and mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Fails to consider the leg count for peacocks",
+        null,
+        "Adds the number of lions and peacocks directly",
+        "Does not solve the system of equations properly"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and logically leads to the answer 30 lions. The reasoning for the wrong options is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 55,
+          "pageStart": 100,
+          "pageEnd": 101,
+          "headingPath": [
+            "5. Linear Equations in Two Variables",
+            "(iii) Their sum is 54 and difference is 20 (iv) Their sum is ... and difference is ..."
+          ]
+        },
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 56,
+          "pageStart": 101,
+          "pageEnd": 102,
+          "headingPath": [
+            "5. Linear Equations in Two Variables",
+            "Problem set 5"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-02T16:05:53.316Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In a class, the number of boys is 5 more than the number of girls. If the total number of students in the class is 35, how many girls are there?",
+      "choices": [
+        "15",
+        "16",
+        "17",
+        "18"
+      ],
+      "answerIndex": 0,
+      "solution": "Let the number of girls be x. Then the number of boys is x + 5. The total number of students is 35, so x + x + 5 = 35. Simplifying gives 2x + 5 = 35, so 2x = 30, and x = 15. Choosing 16 would be incorrect because it would make the number of boys 21, which adds up to 37, 17 would be incorrect because it would make the number of boys 22, which adds up to 39, and 18 would be incorrect because it would make the number of boys 23, which adds up to 41.",
+      "checkExpr": "(35-5)/2",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक कक्षा में लड़कों की संख्या लड़कियों की संख्या से 5 अधिक है। यदि कक्षा में कुल छात्रों की संख्या 35 है, तो लड़कियों की संख्या कितनी है?",
+          "choices": [
+            "15",
+            "16",
+            "17",
+            "18"
+          ],
+          "solution": "मान लीजिए लड़कियों की संख्या x है। तब लड़कों की संख्या x + 5 है। कुल छात्रों की संख्या 35 है, इसलिए x + x + 5 = 35। सरलीकरण करने पर 2x + 5 = 35, इसलिए 2x = 30, और x = 15। 16 चुनना गलत होगा क्योंकि इससे लड़कों की संख्या 21 होगी, जो कुल 37 बन जाएगी, 17 गलत होगा क्योंकि इससे लड़कों की संख्या 22 होगी, जो कुल 39 बन जाएगी, और 18 गलत होगा क्योंकि इससे लड़कों की संख्या 23 होगी, जो कुल 41 बन जाएगी।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका वर्गात बालकांची संख्या बालिकांच्या संख्येपेक्षा 5 अधिक आहे. जर वर्गातील एकूण विद्यार्थ्यांची संख्या 35 असेल, तर बालिकांची संख्या किती आहे?",
+          "choices": [
+            "15",
+            "16",
+            "17",
+            "18"
+          ],
+          "solution": "मानू बालिकांची संख्या x आहे. तर बालकांची संख्या x + 5 आहे. एकूण विद्यार्थ्यांची संख्या 35 आहे, म्हणून x + x + 5 = 35. सोपे केल्यानंतर 2x + 5 = 35, म्हणून 2x = 30, आणि x = 15. 16 निवडल्यास चूक असेल कारण तर बालकांची संख्या 21 होईल, जी एकूण 37 असेल, 17 ही चूक असेल कारण तर बालकांची संख्या 22 होईल, जी एकूण 39 असेल, आणि 18 ही चूक असेल कारण तर बालकांची संख्या 23 होईल, जी एकूण 41 असेल.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical logic, and uses appropriate Marathi terms for 'girls' (बालिका), 'boys' (बालक), and 'students' (विद्यार्थी).",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Thinks the difference of 5 is added to the total before dividing",
+        "Believes the difference between boys and girls is 5, so subtracts 5 from total and divides by 2",
+        "Believes the difference of 5 is added to the total instead of being distributed between boys and girls"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and logically leads to the answer 15. The reasoning for the distractors is based on plausible misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 55,
+          "pageStart": 100,
+          "pageEnd": 101,
+          "headingPath": [
+            "5. Linear Equations in Two Variables",
+            "(iii) Their sum is 54 and difference is 20 (iv) Their sum is ... and difference is ..."
+          ]
+        },
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 56,
+          "pageStart": 101,
+          "pageEnd": 102,
+          "headingPath": [
+            "5. Linear Equations in Two Variables",
+            "Problem set 5"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-02T16:05:53.316Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}

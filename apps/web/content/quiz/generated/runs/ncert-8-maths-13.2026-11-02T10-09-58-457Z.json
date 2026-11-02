@@ -1,0 +1,634 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T10:09:58.457Z",
+  "finishedAt": "2026-11-02T10:16:12.116Z",
+  "seconds": 374,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash Part-II",
+    "bookCode": "hegp2",
+    "document": "ncert/8/mathematics/hegp206.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 13 — Algebra Play",
+    "edition": "2025 edition (the site's Last-Modified)",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n8. B) 8𝑥 - 20 2",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n28. 5\nFrom given polynomial 𝛼 + 𝛽 = 6\n𝛼 + 𝛽 2 2 = ( ) - 2 x 5 6 2 1 6 = 13 36\n2 2 1 2 1\nAnd 𝛼 𝛽 = ( ) = 6 36\n𝑥 - 2 13 36 𝑥 + 36 1\n½\n½\n, 𝛼𝛽 = 1 6 1\n½\n½\n Required polynomial is 36𝑥 -13 𝑥+1",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n8. (d) RHS",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2025-26]\n8. Answer: (C)\n𝑥 + 2 = 1 4 (4𝑥 + 6) + 1 2 so, 𝑃 = 1 4"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 172454,
+      "in": 33,
+      "out": 29,
+      "rejects": 4,
+      "promptTokens": 25450,
+      "completionTokens": 8553
+    },
+    "critique": {
+      "calls": 33,
+      "ms": 249867,
+      "in": 29,
+      "out": 23,
+      "rejects": 6,
+      "promptTokens": 15984,
+      "completionTokens": 5934
+    },
+    "solver": {
+      "calls": 142,
+      "ms": 96027,
+      "in": 23,
+      "out": 10,
+      "rejects": 13,
+      "promptTokens": 27783,
+      "completionTokens": 1504
+    },
+    "form": {
+      "calls": 6,
+      "ms": 36711,
+      "in": 10,
+      "out": 2,
+      "rejects": 8,
+      "promptTokens": 3492,
+      "completionTokens": 788
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 55,
+      "ms": 11351,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 65721,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 5281,
+      "completionTokens": 2679
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the final result of the 'Think of a Number' trick described in the passage?",
+      "ms": {
+        "draft": 6004,
+        "critique": 8648
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the final answer in the date trick is 1390, what date did Mukta think of?",
+      "ms": {
+        "draft": 6004,
+        "critique": 7960,
+        "solver": 2018,
+        "form": 4185
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the bottom row of a 3-row number pyramid contains the first three Virahāṅka-Fibonacci numbers (1, 2, 3), what is the number at the top of the pyramid?",
+      "ms": {
+        "draft": 6004,
+        "critique": 9478
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the bottom row of a pyramid with n rows contains the first n Virahāṅka-Fibonacci numbers, what can we say about the number at the top of the pyramid?",
+      "ms": {
+        "draft": 6004,
+        "critique": 8103,
+        "solver": 1745,
+        "form": 3939
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the calendar trick, if the sum of the 4 numbers in a 2 × 2 grid is 36, what is the top left number in the grid?",
+      "ms": {
+        "draft": 6004,
+        "critique": 9297,
+        "solver": 1587
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the digits 2, 3, and 5 are used once each to form two numbers, what is the largest possible product?",
+      "ms": {
+        "draft": 3810,
+        "critique": 8271,
+        "solver": 1722
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Using the algebraic reasoning from the passage, what is the correct order of digits to form the largest product when the digits are p, q, and r (with p < q < r)?",
+      "ms": {
+        "draft": 3810,
+        "critique": 8584,
+        "solver": 2162
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the digits 3, 5, and 9 are used once each to form two numbers, what is the largest possible product?",
+      "ms": {
+        "draft": 3810,
+        "critique": 8965,
+        "solver": 1780
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the trick where a 2-digit number is reversed and their difference is divided by 9, what is the quotient if the original number is 74?",
+      "ms": {
+        "draft": 3810,
+        "critique": 9031,
+        "solver": 1140
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a 2-digit number is reversed and their sum is divided by 11, what is the result for the number 31?",
+      "ms": {
+        "draft": 3810,
+        "critique": 8551
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Karim started with some coins. After going around the tree once, the number of coins doubled and he gave 8 coins to the genie. After the second round, the coins doubled again and he gave 8 more coins. After the third round, the coins doubled again, but he was left with 8 coins. How many coins did Karim start with?",
+      "ms": {
+        "draft": 6474,
+        "critique": 7513,
+        "solver": 1070,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "After going around the tree three times, Karim was left with 8 coins. If the genie had charged 6 coins instead of 8, how many coins would Karim have had after the third round?",
+      "ms": {
+        "draft": 6474,
+        "critique": 7938
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Karim starts with some coins. Each time he goes around the tree, his coins double and he gives 8 coins to the genie. After three rounds, he has 8 coins. How many coins did he start with?",
+      "ms": {
+        "draft": 5589,
+        "critique": 7632
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Karim goes around the tree three times, and after each round, the coins double and he gives 8 coins to the genie. If he ends up with 8 coins, which algebraic expression correctly models the final number of coins he has?",
+      "ms": {
+        "draft": 5589,
+        "critique": 6239,
+        "solver": 1877,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Karim goes around the tree three times, and after each round, the coins double and he gives 8 coins to the genie. If he ends up with 8 coins, what is the minimum number of coins he should have initially so that he does not end up with 8 coins?",
+      "ms": {
+        "draft": 5589,
+        "critique": 7039,
+        "solver": 1955,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Karim goes around the tree three times, and after each round, the coins double and he gives 8 coins to the genie. If he ends up with 8 coins, which of the following statements is true about the algebraic expression that models the final number of coins?",
+      "ms": {
+        "draft": 5589,
+        "critique": 7694,
+        "solver": 19035
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of algebra according to the passage?",
+      "ms": {
+        "draft": 5589,
+        "critique": 6624,
+        "solver": 19909
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What does the passage say about the application of algebra?",
+      "ms": {
+        "draft": 5589,
+        "critique": 7003,
+        "solver": 19831,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Using the method described in the passage, which of the following is the largest possible product when the digits 1, 3, and 7 are used once each to form a two-digit number and a single-digit number?",
+      "ms": {
+        "draft": 4786,
+        "critique": 7427,
+        "solver": 1395
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following expressions is the largest when digits 2, 3, and 5 are used once each to form a two-digit number and a single-digit number?",
+      "ms": {
+        "draft": 4786,
+        "critique": 10311
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, it is mentioned that the difference between a two-digit number and its reverse is always divisible by 9. If a two-digit number is 47, what is the quotient when the difference between the number and its reverse is divided by 9?",
+      "ms": {
+        "draft": 4786,
+        "critique": 6667,
+        "solver": 2535
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the result of the algebraic trick described in the passage when the original number is doubled, then 4 is added, then divided by 2, and finally the original number is subtracted?",
+      "ms": {
+        "draft": 4738,
+        "critique": 5448,
+        "solver": 1273
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the difference between a two-digit number and its reverse is divided by 9, what is the relationship between the quotient and the digits of the original number?",
+      "ms": {
+        "draft": 4786,
+        "critique": 7473,
+        "solver": 2395,
+        "form": 6048
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, how does the trick to find a date work?",
+      "ms": {
+        "draft": 4738,
+        "critique": 11056,
+        "solver": 1690,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the final answer in the date trick is 1390, what is the date Mukta thought of?",
+      "ms": {
+        "draft": 4738,
+        "critique": 7835,
+        "solver": 1974
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A person dips all his flowers in the first pond, places some in shrine 1, dips the remaining in the second pond, places some in shrine 2, dips the remaining in the third pond, and places all in shrine 3. If he placed an equal number of flowers in each shrine, how many flowers did he start with?",
+      "ms": {
+        "draft": 4786,
+        "critique": 8442,
+        "solver": 17743
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a number pyramid, each number is the sum of the two numbers directly below it. If the bottom row contains the first three Virahāṅka-Fibonacci numbers, what is the number at the top?",
+      "ms": {
+        "draft": 4738,
+        "critique": 6342,
+        "solver": 777
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the algebraic equations for the number pyramid, what is the value of 'c' if a + b = 60, 12 + c = a, and c + 8 = b?",
+      "ms": {
+        "draft": 6004,
+        "critique": 7445,
+        "solver": 1379,
+        "form": 4664,
+        "translation": 56536
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the digits 1, 3, and 7 are used once each to form two numbers, what is the largest possible product?",
+      "ms": {
+        "draft": 3810,
+        "critique": 8756,
+        "solver": 2056,
+        "form": 5957,
+        "translation": 36982
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If Karim wants to increase the number of coins he has, what should be the cost per round he agrees to with the genie?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "How should the genie set the cost per round to get all of Karim’s coins?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "If Karim had 10 coins initially and the genie charged 8 coins per round, how many coins would he have after the second round?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the final result of the 'Think of a Number' trick described in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the final answer in the date trick is 1390, what date did Mukta think of?",
+      "reason": "options are in more than one unit (th december, th january, st march, th april)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the bottom row of a 3-row number pyramid contains the first three Virahāṅka-Fibonacci numbers (1, 2, 3), what is the number at the top of the pyramid?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the bottom row of a pyramid with n rows contains the first n Virahāṅka-Fibonacci numbers, what can we say about the number at the top of the pyramid?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"incorrectly assumes the top number is always a multiple of 3…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "In the calendar trick, if the sum of the 4 numbers in a 2 × 2 grid is 36, what is the top left number in the grid?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the digits 2, 3, and 5 are used once each to form two numbers, what is the largest possible product?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Using the algebraic reasoning from the passage, what is the correct order of digits to form the largest product when the digits are p, q, and r (with p < q < r)?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the digits 3, 5, and 9 are used once each to form two numbers, what is the largest possible product?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the trick where a 2-digit number is reversed and their difference is divided by 9, what is the quotient if the original number is 74?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a 2-digit number is reversed and their sum is divided by 11, what is the result for the number 31?",
+      "reason": "the critic finds option 0 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Karim started with some coins. After going around the tree once, the number of coins doubled and he gave 8 coins to the genie. After the second round, the coins doubled again and he gave 8 more coins. After the third round, the coins doubled again, but he was left with 8 coins. How many coins did Karim start with?",
+      "reason": "checkExpr \"10\" is a bare literal"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "After going around the tree three times, Karim was left with 8 coins. If the genie had charged 6 coins instead of 8, how many coins would Karim have had after the third round?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "According to the passage, which of the following is the correct way to form the largest product using the digits 3, 5, and 9 once each?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Karim starts with some coins. Each time he goes around the tree, his coins double and he gives 8 coins to the genie. After three rounds, he has 8 coins. How many coins did he start with?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Karim goes around the tree three times, and after each round, the coins double and he gives 8 coins to the genie. If he ends up with 8 coins, which algebraic expression correctly models the final number of coins he has?",
+      "reason": "options 0 and 1 say the same thing (\"2(2(2x - 8) - 8) - 8\" / \"2(2x - 8) - 8 - 8\"); options 0 and 2 say the same thing (\"2(2(2x - 8) - 8) - 8\" / \"2(2x - 8 - 8) - 8\"); options 0 and 3 say the same thing (\"2(2(2x - 8) - 8) - 8\" / \"2(2x - 8) - 8\"); options 1 and 2 are the same (\"2(2x - 8) - 8 - 8\"); options 1 and 3 say the same thing (\"2(2x - 8) - 8 - 8\" / \"2(2x - 8) - 8\"); options 2 and 3 say the same thing (\"2(2x - 8 - 8) - 8\" / \"2(2x - 8) - 8\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Karim goes around the tree three times, and after each round, the coins double and he gives 8 coins to the genie. If he ends up with 8 coins, what is the minimum number of coins he should have initially so that he does not end up with 8 coins?",
+      "reason": "checkExpr \"11\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Karim goes around the tree three times, and after each round, the coins double and he gives 8 coins to the genie. If he ends up with 8 coins, which of the following statements is true about the algebraic expression that models the final number of coins?",
+      "reason": "after redrafting distractors 0, 1, 3: the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main purpose of algebra according to the passage?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What does the passage say about the application of algebra?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 2 and 3 say the same thing (\"It is only used in number pyramids and grids\" / \"It is only used in grids and number pyramids\"); distractor 0's reason is not a one-line misconception (\"students may confuse specific examples given in the passage …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Using the method described in the passage, which of the following is the largest possible product when the digits 1, 3, and 7 are used once each to form a two-digit number and a single-digit number?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following expressions is the largest when digits 2, 3, and 5 are used once each to form a two-digit number and a single-digit number?",
+      "reason": "the critic finds option 1 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the passage, it is mentioned that the difference between a two-digit number and its reverse is always divisible by 9. If a two-digit number is 47, what is the quotient when the difference between the number and its reverse is divided by 9?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the result of the algebraic trick described in the passage when the original number is doubled, then 4 is added, then divided by 2, and finally the original number is subtracted?",
+      "reason": "the solver picked option 2 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If the difference between a two-digit number and its reverse is divided by 9, what is the relationship between the quotient and the digits of the original number?",
+      "reason": "option 1 repeats the stem's wording (\"The quotient is the difference between the digits\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, how does the trick to find a date work?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the final answer in the date trick is 1390, what is the date Mukta thought of?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A person dips all his flowers in the first pond, places some in shrine 1, dips the remaining in the second pond, places some in shrine 2, dips the remaining in the third pond, and places all in shrine 3. If he placed an equal number of flowers in each shrine, how many flowers did he start with?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In a number pyramid, each number is the sum of the two numbers directly below it. If the bottom row contains the first three Virahāṅka-Fibonacci numbers, what is the number at the top?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

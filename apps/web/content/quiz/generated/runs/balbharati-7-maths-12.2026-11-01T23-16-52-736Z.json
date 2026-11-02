@@ -1,0 +1,418 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T23:16:52.736Z",
+  "finishedAt": "2026-11-01T23:28:26.583Z",
+  "seconds": 694,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी गणित इंग्रजी",
+    "bookCode": "703020004",
+    "document": "balbharati/7/mathematics/703020004.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 12 — Perimeter and Area",
+    "edition": "2026 edition",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n13. If the perimeter of a circle is equal to that of a square, then the ratio of their areas is 1\n(a) 22 : 7 (b) 14 : 11 (c) 7 : 22 (d) 11: 14",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n14. If the perimeter and the area of a circle are numerically equal, then the radius of the circle 1\nis\n(a) 2 units (b) π units (c) 4 units (d) 7 units",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n6. The perimeter of a triangle with vertices (0, 4), (0, 0) and (3, 0) is 1\n(a) 5 units (b) 12 units (c) 11 units (d) (7 + √5) units",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n13. The radius of a circle is same as the side of a square. Their perimeters are in the ratio\na) 1 : 1 b) 2 : 𝜋 c) 𝜋 : 2 d) √𝜋 : 2"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 273316,
+      "in": 18,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 13710,
+      "completionTokens": 4117
+    },
+    "critique": {
+      "calls": 21,
+      "ms": 186428,
+      "in": 18,
+      "out": 14,
+      "rejects": 4,
+      "promptTokens": 9442,
+      "completionTokens": 3783
+    },
+    "solver": {
+      "calls": 93,
+      "ms": 62660,
+      "in": 14,
+      "out": 12,
+      "rejects": 2,
+      "promptTokens": 17624,
+      "completionTokens": 944
+    },
+    "form": {
+      "calls": 3,
+      "ms": 12571,
+      "in": 12,
+      "out": 6,
+      "rejects": 6,
+      "promptTokens": 729,
+      "completionTokens": 217
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 8,
+      "ms": 3059,
+      "in": 6,
+      "out": 5,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 208965,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 10337,
+      "completionTokens": 4605
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the formula to calculate the perimeter of a square?",
+      "ms": {
+        "draft": 37313,
+        "critique": 5980,
+        "solver": 2321,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the length of a rectangle is doubled and its breadth is also doubled, how many times the original perimeter will the new perimeter be?",
+      "ms": {
+        "draft": 37313,
+        "critique": 5664,
+        "solver": 18637,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the perimeter of a circle is equal to that of a square, then the ratio of their areas is",
+      "ms": {
+        "draft": 37313,
+        "critique": 9091,
+        "solver": 12710
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A rectangular hall is 12 m long and 6 m broad. How many square tiles of 30 cm side will be needed to cover the floor?",
+      "ms": {
+        "draft": 4680,
+        "critique": 11345
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the side of a cube is 0.4 m, what is its total surface area?",
+      "ms": {
+        "draft": 4680,
+        "critique": 12646
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula to calculate the surface area of a cuboid?",
+      "ms": {
+        "draft": 4680,
+        "critique": 9140,
+        "solver": 3206,
+        "form": 5714
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the perimeter of a circle is equal to that of a square, what is the ratio of their areas?",
+      "ms": {
+        "draft": 4680,
+        "critique": 10535,
+        "solver": 1976
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A rectangular plot is 75.5 m long and 30.5 m broad. What is the cost of the plot at 1000 rupees per square meter?",
+      "ms": {
+        "draft": 4680,
+        "critique": 14937
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A rectangular box has length 1.5 m, breadth 1.2 m, and height 1.3 m. If the cost of painting is 50 rupees per sqm, what is the total cost of painting the outer surface?",
+      "ms": {
+        "draft": 4680,
+        "critique": 15265
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the perimeter of a square?",
+      "ms": {
+        "draft": 3560,
+        "critique": 9141,
+        "solver": 2584,
+        "form": 4026
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the perimeter of a rectangle?",
+      "ms": {
+        "draft": 3560,
+        "critique": 9612,
+        "solver": 1989,
+        "form": 3593
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A rectangle has a length of 28 cm and a breadth of 20 cm. If its length is doubled and its breadth is doubled, how many times the perimeter of the old rectangle will that of the new rectangle be?",
+      "ms": {
+        "draft": 3560,
+        "critique": 9857,
+        "solver": 1645,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the length of a rectangle is 17 cm and the breadth is 15 cm, what is its perimeter?",
+      "ms": {
+        "draft": 3560,
+        "critique": 10031,
+        "solver": 16567,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula to calculate the area of a square?",
+      "ms": {
+        "draft": 37313,
+        "critique": 6929,
+        "solver": 901,
+        "form": 0,
+        "translation": 42010
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the side of a square is 12 cm, what is its perimeter?",
+      "ms": {
+        "draft": 3560,
+        "critique": 10759,
+        "solver": 2466,
+        "form": 0,
+        "translation": 29886
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A rectangle has a length of 28 cm and a breadth of 20 cm. If its length is 17 cm, what is its breadth?",
+      "ms": {
+        "draft": 37313,
+        "critique": 6336,
+        "solver": 3527,
+        "form": 0,
+        "translation": 43786
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "The perimeter of a circle is equal to the perimeter of a square. What is the ratio of their areas?",
+      "ms": {
+        "draft": 3560,
+        "critique": 6582,
+        "solver": 1049,
+        "form": 0,
+        "translation": 36921
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the side of a square is tripled, how many times the area of the first square will that of the new square be?",
+      "ms": {
+        "draft": 37313,
+        "critique": 8044,
+        "solver": 2794,
+        "form": 0,
+        "translation": 50320
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 1)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the formula to calculate the perimeter of a square?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the length of a rectangle is doubled and its breadth is also doubled, how many times the original perimeter will the new perimeter be?",
+      "reason": "options 1 and 3 are the same (\"4 times\"); options 1 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the perimeter of a circle is equal to that of a square, then the ratio of their areas is",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A rectangular hall is 12 m long and 6 m broad. How many square tiles of 30 cm side will be needed to cover the floor?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If the side of a cube is 0.4 m, what is its total surface area?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula to calculate the surface area of a cuboid?",
+      "reason": "options 0 and 1 say the same thing (\"2(l + b + h)\" / \"2(l × b + b × h + l × h)\"); options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the perimeter of a circle is equal to that of a square, what is the ratio of their areas?",
+      "reason": "the solver picked option 1 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A rectangular plot is 75.5 m long and 30.5 m broad. What is the cost of the plot at 1000 rupees per square meter?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A rectangular box has length 1.5 m, breadth 1.2 m, and height 1.3 m. If the cost of painting is 50 rupees per sqm, what is the total cost of painting the outer surface?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula for the perimeter of a square?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula for the perimeter of a rectangle?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A rectangle has a length of 28 cm and a breadth of 20 cm. If its length is doubled and its breadth is doubled, how many times the perimeter of the old rectangle will that of the new rectangle be?",
+      "reason": "options are in more than one unit (times, time)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "If the length of a rectangle is 17 cm and the breadth is 15 cm, what is its perimeter?",
+      "reason": "near-duplicate of served question cmvwdhz5201q00remnmmrk6rv (cosine 0.969 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

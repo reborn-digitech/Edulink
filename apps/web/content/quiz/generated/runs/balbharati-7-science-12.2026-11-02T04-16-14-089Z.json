@@ -1,0 +1,481 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T04:16:14.089Z",
+  "finishedAt": "2026-11-02T04:21:22.993Z",
+  "seconds": 309,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "703020012",
+    "document": "balbharati/7/science/703020012.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 12 — The Muscular System and Digestive System in Human Beings",
+    "edition": "First Edition 2017",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[NSEJS 2015 — question paper]\n4. In humans, the digestion of carbohydrates happens/takes place in the following parts of the\ndigestive system:\na) Mouth, stomach and small intestine b) Mouth and small intestine\nc) Small intestine alone d) Stomach and small intestine",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n8. Generally food is broken and absorbed within the body of organisms. In which of the 1\nfollowing organisms is it done outside the body?\na) Amoeba\nb) Mushroom\nc) Paramoecium\nd) Lice",
+      "[CBSE Class X Science, sample question paper, 2026-27]\n13. How do muscles move at the cellular level and respond when processed 3\nmessages are received from the brain?",
+      "[INJSO 2016 — question paper]\n1. Ingestion, digestion, absorption, assimilation and egestion are the steps in food\nprocessing in our body. Majority of absorption takes place in small intestine (villi)\nand which is transported to different organs through the circulatory system.\nStarting with villi, which of the following is the correct sequence of organs that\nthe absorbed food passes through?\na) Liver → Other organs → Heart\nb) Heart→ Liver → Other organs\nc) Heart → Other organs → Liver\nd) Liver→ Heart →Other organs"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 75274,
+      "in": 24,
+      "out": 23,
+      "rejects": 1,
+      "promptTokens": 17540,
+      "completionTokens": 4625
+    },
+    "critique": {
+      "calls": 30,
+      "ms": 173596,
+      "in": 23,
+      "out": 18,
+      "rejects": 5,
+      "promptTokens": 13225,
+      "completionTokens": 5222
+    },
+    "solver": {
+      "calls": 137,
+      "ms": 66928,
+      "in": 18,
+      "out": 16,
+      "rejects": 2,
+      "promptTokens": 22629,
+      "completionTokens": 1407
+    },
+    "form": {
+      "calls": 16,
+      "ms": 36834,
+      "in": 16,
+      "out": 10,
+      "rejects": 6,
+      "promptTokens": 3880,
+      "completionTokens": 1063
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 18,
+      "ms": 2743,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 375502,
+      "in": 20,
+      "out": 20,
+      "rejects": 1,
+      "promptTokens": 24650,
+      "completionTokens": 12276
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 1,
+    "4": 2,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 6,
+      "stem": "Why is it important to have strong and efficient muscles?",
+      "ms": {
+        "draft": 2842,
+        "critique": 5420,
+        "solver": 996,
+        "form": 3256
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which part of the digestive system is responsible for the initial breakdown of carbohydrates?",
+      "ms": {
+        "draft": 2842,
+        "critique": 6310,
+        "solver": 14329,
+        "form": 2441
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Where does the digestion of carbohydrates begin in the human body?",
+      "ms": {
+        "draft": 4359,
+        "critique": 6894,
+        "solver": 10591,
+        "form": 2046
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram of the digestive system, which organ stores bile produced by the liver?",
+      "ms": {
+        "draft": 4359,
+        "critique": 5432,
+        "solver": 11286
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which part of the digestive system is responsible for absorbing water from undigested food?",
+      "ms": {
+        "draft": 4359,
+        "critique": 5774,
+        "solver": 10606,
+        "form": 3022
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In which part of the digestive system does the majority of nutrient absorption take place?",
+      "ms": {
+        "draft": 4359,
+        "critique": 7189,
+        "solver": 10214,
+        "form": 2659
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to food after it is chewed in the mouth?",
+      "ms": {
+        "draft": 2525,
+        "critique": 4272,
+        "solver": 1098,
+        "form": 3706
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Where is the liver located in the digestive system?",
+      "ms": {
+        "draft": 2525,
+        "critique": 6478,
+        "solver": 13069
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person's stomach muscles stop moving, which of the following would happen?",
+      "ms": {
+        "draft": 2820,
+        "critique": 6037
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which type of muscles are responsible for the movement of the heart?",
+      "ms": {
+        "draft": 2820,
+        "critique": 7977
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the digestive system?",
+      "ms": {
+        "draft": 2820,
+        "critique": 7180
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In which part of the body are the smallest muscles located?",
+      "ms": {
+        "draft": 2820,
+        "critique": 6140
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do muscles need to be strong and efficient?",
+      "ms": {
+        "draft": 2820,
+        "critique": 4507
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the function of the muscles in our body?",
+      "ms": {
+        "draft": 2842,
+        "critique": 4744,
+        "solver": 2065,
+        "form": 1822,
+        "translation": 42149
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the digestive system is responsible for the digestion of carbohydrates?",
+      "ms": {
+        "draft": 2525,
+        "critique": 4573,
+        "solver": 1755,
+        "form": 2087,
+        "translation": 26694
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which type of muscles work according to our will?",
+      "ms": {
+        "draft": 2842,
+        "critique": 4238,
+        "solver": 983,
+        "form": 4154,
+        "translation": 43326
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of the liver?",
+      "ms": {
+        "draft": 4359,
+        "critique": 6459,
+        "solver": 1238,
+        "form": 1204,
+        "translation": 45904
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens if the cardiac muscles do not move?",
+      "ms": {
+        "draft": 2842,
+        "critique": 4396,
+        "solver": 1668,
+        "form": 2568,
+        "translation": 37220
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a function of the digestive system?",
+      "ms": {
+        "draft": 2842,
+        "critique": 7548,
+        "solver": 14021,
+        "form": 2033,
+        "translation": 50623
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of a voluntary muscle?",
+      "ms": {
+        "draft": 2525,
+        "critique": 5793,
+        "solver": 1366,
+        "form": 3110,
+        "translation": 33833
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which part of the digestive system absorbs water from the undigested food?",
+      "ms": {
+        "draft": 2525,
+        "critique": 6019,
+        "solver": 1238,
+        "form": 1990,
+        "translation": 27572
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the small intestine considered the primary site for nutrient absorption?",
+      "ms": {
+        "draft": 4359,
+        "critique": 6875,
+        "solver": 1059,
+        "form": 2413,
+        "translation": 38385
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do muscles in the stomach not get tired easily?",
+      "ms": {
+        "draft": 2525,
+        "critique": 6362,
+        "solver": 1436,
+        "form": 3218,
+        "translation": 26870
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is it important to have strong and efficient muscles?",
+      "reason": "the key is far longer than every distractor (49 vs 26 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which part of the digestive system is responsible for the initial breakdown of carbohydrates?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Where does the digestion of carbohydrates begin in the human body?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the diagram of the digestive system, which organ stores bile produced by the liver?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which part of the digestive system is responsible for absorbing water from undigested food?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In which part of the digestive system does the majority of nutrient absorption take place?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the main function of the digestive system?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What happens to food after it is chewed in the mouth?",
+      "reason": "the key is far longer than every distractor (50 vs 29 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Where is the liver located in the digestive system?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person's stomach muscles stop moving, which of the following would happen?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which type of muscles are responsible for the movement of the heart?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the digestive system?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In which part of the body are the smallest muscles located?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why do muscles need to be strong and efficient?",
+      "reason": "option 2 is not wrong"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -21,49 +21,49 @@
   "board": "BALBHARATI",
   "book": "६ वी गणित इंग्रजी",
   "edition": "First Edition 2026",
-  "generatedAt": "2026-10-31T00:37:29.382Z",
+  "generatedAt": "2026-11-01T13:49:30.585Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "What is the term used when the selling price is greater than the cost price?",
+      "difficulty": 2,
+      "stem": "What is the meaning of 'profit' in the context of buying and selling?",
       "choices": [
-        "Loss",
-        "Profit",
-        "Discount",
-        "Markup"
+        "It is the cost of the item",
+        "It is the amount spent on purchasing the item",
+        "It is the difference between the selling price and the cost price",
+        "It is the price at which the item is sold"
       ],
-      "answerIndex": 1,
-      "solution": "When the selling price is greater than the cost price, it means the seller has earned more than the amount spent. This is called a profit. A loss occurs when the selling price is less than the cost price. Discount and markup are different concepts not directly related to this comparison.",
+      "answerIndex": 2,
+      "solution": "Profit is defined as the difference between the selling price and the cost price when the selling price is higher. The correct option states this clearly. The other options incorrectly define profit as the cost price, the amount spent, or the selling price, which are not accurate.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "जब बिक्री मूल्य लागत मूल्य से अधिक होता है, तो उसके लिए क्या शब्द प्रयोग किया जाता है?",
+          "stem": "खरीदाई और बिक्री के संदर्भ में 'लाभ' का क्या अर्थ है?",
           "choices": [
-            "हानि",
-            "लाभ",
-            "छूट",
-            "मूल्य वृद्धि"
+            "यह वस्तु की लागत है",
+            "यह वस्तु खरीदने पर खर्च की गई राशि है",
+            "यह बिक्री मूल्य और लागत मूल्य के बीच का अंतर है",
+            "यह वस्तु के बिक्री मूल्य के रूप में है"
           ],
-          "solution": "जब बिक्री मूल्य लागत मूल्य से अधिक होता है, तो यह अर्थ यह है कि विक्रेता द्वारा खर्च की गई राशि से अधिक कमाई की गई है। इसे लाभ कहा जाता है। जब बिक्री मूल्य लागत मूल्य से कम होता है, तो हानि होती है। छूट और मूल्य वृद्धि इस तुलना से सीधे संबंधित नहीं हैं।",
+          "solution": "लाभ की व्याख्या बिक्री मूल्य और लागत मूल्य के बीच के अंतर के रूप में की जाती है जब बिक्री मूल्य अधिक होता है। सही विकल्प इसे स्पष्ट रूप से बताता है। अन्य विकल्प लाभ की गलत व्याख्या लागत मूल्य, खर्च की गई राशि या बिक्री मूल्य के रूप में करते हैं, जो सटीक नहीं है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology commonly found in Hindi-medium textbooks.",
+          "critique": "The Hindi translation accurately conveys the meaning of the English question and options. Technical terms like 'लाभ' (profit), 'बिक्री मूल्य' (selling price), and 'लागत मूल्य' (cost price) are standard in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "विक्री किंमत किंमतीपेक्षा जास्त असताना कोणत्या शब्दाचा वापर केला जातो?",
+          "stem": "खरेदी आणि विक्रीच्या संदर्भात 'लाभ' म्हणजे काय?",
           "choices": [
-            "तोटा",
-            "फायदा",
-            "सूट",
-            "मार्कअप"
+            "ते वस्तूची खरेदी किंमत आहे",
+            "ते वस्तू खरेदी करण्यासाठी खर्च केलेली रक्कम आहे",
+            "ते विक्री किंमत आणि खरेदी किंमत दरम्यानचा फरक आहे",
+            "ते वस्तू विकली जाणारी किंमत आहे"
           ],
-          "solution": "जेव्हा विक्री किंमत किंमतीपेक्षा जास्त असते, तेव्हा विक्रेता खर्च केलेल्या रकमेपेक्षा जास्त मिळवतो. हा फायदा म्हणतात. जेव्हा विक्री किंमत किंमतीपेक्षा कमी असते तेव्हा तोटा होतो. सूट आणि मार्कअप हे विविध संकल्पना आहेत जी या तुलनेशी सीधा संबंध नाहीत.",
+          "solution": "लाभ म्हणजे विक्री किंमत आणि खरेदी किंमत दरम्यानचा फरक आहे जेव्हा विक्री किंमत खरेदी किंमतपेक्षा जास्त असते. बरोबर उत्तर याच स्पष्टपणे सांगते. इतर उत्तरे लाभला खरेदी किंमत, खर्च केलेली रक्कम किंवा विक्री किंमत म्हणून चुकीचे वर्णन करतात, जे अचूक नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terms used for business concepts.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology for business concepts.",
           "flag": null
         }
       },
@@ -72,20 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses profit with loss",
+        "Confuses profit with cost price",
+        "Confuses profit with the amount spent",
         null,
-        "Does not understand the definition of profit",
-        "Does not know the term for selling price being higher than cost price"
+        "Confuses profit with selling price"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": null,
-      "critique": "The question is straightforward and the correct answer is clearly 1 (Profit). The solution and reasoning are accurate, and the distractors reflect common misconceptions.",
+      "critique": "The correct answer is option 2, which accurately defines profit as the difference between the selling price and the cost price. The author's reasoning for the other options is valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
@@ -119,49 +119,147 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T00:37:29.382Z",
+      "generatedAt": "2026-11-01T13:49:30.585Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the meaning of 'loss' in the context of buying and selling?",
+      "choices": [
+        "It is the cost of the item",
+        "It is the amount spent on purchasing the item",
+        "It is the difference between the cost price and the selling price",
+        "It is the price at which the item is sold"
+      ],
+      "answerIndex": 2,
+      "solution": "Loss is defined as the difference between the cost price and the selling price when the selling price is lower. The correct option states this clearly. The other options incorrectly define loss as the cost price, the amount spent, or the selling price, which are not accurate.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "खरीदाई और बिक्री के संदर्भ में 'हानि' का अर्थ क्या है?",
+          "choices": [
+            "यह वस्तु की लागत है",
+            "यह वस्तु की खरीद के लिए खर्च की गई राशि है",
+            "यह क्रय मूल्य और बिक्री मूल्य के बीच अंतर है",
+            "यह वस्तु के बेचे जाने का मूल्य है"
+          ],
+          "solution": "हानि की व्याख्या क्रय मूल्य और बिक्री मूल्य के बीच अंतर के रूप में की जाती है जब बिक्री मूल्य कम होता है। सही विकल्प इसे स्पष्ट रूप से बताता है। अन्य विकल्प गलत रूप से हानि को क्रय मूल्य, खर्च की गई राशि या बिक्री मूल्य के रूप में परिभाषित करते हैं, जो सटीक नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi business terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खरेदी आणि विक्रीच्या संदर्भात 'तोटा' म्हणजे काय?",
+          "choices": [
+            "ते वस्तूची खरेदी किंमत आहे",
+            "ते वस्तू खरेदी करण्यासाठी खर्च केलेली रक्कम आहे",
+            "ते क्रयमूल्य आणि विक्रयमूल्यातील फरक आहे",
+            "ते वस्तू विकल्याचे मूल्य आहे"
+          ],
+          "solution": "तोटा म्हणजे क्रयमूल्य आणि विक्रयमूल्यातील फरक असतो जेव्हा विक्रयमूल्य क्रयमूल्यापेक्षा कमी असते. बरोबर उत्तर याच स्पष्टपणे सांगते. इतर उत्तरांमध्ये तोटा क्रयमूल्य, खर्च केलेली रक्कम किंवा विक्रयमूल्य म्हणून चुकीचे वर्णन केले आहे, जे अचूक नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for business concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses loss with cost price",
+        "Confuses loss with the amount spent",
+        null,
+        "Confuses loss with selling price"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, and the correct answer is clearly option 2. The author's reasoning for the distractors aligns with common misconceptions students might have about the definition of loss.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 64,
+          "pageStart": 98,
+          "pageEnd": 99,
+          "headingPath": [
+            "12. Profit and Loss",
+            "Green Fair"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 65,
+          "pageStart": 100,
+          "pageEnd": 100,
+          "headingPath": [
+            "12. Profit and Loss",
+            "Green Fair"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 66,
+          "pageStart": 101,
+          "pageEnd": 101,
+          "headingPath": [
+            "12. Profit and Loss",
+            "Green Fair"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T13:49:30.585Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "A shopkeeper bought 100 kg of rice for ₹4,000 and sold it for ₹4,500. What is the profit made?",
+      "stem": "A vegetable seller bought 342 kg of tomatoes for ₹8,208. He sold 318 kg at ₹25 per kg. How much loss did he suffer?",
       "choices": [
-        "₹400",
-        "₹500",
-        "₹600",
-        "₹700"
+        "₹258",
+        "₹7950",
+        "₹8208",
+        "₹24"
       ],
-      "answerIndex": 1,
-      "solution": "Profit is calculated as selling price minus cost price. Here, 4,500 - 4,000 = 500. Therefore, the profit is ₹500. The other options do not match the correct calculation.",
-      "checkExpr": "4500-4000",
+      "answerIndex": 0,
+      "solution": "The total selling price of 318 kg of tomatoes is 318 × 25 = ₹7950. The cost price of all the tomatoes was ₹8208. The loss is calculated as cost price minus selling price, which is 8208 - 7950 = ₹258. The option ₹258 is correct because it represents the difference between the cost and the amount received from the sale. The other options are either the selling price, the total cost, or an incorrect value not derived from the calculation.",
+      "checkExpr": "8208-7950",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक दुकानदार ने ₹4,000 में 100 किग्रा चावल खरीदा और इसे ₹4,500 में बेच दिया। बनाई गई लाभ क्या है?",
+          "stem": "एक सब्जी विक्रेता ने 342 किग्रा टमाटर ₹8,208 में खरीदे। उसने 318 किग्रा को ₹25 प्रति किग्रा के हिसाब से बेच दिया। उसे कितना नुकसान हुआ?",
           "choices": [
-            "₹400",
-            "₹500",
-            "₹600",
-            "₹700"
+            "₹258",
+            "₹7950",
+            "₹8208",
+            "₹24"
           ],
-          "solution": "लाभ बिक्री मूल्य में से लागत मूल्य को घटाकर निकाला जाता है। यहां, 4,500 - 4,000 = 500। अतः, लाभ ₹500 है। अन्य विकल्प सही गणना के बराबर नहीं हैं।",
+          "solution": "318 किग्रा टमाटर का कुल बिक्री मूल्य 318 × 25 = ₹7950 है। सभी टमाटर का लागत मूल्य ₹8208 था। नुकसान की गणना लागत मूल्य में बिक्री मूल्य के अंतर के रूप में की जाती है, जो 8208 - 7950 = ₹258 है। ₹258 विकल्प सही है क्योंकि यह लागत और बिक्री से प्राप्त राशि के अंतर का प्रतिनिधित्व करता है। अन्य विकल्प या तो बिक्री मूल्य, कुल लागत हैं या गणना से प्राप्त गलत मान हैं।",
           "imageAlt": null,
           "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "एका दुकानदाराने 100 किग्रा चावल ₹4,000 मध्ये खरेदी केला आणि ₹4,500 मध्ये विकला. त्याचा नफा किती होता?",
+          "stem": "एका भाजी विक्रेत्याने 342 किलोग्राम टोमॅटो 8,208 रुपयांना खरेदी केले. त्याने 318 किलोग्राम 25 रुपये प्रति किलोग्राम दराने विकले. त्याला किती तोटा झाला?",
           "choices": [
-            "₹400",
-            "₹500",
-            "₹600",
-            "₹700"
+            "8208 रुपये",
+            "7950 रुपये",
+            "258 रुपये",
+            "24 रुपये"
           ],
-          "solution": "नफा विक्री किंमत मापन किंमत वजा करून काढला जातो. येथे, 4,500 - 4,000 = 500. म्हणून, नफा ₹500 आहे. इतर विकल्प योग्य गणनेशी जुळत नाहीत.",
+          "solution": "318 किलोग्राम टोमॅटोची एकूण विक्री किंमत 318 × 25 = 7950 रुपये आहे. सर्व टोमॅटोची खरेदी किंमत 8208 रुपये होती. तोटा खरेदी किंमत विक्री किंमतच्या फरकाने गणला जातो, जो 8208 - 7950 = 258 रुपये आहे. 258 रुपये असलेला विकल्प बरोबर आहे कारण तो खरेदी आणि विक्रीमधून मिळालेल्या रकमेचा फरक दर्शवतो. इतर विकल्प विक्री किंमत, एकूण खरेदी किंमत किंवा गणनेने मिळालेल्या चुकीच्या मूल्याचे दर्शक आहेत.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains in the same position, and the distractors are still incorrect.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
           "flag": null
         }
       },
@@ -170,20 +268,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Calculating profit as cost price minus selling price instead of selling price minus cost price",
         null,
-        "Adds the cost price and selling price",
-        "Subtracts the selling price from the cost price"
+        "Calculates total revenue as 342 kg × ₹25 = ₹8550, then subtracts cost price incorrectly as ₹8550 - ₹8208 = ₹342, but then mistakenly subtracts that from cost price again.",
+        "Believes the total cost price is the loss if not all items are sold",
+        "Confuses the loss with the price per kg of the unsold tomatoes"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": null,
-      "critique": "The solution is correct and straightforward. The profit is indeed ₹500, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "critique": "The solution is correct and matches the author's key. The calculation of selling price (318 × 25 = 7950) and loss (8208 - 7950 = 258) is accurate. The reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
@@ -217,49 +315,49 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T00:37:29.382Z",
+      "generatedAt": "2026-11-01T13:49:30.585Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "A fruit seller bought 50 apples for ₹250 and sold them for ₹200. What is the loss?",
+      "stem": "If the cost price is ₹60 and the selling price is ₹75, what is the profit?",
       "choices": [
-        "₹250",
-        "₹50",
-        "₹60",
-        "₹70"
+        "₹10",
+        "₹15",
+        "₹20",
+        "₹25"
       ],
       "answerIndex": 1,
-      "solution": "Loss is calculated as cost price minus selling price. Here, 250 - 200 = 50. Therefore, the loss is ₹50. The other options do not match the correct calculation.",
-      "checkExpr": "250-200",
+      "solution": "Profit is calculated as selling price minus cost price. So, 75 - 60 = 15. The correct answer is ₹15. The other options are incorrect because they result from errors like subtracting in the wrong order or miscalculating the difference.",
+      "checkExpr": "75-60",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक फल विक्रेता ने ₹250 में 50 सेब खरीदे और उन्हें ₹200 में बेच दिया। हानि कितनी है?",
+          "stem": "यदि क्रय मूल्य ₹60 है और बिक्री मूल्य ₹75 है, तो लाभ क्या है?",
           "choices": [
-            "₹250",
-            "₹50",
-            "₹60",
-            "₹70"
+            "₹10",
+            "₹15",
+            "₹20",
+            "₹25"
           ],
-          "solution": "हानि लागत मूल्य में बिक्री मूल्य के अंतर के रूप में गणना की जाती है। यहां, 250 - 200 = 50। इसलिए, हानि ₹50 है। अन्य विकल्प सही गणना के अनुरूप नहीं हैं।",
+          "solution": "लाभ की गणना बिक्री मूल्य में से क्रय मूल्य को घटाकर की जाती है। इसलिए, 75 - 60 = 15। सही उत्तर ₹15 है। अन्य विकल्प गलत हैं क्योंकि वे गलत क्रम में घटाने या अंतर की गलत गणना के कारण प्राप्त होते हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi terminology for cost price and selling price.",
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi terms for cost price (क्रय मूल्य), selling price (बिक्री मूल्य), and profit (लाभ).",
           "flag": null
         },
         "mr": {
-          "stem": "एका फळविक्रेत्याने 50 सेब ₹250 मध्ये खरेदी केले आणि ते ₹200 मध्ये विकले. त्याचा तोटा किती आहे?",
+          "stem": "जर किंमत 60 रुपये असेल आणि विक्री किंमत 75 रुपये असेल, तर नफा किती असेल?",
           "choices": [
-            "₹250",
-            "₹50",
-            "₹60",
-            "₹70"
+            "10 रुपये",
+            "15 रुपये",
+            "20 रुपये",
+            "25 रुपये"
           ],
-          "solution": "तोटा किंमत किंमत विक्री किंमत वजा करून काढला जातो. येथे, 250 - 200 = 50. म्हणून, तोटा ₹50 आहे. इतर विकल्प योग्य गणनेशी मेळ खात नाहीत.",
+          "solution": "नफा विक्री किंमत वजा किंमत असे काढला जातो. म्हणून, 75 - 60 = 15. बरोबर उत्तर 15 रुपये आहे. इतर उत्तरे चूक असतात कारण ते वजा करताना चूक केलेली अनुक्रम असतो किंवा फरक मोजताना चूक होते.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology for cost price and selling price.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology for cost price, selling price, and profit.",
           "flag": null
         }
       },
@@ -268,10 +366,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Pupil subtracts the wrong way, thinking loss is selling price minus cost price",
+        "Confuses the order of subtraction",
         null,
         "Adds the cost price and selling price",
-        "Subtracts the selling price from the cost price"
+        "Subtracts the cost price from the selling price incorrectly"
       ],
       "solverAnswers": [
         1,
@@ -281,7 +379,7 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The solution is correct. The loss is indeed calculated as cost price minus selling price, which is 250 - 200 = 50. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "critique": "The solution is correct and straightforward. The profit is indeed 75 - 60 = 15. The distractors reflect common misconceptions such as incorrect subtraction order, addition instead of subtraction, and miscalculating the difference.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
@@ -315,7 +413,105 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T00:37:29.382Z",
+      "generatedAt": "2026-11-01T13:49:30.585Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A shopkeeper bought 150 kg of jaggery for ₹7,500 and sold it for ₹8,250. How much profit did he make?",
+      "choices": [
+        "₹750",
+        "₹8,250",
+        "₹7,500",
+        "₹1,500"
+      ],
+      "answerIndex": 0,
+      "solution": "Profit is calculated by subtracting the cost price from the selling price. Here, 8,250 minus 7,500 equals 750. The correct answer is ₹750. The other options are either the cost price, the selling price, or an incorrect total.",
+      "checkExpr": "8250-7500",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक दुकानदार ने ₹7,500 में 150 किग्रा गुड़ खरीदा और इसे ₹8,250 में बेच दिया। उसे कितना लाभ हुआ?",
+          "choices": [
+            "₹750",
+            "₹8,250",
+            "₹7,500",
+            "₹1,500"
+          ],
+          "solution": "लाभ की गणना क्रय मूल्य को बिक्री मूल्य में से घटाकर की जाती है। यहां, 8,250 में से 7,500 घटाने पर 750 आता है। सही उत्तर ₹750 है। अन्य विकल्प क्रय मूल्य, बिक्री मूल्य या गलत कुल राशि हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका दुकानदाराने 150 किलो गुळासाठी ₹7,500 भरले आणि तो ₹8,250 ला विकला. त्याला किती फायदा झाला?",
+          "choices": [
+            "₹750",
+            "₹8,250",
+            "₹7,500",
+            "₹1,500"
+          ],
+          "solution": "फायदा किंमत विक्री किंमत वजा किंमत करून गणला जातो. येथे, 8,250 वजा 7,500 हा 750 आहे. योग्य उत्तर ₹750 आहे. इतर विकल्प किंमत, विक्री किंमत किंवा अयोग्य एकूण असू शकतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for cost price, selling price, and profit.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses profit with the selling price",
+        "Confuses profit with the cost price",
+        "Confuses profit with the total weight"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and straightforward. The profit is calculated as the difference between the selling price and the cost price, which is ₹750. The distractors represent common misconceptions such as confusing profit with cost price, selling price, or a number from the passage.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 64,
+          "pageStart": 98,
+          "pageEnd": 99,
+          "headingPath": [
+            "12. Profit and Loss",
+            "Green Fair"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 65,
+          "pageStart": 100,
+          "pageEnd": 100,
+          "headingPath": [
+            "12. Profit and Loss",
+            "Green Fair"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 66,
+          "pageStart": 101,
+          "pageEnd": 101,
+          "headingPath": [
+            "12. Profit and Loss",
+            "Green Fair"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T13:49:30.585Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

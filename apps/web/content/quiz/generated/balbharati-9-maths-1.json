@@ -1,0 +1,979 @@
+{
+  "subject": "MATHS",
+  "classLevel": 9,
+  "chapter": "Chapter 1 — Sets",
+  "name": "Sets",
+  "slug": "balbharati-maths-9-sets",
+  "summary": "This chapter introduces the concept of sets, their representation, and basic operations like union and intersection.",
+  "position": 1,
+  "source": "generated against Balbharati Mathematics, Class 9, chapter 1 (\"९ वी गणित भाग-१ इंग्रजी\", chapter 1) (2026 edition)",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {
+    "hi": {
+      "name": "अध्याय 1 - सेट्स",
+      "summary": "इस अध्याय में सेट के अवधारणा, उनके प्रतिनिधित्व और यूनियन और प्रतिच्छेद के मूल ऑपरेशन का परिचय दिया गया है।"
+    },
+    "mr": {
+      "name": "अध्याय 1 - सेट्स",
+      "summary": "हा अध्याय सेटच्या संकल्पना, त्यांचे प्रतिनिधित्व आणि युनियन आणि इंटरसेक्शन या मूलभूत ऑपरेशनचे परिचय देतो."
+    }
+  },
+  "board": "BALBHARATI",
+  "book": "९ वी गणित भाग-१ इंग्रजी",
+  "edition": "2026 edition",
+  "generatedAt": "2026-11-02T15:16:53.027Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": true,
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the term for a collection of well-defined objects?",
+      "choices": [
+        "Set",
+        "Group",
+        "Collection",
+        "List"
+      ],
+      "answerIndex": 0,
+      "solution": "A set is the term used in mathematics for a collection of well-defined objects. 'Group' and 'collection' are too general and not specific mathematical terms. 'List' refers to an ordered sequence, not a mathematical set.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कल्पित वस्तुओं के संग्रह के लिए क्या शब्द प्रयोग किया जाता है?",
+          "choices": [
+            "सेट",
+            "समूह",
+            "संग्रह",
+            "सूची"
+          ],
+          "solution": "गणित में कल्पित वस्तुओं के संग्रह के लिए 'सेट' शब्द का प्रयोग किया जाता है। 'समूह' और 'संग्रह' बहुत व्यापक हैं और गणितीय शब्द नहीं हैं। 'सूची' का अर्थ क्रमबद्ध अनुक्रम होता है, जो गणितीय सेट नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "ही चांगले निश्चित केलेल्या वस्तूंच्या गोळाबेरोबर काय म्हणतात?",
+          "choices": [
+            "सेट",
+            "गट",
+            "गोळाबेरोबर",
+            "रेणी"
+          ],
+          "solution": "गणितात चांगले निश्चित केलेल्या वस्तूंच्या गोळाबेरोबरला 'सेट' म्हणतात. 'गट' आणि 'गोळाबेरोबर' हे खूप व्यापक आहेत आणि गणितीय शब्द नाहीत. 'रेणी' हा विन्यासाच्या क्रमाने ठेवलेल्या वस्तूंचा विचार करतो, गणितीय सेट नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate and maintains the original meaning, with appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the term 'set' with a general 'group'",
+        "Confuses the term 'set' with a general 'collection'",
+        "Confuses the term 'set' with a general 'list'"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and aligns with the definition of a set in mathematics. The correct answer is 'Set' (option 0), and the author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 14,
+          "pageStart": 25,
+          "pageEnd": 27,
+          "headingPath": [
+            "1. Sets",
+            "È f"
+          ]
+        },
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 15,
+          "pageStart": 27,
+          "pageEnd": 28,
+          "headingPath": [
+            "1. Sets",
+            "Problem set 1"
+          ]
+        },
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 16,
+          "pageStart": 28,
+          "pageEnd": 28,
+          "headingPath": [
+            "1. Sets",
+            "Ç f"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-02T15:16:53.027Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is an example of a finite set?",
+      "choices": [
+        "Set of all natural numbers",
+        "Set of all integers",
+        "Set of all prime numbers",
+        "Set of all students in a class"
+      ],
+      "answerIndex": 3,
+      "solution": "A finite set has a definite number of elements. The set of all students in a class has a definite number of elements, making it finite. The other options are infinite sets.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक परिमित समुच्चय का उदाहरण है?",
+          "choices": [
+            "सभी प्राकृत संख्याओं का समुच्चय",
+            "सभी पूर्णांकों का समुच्चय",
+            "सभी अभाज्य संख्याओं का समुच्चय",
+            "एक कक्षा में सभी छात्रों का समुच्चय"
+          ],
+          "solution": "एक परिमित समुच्चय में निश्चित संख्या में अवयव होते हैं। एक कक्षा में सभी छात्रों का समुच्चय निश्चित संख्या में अवयव रखता है, जिसके कारण यह परिमित है। अन्य विकल्प अनंत समुच्चय हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक अंमान्य सेटचे उदाहरण आहे?",
+          "choices": [
+            "सर्व प्राकृतिक संख्यांचा सेट",
+            "सर्व पूर्णांकांचा सेट",
+            "सर्व अभाज्य संख्यांचा सेट",
+            "एका वर्गातील सर्व विद्यार्थ्यांचा सेट"
+          ],
+          "solution": "अंमान्य सेटला निश्चित संख्येचे घटक असतात. एका वर्गातील सर्व विद्यार्थ्यांचा सेटला निश्चित संख्येचे घटक असतात, ज्यामुळे तो अंमान्य सेट असतो. इतर विकल्प अनंत सेट आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses finite with infinite sets",
+        "Confuses finite with infinite sets",
+        "Confuses finite with infinite sets",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. The set of all students in a class is finite, while the other options are infinite. The reasons for the wrong options are valid misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 14,
+          "pageStart": 25,
+          "pageEnd": 27,
+          "headingPath": [
+            "1. Sets",
+            "È f"
+          ]
+        },
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 15,
+          "pageStart": 27,
+          "pageEnd": 28,
+          "headingPath": [
+            "1. Sets",
+            "Problem set 1"
+          ]
+        },
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 16,
+          "pageStart": 28,
+          "pageEnd": 28,
+          "headingPath": [
+            "1. Sets",
+            "Ç f"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-02T15:16:53.027Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a set?",
+      "choices": [
+        "Happy children in the village",
+        "Brilliant students of the class",
+        "Days of a week",
+        "Strong forts of Maharashtra"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is 'Days of a week' because it is a well-defined collection of distinct elements. 'Happy children' and 'Brilliant students' are subjective and not clearly defined, while 'Strong forts' lacks a specific and objective criterion for inclusion.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक समुच्चय है?",
+          "choices": [
+            "गांव के खुश बच्चे",
+            "कक्षा के प्रतिभाशाली छात्र",
+            "सप्ताह के दिन",
+            "महाराष्ट्र के मजबूत किले"
+          ],
+          "solution": "सही उत्तर 'सप्ताह के दिन' है क्योंकि यह एक अच्छी तरह से परिभाषित अलग-अलग तत्वों का संग्रह है। 'खुश बच्चे' और 'प्रतिभाशाली छात्र' व्यक्तिगत हैं और स्पष्ट रूप से परिभाषित नहीं हैं, जबकि 'मजबूत किले' में शामिल होने के लिए एक विशिष्ट और वस्तुनिष्ठ मानदंड की कमी है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for mathematical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते सेट आहे?",
+          "choices": [
+            "गावातील आनंदी मुले",
+            "कक्षेतील उत्तम विद्यार्थी",
+            "आठवड्यातील दिवस",
+            "महाराष्ट्रातील दृढ दुर्गे"
+          ],
+          "solution": "बरोबर उत्तर 'आठवड्यातील दिवस' आहे कारण ते विशिष्ट घटकांचे एक विशिष्ट विवरण असलेले संच आहे. 'आनंदी मुले' आणि 'उत्तम विद्यार्थी' व्यक्तिगत आहेत आणि स्पष्ट विवरण नाहीत, तर 'दृढ दुर्गे' यांच्यासाठी समावेश करण्याचे विशिष्ट आणि वस्तुनिष्ठ मानदंड नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with educational materials.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses relative terms with sets",
+        "Confuses relative terms with sets",
+        null,
+        "Confuses the idea of definiteness with subjective or vague criteria"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. 'Days of a week' is a well-defined set, while the other options involve subjective or vague terms that do not meet the definition of a set.",
+      "sources": [
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 5,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "1. Sets"
+          ]
+        },
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 6,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "1. Sets"
+          ]
+        },
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 7,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "1. Sets",
+            "Ï N"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-02T15:16:53.027Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of an empty set?",
+      "choices": [
+        "{x | x is a natural number less than 1}",
+        "{x | x is a prime number between 1 and 10}",
+        "{x | x is a whole number less than 5}",
+        "{x | x is a letter of the word 'apple' and x is not a vowel}"
+      ],
+      "answerIndex": 0,
+      "solution": "The set {x | x is a natural number less than 1} has no elements, so it is an empty set. The other options contain elements, so they are not empty.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक खाली समुच्चय का उदाहरण है?",
+          "choices": [
+            "{x | x एक प्राकृत संख्या है जो 1 से कम है}",
+            "{x | x 1 और 10 के बीच एक अभाज्य संख्या है}",
+            "{x | x 5 से कम एक पूर्ण संख्या है}",
+            "{x | x 'apple' शब्द का एक अक्षर है और x एक अक्षर नहीं है}"
+          ],
+          "solution": "समुच्चय {x | x एक प्राकृत संख्या है जो 1 से कम है} के कोई अवयव नहीं हैं, इसलिए यह एक खाली समुच्चय है। अन्य विकल्पों में अवयव होते हैं, इसलिए वे खाली समुच्चय नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately conveys the mathematical concepts and maintains the structure of the original question.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक खालील शून्य सेटचे उदाहरण आहे?",
+          "choices": [
+            "{x | x हा 1 पेक्षा लहान प्राकृतिक संख्या आहे}",
+            "{x | x हा 1 आणि 10 च्या दरम्यान असलेली अभाज्य संख्या आहे}",
+            "{x | x हा 5 पेक्षा लहान पूर्ण संख्या आहे}",
+            "{x | x हा 'apple' शब्दातील अक्षर आहे आणि x एक स्वर नाही}"
+          ],
+          "solution": "सेट {x | x हा 1 पेक्षा लहान प्राकृतिक संख्या आहे} ला कोणतेही घटक नाहीत, म्हणून ते एक शून्य सेट आहे. इतर विकल्पांमध्ये घटक असतात, म्हणून ते शून्य सेट नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes that prime numbers between 1 and 10 include 1, which is not a prime number",
+        "Student thinks whole numbers start at 1 and excludes 0, so they think this set is empty",
+        "Student thinks 'apple' has only consonants, ignoring the vowels 'a' and 'e'"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as there are no natural numbers less than 1. The other options contain elements, and the author's explanations for the distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 8,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "1. Sets",
+            "Ï N"
+          ]
+        },
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 9,
+          "pageStart": 17,
+          "pageEnd": 19,
+          "headingPath": [
+            "1. Sets",
+            "Ï N"
+          ]
+        },
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 10,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "1. Sets",
+            "f Í"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-02T15:16:53.027Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If n(A) = 15, n(A ∪ B) = 29, and n(A ∩ B) = 7, then what is n(B)?",
+      "choices": [
+        "11",
+        "21",
+        "31",
+        "41"
+      ],
+      "answerIndex": 1,
+      "solution": "Using the formula n(A ∪ B) = n(A) + n(B) - n(A ∩ B), we substitute the given values: 29 = 15 + n(B) - 7. Solving for n(B) gives 21. The other options do not follow from the formula.",
+      "checkExpr": "29-15+7",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि n(A) = 15, n(A ∪ B) = 29, और n(A ∩ B) = 7, तो n(B) क्या है?",
+          "choices": [
+            "11",
+            "21",
+            "31",
+            "41"
+          ],
+          "solution": "सूत्र n(A ∪ B) = n(A) + n(B) - n(A ∩ B) का उपयोग करके, हम दिए गए मानों को प्रतिस्थापित करते हैं: 29 = 15 + n(B) - 7। n(B) के लिए हल करने पर 21 प्राप्त होता है। अन्य विकल्प सूत्र से अनुसरण नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर n(A) = 15, n(A ∪ B) = 29 आणि n(A ∩ B) = 7 असेल, तर n(B) किती आहे?",
+          "choices": [
+            "11",
+            "21",
+            "31",
+            "41"
+          ],
+          "solution": "सूत्र n(A ∪ B) = n(A) + n(B) - n(A ∩ B) वापरून आम्ही दिलेल्या मूल्यांचा बदल करतो: 29 = 15 + n(B) - 7. n(B) साठी सोडवल्यास 21 मिळते. इतर विकल्प सूत्रापासून मिळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Adds n(A) and n(A ∩ B) instead of subtracting",
+        null,
+        "Subtracts n(A) from n(A ∪ B) directly",
+        "Adds n(A) and n(A ∪ B) directly"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly applies the set union formula and arrives at the correct answer. The distractors reflect common misconceptions about how to manipulate the formula.",
+      "sources": [
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 14,
+          "pageStart": 25,
+          "pageEnd": 27,
+          "headingPath": [
+            "1. Sets",
+            "È f"
+          ]
+        },
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 15,
+          "pageStart": 27,
+          "pageEnd": 28,
+          "headingPath": [
+            "1. Sets",
+            "Problem set 1"
+          ]
+        },
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 16,
+          "pageStart": 28,
+          "pageEnd": 28,
+          "headingPath": [
+            "1. Sets",
+            "Ç f"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-02T15:16:53.027Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "In a class of 28 students, 8 have only dogs, 6 have only cats, and 10 have both. How many students do not have a dog or cat?",
+      "choices": [
+        "2",
+        "4",
+        "6",
+        "8"
+      ],
+      "answerIndex": 1,
+      "solution": "Total students = 28. Students with dogs or cats = 8 (only dogs) + 6 (only cats) + 10 (both) = 24. Students without a dog or cat = 28 - 24 = 4. The option '2' is incorrect because it subtracts incorrectly. The option '6' is incorrect because it includes only one group. The option '8' is incorrect because it is the number of students with only dogs.",
+      "checkExpr": "28-(8+6+10)",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "28 छात्रों की एक कक्षा में, 8 केवल कुत्ते रखते हैं, 6 केवल बिल्लियां रखते हैं, और 10 दोनों रखते हैं। कितने छात्रों के पास कुत्ता या बिल्ली नहीं है?",
+          "choices": [
+            "2",
+            "4",
+            "6",
+            "8"
+          ],
+          "solution": "कुल छात्र = 28। कुत्ते या बिल्ली रखने वाले छात्र = 8 (केवल कुत्ते) + 6 (केवल बिल्लियां) + 10 (दोनों) = 24। कुत्ता या बिल्ली न रखने वाले छात्र = 28 - 24 = 4। विकल्प '2' गलत है क्योंकि इसमें गलत घटाव किया गया है। विकल्प '6' गलत है क्योंकि इसमें केवल एक समूह शामिल किया गया है। विकल्प '8' गलत है क्योंकि यह केवल कुत्ते रखने वाले छात्रों की संख्या है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains in the same position, and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "28 विद्यार्थी असलेल्या एका वर्गात, 8 विद्यार्थी केवळ कुत्रे आहेत, 6 विद्यार्थी केवळ बिलांचे आहेत आणि 10 विद्यार्थी दोन्ही असलेले आहेत. किती विद्यार्थी कुत्रा किंवा बिलांचा नाहीत?",
+          "choices": [
+            "2",
+            "4",
+            "6",
+            "8"
+          ],
+          "solution": "एकूण विद्यार्थी = 28. कुत्रे किंवा बिलांचे विद्यार्थी = 8 (केवळ कुत्रे) + 6 (केवळ बिलां) + 10 (दोन्ही) = 24. कुत्रा किंवा बिलांचा नसलेले विद्यार्थी = 28 - 24 = 4. '2' विकल्प चुकीचा आहे कारण तो चुकीच्या प्रकारे वजा करतो. '6' विकल्प चुकीचा आहे कारण तो केवळ एका समूहाचा समावेश करतो. '8' विकल्प चुकीचा आहे कारण तो केवळ कुत्रे असलेल्या विद्यार्थ्यांची संख्या आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "subtracts 8 + 6 from 28",
+        null,
+        "includes only students with only cats",
+        "confuses the number of students with only dogs"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. The total number of students with dogs or cats is 8 + 6 + 10 = 24, so 28 - 24 = 4 students do not have a dog or cat. The author's reasoning for the distractors is valid.",
+      "sources": [
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 14,
+          "pageStart": 25,
+          "pageEnd": 27,
+          "headingPath": [
+            "1. Sets",
+            "È f"
+          ]
+        },
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 15,
+          "pageStart": 27,
+          "pageEnd": 28,
+          "headingPath": [
+            "1. Sets",
+            "Problem set 1"
+          ]
+        },
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 16,
+          "pageStart": 28,
+          "pageEnd": 28,
+          "headingPath": [
+            "1. Sets",
+            "Ç f"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-02T15:16:53.027Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Observe the Venn diagram and determine the set A ∪ B.",
+      "choices": [
+        "{1, 2, 3, 4, 5, 6}",
+        "{1, 2, 3}",
+        "{4, 5, 6}",
+        "{3, 4, 5}"
+      ],
+      "answerIndex": 0,
+      "solution": "The union of sets A and B includes all elements in both sets. Based on the Venn diagram, A ∪ B = {1, 2, 3, 4, 5, 6}. The option '{1, 2, 3}' is incorrect because it only includes elements of A. The option '{4, 5, 6}' is incorrect because it only includes elements of B. The option '{3, 4, 5}' is incorrect because it only includes the intersection.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "वेन आरेख को देखें और सेट A ∪ B निर्धारित करें।",
+          "choices": [
+            "{1, 2, 3, 4, 5, 6}",
+            "{1, 2, 3}",
+            "{4, 5, 6}",
+            "{3, 4, 5}"
+          ],
+          "solution": "सेट A और B का संयोजन सभी तत्वों को शामिल करता है जो दोनों सेट में हैं। वेन आरेख के आधार पर, A ∪ B = {1, 2, 3, 4, 5, 6}। विकल्प '{1, 2, 3}' गलत है क्योंकि यह केवल A के तत्वों को शामिल करता है। विकल्प '{4, 5, 6}' गलत है क्योंकि यह केवल B के तत्वों को शामिल करता है। विकल्प '{3, 4, 5}' गलत है क्योंकि यह केवल प्रतिच्छेदन के तत्वों को शामिल करता है।",
+          "imageAlt": "दो ओवरलैपिंग वृत्त A और B एक आयताकार U के भीतर।",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "वेन आकृती पाहून सेट A ∪ B निश्चित करा.",
+          "choices": [
+            "{1, 2, 3, 4, 5, 6}",
+            "{1, 2, 3}",
+            "{4, 5, 6}",
+            "{3, 4, 5}"
+          ],
+          "solution": "सेट A आणि B चा योग दोन्ही सेटमधील सर्व घटकांचा समावेश करतो. वेन आकृतीनुसार, A ∪ B = {1, 2, 3, 4, 5, 6}. पर्याय '{1, 2, 3}' अयोग्य आहे कारण तो केवळ A च्या घटकांचा समावेश करतो. पर्याय '{4, 5, 6}' अयोग्य आहे कारण तो केवळ B च्या घटकांचा समावेश करतो. पर्याय '{3, 4, 5}' अयोग्य आहे कारण तो केवळ छेदनबिंदूच्या घटकांचा समावेश करतो.",
+          "imageAlt": "दोन ओव्हरलॅपिंग वृत्तांची वेन आकृती ज्यांचे नाव A आणि B आहे आणि एक चौकोनात बंद केलेले आहे ज्याचे नाव U आहे.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A Venn diagram with two overlapping circles labeled A and B inside a rectangle labeled U.",
+      "figure": {
+        "kind": "geometry",
+        "spec": {
+          "frame": {
+            "xMin": 0,
+            "xMax": 10,
+            "yMin": 0,
+            "yMax": 7,
+            "unit": "units"
+          },
+          "points": [
+            {
+              "id": "A",
+              "x": 3,
+              "y": 4,
+              "label": "A"
+            },
+            {
+              "id": "B",
+              "x": 7,
+              "y": 4,
+              "label": "B"
+            },
+            {
+              "id": "U",
+              "x": 1,
+              "y": 1,
+              "label": "U"
+            }
+          ],
+          "circles": [
+            {
+              "center": "A",
+              "radius": 2,
+              "dashed": false
+            },
+            {
+              "center": "B",
+              "radius": 2,
+              "dashed": false
+            }
+          ],
+          "polygons": [
+            {
+              "vertices": [
+                "U",
+                "U",
+                "U",
+                "U"
+              ],
+              "shade": false
+            }
+          ],
+          "texts": [
+            {
+              "x": 1,
+              "y": 6,
+              "label": "U"
+            }
+          ]
+        },
+        "labels": {
+          "A": {
+            "en": "Set A"
+          },
+          "B": {
+            "en": "Set B"
+          },
+          "U": {
+            "en": "Universal Set"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        null,
+        "includes only elements of A",
+        "includes only elements of B",
+        "includes only the intersection of A and B"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The union of sets A and B includes all elements in either set, which matches the correct option. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 14,
+          "pageStart": 25,
+          "pageEnd": 27,
+          "headingPath": [
+            "1. Sets",
+            "È f"
+          ]
+        },
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 15,
+          "pageStart": 27,
+          "pageEnd": 28,
+          "headingPath": [
+            "1. Sets",
+            "Problem set 1"
+          ]
+        },
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 16,
+          "pageStart": 28,
+          "pageEnd": 28,
+          "headingPath": [
+            "1. Sets",
+            "Ç f"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-02T15:16:53.027Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following represents a finite set?",
+      "choices": [
+        "Set of natural numbers",
+        "Set of integers",
+        "Set of whole numbers",
+        "Set of multiples of 5 less than 30"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct answer is 'Set of multiples of 5 less than 30' because it contains a specific, limited number of elements. Multiples of 5 less than 30 are 5, 10, 15, 20, and 25, which are finite in number. The other options include numbers that extend infinitely in either direction, making them infinite sets.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक परिमित समुच्चय का प्रतिनिधित्व करता है?",
+          "choices": [
+            "प्राकृत संख्याओं का समुच्चय",
+            "पूर्णांकों का समुच्चय",
+            "पूर्ण संख्याओं का समुच्चय",
+            "30 से कम 5 के गुणजों का समुच्चय"
+          ],
+          "solution": "सही उत्तर '30 से कम 5 के गुणजों का समुच्चय' है क्योंकि इसमें एक विशिष्ट और सीमित संख्या में अवयव होते हैं। 30 से कम 5 के गुणज 5, 10, 15, 20 और 25 होते हैं, जो संख्या में परिमित होते हैं। अन्य विकल्पों में संख्याएँ दोनों दिशाओं में अनंत तक बढ़ती हैं, जिसके कारण ये अनंत समुच्चय होते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question, with appropriate mathematical terminology used in a way that aligns with standard Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक अंतिम सेट दर्शविते?",
+          "choices": [
+            "प्राकृतिक संख्यांचा सेट",
+            "पूर्णांकांचा सेट",
+            "अंकगणितीय संख्यांचा सेट",
+            "30 पेक्षा कमी 5 चे गुणकांचा सेट"
+          ],
+          "solution": "बरोबर उत्तर '30 पेक्षा कमी 5 चे गुणकांचा सेट' आहे कारण त्यामध्ये विशिष्ट, मर्यादित संख्येचे घटक असतात. 30 पेक्षा कमी 5 चे गुणक 5, 10, 15, 20 आणि 25 असतात, जे संख्येने मर्यादित असतात. इतर विकल्पांमध्ये संख्या एका बाजूला किंवा दुसरीकडे अनंतपर्यंत वाढत जातात, ज्यामुळे ते अनंत सेट बनतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses infinite sets with finite sets",
+        "Confuses infinite sets with finite sets",
+        "Confuses infinite sets with finite sets",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is option 3, as the set of multiples of 5 less than 30 is finite. The other options are infinite sets, which aligns with the author's reasoning. The distractors are all incorrect and the reasons provided are valid misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 5,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "1. Sets"
+          ]
+        },
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 6,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "1. Sets"
+          ]
+        },
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 7,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "1. Sets",
+            "Ï N"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-02T15:16:53.027Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is a subset of the set of natural numbers?",
+      "choices": [
+        "{x | x is an integer}",
+        "{x | x is a rational number}",
+        "{x | x is a prime number}",
+        "{x | x is a negative number}"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is {x | x is a prime number} because all prime numbers are natural numbers. The other options include numbers that are not natural numbers.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा प्राकृत संख्याओं के समुच्चय का एक उपसमुच्चय है?",
+          "choices": [
+            "{x | x एक पूर्णांक है}",
+            "{x | x एक परिमेय संख्या है}",
+            "{x | x एक अभाज्य संख्या है}",
+            "{x | x एक ऋणात्मक संख्या है}"
+          ],
+          "solution": "सही उत्तर {x | x एक अभाज्य संख्या है} है क्योंकि सभी अभाज्य संख्याएं प्राकृत संख्याएं होती हैं। अन्य विकल्पों में प्राकृत संख्याएं नहीं होती हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Hindi terminology used for mathematical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता प्राकृतिक संख्यांच्या सेटचा उपसमुच्चय आहे?",
+          "choices": [
+            "{x | x एक पूर्णांक आहे}",
+            "{x | x एक अपरिमेय संख्या आहे}",
+            "{x | x एक अभाज्य संख्या आहे}",
+            "{x | x एक ऋण संख्या आहे}"
+          ],
+          "solution": "सही उत्तर {x | x एक अभाज्य संख्या आहे} आहे कारण अभाज्य संख्या सर्वत्र प्राकृतिक संख्या आहेत. इतर विकल्पांमध्ये प्राकृतिक संख्या नसलेल्या संख्या समाविष्ट आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the mathematical meaning. The term 'अभाज्य संख्या' (prime number) is correctly used, and the terminology aligns with standard Marathi mathematics curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "includes integers which are not all natural numbers",
+        "includes rational numbers which are not all natural numbers",
+        null,
+        "includes negative numbers which are not natural numbers"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The set of prime numbers is indeed a subset of the natural numbers, while the other options include elements outside the natural numbers.",
+      "sources": [
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 8,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "1. Sets",
+            "Ï N"
+          ]
+        },
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 9,
+          "pageStart": 17,
+          "pageEnd": 19,
+          "headingPath": [
+            "1. Sets",
+            "Ï N"
+          ]
+        },
+        {
+          "document": "balbharati/9/mathematics/903000608.pdf",
+          "ordinal": 10,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "1. Sets",
+            "f Í"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-02T15:16:53.027Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}

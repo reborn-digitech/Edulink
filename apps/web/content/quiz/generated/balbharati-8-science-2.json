@@ -21,144 +21,49 @@
   "board": "BALBHARATI",
   "book": "८ वी सामान्य विज्ञान इंग्रजी",
   "edition": "First Edition 2018",
-  "generatedAt": "2026-10-29T19:47:45.321Z",
+  "generatedAt": "2026-11-02T10:33:33.109Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "What is the cause of dengue?",
+      "difficulty": 2,
+      "stem": "What is the main cause of diabetes?",
       "choices": [
-        "Bacteria",
-        "Virus",
-        "Fungus",
-        "Protozoa"
-      ],
-      "answerIndex": 1,
-      "solution": "Dengue is caused by a virus, specifically the dengue virus, which is part of the flavivirus family. Bacteria, fungus, and protozoa are not responsible for causing dengue. These other options are incorrect because they refer to different types of pathogens that do not cause this specific illness.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "डेंगू का कारण क्या है?",
-          "choices": [
-            "जीवाणु",
-            "विषाणु",
-            "कवक",
-            "एककोशिकीय जीव"
-          ],
-          "solution": "डेंगू एक विषाणु के कारण होता है, विशेष रूप से डेंगू विषाणु जो फ्लाविवायरस परिवार का हिस्सा है। जीवाणु, कवक और एककोशिकीय जीव डेंगू के कारण नहीं होते हैं। इन अन्य विकल्पों को गलत बताया जाता है क्योंकि वे अलग-अलग प्रकार के रोगजनकों को संदर्भित करते हैं जो इस विशिष्ट बीमारी के कारण नहीं होते हैं।",
-          "imageAlt": null,
-          "critique": "All terms are standard in Hindi medical terminology. 'एककोशिकीय जीव' is the correct term for 'protozoa' in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "डेंग्यूचे कारण काय आहे?",
-          "choices": [
-            "किटाणू",
-            "व्हायरस",
-            "कवक",
-            "प्रोटोझॉआ"
-          ],
-          "solution": "डेंग्यू व्हायरसमुळे होतो, विशेषतः डेंग्यू व्हायरस, जो फ्लाविव्हायरस कुटुंबाचा भाग आहे. किटाणू, कवक आणि प्रोटोझॉआ डेंग्यू उत्पन्न करणारे नाहीत. या इतर विकल्प चुकीचे आहेत कारण ते विविध प्रकारच्या रोगजनकांचा संदर्भ देतात जे या विशिष्ट आजाराला कारणीभूत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses dengue with bacterial infections",
-        null,
-        "Incorrectly identifies the cause of dengue",
-        "Confuses dengue with other types of infections"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The question is straightforward and tests recall of basic microbiology. The correct answer is 'Virus', and the author's reasoning aligns with scientific fact. The distractors reflect common misconceptions about infectious agents.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 14,
-          "pageStart": 16,
-          "pageEnd": 17,
-          "headingPath": [
-            "2. Health and Diseases"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 15,
-          "pageStart": 17,
-          "pageEnd": 18,
-          "headingPath": [
-            "2. Health and Diseases"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 16,
-          "pageStart": 18,
-          "pageEnd": 19,
-          "headingPath": [
-            "2. Health and Diseases"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T19:47:45.321Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "What should be done if someone is suffering from a heart attack?",
-      "choices": [
-        "Perform CPR",
-        "Chant mantras",
-        "Give them sweets",
-        "Ignore the symptoms"
+        "Lack of insulin",
+        "Excessive sugar consumption",
+        "Overeating",
+        "Too much water"
       ],
       "answerIndex": 0,
-      "solution": "Performing CPR is the correct action during a heart attack because it helps maintain blood flow to the brain and other vital organs when the heart stops beating effectively. Chanting mantras, giving sweets, or ignoring the symptoms do not address the medical emergency and can delay life-saving interventions.",
+      "solution": "The main cause of diabetes is the lack of insulin, which is necessary to control blood sugar levels. Excessive exercise, overeating, and too much water are not the main causes of diabetes.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक व्यक्ति के हृदय दौरा होने पर क्या करना चाहिए?",
+          "stem": "मुख्य कारण मधुमेह क्या है?",
           "choices": [
-            "सीपीआर करें",
-            "मंत्रों का जाप करें",
-            "उन्हें मिठाई दें",
-            "लक्षणों की अनदेखी करें"
+            "इंसुलिन की कमी",
+            "अत्यधिक शर्करा का उपभोग",
+            "अत्यधिक भोजन करना",
+            "अत्यधिक पानी पीना"
           ],
-          "solution": "हृदय दौरा के दौरान सीपीआर करना सही कार्य है क्योंकि यह हृदय के अस्पष्ट धड़कन के समय मस्तिष्क और अन्य महत्वपूर्ण अंगों में रक्त प्रवाह बनाए रखने में मदद करता है। मंत्रों का जाप, मिठाई देना या लक्षणों की अनदेखी करना चिकित्सीय आपातकाल को हल नहीं करता और जीवन बचाने वाले उपायों में देरी कर सकता है।",
+          "solution": "मधुमेह का मुख्य कारण इंसुलिन की कमी है, जो रक्त शर्करा के स्तर को नियंत्रित करने के लिए आवश्यक है। अत्यधिक व्यायाम, अत्यधिक भोजन और अत्यधिक पानी पीना मधुमेह के मुख्य कारण नहीं हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi medical terminology used.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated with appropriate medical terms used in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "हृदयाचा अटॅक झालेल्या व्यक्तीकडे काय करावे?",
+          "stem": "डायबिटीसचे मुख्य कारण काय आहे?",
           "choices": [
-            "CPR करा",
-            "मंत्र जपा",
-            "त्यांना मिठाई द्या",
-            "लक्ष द्या"
+            "इन्सुलिनची कमतरता",
+            "अतिशय चावल खाणे",
+            "अतिशय खाणे",
+            "अतिशय पाणी पिणे"
           ],
-          "solution": "हृदयाच्या अटॅक दरम्यान CPR करणे योग्य कृत्य आहे कारण हे ताबडतोब रक्ताच्या प्रवाहाला ब्रेन आणि इतर महत्त्वाच्या अवयवांकडे जाण्यास मदत करते जेव्हा हृदय अचानक थांबते. मंत्र जपणे, मिठाई देणे किंवा लक्ष न देणे हे औषधी आपत्कालीन स्थितीला न जुमानता जीवरक्षक उपायांमध्ये विलंब करू शकतात.",
+          "solution": "डायबिटीसचे मुख्य कारण इन्सुलिनची कमतरता आहे, जे रक्तातील शर्करा पातळी नियंत्रित करण्यासाठी आवश्यक आहे. अतिशय व्यायाम, अतिशय खाणे आणि अतिशय पाणी पिणे डायबिटीसचे मुख्य कारण नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for medical concepts.",
           "flag": null
         }
       },
@@ -168,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Believing that spiritual or religious practices can treat medical emergencies like heart attacks",
-        "Believes in superstition",
-        "Misunderstands the symptoms and treatment of heart disease', 'Misunderstands the symptoms and treatment of heart disease"
+        "Believes diabetes is caused by eating too much sugar rather than insulin issues",
+        "Misunderstands the cause of diabetes",
+        "Misunderstands the cause of diabetes', "
       ],
       "solverAnswers": [
         0,
@@ -180,7 +85,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 0 (Perform CPR), as it is the appropriate first-aid response for a heart attack. The author's solution is sound, and the reasons for the wrong options reflect common misconceptions.",
+      "critique": "The correct answer is 0 (Lack of insulin). The solution is accurate, and the author's reasoning for the distractors reflects common misconceptions.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -211,49 +116,49 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T19:47:45.321Z",
+      "generatedAt": "2026-11-02T10:33:33.109Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "What can be done to prevent the spread of infectious diseases?",
+      "stem": "What is one of the symptoms of rabies?",
       "choices": [
-        "Drinking boiled and filtered water",
-        "Avoiding smoking and alcoholism",
-        "Regular balanced diet",
-        "Proper checking of blood before donation"
+        "Fever for 2-12 weeks",
+        "Chronic cough",
+        "Frequent urination at night",
+        "Lumps in the breast"
       ],
       "answerIndex": 0,
-      "solution": "Drinking boiled and filtered water helps prevent the spread of infectious diseases by removing harmful pathogens that can cause illness. The other options, while beneficial for overall health, do not directly address the transmission of infectious diseases.",
+      "solution": "Fever for 2-12 weeks is one of the symptoms of rabies. Chronic cough, frequent urination at night, and lumps in the breast are symptoms of other diseases like cancer or diabetes, not rabies.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "संक्रामक रोगों के फैलाव को रोकने के लिए क्या किया जा सकता है?",
+          "stem": "रेबीज के लक्षणों में से एक क्या है?",
           "choices": [
-            "उबला और छाना हुआ पानी पीना",
-            "धूम्रपान और शराब के बचना",
-            "नियमित संतुलित आहार",
-            "दान के पहले रक्त की उचित जांच कराना"
+            "2-12 सप्ताह तक बुखार",
+            "लंबे समय तक छाती में खांसी",
+            "रात में बार-बार मूत्रत्याग",
+            "छाती में गांठ"
           ],
-          "solution": "उबला और छाना हुआ पानी पीने से संक्रामक रोगों के फैलाव को रोका जा सकता है क्योंकि यह हानिकारक रोगजनकों को हटा देता है जो बीमारी पैदा कर सकते हैं। अन्य विकल्प, हालांकि स्वास्थ्य के लिए लाभदायक हैं, लेकिन संक्रामक रोगों के संचरण के सीधे उपाय नहीं हैं।",
+          "solution": "2-12 सप्ताह तक बुखार रेबीज के लक्षणों में से एक है। लंबे समय तक छाती में खांसी, रात में बार-बार मूत्रत्याग और छाती में गांठ कैंसर या मधुमेह जैसे अन्य बीमारियों के लक्षण हैं, रेबीज के नहीं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate medical terminology.",
+          "critique": "Translation is accurate, technical terms are appropriate for Hindi-medium curriculum, and the structure matches the original.",
           "flag": null
         },
         "mr": {
-          "stem": "संसर्गजन्य आजारांच्या पसरण्याला रोखण्यासाठी काय केले जाऊ शकते?",
+          "stem": "रॅबीजचे एक लक्षण कोणते आहे?",
           "choices": [
-            "उकडलेले आणि फिल्टर केलेले पाणी पिणे",
-            "तंबाखू आणि अल्कोहोलचा निरोगी वापर करणे",
-            "नियमित आणि संतुलित आहार घेणे",
-            "दान करण्यापूर्वी रक्ताची योग्य तपासणी करणे"
+            "2-12 आठवड्यांसाठी ताप",
+            "लांब खोकला",
+            "रात्रीत वारंवार मूत्रत्याग",
+            "छातीत गाठ"
           ],
-          "solution": "उकडलेले आणि फिल्टर केलेले पाणी पिणे संसर्गजन्य आजारांच्या पसरण्याला रोखते कारण ते आजार उत्पन्न करणारे हानिकारक पैदा करते. इतर विकल्प, जरी सामान्य आरोग्यासाठी फायदेशीर असले तरी, संसर्गजन्य आजारांच्या पसरण्याला सीधा उत्तर देत नाहीत.",
+          "solution": "2-12 आठवड्यांसाठी ताप रॅबीजचे एक लक्षण आहे. लांब खोकला, रात्रीत वारंवार मूत्रत्याग आणि छातीत गाठ ही अन्य आजारांची लक्षणे आहेत जसे की कॅन्सर किंवा मधुमेह, रॅबीजची नाहीत.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology common in Marathi-medium education.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi medical terminology.",
           "flag": null
         }
       },
@@ -263,9 +168,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "This is a preventive measure for non-infectious diseases.",
-        "This is a preventive measure for non-infectious diseases.",
-        "This is a general health practice but not specifically for infectious diseases."
+        "Confuses rabies symptoms with those of cancer or other diseases",
+        "Confuses rabies symptoms with those of diabetes or other urinary issues",
+        "Confuses symptoms of rabies with symptoms of breast cancer"
       ],
       "solverAnswers": [
         0,
@@ -275,7 +180,102 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 0, as drinking boiled and filtered water is a direct preventive measure against infectious diseases. The other options are valid health practices but not specifically related to preventing the spread of infectious diseases.",
+      "critique": "The correct answer is 0, as fever for 2-12 weeks is a known early symptom of rabies. The other options are indeed symptoms of other diseases, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 17,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "2. Health and Diseases"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 18,
+          "pageStart": 20,
+          "pageEnd": 21,
+          "headingPath": [
+            "2. Health and Diseases"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 19,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "2. Health and Diseases"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T10:33:33.109Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Master X, a 3-year-old child, lives in a slum with a public toilet nearby, and his mother does not know the importance of a balanced diet. Which of the following diseases is most likely to affect him?",
+      "choices": [
+        "Tuberculosis",
+        "Malaria",
+        "Diabetes",
+        "AIDS"
+      ],
+      "answerIndex": 0,
+      "solution": "Tuberculosis is an infectious disease that spreads easily in crowded and unhygienic environments, which matches the conditions described. Malaria is transmitted by mosquitoes, not directly by poor hygiene. Diabetes is a metabolic disorder, not an infectious disease. AIDS is caused by a virus and is not directly linked to the living conditions mentioned. Therefore, the correct answer is Tuberculosis.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मास्टर एक्स, एक 3 वर्षीय बच्चा, एक झुग्गी में एक सार्वजनिक शौचालय के पास रहता है, और उसकी माँ को संतुलित आहार के महत्व के बारे में ज्ञान नहीं है। निम्नलिखित में से कौन सी बीमारी उसे सबसे अधिक प्रभावित कर सकती है?",
+          "choices": [
+            "ट्यूबरकुलोसिस",
+            "मलेरिया",
+            "मधुमेह",
+            "एड्स"
+          ],
+          "solution": "ट्यूबरकुलोसिस एक संक्रामक बीमारी है जो भीड़भाड़ और अस्वच्छ वातावरण में आसानी से फैलती है, जो वर्णित स्थितियों के अनुरूप है। मलेरिया मच्छरों द्वारा फैलती है, न कि बर्बर हाइजीन से सीधे। मधुमेह एक एंडोक्राइन विकार है, संक्रामक बीमारी नहीं। एड्स एक वायरस के कारण होता है और उल्लिखित रहने की स्थिति से सीधा संबंध नहीं है। इसलिए, सही उत्तर ट्यूबरकुलोसिस है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi medical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मास्टर एक्स, एक 3 वर्षीय मुलगा, एका गल्लीत राहतो आणि त्याच्या जवळ एक सार्वजनिक शौचालय आहे, आणि त्याच्या आईला संतुलित आहाराच्या महत्त्वाबद्दल काहीही माहिती नाही. खालीलपैकी कोणता आजार त्याला सर्वात जास्त प्रमाणात प्रभावित करू शकतो?",
+          "choices": [
+            "ट्यूबरक्युलोसिस",
+            "मलेरिया",
+            "डायबिटीज",
+            "एएचआयव्ही"
+          ],
+          "solution": "ट्यूबरक्युलोसिस हा संसर्गजन्य आजार आहे जो गर्दीत आणि अस्वच्छ वातावरणात सहज पसरतो, जे वर्णन केलेल्या अवस्थेशी जुळतो. मलेरिया वाघळांमुळे पसरतो, जे दूर नक्की नाही. डायबिटीज हा एक अंतःस्त्रावी विकार आहे, संसर्गजन्य आजार नाही. एएचआयव्ही विषाणूमुळे होतो आणि उल्लेखित रहिवासी अवस्थांशी सीधा संबंध नाही. म्हणून, योग्य उत्तर ट्यूबरक्युलोसिस आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "A pupil might confuse malaria with a disease caused by poor sanitation and diet, not realizing it is transmitted by mosquitoes.",
+        "Confuses infectious diseases with non-infectious ones",
+        "Confuses infectious diseases with non-infectious ones"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is sound and aligns with the reasoning provided. The key is correct as tuberculosis is an infectious disease that can be contracted in unhygienic conditions, which matches the scenario described.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -298,102 +298,7 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T19:47:45.321Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If a person is infected with HIV, which of the following is true?",
-      "choices": [
-        "They will immediately show symptoms",
-        "They can transmit the virus through casual contact",
-        "They can lead a normal life with proper treatment",
-        "They can only infect others through blood transfusions"
-      ],
-      "answerIndex": 2,
-      "solution": "Proper treatment allows people living with HIV to maintain a healthy and normal life. HIV is not transmitted through casual contact, and while it can be spread through blood, it is not limited to blood transfusions. The correct option reflects the effectiveness of modern medical interventions.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि कोई व्यक्ति HIV से संक्रमित हो जाता है, तो निम्नलिखित में से कौन-सा सत्य है?",
-          "choices": [
-            "उन्हें तुरंत लक्षण दिखाई देंगे",
-            "वे आम संपर्क द्वारा वायरस संचारित कर सकते हैं",
-            "उचित उपचार के साथ वे सामान्य जीवन जी सकते हैं",
-            "वे केवल रक्त आधान द्वारा अन्य लोगों को संक्रमित कर सकते हैं"
-          ],
-          "solution": "उचित उपचार के साथ HIV से संक्रमित व्यक्ति स्वस्थ आउट और सामान्य जीवन बिता सकते हैं। HIV आम संपर्क द्वारा संचारित नहीं होता है, और यह रक्त द्वारा फैल सकता है, लेकिन रक्त आधान तक सीमित नहीं है। सही विकल्प आधुनिक चिकित्सा द्वारा प्रभावीत होता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate medical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एखाद्या व्यक्तीला HIV चा संसर्ग झाला असेल, तर खालीलपैकी कोणते खरे आहे?",
-          "choices": [
-            "त्यांना तात्काळ लक्षणे दिसतील",
-            "त्यांनी अनौपचारिक संपर्काद्वारे व्हायरस पसरवू शकतात",
-            "उचित उपचाराने ते सामान्य जीवन जगू शकतात",
-            "त्यांनी फक्त रक्त देण्याच्या प्रक्रियेद्वारे इतरांना संसर्ग करू शकतात"
-          ],
-          "solution": "उचित उपचारामुळे HIV चा संसर्ग झालेल्या व्यक्तींना आरोग्यपूर्ण आणि सामान्य जीवन जगता येते. HIV अनौपचारिक संपर्काद्वारे पसरत नाही, आणि रक्ताद्वारे पसरू शकतो, परंतु रक्त देण्याच्या प्रक्रियेपेक्षा अधिक असतो. योग्य पर्याय आधुनिक चिकित्सा उपायांच्या प्रभावीतेचे प्रतिबिंबित करतो.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi medical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Misunderstands the progression of HIV",
-        "Misunderstands how HIV is transmitted",
-        null,
-        "Incorrectly limits the ways HIV can be transmitted"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2, as HIV can be managed with treatment, allowing a normal life. The other options reflect common misconceptions about symptom onset, transmission, and modes of transmission.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 14,
-          "pageStart": 16,
-          "pageEnd": 17,
-          "headingPath": [
-            "2. Health and Diseases"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 15,
-          "pageStart": 17,
-          "pageEnd": 18,
-          "headingPath": [
-            "2. Health and Diseases"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 16,
-          "pageStart": 18,
-          "pageEnd": 19,
-          "headingPath": [
-            "2. Health and Diseases"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T19:47:45.321Z",
+      "generatedAt": "2026-11-02T10:33:33.109Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

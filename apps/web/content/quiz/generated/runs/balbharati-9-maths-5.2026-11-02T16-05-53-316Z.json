@@ -1,0 +1,672 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T16:05:53.316Z",
+  "finishedAt": "2026-11-02T16:15:56.507Z",
+  "seconds": 603,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "९ वी गणित भाग-१ इंग्रजी",
+    "bookCode": "903000608",
+    "document": "balbharati/9/mathematics/903000608.pdf",
+    "classLevel": 9,
+    "subject": "Mathematics",
+    "chapter": "Chapter 5 — Linear Equations in Two Variables",
+    "edition": "2026 edition",
+    "chunks": 8,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n21. Find whether the following pair of linear equations is consistent or inconsistent:\n3x + 2y = 8\n6x – 4y = 9",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n4. Graphically, the pair of equations given by\n6x – 3y + 10 = 0\n2x – y + 9 = 0\nrepresents two lines which are\n(a) intersecting at exactly one point.\n(c) coincident.\n(c) 5 (d) –5\n(b) parallel.\n(d) intersecting at exactly two points.",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n21. 3𝑥+2𝑦 = 8\n6𝑥- 4𝑦 = 9\n𝑎 =3, ଵ 𝑏 =2, ଵ 𝑐 = 8 ଵ\n𝑎 =6, ଶ 𝑏 =-4, ଶ 𝑐 = 9 ଶ\n௔ ௔ భ మ = ଷ ଺ = ଵ ଶ ௕ ௕ భ మ = ସ ଶି = ିଵ ଶ ௖ ௖ భ మ = ଼ ଽ\n௔ ௔ భ మ ≠ ௕ ௕ భ మ\nThe given pair of linear equations are consistent.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2026-27]\n3. Tarun correctly solved a pair of linear equations in two variables and found their 1\nonly point of intersection as (5, – 1). One of the lines was x – y = 6.\nWhich of the following could have been the other line?\nI: 3x – 3y = 18\nII: 2x – 3y = 13\nIII: 2x – 3y = 16\n(A) I only (B) II only (C) I and II (D) II and III"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 204522,
+      "in": 34,
+      "out": 34,
+      "rejects": 0,
+      "promptTokens": 28002,
+      "completionTokens": 7554
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 477530,
+      "in": 34,
+      "out": 28,
+      "rejects": 6,
+      "promptTokens": 22040,
+      "completionTokens": 8404
+    },
+    "solver": {
+      "calls": 236,
+      "ms": 242908,
+      "in": 28,
+      "out": 17,
+      "rejects": 11,
+      "promptTokens": 57402,
+      "completionTokens": 2753
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 17,
+      "out": 10,
+      "rejects": 7,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 4,
+      "ms": 935,
+      "in": 10,
+      "out": 8,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 397643,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 17847,
+      "completionTokens": 7585
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 3,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Given the equations 2x + 3y = 12 and x - y = 1, what is the value of y?",
+      "ms": {
+        "draft": 5697,
+        "critique": 9323,
+        "solver": 25195
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The equations 3x + 4y = 12 and kx + 8y = 24 have infinitely many solutions. What is the value of k?",
+      "ms": {
+        "draft": 5697,
+        "critique": 11896
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A pair of linear equations has infinitely many solutions. Which of the following must be true?",
+      "ms": {
+        "draft": 5697,
+        "critique": 12969,
+        "solver": 17653,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If 3x + 2y = 8 and 6x - 4y = 9, which of the following is true about the pair of equations?",
+      "ms": {
+        "draft": 5205,
+        "critique": 12165,
+        "solver": 2277
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a solution of the equation 2x + 3y = 6?",
+      "ms": {
+        "draft": 5205,
+        "critique": 11724,
+        "solver": 20364
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the sum of two numbers is 36 and 8 times the first number minus 9 equals the second number, what are the numbers?",
+      "ms": {
+        "draft": 5205,
+        "critique": 9774,
+        "solver": 2356
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the population of a town was 50,000 and increased to 52,020 with male population increased by 5% and female population by 3%, what was the number of males and females in the previous year?",
+      "ms": {
+        "draft": 5205,
+        "critique": 11344,
+        "solver": 2593
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Tarun found the point of intersection of a pair of linear equations as (5, -1) and one of the lines was x - y = 6. Which of the following could have been the other line?",
+      "ms": {
+        "draft": 5205,
+        "critique": 11270,
+        "solver": 2736
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the sum of the digits of a two-digit number is 9 and the number obtained by interchanging the digits exceeds the original number by 27, what is the original number?",
+      "ms": {
+        "draft": 7482,
+        "critique": 11552,
+        "solver": 2987
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a car travels at a speed of 60 km/h and another car travels at a speed of 40 km/h, and they start from two places 70 km apart, how long will it take for them to meet if they travel towards each other?",
+      "ms": {
+        "draft": 7482,
+        "critique": 12548
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the mathematical form of the statement: 'When 5 is subtracted from length and breadth of the rectangle, the perimeter becomes 26.'",
+      "ms": {
+        "draft": 7482,
+        "critique": 8629,
+        "solver": 1654,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the sum of the measures of angles B and C in triangle ABC is equal to the measure of angle A and the ratio of B to C is 4:5, what is the measure of angle A?",
+      "ms": {
+        "draft": 7482,
+        "critique": 13439
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A rectangle has a length that is 4 units more than its width. If the perimeter of the rectangle is 20 units, what is the width of the rectangle?",
+      "ms": {
+        "draft": 5659,
+        "critique": 10671,
+        "solver": 23234
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the sum of two numbers is 15 and their difference is 3, what is the smaller number?",
+      "ms": {
+        "draft": 5659,
+        "critique": 11597,
+        "solver": 23800,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a linear equation in two variables?",
+      "ms": {
+        "draft": 5183,
+        "critique": 13388
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 2x + 3y = 12 and 4x + 6y = 24, what is the relationship between the two equations?",
+      "ms": {
+        "draft": 5659,
+        "critique": 9244,
+        "solver": 26185,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A train travels at a speed of 60 km/h. How long will it take to cover a distance of 300 km?",
+      "ms": {
+        "draft": 5659,
+        "critique": 11966,
+        "solver": 26418
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The sum of two numbers is 36. If 9 is subtracted from 8 times the first number, we get the second number. What is the second number?",
+      "ms": {
+        "draft": 5183,
+        "critique": 9396,
+        "solver": 4245
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following could be the other line if one of the lines is x – y = 6 and the point of intersection is (5, –1)?",
+      "ms": {
+        "draft": 5183,
+        "critique": 9890,
+        "solver": 2682
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following represents the solution of the equation x + y = 14?",
+      "ms": {
+        "draft": 6871,
+        "critique": 10185
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a linear equation in two variables?",
+      "ms": {
+        "draft": 6871,
+        "critique": 10089,
+        "solver": 2299,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the condition for two linear equations in two variables to have infinitely many solutions?",
+      "ms": {
+        "draft": 6871,
+        "critique": 8490,
+        "solver": 2686,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the equations 2x + 3y = 6 and 4x + ky = 12 are to have infinitely many solutions, what should be the value of k?",
+      "ms": {
+        "draft": 6871,
+        "critique": 7561
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the equations 2x + 3y = 6 and 4x + 6y = 12 are given, which of the following is true about their solutions?",
+      "ms": {
+        "draft": 6871,
+        "critique": 6858,
+        "solver": 9702,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the general form of a linear equation in two variables?",
+      "ms": {
+        "draft": 5205,
+        "critique": 13204,
+        "solver": 24559,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the general form of a linear equation in two variables?",
+      "ms": {
+        "draft": 5183,
+        "critique": 9496,
+        "solver": 22065,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a linear equation in two variables?",
+      "ms": {
+        "draft": 5697,
+        "critique": 11647,
+        "solver": 21447,
+        "form": 0,
+        "translation": 40786
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the general form of a linear equation in two variables?",
+      "ms": {
+        "draft": 5697,
+        "critique": 10547,
+        "solver": 3684,
+        "form": 0,
+        "translation": 39326
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If x = 2 and y = 3 is a solution to the equation 2x + 3y = k, what is the value of k?",
+      "ms": {
+        "draft": 5183,
+        "critique": 10424,
+        "solver": 18388,
+        "form": 0,
+        "translation": 34633
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If x + y = 10 and x - y = 2, what is the value of x?",
+      "ms": {
+        "draft": 5697,
+        "critique": 10319,
+        "solver": 25969,
+        "form": 0,
+        "translation": 31001
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the price of 3 chairs and 2 tables is Rs. 4500 and the price of 5 chairs and 3 tables is Rs. 7000, what is the total price of 2 chairs and 2 tables?",
+      "ms": {
+        "draft": 7482,
+        "critique": 11972,
+        "solver": 3134,
+        "form": 0,
+        "translation": 74372
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 5 times a number is 25, what is the number?",
+      "ms": {
+        "draft": 5659,
+        "critique": 9482,
+        "solver": 2475,
+        "form": 0,
+        "translation": 45886
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the total number of lions and peacocks in a zoo is 50 and their total legs is 140, how many lions are there?",
+      "ms": {
+        "draft": 7482,
+        "critique": 9835,
+        "solver": 1847,
+        "form": 0,
+        "translation": 69132
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a class, the number of boys is 5 more than the number of girls. If the total number of students in the class is 35, how many girls are there?",
+      "ms": {
+        "draft": 5659,
+        "critique": 15167,
+        "solver": 25030,
+        "form": 0,
+        "translation": 56570
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Given the equations 2x + 3y = 12 and x - y = 1, what is the value of y?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "The equations 3x + 4y = 12 and kx + 8y = 24 have infinitely many solutions. What is the value of k?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A pair of linear equations has infinitely many solutions. Which of the following must be true?",
+      "reason": "options 0 and 1 say the same thing (\"The coefficients of x and y are the same in both equations\" / \"The coefficients of x and y are different in both equations\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If 3x + 2y = 8 and 6x - 4y = 9, which of the following is true about the pair of equations?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a solution of the equation 2x + 3y = 6?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the sum of two numbers is 36 and 8 times the first number minus 9 equals the second number, what are the numbers?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If the population of a town was 50,000 and increased to 52,020 with male population increased by 5% and female population by 3%, what was the number of males and females in the previous year?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Tarun found the point of intersection of a pair of linear equations as (5, -1) and one of the lines was x - y = 6. Which of the following could have been the other line?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If the sum of the digits of a two-digit number is 9 and the number obtained by interchanging the digits exceeds the original number by 27, what is the original number?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a car travels at a speed of 60 km/h and another car travels at a speed of 40 km/h, and they start from two places 70 km apart, how long will it take for them to meet if they travel towards each other?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the mathematical form of the statement: 'When 5 is subtracted from length and breadth of the rectangle, the perimeter becomes 26.'",
+      "reason": "options 0 and 1 say the same thing (\"x - y = 26\" / \"2(x - y) = 26\"); options 0 and 3 say the same thing (\"x - y = 26\" / \"x + y - 10 = 26\"); options 1 and 2 say the same thing (\"2(x - y) = 26\" / \"2(x + y - 10) = 26\"); options 2 and 3 say the same thing (\"2(x + y - 10) = 26\" / \"x + y - 10 = 26\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the sum of the measures of angles B and C in triangle ABC is equal to the measure of angle A and the ratio of B to C is 4:5, what is the measure of angle A?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A rectangle has a length that is 4 units more than its width. If the perimeter of the rectangle is 20 units, what is the width of the rectangle?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the sum of two numbers is 15 and their difference is 3, what is the smaller number?",
+      "reason": "options 0 and 1 are the same (\"12\"); options 0 and 1 are the same number; ARITHMETIC MISMATCH — checkExpr \"15-3/2\" = 13.5, but the key says 6"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a linear equation in two variables?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If 2x + 3y = 12 and 4x + 6y = 24, what is the relationship between the two equations?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A train travels at a speed of 60 km/h. How long will it take to cover a distance of 300 km?",
+      "reason": "after redrafting distractors 0, 1, 3: the critic finds option 0 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The sum of two numbers is 36. If 9 is subtracted from 8 times the first number, we get the second number. What is the second number?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following could be the other line if one of the lines is x – y = 6 and the point of intersection is (5, –1)?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following represents the solution of the equation x + y = 14?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a linear equation in two variables?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct option is the only one that fits the definition of a…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the condition for two linear equations in two variables to have infinitely many solutions?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct option is the only one that represents the condition…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the equations 2x + 3y = 6 and 4x + ky = 12 are to have infinitely many solutions, what should be the value of k?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the equations 2x + 3y = 6 and 4x + 6y = 12 are given, which of the following is true about their solutions?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the general form of a linear equation in two variables?",
+      "reason": "near-duplicate of batch item \"What is the general form of a linear equation in t…\" (cosine 0.981 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the general form of a linear equation in two variables?",
+      "reason": "near-duplicate of batch item \"What is the general form of a linear equation in t…\" (cosine 0.981 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

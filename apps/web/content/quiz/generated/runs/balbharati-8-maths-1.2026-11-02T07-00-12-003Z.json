@@ -1,0 +1,309 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T07:00:12.003Z",
+  "finishedAt": "2026-11-02T07:03:46.155Z",
+  "seconds": 214,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी गणित इंग्रजी",
+    "bookCode": "803020004",
+    "document": "balbharati/8/mathematics/803020004.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — Rational and Irrational numbers",
+    "edition": "First Edition 2018",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n20. Assertion(A): (2 + √3)√3 is an irrational number. 1\nReason(R): Product of two irrational numbers is always irrational.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n11. A) Irrational and distinct",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n26. Prove that √3 is an irrational number.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n26. Show that √2 − √5 is an irrational number. 3"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 37961,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 8548,
+      "completionTokens": 2346
+    },
+    "critique": {
+      "calls": 18,
+      "ms": 94540,
+      "in": 12,
+      "out": 10,
+      "rejects": 2,
+      "promptTokens": 7579,
+      "completionTokens": 3081
+    },
+    "solver": {
+      "calls": 90,
+      "ms": 43404,
+      "in": 10,
+      "out": 9,
+      "rejects": 1,
+      "promptTokens": 18161,
+      "completionTokens": 989
+    },
+    "form": {
+      "calls": 1,
+      "ms": 3160,
+      "in": 9,
+      "out": 6,
+      "rejects": 3,
+      "promptTokens": 2125,
+      "completionTokens": 169
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 7,
+      "ms": 1170,
+      "in": 6,
+      "out": 5,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 166770,
+      "in": 10,
+      "out": 10,
+      "rejects": 2,
+      "promptTokens": 12744,
+      "completionTokens": 5951
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 0,
+    "4": 1,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "On a number line, which point represents the rational number -7/3?",
+      "ms": {
+        "draft": 3001,
+        "critique": 4855
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a terminating decimal representation of a rational number?",
+      "ms": {
+        "draft": 3001,
+        "critique": 6948,
+        "solver": 988,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an irrational number?",
+      "ms": {
+        "draft": 3001,
+        "critique": 6623,
+        "solver": 12592
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a correct way to compare the rational numbers -3/4 and -2/3?",
+      "ms": {
+        "draft": 11361,
+        "critique": 4392
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an irrational number?",
+      "ms": {
+        "draft": 11361,
+        "critique": 6180,
+        "solver": 945,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a and b are rational numbers, which of the following is always true?",
+      "ms": {
+        "draft": 11361,
+        "critique": 6077,
+        "solver": 4415,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a rational number?",
+      "ms": {
+        "draft": 11361,
+        "critique": 5327,
+        "solver": 10683,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a rational number?",
+      "ms": {
+        "draft": 3001,
+        "critique": 4263,
+        "solver": 1165,
+        "form": 0,
+        "translation": 23741
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct representation of a rational number?",
+      "ms": {
+        "draft": 3001,
+        "critique": 4583,
+        "solver": 1627,
+        "form": 0,
+        "translation": 40144
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct representation of a rational number on a number line?",
+      "ms": {
+        "draft": 11361,
+        "critique": 5127,
+        "solver": 11482,
+        "form": 0,
+        "translation": 45959
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the value of the expression 1/2 + 1/3?",
+      "ms": {
+        "draft": 11361,
+        "critique": 6862,
+        "solver": 10554,
+        "form": 0,
+        "translation": 19366
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is an example of an irrational number that can be shown on a number line?",
+      "ms": {
+        "draft": 3001,
+        "critique": 6161,
+        "solver": 11000,
+        "form": 0,
+        "translation": 34081
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "On a number line, which point represents the rational number -7/3?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a terminating decimal representation of a rational number?",
+      "reason": "options are in more than one unit (..., none); options are written to different precisions (2 and 3 and 6 and 9 decimals)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following is an irrational number?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is a correct way to compare the rational numbers -3/4 and -2/3?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is an irrational number?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a and b are rational numbers, which of the following is always true?",
+      "reason": "options 0 and 1 are the same (\"a + b is irrational\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a rational number?",
+      "reason": "near-duplicate of batch item \"Which of the following is a rational number?…\" (cosine 0.925 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

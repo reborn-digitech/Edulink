@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Curiosity",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-29T22:17:48.099Z",
+  "generatedAt": "2026-11-02T13:03:59.493Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 3,
-      "stem": "What is the most important step to prevent the spread of dengue in a community?",
+      "stem": "If a student has flu symptoms and is still attending school, what is the best way to prevent the spread of infection?",
       "choices": [
-        "Using mosquito repellents",
-        "Drinking clean water",
-        "Maintaining hygiene",
-        "Wearing masks"
+        "Share a water bottle with them",
+        "Avoid close contact and use a mask",
+        "Ignore the symptoms",
+        "Touch their belongings"
       ],
-      "answerIndex": 0,
-      "solution": "Using mosquito repellents is the most important step to prevent the spread of dengue because dengue is transmitted by mosquitoes. Drinking clean water and maintaining hygiene are important, but they are not the primary preventive measure. Wearing masks is not relevant for dengue prevention.",
+      "answerIndex": 1,
+      "solution": "Avoiding close contact and using a mask helps prevent the spread of flu, which is a communicable disease. Sharing a water bottle or touching their belongings increases the risk of transmission.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक समुदाय में डेंगू के प्रसार को रोकने का सबसे महत्वपूर्ण कदम क्या है?",
+          "stem": "यदि कोई छात्र फ्लू के लक्षण रखता है और अभी भी स्कूल जा रहा है, तो संक्रमण के फैलाव को रोकने का सबसे अच्छा तरीका क्या है?",
           "choices": [
-            "मच्छर प्रतिकारक का उपयोग करना",
-            "स्वच्छ पानी पीना",
-            "हाइजीन बनाए रखना",
-            "मास्क पहनना"
+            "उनके साथ जल बोतल साझा करें",
+            "निकट संपर्क से बचें और मास्क का उपयोग करें",
+            "लक्षणों की अनदेखी करें",
+            "उनकी वस्तुओं को छूएं"
           ],
-          "solution": "मच्छर प्रतिकारक का उपयोग करना डेंगू के प्रसार को रोकने का सबसे महत्वपूर्ण कदम है क्योंकि डेंगू मच्छरों द्वारा फैलता है। स्वच्छ पानी पीना और हाइजीन बनाए रखना महत्वपूर्ण है, लेकिन वे प्राथमिक रोकथाम के उपाय नहीं हैं। मास्क पहनना डेंगू रोकथाम के लिए असंबंधित है।",
+          "solution": "निकट संपर्क से बचना और मास्क का उपयोग करना फ्लू के फैलाव को रोकता है, जो एक संक्रामक बीमारी है। जल बोतल साझा करना या उनकी वस्तुओं को छूना संक्रमण के जोखिम को बढ़ाता है।",
           "imageAlt": null,
-          "critique": "Translation accurately preserves meaning, technical terms are appropriate for Hindi curriculum, and the correct answer remains in the same position.",
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi medical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "डेंग्यूच्या पसरणीला रोखण्यासाठी एका समुदायात सर्वात महत्वाचा टप्पा काय आहे?",
+          "stem": "जर एका विद्यार्थ्याला फ्लूचे लक्षणे असतील आणि तो शाळेत जात असेल, तर संसर्गाचा प्रसार रोखण्यासाठी सर्वोत्तम पद्धत काय आहे?",
           "choices": [
-            "मच्छर विरोधी द्रव्यांचा वापर करणे",
-            "स्वच्छ पाणी पिणे",
-            "हायजीन ठेवणे",
-            "मास्क घालणे"
+            "त्यांच्याशी पाण्याचा बाटली शेअर करा",
+            "जवळचा संपर्क टाळा आणि मास्क वापरा",
+            "लक्षणांना अनादर करा",
+            "त्यांच्या सामानाला स्पर्श करा"
           ],
-          "solution": "मच्छर विरोधी द्रव्यांचा वापर करणे हा डेंग्यूच्या पसरणीला रोखण्यासाठी सर्वात महत्वाचा टप्पा आहे कारण डेंग्यू मच्छरांद्वारे पसरतो. स्वच्छ पाणी पिणे आणि हायजीन ठेवणे महत्वाचे आहे, परंतु ते प्राथमिक रोख उपाय नाहीत. मास्क घालणे डेंग्यू रोखण्यासाठी संबंधित नाही.",
+          "solution": "जवळचा संपर्क टाळणे आणि मास्क वापरणे हे फ्लूच्या प्रसाराला रोखते, जो संक्रमणकारक आजार आहे. पाण्याची बाटली शेअर करणे किंवा त्यांच्या सामानाला स्पर्श करणे हे प्रसाराच्या जोखीम वाढवते.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for medical concepts.",
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for health concepts.",
           "flag": null
         }
       },
@@ -72,20 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Promotes transmission of germs",
         null,
-        "Thinks water is the main cause of dengue.",
-        "Thinks general hygiene is the main cause.",
-        "Thinks masks prevent mosquito bites."
+        "Does not take any preventive action",
+        "Encourages contact with contaminated items"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 0 (Using mosquito repellents), as dengue is transmitted by mosquitoes, and repellents directly address this vector. The other options are either irrelevant (masks) or address general health but not the primary cause of dengue transmission.",
+      "critique": "The correct answer is 1, as avoiding close contact and using a mask are effective ways to prevent the spread of flu. The other options all increase the risk of transmission, which aligns with the author's reasoning.",
       "sources": [
         {
           "document": "ncert/8/science/hecu103.pdf",
@@ -122,49 +122,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T22:17:48.099Z",
+      "generatedAt": "2026-11-02T13:03:59.493Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "What is the most effective way to prevent the spread of diseases like typhoid?",
+      "stem": "If a person is suffering from a viral infection like the flu, what should they do?",
       "choices": [
-        "Wearing a mask in crowded places",
-        "Avoiding close contact with infected people",
-        "Drinking boiled water and eating cooked food",
-        "Getting vaccinated"
+        "Take antibiotics",
+        "Rest and drink water",
+        "Eat more sugar",
+        "Avoid all food"
       ],
-      "answerIndex": 2,
-      "solution": "Drinking boiled water and eating cooked food is the most effective way to prevent typhoid, as it is caused by bacteria that spread through contaminated food and water. Wearing a mask and getting vaccinated are useful for air-borne diseases, while avoiding close contact is for diseases that spread through direct contact.",
+      "answerIndex": 1,
+      "solution": "Rest and drink water is the correct approach for a viral infection. Antibiotics are ineffective against viruses, and eating more sugar or avoiding food is not advisable.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "टाइफॉइड जैसी बीमारियों के फैलाव को रोकने का सबसे प्रभावी तरीका क्या है?",
+          "stem": "यदि कोई व्यक्ति फ्लू जैसे विषाणु संक्रमण से पीड़ित है, तो वे क्या करना चाहिए?",
           "choices": [
-            "भीड़ भाड़ वाले स्थानों में मास्क पहनना",
-            "संक्रमित लोगों के निकट रहने से बचना",
-            "उबला हुआ पानी पीना और पका भोजन खाना",
-            "टीकाकरण कराना"
+            "एंटीबायोटिक लें",
+            "आराम करें और पानी पिएं",
+            "अधिक शर्बत खाएं",
+            "सभी भोजन से बचें"
           ],
-          "solution": "टाइफॉइड के फैलाव को रोकने का सबसे प्रभावी तरीका उबला हुआ पानी पीना और पका भोजन खाना है, क्योंकि यह बैक्टीरिया द्वारा होता है जो दूषित भोजन और पानी के माध्यम से फैलता है। मास्क पहनना और टीकाकरण हवा-अंतरित बीमारियों के लिए उपयोगी है, जबकि निकट संपर्क से बचना सीधे संपर्क द्वारा फैलने वाली बीमारियों के लिए है।",
+          "solution": "विषाणु संक्रमण के लिए आराम करना और पानी पीना सही उपाय है। एंटीबायोटिक विषाणुओं पर कार्य नहीं करते हैं, और अधिक शर्बत खाना या भोजन से बचना उपयुक्त नहीं है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology.",
-          "flag": null
+          "critique": "Option 1 is incorrect in Hindi (should be option 2), but all other elements match the original.",
+          "flag": "translation critique: not one answer at the same position"
         },
         "mr": {
-          "stem": "टायफॉइड सारख्या आजारांच्या पसरण्याचा उपाय काय आहे?",
+          "stem": "जर कोणी फ्लू सारख्या व्हायरल संसर्गाने ग्रस्त असेल, तर त्यांनी काय करावे?",
           "choices": [
-            "गर्दीत असताना मास्क घालणे",
-            "संसर्गजन्य लोकांशी जवळचा संपर्क टाळणे",
-            "उकडलेले पाणी पिणे आणि शिजलेले खाणे",
-            "टीका घेणे"
+            "एंटीबायोटिक्स घ्यावेत",
+            "आराम करा आणि पाणी पिऊ द्यावे",
+            "अधिक शर्करा खावी",
+            "सर्व खाद्य पदार्थ टाळावेत"
           ],
-          "solution": "टायफॉइड रोखण्यासाठी उकडलेले पाणी पिणे आणि शिजलेले खाणे हा सर्वात अधिक प्रभावी उपाय आहे, कारण हा जीवाणू द्वारा प्रसारित होतो जो दूषित खाद्य पदार्थ आणि पाणी माध्यमातून पसरतो. मास्क घालणे आणि टीका घेणे हे वायू-प्रसारित आजारांसाठी उपयुक्त आहेत, तर जवळचा संपर्क टाळणे हे लोकांमध्ये सीधा संपर्काने पसरणाऱ्या आजारांसाठी आहे.",
+          "solution": "व्हायरल संसर्गासाठी आराम करा आणि पाणी पिऊ द्यावे हा योग्य प्रकार आहे. एंटीबायोटिक्स व्हायरसवर कार्य करत नाहीत, आणि अधिक शर्करा खाणे किंवा सर्व खाद्य पदार्थ टाळणे शिफारस केलेले नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for medical concepts.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi medical terminology used.",
           "flag": null
         }
       },
@@ -173,10 +173,111 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "confuses prevention methods for air-borne diseases",
-        "confuses prevention methods for direct contact diseases",
+        "Believes antibiotics can cure viral infections",
         null,
-        "confuses prevention methods for vaccine-preventable diseases"
+        "Mistakes dietary restrictions for proper treatment",
+        "Confuses food avoidance with health management"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as rest and hydration are appropriate for viral infections. The other options reflect common misconceptions about antibiotics, diet, and food avoidance.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu103.pdf",
+          "ordinal": 14,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 3: — Health: The Ultimate Treasure",
+            "3.5 How to Prevent and Control Diseases?",
+            "Activity 3.7: Let us infer"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu103.pdf",
+          "ordinal": 15,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 3: — Health: The Ultimate Treasure",
+            "3.5 How to Prevent and Control Diseases?",
+            "Activity 3.7: Let us infer"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu103.pdf",
+          "ordinal": 16,
+          "pageStart": 18,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 3: — Health: The Ultimate Treasure",
+            "3.5 How to Prevent and Control Diseases?",
+            "Activity 3.7: Let us infer"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T13:03:59.493Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the main way to prevent the spread of diseases like typhoid and cholera?",
+      "choices": [
+        "Avoiding close contact with sick people",
+        "Getting vaccinated",
+        "Drinking boiled water and eating properly cooked food",
+        "Keeping personal items separate"
+      ],
+      "answerIndex": 2,
+      "solution": "Drinking boiled water and eating properly cooked food is the main way to prevent diseases like typhoid and cholera because they are spread through contaminated food and water. Avoiding close contact and keeping personal items separate help prevent other diseases, and vaccination is important for some diseases but not all.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "टाइफॉइड और हैजा जैसी बीमारियों के फैलाव को रोकने का मुख्य तरीका क्या है?",
+          "choices": [
+            "बीमार लोगों के निकट संपर्क से बचना",
+            "टीकाकरण कराना",
+            "उबला हुआ पानी पीना और अच्छी तरह से पका खाना खाना",
+            "व्यक्तिगत वस्तुओं को अलग रखना"
+          ],
+          "solution": "टाइफॉइड और हैजा जैसी बीमारियां दूषित खाद्य पदार्थों और पानी के माध्यम से फैलती हैं, इसलिए उबला हुआ पानी पीना और अच्छी तरह से पका खाना खाना इन बीमारियों के फैलाव को रोकने का मुख्य तरीका है। निकट संपर्क से बचना और व्यक्तिगत वस्तुओं को अलग रखना अन्य बीमारियों के फैलाव को रोकने में मदद करता है, और टीकाकरण कुछ बीमारियों के लिए महत्वपूर्ण होता है लेकिन सभी बीमारियों के लिए नहीं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi medical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "टायफॉइड आणि हाप्पी असे आजारांच्या पसरण्याचा मुख्य मार्ग काय आहे?",
+          "choices": [
+            "आजारी लोकांशी निकट संपर्क टाळणे",
+            "लसीकरण करून घेणे",
+            "उकडलेले पाणी पिणे आणि योग्यरित्या शिजवलेले खाद्य पदार्थ खाणे",
+            "वैयक्तिक वस्तू वेगळ्या ठिकाणी ठेवणे"
+          ],
+          "solution": "टायफॉइड आणि हाप्पी असे आजार दूषित खाद्यपदार्थ आणि पाणी माध्यमातून पसरतात. त्यामुळे उकडलेले पाणी पिणे आणि योग्यरित्या शिजवलेले खाद्य पदार्थ खाणे हा मुख्य मार्ग आहे. आजारी लोकांशी निकट संपर्क टाळणे आणि वैयक्तिक वस्तू वेगळ्या ठिकाणी ठेवणे इतर आजारांच्या पसरण्याचा मार्ग टाळतात. लसीकरण काही आजारांसाठी महत्वपूर्ण असते परंतु सर्व आजारांसाठी नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology common in Marathi-medium textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Refers to methods for air-borne diseases",
+        "Refers to general prevention methods for some diseases",
+        null,
+        "Refers to methods for direct contact diseases"
       ],
       "solverAnswers": [
         2,
@@ -186,7 +287,7 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The solution is correct. Typhoid is caused by Salmonella typhi, which spreads through contaminated food and water. Boiling water and cooking food effectively kill the bacteria, making option 2 the most effective preventive measure. The other options are appropriate for different types of diseases, as explained.",
+      "critique": "The correct answer is 2, as typhoid and cholera are primarily waterborne and foodborne diseases. The author's reasoning aligns with scientific understanding, and the misconceptions listed for the other options are plausible for students.",
       "sources": [
         {
           "document": "ncert/8/science/hecu103.pdf",
@@ -221,49 +322,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T22:17:48.099Z",
+      "generatedAt": "2026-11-02T13:03:59.493Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 4,
-      "stem": "What is the main reason for the spread of flu in a school during an outbreak?",
+      "stem": "In a school, a flu outbreak occurs, and some students are absent while others are symptomatic. What should be the first step taken by the school?",
       "choices": [
-        "Poor hygiene",
-        "Overcrowding in classrooms",
-        "Contaminated water",
-        "Sharing of personal items"
+        "Start a health campaign",
+        "Isolate affected students",
+        "Cancel all classes",
+        "Provide antibiotics to everyone"
       ],
-      "answerIndex": 0,
-      "solution": "Poor hygiene is the main reason for the spread of flu in a school during an outbreak because flu is a communicable disease that spreads through droplets from coughing and sneezing. Overcrowding and sharing personal items may contribute, but poor hygiene is the primary factor. Contaminated water is not the main cause of flu.",
+      "answerIndex": 1,
+      "solution": "Isolating affected students is the first step to prevent the spread of flu. Starting a health campaign or providing antibiotics is not the immediate action, and cancelling classes is not a practical solution.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक बाधा के दौरान स्कूल में फ्लू के फैलाव का मुख्य कारण क्या है?",
+          "stem": "एक स्कूल में फ्लू के फैलाव हो जाता है, और कुछ छात्र अनुपस्थित होते हैं जबकि अन्य लक्षण वाले होते हैं। स्कूल द्वारा पहला कदम क्या होना चाहिए?",
           "choices": [
-            "खराब स्वच्छता",
-            "कक्षाओं में अत्यधिक भीड़",
-            "दूषित पानी",
-            "व्यक्तिगत वस्तुओं का साझा करना"
+            "स्वास्थ्य अभियान शुरू करें",
+            "प्रभावित छात्रों को अलग करें",
+            "सभी कक्षाओं को रद्द करें",
+            "सभी को एंटीबायोटिक दें"
           ],
-          "solution": "एक बाधा के दौरान स्कूल में फ्लू के फैलाव का मुख्य कारण खराब स्वच्छता है क्योंकि फ्लू एक संक्रामक बीमारी है जो खांसी और छींक के बूंदों से फैलती है। अत्यधिक भीड़ और व्यक्तिगत वस्तुओं का साझा करना योगदान दे सकता है, लेकिन खराब स्वच्छता मुख्य कारक है। दूषित पानी फ्लू के मुख्य कारण नहीं है।",
+          "solution": "फ्लू के फैलाव को रोकने के लिए प्रभावित छात्रों को अलग करना पहला कदम है। स्वास्थ्य अभियान शुरू करना या एंटीबायोटिक देना तुरंत कार्रवाई नहीं है, और कक्षाओं को रद्द करना व्यावहारिक समाधान नहीं है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question, with appropriate terminology and correct answer placement.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated and maintain the intended logic.",
           "flag": null
         },
         "mr": {
-          "stem": "शाळेत एखाद्या विषाणूच्या उद्रेकादरम्यान फ्लूचा प्रसार करण्याचा मुख्य कारण काय आहे?",
+          "stem": "शाळेत फ्लूचा उद्रेक झाला आहे आणि काही विद्यार्थी अनुपस्थित आहेत तर काही लक्षणे दाखवत आहेत. शाळेने काय प्रथम कार्यवाही करावी?",
           "choices": [
-            "खराब हायजीन",
-            "कक्षांमध्ये भीड",
-            "दूषित पाणी",
-            "वैयक्तिक वस्तूंचा शेअर करणे"
+            "आरोग्य अभियान सुरू करा",
+            "प्रभावित विद्यार्थी वेगळे करा",
+            "सर्व वर्ग रद्द करा",
+            "सर्वांना एंटीबायोटिक्स द्या"
           ],
-          "solution": "शाळेत एखाद्या विषाणूच्या उद्रेकादरम्यान फ्लूचा प्रसार करण्याचा मुख्य कारण खराब हायजीन आहे कारण फ्लू हा संसर्गजन्य आजार आहे जो खोकला आणि खाज घालण्यामुळे हवेत फैलावतो. भीड आणि वैयक्तिक वस्तूंचा शेअर करणे यांमुळे योगदान देऊ शकते, परंतु खराब हायजीन हा प्राथमिक कारण आहे. दूषित पाणी हा फ्लूच्या प्रसाराचा मुख्य कारण नाही.",
+          "solution": "प्रभावित विद्यार्थी वेगळे करणे हे फ्लूच्या पसरण्यापासून रोखण्यासाठी प्रथम कार्यवाही आहे. आरोग्य अभियान सुरू करणे किंवा एंटीबायोटिक्स देणे तात्काळ कार्यवाही नाही आणि वर्ग रद्द करणे व्यावहारिक सोल्यूशन नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for health concepts.",
+          "critique": "The translation accurately reflects the original meaning, with appropriate Marathi terminology and logical structure.",
           "flag": null
         }
       },
@@ -272,20 +373,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Delayed action",
         null,
-        "Thinks environmental factors are the main cause.",
-        "Thinks physical contact is the main cause.",
-        "Thinks water is the main cause."
+        "Unnecessary measure",
+        "Incorrect treatment method"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies poor hygiene as the main reason for flu spread, as it aligns with the scientific understanding of how flu is transmitted. The reasoning for the other options is valid as misconceptions.",
+      "critique": "The solution is sound and correctly identifies isolating affected students as the first step. The reasoning for the other options aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/8/science/hecu103.pdf",
@@ -322,49 +423,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T22:17:48.099Z",
+      "generatedAt": "2026-11-02T13:03:59.493Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 4,
-      "stem": "What should be the first action taken if someone in the class starts showing symptoms of the flu?",
+      "stem": "In a school with a flu outbreak, what is the best way to prevent the spread of the disease?",
       "choices": [
-        "Isolate the person",
-        "Give them medicine",
-        "Call a doctor",
-        "Notify the school authorities"
+        "Share personal items",
+        "Wash hands regularly",
+        "Ignore symptoms",
+        "Go to crowded places"
       ],
-      "answerIndex": 0,
-      "solution": "Isolating the person is the first action to prevent the spread of flu in the class. Giving medicine or calling a doctor may follow, but isolation is the most immediate step. Notifying the school authorities is also important but not the first action.",
+      "answerIndex": 1,
+      "solution": "Washing hands regularly is the most effective way to prevent the spread of flu. Sharing personal items, ignoring symptoms, and visiting crowded places can increase the risk of transmission.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि कक्षा में कोई व्यक्ति फ्लू के लक्षण दिखाने लगे तो पहला क्या कदम उठाना चाहिए?",
+          "stem": "फ्लू के फैलाव को रोकने के लिए स्कूल में सबसे अच्छा तरीका क्या है?",
           "choices": [
-            "व्यक्ति को अलग करें",
-            "उन्हें दवा दें",
-            "डॉक्टर को बुलाएं",
-            "स्कूल प्राधिकरण को सूचित करें"
+            "व्यक्तिगत वस्तुएं साझा करें",
+            "नियमित रूप से हाथ धोएं",
+            "लक्षणों की अवहेलना करें",
+            "भीड़ वाले स्थानों में जाएं"
           ],
-          "solution": "फ्लू के फैलाव को रोकने के लिए व्यक्ति को अलग करना पहला कदम है। दवा देने या डॉक्टर को बुलाने के बाद हो सकता है, लेकिन अलग करना सबसे तुरंत कदम है। स्कूल प्राधिकरण को सूचित करना भी महत्वपूर्ण है लेकिन पहला कदम नहीं है।",
+          "solution": "नियमित रूप से हाथ धोना फ्लू के फैलाव को रोकने का सबसे प्रभावी तरीका है। व्यक्तिगत वस्तुओं के साझा करने, लक्षणों की अवहेलना करने और भीड़ वाले स्थानों में जाने से संचरण के जोखिम में वृद्धि हो सकती है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a Hindi-medium educational context.",
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a school health context.",
           "flag": null
         },
         "mr": {
-          "stem": "शाळेत एखाद्या विद्यार्थ्याला फ्लूचे लक्षणे दिसू लागल्यास प्रथम कोणती कृत्ये करावी?",
+          "stem": "शाळेत फ्लूच्या विषाणूच्या प्रसाराचा विचार करता, आजाराच्या प्रसाराचा रोखण्यासाठी सर्वोत्तम पद्धत काय आहे?",
           "choices": [
-            "त्या व्यक्तीला वेगळे करा",
-            "त्याला औषध द्या",
-            "डॉक्टरला बोलावा",
-            "शाळा प्रशासनाला सूचित करा"
+            "वैयक्तिक वस्तू शेअर करा",
+            "नियमितपणे हात धुवा",
+            "लक्षणांना अनादर करा",
+            "लोकांच्या जागी जाऊन बसा"
           ],
-          "solution": "फ्लूच्या पसरण्याची शक्यता टाळण्यासाठी व्यक्तीला वेगळे करणे ही प्रथम कृत्ये असते. औषध देणे किंवा डॉक्टरला बोलावणे नंतर होऊ शकते, परंतु वेगळे करणे ही सर्वात तत्काळ कृत्ये असते. शाळा प्रशासनाला सूचित करणे देखील महत्वाचे असते पण ही प्रथम कृत्ये नसते.",
+          "solution": "हात नियमितपणे धुणे हा फ्लूच्या विषाणूच्या प्रसाराचा रोखण्यासाठी सर्वात प्रभावी पद्धत आहे. वैयक्तिक वस्तू शेअर करणे, लक्षणांना अनादर करणे आणि लोकांच्या जागी जाणे हे प्रसाराच्या जोखीम वाढवू शकते.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for medical and administrative terms.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for health concepts.",
           "flag": null
         }
       },
@@ -373,20 +474,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Believes sharing personal items reduces transmission",
         null,
-        "Thinks medical treatment is the first step.",
-        "Believes that medical professionals must be contacted immediately for any illness, without considering isolation as a first step",
-        "Believes school authorities should handle all health issues immediately without personal responsibility"
+        "Mistakes neglect for prevention",
+        "Confuses crowded places with safe environments"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies isolation as the first step in preventing the spread of flu, and the reasoning aligns with standard public health guidelines. The misconceptions listed for the wrong options are plausible and relevant to common student misunderstandings.",
+      "critique": "The correct answer is 1 (Wash hands regularly), which is the most effective preventive measure against flu. The other options are clearly incorrect and the author's reasons for the wrong options align with common misconceptions.",
       "sources": [
         {
           "document": "ncert/8/science/hecu103.pdf",
@@ -423,49 +524,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T22:17:48.099Z",
+      "generatedAt": "2026-11-02T13:03:59.493Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "If a person is infected with a virus like the flu, what is the correct approach to treat the infection?",
+      "stem": "If a student spends too much time on social media, what effect might it have on their health?",
       "choices": [
-        "Take antibiotics",
-        "Rest and drink fluids",
-        "Get vaccinated immediately",
-        "Avoid all physical activity"
+        "It can improve their mental health",
+        "It can lead to loneliness and health issues",
+        "It can make them more socially connected",
+        "It can increase their appetite"
       ],
       "answerIndex": 1,
-      "solution": "Rest and drink fluids is the correct approach to treat a viral infection like the flu because antibiotics are ineffective against viruses. Vaccination is a preventive measure, not a treatment. Avoiding all physical activity is not necessary in most cases.",
+      "solution": "Spending too much time on social media can lead to loneliness and health issues because excessive use often reduces face-to-face interactions and can contribute to stress or poor sleep. Improved mental health and increased social connection are unlikely outcomes as they contradict the negative effects associated with overuse. Increased appetite is not directly linked to social media use in this context.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि कोई व्यक्ति फ्लू जैसे वायरस से संक्रमित हो जाता है, तो संक्रमण के उपचार के लिए सही दृष्टिकोण क्या है?",
+          "stem": "यदि एक छात्र सोशल मीडिया पर बहुत अधिक समय बिताता है, तो इसका उनके स्वास्थ्य पर क्या प्रभाव हो सकता है?",
           "choices": [
-            "एंटीबायोटिक लें",
-            "आराम करें और द्रव पीएं",
-            "तुरंत टीकाकरण करवाएं",
-            "सभी शारीरिक गतिविधियों से बचें"
+            "इसके कारण उनके मानसिक स्वास्थ्य में सुधार हो सकता है",
+            "इसके कारण उनके अकेलापन और स्वास्थ्य समस्याएं हो सकती हैं",
+            "इसके कारण वे अधिक सामाजिक रूप से जुड़े रह सकते हैं",
+            "इसके कारण उनकी भूख बढ़ सकती है"
           ],
-          "solution": "वायरस संक्रमण जैसे फ्लू के उपचार के लिए आराम करें और द्रव पीएं सही दृष्टिकोण है क्योंकि एंटीबायोटिक वायरस पर कार्य नहीं करते। टीकाकरण एक रोकथाम का उपाय है, उपचार नहीं। अधिकांश मामलों में सभी शारीरिक गतिविधियों से बचना आवश्यक नहीं है।",
+          "solution": "सोशल मीडिया पर बहुत अधिक समय बिताना अकेलापन और स्वास्थ्य समस्याओं के कारण हो सकता है क्योंकि अत्यधिक उपयोग अक्सर चेहरा-से-चेहरा अंतःक्रिया को कम कर देता है और तनाव या खराब नींद के कारण बन सकता है। मानसिक स्वास्थ्य में सुधार और अधिक सामाजिक रूप से जुड़े रहना अत्यधिक उपयोग से जुड़े नकारात्मक प्रभावों के विरोधी हैं। भूख में वृद्धि इस संदर्भ में सोशल मीडिया उपयोग से सीधा संबंधित नहीं है।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses appropriate medical terminology in Hindi.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology. The correct answer remains option (2) and the distractors are still incorrect.",
           "flag": null
         },
         "mr": {
-          "stem": "एका व्यक्तीला फ्लू सारख्या व्हायरसमुळे संसर्ग झाल्यास, संसर्गाचा उपचार करण्याचा योग्य प्रकार काय आहे?",
+          "stem": "एका विद्यार्थ्याने सोशल मीडियावर जास्त वेळ घालवल्यास त्याच्या आरोग्यावर काय परिणाम होऊ शकतो?",
           "choices": [
-            "एंटीबायोटिक्स घ्यावे",
-            "आराम करा आणि द्रव पिणे",
-            "तत्काळ लसीकरण करून घ्यावे",
-            "सर्व शारीरिक क्रियाकलाप टाळावे"
+            "त्याच्या मानसिक आरोग्याची बरी करू शकते",
+            "त्याला एकटेपणा आणि आरोग्याचे अडचणी निर्माण करू शकते",
+            "त्याला अधिक सामाजिकरित्या जोडलेले बनवू शकते",
+            "त्याच्या भूक वाढवू शकते"
           ],
-          "solution": "फ्लू सारख्या व्हायरस संसर्गाचा उपचार करण्यासाठी आराम करा आणि द्रव पिणे हा योग्य प्रकार आहे कारण एंटीबायोटिक्स व्हायरसवर कार्य करत नाहीत. लसीकरण रोखक उपाय आहे, उपचार नाही. सर्व शारीरिक क्रियाकलाप टाळणे बहुतेक बाबतीत आवश्यक नाही.",
+          "solution": "सोशल मीडियावर जास्त वेळ घालवल्यामुळे एकटेपणा आणि आरोग्याच्या समस्या उद्भवू शकतात कारण अतिशय वापरामुळे चेहरा-चेहरा संवाद कमी होतो आणि तणाव किंवा खराब झोप यांचा वाढ होऊ शकतो. मानसिक आरोग्याची सुधारणा आणि सामाजिकरित्या जोडलेलेपणा असे नकारात्मक परिणामांच्या विरुद्ध असतात. भूक वाढवणे हा सोशल मीडियाच्या वापराशी सीधा संबंध नसतो.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi medical terminology.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for health-related concepts.",
           "flag": null
         }
       },
@@ -474,10 +575,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Thinks antibiotics work for all infections.",
+        "students might confuse social media use with social interaction, thinking it helps with mental health",
         null,
-        "Thinks vaccination is a treatment.",
-        "Thinks physical activity is harmful in all cases."
+        "students might mistakenly believe that more social media use increases real-world social interaction",
+        "students may confuse social media use with eating habits, thinking it stimulates hunger"
       ],
       "solverAnswers": [
         1,
@@ -487,166 +588,126 @@
         1
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that antibiotics are ineffective against viral infections, and that rest and fluids are appropriate treatments. The reasoning for the wrong options aligns with common misconceptions.",
+      "critique": "The correct answer is 1, as excessive social media use is commonly associated with loneliness and health issues. The author's reasoning aligns with this, and the misconceptions listed for the other options are plausible for students.",
       "sources": [
         {
           "document": "ncert/8/science/hecu103.pdf",
-          "ordinal": 14,
-          "pageStart": 16,
-          "pageEnd": 17,
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
           "headingPath": [
             "Chapter 3: — Health: The Ultimate Treasure",
-            "3.5 How to Prevent and Control Diseases?",
-            "Activity 3.7: Let us infer"
+            "Probe and ponder"
           ]
         },
         {
           "document": "ncert/8/science/hecu103.pdf",
-          "ordinal": 15,
-          "pageStart": 17,
-          "pageEnd": 18,
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
           "headingPath": [
             "Chapter 3: — Health: The Ultimate Treasure",
-            "3.5 How to Prevent and Control Diseases?",
-            "Activity 3.7: Let us infer"
+            "3.1 Health: Is It More Than Not Falling Sick?"
           ]
         },
         {
           "document": "ncert/8/science/hecu103.pdf",
-          "ordinal": 16,
-          "pageStart": 18,
-          "pageEnd": 18,
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
           "headingPath": [
             "Chapter 3: — Health: The Ultimate Treasure",
-            "3.5 How to Prevent and Control Diseases?",
-            "Activity 3.7: Let us infer"
+            "3.2 How Can We Stay Healthy?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu103.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: — Health: The Ultimate Treasure",
+            "3.2 How Can We Stay Healthy?",
+            "Activity 3.3: Let us compare"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu103.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: — Health: The Ultimate Treasure",
+            "3.3 How Do We Know That We Are Unwell?"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T22:17:48.099Z",
+      "generatedAt": "2026-11-02T13:03:59.493Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "Which of the following is the best way to prevent the spread of antibiotic-resistant bacteria?",
+      "difficulty": 5,
+      "stem": "If a farmer uses antibiotics in animal feed, what could be a possible consequence?",
       "choices": [
-        "Using antibiotics only when prescribed by a doctor",
-        "Taking antibiotics for viral infections",
-        "Avoiding all antibiotics",
-        "Using high doses of antibiotics"
+        "The animals may become healthier",
+        "The antibiotics will not affect the animals",
+        "The bacteria in the animals may become resistant",
+        "The antibiotics will eliminate all bacteria in the animals"
       ],
-      "answerIndex": 0,
-      "solution": "Using antibiotics only when prescribed by a doctor ensures they are used appropriately, which helps prevent the development of resistant bacteria. Taking antibiotics for viral infections is ineffective because antibiotics target bacteria, not viruses. Avoiding all antibiotics is not advisable as they are necessary for treating bacterial infections when needed. Using high doses of antibiotics can increase the risk of resistance and harm the body.",
+      "answerIndex": 2,
+      "solution": "Antibiotics can kill some bacteria, but the ones that survive may have genetic traits that make them resistant. Over time, these resistant bacteria can multiply and become more common. The other options are incorrect because antibiotics can affect animal health, but they do not eliminate all bacteria, and they can have effects on the animals themselves.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा एंटीबायोटिक प्रतिरोधी बैक्टीरिया के फैलाव को रोकने का सबसे अच्छा तरीका है?",
+          "stem": "यदि किसान जानवरों के खाद्य में एंटीबायोटिक्स का उपयोग करता है, तो संभावित परिणाम क्या हो सकता है?",
           "choices": [
-            "चिकित्सक द्वारा निर्धारित कराए गए एंटीबायोटिक केवल तभी उपयोग करना",
-            "वायरल संक्रमण के लिए एंटीबायोटिक लेना",
-            "सभी एंटीबायोटिक बचाना",
-            "उच्च खुराक में एंटीबायोटिक लेना"
+            "जानवर स्वस्थ हो सकते हैं",
+            "एंटीबायोटिक्स जानवरों पर कोई प्रभाव नहीं डालेगा",
+            "जानवरों में रोगजनक एंटीबायोटिक प्रतिरोधी हो सकते हैं",
+            "एंटीबायोटिक्स जानवरों में सभी रोगजनकों को नष्ट कर देंगे"
           ],
-          "solution": "चिकित्सक द्वारा निर्धारित कराए गए एंटीबायोटिक केवल तभी उपयोग करना उनके उचित उपयोग का आश्वासन देता है, जो प्रतिरोधी बैक्टीरिया के विकास को रोकने में मदद करता है। वायरल संक्रमण के लिए एंटीबायोटिक लेना असफल होता है क्योंकि एंटीबायोटिक बैक्टीरिया के लिए होते हैं, वायरस के लिए नहीं। सभी एंटीबायोटिक बचाना सलाह के विपरीत है क्योंकि जब आवश्यकता होती है तो वे बैक्टीरियल संक्रमण के इलाज के लिए आवश्यक होते हैं। उच्च खुराक में एंटीबायोटिक लेना प्रतिरोध के जोखिम को बढ़ा सकता है और शरीर को नुकसान पहुंचा सकता है।",
-          "imageAlt": "मानव आंख के मुख्य भागों वाला एक आरेख।",
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate medical terminology commonly found in Hindi textbooks.",
+          "solution": "एंटीबायोटिक्स कुछ रोगजनकों को मार सकते हैं, लेकिन जो बच जाते हैं उनमें आनुवंशिक गुण हो सकते हैं जो उन्हें प्रतिरोधी बना देते हैं। समय के साथ, ये प्रतिरोधी रोगजनक बढ़ सकते हैं और अधिक सामान्य हो सकते हैं। अन्य विकल्प गलत हैं क्योंकि एंटीबायोटिक्स जानवरों के स्वास्थ्य पर प्रभाव डाल सकते हैं, लेकिन वे सभी रोगजनकों को नष्ट नहीं करते हैं, और वे जानवरों पर अपना प्रभाव डाल सकते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for biological concepts.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता पद्धतीने अँटीबायोटिक-प्रतिरोधक बॅक्टेरिया फैलविण्याचा उत्तम मार्ग रोखता येईल?",
+          "stem": "जर शेतकरी पशु खाद्यात अँटिबायोटिक्स वापरत असेल तर त्याचा शक्य परिणाम काय असू शकतो?",
           "choices": [
-            "डॉक्टरांनी लिहून दिलेल्या अँटीबायोटिक फक्त वापरावे",
-            "व्हायरल संसर्गासाठी अँटीबायोटिक घेणे",
-            "सर्व अँटीबायोटिक टाळावे",
-            "उच्च डोसमध्ये अँटीबायोटिक वापरावे"
+            "पशू आरोग्यवान होऊ शकतात",
+            "अँटिबायोटिक्स पशूंवर प्रभाव टाकणार नाहीत",
+            "पशूंमधील बॅक्टेरिया प्रतिरोधक होऊ शकतात",
+            "अँटिबायोटिक्स पशूंमधील सर्व बॅक्टेरियांना नाश करतील"
           ],
-          "solution": "डॉक्टरांनी लिहून दिलेल्या अँटीबायोटिक फक्त वापरावे हे अँटीबायोटिक योग्य पद्धतीने वापरण्याचा मार्ग असून, हे प्रतिरोधक बॅक्टेरिया विकसित होण्याचा धोका टाळते. व्हायरल संसर्गासाठी अँटीबायोटिक घेणे अप्रभावी असते कारण अँटीबायोटिक बॅक्टेरियांवर निर्देशित असतात, व्हायरस नाहीत. सर्व अँटीबायोटिक टाळणे अनुचित असते कारण आवश्यकतेनुसार बॅक्टेरियांच्या संसर्गाचे उपचार करण्यासाठी त्यांची आवश्यकता असते. उच्च डोसमध्ये अँटीबायोटिक वापरणे प्रतिरोधकतेचा धोका वाढवू शकते आणि शरीराला नुकसान पोहोचू शकते.",
-          "imageAlt": "मानवी डोळ्याचा आकृती ज्यात त्याचे मुख्य भाग निर्दिष्ट केलेले आहेत.",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
+          "solution": "अँटिबायोटिक्स काही बॅक्टेरियांना मारू शकतात, परंतु जे जिवंत राहतात त्यांच्याकडे प्रतिरोधक जीनेटिक लक्षणे असू शकतात. वेळ जाऊन या प्रतिरोधक बॅक्टेरियांची संख्या वाढू शकते आणि ते अधिक सामान्य होऊ शकतात. इतर विकल्प चुकीचे आहेत कारण अँटिबायोटिक्स पशूंच्या आरोग्यावर प्रभाव टाकू शकतात, परंतु ते सर्व बॅक्टेरियांना नाश करत नाहीत, आणि ते पशूंवर आपला प्रभाव टाकू शकतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": "A diagram of the human eye with its main parts labeled.",
-      "figure": {
-        "kind": "diagram",
-        "spec": {
-          "parts": [
-            {
-              "part": "eye",
-              "x": 50,
-              "y": 30,
-              "size": 30,
-              "labels": [
-                "cornea",
-                "iris",
-                "lens",
-                "retina",
-                "opticNerve"
-              ]
-            }
-          ],
-          "texts": [
-            {
-              "x": 50,
-              "y": 10,
-              "label": "StructureOfTheHumanEye"
-            }
-          ]
-        },
-        "labels": {
-          "cornea": {
-            "en": "Cornea",
-            "hi": "कॉर्निया",
-            "mr": "कॉर्निया"
-          },
-          "iris": {
-            "en": "Iris",
-            "hi": "आइरिस",
-            "mr": "आयरिस"
-          },
-          "lens": {
-            "en": "Lens",
-            "hi": "लेंस",
-            "mr": "लेंस"
-          },
-          "retina": {
-            "en": "Retina",
-            "hi": "रेटिना",
-            "mr": "रेटिना"
-          },
-          "opticNerve": {
-            "en": "Optic Nerve",
-            "hi": "दृष्टि तंत्रिका",
-            "mr": "दृष्टी नाडी"
-          },
-          "StructureOfTheHumanEye": {
-            "en": "Structure of the Human Eye",
-            "hi": "मानव आंख की संरचना",
-            "mr": "मानवी डोळ्याची रचना"
-          }
-        }
-      },
-      "needsFigure": true,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
       "distractorReason": [
+        "Assumes that antibiotics always improve health",
+        "Fails to understand the mechanism of antibiotic resistance",
         null,
-        "Believing antibiotics work for all infections, not just bacterial ones",
-        "misunderstands the role of antibiotics",
-        "overgeneralizes the use of antibiotics"
+        "Believes antibiotics destroy all bacteria without any side effects"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is about preventing antibiotic resistance, and the correct answer is using antibiotics only when prescribed. The other options represent common misconceptions about antibiotic use.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as antibiotic resistance is a well-established consequence of overuse. The other options reflect common misconceptions about antibiotics.",
       "sources": [
         {
           "document": "ncert/8/science/hecu103.pdf",
@@ -683,47 +744,148 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T22:17:48.099Z",
+      "generatedAt": "2026-11-02T13:03:59.493Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "Why is it important to avoid sharing personal items like towels and handkerchiefs?",
+      "difficulty": 5,
+      "stem": "A student is offered a cigarette at a party. What is the best way to respond without being rude?",
       "choices": [
-        "To prevent the spread of air-borne diseases",
-        "To avoid direct contact with pathogens",
-        "To reduce the risk of non-communicable diseases",
-        "To protect against insect-borne diseases"
+        "Take the cigarette and smoke it",
+        "Say no politely and walk away",
+        "Laugh and accept it",
+        "Argue with the person"
       ],
       "answerIndex": 1,
-      "solution": "Avoiding sharing personal items like towels and handkerchiefs is important to prevent direct contact with pathogens, which can cause communicable diseases. It is not directly related to air-borne, non-communicable, or insect-borne diseases.",
+      "solution": "Saying no politely and walking away is the best way to avoid smoking while being considerate. Taking the cigarette or arguing is not a good response.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "व्यक्तिगत वस्तुओं जैसे तौलिये और हैंडकैच के साझा करने से बचना क्यों महत्वपूर्ण है?",
+          "stem": "एक छात्र किसी पार्टी में सिगरेट दी जाती है। बिना अनुचित बर्ताव किए सबसे अच्छा उत्तर क्या होगा?",
           "choices": [
-            "वायु-अपवाही रोगों के फैलाव को रोकने के लिए",
-            "पैथोजन के सीधे संपर्क से बचने के लिए",
-            "गैर-संचारी रोगों के जोखिम को कम करने के लिए",
-            "कीट-अपवाही रोगों के खिलाफ सुरक्षा के लिए"
+            "सिगरेट ले लो और धूम्रपान करो",
+            "बिना अनुचित बर्ताव किए नकार दो और चले जाओ",
+            "हंसकर ले लो",
+            "व्यक्ति से वादा करो"
           ],
-          "solution": "तौलिये और हैंडकैच जैसी व्यक्तिगत वस्तुओं के साझा करने से बचना महत्वपूर्ण है क्योंकि यह पैथोजन के सीधे संपर्क को रोकता है, जो संचारी रोगों का कारण बन सकता है। इसका सीधा संबंध वायु-अपवाही, गैर-संचारी या कीट-अपवाही रोगों से नहीं होता।",
+          "solution": "नकार देना और चले जाना धूम्रपान से बचने के लिए सबसे अच्छा तरीका है जबकि विचार करने वाला बर्ताव किया जाता है। सिगरेट लेना या वादा करना अच्छा उत्तर नहीं है।",
           "imageAlt": null,
-          "critique": "Translation accurately reflects the original meaning with appropriate Hindi medical terminology.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, with appropriate terminology and correct answer positioning.",
           "flag": null
         },
         "mr": {
-          "stem": "खासगी वस्तू जसे की तौलिये आणि हाताचे कपडे शेअर करणे टाळणे जरूरी का आहे?",
+          "stem": "एका पार्टीत एका विद्यार्थ्याला सिगारेट दिली जाते. अमर्यादित न करता उत्तर कसे द्यावे?",
           "choices": [
-            "वायू-वाह्य आजारांच्या पसरण्याचा टाळणे",
-            "पॅथॉजेन्सच्या थेट संपर्काचा टाळणे",
-            "गैर-संक्रामक आजारांच्या धोक्याचा घटवणे",
-            "कीटक-वाह्य आजारांपासून बचाव करणे"
+            "सिगारेट घेऊन ती जाळा",
+            "नकार करा आणि विनम्रतेने निघून जा",
+            "हसून ती स्वीकारा",
+            "व्यक्तीशी वाद करा"
           ],
-          "solution": "खासगी वस्तू जसे की तौलिये आणि हाताचे कपडे शेअर करणे टाळणे थेट पॅथॉजेन्सच्या संपर्काच्या टाळण्यासाठी महत्वपूर्ण आहे, जे संक्रामक आजार उद्भवू शकतात. ते वायू-वाह्य, गैर-संक्रामक किंवा कीटक-वाह्य आजारांशी सीधा संबंधित नाही.",
+          "solution": "नकार करा आणि विनम्रतेने निघून जा हा धूम्रपानापासून दूर राहण्यासाठी आणि विचारपूर्वक राहण्यासाठी सर्वोत्तम पद्धत आहे. सिगारेट घेणे किंवा वाद करणे चांगले उत्तर नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Promotes harmful behavior",
+        null,
+        "Encourages peer pressure",
+        "Creates conflict"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as it reflects a respectful and responsible response to peer pressure. The author's reasoning for the other options aligns with common misconceptions or harmful behaviors.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu103.pdf",
+          "ordinal": 14,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 3: — Health: The Ultimate Treasure",
+            "3.5 How to Prevent and Control Diseases?",
+            "Activity 3.7: Let us infer"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu103.pdf",
+          "ordinal": 15,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 3: — Health: The Ultimate Treasure",
+            "3.5 How to Prevent and Control Diseases?",
+            "Activity 3.7: Let us infer"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu103.pdf",
+          "ordinal": 16,
+          "pageStart": 18,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 3: — Health: The Ultimate Treasure",
+            "3.5 How to Prevent and Control Diseases?",
+            "Activity 3.7: Let us infer"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T13:03:59.493Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "What is the most effective way to prevent the spread of a disease like dengue fever?",
+      "choices": [
+        "Using a mask in crowded places",
+        "Keeping personal items separate",
+        "Avoiding contaminated food and water",
+        "Controlling mosquito populations"
+      ],
+      "answerIndex": 3,
+      "solution": "Dengue is spread by mosquitoes, so controlling mosquito populations is the most effective way to prevent it. Using a mask, keeping personal items separate, and avoiding contaminated food and water are more relevant for other types of diseases.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "डेंगू बुखार जैसे रोग के फैलाव को रोकने का सबसे कारगर तरीका क्या है?",
+          "choices": [
+            "भीड़ वाले स्थानों में मास्क का उपयोग करना",
+            "अपनी वस्तुओं को अलग रखना",
+            "दूषित भोजन और पानी से बचना",
+            "मच्छर के आबादी को नियंत्रित करना"
+          ],
+          "solution": "डेंगू मच्छरों द्वारा फैलता है, इसलिए मच्छर की आबादी को नियंत्रित करना इसकी रोकथाम का सबसे कारगर तरीका है। मास्क का उपयोग, अपनी वस्तुओं को अलग रखना और दूषित भोजन और पानी से बचना अन्य प्रकार के रोगों के लिए अधिक संबंधित हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, with the correct answer (option 3) maintaining its position and validity.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "डेंग्यू बुवा असा आजार पसरण्याच्या अत्यंत प्रभावी पद्धती काय आहे?",
+          "choices": [
+            "गर्दीत जाणाऱ्या ठिकाणी मास्क वापरणे",
+            "वैयक्तिक वस्तू वेगळ्या ठिकाणी ठेवणे",
+            "दूषित अन्न आणि पाणी टाळणे",
+            "मच्छरांच्या लोकसंख्येचे नियंत्रण करणे"
+          ],
+          "solution": "डेंग्यू मच्छरांद्वारे पसरतो, म्हणून मच्छरांच्या लोकसंख्येचे नियंत्रण करणे ही त्याला रोखण्याची अत्यंत प्रभावी पद्धती आहे. मास्क वापरणे, वैयक्तिक वस्तू वेगळ्या ठिकाणी ठेवणे आणि दूषित अन्न आणि पाणी टाळणे इतर आजारांसाठी अधिक उपयुक्त आहेत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
           "flag": null
@@ -734,20 +896,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "confuses prevention methods for air-borne diseases",
-        null,
-        "confuses prevention methods for non-communicable diseases",
-        "confuses prevention methods for insect-borne diseases"
+        "Refers to prevention of air-borne diseases",
+        "Refers to prevention of direct contact diseases",
+        "Refers to prevention of food and water-borne diseases",
+        null
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        3,
+        3,
+        3,
+        3,
+        3
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as sharing personal items can lead to direct contact with pathogens. The author's reasoning is accurate and aligns with the solution.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the key. The reasoning for the distractors is accurate and reflects common misconceptions about disease transmission.",
       "sources": [
         {
           "document": "ncert/8/science/hecu103.pdf",
@@ -782,7 +944,308 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T22:17:48.099Z",
+      "generatedAt": "2026-11-02T13:03:59.493Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why should antibiotics not be taken for a viral infection like a cold?",
+      "choices": [
+        "They can kill beneficial bacteria",
+        "They can cause resistance in viruses",
+        "They are ineffective against viruses",
+        "They can cause resistance in bacteria"
+      ],
+      "answerIndex": 2,
+      "solution": "Antibiotics are only effective against bacterial infections, not viral infections. Taking them for a cold is not helpful and can lead to antibiotic resistance.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक वायरल संक्रमण जैसे निमोनिया के लिए एंटीबायोटिक्स क्यों नहीं लिए जाने चाहिए?",
+          "choices": [
+            "उन प्रयोगशाला जीवाणुओं को मार सकते हैं",
+            "उन वायरस में प्रतिरोध पैदा कर सकते हैं",
+            "उन वायरस के लिए अकार्यक्षम होते हैं",
+            "उन जीवाणुओं में प्रतिरोध पैदा कर सकते हैं"
+          ],
+          "solution": "एंटीबायोटिक्स केवल बैक्टीरियल संक्रमण पर प्रभावी होते हैं, वायरल संक्रमण पर नहीं। निमोनिया के लिए उनका उपयोग उपयोगी नहीं होता है और एंटीबायोटिक प्रतिरोध के कारण हो सकता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and options, with appropriate terminology used in a Hindi-medium science context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोरोना सारख्या व्हायरल संसर्गासाठी एंटीबायोटिक्स का घेऊ नयेत?",
+          "choices": [
+            "ते उपयुक्त बॅक्टेरिया मारू शकतात",
+            "ते व्हायरसमध्ये प्रतिकार निर्माण करू शकतात",
+            "ते व्हायरसांवर अक्रिय असतात",
+            "ते बॅक्टेरियांमध्ये प्रतिकार निर्माण करू शकतात"
+          ],
+          "solution": "एंटीबायोटिक्स फक्त बॅक्टेरियल संसर्गांवर प्रभावी असतात, व्हायरल संसर्गांवर नाही. कोरोनासाठी त्यांचा वापर उपयुक्त नसतो आणि एंटीबायोटिक प्रतिरोध निर्माण होऊ शकतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific meaning. The term 'एंटीबायोटिक्स' is correctly used, and technical terms like 'प्रतिकार' (resistance) and 'बॅक्टेरिया' (bacteria) are appropriate for Marathi-medium education.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "students often confuse antibiotic effects on the body's microbiome",
+        "students may believe antibiotics make viruses stronger instead of understanding they are ineffective against them",
+        null,
+        "Students may confuse antibiotic resistance with viral resistance, thinking antibiotics can make viruses stronger."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as antibiotics are ineffective against viruses. The author's solution is accurate and aligns with the correct reasoning. All distractors reflect common misconceptions about antibiotics and their effects.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu103.pdf",
+          "ordinal": 14,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 3: — Health: The Ultimate Treasure",
+            "3.5 How to Prevent and Control Diseases?",
+            "Activity 3.7: Let us infer"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu103.pdf",
+          "ordinal": 15,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 3: — Health: The Ultimate Treasure",
+            "3.5 How to Prevent and Control Diseases?",
+            "Activity 3.7: Let us infer"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu103.pdf",
+          "ordinal": 16,
+          "pageStart": 18,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 3: — Health: The Ultimate Treasure",
+            "3.5 How to Prevent and Control Diseases?",
+            "Activity 3.7: Let us infer"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T13:03:59.493Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is it important to avoid taking antibiotics for a viral infection?",
+      "choices": [
+        "Because they can cause side effects",
+        "Because they can cause allergies",
+        "Because they are ineffective against viruses",
+        "Because they can cause addiction"
+      ],
+      "answerIndex": 2,
+      "solution": "Antibiotics are ineffective against viruses, so they should not be used for viral infections. They do not cause allergies, addiction, or excessive cost in this context.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "वायरल संक्रमण के लिए एंटीबायोटिक्स लेना बचना क्यों महत्वपूर्ण है?",
+          "choices": [
+            "क्योंकि वे साइड इफेक्ट्स का कारण बन सकते हैं",
+            "क्योंकि वे एलर्जी का कारण बन सकते हैं",
+            "क्योंकि वे वायरस पर कार्य नहीं करते",
+            "क्योंकि वे एडिक्शन का कारण बन सकते हैं"
+          ],
+          "solution": "एंटीबायोटिक्स वायरस पर कार्य नहीं करते, इसलिए वायरल संक्रमण के लिए उनका उपयोग नहीं किया जाना चाहिए। इस संदर्भ में वे एलर्जी, एडिक्शन या अत्यधिक लागत का कारण नहीं बनते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in Indian medical education.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोरोना विषाणूच्या संसर्गासाठी एंटीबायोटिक्स घेणे टाळणे महत्वाचे का आहे?",
+          "choices": [
+            "कारण ते बाजूच्या असरी निर्माण करू शकतात",
+            "कारण ते एलर्जी निर्माण करू शकतात",
+            "कारण ते विषाणूंवर प्रभावी नसतात",
+            "कारण ते आवर्तन निर्माण करू शकतात"
+          ],
+          "solution": "एंटीबायोटिक्स विषाणूंवर प्रभावी नसतात, म्हणून त्यांचा विषाणूंच्या संसर्गासाठी वापर करू नये. ते या संदर्भात एलर्जी, आवर्तन किंवा अत्यधिक खर्च निर्माण करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Pupils may think antibiotics always cause harmful side effects regardless of the infection type",
+        "Mistakes allergy as the primary issue",
+        null,
+        "Misunderstands addiction as the main concern"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as antibiotics are ineffective against viruses. The author's reasoning aligns with scientific understanding, and the misconceptions listed for the wrong options are plausible for students.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu103.pdf",
+          "ordinal": 14,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 3: — Health: The Ultimate Treasure",
+            "3.5 How to Prevent and Control Diseases?",
+            "Activity 3.7: Let us infer"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu103.pdf",
+          "ordinal": 15,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 3: — Health: The Ultimate Treasure",
+            "3.5 How to Prevent and Control Diseases?",
+            "Activity 3.7: Let us infer"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu103.pdf",
+          "ordinal": 16,
+          "pageStart": 18,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 3: — Health: The Ultimate Treasure",
+            "3.5 How to Prevent and Control Diseases?",
+            "Activity 3.7: Let us infer"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T13:03:59.493Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following best explains why diseases like malaria are more common in certain regions?",
+      "choices": [
+        "Because people do not wash hands frequently",
+        "Because of the presence of mosquitoes",
+        "Because of poor nutrition",
+        "Because of poor sanitation"
+      ],
+      "answerIndex": 1,
+      "solution": "Malaria is spread by mosquitoes, which are vectors. The presence of mosquitoes in certain regions makes these areas more prone to malaria. Hand washing, nutrition, and sanitation affect other types of diseases, not malaria specifically.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा रोगों जैसे मलेरिया के कुछ क्षेत्रों में अधिक होने की बेस्ट व्याख्या करता है?",
+          "choices": [
+            "क्योंकि लोग अक्सर हाथ नहीं धोते",
+            "क्योंकि मच्छर की उपस्थिति होती है",
+            "क्योंकि खाने की गुणवत्ता खराब होती है",
+            "क्योंकि गंदगी होती है"
+          ],
+          "solution": "मलेरिया मच्छरों द्वारा फैलता है, जो वेक्टर होते हैं। कुछ क्षेत्रों में मच्छरों की उपस्थिति इन क्षेत्रों को मलेरिया के लिए अधिक संवेदनशील बनाती है। हाथ धोना, पोषण और स्वच्छता अन्य प्रकार के रोगों के लिए प्रभावित करते हैं, लेकिन मलेरिया के विशेष रूप से नहीं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms (मच्छर, वेक्टर, स्वच्छता, पोषण) match standard Hindi textbook usage.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते रोगांच्या अधिक वारंवारतेमुळे विशिष्ट भागांमध्ये मलेरिया सारख्या रोगांच्या अधिक वारंवारतेचे सर्वात चांगले स्पष्टीकरण देते?",
+          "choices": [
+            "कारण लोक वारंवार हात धुत नाहीत",
+            "कारण वाघांच्या उपस्थितीमुळे",
+            "कारण खराब पोषण",
+            "कारण खराब स्वच्छता"
+          ],
+          "solution": "मलेरिया वाघां द्वारे पसरते, जे वेक्टर आहेत. विशिष्ट भागांमध्ये वाघांची उपस्थिती हे भागांना मलेरियासाठी अधिक संवेदनशील करते. हात धुणे, पोषण आणि स्वच्छता इतर प्रकारच्या रोगांवर प्रभाव पाडतात, मलेरियासाठी विशिष्ट नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for medical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Refers to prevention of communicable diseases spread through touch",
+        null,
+        "Refers to prevention of non-communicable diseases",
+        "Refers to prevention of water-borne diseases"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that mosquitoes are the vector for malaria, and the other options relate to different types of diseases. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu103.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: — Health: The Ultimate Treasure",
+            "3.4 Diseases: What Are the Causes and Types?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu103.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 3: — Health: The Ultimate Treasure",
+            "3.4 Diseases: What Are the Causes and Types?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu103.pdf",
+          "ordinal": 7,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: — Health: The Ultimate Treasure",
+            "3.4 Diseases: What Are the Causes and Types?",
+            "Activity 3.4: Let us find out"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T13:03:59.493Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

@@ -1,0 +1,717 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T02:46:09.766Z",
+  "finishedAt": "2026-11-02T02:54:57.893Z",
+  "seconds": 528,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash-II",
+    "bookCode": "gegp2",
+    "document": "ncert/7/mathematics/gegp205.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 13 — Connecting the Dots…",
+    "edition": "2025 edition (the site's Last-Modified)",
+    "chunks": 24,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n7. C) 140 𝑂",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n4. A) 7",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 22 7 wherever required if not stated."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 186466,
+      "in": 39,
+      "out": 37,
+      "rejects": 2,
+      "promptTokens": 45455,
+      "completionTokens": 11057
+    },
+    "critique": {
+      "calls": 47,
+      "ms": 291428,
+      "in": 37,
+      "out": 28,
+      "rejects": 9,
+      "promptTokens": 22616,
+      "completionTokens": 8428
+    },
+    "solver": {
+      "calls": 210,
+      "ms": 106718,
+      "in": 28,
+      "out": 22,
+      "rejects": 6,
+      "promptTokens": 44779,
+      "completionTokens": 2280
+    },
+    "form": {
+      "calls": 7,
+      "ms": 20381,
+      "in": 22,
+      "out": 12,
+      "rejects": 10,
+      "promptTokens": 3531,
+      "completionTokens": 661
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 49,
+      "ms": 9053,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 53,
+      "ms": 526400,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 34223,
+      "completionTokens": 16971
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 1,
+    "4": 3,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 6,
+      "stem": "In a cricket series, Shubman scored 110 runs in 5 matches and Yashasvi scored 96 runs in 4 matches. According to the passage, what is the most accurate way to determine who performed better?",
+      "ms": {
+        "draft": 3931,
+        "critique": 7158,
+        "solver": 14207,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the average number of Hibiscus flowers blooming per day in Vaishnavi’s garden if the data is 2, 7, 9, 4, and 3?",
+      "ms": {
+        "draft": 3931,
+        "critique": 8004,
+        "solver": 15180
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Who on average ran quicker between Nikhil and Sunil? Nikhil's times are 17, 18, 17, 16, 19, 17, 18. Sunil's times are 20, 18, 18, 17, 16, 16, 17.",
+      "ms": {
+        "draft": 5373,
+        "critique": 7926
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the mean enrolment in the school over six years if the enrolments are 1555, 1670, 1750, 2013, 2040, 2126?",
+      "ms": {
+        "draft": 5373,
+        "critique": 7287
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the average price of onions at Yahapur and Wahapur? The monthly prices for Yahapur are 24, 39, 29, 39, 42, 39, 42, 50, 48, 51, 50, 58. For Wahapur, they are 17, 35, 39, 42, 42, 49, 50, 55, 57, 59, 60, 60.",
+      "ms": {
+        "draft": 5373,
+        "critique": 8308,
+        "solver": 1135
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the median height of Yaangba’s family if the sorted data is 150, 155, 164, 165, 170, 175?",
+      "ms": {
+        "draft": 6235,
+        "critique": 6287,
+        "solver": 1817,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A class has 10 students. The mean height is 145 cm, and the median height is 143 cm. What can be inferred about the data?",
+      "ms": {
+        "draft": 6235,
+        "critique": 5328
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the median of the data set 11, 13, 15, 17, 19?",
+      "ms": {
+        "draft": 6235,
+        "critique": 7016
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a dot plot showing the number of short stories read by students, the median is 6. What does this mean?",
+      "ms": {
+        "draft": 6235,
+        "critique": 7268,
+        "solver": 15093,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a data set with values 0, 1, 0, 4, 8, 0, 0, 2, 1, 1, 5, 3, 4, 0, 0, —, 10, 25, 2, —, 2, 4, what is the median if the missing values are not counted?",
+      "ms": {
+        "draft": 4760,
+        "critique": 5915
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a data set has a mean of 140.14 and a median of 140, what can be inferred about the distribution of the data?",
+      "ms": {
+        "draft": 4760,
+        "critique": 6182
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements about the rocket launch data is supported by the passage?",
+      "ms": {
+        "draft": 3528,
+        "critique": 5063,
+        "solver": 1645,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Based on the graph, how many runs did the blue team score in over 12?",
+      "ms": {
+        "draft": 10440,
+        "critique": 7638
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula for the arithmetic mean of a set of data?",
+      "ms": {
+        "draft": 3931,
+        "critique": 5746,
+        "solver": 1475,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student collected data on how many times they stepped out of their house in a day for a month. They made a dot plot. What can be concluded about the variability of the data?",
+      "ms": {
+        "draft": 3931,
+        "critique": 8557,
+        "solver": 1316,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A dot plot shows the number of names starting with each letter. If the median starting letter is 'M', what does this imply about the data?",
+      "ms": {
+        "draft": 3931,
+        "critique": 6482,
+        "solver": 14310,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a data set has 8 values and the sum of all the values is 160, what is the arithmetic mean?",
+      "ms": {
+        "draft": 3931,
+        "critique": 6769,
+        "solver": 14902
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A number lock has a 3-digit code. One digit is correct and well placed. Nothing is correct. One digit is correct but wrongly placed. What can be concluded about the code?",
+      "ms": {
+        "draft": 3931,
+        "critique": 6030,
+        "solver": 1294
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements is supported by the passage?",
+      "ms": {
+        "draft": 3572,
+        "critique": 4995,
+        "solver": 1509
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the median of a data set with 10 values is the average of the 5th and 6th values, what does this imply?",
+      "ms": {
+        "draft": 3931,
+        "critique": 6573,
+        "solver": 1514,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Between which two successive ages from 5 to 19 did boys grow the most according to the passage?",
+      "ms": {
+        "draft": 3572,
+        "critique": 7604
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the average height of a newborn is 50 cm, what is the estimated average height of young children of ages 1 to 4?",
+      "ms": {
+        "draft": 3572,
+        "critique": 7359,
+        "solver": 1917
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the best way for the sports teacher to divide the class into two groups with equal numbers of students based on height?",
+      "ms": {
+        "draft": 3572,
+        "critique": 6460,
+        "solver": 1161,
+        "form": 3438
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which team is represented by the blue bars in the double bar graph?",
+      "ms": {
+        "draft": 8590,
+        "critique": 6060,
+        "solver": 1346,
+        "form": 2218
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the mean of the data set: 57, 13, 0, 84, 51, 27?",
+      "ms": {
+        "draft": 4839,
+        "critique": 5233
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which organisation launched about 35 more rockets in 2023 compared to 2022?",
+      "ms": {
+        "draft": 4526,
+        "critique": 4996,
+        "solver": 919,
+        "form": 1735,
+        "translation": 30991
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the average number of bounces of the ball that Shreyas is able to make with his bat? The data is 6, 2, 9, 5, 4, 6, 3, 5.",
+      "ms": {
+        "draft": 5373,
+        "critique": 7138,
+        "solver": 1888,
+        "form": 1,
+        "translation": 32901
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the meaning of the term 'median' in the context of data analysis?",
+      "ms": {
+        "draft": 4760,
+        "critique": 8380,
+        "solver": 10723,
+        "form": 0,
+        "translation": 37459
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How much do onion prices vary across shops in the same area?",
+      "ms": {
+        "draft": 5373,
+        "critique": 6061,
+        "solver": 1319,
+        "form": 3834,
+        "translation": 42486
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a statistical question?",
+      "ms": {
+        "draft": 3931,
+        "critique": 6098,
+        "solver": 1736,
+        "form": 0,
+        "translation": 46847
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a cricket series, Shubman scored 110 runs in 5 matches and Yashasvi scored 96 runs in 4 matches. What is the average number of runs scored by Yashasvi in a match?",
+      "ms": {
+        "draft": 3931,
+        "critique": 4582,
+        "solver": 1216,
+        "form": 0,
+        "translation": 31630
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Shreyas’s group collected 30 guavas and has 5 people. Parag’s group collected 30 guavas and has 6 people. How many guavas does each person get in Shreyas’s group?",
+      "ms": {
+        "draft": 3931,
+        "critique": 5864,
+        "solver": 12731,
+        "form": 0,
+        "translation": 58547
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In a cricket match, if a team’s median runs scored by a player is 0 but the team’s total score is 407, what does this indicate about the players' scores?",
+      "ms": {
+        "draft": 4760,
+        "critique": 6678,
+        "solver": 11756,
+        "form": 0,
+        "translation": 43485
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Vaishnavi says, 'Here, Shubman performed better since his total is 110 runs, while Yashasvi’s total is 96 runs.' Shreyas says, 'But Yashasvi made 96 runs in 4 matches and Shubman made 110 runs in 5 matches.' Which of the following is the most appropriate way to compare their performances?",
+      "ms": {
+        "draft": 3931,
+        "critique": 4746,
+        "solver": 2130,
+        "form": 0,
+        "translation": 60019
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is the best estimate of the total number of rockets launched worldwide in 2023?",
+      "ms": {
+        "draft": 3528,
+        "critique": 6521,
+        "solver": 10119,
+        "form": 2199,
+        "translation": 38591
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the data about daylight hours in the two cities, which of the following best explains the seasonal pattern?",
+      "ms": {
+        "draft": 3528,
+        "critique": 5547,
+        "solver": 11383,
+        "form": 1335,
+        "translation": 50220
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a data set with an even number of values, the median is the average of the two middle numbers. What happens if the two middle numbers are the same?",
+      "ms": {
+        "draft": 6235,
+        "critique": 4696,
+        "solver": 996,
+        "form": 0,
+        "translation": 48705
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the average height of Yaangba’s family? The heights are 169 cm, 173 cm, 155 cm, 165 cm, 160 cm, 164 cm.",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a cricket series, Shubman scored 110 runs in 5 matches and Yashasvi scored 96 runs in 4 matches. According to the passage, what is the most accurate way to determine who performed better?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 2 and 3 say the same thing (\"By comparing the total number of runs scored in the first match\" / \"By comparing the total number of runs scored in the last match\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the average number of Hibiscus flowers blooming per day in Vaishnavi’s garden if the data is 2, 7, 9, 4, and 3?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Who on average ran quicker between Nikhil and Sunil? Nikhil's times are 17, 18, 17, 16, 19, 17, 18. Sunil's times are 20, 18, 18, 17, 16, 16, 17.",
+      "reason": "the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the mean enrolment in the school over six years if the enrolments are 1555, 1670, 1750, 2013, 2040, 2126?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the average price of onions at Yahapur and Wahapur? The monthly prices for Yahapur are 24, 39, 29, 39, 42, 39, 42, 50, 48, 51, 50, 58. For Wahapur, they are 17, 35, 39, 42, 42, 49, 50, 55, 57, 59, 60, 60.",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the median height of Yaangba’s family if the sorted data is 150, 155, 164, 165, 170, 175?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A class has 10 students. The mean height is 145 cm, and the median height is 143 cm. What can be inferred about the data?",
+      "reason": "the critic finds option 1 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the median of the data set 11, 13, 15, 17, 19?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a dot plot showing the number of short stories read by students, the median is 6. What does this mean?",
+      "reason": "figure: figure spec refused: spec.title: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a data set with values 0, 1, 0, 4, 8, 0, 0, 2, 1, 1, 5, 3, 4, 0, 0, —, 10, 25, 2, —, 2, 4, what is the median if the missing values are not counted?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a data set has a mean of 140.14 and a median of 140, what can be inferred about the distribution of the data?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following statements about the rocket launch data is supported by the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Based on the graph, how many runs did the blue team score in over 12?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following statements is true based on the dot plots of the number of pockets on clothing?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the formula for the arithmetic mean of a set of data?",
+      "reason": "options 0 and 1 say the same thing (\"Sum of all the values in the data divided by the number of values in the data\" / \"Sum of all the values in the data multiplied by the number of values in the data\"); options 0 and 2 say the same thing (\"Sum of all the values in the data divided by the number of values in the data\" / \"Number of values in the data divided by the sum of all the values in the data\"); options 1 and 2 say the same thing (\"Sum of all the values in the data multiplied by the number of values in the data\" / \"Number of values in the data divided by the sum of all the values in the data\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student collected data on how many times they stepped out of their house in a day for a month. They made a dot plot. What can be concluded about the variability of the data?",
+      "reason": "options 1 and 2 say the same thing (\"It can only be determined by calculating the mean\" / \"It can only be determined by calculating the median\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A dot plot shows the number of names starting with each letter. If the median starting letter is 'M', what does this imply about the data?",
+      "reason": "options 1 and 2 say the same thing (\"1: More names start with letters N–Z than A–M\" / \"More names start with letters A–M than N–Z\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a data set has 8 values and the sum of all the values is 160, what is the arithmetic mean?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A number lock has a 3-digit code. One digit is correct and well placed. Nothing is correct. One digit is correct but wrongly placed. What can be concluded about the code?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following statements is supported by the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the median of a data set with 10 values is the average of the 5th and 6th values, what does this imply?",
+      "reason": "options 0 and 1 say the same thing (\"The data set has an even number of values\" / \"The data set has an odd number of values\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Between which two successive ages from 5 to 19 did boys grow the most according to the passage?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the average height of a newborn is 50 cm, what is the estimated average height of young children of ages 1 to 4?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the best way for the sports teacher to divide the class into two groups with equal numbers of students based on height?",
+      "reason": "options 0 and 1 say the same thing (\"Divide the class into two groups based on the mean height.\" / \"Divide the class into two groups based on the median height.\"); options 0 and 2 say the same thing (\"Divide the class into two groups based on the mean height.\" / \"Divide the class into two groups based on the mode height.\"); options 1 and 2 say the same thing (\"Divide the class into two groups based on the median height.\" / \"Divide the class into two groups based on the mode height.\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which team is represented by the blue bars in the double bar graph?",
+      "reason": "distractor 2 has no reason; distractor 3's reason is not a one-line misconception (\"makes up a new team color not mentioned in the passage or th…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the mean of the data set: 57, 13, 0, 84, 51, 27?",
+      "reason": "the critic finds option 1 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound; option 1 is not wrong"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

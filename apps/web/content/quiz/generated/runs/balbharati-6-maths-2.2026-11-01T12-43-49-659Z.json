@@ -1,0 +1,502 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T12:43:49.659Z",
+  "finishedAt": "2026-11-01T12:51:05.415Z",
+  "seconds": 436,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 2 — Lines and Angles",
+    "edition": "First Edition 2026",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2022-23]\n11. If two tangents inclined at an angle of 60ᵒ are drawn to a circle of radius 3cm, then the 1\nlength of each tangent is equal to\n3√3 (b) 3cm (c) 6cm (d) 3√3cm\n(a) 2 cm",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n22. Given:-AB II CD II EF\nTo prove:- ா஽ ஺ா = ஻ி ி஼\nConstruction:- Join BD to\nintersect EF at G.\nProof:- in ∆ ABD\nEG II AB ( EF II AB )\nா஽ ஺ா = ஻ீீ ஽ ( by BPT )___________(1)\nIn ∆𝐷𝐵𝐶\nGF II CD ( EF II CD )\n஻ி ி஼ = ஻ீீ ஽ ( by BPT )___________(2)\n𝑓𝑟𝑜𝑚 (1) & (2)\nா஽ ஺ா = ஻ி ி஼\nGiven AD=6cm, DB=9cm\nAE=8cm, EC=12cm, ∠ADE=48\nTo find:- ∠ABC=?\nProof:\nIn ∆𝐴𝐵𝐶\n஽஻ ஺஽ = = ଺ ଽ ଶ ଷ ……(1)\n஺ா ா஼ = ଵଶ ଼ = ଶ ଷ ……..(2)\nFrom (1) & (2)\n஽஻ ஺஽ = ஺ா ா஼\nDE II BC (Converse of BPT)\n∠ADE=∠ABC (Corresponding angles)\n⇒ ∠ABC=48˚\nOR",
+      "[RMO 2017 — question paper]\n1. Let AOB be a given angle less than 180° and let P be an interior point of the\nangular region determined by ZAOB. Show, with proof, how to construct,\nusing only ruler and compasses, a line segment CD passing through P such\nthat C' lies on the ray OA and D lies on the ray OB, and CP: PD =1:2.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n26. In Figure, XY and X′Y′ are two parallel tangents to a 3\ncircle with centre O and another tangent AB with\npoint of contact C intersecting XY at A and X′Y′ at B.\nProve that ∠ AOB = 90°\nFor Visually Impaired candidates:\nTwo tangents PA and PB are drawn to a circle with centre O from an external point\nP. Prove that ∠APB= 2(∠OAB)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 126038,
+      "in": 23,
+      "out": 23,
+      "rejects": 0,
+      "promptTokens": 18288,
+      "completionTokens": 4671
+    },
+    "critique": {
+      "calls": 31,
+      "ms": 285820,
+      "in": 23,
+      "out": 18,
+      "rejects": 5,
+      "promptTokens": 12839,
+      "completionTokens": 5272
+    },
+    "solver": {
+      "calls": 142,
+      "ms": 112622,
+      "in": 18,
+      "out": 13,
+      "rejects": 5,
+      "promptTokens": 23931,
+      "completionTokens": 1509
+    },
+    "form": {
+      "calls": 9,
+      "ms": 58209,
+      "in": 13,
+      "out": 8,
+      "rejects": 5,
+      "promptTokens": 7338,
+      "completionTokens": 1298
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 17,
+      "ms": 4052,
+      "in": 8,
+      "out": 4,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 141794,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7953,
+      "completionTokens": 3555
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the name of a line that is written using a single lowercase letter?",
+      "ms": {
+        "draft": 5846,
+        "critique": 11006,
+        "solver": 20963
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a single line can pass through three points, what are these points called?",
+      "ms": {
+        "draft": 5846,
+        "critique": 12781,
+        "solver": 17664,
+        "form": 5382
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is true about a ray?",
+      "ms": {
+        "draft": 5846,
+        "critique": 7896
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a line segment is drawn between two points, what determines its length?",
+      "ms": {
+        "draft": 5846,
+        "critique": 8722
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct way to name a line segment?",
+      "ms": {
+        "draft": 5846,
+        "critique": 10178,
+        "solver": 17623
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the measure of a straight angle?",
+      "ms": {
+        "draft": 4918,
+        "critique": 9528,
+        "solver": 18352,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, what is the measure of the reflex angle?",
+      "ms": {
+        "draft": 4918,
+        "critique": 7378,
+        "solver": 1260,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the figure, which of the following is a ray?",
+      "ms": {
+        "draft": 5907,
+        "critique": 8751,
+        "solver": 1634
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of angle?",
+      "ms": {
+        "draft": 5907,
+        "critique": 7684,
+        "solver": 22586
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If an angle is formed by rotating a paper fan from a zero angle to a complete angle, how many right angles are formed in the process?",
+      "ms": {
+        "draft": 5907,
+        "critique": 8414
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is used to denote a point in geometry?",
+      "ms": {
+        "draft": 20815,
+        "critique": 7851
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, if three points lie on the same line, what are they called?",
+      "ms": {
+        "draft": 20815,
+        "critique": 12873
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the angle between the hour hand and the minute hand of a clock is 180°, what time is it?",
+      "ms": {
+        "draft": 5907,
+        "critique": 10377,
+        "solver": 25916
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a line segment has endpoints P and Q, how is it named?",
+      "ms": {
+        "draft": 20815,
+        "critique": 7797,
+        "solver": 1637,
+        "form": 5031
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If two rays originate from the same point, what is the common point called?",
+      "ms": {
+        "draft": 20815,
+        "critique": 8147,
+        "solver": 1559,
+        "form": 2606
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the term 'collinear points'?",
+      "ms": {
+        "draft": 5846,
+        "critique": 10629,
+        "solver": 18724,
+        "form": 4326
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a reflex angle?",
+      "ms": {
+        "draft": 4918,
+        "critique": 8561,
+        "solver": 2194,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a straight angle is divided into three equal parts, what type of angle will each part be?",
+      "ms": {
+        "draft": 4918,
+        "critique": 7920,
+        "solver": 1672,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a straight angle is divided into three equal parts, what type of angle will each part be?",
+      "ms": {
+        "draft": 5907,
+        "critique": 8024,
+        "solver": 18080,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the measure of a complete angle?",
+      "ms": {
+        "draft": 4918,
+        "critique": 9236,
+        "solver": 2420,
+        "form": 0,
+        "translation": 34798
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is formed when the two arms of an angle are in a straight line?",
+      "ms": {
+        "draft": 4918,
+        "critique": 8754,
+        "solver": 2541,
+        "form": 0,
+        "translation": 39767
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the measure of a right angle?",
+      "ms": {
+        "draft": 5907,
+        "critique": 6404,
+        "solver": 2255,
+        "form": 8110,
+        "translation": 39483
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many lines can be drawn through two distinct points?",
+      "ms": {
+        "draft": 20815,
+        "critique": 11096,
+        "solver": 2647,
+        "form": 4460,
+        "translation": 22801
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the name of a line that is written using a single lowercase letter?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a single line can pass through three points, what are these points called?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is true about a ray?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a line segment is drawn between two points, what determines its length?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is a correct way to name a line segment?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the measure of a straight angle?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given figure, what is the measure of the reflex angle?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels OA, OB"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the figure, which of the following is a ray?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a type of angle?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If an angle is formed by rotating a paper fan from a zero angle to a complete angle, how many right angles are formed in the process?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is used to denote a point in geometry?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the given figure, if three points lie on the same line, what are they called?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the angle between the hour hand and the minute hand of a clock is 180°, what time is it?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a line segment has endpoints P and Q, how is it named?",
+      "reason": "figure: figure spec refused: spec.segments.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If two rays originate from the same point, what is the common point called?",
+      "reason": "figure: figure spec refused: spec.segments.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following best describes the term 'collinear points'?",
+      "reason": "near-duplicate of served question cmvvfc11c00060r437zxl5pse (cosine 0.915 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is an example of a reflex angle?",
+      "reason": "near-duplicate of served question cmvvmxque000p0rem6kuqc716 (cosine 0.923 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a straight angle is divided into three equal parts, what type of angle will each part be?",
+      "reason": "near-duplicate of served question cmvvmxquh000v0rempv75gvma (cosine 0.922 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a straight angle is divided into three equal parts, what type of angle will each part be?",
+      "reason": "near-duplicate of served question cmvvmxquh000v0rempv75gvma (cosine 0.922 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

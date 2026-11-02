@@ -21,603 +21,13 @@
   "board": "BALBHARATI",
   "book": "७ वी सामान्य विज्ञान इंग्रजी",
   "edition": "First Edition 2017",
-  "generatedAt": "2026-10-31T15:57:02.733Z",
+  "generatedAt": "2026-11-02T03:26:06.466Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "Which property of air is demonstrated by the experiment where a stick with balloons on both ends tilts when one balloon is inflated?",
-      "choices": [
-        "Air is transparent",
-        "Air has mass and weight",
-        "Air is a mixture of gases",
-        "Air occupies space"
-      ],
-      "answerIndex": 1,
-      "solution": "The experiment shows that when one balloon is inflated, the stick tilts, indicating that air has mass and weight. The correct answer is 'Air has mass and weight'. The other options are incorrect because the experiment does not demonstrate transparency, the composition of air, or the fact that air occupies space directly.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "हवा के किस गुण को एक छड़ जिसके दोनों सिरों पर बैलून हैं, जब एक बैलून को फूंका जाता है तो छड़ झुक जाती है, तो इस प्रयोग द्वारा दर्शाया जाता है?",
-          "choices": [
-            "हवा अमापदर्शी होती है",
-            "हवा के द्रव्यमान और भार होता है",
-            "हवा गैसों का मिश्रण होती है",
-            "हवा स्थान घेरती है"
-          ],
-          "solution": "इस प्रयोग में जब एक बैलून को फूंका जाता है, तो छड़ झुक जाती है, जिसके द्वारा यह दर्शाया जाता है कि हवा के द्रव्यमान और भार होता है। सही उत्तर 'हवा के द्रव्यमान और भार होता है' है। अन्य विकल्प गलत हैं क्योंकि प्रयोग में पारदर्शिता, हवा के संघटन या हवा द्वारा स्थान घेरे जाने के गुण को सीधे दर्शाया नहीं जाता है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains the original meaning, and uses standard Hindi terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "हवेच्या कोणत्या गुणधर्माचे उदाहरण दाखवले जाते जेव्हा दोन बॅलून असलेल्या एका छडीच्या दोन्ही बाजूंवर एका बॅलूनला फुंकल्यास छडी झुकते?",
-          "choices": [
-            "हवा दृश्यमान आहे",
-            "हवेला द्रव्यमान आणि वजन आहे",
-            "हवा वायूंचे मिश्रण आहे",
-            "हवा जागा घेते"
-          ],
-          "solution": "हे प्रयोग दर्शवते की जेव्हा एका बॅलूनला फुंकल्यास छडी झुकते, जे दर्शवते की हवेला द्रव्यमान आणि वजन आहे. योग्य उत्तर 'हवेला द्रव्यमान आणि वजन आहे' आहे. इतर विकल्प चुकीचे आहेत कारण प्रयोग हवेच्या दृश्यमानतेचे, हवेच्या रचनेचे किंवा हवा जागा घेते याचे सीधे दर्शन देत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the property of air being transparent with the experiment",
-        null,
-        "Thinks the experiment proves the composition of air",
-        "Believes the experiment shows air occupies space, but the actual property demonstrated is mass and weight"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The experiment demonstrates that air has mass and weight, as the stick tilts when one balloon is inflated. The other options are not directly demonstrated by the experiment, and the author's reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 24,
-          "pageStart": 26,
-          "pageEnd": 26,
-          "headingPath": [
-            "3. Properties of Natural Resources"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 25,
-          "pageStart": 26,
-          "pageEnd": 27,
-          "headingPath": [
-            "3. Properties of Natural Resources"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 26,
-          "pageStart": 27,
-          "pageEnd": 28,
-          "headingPath": [
-            "3. Properties of Natural Resources"
-          ]
-        }
-      ],
-      "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T15:57:02.733Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the main reason why we can hear the whistle of a distant train more clearly in winter?",
-      "choices": [
-        "Because the air is warmer",
-        "Because the air is denser",
-        "Because the air is less dense",
-        "Because the air is drier"
-      ],
-      "answerIndex": 1,
-      "solution": "The correct answer is because the air is denser. Sound travels more efficiently through denser air because the molecules are closer together, allowing sound waves to propagate more effectively. Warmer air is less dense, less dense air slows sound, and drier air does not significantly affect sound clarity compared to density.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "सर्दी में दूर के ट्रेन की चिल्लाहट अधिक स्पष्ट क्यों सुनाई देती है?",
-          "choices": [
-            "क्योंकि हवा गर्म होती है",
-            "क्योंकि हवा घनी होती है",
-            "क्योंकि हवा कम घनी होती है",
-            "क्योंकि हवा शुष्क होती है"
-          ],
-          "solution": "सही उत्तर क्योंकि हवा घनी होती है। घनी हवा में ध्वनि अधिक प्रभावी रूप से यात्रा करती है क्योंकि अणु एक दूसरे के करीब होते हैं, जिससे ध्वनि तरंगों के प्रसार के लिए अनुकूल परिस्थिति बनती है। गर्म हवा कम घनी होती है, कम घनी हवा ध्वनि को धीमा कर देती है, और शुष्क हवा घनत्व की तुलना में ध्वनि स्पष्टता पर निर्णायक प्रभाव नहीं डालती है।",
-          "imageAlt": null,
-          "critique": "Hindi translation accurately reflects the English original in meaning, structure, and technical terms. The correct answer is in the same position (option 2), and the explanation aligns with the original.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "उन्हाळ्यात दूरच्या रेल्वेच्या बिल्लीचा आवाज जास्त स्पष्ट का ऐकू येतो?",
-          "choices": [
-            "कारण हवा उबदार असते",
-            "कारण हवा जास्त घन असते",
-            "कारण हवा कमी घन असते",
-            "कारण हवा शुष्क असते"
-          ],
-          "solution": "योग्य उत्तर हवा जास्त घन असल्यामुळे आहे. घन हवेत ध्वनी अधिक प्रभावीपणे पसरतो कारण अणू जवळ असतात, ज्यामुळे ध्वनी तरंग अधिक प्रभावीपणे पसरतात. उबदार हवा कमी घन असते, कमी घन हवा ध्वनीला वेग घटवते, आणि शुष्क हवा घनतेपेक्षा ध्वनी स्पष्टतेवर थोडाच असर करते.",
-          "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the English question and solution, with appropriate technical terms like 'घन' (dense) used in the context of air density.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Incorrectly assumes warmer air",
-        null,
-        "Incorrectly assumes less dense air",
-        "Incorrectly assumes dry air"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as colder air is denser and allows sound to travel more effectively. The author's reasoning aligns with this, and the misconceptions in the wrong options are plausible for students.",
-      "sources": [
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 27,
-          "pageStart": 28,
-          "pageEnd": 29,
-          "headingPath": [
-            "3. Properties of Natural Resources"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 28,
-          "pageStart": 29,
-          "pageEnd": 30,
-          "headingPath": [
-            "3. Properties of Natural Resources"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 29,
-          "pageStart": 31,
-          "pageEnd": 32,
-          "headingPath": [
-            "3. Properties of Natural Resources"
-          ]
-        }
-      ],
-      "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T15:57:02.733Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the main reason sandy soil is less fertile?",
-      "choices": [
-        "It has large particles",
-        "It has small particles",
-        "It has medium-sized particles",
-        "It holds too much water"
-      ],
-      "answerIndex": 0,
-      "solution": "Sandy soil is less fertile because its large particles do not hold onto nutrients well, making it difficult for plants to absorb them. Small or medium-sized particles help retain nutrients, while holding too much water is more characteristic of clay soils. Therefore, the main reason is its large particle size.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "रेतीली मिट्टी कम उपजाऊ क्यों होती है?",
-          "choices": [
-            "इसमें बड़े कण होते हैं",
-            "इसमें छोटे कण होते हैं",
-            "इसमें मध्यम आकार के कण होते हैं",
-            "इसमें बहुत अधिक पानी रहता है"
-          ],
-          "solution": "रेतीली मिट्टी कम उपजाऊ होती है क्योंकि इसके बड़े कण पोषक तत्वों को अच्छी तरह से नहीं रखते, जिसके कारण पौधों के लिए उनके अवशोषण में कठिनाई होती है। छोटे या मध्यम आकार के कण पोषक तत्वों को बरकरार रखते हैं, जबकि बहुत अधिक पानी रखना बलुई मिट्टी की विशेषता होती है। इसलिए मुख्य कारण इसके बड़े आकार के कण हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English content with appropriate technical terms and maintains the correct answer position.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "कोरड्या मातीची फळबाग ओली असते कारण काय आहे?",
-          "choices": [
-            "तिला मोठ्या कणांचा असतो",
-            "तिला लहान कणांचा असतो",
-            "तिला मध्यम आकाराच्या कणांचा असतो",
-            "तिला खूप पाणी ठेवण्याची क्षमता असते"
-          ],
-          "solution": "कोरड्या मातीला मोठ्या कणांचा असतो, जे पोषक तत्त्वे चांगल्या प्रकारे धरू शकत नाहीत, ज्यामुळे वनस्पतींना त्यांचा अभाव असतो. लहान किंवा मध्यम आकाराच्या कणांमुळे पोषक तत्त्वे राखली जातात, तर खूप पाणी ठेवणे हे चिकट मातीची वैशिष्ट्ये असतात. त्यामुळे, मुख्य कारण तिच्या मोठ्या आकाराच्या कणांचे असते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and natural, with appropriate Marathi terminology for soil types and particle sizes.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Believes that smaller particles mean less fertility due to confusion between particle size and nutrient retention",
-        "Incorrectly assumes small particles affect fertility",
-        "Incorrectly describes silt soil properties"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0, as sandy soil's large particles prevent nutrient retention. The distractors reflect common misconceptions about particle size and soil fertility.",
-      "sources": [
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 30,
-          "pageStart": 32,
-          "pageEnd": 33,
-          "headingPath": [
-            "3. Properties of Natural Resources"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 31,
-          "pageStart": 33,
-          "pageEnd": 34,
-          "headingPath": [
-            "3. Properties of Natural Resources"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 32,
-          "pageStart": 34,
-          "pageEnd": 34,
-          "headingPath": [
-            "3. Properties of Natural Resources"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 33,
-          "pageStart": 35,
-          "pageEnd": 35,
-          "headingPath": [
-            "3. Properties of Natural Resources",
-            "t t t"
-          ]
-        }
-      ],
-      "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T15:57:02.733Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a person blows through a straw and causes a fountain of water to rise, which principle explains this phenomenon?",
-      "choices": [
-        "Bernoulli's principle",
-        "Newton's law of motion",
-        "Archimedes' principle",
-        "Law of conservation of energy"
-      ],
-      "answerIndex": 0,
-      "solution": "Bernoulli's principle explains that when air moves faster, its pressure decreases, which can cause water to rise. This principle directly relates to the observed phenomenon of the water fountain. Newton's law of motion deals with forces and acceleration, Archimedes' principle concerns buoyancy, and the law of conservation of energy relates to energy transformation, none of which directly explain the water rising due to air movement.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि कोई व्यक्ति एक प्लास्टिक की नली से हवा बहाता है और पानी के फव्वारे को उत्पन्न करता है, तो इस घटना को कौन-सा सिद्धांत समझाता है?",
-          "choices": [
-            "बर्नौली का सिद्धांत",
-            "न्यूटन का गति का नियम",
-            "आर्किमिडीज का सिद्धांत",
-            "ऊर्जा संरक्षण का नियम"
-          ],
-          "solution": "बर्नौली का सिद्धांत यह समझाता है कि जब हवा तेजी से चलती है, तो इसका दबाव घट जाता है, जो पानी के ऊपर उठने के लिए उत्तरदायी हो सकता है। इस सिद्धांत का सीधा संबंध पानी के फव्वारे के अवलोकित घटना से होता है। न्यूटन का गति का नियम बलों और त्वरण से संबंधित है, आर्किमिडीज का सिद्धांत उत्प्लावन से संबंधित है, और ऊर्जा संरक्षण का नियम ऊर्जा के रूपांतरण से संबंधित है, जो कोई भी इस घटना के लिए सीधा व्याख्या नहीं करते हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एखाद्या व्यक्तीने एका प्लास्टिकच्या नळीतून वाफ दिली आणि पाण्याचा फवारा उठला, तर हा प्रकार कोणत्या तत्वाने स्पष्टीकरण देता येईल?",
-          "choices": [
-            "बर्नॉलीचे तत्व",
-            "न्यूटनचे गतीचे नियम",
-            "आर्किमिडीजचे तत्व",
-            "ऊर्जा संरक्षणाचा नियम"
-          ],
-          "solution": "बर्नॉलीचे तत्व सांगते की जेव्हा हवा जास्त वेगाने चालते तेव्हा तिचे दाब कमी होते, ज्यामुळे पाणी वर उठू शकते. हे तत्व अवलोकित घटनेशी सीधा संबंध ठेवते. न्यूटनचे गतीचे नियम बल आणि त्वरणाशी संबंधित असतात, आर्किमिडीजचे तत्व उत्प्लावनाशी संबंधित असते आणि ऊर्जा संरक्षणाचा नियम ऊर्जाच्या रूपांतराशी संबंधित असतो, जे वाफ चालवून पाणी उठल्याच्या घटनेचे स्पष्टीकरण देत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Believes that force applied through blowing directly pushes the water up, ignoring pressure differences",
-        "Believing that air pressure can be explained by buoyancy forces rather than pressure differences",
-        "Confuses energy conservation with pressure and fluid dynamics principles"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0 (Bernoulli's principle), as the explanation aligns with the principle that faster-moving air has lower pressure, causing water to rise. The other options are correctly dismissed as incorrect explanations.",
-      "sources": [
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 24,
-          "pageStart": 26,
-          "pageEnd": 26,
-          "headingPath": [
-            "3. Properties of Natural Resources"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 25,
-          "pageStart": 26,
-          "pageEnd": 27,
-          "headingPath": [
-            "3. Properties of Natural Resources"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 26,
-          "pageStart": 27,
-          "pageEnd": 28,
-          "headingPath": [
-            "3. Properties of Natural Resources"
-          ]
-        }
-      ],
-      "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T15:57:02.733Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Why is the water holding capacity of clay soil high?",
-      "choices": [
-        "Because it has large particles",
-        "Because it has medium-sized particles",
-        "Because it has small particles",
-        "Because it is porous"
-      ],
-      "answerIndex": 2,
-      "solution": "Clay soil has a high water holding capacity because its small particles create more surface area and tiny spaces that can trap and hold water effectively. Large particles would allow water to drain away quickly, while medium-sized particles would not hold water as well as small ones. Porosity alone does not determine water retention; the size and arrangement of particles are more critical.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "क्यों चिकनी मिट्टी की जल धारण क्षमता अधिक होती है?",
-          "choices": [
-            "क्योंकि इसमें बड़े कण होते हैं",
-            "क्योंकि इसमें मध्यम आकार के कण होते हैं",
-            "क्योंकि इसमें छोटे कण होते हैं",
-            "क्योंकि यह छिद्रयुक्त होती है"
-          ],
-          "solution": "चिकनी मिट्टी की जल धारण क्षमता अधिक होती है क्योंकि इसके छोटे कण अधिक सतह क्षेत्र बनाते हैं और छोटे छिद्र बनाते हैं जो जल को सुचारु रूप से अवशोषित और धारित कर सकते हैं। बड़े कण जल को तेजी से बाहर निकलने देते हैं, जबकि मध्यम आकार के कण छोटे कणों की तुलना में जल को कम धारित कर सकते हैं। छिद्रता अकेले जल अवशोषण को निर्धारित नहीं करती है; कणों के आकार और व्यवस्था अधिक महत्वपूर्ण होती है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as per Indian curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "क्ले जमीनची जल धारकता का उच्च असते?",
-          "choices": [
-            "कारण त्यात मोठे कण असतात",
-            "कारण त्यात मध्यम आकाराचे कण असतात",
-            "कारण त्यात लहान कण असतात",
-            "कारण ती रिंगणदार असते"
-          ],
-          "solution": "क्ले जमीनची जल धारकता उच्च असते कारण त्याचे लहान कण अधिक सतह क्षेत्र आणि छोटी जागा तयार करतात जी पाणी अत्यंत प्रभावी प्रकारे बांधू शकतात. मोठे कण पाणी त्वरित बाहेर जाऊ देतात, तर मध्यम आकाराचे कण लहान कणांपेक्षा पाणी बांधू शकत नाहीत. रिंगणदारत्वच जल धारणेचे निर्धारक नसते; कणांच्या आकाराचे आणि व्यवस्थेचे अधिक महत्व असते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms like 'कण' (particles) and 'रिंगणदार' (porous). The correct answer remains in the same position (option 2).",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Incorrectly assumes large particles hold water",
-        "Incorrectly assumes medium-sized particles hold water",
-        null,
-        "students confuse porosity with water holding capacity, thinking that more pores mean more water retention"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 2, as clay soil's high water holding capacity is due to its small particle size, which allows for greater surface area and water retention. The distractors reflect common misconceptions about particle size and porosity.",
-      "sources": [
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 30,
-          "pageStart": 32,
-          "pageEnd": 33,
-          "headingPath": [
-            "3. Properties of Natural Resources"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 31,
-          "pageStart": 33,
-          "pageEnd": 34,
-          "headingPath": [
-            "3. Properties of Natural Resources"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 32,
-          "pageStart": 34,
-          "pageEnd": 34,
-          "headingPath": [
-            "3. Properties of Natural Resources"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 33,
-          "pageStart": 35,
-          "pageEnd": 35,
-          "headingPath": [
-            "3. Properties of Natural Resources",
-            "t t t"
-          ]
-        }
-      ],
-      "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T15:57:02.733Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "What is the main reason for the piston of a syringe being pushed back when the inlet hole is closed and the piston is pulled out?",
-      "choices": [
-        "Air expands",
-        "Air pressure inside the syringe increases",
-        "Air pressure outside the syringe is higher",
-        "Air has weight"
-      ],
-      "answerIndex": 2,
-      "solution": "When the inlet hole of the syringe is closed, pulling the piston creates a lower pressure inside the syringe. The higher pressure outside pushes the piston back. The correct answer is 'Air pressure outside the syringe is higher'. The other options are incorrect because air does not expand in this case, the pressure inside does not increase, and while air has weight, it is not the main reason for the piston being pushed back.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक सिरिंज के पिस्टन के बाहर खींचे जाने पर जब इनलेट छिद्र बंद कर दिया जाता है, तो पिस्टन के वापस धकेले जाने का मुख्य कारण क्या है?",
-          "choices": [
-            "हवा फैलती है",
-            "सिरिंज के अंदर हवा का दबाव बढ़ जाता है",
-            "सिरिंज के बाहर हवा का दबाव अधिक होता है",
-            "हवा का भार होता है"
-          ],
-          "solution": "जब सिरिंज के इनलेट छिद्र को बंद कर दिया जाता है, तो पिस्टन के बाहर खींचने से सिरिंज के अंदर कम दबाव बन जाता है। बाहर के अधिक दबाव के कारण पिस्टन वापस धकेल दिया जाता है। सही उत्तर 'सिरिंज के बाहर हवा का दबाव अधिक होता है' है। अन्य विकल्प गलत हैं क्योंकि इस मामले में हवा फैलती नहीं है, अंदर के दबाव बढ़ नहीं जाता है और यह सच है कि हवा का भार होता है, लेकिन पिस्टन के वापस धकेले जाने का मुख्य कारण नहीं है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "सिरिंजच्या पिस्टनला इनलेट होल बंद असताना पिस्टन बाहेर काढल्यास पिस्टन पुढे जाण्याचा मुख्य कारण काय आहे?",
-          "choices": [
-            "वायू विस्तारतो",
-            "सिरिंजमध्ये वायूचा दाब वाढतो",
-            "सिरिंजबाहेर वायूचा दाब जास्त असतो",
-            "वायूला वजन असते"
-          ],
-          "solution": "जेव्हा सिरिंजच्या इनलेट होल बंद असतो तेव्हा पिस्टन बाहेर काढल्यास सिरिंजमध्ये कमी दाब तयार होतो. बाहेरील जास्त दाब पिस्टनला पुढे धक्का देतो. योग्य उत्तर 'सिरिंजबाहेर वायूचा दाब जास्त असतो' आहे. इतर विकल्प अयोग्य आहेत कारण यावेळी वायू विस्तारत नाही, सिरिंजमध्ये दाब वाढत नाही आणि वायूला वजन असतो, परंतु ते पिस्टनला पुढे जाण्याचा मुख्य कारण नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Thinks air expands when the piston is pulled out",
-        "Believes the pressure inside the syringe increases",
-        null,
-        "Mistakenly thinks air's weight is the reason for the piston movement"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly explains that the piston is pushed back due to higher external air pressure. The reasoning for the other options aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 24,
-          "pageStart": 26,
-          "pageEnd": 26,
-          "headingPath": [
-            "3. Properties of Natural Resources"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 25,
-          "pageStart": 26,
-          "pageEnd": 27,
-          "headingPath": [
-            "3. Properties of Natural Resources"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 26,
-          "pageStart": 27,
-          "pageEnd": 28,
-          "headingPath": [
-            "3. Properties of Natural Resources"
-          ]
-        }
-      ],
-      "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T15:57:02.733Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "What happens to the density of water when its temperature falls below 4°C?",
+      "stem": "What happens to the density of water when it freezes?",
       "choices": [
         "It increases",
         "It decreases",
@@ -625,35 +35,35 @@
         "It becomes zero"
       ],
       "answerIndex": 1,
-      "solution": "The correct answer is 'It decreases.' Water exhibits anomalous behavior, where its density decreases when the temperature falls below 4°C, causing it to expand. The other options are incorrect because density does not increase (option 1), remain the same (option 3), or become zero (option 4) under these conditions.",
+      "solution": "When water freezes, it expands, which causes its density to decrease. This is because the molecules form a crystalline structure that takes up more space. The other options are incorrect because density does not increase, stay the same, or reach zero when water turns into ice.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "जब पानी का तापमान 4°C से नीचे गिरता है तो इसका घनत्व क्या होता है?",
+          "stem": "जब पानी जम जाता है तो इसका घनत्व क्या होता है?",
           "choices": [
             "इसका घनत्व बढ़ जाता है",
             "इसका घनत्व घट जाता है",
             "इसका घनत्व एक समान रहता है",
             "इसका घनत्व शून्य हो जाता है"
           ],
-          "solution": "सही उत्तर 'इसका घनत्व घट जाता है' है। पानी असामान्य व्यवहार दर्शाता है, जहां इसका घनत्व 4°C से नीचे के तापमान पर घट जाता है, जिसके कारण यह फैल जाता है। अन्य विकल्प गलत हैं क्योंकि घनत्व बढ़ नहीं सकता (विकल्प 1), एक समान नहीं रहता (विकल्प 3) या शून्य नहीं हो सकता (विकल्प 4) इन स्थितियों में।",
+          "solution": "जब पानी जम जाता है तो यह फैल जाता है, जिसके कारण इसका घनत्व घट जाता है। यह इसलिए होता है क्योंकि अणु एक क्रिस्टलीय संरचना बनाते हैं जो अधिक जगह लेते हैं। अन्य विकल्प गलत हैं क्योंकि घनत्व बढ़ता नहीं है, एक समान रहता नहीं है या शून्य हो जाता है जब पानी बर्फ में बदल जाता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer is in the same position, and the distractors remain incorrect.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology commonly found in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "जेव्हा पाण्याची तापमान 4°C खाली जाते तेव्हा पाण्याची घनता काय होते?",
+          "stem": "पाण्याची घनता जमताना काय होते?",
           "choices": [
             "ती वाढते",
             "ती घटते",
             "ती एकसारखी राहते",
             "ती शून्य होते"
           ],
-          "solution": "सही उत्तर 'ती घटते.' पाणी असामान्य वर्तन दर्शवते, जेव्हा तापमान 4°C खाली जाते तेव्हा त्याची घनता घटते आणि ते विस्तारते. इतर विकल्प अयोग्य आहेत कारण घनता वाढत नाही (पहिला विकल्प), एकसारखी राहत नाही (तिसरा विकल्प) किंवा शून्य होत नाही (चौथा विकल्प) या परिस्थितीत.",
+          "solution": "जेव्हा पाणी जमते तेव्हा ते विस्तारते, ज्यामुळे त्याची घनता घटते. हे त्यामुळे आहे कारण अणू एका क्रिस्टलीय संरचनेचा निर्माण करतात जो जास्त जागा घेतो. इतर विकल्प चुकीचे आहेत कारण पाणी बर्फात बदलताना घनता वाढत नाही, एकसारखी राहत नाही किंवा शून्य होत नाही.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology commonly found in Marathi textbooks.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms like 'घनता' (density) and 'क्रिस्टलीय संरचना' (crystalline structure) that are standard in Marathi textbooks.",
           "flag": null
         }
       },
@@ -662,10 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses cooling with density increase",
+        "Believes water becomes denser when it freezes",
         null,
-        "Confuses normal behavior with anomalous behavior",
-        "Confuses zero density with no mass"
+        "Assumes no change in density during freezing",
+        "Incorrectly thinks density becomes zero, which is not possible for water"
       ],
       "solverAnswers": [
         1,
@@ -674,8 +84,8 @@
         1,
         1
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. Water's density decreases when cooled below 4°C due to its anomalous expansion. The author's reasoning for the distractors aligns with common misconceptions.",
+      "levelFlag": null,
+      "critique": "The correct answer is 1 (It decreases), as water expands when it freezes, reducing its density. The author's solution and reasoning are accurate, and the distractors reflect common misconceptions.",
       "sources": [
         {
           "document": "balbharati/7/science/703020012.pdf",
@@ -706,49 +116,49 @@
         }
       ],
       "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T15:57:02.733Z",
+      "generatedAt": "2026-11-02T03:26:06.466Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "What would happen to the Earth's temperature if there were no air?",
+      "difficulty": 1,
+      "stem": "Which of the following is a property of sandy soil?",
       "choices": [
-        "It would be much colder",
-        "It would be much hotter",
-        "It would remain the same",
-        "It would fluctuate more"
+        "It holds a lot of water",
+        "It is very fertile",
+        "It drains water quickly",
+        "It feels smooth to touch"
       ],
-      "answerIndex": 0,
-      "solution": "Air plays a crucial role in trapping heat through the greenhouse effect, which keeps the Earth warm. Without air, this heat would escape into space, making the Earth much colder. The other options do not align with the scientific principle of heat retention by atmospheric gases.",
+      "answerIndex": 2,
+      "solution": "Sandy soil has large particles that allow water to drain quickly. This makes it easy to plough but less fertile. The other options are incorrect because sandy soil does not hold much water, is not very fertile, and does not feel smooth to touch.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "पृथ्वी के तापमान पर क्या प्रभाव पड़ेगा अगर पृथ्वी पर कोई हवा न हो?",
+          "stem": "निम्नलिखित में से कौन-सा रेतीली मिट्टी का गुण है?",
           "choices": [
-            "यह बहुत ठंडा हो जाएगा",
-            "यह बहुत गर्म हो जाएगा",
-            "यह एक ही रहेगा",
-            "यह अधिक उतार-चढ़ाव होगा"
+            "यह बहुत अधिक पानी रखती है",
+            "यह बहुत उपजाऊ होती है",
+            "यह पानी को तेजी से बहा देती है",
+            "यह स्पर्श करने पर चिकनी लगती है"
           ],
-          "solution": "हवा ग्रीनहाउस प्रभाव द्वारा ऊष्मा को अवरुद्ध करने में महत्वपूर्ण भूमिका निभाती है, जो पृथ्वी को गर्म रखता है। हवा न होने पर यह ऊष्मा अंतरिक्ष में भापित हो जाएगी, जिससे पृथ्वी बहुत ठंडी हो जाएगी। अन्य विकल्प वातावरणीय गैसों द्वारा ऊष्मा के अवशोषण के वैज्ञानिक सिद्धांत के अनुरूप नहीं हैं।",
+          "solution": "रेतीली मिट्टी में बड़े कण होते हैं जो पानी के बहाव की अनुमति देते हैं। इससे इसे जोतना आसान होता है लेकिन यह कम उपजाऊ होती है। अन्य विकल्प गलत हैं क्योंकि रेतीली मिट्टी बहुत अधिक पानी नहीं रखती है, बहुत उपजाऊ नहीं होती है और स्पर्श करने पर चिकनी नहीं लगती है।",
           "imageAlt": null,
-          "critique": "Translation accurately reflects the original meaning, technical terms like 'ग्रीनहाउस प्रभाव' are standard in Hindi science textbooks.",
+          "critique": "Translation accurately reflects the original meaning with appropriate Hindi terminology. The correct answer remains option 2, and all distractors are still incorrect.",
           "flag": null
         },
         "mr": {
-          "stem": "भूमीची तापमानाची काय अवस्था होईल जर भूमीवर हवा नसल्यास?",
+          "stem": "खालीलपैकी कोणते रेतीच्या जमीनीचे गुणधर्म आहे?",
           "choices": [
-            "ते खूप थंड होईल",
-            "ते खूप उबदार होईल",
-            "ते एकसारखे राहील",
-            "ते जास्त खालाबाहेर होईल"
+            "ती खूप पाणी धरते",
+            "ती खूप उपजीविका देते",
+            "ती पाणी लवकर वाहून नेते",
+            "ती स्पर्श केल्यावर चिकट वाटते"
           ],
-          "solution": "हवा ग्रीनहाउस प्रभावाद्वारे उष्णता अडविण्याच्या महत्त्वाच्या भूमिकेत असते, जी भूमीला उबदार ठेवते. हवा नसल्यास, या उष्णता अंतरिक्षात फुटेल, जेणेकरून भूमी खूप थंड होईल. इतर विकल्प वातावरणीय वायूंच्या उष्णता राखण्याच्या वैज्ञानिक तत्वाशी सुसंगत नाहीत.",
+          "solution": "रेतीच्या जमीनीत मोठ्या कण असतात जे पाणी वाहून नेण्यास परवानगी देतात. हे तिच्या खोदकामास सोपे करते परंतु उपजीविका कमी असते. इतर विकल्प अयोग्य आहेत कारण रेतीच्या जमीनीत पाणी खूप धरले जात नाही, उपजीविका खूप नसते आणि स्पर्श केल्यावर चिकट वाटत नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the scientific meaning, and uses appropriate Marathi terminology for atmospheric concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for soil properties.",
           "flag": null
         }
       },
@@ -757,175 +167,103 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Confuses sandy soil with clay soil",
+        "Misunderstands the concept of fertility",
         null,
-        "Incorrectly assumes a hotter temperature",
-        "Incorrectly assumes no change",
-        "Incorrectly assumes increased fluctuation"
+        "Students may confuse clay soil's smooth texture with sandy soil"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The reasoning is sound. The Earth's atmosphere plays a critical role in regulating temperature through processes like the greenhouse effect. Without air, the planet would lose this thermal regulation, leading to much colder temperatures. The other options represent common misconceptions about the role of the atmosphere.",
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as sandy soil has large particles that allow quick drainage. The author's reasoning for the distractors aligns with common misconceptions about soil types.",
       "sources": [
         {
           "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 27,
-          "pageStart": 28,
-          "pageEnd": 29,
+          "ordinal": 30,
+          "pageStart": 32,
+          "pageEnd": 33,
           "headingPath": [
             "3. Properties of Natural Resources"
           ]
         },
         {
           "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 28,
-          "pageStart": 29,
-          "pageEnd": 30,
+          "ordinal": 31,
+          "pageStart": 33,
+          "pageEnd": 34,
           "headingPath": [
             "3. Properties of Natural Resources"
           ]
         },
         {
           "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 29,
-          "pageStart": 31,
-          "pageEnd": 32,
+          "ordinal": 32,
+          "pageStart": 34,
+          "pageEnd": 34,
           "headingPath": [
             "3. Properties of Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 33,
+          "pageStart": 35,
+          "pageEnd": 35,
+          "headingPath": [
+            "3. Properties of Natural Resources",
+            "t t t"
           ]
         }
       ],
       "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T15:57:02.733Z",
+      "generatedAt": "2026-11-02T03:26:06.466Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "A student adds salt to water and observes that a potato floats. What is the reason for this?",
+      "difficulty": 2,
+      "stem": "Which property of air is demonstrated by the fact that when a balloon is inflated, the stick in the experiment tilts downwards on that side?",
       "choices": [
-        "The salt makes the water more dense",
-        "The salt makes the water less dense",
-        "The salt changes the temperature of the water",
-        "The salt makes the potato lighter"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct answer is 'The salt makes the water more dense.' When salt dissolves in water, it increases the water's density, allowing the potato to float. The other options are incorrect because salt increases density, not decreases it (option 2), salt does not significantly change the water's temperature (option 3), and salt does not make the potato lighter (option 4).",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक छात्र पानी में नमक मिलाता है और देखता है कि आलू तैरता है। इसका कारण क्या है?",
-          "choices": [
-            "नमक पानी को अधिक घनत्व वाला बनाता है",
-            "नमक पानी को कम घनत्व वाला बनाता है",
-            "नमक पानी के तापमान को बदल देता है",
-            "नमक आलू को हल्का बना देता है"
-          ],
-          "solution": "सही उत्तर 'नमक पानी को अधिक घनत्व वाला बनाता है' है। जब नमक पानी में घुल जाता है, तो यह पानी के घनत्व को बढ़ा देता है, जिससे आलू तैरने लगता है। अन्य विकल्प गलत हैं क्योंकि नमक घनत्व को बढ़ाता है, न कि कम (विकल्प 2), नमक पानी के तापमान को बदल नहीं सकता (विकल्प 3), और नमक आलू को हल्का नहीं करता (विकल्प 4)।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology as used in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका विद्यार्थ्याने पाण्यात लवण घालले आणि पाहिले की आलू तरंगतो. ह्याचे कारण काय आहे?",
-          "choices": [
-            "लवण पाणी अधिक घन बनवतो",
-            "लवण पाणी कमी घन बनवतो",
-            "लवण पाण्याचे तापमान बदलतो",
-            "लवण आलू लहान करतो"
-          ],
-          "solution": "बरोबर उत्तर 'लवण पाणी अधिक घन बनवतो' आहे. जेव्हा लवण पाण्यात विरघळतो तेव्हा ते पाण्याची घनता वाढवते, जेणेकरून आलू तरंगतो. इतर विकल्प अयोग्य आहेत कारण लवण घनता वाढवतो, नाही कमी करतो (विकल्प 2), लवण पाण्याचे तापमान जास्त बदलत नाही (विकल्प 3), आणि लवण आलू लहान करत नाही (विकल्प 4).",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the scientific terminology used in Marathi textbooks, and preserves the logical structure of the question and answer.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses salt with density decrease",
-        "Confuses temperature with density change",
-        "Confuses solubility with weight change"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is sound and correctly identifies option 0 as the correct answer. The reasoning aligns with the scientific principle that adding salt increases water density, allowing the potato to float.",
-      "sources": [
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 27,
-          "pageStart": 28,
-          "pageEnd": 29,
-          "headingPath": [
-            "3. Properties of Natural Resources"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 28,
-          "pageStart": 29,
-          "pageEnd": 30,
-          "headingPath": [
-            "3. Properties of Natural Resources"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 29,
-          "pageStart": 31,
-          "pageEnd": 32,
-          "headingPath": [
-            "3. Properties of Natural Resources"
-          ]
-        }
-      ],
-      "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T15:57:02.733Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Which of the following best explains why water droplets appear on the outside of a glass containing ice cubes?",
-      "choices": [
-        "Because the air around the glass is dry",
-        "Because the air around the glass is cool and holds less moisture",
-        "Because the air inside the glass is warm",
-        "Because the glass is not sealed"
+        "Air is transparent",
+        "Air has mass",
+        "Air is a mixture of gases",
+        "Air can be compressed"
       ],
       "answerIndex": 1,
-      "solution": "The air around the glass cools down due to the ice cubes, reducing its capacity to hold moisture. This causes the moisture in the air to condense into water droplets. The correct answer is 'Because the air around the glass is cool and holds less moisture'. The other options are incorrect because the air is not dry, the air inside the glass is not the main factor, and the glass being unsealed is not the reason for the droplets.",
+      "solution": "The experiment shows that air has mass because when the balloon is inflated, it adds weight to that side of the stick, causing it to tilt downwards. Air being transparent is not related to this observation. Air being a mixture of gases is a general property, not demonstrated by the tilt. Air being compressible is not directly shown by the tilt of the stick.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा वास्तव में बर्फ के टुकड़ों वाले ग्लास के बाहर पानी की बूंदें दिखाई देने की व्याख्या करता है?",
+          "stem": "बैलून को फुंकने पर बैलून की ओर झुकते हुए छड़ के नीचे की ओर झुकने से हवा के कौन-से गुण का प्रदर्शन होता है?",
           "choices": [
-            "क्योंकि ग्लास के आसपास की हवा शुष्क है",
-            "क्योंकि ग्लास के आसपास की हवा ठंडी है और कम नमी धारण करती है",
-            "क्योंकि ग्लास के अंदर की हवा गर्म है",
-            "क्योंकि ग्लास बंद नहीं है"
+            "हवा अमार्जित होती है",
+            "हवा का द्रव्यमान होता है",
+            "हवा गैसों का मिश्रण होती है",
+            "हवा संपीडित की जा सकती है"
           ],
-          "solution": "ग्लास के आसपास की हवा बर्फ के कारण ठंडी हो जाती है, जिससे इसकी नमी धारण करने की क्षमता कम हो जाती है। इससे हवा में नमी जल की बूंदों में जम जाती है। सही उत्तर 'क्योंकि ग्लास के आसपास की हवा ठंडी है और कम नमी धारण करती है' है। अन्य विकल्प गलत हैं क्योंकि हवा शुष्क नहीं है, ग्लास के अंदर की हवा मुख्य कारण नहीं है, और ग्लास के खुले रहने से बूंदें नहीं बनती हैं।",
+          "solution": "यह प्रयोग दर्शाता है कि हवा का द्रव्यमान होता है क्योंकि जब बैलून को फुंका जाता है, तो छड़ के उस ओर भार बढ़ जाता है, जिसके कारण छड़ नीचे की ओर झुक जाती है। हवा के अमार्जित होने का इस अवलोकन से कोई संबंध नहीं है। हवा के गैसों के मिश्रण होने का एक सामान्य गुण है, जो इस झुकाव द्वारा दर्शाया नहीं जाता है। हवा के संपीडित होने का छड़ के झुकाव द्वारा सीधा प्रदर्शन नहीं होता है।",
           "imageAlt": null,
-          "critique": "Translation accurately conveys the scientific concept with appropriate Hindi terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "हवेच्या कोणत्या गुणधर्माचे उदाहरण दर्शविले जाते जेव्हा बॅलून फुंकला जातो आणि चित्रातील छडी त्या बाजूला खाली झुकते?",
+          "choices": [
+            "हवा दृश्य आहे",
+            "हवेला द्रव्यमान आहे",
+            "हवा वायूंचा मिश्रण आहे",
+            "हवा दाबला जाऊ शकतो"
+          ],
+          "solution": "हे उद्योग हवेला द्रव्यमान असल्याचे दर्शविते कारण जेव्हा बॅलून फुंकला जातो तेव्हा छडीच्या त्या बाजूला वजन जोडले जाते आणि छडी खाली झुकते. हवा दृश्य असल्याचे या निरीक्षणाशी संबंधित नाही. हवा वायूंचा मिश्रण असल्याचे एक सामान्य गुणधर्म आहे, जो छडीच्या झुकण्याद्वारे दर्शविला जात नाही. हवा दाबली जाऊ शकते हे छडीच्या झुकण्याद्वारे सीधा दर्शविले जात नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
         }
       },
@@ -934,10 +272,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Thinks the air around the glass is dry",
+        "Confuses transparency with weight",
         null,
-        "Believes the air inside the glass is warm",
-        "Mistakenly thinks the glass being unsealed is the cause"
+        "Does not link the tilt to mass",
+        "Does not connect the experiment to the composition of air"
       ],
       "solverAnswers": [
         1,
@@ -946,8 +284,8 @@
         1,
         1
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that cooling of the surrounding air leads to condensation. The reasoning for the distractors aligns with common misconceptions.",
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that the tilt of the stick demonstrates that air has mass. The reasoning for the distractors is valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "balbharati/7/science/703020012.pdf",
@@ -978,49 +316,49 @@
         }
       ],
       "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T15:57:02.733Z",
+      "generatedAt": "2026-11-02T03:26:06.466Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "Why is it easier to swim in the sea than in a lake?",
+      "difficulty": 2,
+      "stem": "What is the main reason for the stick tilting when one balloon is inflated in the experiment?",
       "choices": [
-        "Because sea water has a higher density",
-        "Because sea water is warmer",
-        "Because sea water is less salty",
-        "Because sea water has more oxygen"
+        "The stick is not balanced",
+        "The air inside the balloon is lighter",
+        "The balloon becomes heavier",
+        "The air has no weight"
       ],
-      "answerIndex": 0,
-      "solution": "The correct answer is 'Because sea water has a higher density.' Sea water contains dissolved salts, which increase its density, making it easier to float and swim. The other options are incorrect because sea water is not necessarily warmer (option 2), not less salty (option 3), and not necessarily richer in oxygen (option 4).",
+      "answerIndex": 2,
+      "solution": "When the balloon is inflated, it gains weight because air has mass. This causes the stick to tilt downwards on that side. The stick was balanced initially, so it is not the issue. The air inside the balloon is not lighter, and the experiment shows that air has weight.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "समुद्र में तैरना झील में तैरने की तुलना में क्यों आसान होता है?",
+          "stem": "प्रयोग में एक बैलून के फूलने के कारण छड़ क्यों झुक जाती है?",
           "choices": [
-            "क्योंकि समुद्र के पानी का घनत्व अधिक होता है",
-            "क्योंकि समुद्र के पानी का तापमान अधिक होता है",
-            "क्योंकि समुद्र के पानी में लवण कम होता है",
-            "क्योंकि समुद्र के पानी में ऑक्सीजन अधिक होता है"
+            "छड़ संतुलित नहीं है",
+            "बैलून के अंदर की हवा हल्की हो जाती है",
+            "बैलून भारी हो जाता है",
+            "हवा के पास कोई भार नहीं होता"
           ],
-          "solution": "सही उत्तर 'क्योंकि समुद्र के पानी का घनत्व अधिक होता है' है। समुद्र के पानी में घुले लवण होते हैं जो इसके घनत्व को बढ़ा देते हैं जिससे तैरना आसान हो जाता है। अन्य विकल्प गलत हैं क्योंकि समुद्र के पानी का तापमान आवश्यक रूप से अधिक नहीं होता (विकल्प 2), लवण कम नहीं होता (विकल्प 3), और ऑक्सीजन में अधिकता आवश्यक रूप से नहीं होती (विकल्प 4)।",
+          "solution": "जब बैलून फूलता है, तो यह भार बढ़ जाता है क्योंकि हवा के पास द्रव्यमान होता है। इससे छड़ उस तरफ नीचे झुक जाती है। शुरू में छड़ संतुलित रहती है, इसलिए यह समस्या नहीं है। बैलून के अंदर की हवा हल्की नहीं होती और प्रयोग दर्शाता है कि हवा के पास भार होता है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate scientific terminology in Hindi.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and scientific terminology. All options are correctly translated and maintain their original intent. The correct answer remains option (2), and the distractors are still incorrect.",
           "flag": null
         },
         "mr": {
-          "stem": "समुद्रात तलावापेक्षा तरंगणे सोपे का आहे?",
+          "stem": "स्टिक झुकते कारण एक बॅलून फुंकल्यास काय असते?",
           "choices": [
-            "कारण समुद्राचे पाणी जास्त घनता असते",
-            "कारण समुद्राचे पाणी उबदार असते",
-            "कारण समुद्राचे पाणी कमी खारट असते",
-            "कारण समुद्राचे पाणी जास्त ऑक्सीजन असते"
+            "स्टिक असंतुलित आहे",
+            "बॅलूनमधील हवा हलकी आहे",
+            "बॅलून भारी होते",
+            "हवेला वजन नाही"
           ],
-          "solution": "बरोबर उत्तर 'कारण समुद्राचे पाणी जास्त घनता असते' आहे. समुद्राचे पाणी विलीन खारटपणा असतो, जो त्याची घनता वाढवतो, ज्यामुळे तरंगणे सोपे होते. इतर विकल्प अयोग्य आहेत कारण समुद्राचे पाणी आवश्यकतेपेक्षा उबदार नसते (विकल्प 2), कमी खारट नसते (विकल्प 3) आणि आवश्यकतेपेक्षा जास्त ऑक्सीजन असते (विकल्प 4).",
+          "solution": "जेव्हा बॅलून फुंकला जातो तेव्हा त्याला वजन मिळते कारण हवेला द्रव्यमान असते. हे त्या बाजूला स्टिक खाली झुकण्यास कारणीभूत होते. सुरुवातीला स्टिक संतुलित होते, म्हणून ते विषय नाही. बॅलूनमधील हवा हलकी नाही आणि प्रयोग दर्शवतो की हवेला वजन असते.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for scientific concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
         }
       },
@@ -1029,20 +367,115 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Thinks the stick is unbalanced",
+        "Confuses lighter air with weight",
         null,
-        "Confuses temperature with buoyancy",
-        "Confuses salinity with salt content",
-        "Confuses oxygen with buoyancy"
+        "Believes air has no weight"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is option 0, as sea water's higher density due to dissolved salts makes it easier to swim. The other options reflect common misconceptions about temperature, salinity, and oxygen content.",
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that the balloon becomes heavier when inflated, which causes the stick to tilt. The reasoning aligns with the scientific understanding that air has mass.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 24,
+          "pageStart": 26,
+          "pageEnd": 26,
+          "headingPath": [
+            "3. Properties of Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 25,
+          "pageStart": 26,
+          "pageEnd": 27,
+          "headingPath": [
+            "3. Properties of Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 26,
+          "pageStart": 27,
+          "pageEnd": 28,
+          "headingPath": [
+            "3. Properties of Natural Resources"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T03:26:06.466Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which property of water allows it to be used for water transport and generating electricity?",
+      "choices": [
+        "Its high density",
+        "Its ability to dissolve substances",
+        "Its fluidity",
+        "Its ability to expand when frozen"
+      ],
+      "answerIndex": 2,
+      "solution": "Water is a fluid substance, which means it can flow and take the shape of its container. This property makes it useful for water transport and generating electricity when it falls from a height. The other options are incorrect because high density is not the key property for transport, dissolving substances is not directly related to transport, and expansion when frozen is not relevant to this use.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जल के किस गुण के कारण इसका उपयोग पानी के परिवहन और बिजली उत्पादन में किया जाता है?",
+          "choices": [
+            "इसका उच्च घनत्व",
+            "इसके अविलेय पदार्थों को घोलने की क्षमता",
+            "इसकी प्रवाहिता",
+            "इसके जमने पर फैल जाने की क्षमता"
+          ],
+          "solution": "जल एक प्रवाहित पदार्थ है, जिसका अर्थ है कि यह बह सकता है और अपने पात्र के आकार को ले सकता है। इस गुण के कारण इसका उपयोग पानी के परिवहन और ऊंचाई से गिरते हुए बिजली उत्पादन में किया जाता है। अन्य विकल्प गलत हैं क्योंकि उच्च घनत्व परिवहन के लिए मुख्य गुण नहीं है, अविलेय पदार्थों को घोलने की क्षमता परिवहन से सीधा संबंध नहीं रखती है, और जमने पर फैल जाने की क्षमता इस उपयोग के लिए संबंधित नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original meaning, with appropriate Hindi terminology used for scientific concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पाण्याची कोणती वैशिष्ट्ये जल परिवहन आणि विद्युत उत्पादनासाठी वापरली जाऊ शकते?",
+          "choices": [
+            "त्याची उच्च घनता",
+            "त्याची पदार्थ विकरीत करण्याची क्षमता",
+            "त्याची प्रवाहकता",
+            "त्याची थांबल्यावर विस्तार करण्याची क्षमता"
+          ],
+          "solution": "पाणी एक द्रव पदार्थ आहे, ज्याचा अर्थ तो वाहू शकतो आणि त्याच्या वास्तविक निर्माणाच्या आकाराचा अनुसरण करू शकतो. ही वैशिष्ट्ये जल परिवहन आणि उंचीवरून पडणाऱ्या पाण्याच्या विद्युत उत्पादनासाठी उपयुक्त आहे. इतर विकल्प अयोग्य आहेत कारण उच्च घनता परिवहनासाठी मुख्य गुण नाही, पदार्थ विकरीत करण्याची क्षमता परिवहनाशी सीधा संबंध नाही, आणि थांबल्यावर विस्तार करण्याची क्षमता ही या उपयोगासाठी संबंधित नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses fluidity with density",
+        "Misunderstands the role of solubility in transport",
+        null,
+        "Students often confuse water's expansion upon freezing with its ability to flow or move, thinking it's related to transport or energy generation."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2 (fluidity), as water's ability to flow is essential for transport and hydroelectric power. The author's reasoning for the other options aligns with common misconceptions.",
       "sources": [
         {
           "document": "balbharati/7/science/703020012.pdf",
@@ -1073,7 +506,787 @@
         }
       ],
       "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T15:57:02.733Z",
+      "generatedAt": "2026-11-02T03:26:06.466Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a property of water that allows it to dissolve many substances?",
+      "choices": [
+        "Its fluidity",
+        "Its density",
+        "Its ability to change state",
+        "Its ability to act as a solvent"
+      ],
+      "answerIndex": 3,
+      "solution": "Water's ability to act as a solvent is due to its polar nature, which allows it to interact with and break apart many different types of molecules. Fluidity refers to how easily a substance flows, not its ability to dissolve. Density is a measure of mass per unit volume, and changing state relates to physical changes rather than solubility.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा जल का गुण है जो इसे कई पदार्थों को घोलने में सक्षम बनाता है?",
+          "choices": [
+            "इसकी प्रवाहिता",
+            "इसकी घनत्व",
+            "इसके अवस्था बदलने की क्षमता",
+            "इसके विलायक के रूप में कार्य करने की क्षमता"
+          ],
+          "solution": "जल के विलायक के रूप में कार्य करने की क्षमता इसकी ध्रुवीय प्रकृति के कारण होती है, जो इसे विभिन्न प्रकार के अणुओं के साथ अंतःक्रिया करने और उन्हें अलग करने की अनुमति देती है। प्रवाहिता का अर्थ है किसी पदार्थ के प्रवाह में सुविधा, न कि घुलने की क्षमता। घनत्व द्रव्यमान प्रति इकाई आयतन का माप है, और अवस्था बदलना भौतिक परिवर्तन से संबंधित है, न कि विलेयता से।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक पाण्याचे गुणधर्म आहे जे त्याला अनेक द्रव्यांना विद्रावित करण्यास परवानगी देते?",
+          "choices": [
+            "त्याची द्रवता",
+            "त्याची घनता",
+            "त्याची अवस्था बदलण्याची क्षमता",
+            "त्याची विलायक म्हणून कार्य करण्याची क्षमता"
+          ],
+          "solution": "पाण्याची विलायक म्हणून कार्य करण्याची क्षमता त्याच्या ध्रुवीय स्वभावामुळे आहे, जे त्याला अनेक प्रकारच्या अणूंशी अनुक्रिया करण्यास आणि त्यांना फोडण्यास परवानगी देते. द्रवता हे एखाद्या पदार्थाच्या प्रवाहाच्या सुलभतेबद्दल आहे, विलेयतेशी संबंधित नाही. घनता हे एकक आयतनातील द्रव्यमानाचे मापन आहे, आणि अवस्था बदलणे हे भौमितिक बदलाशी संबंधित आहे, विलेयतेशी नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses fluidity with solubility",
+        "Misunderstands the role of density in dissolution",
+        "Misinterprets the concept of changing state",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 3, as water's ability to act as a solvent is the property that allows it to dissolve many substances. The author's reasoning is sound and aligns with scientific understanding.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 27,
+          "pageStart": 28,
+          "pageEnd": 29,
+          "headingPath": [
+            "3. Properties of Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 28,
+          "pageStart": 29,
+          "pageEnd": 30,
+          "headingPath": [
+            "3. Properties of Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 29,
+          "pageStart": 31,
+          "pageEnd": 32,
+          "headingPath": [
+            "3. Properties of Natural Resources"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T03:26:06.466Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What happens to the air pressure inside a syringe when the piston is pulled out and the inlet is closed?",
+      "choices": [
+        "It increases",
+        "It decreases",
+        "It remains the same",
+        "It becomes zero"
+      ],
+      "answerIndex": 1,
+      "solution": "When the piston is pulled out and the inlet is closed, the air inside the syringe becomes rarified, which means the air molecules spread out more, reducing the pressure. This is why the piston is pushed back in when released. The pressure does not increase, remain the same, or become zero in this scenario.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "सुई के पिस्टन को बाहर खींचने और इनलेट को बंद करने पर सुई में हवा का दबाव क्या होता है?",
+          "choices": [
+            "यह बढ़ जाता है",
+            "यह घट जाता है",
+            "यह एक ही रहता है",
+            "यह शून्य हो जाता है"
+          ],
+          "solution": "जब पिस्टन को बाहर खींचा जाता है और इनलेट बंद कर दिया जाता है, तो सुई में हवा तनु हो जाती है, जिसका अर्थ है कि हवा के अणु अधिक फैल जाते हैं, जिससे दबाव कम हो जाता है। इसी कारण से जब इसे छोड़ दिया जाता है, तो पिस्टन वापस आ जाता है। इस परिस्थिति में दबाव बढ़ नहीं सकता, एक ही नहीं रह सकता और शून्य भी नहीं हो सकता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains option (1), and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सिरिंजच्या पिस्टनला बाहेर खेचल्यास आणि इनलेट बंद केल्यास सिरिंजच्या आतल्या हवेचा दाब काय होतो?",
+          "choices": [
+            "तो वाढतो",
+            "तो कमी होतो",
+            "तो एकसारखा रहातो",
+            "तो शून्य होतो"
+          ],
+          "solution": "जेव्हा पिस्टन बाहेर खेचला जातो आणि इनलेट बंद केला जातो, तेव्हा सिरिंजच्या आतली हवा विरळ होते, ज्याचा अर्थ आहे की हवेचे अणू अधिक विस्तारतात आणि दाब कमी होतो. यामुळे जेव्हा पिस्टन मुक्त केला जातो तेव्हा तो पुन्हा आत खेचला जातो. या परिस्थितीत दाब वाढत नाही, एकसारखा रहात नाही किंवा शून्य होत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the scientific terminology, and preserves the logical structure of the question and solution.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks pulling the piston increases pressure",
+        null,
+        "Assumes pressure stays constant",
+        "Believes pressure drops to zero"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly explains that pulling the piston out increases the volume, reducing air pressure. The reasoning aligns with the physical principle of gas expansion and pressure change.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 24,
+          "pageStart": 26,
+          "pageEnd": 26,
+          "headingPath": [
+            "3. Properties of Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 25,
+          "pageStart": 26,
+          "pageEnd": 27,
+          "headingPath": [
+            "3. Properties of Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 26,
+          "pageStart": 27,
+          "pageEnd": 28,
+          "headingPath": [
+            "3. Properties of Natural Resources"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T03:26:06.466Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What would happen if all the air surrounding the Earth was removed?",
+      "choices": [
+        "The Earth would become colder",
+        "The Earth would become hotter",
+        "The Earth would remain the same temperature",
+        "The Earth would have no effect on temperature"
+      ],
+      "answerIndex": 0,
+      "solution": "The Earth would become colder because the atmosphere plays a key role in trapping heat through the greenhouse effect. Without air, this heat would escape into space, leading to a significant drop in temperature. The other options are incorrect because they do not align with how heat is retained or lost in the absence of an atmosphere.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अगर पृथ्वी के चारों ओर का सारा हवा हटा दी जाए तो क्या होगा?",
+          "choices": [
+            "पृथ्वी ठंडी हो जाएगी",
+            "पृथ्वी गर्म हो जाएगी",
+            "पृथ्वी का तापमान एक ही रहेगा",
+            "पृथ्वी का तापमान पर कोई प्रभाव नहीं पड़ेगा"
+          ],
+          "solution": "पृथ्वी ठंडी हो जाएगी क्योंकि वातावरण ग्रीनहाउस प्रभाव के माध्यम से ऊष्मा को अवशोषित करता है। हवा के बिना, यह ऊष्मा अंतरिक्ष में छाप जाएगी, जिसके कारण तापमान में गिरावट होगी। अन्य विकल्प गलत हैं क्योंकि वे वातावरण के अभाव में ऊष्मा के अवशोषण या हानि के तरीके के साथ मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate scientific terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "भूमीच्या आजूबाजूचे सर्व वायू दूर केल्यास काय होईल?",
+          "choices": [
+            "भूमी थंड होईल",
+            "भूमी उबदार होईल",
+            "भूमीची तापमान एकसारखी राहील",
+            "भूमीचा तापमानावर कोणताही परिणाम होणार नाही"
+          ],
+          "solution": "भूमी थंड होईल कारण वातावरण ग्रीनहाउस प्रभावामुळे ऊष्मा अडवते. वायू नसल्यास ही ऊष्मा अंतरिक्षात फुटते, ज्यामुळे तापमानात मोठ्या प्रमाणात घट होते. इतर विकल्प अयोग्य आहेत कारण ते वातावरण नसल्यामुळे ऊष्मा कशी राखली जाते किंवा गमावली जाते याशी सुसंगत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Chooses the opposite effect",
+        "Thinks air would make the Earth hotter",
+        "Misunderstands the role of air in temperature regulation"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is sound and aligns with the correct answer. The reasoning that air absorbs heat and helps maintain temperature is accurate, and the explanation for the other options reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 27,
+          "pageStart": 28,
+          "pageEnd": 29,
+          "headingPath": [
+            "3. Properties of Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 28,
+          "pageStart": 29,
+          "pageEnd": 30,
+          "headingPath": [
+            "3. Properties of Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 29,
+          "pageStart": 31,
+          "pageEnd": 32,
+          "headingPath": [
+            "3. Properties of Natural Resources"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T03:26:06.466Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Why does ice float on water?",
+      "choices": [
+        "It has a higher density than water",
+        "It has a lower density than water",
+        "It is heavier than water",
+        "It is lighter in colour than water"
+      ],
+      "answerIndex": 1,
+      "solution": "Ice floats on water because it has a lower density than liquid water. When water freezes, its molecules form a crystalline structure that takes up more space, reducing its density. The other options are incorrect because density, not weight or color, determines whether something floats.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "बर्फ पानी पर क्यों तैरती है?",
+          "choices": [
+            "इसका घनत्व पानी के मुकाबले अधिक होता है",
+            "इसका घनत्व पानी के मुकाबले कम होता है",
+            "इसका भार पानी के मुकाबले अधिक होता है",
+            "इसका रंग पानी के मुकाबले हल्का होता है"
+          ],
+          "solution": "बर्फ पानी पर तैरती है क्योंकि इसका घनत्व तरल पानी के मुकाबले कम होता है। जब पानी जम जाता है, तो इसके अणु क्रिस्टलीय संरचना बनाते हैं जो अधिक जगह लेती है, जिससे घनत्व कम हो जाता है। अन्य विकल्प गलत हैं क्योंकि भार या रंग के बजाय घनत्व निर्धारित करता है कि कोई वस्तु तैरती है या नहीं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate scientific terminology used in a way that aligns with standard Hindi-medium education materials.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "हिम काय जलावर तरंगतो का?",
+          "choices": [
+            "त्याचे घनत्व पाण्यापेक्षा जास्त आहे",
+            "त्याचे घनत्व पाण्यापेक्षा कमी आहे",
+            "ते पाण्यापेक्षा भारी आहे",
+            "ते पाण्यापेक्षा रंगाने हलके आहे"
+          ],
+          "solution": "हिम पाण्यावर तरंगतो कारण त्याचे घनत्व द्रव पाण्यापेक्षा कमी आहे. जेव्हा पाणी थांबते, तेव्हा त्याच्या अणू एका क्रिस्टल संरचनेत बनतात जी जास्त जागा घेते, ज्यामुळे घनत्व कमी होतो. इतर विकल्प अयोग्य आहेत कारण तुलनेत वजन किंवा रंग नसताना घनत्व निर्णायक असतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses density with weight",
+        null,
+        "Misunderstands the concept of buoyancy",
+        "Thinks colour affects buoyancy"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as ice floats due to its lower density. The author's reasoning for the distractors aligns with common misconceptions about density, weight, and buoyancy.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 27,
+          "pageStart": 28,
+          "pageEnd": 29,
+          "headingPath": [
+            "3. Properties of Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 28,
+          "pageStart": 29,
+          "pageEnd": 30,
+          "headingPath": [
+            "3. Properties of Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 29,
+          "pageStart": 31,
+          "pageEnd": 32,
+          "headingPath": [
+            "3. Properties of Natural Resources"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T03:26:06.466Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a glass filled with water is covered with a cardboard and then inverted, the cardboard does not fall off. What is the main reason for this?",
+      "choices": [
+        "The weight of the water is less than the weight of the cardboard",
+        "Atmospheric pressure holds the cardboard in place",
+        "The air inside the glass is compressed",
+        "The water is very heavy"
+      ],
+      "answerIndex": 1,
+      "solution": "Atmospheric pressure pushes the cardboard upwards, balancing the weight of the water and preventing it from falling. The weight of the water is not less than the cardboard’s weight, the air inside is not compressed, and the water’s weight is not the main reason.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि पानी से भरा एक ग्लास कार्डबोर्ड से ढक दिया जाता है और फिर उल्टा कर दिया जाता है, तो कार्डबोर्ड नीचे नहीं गिरता। इसके मुख्य कारण क्या है?",
+          "choices": [
+            "पानी का भार कार्डबोर्ड के भार से कम है",
+            "वायुमंडलीय दबाव कार्डबोर्ड को स्थिर रखता है",
+            "ग्लास के भीतर वायु संपीडित हो गई है",
+            "पानी बहुत भारी है"
+          ],
+          "solution": "वायुमंडलीय दबाव कार्डबोर्ड को ऊपर की ओर धकेलता है, जो पानी के भार को संतुलित करता है और इसे गिरने से रोकता है। पानी का भार कार्डबोर्ड के भार से कम नहीं है, ग्लास के भीतर वायु संपीडित नहीं है, और पानी के भार को मुख्य कारण नहीं माना जा सकता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English version in meaning, structure, and technical terms. The correct answer remains in the same position, and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका ग्लासमध्ये पाणी भरून कार्डबोर्डने झाकले जाईल आणि नंतर उलटले जाईल, तर कार्डबोर्ड खाली पडत नाही. ह्याचे मुख्य कारण काय आहे?",
+          "choices": [
+            "पाण्याचा वजन कार्डबोर्डच्या वजनापेक्षा कमी आहे",
+            "वातावरणीय दाब कार्डबोर्डला ठेवतो",
+            "ग्लासमधील हवा दाबली गेली आहे",
+            "पाणी खूप भारी आहे"
+          ],
+          "solution": "वातावरणीय दाब कार्डबोर्डला वरच्या दिशेने धक्का देतो, जो पाण्याच्या वजनाला संतुलित करतो आणि ते पडू देत नाही. पाण्याचा वजन कार्डबोर्डच्या वजनापेक्षा कमी नाही, हवा दाबली गेलेली नाही आणि पाण्याचा वजन हा मुख्य कारण नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Mistakenly thinks weight balances",
+        null,
+        "Confuses air compression with pressure",
+        "Believes water weight is the main factor"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies atmospheric pressure as the main reason. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 24,
+          "pageStart": 26,
+          "pageEnd": 26,
+          "headingPath": [
+            "3. Properties of Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 25,
+          "pageStart": 26,
+          "pageEnd": 27,
+          "headingPath": [
+            "3. Properties of Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 26,
+          "pageStart": 27,
+          "pageEnd": 28,
+          "headingPath": [
+            "3. Properties of Natural Resources"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T03:26:06.466Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a farmer notices that the pH of the soil is 5.5, what should they do to improve soil fertility?",
+      "choices": [
+        "Add more chemical fertilizers",
+        "Plant leguminous crops",
+        "Increase the use of saline water",
+        "Use more pesticides"
+      ],
+      "answerIndex": 1,
+      "solution": "Soil with a pH of 5.5 is acidic, which can reduce nutrient availability. Planting leguminous crops helps improve soil fertility by fixing nitrogen from the air into the soil. Adding chemical fertilizers, using saline water, or increasing pesticides do not address the acidity or improve nutrient content effectively.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसान को अपनी मिट्टी के pH के 5.5 होने पर ध्यान रहता है, तो मिट्टी की उर्वरता में सुधार के लिए उन्हें क्या करना चाहिए?",
+          "choices": [
+            "अधिक रासायनिक उर्वरक डालें",
+            "लेग्यूमिनस फसल लगाएं",
+            "लवणीय पानी के उपयोग को बढ़ाएं",
+            "अधिक कीटनाशक उपयोग करें"
+          ],
+          "solution": "मिट्टी के pH के 5.5 होना अम्लीय होना है, जो पोषक तत्वों की उपलब्धता को कम कर सकता है। लेग्यूमिनस फसलों के लगाने से मिट्टी में हवा से नाइट्रोजन के निर्माण में सहायता मिलती है। रासायनिक उर्वरकों के डालने, लवणीय पानी के उपयोग के बढ़ाने या कीटनाशकों के बढ़ाने से अम्लता या पोषक तत्वों की मात्रा में सुधार नहीं होता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi agricultural terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर शेतकरीला जमीनचा pH 5.5 असल्याचे लक्षात आले, तर त्यांनी जमीन संपदेच्या सुधारित उत्पादकतेसाठी काय करावे?",
+          "choices": [
+            "अधिक रासायनिक खते द्यावीत",
+            "मूगदळीय शेंगा लावाव्यात",
+            "तलावाच्या पाण्याचा वापर वाढवावा",
+            "अधिक कीटकनाशक वापरावे"
+          ],
+          "solution": "जमीनचा pH 5.5 असल्याने ती अम्लीय असते, जी पोषक तत्वांच्या उपलब्धतेवर प्रभाव टाकते. मूगदळीय शेंगा लावणे जमीन संपदेच्या सुधारित उत्पादकतेसाठी वापरल्या जातात कारण त्या हवेतील नाइट्रोजन जमीनमध्ये बदलतात. रासायनिक खतांचा वापर, तलावाच्या पाण्याचा वापर किंवा कीटकनाशकांचा वापर अम्लतेचा उपाय करत नाहीत किंवा पोषक तत्वांची उपलब्धता सुधारत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes chemical fertilizers improve soil",
+        null,
+        "Thinks saline water helps",
+        "Thinks pesticides improve soil fertility"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that leguminous crops help restore soil fertility, especially in acidic soils. The reasoning aligns with the given information and is scientifically sound.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 30,
+          "pageStart": 32,
+          "pageEnd": 33,
+          "headingPath": [
+            "3. Properties of Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 31,
+          "pageStart": 33,
+          "pageEnd": 34,
+          "headingPath": [
+            "3. Properties of Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 32,
+          "pageStart": 34,
+          "pageEnd": 34,
+          "headingPath": [
+            "3. Properties of Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 33,
+          "pageStart": 35,
+          "pageEnd": 35,
+          "headingPath": [
+            "3. Properties of Natural Resources",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T03:26:06.466Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "What is the reason for the anomalous behaviour of water?",
+      "choices": [
+        "It expands when it freezes",
+        "It contracts when it freezes",
+        "It has a maximum density at 4°C",
+        "It has a minimum density at 4°C"
+      ],
+      "answerIndex": 2,
+      "solution": "Water's anomalous behaviour is due to it reaching maximum density at 4°C, which causes it to expand when cooled below this temperature. The other options are incorrect because water actually expands when it freezes, not contracts, and its density is not at a minimum at 4°C.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जल के असामान्य व्यवहार का क्या कारण है?",
+          "choices": [
+            "यह जमने पर फैल जाता है",
+            "यह जमने पर सिकुड़ जाता है",
+            "यह 4°C पर अधिकतम घनत्व प्राप्त कर लेता है",
+            "यह 4°C पर न्यूनतम घनत्व प्राप्त कर लेता है"
+          ],
+          "solution": "जल के असामान्य व्यवहार का कारण यह है कि यह 4°C पर अधिकतम घनत्व प्राप्त कर लेता है, जिसके कारण इसके तापमान में 4°C से कम होने पर यह फैल जाता है। अन्य विकल्प गलत हैं क्योंकि जल वास्तव में जमने पर फैल जाता है, न कि सिकुड़ जाता है, और इसका घनत्व 4°C पर न्यूनतम नहीं होता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जलाच्या असामान्य वर्तनाचे कारण काय आहे?",
+          "choices": [
+            "ते जमताना विस्तारते",
+            "ते जमताना आकुंचित होते",
+            "ते 4°C वर अधिकतम घनता असते",
+            "ते 4°C वर न्यूनतम घनता असते"
+          ],
+          "solution": "जलाचे असामान्य वर्तन त्याच्या 4°C वर अधिकतम घनता प्राप्त करण्यामुळे होते, ज्यामुळे ते या तापमानापेक्षा कमी तापमानाला थंड होताना विस्तारते. इतर विकल्प चुकीचे आहेत कारण जल जमताना आकुंचित होत नाही तर विस्तारते आणि त्याची घनता 4°C वर न्यूनतम नसते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Correctly identifies expansion but not the key point about density",
+        "Confuses expansion with contraction",
+        null,
+        "Misunderstands the temperature at which density is maximum"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        0,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as water's maximum density at 4°C is the primary reason for its anomalous behavior. The other options either misrepresent the behavior (e.g., contraction on freezing) or the temperature at which density is maximized.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 27,
+          "pageStart": 28,
+          "pageEnd": 29,
+          "headingPath": [
+            "3. Properties of Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 28,
+          "pageStart": 29,
+          "pageEnd": 30,
+          "headingPath": [
+            "3. Properties of Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 29,
+          "pageStart": 31,
+          "pageEnd": 32,
+          "headingPath": [
+            "3. Properties of Natural Resources"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T03:26:06.466Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is it said that soil has plasticity?",
+      "choices": [
+        "Because it can be shaped into different forms",
+        "Because it can hold water",
+        "Because it can be used for making bricks",
+        "Because it can be used for growing plants"
+      ],
+      "answerIndex": 0,
+      "solution": "Soil is said to have plasticity because it can be shaped into different forms when wet, which is a key characteristic of this property. The ability to hold water or be used for growing plants is related to other soil properties, not plasticity. While soil can be used for making bricks, this is a practical application, not the definition of plasticity.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मिट्टी में प्लास्टिसिटी क्यों कहा जाता है?",
+          "choices": [
+            "क्योंकि यह विभिन्न आकृतियों में बनाई जा सकती है",
+            "क्योंकि यह पानी को धारण कर सकती है",
+            "क्योंकि इसका उपयोग ईंटें बनाने में किया जा सकता है",
+            "क्योंकि इसका उपयोग पौधों को उगाने में किया जा सकता है"
+          ],
+          "solution": "मिट्टी में प्लास्टिसिटी कहा जाता है क्योंकि यह गीली होने पर विभिन्न आकृतियों में बनाई जा सकती है, जो इस गुण की मुख्य विशेषता है। पानी को धारण करने की क्षमता या पौधों को उगाने के लिए उपयोग करना अन्य मिट्टी के गुणों से संबंधित है, प्लास्टिसिटी से नहीं। यद्यपि मिट्टी का उपयोग ईंटें बनाने में किया जा सकता है, लेकिन यह एक व्यावहारिक अनुप्रयोग है, प्लास्टिसिटी की परिभाषा नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for soil properties.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मातीला प्लास्टिकता असल्याचे का म्हटले जाते?",
+          "choices": [
+            "कारण ती विविध आकृतीत आकार देता येते",
+            "कारण ती पाणी धरू शकते",
+            "कारण ती इमारती बनवण्यासाठी वापरता येते",
+            "कारण ती वनस्पती लावण्यासाठी वापरता येते"
+          ],
+          "solution": "मातीला प्लास्टिकता असल्याचे म्हटले जाते कारण ती ओली असताना विविध आकृतीत आकार देता येते, हे ही या गुणधर्माचे मुख्य लक्षण आहे. पाणी धरणे किंवा वनस्पती लावणे हे मातीच्या इतर गुणधर्मांशी संबंधित आहे, प्लास्टिकतेशी नाही. माती इमारती बनवण्यासाठी वापरता येते, परंतु हे एक व्यावहारिक अनुप्रयोग आहे, प्लास्टिकतेचे वर्णन नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for soil properties.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses plasticity with water retention",
+        "Thinks plasticity refers to its use in making bricks",
+        "Thinks plasticity refers to its use in growing plants"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as plasticity refers to the ability to be shaped. The author's reasoning for the other options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 30,
+          "pageStart": 32,
+          "pageEnd": 33,
+          "headingPath": [
+            "3. Properties of Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 31,
+          "pageStart": 33,
+          "pageEnd": 34,
+          "headingPath": [
+            "3. Properties of Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 32,
+          "pageStart": 34,
+          "pageEnd": 34,
+          "headingPath": [
+            "3. Properties of Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 33,
+          "pageStart": 35,
+          "pageEnd": 35,
+          "headingPath": [
+            "3. Properties of Natural Resources",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T03:26:06.466Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

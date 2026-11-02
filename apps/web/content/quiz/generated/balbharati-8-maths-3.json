@@ -21,47 +21,237 @@
   "board": "BALBHARATI",
   "book": "८ वी गणित इंग्रजी",
   "edition": "First Edition 2018",
-  "generatedAt": "2026-11-01T00:15:24.253Z",
+  "generatedAt": "2026-11-02T07:10:12.647Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the index form of the fifth root of 13?",
+      "stem": "What is the index form of the product 2 × 2 × 2 × 2 × 2?",
       "choices": [
-        "13^5",
-        "5^13",
-        "13^(1/5)",
-        "5^(1/5)"
+        "2^2",
+        "2^3",
+        "2^4",
+        "2^5"
       ],
-      "answerIndex": 2,
-      "solution": "The fifth root of 13 is expressed as 13 raised to the power of 1/5. The index form of a root is written as the base raised to the reciprocal of the root. 13^5 means 13 multiplied by itself five times, not the fifth root. 5^13 and 5^(1/13) do not represent the fifth root of 13.",
+      "answerIndex": 3,
+      "solution": "The product 2 × 2 × 2 × 2 × 2 can be written as 2 raised to the power of 5, which is 2^5. The other options are incorrect because they do not match the number of times 2 is multiplied.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "13 के पांचवें मूल का सूचकांक रूप क्या है?",
+          "stem": "2 × 2 × 2 × 2 × 2 के गुणनफल का घात स्वरूप क्या है?",
           "choices": [
-            "13^5",
-            "5^13",
-            "13^(1/5)",
-            "5^(1/5)"
+            "2^2",
+            "2^3",
+            "2^4",
+            "2^5"
           ],
-          "solution": "13 का पांचवां मूल 13 के 1/5 घात के रूप में व्यक्त किया जाता है। मूल के सूचकांक रूप को आधार के व्युत्क्रम के घात के रूप में लिखा जाता है। 13^5 का अर्थ 13 के लगातार पांच बार गुणा करना है, न कि पांचवां मूल। 5^13 और 5^(1/13) 13 के पांचवां मूल का प्रतिनिधित्व नहीं करते हैं।",
+          "solution": "2 × 2 × 2 × 2 × 2 के गुणनफल को 2 के 5 घात के रूप में लिखा जा सकता है, जो कि 2^5 है। अन्य विकल्प गलत हैं क्योंकि वे 2 के गुणन की संख्या के साथ मेल नहीं खाते।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. Technical terms like 'मूल' (root) and 'सूचकांक रूप' (index form) are appropriately used as per Hindi-medium mathematics curriculum.",
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate use of Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "13 च्या पाचव्या मूळाची अंकगणितीय रूपे कोणती आहे?",
+          "stem": "2 × 2 × 2 × 2 × 2 च्या गुणाकाराचे अंकगणितीय रूप काय आहे?",
           "choices": [
-            "13^5",
-            "5^13",
-            "13^(1/5)",
-            "5^(1/5)"
+            "2^2",
+            "2^3",
+            "2^4",
+            "2^5"
           ],
-          "solution": "13 च्या पाचव्या मूळाला 13 ला 1/5 घातावर घेऊन दर्शविले जाते. मूळाची अंकगणितीय रूपे बेसला मूळाच्या व्यस्त घातावर घेऊन लिहिले जाते. 13^5 म्हणजे 13 ला पाच वेळा गुणणे, म्हणजे पाचवे मूळ नाही. 5^13 आणि 5^(1/13) 13 च्या पाचव्या मूळाला दर्शवित नाहीत.",
+          "solution": "2 × 2 × 2 × 2 × 2 चा गुणाकार 2 च्या 5 व्या घातात लिहिता येतो, जो 2^5 आहे. इतर विकल्प चुकीचे आहेत कारण ते 2 च्या गुणाकाराच्या संख्येसह जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English question and solution, with appropriate mathematical terminology used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses the number of multiplications",
+        "incorrect exponent",
+        "incorrect exponent",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and tests recall of index notation. The correct answer is 2^5, as there are five 2s being multiplied. All distractors are plausible errors for a student who miscounts the number of factors.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 15,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "3. Indices and Cube root"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 16,
+          "pageStart": 25,
+          "pageEnd": 27,
+          "headingPath": [
+            "3. Indices and Cube root"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 17,
+          "pageStart": 27,
+          "pageEnd": 28,
+          "headingPath": [
+            "3. Indices and Cube root"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T07:10:12.647Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following represents the square root of 25 in index form?",
+      "choices": [
+        "25^(1/2)",
+        "25^(-2)",
+        "25^3",
+        "25^(1/3)"
+      ],
+      "answerIndex": 0,
+      "solution": "The square root of a number is equivalent to raising that number to the power of 1/2. Therefore, the square root of 25 is represented as 25^(1/2). The other options represent different exponents, such as squaring, cubing, or taking the reciprocal of a square, which do not correspond to a square root.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा 25 के वर्गमूल का अंक रूप दर्शाता है?",
+          "choices": [
+            "25^(1/2)",
+            "25^(-2)",
+            "25^3",
+            "25^(1/3)"
+          ],
+          "solution": "किसी संख्या का वर्गमूल उस संख्या के 1/2 घात तक बढ़ाने के बराबर होता है। अतः 25 का वर्गमूल 25^(1/2) के रूप में दर्शाया जाता है। अन्य विकल्पों में वर्ग, घन या वर्ग के व्युत्क्रम के रूप में घात के अलग-अलग मान होते हैं जो वर्गमूल के अनुरूप नहीं होते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते 25 च्या वर्गमूळाचे अंकगणितीय रूप दर्शविते?",
+          "choices": [
+            "25^(1/2)",
+            "25^(-2)",
+            "25^3",
+            "25^(1/3)"
+          ],
+          "solution": "कोणत्याही संख्येचे वर्गमूळ त्या संख्येच्या 1/2 घाताच्या बरोबरीत असते. म्हणूनच 25 चे वर्गमूळ 25^(1/2) असे दर्शविले जाते. उरलेल्या विकल्पांमध्ये वर्ग, घन व वर्गाच्या व्युत्क्रमाचे घात दर्शविले गेले आहेत, जे वर्गमूळाच्या बरोबरीत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses square root with negative exponent of the same number",
+        "represents the square, not the square root",
+        "represents the cube root, not the square root"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is correct. The correct answer is 25^(1/2), and the explanations for the distractors align with common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 15,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "3. Indices and Cube root"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 16,
+          "pageStart": 25,
+          "pageEnd": 27,
+          "headingPath": [
+            "3. Indices and Cube root"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 17,
+          "pageStart": 27,
+          "pageEnd": 28,
+          "headingPath": [
+            "3. Indices and Cube root"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T07:10:12.647Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the cube of 4?",
+      "choices": [
+        "64",
+        "16",
+        "24",
+        "48"
+      ],
+      "answerIndex": 0,
+      "solution": "The cube of a number is calculated by multiplying the number by itself three times. Therefore, 4 × 4 × 4 equals 64. The other options result from incorrect calculations or misunderstandings of the concept of cubing a number.",
+      "checkExpr": "4*4*4",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "4 का घन क्या है?",
+          "choices": [
+            "64",
+            "16",
+            "24",
+            "48"
+          ],
+          "solution": "किसी संख्या का घन उस संख्या को तीन बार गुणा करके निकाला जाता है। अतः 4 × 4 × 4 का मान 64 होता है। अन्य विकल्प गलत गणना या घन की अवधारणा के गलत समझ के कारण प्राप्त होते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "4 चा घन किती आहे?",
+          "choices": [
+            "64",
+            "16",
+            "24",
+            "48"
+          ],
+          "solution": "एखाद्या संख्येचा घन ती संख्या तिन्ही वेळा गुणून मिळतो. म्हणून, 4 × 4 × 4 चा फलितार्थ 64 आहे. इतर विकल्प चुकीच्या गणना किंवा घन घेण्याच्या अपात्रतेमुळे मिळतात.",
           "imageAlt": null,
           "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
@@ -72,10 +262,105 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the base and the index",
-        "Misunderstands the meaning of root",
         null,
-        "Confuses the root and the power, thinking the index is 1/5 for the root but applies it to the wrong base"
+        "Confuses the cube of 4 with 4 squared (16) instead of 4×4×4.",
+        "adds 4 three times instead of multiplying",
+        "multiplies 4 by 6 instead of 4 three times"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and the solution is correct. The correct answer is 64, and the author's explanations for the wrong options are valid misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 15,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "3. Indices and Cube root"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 16,
+          "pageStart": 25,
+          "pageEnd": 27,
+          "headingPath": [
+            "3. Indices and Cube root"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 17,
+          "pageStart": 27,
+          "pageEnd": 28,
+          "headingPath": [
+            "3. Indices and Cube root"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T07:10:12.647Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If 4^3 = 64, what is 4^2?",
+      "choices": [
+        "8",
+        "12",
+        "16",
+        "24"
+      ],
+      "answerIndex": 2,
+      "solution": "Since 4^3 is 4 × 4 × 4 = 64, 4^2 is 4 × 4 = 16. The other options are incorrect calculations.",
+      "checkExpr": "4*4",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि 4^3 = 64, तो 4^2 क्या है?",
+          "choices": [
+            "8",
+            "12",
+            "16",
+            "24"
+          ],
+          "solution": "चूंकि 4^3 4 × 4 × 4 = 64 है, तो 4^2 4 × 4 = 16 है। अन्य विकल्प गलत गणनाएं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर 4^3 = 64, तर 4^2 किती आहे?",
+          "choices": [
+            "8",
+            "12",
+            "16",
+            "24"
+          ],
+          "solution": "कारण 4^3 हा 4 × 4 × 4 = 64 आहे, तर 4^2 हा 4 × 4 = 16 आहे. इतर विकल्प चुकीचे गणना आहेत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "incorrectly adds 4 + 4",
+        "incorrectly multiplies 4 × 3",
+        null,
+        "incorrectly multiplies 4 × 6"
       ],
       "solverAnswers": [
         2,
@@ -85,7 +370,7 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 13^(1/5), as the fifth root of a number is expressed as that number raised to the power of 1/5. The author's solution and reasoning are accurate.",
+      "critique": "The correct answer is 16, as 4^2 = 4 × 4 = 16. The author's solution is correct, and the reasons for the distractors are plausible misconceptions.",
       "sources": [
         {
           "document": "balbharati/8/mathematics/803020004.pdf",
@@ -116,49 +401,49 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T00:15:24.253Z",
+      "generatedAt": "2026-11-02T07:10:12.647Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 2,
-      "stem": "Which of the following represents the square root of 256 in index form?",
+      "difficulty": 6,
+      "stem": "If (2^3)^4 = 2^x, what is the value of x?",
       "choices": [
-        "256^2",
-        "256^(1/2)",
-        "256^(2/1)",
-        "1/2^256"
+        "12",
+        "7",
+        "4",
+        "3"
       ],
-      "answerIndex": 1,
-      "solution": "The square root of 256 is the same as 256 raised to the power of 1/2. 256^2 represents 256 squared, not the square root. 2^256 and 1/2^256 are not related to the square root of 256.",
-      "checkExpr": null,
+      "answerIndex": 0,
+      "solution": "According to the laws of indices, (a^m)^n = a^(m×n). So (2^3)^4 = 2^(3×4) = 2^12. The value of x is 12. The other options do not correctly apply the rule of exponents.",
+      "checkExpr": "3*4",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा 256 के वर्गमूल का अंकगणितीय रूप दर्शाता है?",
+          "stem": "यदि (2^3)^4 = 2^x है, तो x का मान क्या है?",
           "choices": [
-            "256^2",
-            "256^(1/2)",
-            "256^(2/1)",
-            "1/2^256"
+            "12",
+            "7",
+            "4",
+            "3"
           ],
-          "solution": "256 का वर्गमूल 256 के 1/2 घात के बराबर होता है। 256^2 का अर्थ 256 का वर्ग होता है, न कि वर्गमूल। 2^256 और 1/2^256 256 के वर्गमूल से संबंधित नहीं हैं।",
+          "solution": "सूचकांक के नियम के अनुसार, (a^m)^n = a^(m×n) होता है। अतः (2^3)^4 = 2^(3×4) = 2^12 होता है। x का मान 12 है। अन्य विकल्प सूचकांक के नियम के सही अनुप्रयोग के बजाय गलत हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as found in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते 256 च्या वर्गमूळाचे अंकगणितीय रूप दर्शविते?",
+          "stem": "जर (2^3)^4 = 2^x असेल, तर x ची किंमत काय असेल?",
           "choices": [
-            "256^2",
-            "256^(1/2)",
-            "256^(2/1)",
-            "1/2^256"
+            "12",
+            "7",
+            "4",
+            "3"
           ],
-          "solution": "256 च्या वर्गमूळाचे अंकगणितीय रूप 256 च्या 1/2 घाताच्या समान आहे. 256^2 हे 256 च्या वर्गाचे अंकगणितीय रूप दर्शविते, वर्गमूळ नाही. 2^256 आणि 1/2^256 हे 256 च्या वर्गमूळाशी संबंधित नाहीत.",
+          "solution": "सूचकांच्या नियमानुसार, (a^m)^n = a^(m×n). म्हणून (2^3)^4 = 2^(3×4) = 2^12. x ची किंमत 12 आहे. इतर विकल्प घातांच्या नियमाच्या चुकीच्या अनुज्ञानामुळे अचूक नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terminology for exponents and square roots.",
+          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terminology for exponents and indices.",
           "flag": null
         }
       },
@@ -167,20 +452,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses square with square root",
         null,
-        "Confuses the square root with squaring the number, thinking that the index 1/2 is the same as 2/1",
-        "Misunderstands the meaning of exponent"
+        "Confuses the exponent rules, thinking (a^b)^c = a^(b+c) instead of a^(b*c)",
+        "adds the exponents instead of multiplying",
+        "uses the base as the exponent"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies that the square root of 256 is 256^(1/2). The reasoning for the distractors aligns with common misconceptions about exponents and roots.",
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly applies the power of a power rule (a^m)^n = a^(m×n), leading to the correct answer of 12. The distractors reflect common misconceptions about exponent rules.",
       "sources": [
         {
           "document": "balbharati/8/mathematics/803020004.pdf",
@@ -211,49 +496,49 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T00:15:24.253Z",
+      "generatedAt": "2026-11-02T07:10:12.647Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "Which expression represents the cube of the square root of 225?",
+      "difficulty": 6,
+      "stem": "If 2^3 = 8, what is the value of 2^6?",
       "choices": [
-        "(225^(1/2))^3",
-        "225^(3/2)",
-        "225^(2/3)",
-        "225^(1/3)"
+        "16",
+        "32",
+        "64",
+        "128"
       ],
-      "answerIndex": 1,
-      "solution": "The cube of the square root of 225 is represented as 225^(3/2). (225^(1/2))^3 is equivalent to 225^(3/2), but it is not the standard form. 225^3 represents the cube of 225, not the square root. 225^(1/3) represents the cube root, not the square root.",
-      "checkExpr": null,
+      "answerIndex": 2,
+      "solution": "Since 2^3 = 8, 2^6 = (2^3)^2 = 8^2 = 64. The other options are incorrect calculations.",
+      "checkExpr": "(2^3)^2",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "225 के वर्गमूल के घन को कौन-सा व्यंजक दर्शाता है?",
+          "stem": "यदि 2^3 = 8, तो 2^6 का मान क्या है?",
           "choices": [
-            "(225^(1/2))^3",
-            "225^(3/2)",
-            "225^(2/3)",
-            "225^(1/3)"
+            "16",
+            "32",
+            "64",
+            "128"
           ],
-          "solution": "225 के वर्गमूल के घन को 225^(3/2) द्वारा दर्शाया जाता है। (225^(1/2))^3, 225^(3/2) के बराबर है, लेकिन यह मानक रूप नहीं है। 225^3, 225 के घन को दर्शाता है, न कि वर्गमूल को। 225^(1/3), घनमूल को दर्शाता है, न कि वर्गमूल को।",
+          "solution": "क्योंकि 2^3 = 8, 2^6 = (2^3)^2 = 8^2 = 64। अन्य विकल्प गलत गणनाएं हैं।",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "225 च्या वर्गमूळाच्या घनाचे व्यंजक कोणते आहे?",
+          "stem": "2^3 = 8 असल्यास 2^6 ची किंमत किती आहे?",
           "choices": [
-            "(225^(1/2))^3",
-            "225^(3/2)",
-            "225^(2/3)",
-            "225^(1/3)"
+            "16",
+            "32",
+            "64",
+            "128"
           ],
-          "solution": "225 च्या वर्गमूळाच्या घनाचे व्यंजक 225^(3/2) असते. (225^(1/2))^3 हे 225^(3/2) च्या समतुल्य असते, परंतु ते मानक रूप नाही. 225^3 हे 225 च्या घनाचे व्यंजक असते, वर्गमूळाचे नाही. 225^(1/3) हे घनमूळ दर्शविते, वर्गमूळ नाही.",
+          "solution": "कारण 2^3 = 8, 2^6 = (2^3)^2 = 8^2 = 64. इतर विकल्प चुकीच्या गणना आहेत.",
           "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the English original in meaning, structure, and terminology. Technical terms like 'वर्गमूळ' (square root) and 'घन' (cube) are correctly used as per Marathi curriculum.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology in Marathi.",
           "flag": null
         }
       },
@@ -262,20 +547,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Chooses an equivalent but non-standard form",
+        "incorrectly doubles 8",
+        "incorrectly multiplies 8 × 4",
         null,
-        "Confuses the order of operations, thinking cube of square root means raising to 2/3 instead of 3/2",
-        "Confuses cube with square root"
+        "incorrectly triples 8"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        2,
+        2,
+        2,
+        2,
+        2
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is well-constructed. The correct answer is 225^(3/2), which is the standard form of the cube of the square root of 225. The distractors represent common misconceptions: equivalent but non-standard form, confusion of exponent order, and confusion between cube and square root.",
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly uses the property of exponents (2^6 = (2^3)^2) and arrives at the correct answer of 64. The author's explanations for the distractors are plausible misconceptions.",
       "sources": [
         {
           "document": "balbharati/8/mathematics/803020004.pdf",
@@ -306,7 +591,7 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T00:15:24.253Z",
+      "generatedAt": "2026-11-02T07:10:12.647Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

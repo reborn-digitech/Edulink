@@ -21,49 +21,49 @@
   "board": "BALBHARATI",
   "book": "६ वी गणित इंग्रजी",
   "edition": "First Edition 2026",
-  "generatedAt": "2026-10-31T00:11:04.721Z",
+  "generatedAt": "2026-11-01T13:05:11.931Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 3,
-      "stem": "What part of the plot is made for the garden if a house is built on 1/3 of the plot?",
+      "difficulty": 1,
+      "stem": "What is the term for a fraction that has 1 as its numerator?",
       "choices": [
-        "1/3",
-        "2/3",
-        "2: 3/4",
-        "1/4"
+        "Improper fraction",
+        "Mixed fraction",
+        "Unit fraction",
+        "Equivalent fraction"
       ],
-      "answerIndex": 1,
-      "solution": "If a house is built on 1/3 of the plot, the remaining part for the garden is 1 - 1/3 = 2/3. The other options do not represent the remaining part of the plot.",
-      "checkExpr": "1 - 1/3",
+      "answerIndex": 2,
+      "solution": "A unit fraction is a fraction that has 1 as its numerator. This is correct because the definition of a unit fraction is based on having 1 as the top number. An improper fraction has a numerator larger than its denominator, a mixed fraction combines a whole number with a fraction, and equivalent fractions have different numerators and denominators but represent the same value.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि घर के लिए भूखंड के 1/3 भाग पर निर्माण किया जाता है, तो बगीचे के लिए कितना भाग बनाया जाता है?",
+          "stem": "एक भिन्न के लिए क्या शब्द होता है जिसका अंश 1 होता है?",
           "choices": [
-            "1/3",
-            "2/3",
-            "3/4",
-            "1/4"
+            "अनुचित भिन्न",
+            "मिश्रित भिन्न",
+            "इकाई भिन्न",
+            "समतुल्य भिन्न"
           ],
-          "solution": "यदि घर के लिए भूखंड के 1/3 भाग पर निर्माण किया जाता है, तो बगीचे के लिए शेष भाग 1 - 1/3 = 2/3 होता है। अन्य विकल्प भूखंड के शेष भाग का प्रतिनिधित्व नहीं करते हैं।",
+          "solution": "एक इकाई भिन्न वह भिन्न होती है जिसका अंश 1 होता है। यह सही है क्योंकि एक इकाई भिन्न की परिभाषा अंश के रूप में 1 होने पर आधारित होती है। एक अनुचित भिन्न में अंश हर से बड़ा होता है, मिश्रित भिन्न में पूर्ण संख्या और भिन्न का संयोजन होता है और समतुल्य भिन्नों में अलग-अलग अंश और हर होते हैं लेकिन वे एक ही मान दर्शाते हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Hindi terms for fractions and parts of a plot.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology used in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "भूखंडाच्या किती भागात बाग बांधली जाईल जर घर भूखंडाच्या 1/3 भागात बांधले जाईल?",
+          "stem": "एक अपूर्णांक ज्याचा अंश 1 असतो त्याला काय म्हणतात?",
           "choices": [
-            "1/3",
-            "2/3",
-            "3/4",
-            "1/4"
+            "अपूर्णांक",
+            "मिश्र अपूर्णांक",
+            "एकक अपूर्णांक",
+            "समतुल्य अपूर्णांक"
           ],
-          "solution": "जर घर भूखंडाच्या 1/3 भागात बांधले जाईल तर बागासाठी उरलेला भाग 1 - 1/3 = 2/3 आहे. इतर विकल्प भूखंडाच्या उरलेल्या भागाचे प्रतिनिधित्व करत नाहीत.",
+          "solution": "एकक अपूर्णांक हा अपूर्णांक आहे ज्याचा अंश 1 असतो. हे बरोबर आहे कारण एकक अपूर्णांकची व्याख्या अंश 1 असल्यावर असते. अपूर्णांकाचा अंश छोटा असतो आणि मिश्र अपूर्णांक हा पूर्णांक आणि अपूर्णांक यांचा संयोजन असतो आणि समतुल्य अपूर्णांकांमध्ये वेगवेगळे अंश आणि हर असतात पण ते एकसारखे मूल्य दर्शवतात.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -72,20 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Chooses the part used for the house",
+        "Confuses improper fraction with unit fraction",
+        "Thinks mixed fraction is defined by having 1 as numerator",
         null,
-        "Student incorrectly adds the fraction of the house to the remaining plot instead of subtracting it.",
-        "Incorrectly assumes equal division"
+        "Student thinks all fractions with 1 in numerator are equivalent to each other"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": null,
-      "critique": "The solution is correct: 1 - 1/3 = 2/3. The reasoning for the distractors aligns with common misconceptions.",
+      "critique": "The question is clear and the correct answer is correctly identified. The explanations for the distractors align with common misconceptions.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
@@ -125,7 +125,631 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T00:11:04.721Z",
+      "generatedAt": "2026-11-01T13:05:11.931Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a circle is divided into 8 equal parts and 3 parts are shaded, what fraction represents the shaded part?",
+      "choices": [
+        "3/8",
+        "3/4",
+        "1/3",
+        "5/8"
+      ],
+      "answerIndex": 0,
+      "solution": "When a circle is divided into 8 equal parts and 3 parts are shaded, the fraction representing the shaded part is 3/8. This is because the numerator represents the number of shaded parts, and the denominator represents the total number of equal parts. The other options are incorrect because 8/3 is an improper fraction, 1/8 is a unit fraction, and 5/8 represents the unshaded part.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक वृत्त को 8 बराबर भागों में विभाजित किया जाता है और 3 भाग छायांकित किए जाते हैं, तो कौन-सा भिन्न छायांकित भाग का प्रतिनिधित्व करता है?",
+          "choices": [
+            "3/8",
+            "3/4",
+            "1/3",
+            "5/8"
+          ],
+          "solution": "जब एक वृत्त को 8 बराबर भागों में विभाजित किया जाता है और 3 भाग छायांकित किए जाते हैं, तो छायांकित भाग का प्रतिनिधित्व 3/8 करता है। ऐसा इसलिए है क्योंकि अंश छायांकित भागों की संख्या का प्रतिनिधित्व करता है, और हर कुल बराबर भागों की संख्या का प्रतिनिधित्व करता है। अन्य विकल्प गलत हैं क्योंकि 8/3 एक अंजामी भिन्न है, 1/8 एक इकाई भिन्न है, और 5/8 अछायांकित भाग का प्रतिनिधित्व करता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक वर्तुळ 8 समान भागांमध्ये विभागले गेले आहे आणि 3 भाग छायाचित्रित केले गेले आहेत, तर छायाचित्रित भागाचे अपूर्णांक कोणता आहे?",
+          "choices": [
+            "3/8",
+            "3/4",
+            "1/3",
+            "5/8"
+          ],
+          "solution": "जेव्हा एक वर्तुळ 8 समान भागांमध्ये विभागले जाते आणि 3 भाग छायाचित्रित केले जातात, तेव्हा छायाचित्रित भागाचे अपूर्णांक 3/8 असतो. हे असे कारण आहे की अंशांक छायाचित्रित भागांची संख्या दर्शवतो, आणि छेदांक समान भागांची एकूण संख्या दर्शवतो. इतर विकल्प चुकीचे आहेत कारण 8/3 अपूर्णांक असतो, 1/8 एकक अपूर्णांक असतो आणि 5/8 अपूर्णांक असतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the number of shaded parts with the number of total parts in a different context",
+        "Confuses the number of shaded parts with the number of total parts",
+        "Chooses the unshaded part instead of the shaded part"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the correct answer is 3/8. The author's solution is accurate, and the reasons for the distractors align with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 39,
+          "pageStart": 57,
+          "pageEnd": 58,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 40,
+          "pageStart": 58,
+          "pageEnd": 61,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 41,
+          "pageStart": 61,
+          "pageEnd": 63,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 42,
+          "pageStart": 63,
+          "pageEnd": 63,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T13:05:11.931Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the sum of 1/2 and 1/4?",
+      "choices": [
+        "3/4",
+        "1/4",
+        "2/4",
+        "3/8"
+      ],
+      "answerIndex": 0,
+      "solution": "To add 1/2 and 1/4, find the LCM of the denominators, which is 4. Convert 1/2 to 2/4 and add it to 1/4 to get 3/4. The other options do not result from correct addition.",
+      "checkExpr": "1/2 + 1/4",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "1/2 और 1/4 का योग क्या है?",
+          "choices": [
+            "3/4",
+            "1/4",
+            "2/4",
+            "3/8"
+          ],
+          "solution": "1/2 और 1/4 को जोड़ने के लिए हरों का ल.स.प. ज्ञात करें, जो 4 है। 1/2 को 2/4 में बदलें और इसे 1/4 में जोड़ें ताकि 3/4 प्राप्त हो। अन्य विकल्प सही जोड़ से प्राप्त नहीं होते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "1/2 आणि 1/4 ची बेरीज किती आहे?",
+          "choices": [
+            "3/4",
+            "1/4",
+            "2/4",
+            "3/8"
+          ],
+          "solution": "1/2 आणि 1/4 जोडण्यासाठी, छेदांचे ल.सा.म. शोधा, जे 4 आहे. 1/2 ला 2/4 मध्ये बदला आणि 1/4 शी जोडा जेणेकरून 3/4 मिळेल. इतर विकल्प चुकीच्या बेरीजमुळे मिळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Student adds numerators but keeps the denominator of the second fraction, thinking 1/2 + 1/4 = 1/4",
+        "Believes fractions can be added by adding numerators and denominators separately",
+        "Adding numerators and denominators separately without finding a common denominator"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 3/4, and the solution is sound. The distractors reflect common misconceptions about fraction addition.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 39,
+          "pageStart": 57,
+          "pageEnd": 58,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 40,
+          "pageStart": 58,
+          "pageEnd": 61,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 41,
+          "pageStart": 61,
+          "pageEnd": 63,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 42,
+          "pageStart": 63,
+          "pageEnd": 63,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T13:05:11.931Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following fractions is greater than 3/5?",
+      "choices": [
+        "2/5",
+        "4/5",
+        "2: 2/5",
+        "3/7"
+      ],
+      "answerIndex": 1,
+      "solution": "To determine which fraction is greater than 3/5, we compare them. 4/5 is greater than 3/5 because the denominators are the same, and 4 is greater than 3. The other options are incorrect because 2/5 and 1/5 are smaller than 3/5, and 3/7 is smaller than 3/5 because the denominator is larger.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्न में से कौन-सा भिन्न 3/5 से बड़ा है?",
+          "choices": [
+            "2/5",
+            "4/5",
+            "2/5",
+            "3/7"
+          ],
+          "solution": "3/5 से बड़ा भिन्न ज्ञात करने के लिए, हम उनकी तुलना करते हैं। 4/5, 3/5 से बड़ा है क्योंकि हर समान है, और 4, 3 से बड़ा है। अन्य विकल्प गलत हैं क्योंकि 2/5 और 1/5, 3/5 से छोटे हैं, और 3/7, हर बड़े होने के कारण 3/5 से छोटा है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता अपूर्णांक 3/5 पेक्षा जास्त आहे?",
+          "choices": [
+            "2/5",
+            "4/5",
+            "2/5",
+            "3/7"
+          ],
+          "solution": "3/5 पेक्षा जास्त अपूर्णांक ओळखण्यासाठी, आपण त्यांची तुलना करतो. 4/5 हा 3/5 पेक्षा जास्त आहे कारण छेद समान आहेत आणि 4, 3 पेक्षा जास्त आहे. इतर विकल्प चुकीचे आहेत कारण 2/5 आणि 1/5 3/5 पेक्षा लहान आहेत, आणि 3/7 हा 3/5 पेक्षा लहान आहे कारण छेद मोठा आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses a fraction with a smaller numerator",
+        null,
+        "Confuses numerator and denominator when comparing fractions",
+        "Compares fractions incorrectly"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 4/5, as it has the same denominator as 3/5 and a larger numerator. The other options are correctly identified as smaller. The author's reasoning is sound and matches common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 39,
+          "pageStart": 57,
+          "pageEnd": 58,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 40,
+          "pageStart": 58,
+          "pageEnd": 61,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 41,
+          "pageStart": 61,
+          "pageEnd": 63,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 42,
+          "pageStart": 63,
+          "pageEnd": 63,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T13:05:11.931Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If 1/3 of a cake is given to Ramesh, 1/6 to Seema, and the rest to their friend, what fraction of the cake is given to the friend?",
+      "choices": [
+        "1/2",
+        "1/3",
+        "1/6",
+        "2/3"
+      ],
+      "answerIndex": 0,
+      "solution": "Add 1/3 and 1/6 to get 1/2. The remaining fraction is 1 - 1/2 = 1/2. The other options are incorrect because they do not account for the full cake.",
+      "checkExpr": "1 - (1/3 + 1/6)",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि 1/3 केक रमेश को दिया जाता है, 1/6 सीमा को दिया जाता है, और शेष उनके दोस्त को दिया जाता है, तो केक का कौन-सा भाग दोस्त को दिया जाता है?",
+          "choices": [
+            "1/2",
+            "1/3",
+            "1/6",
+            "2/3"
+          ],
+          "solution": "1/3 और 1/6 को जोड़कर 1/2 प्राप्त करें। शेष भाग 1 - 1/2 = 1/2 है। अन्य विकल्प गलत हैं क्योंकि वे पूरे केक को ध्यान में नहीं रखते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology common in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर 1/3 भाग रमेशला दिला, 1/6 भाग सीमाला दिला आणि उर्वरित त्यांच्या मित्राला दिला, तर मित्राला केकाचा किती भाग दिला गेला?",
+          "choices": [
+            "1/2",
+            "1/3",
+            "1/6",
+            "2/3"
+          ],
+          "solution": "1/3 आणि 1/6 जोडा ते 1/2 मिळते. उर्वरित भाग 1 - 1/2 = 1/2 आहे. इतर विकल्प चुकीचे आहेत कारण ते पूर्ण केक नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses standard Marathi terms for fractions.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Miscalculates the remaining fraction by subtracting only one of the given fractions instead of summing them first",
+        "Chooses one of the given fractions",
+        "Chooses one of the given fractions"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The total given to Ramesh and Seema is 1/3 + 1/6 = 1/2, so the remaining is 1 - 1/2 = 1/2. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 39,
+          "pageStart": 57,
+          "pageEnd": 58,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 40,
+          "pageStart": 58,
+          "pageEnd": 61,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 41,
+          "pageStart": 61,
+          "pageEnd": 63,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 42,
+          "pageStart": 63,
+          "pageEnd": 63,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T13:05:11.931Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If 3/4 of a water tank is filled and 1/2 of the tank is used, what fraction of the tank is left?",
+      "choices": [
+        "1/4",
+        "1/2",
+        "3/4",
+        "5/8"
+      ],
+      "answerIndex": 0,
+      "solution": "If 3/4 of the tank is filled and 1/2 is used, we subtract 1/2 from 3/4. To subtract, we find a common denominator, which is 4. 1/2 is equivalent to 2/4, so 3/4 - 2/4 = 1/4. Therefore, 1/4 of the tank is left. The other options are incorrect because 1/2 and 3/4 do not represent the correct difference, and 5/8 is not a result of the calculation.",
+      "checkExpr": "(3/4)-(1/2)",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक पानी के टैंक के 3/4 भाग में पानी भरा गया और टैंक के 1/2 भाग का उपयोग कर लिया गया, तो टैंक का कौन-सा भाग बचा रहेगा?",
+          "choices": [
+            "1/4",
+            "1/2",
+            "3/4",
+            "5/8"
+          ],
+          "solution": "यदि टैंक के 3/4 भाग में पानी भरा गया और 1/2 भाग का उपयोग कर लिया गया, तो हम 3/4 में से 1/2 को घटाएंगे। घटाने के लिए हमें एक सामान्य हर ढूंढना होगा, जो 4 है। 1/2 समतुल्य 2/4 है, इसलिए 3/4 - 2/4 = 1/4। इसलिए, टैंक का 1/4 भाग बचा रहेगा। अन्य विकल्प गलत हैं क्योंकि 1/2 और 3/4 सही अंतर का प्रतिनिधित्व नहीं करते, और 5/8 गणना के परिणाम नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर 4 भागांपैकी 3 भाग पाण्याने भरलेला टॅंक असेल आणि टॅंकच्या 2 भागाचा वापर केला जाईल, तर टॅंकच्या किती भागाचा उर्वरित भाग राहील?",
+          "choices": [
+            "1/4",
+            "1/2",
+            "3/4",
+            "5/8"
+          ],
+          "solution": "जर 4 भागांपैकी 3 भाग पाण्याने भरलेला टॅंक असेल आणि 2 भागाचा वापर केला जाईल, तर आपण 3/4 मधून 1/2 वजा करू. वजा करण्यासाठी, आपण सामान्य हर्स शोधू. तो 4 आहे. 1/2 हे 2/4 इतके बरोबर आहे, म्हणून 3/4 - 2/4 = 1/4. म्हणून, टॅंकच्या 1/4 भागाचा उर्वरित भाग राहील. इतर विकल्प चूक आहेत कारण 1/2 आणि 3/4 योग्य फरक दर्शवत नाहीत आणि 5/8 हा गणनेचा परिणाम नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Chooses the fraction of the tank used instead of the remaining",
+        "Adds fractions instead of subtracting",
+        "Chooses a fraction that is not the result of the subtraction"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-posed and the solution is correct. The correct answer is 1/4, and the reasoning provided by the author is sound. The distractors are plausible errors that students might make.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 39,
+          "pageStart": 57,
+          "pageEnd": 58,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 40,
+          "pageStart": 58,
+          "pageEnd": 61,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 41,
+          "pageStart": 61,
+          "pageEnd": 63,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 42,
+          "pageStart": 63,
+          "pageEnd": 63,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T13:05:11.931Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following is an improper fraction?",
+      "choices": [
+        "3/2",
+        "1/2",
+        "2/3",
+        "4/5"
+      ],
+      "answerIndex": 0,
+      "solution": "An improper fraction is a fraction where the numerator is greater than the denominator. 3/2 is an improper fraction. The other options are proper fractions because their numerators are less than their denominators.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा अंश अनुचित अंश है?",
+          "choices": [
+            "3/2",
+            "1/2",
+            "2/3",
+            "4/5"
+          ],
+          "solution": "एक अनुचित अंश वह अंश होता है जिसका अंश हर से बड़ा होता है। 3/2 एक अनुचित अंश है। अन्य विकल्प उचित अंश हैं क्योंकि उनके अंश हर से छोटे होते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are correctly used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते अयोग्य अपूर्णांक आहे?",
+          "choices": [
+            "3/2",
+            "1/2",
+            "2/3",
+            "4/5"
+          ],
+          "solution": "अयोग्य अपूर्णांक हा अपूर्णांक आहे ज्यात अंश छेदापेक्षा मोठा असतो. 3/2 हा अयोग्य अपूर्णांक आहे. इतर विकल्प हे योग्य अपूर्णांक आहेत कारण त्यांच्या अंशांची संख्या छेदापेक्षा लहान असते.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Chooses a proper fraction",
+        "Chooses a proper fraction",
+        "Chooses a proper fraction"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question correctly identifies 3/2 as the improper fraction, and the reasoning aligns with the definition. The distractors are all proper fractions, which is a valid distinction.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 39,
+          "pageStart": 57,
+          "pageEnd": 58,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 40,
+          "pageStart": 58,
+          "pageEnd": 61,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 41,
+          "pageStart": 61,
+          "pageEnd": 63,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 42,
+          "pageStart": 63,
+          "pageEnd": 63,
+          "headingPath": [
+            "6. Fractions"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T13:05:11.931Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

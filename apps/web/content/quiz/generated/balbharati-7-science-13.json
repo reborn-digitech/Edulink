@@ -21,49 +21,49 @@
   "board": "BALBHARATI",
   "book": "७ वी सामान्य विज्ञान इंग्रजी",
   "edition": "First Edition 2017",
-  "generatedAt": "2026-10-31T17:20:53.282Z",
+  "generatedAt": "2026-11-02T04:21:24.181Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 3,
-      "stem": "If a piece of iron is painted, what is the main purpose of this action?",
+      "stem": "Which of the following changes can be reversed?",
       "choices": [
-        "To make it look shiny",
-        "To prevent rusting",
-        "To make it more attractive",
-        "To make it lighter"
+        "Burning of paper",
+        "Cooking of an egg",
+        "Melting of ice",
+        "Rusting of iron"
       ],
-      "answerIndex": 1,
-      "solution": "Painting iron prevents rusting by creating a barrier that stops moisture and oxygen from reaching the surface. The other options are not the primary purpose of painting iron.",
+      "answerIndex": 2,
+      "solution": "Melting of ice is a reversible change because ice can be turned back into water by cooling. Burning paper, cooking an egg, and rusting iron are irreversible changes as they involve the formation of new substances that cannot be easily reversed.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि लोहे के टुकड़े पर पेंट किया जाता है, तो इस कार्य का मुख्य उद्देश्य क्या होता है?",
+          "stem": "निम्नलिखित में से कौन-सा परिवर्तन उत्क्रमणीय हो सकता है?",
           "choices": [
-            "इसे चमकदार बनाना",
-            "जंग लगने से रोकना",
-            "इसे अधिक आकर्षक बनाना",
-            "इसे हल्का बनाना"
+            "कागज का जलना",
+            "अंडे का रसोई में पकना",
+            "बर्फ का पिघलना",
+            "लोहे का जंग लगना"
           ],
-          "solution": "लोहे पर पेंट लगाने से जंग लगना रोका जाता है क्योंकि यह एक बाधा बनाता है जो नमी और ऑक्सीजन के सतह तक पहुंचने से रोकता है। अन्य विकल्प लोहे पर पेंट लगाने का मुख्य उद्देश्य नहीं है।",
+          "solution": "बर्फ का पिघलना एक उत्क्रमणीय परिवर्तन है क्योंकि बर्फ को ठंडा करके पुनः पानी में बदला जा सकता है। कागज का जलना, अंडे का रसोई में पकना और लोहे का जंग लगना अनुत्क्रमणीय परिवर्तन हैं क्योंकि इनमें नए पदार्थों के बनने के कारण इन्हें आसानी से उत्क्रमित नहीं किया जा सकता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms like 'जंग लगना' for 'rusting'.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology common in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "लोखंडाचा एक तुकडा रंगला गेला असता, ह्या कृतीचा मुख्य उद्देश काय असतो?",
+          "stem": "खालीलपैकी कोणता बदल फिरवता येऊ शकतो?",
           "choices": [
-            "त्याला चमकदार बनवणे",
-            "रूस्टिंग रोखणे",
-            "त्याला अधिक सुंदर बनवणे",
-            "त्याला हलका बनवणे"
+            "कागदाचे जाळणे",
+            "अंड्याचे शिजवणे",
+            "हिमाचे वितळणे",
+            "लोखंडाचे धूल बनणे"
           ],
-          "solution": "लोखंडावर रंग लावल्याने त्याच्या सतहला नम आणि ऑक्सिजनपासून बचाव होतो, ज्यामुळे रूस्टिंग रोखली जाते. इतर विकल्प लोखंडावर रंग लावण्याचा मुख्य उद्देश नाहीत.",
+          "solution": "हिमाचे वितळणे हा फिरवता येणारा बदल आहे कारण हिमाला थंड करून पुन्हा पाणी बनवता येऊ शकते. कागदाचे जाळणे, अंड्याचे शिजवणे आणि लोखंडाचे धूल बनणे हे अफिरवता येणारे बदल आहेत कारण त्यांमध्ये नवीन पदार्थ तयार होतात जे सहज फिरवता येत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms like 'रूस्टिंग' (rusting) which is commonly used in Marathi textbooks.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
           "flag": null
         }
       },
@@ -72,98 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "focuses on appearance rather than protection",
+        "Thinks burning is a reversible change",
+        "Confuses cooking with a reversible process",
         null,
-        "students may confuse the purpose of painting with aesthetic improvement rather than protection",
-        "confuses function with weight change"
+        "Does not understand the concept of irreversible change"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 1, as painting iron prevents rusting by blocking moisture and oxygen. The other options are common misconceptions about the purpose of painting.",
-      "sources": [
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 101,
-          "pageStart": 101,
-          "pageEnd": 101,
-          "headingPath": [
-            "13. Changes – Physical and Chemical",
-            "t t t"
-          ]
-        }
-      ],
-      "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T17:20:53.282Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "A student observes that a piece of metal changes color when exposed to air. What can be inferred about the change?",
-      "choices": [
-        "It is a physical change because the color changed",
-        "It is a chemical change because the metal became heavier",
-        "It is a physical change because no new substance is formed",
-        "It is a chemical change because the composition of the metal changed"
-      ],
-      "answerIndex": 3,
-      "solution": "The change is a chemical change because a color change in a metal often indicates a chemical reaction, such as oxidation or corrosion, which alters the composition of the metal. A physical change would not involve a change in the composition of the metal.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक छात्र देखता है कि हवा के संपर्क में आने पर एक धातु के टुकड़े का रंग बदल जाता है। इस परिवर्तन के बारे में क्या निष्कर्ष निकाला जा सकता है?",
-          "choices": [
-            "यह एक भौतिक परिवर्तन है क्योंकि रंग बदल गया",
-            "यह एक रासायनिक परिवर्तन है क्योंकि धातु भारी हो गई",
-            "यह एक भौतिक परिवर्तन है क्योंकि कोई नया पदार्थ नहीं बना",
-            "यह एक रासायनिक परिवर्तन है क्योंकि धातु की संरचना बदल गई"
-          ],
-          "solution": "यह परिवर्तन एक रासायनिक परिवर्तन है क्योंकि धातु में रंग परिवर्तन आमतौर पर रासायनिक अभिक्रिया, जैसे ऑक्सीकरण या जंग लगने के संकेत होता है, जो धातु की संरचना को बदल देता है। एक भौतिक परिवर्तन में धातु की संरचना में कोई परिवर्तन नहीं होता।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका विद्यार्थ्याला लक्षात आले की वायूशी संपर्कात आल्यानंतर धातूचा रंग बदलतो. या बदलाबद्दल काय निष्कर्ष काढता येईल?",
-          "choices": [
-            "हे भौमितिक बदल आहे कारण रंग बदलला",
-            "हे रासायनिक बदल आहे कारण धातू भारवान झाला",
-            "हे भौमितिक बदल आहे कारण कोणताही नवीन पदार्थ तयार झाला नाही",
-            "हे रासायनिक बदल आहे कारण धातूचा घटक बदलला"
-          ],
-          "solution": "हा बदल रासायनिक बदल आहे कारण धातूमध्ये रंग बदलणे रासायनिक अभिक्रिया, जसे की ऑक्सिडेशन किंवा अपघटन यांचा संकेत देते, जी धातूच्या घटकात बदल करते. भौमितिक बदलामध्ये धातूच्या घटकात बदल होत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Fails to understand that color change can indicate a chemical change",
-        "Student assumes weight change indicates chemical change, not realizing color change is the key clue",
-        "Confuses a chemical change with a physical change",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 3, as a color change in a metal typically indicates a chemical change, such as oxidation. The solution correctly identifies this and the reasoning aligns with the key.",
+      "critique": "The correct answer is 2 (Melting of ice), as it is a physical change that can be reversed. The other options are chemical changes that result in new substances and are irreversible. The author's reasoning aligns with scientific understanding.",
       "sources": [
         {
           "document": "balbharati/7/science/703020012.pdf",
@@ -203,7 +125,189 @@
         }
       ],
       "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T17:20:53.282Z",
+      "generatedAt": "2026-11-02T04:21:24.181Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A student observed that a dry handkerchief gets wet quickly when dipped in water, but a wet handkerchief takes longer to dry. What can be inferred from this observation?",
+      "choices": [
+        "It is a physical change because no new substance is formed.",
+        "It is a chemical change because the handkerchief changes color when it gets wet.",
+        "It is a natural change because it happens without human intervention.",
+        "It is a non-periodic change because it does not happen in a regular pattern."
+      ],
+      "answerIndex": 0,
+      "solution": "This is a physical change because the absorption of water by the handkerchief does not form a new substance. Chemical, natural, and periodic changes do not apply to the process of absorption.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र ने देखा कि एक सूखा हाथों का टुकड़ा पानी में डुबोए जाने पर तेजी से गीला हो जाता है, लेकिन गीला हाथों का टुकड़ा सूखने में अधिक समय लेता है। इस अवलोकन से क्या निष्कर्ष निकाला जा सकता है?",
+          "choices": [
+            "यह एक भौतिक परिवर्तन है क्योंकि कोई नया पदार्थ नहीं बनता है।",
+            "यह एक रासायनिक परिवर्तन है क्योंकि हाथों का टुकड़ा गीला होने पर रंग बदल जाता है।",
+            "यह एक प्राकृतिक परिवर्तन है क्योंकि यह मनुष्य हस्तक्षेप के बिना होता है।",
+            "यह एक आवर्ती परिवर्तन नहीं है क्योंकि यह नियमित पैटर्न में नहीं होता है।"
+          ],
+          "solution": "यह एक भौतिक परिवर्तन है क्योंकि हाथों के टुकड़े द्वारा पानी के अवशोषण द्वारा कोई नया पदार्थ नहीं बनता है। रासायनिक, प्राकृतिक और आवर्ती परिवर्तन अवशोषण की प्रक्रिया के लिए लागू नहीं होते हैं।",
+          "imageAlt": null,
+          "critique": "Translation accurately conveys the original meaning with appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थीने नोंद केले की शुष्क तौलिया पाण्यात बुडवल्यास लवकर भिजतो, परंतु भिजलेला तौलिया शुष्क होण्यास जास्त वेळ लागतो. या निरीक्षणावरून काय निष्कर्ष काढता येईल?",
+          "choices": [
+            "हे भौमिक बदल आहे कारण कोणताही नवीन पदार्थ तयार होत नाही.",
+            "हे रासायनिक बदल आहे कारण तौलिया भिजल्यावर त्याचा रंग बदलतो.",
+            "हे प्राकृतिक बदल आहे कारण तो माणसाच्या हस्तक्षेपशिवाय घडतो.",
+            "हे आवर्ती बदल नाही कारण तो नियमित पॅटर्नमध्ये घडत नाही."
+          ],
+          "solution": "हे भौमिक बदल आहे कारण तौलियाला पाणी शोषल्यामुळे नवीन पदार्थ तयार होत नाही. रासायनिक, प्राकृतिक आणि आवर्ती बदल शोषणाच्या प्रक्रियेला लागू होत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes that any visible change, like color change, indicates a chemical change",
+        "Student believes all changes that occur without direct human action are natural, ignoring the classification criteria.",
+        "Student confuses the classification of changes based on repetition, thinking that drying is not periodic just because it doesn't happen regularly."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as the absorption of water by a handkerchief is a physical change. The author's reasoning aligns with the correct scientific classification, and the misconceptions described for the other options are plausible for students.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 101,
+          "pageStart": 101,
+          "pageEnd": 101,
+          "headingPath": [
+            "13. Changes – Physical and Chemical",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T04:21:24.181Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A student observes that when a piece of glass is heated and bent, it can be returned to its original shape. What does this demonstrate?",
+      "choices": [
+        "It is a chemical change",
+        "It is an irreversible change",
+        "It is a physical change",
+        "It is a non-periodic change"
+      ],
+      "answerIndex": 2,
+      "solution": "This demonstrates a physical change because the glass can be returned to its original shape, showing that the change is reversible and no new substances are formed. It is not a chemical change because the composition of the glass remains the same. It is not an irreversible change because the original shape can be restored. It is not a non-periodic change because the change is not related to time intervals.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र देखता है कि जब कांच के एक टुकड़े को गर्म किया जाता है और मोड़ा जाता है, तो इसे अपनी मूल आकृति में वापस किया जा सकता है। यह क्या दर्शाता है?",
+          "choices": [
+            "यह एक रासायनिक परिवर्तन है",
+            "यह एक अपरिवर्तनीय परिवर्तन है",
+            "यह एक भौतिक परिवर्तन है",
+            "यह एक अअवधि परिवर्तन है"
+          ],
+          "solution": "यह भौतिक परिवर्तन दर्शाता है क्योंकि कांच को अपनी मूल आकृति में वापस किया जा सकता है, जो दर्शाता है कि परिवर्तन उत्क्रमणीय है और कोई नए पदार्थ नहीं बनते। यह रासायनिक परिवर्तन नहीं है क्योंकि कांच की संरचना एक ही रहती है। यह अपरिवर्तनीय परिवर्तन नहीं है क्योंकि मूल आकृति वापस लाई जा सकती है। यह अअवधि परिवर्तन नहीं है क्योंकि परिवर्तन समय अंतराल से संबंधित नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a Hindi-medium science context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने लक्षात घेतले की, जेव्हा एखादा ग्लासचा तुकडा गरम केला जातो आणि मोडला जातो, तेव्हा तो त्याच्या मूळ आकृतीत परत केला जाऊ शकतो. हे काय सुचवते?",
+          "choices": [
+            "हे रासायनिक बदल आहे",
+            "हे अनुत्क्रमणीय बदल आहे",
+            "हे भौतिक बदल आहे",
+            "हे अनावर्ती बदल आहे"
+          ],
+          "solution": "हे भौतिक बदल दर्शवते कारण ग्लास मूळ आकृतीत परत येऊ शकतो, जे बदल उलटवता येऊ शकतो आणि नवीन पदार्थ तयार होत नाहीत असे दर्शवते. हे रासायनिक बदल नाही कारण ग्लासचा घटक बदलत नाही. हे अनुत्क्रमणीय बदल नाही कारण मूळ आकृती परत मिळू शकते. हे अनावर्ती बदल नाही कारण बदल वेळेच्या अंतराशी संबंधित नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks the change involves new substances",
+        "Believes the change cannot be reversed",
+        null,
+        "Does not understand the concept of periodic changes"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the reversible nature of the change indicates a physical change. The reasoning aligns with the scientific understanding of physical vs. chemical changes.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 97,
+          "pageStart": 98,
+          "pageEnd": 99,
+          "headingPath": [
+            "13. Changes – Physical and Chemical"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 98,
+          "pageStart": 99,
+          "pageEnd": 100,
+          "headingPath": [
+            "13. Changes – Physical and Chemical"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 99,
+          "pageStart": 100,
+          "pageEnd": 101,
+          "headingPath": [
+            "13. Changes – Physical and Chemical"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 100,
+          "pageStart": 101,
+          "pageEnd": 101,
+          "headingPath": [
+            "13. Changes – Physical and Chemical"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T04:21:24.181Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

@@ -1,0 +1,495 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T21:08:57.679Z",
+  "finishedAt": "2026-11-01T21:12:41.257Z",
+  "seconds": 224,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी गणित इंग्रजी",
+    "bookCode": "703020004",
+    "document": "balbharati/7/mathematics/703020004.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — Geometrical Constructions",
+    "edition": "2026 edition",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[RMO 2017 — question paper]\n1. Let AOB be a given angle less than 180° and let P be an interior point of the\nangular region determined by ZAOB. Show, with proof, how to construct,\nusing only ruler and compasses, a line segment CD passing through P such\nthat C' lies on the ray OA and D lies on the ray OB, and CP: PD =1:2.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n33. Correct given, to prove, construction, figure 1\nCorrect proof 2\nAR = AQ = 7cm ½\nBP = BR = AB-AR = 3cm ½\nCP =CQ = 5cm ½\nBC = BP+PC = 3+5 = 8 cm ½",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 22 7 wherever required if not stated."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 103493,
+      "in": 24,
+      "out": 21,
+      "rejects": 3,
+      "promptTokens": 19090,
+      "completionTokens": 5771
+    },
+    "critique": {
+      "calls": 25,
+      "ms": 164318,
+      "in": 21,
+      "out": 15,
+      "rejects": 6,
+      "promptTokens": 11373,
+      "completionTokens": 4384
+    },
+    "solver": {
+      "calls": 101,
+      "ms": 49796,
+      "in": 15,
+      "out": 13,
+      "rejects": 2,
+      "promptTokens": 18106,
+      "completionTokens": 990
+    },
+    "form": {
+      "calls": 2,
+      "ms": 24769,
+      "in": 13,
+      "out": 4,
+      "rejects": 9,
+      "promptTokens": 2278,
+      "completionTokens": 605
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 5,
+      "ms": 1048,
+      "in": 4,
+      "out": 2,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 64229,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4922,
+      "completionTokens": 2462
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a line segment is 6.7 cm long, what is the length of its perpendicular bisector?",
+      "ms": {
+        "draft": 6089,
+        "critique": 6976
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about an angle bisector?",
+      "ms": {
+        "draft": 6089,
+        "critique": 7638
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following conditions is necessary to construct a unique triangle?",
+      "ms": {
+        "draft": 6089,
+        "critique": 7560
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the measure of an angle that is bisected into two angles of 25° each?",
+      "ms": {
+        "draft": 6089,
+        "critique": 9189
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a toy shop is equidistant from three houses, which geometrical construction is used to represent this?",
+      "ms": {
+        "draft": 6089,
+        "critique": 7585,
+        "solver": 11854,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a triangle, if two sides and the included angle are given, which property can be used to construct the triangle?",
+      "ms": {
+        "draft": 3304,
+        "critique": 6410
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a triangle, if the angle bisectors meet at a point, what is this point called?",
+      "ms": {
+        "draft": 6089,
+        "critique": 6249,
+        "solver": 1731,
+        "form": 3027
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the measure of the third angle in a triangle if two angles are 60° and 40°?",
+      "ms": {
+        "draft": 3304,
+        "critique": 8109,
+        "solver": 1408
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a right-angled triangle, the hypotenuse is 5 cm and one side is 3 cm. What is the length of the other side?",
+      "ms": {
+        "draft": 3304,
+        "critique": 6030,
+        "solver": 8735
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given triangle, the hypotenuse is 10 cm and one side is 8 cm. What is the length of the other side?",
+      "ms": {
+        "draft": 3304,
+        "critique": 5961,
+        "solver": 7266,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a triangle, if two angles are 60° and 40°, what is the measure of the third angle?",
+      "ms": {
+        "draft": 4147,
+        "critique": 6051
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a right-angled triangle, if the hypotenuse is 5 cm and one of the sides is 3 cm, what is the length of the other side?",
+      "ms": {
+        "draft": 4147,
+        "critique": 4860,
+        "solver": 1361,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a triangle, if two sides are 6 cm and 8 cm, and the included angle is 90°, what is the length of the hypotenuse?",
+      "ms": {
+        "draft": 4147,
+        "critique": 4892,
+        "solver": 2306,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A triangle is constructed with sides of lengths 5.5 cm, 4.2 cm, and 3.5 cm. Which of the following must be true about the triangle?",
+      "ms": {
+        "draft": 3710,
+        "critique": 7914,
+        "solver": 1506,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A toy shop is to be located equidistant from three houses. Which of the following geometrical constructions should be used to find the location of the shop?",
+      "ms": {
+        "draft": 3710,
+        "critique": 9007,
+        "solver": 1311,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a triangle, the angle bisectors of all three angles are drawn and they meet at a point. What is the significance of this point?",
+      "ms": {
+        "draft": 3710,
+        "critique": 8257,
+        "solver": 1687,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A triangle is drawn with two sides measuring 5.5 cm and 5 cm, and the included angle measuring 50°. Which of the following is true about the triangle?",
+      "ms": {
+        "draft": 3710,
+        "critique": 10392,
+        "solver": 12668,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the name of the side opposite the right angle in a right-angled triangle?",
+      "ms": {
+        "draft": 4147,
+        "critique": 6571,
+        "solver": 1306,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a triangle, the perpendicular bisectors of the sides are drawn. What is the significance of the point where these bisectors meet?",
+      "ms": {
+        "draft": 3710,
+        "critique": 7225,
+        "solver": 1568,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two line segments are congruent, what can be said about their lengths?",
+      "ms": {
+        "draft": 4147,
+        "critique": 6026,
+        "solver": 1683,
+        "form": 1,
+        "translation": 29142
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a triangle, if two angles are 30° and 60°, and the side opposite the 30° angle is 4 cm, what is the length of the hypotenuse?",
+      "ms": {
+        "draft": 4147,
+        "critique": 7574,
+        "solver": 2141,
+        "form": 0,
+        "translation": 31323
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If two line segments have the same length, what can be said about them?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If two angles have the same measure, what can be said about them?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a line segment is 6.7 cm long, what is the length of its perpendicular bisector?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is true about an angle bisector?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following conditions is necessary to construct a unique triangle?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the measure of an angle that is bisected into two angles of 25° each?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a toy shop is equidistant from three houses, which geometrical construction is used to represent this?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In a triangle, if two sides and the included angle are given, which property can be used to construct the triangle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a triangle, if the angle bisectors meet at a point, what is this point called?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels AB, BC, CA"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the measure of the third angle in a triangle if two angles are 60° and 40°?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In a right-angled triangle, the hypotenuse is 5 cm and one side is 3 cm. What is the length of the other side?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given triangle, the hypotenuse is 10 cm and one side is 8 cm. What is the length of the other side?",
+      "reason": "checkExpr \"sqrt(10^2 - 8^2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A triangle is constructed with two angles measuring 30° and 100°. What is the measure of the third angle?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In a triangle, if two angles are 60° and 40°, what is the measure of the third angle?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a right-angled triangle, if the hypotenuse is 5 cm and one of the sides is 3 cm, what is the length of the other side?",
+      "reason": "checkExpr \"sqrt(5^2 - 3^2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a triangle, if two sides are 6 cm and 8 cm, and the included angle is 90°, what is the length of the hypotenuse?",
+      "reason": "checkExpr \"sqrt(6^2 + 8^2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A triangle is constructed with sides of lengths 5.5 cm, 4.2 cm, and 3.5 cm. Which of the following must be true about the triangle?",
+      "reason": "the key is far longer than every distractor (65 vs 28 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A toy shop is to be located equidistant from three houses. Which of the following geometrical constructions should be used to find the location of the shop?",
+      "reason": "options 0 and 1 say the same thing (\"Drawing the angle bisectors of the triangle formed by the houses\" / \"Drawing the perpendicular bisectors of the triangle formed by the houses\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a triangle, the angle bisectors of all three angles are drawn and they meet at a point. What is the significance of this point?",
+      "reason": "options 0 and 1 say the same thing (\"It is the point equidistant from all three sides of the triangle\" / \"It is the point equidistant from all three vertices of the triangle\"); options 2 and 3 say the same thing (\"It is the point where the medians of the triangle intersect\" / \"It is the point where the altitudes of the triangle intersect\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A triangle is drawn with two sides measuring 5.5 cm and 5 cm, and the included angle measuring 50°. Which of the following is true about the triangle?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the name of the side opposite the right angle in a right-angled triangle?",
+      "reason": "near-duplicate of served question cmvw9ep4l01fh0rem7l6k86sp (cosine 0.911 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "In a triangle, the perpendicular bisectors of the sides are drawn. What is the significance of the point where these bisectors meet?",
+      "reason": "near-duplicate of served question cmvw9ep8q01ft0rembqhxzzpg (cosine 0.903 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

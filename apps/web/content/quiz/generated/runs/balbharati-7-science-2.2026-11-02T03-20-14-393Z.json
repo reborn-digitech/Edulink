@@ -1,0 +1,475 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T03:20:14.393Z",
+  "finishedAt": "2026-11-02T03:26:05.304Z",
+  "seconds": 351,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "703020012",
+    "document": "balbharati/7/science/703020012.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 2 — Plants : Structure and Function",
+    "edition": "First Edition 2017",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2024-25]\nC. Growth of pollen tubes towards the ovule is an example of\nchemotropism whereas bending of shoots towards sunlight is an\nexample of phototropism. (1)\nD.\ni) Although both plants and animals show electrical–chemical means to\nconvey the information from cell to cell but unlike nerve cells in\nanimals there is no specialized tissue in plants for conduction of\ninformation. (0.5)\nii) In animal cells, change in shape occurs because of the specialized\nproteins found in muscle cells; plant cells change shape by changing\nthe amount of water in them. (0.5)",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n38. Mohan and Rohit observed that shoots of a plant growing in shade bend 4\ntowards the sunlight. Whereas, leaves of ‘Touch me not’ plant fold and droop\nsoon after touching. They were curious to know how these movements occur\nin plants.\nA. Shoots of a plant bending towards light\nB. Folding of leaves Touch me not plant\nIn order to help them understand the movements in the plants, answer the\nfollowing questions:\nAttempt either subpart A or B.\nA. What causes the bending of shoots in the plants as shown in figure A?\nOR\nB. What causes the folding of the leaves in ‘Touch me not’ plant as shown\nin figure B? (2)\nC. Compare the movement of growth of the pollen tube towards ovule with\nthe movements sh",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n10. It is completely wrong to say that plants do not produce any excretory 2\nproducts.\nHowever, plants use completely different strategies for excretion than those\nof the animals.They get rid of these wastes in different manner (any two):\ni. Oxygen, a photosynthetic waste, is removed through stomata.\nii. Excess water is removed by transpiration through stomata.\niii. Other metabolic wastes are either stored in dead cells, resins and\ngums or are removed through falling of old leaves.\niv. Many waste products are stored in cellular vacuoles",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n38. Students to attempt either subpart A or B. 4\nA.\n● Bending of shoots of plants is a response to the stimulus and a\ndirectional, growth-related movement.\n● When growing plants detect sunlight, a hormone called auxin,\nsynthesized at shoot tip helps the cells to grow longer.\n● When light is coming from one side of the plant, auxin diffuses to the\nshady side of the shoot.\n● This concentration of auxin stimulates the cells of the shoot to grow\nlonger on the side of the shoot which is away from the light. Thus, plant\nappears to bend towards light. (0.5 x 4 =2)\nOR\nB.\n● Leaves of ‘Touch me not’ plant respond to the stimulus by showing\ngrowth independent movement.\n● These plants use electrical–che"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 71089,
+      "in": 23,
+      "out": 23,
+      "rejects": 0,
+      "promptTokens": 18466,
+      "completionTokens": 4256
+    },
+    "critique": {
+      "calls": 31,
+      "ms": 175268,
+      "in": 23,
+      "out": 20,
+      "rejects": 3,
+      "promptTokens": 13621,
+      "completionTokens": 5198
+    },
+    "solver": {
+      "calls": 154,
+      "ms": 79039,
+      "in": 20,
+      "out": 19,
+      "rejects": 1,
+      "promptTokens": 28295,
+      "completionTokens": 1654
+    },
+    "form": {
+      "calls": 14,
+      "ms": 36279,
+      "in": 19,
+      "out": 12,
+      "rejects": 7,
+      "promptTokens": 3650,
+      "completionTokens": 1046
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 13,
+      "ms": 2096,
+      "in": 12,
+      "out": 11,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 49,
+      "ms": 457622,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 28163,
+      "completionTokens": 13925
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 1,
+    "2": 4,
+    "3": 2,
+    "4": 0,
+    "5": 3,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a plant has a tap root, which of the following is most likely true?",
+      "ms": {
+        "draft": 3560,
+        "critique": 6266,
+        "solver": 14457,
+        "form": 2904
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main difference between tap roots and fibrous roots?",
+      "ms": {
+        "draft": 3560,
+        "critique": 5842,
+        "solver": 10838,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What would happen to a plant if its root tip were injured?",
+      "ms": {
+        "draft": 3560,
+        "critique": 4952,
+        "solver": 10332
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following describes the venation in a peepal leaf?",
+      "ms": {
+        "draft": 3191,
+        "critique": 5738,
+        "solver": 1368,
+        "form": 2756
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observes a leaf with a mid-vein and secondary veins forming a network. What can the student conclude about the leaf?",
+      "ms": {
+        "draft": 2737,
+        "critique": 5825,
+        "solver": 1278,
+        "form": 4003
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a leaf has veins that run parallel from base to tip, what can be said about the plant it belongs to?",
+      "ms": {
+        "draft": 2737,
+        "critique": 5676,
+        "solver": 2614,
+        "form": 3091
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which part of the plant helps in absorbing water and minerals from the soil?",
+      "ms": {
+        "draft": 2833,
+        "critique": 7009
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the function of the root tip in a plant?",
+      "ms": {
+        "draft": 2833,
+        "critique": 6425
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the venation in a leaf that has a mid-vein and secondary veins forming a network?",
+      "ms": {
+        "draft": 2737,
+        "critique": 6895,
+        "solver": 15283,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the function of the root cap in a plant?",
+      "ms": {
+        "draft": 2833,
+        "critique": 6309
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student observes that a plant has a thick main root with smaller side roots. Which type of root system does this plant have?",
+      "ms": {
+        "draft": 2833,
+        "critique": 6557,
+        "solver": 10191,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student observes a leaf with a network of veins. Which type of venation does this leaf have?",
+      "ms": {
+        "draft": 3191,
+        "critique": 6732,
+        "solver": 1446,
+        "form": 2008
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What type of venation is found in a peepal leaf?",
+      "ms": {
+        "draft": 2737,
+        "critique": 4601,
+        "solver": 2144,
+        "form": 2769,
+        "translation": 29227
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which part of the plant grows from the seed and goes into the ground for support?",
+      "ms": {
+        "draft": 3560,
+        "critique": 5997,
+        "solver": 12059,
+        "form": 3240,
+        "translation": 33652
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of root hairs in plants?",
+      "ms": {
+        "draft": 3560,
+        "critique": 5753,
+        "solver": 13301,
+        "form": 3327,
+        "translation": 51298
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of the sepals in a flower?",
+      "ms": {
+        "draft": 3191,
+        "critique": 3785,
+        "solver": 817,
+        "form": 1768,
+        "translation": 90066
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a leaf with reticulate venation?",
+      "ms": {
+        "draft": 2737,
+        "critique": 4422,
+        "solver": 1591,
+        "form": 2794,
+        "translation": 39040
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plant has leaves with parallel venation, what can be inferred about its stem?",
+      "ms": {
+        "draft": 3191,
+        "critique": 6983,
+        "solver": 1230,
+        "form": 4018,
+        "translation": 50331
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a leaf has veins that run parallel from the base to the tip, what type of venation does it have?",
+      "ms": {
+        "draft": 2737,
+        "critique": 4289,
+        "solver": 1008,
+        "form": 2979,
+        "translation": 31117
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a plant has a tap root, which of the following would you expect to find in its root system?",
+      "ms": {
+        "draft": 3560,
+        "critique": 4788,
+        "solver": 1988,
+        "form": 3604,
+        "translation": 45871
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a plant has fibrous roots, which of the following is most likely to be true?",
+      "ms": {
+        "draft": 2833,
+        "critique": 6155,
+        "solver": 9747,
+        "form": 0,
+        "translation": 27458
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student finds a leaf with veins arranged in a network. Which of the following is most likely true about the plant?",
+      "ms": {
+        "draft": 3191,
+        "critique": 5960,
+        "solver": 1297,
+        "form": 2060,
+        "translation": 44901
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A plant has leaves with reticulate venation and a taproot system. Which of the following is most likely true about the plant?",
+      "ms": {
+        "draft": 3191,
+        "critique": 4911,
+        "solver": 1513,
+        "form": 0,
+        "translation": 54495
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a plant has a tap root, which of the following is most likely true?",
+      "reason": "options 2 and 3 say the same thing (\"It has roots growing from the stem just above the soil\" / \"3: It has roots growing from the stem just above the soil\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the main difference between tap roots and fibrous roots?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers); distractor 0's reason is not a one-line misconception (\"Confuses the classification of monocot and dicot plants, whi…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What would happen to a plant if its root tip were injured?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following describes the venation in a peepal leaf?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"misreads the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student observes a leaf with a mid-vein and secondary veins forming a network. What can the student conclude about the leaf?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Chooses a plant not discussed in the passage…\"); distractor 3's reason is not a one-line misconception (\"Chooses a plant not discussed in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a leaf has veins that run parallel from base to tip, what can be said about the plant it belongs to?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Chooses a plant not discussed in the passage…\"); distractor 3's reason is not a one-line misconception (\"Chooses a plant not discussed in the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which part of the plant helps in absorbing water and minerals from the soil?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the function of the root tip in a plant?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the venation in a leaf that has a mid-vein and secondary veins forming a network?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the function of the root cap in a plant?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student observes that a plant has a thick main root with smaller side roots. Which type of root system does this plant have?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "A student observes a leaf with a network of veins. Which type of venation does this leaf have?",
+      "reason": "near-duplicate of served question cmvwl3nlq02cj0rem31y6ewpt (cosine 0.959 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

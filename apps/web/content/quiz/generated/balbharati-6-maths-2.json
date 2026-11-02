@@ -21,49 +21,334 @@
   "board": "BALBHARATI",
   "book": "६ वी गणित इंग्रजी",
   "edition": "First Edition 2026",
-  "generatedAt": "2026-10-30T23:46:37.657Z",
+  "generatedAt": "2026-11-01T12:43:49.659Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the name of a line that is written using any two points on the line?",
+      "stem": "What is the measure of a complete angle?",
       "choices": [
-        "Line AB",
-        "Line a",
-        "Line P",
-        "Line Q"
+        "0°",
+        "90°",
+        "180°",
+        "360°"
       ],
-      "answerIndex": 0,
-      "solution": "A line is named using any two points on it, which is why Line AB is correct. This follows the standard geometric convention where two points define a line. Line a, Line P, and Line Q do not follow this method as they use a single letter or a single point for naming.",
+      "answerIndex": 3,
+      "solution": "A complete angle is formed when the two arms of an angle overlap completely, forming a full circle. The measure of such an angle is 360°. A zero angle is 0°, a right angle is 90°, and a straight angle is 180°.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "किसी रेखा का नाम क्या होता है जिसे रेखा पर किन्हीं दो बिंदुओं के द्वारा लिखा जाता है?",
+          "stem": "एक पूर्ण कोण का माप क्या है?",
           "choices": [
-            "रेखा AB",
-            "रेखा a",
-            "रेखा P",
-            "रेखा Q"
+            "0°",
+            "90°",
+            "180°",
+            "360°"
           ],
-          "solution": "एक रेखा किसी भी दो बिंदुओं के द्वारा नामित की जाती है, इसलिए रेखा AB सही है। यह मानक ज्यामितीय परंपरा के अनुसार है कि दो बिंदु एक रेखा को परिभाषित करते हैं। रेखा a, रेखा P और रेखा Q इस विधि का अनुसरण नहीं करते क्योंकि वे एक अक्षर या एक बिंदु के द्वारा नामित करते हैं।",
+          "solution": "एक पूर्ण कोण तब बनता है जब कोण के दोनों किरणें पूरी तरह से ढक लें, जिससे एक पूर्ण वृत्त बनता है। ऐसे कोण का माप 360° होता है। शून्य कोण 0° के बराबर होता है, समकोण 90° के बराबर होता है और सीधा कोण 180° के बराबर होता है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard geometric terminology in Hindi.",
+          "critique": "All terms and concepts are accurately translated and match standard Hindi-medium geometry terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "कोणत्या रेषेचे नाव रेषेवरील कोणत्याही दोन बिंदूंनी दिले जाते?",
+          "stem": "एकूण कोनाचे माप किती आहे?",
           "choices": [
-            "रेषा AB",
-            "रेषा a",
-            "रेषा P",
-            "रेषा Q"
+            "0°",
+            "90°",
+            "180°",
+            "360°"
           ],
-          "solution": "रेषा कोणत्याही दोन बिंदूंनी नाव दिले जाते, म्हणून रेषा AB बरोबर आहे. हे मानक भूमितीच्या पद्धतीनुसार आहे जेथे दोन बिंदू रेषा निश्चित करतात. रेषा a, रेषा P आणि रेषा Q ही पद्धतीचे अनुसरण करत नाहीत कारण त्यांनी एक अक्षर किंवा एक बिंदू वापरला आहे.",
+          "solution": "एकूण कोन हा असा कोन असतो जेव्हा कोनाचे दोन खांब पूर्णपणे ओव्हरलॅप करतात आणि एक पूर्ण वर्तुळ बनवतात. अशा कोनाचे माप 360° असते. शून्य कोन 0° असतो, उजवा कोन 90° असतो आणि सीधा कोन 180° असतो.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi geometric terminology.",
+          "critique": "The translation is accurate, with appropriate Marathi terms for angles (एकूण कोन, शून्य कोन, उजवा कोन, सीधा कोन) that match standard Marathi-medium math terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses zero angle with complete angle",
+        "confuses right angle with complete angle",
+        "confuses straight angle with complete angle",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the solution is accurate. The correct answer is 360°, and the author's explanations for the distractors are valid misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 21,
+          "pageStart": 28,
+          "pageEnd": 30,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 22,
+          "pageStart": 30,
+          "pageEnd": 31,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 23,
+          "pageStart": 31,
+          "pageEnd": 31,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T12:43:49.659Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is formed when the two arms of an angle are in a straight line?",
+      "choices": [
+        "Zero angle",
+        "Acute angle",
+        "Right angle",
+        "Straight angle"
+      ],
+      "answerIndex": 3,
+      "solution": "A straight angle is formed when the two arms of an angle are in a straight line, and its measure is 180°. A zero angle has arms overlapping completely, an acute angle is less than 90°, and a right angle is exactly 90°.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा कोण बनता है जब कोण के दो किनारे एक सीधी रेखा में होते हैं?",
+          "choices": [
+            "शून्य कोण",
+            "न्यून कोण",
+            "समकोण",
+            "सीधा कोण"
+          ],
+          "solution": "जब कोण के दो किनारे एक सीधी रेखा में होते हैं, तो एक सीधा कोण बनता है जिसका माप 180° होता है। एक शून्य कोण में किनारे पूरी तरह से एक दूसरे के ऊपर होते हैं, एक न्यून कोण 90° से कम होता है, और एक समकोण ठीक 90° होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard geometric terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता तयार होतो जेव्हा कोनाचे दोन बाजू एका सरळ रेषेत असतात?",
+          "choices": [
+            "शून्य कोन",
+            "तीक्ष्ण कोन",
+            "समकोन",
+            "सरळ कोन"
+          ],
+          "solution": "जेव्हा कोनाचे दोन बाजू सरळ रेषेत असतात तेव्हा सरळ कोन तयार होतो आणि त्याचे माप 180° असते. शून्य कोनाचे बाजू पूर्णपणे ओव्हरलॅप करतात, तीक्ष्ण कोन 90° पेक्षा कमी असतो आणि समकोन थेट 90° असतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses zero angle with straight angle",
+        "confuses acute angle with straight angle",
+        "confuses right angle with straight angle",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-posed and the solution is accurate. A straight angle is indeed formed when the two arms of an angle are in a straight line, measuring 180°. The distractors correctly represent common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 21,
+          "pageStart": 28,
+          "pageEnd": 30,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 22,
+          "pageStart": 30,
+          "pageEnd": 31,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 23,
+          "pageStart": 31,
+          "pageEnd": 31,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T12:43:49.659Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the measure of a right angle?",
+      "choices": [
+        "Less than 90°",
+        "Exactly 90°",
+        "More than 90°",
+        "More than 180°"
+      ],
+      "answerIndex": 1,
+      "solution": "A right angle is defined as an angle that measures exactly 90 degrees. Angles less than 90 degrees are acute, and those more than 90 degrees are obtuse, so they do not qualify as right angles. Angles more than 180 degrees are reflex angles, which are also not right angles.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक समकोण का माप क्या है?",
+          "choices": [
+            "90° से कम",
+            "ठीक 90°",
+            "90° से अधिक",
+            "180° से अधिक"
+          ],
+          "solution": "एक समकोण को ठीक 90 डिग्री के माप वाला कोण के रूप में परिभाषित किया गया है। 90 डिग्री से कम कोण न्यून कोण होते हैं, और 90 डिग्री से अधिक कोण अधिक कोण होते हैं, इसलिए वे समकोण नहीं माने जाते हैं। 180 डिग्री से अधिक कोण प्रतिबिंब कोण होते हैं, जो समकोण नहीं होते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका समकोनाचे माप किती आहे?",
+          "choices": [
+            "90° पेक्षा कमी",
+            "अचूक 90°",
+            "90° पेक्षा जास्त",
+            "180° पेक्षा जास्त"
+          ],
+          "solution": "समकोन म्हणजे अचूक 90 अंशांचे कोन आहे. 90 अंशांपेक्षा कमी असलेले कोन निकोन असतात आणि 90 अंशांपेक्षा जास्त असलेले कोन अधिक कोन असतात, जे समकोन म्हणून विचारले जात नाहीत. 180 अंशांपेक्षा जास्त असलेले कोन प्रतिबिंबित कोन असतात, जे समकोन नसतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for angles.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Describes an acute angle",
+        null,
+        "Describes an obtuse angle",
+        "Describes a reflex angle"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and the correct answer is clearly 1. The distractors are all standard angle classifications that students might confuse with a right angle.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 21,
+          "pageStart": 28,
+          "pageEnd": 30,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 22,
+          "pageStart": 30,
+          "pageEnd": 31,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 23,
+          "pageStart": 31,
+          "pageEnd": 31,
+          "headingPath": [
+            "2. Lines and Angles"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T12:43:49.659Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "How many lines can be drawn through two distinct points?",
+      "choices": [
+        "One",
+        "Two",
+        "Infinite",
+        "None"
+      ],
+      "answerIndex": 0,
+      "solution": "In geometry, through any two distinct points, exactly one straight line can be drawn. This is a fundamental principle of Euclidean geometry. The option 'Two' and 'Infinite' are incorrect because they contradict this principle. 'None' is also incorrect as it denies the existence of a line through two points, which is not true.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "दो अलग-अलग बिंदुओं से कितनी रेखाएं खींची जा सकती हैं?",
+          "choices": [
+            "एक",
+            "दो",
+            "अनंत",
+            "कोई नहीं"
+          ],
+          "solution": "ज्यामिति में, किन्हीं दो अलग-अलग बिंदुओं से ठीक एक सीधी रेखा खींची जा सकती है। यह यूक्लिडियन ज्यामिति का एक मौलिक सिद्धांत है। विकल्प 'दो' और 'अनंत' गलत हैं क्योंकि ये इस सिद्धांत के विरोधी हैं। 'कोई नहीं' भी गलत है क्योंकि यह दो बिंदुओं से रेखा के अस्तित्व को अस्वीकार करता है, जो सही नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "दोन वेगळ्या बिंदूंमार्फत किती रेषा काढता येतील?",
+          "choices": [
+            "एक",
+            "दोन",
+            "अनंत",
+            "कोणतीही नाही"
+          ],
+          "solution": "ज्योमितीमध्ये, कोणत्याही दोन वेगळ्या बिंदूंमार्फत अचूक एक थर रेषा काढता येते. हे युक्लिडियन ज्योमितीच्या मूलभूत नियमांपैकी एक आहे. बरोबर उत्तर 'दोन' आणि 'अनंत' असे नाही कारण ते या नियमांच्या विरोधात आहेत. 'कोणतीही नाही' देखील चूक आहे कारण ते दोन बिंदूंमार्फत रेषा अस्तित्वात नसल्याचा नकार करते, जे सत्य नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         }
       },
@@ -73,9 +358,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses lowercase letters with proper notation for lines",
-        "Confuses line naming with lowercase letters",
-        "Confuses line naming with single letters"
+        "Confuses with multiple lines through two points",
+        "Confuses with infinite lines",
+        "Confuses with no line"
       ],
       "solverAnswers": [
         0,
@@ -85,7 +370,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 0 (Line AB), as it follows the convention of naming a line using two points. The other options incorrectly use lowercase or single letters, which is not the standard notation for lines.",
+      "critique": "The question is mathematically correct, and the solution aligns with the fundamental geometric principle that exactly one line can be drawn through two distinct points. The author's key and reasoning are accurate.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
@@ -116,482 +401,7 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T23:46:37.657Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is an example of a reflex angle?",
-      "choices": [
-        "45°",
-        "90°",
-        "180°",
-        "270°"
-      ],
-      "answerIndex": 3,
-      "solution": "A reflex angle is an angle that is greater than 180° but less than 360°. Among the options, 270° is a reflex angle. The other options represent acute, right, and straight angles respectively.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन एक प्रतिवर्ती कोण का उदाहरण है?",
-          "choices": [
-            "45°",
-            "90°",
-            "180°",
-            "270°"
-          ],
-          "solution": "एक प्रतिवर्ती कोण वह कोण होता है जो 180° से अधिक लेकिन 360° से कम होता है। विकल्पों में 270° एक प्रतिवर्ती कोण है। अन्य विकल्प क्रमशः न्यून कोण, समकोण और सीधा कोण दर्शाते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English question, with appropriate terminology used for angles.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते एक अपक्रमण कोनाचे उदाहरण आहे?",
-          "choices": [
-            "45°",
-            "90°",
-            "180°",
-            "270°"
-          ],
-          "solution": "अपक्रमण कोन हा एखादा कोन आहे जो 180° पेक्षा जास्त पण 360° पेक्षा कमी असतो. निवडक पर्यायांमध्ये 270° अपक्रमण कोन आहे. उरलेल्या पर्यायांमध्ये तिन्ही तीन कोन लहान कोन, समकोन आणि सरळ कोन दर्शवितात क्रमाने.",
-          "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the English question and solution, with appropriate terminology used for angles.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "represents an acute angle",
-        "represents a right angle",
-        "represents a straight angle",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies 270° as a reflex angle, which is between 180° and 360°, and correctly labels the other options as acute, right, and straight angles.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 21,
-          "pageStart": 28,
-          "pageEnd": 30,
-          "headingPath": [
-            "2. Lines and Angles"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 22,
-          "pageStart": 30,
-          "pageEnd": 31,
-          "headingPath": [
-            "2. Lines and Angles"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 23,
-          "pageStart": 31,
-          "pageEnd": 31,
-          "headingPath": [
-            "2. Lines and Angles"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T23:46:37.657Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "If a straight angle is divided into three equal parts, what type of angle is each part?",
-      "choices": [
-        "Right angle",
-        "Acute angle",
-        "Obtuse angle",
-        "Reflex angle"
-      ],
-      "answerIndex": 1,
-      "solution": "A straight angle measures 180°, so dividing it into three equal parts gives 60°, which is an acute angle. Other options do not match the measure of 60°.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक सीधा कोण तीन बराबर भागों में विभाजित किया जाता है, तो प्रत्येक भाग किस प्रकार का कोण होता है?",
-          "choices": [
-            "समकोण",
-            "न्यून कोण",
-            "अधिक कोण",
-            "प्रतिवर्ती कोण"
-          ],
-          "solution": "एक सीधा कोण 180° का होता है, इसलिए इसे तीन बराबर भागों में विभाजित करने पर 60° प्राप्त होता है, जो एक न्यून कोण है। अन्य विकल्प 60° के माप के साथ मेल नहीं खाते।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are standard in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एक सरळ कोन तीन समान भागांमध्ये विभागला जाईल, तर प्रत्येक भाग कोणत्या प्रकारचा कोन असेल?",
-          "choices": [
-            "समकोन",
-            "कूटिल कोन",
-            "अधिक कोन",
-            "प्रतिकूटिल कोन"
-          ],
-          "solution": "एक सरळ कोन 180° मोजतो, म्हणून त्याला तीन समान भागांमध्ये विभागल्यास 60° मिळतो, जो कूटिल कोन आहे. इतर विकल्प 60° च्या मापासह जुळत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for angles.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses with right angle",
-        null,
-        "Incorrectly assumes the angle is obtuse",
-        "Misunderstands the classification of angles"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct. A straight angle is 180°, and dividing it into three equal parts gives 60°, which is an acute angle. The reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 21,
-          "pageStart": 28,
-          "pageEnd": 30,
-          "headingPath": [
-            "2. Lines and Angles"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 22,
-          "pageStart": 30,
-          "pageEnd": 31,
-          "headingPath": [
-            "2. Lines and Angles"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 23,
-          "pageStart": 31,
-          "pageEnd": 31,
-          "headingPath": [
-            "2. Lines and Angles"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T23:46:37.657Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a paper fan is closed, what type of angle is formed between the two edges of the fan?",
-      "choices": [
-        "Acute angle",
-        "Right angle",
-        "Zero angle",
-        "Reflex angle"
-      ],
-      "answerIndex": 2,
-      "solution": "When a paper fan is closed, the two edges of the fan lie directly on top of each other, forming a zero angle. An acute angle is less than 90 degrees, a right angle is exactly 90 degrees, and a reflex angle is greater than 180 degrees, none of which match the situation when the fan is fully closed.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक कागज के पंखा बंद कर दिया जाए, तो पंखे के दो किनारों के बीच किस प्रकार का कोण बनता है?",
-          "choices": [
-            "न्यून कोण",
-            "समकोण",
-            "शून्य कोण",
-            "प्रतिवर्ती कोण"
-          ],
-          "solution": "जब एक कागज का पंखा बंद कर दिया जाता है, तो पंखे के दो किनारे सीधे एक दूसरे पर रहते हैं, जिससे शून्य कोण बनता है। एक न्यून कोण 90 डिग्री से कम होता है, समकोण ठीक 90 डिग्री होता है, और प्रतिवर्ती कोण 180 डिग्री से अधिक होता है, जो कि पंखे के पूरी तरह से बंद होने की स्थिति के अनुरूप नहीं है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for angles.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "कागदाचा पंखा बंद असताना, पंख्याच्या दोन किनारांमध्ये कोणता कोन तयार होतो?",
-          "choices": [
-            "तीक्ष्ण कोन",
-            "समकोन",
-            "शून्य कोन",
-            "प्रतिकूल कोन"
-          ],
-          "solution": "जेव्हा कागदाचा पंखा बंद असतो तेव्हा पंख्याच्या दोन किनारा एकमेकांवर ठेवल्या जातात, जे शून्य कोन तयार करतात. तीक्ष्ण कोन 90 अंशापेक्षा कमी असतो, समकोन तर 90 अंश असतो आणि प्रतिकूल कोन 180 अंशापेक्षा जास्त असतो, जे पंखा पूर्णपणे बंद असताना घडत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses with acute angle",
-        "Confuses with right angle",
-        null,
-        "Misunderstands the classification of angles"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The question is valid and the correct answer is 'Zero angle' (option 2). The reasoning aligns with the definition of a zero angle, which is formed when two lines or edges are in the same direction, as in a closed fan. The distractors represent common misconceptions about angle types.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 21,
-          "pageStart": 28,
-          "pageEnd": 30,
-          "headingPath": [
-            "2. Lines and Angles"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 22,
-          "pageStart": 30,
-          "pageEnd": 31,
-          "headingPath": [
-            "2. Lines and Angles"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 23,
-          "pageStart": 31,
-          "pageEnd": 31,
-          "headingPath": [
-            "2. Lines and Angles"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T23:46:37.657Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "What type of angle is formed between the hour hand and the minute hand of a clock when it is 04:00?",
-      "choices": [
-        "Acute angle",
-        "Right angle",
-        "Obtuse angle",
-        "Reflex angle"
-      ],
-      "answerIndex": 2,
-      "solution": "At 04:00, the hour hand is at 4 and the minute hand is at 12, forming an obtuse angle. Other options are incorrect as they do not match the angle formed at this time.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "समय 04:00 पर घड़ी के घंटा सूई और मिनट सूई के बीच कौन सा कोण बनता है?",
-          "choices": [
-            "न्यून कोण",
-            "समकोण",
-            "अधिक कोण",
-            "प्रतिवर्ती कोण"
-          ],
-          "solution": "04:00 पर, घंटा सूई 4 पर और मिनट सूई 12 पर होती है, जो एक अधिक कोण बनाती है। अन्य विकल्प गलत हैं क्योंकि इनमें से कोई भी इस समय बने कोण के साथ मेल नहीं खाता।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and options, with appropriate terminology used in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "तासाच्या सूचक आणि मिनिटाच्या सूचक दरम्यान कोणता प्रकारचा कोन तयार होतो जेव्हा वेळ 04:00 असतो?",
-          "choices": [
-            "तीव्र कोन",
-            "समकोन",
-            "अधिक कोन",
-            "प्रतिकूल कोन"
-          ],
-          "solution": "04:00 वाजताना, तासाचा सूचक 4 वर असतो आणि मिनिटाचा सूचक 12 वर असतो, जे अधिक कोन तयार करतो. या वेळी तयार होणारा कोन यांच्याशी जुळत नाही म्हणून इतर विकल्प अयोग्य आहेत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, with appropriate Marathi technical terms used for angles.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses with acute angle",
-        "Confuses with right angle",
-        null,
-        "Misunderstands the classification of angles"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct. At 4:00, the hour hand is at 4 and the minute hand is at 12, forming an angle of 120 degrees, which is an obtuse angle. The other options are incorrect.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 21,
-          "pageStart": 28,
-          "pageEnd": 30,
-          "headingPath": [
-            "2. Lines and Angles"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 22,
-          "pageStart": 30,
-          "pageEnd": 31,
-          "headingPath": [
-            "2. Lines and Angles"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 23,
-          "pageStart": 31,
-          "pageEnd": 31,
-          "headingPath": [
-            "2. Lines and Angles"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T23:46:37.657Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "If an angle is formed by rotating a ray from one position to another, and the rotation is more than 180° but less than 360°, what type of angle is it?",
-      "choices": [
-        "acute angle",
-        "right angle",
-        "obtuse angle",
-        "reflex angle"
-      ],
-      "answerIndex": 3,
-      "solution": "A reflex angle is defined as an angle that is greater than 180° but less than 360°. The other options do not match this range of measures: acute angles are less than 90°, right angles are 90°, and obtuse angles are between 90° and 180°.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि कोण एक किरण के एक स्थिति से दूसरी स्थिति तक घूमने से बनता है, और घूर्णन 180° से अधिक लेकिन 360° से कम है, तो यह किस प्रकार का कोण है?",
-          "choices": [
-            "न्यून कोण",
-            "समकोण",
-            "अधिक कोण",
-            "प्रतिवर्ती कोण"
-          ],
-          "solution": "एक प्रतिवर्ती कोण की परिभाषा एक कोण है जो 180° से अधिक लेकिन 360° से कम होता है। अन्य विकल्प इस विस्तार के माप के अनुरूप नहीं होते हैं: न्यून कोण 90° से कम होता है, समकोण 90° होता है, और अधिक कोण 90° से 180° के बीच होता है।",
-          "imageAlt": null,
-          "critique": "All terms are standard Hindi mathematical terms used in textbooks. The translation is accurate and maintains the original meaning and structure.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एक कोन एका रेशीच्या एका स्थितीतून दुसऱ्या स्थितीत फिरविल्यामुळे तयार होतो, आणि फिरवणी 180° पेक्षा जास्त पण 360° पेक्षा कमी असेल, तर तो कोन कोणत्या प्रकारचा असेल?",
-          "choices": [
-            "तीव्र कोन",
-            "समकोन",
-            "अधिक कोन",
-            "प्रतिबिंब कोन"
-          ],
-          "solution": "प्रतिबिंब कोन म्हणजे 180° पेक्षा जास्त पण 360° पेक्षा कमी असलेला कोन आहे. इतर विकल्प या श्रेणीशी जुळत नाहीत: तीव्र कोन 90° पेक्षा कमी असतात, समकोन 90° असतात आणि अधिक कोन 90° आणि 180° दरम्यान असतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and uses standard Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "represents an acute angle",
-        "represents a right angle",
-        "represents an obtuse angle",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is well-posed and the solution is correct. The correct answer is 'reflex angle,' and the author's reasoning for the distractors aligns with common misconceptions about angle types.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 21,
-          "pageStart": 28,
-          "pageEnd": 30,
-          "headingPath": [
-            "2. Lines and Angles"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 22,
-          "pageStart": 30,
-          "pageEnd": 31,
-          "headingPath": [
-            "2. Lines and Angles"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 23,
-          "pageStart": 31,
-          "pageEnd": 31,
-          "headingPath": [
-            "2. Lines and Angles"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T23:46:37.657Z",
+      "generatedAt": "2026-11-01T12:43:49.659Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

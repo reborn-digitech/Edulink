@@ -1,0 +1,751 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T15:39:39.783Z",
+  "finishedAt": "2026-11-02T15:54:11.821Z",
+  "seconds": 872,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "९ वी गणित भाग-१ इंग्रजी",
+    "bookCode": "903000608",
+    "document": "balbharati/9/mathematics/903000608.pdf",
+    "classLevel": 9,
+    "subject": "Mathematics",
+    "chapter": "Chapter 3 — Polynomials",
+    "edition": "2026 edition",
+    "chunks": 12,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INMO 2021 — solutions or answer key]\nhas degree 0, i.e., is a constant polynomial. First consider the case when deg p is even;\nassume for now the leading coefficient of p is positive. That means p(x) → ∞ for x → ±∞,\nso it has a global minimum, say C. Then the polynomial p + k (k > C) has no real roots.\nUsing (?) on p and the constant polynomial −k, we see that f(p) − f(−k) has no roots.\nBut this is impossible if deg f(p) is odd (since f(−k) is a constant), so by claim 2, we must\ndeg f(p) = deg p. A similar argument holds if p has negative leading coefficient.\nNow if deg p is odd, then deg f(p) cannot be even, otherwise q = f(p) would be an even\ndegree polynomial whose image f(q) = f(f(p)) = p has odd degree, contradicting the l",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2025-26]\n3. Answer – D 1\nAs, 𝑓(𝑥) = k(x + 2)(x − 5) ⟹ 𝑓(𝑥) = k(𝑥 − 3x − 10), k ≠ 0 2\nSince k can be any real number. So, there are Infinitely many such polynomials.",
+      "[INMO 2020 — question paper]\n2. Suppose P(x) is a polynomial with real coefficients satisfying the condition\nP(cosf + sin 0) = P(cos — sin 6),\nfor every real 0. Prove that P(x) can be expressed in the form\nPa) = ap + ar(1 — 22) + as(1 — a®)* +--+ an (1 — 22)\",\nfor some real numbers ag. a1. as. ... a, and nonnegative integer n.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n28. 5\nFrom given polynomial 𝛼 + 𝛽 = 6\n𝛼 + 𝛽 2 2 = ( ) - 2 x 5 6 2 1 6 = 13 36\n2 2 1 2 1\nAnd 𝛼 𝛽 = ( ) = 6 36\n𝑥 - 2 13 36 𝑥 + 36 1\n½\n½\n, 𝛼𝛽 = 1 6 1\n½\n½\n Required polynomial is 36𝑥 -13 𝑥+1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 306148,
+      "in": 43,
+      "out": 37,
+      "rejects": 6,
+      "promptTokens": 40076,
+      "completionTokens": 9929
+    },
+    "critique": {
+      "calls": 52,
+      "ms": 605803,
+      "in": 37,
+      "out": 26,
+      "rejects": 11,
+      "promptTokens": 24438,
+      "completionTokens": 9354
+    },
+    "solver": {
+      "calls": 230,
+      "ms": 218838,
+      "in": 26,
+      "out": 19,
+      "rejects": 7,
+      "promptTokens": 51479,
+      "completionTokens": 2571
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 19,
+      "out": 9,
+      "rejects": 10,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 3,
+      "ms": 503,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 442546,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 20413,
+      "completionTokens": 8589
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 3,
+    "2": 2,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is a constant polynomial?",
+      "ms": {
+        "draft": 5985,
+        "critique": 8755,
+        "solver": 22100,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the degree of a polynomial in one variable is 0, which of the following could it be?",
+      "ms": {
+        "draft": 5985,
+        "critique": 12901
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a trinomial of degree 8?",
+      "ms": {
+        "draft": 5985,
+        "critique": 13550,
+        "solver": 2945
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the standard form of the polynomial 3x^2 + 5x + 2x^3?",
+      "ms": {
+        "draft": 5985,
+        "critique": 12104,
+        "solver": 27473
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the degree of a polynomial with the highest power of variable as 5?",
+      "ms": {
+        "draft": 6114,
+        "critique": 14336
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the degree of one polynomial is 3 and the degree of another polynomial is 5, what is the degree of their product?",
+      "ms": {
+        "draft": 6114,
+        "critique": 13684
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the polynomial 3x² + 5x + 7 is divided by (x + 2), what is the remainder?",
+      "ms": {
+        "draft": 6114,
+        "critique": 16705
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Using synthetic division, what is the quotient when (3x³ + 2x² - 1) is divided by (x + 2)?",
+      "ms": {
+        "draft": 6114,
+        "critique": 15630,
+        "solver": 2583
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the relationship between the remainder of a polynomial division and the value of the polynomial at a specific point?",
+      "ms": {
+        "draft": 10385,
+        "critique": 13304
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a polynomial f(x) has roots at x = 2 and x = -3, which of the following is a factor of the polynomial?",
+      "ms": {
+        "draft": 6114,
+        "critique": 13660,
+        "solver": 21448,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the polynomial p(x) = x^3 + ax^2 + bx + c is divided by (x - 1), the remainder is 6. If the polynomial is also divided by (x + 1), the remainder is -4. What is the value of a + b + c?",
+      "ms": {
+        "draft": 10385,
+        "critique": 13630
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the polynomial f(x) = x^2 - 2x + 1 is divided by (x - 1), what is the remainder?",
+      "ms": {
+        "draft": 10385,
+        "critique": 13229,
+        "solver": 24580
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The polynomial p(x) = x^3 + ax^2 + bx + c is divided by (x - 1), (x + 1), and (x - 2). The remainders are 6, -4, and 12, respectively. What is the value of a + b + c?",
+      "ms": {
+        "draft": 10385,
+        "critique": 13632
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The polynomial p(x) = x^3 - 3x^2 + 3x - 1 is divided by (x - 1). According to the Remainder Theorem, what is the remainder?",
+      "ms": {
+        "draft": 10385,
+        "critique": 12313,
+        "solver": 28443,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the degree of the polynomial 5x^2 + 3?",
+      "ms": {
+        "draft": 24440,
+        "critique": 16455,
+        "solver": 2391,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the degree of the polynomial 2x^3 + 7?",
+      "ms": {
+        "draft": 24440,
+        "critique": 13349,
+        "solver": 24508,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the value of the polynomial 2x^2 + 5 when x = 2?",
+      "ms": {
+        "draft": 7142,
+        "critique": 10928
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the value of the polynomial 2x^3 + 3x + 4 when x = -2?",
+      "ms": {
+        "draft": 7142,
+        "critique": 11176
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the degree of the polynomial 2x^3 + 7?",
+      "ms": {
+        "draft": 5761,
+        "critique": 11814,
+        "solver": 17141
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the polynomial x^3 + ax^2 + bx + c is divided by (x - 1), the remainder is 5. What is the value of the polynomial when x = 1?",
+      "ms": {
+        "draft": 7142,
+        "critique": 14127,
+        "solver": 3074,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the value of the polynomial x^3 - 3x^2 + 2x + 7 when x = -1 is 10, what is the value of the polynomial x^3 - 3x^2 + 2x + 7 when x = -1?",
+      "ms": {
+        "draft": 7142,
+        "critique": 10865,
+        "solver": 31985
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the polynomial x^3 + ax^2 + bx + c is divided by (x + 1), the remainder is 10. What is the value of the polynomial when x = -1?",
+      "ms": {
+        "draft": 7142,
+        "critique": 13991,
+        "solver": 24604,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the value of the polynomial 2x^2 + 3x - 4 when x = 2?",
+      "ms": {
+        "draft": 10186,
+        "critique": 15754
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the polynomial 2x^3 - 5x^2 + 3x - 1 is divided by x - 2, what is the remainder?",
+      "ms": {
+        "draft": 10186,
+        "critique": 9943,
+        "solver": 3121,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the degree of the polynomial 10?",
+      "ms": {
+        "draft": 6432,
+        "critique": 7468,
+        "solver": 1661,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a polynomial p(x) is divided by (x - 1) and (x - 2), the remainders are 3 and 5 respectively. What is the remainder when p(x) is divided by (x - 1)(x - 2)?",
+      "ms": {
+        "draft": 10186,
+        "critique": 12322
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a constant polynomial?",
+      "ms": {
+        "draft": 6432,
+        "critique": 9352,
+        "solver": 15145,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the coefficient form of a polynomial is (2, -1, 0, 5, 6), what is the index form of the polynomial?",
+      "ms": {
+        "draft": 6432,
+        "critique": 12522,
+        "solver": 3729
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the general form of a polynomial of degree 3?",
+      "ms": {
+        "draft": 6114,
+        "critique": 15068,
+        "solver": 20867,
+        "form": 0,
+        "translation": 44470
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of a polynomial when the variable is replaced by a specific number?",
+      "ms": {
+        "draft": 10385,
+        "critique": 13426,
+        "solver": 20323,
+        "form": 0,
+        "translation": 60753
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the coefficient form of x^3 - 1?",
+      "ms": {
+        "draft": 5761,
+        "critique": 10108,
+        "solver": 2377,
+        "form": 0,
+        "translation": 52512
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the degree of the polynomial 10?",
+      "ms": {
+        "draft": 5985,
+        "critique": 7401,
+        "solver": 2474,
+        "form": 0,
+        "translation": 34200
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the degree of the polynomial 3x^2y^3 + 4xy^2 - 7?",
+      "ms": {
+        "draft": 10186,
+        "critique": 10483,
+        "solver": 2492,
+        "form": 0,
+        "translation": 73627
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a monomial of degree 5?",
+      "ms": {
+        "draft": 5985,
+        "critique": 10148,
+        "solver": 18410,
+        "form": 0,
+        "translation": 39429
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If p(x) = 2x + 5, what is p(2)?",
+      "ms": {
+        "draft": 24440,
+        "critique": 15236,
+        "solver": 15635,
+        "form": 0,
+        "translation": 33369
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the polynomial 3x^2 + 5x + 2 is divided by x + 1, what is the remainder?",
+      "ms": {
+        "draft": 10186,
+        "critique": 11115,
+        "solver": 1966,
+        "form": 0,
+        "translation": 61659
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a binomial of degree 5 in two variables?",
+      "ms": {
+        "draft": 6432,
+        "critique": 12062,
+        "solver": 11820,
+        "form": 0,
+        "translation": 85373
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the coefficient form of x^3 - 1?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If (x + 1) is a factor of the polynomial 3x + m, find the value of m.",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a constant polynomial?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the degree of a polynomial in one variable is 0, which of the following could it be?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following is a trinomial of degree 8?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the standard form of the polynomial 3x^2 + 5x + 2x^3?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the degree of a polynomial with the highest power of variable as 5?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If the degree of one polynomial is 3 and the degree of another polynomial is 5, what is the degree of their product?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the polynomial 3x² + 5x + 7 is divided by (x + 2), what is the remainder?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Using synthetic division, what is the quotient when (3x³ + 2x² - 1) is divided by (x + 2)?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "According to the passage, what is the relationship between the remainder of a polynomial division and the value of the polynomial at a specific point?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a polynomial f(x) has roots at x = 2 and x = -3, which of the following is a factor of the polynomial?",
+      "reason": "options 0 and 2 say the same thing (\"(x - 2)(x + 3)\" / \"(x - 2)(x - 3)\"); options 1 and 3 are the same (\"(x + 2)(x + 3)\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the polynomial p(x) = x^3 + ax^2 + bx + c is divided by (x - 1), the remainder is 6. If the polynomial is also divided by (x + 1), the remainder is -4. What is the value of a + b + c?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the polynomial f(x) = x^2 - 2x + 1 is divided by (x - 1), what is the remainder?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "The polynomial p(x) = x^3 + ax^2 + bx + c is divided by (x - 1), (x + 1), and (x - 2). The remainders are 6, -4, and 12, respectively. What is the value of a + b + c?",
+      "reason": "the critic finds option 1 correct, the key is 2; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The polynomial p(x) = x^3 - 3x^2 + 3x - 1 is divided by (x - 1). According to the Remainder Theorem, what is the remainder?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); checkExpr \"0\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the degree of the polynomial 5x^2 + 3?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the degree of the polynomial 2x^3 + 7?",
+      "reason": "options 1 and 2 are the same (\"2: 2\"); options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the value of the polynomial 2x + 3 when x = -1?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is a linear polynomial?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the degree of the zero polynomial?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the remainder when (x^2 - 5x + 7) is divided by (x + 2)?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the value of the polynomial 2x^2 + 5 when x = 2?",
+      "reason": "the critic finds option 3 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the value of the polynomial 2x^3 + 3x + 4 when x = -2?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the degree of the polynomial 2x^3 + 7?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the polynomial x^3 + ax^2 + bx + c is divided by (x - 1), the remainder is 5. What is the value of the polynomial when x = 1?",
+      "reason": "checkExpr \"5\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If the value of the polynomial x^3 - 3x^2 + 2x + 7 when x = -1 is 10, what is the value of the polynomial x^3 - 3x^2 + 2x + 7 when x = -1?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the polynomial x^3 + ax^2 + bx + c is divided by (x + 1), the remainder is 10. What is the value of the polynomial when x = -1?",
+      "reason": "checkExpr \"10\" is a bare literal"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the value of the polynomial 2x^2 + 3x - 4 when x = 2?",
+      "reason": "the critic finds option 2 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the polynomial 2x^3 - 5x^2 + 3x - 1 is divided by x - 2, what is the remainder?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"2*2^3-5*2^2+3*2-1\" = 1, but the key says 3"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the degree of the polynomial 10?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a polynomial p(x) is divided by (x - 1) and (x - 2), the remainders are 3 and 5 respectively. What is the remainder when p(x) is divided by (x - 1)(x - 2)?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a constant polynomial?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the coefficient form of a polynomial is (2, -1, 0, 5, 6), what is the index form of the polynomial?",
+      "reason": "the solver picked option 3 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

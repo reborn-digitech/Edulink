@@ -21,47 +21,142 @@
   "board": "BALBHARATI",
   "book": "७ वी गणित इंग्रजी",
   "edition": "2026 edition",
-  "generatedAt": "2026-10-31T12:18:45.663Z",
+  "generatedAt": "2026-11-01T23:16:52.736Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 2,
-      "stem": "What is the area of a rectangle with a length of 15 cm and a breadth of 5 cm?",
+      "stem": "What is the formula to calculate the area of a square?",
       "choices": [
-        "75 sqcm",
-        "30 sqcm",
-        "15 sqcm",
-        "5 sqcm"
+        "side × side",
+        "length × breadth",
+        "2 × length + 2 × breadth",
+        "side × side × side"
       ],
       "answerIndex": 0,
-      "solution": "The area of a rectangle is calculated as length × breadth. So, 15 cm × 5 cm = 75 sqcm. The other options are incorrect because they either multiply incorrectly (30, 15, 5) or use wrong values.",
+      "solution": "The area of a square is calculated as side × side. The other options are formulas for the area of a rectangle, perimeter of a rectangle, and volume of a cube, respectively.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "15 सेमी लंबाई और 5 सेमी चौड़ाई वाले आयत का क्षेत्रफल क्या है?",
+          "stem": "एक वर्ग के क्षेत्रफल की गणना करने का सूत्र क्या है?",
           "choices": [
-            "75 वर्ग सेमी",
-            "30 वर्ग सेमी",
-            "15 वर्ग सेमी",
-            "5 वर्ग सेमी"
+            "भुजा × भुजा",
+            "लंबाई × चौड़ाई",
+            "2 × लंबाई + 2 × चौड़ाई",
+            "भुजा × भुजा × भुजा"
           ],
-          "solution": "एक आयत का क्षेत्रफल लंबाई × चौड़ाई के रूप में गणना किया जाता है। इसलिए, 15 सेमी × 5 सेमी = 75 वर्ग सेमी। अन्य विकल्प गलत हैं क्योंकि वे गलत रूप से गुणा करते हैं (30, 15, 5) या गलत मानों का उपयोग करते हैं।",
+          "solution": "एक वर्ग का क्षेत्रफल भुजा × भुजा के रूप में गणना की जाती है। अन्य विकल्प क्रमशः आयत के क्षेत्रफल, आयत के परिमाप और घन के आयतन के सूत्र हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology as found in Hindi textbooks.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All options and the solution are correctly translated, with technical terms like 'भुजा' (side), 'लंबाई' (length), 'चौड़ाई' (breadth), and 'क्षेत्रफल' (area) being standard in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "15 सेमी लांबी आणि 5 सेमी रुंदी असलेल्या चौरसाचे क्षेत्रफळ किती आहे?",
+          "stem": "चौरसाच्या क्षेत्रफळाचे सूत्र काय आहे?",
           "choices": [
-            "75 चौ.सेमी",
-            "30 चौ.सेमी",
-            "15 चौ.सेमी",
-            "5 चौ.सेमी"
+            "बाजू × बाजू",
+            "लांबी × रुंदी",
+            "2 × लांबी + 2 × रुंदी",
+            "बाजू × बाजू × बाजू"
           ],
-          "solution": "चौरसाचे क्षेत्रफळ लांबी × रुंदी असे गणले जाते. म्हणून, 15 सेमी × 5 सेमी = 75 चौ.सेमी. इतर विकल्प चुकीचे आहेत कारण ते चुकीच्या पद्धतीने गुणाकार करतात (30, 15, 5) किंवा चुकीच्या मूल्यांचा वापर करतात.",
+          "solution": "चौरसाचे क्षेत्रफळ बाजू × बाजू असे काढले जाते. इतर विकल्प अनुक्रमे आयताचे क्षेत्रफळ, आयताचा परिमाण आणि घनटकाचे आयतन यांचे सूत्र आहेत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi-medium textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses the area formula with that of a rectangle",
+        "confuses the perimeter formula with that of the area",
+        "confuses the area formula with that of a cube"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (side × side). The other options are correctly identified as formulas for a rectangle's area, a rectangle's perimeter, and a cube's volume. The reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 58,
+          "pageStart": 90,
+          "pageEnd": 91,
+          "headingPath": [
+            "12. Perimeter and Area"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 59,
+          "pageStart": 91,
+          "pageEnd": 92,
+          "headingPath": [
+            "12. Perimeter and Area"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 60,
+          "pageStart": 92,
+          "pageEnd": 94,
+          "headingPath": [
+            "12. Perimeter and Area"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-01T23:16:52.736Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If the side of a square is 12 cm, what is its perimeter?",
+      "choices": [
+        "48 cm",
+        "12 cm",
+        "24 cm",
+        "36 cm"
+      ],
+      "answerIndex": 0,
+      "solution": "The perimeter of a square is calculated as 4 × side. So, 4 × 12 = 48 cm. The other options are incorrect calculations based on different values or incorrect formulas.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक वर्ग की भुजा 12 सेमी है, तो इसका परिमाप क्या है?",
+          "choices": [
+            "48 सेमी",
+            "12 सेमी",
+            "24 सेमी",
+            "36 सेमी"
+          ],
+          "solution": "एक वर्ग का परिमाप 4 × भुजा के रूप में गणना किया जाता है। इसलिए, 4 × 12 = 48 सेमी। अन्य विकल्प विभिन्न मानों या गलत सूत्रों पर आधारित गलत गणनाएं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर चौरसाच्या बाजूची लांबी 12 सेंमी असेल, तर त्याचा परिमाण किती असेल?",
+          "choices": [
+            "48 सेंमी",
+            "12 सेंमी",
+            "24 सेंमी",
+            "36 सेंमी"
+          ],
+          "solution": "चौरसाचा परिमाण 4 × बाजू असे गणला जातो. म्हणून, 4 × 12 = 48 सेंमी. इतर विकल्प वेगवेगळ्या मूल्यांवर किंवा चुकीच्या सूत्रांवर आधारित असलेल्या चुकीच्या गणना आहेत.",
           "imageAlt": null,
           "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
@@ -73,9 +168,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "incorrect multiplication",
-        "uses only one dimension",
-        "uses one dimension as area"
+        "Incorrectly assumes the perimeter is 12 cm, which is the side length itself.",
+        "Incorrectly calculates the perimeter as 24 cm, which is 2 × side.",
+        "Incorrectly calculates the perimeter as 36 cm, which is 3 × side."
       ],
       "solverAnswers": [
         0,
@@ -85,7 +180,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 75 sqcm, as area of a rectangle is length × breadth. The distractors reflect common misconceptions like incorrect multiplication, using only one dimension, or misinterpreting a single dimension as area.",
+      "critique": "The solution correctly calculates the perimeter of a square as 4 × side, which is 48 cm. The distractors reflect common misconceptions where students might use 1 × side, 2 × side, or 3 × side instead of 4 × side.",
       "sources": [
         {
           "document": "balbharati/7/mathematics/703020004.pdf",
@@ -116,49 +211,49 @@
         }
       ],
       "edition": "2026 edition",
-      "generatedAt": "2026-10-31T12:18:45.663Z",
+      "generatedAt": "2026-11-01T23:16:52.736Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "A rectangle has a length of 17 cm and a breadth of 15 cm. What is its perimeter?",
+      "difficulty": 4,
+      "stem": "A rectangle has a length of 28 cm and a breadth of 20 cm. If its length is 17 cm, what is its breadth?",
       "choices": [
-        "64 cm",
-        "32 cm",
+        "15 cm",
         "17 cm",
-        "24 cm"
+        "20 cm",
+        "28 cm"
       ],
       "answerIndex": 0,
-      "solution": "The perimeter of a rectangle is calculated as 2 × (length + breadth). So, 2 × (17 cm + 15 cm) = 2 × 32 cm = 64 cm. The other options are incorrect because they either add the length and breadth once (32 cm), use the length alone (17 cm), or use the side of a square (24 cm).",
-      "checkExpr": null,
+      "solution": "The perimeter of the rectangle is 2 × (length + breadth) = 64 cm. If the length is 17 cm, then 2 × (17 + x) = 64, which gives x = 15 cm. The other options are not consistent with the given perimeter and length.",
+      "checkExpr": "64/2-17",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक आयत की लंबाई 17 सेमी और चौड़ाई 15 सेमी है। इसका परिमाप क्या है?",
+          "stem": "एक आयत की लंबाई 28 सेमी और चौड़ाई 20 सेमी है। यदि इसकी लंबाई 17 सेमी है, तो इसकी चौड़ाई क्या है?",
           "choices": [
-            "64 सेमी",
-            "32 सेमी",
+            "15 सेमी",
             "17 सेमी",
-            "24 सेमी"
+            "20 सेमी",
+            "28 सेमी"
           ],
-          "solution": "एक आयत का परिमाप 2 × (लंबाई + चौड़ाई) के रूप में गणना किया जाता है। इसलिए, 2 × (17 सेमी + 15 सेमी) = 2 × 32 सेमी = 64 सेमी। अन्य विकल्प गलत हैं क्योंकि वे लंबाई और चौड़ाई को एक बार जोड़ते हैं (32 सेमी), लंबाई के एकल उपयोग (17 सेमी) या वर्ग की भुजा के उपयोग (24 सेमी) करते हैं।",
+          "solution": "आयत का परिमाप 2 × (लंबाई + चौड़ाई) = 64 सेमी है। यदि लंबाई 17 सेमी है, तो 2 × (17 + x) = 64, जिसके फलस्वरूप x = 15 सेमी प्राप्त होता है। अन्य विकल्प दिए गए परिमाप और लंबाई के साथ संगत नहीं हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "एका चौकोनाची लांबी 17 सेमी आणि रुंदी 15 सेमी आहे. त्याची परिमिती किती आहे?",
+          "stem": "एका चौकोनाची लांबी 28 सेमी आहे आणि रुंदी 20 सेमी आहे. जर त्याची लांबी 17 सेमी असेल, तर त्याची रुंदी किती असेल?",
           "choices": [
-            "64 सेमी",
-            "32 सेमी",
+            "15 सेमी",
             "17 सेमी",
-            "24 सेमी"
+            "20 सेमी",
+            "28 सेमी"
           ],
-          "solution": "चौकोनाची परिमिती 2 × (लांबी + रुंदी) असे काढली जाते. म्हणून, 2 × (17 सेमी + 15 सेमी) = 2 × 32 सेमी = 64 सेमी. इतर विकल्प चुकीचे आहेत कारण ते लांबी आणि रुंदी एकदा जोडतात (32 सेमी), लांबी एकटीच वापरतात (17 सेमी), किंवा चौरसाच्या बाजूचा वापर करतात (24 सेमी).",
+          "solution": "चौकोनाचा परिमाण 2 × (लांबी + रुंदी) = 64 सेमी आहे. जर लांबी 17 सेमी असेल, तर 2 × (17 + x) = 64, जे x = 15 सेमी देते. इतर विकल्प दिलेल्या परिमाण आणि लांबीशी संगत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for geometry.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms for geometry.",
           "flag": null
         }
       },
@@ -168,9 +263,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "adds the length and breadth once",
-        "uses only the length",
-        "confuses with side of a square"
+        "incorrectly uses the original length instead of the new length",
+        "confuses the length with the breadth",
+        "uses the original breadth instead of the new value"
       ],
       "solverAnswers": [
         0,
@@ -179,8 +274,8 @@
         0,
         0
       ],
-      "levelFlag": null,
-      "critique": "The solution correctly applies the formula for the perimeter of a rectangle. The reasoning for the distractors aligns with common misconceptions.",
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is flawed because it states the length is 28 cm and then says the length is 17 cm, which is contradictory. However, assuming the perimeter is fixed, the correct answer is 15 cm. The author's solution is logically sound given this assumption.",
       "sources": [
         {
           "document": "balbharati/7/mathematics/703020004.pdf",
@@ -211,7 +306,197 @@
         }
       ],
       "edition": "2026 edition",
-      "generatedAt": "2026-10-31T12:18:45.663Z",
+      "generatedAt": "2026-11-01T23:16:52.736Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "The perimeter of a circle is equal to the perimeter of a square. What is the ratio of their areas?",
+      "choices": [
+        "22 : 7",
+        "14 : 11",
+        "7 : 22",
+        "11 : 14"
+      ],
+      "answerIndex": 1,
+      "solution": "If the perimeter of a circle (circumference) is equal to the perimeter of a square, then 2πr = 4a. The area of the circle is πr² and the area of the square is a². Substituting r = (2a)/π, the ratio of their areas is (π(2a/π)²) : a² = 4π : π² = 4 : π. This simplifies to approximately 14 : 11. The other options are incorrect based on different assumptions or calculations.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक वृत्त का परिमाप एक वर्ग के परिमाप के बराबर है। उनके क्षेत्रफलों का अनुपात क्या है?",
+          "choices": [
+            "22 : 7",
+            "14 : 11",
+            "7 : 22",
+            "11 : 14"
+          ],
+          "solution": "यदि एक वृत्त (परिधि) का परिमाप एक वर्ग के परिमाप के बराबर है, तो 2πr = 4a। वृत्त का क्षेत्रफल πr² और वर्ग का क्षेत्रफल a² है। r = (2a)/π के स्थान पर रखने पर, उनके क्षेत्रफलों का अनुपात (π(2a/π)²) : a² = 4π : π² = 4 : π होता है। यह लगभग 14 : 11 के रूप में सरल हो जाता है। अन्य विकल्प विभिन्न मान्यताओं या गणनाओं के आधार पर गलत हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as per Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "वर्तुळाचा परिमाण चौरसाच्या परिमाणाबरोबर आहे. त्यांच्या क्षेत्रफळांचे गुणोत्तर किती आहे?",
+          "choices": [
+            "22 : 7",
+            "14 : 11",
+            "7 : 22",
+            "11 : 14"
+          ],
+          "solution": "जर वर्तुळाचा परिमाण (परिघ) चौरसाच्या परिमाणाबरोबर असेल, तर 2πr = 4a. वर्तुळाचे क्षेत्रफळ πr² आहे आणि चौरसाचे क्षेत्रफळ a² आहे. r = (2a)/π असे बदलल्यास, त्यांच्या क्षेत्रफळांचे गुणोत्तर (π(2a/π)²) : a² = 4π : π² = 4 : π असे होते. जे अंदाजे 14 : 11 असे सोपे केले जाऊ शकते. इतर विकल्प वेगवेगळ्या अंदाजांवर किंवा गणनांवर असलेल्या चूकीमुळे अयोग्य आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "This is the ratio of the circumference of a circle to the perimeter of a square, not the areas.",
+        null,
+        "This is a common incorrect assumption based on the values of π and 7.",
+        "This is the inverse of the correct ratio."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly equates the circumference of the circle to the perimeter of the square, derives the ratio of their areas, and simplifies it to 14:11. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 58,
+          "pageStart": 90,
+          "pageEnd": 91,
+          "headingPath": [
+            "12. Perimeter and Area"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 59,
+          "pageStart": 91,
+          "pageEnd": 92,
+          "headingPath": [
+            "12. Perimeter and Area"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 60,
+          "pageStart": 92,
+          "pageEnd": 94,
+          "headingPath": [
+            "12. Perimeter and Area"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-01T23:16:52.736Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If the side of a square is tripled, how many times the area of the first square will that of the new square be?",
+      "choices": [
+        "9 times",
+        "3 times",
+        "6 times",
+        "12 times"
+      ],
+      "answerIndex": 0,
+      "solution": "The area of a square is (side)². If the side is tripled, the new area is (3 × side)² = 9 × (side)². Therefore, the new area is 9 times the original area. Other options incorrectly assume a linear relationship between the side and the area.",
+      "checkExpr": "3^2",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक वर्ग की भुजा तीन गुना कर दी जाए, तो नए वर्ग का क्षेत्रफल पहले वर्ग के क्षेत्रफल का कितने गुना हो जाएगा?",
+          "choices": [
+            "9 गुना",
+            "3 गुना",
+            "6 गुना",
+            "12 गुना"
+          ],
+          "solution": "एक वर्ग का क्षेत्रफल (भुजा)² होता है। यदि भुजा तीन गुना कर दी जाए, तो नए क्षेत्रफल का मान (3 × भुजा)² = 9 × (भुजा)² होगा। अतः नए क्षेत्रफल का मान मूल क्षेत्रफल का 9 गुना हो जाएगा। अन्य विकल्प भुजा और क्षेत्रफल के बीच रैखिक संबंध की गलत धारणा पर आधारित हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर चौरसाच्या बाजू तिप्पट केल्या गेल्या, तर पहिल्या चौरसाच्या क्षेत्रफळाच्या किती पट नवीन चौरसाचा क्षेत्रफळ असेल?",
+          "choices": [
+            "9 पट",
+            "3 पट",
+            "6 पट",
+            "12 पट"
+          ],
+          "solution": "चौरसाचे क्षेत्रफळ (बाजू)² असते. जर बाजू तिप्पट केली गेली तर नवीन क्षेत्रफळ (3 × बाजू)² = 9 × (बाजू)² असते. म्हणून नवीन क्षेत्रफळ मूळ क्षेत्रफळाच्या 9 पट असते. इतर विकल्प बाजू आणि क्षेत्रफळ यांच्या रेषीय संबंधाच्या चुकीच्या अटलकरणावर आधारित आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "assumes the area increases linearly with the side length",
+        "confuses the relationship between side and area",
+        "uses an arbitrary multiple unrelated to the scaling factor"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly applies the formula for the area of a square and recognizes that tripling the side length results in a ninefold increase in area. The reasoning for the distractors aligns with common misconceptions about the relationship between side length and area.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 58,
+          "pageStart": 90,
+          "pageEnd": 91,
+          "headingPath": [
+            "12. Perimeter and Area"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 59,
+          "pageStart": 91,
+          "pageEnd": 92,
+          "headingPath": [
+            "12. Perimeter and Area"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 60,
+          "pageStart": 92,
+          "pageEnd": 94,
+          "headingPath": [
+            "12. Perimeter and Area"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-01T23:16:52.736Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

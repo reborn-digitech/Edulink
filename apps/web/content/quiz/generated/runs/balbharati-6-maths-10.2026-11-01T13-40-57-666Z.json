@@ -1,0 +1,308 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T13:40:57.666Z",
+  "finishedAt": "2026-11-01T13:45:07.524Z",
+  "seconds": 250,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 10 — Magical Mathematics-1",
+    "edition": "First Edition 2026",
+    "chunks": 2,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n6. (c) 5 Unit",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n6. A) 11 9",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n6. (b) 12",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n1. D) -6,6 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 80807,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 6576,
+      "completionTokens": 3251
+    },
+    "critique": {
+      "calls": 14,
+      "ms": 149922,
+      "in": 12,
+      "out": 10,
+      "rejects": 2,
+      "promptTokens": 6584,
+      "completionTokens": 2552
+    },
+    "solver": {
+      "calls": 64,
+      "ms": 49652,
+      "in": 10,
+      "out": 8,
+      "rejects": 2,
+      "promptTokens": 11158,
+      "completionTokens": 650
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 18,
+      "ms": 4297,
+      "in": 7,
+      "out": 5,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 235648,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 10890,
+      "completionTokens": 4944
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 1,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "In the addition-subtraction grid, the numbers 3, 4, 5 are given. What is the result of 5 - 3 + 4?",
+      "ms": {
+        "draft": 5998,
+        "critique": 9788
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A 6×10 rectangle is completed by using pentominoes. If the area of each pentomino is 5 square units, what is the total area of the 6×10 rectangle?",
+      "ms": {
+        "draft": 5998,
+        "critique": 10669,
+        "solver": 2170
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A regular pentagon is formed inside a five-pointed star. If each angle of the pentagon measures 108°, what is the measure of each angle in the star?",
+      "ms": {
+        "draft": 7470,
+        "critique": 17632
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the sum of the angles in a pentagon is 540° and the sum of the angles in a hexagon is 720°, what is the sum of the angles in a 10-sided polygon?",
+      "ms": {
+        "draft": 7470,
+        "critique": 9443,
+        "solver": 2351
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a star has n points and a regular n-sided polygon is formed inside it, what is the measure of each angle of the polygon?",
+      "ms": {
+        "draft": 7470,
+        "critique": 10936,
+        "solver": 16288,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the sum of the measures of all the angles of a pentagon?",
+      "ms": {
+        "draft": 5998,
+        "critique": 8457,
+        "solver": 2587,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a regular pentagon, each angle is 108°. If a five-pointed star is formed inside it, what is the measure of one angle of the star?",
+      "ms": {
+        "draft": 5998,
+        "critique": 9093,
+        "solver": 3019,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total number of angles in a pentagon?",
+      "ms": {
+        "draft": 7470,
+        "critique": 14531,
+        "solver": 3109,
+        "form": 0,
+        "translation": 35540
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a star has six points, what would be the difference in the measures of its angles compared to a five-pointed star?",
+      "ms": {
+        "draft": 5998,
+        "critique": 8086,
+        "solver": 1636,
+        "form": 0,
+        "translation": 62145
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a 5×12 rectangle is completely covered by pentominoes without any gaps or overlaps, what is the total area covered by the pentominoes?",
+      "ms": {
+        "draft": 7470,
+        "critique": 16749,
+        "solver": 2518,
+        "form": 0,
+        "translation": 44225
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A star has six points, and a regular hexagon is formed inside it. If the sum of the angles in a pentagon is 540°, what is the sum of the angles in the hexagon?",
+      "ms": {
+        "draft": 7470,
+        "critique": 10730,
+        "solver": 19164,
+        "form": 0,
+        "translation": 31997
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a pentagon is formed inside a star, and the sum of the angles of the pentagon is 540°, what is the measure of each angle in the star?",
+      "ms": {
+        "draft": 5998,
+        "critique": 11273,
+        "solver": 1145,
+        "form": 0,
+        "translation": 57159
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In the addition-subtraction grid, the numbers 3, 4, 5 are given. What is the result of 5 - 3 + 4?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A 6×10 rectangle is completed by using pentominoes. If the area of each pentomino is 5 square units, what is the total area of the 6×10 rectangle?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A regular pentagon is formed inside a five-pointed star. If each angle of the pentagon measures 108°, what is the measure of each angle in the star?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the sum of the angles in a pentagon is 540° and the sum of the angles in a hexagon is 720°, what is the sum of the angles in a 10-sided polygon?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a star has n points and a regular n-sided polygon is formed inside it, what is the measure of each angle of the polygon?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the sum of the measures of all the angles of a pentagon?",
+      "reason": "near-duplicate of served question cmvvo55pl005d0rem17l8kryp (cosine 0.942 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "In a regular pentagon, each angle is 108°. If a five-pointed star is formed inside it, what is the measure of one angle of the star?",
+      "reason": "near-duplicate of served question cmvvo55pu005p0remgu4zadjl (cosine 0.933 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

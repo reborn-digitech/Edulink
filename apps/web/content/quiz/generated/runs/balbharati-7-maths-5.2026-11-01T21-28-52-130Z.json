@@ -1,0 +1,518 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T21:28:52.130Z",
+  "finishedAt": "2026-11-01T21:35:08.417Z",
+  "seconds": 376,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी गणित इंग्रजी",
+    "bookCode": "703020004",
+    "document": "balbharati/7/mathematics/703020004.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 5 — Operations on Rational Numbers",
+    "edition": "2026 edition",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[RMO 2013 — question paper]\n4. Let x be a non-zero real number such that x + 4 and x + 5 are both rational numbers.\nx x\nProve that x + is a rational number.\nx",
+      "[RMO 2019 — question paper]\n1. Suppose x is a nonzero real number such that both x and 20x + are rational numbers. Prove\nx\nthat x is a rational number.",
+      "[PRMO 2019 — question paper]\n9. Let the rational number p/q be closest to but not equal to 22/7 among all rational numbers\nwith denominator < 100. What is the value of p − 3q ?",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n20. Assertion(A): (2 + √3)√3 is an irrational number. 1\nReason(R): Product of two irrational numbers is always irrational."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 97956,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 17104,
+      "completionTokens": 5786
+    },
+    "critique": {
+      "calls": 36,
+      "ms": 230845,
+      "in": 24,
+      "out": 17,
+      "rejects": 7,
+      "promptTokens": 16182,
+      "completionTokens": 6481
+    },
+    "solver": {
+      "calls": 171,
+      "ms": 103990,
+      "in": 17,
+      "out": 14,
+      "rejects": 3,
+      "promptTokens": 38745,
+      "completionTokens": 2107
+    },
+    "form": {
+      "calls": 3,
+      "ms": 6981,
+      "in": 14,
+      "out": 5,
+      "rejects": 9,
+      "promptTokens": 718,
+      "completionTokens": 203
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 7,
+      "ms": 1308,
+      "in": 5,
+      "out": 4,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 152764,
+      "in": 8,
+      "out": 8,
+      "rejects": 2,
+      "promptTokens": 10126,
+      "completionTokens": 4475
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 2,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "What is the result of dividing 3/4 by 1/2?",
+      "ms": {
+        "draft": 3616,
+        "critique": 5030
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following operations on rational numbers is always closed?",
+      "ms": {
+        "draft": 3616,
+        "critique": 7625
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a rational number?",
+      "ms": {
+        "draft": 3616,
+        "critique": 5231,
+        "solver": 12876,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If x + 1/x is a rational number, which of the following must also be rational?",
+      "ms": {
+        "draft": 3616,
+        "critique": 8600
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If x + 1/x is rational, which of the following must be true?",
+      "ms": {
+        "draft": 3616,
+        "critique": 6424
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a terminating decimal form of a rational number?",
+      "ms": {
+        "draft": 14139,
+        "critique": 5728,
+        "solver": 14767
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a recurring decimal?",
+      "ms": {
+        "draft": 14139,
+        "critique": 7716,
+        "solver": 14994
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a correct rule for simplifying an expression?",
+      "ms": {
+        "draft": 14139,
+        "critique": 7098,
+        "solver": 15280,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 2 + 3/x and 2 + 4/x are both rational numbers, which of the following is also rational?",
+      "ms": {
+        "draft": 14139,
+        "critique": 7466,
+        "solver": 1182,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the expression (13 × 4) ÷ 2 - 26, which operation is done first?",
+      "ms": {
+        "draft": 14139,
+        "critique": 5697,
+        "solver": 14115,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 2 + 1/2 and 2 + 1/3 are rational numbers, which of the following is also a rational number?",
+      "ms": {
+        "draft": 14139,
+        "critique": 8717,
+        "solver": 9999
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the correct order of operations to simplify an expression?",
+      "ms": {
+        "draft": 11578,
+        "critique": 6508
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a terminating decimal?",
+      "ms": {
+        "draft": 11578,
+        "critique": 5780,
+        "solver": 1739,
+        "form": 1788
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a rational number p/q is closest to 22/7 but not equal to it, and q < 100, what is p − 3q?",
+      "ms": {
+        "draft": 11578,
+        "critique": 7406
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the decimal form of 1/6?",
+      "ms": {
+        "draft": 11578,
+        "critique": 6763,
+        "solver": 1634,
+        "form": 2999
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a rational number?",
+      "ms": {
+        "draft": 3804,
+        "critique": 7962,
+        "solver": 16742,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a and b are rational numbers and a + b is rational, then which of the following is true?",
+      "ms": {
+        "draft": 3804,
+        "critique": 6986
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a property of rational numbers?",
+      "ms": {
+        "draft": 3804,
+        "critique": 6177,
+        "solver": 12614,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If x + 1/x is rational, which of the following is true?",
+      "ms": {
+        "draft": 3804,
+        "critique": 6947,
+        "solver": 9098,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a rational number?",
+      "ms": {
+        "draft": 3804,
+        "critique": 6675,
+        "solver": 13991,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a rational number?",
+      "ms": {
+        "draft": 3616,
+        "critique": 5501,
+        "solver": 10656,
+        "form": 0,
+        "translation": 47976
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the result of adding 1/2 and 1/4?",
+      "ms": {
+        "draft": 3804,
+        "critique": 6391,
+        "solver": 16499,
+        "form": 0,
+        "translation": 24710
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the value of the expression 72 ÷ 6 + 2 × 2?",
+      "ms": {
+        "draft": 11578,
+        "critique": 5629,
+        "solver": 1089,
+        "form": 2816,
+        "translation": 27865
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If x is a rational number such that x + 1/x is also rational, what can we say about x?",
+      "ms": {
+        "draft": 11578,
+        "critique": 6315,
+        "solver": 1342,
+        "form": 0,
+        "translation": 48162
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the result of dividing 3/4 by 1/2?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following operations on rational numbers is always closed?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a rational number?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If x + 1/x is a rational number, which of the following must also be rational?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If x + 1/x is rational, which of the following must be true?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a terminating decimal form of a rational number?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a recurring decimal?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a correct rule for simplifying an expression?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If 2 + 3/x and 2 + 4/x are both rational numbers, which of the following is also rational?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the expression (13 × 4) ÷ 2 - 26, which operation is done first?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If 2 + 1/2 and 2 + 1/3 are rational numbers, which of the following is also a rational number?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the correct order of operations to simplify an expression?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of a terminating decimal?",
+      "reason": "options are in more than one unit (..., none); options are written to different precisions (2 and 3 and 4 decimals)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a rational number p/q is closest to 22/7 but not equal to it, and q < 100, what is p − 3q?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the decimal form of 1/6?",
+      "reason": "options are in more than one unit (..., none); options are written to different precisions (3 and 4 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a rational number?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a and b are rational numbers and a + b is rational, then which of the following is true?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a property of rational numbers?",
+      "reason": "options 0 and 3 are the same (\"They are not closed under division\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If x + 1/x is rational, which of the following is true?",
+      "reason": "options 1 and 2 say the same thing (\"x must be a fraction\" / \"2: x must be a fraction\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a rational number?",
+      "reason": "near-duplicate of batch item \"Which of the following is a rational number?…\" (cosine 1.000 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

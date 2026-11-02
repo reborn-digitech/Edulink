@@ -21,47 +21,137 @@
   "board": "NCERT",
   "book": "Ganita Prakash-II",
   "edition": "2025 edition (the site's Last-Modified)",
-  "generatedAt": "2026-10-31T14:19:28.389Z",
+  "generatedAt": "2026-11-02T02:18:13.176Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "If the sum of two numbers is 25 and their difference is 11, what is the smaller number?",
+      "stem": "Which of the following statements about integer multiplication is true?",
       "choices": [
-        "12",
-        "18",
-        "7",
-        "14"
+        "Multiplication is not commutative",
+        "Multiplication is not associative",
+        "Multiplication is not distributive over addition",
+        "Multiplication is commutative"
       ],
-      "answerIndex": 2,
-      "solution": "The smaller number is 7. If the two numbers add up to 25 and their difference is 11, we can find the smaller number by subtracting the difference from the sum and dividing by 2: (25 - 11)/2 = 14/2 = 7. Option 12 is incorrect because it does not satisfy the conditions given. Option 18 is incorrect because it would be the larger number. Option 14 is incorrect because it does not satisfy the difference condition.",
+      "answerIndex": 3,
+      "solution": "Multiplication is commutative because the order of the numbers does not affect the product, such as 3 × 4 = 4 × 3. The other options are incorrect because multiplication is associative and distributive over addition, which are fundamental properties of arithmetic.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि दो संख्याओं का योग 25 है और उनका अंतर 11 है, तो छोटी संख्या क्या है?",
+          "stem": "निम्नलिखित में से कौन-सा पूर्णांक गुणन के बारे में सत्य कथन है?",
           "choices": [
-            "12",
-            "18",
-            "7",
-            "14"
+            "गुणन क्रमविनिमेय नहीं है",
+            "गुणन साहचर्य नहीं है",
+            "जोड़ पर गुणन वितरण नहीं है",
+            "गुणन क्रमविनिमेय है"
           ],
-          "solution": "छोटी संख्या 7 है। यदि दो संख्याएं 25 के योग और 11 के अंतर के साथ हैं, तो हम योग से अंतर को घटाकर और 2 से विभाजित करके छोटी संख्या ज्ञात कर सकते हैं: (25 - 11)/2 = 14/2 = 7। विकल्प 12 गलत है क्योंकि यह दिए गए शर्तों को संतुष्ट नहीं करता। विकल्प 18 गलत है क्योंकि यह बड़ी संख्या होगी। विकल्प 14 गलत है क्योंकि यह अंतर की शर्त को संतुष्ट नहीं करता।",
+          "solution": "गुणन क्रमविनिमेय है क्योंकि संख्याओं के क्रम का गुणनफल पर कोई प्रभाव नहीं पड़ता है, जैसे 3 × 4 = 4 × 3। अन्य विकल्प गलत हैं क्योंकि गुणन साहचर्य और जोड़ पर वितरण होता है, जो अंकगणित के मूलभूत गुण हैं।",
           "imageAlt": null,
-          "critique": "Translation accurately preserves meaning, technical terms are appropriate, and the structure matches the original.",
+          "critique": "The Hindi translation accurately reflects the original English question, with correct mathematical terminology and logical structure.",
           "flag": null
         },
         "mr": {
-          "stem": "जर दोन संख्यांची बेरीज 25 आहे आणि त्यांचा फरक 11 आहे, तर लहान संख्या काय आहे?",
+          "stem": "खालीलपैकी कोणता अंकगणितीय गुणाकाराबद्दलचा विधान खरा आहे?",
           "choices": [
-            "12",
-            "18",
-            "7",
-            "14"
+            "गुणाकार विनिमेय नाही",
+            "गुणाकार आवश्यक नाही",
+            "जोडीवर गुणाकार वितरक नाही",
+            "गुणाकार विनिमेय आहे"
           ],
-          "solution": "लहान संख्या 7 आहे. जर दोन संख्यांची बेरीज 25 आहे आणि त्यांचा फरक 11 आहे, तर आपण लहान संख्या शोधू शकतो जी बेरीजमधून फरक वजा करून 2 ने भागल्यास: (25 - 11)/2 = 14/2 = 7. ऑप्शन 12 अयोग्य आहे कारण तो दिलेल्या अटींची पूर्तता करत नाही. ऑप्शन 18 अयोग्य आहे कारण तो मोठी संख्या असेल. ऑप्शन 14 अयोग्य आहे कारण तो फरकाची अट पूर्तता करत नाही.",
+          "solution": "गुणाकार विनिमेय आहे कारण संख्यांच्या क्रमाचा उत्पादनावर परिणाम होत नाही, उदाहरणार्थ 3 × 4 = 4 × 3. इतर विधाने अयोग्य आहेत कारण गुणाकार आवश्यक आहे आणि जोडीवर वितरक आहे, जे अंकगणिताची मूलभूत गुणधर्म आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the commutative property with other properties",
+        "Fails to recognize the associative property",
+        "Misunderstands the distributive property of multiplication over addition",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 3, as multiplication of integers is indeed commutative. The other options are incorrect because multiplication is associative and distributive over addition. The author's reasoning for the wrong options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp202.pdf",
+          "ordinal": 12,
+          "pageStart": 21,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 2: Operations with Integers",
+            "2.1 A Quick Recap of Integers",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp202.pdf",
+          "ordinal": 13,
+          "pageStart": 23,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 2: Operations with Integers",
+            "2.1 A Quick Recap of Integers",
+            "SUMMARY"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-11-02T02:18:13.176Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the result of multiplying two negative integers?",
+      "choices": [
+        "Positive",
+        "Negative",
+        "Zero",
+        "Cannot be determined"
+      ],
+      "answerIndex": 0,
+      "solution": "The product of two negative integers is always positive. This is a fundamental rule of integer multiplication. A negative times a negative equals a positive. The other options are incorrect because multiplying two negative numbers does not give a negative, zero, or an undefined result.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "दो ऋणात्मक पूर्णांकों के गुणन का परिणाम क्या होता है?",
+          "choices": [
+            "धनात्मक",
+            "ऋणात्मक",
+            "शून्य",
+            "निर्धारित नहीं किया जा सकता"
+          ],
+          "solution": "दो ऋणात्मक पूर्णांकों का गुणन हमेशा धनात्मक होता है। यह पूर्णांक गुणन का एक मूलभूत नियम है। ऋणात्मक गुणा ऋणात्मक एक धनात्मक होता है। अन्य विकल्प गलत हैं क्योंकि दो ऋणात्मक संख्याओं का गुणन ऋणात्मक, शून्य या अनिर्धारित परिणाम नहीं देता।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "दोन ऋणात्मक पूर्णांकांचा गुणाकार करण्याचा निकाल काय असतो?",
+          "choices": [
+            "धनात्मक",
+            "ऋणात्मक",
+            "शून्य",
+            "निश्चित करता येत नाही"
+          ],
+          "solution": "दोन ऋणात्मक पूर्णांकांचा गुणाकार हमेशा धनात्मक असतो. ही पूर्णांक गुणाकाराची मूलभूत नियम आहे. ऋणात्मक व ऋणात्मक गुणाकार करताना धनात्मक मिळतो. इतर विकल्प अयोग्य आहेत कारण दोन ऋणात्मक संख्यांचा गुणाकार ऋणात्मक, शून्य किंवा अनिश्चित परिणाम देत नाही.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -72,118 +162,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Assuming the difference is added to the sum instead of being subtracted to find the smaller number",
-        "thinks the larger number is the answer",
         null,
-        "The student subtracts the difference from the sum instead of solving the system of equations."
+        "Confuses the sign rule for multiplication",
+        "Does not understand that negative times negative is positive",
+        "Thinks the product of two negatives is zero"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": null,
-      "critique": "The solution is correct and matches the key. The correct answer is 7, and the reasoning is sound. The author's explanations for the distractors are reasonable and reflect common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp202.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 2: Operations with Integers",
-            "2.1 A Quick Recap of Integers"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp202.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 2: Operations with Integers",
-            "2.1 A Quick Recap of Integers"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp202.pdf",
-          "ordinal": 2,
-          "pageStart": 4,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 2: Operations with Integers",
-            "2.1 A Quick Recap of Integers"
-          ]
-        }
-      ],
-      "edition": "2025 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-31T14:19:28.389Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "Which property of integers states that the product remains the same when numbers are grouped differently during multiplication?",
-      "choices": [
-        "Commutative property",
-        "Distributive property",
-        "Associative property",
-        "Identity property"
-      ],
-      "answerIndex": 2,
-      "solution": "The correct answer is the associative property. This property states that the product of integers remains the same regardless of how the numbers are grouped during multiplication. The commutative property relates to the order of numbers, the distributive property involves multiplication over addition, and the identity property involves multiplying by 1.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "कौन सा परिवर्तनीय गुण अंकगणितीय संख्याओं का वर्णन करता है कि गुणन के दौरान संख्याओं के समूह के बदले गुणनफल एक ही रहता है?",
-          "choices": [
-            "क्रमविनिमेय गुण",
-            "वितरण गुण",
-            "साहचर्य गुण",
-            "तत्सम गुण"
-          ],
-          "solution": "सही उत्तर साहचर्य गुण है। यह गुण बताता है कि पूर्णांकों का गुणनफल गुणन के दौरान संख्याओं के समूह के बिना एक ही रहता है। क्रमविनिमेय गुण संख्याओं के क्रम से संबंधित होता है, वितरण गुण जोड़ पर गुणन के साथ जुड़ा होता है, और तत्सम गुण 1 से गुणन से संबंधित होता है।",
-          "imageAlt": null,
-          "critique": "Hindi translation accurately conveys the original meaning with appropriate mathematical terminology used in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "संख्यांच्या कोणत्या गुणधर्मामुळे गुणाकार बदलत नाही जेव्हा संख्यांचे विविध प्रकारे गट केले जाते?",
-          "choices": [
-            "क्रमविनिमेय गुणधर्म",
-            "वितरक गुणधर्म",
-            "संगत गुणधर्म",
-            "एकीकरण गुणधर्म"
-          ],
-          "solution": "बरोबर उत्तर संगत गुणधर्म आहे. हा गुणधर्म सांगतो की पूर्णांकांचा गुणाकार बदलत नाही जेव्हा संख्यांचे विविध प्रकारे गट केले जाते. क्रमविनिमेय गुणधर्म संख्यांच्या क्रमाशी संबंधित आहे, वितरक गुणधर्म जोडणीवर गुणाकाराचा वापर करतो आणि एकीकरण गुणधर्म 1 ने गुणाकार करण्याशी संबंधित आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and uses standard Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the property of changing the order of numbers with grouping",
-        "Mistakes the property involving multiplication over addition",
-        null,
-        "Does not understand the concept of grouping in multiplication"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The question is clear and the correct answer is the associative property. The explanation provided by the author is accurate and matches the definition of the property.",
+      "critique": "The solution is correct and matches the key. The product of two negative integers is always positive, which is a fundamental rule of integer arithmetic.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp202.pdf",
@@ -217,49 +209,49 @@
         }
       ],
       "edition": "2025 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-31T14:19:28.389Z",
+      "generatedAt": "2026-11-02T02:18:13.176Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "What is the result of the operation (+7) – (+18) using the token model?",
+      "difficulty": 3,
+      "stem": "What integer should replace the blank in the expression (– 3) × _____ = 27 to make it true?",
       "choices": [
-        "-11",
-        "-7",
-        "11",
-        "18"
+        "9",
+        "-9",
+        "3",
+        "-3"
       ],
-      "answerIndex": 0,
-      "solution": "To subtract 18 from 7, we add the additive inverse of 18, which is -18. So 7 + (-18) = -11. The correct answer is -11. Choosing -7 would be incorrect because it assumes the result is the difference between 7 and 18 without considering the sign. Choosing 11 or 18 would be incorrect because they do not account for the negative value in the operation.",
+      "answerIndex": 1,
+      "solution": "The correct answer is -9. To find this, we divide 27 by -3, which gives -9. The other options are incorrect because 9 × -3 = -27, 3 × -3 = -9, and -3 × -3 = 9, none of which equal 27.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "(+7) – (+18) संक्रिया का परिणाम टोकन मॉडल का उपयोग करके क्या होगा?",
+          "stem": "कौन-सा पूर्णांक खाली स्थान को भरे ताकि व्यंजक (– 3) × _____ = 27 सत्य हो जाए?",
           "choices": [
-            "-11",
-            "-7",
-            "11",
-            "18"
+            "9",
+            "-9",
+            "3",
+            "-3"
           ],
-          "solution": "18 को 7 से घटाने के लिए, हम 18 के योजक व्युत्क्रम को जोड़ते हैं, जो -18 है। इसलिए 7 + (-18) = -11। सही उत्तर -11 है। -7 चुनना गलत होगा क्योंकि यह अंतर के बिना चिह्न को ध्यान में रखे बिना परिणाम मानता है। 11 या 18 चुनना गलत होगा क्योंकि वे संक्रिया में ऋणात्मक मान की गणना नहीं करते।",
+          "solution": "सही उत्तर -9 है। इसे ज्ञात करने के लिए हम 27 को -3 से विभाजित करते हैं, जो -9 देता है। अन्य विकल्प गलत हैं क्योंकि 9 × -3 = -27, 3 × -3 = -9, और -3 × -3 = 9, जिनमें से कोई भी 27 के बराबर नहीं है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology in Hindi.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "कोटी मॉडेल वापरून (+7) – (+18) चा क्रियाकलापाचा परिणाम काय आहे?",
+          "stem": "कोणता पूर्णांक खालील व्यंजकातील रिक्तस्थान भरावा जेणेकरून तो खरा ठरेल? (– 3) × _____ = 27",
           "choices": [
-            "-11",
-            "-7",
-            "11",
-            "18"
+            "9",
+            "-9",
+            "3",
+            "-3"
           ],
-          "solution": "7 मधून 18 वजा करण्यासाठी, आम्ही 18 च्या जोडतीय विरुद्ध (जे -18 आहे) जोडतो. म्हणून 7 + (-18) = -11. योग्य उत्तर -11 आहे. -7 निवडणे चुकीचे आहे कारण ते 7 आणि 18 च्या फरकाचा अंदाज घेते परंतु चिन्हाचा विचार करत नाही. 11 किंवा 18 निवडणे चुकीचे आहे कारण ते क्रियाकलापातील ऋण मूल्याचा विचार करत नाही.",
+          "solution": "योग्य उत्तर -9 आहे. याचा शोध घेण्यासाठी, आम्ही 27 ला -3 ने भागतो, जे -9 देते. इतर विकल्प चुकीचे आहेत कारण 9 × -3 = -27, 3 × -3 = -9 आणि -3 × -3 = 9, जे कोणतेही 27 च्या बरोबर नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terminology for mathematical concepts.",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         }
       },
@@ -268,20 +260,118 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Confuses the sign of the result",
         null,
-        "Incorrectly calculates the difference without considering the sign",
-        "Believes subtracting a positive number from a smaller positive number results in a positive number",
-        "Confuses the result with the larger number in the problem"
+        "Confuses the sign of the result, thinking that multiplying two negatives gives a positive but forgetting to apply it here.",
+        "Divides incorrectly by 3 instead of -3"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. Dividing 27 by -3 gives -9, which is the correct answer. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp202.pdf",
+          "ordinal": 9,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 2: Operations with Integers",
+            "2.1 A Quick Recap of Integers"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp202.pdf",
+          "ordinal": 10,
+          "pageStart": 17,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 2: Operations with Integers",
+            "2.1 A Quick Recap of Integers"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp202.pdf",
+          "ordinal": 11,
+          "pageStart": 20,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 2: Operations with Integers",
+            "2.1 A Quick Recap of Integers"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-11-02T02:18:13.176Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "If the first movement of a carrom coin is -4 and the final position is 5, what is the second movement?",
+      "choices": [
+        "-9",
+        "-1",
+        "9",
+        "1"
+      ],
+      "answerIndex": 2,
+      "solution": "The final position is the sum of the two movements: -4 + x = 5. Solving for x gives x = 9. The correct answer is 9. Subtracting the numbers is a misconception. Adding the numbers directly without considering the sign is incorrect. Confusing the sign of the final position is also incorrect.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कारम के एक सिक्के की पहली गति -4 है और अंतिम स्थिति 5 है, तो दूसरी गति क्या है?",
+          "choices": [
+            "-9",
+            "-1",
+            "9",
+            "1"
+          ],
+          "solution": "अंतिम स्थिति दोनों गतियों के योग के बराबर होती है: -4 + x = 5। x के लिए हल करने पर x = 9 प्राप्त होता है। सही उत्तर 9 है। संख्याओं को घटाना एक भ्रम है। चिह्न के बिना संख्याओं को सीधे जोड़ना गलत है। अंतिम स्थिति के चिह्न को गलती से समझना भी गलत है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains in the same position, and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर कारम कॉइनचा पहिला गतिविधी -4 असेल आणि अंतिम स्थिती 5 असेल, तर दुसरी गतिविधी काय असेल?",
+          "choices": [
+            "-9",
+            "-1",
+            "9",
+            "1"
+          ],
+          "solution": "अंतिम स्थिती ही दोन गतिविधींचा बेरीज आहे: -4 + x = 5. x चे समाधान करून x = 9 मिळते. योग्य उत्तर 9 आहे. संख्या वजा करणे हे चूक आहे. चिन्हांचा विचार न करता संख्या जोडणे चूक आहे. अंतिम स्थितीच्या चिन्हाचा गैरसमज देखील चूक आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "subtracts the numbers instead of adding them",
+        "Student thinks the total movement is the difference between the first and second movement, not the sum",
+        null,
+        "confuses the sign of the final position"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly applies the concept of additive inverses to solve (+7) – (+18) = 7 + (-18) = -11. The reasoning for the distractors aligns with common misconceptions students might have.",
+      "critique": "The solution is correct. The second movement is 9, as -4 + 9 = 5. The author's reasons for the wrong options are valid misconceptions.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp202.pdf",
@@ -315,49 +405,49 @@
         }
       ],
       "edition": "2025 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-31T14:19:28.389Z",
+      "generatedAt": "2026-11-02T02:18:13.176Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "If the carrom coin is struck with movements of 1, -2, 3, -4, ..., -10, what is the final position?",
+      "stem": "If a coin is struck twice and the final position is –2, and one of the movements is 5, what is the other movement?",
       "choices": [
-        "-5",
-        "0",
-        "5",
-        "10"
+        "-7",
+        "7",
+        "3",
+        "-3"
       ],
       "answerIndex": 0,
-      "solution": "Adding the movements: 1 - 2 + 3 - 4 + 5 - 6 + 7 - 8 + 9 - 10 = (1 - 2) + (3 - 4) + (5 - 6) + (7 - 8) + (9 - 10) = (-1) + (-1) + (-1) + (-1) + (-1) = -5. The correct answer is -5. Choosing 0 would be incorrect because the sequence does not cancel out perfectly. Choosing 5 or 10 would be incorrect because it ignores the negative values in the sequence.",
+      "solution": "The other movement is –7. The equation is 5 + x = –2. Solving for x gives x = –7. The other options do not satisfy the equation. 7 would give a final position of 12, 3 would give 8, and –3 would give 2.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि कैरम के सिक्के को 1, -2, 3, -4, ..., -10 गतियों के साथ मारा जाता है, तो अंतिम स्थिति क्या होगी?",
+          "stem": "यदि एक सिक्का दो बार मारा जाता है और अंतिम स्थिति -2 है, और एक गति 5 है, तो अन्य गति क्या है?",
           "choices": [
-            "-5",
-            "0",
-            "5",
-            "10"
+            "-7",
+            "7",
+            "3",
+            "-3"
           ],
-          "solution": "गतियों को जोड़ना: 1 - 2 + 3 - 4 + 5 - 6 + 7 - 8 + 9 - 10 = (1 - 2) + (3 - 4) + (5 - 6) + (7 - 8) + (9 - 10) = (-1) + (-1) + (-1) + (-1) + (-1) = -5। सही उत्तर -5 है। 0 चुनना गलत होगा क्योंकि अनुक्रम पूरी तरह से रद्द नहीं होता। 5 या 10 चुनना गलत होगा क्योंकि अनुक्रम में ऋणात्मक मानों को अनदेखा कर दिया जाता है।",
+          "solution": "अन्य गति -7 है। समीकरण 5 + x = -2 है। x के लिए हल करने पर x = -7 प्राप्त होता है। अन्य विकल्प समीकरण को संतुष्ट नहीं करते हैं। 7 के लिए अंतिम स्थिति 12 होगी, 3 के लिए 8 होगी, और -3 के लिए 2 होगी।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The Hindi translation accurately reflects the English question, with appropriate mathematical terminology and correct answer positioning.",
           "flag": null
         },
         "mr": {
-          "stem": "गोली जर 1, -2, 3, -4, ..., -10 या गतींनी ठेचली गेली तर अंतिम स्थिती काय असेल?",
+          "stem": "जर एक नाणे दोनदा मारले गेले आणि अंतिम स्थिती -2 आहे, आणि एका गतीत 5 आहे, तर इतर गती काय आहे?",
           "choices": [
-            "-5",
-            "0",
-            "5",
-            "10"
+            "-7",
+            "7",
+            "3",
+            "-3"
           ],
-          "solution": "गतींची बेरीज करा: 1 - 2 + 3 - 4 + 5 - 6 + 7 - 8 + 9 - 10 = (1 - 2) + (3 - 4) + (5 - 6) + (7 - 8) + (9 - 10) = (-1) + (-1) + (-1) + (-1) + (-1) = -5. योग्य उत्तर -5 आहे. 0 निवडणे चूक असेल कारण अनुक्रम पूर्णपणे रद्द होत नाही. 5 किंवा 10 निवडणे चूक असेल कारण अनुक्रमातील नकारात्मक मूल्यांना अनुमाने घेतले जात नाही.",
+          "solution": "इतर गती -7 आहे. समीकरण 5 + x = -2 आहे. x चे समाधान करण्यासाठी x = -7 मिळते. इतर विकल्प समीकरणाचे पालन करत नाहीत. 7 अंतिम स्थिती 12 देईल, 3 अंतिम स्थिती 8 देईल आणि -3 अंतिम स्थिती 2 देईल.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terminology for 'position' and 'movements'.",
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for 'movement' and 'position'.",
           "flag": null
         }
       },
@@ -367,9 +457,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Incorrectly assumes the sequence cancels out",
-        "Fails to recognize the pattern of alternating signs",
-        "Fails to calculate the sum correctly"
+        "Confuses the direction of movement and adds the absolute values instead of considering signed numbers.",
+        "Confuses the direction of movement and adds instead of subtracting",
+        "Confuses the direction of movement, thinking that subtracting 5 from -2 gives -3 instead of -7"
       ],
       "solverAnswers": [
         0,
@@ -379,7 +469,7 @@
         0
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly adds the alternating series and arrives at -5. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "critique": "The question is well-posed and the solution is mathematically sound. The correct answer is -7, and the author's reasoning for the distractors aligns with common misconceptions about integer operations.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp202.pdf",
@@ -413,49 +503,36 @@
         }
       ],
       "edition": "2025 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-31T14:19:28.389Z",
+      "generatedAt": "2026-11-02T02:18:13.176Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 6,
-      "stem": "An alien society uses a peculiar currency called ‘pibs’ with just two denominations of coins — a +13 pibs coin and a – 9 pibs coin. You have several of these coins. Is it possible to purchase an item that costs + 85 pibs?",
+      "stem": "In the game of Terhüchü, if a player jumps over an opponent's coin and lands in a vacant intersection, what happens to the opponent's coin?",
       "choices": [
-        "Yes",
-        "No",
-        "Not sure",
-        "Depends on the number of coins"
+        "It is moved to a new position",
+        "It is removed from the board",
+        "It is left on the board",
+        "It is captured and removed from the board"
       ],
-      "answerIndex": 0,
-      "solution": "The correct answer is 'Yes.' This is because 10 coins of +13 pibs and 5 coins of – 9 pibs give 10 × 13 + 5 × (– 9) = 130 – 45 = 85 pibs. The other options either fail to recognize that the combination of coins can achieve the desired amount or assume it is not possible without checking the combination.",
+      "answerIndex": 3,
+      "solution": "If a player jumps over an opponent's coin and lands in a vacant intersection, the opponent's coin is captured and removed from the board, as this action is defined as a capture in the game's rules. The other options are incorrect because there is no rule that allows the coin to be moved or left on the board after being jumped over. The correct answer reflects the standard game mechanic where captured pieces are taken off the board.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक बाह्य जीव समाज एक विचित्र मुद्रा 'पिब्स' का उपयोग करता है जिसमें केवल दो मूल्यवर्ग के सिक्के होते हैं — +13 पिब्स का सिक्का और –9 पिब्स का सिक्का। आपके पास इन सिक्कों की कई संख्या है। क्या आप +85 पिब्स की वस्तु खरीद सकते हैं?",
+          "stem": "टरहूचू के खेल में, यदि एक खिलाड़ी एक प्रतिद्वंद्वी के सिक्के के ऊपर कूदता है और खाली अंतर्सेतु में उतरता है, तो प्रतिद्वंद्वी के सिक्के के साथ क्या होता है?",
           "choices": [
-            "हाँ",
-            "नहीं",
-            "निश्चित रूप से नहीं",
-            "सिक्कों की संख्या पर निर्भर करता है"
+            "इसे एक नई स्थिति में ले जाया जाता है",
+            "इसे बोर्ड से हटा दिया जाता है",
+            "इसे बोर्ड पर छोड़ दिया जाता है",
+            "इसे गिरफ्तार कर लिया जाता है और बोर्ड से हटा दिया जाता है"
           ],
-          "solution": "सही उत्तर 'हाँ' है। इसका कारण यह है कि 10 सिक्के +13 पिब्स और 5 सिक्के –9 पिब्स देते हैं 10 × 13 + 5 × (–9) = 130 – 45 = 85 पिब्स। अन्य विकल्प यह नहीं समझते कि सिक्कों के संयोजन से आवश्यक राशि प्राप्त की जा सकती है या बिना संयोजन के जांचे बिना यह मान लेते हैं कि यह संभव नहीं है।",
+          "solution": "यदि एक खिलाड़ी एक प्रतिद्वंद्वी के सिक्के के ऊपर कूदता है और खाली अंतर्सेतु में उतरता है, तो प्रतिद्वंद्वी के सिक्के को गिरफ्तार कर लिया जाता है और बोर्ड से हटा दिया जाता है, क्योंकि इस क्रिया को खेल के नियमों में गिरफ्तारी के रूप में परिभाषित किया गया है। अन्य विकल्प गलत हैं क्योंकि ऐसा कोई नियम नहीं है जो सिक्के के ऊपर कूदे जाने के बाद इसे ले जाने या बोर्ड पर छोड़े जाने की अनुमति देता है। सही उत्तर मानक खेल यांत्रिकी को प्रतिबिंबित करता है जहां गिरफ्तार किए गए टुकड़े बोर्ड से हटा दिए जाते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question, with appropriate terminology and logical structure. The correct answer remains in the same position, and the options are still distinct and incorrect where they should be.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एक बाल्यावस्थेच्या समाजाने 'पिब्स' नावाचे असामान्य मुद्रा वापरले आहे ज्यामध्ये केवळ दोन धोरणांचे छोटे टोके आहेत — +13 पिब्स चे छोटे टोके आणि -9 पिब्स चे छोटे टोके. तुम्हाला या छोट्या टोक्यांचे बरेच आहेत. +85 पिब्स किंमत असलेले एक वस्तू खरेदी करणे शक्य आहे का?",
-          "choices": [
-            "होय",
-            "नाही",
-            "अजिबात कळत नाही",
-            "छोट्या टोक्यांच्या संख्यावर अवलंबून असते"
-          ],
-          "solution": "हे योग्य उत्तर 'होय' आहे. हे कारण असे आहे की 10 छोट्या टोक्यांचे +13 पिब्स आणि 5 छोट्या टोक्यांचे -9 पिब्स देतात 10 × 13 + 5 × (– 9) = 130 – 45 = 85 पिब्स. इतर उत्तरे असे आहेत जे जाणून घेण्याच्या आधी छोट्या टोक्यांच्या संयोजनामुळे आवश्यक रक्कम मिळू शकते याची ओळख करू शकत नाहीत किंवा छोट्या टोक्यांच्या संयोजनाची तपासणी न करता ते अशक्य मानतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate terminology. The correct answer is option (3) in both versions, and the distractors remain incorrect in Hindi.",
           "flag": null
         }
       },
@@ -464,26 +541,116 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        null,
-        "Fails to recognize that the combination of coins can achieve the desired amount",
-        "Assumes it is not possible without checking the combination",
-        "Fails to recognize that the combination of coins can achieve the desired amount and assumes it depends on the number of coins"
+        "Thinks the coin is just moved but not captured",
+        "Does not understand the rule about capturing",
+        "Misinterprets the rule about removing the coin",
+        null
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        3,
+        3,
+        3,
+        3,
+        3
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and matches the reasoning. The combination of 10 coins of +13 and 5 coins of -9 indeed equals 85. All distractors reflect common misconceptions about the problem.",
+      "critique": "The correct answer is 3, as the passage explicitly states that the coin is 'captured and removed from the board.' The other options are invalid because they contradict the rule described in the passage.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp202.pdf",
-          "ordinal": 9,
-          "pageStart": 16,
-          "pageEnd": 17,
+          "ordinal": 12,
+          "pageStart": 21,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 2: Operations with Integers",
+            "2.1 A Quick Recap of Integers",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp202.pdf",
+          "ordinal": 13,
+          "pageStart": 23,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 2: Operations with Integers",
+            "2.1 A Quick Recap of Integers",
+            "SUMMARY"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-11-02T02:18:13.176Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a × b = b × a for all integers a and b, which of the following is a consequence of this property?",
+      "choices": [
+        "Multiplication is associative",
+        "Division is commutative",
+        "Addition is commutative",
+        "Multiplication is commutative"
+      ],
+      "answerIndex": 3,
+      "solution": "The property a × b = b × a for all integers a and b directly demonstrates that multiplication is commutative, meaning the order of the numbers does not affect the product. The other options are incorrect: associativity involves grouping, not order, and division is not commutative because a ÷ b is not always equal to b ÷ a. Addition being commutative is a separate property not directly implied by the given statement.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि सभी पूर्णांकों a और b के लिए a × b = b × a, तो निम्नलिखित में से कौन इस संपत्ति का परिणाम है?",
+          "choices": [
+            "गुणन साहचर्य है",
+            "भाग द्वारा क्रमविनिमेय है",
+            "जोड़ क्रमविनिमेय है",
+            "गुणन क्रमविनिमेय है"
+          ],
+          "solution": "सभी पूर्णांकों a और b के लिए a × b = b × a के गुण के द्वारा सीधे यह दर्शाया जाता है कि गुणन क्रमविनिमेय है, जिसका अर्थ है कि संख्याओं के क्रम का गुणनफल पर कोई प्रभाव नहीं होता है। अन्य विकल्प गलत हैं: साहचर्यता समूहन से संबंधित होती है, क्रम से नहीं, और भाग क्रमविनिमेय नहीं होता क्योंकि a ÷ b हमेशा b ÷ a के बराबर नहीं होता है। जोड़ क्रमविनिमेय होना एक अलग गुण है जो दिए गए कथन से सीधे निहित नहीं होता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard mathematical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर a × b = b × a सर्व पूर्णांक a आणि b साठी, तर खालीलपैकी कोणते या संपत्तीचे परिणाम आहे?",
+          "choices": [
+            "गुणन एकीकरणीय आहे",
+            "भागाकार संबद्ध आहे",
+            "बेरीज संबद्ध आहे",
+            "गुणन संबद्ध आहे"
+          ],
+          "solution": "a × b = b × a सर्व पूर्णांक a आणि b साठी गुणन संबद्धतेचे सीधे प्रतिबिंबित करते, ज्यामुळे संख्यांच्या क्रमाचा उत्पादनावर परिणाम होत नाही. इतर विकल्प चुकीचे आहेत: एकीकरणीयता गटबद्धतेवर आधारित असते, न की क्रमावर, आणि भागाकार संबद्ध नसतो कारण a ÷ b हे नेहमी b ÷ a च्या समान नसते. बेरीज संबद्ध असणे ही एक वेगळी संपत्ती आहे जी दिलेल्या विधानाशी सीध्या संबंधित नसते.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English original in meaning, structure, and terminology. All technical terms are in line with standard Marathi-medium math curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses commutativity with associativity",
+        "thinks division is commutative",
+        "thinks addition is the result of multiplication",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question correctly identifies that the commutative property of multiplication is the direct consequence of a × b = b × a. The other options are incorrect, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp202.pdf",
+          "ordinal": 6,
+          "pageStart": 11,
+          "pageEnd": 12,
           "headingPath": [
             "Chapter 2: Operations with Integers",
             "2.1 A Quick Recap of Integers"
@@ -491,9 +658,9 @@
         },
         {
           "document": "ncert/7/mathematics/gegp202.pdf",
-          "ordinal": 10,
-          "pageStart": 17,
-          "pageEnd": 19,
+          "ordinal": 7,
+          "pageStart": 12,
+          "pageEnd": 14,
           "headingPath": [
             "Chapter 2: Operations with Integers",
             "2.1 A Quick Recap of Integers"
@@ -501,9 +668,9 @@
         },
         {
           "document": "ncert/7/mathematics/gegp202.pdf",
-          "ordinal": 11,
-          "pageStart": 20,
-          "pageEnd": 21,
+          "ordinal": 8,
+          "pageStart": 14,
+          "pageEnd": 16,
           "headingPath": [
             "Chapter 2: Operations with Integers",
             "2.1 A Quick Recap of Integers"
@@ -511,7 +678,7 @@
         }
       ],
       "edition": "2025 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-31T14:19:28.389Z",
+      "generatedAt": "2026-11-02T02:18:13.176Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

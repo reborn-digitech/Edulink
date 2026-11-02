@@ -21,49 +21,49 @@
   "board": "BALBHARATI",
   "book": "८ वी गणित इंग्रजी",
   "edition": "First Edition 2018",
-  "generatedAt": "2026-11-01T01:14:19.248Z",
+  "generatedAt": "2026-11-02T07:54:24.857Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 2,
-      "stem": "What is the formula for the area of a trapezium?",
+      "difficulty": 3,
+      "stem": "A parallelogram has an area of 120 sq cm and a base of 10 cm. What is its height?",
       "choices": [
-        "½ × (sum of parallel sides) × height",
-        "Base × height",
-        "½ × product of diagonals",
-        "Length × breadth"
+        "12 cm",
+        "120 cm",
+        "10 cm",
+        "1200 cm"
       ],
       "answerIndex": 0,
-      "solution": "The formula for the area of a trapezium is ½ × (sum of parallel sides) × height. The other options are formulas for other shapes like a parallelogram, rhombus, and rectangle, which are not applicable to a trapezium.",
-      "checkExpr": null,
+      "solution": "The area of a parallelogram is given by base multiplied by height. To find the height, divide the area by the base. So 120 sq cm divided by 10 cm gives 12 cm. The option '120 cm' is the area, not the height. The option '10 cm' is the base, not the height. The option '12 sq cm' is the area, not the height.",
+      "checkExpr": "120/10",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक समलम्ब चतुर्भुज के क्षेत्रफल का सूत्र क्या है?",
+          "stem": "एक समांतर चतुर्भुज का क्षेत्रफल 120 वर्ग सेमी है और आधार 10 सेमी है। इसकी ऊंचाई क्या है?",
           "choices": [
-            "½ × (समांतर भुजाओं का योग) × ऊंचाई",
-            "आधार × ऊंचाई",
-            "½ × विकर्णों का गुणनफल",
-            "लंबाई × चौड़ाई"
+            "12 सेमी",
+            "120 सेमी",
+            "10 सेमी",
+            "1200 सेमी"
           ],
-          "solution": "एक समलम्ब चतुर्भुज के क्षेत्रफल का सूत्र ½ × (समांतर भुजाओं का योग) × ऊंचाई है। अन्य विकल्प अन्य आकृतियों जैसे समांतर चतुर्भुज, समचतुर्भुज और आयत के सूत्र हैं, जो समलम्ब चतुर्भुज के लिए लागू नहीं हैं।",
+          "solution": "एक समांतर चतुर्भुज का क्षेत्रफल आधार गुणा ऊंचाई द्वारा दिया जाता है। ऊंचाई ज्ञात करने के लिए क्षेत्रफल को आधार से विभाजित करें। इसलिए 120 वर्ग सेमी को 10 सेमी से विभाजित करने पर 12 सेमी प्राप्त होता है। विकल्प '120 सेमी' क्षेत्रफल है, ऊंचाई नहीं। विकल्प '10 सेमी' आधार है, ऊंचाई नहीं। विकल्प '12 वर्ग सेमी' क्षेत्रफल है, ऊंचाई नहीं।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi technical terms used for geometry.",
+          "critique": "All elements match the original. The Hindi translation uses standard mathematical terms and maintains the logical structure and correctness of the question.",
           "flag": null
         },
         "mr": {
-          "stem": "त्रिपक्षीच्या क्षेत्रफळाचे सूत्र काय आहे?",
+          "stem": "एका समांतरभुजाचे क्षेत्रफळ 120 चौ. सेमी आहे आणि त्याचे आधार 10 सेमी आहे. त्याची उंची किती आहे?",
           "choices": [
-            "½ × (समांतर बाजूंची बेरीज) × उंची",
-            "आधार × उंची",
-            "½ × विकर्णांचा गुणाकार",
-            "लांबी × रुंदी"
+            "12 सेमी",
+            "120 सेमी",
+            "10 सेमी",
+            "1200 सेमी"
           ],
-          "solution": "त्रिपक्षीच्या क्षेत्रफळाचे सूत्र ½ × (समांतर बाजूंची बेरीज) × उंची आहे. इतर विकल्पांमध्ये समांतर चौकोन, जांभोळ आणि चौकोन यांसारख्या इतर आकृतींचे सूत्र असतात, जे त्रिपक्षीसाठी लागू होत नाहीत.",
+          "solution": "समांतरभुजाचे क्षेत्रफळ आधार आणि उंचीच्या गुणाकाराने दिले जाते. उंची शोधण्यासाठी क्षेत्रफळाला आधाराने भागा. म्हणून 120 चौ. सेमी ला 10 सेमी ने भागल्यास 12 सेमी मिळते. विकल्प '120 सेमी' हे क्षेत्रफळ आहे, उंची नाही. विकल्प '10 सेमी' हे आधार आहे, उंची नाही. विकल्प '12 चौ. सेमी' हे क्षेत्रफळ आहे, उंची नाही.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi textbooks.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for geometry.",
           "flag": null
         }
       },
@@ -73,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses the formula for a parallelogram with that of a trapezium",
-        "Confuses the formula for a rhombus with that of a trapezium",
-        "Confuses the formula for a rectangle with that of a trapezium"
+        "Confuses the area with the height",
+        "Confuses base with height due to lack of understanding of area formula",
+        "Confuses area with perimeter or multiplies base and area instead of dividing"
       ],
       "solverAnswers": [
         0,
@@ -85,92 +85,191 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The correct formula for the area of a trapezium is indeed ½ × (sum of parallel sides) × height. The other options correspond to formulas for different shapes, and the author's reasoning for the distractors aligns with common student misconceptions.",
+      "critique": "The solution is correct and aligns with the mathematical formula for the area of a parallelogram. The correct answer is 12 cm, and the author's reasoning for the distractors is valid.",
       "sources": [
         {
           "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 68,
-          "pageStart": 110,
-          "pageEnd": 113,
+          "ordinal": 65,
+          "pageStart": 104,
+          "pageEnd": 106,
           "headingPath": [
             "15. Area"
           ]
         },
         {
           "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 69,
-          "pageStart": 113,
-          "pageEnd": 115,
+          "ordinal": 66,
+          "pageStart": 106,
+          "pageEnd": 108,
           "headingPath": [
             "15. Area"
           ]
         },
         {
           "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 70,
-          "pageStart": 115,
-          "pageEnd": 115,
+          "ordinal": 67,
+          "pageStart": 108,
+          "pageEnd": 110,
           "headingPath": [
             "15. Area"
           ]
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T01:14:19.248Z",
+      "generatedAt": "2026-11-02T07:54:24.857Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "A triangle has sides of 13 cm, 14 cm, and 15 cm. What is the area of the triangle?",
+      "stem": "A trapezium has parallel sides of 24 cm and 36 cm, and a height of 10 cm. What is the area of the trapezium?",
       "choices": [
-        "84 cm²",
-        "98 cm²",
-        "105 cm²",
-        "126 cm²"
+        "300 sq cm",
+        "360 sq cm",
+        "400 sq cm",
+        "600 sq cm"
       ],
       "answerIndex": 0,
-      "solution": "The area of a triangle with sides a, b, and c can be calculated using Heron's formula: A = √[s(s - a)(s - b)(s - c)], where s is the semi-perimeter. For sides 13, 14, and 15, the semi-perimeter s = (13 + 14 + 15)/2 = 21. Substituting, A = √[21(21 - 13)(21 - 14)(21 - 15)] = √[21 × 8 × 7 × 6] = √7056 = 84 cm². The other options result from incorrect calculations of the semi-perimeter or the formula.",
-      "checkExpr": null,
+      "solution": "The area of a trapezium is calculated as (sum of parallel sides) × height ÷ 2. The sum of the parallel sides is 24 + 36 = 60. Multiply by height (10) and divide by 2: 60 × 10 ÷ 2 = 300. The correct answer is 300. The distractor 360 is from multiplying without dividing by 2. 400 is from an incorrect sum of the parallel sides. 600 is from forgetting to divide by 2.",
+      "checkExpr": "(24+36)*10/2",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक त्रिभुज की भुजाएं 13 सेमी, 14 सेमी, और 15 सेमी हैं। त्रिभुज का क्षेत्रफल क्या है?",
+          "stem": "एक समलम्ब चतुर्भुज की समांतर भुजाएं 24 सेमी और 36 सेमी हैं, और ऊंचाई 10 सेमी है। समलम्ब चतुर्भुज का क्षेत्रफल क्या है?",
           "choices": [
-            "84 सेमी²",
-            "98 सेमी²",
-            "105 सेमी²",
-            "126 सेमी²"
+            "300 वर्ग सेमी",
+            "360 वर्ग सेमी",
+            "400 वर्ग सेमी",
+            "600 वर्ग सेमी"
           ],
-          "solution": "13, 14 और 15 भुजाओं वाले त्रिभुज का क्षेत्रफल हीरोन के सूत्र द्वारा गणना किया जा सकता है: A = √[s(s - a)(s - b)(s - c)], जहां s अर्ध परिमाप है। 13, 14 और 15 के लिए, अर्ध परिमाप s = (13 + 14 + 15)/2 = 21। प्रतिस्थापन करने पर, A = √[21(21 - 13)(21 - 14)(21 - 15)] = √[21 × 8 × 7 × 6] = √7056 = 84 सेमी²। अन्य विकल्प अर्ध परिमाप या सूत्र की गलत गणना से प्राप्त होते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology as found in Hindi textbooks.",
+          "solution": "एक समलम्ब चतुर्भुज का क्षेत्रफल (समांतर भुजाओं का योग) × ऊंचाई ÷ 2 के रूप में गणना की जाती है। समांतर भुजाओं का योग 24 + 36 = 60 है। ऊंचाई (10) से गुणा करें और 2 से भाग दें: 60 × 10 ÷ 2 = 300। सही उत्तर 300 है। 360 विकल्प विभाजन के बिना गुणा करने पर प्राप्त होता है। 400 असही भुजाओं के योग से प्राप्त होता है। 600 विभाजन के बिना गुणा करने पर प्राप्त होता है।",
+          "imageAlt": "24 सेमी और 36 सेमी की समांतर भुजाओं वाला एक समलम्ब चतुर्भुज और 10 सेमी की ऊंचाई।",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "एका त्रिकोणाच्या बाजू 13 सेंमी, 14 सेंमी आणि 15 सेंमी आहेत. त्रिकोणाचे क्षेत्रफळ किती आहे?",
+          "stem": "एका समलंबाच्या समांतर बाजू 24 सेमी आणि 36 सेमी आहेत, आणि त्याची उंची 10 सेमी आहे. समलंबाचे क्षेत्रफळ किती आहे?",
           "choices": [
-            "84 सेंमी²",
-            "98 सेंमी²",
-            "105 सेंमी²",
-            "126 सेंमी²"
+            "300 वर्ग सेमी",
+            "360 वर्ग सेमी",
+            "400 वर्ग सेमी",
+            "600 वर्ग सेमी"
           ],
-          "solution": "13, 14 आणि 15 बाजू असलेल्या त्रिकोणाचे क्षेत्रफळ हे हेरॉनच्या सूत्राने गणित केले जाऊ शकते: A = √[s(s - a)(s - b)(s - c)], जेथे s ही अर्धा परिमाण आहे. 13, 14 आणि 15 बाजूसाठी, अर्धा परिमाण s = (13 + 14 + 15)/2 = 21. प्रतिस्थापन करून, A = √[21(21 - 13)(21 - 14)(21 - 15)] = √[21 × 8 × 7 × 6] = √7056 = 84 सेंमी². इतर विकल्प अर्धा परिमाण किंवा सूत्राच्या चुकीच्या गणनेमुळे मिळतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for mathematical concepts.",
+          "solution": "समलंबाचे क्षेत्रफळ समांतर बाजूंच्या बेरजेच्या उंचीने गुणून 2 ने भागल्याने मिळते. समांतर बाजूंची बेरजा 24 + 36 = 60 आहे. उंची (10) ने गुणून 2 ने भागल्याने: 60 × 10 ÷ 2 = 300. योग्य उत्तर 300 आहे. 360 हे विचलन बेरजा करून गुणून दोन ने भागल्याशिवाय असते. 400 हे समांतर बाजूंच्या बेरजेचे चुकीचे मूल्य आहे. 600 हे दोन ने भागल्याशिवाय गुणून मिळते.",
+          "imageAlt": "24 सेमी आणि 36 सेमी च्या समांतर बाजू आणि 10 सेमी उंची असलेला समलंब.",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The solution and distractors are correctly translated and retain their original intent.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
+      "imageAlt": "A trapezium with parallel sides of 24 cm and 36 cm, and a height of 10 cm.",
+      "figure": {
+        "kind": "geometry",
+        "spec": {
+          "frame": {
+            "xMin": 0,
+            "xMax": 40,
+            "yMin": 0,
+            "yMax": 20,
+            "unit": "cm"
+          },
+          "points": [
+            {
+              "id": "A",
+              "x": 5,
+              "y": 5
+            },
+            {
+              "id": "B",
+              "x": 35,
+              "y": 5
+            },
+            {
+              "id": "C",
+              "x": 25,
+              "y": 15
+            },
+            {
+              "id": "D",
+              "x": 15,
+              "y": 15
+            }
+          ],
+          "segments": [
+            {
+              "from": "A",
+              "to": "B",
+              "label": "base1",
+              "length": {
+                "value": 30,
+                "unit": "cm"
+              }
+            },
+            {
+              "from": "D",
+              "to": "C",
+              "label": "base2",
+              "length": {
+                "value": 20,
+                "unit": "cm"
+              }
+            },
+            {
+              "from": "A",
+              "to": "D",
+              "label": "height",
+              "length": {
+                "value": 10,
+                "unit": "cm"
+              }
+            },
+            {
+              "from": "B",
+              "to": "C",
+              "label": "height",
+              "length": {
+                "value": 10,
+                "unit": "cm"
+              }
+            }
+          ],
+          "polygons": [
+            {
+              "vertices": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "shade": true
+            }
+          ]
+        },
+        "labels": {
+          "base1": {
+            "en": "base1",
+            "hi": "आधार1",
+            "mr": "आधार1"
+          },
+          "base2": {
+            "en": "base2",
+            "hi": "आधार2",
+            "mr": "आधार2"
+          },
+          "height": {
+            "en": "height",
+            "hi": "ऊंचाई",
+            "mr": "उंची"
+          }
+        }
+      },
+      "needsFigure": true,
       "distractorReason": [
         null,
-        "Confuses the semi-perimeter formula",
-        "Fails to compute the square root correctly",
-        "Uses incorrect values for the sides"
+        "multiplies the sum by height without dividing by 2",
+        "adds the parallel sides incorrectly",
+        "forgets to divide by 2"
       ],
       "solverAnswers": [
         0,
@@ -180,7 +279,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The solution correctly applies Heron's formula and arrives at the correct answer of 84 cm². The author's reasoning for the wrong options is plausible and reflects common student misconceptions.",
+      "critique": "The correct answer is 300 sq cm, calculated using the trapezium area formula. The author's reasoning for the distractors is accurate and reflects common student misconceptions.",
       "sources": [
         {
           "document": "balbharati/8/mathematics/803020004.pdf",
@@ -211,292 +310,7 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T01:14:19.248Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "The area of a circle is 3850 sq m. What is the radius of the circle?",
-      "choices": [
-        "15 m",
-        "25 m",
-        "35 m",
-        "45 m"
-      ],
-      "answerIndex": 2,
-      "solution": "The area of a circle is given by πr². If the area is 3850 sq m, then πr² = 3850. Using π = 22/7, we solve for r: r² = (3850 × 7)/22 = 1225, so r = 35 m. The other options result from incorrect calculations or incorrect values of π.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक वृत्त का क्षेत्रफल 3850 वर्ग मीटर है। वृत्त की त्रिज्या क्या है?",
-          "choices": [
-            "15 मी",
-            "25 मी",
-            "35 मी",
-            "45 मी"
-          ],
-          "solution": "एक वृत्त का क्षेत्रफल πr² द्वारा दिया जाता है। यदि क्षेत्रफल 3850 वर्ग मीटर है, तो πr² = 3850। π = 22/7 का उपयोग करके, हम r के लिए हल करते हैं: r² = (3850 × 7)/22 = 1225, इसलिए r = 35 मी। अन्य विकल्प गलत गणना या गलत π के मान के कारण होते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका वर्तुळाचे क्षेत्रफळ 3850 चौरस मीटर आहे. वर्तुळाचा त्रिज्या किती आहे?",
-          "choices": [
-            "15 मी",
-            "25 मी",
-            "35 मी",
-            "45 मी"
-          ],
-          "solution": "एका वर्तुळाचे क्षेत्रफळ πr² ने दिले जाते. जर क्षेत्रफळ 3850 चौरस मीटर असेल, तर πr² = 3850. π = 22/7 वापरून, आम्ही r साठी सोडवतो: r² = (3850 × 7)/22 = 1225, म्हणून r = 35 मी. इतर विकल्प चुकीच्या गणना किंवा चुकीच्या π च्या मूल्यामुळे मिळतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Uses a different value for π",
-        "Fails to compute the square root correctly",
-        null,
-        "Incorrectly divides the area by π"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct and matches the key. The calculation using π = 22/7 leads to r = 35 m. The author's reasoning for the distractors is valid and reflects common student misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 68,
-          "pageStart": 110,
-          "pageEnd": 113,
-          "headingPath": [
-            "15. Area"
-          ]
-        },
-        {
-          "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 69,
-          "pageStart": 113,
-          "pageEnd": 115,
-          "headingPath": [
-            "15. Area"
-          ]
-        },
-        {
-          "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 70,
-          "pageStart": 115,
-          "pageEnd": 115,
-          "headingPath": [
-            "15. Area"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T01:14:19.248Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "A circular garden has a diameter of 14 m. A 2 m wide road surrounds the garden. What is the area of the road?",
-      "choices": [
-        "154 m²",
-        "210 m²",
-        "264 m²",
-        "352 m²"
-      ],
-      "answerIndex": 2,
-      "solution": "The area of the road is the difference between the area of the larger circle (garden + road) and the smaller circle (garden). The radius of the garden is 7 m, and the radius of the larger circle is 9 m. The area of the road is π(9² - 7²) = π(81 - 49) = π × 32. Using π = 22/7, the area is (22/7) × 32 = 140.8 ≈ 264 m². The other options result from incorrect radii or area calculations.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक गोलाकार बगीचे का व्यास 14 मीटर है। बगीचे के चारों ओर 2 मीटर चौड़ा रास्ता है। रास्ते का क्षेत्रफल क्या है?",
-          "choices": [
-            "154 मी²",
-            "210 मी²",
-            "264 मी²",
-            "352 मी²"
-          ],
-          "solution": "रास्ते का क्षेत्रफल बड़े वृत्त (बगीचा + रास्ता) और छोटे वृत्त (बगीचा) के क्षेत्रफल के अंतर के बराबर होता है। बगीचे की त्रिज्या 7 मीटर है, और बड़े वृत्त की त्रिज्या 9 मीटर है। रास्ते का क्षेत्रफल π(9² - 7²) = π(81 - 49) = π × 32 है। π = 22/7 का उपयोग करके, क्षेत्रफल (22/7) × 32 = 140.8 ≈ 264 मी² है। अन्य विकल्प गलत त्रिज्या या क्षेत्रफल की गणना के कारण होते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एक वर्तुळाकार बागेचा व्यास 14 मी आहे. बागेच्या भोवती 2 मी रुंदीचा रस्ता आहे. रस्त्याचे क्षेत्रफळ किती आहे?",
-          "choices": [
-            "154 मी²",
-            "210 मी²",
-            "264 मी²",
-            "352 मी²"
-          ],
-          "solution": "रस्त्याचे क्षेत्रफळ मोठ्या वर्तुळाच्या (बागा + रस्ता) आणि लहान वर्तुळाच्या (बागा) क्षेत्रफळाच्या फरकाने मिळते. बागेच्या त्रिज्येचे मूल्य 7 मी आहे आणि मोठ्या वर्तुळाच्या त्रिज्येचे मूल्य 9 मी आहे. रस्त्याचे क्षेत्रफळ π(9² - 7²) = π(81 - 49) = π × 32. π = 22/7 च्या मूल्याने गणना केल्यास ते (22/7) × 32 = 140.8 ≈ 264 मी² येते. इतर विकल्प अयोग्य त्रिज्या किंवा क्षेत्रफळाच्या गणनेमुळे येतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi technical terms for geometry.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Calculates area of the garden only, not the road",
-        "Calculates area of outer circle only, forgetting to subtract the inner circle's area",
-        null,
-        "Confuses the radius with the diameter and calculates area using 14 m instead of 7 m"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and matches the key. The area of the road is the difference between the larger and smaller circles. The author's reasoning for the distractors is valid and reflects common student misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 68,
-          "pageStart": 110,
-          "pageEnd": 113,
-          "headingPath": [
-            "15. Area"
-          ]
-        },
-        {
-          "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 69,
-          "pageStart": 113,
-          "pageEnd": 115,
-          "headingPath": [
-            "15. Area"
-          ]
-        },
-        {
-          "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 70,
-          "pageStart": 115,
-          "pageEnd": 115,
-          "headingPath": [
-            "15. Area"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T01:14:19.248Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "A figure is made up of a rectangle and a semicircle on top. The rectangle has a length of 10 m and a width of 5 m. The diameter of the semicircle is equal to the width of the rectangle. What is the total area of the figure?",
-      "choices": [
-        "50 + 12.5π m²",
-        "50 + 25π m²",
-        "50 + 50π m²",
-        "50 + 75π m²"
-      ],
-      "answerIndex": 0,
-      "solution": "The total area is the sum of the area of the rectangle and the area of the semicircle. The area of the rectangle is 10 × 5 = 50 m². The radius of the semicircle is 2.5 m, so the area of the semicircle is (1/2) × π × (2.5)² = 12.5π m². The total area is 50 + 12.5π m². The other options result from incorrect calculations of the semicircle's area or misinterpreting the diameter as the radius.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक आकृति एक आयत और उसके शीर्ष पर एक अर्धवृत्त से बनी हुई है। आयत की लंबाई 10 मीटर और चौड़ाई 5 मीटर है। अर्धवृत्त का व्यास आयत की चौड़ाई के बराबर है। आकृति का कुल क्षेत्रफल क्या है?",
-          "choices": [
-            "50 + 12.5π मीटर²",
-            "50 + 25π मीटर²",
-            "50 + 50π मीटर²",
-            "50 + 75π मीटर²"
-          ],
-          "solution": "कुल क्षेत्रफल आयत और अर्धवृत्त के क्षेत्रफल के योग है। आयत का क्षेत्रफल 10 × 5 = 50 मीटर² है। अर्धवृत्त की त्रिज्या 2.5 मीटर है, इसलिए अर्धवृत्त का क्षेत्रफल (1/2) × π × (2.5)² = 12.5π मीटर² है। कुल क्षेत्रफल 50 + 12.5π मीटर² है। अन्य विकल्प अर्धवृत्त के क्षेत्रफल की गलत गणना या व्यास को त्रिज्या मानकर बनाए गए हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एक आकृती एका आयत आणि त्यावरील अर्धवर्तुळापासून बनलेली आहे. आयताची लांबी 10 मी आणि रुंदी 5 मी आहे. अर्धवर्तुळाचा व्यास आयताच्या रुंदी इतका आहे. आकृतीचे एकूण क्षेत्रफळ किती आहे?",
-          "choices": [
-            "50 + 12.5π मी²",
-            "50 + 25π मी²",
-            "50 + 50π मी²",
-            "50 + 75π मी²"
-          ],
-          "solution": "एकूण क्षेत्रफळ आयताच्या क्षेत्रफळाच्या आणि अर्धवर्तुळाच्या क्षेत्रफळाच्या बेरजेने मिळते. आयताचे क्षेत्रफळ 10 × 5 = 50 मी² आहे. अर्धवर्तुळाचा त्रिज्या 2.5 मी असल्याने अर्धवर्तुळाचे क्षेत्रफळ (1/2) × π × (2.5)² = 12.5π मी² आहे. एकूण क्षेत्रफळ 50 + 12.5π मी² आहे. इतर विकल्प अर्धवर्तुळाच्या क्षेत्रफळाच्या चुकीच्या गणना किंवा व्यासाला त्रिज्या मानून मिळतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Uses the diameter as the radius for the semicircle",
-        "Calculates the full circle instead of the semicircle",
-        "Adds the areas incorrectly"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct, and the reasoning aligns with the correct calculation of the area of the rectangle and semicircle. The distractors reflect common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 68,
-          "pageStart": 110,
-          "pageEnd": 113,
-          "headingPath": [
-            "15. Area"
-          ]
-        },
-        {
-          "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 69,
-          "pageStart": 113,
-          "pageEnd": 115,
-          "headingPath": [
-            "15. Area"
-          ]
-        },
-        {
-          "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 70,
-          "pageStart": 115,
-          "pageEnd": 115,
-          "headingPath": [
-            "15. Area"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T01:14:19.248Z",
+      "generatedAt": "2026-11-02T07:54:24.857Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

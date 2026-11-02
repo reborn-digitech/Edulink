@@ -1,0 +1,294 @@
+{
+  "subject": "MATHS",
+  "classLevel": 8,
+  "chapter": "Chapter 13 — Algebra Play",
+  "name": "Algebra Play",
+  "slug": "maths-8-algebra-play",
+  "summary": "This chapter explores algebra through number tricks, pyramids, grids, and divisibility rules to make learning fun.",
+  "position": 13,
+  "source": "generated against NCERT Mathematics, Class 8, chapter 13 (\"Ganita Prakash Part-II\", chapter 6) (2025 edition (the site's Last-Modified))",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {
+    "hi": {
+      "name": "अध्याय 13 — बीजगणित का खेल",
+      "summary": "इस अध्याय में संख्या ट्रिक्स, पिरामिड, ग्रिड और विभाजन नियमों के माध्यम से बीजगणित का आनंद लिया जाता है।"
+    },
+    "mr": {
+      "name": "अध्याय 13 — बीजगणिताचा खेळ",
+      "summary": "हा अध्याय संख्या ट्रिक्स, पिरामिड, ग्रिड आणि विभाज्यता नियमांच्या माध्यमातून बीजगणिताचा आनंद घेण्यासाठी असतो."
+    }
+  },
+  "board": "NCERT",
+  "book": "Ganita Prakash Part-II",
+  "edition": "2025 edition (the site's Last-Modified)",
+  "generatedAt": "2026-11-02T10:09:58.457Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": true,
+  "questions": [
+    {
+      "difficulty": 4,
+      "stem": "Based on the algebraic equations for the number pyramid, what is the value of 'c' if a + b = 60, 12 + c = a, and c + 8 = b?",
+      "choices": [
+        "10",
+        "15",
+        "20",
+        "25"
+      ],
+      "answerIndex": 2,
+      "solution": "By substituting the expressions for a and b into the equation a + b = 60, we get (12 + c) + (c + 8) = 60, which simplifies to 20 + 2c = 60. Solving for c gives c = 20. The other options do not satisfy the equation when substituted back into the relationships given.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "बीजगणितीय समीकरणों के आधार पर संख्या पिरामिड, 'c' का मान क्या है यदि a + b = 60, 12 + c = a, और c + 8 = b?",
+          "choices": [
+            "10",
+            "15",
+            "20",
+            "25"
+          ],
+          "solution": "हम a और b के अभिव्यक्तियों को a + b = 60 में प्रतिस्थापित करके पाते हैं कि (12 + c) + (c + 8) = 60, जो 20 + 2c = 60 में सरल हो जाता है। c के लिए हल करने पर c = 20 प्राप्त होता है। अन्य विकल्प दिए गए संबंधों में वापस स्थापित करने पर समीकरण को संतुष्ट नहीं करते हैं।",
+          "imageAlt": "तीन पंक्तियों वाला एक संख्या पिरामिड। नीचे की पंक्ति में तीन संख्याएं c, a और b हैं। 12 से a और 8 से b की ओर तीर हैं।",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "बीजगणितीय समीकरणांच्या आधारे अंक पिरामिडवरून, जर a + b = 60, 12 + c = a, आणि c + 8 = b असेल तर 'c' ची किंमत काय आहे?",
+          "choices": [
+            "10",
+            "15",
+            "20",
+            "25"
+          ],
+          "solution": "a आणि b च्या व्यंजकांचे बदल करून a + b = 60 या समीकरणात ठेवल्यास (12 + c) + (c + 8) = 60 मिळते, जे 20 + 2c = 60 अशा रूपात सोपे केले जाऊ शकते. c चे मूल्य काढल्यास c = 20 मिळते. इतर विकल्पांमध्ये दिलेल्या संबंधांमध्ये परत ठेवल्यास समीकरण पूर्ण होत नाही.",
+          "imageAlt": "तीन ओळी असलेला अंक पिरामिड. खालच्या ओळीत तीन अंक c, a आणि b असतात. 12 पासून a आणि 8 पासून b ला तीर दाखवले आहेत.",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A number pyramid with three rows. The bottom row has three numbers labeled c, a, and b. Arrows point from 12 to a and from 8 to b.",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "lever",
+              "x": 20,
+              "y": 20,
+              "size": 40,
+              "labels": [
+                "fulcrum",
+                "effort",
+                "load"
+              ],
+              "text": {
+                "fulcrum": "c",
+                "effort": "a",
+                "load": "b"
+              }
+            }
+          ],
+          "arrows": [
+            {
+              "from": [
+                10,
+                30
+              ],
+              "to": [
+                20,
+                20
+              ],
+              "label": "12",
+              "curved": true
+            },
+            {
+              "from": [
+                30,
+                30
+              ],
+              "to": [
+                20,
+                20
+              ],
+              "label": "8",
+              "curved": true
+            }
+          ],
+          "texts": []
+        },
+        "labels": {
+          "a": {
+            "en": "a"
+          },
+          "b": {
+            "en": "b"
+          },
+          "c": {
+            "en": "c"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "incorrectly solves the equation 20 + 2c = 60 as 2c = 20",
+        "mistakenly assumes the value of c is 15 due to a calculation error",
+        null,
+        "incorrectly calculates 2c = 60 - 20 as 2c = 30"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and logically follows from the given equations. The correct answer is 20, and the author's reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp206.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 13: Algebra Play"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp206.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 13: Algebra Play",
+            "6.2 Thinking about ‘Think of a Number’ Tricks"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp206.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 13: Algebra Play",
+            "6.3 Number Pyramids"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp206.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 13: Algebra Play",
+            "6.4 Fun with Grids"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-11-02T10:09:58.457Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If the digits 1, 3, and 7 are used once each to form two numbers, what is the largest possible product?",
+      "choices": [
+        "13 × 7",
+        "17 × 3",
+        "31 × 7",
+        "37 × 1"
+      ],
+      "answerIndex": 2,
+      "solution": "To find the largest product, the digits 1, 3, and 7 should be arranged so that the larger digits contribute more to the product. Placing the largest digit, 7, as a single-digit number and combining the remaining digits into the largest two-digit number, 31, gives 31 × 7 = 217. Other combinations like 13 × 7 = 91, 17 × 3 = 51, and 37 × 1 = 37 result in smaller products because they do not maximize the contribution of the larger digits.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि अंक 1, 3 और 7 का प्रयोग दो संख्याएँ बनाने के लिए एक बार प्रत्येक के रूप में किया जाता है, तो सबसे बड़ा संभव गुणनफल क्या है?",
+          "choices": [
+            "13 × 7",
+            "17 × 3",
+            "31 × 7",
+            "37 × 1"
+          ],
+          "solution": "सबसे बड़ा गुणनफल प्राप्त करने के लिए, अंक 1, 3 और 7 को इस प्रकार व्यवस्थित किया जाना चाहिए कि बड़े अंक गुणनफल में अधिक योगदान दें। सबसे बड़ा अंक 7 को एक अक्षर वाली संख्या के रूप में रखना और शेष अंकों को सबसे बड़ी द्विअंकीय संख्या में संयोजित करना, 31, देता है 31 × 7 = 217। अन्य संयोजन जैसे 13 × 7 = 91, 17 × 3 = 51 और 37 × 1 = 37 छोटे गुणनफल प्राप्त करते हैं क्योंकि वे बड़े अंकों के योगदान को अधिकतम नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "1, 3 आणि 7 या अंकांचा एकदम एकदम वापर करून दोन संख्या तयार केल्या असतील, तर अशा दोन संख्यांचा सर्वात मोठा शक्य गुणाकार किती असेल?",
+          "choices": [
+            "13 × 7",
+            "17 × 3",
+            "31 × 7",
+            "37 × 1"
+          ],
+          "solution": "सर्वात मोठा गुणाकार मिळविण्यासाठी, 1, 3 आणि 7 या अंकांची व्यवस्था करावी लागेल जेणेकरून मोठ्या अंकांचा गुणाकारात जास्त योगदान राहील. सर्वात मोठा अंक, 7, एक अंकी संख्या म्हणून ठेवून उरलेल्या अंकांनी बनवलेली सर्वात मोठी द्विअंकी संख्या, 31, तयार करणे अवश्य आहे. त्यामुळे 31 × 7 = 217 मिळतो. इतर संयोजनांमध्ये 13 × 7 = 91, 17 × 3 = 51 आणि 37 × 1 = 37 असे गुणाकार मिळतात, जे मोठ्या अंकांचा योगदान जास्त करत नाहीत म्हणून ते लहान असतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses an order where the largest digit is not the multiplier",
+        "Chooses an order that places the smallest digit as the multiplier",
+        null,
+        "Chooses an order that does not place the digits in decreasing order as the multiplicand"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 31 × 7 = 217. The author's reasoning aligns with the principle that placing the largest digit as the multiplier and arranging the remaining digits in decreasing order as the multiplicand yields the largest product. The reasoning for the wrong options is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp206.pdf",
+          "ordinal": 4,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 13: Algebra Play",
+            "6.5 The Largest Product"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp206.pdf",
+          "ordinal": 5,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 13: Algebra Play",
+            "6.6 Decoding Divisibility Tricks"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp206.pdf",
+          "ordinal": 6,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 13: Algebra Play",
+            "6.6 Decoding Divisibility Tricks"
+          ]
+        }
+      ],
+      "edition": "2025 edition (the site's Last-Modified)",
+      "generatedAt": "2026-11-02T10:09:58.457Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}

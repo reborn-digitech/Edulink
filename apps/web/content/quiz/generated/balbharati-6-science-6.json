@@ -21,47 +21,134 @@
   "board": "BALBHARATI",
   "book": "६ वी सामान्य विज्ञान इंग्रजी",
   "edition": "First Edition 2026",
-  "generatedAt": "2026-10-31T04:38:42.245Z",
+  "generatedAt": "2026-11-01T17:20:40.098Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "Which of the following is a property of a solid?",
+      "stem": "Which of the following is the correct state of water?",
       "choices": [
-        "Particles are very close to each other and hold each other tightly.",
-        "Particles are slightly further apart and loosely bound.",
-        "Particles scatter everywhere in the available space.",
-        "Particles are not bound to each other."
+        "Solid",
+        "Liquid",
+        "Gas",
+        "Plasma"
       ],
       "answerIndex": 0,
-      "solution": "The correct answer is that particles are very close to each other and hold each other tightly. This arrangement gives solids their fixed shape and volume. The other options describe particles that are more spread out or free to move, which are characteristics of liquids and gases, not solids.",
+      "solution": "The correct state of water is solid, as water freezes into ice at temperatures below 0°C. Liquid is incorrect because it refers to water in its fluid state, not the specific state being asked. Gas is incorrect because it refers to water vapor, which is not the state in question. Plasma is incorrect because it is a high-energy state of matter not typically associated with water under normal conditions.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा ठोस का गुण है?",
+          "stem": "निम्नलिखित में से कौन-सी जल की सही अवस्था है?",
           "choices": [
-            "कण एक दूसरे के बहुत करीब होते हैं और एक दूसरे को ढकेलते हैं।",
-            "कण थोड़ा दूर होते हैं और ढीले बंधे होते हैं।",
-            "कण उपलब्ध स्थान में हर जगह फैल जाते हैं।",
-            "कण एक दूसरे से बंधे नहीं होते।"
+            "ठोस",
+            "तरल",
+            "गैस",
+            "प्लाज्मा"
           ],
-          "solution": "सही उत्तर यह है कि कण एक दूसरे के बहुत करीब होते हैं और एक दूसरे को ढकेलते हैं। इस व्यवस्था के कारण ठोसों के स्थिर आकार और आयतन होता है। अन्य विकल्प कणों के अधिक फैले होने या गतिशील होने का वर्णन करते हैं, जो तरल और गैस के गुण हैं, ठोस के नहीं।",
+          "solution": "जल की सही अवस्था ठोस है क्योंकि जल 0°C से नीचे के तापमान पर बर्फ में जम जाता है। तरल गलत है क्योंकि यह जल की तरल अवस्था को संदर्भित करता है, न कि पूछे गए विशिष्ट अवस्था को। गैस गलत है क्योंकि यह जल के वाष्प को संदर्भित करता है, जो प्रश्न में अवस्था नहीं है। प्लाज्मा गलत है क्योंकि यह ऊंची ऊर्जा वाली पदार्थ की अवस्था है जो सामान्य परिस्थितियों में जल के साथ जुड़ी नहीं होती है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology as found in Hindi textbooks.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate scientific terminology in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते घन पदार्थाचे गुणधर्म आहे?",
+          "stem": "खालीलपैकी कोणता पाण्याचा योग्य अवस्था आहे?",
           "choices": [
-            "कण एकमेकांच्या जवळ असतात आणि एकमेकांना घट्ट बांधून ठेवतात.",
-            "कण थोडे दूर असतात आणि अस्पष्ट बांधून ठेवतात.",
-            "कण उपलब्ध जागेत सर्वत्र बिखेरलेले असतात.",
-            "कण एकमेकांना बांधलेले नसतात."
+            "पाकळी",
+            "तरल",
+            "वायू",
+            "प्लाझ्मा"
           ],
-          "solution": "सही उत्तर म्हणजे कण एकमेकांच्या जवळ असतात आणि एकमेकांना घट्ट बांधून ठेवतात. हा व्यवस्थानामुळे घन पदार्थांना त्यांची निश्चित आकृती आणि आयतन असतो. इतर विकल्पांमध्ये कण अधिक दूर असतात किंवा गतिशील असतात, हे द्रव आणि वायूंचे गुणधर्म आहेत, घन पदार्थांचे नाही.",
+          "solution": "पाण्याची योग्य अवस्था पाकळी आहे, कारण पाणी 0°C पेक्षा कमी तापमानावर बर्फात जमते. तरल असे चुकीचे आहे कारण ते पाण्याच्या तरल अवस्थेला संदर्भित करते, जे विचारलेल्या विशिष्ट अवस्थेला संदर्भित करत नाही. वायू असे चुकीचे आहे कारण ते पाण्याच्या वाफेला संदर्भित करते, जे अवस्थेच्या प्रश्नाला संदर्भित करत नाही. प्लाझ्मा असे चुकीचे आहे कारण ते सामान्य परिस्थितीत पाण्याशी संबंधित नसलेल्या उच्च-ऊर्जा पदार्थाच्या अवस्थेला संदर्भित करते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for physical states of matter.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes water is always in liquid form regardless of temperature",
+        "Confuses the common states of matter with the less commonly mentioned plasma as a state of water",
+        "Student thinks plasma is a common state of water, not realizing it's rare and only found in extreme conditions"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is flawed because it does not provide context about the temperature or condition of water. Water can exist in all four states depending on temperature and pressure. The correct answer depends on the context, which is missing. The author's key (0) assumes water is in solid form, but this is not universally correct without additional information.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 59,
+          "pageStart": 70,
+          "pageEnd": 71,
+          "headingPath": [
+            "6. Properties of Substances"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 60,
+          "pageStart": 71,
+          "pageEnd": 71,
+          "headingPath": [
+            "6. Properties of Substances",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T17:20:40.098Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What happens when light rays fall on an opaque substance?",
+      "choices": [
+        "Some light passes through",
+        "All light passes through",
+        "Light does not pass through",
+        "Light bends around the substance"
+      ],
+      "answerIndex": 2,
+      "solution": "Light does not pass through an opaque substance because the material blocks all light. Some light passing through would describe a translucent or transparent material, not an opaque one. All light passing through is incorrect as it contradicts the definition of opacity. Light bending around the substance is a description of diffraction, not the behavior of light with opaque materials.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जब प्रकाश की किरणें एक अपारदर्शी पदार्थ पर गिरती हैं तो क्या होता है?",
+          "choices": [
+            "कुछ प्रकाश पार हो जाता है",
+            "सभी प्रकाश पार हो जाता है",
+            "प्रकाश पार नहीं होता है",
+            "प्रकाश पदार्थ के चारों ओर झुक जाता है"
+          ],
+          "solution": "अपारदर्शी पदार्थ पर प्रकाश की किरणें नहीं पार होती हैं क्योंकि इस पदार्थ द्वारा सभी प्रकाश रोक लिया जाता है। कुछ प्रकाश पार होना एक अर्धपारदर्शी या पारदर्शी पदार्थ का वर्णन करता है, न कि अपारदर्शी पदार्थ का। सभी प्रकाश पार होना असत्य है क्योंकि यह अपारदर्शिता की परिभाषा के विरुद्ध है। पदार्थ के चारों ओर प्रकाश के झुकने का वर्णन विवर्तन के रूप में किया जाता है, न कि अपारदर्शी पदार्थों के साथ प्रकाश के व्यवहार के रूप में।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Hindi-medium science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "प्रकाशाचे किरण अपारदर्शक पदार्थावर पडतात तेव्हा काय होते?",
+          "choices": [
+            "काही प्रकाश त्यातून जातो",
+            "सर्व प्रकाश त्यातून जातो",
+            "प्रकाश त्यातून जात नाही",
+            "प्रकाश पदार्थाच्या आजूबाजूला मोडतो"
+          ],
+          "solution": "अपारदर्शक पदार्थावर प्रकाश त्यातून जात नाही, कारण तो पदार्थ सर्व प्रकाश अडवतो. काही प्रकाश त्यातून जाणे हे पारदर्शक किंवा अर्धपारदर्शक पदार्थाचे वर्णन असते, अपारदर्शक पदार्थासाठी नाही. सर्व प्रकाश त्यातून जाणे असे अपारदर्शकतेच्या व्याख्येशी विरोधात असते. पदार्थाच्या आजूबाजूला मोडणे हे विवर्तनाचे वर्णन असते, अपारदर्शक पदार्थांसाठी नाही.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for scientific concepts.",
           "flag": null
@@ -72,20 +159,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Confuses opaque with transparent",
+        "Misunderstands the definition of all light passing through",
         null,
-        "Confuses the properties of solids with those of liquids",
-        "Confuses the properties of solids with those of gases",
-        "Does not understand the concept of particle arrangement in solids"
+        "Does not know the correct property of opaque substances"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 0, as solids have tightly packed particles. The other options correctly describe liquids (1) and gases (2, 3), and the author's reasoning for the distractors aligns with common misconceptions.",
+      "critique": "The question is well-constructed and the key is correct. The solution correctly identifies that opaque substances do not allow light to pass through, and the distractors reflect common misconceptions.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
@@ -108,49 +195,49 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T04:38:42.245Z",
+      "generatedAt": "2026-11-01T17:20:40.098Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 1,
-      "stem": "Which of the following is a state of matter?",
+      "difficulty": 2,
+      "stem": "Which of the following properties of a substance is determined by how tightly its particles hold each other?",
       "choices": [
-        "Plasma",
-        "Magnet",
-        "Circuit",
-        "Battery"
+        "Mass",
+        "Volume",
+        "Density",
+        "State"
       ],
-      "answerIndex": 0,
-      "solution": "Plasma is a state of matter, characterized by ionized particles and free electrons. Magnet, circuit, and battery are not states of matter; they are objects or systems that involve magnetic fields, electrical connections, or energy storage, respectively.",
+      "answerIndex": 3,
+      "solution": "The state of a substance, such as solid, liquid, or gas, is determined by how tightly its particles are held together. This is because the strength of the forces between particles affects their arrangement and movement. Mass, volume, and density are properties that depend on the amount of matter and its distribution, not the strength of particle interactions.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सी पदार्थ की अवस्था है?",
+          "stem": "निम्नलिखित में से कौन-सा गुण एक पदार्थ के कणों के एक दूसरे के साथ कितनी तेजी से बंधे रहने पर निर्भर करता है?",
           "choices": [
-            "प्लाज्मा",
-            "चुंबक",
-            "परिपथ",
-            "बैटरी"
+            "द्रव्यमान",
+            "आयतन",
+            "घनत्व",
+            "अवस्था"
           ],
-          "solution": "प्लाज्मा एक पदार्थ की अवस्था है, जिसकी विशेषता आयनित कणों और मुक्त इलेक्ट्रॉनों होते हैं। चुंबक, परिपथ और बैटरी पदार्थ की अवस्थाएं नहीं हैं; वे चुंबकीय क्षेत्रों, विद्युत संयोजनों या ऊर्जा भंडारण के क्रमशः वस्तुओं या प्रणालियों के रूप में होते हैं।",
+          "solution": "एक पदार्थ की अवस्था, जैसे ठोस, द्रव या गैस, कणों के एक दूसरे के साथ कितनी तेजी से बंधे रहने पर निर्भर करती है। इसका कारण यह है कि कणों के बीच बलों की ताकत उनकी व्यवस्था और गति को प्रभावित करती है। द्रव्यमान, आयतन और घनत्व ऐसे गुण हैं जो पदार्थ की मात्रा और उसके वितरण पर निर्भर करते हैं, कणों के अंतरक्रिया की ताकत पर नहीं।",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for scientific concepts.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains in the same position. The distractors remain incorrect, and the technical terms used are standard in Hindi science education.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते द्रव्याचे अवस्था आहे?",
+          "stem": "खालीलपैकी कोणता गुणधर्म एखाद्या पदार्थाचा निर्धार करतो ज्यामुळे त्याचे कण एकमेकांना घट्ट बांधून ठेवतात?",
           "choices": [
-            "प्लाझ्मा",
-            "चुंबक",
-            "परिपथ",
-            "बॅटरी"
+            "द्रव्यमान",
+            "आयतन",
+            "घनता",
+            "अवस्था"
           ],
-          "solution": "प्लाझ्मा द्रव्याची अवस्था आहे, जी आयनीकृत कणांमध्ये आणि मुक्त इलेक्ट्रॉनमध्ये विशिष्ट आहे. चुंबक, परिपथ आणि बॅटरी द्रव्याच्या अवस्था नाहीत; ते चुंबकीय क्षेत्रांचा वापर, विद्युत जोडणी किंवा ऊर्जा साठवणी यांना संबोधित करणारे वस्तू किंवा प्रणाली आहेत.",
+          "solution": "एखाद्या पदार्थाची अवस्था, जसे की घन, द्रव किंवा वायू, त्याचे कण किती घट्ट बांधून ठेवले गेले आहेत यावर अवलंबून असते. हे कारण आहे की कणांमधील बलाची तीव्रता त्यांच्या व्यवस्थेवर आणि गतीवर प्रभाव टाकते. द्रव्यमान, आयतन आणि घनता हे गुणधर्म जास्तीत जास्त पदार्थाच्या वितरणावर अवलंबून असतात, कणांच्या अंतर्क्रियांच्या तीव्रतेवर नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
         }
       },
@@ -159,57 +246,65 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        null,
-        "Confuses a state of matter with an object",
-        "Confuses a state of matter with an object",
-        "Confuses a state of matter with an object"
+        "Confuses mass with state",
+        "Confuses volume with state",
+        "Confuses density with state",
+        null
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        3,
+        3,
+        3,
+        3,
+        3
       ],
       "levelFlag": null,
-      "critique": "The correct answer is plasma, which is a state of matter. The other options are objects, not states of matter. The author's reasoning is sound and matches the correct answer.",
+      "critique": "The question correctly identifies the state of a substance as being determined by how tightly its particles hold each other. The author's solution is accurate and the reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 59,
-          "pageStart": 70,
-          "pageEnd": 71,
+          "ordinal": 56,
+          "pageStart": 67,
+          "pageEnd": 67,
           "headingPath": [
             "6. Properties of Substances"
           ]
         },
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 60,
-          "pageStart": 71,
-          "pageEnd": 71,
+          "ordinal": 57,
+          "pageStart": 68,
+          "pageEnd": 68,
           "headingPath": [
-            "6. Properties of Substances",
-            "Exercises"
+            "6. Properties of Substances"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 58,
+          "pageStart": 69,
+          "pageEnd": 69,
+          "headingPath": [
+            "6. Properties of Substances"
           ]
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T04:38:42.245Z",
+      "generatedAt": "2026-11-01T17:20:40.098Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 1,
+      "difficulty": 2,
       "stem": "Which of the following is a property of a transparent substance?",
       "choices": [
-        "It allows some light to pass through",
         "It allows all light to pass through",
-        "It allows a little light to pass through",
+        "It allows some light to pass through",
+        "It does not allow any light to pass through",
         "It reflects all light"
       ],
-      "answerIndex": 1,
-      "solution": "A transparent substance allows all light to pass through, which is why it is clear and objects can be seen through it. The option stating it allows some or a little light to pass through describes a translucent substance, and the option stating it reflects all light describes an opaque substance.",
+      "answerIndex": 0,
+      "solution": "A transparent substance allows all light to pass through. A pupil who confuses translucent with transparent might choose 'allows some light to pass through'. A pupil who thinks opaque is the opposite might choose 'does not allow any light to pass through'. A pupil who misunderstands the concept might choose 'reflects all light'.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
@@ -217,207 +312,25 @@
         "hi": {
           "stem": "निम्नलिखित में से कौन-सा एक पारदर्शी पदार्थ का गुण है?",
           "choices": [
-            "इसमें कुछ प्रकाश गुजरता है",
-            "इसमें सभी प्रकाश गुजरता है",
-            "इसमें थोड़ा प्रकाश गुजरता है",
-            "इसमें सभी प्रकाश परावर्तित हो जाता है"
+            "यह सभी प्रकाश के गुजरने की अनुमति देता है",
+            "यह कुछ प्रकाश के गुजरने की अनुमति देता है",
+            "यह किसी भी प्रकाश के गुजरने की अनुमति नहीं देता है",
+            "यह सभी प्रकाश को परावर्तित कर देता है"
           ],
-          "solution": "एक पारदर्शी पदार्थ सभी प्रकाश को गुजरने देता है, जिसके कारण यह स्पष्ट होता है और इसके माध्यम से वस्तुएं देखी जा सकती हैं। वह विकल्प जो कहता है कि कुछ या थोड़ा प्रकाश गुजरता है, एक अर्धपारदर्शी पदार्थ के गुण का वर्णन करता है, और वह विकल्प जो कहता है कि सभी प्रकाश परावर्तित हो जाता है, अपारदर्शी पदार्थ के गुण का वर्णन करता है।",
+          "solution": "एक पारदर्शी पदार्थ सभी प्रकाश के गुजरने की अनुमति देता है। एक छात्र जो पारदर्शी और अंधकारमय के बीच भ्रमित हो जाए, 'कुछ प्रकाश के गुजरने की अनुमति देता है' चुन सकता है। एक छात्र जो अपारदर्शी के विपरीत विचार करता है, 'किसी भी प्रकाश के गुजरने की अनुमति नहीं देता है' चुन सकता है। एक छात्र जो अवधारणा को गलत समझता है, 'सभी प्रकाश को परावर्तित कर देता है' चुन सकता है।",
           "imageAlt": null,
-          "critique": "Translation accurately reflects the original meaning with appropriate Hindi terminology for scientific concepts.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard Hindi terminology for scientific concepts.",
           "flag": null
         },
         "mr": {
           "stem": "खालीलपैकी कोणते एक पारदर्शक पदार्थाचे गुणधर्म आहे?",
           "choices": [
-            "ते काही प्रकाशाच्या पारगंत करते",
-            "ते सर्व प्रकाशाच्या पारगंत करते",
-            "ते थोडा प्रकाशाच्या पारगंत करते",
-            "ते सर्व प्रकाशाचे परावर्तन करते"
+            "ते सर्व प्रकाशाला पार करते",
+            "ते काही प्रकाशाला पार करते",
+            "ते कोणताही प्रकाश पार करत नाही",
+            "ते सर्व प्रकाश परावर्तित करते"
           ],
-          "solution": "पारदर्शक पदार्थ सर्व प्रकाशाच्या पारगंत करते, ज्यामुळे तो स्पष्ट असतो आणि त्यामार्फत वस्तू दिसू शकतात. त्याचे काही किंवा थोडा प्रकाशाच्या पारगंत करते असे विधान अपारदर्शक पदार्थाचे वर्णन करते आणि सर्व प्रकाशाचे परावर्तन करते असे विधान अपारदर्शक पदार्थाचे वर्णन करते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Describes a translucent substance",
-        null,
-        "Confuses transparent with translucent substances",
-        "Describes an opaque substance"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as transparent substances allow all light to pass through. The author's solution and reasoning are accurate, and the distractors correctly identify common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 59,
-          "pageStart": 70,
-          "pageEnd": 71,
-          "headingPath": [
-            "6. Properties of Substances"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 60,
-          "pageStart": 71,
-          "pageEnd": 71,
-          "headingPath": [
-            "6. Properties of Substances",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T04:38:42.245Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which state of matter has particles that are very close to each other and hold each other tightly?",
-      "choices": [
-        "Gas",
-        "Liquid",
-        "Solid",
-        "Plasma"
-      ],
-      "answerIndex": 2,
-      "solution": "Solids have particles that are very close to each other and hold each other tightly, which gives them a fixed shape and volume. In contrast, gases have particles that are far apart and move freely, liquids have particles that are close but can slide past each other, and plasma consists of ionized particles that are not bound together.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "किस पदार्थ की अवस्था में कण एक दूसरे के बहुत निकट होते हैं और एक दूसरे को ठीक से पकड़े रखते हैं?",
-          "choices": [
-            "गैस",
-            "तरल",
-            "ठोस",
-            "प्लाज्मा"
-          ],
-          "solution": "ठोस में कण एक दूसरे के बहुत निकट होते हैं और एक दूसरे को ठीक से पकड़े रखते हैं, जिसके कारण उनका निश्चित आकार और आयतन होता है। विपरीत, गैस में कण दूर होते हैं और मुक्त रूप से गति करते हैं, तरल में कण निकट होते हैं लेकिन एक दूसरे के पास से फिसल सकते हैं, और प्लाज्मा में आयनीकृत कण होते हैं जो एक दूसरे से बंधे नहीं रहते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard scientific terminology used in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "पदार्थाच्या कोणत्या अवस्थेत कण एकमेकांच्या खूप जवळ असतात आणि एकमेकांना खूप घट्ट बांधून ठेवतात?",
-          "choices": [
-            "गॅस",
-            "तरल",
-            "ठोस",
-            "प्लाज्मा"
-          ],
-          "solution": "ठोसांमध्ये कण एकमेकांच्या खूप जवळ असतात आणि एकमेकांना खूप घट्ट बांधून ठेवतात, जे त्यांना निश्चित आकार आणि आयतन देते. विरुद्ध, गॅसमध्ये कण खूप दूर असतात आणि मुक्तपणे चालतात, तरलांमध्ये कण जवळ असतात पण एकमेकांवरून जाऊ शकतात आणि प्लाज्मामध्ये आयनीकृत कण असतात जे एकमेकांशी बांधलेले नसतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses gas with solid",
-        "Confuses liquid with solid",
-        null,
-        "Does not understand the properties of plasma"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed, with a clear correct answer (solid) and plausible misconceptions for the other options. The reasoning aligns with scientific understanding.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 53,
-          "pageStart": 64,
-          "pageEnd": 65,
-          "headingPath": [
-            "6. Properties of Substances"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 54,
-          "pageStart": 65,
-          "pageEnd": 66,
-          "headingPath": [
-            "6. Properties of Substances"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 55,
-          "pageStart": 66,
-          "pageEnd": 67,
-          "headingPath": [
-            "6. Properties of Substances"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T04:38:42.245Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is a property of matter?",
-      "choices": [
-        "It can be seen with the naked eye",
-        "It can be touched",
-        "It occupies space and has mass",
-        "It can be tasted"
-      ],
-      "answerIndex": 2,
-      "solution": "The correct option is 'It occupies space and has mass' because these are fundamental characteristics of all matter. The other options are incorrect because some matter cannot be seen, touched, or tasted, such as gases or very small particles.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा पदार्थ का गुण है?",
-          "choices": [
-            "इसे नंगी आंखों से देखा जा सकता है",
-            "इसे छू सकते हैं",
-            "यह स्थान घेरता है और द्रव्यमान होता है",
-            "इसका स्वाद लिया जा सकता है"
-          ],
-          "solution": "सही विकल्प 'यह स्थान घेरता है और द्रव्यमान होता है' है क्योंकि ये सभी पदार्थों के मूल गुण हैं। अन्य विकल्प गलत हैं क्योंकि कुछ पदार्थ दिखाई नहीं देते, छूए नहीं जा सकते या स्वाद नहीं लिया जा सकता है, जैसे गैस या बहुत छोटे कण।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for a science textbook.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते द्रव्याचे गुणधर्म आहे?",
-          "choices": [
-            "ते नग्न नेत्राने दिसू शकते",
-            "ते छूत शकते",
-            "ते जागा घेते आणि द्रव्यमान असते",
-            "ते चव घेता येते"
-          ],
-          "solution": "सही विकल्प 'ते जागा घेते आणि द्रव्यमान असते' आहे कारण हे सर्व द्रव्याचे मूलभूत गुणधर्म आहेत. इतर विकल्प अयोग्य आहेत कारण काही द्रव्य दिसू शकत नाही, छूत शकत नाही किंवा चव घेता येत नाही, उदाहरणार्थ वायू किंवा खूप लहान अणू.",
+          "solution": "एक पारदर्शक पदार्थ सर्व प्रकाशाला पार करतो. एक विद्यार्थी जो पारभासी आणि पारदर्शक यांच्यात गुंतलेला असेल तर 'काही प्रकाशाला पार करते' निवडू शकतो. एक विद्यार्थी जो अपारदर्शक चा विरुद्ध विचार करतो तर 'कोणताही प्रकाश पार करत नाही' निवडू शकतो. एक विद्यार्थी जो अवधारणेचा चुकीचा अर्थ करतो तर 'सर्व प्रकाश परावर्तित करते' निवडू शकतो.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for scientific concepts.",
           "flag": null
@@ -428,188 +341,85 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses matter with visible things",
-        "Thinks matter is only physical",
         null,
-        "Does not understand the definition of matter"
+        "confuses translucent with transparent",
+        "confuses opaque with transparent",
+        "misunderstands the concept of transparency"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 2, as it accurately reflects the scientific definition of matter. The other options are incorrect because they describe properties that are not universally true for all matter.",
+      "critique": "The correct answer is 0, as a transparent substance allows all light to pass through. The author's reasoning for the distractors aligns with common misconceptions about transparency, translucency, and opacity.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 56,
-          "pageStart": 67,
-          "pageEnd": 67,
+          "ordinal": 59,
+          "pageStart": 70,
+          "pageEnd": 71,
           "headingPath": [
             "6. Properties of Substances"
           ]
         },
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 57,
-          "pageStart": 68,
-          "pageEnd": 68,
+          "ordinal": 60,
+          "pageStart": 71,
+          "pageEnd": 71,
           "headingPath": [
-            "6. Properties of Substances"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 58,
-          "pageStart": 69,
-          "pageEnd": 69,
-          "headingPath": [
-            "6. Properties of Substances"
+            "6. Properties of Substances",
+            "Exercises"
           ]
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T04:38:42.245Z",
+      "generatedAt": "2026-11-01T17:20:40.098Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 2,
-      "stem": "What is the unit of density?",
+      "stem": "What does it mean if oil floats on water?",
       "choices": [
-        "Grams",
-        "Cubic centimetres",
-        "Grams per cubic centimetre",
-        "Litres"
-      ],
-      "answerIndex": 2,
-      "solution": "Density is defined as mass per unit volume. The correct unit is grams per cubic centimetre because it represents mass divided by volume. Grams and cubic centimetres are units of mass and volume separately, not density. Litres are a unit of volume, not density.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "घनत्व का मात्रक क्या है?",
-          "choices": [
-            "ग्राम",
-            "घन सेंटीमीटर",
-            "ग्राम प्रति घन सेंटीमीटर",
-            "लीटर"
-          ],
-          "solution": "घनत्व को द्रव्यमान प्रति इकाई आयतन के रूप में परिभाषित किया जाता है। सही मात्रक ग्राम प्रति घन सेंटीमीटर है क्योंकि यह द्रव्यमान के आयतन से विभाजित होने का प्रतिनिधित्व करता है। ग्राम और घन सेंटीमीटर द्रव्यमान और आयतन के अलग-अलग मात्रक हैं, घनत्व के नहीं। लीटर आयतन का मात्रक है, घनत्व का नहीं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "घनता चे एकक काय आहे?",
-          "choices": [
-            "ग्रॅम",
-            "घन सेंमी",
-            "ग्रॅम प्रति घन सेंमी",
-            "लिटर"
-          ],
-          "solution": "घनता मासाचे एकक आयतनाने भागलेले असते. योग्य एकक ग्रॅम प्रति घन सेंमी असते कारण ते मासाला आयतनाने भागलेले दर्शवते. ग्रॅम आणि घन सेंमी हे एकक मास आणि आयतन अलग असतात, घनता नाही. लिटर हे आयतनाचे एकक असते, घनता नाही.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses mass with unit",
-        "Thinks volume is a unit",
-        null,
-        "Confuses volume with unit"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 'Grams per cubic centimetre' as it is the unit of density. The other options are either units of mass (grams) or volume (cubic centimetres, litres), which are not units of density.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 56,
-          "pageStart": 67,
-          "pageEnd": 67,
-          "headingPath": [
-            "6. Properties of Substances"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 57,
-          "pageStart": 68,
-          "pageEnd": 68,
-          "headingPath": [
-            "6. Properties of Substances"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 58,
-          "pageStart": 69,
-          "pageEnd": 69,
-          "headingPath": [
-            "6. Properties of Substances"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T04:38:42.245Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "What happens to the particles of a substance when it is heated enough to change from solid to liquid?",
-      "choices": [
-        "They move closer to each other and become tightly bound",
-        "They move away from each other and become loosely bound",
-        "They remain in fixed positions",
-        "They scatter in all directions"
+        "Oil is denser than water",
+        "Oil is less dense than water",
+        "Oil has the same density as water",
+        "Oil is a solid"
       ],
       "answerIndex": 1,
-      "solution": "When a solid is heated enough, its particles gain energy and move away from each other, becoming loosely bound, which allows the substance to change into a liquid state. Other options describe different states of matter, not the transition from solid to liquid.",
+      "solution": "Oil floats on water because it is less dense than water, which means it has a lower mass per unit volume. This is a fundamental principle of buoyancy and density. The other options are incorrect because oil is not denser than water, nor does it have the same density, and oil is not a solid.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "जब किसी पदार्थ को गर्म किया जाता है और यह ठोस से द्रव में बदल जाता है तो उसके कण क्या होते हैं?",
+          "stem": "तेल पानी पर क्यों तैरता है?",
           "choices": [
-            "वे एक दूसरे के पास आ जाते हैं और तीव्र रूप से बंध जाते हैं",
-            "वे एक दूसरे से दूर जाते हैं और ढीले ढाले रूप से बंध जाते हैं",
-            "वे निश्चित स्थिति में रहते हैं",
-            "वे सभी दिशाओं में फैल जाते हैं"
+            "तेल पानी से अधिक घनत्व वाला है",
+            "तेल पानी से कम घनत्व वाला है",
+            "तेल का घनत्व पानी के समान है",
+            "तेल एक ठोस है"
           ],
-          "solution": "जब किसी ठोस को पर्याप्त गर्म किया जाता है तो इसके कण ऊर्जा प्राप्त करते हैं और एक दूसरे से दूर जाते हैं, जो ढीले ढाले रूप से बंध जाते हैं, जिससे पदार्थ द्रव अवस्था में बदल जाता है। अन्य विकल्प ठोस से द्रव में परिवर्तन के स्थिति के बजाय अलग-अलग अवस्थाओं का वर्णन करते हैं।",
+          "solution": "तेल पानी पर तैरता है क्योंकि यह पानी से कम घनत्व वाला होता है, जिसका अर्थ है इसका इकाई आयतन पर द्रव्यमान कम होता है। यह उत्प्लावन और घनत्व के मूल सिद्धांत है। अन्य विकल्प गलत हैं क्योंकि तेल पानी से अधिक घनत्व वाला नहीं होता है, न ही इसका घनत्व पानी के समान होता है, और तेल एक ठोस नहीं होता है।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "critique": "Translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "एका पदार्थाच्या कणांवर काय परिणाम होतो जेव्हा तो घन अवस्थेपासून द्रव अवस्थेमध्ये बदलतो?",
+          "stem": "जिरे पाण्यावर तरंगते म्हणजे काय अर्थ आहे?",
           "choices": [
-            "ते एकमेकांच्या जवळ जातात आणि घन बांधलेले असतात",
-            "ते एकमेकांपासून दूर जातात आणि अस्पष्ट बांधलेले असतात",
-            "ते निश्चित ठिकाणी राहतात",
-            "ते सर्व दिशांमध्ये फैलावतात"
+            "जिरा पाण्यापेक्षा जास्त घन आहे",
+            "जिरा पाण्यापेक्षा कमी घन आहे",
+            "जिरा पाण्यासारखा घन आहे",
+            "जिरा घन आहे"
           ],
-          "solution": "जेव्हा घन पदार्थ उकळला जातो तेव्हा त्याच्या कणांना ऊर्जा मिळते आणि ते एकमेकांपासून दूर जातात, जे अस्पष्ट बांधलेले असतात, ज्यामुळे पदार्थ द्रव अवस्थेमध्ये बदलतो. इतर विकल्पांमध्ये घन अवस्थेपासून द्रव अवस्थेमध्ये बदलाची वर्णन केलेली नाही.",
+          "solution": "जिरा पाण्यावर तरंगतो कारण तो पाण्यापेक्षा कमी घन आहे, ज्याचा अर्थ त्याचा एकक आयतनासाठी जास्त वजन नाही. हे उत्प्लावन आणि घनतेच्या मूलभूत नियमाचा अंग आहे. इतर विकल्प चुकीचे आहेत कारण जिरा पाण्यापेक्षा जास्त घन नाही, आणि जिरा घन नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific meaning. Technical terms like 'घन बांधलेले' (tightly bound) and 'अस्पष्ट बांधलेले' (loosely bound) are appropriate for Marathi science textbooks.",
+          "critique": "The translation is accurate, with appropriate Marathi terms for 'density' ('घन') and 'buoyancy' ('उत्प्लावन'). The structure and meaning of the question and solution match the original English version.",
           "flag": null
         }
       },
@@ -618,10 +428,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Describes the solid state",
+        "Assumes oil is denser than water",
         null,
-        "Describes the solid state",
-        "Describes the gaseous state"
+        "Thinks oil and water have the same density",
+        "Confuses oil with a solid substance"
       ],
       "solverAnswers": [
         1,
@@ -631,102 +441,7 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 1, as heating a solid gives particles enough energy to move apart and become loosely bound, transitioning to a liquid. The other options correctly describe solid (0, 2) and gaseous (3) states, not the transition from solid to liquid.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 53,
-          "pageStart": 64,
-          "pageEnd": 65,
-          "headingPath": [
-            "6. Properties of Substances"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 54,
-          "pageStart": 65,
-          "pageEnd": 66,
-          "headingPath": [
-            "6. Properties of Substances"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 55,
-          "pageStart": 66,
-          "pageEnd": 67,
-          "headingPath": [
-            "6. Properties of Substances"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T04:38:42.245Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Which of the following substances is an example of a liquid?",
-      "choices": [
-        "Ice",
-        "Steam",
-        "Oil",
-        "Snow"
-      ],
-      "answerIndex": 2,
-      "solution": "The correct answer is oil. Oil is a liquid, as it has a definite volume but no definite shape. Ice and snow are solids, and steam is a gas. The other options are not liquids.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा पदार्थ द्रव का एक उदाहरण है?",
-          "choices": [
-            "बर्फ",
-            "भाप",
-            "तेल",
-            "हिम"
-          ],
-          "solution": "सही उत्तर तेल है। तेल एक द्रव है, क्योंकि इसका निश्चित आयतन होता है लेकिन निश्चित आकृति नहीं होती। बर्फ और हिम ठोस हैं, और भाप एक गैस है। अन्य विकल्प द्रव नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English question, with appropriate scientific terminology and correct answer placement.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता पदार्थ द्रवाचा उदाहरण आहे?",
-          "choices": [
-            "हिम",
-            "भाप",
-            "तेल",
-            "हिमराशी"
-          ],
-          "solution": "बरोबर उत्तर तेल आहे. तेल द्रव आहे, कारण त्याचा निश्चित आयतन असतो परंतु निश्चित आकार नसतो. हिम आणि हिमराशी घन आहेत, आणि भाप वायू आहे. इतर विकल्प द्रव नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the properties of solids with those of liquids",
-        "Confuses the properties of gases with those of liquids",
-        null,
-        "Does not understand the concept of liquid states"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed. The correct answer is oil, which is a liquid. The other options are correctly identified as solid (ice, snow) or gas (steam). The distractors reflect common misconceptions about the states of matter.",
+      "critique": "The question is well-constructed and the correct answer is clearly 1. The reasoning provided by the author aligns with the scientific principle that objects less dense than a liquid will float on it.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
@@ -749,421 +464,49 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T04:38:42.245Z",
+      "generatedAt": "2026-11-01T17:20:40.098Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "Which of the following substances is an example of a solid?",
+      "difficulty": 2,
+      "stem": "Which of the following describes the gaseous state of a substance?",
       "choices": [
-        "Water",
-        "Smoke",
-        "Iron",
-        "Air"
+        "Particles are very close to each other and hold each other tightly",
+        "Particles are slightly further apart and loosely bound",
+        "Particles scatter everywhere in the available space",
+        "Particles move in a fixed position"
       ],
       "answerIndex": 2,
-      "solution": "The correct answer is iron. Iron is a solid, as it has a definite shape and volume. Water is a liquid, smoke and air are gases. The other options are not solids.",
+      "solution": "The gaseous state is characterized by particles that are not held together and can move freely, which means they scatter everywhere in the available space. In contrast, particles in solids are very close and fixed in position, while those in liquids are slightly further apart but still loosely bound. This matches the behavior of gases, where particles have high kinetic energy and minimal attraction between them.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित पदार्थों में से कौन-सा ठोस का उदाहरण है?",
+          "stem": "निम्नलिखित में से कौन-सा किसी पदार्थ की गैसीय अवस्था का वर्णन करता है?",
           "choices": [
-            "पानी",
-            "धुआं",
-            "लोहा",
-            "हवा"
+            "कण एक दूसरे के बहुत करीब होते हैं और एक दूसरे को ठीक से पकड़े रखते हैं",
+            "कण थोड़ा दूर होते हैं और ढीले बंधे रहते हैं",
+            "कण उपलब्ध स्थान में हर जगह फैल जाते हैं",
+            "कण एक निश्चित स्थिति में गतिमान रहते हैं"
           ],
-          "solution": "सही उत्तर लोहा है। लोहा एक ठोस है, क्योंकि इसका निश्चित आकार और आयतन होता है। पानी एक द्रव है, धुआं और हवा गैसें हैं। अन्य विकल्प ठोस नहीं हैं।",
+          "solution": "गैसीय अवस्था की विशेषता यह है कि कण एक दूसरे को नहीं पकड़े रखते और मुक्त रूप से गतिमान रहते हैं, जिसका अर्थ है कि वे उपलब्ध स्थान में हर जगह फैल जाते हैं। विपरीत, ठोस पदार्थों के कण बहुत करीब होते हैं और निश्चित स्थिति में रहते हैं, जबकि द्रव के कण थोड़ा दूर होते हैं लेकिन अभी भी ढीले बंधे रहते हैं। इसका अर्थ है कि गैसों के कणों में उच्च गतिज ऊर्जा होती है और उनके बीच न्यूनतम आकर्षण बल होता है।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi scientific terms used.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता पदार्थ घनाचा उदाहरण आहे?",
+          "stem": "खालीलपैकी कोणते द्रव्याच्या वायु अवस्थेचे वर्णन करते?",
           "choices": [
-            "पाणी",
-            "धूम्र",
-            "लोखंड",
-            "वायू"
+            "कण एकमेकांच्या जवळ असतात आणि एकमेकांना घट्ट बांधून ठेवतात",
+            "कण थोडे अंतरावर असतात आणि ढिल्ले बांधून ठेवतात",
+            "कण उपलब्ध जागेत सर्वत्र बिखेरलेले असतात",
+            "कण निश्चित स्थितीत चालतात"
           ],
-          "solution": "बरोबर उत्तर लोखंड आहे. लोखंड एक घन आहे, कारण त्याला निश्चित आकार आणि आयतन आहे. पाणी द्रव आहे, धूम्र आणि वायू वायू आहेत. इतर विकल्प घन नाहीत.",
+          "solution": "वायु अवस्थेची विशेषता कणांचे एकमेकांशी बांधलेले नसणे आणि स्वतंत्रपणे चालू शकणे आहे, ज्याचा अर्थ ते उपलब्ध जागेत सर्वत्र बिखेरलेले असतात. तुलनेत, घन पदार्थातील कण एकमेकांच्या जवळ असतात आणि निश्चित स्थितीत असतात, तर द्रवातील कण थोडे अंतरावर असतात परंतु अजूनही ढिल्ले बांधून ठेवतात. हे वायूंच्या वर्तनाशी जुळते, जेथे कणांची उच्च गती असते आणि त्यांच्यातील आकर्षण कमी असते.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terms for scientific concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the properties of liquids with those of solids",
-        "Confuses the properties of gases with those of solids",
-        null,
-        "Does not understand the concept of solid states"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed and the correct answer is clearly iron. The distractors are common misconceptions about the states of matter.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 59,
-          "pageStart": 70,
-          "pageEnd": 71,
-          "headingPath": [
-            "6. Properties of Substances"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 60,
-          "pageStart": 71,
-          "pageEnd": 71,
-          "headingPath": [
-            "6. Properties of Substances",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T04:38:42.245Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "Which of the following statements best explains why a solid object retains its shape?",
-      "choices": [
-        "The particles are very close and tightly bound",
-        "The particles are free to move in all directions",
-        "The particles are loosely bound and can move past each other",
-        "The particles are scattered and not connected"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct answer is 'The particles are very close and tightly bound.' This is because in the solid state, the particles are held close together and do not move freely, which allows the object to maintain its shape. The other options describe the liquid and gaseous states, where the particles are not tightly bound and can move more freely.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा कथन ठोस वस्तु के आकृति बनाए रखने के कारण को सबसे अच्छा समझाता है?",
-          "choices": [
-            "कण बहुत निकट और मजबूती से बंधे हुए हैं",
-            "कण सभी दिशाओं में आजाद रूप से गतिशील हैं",
-            "कण ढीले ढाले बंधे हुए हैं और एक दूसरे के पास आ सकते हैं",
-            "कण बिखरे हुए हैं और जुड़े नहीं हैं"
-          ],
-          "solution": "सही उत्तर 'कण बहुत निकट और मजबूती से बंधे हुए हैं' है। ठोस अवस्था में, कण एक दूसरे के निकट रहते हैं और आजाद रूप से गतिशील नहीं होते, जिसके कारण वस्तु अपनी आकृति बनाए रखती है। अन्य विकल्प तरल और गैसीय अवस्थाओं का वर्णन करते हैं, जहां कण मजबूती से बंधे नहीं होते और अधिक आजादी से गतिशील होते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology common in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता विधान घन पदार्थ आकृती राखतो याचे सर्वात चांगले स्पष्टीकरण देते?",
-          "choices": [
-            "कण खूप जवळ आणि घनपणे बांधले गेले आहेत",
-            "कण सर्व दिशांमध्ये मुक्तपणे चालू शकतात",
-            "कण अस्पष्टपणे बांधले गेले आहेत आणि एकमेकांच्या मागे चालू शकतात",
-            "कण विखुले आहेत आणि जोडले गेलेले नाहीत"
-          ],
-          "solution": "सही उत्तर 'कण खूप जवळ आणि घनपणे बांधले गेले आहेत.' हे असे आहे कारण घनाच्या अवस्थेत, कण खूप जवळ राहतात आणि मुक्तपणे चालू शकत नाहीत, ज्यामुळे वस्तू आकृती राखते. इतर विकल्प द्रव आणि वायु अवस्थांचे वर्णन करतात, जेथे कण घनपणे बांधले गेलेले नाहीत आणि मुक्तपणे चालू शकतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the properties of solids with liquids",
-        "Incorrectly assumes particles move freely in all directions",
-        "Mixes up the characteristics of liquids and solids"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0, as solids have particles that are closely packed and tightly bound, which explains their fixed shape. The other options describe liquids and gases, which is a valid distinction. The reasons for the wrong options align with common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 53,
-          "pageStart": 64,
-          "pageEnd": 65,
-          "headingPath": [
-            "6. Properties of Substances"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 54,
-          "pageStart": 65,
-          "pageEnd": 66,
-          "headingPath": [
-            "6. Properties of Substances"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 55,
-          "pageStart": 66,
-          "pageEnd": 67,
-          "headingPath": [
-            "6. Properties of Substances"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T04:38:42.245Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "What happens to the particles of a substance when it changes from a solid to a liquid?",
-      "choices": [
-        "They vibrate more but stay in fixed positions",
-        "They become independent and scatter in space",
-        "They separate and flow to take the shape of the container",
-        "They remain in fixed positions"
-      ],
-      "answerIndex": 2,
-      "solution": "The correct answer is 'They separate and flow to take the shape of the container.' When a solid melts, the particles gain energy and move apart, allowing them to flow and take the shape of the container. The other options describe the solid state, gaseous state, or incorrect particle behavior.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "किसी पदार्थ के कण क्या होते हैं जब वह ठोस से द्रव में बदल जाता है?",
-          "choices": [
-            "वे अधिक कंपन करते हैं लेकिन निश्चित स्थिति में रहते हैं",
-            "वे स्वतंत्र हो जाते हैं और अंतरिक्ष में फैल जाते हैं",
-            "वे अलग हो जाते हैं और बर्तन के आकार को ले लेते हैं",
-            "वे निश्चित स्थिति में रहते हैं"
-          ],
-          "solution": "सही उत्तर 'वे अलग हो जाते हैं और बर्तन के आकार को ले लेते हैं' है। जब ठोस पिघलता है, तो कणों को ऊर्जा मिलती है और वे अलग हो जाते हैं, जिससे वे बह सकते हैं और बर्तन के आकार को ले सकते हैं। अन्य विकल्प ठोस अवस्था, गैसीय अवस्था या गलत कण व्यवहार का वर्णन करते हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific meaning, with appropriate Hindi terminology used for states of matter and particle behavior.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका पदार्थाच्या कणांवर काय परिणाम होतो जेव्हा तो घन पासून द्रवात बदलतो?",
-          "choices": [
-            "ते अधिक झटकून त्यांच्या निश्चित स्थानांमध्ये राहतात",
-            "ते स्वतंत्र होतात आणि अंतरात फैलावतात",
-            "ते विभक्त होतात आणि त्यांच्या आकाराच्या अनुसार प्रवाहित होतात",
-            "ते निश्चित स्थानांमध्ये राहतात"
-          ],
-          "solution": "योग्य उत्तर 'ते विभक्त होतात आणि त्यांच्या आकाराच्या अनुसार प्रवाहित होतात' आहे. जेव्हा घन पाण्यात बदलतो तेव्हा कणांना ऊर्जा मिळते आणि ते एकमेकांपासून दूर होतात, जेणेकरून ते प्रवाहित होऊ शकतात आणि त्यांच्या आकाराच्या अनुसार बदलतात. इतर विकल्प घन अवस्था, वायु अवस्था किंवा अयोग्य कणांच्या वर्तनाचे वर्णन करतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific meaning, with appropriate Marathi terminology used for particle behavior in different states of matter.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "students think particles in a liquid still have some fixed arrangement",
-        "Refers to the gaseous state",
-        null,
-        "Suggests particles remain in fixed positions"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is option 2. The solution correctly explains that when a solid melts, particles gain energy, separate, and flow to take the shape of the container. The other options correspond to misconceptions about solid, gaseous, and incorrect particle behavior.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 53,
-          "pageStart": 64,
-          "pageEnd": 65,
-          "headingPath": [
-            "6. Properties of Substances"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 54,
-          "pageStart": 65,
-          "pageEnd": 66,
-          "headingPath": [
-            "6. Properties of Substances"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 55,
-          "pageStart": 66,
-          "pageEnd": 67,
-          "headingPath": [
-            "6. Properties of Substances"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T04:38:42.245Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "A student places a solid object into a container filled to the brim with water. The volume of water displaced is 15 cm³. What does this tell us about the object?",
-      "choices": [
-        "It is less dense than water",
-        "It is more dense than water",
-        "It has a volume of 15 cm³",
-        "It is made of a magnetic material"
-      ],
-      "answerIndex": 2,
-      "solution": "The volume of water displaced equals the volume of the object, so the object must have a volume of 15 cm³. The other options cannot be determined from the displacement alone, as density or magnetic properties are not indicated by the amount of water displaced.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक छात्र एक ठोस वस्तु को एक ऐसे कंटेनर में रखता है जो पानी से भरा हुआ है। विस्थापित पानी का आयतन 15 सेमी³ है। इससे हमें वस्तु के बारे में क्या पता चलता है?",
-          "choices": [
-            "यह पानी से कम घनत्व वाला है",
-            "यह पानी से अधिक घनत्व वाला है",
-            "इसका आयतन 15 सेमी³ है",
-            "यह चुंबकीय सामग्री से बना है"
-          ],
-          "solution": "विस्थापित पानी का आयतन वस्तु के आयतन के बराबर होता है, इसलिए वस्तु का आयतन 15 सेमी³ होना चाहिए। अन्य विकल्पों को विस्थापन के आधार पर निर्धारित नहीं किया जा सकता है, क्योंकि घनत्व या चुंबकीय गुण पानी के विस्थापन द्वारा नहीं दर्शाए जाते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, with the correct answer remaining in the same position. The technical terms like 'घनत्व' (density) and 'आयतन' (volume) are standard in Hindi science textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका विद्यार्थ्याने एका घन पदार्थाला पाण्याने भरलेल्या बरोबरीच्या वासरात ठेवले. विस्थापित पाण्याचा घनफळ 15 सें.मी.³ आहे. हे आपल्याला वस्तूबद्दल काय सांगते?",
-          "choices": [
-            "ते पाण्यापेक्षा कमी घनत्वाचे आहे",
-            "ते पाण्यापेक्षा जास्त घनत्वाचे आहे",
-            "त्याचे घनफळ 15 सें.मी.³ आहे",
-            "ते चुंबकीय द्रव्यापासून बनलेले आहे"
-          ],
-          "solution": "विस्थापित पाण्याचे घनफळ वस्तूच्या घनफळास सारखे असते, म्हणून वस्तूचे घनफळ 15 सें.मी.³ असणे आवश्यक आहे. इतर विकल्पांचे निर्धारण विस्थापनावरून करता येत नाही, कारण घनत्व किंवा चुंबकीय गुणधर्म विस्थापनामुळे दिसत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Assumes density based on displacement",
-        "Thinks density is determined by displacement",
-        null,
-        "Confuses magnetic properties with displacement"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and directly follows from the principle of water displacement. The correct answer is clearly 2, and the reasoning for the other options reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 56,
-          "pageStart": 67,
-          "pageEnd": 67,
-          "headingPath": [
-            "6. Properties of Substances"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 57,
-          "pageStart": 68,
-          "pageEnd": 68,
-          "headingPath": [
-            "6. Properties of Substances"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 58,
-          "pageStart": 69,
-          "pageEnd": 69,
-          "headingPath": [
-            "6. Properties of Substances"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T04:38:42.245Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "A student is given a sample of a substance and wants to determine its state of matter. The student observes that the particles are independent and can move far away from each other. Which state of matter is the substance in?",
-      "choices": [
-        "Solid",
-        "Liquid",
-        "Gas",
-        "Plasma"
-      ],
-      "answerIndex": 2,
-      "solution": "The substance is in the gaseous state because gas particles are independent and can move far away from each other. Solids have particles that are tightly packed and vibrate in place, while liquids have particles that are close but can slide past each other. Plasma is a high-energy state with ionized particles, which is not described here.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक छात्र को किसी पदार्थ के नमूने को दिया जाता है और वह इसकी अवस्था के निर्धारण करना चाहता है। छात्र देखता है कि कण स्वतंत्र रूप से हैं और एक दूसरे से दूर चले जा सकते हैं। पदार्थ कौन सी अवस्था में है?",
-          "choices": [
-            "ठोस",
-            "तरल",
-            "गैस",
-            "प्लाज्मा"
-          ],
-          "solution": "पदार्थ गैसीय अवस्था में है क्योंकि गैस के कण स्वतंत्र रूप से होते हैं और एक दूसरे से दूर चले जा सकते हैं। ठोस में कण घनी रूप से पैक किए जाते हैं और अपनी जगह पर कंपन करते हैं, जबकि तरल में कण निकट होते हैं लेकिन एक दूसरे के पास फिसल सकते हैं। प्लाज्मा एक उच्च ऊर्जा अवस्था है जिसमें आयनित कण होते हैं, जो यहां वर्णित नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard scientific terminology appropriate for a Hindi-medium curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका विद्यार्थ्याला एका पदार्थाचा नमुना दिला जातो आणि तो त्याच्या पदार्थाच्या अवस्थेचे निर्धारण करण्याचा प्रयत्न करतो. विद्यार्थी निरीक्षण करतो की कण स्वतंत्र आहेत आणि एकमेकांपासून दूर जाऊ शकतात. पदार्थ कोणत्या अवस्थेत आहे?",
-          "choices": [
-            "ठोस",
-            "तरल",
-            "वायू",
-            "प्लाज्मा"
-          ],
-          "solution": "पदार्थ वायुमय अवस्थेत आहे कारण वायूचे कण स्वतंत्र असतात आणि एकमेकांपासून दूर जाऊ शकतात. ठोसांमध्ये कण घन आहेत आणि ठिकाणी कंपन करतात, तर तरलांमध्ये कण जवळ असतात परंतु एकमेकांवरून सरकू शकतात. प्लाज्मा ही उच्च-ऊर्जा अवस्था असते जेथे आयनीकृत कण असतात, जे येथे वर्णन केले जात नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for states of matter.",
           "flag": null
         }
       },
@@ -1175,7 +518,7 @@
         "Describes the solid state",
         "Describes the liquid state",
         null,
-        "Does not understand the properties of plasma"
+        "Thinks particles are fixed in position"
       ],
       "solverAnswers": [
         2,
@@ -1184,8 +527,95 @@
         2,
         2
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question correctly identifies gas as the state of matter where particles are independent and can move far apart. The reasoning for the distractors aligns with common misconceptions about solid, liquid, and plasma states.",
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as gas particles are indeed free to move and scatter throughout the available space. The other options correctly describe solid (option 0 and 3) and liquid (option 1) states, which aligns with the author's reasoning.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 59,
+          "pageStart": 70,
+          "pageEnd": 71,
+          "headingPath": [
+            "6. Properties of Substances"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 60,
+          "pageStart": 71,
+          "pageEnd": 71,
+          "headingPath": [
+            "6. Properties of Substances",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T17:20:40.098Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What happens to the particles of a substance when it is in the solid state?",
+      "choices": [
+        "They move freely in all directions",
+        "They are tightly packed and do not move from their positions",
+        "They are loosely bound and can flow",
+        "They are completely separated and scatter in the available space"
+      ],
+      "answerIndex": 1,
+      "solution": "In the solid state, particles are tightly packed and held in fixed positions, which restricts their movement. This arrangement gives solids a definite shape and volume. The other options describe the more freely moving particles in liquids and gases.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किसी पदार्थ के ठोस अवस्था में पदार्थ के कण क्या होते हैं?",
+          "choices": [
+            "वे सभी दिशाओं में मुक्त रूप से गतिमान रहते हैं",
+            "वे घने रूप से बंधे होते हैं और अपनी स्थिति से नहीं हटते",
+            "वे ढीले रूप से बंधे होते हैं और बह सकते हैं",
+            "वे पूरी तरह से अलग हो जाते हैं और उपलब्ध स्थान में फैल जाते हैं"
+          ],
+          "solution": "ठोस अवस्था में, कण घने रूप से बंधे होते हैं और निश्चित स्थिति में रहते हैं, जो उनकी गति को सीमित करता है। इस व्यवस्था के कारण ठोसों का एक निश्चित आकार और आयतन होता है। अन्य विकल्प तरल और गैसों में अधिक मुक्त रूप से गतिमान कणों का वर्णन करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, with the correct answer (option 2) maintaining its position and validity.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एखाद्या पदार्थाच्या कणांचे काय होते जेव्हा तो घन अवस्थेत असतो?",
+          "choices": [
+            "ते सर्व दिशांमध्ये मुक्तपणे चालतात",
+            "ते जवळ जवळ बांधलेले असतात आणि त्यांच्या स्थानांमधून नकोत असतात",
+            "ते अस्पष्ट बांधलेले असतात आणि वाहू शकतात",
+            "ते पूर्णपणे विलग असतात आणि उपलब्ध जागेत बिखेरलेले असतात"
+          ],
+          "solution": "घन अवस्थेत, कण जवळ जवळ बांधलेले असतात आणि त्यांच्या स्थानांमधून नकोत असतात. हा व्यवस्थापन घनांना निश्चित आकार आणि आयतन देते. इतर विकल्प द्रव आणि वायूमध्ये अधिक मुक्तपणे चालणारे कण वर्णन करतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Describes gaseous state",
+        null,
+        "Confuses liquid and solid states",
+        "Describes gaseous state"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as solids have particles that are tightly packed and do not move from their positions. The other options correctly describe liquid and gaseous states, and the author's reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
@@ -1216,47 +646,47 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T04:38:42.245Z",
+      "generatedAt": "2026-11-01T17:20:40.098Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "A student observed that a solid substance melted when heated and then turned into a gas when more heat was applied. What can be concluded about the substance?",
+      "difficulty": 3,
+      "stem": "A student measures the mass and volume of an object and calculates its density. Which of the following can be determined using this information?",
       "choices": [
-        "It is a pure element",
-        "It is not a substance",
-        "It undergoes a physical change",
-        "It undergoes a chemical change"
+        "Whether the object is magnetic",
+        "Whether the object is transparent",
+        "Whether the object is made of a specific substance",
+        "Whether the object is solid, liquid or gas"
       ],
       "answerIndex": 2,
-      "solution": "The correct answer is 'It undergoes a physical change.' The substance changes its state from solid to liquid to gas, but its chemical identity remains the same. This is a physical change, not a chemical one. The other options are either incorrect or not supported by the information given.",
+      "solution": "Density is a characteristic property of a substance, so knowing the density can help determine if an object is made of a specific substance. Magnetic properties depend on the material's atomic structure, not density. Transparency depends on how light interacts with the material, and the state of matter (solid, liquid, gas) is determined by the arrangement and movement of particles, not just density.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक छात्र ने देखा कि एक ठोस पदार्थ के गर्म करने पर पिघल गया और अधिक गर्मी लगाने पर एक गैस में बदल गया। पदार्थ के बारे में क्या निष्कर्ष निकाला जा सकता है?",
+          "stem": "एक छात्र एक वस्तु के द्रव्यमान और आयतन को मापता है और इसके घनत्व की गणना करता है। निम्नलिखित में से क्या इस जानकारी के उपयोग से निर्धारित किया जा सकता है?",
           "choices": [
-            "यह एक शुद्ध तत्व है",
-            "यह एक पदार्थ नहीं है",
-            "इसमें भौतिक परिवर्तन होता है",
-            "इसमें रासायनिक परिवर्तन होता है"
+            "क्या वस्तु चुंबकीय है",
+            "क्या वस्तु पारदर्शी है",
+            "क्या वस्तु एक विशिष्ट पदार्थ से बनी है",
+            "क्या वस्तु ठोस, द्रव या गैस है"
           ],
-          "solution": "सही उत्तर 'इसमें भौतिक परिवर्तन होता है' है। पदार्थ ठोस से द्रव और फिर गैस में बदल जाता है, लेकिन इसकी रासायनिक पहचान बरकरार रहती है। यह भौतिक परिवर्तन है, रासायनिक नहीं। अन्य विकल्प गलत हैं या जानकारी द्वारा समर्थित नहीं हैं।",
+          "solution": "घनत्व एक पदार्थ का विशिष्ट गुण होता है, इसलिए घनत्व के ज्ञान से यह निर्धारित किया जा सकता है कि क्या वस्तु एक विशिष्ट पदार्थ से बनी है। चुंबकीय गुण पदार्थ की परमाणु संरचना पर निर्भर करते हैं, घनत्व पर नहीं। पारदर्शिता पदार्थ के प्रकाश के साथ अंतरक्रिया पर निर्भर करती है, और पदार्थ की अवस्था (ठोस, द्रव, गैस) कणों की व्यवस्था और गति पर निर्भर करती है, घनत्व पर नहीं।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi scientific terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "एका विद्यार्थ्याने नोंद केले की एक घन पदार्थ तापल्यावर द्रव होतो आणि अधिक ताप दिल्यावर ते वायूत बदलतो. पदार्थाबद्दल काय निष्कर्ष काढता येईल?",
+          "stem": "एका विद्यार्थ्याने एका वस्तूच्या द्रव्यमान आणि आयतनाचे मोजणी केली आणि त्याचे घनत्व काढले. खालीलपैकी काय या माहितीच्या आधारे ठरवता येईल?",
           "choices": [
-            "तो शुद्ध घटक आहे",
-            "तो पदार्थ नाही",
-            "त्याचा भौमितिक बदल होतो",
-            "त्याचा रासायनिक बदल होतो"
+            "काय वस्तू चुंबकीय आहे किंवा नाही",
+            "काय वस्तू पारदर्शक आहे किंवा नाही",
+            "काय वस्तू एखाद्या विशिष्ट पदार्थापासून बनलेली आहे किंवा नाही",
+            "काय वस्तू घन, द्रव किंवा वायू आहे किंवा नाही"
           ],
-          "solution": "बरोबर उत्तर 'त्याचा भौमितिक बदल होतो' आहे. पदार्थ घनापासून द्रवापर्यंत आणि वायूत बदलतो, परंतु त्याची रासायनिक ओळख बदलत नाही. हा भौमितिक बदल आहे, रासायनिक नाही. इतर विकल्प चुकीचे आहेत किंवा माहितीवर आधारित नाहीत.",
+          "solution": "घनत्व हा एखाद्या पदार्थाचा वैशिष्ट्यपूर्ण गुणधर्म आहे, त्यामुळे घनत्व जाणून घेणे वस्तू एखाद्या विशिष्ट पदार्थापासून बनलेली आहे किंवा नाही हे ठरवण्यास मदत होते. चुंबकीय गुणधर्म हा पदार्थाच्या परमाण्विक रचनेवर अवलंबून असतो, घनत्वावर नाही. पारदर्शकता हा पदार्थाच्या प्रकाशाशी वागण्यावर अवलंबून असते आणि पदार्थाच्या अवस्थेचे (घन, द्रव, वायू) निर्धारण घनत्वावर नसते तर कणांच्या व्यवस्थेवर आणि गतीवर अवलंबून असते.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
@@ -1267,10 +697,643 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Implies the substance is an element, which is not stated",
-        "Suggests the substance is not a substance, which is incorrect",
+        "Confuses magnetic properties with density",
+        "Confuses optical properties with density",
         null,
-        "Implies a chemical change, which is not the case"
+        "Confuses state with density"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that density can be used to determine if an object is made of a specific substance, as each substance has a unique density. The other options are unrelated to density.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 56,
+          "pageStart": 67,
+          "pageEnd": 67,
+          "headingPath": [
+            "6. Properties of Substances"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 57,
+          "pageStart": 68,
+          "pageEnd": 68,
+          "headingPath": [
+            "6. Properties of Substances"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 58,
+          "pageStart": 69,
+          "pageEnd": 69,
+          "headingPath": [
+            "6. Properties of Substances"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T17:20:40.098Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a substance is placed in a container and it takes the shape of the container but does not occupy the entire volume, which state is it in?",
+      "choices": [
+        "Solid",
+        "Liquid",
+        "Gas",
+        "Plasma"
+      ],
+      "answerIndex": 1,
+      "solution": "A liquid takes the shape of the container but does not occupy the entire volume. A pupil who thinks solids take the shape of the container might choose 'Solid'. A pupil who thinks gases take the shape of the container might choose 'Gas'. A pupil who is confused about the states of matter might choose 'Plasma'.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई पदार्थ एक बर्तन में रखा जाता है और यह बर्तन के आकार को ले लेता है लेकिन पूरे आयतन को नहीं ले लेता है, तो यह किस अवस्था में है?",
+          "choices": [
+            "ठोस",
+            "तरल",
+            "गैस",
+            "प्लाज्मा"
+          ],
+          "solution": "एक तरल बर्तन के आकार को ले लेता है लेकिन पूरे आयतन को नहीं ले लेता है। एक छात्र जो ठोस के बारे में सोचता है कि यह बर्तन के आकार को ले लेता है, 'ठोस' चुन सकता है। एक छात्र जो गैस के बारे में सोचता है कि यह बर्तन के आकार को ले लेती है, 'गैस' चुन सकता है। एक छात्र जो पदार्थ की अवस्थाओं में भ्रमित है, 'प्लाज्मा' चुन सकता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard scientific terminology appropriate for Hindi-medium education.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका द्रव्याला एका वासरात ठेवल्यास ते वासराचा आकार घेते परंतु पूर्ण आयतन घेत नाही, तर ते कोणत्या अवस्थेत असेल?",
+          "choices": [
+            "ठोस",
+            "तरल",
+            "वायू",
+            "प्लाझ्मा"
+          ],
+          "solution": "तरल वासराचा आकार घेते परंतु पूर्ण आयतन घेत नाही. ठोस वासराचा आकार घेतात असे विचार करणारा विद्यार्थी 'ठोस' निवडू शकतो. वायू वासराचा आकार घेतात असे विचार करणारा विद्यार्थी 'वायू' निवडू शकतो. द्रव्याच्या अवस्थांबद्दल गोंधळलेला विद्यार्थी 'प्लाझ्मा' निवडू शकतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for states of matter.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "thinks solids take the shape of the container",
+        null,
+        "thinks gases take the shape of the container",
+        "is confused about the states of matter"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed. The correct answer is Liquid, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 59,
+          "pageStart": 70,
+          "pageEnd": 71,
+          "headingPath": [
+            "6. Properties of Substances"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 60,
+          "pageStart": 71,
+          "pageEnd": 71,
+          "headingPath": [
+            "6. Properties of Substances",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T17:20:40.098Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a liquid has a volume of 3 ml and a mass of 7.5 grams, what is its density?",
+      "choices": [
+        "2.5 g/ml",
+        "3.5 g/ml",
+        "7.5 g/ml",
+        "10.5 g/ml"
+      ],
+      "answerIndex": 0,
+      "solution": "Density is calculated by dividing mass by volume. Using the given values, 7.5 grams divided by 3 ml equals 2.5 g/ml. The other options do not result from this calculation.",
+      "checkExpr": "7.5/3",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक द्रव का आयतन 3 मिलीलीटर है और द्रव्यमान 7.5 ग्राम है, तो इसका घनत्व क्या है?",
+          "choices": [
+            "2.5 ग्राम/मिलीलीटर",
+            "3.5 ग्राम/मिलीलीटर",
+            "7.5 ग्राम/मिलीलीटर",
+            "10.5 ग्राम/मिलीलीटर"
+          ],
+          "solution": "घनत्व की गणना द्रव्यमान को आयतन से विभाजित करके की जाती है। दिए गए मानों का उपयोग करते हुए, 7.5 ग्राम को 3 मिलीलीटर से विभाजित करने पर 2.5 ग्राम/मिलीलीटर प्राप्त होता है। अन्य विकल्प इस गणना से प्राप्त नहीं होते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका द्रवाचे आयतन 3 मिली आणि वजन 7.5 ग्रॅम आहे, तर त्याची घनता किती आहे?",
+          "choices": [
+            "2.5 ग्रॅम/मिली",
+            "3.5 ग्रॅम/मिली",
+            "7.5 ग्रॅम/मिली",
+            "10.5 ग्रॅम/मिली"
+          ],
+          "solution": "घनता वजनाला आयतनाने भागून मिळते. दिलेल्या मूल्यांचा वापर करून, 7.5 ग्रॅम भागिले 3 मिली येते 2.5 ग्रॅम/मिली. इतर पर्याय हा गणना करून मिळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Adds mass and volume together",
+        "Subtracts volume from mass",
+        "Confuses the formula for density"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2.5 g/ml, calculated by dividing 7.5 grams by 3 ml. The author's reasoning for the distractors is valid: adding mass and volume, subtracting volume from mass, and confusing the formula for density are all plausible student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 59,
+          "pageStart": 70,
+          "pageEnd": 71,
+          "headingPath": [
+            "6. Properties of Substances"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 60,
+          "pageStart": 71,
+          "pageEnd": 71,
+          "headingPath": [
+            "6. Properties of Substances",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T17:20:40.098Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "A student places an object in a container filled with water and notices that the water level rises. What does this indicate about the object?",
+      "choices": [
+        "It is less dense than water",
+        "It is more dense than water",
+        "It has a volume equal to the displaced water",
+        "It is made of a magnetic substance"
+      ],
+      "answerIndex": 2,
+      "solution": "The rise in water level occurs because the object displaces a volume of water equal to its own volume. This is a direct result of the object taking up space in the container. The other options, such as density or magnetic properties, do not directly affect the displacement of water in this scenario.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र एक वस्तु को पानी से भरे कंटेनर में रखता है और देखता है कि पानी का स्तर बढ़ जाता है। इससे वस्तु के बारे में क्या संकेत मिलता है?",
+          "choices": [
+            "यह पानी के मुकाबले कम घनत्व वाला है",
+            "यह पानी के मुकाबले अधिक घनत्व वाला है",
+            "इसका आयतन विस्थापित पानी के बराबर है",
+            "यह एक चुंबकीय पदार्थ से बना है"
+          ],
+          "solution": "पानी के स्तर में वृद्धि इसलिए होती है क्योंकि वस्तु पानी के आयतन के बराबर विस्थापित कर देती है। यह वस्तु के कंटेनर में जगह लेने के कारण होता है। अन्य विकल्प, जैसे घनत्व या चुंबकीय गुण, इस परिस्थिति में पानी के विस्थापन को सीधे प्रभावित नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are standard in Hindi science textbooks, and the logic of the question and solution is preserved.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने पाण्याने भरलेल्या एका वासरात एक वस्तू ठेवली आणि त्याने पाण्याचा तरंग वाढत असल्याचे नोंदवले. हे वस्तूबद्दल काय सूचित करते?",
+          "choices": [
+            "ती पाण्यापेक्षा कमी घनतेची आहे",
+            "ती पाण्यापेक्षा जास्त घनतेची आहे",
+            "ती विस्थापित पाण्याच्या आयतनाएवढी आहे",
+            "ती चुंबकीय पदार्थापासून बनलेली आहे"
+          ],
+          "solution": "पाण्याचा तरंग वाढतो कारण वस्तू आपल्या आयतनाएवढे पाणी विस्थापित करते. हे वस्तूने वासरात जागा घेण्यामुळे होते. इतर विकल्प, जसे की घनता किंवा चुंबकीय गुणधर्म, या परिस्थितीत पाण्याच्या विस्थापनाला प्रत्यक्षपणे प्रभावित करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses density with displacement",
+        "Confuses density with displacement",
+        null,
+        "Confuses magnetic properties with displacement"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as the rise in water level directly indicates that the object's volume is equal to the displaced water. The other options are incorrect and represent common misconceptions about density and magnetism.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 56,
+          "pageStart": 67,
+          "pageEnd": 67,
+          "headingPath": [
+            "6. Properties of Substances"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 57,
+          "pageStart": 68,
+          "pageEnd": 68,
+          "headingPath": [
+            "6. Properties of Substances"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 58,
+          "pageStart": 69,
+          "pageEnd": 69,
+          "headingPath": [
+            "6. Properties of Substances"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T17:20:40.098Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "If a substance has a density of 19.3 g/cm³, what can we conclude about it?",
+      "choices": [
+        "It is a liquid",
+        "It is a gas",
+        "It is gold",
+        "It is a transparent substance"
+      ],
+      "answerIndex": 2,
+      "solution": "The density of 19.3 g/cm³ is a known property of gold, so we can conclude the substance is gold. Liquids and gases typically have much lower densities, and density alone does not determine transparency.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई पदार्थ 19.3 ग्राम/घन सेमी के घनत्व के साथ है, तो हम क्या निष्कर्ष निकाल सकते हैं?",
+          "choices": [
+            "यह एक द्रव है",
+            "यह एक गैस है",
+            "यह सोना है",
+            "यह एक पारदर्शी पदार्थ है"
+          ],
+          "solution": "19.3 ग्राम/घन सेमी के घनत्व के साथ सोना एक ज्ञात गुण है, इसलिए हम कह सकते हैं कि पदार्थ सोना है। द्रव और गैस आमतौर पर बहुत कम घनत्व रखते हैं, और घनत्व अकेले पारदर्शिता को निर्धारित नहीं करता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are appropriate, and the logic of the question and solution is preserved.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर कोणताही द्रव्य 19.3 ग्रॅम/घन सेंमी घनता असेल, तर आपण त्याबद्दल काय निष्कर्ष काढू शकतो?",
+          "choices": [
+            "ते द्रव आहे",
+            "ते वायू आहे",
+            "ते सोने आहे",
+            "ते पारदर्शक द्रव्य आहे"
+          ],
+          "solution": "19.3 ग्रॅम/घन सेंमी घनता हे सोन्याचे ओळखीचे गुणधर्म आहे, म्हणून आपण द्रव्य सोने असल्याचा निष्कर्ष काढू शकतो. द्रव आणि वायू सामान्यतः खूप कमी घनता असतात, आणि घनता समाप्ती दर्शकता ठरवत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly assumes density relates to state",
+        "Incorrectly assumes density relates to state",
+        null,
+        "Confuses density with transparency"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and matches the key. The density of 19.3 g/cm³ is a known property of gold, so the conclusion that the substance is gold is valid. The other options are incorrect because density does not determine state of matter or transparency.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 56,
+          "pageStart": 67,
+          "pageEnd": 67,
+          "headingPath": [
+            "6. Properties of Substances"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 57,
+          "pageStart": 68,
+          "pageEnd": 68,
+          "headingPath": [
+            "6. Properties of Substances"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 58,
+          "pageStart": 69,
+          "pageEnd": 69,
+          "headingPath": [
+            "6. Properties of Substances"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T17:20:40.098Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "A student observes that a substance does not allow light to pass through it. She also notices that the substance has a fixed shape and volume. What state is the substance in?",
+      "choices": [
+        "Solid",
+        "Liquid",
+        "Gas",
+        "Plasma"
+      ],
+      "answerIndex": 0,
+      "solution": "A solid does not allow light to pass through, has a fixed shape and volume. A pupil who thinks liquids have a fixed shape might choose 'Liquid'. A pupil who thinks gases have a fixed shape might choose 'Gas'. A pupil who is confused about the states of matter might choose 'Plasma'.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्रा देखती है कि कोई पदार्थ प्रकाश को पार नहीं होने देता है। वह यह भी ध्यान में रखती है कि पदार्थ के पास एक निश्चित आकार और आयतन है। पदार्थ किस अवस्था में है?",
+          "choices": [
+            "ठोस",
+            "तरल",
+            "गैस",
+            "प्लाज्मा"
+          ],
+          "solution": "ठोस प्रकाश को पार नहीं होने देता है, एक निश्चित आकार और आयतन रखता है। एक छात्र जो तरल के एक निश्चित आकार के बारे में सोचता है, 'तरल' चुन सकता है। एक छात्र जो गैस के एक निश्चित आकार के बारे में सोचता है, 'गैस' चुन सकता है। एक छात्र जो पदार्थ की अवस्थाओं में भ्रमित होता है, 'प्लाज्मा' चुन सकता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard scientific terminology appropriate for Hindi-medium education.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थिनीला असा अवलोकन आढळतो की एका पदार्थाने प्रकाशाचा पारगंम होऊ दिला नाही. तिला त्या पदार्थाचा निश्चित आकार आणि आयता दिसतो. तो पदार्थ कोणत्या अवस्थेत आहे?",
+          "choices": [
+            "ठोस",
+            "तरल",
+            "वायु",
+            "प्लाझ्मा"
+          ],
+          "solution": "ठोस पदार्थ प्रकाशाचा पारगंम होऊ देत नाही, आकार आणि आयता निश्चित असतो. जर कोणी तरलांचा आकार निश्चित असल्याचे विचार करत असेल तर तो 'तरल' निवडू शकतो. जर कोणी वायूचा आकार निश्चित असल्याचे विचार करत असेल तर तो 'वायू' निवडू शकतो. जर कोणी पदार्थांच्या अवस्थांच्या विषयी गोंधळलेला असेल तर तो 'प्लाझ्मा' निवडू शकतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "thinks liquids have a fixed shape",
+        "thinks gases have a fixed shape",
+        "is confused about the states of matter"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. The correct answer is solid, as solids have a fixed shape and volume and do not allow light to pass through. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 59,
+          "pageStart": 70,
+          "pageEnd": 71,
+          "headingPath": [
+            "6. Properties of Substances"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 60,
+          "pageStart": 71,
+          "pageEnd": 71,
+          "headingPath": [
+            "6. Properties of Substances",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T17:20:40.098Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following groups contains only substances in the liquid state?",
+      "choices": [
+        "Stone, water, smoke",
+        "Milk, oil, sherbet",
+        "Air, iron, steam",
+        "Water, ice, steam"
+      ],
+      "answerIndex": 1,
+      "solution": "Milk, oil, and sherbet are all substances in the liquid state, as they maintain a definite volume but take the shape of their container. Stone is a solid, air is a gas, and ice is a solid, making those options incorrect. Steam is also a gas, so the group containing water, ice, and steam is not all liquids.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा समूह केवल द्रव अवस्था में उपस्थित वस्तुओं को समाहित करता है?",
+          "choices": [
+            "पत्थर, पानी, धुआं",
+            "दूध, तेल, शरबत",
+            "हवा, लोहा, भाप",
+            "पानी, बर्फ, भाप"
+          ],
+          "solution": "दूध, तेल और शरबत सभी द्रव अवस्था में वस्तुएं हैं, क्योंकि वे एक निश्चित आयतन बनाए रखती हैं लेकिन अपने पात्र के आकार ले लेती हैं। पत्थर ठोस है, हवा गैस है और बर्फ ठोस है, इसलिए उस विकल्प गलत है। भाप भी एक गैस है, इसलिए पानी, बर्फ और भाप वाला समूह सभी द्रव नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणत्या गटामध्ये केवळ द्रव अवस्थेतील पदार्थ आहेत?",
+          "choices": [
+            "डोळा, पाणी, धूम",
+            "दूध, तेल, शरबत",
+            "हवा, लोह, भाप",
+            "पाणी, बर्फ, भाप"
+          ],
+          "solution": "दूध, तेल आणि शरबत हे सर्व द्रव अवस्थेतील पदार्थ आहेत, कारण ते आपला निश्चित आयतन ठेवतात परंतु त्यांच्या वासरा घेतात. डोळा घन अवस्थेत असतो, हवा वायू अवस्थेत असतो आणि बर्फ घन अवस्थेत असतो, ज्यामुळे या विकल्प अयोग्य ठरतात. भाप देखील वायू अवस्थेत असतो, म्हणून पाणी, बर्फ आणि भाप असलेला गट द्रव नसल्यामुळे अयोग्य आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Includes solid and gas substances",
+        null,
+        "Includes gas and solid substances",
+        "Includes solid and gas substances"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is option 1 (Milk, oil, sherbet), as all are liquids. The other options contain solids (stone, ice, iron) or gases (air, steam, smoke). The author's reasoning aligns with the correct analysis.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 59,
+          "pageStart": 70,
+          "pageEnd": 71,
+          "headingPath": [
+            "6. Properties of Substances"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 60,
+          "pageStart": 71,
+          "pageEnd": 71,
+          "headingPath": [
+            "6. Properties of Substances",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T17:20:40.098Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a student observes that a substance is in the gaseous state, what can be inferred about its particles?",
+      "choices": [
+        "They are tightly packed and cannot move",
+        "They are loosely bound and can flow",
+        "They are completely separated and move freely",
+        "They are in a fixed position and do not move"
+      ],
+      "answerIndex": 2,
+      "solution": "In the gaseous state, particles have enough energy to overcome intermolecular forces, allowing them to move freely and occupy all available space. This matches the description of particles being completely separated and moving freely. The other options describe solids and liquids, where particles are either fixed in place or only loosely bound but not free to move throughout the entire space.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक छात्र देखता है कि एक पदार्थ गैसीय अवस्था में है, तो इसके कणों के बारे में क्या निष्कर्ष निकाला जा सकता है?",
+          "choices": [
+            "वे घनी रूप से बंधे हुए हैं और गति नहीं कर सकते",
+            "वे ढीले बंधे हुए हैं और प्रवाहित हो सकते हैं",
+            "वे पूरी तरह से अलग हैं और स्वतंत्र रूप से गति करते हैं",
+            "वे निश्चित स्थिति में हैं और गति नहीं करते"
+          ],
+          "solution": "गैसीय अवस्था में, कणों के पास आंतरिक आणविक बलों को जीतने के लिए पर्याप्त ऊर्जा होती है, जिससे वे स्वतंत्र रूप से गति कर सकते हैं और उपलब्ध सभी स्थान ले सकते हैं। यह पूरी तरह से अलग और स्वतंत्र रूप से गति करने वाले कणों के वर्णन के अनुरूप है। अन्य विकल्प ठोस और द्रव में कणों के वर्णन करते हैं, जहां कण या तो निश्चित स्थिति में होते हैं या केवल ढीले बंधे होते हैं लेकिन पूरे स्थान में गति नहीं कर सकते।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning with appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थीने एखाद्या पदार्थाच्या वाफीने अवस्थेत असल्याचे निरीक्षण केले, तर त्याच्या कणांबद्दल काय निष्कर्ष काढता येईल?",
+          "choices": [
+            "ते घन निर्मित असतात आणि हलू शकत नाहीत",
+            "ते कमी बांधलेले असतात आणि वाहू शकतात",
+            "ते पूर्णपणे विलग असतात आणि स्वतंत्रपणे हलू शकतात",
+            "ते निश्चित स्थितीत असतात आणि हलू शकत नाहीत"
+          ],
+          "solution": "वाफीने अवस्थेत, कणांमध्ये परस्परांमधील अंतराणु बलांचा विरोध करण्यासाठी पुरेसा ऊर्जा असते, ज्यामुळे ते स्वतंत्रपणे हलू शकतात आणि उपलब्ध सर्व जागा घेतात. हे पूर्णपणे विलग असलेल्या कणांना स्वतंत्रपणे हलू शकतात असे वर्णन अनुरूप आहे. इतर विकल्प घन पदार्थ आणि द्रव पदार्थांचे वर्णन करतात, जेथे कण निश्चित स्थितीत असतात किंवा केवळ कमी बांधलेले असतात परंतु संपूर्ण जागेत हलू शकत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Describes solid state",
+        "Describes liquid state",
+        null,
+        "Describes solid state"
       ],
       "solverAnswers": [
         2,
@@ -1280,7 +1343,7 @@
         2
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that the process described is a physical change, as the substance changes state without altering its chemical identity. The reasoning aligns with standard scientific understanding.",
+      "critique": "The correct answer is 2, as gas particles are indeed free to move and are not bound. The author's reasoning for the other options is accurate and reflects common misconceptions about the states of matter.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
@@ -1311,47 +1374,47 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T04:38:42.245Z",
+      "generatedAt": "2026-11-01T17:20:40.098Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "A student observes that when an object is submerged in water, the water level rises. What is the most likely reason for this observation?",
+      "stem": "A student adds a substance to water and observes that the water level rises. She also notices that the substance does not dissolve. What can be concluded about the substance?",
       "choices": [
-        "The object is lighter than water",
-        "The object is made of a magnetic material",
-        "The object displaces water equal to its volume",
-        "The object is made of a transparent material"
+        "It is a liquid",
+        "It is a gas",
+        "It is a solid",
+        "It is a magnetic substance"
       ],
       "answerIndex": 2,
-      "solution": "The water level rises because the object takes up space in the water, pushing the water aside. This is known as displacement, and the amount of water displaced is equal to the volume of the object. The other options are unrelated to the physical principle of displacement.",
+      "solution": "The substance does not dissolve but causes the water level to rise, indicating it displaces water, which is a characteristic of solids. Liquids would mix with water without significant displacement, and gases would not displace water in the same way. Magnetic properties are unrelated to water displacement.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक छात्र देखता है कि जब कोई वस्तु पानी में डूब जाती है, तो पानी का स्तर बढ़ जाता है। इस अवलोकन के लिए सबसे संभावित कारण क्या है?",
+          "stem": "एक छात्रा पानी में एक पदार्थ मिलाती है और देखती है कि पानी का स्तर बढ़ जाता है। वह यह भी ध्यान देती है कि पदार्थ घुल नहीं जाता है। पदार्थ के बारे में क्या निष्कर्ष निकाला जा सकता है?",
           "choices": [
-            "वस्तु पानी के मुकाबले हल्की है",
-            "वस्तु चुंबकीय सामग्री से बनी है",
-            "वस्तु पानी के आयतन के बराबर विस्थापित करती है",
-            "वस्तु पारदर्शी सामग्री से बनी है"
+            "यह एक द्रव है",
+            "यह एक गैस है",
+            "यह एक ठोस है",
+            "यह एक चुंबकीय पदार्थ है"
           ],
-          "solution": "पानी का स्तर बढ़ जाता है क्योंकि वस्तु पानी में जगह ले लेती है, जिससे पानी के पास खाली जगह बचती है। इसे विस्थापन कहते हैं, और विस्थापित पानी की मात्रा वस्तु के आयतन के बराबर होती है। अन्य विकल्प विस्थापन के भौतिक सिद्धांत से संबंधित नहीं हैं।",
+          "solution": "पदार्थ पानी में घुल नहीं जाता है लेकिन पानी के स्तर को बढ़ा देता है, जो ठोस के विशेषता को इंगित करता है। द्रव पानी में मिल जाते हैं बिना महत्वपूर्ण विस्थापन के, और गैसें पानी के विस्थापन के इस तरह से नहीं करती हैं। चुंबकीय गुण पानी के विस्थापन से संबंधित नहीं हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "critique": "Translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "एका विद्यार्थीने एका वस्तूला पाण्यात बुडवल्यावर पाण्याचा तरंग वाढत असल्याचे निरीक्षण केले. ह्या निरीक्षणाचे सर्वात शक्य कारण काय असू शकते?",
+          "stem": "एका विद्यार्थिनीने पाण्यात एका पदार्थाचा घालून पाहिले की पाण्याचा पातळी वाढतो. तिला असेही लक्षात आले की पदार्थ विरघळत नाही. पदार्थाबद्दल काय निष्कर्ष काढता येईल?",
           "choices": [
-            "वस्तू पाण्यापेक्षा हलकी आहे",
-            "वस्तू चुंबकीय पदार्थापासून बनलेली आहे",
-            "वस्तू पाण्याला तिच्या आयतनाएवढे विस्थापित करते",
-            "वस्तू पारदर्शक पदार्थापासून बनलेली आहे"
+            "तो द्रव आहे",
+            "तो वायू आहे",
+            "तो घन आहे",
+            "तो चुंबकीय पदार्थ आहे"
           ],
-          "solution": "पाण्याचा तरंग वाढतो कारण वस्तू पाण्यात जागा घेते, ज्यामुळे पाणी बाजूला धक्का मारते. हे विस्थापन म्हणून ओळखले जाते, आणि विस्थापित पाण्याचे प्रमाण वस्तूच्या आयतनाएवढे असते. इतर विकल्प पाण्याच्या भौतिक तत्वाशी संबंधित नाहीत.",
+          "solution": "पदार्थ विरघळत नाही परंतु पाण्याची पातळी वाढते, जे घन पदार्थांचा लक्षणीय विशेष आहे. द्रव पाण्यात मिसळतील आणि विशिष्ट विस्थापन न करता. वायू पाण्याचे विस्थापन असे करत नाहीत. चुंबकीय गुणधर्म पाण्याच्या विस्थापनाशी संबंधित नाहीत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
@@ -1362,10 +1425,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Thinks lighter objects float",
-        "Confuses magnetic properties with displacement",
+        "Confuses liquids with solids",
+        "Confuses gases with solids",
         null,
-        "Thinks transparency affects water level"
+        "Confuses magnetic properties with solids"
       ],
       "solverAnswers": [
         2,
@@ -1375,7 +1438,7 @@
         2
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2, as the rise in water level is due to displacement equal to the object's volume. The other options represent common misconceptions.",
+      "critique": "The solution correctly identifies that the substance is a solid because it displaces water without dissolving, which is a property of solids. The reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
@@ -1406,49 +1469,49 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T04:38:42.245Z",
+      "generatedAt": "2026-11-01T17:20:40.098Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "If an object is submerged in water, and the water level rises, which of the following can be determined?",
+      "stem": "A student is given two substances: one is a liquid, and the other is a gas. She is asked to determine which one has a higher density. Which property of the substances should she compare?",
       "choices": [
-        "The object is less dense than water",
-        "The object is denser than water",
-        "The volume of the object",
-        "The mass of the object"
+        "Mass",
+        "Volume",
+        "Temperature",
+        "Density"
       ],
-      "answerIndex": 2,
-      "solution": "When an object is submerged in water and the water level rises, the volume of the displaced water equals the volume of the object, allowing direct determination of the object's volume. The density of the object cannot be determined without knowing its mass. The mass of the object also cannot be determined without additional information such as its density or weight.",
+      "answerIndex": 3,
+      "solution": "Density is the correct property to compare as it directly determines which substance is denser. A pupil who thinks mass alone determines density might choose 'Mass'. A pupil who thinks volume alone determines density might choose 'Volume'. A pupil who thinks temperature affects density more might choose 'Temperature'.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि कोई वस्तु पानी में डूब जाती है और पानी का स्तर बढ़ जाता है, तो निम्नलिखित में से क्या निर्धारित किया जा सकता है?",
+          "stem": "एक छात्रा को दो पदार्थ दिए जाते हैं: एक तरल है और दूसरा गैस है। उसे यह निर्धारित करने के लिए कहा जाता है कि कौन सा अधिक घनत्व वाला है। उसे इन पदार्थों के कौन से गुण की तुलना करनी चाहिए?",
           "choices": [
-            "वस्तु पानी के घनत्व से कम है",
-            "वस्तु पानी के घनत्व से अधिक है",
-            "वस्तु का आयतन",
-            "वस्तु का द्रव्यमान"
+            "द्रव्यमान",
+            "आयतन",
+            "तापमान",
+            "घनत्व"
           ],
-          "solution": "जब कोई वस्तु पानी में डूब जाती है और पानी का स्तर बढ़ जाता है, तो विस्थापित पानी का आयतन वस्तु के आयतन के बराबर होता है, जिससे वस्तु के आयतन की सीधी गणना की जा सकती है। वस्तु के घनत्व की गणना इसके द्रव्यमान के बिना नहीं की जा सकती। वस्तु के द्रव्यमान की गणना इसके घनत्व या भार के बिना भी नहीं की जा सकती।",
+          "solution": "घनत्व उचित गुण है क्योंकि यह सीधे यह निर्धारित करता है कि कौन सा पदार्थ अधिक घनत्व वाला है। एक छात्रा जो मानती है कि द्रव्यमान ही घनत्व निर्धारित करता है, 'द्रव्यमान' चुन सकती है। एक छात्रा जो मानती है कि आयतन ही घनत्व निर्धारित करता है, 'आयतन' चुन सकती है। एक छात्रा जो मानती है कि तापमान घनत्व पर अधिक प्रभाव डालता है, 'तापमान' चुन सकती है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium science textbooks.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology as used in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "जर एखादा वस्तू पाण्यात बुडवली जाते आणि पाण्याचा पातळी वाढतो, तर खालीलपैकी काय निश्चित करता येऊ शकते?",
+          "stem": "एका विद्यार्थिनीला दोन द्रव्ये दिली गेली आहेत: एक द्रव असून दुसरे वायू आहे. तिला असे ठरवायला सांगितले जाते की त्यापैकी कोणत्या द्रव्याचे घनता जास्त आहे. तिने या द्रव्यांच्या कोणत्या गुणधर्माची तुलना करावी?",
           "choices": [
-            "वस्तू पाण्यापेक्षा कमी घनत्वाची आहे",
-            "वस्तू पाण्यापेक्षा जास्त घनत्वाची आहे",
-            "वस्तूचा आयतन",
-            "वस्तूचा द्रव्यमान"
+            "द्रव्यमान",
+            "आयतन",
+            "तापमान",
+            "घनता"
           ],
-          "solution": "जेव्हा एखादी वस्तू पाण्यात बुडवली जाते आणि पाण्याचा पातळी वाढतो, तेव्हा विस्थापित पाण्याचा आयतन वस्तूच्या आयतनास समान असतो, ज्यामुळे वस्तूचा आयतन सीधा निश्चित करता येतो. वस्तूचा घनत्व तिच्या द्रव्यमानाशिवाय निश्चित करता येत नाही. वस्तूचा द्रव्यमान तिच्या घनत्वाच्या किंवा वजनाच्या माहितीशिवाय निश्चित करता येत नाही.",
+          "solution": "घनता हा तुलना करण्यासाठी योग्य गुणधर्म आहे कारण तो सीधा ठरवतो की कोणत्या द्रव्याची घनता जास्त आहे. जो विद्यार्थी घनता ठरविण्यासाठी द्रव्यमानच विचारात घेतो तो 'द्रव्यमान' निवडेल. जो विद्यार्थी घनता ठरविण्यासाठी आयतनच विचारात घेतो तो 'आयतन' निवडेल. जो विद्यार्थी तापमान घनता वर प्रभाव टाकते असे विचारतो तो 'तापमान' निवडेल.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for scientific concepts.",
           "flag": null
         }
       },
@@ -1457,51 +1520,43 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Assumes density based on displacement",
-        "Confuses density with volume",
-        null,
-        "Thinks mass can be determined without weight measurement"
+        "thinks mass alone determines density",
+        "thinks volume alone determines density",
+        "thinks temperature affects density more",
+        null
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        3,
+        3,
+        3,
+        3,
+        3
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that the rise in water level directly measures the object's volume, and the reasoning for the other options aligns with common misconceptions.",
+      "critique": "The question is well-constructed. The correct answer is 'Density' because density is the property that directly determines which substance is denser. The author's explanation of the misconceptions is accurate and relevant to common student errors.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 56,
-          "pageStart": 67,
-          "pageEnd": 67,
+          "ordinal": 59,
+          "pageStart": 70,
+          "pageEnd": 71,
           "headingPath": [
             "6. Properties of Substances"
           ]
         },
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 57,
-          "pageStart": 68,
-          "pageEnd": 68,
+          "ordinal": 60,
+          "pageStart": 71,
+          "pageEnd": 71,
           "headingPath": [
-            "6. Properties of Substances"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 58,
-          "pageStart": 69,
-          "pageEnd": 69,
-          "headingPath": [
-            "6. Properties of Substances"
+            "6. Properties of Substances",
+            "Exercises"
           ]
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T04:38:42.245Z",
+      "generatedAt": "2026-11-01T17:20:40.098Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

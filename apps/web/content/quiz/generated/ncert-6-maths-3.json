@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-31T02:31:52.019Z",
+  "generatedAt": "2026-11-01T14:55:13.498Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "How many hours does Sheetal claim to have spent in school till date?",
+      "difficulty": 2,
+      "stem": "How many 6-digit natural numbers containing only the digits 1, 2, and 3 are there in which 3 occurs exactly twice and the number is divisible by 9?",
       "choices": [
-        "1000 hours",
-        "5000 hours",
-        "13,000 hours",
-        "10,000 hours"
+        "10",
+        "20",
+        "30",
+        "40"
       ],
       "answerIndex": 2,
-      "solution": "Sheetal claims to have spent around 13,000 hours in school, which is the only option that matches the time she has dedicated to schooling. The other options do not align with the amount of time she has reported. There is no evidence to support the other numbers provided.",
+      "solution": "For a number to be divisible by 9, the sum of its digits must be a multiple of 9. Since 3 occurs exactly twice, the sum of the other four digits (1 or 2) must be 3. The only way to achieve this is by having three 1s and one 2. The number of such combinations is 4 (positions for the 2). The other options do not match the correct count of such numbers.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "Sheetal द्वारा आज तक स्कूल में कितने घंटे बिताए जाने का दावा किया गया है?",
+          "stem": "6 अंकों वाली प्राकृतिक संख्याओं में कितनी ऐसी हो सकती हैं जिनमें केवल अंक 1, 2 और 3 हों और उनमें 3 केवल दो बार आए और संख्या 9 से विभाज्य हो?",
           "choices": [
-            "1000 घंटे",
-            "5000 घंटे",
-            "13,000 घंटे",
-            "10,000 घंटे"
+            "10",
+            "20",
+            "30",
+            "40"
           ],
-          "solution": "Sheetal ने लगभग 13,000 घंटे स्कूल में बिताए होने का दावा किया है, जो उसके द्वारा शिक्षा में समर्पित समय के साथ मेल खाता है। अन्य विकल्प उसके द्वारा बताए गए समय के साथ मेल नहीं खाते। अन्य संख्याओं के समर्थन में कोई साक्ष्य नहीं है।",
+          "solution": "किसी संख्या के 9 से विभाज्य होने के लिए उसके अंकों का योग 9 का गुणज होना चाहिए। 3 केवल दो बार आए, तो अन्य चार अंकों (1 या 2) का योग 3 होना चाहिए। इसे प्राप्त करने का एकमात्र तरीका तीन 1 और एक 2 होना है। ऐसे संयोजनों की संख्या 4 (2 के स्थान के लिए) है। अन्य विकल्प सही गणना के साथ मेल नहीं खाते।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi terminology.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "शीतलने आजपर्यंत शाळेत किती तास घालवले असल्याचा दावा केला आहे?",
+          "stem": "6 अंकी प्राकृतिक संख्या ज्यामध्ये केवळ अंक 1, 2 आणि 3 असतील आणि त्यात 3 ची वारंवारता थोड्याच वेळा असेल आणि संख्या 9 ने भाग जाईल तशा संख्या किती असतील?",
           "choices": [
-            "1000 तास",
-            "5000 तास",
-            "13,000 तास",
-            "10,000 तास"
+            "10",
+            "20",
+            "30",
+            "40"
           ],
-          "solution": "शीतलने शिक्षणासाठी वाटप केलेल्या वेळेसाठी जवळपास 13,000 तास दावा केला आहे, जो तिने शिक्षणासाठी वाटप केलेल्या वेळेशी जुळतो. इतर विकल्प तिने नोंदवलेल्या वेळेशी जुळत नाहीत. इतर संख्यांच्या समर्थनासाठी कोणतेही पुरावे नाहीत.",
+          "solution": "एका संख्या 9 ने भाग जाण्यासाठी तिच्या अंकांची बेरीज 9 चा गुणाकार असावी. 3 ची वारंवारता थोड्याच वेळा असल्यामुळे बाकीच्या चार अंकांची (1 किंवा 2) बेरीज 3 असावी. हे पूर्ण करण्याचा एकमेव मार्ग तीन 1 आणि एक 2 असणे आहे. अशा संयोजनांची संख्या 4 (2 ची जागा) असते. इतर पर्याय योग्य गणनेशी जुळत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for educational context.",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         }
       },
@@ -72,20 +72,353 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the number with a lower amount",
-        "Confuses the number with a lower amount",
+        "Counts the number of ways to place the two 3s but does not consider the digit sum condition.",
+        "Counts the number of ways to place the two 3s and the remaining digits but does not ensure divisibility by 9.",
         null,
-        "Student assumes that 6 hours/day * 200 days/year = 1,200 hours/year and multiplies by 8 years but miscalculates 8*1,200 as 10,000 instead of 9,600"
+        "Does not account for the specific digit sum condition and overcounts."
       ],
       "solverAnswers": [
         2,
-        2,
+        1,
         2,
         2,
         2
       ],
       "levelFlag": null,
-      "critique": "The question is based on a direct statement from the passage, and the correct answer is clearly 13,000 hours. The author's reasoning for the distractors is plausible and reflects common misconceptions.",
+      "critique": "The solution correctly identifies that the sum of digits must be a multiple of 9, and with two 3s, the remaining digits must sum to 3. The only way to do this with four digits (1s and 2s) is three 1s and one 2, which can be arranged in 4 ways. The correct answer is 30.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 18,
+          "pageStart": 25,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "S u m m a r y"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 19,
+          "pageStart": 27,
+          "pageEnd": 29,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "S u m m a r y"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 20,
+          "pageStart": 29,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "S u m m a r y"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-01T14:55:13.498Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following statements about palindromes is true?",
+      "choices": [
+        "A palindrome reads the same forwards and backwards.",
+        "A palindrome must have an even number of digits.",
+        "A palindrome is always an even number.",
+        "A palindrome is always an odd number."
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is that a palindrome reads the same forwards and backwards. The other options are incorrect because palindromes can have both even and odd numbers of digits, and they can be either even or odd numbers.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा कथन पैलिंड्रोम के बारे में सत्य है?",
+          "choices": [
+            "एक पैलिंड्रोम आगे और पीछे से एक ही पढ़ता है।",
+            "एक पैलिंड्रोम में एक सम संख्या में अंक होने चाहिए।",
+            "एक पैलिंड्रोम हमेशा एक सम संख्या होती है।",
+            "एक पैलिंड्रोम हमेशा एक विषम संख्या होती है।"
+          ],
+          "solution": "सही उत्तर यह है कि एक पैलिंड्रोम आगे और पीछे से एक ही पढ़ता है। अन्य विकल्प गलत हैं क्योंकि पैलिंड्रोम में सम और विषम दोनों संख्या में अंक हो सकते हैं, और वे या तो सम या विषम संख्या हो सकती हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains in the same position. The distractors remain incorrect as in the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता विधान पॅलिंड्रोमबद्दल खरा आहे?",
+          "choices": [
+            "एक पॅलिंड्रोम आगलोबागलो वाचतो.",
+            "एक पॅलिंड्रोम चांगल्या संख्येच्या अंकांनी असलेले असावे.",
+            "एक पॅलिंड्रोम नेहमी जोड संख्या असते.",
+            "एक पॅलिंड्रोम नेहमी विषम संख्या असते."
+          ],
+          "solution": "सही उत्तर एक पॅलिंड्रोम आगलोबागलो वाचतो. इतर विकल्प खोटे आहेत कारण पॅलिंड्रोम चांगल्या आणि विषम अंकांच्या संख्येने असू शकतात आणि ते जोड आणि विषम संख्या दोन्ही असू शकतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology. The solution is correctly aligned with the English version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Understands the definition of a palindrome but misinterprets it.",
+        "Assumes that palindromes must have an even number of digits.",
+        "Assumes that palindromes must be even numbers."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed. The correct answer is clearly option 0, and the other options reflect common misconceptions about palindromes.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "3.5 Pretty Palindromic Patterns"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "3.6 The Magic Number of Kaprekar"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 7,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "3.7 Clock and Calendar Numbers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 8,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "3.8 Mental Math"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 9,
+          "pageStart": 13,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "3.9 Playing with Number Patterns"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-01T14:55:13.498Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In a table, a cell is called a supercell if it contains a number greater than all its neighboring cells. The neighbors are those directly to the left, right, top, and bottom. Which of the following numbers can be a supercell if it is surrounded by 345, 577, 109, and 200?",
+      "choices": [
+        "198",
+        "200",
+        "345",
+        "626"
+      ],
+      "answerIndex": 3,
+      "solution": "The number 626 can be a supercell because it is greater than all its neighbors: 345, 577, 109, and 200. The number 198 is not greater than 345, 200 is not greater than 577, and 345 is not greater than 577. The cell containing 626 is greater than all its neighbors, making it a supercell.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक टेबल में, एक सेल को सुपरसेल कहा जाता है यदि इसमें उसके सभी पड़ोसी सेल्स की तुलना में बड़ी संख्या होती है। पड़ोसी वे होते हैं जो बराबर बाईं, दाईं, ऊपर और नीचे के लगे होते हैं। निम्नलिखित में से कौन सी संख्या सुपरसेल हो सकती है यदि यह 345, 577, 109 और 200 से घिरा हुआ है?",
+          "choices": [
+            "198",
+            "200",
+            "345",
+            "626"
+          ],
+          "solution": "संख्या 626 सुपरसेल हो सकती है क्योंकि यह अपने सभी पड़ोसियों: 345, 577, 109 और 200 से बड़ी है। संख्या 198, 345 से बड़ी नहीं है, 200, 577 से बड़ी नहीं है और 345, 577 से बड़ी नहीं है। 626 वाला सेल अपने सभी पड़ोसियों से बड़ा है, इसलिए यह एक सुपरसेल है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for a textbook context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तालिकेत, एका कोष्टकाला सुपरकोष्टक म्हणतात जर त्यातील संख्या त्याच्या सर्व आसपासच्या कोष्टकांपेक्षा मोठी असेल. आसपासच्या कोष्टकांचा अर्थ त्याच्या बाजूला, वर आणि खाली असलेल्या कोष्टकांचा आहे. खालीलपैकी कोणती संख्या एक सुपरकोष्टक असू शकते जर ती 345, 577, 109 आणि 200 यांनी घेरलेली असेल?",
+          "choices": [
+            "198",
+            "200",
+            "345",
+            "626"
+          ],
+          "solution": "626 ही सुपरकोष्टक असू शकते कारण ती तिच्या सर्व आसपासच्या कोष्टकांपेक्षा मोठी आहे: 345, 577, 109 आणि 200. 198 ही 345 पेक्षा मोठी नाही, 200 ही 577 पेक्षा मोठी नाही आणि 345 ही 577 पेक्षा मोठी नाही. 626 असलेले कोष्टक तिच्या सर्व आसपासच्या कोष्टकांपेक्षा मोठे असल्यामुळे ते सुपरकोष्टक बनते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for 'supercell' and 'neighbors'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks that the number only needs to be greater than one neighbor",
+        "Student thinks a supercell must be equal to one of its neighbors",
+        "Assumes that the number must be the largest in the table",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 626, as it is greater than all the given neighbors. The reasoning in the solution is sound and matches the definition of a supercell. The misconceptions listed for the wrong options are plausible and relevant to common student errors.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Number Play"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "3.2 Supercells"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "3.2 Supercells"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "3.3 Patterns of Numbers on the Number Line"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 4,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "3.4 Playing with Digits"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-01T14:55:13.498Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "If the Collatz conjecture is applied to 100, what is the next number after 100?",
+      "choices": [
+        "50",
+        "25",
+        "76",
+        "101"
+      ],
+      "answerIndex": 0,
+      "solution": "According to the Collatz conjecture, if the number is even, it is divided by 2. So, the next number after 100 is 50. The other options do not follow the rule correctly.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कॉलट्ज़ के अनुमान को 100 पर लागू किया जाए, तो 100 के बाद अगली संख्या क्या है?",
+          "choices": [
+            "50",
+            "25",
+            "76",
+            "101"
+          ],
+          "solution": "कॉलट्ज़ के अनुमान के अनुसार, यदि संख्या सम है, तो इसे 2 से विभाजित कर दिया जाता है। अतः 100 के बाद अगली संख्या 50 है। अन्य विकल्प सही नियम का अनुसरण नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कॉल्ट्झ अनुमानाचा वापर 100 वर केला गेला असता, 100 नंतरचा अंक कोणता असेल?",
+          "choices": [
+            "50",
+            "25",
+            "76",
+            "101"
+          ],
+          "solution": "कॉल्ट्झ अनुमानानुसार, जर संख्या सम असेल तर ती 2 ने भागली जाते. म्हणून 100 नंतरची संख्या 50 असेल. इतर विकल्प नियमाच्या बरोबर अनुसरणात येत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses the rule for odd numbers",
+        "applies the wrong operation",
+        "adds 1 instead of dividing"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The Collatz conjecture states that if a number is even, it is divided by 2. 100 is even, so the next number is 50.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp103.pdf",
@@ -109,49 +442,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T02:31:52.019Z",
+      "generatedAt": "2026-11-01T14:55:13.498Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 1,
-      "stem": "Which of the following is a palindrome?",
+      "difficulty": 4,
+      "stem": "What is the Kaprekar constant that all 4-digit numbers eventually reach using the reverse-and-add process?",
       "choices": [
-        "78987",
-        "7898",
-        "789",
-        "78"
+        "6174",
+        "7641",
+        "1467",
+        "2368"
       ],
       "answerIndex": 0,
-      "solution": "A palindrome reads the same forwards and backwards. The number 78987 is a palindrome because it reads the same from left to right and from right to left. The other options do not meet this condition.",
+      "solution": "The correct answer is 6174. This is known as the Kaprekar constant, and it is reached by repeatedly subtracting the smallest number formed by the digits from the largest number formed by the same digits. The other options are intermediate steps in the process but not the final constant.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन एक पैलिंड्रोम है?",
+          "stem": "4-अंकीय संख्याओं के लिए कैप्रकर नियतांक क्या है जो उल्टा-और-जोड़ प्रक्रिया के माध्यम से अंततः पहुंच जाता है?",
           "choices": [
-            "78987",
-            "7898",
-            "789",
-            "78"
+            "6174",
+            "7641",
+            "1467",
+            "2368"
           ],
-          "solution": "एक पैलिंड्रोम वह संख्या होती है जो आगे से पीछे और पीछे से आगे एक ही तरह पढ़ी जाती है। संख्या 78987 एक पैलिंड्रोम है क्योंकि यह बाएं से दाएं और दाएं से बाएं एक ही तरह पढ़ी जाती है। अन्य विकल्प इस स्थिति को पूरा नहीं करते हैं।",
+          "solution": "सही उत्तर 6174 है। इसे कैप्रकर नियतांक के रूप में जाना जाता है, और इसे अपने अंकों द्वारा बनाई गई सबसे छोटी संख्या को सबसे बड़ी संख्या में से घटाकर दोहराए जाने पर पहुंचा जाता है। अन्य विकल्प प्रक्रिया के मध्य चरण हैं लेकिन अंतिम नियतांक नहीं हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains in the same position (option 1).",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All technical terms like 'Kaprekar constant' are properly translated and match standard Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते एक पॅलिंड्रोम आहे?",
+          "stem": "चार अंकी संख्यांना पलटून-आणि-जोडण्याच्या प्रक्रियेद्वारे अखेर वापरल्या जाणार्‍या काप्रेकर स्थिरांकाचे नाव काय आहे?",
           "choices": [
-            "78987",
-            "7898",
-            "789",
-            "78"
+            "6174",
+            "7641",
+            "1467",
+            "2368"
           ],
-          "solution": "एक पॅलिंड्रोम एखादा संख्या आहे जी आधी आणि मागे एकसारखी वाचते. संख्या 78987 ही पॅलिंड्रोम आहे कारण ती डावीकडून उजवीकडे आणि उजवीकडून डावीकडे एकसारखी वाचते. इतर विकल्प या शर्तीला अनुरूप नाहीत.",
+          "solution": "बरोबर उत्तर 6174 आहे. हे काप्रेकर स्थिरांक म्हणून ओळखले जाते आणि ते त्याच अंकांद्वारे तयार केलेल्या सर्वात लहान संख्येचे वजाबाकी करून निरंतर जवळ येते. इतर विकल्पांमध्ये त्याच्या प्रक्रियेचे मध्यवर्ती टप्पे असतात पण अंतिम स्थिरांक नाहीत.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses the appropriate term 'पॅलिंड्रोम' which is the standard Marathi term for 'palindrome'.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -161,9 +494,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses the length of the number",
-        "Thinks the middle digit is not important",
-        "Fails to check the entire number from both ends"
+        "Chooses an intermediate step in the process.",
+        "Chooses the initial number used in the process.",
+        "Chooses a number that is not part of the Kaprekar constant process."
       ],
       "solverAnswers": [
         0,
@@ -172,8 +505,8 @@
         0,
         0
       ],
-      "levelFlag": null,
-      "critique": "The solution is correct and matches the author's key. All distractors are properly identified as incorrect, and the reasons align with common misconceptions.",
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 6174, which is the Kaprekar constant. The other options are either intermediate steps or not part of the process, and the reasoning provided by the author aligns with common misconceptions students might have.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp103.pdf",
@@ -227,285 +560,166 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T02:31:52.019Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "What is the name of numbers that read the same forwards and backwards?",
-      "choices": [
-        "Primes",
-        "Palindromes",
-        "Factors",
-        "Multiples"
-      ],
-      "answerIndex": 1,
-      "solution": "Numbers that read the same forwards and backwards are called palindromes. This term is used in mathematics to describe such numbers. Primes are numbers with only two distinct factors, factors are numbers that divide another number evenly, and multiples are products of a number and an integer.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "पीछे से आगे और आगे से पीछे एक ही पढ़ते हैं वाली संख्याओं का नाम क्या है?",
-          "choices": [
-            "अभाज्य",
-            "पैलिंड्रोम",
-            "गुणनखंड",
-            "गुणित"
-          ],
-          "solution": "जो संख्याएँ आगे से और पीछे से एक ही पढ़ती हैं, उन्हें पैलिंड्रोम कहा जाता है। गणित में ऐसी संख्याओं के लिए इस शब्द का उपयोग किया जाता है। अभाज्य संख्याएँ वे होती हैं जिनके केवल दो अलग-अलग गुणनखंड होते हैं, गुणनखंड वे संख्याएँ होती हैं जो किसी अन्य संख्या को बराबर भाग दे सकती हैं और गुणित किसी संख्या और पूर्णांक के गुणनफल होते हैं।",
-          "imageAlt": null,
-          "critique": "Hindi translation is accurate, maintains original meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "आकडेच आगलोबागला एकसारखे वाचतात असे नाव काय आहे?",
-          "choices": [
-            "अभाज्य",
-            "पॅलिंड्रोम",
-            "अपवर्तक",
-            "गुणित"
-          ],
-          "solution": "आकडेच आगलोबागला एकसारखे वाचतात असे संख्या पॅलिंड्रोम म्हणतात. हा शब्द गणितात अशा संख्यांना ओळखण्यासाठी वापरला जातो. अभाज्य संख्या ह्या केवळ दोन विशिष्ट अपवर्तक असलेल्या संख्या आहेत, अपवर्तक ह्या एका संख्येला बरोबर भाग जाणारी संख्या आहेत आणि गुणित ह्या एका संख्येचे एखाद्या पूर्णांकाने गुणाकार असतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for mathematical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses with prime numbers",
-        null,
-        "Knows the concept but uses the wrong term",
-        "Misunderstands the term 'factors'"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The question is straightforward and the correct answer is clearly 1 (Palindromes). The reasoning provided by the author is accurate and aligns with the correct solution.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 5,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.5 Pretty Palindromic Patterns"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 6,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.6 The Magic Number of Kaprekar"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 7,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.7 Clock and Calendar Numbers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 8,
-          "pageStart": 11,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.8 Mental Math"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 9,
-          "pageStart": 13,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.9 Playing with Number Patterns"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T02:31:52.019Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is an example of a 3-digit palindrome using the digits 1, 2, and 3?",
-      "choices": [
-        "123",
-        "121",
-        "333",
-        "112"
-      ],
-      "answerIndex": 1,
-      "solution": "A 3-digit palindrome reads the same forwards and backwards. 121 is a palindrome. 123 and 112 are not. 333 is a palindrome but is not made using the digits 1, 2, and 3 as specified. The other options do not match the criteria.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा अंक 1, 2 और 3 के उपयोग से एक 3-अंकीय पैलिंड्रोम का उदाहरण है?",
-          "choices": [
-            "123",
-            "121",
-            "333",
-            "112"
-          ],
-          "solution": "एक 3-अंकीय पैलिंड्रोम आगे और पीछे से एक ही पढ़ता है। 121 एक पैलिंड्रोम है। 123 और 112 नहीं हैं। 333 एक पैलिंड्रोम है लेकिन इसमें अंक 1, 2 और 3 का उपयोग नहीं किया गया है जैसा कि निर्दिष्ट किया गया है। अन्य विकल्प मानदंड के अनुरूप नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms like 'पैलिंड्रोम' which is the standard term in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते 1, 2 आणि 3 अंकांच्या वापराने तयार होणारे तीन अंकी पॅलिंड्रोमचे उदाहरण आहे?",
-          "choices": [
-            "123",
-            "121",
-            "333",
-            "112"
-          ],
-          "solution": "तीन अंकी पॅलिंड्रोम समोरून आणि मागून एकसारखे वाचते. 121 हे पॅलिंड्रोम आहे. 123 आणि 112 नाहीत. 333 हे पॅलिंड्रोम आहे परंतु ते 1, 2 आणि 3 अंकांच्या वापराने तयार केले गेले नाहीत असे निर्दिष्ट केले गेले आहे. इतर विकल्प निकालाच्या मापदंडांच्या तुलनेत नाहीत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer (option 2) is in the same position as in the English version.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Chooses a number that is not a palindrome",
-        null,
-        "Chooses a number that is a palindrome but uses only one digit",
-        "Chooses a number that is not a palindrome"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 121, which is a 3-digit palindrome using the digits 1, 2, and 3. The author's solution is accurate, and the reasoning for each incorrect option reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 5,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.5 Pretty Palindromic Patterns"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 6,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.6 The Magic Number of Kaprekar"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 7,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.7 Clock and Calendar Numbers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 8,
-          "pageStart": 11,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.8 Mental Math"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 9,
-          "pageStart": 13,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.9 Playing with Number Patterns"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T02:31:52.019Z",
+      "generatedAt": "2026-11-01T14:55:13.498Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "A 5-digit number is formed using the digits 1, 0, 6, 3, and 9, each exactly once. If the number is divisible by 9, which of the following must be true?",
+      "stem": "A group of 5 children of different heights is standing in a line. Each child says the number of taller children standing next to them. Is it possible for the sequence 1, 1, 1, 1, 1 to occur?",
       "choices": [
-        "The sum of the digits is 18",
-        "The number ends with 0",
-        "The number is even",
-        "The number is the largest possible"
+        "Yes, if the children are arranged in ascending order",
+        "No, because each child can only have one neighbor on one side",
+        "Yes, if the children are arranged in a circle",
+        "No, because the children at the ends can only have one neighbor"
       ],
-      "answerIndex": 0,
-      "solution": "A number is divisible by 9 if the sum of its digits is divisible by 9. The digits 1, 0, 6, 3, and 9 sum to 19, which is not divisible by 9. Therefore, the sum of the digits must be 18 for the number to be divisible by 9. The other options are not necessarily true based on the divisibility rule for 9.",
+      "answerIndex": 3,
+      "solution": "No, it is not possible for the sequence 1, 1, 1, 1, 1 to occur because the children at the ends of the line can only have one neighbor. Therefore, they cannot have two taller neighbors, which is required for them to say '1'. The other options are incorrect because the sequence '1, 1, 1, 1, 1' would require each child to have two taller neighbors, which is impossible in a line of five different heights.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक 5 अंकीय संख्या अंक 1, 0, 6, 3, और 9 का उपयोग करके बनाई जाती है, प्रत्येक बार एक बार के रूप में। यदि संख्या 9 से विभाज्य है, तो निम्नलिखित में से कौन सा आवश्यक रूप से सत्य होगा?",
+          "stem": "5 अलग-अलग ऊंचाई वाले बच्चों का एक समूह एक पंक्ति में खड़ा है। प्रत्येक बच्चा अपने बगल में खड़े ऊंचे बच्चों की संख्या बताता है। क्या अनुक्रम 1, 1, 1, 1, 1 हो सकता है?",
           "choices": [
-            "अंकों का योग 18 है",
-            "संख्या 0 पर समाप्त होती है",
-            "संख्या सम है",
-            "संख्या सबसे बड़ी संभव है"
+            "हाँ, यदि बच्चों को आरोही क्रम में रखा जाए",
+            "नहीं, क्योंकि प्रत्येक बच्चे के एक तरफ केवल एक पड़ोसी हो सकता है",
+            "हाँ, यदि बच्चों को एक वृत्त में रखा जाए",
+            "नहीं, क्योंकि छोर पर खड़े बच्चों के केवल एक पड़ोसी हो सकते हैं"
           ],
-          "solution": "एक संख्या 9 से विभाज्य होती है यदि इसके अंकों का योग 9 से विभाज्य होता है। अंक 1, 0, 6, 3, और 9 का योग 19 है, जो 9 से विभाज्य नहीं है। इसलिए, संख्या के अंकों का योग 18 होना चाहिए ताकि संख्या 9 से विभाज्य हो सके। अन्य विकल्प 9 के विभाज्यता नियम पर आधारित नहीं हैं।",
+          "solution": "नहीं, अनुक्रम 1, 1, 1, 1, 1 होना संभव नहीं है क्योंकि पंक्ति के छोर पर खड़े बच्चों के केवल एक पड़ोसी हो सकते हैं। इसलिए वे दो ऊंचे पड़ोसियों के बारे में नहीं कह सकते, जिसकी आवश्यकता उनके '1' कहने के लिए होती है। अन्य विकल्प गलत हैं क्योंकि अनुक्रम '1, 1, 1, 1, 1' के लिए प्रत्येक बच्चे के दो ऊंचे पड़ोसियों की आवश्यकता होती है, जो पांच अलग-अलग ऊंचाई वाले बच्चों की पंक्ति में असंभव है।",
           "imageAlt": null,
-          "critique": "Translation accurately preserves meaning, technical terms, and logical structure of the original question.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for a textbook context.",
           "flag": null
         },
         "mr": {
-          "stem": "एक 5 अंकी संख्या अंक 1, 0, 6, 3 आणि 9 वापरून तयार केली जाते, प्रत्येक अंक एकदा वापरला जातो. जर संख्या 9 ने भागली जाऊ शकत असेल, तर खालीलपैकी कोणते खात्रीने खरे असेल?",
+          "stem": "5 वेगवेगळ्या उंचीच्या मुलांचा एक गट एका रांगेत उभा आहे. प्रत्येक मुलगा त्याच्या जवळच्या उंच्या मुलांची संख्या सांगतो. काय शक्य आहे की असा अनुक्रम 1, 1, 1, 1, 1 असू शकेल?",
           "choices": [
-            "अंकांची बेरीज 18 आहे",
-            "संख्या 0 ने संपते",
-            "संख्या सम आहे",
-            "संख्या सर्वात मोठी शक्य आहे"
+            "होय, जर मुलांची वाढत्या क्रमाने व्यवस्थित केली गेली असेल",
+            "नाही, कारण प्रत्येक मुलाला एका बाजूला फक्त एक निकटवर्तीय असू शकतो",
+            "होय, जर मुलांची वृत्ताकारात व्यवस्थित केली गेली असेल",
+            "नाही, कारण रांगेच्या छेडांवर असलेल्या मुलांना फक्त एक निकटवर्तीय असू शकतो"
           ],
-          "solution": "9 ने भागल्या जाऊ शकणारी संख्या असते जेव्हा तिच्या अंकांची बेरीज 9 ने भागली जाऊ शकते. अंक 1, 0, 6, 3 आणि 9 ची बेरीज 19 आहे, जी 9 ने भागली जाऊ शकत नाही. त्यामुळे संख्या 9 ने भागली जाऊ शकत असेल तर अंकांची बेरीज 18 असावी. इतर विकल्प 9 च्या भागल्याच्या नियमावरून खात्रीने खरे नाहीत.",
+          "solution": "नाही, असा अनुक्रम 1, 1, 1, 1, 1 असू शकत नाही कारण रांगेच्या छेडांवर असलेल्या मुलांना फक्त एक निकटवर्तीय असू शकतो. म्हणून त्यांना '1' म्हणण्यासाठी दोन उंच्या मुलांची आवश्यकता असते, जे शक्य नाही. इतर पर्याय चुकीचे आहेत कारण असा अनुक्रम '1, 1, 1, 1, 1' प्रत्येक मुलाला दोन उंच्या मुलांची आवश्यकता असते, जे पाच वेगवेगळ्या उंचीच्या मुलांच्या रांगेत शक्य नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the logical structure, and uses appropriate Marathi mathematical terminology.",
+          "critique": "The translation accurately conveys the original meaning with appropriate Marathi terminology. The logic and structure of the question and solution are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes that the children can have two neighbors at the ends",
+        "Thinks that the sequence is possible in a circle",
+        "Misunderstands the rule of counting taller neighbors",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3. The children at the ends of the line can only have one neighbor, so they cannot have two taller children next to them. The author's reasoning is sound, and the misconceptions described for the other options are plausible for students.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Number Play"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "3.2 Supercells"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "3.2 Supercells"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "3.3 Patterns of Numbers on the Number Line"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 4,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "3.4 Playing with Digits"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-01T14:55:13.498Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "How many 5-digit numbers can be formed using the digits 1, 0, 6, 3, and 9 without repetition such that the number is greater than 50,000?",
+      "choices": [
+        "48",
+        "24",
+        "12",
+        "6"
+      ],
+      "answerIndex": 0,
+      "solution": "The first digit must be 6 or 9 to make the number greater than 50,000. There are 2 choices for the first digit and 4! = 24 ways to arrange the remaining digits, resulting in 2 * 24 = 48 numbers. The other options are incorrect because they do not account for all valid permutations.",
+      "checkExpr": "2*24",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "5 अंकों की कितनी संख्याएँ 1, 0, 6, 3 और 9 अंकों का प्रयोग करके बनाई जा सकती हैं, बिना दोहराए जाए ताकि संख्या 50,000 से बड़ी हो?",
+          "choices": [
+            "48",
+            "24",
+            "12",
+            "6"
+          ],
+          "solution": "पहला अंक 6 या 9 होना चाहिए ताकि संख्या 50,000 से बड़ी हो। पहले अंक के लिए 2 विकल्प हैं और शेष अंकों को व्यवस्थित करने के 4! = 24 तरीके हैं, जिससे 2 × 24 = 48 संख्याएँ प्राप्त होती हैं। अन्य विकल्प गलत हैं क्योंकि वे सभी वैध परमिटेशन को ध्यान में नहीं रखते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "5 अंकी संख्या किती तयार करता येतील ज्या 1, 0, 6, 3 आणि 9 अंकांचा वापर करून विना पुनरावृत्तीत असतील आणि संख्या 50,000 पेक्षा मोठी असेल?",
+          "choices": [
+            "48",
+            "24",
+            "12",
+            "6"
+          ],
+          "solution": "पहिला अंक 6 किंवा 9 असावा जेणेकरून संख्या 50,000 पेक्षा मोठी असेल. पहिल्या अंकासाठी 2 विकल्प आहेत आणि उरलेल्या अंकांची व्यवस्थापन 4! = 24 प्रकारांनी करता येईल, ज्यामुळे 2 * 24 = 48 संख्या मिळतात. इतर विकल्प अयोग्य आहेत कारण ते सर्व वैध पर्म्यूटेशन्स लक्षात ठेवत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -515,9 +729,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Incorrectly assuming the number ends with 0",
-        "Confusing divisibility by 9 with even numbers",
-        "Focusing on the largest number instead of the sum of digits"
+        "Pupil assumes that 0 can be the first digit, leading to incorrect permutations",
+        "only considers one valid starting digit",
+        "considers only some valid permutations"
       ],
       "solverAnswers": [
         0,
@@ -527,7 +741,7 @@
         0
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. The sum of the digits 1 + 0 + 6 + 3 + 9 = 19, which is not divisible by 9. To make the number divisible by 9, the sum must be 18, which is only possible if the digit 1 is excluded. However, the question states that all digits are used exactly once, so the sum cannot be changed. Therefore, the number cannot be divisible by 9, and the only option that is logically consistent with the divisibility rule is that the sum of the digits is 18, which is not possible. However, the author's reasoning is flawed because the sum of the digits is fixed at 19, so the number cannot be divisible by 9 at all.",
+      "critique": "The solution is correct. The first digit must be 6 or 9 to ensure the number is greater than 50,000. There are 2 choices for the first digit and 4! = 24 permutations for the remaining digits, resulting in 2 * 24 = 48 valid numbers.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp103.pdf",
@@ -561,49 +775,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T02:31:52.019Z",
+      "generatedAt": "2026-11-01T14:55:13.498Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "In a table with 9 cells, a supercell is defined as a cell whose number is greater than all its adjacent cells. What is the minimum number of supercells that must exist in any such table?",
+      "difficulty": 5,
+      "stem": "If a player starts at 0 and the goal is to reach 22 by adding numbers between 1 and 3, what is the winning strategy?",
       "choices": [
-        "0",
-        "1",
-        "2",
-        "3"
+        "Be the first player to reach 22",
+        "Reach 19 first",
+        "Reach 20 first",
+        "Reach 21 first"
       ],
       "answerIndex": 1,
-      "solution": "A supercell is defined as a cell greater than all its adjacent cells. In any arrangement of numbers in a 9-cell table, there must be at least one cell that is greater than its neighbors, making it a supercell. Therefore, the minimum number of supercells is 1. Options 0, 2, and 3 are incorrect because it is impossible to have no supercells, and having more than one is not guaranteed.",
+      "solution": "The winning strategy is to reach 19 first, as the opponent will then be forced to add 1, 2, or 3, allowing the first player to win. The other options do not guarantee a win.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "9 सेल वाली एक तालिका में, एक सुपरसेल को एक सेल के रूप में परिभाषित किया गया है जिसकी संख्या इसके सभी पड़ोसी सेलों से बड़ी होती है। किसी भी ऐसी तालिका में आवश्यक रूप से कम से कम कितने सुपरसेल होने चाहिए?",
+          "stem": "यदि एक खिलाड़ी 0 पर शुरू करता है और 1 से 3 के बीच संख्याओं को जोड़कर 22 तक पहुंचना लक्ष्य है, तो जीत की रणनीति क्या है?",
           "choices": [
-            "0",
-            "1",
-            "2",
-            "3"
+            "22 तक पहुंचने वाला पहला खिलाड़ी हो",
+            "पहले 19 तक पहुंचें",
+            "पहले 20 तक पहुंचें",
+            "पहले 21 तक पहुंचें"
           ],
-          "solution": "एक सुपरसेल की परिभाषा एक सेल है जो अपने सभी पड़ोसी सेलों से बड़ा होता है। किसी भी संख्या व्यवस्था में 9-सेल वाली तालिका में कम से कम एक सेल अपने पड़ोसियों से बड़ा होना चाहिए, जिसके कारण यह एक सुपरसेल बन जाता है। इसलिए, सुपरसेल की न्यूनतम संख्या 1 है। विकल्प 0, 2 और 3 गलत हैं क्योंकि कोई सुपरसेल न होना संभव नहीं है, और एक से अधिक होना आवश्यक नहीं है।",
+          "solution": "जीत की रणनीति 19 तक पहुंचना है, क्योंकि विरोधी के पास अब 1, 2, या 3 जोड़ने का विकल्प होगा, जिससे पहले खिलाड़ी जीत जाएगा। अन्य विकल्प जीत की गारंटी नहीं देते।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question, with appropriate terminology and logical structure.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and technical terms. The correct answer remains option (2) in both versions, and the distractors remain incorrect.",
           "flag": null
         },
         "mr": {
-          "stem": "9 सेल असलेल्या टेबलमध्ये, एक सुपरसेल म्हणजे एखादा सेल ज्याचा नंबर सर्व त्याच्या जवळच्या सेल्सपेक्षा मोठा असतो. अशा टेबलमध्ये अवश्य असणाऱ्या सुपरसेलची न्यूनतम संख्या किती असेल?",
+          "stem": "एका खेळाडूने 0 वरून सुरुवात केली आणि 1 ते 3 ची संख्या जोडून 22 वर पोहोचण्याचे लक्ष्य असेल, तर विजयी रणनीती काय असेल?",
           "choices": [
-            "0",
-            "1",
-            "2",
-            "3"
+            "22 वर पहिल्यांदा पोहोचा",
+            "19 वर पहिल्यांदा पोहोचा",
+            "20 वर पहिल्यांदा पोहोचा",
+            "21 वर पहिल्यांदा पोहोचा"
           ],
-          "solution": "एक सुपरसेल म्हणजे सर्व त्याच्या जवळच्या सेल्सपेक्षा मोठा असलेला सेल आहे. 9 सेल असलेल्या टेबलमध्ये संख्यांच्या कोणत्याही व्यवस्थेत, त्याच्या आजूबाजूच्या सेल्सपेक्षा मोठा असलेला एक सेल अवश्य असतो, जो सुपरसेल बनतो. म्हणून, सुपरसेलची न्यूनतम संख्या 1 आहे. 0, 2 आणि 3 हे विकल्प चुकीचे आहेत कारण शून्य सुपरसेल असणे शक्य नाही आणि एकापेक्षा जास्त सुपरसेल असणे खात्री नाही.",
+          "solution": "विजयी रणनीती 19 वर पहिल्यांदा पोहोचणे असेल, कारण तेव्हा विरोधकाला 1, 2 किंवा 3 जोडावे लागेल, ज्यामुळे पहिल्या खेळाडूला विजय मिळतो. इतर विकल्पांमुळे विजय खात्री नसते.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for game strategy.",
           "flag": null
         }
       },
@@ -612,10 +826,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Believing that supercells can be avoided",
+        "confuses the target number",
         null,
-        "Misunderstanding the definition of a supercell",
-        "Assuming multiple supercells are required"
+        "chooses a number that does not force a win",
+        "chooses a number that allows the opponent to win"
       ],
       "solverAnswers": [
         1,
@@ -624,14 +838,14 @@
         1,
         1
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. The largest number in the table must be a supercell because it is greater than all its adjacent cells. Therefore, there must be at least one supercell in any such table.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is logically sound. Reaching 19 forces the opponent into a position where no matter what they add (1, 2, or 3), the first player can always reach 22 on their next turn. The reasoning for the wrong options is valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 15,
-          "pageStart": 19,
-          "pageEnd": 21,
+          "ordinal": 21,
+          "pageStart": 30,
+          "pageEnd": 32,
           "headingPath": [
             "Chapter 3: Number Play",
             "S u m m a r y"
@@ -639,19 +853,9 @@
         },
         {
           "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 16,
-          "pageStart": 22,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 17,
-          "pageStart": 23,
-          "pageEnd": 25,
+          "ordinal": 22,
+          "pageStart": 32,
+          "pageEnd": 32,
           "headingPath": [
             "Chapter 3: Number Play",
             "S u m m a r y"
@@ -659,7 +863,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T02:31:52.019Z",
+      "generatedAt": "2026-11-01T14:55:13.498Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

@@ -1,0 +1,863 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T15:07:49.833Z",
+  "finishedAt": "2026-11-01T15:21:27.927Z",
+  "seconds": 818,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "fegp1",
+    "document": "ncert/6/mathematics/fegp104.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 4 — Data Handling and Presentation",
+    "edition": "Reprint 2026-27",
+    "chunks": 25,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n10. B 𝑁 66\n= = 33, which lies in the interval 10-15\n2 2\n⇒ Median Class is 10-15\nLower limit of median class =10\n(B) 𝟏𝟎",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n6. A) 11 9",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n31. The length of 40 leaves of a plant are measured correct to nearest millimetre, and the data 3\nobtained is represented in the following table.\nLength [in mm]\n118 – 126\n127 – 135\nNumber of leaves\n172 – 180\nFind the mean length of the leaves."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 13,
+      "ms": 264614,
+      "in": 47,
+      "out": 43,
+      "rejects": 4,
+      "promptTokens": 53599,
+      "completionTokens": 10561
+    },
+    "critique": {
+      "calls": 54,
+      "ms": 496808,
+      "in": 43,
+      "out": 37,
+      "rejects": 6,
+      "promptTokens": 23801,
+      "completionTokens": 9344
+    },
+    "solver": {
+      "calls": 254,
+      "ms": 188079,
+      "in": 37,
+      "out": 26,
+      "rejects": 11,
+      "promptTokens": 46065,
+      "completionTokens": 2574
+    },
+    "form": {
+      "calls": 6,
+      "ms": 23522,
+      "in": 26,
+      "out": 9,
+      "rejects": 17,
+      "promptTokens": 1545,
+      "completionTokens": 408
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 55,
+      "ms": 13212,
+      "in": 9,
+      "out": 7,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 388649,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 16678,
+      "completionTokens": 8043
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 1,
+    "4": 2,
+    "5": 3,
+    "6": 0
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the main purpose of data handling as described in the passage?",
+      "ms": {
+        "draft": 4655,
+        "critique": 9145,
+        "solver": 1844,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the meaning of the word 'data' as defined in the passage?",
+      "ms": {
+        "draft": 4655,
+        "critique": 9427,
+        "solver": 2457,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of data collection as shown in the passage?",
+      "ms": {
+        "draft": 4655,
+        "critique": 10307,
+        "solver": 2548,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of arranging data in an organised way, as shown in the passage?",
+      "ms": {
+        "draft": 4655,
+        "critique": 11035,
+        "solver": 2645,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of a pictograph according to the passage?",
+      "ms": {
+        "draft": 16953,
+        "critique": 10819,
+        "solver": 2009,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of using tally marks, as described in the passage?",
+      "ms": {
+        "draft": 4655,
+        "critique": 9835,
+        "solver": 17174,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How did arranging data in ascending order help Sushri Sandhya to answer questions about shoe sizes?",
+      "ms": {
+        "draft": 4655,
+        "critique": 9560,
+        "solver": 19336,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the pictograph in the passage, which mode of travel is used by the most number of students?",
+      "ms": {
+        "draft": 16953,
+        "critique": 8567,
+        "solver": 1599
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If one symbol in a pictograph represents 10 students, how many symbols would represent 45 students?",
+      "ms": {
+        "draft": 16953,
+        "critique": 10257,
+        "solver": 2574
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a pictograph, if one symbol represents 5 students, and there are 22 students in a class, how many symbols would be needed?",
+      "ms": {
+        "draft": 16953,
+        "critique": 9011,
+        "solver": 2403
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "In the bar graph showing the number of students absent in each class, what does the length of the bar represent?",
+      "ms": {
+        "draft": 9296,
+        "critique": 9727
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why might it be challenging to prepare a pictograph when the data is large?",
+      "ms": {
+        "draft": 16953,
+        "critique": 10509,
+        "solver": 1346
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "In the bar graph showing the number of vehicles passing through a road crossing, what does the longest bar represent?",
+      "ms": {
+        "draft": 9296,
+        "critique": 10158
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the bar graph of the number of students absent in each class, if the bar for Class 2 has a height of 4 units and 1 unit = 1 student, how many students were absent in Class 2?",
+      "ms": {
+        "draft": 9296,
+        "critique": 10351,
+        "solver": 19350
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the bar graph of the population of India in crores over 50 years, if 1 unit represents 10 crores, what does a bar of 8 units represent?",
+      "ms": {
+        "draft": 9296,
+        "critique": 11213,
+        "solver": 20556,
+        "form": 3765
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT a step in drawing a bar graph?",
+      "ms": {
+        "draft": 23646,
+        "critique": 9900,
+        "solver": 23297
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The total number of saplings planted on Wednesday and Thursday is",
+      "ms": {
+        "draft": 5998,
+        "critique": 11356
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a frequency distribution table, if a column shows the number of matches and another column shows the number of wickets taken in each match, how can we calculate the total number of wickets taken?",
+      "ms": {
+        "draft": 8788,
+        "critique": 8982
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The number of dogs in Village B and Village D together is more than the number of dogs in the other 4 villages. What is the total number of dogs in Village B and Village D?",
+      "ms": {
+        "draft": 6800,
+        "critique": 5352,
+        "solver": 1052
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the reason for the variation in the number of saplings planted on different days of the week?",
+      "ms": {
+        "draft": 4469,
+        "critique": 8733,
+        "solver": 1700,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a way to visually represent data according to the passage?",
+      "ms": {
+        "draft": 4469,
+        "critique": 9143,
+        "solver": 18164,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the number of dogs in Village B is 36, and the scale for the pictograph is 6 dogs per symbol, how many symbols will be used to represent Village B?",
+      "ms": {
+        "draft": 4469,
+        "critique": 13013,
+        "solver": 17655
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which type of bar graph is more suitable for representing the lengths of rivers on each continent, and why?",
+      "ms": {
+        "draft": 4469,
+        "critique": 10052,
+        "solver": 2537
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the purpose of a pictograph?",
+      "ms": {
+        "draft": 4469,
+        "critique": 8848,
+        "solver": 1689,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of data handling?",
+      "ms": {
+        "draft": 5270,
+        "critique": 10543,
+        "solver": 2359,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a bar graph shows that 5 units represent 20 tickets sold for a city, what is the scale of the graph?",
+      "ms": {
+        "draft": 5270,
+        "critique": 9896,
+        "solver": 2225,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the pictograph showing the number of tractors in villages, which village has the most tractors?",
+      "ms": {
+        "draft": 5270,
+        "critique": 9457,
+        "solver": 2773
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is not a way to represent data?",
+      "ms": {
+        "draft": 5270,
+        "critique": 9021
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a bar graph, if the bar for Vidisha is 6 units long and represents 24 tickets, what is the scale of the graph?",
+      "ms": {
+        "draft": 5270,
+        "critique": 9883,
+        "solver": 15312,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the main problem with the infographic shown in the passage?",
+      "ms": {
+        "draft": 5404,
+        "critique": 9400,
+        "solver": 1843
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of data handling as mentioned in the passage?",
+      "ms": {
+        "draft": 4681,
+        "critique": 8980,
+        "solver": 1945,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How does a bar graph help in interpreting data according to the passage?",
+      "ms": {
+        "draft": 4681,
+        "critique": 9878,
+        "solver": 2004,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the first step in drawing a bar graph?",
+      "ms": {
+        "draft": 6878,
+        "critique": 10868
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the data about the tallest mountains on each continent is represented in a bar graph, which type of bars would be most appropriate according to the passage?",
+      "ms": {
+        "draft": 4681,
+        "critique": 9585,
+        "solver": 11106,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a frequency distribution table for wickets taken by a player, if 3 matches had 4 wickets each, what is the total number of wickets from these matches?",
+      "ms": {
+        "draft": 5270,
+        "critique": 9550,
+        "solver": 2462,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for facts, numbers, measures, observations, and other descriptions of things that convey information?",
+      "ms": {
+        "draft": 5404,
+        "critique": 9866,
+        "solver": 1885,
+        "form": 4550
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the scale used in the bar graph where 1 unit length represents ₹200?",
+      "ms": {
+        "draft": 23646,
+        "critique": 9939,
+        "solver": 21359,
+        "form": 3516,
+        "translation": 58288
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a correct way to represent data?",
+      "ms": {
+        "draft": 5404,
+        "critique": 10134,
+        "solver": 2454,
+        "form": 4826,
+        "translation": 66237
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the bar for Vidisha is 6 unit lengths and the bar for Jabalpur is 5 unit lengths, what is the scale of the graph?",
+      "ms": {
+        "draft": 23646,
+        "critique": 11603,
+        "solver": 3217,
+        "form": 4476,
+        "translation": 56842
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In the given passage, what is the reason for arranging data in ascending order?",
+      "ms": {
+        "draft": 5404,
+        "critique": 9106,
+        "solver": 2329,
+        "form": 5172,
+        "translation": 37931
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the bar for Sagar is missing from the graph, and the number of tickets sold for Sagar is 1000, how many unit lengths should the bar for Sagar have?",
+      "ms": {
+        "draft": 23646,
+        "critique": 9988,
+        "solver": 1681,
+        "form": 0,
+        "translation": 54569
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the total number of students if 10 students chose jalebi, 12 chose barfi, 8 chose gujiya, 10 chose rasgulla, and 10 chose gulab jamun?",
+      "ms": {
+        "draft": 6962,
+        "critique": 7065,
+        "solver": 2549,
+        "form": 0,
+        "translation": 57549
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the number of dogs in Village B and Village D together is 84, and the number of dogs in the other 4 villages is 72, what is the difference between these two quantities?",
+      "ms": {
+        "draft": 4469,
+        "critique": 11635,
+        "solver": 16071,
+        "form": 0,
+        "translation": 51471
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "In the pictograph, what does the symbol represent?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "The total number of saplings planted during the whole week is",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "The greatest number of saplings were planted on",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "What is the difference between the largest and the smallest shoe size if the largest is 7 and the smallest is 3?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of data handling as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Confuses data handling with a specific example from the text…\"); distractor 3's reason is not a one-line misconception (\"Focuses on a specific activity mentioned in the passage but …\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the meaning of the word 'data' as defined in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Focuses on a specific example from the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of data collection as shown in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Focuses on a specific activity mentioned in the passage but …\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of arranging data in an organised way, as shown in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Focuses on a specific activity mentioned in the passage but …\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of a pictograph according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the purpose of using tally marks, as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Focuses on a specific activity mentioned in the passage but …\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "How did arranging data in ascending order help Sushri Sandhya to answer questions about shoe sizes?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Focuses on a specific activity mentioned in the passage but …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the pictograph in the passage, which mode of travel is used by the most number of students?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If one symbol in a pictograph represents 10 students, how many symbols would represent 45 students?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a pictograph, if one symbol represents 5 students, and there are 22 students in a class, how many symbols would be needed?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "In the bar graph showing the number of students absent in each class, what does the length of the bar represent?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why might it be challenging to prepare a pictograph when the data is large?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "In the bar graph showing the number of vehicles passing through a road crossing, what does the longest bar represent?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In the bar graph of the number of students absent in each class, if the bar for Class 2 has a height of 4 units and 1 unit = 1 student, how many students were absent in Class 2?",
+      "reason": "after redrafting distractors 0, 1: the critic finds option 0 correct, the key is 3; the solution's working is not sound; option 0 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the bar graph of the population of India in crores over 50 years, if 1 unit represents 10 crores, what does a bar of 8 units represent?",
+      "reason": "options 2 and 3 are the same (\"8000 crores\"); options 2 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is NOT a step in drawing a bar graph?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "The total number of saplings planted on Wednesday and Thursday is",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In a frequency distribution table, if a column shows the number of matches and another column shows the number of wickets taken in each match, how can we calculate the total number of wickets taken?",
+      "reason": "the critic finds option 2 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The number of dogs in Village B and Village D together is more than the number of dogs in the other 4 villages. What is the total number of dogs in Village B and Village D?",
+      "reason": "the solver picked option 2 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the reason for the variation in the number of saplings planted on different days of the week?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Mistakenly assumes the passage talks about the weather…\"); distractor 3's reason is not a one-line misconception (\"Confuses the passage's explanation…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a way to visually represent data according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the number of dogs in Village B is 36, and the scale for the pictograph is 6 dogs per symbol, how many symbols will be used to represent Village B?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "According to the passage, which type of bar graph is more suitable for representing the lengths of rivers on each continent, and why?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the purpose of a pictograph?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of data handling?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer: data handling involves organizing data in a …\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a bar graph shows that 5 units represent 20 tickets sold for a city, what is the scale of the graph?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"20/5\" = 4, but the key says 1"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the pictograph showing the number of tractors in villages, which village has the most tractors?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is not a way to represent data?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a bar graph, if the bar for Vidisha is 6 units long and represents 24 tickets, what is the scale of the graph?",
+      "reason": "options 1 and 2 are the same (\"1 unit = 24 tickets\"); ARITHMETIC MISMATCH — checkExpr \"24/6\" = 4, but the key says 1"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What is the main problem with the infographic shown in the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main purpose of data handling as mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Focuses on a specific part of the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "How does a bar graph help in interpreting data according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Focuses on a specific detail mentioned in the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is the first step in drawing a bar graph?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the data about the tallest mountains on each continent is represented in a bar graph, which type of bars would be most appropriate according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "In a frequency distribution table for wickets taken by a player, if 3 matches had 4 wickets each, what is the total number of wickets from these matches?",
+      "reason": "near-duplicate of served question cmvq6w9580aadgp21sgguiee6 (cosine 0.913 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the term used for facts, numbers, measures, observations, and other descriptions of things that convey information?",
+      "reason": "near-duplicate of served question cmvinb6cw0drqgpfhwju4co6t (cosine 0.946 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -21,49 +21,49 @@
   "board": "BALBHARATI",
   "book": "७ वी गणित इंग्रजी",
   "edition": "2026 edition",
-  "generatedAt": "2026-10-31T12:27:07.542Z",
+  "generatedAt": "2026-11-01T23:31:39.897Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 3,
-      "stem": "What is the expanded form of (2x + 3y)^2?",
+      "difficulty": 1,
+      "stem": "Which formula represents the expansion of (x + y)²?",
       "choices": [
-        "4x^2 + 9y^2",
-        "4x^2 + 12xy + 9y^2",
-        "4x^2 + 6xy + 9y^2",
-        "2x^2 + 6xy + 3y^2"
+        "x² + y²",
+        "x + 2xy + y",
+        "x² + 2xy + y²",
+        "x² + xy + y²"
       ],
-      "answerIndex": 1,
-      "solution": "The correct answer is 4x^2 + 12xy + 9y^2. When squaring a binomial, the middle term is twice the product of the two terms, so 2*(2x)*(3y) = 12xy. Option 1 is incorrect because it omits the middle term, option 2 is incorrect because it uses an incorrect middle term, and option 3 is incorrect because it uses incorrect coefficients.",
+      "answerIndex": 2,
+      "solution": "The correct formula for the expansion of (x + y)² is x² + 2xy + y². The other options either miss the middle term (x² + y²), have incorrect coefficients (x + 2xy + y), or are not squared expressions (x + y).",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "(2x + 3y)^2 का विस्तारित रूप क्या है?",
+          "stem": "कौन-सा सूत्र (x + y)² के विस्तार का प्रतिनिधित्व करता है?",
           "choices": [
-            "4x^2 + 9y^2",
-            "4x^2 + 12xy + 9y^2",
-            "4x^2 + 6xy + 9y^2",
-            "2x^2 + 6xy + 3y^2"
+            "x² + y²",
+            "x + 2xy + y",
+            "x² + 2xy + y²",
+            "x² + xy + y²"
           ],
-          "solution": "सही उत्तर 4x^2 + 12xy + 9y^2 है। द्विपद के वर्ग में मध्य पद दोनों पदों के गुणनफल का दोगुना होता है, अतः 2*(2x)*(3y) = 12xy। विकल्प 1 गलत है क्योंकि इसमें मध्य पद नहीं है, विकल्प 2 गलत है क्योंकि इसमें गलत मध्य पद है, और विकल्प 3 गलत है क्योंकि इसमें गलत गुणांक हैं।",
+          "solution": "(x + y)² के विस्तार का सही सूत्र x² + 2xy + y² है। अन्य विकल्प मध्य पद को छोड़ देते हैं (x² + y²), गलत गुणांक होते हैं (x + 2xy + y), या वर्गीकृत व्यंजक नहीं होते (x + y)।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "2x + 3y)^2 ची विस्तारित रूप काय आहे?",
+          "stem": "(x + y)² च्या विस्ताराचे सूत्र कोणते आहे?",
           "choices": [
-            "4x^2 + 9y^2",
-            "4x^2 + 12xy + 9y^2",
-            "4x^2 + 6xy + 9y^2",
-            "2x^2 + 6xy + 3y^2"
+            "x² + y²",
+            "x + 2xy + y",
+            "x² + 2xy + y²",
+            "x² + xy + y²"
           ],
-          "solution": "सही उत्तर 4x^2 + 12xy + 9y^2 आहे. द्विपदाचा वर्ग करताना, मध्य वर्ग दोन्ही वर्गांच्या गुणाकाराच्या दुप्पट असतो, म्हणून 2*(2x)*(3y) = 12xy. पर्याय 1 असताना मध्य वर्ग नसतो, पर्याय 2 असताना मध्य वर्ग चुकीचा असतो आणि पर्याय 3 असताना गुणक चुकीचे असतात.",
+          "solution": "(x + y)² च्या विस्ताराचे बरोबर सूत्र x² + 2xy + y² आहे. इतर विकल्पांमध्ये मध्य पद गहाळ आहे (x² + y²), अयोग्य गुणक (x + 2xy + y) किंवा ते वर्गित व्यंजक नाहीत (x + y).",
           "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the original English question, with appropriate mathematical terminology used in Marathi.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -73,19 +73,19 @@
       "needsFigure": false,
       "distractorReason": [
         "misses the middle term",
+        "incorrect coefficients",
         null,
-        "wrong middle term",
-        "wrong coefficients"
+        "Students often forget to double the middle term when squaring a binomial."
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": null,
-      "critique": "The solution correctly applies the formula (a + b)^2 = a^2 + 2ab + b^2, and the reasoning for the distractors aligns with common student misconceptions.",
+      "critique": "The correct expansion of (x + y)² is x² + 2xy + y². The other options are incorrect due to missing or incorrect terms, which align with common misconceptions.",
       "sources": [
         {
           "document": "balbharati/7/mathematics/703020004.pdf",
@@ -116,49 +116,434 @@
         }
       ],
       "edition": "2026 edition",
-      "generatedAt": "2026-10-31T12:27:07.542Z",
+      "generatedAt": "2026-11-01T23:31:39.897Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "What is the value of (a + b)^2 if a = 3 and b = 2?",
+      "difficulty": 3,
+      "stem": "If (a + b)^2 = 64 and (a - b)^2 = 16, what is the value of a^2 + b^2?",
       "choices": [
-        "25",
-        "13",
-        "12",
-        "9"
+        "16",
+        "32",
+        "40",
+        "64"
       ],
-      "answerIndex": 0,
-      "solution": "The correct answer is 25. According to the formula (a + b)^2 = a^2 + 2ab + b^2, substituting a = 3 and b = 2 gives 9 + 12 + 4 = 25. The other options are incorrect because they do not match the calculation. Option 1 is correct, option 2 is the square of a single number, option 3 is incorrect, and option 4 is incorrect.",
-      "checkExpr": null,
+      "answerIndex": 2,
+      "solution": "Adding (a + b)^2 = a^2 + 2ab + b^2 = 64 and (a - b)^2 = a^2 - 2ab + b^2 = 16, we get 2a^2 + 2b^2 = 80. Dividing by 2 gives a^2 + b^2 = 40. The option '16' is the value of (a - b)^2, '32' is the value of 2ab, and '64' is the value of (a + b)^2.",
+      "checkExpr": "(64 + 16)/2",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "a = 3 और b = 2 होने पर (a + b)^2 का मान क्या है?",
+          "stem": "यदि (a + b)^2 = 64 और (a - b)^2 = 16 है, तो a^2 + b^2 का मान क्या है?",
           "choices": [
-            "25",
-            "13",
-            "12",
-            "9"
+            "16",
+            "32",
+            "40",
+            "64"
           ],
-          "solution": "सही उत्तर 25 है। सूत्र (a + b)^2 = a^2 + 2ab + b^2 के अनुसार, a = 3 और b = 2 के मान रखने पर 9 + 12 + 4 = 25 प्राप्त होता है। अन्य विकल्प गलत हैं क्योंकि वे गणना के साथ मेल नहीं खाते। विकल्प 1 सही है, विकल्प 2 एक अकेली संख्या का वर्ग है, विकल्प 3 गलत है, और विकल्प 4 गलत है।",
+          "solution": "हम (a + b)^2 = a^2 + 2ab + b^2 = 64 और (a - b)^2 = a^2 - 2ab + b^2 = 16 को जोड़ते हैं, तो हमें 2a^2 + 2b^2 = 80 प्राप्त होता है। 2 से भाग देने पर हमें a^2 + b^2 = 40 प्राप्त होता है। विकल्प '16' (a - b)^2 का मान है, '32' 2ab का मान है, और '64' (a + b)^2 का मान है।",
           "imageAlt": null,
           "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "a = 3 आणि b = 2 असल्यास (a + b)^2 ची किंमत काय आहे?",
+          "stem": "जर (a + b)^2 = 64 आणि (a - b)^2 = 16, तर a^2 + b^2 ची किंमत काय आहे?",
           "choices": [
-            "25",
-            "13",
-            "12",
-            "9"
+            "16",
+            "32",
+            "40",
+            "64"
           ],
-          "solution": "बरोबर उत्तर 25 आहे. सूत्र (a + b)^2 = a^2 + 2ab + b^2 च्या आधारे, a = 3 आणि b = 2 ची बदली करून 9 + 12 + 4 = 25 मिळते. इतर उत्तरे चुकीची आहेत कारण ते गणनेशी मेळ नाहीत. पहिले उत्तर बरोबर आहे, दुसरे उत्तर एका संख्येचे वर्ग आहे, तिसरे उत्तर चुकीचे आहे आणि चौथे उत्तर चुकीचे आहे.",
+          "solution": "(a + b)^2 = a^2 + 2ab + b^2 = 64 आणि (a - b)^2 = a^2 - 2ab + b^2 = 16 जोडल्यास आपल्याला 2a^2 + 2b^2 = 80 मिळते. 2 ने भागल्यास a^2 + b^2 = 40 मिळते. '16' ही (a - b)^2 ची किंमत आहे, '32' ही 2ab ची किंमत आहे आणि '64' ही (a + b)^2 ची किंमत आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for algebraic expressions.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "value of (a - b)^2",
+        "value of 2ab",
+        null,
+        "value of (a + b)^2"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly adds the two expanded equations and isolates a^2 + b^2. The reasoning for the distractors is accurate and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 66,
+          "pageStart": 101,
+          "pageEnd": 102,
+          "headingPath": [
+            "14. Algebraic Formulae - Expansion of Squares"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 67,
+          "pageStart": 102,
+          "pageEnd": 104,
+          "headingPath": [
+            "14. Algebraic Formulae - Expansion of Squares"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 68,
+          "pageStart": 104,
+          "pageEnd": 104,
+          "headingPath": [
+            "14. Algebraic Formulae - Expansion of Squares"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-01T23:31:39.897Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is the correct expansion of (a - b)²?",
+      "choices": [
+        "a² - b²",
+        "a - 2ab + b",
+        "a² - 2ab + b²",
+        "a² + 2ab + b²"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct expansion of (a - b)² is a² - 2ab + b². The other options either have incorrect signs (a² - b², a + 2ab + b²) or incorrect middle term (a - 2ab + b).",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन (a - b)² का सही विस्तार है?",
+          "choices": [
+            "a² - b²",
+            "a - 2ab + b",
+            "a² - 2ab + b²",
+            "a² + 2ab + b²"
+          ],
+          "solution": "(a - b)² का सही विस्तार a² - 2ab + b² है। अन्य विकल्प गलत चिह्न (a² - b², a + 2ab + b²) या गलत मध्य पद (a - 2ab + b) के कारण गलत हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते (a - b)² चे योग्य विस्तार आहे?",
+          "choices": [
+            "a² - b²",
+            "a - 2ab + b",
+            "a² - 2ab + b²",
+            "a² + 2ab + b²"
+          ],
+          "solution": "(a - b)² चा योग्य विस्तार a² - 2ab + b² आहे. इतर विकल्पांमध्ये चुकीचे चिन्ह (a² - b², a + 2ab + b²) किंवा मध्यम पद (a - 2ab + b) आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "incorrect signs",
+        "incorrect middle term",
+        null,
+        "Confuses (a - b)² with (a + b)² due to misunderstanding the sign in the middle term"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct expansion of (a - b)² is a² - 2ab + b². The author's solution and reasoning are accurate and reflect common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 66,
+          "pageStart": 101,
+          "pageEnd": 102,
+          "headingPath": [
+            "14. Algebraic Formulae - Expansion of Squares"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 67,
+          "pageStart": 102,
+          "pageEnd": 104,
+          "headingPath": [
+            "14. Algebraic Formulae - Expansion of Squares"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 68,
+          "pageStart": 104,
+          "pageEnd": 104,
+          "headingPath": [
+            "14. Algebraic Formulae - Expansion of Squares"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-01T23:31:39.897Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In the given figure, a square of side (x + y) is divided into four rectangles. What is the area of the square?",
+      "choices": [
+        "x^2 + y^2",
+        "x^2 + 2xy + y^2",
+        "x^2 + xy + y^2",
+        "2x^2 + 2y^2"
+      ],
+      "answerIndex": 1,
+      "solution": "The area of a square is calculated by squaring the length of its side. For a square with side (x + y), the area is (x + y)^2, which expands to x^2 + 2xy + y^2. The option 'x^2 + y^2' is missing the middle term, 'x^2 + xy + y^2' has the wrong coefficient for the middle term, and '2x^2 + 2y^2' incorrectly doubles both squared terms.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "दिए गए आरेख में, (x + y) भुजा वाला एक वर्ग चार आयतों में विभाजित है। वर्ग का क्षेत्रफल क्या है?",
+          "choices": [
+            "x^2 + y^2",
+            "x^2 + 2xy + y^2",
+            "x^2 + xy + y^2",
+            "2x^2 + 2y^2"
+          ],
+          "solution": "एक वर्ग का क्षेत्रफल इसकी भुजा के वर्ग से निकाला जाता है। (x + y) भुजा वाले वर्ग का क्षेत्रफल (x + y)^2 होता है, जो x^2 + 2xy + y^2 में विस्तारित होता है। विकल्प 'x^2 + y^2' मध्य पद को छोड़ देता है, 'x^2 + xy + y^2' मध्य पद का सही गुणांक नहीं रखता है और '2x^2 + 2y^2' दोनों वर्गित पदों को गलती से दोगुना कर देता है।",
+          "imageAlt": "एक वर्ग PQRS जिसकी भुजा (x + y) है और जो चार आयतों में विभाजित है।",
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "दिलेल्या आकृतीत, (x + y) बाजू असलेला एक चौरस चार आयतांमध्ये विभाजित केला गेला आहे. चौरसाचे क्षेत्रफळ किती आहे?",
+          "choices": [
+            "x^2 + y^2",
+            "x^2 + 2xy + y^2",
+            "x^2 + xy + y^2",
+            "2x^2 + 2y^2"
+          ],
+          "solution": "चौरसाचे क्षेत्रफळ त्याच्या बाजूच्या लांबीच्या वर्गाने गणले जाते. (x + y) बाजू असलेल्या चौरसाचे क्षेत्रफळ (x + y)^2 असते, जो x^2 + 2xy + y^2 मध्ये विस्तारित केला जातो. 'x^2 + y^2' हा विकल्प मध्यम पद अनुपस्थित आहे, 'x^2 + xy + y^2' मध्ये मध्यम पदाचा गुणक चुकीचा आहे आणि '2x^2 + 2y^2' मध्ये दोन्ही वर्गित पदांचा दुप्पट केला गेला आहे.",
+          "imageAlt": "PQRS हा (x + y) बाजू असलेला एक चौरस चार आयतांमध्ये विभाजित केला गेला आहे.",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A square PQRS with side (x + y) divided into four rectangles.",
+      "figure": {
+        "kind": "geometry",
+        "spec": {
+          "frame": {
+            "xMin": 0,
+            "xMax": 10,
+            "yMin": 0,
+            "yMax": 7,
+            "unit": "units"
+          },
+          "points": [
+            {
+              "id": "P",
+              "x": 1,
+              "y": 1,
+              "label": "P"
+            },
+            {
+              "id": "Q",
+              "x": 5,
+              "y": 1,
+              "label": "Q"
+            },
+            {
+              "id": "R",
+              "x": 5,
+              "y": 5,
+              "label": "R"
+            },
+            {
+              "id": "S",
+              "x": 1,
+              "y": 5,
+              "label": "S"
+            }
+          ],
+          "segments": [
+            {
+              "from": "P",
+              "to": "Q",
+              "label": "x",
+              "length": {
+                "value": 4,
+                "unit": "units"
+              }
+            },
+            {
+              "from": "Q",
+              "to": "R",
+              "label": "y",
+              "length": {
+                "value": 4,
+                "unit": "units"
+              }
+            },
+            {
+              "from": "R",
+              "to": "S",
+              "label": "x",
+              "length": {
+                "value": 4,
+                "unit": "units"
+              }
+            },
+            {
+              "from": "S",
+              "to": "P",
+              "label": "y",
+              "length": {
+                "value": 4,
+                "unit": "units"
+              }
+            }
+          ],
+          "polygons": [
+            {
+              "vertices": [
+                "P",
+                "Q",
+                "R",
+                "S"
+              ],
+              "shade": true
+            }
+          ]
+        },
+        "labels": {
+          "P": {
+            "en": "P"
+          },
+          "Q": {
+            "en": "Q"
+          },
+          "R": {
+            "en": "R"
+          },
+          "S": {
+            "en": "S"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "misses the middle term",
+        null,
+        "incorrect coefficient for the middle term",
+        "incorrect expression"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is straightforward and tests the expansion of (x + y)^2. The correct answer is x^2 + 2xy + y^2, and the author's reasoning for the distractors is valid. All three wrong options represent common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 66,
+          "pageStart": 101,
+          "pageEnd": 102,
+          "headingPath": [
+            "14. Algebraic Formulae - Expansion of Squares"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 67,
+          "pageStart": 102,
+          "pageEnd": 104,
+          "headingPath": [
+            "14. Algebraic Formulae - Expansion of Squares"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 68,
+          "pageStart": 104,
+          "pageEnd": 104,
+          "headingPath": [
+            "14. Algebraic Formulae - Expansion of Squares"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-01T23:31:39.897Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If (a + b)² = 64 and ab = 9, what is the value of a² + b²?",
+      "choices": [
+        "46",
+        "55",
+        "36",
+        "40"
+      ],
+      "answerIndex": 0,
+      "solution": "Using the identity (a + b)² = a² + 2ab + b², we can find a² + b² = (a + b)² - 2ab = 64 - 18 = 46. The other options either have incorrect subtraction (55, 36, 40) or do not follow the formula correctly.",
+      "checkExpr": "64-2*9",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि (a + b)² = 64 और ab = 9 है, तो a² + b² का मान क्या है?",
+          "choices": [
+            "46",
+            "55",
+            "36",
+            "40"
+          ],
+          "solution": "सर्वसमिका (a + b)² = a² + 2ab + b² का उपयोग करके हम a² + b² = (a + b)² - 2ab = 64 - 18 = 46 पाते हैं। अन्य विकल्प गलत घटाव (55, 36, 40) या सूत्र के गलत उपयोग के कारण हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर (a + b)² = 64 आणि ab = 9 असेल, तर a² + b² चे मूल्य किती आहे?",
+          "choices": [
+            "46",
+            "55",
+            "36",
+            "40"
+          ],
+          "solution": "संकल्पना (a + b)² = a² + 2ab + b² वापरून, आम्ही a² + b² = (a + b)² - 2ab = 64 - 18 = 46 मिळवू शकतो. इतर विकल्पांमध्ये चूकीचे वजाबाकी (55, 36, 40) किंवा सूत्राचे चुकीचे अनुसरण आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology.",
           "flag": null
         }
       },
@@ -168,9 +553,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Adding the squares of a and b instead of expanding the binomial",
-        "square of a single number",
-        "incorrect calculation"
+        "Confuses (a + b)² = a² + b² + 2ab with a² + b² = (a + b)² - ab",
+        "Thinking that a² + b² is just (a + b)² minus 2ab, but subtracting ab instead of 2ab",
+        "Mistakenly subtracts ab from (a + b)² instead of using the identity a² + b² = (a + b)² - 2ab"
       ],
       "solverAnswers": [
         0,
@@ -180,7 +565,7 @@
         0
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 25, as (3 + 2)^2 = 25. The author's solution is correct, and the reasoning for the distractors is plausible.",
+      "critique": "The solution correctly applies the identity (a + b)² = a² + 2ab + b² and calculates a² + b² as 64 - 18 = 46. The reasoning for the distractors is valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "balbharati/7/mathematics/703020004.pdf",
@@ -211,7 +596,102 @@
         }
       ],
       "edition": "2026 edition",
-      "generatedAt": "2026-10-31T12:27:07.542Z",
+      "generatedAt": "2026-11-01T23:31:39.897Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which binomial, when squared, gives the expression m²n² + 14mnpq + 49p²q²?",
+      "choices": [
+        "(mn + pq)²",
+        "(mn + 7pq)²",
+        "(7mn + 7pq)²",
+        "(mn + 14pq)²"
+      ],
+      "answerIndex": 1,
+      "solution": "The expression m²n² + 14mnpq + 49p²q² is the square of (mn + 7pq), since (mn + 7pq)² = m²n² + 2×mn×7pq + (7pq)² = m²n² + 14mnpq + 49p²q². The other options either have incorrect coefficients in the middle term (mn + pq)², (7mn + pq)², or (mn + 14pq)².",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन-सा द्विपद, जिसका वर्ग व्यंजक m²n² + 14mnpq + 49p²q² देता है?",
+          "choices": [
+            "(mn + pq)²",
+            "(mn + 7pq)²",
+            "(7mn + 7pq)²",
+            "(mn + 14pq)²"
+          ],
+          "solution": "व्यंजक m²n² + 14mnpq + 49p²q² (mn + 7pq) के वर्ग है, क्योंकि (mn + 7pq)² = m²n² + 2×mn×7pq + (7pq)² = m²n² + 14mnpq + 49p²q²। अन्य विकल्पों में मध्य पद में गलत गुणांक हैं (mn + pq)², (7mn + pq)², या (mn + 14pq)²।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the mathematical meaning, with appropriate Hindi terminology for algebraic expressions.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणते द्विपद, ज्याचा वर्ग घेतला तर व्यंजक m²n² + 14mnpq + 49p²q² मिळतो?",
+          "choices": [
+            "(mn + pq)²",
+            "(mn + 7pq)²",
+            "(7mn + 7pq)²",
+            "(mn + 14pq)²"
+          ],
+          "solution": "व्यंजक m²n² + 14mnpq + 49p²q² हा (mn + 7pq) चा वर्ग आहे, कारण (mn + 7pq)² = m²n² + 2×mn×7pq + (7pq)² = m²n² + 14mnpq + 49p²q². इतर विकल्पांमध्ये मध्य पदात चुकीचे गुणक असतात (mn + pq)², (7mn + pq)², किंवा (mn + 14pq)².",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "incorrect middle term",
+        null,
+        "Confuses the coefficients and applies them to both terms instead of just one",
+        "incorrect middle term"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is (mn + 7pq)², as shown by expanding the square and matching the given expression. The other options have incorrect middle terms or coefficient placement, which aligns with the author's reasoning.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 66,
+          "pageStart": 101,
+          "pageEnd": 102,
+          "headingPath": [
+            "14. Algebraic Formulae - Expansion of Squares"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 67,
+          "pageStart": 102,
+          "pageEnd": 104,
+          "headingPath": [
+            "14. Algebraic Formulae - Expansion of Squares"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 68,
+          "pageStart": 104,
+          "pageEnd": 104,
+          "headingPath": [
+            "14. Algebraic Formulae - Expansion of Squares"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-01T23:31:39.897Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

@@ -1,0 +1,507 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T16:52:41.210Z",
+  "finishedAt": "2026-11-01T16:57:46.656Z",
+  "seconds": 305,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "603050012",
+    "document": "balbharati/6/science/603050012.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 3 — Let’s Separate the Components",
+    "edition": "First Edition 2026",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2024-25]\n6. Section E would have 3 source based/case based/passage based/integrated units of\nassessment (04 marks each) with sub-parts of the values of 1/2/3 marks.",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n20. Assertion: Biodegradable substances result in the formation of compost and natural 1\nreplenishment.\nReason: It is due to breakdown of complex inorganic substances into simple organic\nsubstances.",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n6. B. (ii), (iii), (iv)",
+      "[CBSE Class X Science, sample question paper, 2026-27]\nthe inference he draws on the basis of his experiment be correct? Justify\nyour answer."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 104278,
+      "in": 23,
+      "out": 23,
+      "rejects": 0,
+      "promptTokens": 16985,
+      "completionTokens": 4829
+    },
+    "critique": {
+      "calls": 27,
+      "ms": 191462,
+      "in": 23,
+      "out": 13,
+      "rejects": 10,
+      "promptTokens": 12363,
+      "completionTokens": 4750
+    },
+    "solver": {
+      "calls": 93,
+      "ms": 50764,
+      "in": 13,
+      "out": 8,
+      "rejects": 5,
+      "promptTokens": 16218,
+      "completionTokens": 1004
+    },
+    "form": {
+      "calls": 7,
+      "ms": 19193,
+      "in": 8,
+      "out": 3,
+      "rejects": 5,
+      "promptTokens": 1780,
+      "completionTokens": 511
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 18,
+      "ms": 3326,
+      "in": 3,
+      "out": 1,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 33700,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2401,
+      "completionTokens": 1383
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is not a method of separation mentioned?",
+      "ms": {
+        "draft": 18295,
+        "critique": 5459
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which method is used to separate oil and water based on their physical properties?",
+      "ms": {
+        "draft": 18295,
+        "critique": 7231
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a mixture of sand and gravel is accidentally created at a construction site, which method can be used to separate them?",
+      "ms": {
+        "draft": 18295,
+        "critique": 5428,
+        "solver": 1549,
+        "form": 2994
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student mixed oil and water in a container and observed that two layers were formed. To separate them completely, they tried pouring the top layer into another container, but some oil remained in the bottom. What could be the reason?",
+      "ms": {
+        "draft": 18295,
+        "critique": 9467
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which method is used to separate magnetic substances from non-magnetic ones?",
+      "ms": {
+        "draft": 3267,
+        "critique": 8085
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which method would be most suitable to separate small stones from wheat?",
+      "ms": {
+        "draft": 3267,
+        "critique": 7487,
+        "solver": 1813
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the passage, it is mentioned that during an epidemic, we should wear a mask to cover our nose and mouth. How does this relate to the methods of separation discussed?",
+      "ms": {
+        "draft": 18295,
+        "critique": 8290,
+        "solver": 18064
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the passage, it is mentioned that during an epidemic, we should wear a mask to cover our nose and mouth. How does this relate to the methods of separation discussed?",
+      "ms": {
+        "draft": 18295,
+        "critique": 8940,
+        "solver": 18823
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In which scenario would the salt be collected first?",
+      "ms": {
+        "draft": 3267,
+        "critique": 8721
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Why is it necessary to separate magnetic materials from garbage?",
+      "ms": {
+        "draft": 3267,
+        "critique": 8275
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which method is used to separate small stones from wheat?",
+      "ms": {
+        "draft": 4112,
+        "critique": 5283,
+        "solver": 1253
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which method is used to separate milk from water?",
+      "ms": {
+        "draft": 4112,
+        "critique": 8729,
+        "solver": 2018
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a true statement about filtration?",
+      "ms": {
+        "draft": 4112,
+        "critique": 7693,
+        "solver": 1550,
+        "form": 2911
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which method is used to separate magnetic substances from a mixture?",
+      "ms": {
+        "draft": 4112,
+        "critique": 6157,
+        "solver": 13099,
+        "form": 4202
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a true statement about magnetic separation?",
+      "ms": {
+        "draft": 4112,
+        "critique": 7645,
+        "solver": 1961,
+        "form": 2531
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which method would be most suitable to separate sand and gravel that have accidentally mixed at a construction site?",
+      "ms": {
+        "draft": 4489,
+        "critique": 6342
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the name of the method used to separate heavy and light substances with the help of wind?",
+      "ms": {
+        "draft": 4489,
+        "critique": 7043
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a mixture of oil and water, which liquid will start flowing out first when a container with a hole is held slightly above another empty container?",
+      "ms": {
+        "draft": 4489,
+        "critique": 8638
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the main reason for using a sieve in separating mixtures of solid substances?",
+      "ms": {
+        "draft": 4489,
+        "critique": 8013
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Why does the oil form a separate layer on top of water in a mixture?",
+      "ms": {
+        "draft": 4489,
+        "critique": 8616,
+        "solver": 4958,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which method is used to separate salt from seawater?",
+      "ms": {
+        "draft": 3267,
+        "critique": 4866,
+        "solver": 1081,
+        "form": 1573
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which method is used to separate alum dissolved in water?",
+      "ms": {
+        "draft": 4112,
+        "critique": 5514,
+        "solver": 1615,
+        "form": 3902
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which method is used to separate a mixture of sawdust and water?",
+      "ms": {
+        "draft": 3267,
+        "critique": 6801,
+        "solver": 933,
+        "form": 2593,
+        "translation": 27234
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is not a method of separation mentioned?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which method is used to separate oil and water based on their physical properties?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a mixture of sand and gravel is accidentally created at a construction site, which method can be used to separate them?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Confuses filtration with sieving, thinking it is used for so…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student mixed oil and water in a container and observed that two layers were formed. To separate them completely, they tried pouring the top layer into another container, but some oil remained in the bottom. What could be the reason?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which method is used to separate magnetic substances from non-magnetic ones?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which method would be most suitable to separate small stones from wheat?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In the passage, it is mentioned that during an epidemic, we should wear a mask to cover our nose and mouth. How does this relate to the methods of separation discussed?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In the passage, it is mentioned that during an epidemic, we should wear a mask to cover our nose and mouth. How does this relate to the methods of separation discussed?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In which scenario would the salt be collected first?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Why is it necessary to separate magnetic materials from garbage?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which method is used to separate small stones from wheat?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which method is used to separate milk from water?",
+      "reason": "the solver picked option 2 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a true statement about filtration?",
+      "reason": "options 0 and 1 say the same thing (\"Filtration is used to separate substances that are dissolved in a liquid.\" / \"Filtration is used to separate substances that are not dissolved in a liquid.\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which method is used to separate magnetic substances from a mixture?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a true statement about magnetic separation?",
+      "reason": "options 2 and 3 say the same thing (\"Magnetic separation is used to separate substances based on their size.\" / \"Magnetic separation is used to separate substances based on their solubility.\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which method would be most suitable to separate sand and gravel that have accidentally mixed at a construction site?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the name of the method used to separate heavy and light substances with the help of wind?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a mixture of oil and water, which liquid will start flowing out first when a container with a hole is held slightly above another empty container?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What is the main reason for using a sieve in separating mixtures of solid substances?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Why does the oil form a separate layer on top of water in a mixture?",
+      "reason": "options 2 and 3 say the same thing (\"Because oil is a liquid and water is a solid\" / \"Because oil is a solid and water is a liquid\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which method is used to separate salt from seawater?",
+      "reason": "near-duplicate of served question cmvvd52pe00sg0rgncgztnhlg (cosine 0.935 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which method is used to separate alum dissolved in water?",
+      "reason": "near-duplicate of served question cmvvw0vis00lu0remlzcm03c6 (cosine 0.930 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

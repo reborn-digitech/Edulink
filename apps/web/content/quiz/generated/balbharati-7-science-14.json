@@ -21,49 +21,49 @@
   "board": "BALBHARATI",
   "book": "७ वी सामान्य विज्ञान इंग्रजी",
   "edition": "First Edition 2017",
-  "generatedAt": "2026-10-31T17:26:17.926Z",
+  "generatedAt": "2026-11-02T04:25:53.430Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the term used for a single kind of matter in scientific language?",
+      "stem": "Which of the following is an example of a substance?",
       "choices": [
-        "Mixture",
-        "Compound",
-        "Element",
-        "Substance"
+        "Water",
+        "Soil",
+        "Air",
+        "Smoke"
       ],
-      "answerIndex": 3,
-      "solution": "A single kind of matter is referred to as a 'substance' because it consists of only one type of material with consistent properties. 'Mixture' is incorrect because it involves two or more substances combined without chemical bonding. 'Compound' is wrong because it is made of two or more elements chemically bonded. 'Element' is incorrect because it refers to a pure substance made of only one type of atom, not a general term for any single kind of matter.",
+      "answerIndex": 0,
+      "solution": "Water is a substance because it is made up of only one constituent. Soil, air, and smoke are mixtures as they contain multiple substances.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "वैज्ञानिक भाषा में एक प्रकार के पदार्थ के लिए शब्द क्या है?",
+          "stem": "निम्नलिखित में से कौन एक पदार्थ का उदाहरण है?",
           "choices": [
-            "मिश्रण",
-            "यौगिक",
-            "तत्व",
-            "पदार्थ"
+            "पानी",
+            "मिट्टी",
+            "हवा",
+            "धुआं"
           ],
-          "solution": "एक प्रकार के पदार्थ को 'पदार्थ' कहा जाता है क्योंकि इसमें केवल एक प्रकार के पदार्थ होते हैं जिनके स्थिर गुण होते हैं। 'मिश्रण' गलत है क्योंकि इसमें रासायनिक बंधन के बिना दो या अधिक पदार्थ मिले होते हैं। 'यौगिक' गलत है क्योंकि यह दो या अधिक तत्वों के रासायनिक बंधन से बना होता है। 'तत्व' गलत है क्योंकि यह केवल एक प्रकार के परमाणु से बना एक शुद्ध पदार्थ होता है, कोई सामान्य शब्द के रूप में कोई भी एक प्रकार के पदार्थ के लिए नहीं होता।",
+          "solution": "पानी एक पदार्थ है क्योंकि यह केवल एक ही घटक से बना होता है। मिट्टी, हवा और धुआं मिश्रण होते हैं क्योंकि इनमें कई पदार्थ होते हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
+          "critique": "The Hindi translation accurately reflects the original English question, with appropriate scientific terminology used in the context of a Hindi-medium curriculum.",
           "flag": null
         },
         "mr": {
-          "stem": "वैज्ञानिक भाषेत एक प्रकारच्या द्रव्याच्या नावासाठी वापरलेले शब्द काय आहे?",
+          "stem": "खालीलपैकी कोणते एक पदार्थाचे उदाहरण आहे?",
           "choices": [
-            "मिश्रण",
-            "यौगिक",
-            "तत्व",
-            "द्रव्य"
+            "पाणी",
+            "माती",
+            "हवा",
+            "धूम"
           ],
-          "solution": "एक प्रकारच्या द्रव्याला 'द्रव्य' म्हणतात कारण ते एकाच प्रकारच्या पदार्थापासून बनलेले असते आणि त्याच्या गुणधर्म एकरूप असतात. 'मिश्रण' अयोग्य आहे कारण त्यात दोन किंवा अधिक द्रव्यांचे रासायनिक बंधन न ठेवता जोडले जाते. 'यौगिक' अयोग्य आहे कारण ते दोन किंवा अधिक तत्वांच्या रासायनिक बंधनाने बनलेले असते. 'तत्व' अयोग्य आहे कारण ते केवळ एक प्रकारच्या परमाणूंनी बनलेले शुद्ध द्रव्य असते, नियमितपणे कोणत्याही एक प्रकारच्या द्रव्याचे सामान्य नाव नसते.",
+          "solution": "पाणी एक पदार्थ आहे कारण ते केवळ एका घटकापासून बनलेले आहे. माती, हवा आणि धूम हे मिश्रणे आहेत कारण त्यांमध्ये अनेक पदार्थ असतात.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology as used in Marathi textbooks.",
+          "critique": "The translation is accurate, with appropriate Marathi terminology for scientific concepts.",
           "flag": null
         }
       },
@@ -72,9 +72,390 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses 'substance' with 'mixture'",
-        "Confuses 'substance' with 'compound'",
-        "Confuses 'substance' with 'element'",
+        null,
+        "Confuses mixtures with substances",
+        "Confuses mixtures with substances",
+        "Confuses mixtures with substances"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. Water is a pure substance (a compound), while soil, air, and smoke are mixtures. The reasoning aligns with basic chemistry concepts for Class 7.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 102,
+          "pageStart": 102,
+          "pageEnd": 102,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 103,
+          "pageStart": 103,
+          "pageEnd": 103,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 104,
+          "pageStart": 103,
+          "pageEnd": 104,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T04:25:53.430Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the smallest particle of an element called?",
+      "choices": [
+        "Atom",
+        "Molecule",
+        "Ion",
+        "Particle"
+      ],
+      "answerIndex": 0,
+      "solution": "The smallest particle of an element is called an atom. Molecules are made of atoms, ions are charged particles, and particle is a general term.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक तत्व के सबसे छोटे कण को क्या कहा जाता है?",
+          "choices": [
+            "परमाणु",
+            "अणु",
+            "आयन",
+            "कण"
+          ],
+          "solution": "एक तत्व के सबसे छोटे कण को परमाणु कहा जाता है। अणु परमाणुओं से बने होते हैं, आयन आवेशित कण होते हैं, और कण एक सामान्य शब्द है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard scientific terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका घटकाचा सर्वात लहान कण काय म्हणतात?",
+          "choices": [
+            "अणू",
+            "अणू",
+            "आयन",
+            "कण"
+          ],
+          "solution": "एका घटकाचा सर्वात लहान कण अणू म्हणतात. अणू अणूंमधून बनतात, आयन चार्ज केलेले कण असतात आणि कण हा एक सामान्य शब्द आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation has errors: (1) and (2) are both 'अणू' (atom), making two correct answers. The solution incorrectly states 'अणू अणूंमधून बनतात' (molecules are made of atoms), which is correct, but the translation of 'molecule' as 'अणू' is incorrect. The term 'अणू' is used for both 'atom' and 'molecule' which is misleading.",
+          "flag": "translation critique: meaning changed; not one answer at the same position; a distractor no longer wrong"
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses atom with molecule",
+        "Confuses atom with ion",
+        "Confuses atom with particle"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and tests basic recall. The correct answer is 'Atom' and the reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 102,
+          "pageStart": 102,
+          "pageEnd": 102,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 103,
+          "pageStart": 103,
+          "pageEnd": 103,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 104,
+          "pageStart": 103,
+          "pageEnd": 104,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T04:25:53.430Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a property of metals?",
+      "choices": [
+        "Malleability",
+        "Brittleness",
+        "Dullness",
+        "Poor conductivity"
+      ],
+      "answerIndex": 0,
+      "solution": "Malleability is a property of metals because they can be shaped into different forms without breaking. Brittleness is a property of non-metals, as they tend to break easily. Dullness and poor conductivity are also characteristics of non-metals, which do not shine or conduct heat and electricity well.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा धातु का गुण है?",
+          "choices": [
+            "आघातवर्ध्यता",
+            "भंगुरता",
+            "अज्ञेयता",
+            "खराब चालकता"
+          ],
+          "solution": "आघातवर्ध्यता धातु का गुण है क्योंकि वे टूटे बिना विभिन्न आकारों में आकार दिया जा सकता है। भंगुरता अधातुओं का गुण है, क्योंकि वे आसानी से टूट जाते हैं। अज्ञेयता और खराब चालकता भी अधातुओं के गुण हैं, जो चमक नहीं देते या ऊष्मा और विद्युत का अच्छा चालक नहीं होते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi technical terms used for scientific concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते धातूंचे गुणधर्म आहे?",
+          "choices": [
+            "कुस्तीकरण",
+            "भंगुरता",
+            "अज्ञानता",
+            "खराब वाहकता"
+          ],
+          "solution": "कुस्तीकरण धातूंचे गुणधर्म आहे कारण ते तोडले न जाता विविध आकारात बदलू शकतात. भंगुरता अधातूंचे गुणधर्म आहे, कारण ते सहज तुटतात. अज्ञानता आणि खराब वाहकता अधातूंच्या वैशिष्ट्यांपैकी आहेत, जे चमकत नाहीत किंवा ऊष्मा आणि विद्युत चांगल्या प्रकारे पार करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses properties of metals with those of non-metals",
+        "Confuses properties of metals with those of non-metals",
+        "Confuses properties of metals with those of non-metals"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (Malleability), as it is a well-known property of metals. The other options are properties of non-metals, and the author's reasoning correctly identifies this common misconception.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 105,
+          "pageStart": 104,
+          "pageEnd": 105,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 106,
+          "pageStart": 105,
+          "pageEnd": 106,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 107,
+          "pageStart": 106,
+          "pageEnd": 107,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T04:25:53.430Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a compound?",
+      "choices": [
+        "Salt",
+        "Hydrogen",
+        "Stainless steel",
+        "Buttermilk"
+      ],
+      "answerIndex": 0,
+      "solution": "Salt is a compound because it is made up of two different elements, sodium and chlorine, chemically bonded together. Hydrogen is an element, not a compound, as it consists of only one type of atom. Stainless steel is a mixture of metals, and buttermilk is a mixture of liquids and solids. Therefore, the correct answer is 'Salt'.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक यौगिक है?",
+          "choices": [
+            "नमक",
+            "हाइड्रोजन",
+            "स्टेनलेस स्टील",
+            "मक्खन"
+          ],
+          "solution": "नमक एक यौगिक है क्योंकि यह दो अलग-अलग तत्व, सोडियम और क्लोरीन, के रूप में रासायनिक रूप से बंधे हुए होते हैं। हाइड्रोजन एक तत्व है, एक यौगिक नहीं, क्योंकि यह केवल एक प्रकार के परमाणु से बना होता है। स्टेनलेस स्टील धातुओं का मिश्रण है, और मक्खन तरल और ठोस का मिश्रण है। इसलिए, सही उत्तर 'नमक' है।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the original English question and solution with appropriate scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक यौगिक आहे?",
+          "choices": [
+            "खाली",
+            "हायड्रोजन",
+            "स्टेनलेस स्टील",
+            "मलई"
+          ],
+          "solution": "खाली एक यौगिक आहे कारण ते दोन वेगवेगळ्या घटक, सोडियम आणि क्लोरीन यांच्या रासायनिक बंधानाने बनलेले आहे. हायड्रोजन एक घटक आहे, जे केवळ एक प्रकारचे परमाणू असतात. स्टेनलेस स्टील हे धातूंचे मिश्रण आहे, आणि मलई हे द्रव आणि घन पदार्थांचे मिश्रण आहे. त्यामुळे, योग्य उत्तर 'खाली' आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi scientific terminology used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Chooses hydrogen as an element but mistakes it for a compound",
+        "Confuses stainless steel with a compound",
+        "Thinks buttermilk is a compound"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 'Salt' (option 0), as it is a compound (sodium chloride). The other options are correctly identified as an element (hydrogen), a mixture (stainless steel), and a mixture (buttermilk). The reasoning in the solution is sound and matches the misconceptions described.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 108,
+          "pageStart": 108,
+          "pageEnd": 108,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 109,
+          "pageStart": 108,
+          "pageEnd": 109,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 110,
+          "pageStart": 109,
+          "pageEnd": 109,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T04:25:53.430Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following is a mixture?",
+      "choices": [
+        "Water",
+        "Salt",
+        "Iron",
+        "Brass"
+      ],
+      "answerIndex": 3,
+      "solution": "Brass is a mixture because it is composed of two or more substances, copper and zinc, that are physically combined. Water and salt are pure substances, and iron is an element, not a mixture. A mixture does not have a fixed composition and can be separated by physical means, which applies to brass.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक मिश्रण है?",
+          "choices": [
+            "जल",
+            "नमक",
+            "लोहा",
+            "ब्रॉन्ज"
+          ],
+          "solution": "ब्रॉन्ज एक मिश्रण है क्योंकि यह दो या दो से अधिक पदार्थों, तांबा और जिंक के भौतिक रूप से मिले हुए होते हैं। जल और नमक शुद्ध पदार्थ हैं, और लोहा एक तत्व है, जो मिश्रण नहीं है। एक मिश्रण का निश्चित संघटन नहीं होता है और इसे भौतिक विधियों द्वारा अलग किया जा सकता है, जो ब्रॉन्ज के लिए लागू होता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are correctly used in Hindi, and the logic of the solution matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते मिश्रण आहे?",
+          "choices": [
+            "पाणी",
+            "खारा",
+            "लोह",
+            "कांस्य"
+          ],
+          "solution": "कांस्य मिश्रण आहे कारण ते दोन किंवा अधिक द्रव्यांचे भौमितिकरित्या जोडलेले असते, जे तांबा आणि जिंक आहेत. पाणी आणि खारा शुद्ध द्रव्य आहेत, आणि लोह एक घटक आहे, मिश्रण नाही. मिश्रणाचा निश्चित घटक नसतो आणि भौमितिक पद्धतीने विभक्त केले जाऊ शकते, जे कांस्यासाठी लागू होते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses water with mixture",
+        "Confuses salt with mixture",
+        "Confuses iron with mixture",
         null
       ],
       "solverAnswers": [
@@ -85,7 +466,7 @@
         3
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed and the solution is correct. The term 'substance' is indeed used to describe a single kind of matter, and the author's reasoning for the distractors aligns with common student misconceptions.",
+      "critique": "The question is correctly formulated. Brass is a mixture (an alloy), while water, salt, and iron are pure substances. The reasoning in the solution is sound and matches the correct answer.",
       "sources": [
         {
           "document": "balbharati/7/science/703020012.pdf",
@@ -116,332 +497,47 @@
         }
       ],
       "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T17:26:17.926Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "Which of the following is an example of a compound?",
-      "choices": [
-        "Sugar",
-        "Iron",
-        "Carbon",
-        "Oxygen"
-      ],
-      "answerIndex": 0,
-      "solution": "Sugar is a compound because it is made up of different elements chemically combined. Iron and oxygen are elements, while carbon is also an element. The correct answer is sugar.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन एक यौगिक का उदाहरण है?",
-          "choices": [
-            "शर्करा",
-            "लोहा",
-            "कार्बन",
-            "ऑक्सीजन"
-          ],
-          "solution": "शर्करा एक यौगिक है क्योंकि यह विभिन्न तत्वों से रासायनिक रूप से जुड़ा होता है। लोहा और ऑक्सीजन तत्व हैं, जबकि कार्बन भी एक तत्व है। सही उत्तर शर्करा है।",
-          "imageAlt": null,
-          "critique": "Translation accurately reflects the original meaning with appropriate Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते एक यौगिकाचे उदाहरण आहे?",
-          "choices": [
-            "शर्करा",
-            "लोह",
-            "कार्बन",
-            "ऑक्सीजन"
-          ],
-          "solution": "शर्करा एक यौगिक आहे कारण ती वेगवेगळ्या घटकांच्या रासायनिक एकत्रित बनलेली असते. लोह आणि ऑक्सीजन घटक असतात, तर कार्बन देखील घटक आहे. योग्य उत्तर शर्करा आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses a compound with a metal",
-        "Thinks all substances are elements",
-        "Confuses a compound with an element"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct. Sugar is a compound (sucrose, C12H22O11), while iron, carbon, and oxygen are elements. The reasoning aligns with the correct scientific understanding.",
-      "sources": [
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 105,
-          "pageStart": 104,
-          "pageEnd": 105,
-          "headingPath": [
-            "14. Elements, Compounds and Mixtures"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 106,
-          "pageStart": 105,
-          "pageEnd": 106,
-          "headingPath": [
-            "14. Elements, Compounds and Mixtures"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 107,
-          "pageStart": 106,
-          "pageEnd": 107,
-          "headingPath": [
-            "14. Elements, Compounds and Mixtures"
-          ]
-        }
-      ],
-      "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T17:26:17.926Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "Which of the following is an example of a mixture?",
-      "choices": [
-        "Salt water",
-        "Oxygen",
-        "Carbon dioxide",
-        "Gold"
-      ],
-      "answerIndex": 0,
-      "solution": "Salt water is a mixture because it is a combination of different substances without any chemical change. Oxygen and carbon dioxide are compounds, while gold is an element. The correct answer is salt water.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन एक मिश्रण का उदाहरण है?",
-          "choices": [
-            "नमक का पानी",
-            "ऑक्सीजन",
-            "कार्बन डाइऑक्साइड",
-            "सोना"
-          ],
-          "solution": "नमक का पानी एक मिश्रण है क्योंकि यह विभिन्न पदार्थों का एक संयोजन है बिना कोई रासायनिक परिवर्तन के। ऑक्सीजन और कार्बन डाइऑक्साइड यौगिक हैं, जबकि सोना एक तत्व है। सही उत्तर नमक का पानी है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते एक मिश्रणाचे उदाहरण आहे?",
-          "choices": [
-            "खारा पाणी",
-            "ऑक्सीजन",
-            "कार्बन डायऑक्साइड",
-            "सोने"
-          ],
-          "solution": "खारा पाणी मिश्रण आहे कारण ते रासायनिक बदलाशिवाय विविध पदार्थांचे संयोजन आहे. ऑक्सीजन आणि कार्बन डायऑक्साइड या यौगिक आहेत, तर सोने एक घटक आहे. योग्य उत्तर खारा पाणी आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses a mixture with a compound",
-        "Thinks all substances are elements",
-        "Confuses a mixture with an element"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct. Salt water is a mixture, while oxygen, carbon dioxide, and gold are a diatomic element, a compound, and a pure element, respectively.",
-      "sources": [
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 105,
-          "pageStart": 104,
-          "pageEnd": 105,
-          "headingPath": [
-            "14. Elements, Compounds and Mixtures"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 106,
-          "pageStart": 105,
-          "pageEnd": 106,
-          "headingPath": [
-            "14. Elements, Compounds and Mixtures"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 107,
-          "pageStart": 106,
-          "pageEnd": 107,
-          "headingPath": [
-            "14. Elements, Compounds and Mixtures"
-          ]
-        }
-      ],
-      "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T17:26:17.926Z",
+      "generatedAt": "2026-11-02T04:25:53.430Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "Which of the following is made of only one type of atom?",
+      "stem": "If a substance is made up of two or more elements in a fixed ratio, what is it called?",
       "choices": [
-        "Water",
-        "Carbon dioxide",
-        "Oxygen gas",
-        "Salt"
+        "An element",
+        "A compound",
+        "A mixture",
+        "A metal"
       ],
-      "answerIndex": 2,
-      "solution": "Oxygen gas is made of only one type of atom because it is an element, and elements consist of a single type of atom. Water and carbon dioxide are compounds made of different types of atoms, and salt is a compound composed of sodium and chlorine atoms.",
+      "answerIndex": 1,
+      "solution": "A compound is formed when two or more elements chemically combine in a fixed ratio. An element consists of only one type of atom, a mixture has components in variable proportions, and a metal is a type of element, not a combination of elements.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन एक ही प्रकार के परमाणु से बना हुआ है?",
+          "stem": "यदि कोई पदार्थ दो या दो से अधिक तत्वों से मिलकर एक निश्चित अनुपात में बना हो, तो इसे क्या कहा जाता है?",
           "choices": [
-            "पानी",
-            "कार्बन डाइऑक्साइड",
-            "ऑक्सीजन गैस",
-            "नमक"
+            "एक तत्व",
+            "एक यौगिक",
+            "एक मिश्रण",
+            "एक धातु"
           ],
-          "solution": "ऑक्सीजन गैस केवल एक ही प्रकार के परमाणु से बनी हुई है क्योंकि यह एक तत्व है और तत्वों में केवल एक प्रकार के परमाणु होते हैं। पानी और कार्बन डाइऑक्साइड विभिन्न प्रकार के परमाणुओं से बने यौगिक हैं और नमक सोडियम और क्लोरीन परमाणुओं से बना एक यौगिक है।",
+          "solution": "एक यौगिक तब बनता है जब दो या दो से अधिक तत्व एक निश्चित अनुपात में रासायनिक रूप से जुड़ जाते हैं। एक तत्व केवल एक प्रकार के परमाणु से बना होता है, मिश्रण में घटक चर अनुपात में होते हैं, और धातु एक प्रकार का तत्व होता है, तत्वों के संयोजन नहीं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate scientific terminology in Hindi.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते फक्त एक प्रकारचे परमाणूने बनलेले आहे?",
+          "stem": "एका द्रव्याचा दोन किंवा अधिक घटकांत फक्त निश्चित अनुपातात बनलेला असेल, तर त्याला काय म्हणतात?",
           "choices": [
-            "पाणी",
-            "कार्बन डायऑक्साइड",
-            "ऑक्सीजन वायू",
-            "खारा"
+            "एक घटक",
+            "एक यौगिक",
+            "एक मिश्रण",
+            "एक धातू"
           ],
-          "solution": "ऑक्सीजन वायू फक्त एक प्रकारचे परमाणूने बनलेला आहे कारण तो एक घटक आहे आणि घटकांमध्ये फक्त एक प्रकारचे परमाणू असतात. पाणी आणि कार्बन डायऑक्साइड हे विविध प्रकारचे परमाणूंनी बनलेले अणु आहेत, आणि खारा हा सोडियम आणि क्लोरिनच्या परमाणूंनी बनलेला अणू आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Chooses a compound instead of an element",
-        "Chooses a compound instead of an element",
-        null,
-        "Chooses a compound instead of an element"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed and the solution is correct. Oxygen gas (O₂) is an element composed of only one type of atom, while the other options are compounds. The author's reasoning for the distractors is valid, as students often confuse compounds with elements.",
-      "sources": [
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 102,
-          "pageStart": 102,
-          "pageEnd": 102,
-          "headingPath": [
-            "14. Elements, Compounds and Mixtures"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 103,
-          "pageStart": 103,
-          "pageEnd": 103,
-          "headingPath": [
-            "14. Elements, Compounds and Mixtures"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 104,
-          "pageStart": 103,
-          "pageEnd": 104,
-          "headingPath": [
-            "14. Elements, Compounds and Mixtures"
-          ]
-        }
-      ],
-      "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T17:26:17.926Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "What happens when a magnesium ribbon is burned in a flame?",
-      "choices": [
-        "It turns black",
-        "It produces a loud sound",
-        "It forms a white powder",
-        "It becomes softer"
-      ],
-      "answerIndex": 2,
-      "solution": "When a magnesium ribbon is burned in a flame, it forms a white powder. This is a chemical reaction. The correct answer is it forms a white powder.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "जब मैग्नीशियम की पट्टी एक ज्वाला में जलती है तो क्या होता है?",
-          "choices": [
-            "यह काली हो जाती है",
-            "यह एक तीव्र ध्वनि उत्पन्न करती है",
-            "यह एक सफेद चूर्ण बन जाती है",
-            "यह नरम हो जाती है"
-          ],
-          "solution": "जब मैग्नीशियम की पट्टी एक ज्वाला में जलती है, तो यह एक सफेद चूर्ण बन जाती है। यह एक रासायनिक अभिक्रिया है। सही उत्तर यह है कि यह एक सफेद चूर्ण बन जाती है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जेव्हा मॅग्नेशियम बार एका ज्वालेत जाळली जाते तेव्हा काय होते?",
-          "choices": [
-            "ती काळी होते",
-            "ती जास्त आवाज करते",
-            "ती एका सफेद चूर्णाची निर्मिती करते",
-            "ती नरम होते"
-          ],
-          "solution": "जेव्हा मॅग्नेशियम बार एका ज्वालेत जाळली जाते तेव्हा ती सफेद चूर्णाची निर्मिती करते. हे रासायनिक अभिक्रिया आहे. योग्य उत्तर ती सफेद चूर्णाची निर्मिती करते आहे.",
+          "solution": "एक यौगिक हा दोन किंवा अधिक घटकांचा रासायनिकरित्या एकत्रित बनलेला असतो आणि त्यांचा निश्चित अनुपात असतो. एक घटक हा एकाच प्रकारच्या परमाणूंचा बनलेला असतो, मिश्रणात घटकांचा अनुपात बदलतो आणि धातू हा घटकांचा संयोजन नसून एक प्रकारचा घटक असतो.",
           "imageAlt": null,
           "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi scientific terminology.",
           "flag": null
@@ -452,10 +548,105 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Thinks the ribbon turns black",
-        "Confuses sonority with a chemical change",
+        "A definition of an element",
         null,
-        "Thinks the ribbon becomes softer"
+        "Confuses the definition of a compound with that of a mixture",
+        "Confuses the definition of a compound with that of a metal"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question correctly identifies a compound as a substance made of two or more elements in a fixed ratio. The author's solution and reasoning are accurate and align with scientific definitions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 105,
+          "pageStart": 104,
+          "pageEnd": 105,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 106,
+          "pageStart": 105,
+          "pageEnd": 106,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 107,
+          "pageStart": 106,
+          "pageEnd": 107,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T04:25:53.430Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following is an example of an alloy?",
+      "choices": [
+        "Gold",
+        "Silver",
+        "Brass",
+        "Carbon"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is brass. An alloy is a mixture of metals. Brass is an alloy made up of copper and zinc. Gold and silver are pure elements, while carbon is a non-metal.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक मिश्रधातु का उदाहरण है?",
+          "choices": [
+            "सोना",
+            "चांदी",
+            "ब्रॉंज",
+            "कार्बन"
+          ],
+          "solution": "सही उत्तर ब्रॉंज है। मिश्रधातु धातुओं का मिश्रण होता है। ब्रॉंज तांबा और जिंक से बनी एक मिश्रधातु है। सोना और चांदी शुद्ध तत्व हैं, जबकि कार्बन एक अधातु है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi-medium science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते अॅलॉयचे उदाहरण आहे?",
+          "choices": [
+            "सोने",
+            "रूपे",
+            "कांस्य",
+            "कार्बन"
+          ],
+          "solution": "बरोबर उत्तर कांस्य आहे. अॅलॉय हे धातूंचे मिश्रण आहे. कांस्य हे तांबे आणि जिंक यांचे मिश्रण आहे. सोने आणि रूपे शुद्ध घटक आहेत, तर कार्बन अधातू आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms for the concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses pure elements with alloys",
+        "Thinks all metals are alloys",
+        null,
+        "Thinks non-metals can form alloys"
       ],
       "solverAnswers": [
         2,
@@ -465,7 +656,7 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 2, as magnesium burns with a bright white light and forms magnesium oxide, a white powder. The distractors reflect common misconceptions about the physical and chemical changes involved.",
+      "critique": "The solution is correct. Brass is an alloy, while gold, silver, and carbon are not. The reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "balbharati/7/science/703020012.pdf",
@@ -496,145 +687,50 @@
         }
       ],
       "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T17:26:17.926Z",
+      "generatedAt": "2026-11-02T04:25:53.430Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "What is the term used to describe the smallest particles of substances?",
+      "difficulty": 3,
+      "stem": "Which of the following is an example of a mixture?",
       "choices": [
-        "Molecules",
-        "Atoms",
-        "Ions",
-        "Compounds"
-      ],
-      "answerIndex": 1,
-      "solution": "Atoms are the smallest particles of substances that retain their chemical identity. Molecules are groups of atoms bonded together, ions are atoms or molecules with a charge, and compounds are substances formed by chemically combining two or more elements. Atoms are the fundamental building blocks of all matter.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "किस पद का उपयोग पदार्थों के सबसे छोटे कणों के लिए किया जाता है?",
-          "choices": [
-            "अणु",
-            "परमाणु",
-            "आयन",
-            "यौगिक"
-          ],
-          "solution": "परमाणु पदार्थों के सबसे छोटे कण होते हैं जो अपनी रासायनिक पहचान बरकरार रखते हैं। अणु परमाणुओं के समूह होते हैं जो एक दूसरे से बंधे रहते हैं, आयन परमाणु या अणु होते हैं जिनमें आवेश होता है और यौगिक दो या अधिक तत्वों के रासायनिक रूप से संयोजन से बने पदार्थ होते हैं। परमाणु सभी पदार्थों के मूल निर्माण ब्लॉक होते हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "पदार्थांच्या सर्वात लहान कणांच्या नावाचा शब्द काय आहे?",
-          "choices": [
-            "अणू",
-            "परमाणू",
-            "आयन",
-            "यौगिक"
-          ],
-          "solution": "परमाणू पदार्थांच्या सर्वात लहान कणांच्या नावाचा शब्द आहे जे त्यांची रासायनिक ओळख टिकवून ठेवतात. अणू अणूंच्या बंधनात बनलेल्या गटांच्या नावाचा शब्द आहे, आयन परमाणू किंवा अणू ज्यांचा आवेश असतो, आणि यौगिक दोन किंवा अधिक घटकांच्या रासायनिक जोडणीने बनलेल्या पदार्थांच्या नावाचा शब्द आहे. परमाणू हे सर्व पदार्थांच्या मूलभूत बांधकाम कणांच्या नावाचा शब्द आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks. The solution correctly identifies 'Atoms' as the correct answer and explains why the other options are incorrect.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Chooses a term for a group of atoms",
-        null,
-        "Believes that charged particles are the smallest unit of matter",
-        "Student thinks compounds are the basic unit of matter, not realizing they are made of atoms"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 'Atoms' as the smallest particles of substances. The author's reasoning is sound, and the misconceptions listed for the wrong options are plausible for students at this level.",
-      "sources": [
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 102,
-          "pageStart": 102,
-          "pageEnd": 102,
-          "headingPath": [
-            "14. Elements, Compounds and Mixtures"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 103,
-          "pageStart": 103,
-          "pageEnd": 103,
-          "headingPath": [
-            "14. Elements, Compounds and Mixtures"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 104,
-          "pageStart": 103,
-          "pageEnd": 104,
-          "headingPath": [
-            "14. Elements, Compounds and Mixtures"
-          ]
-        }
-      ],
-      "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T17:26:17.926Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "Which of the following is a metalloid?",
-      "choices": [
-        "Sulfur",
-        "Phosphorus",
-        "Silicon",
-        "Chlorine"
+        "Salt",
+        "Hydrogen",
+        "Stainless steel",
+        "Sodium chloride"
       ],
       "answerIndex": 2,
-      "solution": "Silicon is a metalloid because it shows properties of both metals and non-metals. Sulfur, phosphorus, and chlorine are non-metals.",
+      "solution": "Stainless steel is a mixture because it is an alloy composed of different elements like iron, chromium, and nickel, which are physically combined but not chemically bonded. Salt and sodium chloride are both compounds made of chemically bonded elements, and hydrogen is a pure element. Therefore, the correct answer is 'Stainless steel'.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन एक अर्धधातु है?",
+          "stem": "निम्नलिखित में से कौन एक मिश्रण का उदाहरण है?",
           "choices": [
-            "सल्फर",
-            "फॉस्फोरस",
-            "सिलिकॉन",
-            "क्लोरीन"
+            "नमक",
+            "हाइड्रोजन",
+            "स्टेनलेस स्टील",
+            "सोडियम क्लोराइड"
           ],
-          "solution": "सिलिकॉन एक अर्धधातु है क्योंकि यह धातुओं और अधातुओं दोनों के गुण प्रदर्शित करता है। सल्फर, फॉस्फोरस और क्लोरीन अधातु हैं।",
+          "solution": "स्टेनलेस स्टील एक मिश्रण है क्योंकि यह एक अम्लीय धातु है जो विभिन्न तत्वों जैसे लोहा, क्रोमियम और निकेल से बनी होती है, जो भौतिक रूप से मिले हुए होते हैं लेकिन रासायनिक रूप से जुड़े नहीं होते। नमक और सोडियम क्लोराइड दोनों रासायनिक रूप से जुड़े तत्वों से बने यौगिक हैं, और हाइड्रोजन एक शुद्ध तत्व है। इसलिए, सही उत्तर 'स्टेनलेस स्टील' है।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are correctly used in Hindi.",
+          "critique": "The Hindi translation is accurate and maintains the original meaning, with appropriate scientific terminology used in Indian textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता अल्पधातू आहे?",
+          "stem": "खालीलपैकी कोणते मिश्रणाचे उदाहरण आहे?",
           "choices": [
-            "सल्फर",
-            "फॉस्फरस",
-            "सिलिकॉन",
-            "क्लोरिन"
+            "खालीलपैकी कोणते मिश्रणाचे उदाहरण आहे?",
+            "खालीलपैकी कोणते मिश्रणाचे उदाहरण आहे?",
+            "खालीलपैकी कोणते मिश्रणाचे उदाहरण आहे?",
+            "खालीलपैकी कोणते मिश्रणाचे उदाहरण आहे?"
           ],
-          "solution": "सिलिकॉन अल्पधातू आहे कारण तो धातू आणि अधातू दोन्हीच्या गुणांचा दर्शवतो. सल्फर, फॉस्फरस आणि क्लोरिन अधातू आहेत.",
+          "solution": "स्टेनलेस स्टील मिश्रण आहे कारण ते विविध घटकांचे अलॉय आहे जसे की लोह, क्रोमियम आणि निकेल, जे भौतिकरित्या जोडलेले असतात परंतु रासायनिकरित्या बंधन नसतात. खालीलपैकी कोणते मिश्रणाचे उदाहरण आहे? आणि सोडियम क्लोराइड हे रासायनिकरित्या बंधन असलेल्या घटकांनी बनलेले असतात, आणि हायड्रोजन हे शुद्ध घटक आहे. म्हणून, योग्य उत्तर 'स्टेनलेस स्टील' आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for elements and concepts.",
-          "flag": null
+          "critique": "The Marathi translation is completely incorrect. The stem and options are repeated verbatim, and the solution contains a logical error. The correct answer (option 3) is not properly identified. The term 'स्टेनलेस स्टील' is acceptable, but the overall translation is invalid.",
+          "flag": "translation critique: meaning changed; not one answer at the same position; a distractor no longer wrong"
         }
       },
       "imageKey": null,
@@ -642,10 +738,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "A non-metal",
-        "A non-metal",
+        "Chooses salt as a compound but thinks it is a mixture",
+        "Identifies hydrogen as an element but mistakes it for a mixture",
         null,
-        "Confuses metalloids with metals"
+        "Confuses sodium chloride with a mixture"
       ],
       "solverAnswers": [
         2,
@@ -654,79 +750,80 @@
         2,
         2
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is Silicon (option 2), which is a metalloid. The other options are non-metals, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "levelFlag": null,
+      "critique": "The solution is correct. Stainless steel is an alloy, which is a type of mixture. Salt and sodium chloride are compounds, and hydrogen is an element. The reasoning aligns with standard chemistry definitions.",
       "sources": [
         {
           "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 105,
-          "pageStart": 104,
-          "pageEnd": 105,
+          "ordinal": 108,
+          "pageStart": 108,
+          "pageEnd": 108,
           "headingPath": [
             "14. Elements, Compounds and Mixtures"
           ]
         },
         {
           "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 106,
-          "pageStart": 105,
-          "pageEnd": 106,
+          "ordinal": 109,
+          "pageStart": 108,
+          "pageEnd": 109,
           "headingPath": [
             "14. Elements, Compounds and Mixtures"
           ]
         },
         {
           "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 107,
-          "pageStart": 106,
-          "pageEnd": 107,
+          "ordinal": 110,
+          "pageStart": 109,
+          "pageEnd": 109,
           "headingPath": [
-            "14. Elements, Compounds and Mixtures"
+            "14. Elements, Compounds and Mixtures",
+            "t t t"
           ]
         }
       ],
       "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T17:26:17.926Z",
+      "generatedAt": "2026-11-02T04:25:53.430Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "Which of the following statements about elements is correct?",
+      "difficulty": 5,
+      "stem": "Which of the following is a method used to separate a mixture of semolina, salt, and iron filings?",
       "choices": [
-        "They can be broken down into simpler substances by chemical means",
-        "They are made of only one type of atom",
-        "They are made of two or more different elements",
-        "They are made of two or more substances"
+        "Filtration",
+        "Sublimation",
+        "Magnetism",
+        "Evaporation"
       ],
-      "answerIndex": 1,
-      "solution": "Elements are defined as substances made of only one type of atom, which is why this statement is correct. Elements cannot be broken down into simpler substances by chemical means, and they are not composed of multiple elements or substances.",
+      "answerIndex": 2,
+      "solution": "Magnetism is the correct method because iron filings are magnetic and can be attracted by a magnet, separating them from the mixture. Filtration cannot separate fine particles like semolina and salt from iron filings effectively. Sublimation is not applicable here as none of the substances sublime. Evaporation is used to separate a dissolved solid from a liquid, which is not the case here.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा कथन तत्वों के बारे में सही है?",
+          "stem": "निम्नलिखित में से कौन-सी विधि बर्फीले अनाज, नमक और लोहे के चूर्ण के मिश्रण को अलग करने के लिए उपयोग की जाती है?",
           "choices": [
-            "उन्हें रासायनिक विधियों द्वारा सरल अवयवों में अलग किया जा सकता है",
-            "वे केवल एक प्रकार के परमाणु से बने होते हैं",
-            "वे दो या अधिक विभिन्न तत्वों से बने होते हैं",
-            "वे दो या अधिक अवयवों से बने होते हैं"
+            "अपोलन",
+            "उत्केशन",
+            "चुंबकत्व",
+            "वाष्पीकरण"
           ],
-          "solution": "तत्वों को केवल एक प्रकार के परमाणु से बने हुए पदार्थ के रूप में परिभाषित किया जाता है, इसलिए यह कथन सही है। तत्वों को रासायनिक विधियों द्वारा सरल अवयवों में अलग नहीं किया जा सकता है, और वे कई तत्वों या अवयवों से निर्मित नहीं होते हैं।",
+          "solution": "चुंबकत्व सही विधि है क्योंकि लोहे के चूर्ण चुंबकीय होते हैं और एक चुंबक द्वारा आकर्षित किए जा सकते हैं, जिससे वे मिश्रण से अलग हो जाते हैं। अपोलन बर्फीले अनाज और नमक के छोटे कणों को लोहे के चूर्ण से अलग करने में प्रभावी नहीं होता है। उत्केशन यहां लागू नहीं होता है क्योंकि इनमें से कोई भी पदार्थ उत्केशित नहीं होता है। वाष्पीकरण का उपयोग एक द्रव में घुले ठोस को अलग करने के लिए किया जाता है, जो यहां नहीं है।",
           "imageAlt": null,
-          "critique": "Hindi translation accurately reflects the original English question and solution, with appropriate scientific terminology used in a Hindi-medium context.",
+          "critique": "Hindi translation accurately reflects the original English question and solution, with appropriate technical terms used in Indian curriculum.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी घटकांबद्दलचा कोणता विधान बरोबर आहे?",
+          "stem": "खालीलपैकी कोणता पद्धत चिकू, लवंग आणि लोह चूर्ण यांच्या मिश्रणाला विभक्त करण्यासाठी वापरला जातो?",
           "choices": [
-            "त्यांना रासायनिक पद्धतीने सोपे केले जाऊ शकते",
-            "ते केवळ एक प्रकारच्या परमाणूंनी बनलेले असतात",
-            "ते दोन किंवा अधिक वेगवेगळ्या घटकांनी बनलेले असतात",
-            "ते दोन किंवा अधिक द्रव्यांनी बनलेले असतात"
+            "विलगीकरण",
+            "उत्केलन",
+            "चुंबकत्व",
+            "वाष्पीकरण"
           ],
-          "solution": "घटक म्हणजे केवळ एक प्रकारच्या परमाणूंनी बनलेले द्रव्य असतात, ज्यामुळे हे विधान बरोबर आहे. घटक रासायनिक पद्धतीने सोपे करता येत नाहीत, आणि ते अनेक घटक किंवा द्रव्यांनी बनलेले नसतात.",
+          "solution": "चुंबकत्व ही योग्य पद्धत आहे कारण लोह चूर्ण चुंबकीय असतात आणि ते चुंबकाने आकर्षित केले जाऊ शकतात, ज्यामुळे ते मिश्रणापासून विभक्त होतात. विलगीकरण चिकू आणि लवंग यांच्या सूक्ष्म कणांना लोह चूर्णापासून असमर्थ असते. उत्केलन येथे अनुलक्षून नाही कारण येथे कोणतेही पदार्थ उत्केलित होत नाहीत. वाष्पीकरण द्रव पासून विरल घटक विभक्त करण्यासाठी वापरले जाते, जे येथे नाही.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
@@ -737,115 +834,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses elements with compounds",
+        "A method suitable for other types of mixtures",
+        "A method suitable for other types of mixtures",
         null,
-        "Chooses a statement about compounds",
-        "Chooses a definition of a mixture"
+        "A method suitable for other types of mixtures"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        2,
+        2,
+        2,
+        2,
+        2
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is option 1, as elements are defined as substances made of only one type of atom. The other options confuse elements with compounds or mixtures, which aligns with the author's reasoning.",
-      "sources": [
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 102,
-          "pageStart": 102,
-          "pageEnd": 102,
-          "headingPath": [
-            "14. Elements, Compounds and Mixtures"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 103,
-          "pageStart": 103,
-          "pageEnd": 103,
-          "headingPath": [
-            "14. Elements, Compounds and Mixtures"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 104,
-          "pageStart": 103,
-          "pageEnd": 104,
-          "headingPath": [
-            "14. Elements, Compounds and Mixtures"
-          ]
-        }
-      ],
-      "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T17:26:17.926Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "What happens when a compound is formed from its constituent elements?",
-      "choices": [
-        "It gains new properties",
-        "It loses all its properties",
-        "It retains the properties of its elements",
-        "It has properties different from its elements"
-      ],
-      "answerIndex": 3,
-      "solution": "When a compound is formed, it has properties different from its constituent elements. For example, water, a compound, has properties different from hydrogen and oxygen. This is because the elements are chemically combined in a new way.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "जब कोई यौगिक अपने घटक तत्वों से बनता है तो क्या होता है?",
-          "choices": [
-            "इसके नए गुण हो जाते हैं",
-            "इसके सभी गुण खो जाते हैं",
-            "इसके तत्वों के गुण बरकरार रहते हैं",
-            "इसके गुण इसके तत्वों से अलग होते हैं"
-          ],
-          "solution": "जब कोई यौगिक बनता है, तो इसके गुण अपने घटक तत्वों से अलग होते हैं। उदाहरण के लिए, पानी, एक यौगिक, हाइड्रोजन और ऑक्सीजन के गुणों से अलग होता है। इसका कारण यह है कि तत्व नए तरीके से रासायनिक रूप से जुड़े होते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका यौगिकाच्या घटक घटकांपासून तयार होत असताना काय होते?",
-          "choices": [
-            "त्याला नवीन गुणधर्म मिळतात",
-            "त्याला सर्व गुणधर्म गमवितात",
-            "त्याला त्याच्या घटकांचे गुणधर्म टिकतात",
-            "त्याला त्याच्या घटकांपेक्षा वेगळे गुणधर्म असतात"
-          ],
-          "solution": "एका यौगिकाच्या तयार होत असताना त्याला त्याच्या घटक घटकांपेक्षा वेगळे गुणधर्म असतात. उदाहरणार्थ, जल, एका यौगिकाचे, हायड्रोजन आणि ऑक्सिजनपेक्षा वेगळे गुणधर्म असतात. हे त्यामुळे होते कारण घटक नवीन प्रकारे रासायनिकरित्या जोडले जातात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific meaning. The term 'यौगिक' is the standard Marathi term for 'compound' and 'गुणधर्म' is the correct term for 'properties'.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Thinks compounds retain properties of elements",
-        "Thinks compounds lose properties of elements",
-        "Confuses compounds with mixtures",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 3, as compounds have properties different from their constituent elements. The author's reasoning is sound and aligns with scientific understanding. The distractors reflect common misconceptions about compounds and mixtures.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is magnetism, as it is the only method that directly targets iron filings. The other options are not suitable for this specific mixture.",
       "sources": [
         {
           "document": "balbharati/7/science/703020012.pdf",
@@ -876,7 +878,102 @@
         }
       ],
       "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T17:26:17.926Z",
+      "generatedAt": "2026-11-02T04:25:53.430Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following is not a compound?",
+      "choices": [
+        "Water",
+        "Oxygen",
+        "Carbon dioxide",
+        "Ammonia"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is oxygen. A compound is made up of two or more different elements. Oxygen is an element, not a compound. Water, carbon dioxide, and ammonia are all compounds made of different elements.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक यौगिक नहीं है?",
+          "choices": [
+            "जल",
+            "ऑक्सीजन",
+            "कार्बन डाइऑक्साइड",
+            "अमोनिया"
+          ],
+          "solution": "सही उत्तर ऑक्सीजन है। एक यौगिक दो या दो से अधिक विभिन्न तत्वों से मिलकर बना होता है। ऑक्सीजन एक तत्व है, यौगिक नहीं। जल, कार्बन डाइऑक्साइड और अमोनिया सभी विभिन्न तत्वों से बने यौगिक हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक अणू नाही?",
+          "choices": [
+            "पाणी",
+            "ऑक्सिजन",
+            "कार्बन डायऑक्साइड",
+            "अमोनिया"
+          ],
+          "solution": "बरोबर उत्तर ऑक्सिजन आहे. अणू हे दोन किंवा अधिक वेगवेगळ्या घटकांचा बनलेला असतो. ऑक्सिजन घटक आहे, अणू नाही. पाणी, कार्बन डायऑक्साइड आणि अमोनिया हे सर्व वेगवेगळ्या घटकांचे अणू आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses elements with compounds",
+        null,
+        "Thinks all gases are compounds",
+        "Thinks all pure substances are compounds"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. Oxygen is an element, not a compound, and the reasoning provided by the author is accurate. The distractors reflect common misconceptions about elements and compounds.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 105,
+          "pageStart": 104,
+          "pageEnd": 105,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 106,
+          "pageStart": 105,
+          "pageEnd": 106,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 107,
+          "pageStart": 106,
+          "pageEnd": 107,
+          "headingPath": [
+            "14. Elements, Compounds and Mixtures"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T04:25:53.430Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

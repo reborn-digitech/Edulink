@@ -1,0 +1,641 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T03:14:48.860Z",
+  "finishedAt": "2026-11-02T03:20:13.239Z",
+  "seconds": 324,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "703020012",
+    "document": "balbharati/7/science/703020012.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 1 — The Living World : Adaptations and Classification",
+    "edition": "First Edition 2017",
+    "chunks": 8,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2022-23]\n35. (a) The reason is that many multi-cellular organisms are not simply a random 5\ncollection of cells. Specialised cells are organised as tissues, and tissues are\norganised into organs, which then have to be placed at definite positions in the\nbody. Therefore, cell-by-cell division would be impractical. (2 marks)\n(b) Sexual maturation of reproductive tissues is a necessary link for reproduction\nbecause of the need for specialised cell called germ-cells to participate in\nsexual reproduction. The body of the individual organism has to grow to its\nadult size, the rate of general body growth begins to slow down, reproductive\ntissues begin to mature. (1½ marks)\nA whole new set of changes in the ",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n10. Which of the following adaptations in herbivores helps in digestions of 1\ncellulose?\nA. Longer large intestine\nB. Smaller large intestine\nC. Smaller small intestine\nD. Longer small intestine",
+      "[INJSO 2022 — question paper]\n11. The following observations were recorded after studying some organisms:\nCharacter Organism W Organism X Organism Y Organism Z\nWater essential for fertilization -\nFormation of filament from -\ngerminating spore\nPlant body sporophytic, differentiated +\nin root, stem and leaves\nMale and female sex organs arranged +\ncompactly in cone\nFemale gametophyte enveloped by +\nsingle layered covering\nTriploid tissue observed in zygote -\n+ - +\n- - +\n+ + -\n+ - -\n- - -\n- + -\nOn the basis of the data, identify the group of organisms:\nA. W- pteridophytes, X- bryophytes, Y- angiosperms, Z- gymnosperms\nB. W- angiosperms, X- gymnosperms, Y-pteridophytes, Z- bryophytes\nC. W- angiosperms, X- bryophytes, Y-gymnos",
+      "[CBSE Class X Science, sample question paper, 2022-23]\n35. (a) Why is it not possible to reconstruct the whole organism from a fragment in 5\ncomplex multicellular organisms?\n(b) Sexual maturation of reproductive tissues and organs are necessary link for\nreproduction. Elucidate.\nOR\n(a) How are variations useful for species if there is drastic alteration in the niches?\n(b) Explain how the uterus and placenta provide necessary conditions for proper\ngrowth and development of the embryo after implantation?"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 93021,
+      "in": 33,
+      "out": 32,
+      "rejects": 1,
+      "promptTokens": 26345,
+      "completionTokens": 5663
+    },
+    "critique": {
+      "calls": 39,
+      "ms": 203706,
+      "in": 32,
+      "out": 30,
+      "rejects": 2,
+      "promptTokens": 16146,
+      "completionTokens": 6641
+    },
+    "solver": {
+      "calls": 192,
+      "ms": 77814,
+      "in": 30,
+      "out": 25,
+      "rejects": 5,
+      "promptTokens": 25790,
+      "completionTokens": 1732
+    },
+    "form": {
+      "calls": 6,
+      "ms": 12084,
+      "in": 25,
+      "out": 12,
+      "rejects": 13,
+      "promptTokens": 1417,
+      "completionTokens": 419
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 13,
+      "ms": 1925,
+      "in": 12,
+      "out": 11,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 349002,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 22606,
+      "completionTokens": 10991
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 3,
+    "2": 2,
+    "3": 3,
+    "4": 1,
+    "5": 2,
+    "6": 0
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the main reason for the diversity of life on Earth according to the passage?",
+      "ms": {
+        "draft": 2756,
+        "critique": 6441,
+        "solver": 2409
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the function of the waxy layer on the leaves of aquatic plants?",
+      "ms": {
+        "draft": 2756,
+        "critique": 6710
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is an example of a parasitic plant?",
+      "ms": {
+        "draft": 2756,
+        "critique": 6608,
+        "solver": 9949,
+        "form": 1960
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the function of a bird's hollow bones?",
+      "ms": {
+        "draft": 3042,
+        "critique": 5114,
+        "solver": 1416,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why are adaptations gradual and continuous?",
+      "ms": {
+        "draft": 3042,
+        "critique": 5284,
+        "solver": 1237,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of binomial nomenclature according to the passage?",
+      "ms": {
+        "draft": 2903,
+        "critique": 5106,
+        "solver": 1707,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best describes the purpose of binomial nomenclature according to the passage?",
+      "ms": {
+        "draft": 2903,
+        "critique": 5558,
+        "solver": 1234,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about organisms in the same species?",
+      "ms": {
+        "draft": 2903,
+        "critique": 5619,
+        "solver": 1310,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student finds a plant with fleshy, green parts in a desert, which adaptation would help it survive according to the passage?",
+      "ms": {
+        "draft": 2903,
+        "critique": 5193,
+        "solver": 1690,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why is it important for organisms to be classified into species?",
+      "ms": {
+        "draft": 2903,
+        "critique": 4872,
+        "solver": 763
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a plant with haustorial roots according to the passage?",
+      "ms": {
+        "draft": 2903,
+        "critique": 4038,
+        "solver": 4096,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of binomial nomenclature?",
+      "ms": {
+        "draft": 2457,
+        "critique": 6248
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student found a plant in the desert and wants to identify it. Which of the following would help them determine if it belongs to a specific species?",
+      "ms": {
+        "draft": 2457,
+        "critique": 4815,
+        "solver": 1858
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student is told that an organism is classified in the same species as a domestic cat. Which of the following must be true about this organism?",
+      "ms": {
+        "draft": 2457,
+        "critique": 5839,
+        "solver": 1627,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is given the following information about an organism: It has haustorial roots, it lives in a desert, and it has a fleshy, green part that is not a leaf. Which of the following is it likely to be?",
+      "ms": {
+        "draft": 2457,
+        "critique": 6682,
+        "solver": 2188
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which adaptation helps birds reduce air resistance while flying?",
+      "ms": {
+        "draft": 2660,
+        "critique": 4248,
+        "solver": 1659,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an adaptation that helps frogs breathe underwater?",
+      "ms": {
+        "draft": 2660,
+        "critique": 7264,
+        "solver": 1394
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following is an example of an adaptation that helps an animal survive in a changing environment?",
+      "ms": {
+        "draft": 2660,
+        "critique": 5878,
+        "solver": 1515,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the function of the waxy layer on the leaves of aquatic plants?",
+      "ms": {
+        "draft": 3372,
+        "critique": 4626,
+        "solver": 7914,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a plant found in snowy regions?",
+      "ms": {
+        "draft": 3372,
+        "critique": 4677,
+        "solver": 9319,
+        "form": 951
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observes that an animal has a white body and long, thick hair. Which habitat is this animal most likely adapted to?",
+      "ms": {
+        "draft": 2660,
+        "critique": 5475,
+        "solver": 1514,
+        "form": 3455
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a plant that grows in a desert?",
+      "ms": {
+        "draft": 2756,
+        "critique": 5663,
+        "solver": 10702,
+        "form": 2609,
+        "translation": 34694
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of an adaptation in aquatic animals?",
+      "ms": {
+        "draft": 3042,
+        "critique": 6500,
+        "solver": 1820,
+        "form": 0,
+        "translation": 35121
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a feature of all organisms in a species?",
+      "ms": {
+        "draft": 2457,
+        "critique": 4786,
+        "solver": 1113,
+        "form": 0,
+        "translation": 34379
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for the adaptation of a frog's skin?",
+      "ms": {
+        "draft": 3042,
+        "critique": 4819,
+        "solver": 1534,
+        "form": 0,
+        "translation": 26092
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What helps a duck stay dry in water?",
+      "ms": {
+        "draft": 2660,
+        "critique": 4642,
+        "solver": 967,
+        "form": 0,
+        "translation": 22537
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which adaptation helps a cactus to survive in a desert?",
+      "ms": {
+        "draft": 2756,
+        "critique": 6035,
+        "solver": 11279,
+        "form": 2007,
+        "translation": 40790
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following animals would have long and tapering legs?",
+      "ms": {
+        "draft": 3042,
+        "critique": 5205,
+        "solver": 1376,
+        "form": 0,
+        "translation": 28642
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why do desert animals have thick skin?",
+      "ms": {
+        "draft": 2660,
+        "critique": 4914,
+        "solver": 983,
+        "form": 0,
+        "translation": 31531
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A penguin has a thick layer of fat under its skin. What is the purpose of this adaptation?",
+      "ms": {
+        "draft": 2457,
+        "critique": 6594,
+        "solver": 804,
+        "form": 0,
+        "translation": 26061
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Why are the branches of coniferous trees in snowy regions sloped?",
+      "ms": {
+        "draft": 2756,
+        "critique": 6617,
+        "solver": 10072,
+        "form": 2477,
+        "translation": 36714
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In which of the following environments would an animal with a white body color be most beneficial?",
+      "ms": {
+        "draft": 3042,
+        "critique": 5446,
+        "solver": 1218,
+        "form": 0,
+        "translation": 28679
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main reason for the diversity of life on Earth according to the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the function of the waxy layer on the leaves of aquatic plants?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is an example of a parasitic plant?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the function of a bird's hollow bones?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, why are adaptations gradual and continuous?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of binomial nomenclature according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, but it is the only…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following best describes the purpose of binomial nomenclature according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Confuses the purpose of binomial nomenclature with describin…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about organisms in the same species?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Confuses the definition of species with not being in the sam…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a student finds a plant with fleshy, green parts in a desert, which adaptation would help it survive according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, but it is the only…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "According to the passage, why is it important for organisms to be classified into species?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a plant with haustorial roots according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the main reason for the diversity of living things on Earth?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of binomial nomenclature?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound; option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A student found a plant in the desert and wants to identify it. Which of the following would help them determine if it belongs to a specific species?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student is told that an organism is classified in the same species as a domestic cat. Which of the following must be true about this organism?",
+      "reason": "options 2 and 3 say the same thing (\"It has the same colour as a domestic cat\" / \"It has the same size as a domestic cat\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student is given the following information about an organism: It has haustorial roots, it lives in a desert, and it has a fleshy, green part that is not a leaf. Which of the following is it likely to be?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which adaptation helps birds reduce air resistance while flying?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an adaptation that helps frogs breathe underwater?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, which of the following is an example of an adaptation that helps an animal survive in a changing environment?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the function of the waxy layer on the leaves of aquatic plants?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of a plant found in snowy regions?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A student observes that an animal has a white body and long, thick hair. Which habitat is this animal most likely adapted to?",
+      "reason": "near-duplicate of served question cmvwkuda802b80remkq1oql0k (cosine 0.918 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -21,47 +21,47 @@
   "board": "NCERT",
   "book": "Ganita Prakash Part-I",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-29T18:42:38.135Z",
+  "generatedAt": "2026-11-02T08:41:05.770Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 2,
-      "stem": "If the digital root of a number is 9, what is the remainder when the number is divided by 9?",
+      "stem": "Which of the following is a multiple of both 3 and 5?",
       "choices": [
-        "0",
-        "1",
-        "9",
-        "3"
+        "15",
+        "18",
+        "22",
+        "28"
       ],
       "answerIndex": 0,
-      "solution": "If the digital root of a number is 9, it means the number is divisible by 9. Therefore, the remainder when the number is divided by 9 is 0. The correct answer is 0. The option 1 is incorrect because it assumes the number is not divisible by 9. The option 2 is incorrect because it assumes the remainder is 9. The option 3 is incorrect because it assumes the remainder is 3.",
+      "solution": "A number divisible by both 3 and 5 must be a multiple of 15. Among the options, 15 is a multiple of 15. 18 is a multiple of 3 but not 5. 22 is not a multiple of either. 28 is not a multiple of either.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि किसी संख्या की डिजिटल मूल (digital root) 9 है, तो संख्या के 9 से भाग देने पर शेष क्या होगा?",
+          "stem": "निम्नलिखित में से कौन 3 और 5 दोनों का गुणज है?",
           "choices": [
-            "0",
-            "1",
-            "9",
-            "3"
+            "15",
+            "18",
+            "22",
+            "28"
           ],
-          "solution": "यदि किसी संख्या की डिजिटल मूल 9 है, तो इसका अर्थ है कि संख्या 9 से विभाज्य है। अतः संख्या के 9 से भाग देने पर शेष 0 होगा। सही उत्तर 0 है। विकल्प 1 गलत है क्योंकि यह मान लेता है कि संख्या 9 से विभाज्य नहीं है। विकल्प 2 गलत है क्योंकि यह मान लेता है कि शेष 9 है। विकल्प 3 गलत है क्योंकि यह मान लेता है कि शेष 3 है।",
+          "solution": "3 और 5 दोनों द्वारा विभाज्य एक संख्या 15 का गुणज होनी चाहिए। विकल्पों में से 15, 15 का गुणज है। 18, 3 का गुणज है लेकिन 5 का नहीं। 22, दोनों का गुणज नहीं है। 28, दोनों का गुणज नहीं है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate use of Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "एका संख्येचे डिजिटल मूल (digital root) 9 असल्यास, ती संख्या 9 ने भागल्यास उर्वरक काय असेल?",
+          "stem": "खालीलपैकी कोणता 3 आणि 5 दोन्हीचा गुणक आहे?",
           "choices": [
-            "0",
-            "1",
-            "9",
-            "3"
+            "15",
+            "18",
+            "22",
+            "28"
           ],
-          "solution": "जर एका संख्येचे डिजिटल मूल 9 असेल, तर ती संख्या 9 ने भागली जाऊ शकते. त्यामुळे ती संख्या 9 ने भागल्यास उर्वरक 0 असेल. योग्य उत्तर 0 आहे. पर्याय 1 अयोग्य आहे कारण तो संख्या 9 ने भागली जात नाही असे मानतो. पर्याय 2 अयोग्य आहे कारण तो उर्वरक 9 असेल असे मानतो. पर्याय 3 अयोग्य आहे कारण तो उर्वरक 3 असेल असे मानतो.",
+          "solution": "3 आणि 5 दोन्हीने विभाज्य असलेला नंबर 15 चा गुणक असणे आवश्यक आहे. विकल्पांमध्ये 15 हा 15 चा गुणक आहे. 18 हा 3 चा गुणक आहे पण 5 चा नाही. 22 हा कोणत्याही गुणक नाही. 28 हा कोणत्याही गुणक नाही.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -73,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Assumes the number is not divisible by 9",
-        "Confuses the digital root with the remainder",
-        "Chooses a random number that is not related to divisibility by 9"
+        "confuses divisibility by 3 and 5",
+        "knows divisibility by 3 but not by 5",
+        "does not know divisibility rules for 3 or 5, picks random number not divisible by either, selects a number not divisible by either"
       ],
       "solverAnswers": [
         0,
@@ -85,108 +85,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The solution is correct. A digital root of 9 implies the number is divisible by 9, so the remainder is 0. The author's reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp105.pdf",
-          "ordinal": 20,
-          "pageStart": 29,
-          "pageEnd": 31,
-          "headingPath": [
-            "Chapter 5: Number Play",
-            "SUMMARY",
-            "Navakankari"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp105.pdf",
-          "ordinal": 21,
-          "pageStart": 31,
-          "pageEnd": 32,
-          "headingPath": [
-            "Chapter 5: Number Play",
-            "SUMMARY",
-            "Navakankari"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp105.pdf",
-          "ordinal": 22,
-          "pageStart": 32,
-          "pageEnd": 33,
-          "headingPath": [
-            "Chapter 5: Number Play",
-            "SUMMARY",
-            "Navakankari"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T18:42:38.135Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the least common multiple (LCM) of 2, 3, and 4?",
-      "choices": [
-        "6",
-        "12",
-        "24",
-        "36"
-      ],
-      "answerIndex": 1,
-      "solution": "The least common multiple of 2, 3, and 4 is 12 because 12 is the smallest number that all three divide into without a remainder. 6 is too small because it is not divisible by 4. 24 and 36 are multiples of 12 but not the least one.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "2, 3 और 4 का लघुत्तम समापवर्त्य (LCM) क्या है?",
-          "choices": [
-            "6",
-            "12",
-            "24",
-            "36"
-          ],
-          "solution": "2, 3 और 4 का लघुत्तम समापवर्त्य 12 है क्योंकि 12 वह सबसे छोटी संख्या है जिसमें तीनों बिना शेष के विभाजित हो जाते हैं। 6 बहुत छोटा है क्योंकि यह 4 से विभाजित नहीं होता है। 24 और 36 12 के गुणज हैं लेकिन सबसे कम नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "2, 3 आणि 4 चा लघुसामायिक (LCM) किती आहे?",
-          "choices": [
-            "6",
-            "12",
-            "24",
-            "36"
-          ],
-          "solution": "2, 3 आणि 4 चा लघुसामायिक 12 आहे कारण 12 हा एक अशा संख्या आहे जी तीन बरोबर भाग जाते. 6 लहान आहे कारण ते 4 ने भाग जात नाही. 24 आणि 36 हे 12 चे गुणक आहेत परंतु ते लहान नाहीत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses LCM with GCD",
-        null,
-        "Chooses the first number in the sequence",
-        "Mistakenly adds the numbers together"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 12, which is the LCM of 2, 3, and 4. The author's reasoning is sound, and the misconceptions listed for the wrong options are plausible for students.",
+      "critique": "The solution is correct and aligns with the key. All distractors are properly identified as incorrect due to common misconceptions.",
       "sources": [
         {
           "document": "ncert/8/mathematics/hegp105.pdf",
@@ -223,246 +122,47 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T18:42:38.135Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following algebraic expressions always results in an even number?",
-      "choices": [
-        "4p + 4q",
-        "4p + 2",
-        "4p + 2q + 1",
-        "4p + 1"
-      ],
-      "answerIndex": 0,
-      "solution": "The expression 4p + 4q is always even because both terms are multiples of 4, and their sum is also a multiple of 4, which is even. The other options are not always even. 4p + 2 is even only if p is even, 4p + 2q is even, but not always, and 4p + 1 is always odd.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा बीजगणितीय व्यंजक हमेशा सम संख्या प्राप्त करता है?",
-          "choices": [
-            "4p + 4q",
-            "4p + 2",
-            "4p + 2q + 1",
-            "4p + 1"
-          ],
-          "solution": "व्यंजक 4p + 4q हमेशा सम होता है क्योंकि दोनों पद 4 के गुणज हैं, और उनका योग भी 4 का गुणज होता है, जो सम होता है। अन्य विकल्प हमेशा सम नहीं होते। 4p + 2 केवल तभी सम होता है जब p सम होता है, 4p + 2q सम होता है, लेकिन हमेशा नहीं, और 4p + 1 हमेशा विषम होता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते बीजगणितीय व्यंजक नेहमी सम अंक देते?",
-          "choices": [
-            "4p + 4q",
-            "4p + 2",
-            "4p + 2q + 1",
-            "4p + 1"
-          ],
-          "solution": "4p + 4q नेहमी सम असते कारण दोन्ही वर्ग चार चे गुणक असतात आणि त्यांचा बेरीज देखील चार चा गुणक असतो, जो सम अंक असतो. उरलेल्या व्यंजकांमध्ये 4p + 2 नेहमी सम असत नाही, 4p + 2q सम असतो पण नेहमी नाही, आणि 4p + 1 नेहमी विषम असतो.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the properties of even and odd numbers",
-        "Believes adding even numbers can sometimes result in an odd number due to a misunderstanding of parity rules",
-        "Believes that adding an odd number to an even number can result in an even number"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0 (4p + 4q), as it is always even. The author's reasoning is sound, and the misconceptions listed for the wrong options are plausible for students.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp105.pdf",
-          "ordinal": 3,
-          "pageStart": 5,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 5: Number Play",
-            "5.1 Is This a Multiple Of?"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp105.pdf",
-          "ordinal": 4,
-          "pageStart": 7,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 5: Number Play",
-            "5.1 Is This a Multiple Of?"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp105.pdf",
-          "ordinal": 5,
-          "pageStart": 9,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 5: Number Play",
-            "5.1 Is This a Multiple Of?"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T18:42:38.135Z",
+      "generatedAt": "2026-11-02T08:41:05.770Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "What will be the digital root of a number if 10 is added to it, given that its original digital root is 5?",
+      "stem": "Which of the following expressions is guaranteed to be even for all integer values of the variables?",
       "choices": [
-        "5",
-        "6",
-        "7",
-        "4"
+        "13k – 5k",
+        "3g + 5h + 1",
+        "6m – 3n",
+        "4m + 2n"
       ],
-      "answerIndex": 1,
-      "solution": "If the original digital root of a number is 5, then adding 10 (which has a digital root of 1) will increase the digital root by 1. Therefore, the new digital root will be 6. The correct answer is 6. The option 5 is incorrect because it assumes the digital root remains the same. The option 7 is incorrect because it assumes the digital root increases by 2. The option 4 is incorrect because it assumes the digital root decreases.",
+      "answerIndex": 3,
+      "solution": "The expression 4m + 2n will always be even because both 4m and 2n are even for any integer values of m and n. Their sum will also be even. The other options involve combinations of odd and even numbers, which may result in odd or even numbers depending on the values of the variables, so they are not guaranteed to be even.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक संख्या का डिजिटल मूल क्या होगा यदि इसमें 10 जोड़ा जाए, जबकि इसका मूल डिजिटल मूल 5 है?",
+          "stem": "निम्न में से कौन-सा व्यंजक सभी पूर्णांक मानों के लिए एक विषम संख्या होने की गारंटी देता है?",
           "choices": [
-            "5",
-            "6",
-            "7",
-            "4"
+            "13k – 5k",
+            "3g + 5h + 1",
+            "6m – 3n",
+            "4m + 2n"
           ],
-          "solution": "यदि किसी संख्या का मूल डिजिटल मूल 5 है, तो 10 (जिसका डिजिटल मूल 1 है) जोड़ने से डिजिटल मूल में 1 की वृद्धि होगी। इसलिए नया डिजिटल मूल 6 होगा। सही उत्तर 6 है। विकल्प 5 गलत है क्योंकि यह मान लेता है कि डिजिटल मूल अपरिवर्तित रहता है। विकल्प 7 गलत है क्योंकि यह मान लेता है कि डिजिटल मूल में 2 की वृद्धि होती है। विकल्प 4 गलत है क्योंकि यह मान लेता है कि डिजिटल मूल घट जाता है।",
+          "solution": "व्यंजक 4m + 2n हमेशा एक सम संख्या होगा क्योंकि m और n के किसी भी पूर्णांक मानों के लिए 4m और 2n दोनों सम होते हैं। उनका योग भी सम होगा। अन्य विकल्प विषम और सम संख्याओं के संयोजन के साथ होते हैं, जो चर के मानों पर निर्भर करके विषम या सम हो सकते हैं, इसलिए वे एक सम संख्या होने की गारंटी नहीं देते।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms like 'डिजिटल मूल' which is the standard term in Hindi mathematics textbooks.",
-          "flag": null
+          "critique": "The stem and solution have opposite meaning (odd vs even). The rest are correct.",
+          "flag": "translation critique: meaning changed"
         },
         "mr": {
-          "stem": "एका संख्येचे डिजिटल मूल्य 5 असल्यास, जर त्यात 10 मिळवला तर डिजिटल मूल्य काय असेल?",
+          "stem": "खालीलपैकी कोणते व्यंजक चलांच्या सर्व पूर्णांक मूल्यांसाठी सुनिश्चित एक सम संख्या असते?",
           "choices": [
-            "5",
-            "6",
-            "7",
-            "4"
+            "13k – 5k",
+            "3g + 5h + 1",
+            "6m – 3n",
+            "4m + 2n"
           ],
-          "solution": "जर एका संख्येचे डिजिटल मूल्य 5 असेल, तर 10 (ज्याचे डिजिटल मूल्य 1 आहे) मिळवल्याने डिजिटल मूल्य 1 ने वाढेल. म्हणून नवीन डिजिटल मूल्य 6 असेल. योग्य उत्तर 6 आहे. विकल्प 5 अयोग्य आहे कारण तो डिजिटल मूल्य समान राहते असे मानतो. विकल्प 7 अयोग्य आहे कारण तो डिजिटल मूल्य 2 ने वाढते असे मानतो. विकल्प 4 अयोग्य आहे कारण तो डिजिटल मूल्य कमी होते असे मानतो.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology for 'digital root' (डिजिटल मूल्य).",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Assumes the digital root does not change when 10 is added",
-        null,
-        "Adds 2 instead of 1 to the original digital root",
-        "Subtracts 1 instead of adding 1 to the original digital root"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct. Adding 10 (digital root 1) to a number with digital root 5 increases the digital root by 1, resulting in 6. The reasoning for the distractors matches common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp105.pdf",
-          "ordinal": 20,
-          "pageStart": 29,
-          "pageEnd": 31,
-          "headingPath": [
-            "Chapter 5: Number Play",
-            "SUMMARY",
-            "Navakankari"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp105.pdf",
-          "ordinal": 21,
-          "pageStart": 31,
-          "pageEnd": 32,
-          "headingPath": [
-            "Chapter 5: Number Play",
-            "SUMMARY",
-            "Navakankari"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp105.pdf",
-          "ordinal": 22,
-          "pageStart": 32,
-          "pageEnd": 33,
-          "headingPath": [
-            "Chapter 5: Number Play",
-            "SUMMARY",
-            "Navakankari"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T18:42:38.135Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "Based on the explanation provided, what is the reason that all expressions formed by four consecutive numbers with '+' and '-' signs have the same parity?",
-      "choices": [
-        "The numbers are always even",
-        "The number of '+' and '-' signs are the same",
-        "Changing a sign changes the value by an even number",
-        "The sum of the numbers is always even"
-      ],
-      "answerIndex": 2,
-      "solution": "Changing a sign in the expression changes the value by an even number, which means all expressions have the same parity. The other options are incorrect because the numbers can be odd, the number of '+' and '-' signs can vary, and the sum of four consecutive numbers is not always even.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "उपलब्ध स्पष्टीकरण के आधार पर, चार लगातार संख्याओं से बने सभी अभिव्यक्तियाँ जिनमें '+' और '-' चिह्न होते हैं, एक ही समानता (parity) क्यों होती हैं?",
-          "choices": [
-            "संख्याएँ हमेशा सम होती हैं",
-            "'+' और '-' चिह्नों की संख्या समान होती है",
-            "चिह्न बदलने से मान एक सम संख्या बदल जाता है",
-            "संख्याओं का योग हमेशा सम होता है"
-          ],
-          "solution": "अभिव्यक्ति में चिह्न बदलने से मान एक सम संख्या बदल जाता है, जिसका अर्थ है कि सभी अभिव्यक्तियाँ एक ही समानता रखती हैं। अन्य विकल्प गलत हैं क्योंकि संख्याएँ विषम भी हो सकती हैं, '+' और '-' चिह्नों की संख्या भिन्न-भिन्न हो सकती है, और चार लगातार संख्याओं का योग हमेशा सम नहीं होता।",
-          "imageAlt": null,
-          "critique": "The translation accurately reflects the original meaning, maintains the correct answer position, keeps the distractors incorrect, and uses appropriate Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "दिलेल्या स्पष्टीकरणानुसार, चार लगतच्या संख्यांनी बनलेल्या व्यंजकांमध्ये '+' आणि '-' चे चिन्हे असताना त्यांची समान विषमता का असते?",
-          "choices": [
-            "संख्या नेहमी सम असतात",
-            "'+' आणि '-' चे चिन्हांची संख्या समान असते",
-            "चिन्ह बदलणे मूल्यात एक जोड संख्या बदलते",
-            "संख्यांची बेरीज नेहमी सम असते"
-          ],
-          "solution": "व्यंजकातील चिन्ह बदलणे मूल्यात एक जोड संख्या बदलते, ज्यामुळे सर्व व्यंजकांची समान विषमता असते. इतर विकल्प चुकीचे आहेत कारण संख्या विषम असू शकतात, '+' आणि '-' चे चिन्हांची संख्या बदलू शकते आणि चार लगतच्या संख्यांची बेरीज नेहमी सम असत नाही.",
+          "solution": "व्यंजक 4m + 2n सदैव सम असतो कारण m आणि n च्या कोणत्याही पूर्णांक मूल्यांसाठी 4m आणि 2n दोन्ही सम असतात. त्यांच्या बेरजेचा देखील निश्चितपणे सम असतो. इतर विकल्पांमध्ये विषम आणि सम संख्यांचे संयोजन असते, जे चलांच्या मूल्यांवर अवलंबून असते, त्यामुळे ते सुनिश्चितपणे सम असत नाहीत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -473,20 +173,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Assumes all numbers are even",
-        "Fails to recognize that the number of '+' and '-' signs can vary",
-        null,
-        "Misunderstands the explanation about how changing a sign affects the value"
+        "Student thinks subtracting multiples of k preserves evenness regardless of k's value",
+        "Believes adding odd numbers always results in even, ignoring the effect of coefficients and constants",
+        "Student thinks subtracting an odd number from an even number always results in an even number",
+        null
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        3,
+        3,
+        3,
+        3,
+        3
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2, as changing a sign in the expression changes the value by an even number, which preserves the parity. The other options are incorrect for the reasons given.",
+      "levelFlag": null,
+      "critique": "The correct answer is 3 (4m + 2n), as both 4m and 2n are always even. The other options can be odd depending on variable values. The author's reasoning is accurate and the misconceptions listed for the distractors are plausible.",
       "sources": [
         {
           "document": "ncert/8/mathematics/hegp105.pdf",
@@ -520,49 +220,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T18:42:38.135Z",
+      "generatedAt": "2026-11-02T08:41:05.770Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "If a number is divisible by 8, and another number is also divisible by 8, what can we say about their sum?",
+      "difficulty": 3,
+      "stem": "If a number is divisible by 15, what must be true about its last digit?",
       "choices": [
-        "It is always divisible by 8",
-        "It is sometimes divisible by 16",
-        "It is never divisible by 16",
-        "It is always divisible by 16"
+        "It is 0",
+        "It is 5",
+        "It is 0 or 5",
+        "It is 2"
       ],
-      "answerIndex": 0,
-      "solution": "If two numbers are divisible by 8, their sum will also be divisible by 8. This is because the sum of two multiples of 8 is another multiple of 8. The other options are incorrect. The sum is not always divisible by 16, and it is not sometimes or never divisible by 8.",
+      "answerIndex": 2,
+      "solution": "A number divisible by 15 must be divisible by both 3 and 5. For a number to be divisible by 5, its last digit must be 0 or 5. 0 is a valid option, as is 5. 2 is not a valid option for divisibility by 5.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि कोई संख्या 8 से विभाज्य है, और दूसरी संख्या भी 8 से विभाज्य है, तो हम क्या कह सकते हैं?",
+          "stem": "यदि कोई संख्या 15 से विभाज्य है, तो इसके अंतिम अंक के बारे में क्या सत्य होना चाहिए?",
           "choices": [
-            "इसका अर्थ हमेशा 8 से विभाज्य होता है",
-            "इसका अर्थ कभी-कभी 16 से विभाज्य होता है",
-            "इसका अर्थ कभी-कभी 16 से विभाज्य नहीं होता है",
-            "इसका अर्थ हमेशा 16 से विभाज्य होता है"
+            "यह 0 है",
+            "यह 5 है",
+            "यह 0 या 5 है",
+            "यह 2 है"
           ],
-          "solution": "यदि दो संख्याएं 8 से विभाज्य हैं, तो उनका योग भी 8 से विभाज्य होगा। इसका कारण यह है कि 8 के दो गुणजों का योग एक अन्य 8 का गुणज होता है। अन्य विकल्प गलत हैं। योग हमेशा 16 से विभाज्य नहीं होता है, और यह 8 से विभाज्य नहीं होता है।",
+          "solution": "एक संख्या जो 15 से विभाज्य होती है, वह 3 और 5 दोनों से विभाज्य होनी चाहिए। किसी संख्या के 5 से विभाज्य होने के लिए, इसका अंतिम अंक 0 या 5 होना चाहिए। 0 एक वैध विकल्प है, जैसा कि 5 भी है। 5 से विभाज्यता के लिए 2 एक वैध विकल्प नहीं है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "critique": "Translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "एका संख्येला 8 ने भाग जातो, आणि दुसरी संख्याही 8 ने भाग जाते, तर त्यांच्या बेरजेबद्दल आपण काय म्हणू शकतो?",
+          "stem": "एक संख्या 15 ने विभाज्य असल्यास, तिच्या शेवटच्या अंकाबद्दल काय खात्री असावी?",
           "choices": [
-            "ती नेहमी 8 ने भाग जाते",
-            "ती वेळोवेळी 16 ने भाग जाते",
-            "ती कधीही 16 ने भाग जात नाही",
-            "ती नेहमी 16 ने भाग जाते"
+            "तो 0 असतो",
+            "तो 5 असतो",
+            "तो 0 किंवा 5 असतो",
+            "तो 2 असतो"
           ],
-          "solution": "जर दोन संख्या 8 ने भाग जात असतील, तर त्यांच्या बेरजेला 8 ने भाग जाईल. हे कारण दोन 8 च्या गुणकांची बेरीज देखील 8 चा गुणक असते. इतर विकल्प चुकीचे आहेत. बेरीज नेहमी 16 ने भाग जात नाही, आणि 8 ने भाग जात नाही असे नाही.",
+          "solution": "एक संख्या 15 ने विभाज्य असावी म्हणजे ती 3 आणि 5 ने विभाज्य असावी. एका संख्येला 5 ने विभाज्य असावे म्हणजे तिच्या शेवटचा अंक 0 किंवा 5 असावा. 0 एक वैध विकल्प आहे, तसेच 5 देखील वैध विकल्प आहे. 2 ला 5 ने विभाज्यतेसाठी वैध विकल्प नाही.",
           "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the English question and solution, with appropriate mathematical terminology used in Marathi.",
+          "critique": "The translation is accurate, maintains the logical structure, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -571,216 +271,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "forgets that 0 is also a valid digit for divisibility by 5",
+        "only remembers that 5 is a valid digit for divisibility by 5",
         null,
-        "Student thinks that if numbers are divisible by 8, their sum might only sometimes be divisible by a higher multiple like 16",
-        "Students might think that if two numbers are divisible by 8, their sum cannot be divisible by a higher multiple like 16",
-        "Confuses the divisibility of the sum with the need for the sum to be a higher multiple of the original divisor"
+        "does not understand the rule for divisibility by 5, selects a number not valid for divisibility by 5"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. The sum of two numbers divisible by 8 is always divisible by 8, but not necessarily by 16. The reasoning for the distractors reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp105.pdf",
-          "ordinal": 3,
-          "pageStart": 5,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 5: Number Play",
-            "5.1 Is This a Multiple Of?"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp105.pdf",
-          "ordinal": 4,
-          "pageStart": 7,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 5: Number Play",
-            "5.1 Is This a Multiple Of?"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp105.pdf",
-          "ordinal": 5,
-          "pageStart": 9,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 5: Number Play",
-            "5.1 Is This a Multiple Of?"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T18:42:38.135Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If a number is divisible by 7, and another number is also divisible by 7, what can we say about their sum?",
-      "choices": [
-        "It is always divisible by 7",
-        "It is sometimes divisible by 7",
-        "It is never divisible by 7",
-        "It is always divisible by 14"
-      ],
-      "answerIndex": 0,
-      "solution": "If two numbers are divisible by 7, their sum will also be divisible by 7. This is because the sum of two multiples of 7 is another multiple of 7. The other options are incorrect. The sum is not always divisible by 14, and it is not sometimes or never divisible by 7.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि कोई संख्या 7 द्वारा विभाज्य है, और दूसरी संख्या भी 7 द्वारा विभाज्य है, तो हम क्या कह सकते हैं?",
-          "choices": [
-            "यह हमेशा 7 द्वारा विभाज्य होता है",
-            "यह कभी-कभी 7 द्वारा विभाज्य होता है",
-            "यह कभी-कभी 7 द्वारा विभाज्य नहीं होता है",
-            "यह हमेशा 14 द्वारा विभाज्य होता है"
-          ],
-          "solution": "यदि दो संख्याएँ 7 द्वारा विभाज्य हैं, तो उनका योग भी 7 द्वारा विभाज्य होगा। इसका कारण यह है कि 7 के दो गुणजों का योग भी 7 का गुणज होता है। अन्य विकल्प गलत हैं। योग हमेशा 14 द्वारा विभाज्य नहीं होता है, और यह 7 द्वारा विभाज्य नहीं होता है या कभी-कभी विभाज्य होता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका संख्येला 7 ने भाग जातो, आणि दुसरी संख्याही 7 ने भाग जाते, तर त्यांच्या बेरजेबद्दल आपण काय म्हणू शकतो?",
-          "choices": [
-            "ती नेहमी 7 ने भाग जाते",
-            "ती कधीकधी 7 ने भाग जाते",
-            "ती कधीही 7 ने भाग जात नाही",
-            "ती नेहमी 14 ने भाग जाते"
-          ],
-          "solution": "जर दोन संख्या 7 ने भाग जात असतील, तर त्यांच्या बेरजेला 7 ने भाग जाईल. हे कारण दोन 7 च्या गुणकांची बेरीज देखील 7 चा गुणक असते. इतर विकल्प चुकीचे आहेत. बेरीज नेहमी 14 ने भाग जात नाही, आणि 7 ने भाग जात नाही असे नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for divisibility and multiples.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Thinks that the sum of two multiples of 7 is not always a multiple of 7",
-        "Believes that the sum could only be divisible by 14 in some cases",
-        "Mistakenly thinks that the sum might not be divisible by 7 at all"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and aligns with mathematical principles. The sum of two numbers divisible by 7 is always divisible by 7, making option 0 the only valid choice.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp105.pdf",
-          "ordinal": 3,
-          "pageStart": 5,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 5: Number Play",
-            "5.1 Is This a Multiple Of?"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp105.pdf",
-          "ordinal": 4,
-          "pageStart": 7,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 5: Number Play",
-            "5.1 Is This a Multiple Of?"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp105.pdf",
-          "ordinal": 5,
-          "pageStart": 9,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 5: Number Play",
-            "5.1 Is This a Multiple Of?"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T18:42:38.135Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "If a number is divisible by 11, which of the following statements is always true?",
-      "choices": [
-        "The number is divisible by 2",
-        "1: The number is divisible by 3",
-        "The number is divisible by 4",
-        "The number is divisible by 22"
-      ],
-      "answerIndex": 3,
-      "solution": "If a number is divisible by 11, doubling it results in 22k, which is always divisible by 22. Other options are not necessarily true.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि कोई संख्या 11 से विभाज्य है, तो निम्नलिखित में से कौन-सा कथन हमेशा सत्य है?",
-          "choices": [
-            "संख्या 2 से विभाज्य है",
-            "संख्या 3 से विभाज्य है",
-            "संख्या 4 से विभाज्य है",
-            "संख्या 22 से विभाज्य है"
-          ],
-          "solution": "यदि कोई संख्या 11 से विभाज्य है, तो इसको दोगुना करने पर 22k प्राप्त होता है, जो हमेशा 22 से विभाज्य होता है। अन्य विकल्प आवश्यक रूप से सत्य नहीं होते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एक संख्या 11 ने भाग जात असेल, तर खालीलपैकी कोणता विधान नेहमी खरा असतो?",
-          "choices": [
-            "संख्या 2 ने भाग जाते",
-            "संख्या 3 ने भाग जाते",
-            "संख्या 4 ने भाग जाते",
-            "संख्या 22 ने भाग जाते"
-          ],
-          "solution": "जर एक संख्या 11 ने भाग जात असेल, तर तिचे दुप्पट करणे 22k मिळते, जे नेहमी 22 ने भाग जाते. इतर विधाने नेहमी खरी नसतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Chooses 2 because 11 is even",
-        "Confuses divisibility by 11 with divisibility by 3 due to similar rules for checking divisibility",
-        "Confusing divisibility rules for 11 with those for 4",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 3, as any number divisible by 11 is also divisible by 22 when doubled. The author's reasoning is flawed, as the solution should focus on the fact that divisibility by 11 does not imply divisibility by 2, 3, or 4. The reasoning for the distractors is valid.",
+      "levelFlag": null,
+      "critique": "The solution is correct. A number divisible by 15 must be divisible by both 3 and 5. Divisibility by 5 requires the last digit to be 0 or 5, making option 2 correct. The other options represent common misconceptions about divisibility by 5.",
       "sources": [
         {
           "document": "ncert/8/mathematics/hegp105.pdf",
@@ -817,7 +321,418 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T18:42:38.135Z",
+      "generatedAt": "2026-11-02T08:41:05.770Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "If the middle number in a sequence of 5 consecutive even numbers is 5p, what is the third number in the sequence?",
+      "choices": [
+        "5p - 2",
+        "5p - 4",
+        "5p + 2",
+        "5p + 4"
+      ],
+      "answerIndex": 0,
+      "solution": "The sequence of 5 consecutive even numbers around the middle number 5p is 5p - 4, 5p - 2, 5p, 5p + 2, 5p + 4. The third number is 5p - 2. 5p - 4 is the first number. 5p + 2 is the fourth number. 5p + 4 is the fifth number.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि 5 क्रमागत सम संख्याओं के अनुक्रम में मध्य संख्या 5p है, तो अनुक्रम में तीसरी संख्या क्या है?",
+          "choices": [
+            "5p - 2",
+            "5p - 4",
+            "5p + 2",
+            "5p + 4"
+          ],
+          "solution": "5 क्रमागत सम संख्याओं के अनुक्रम में मध्य संख्या 5p है, जो 5p - 4, 5p - 2, 5p, 5p + 2, 5p + 4 है। तीसरी संख्या 5p - 2 है। 5p - 4 पहली संख्या है। 5p + 2 चौथी संख्या है। 5p + 4 पांचवीं संख्या है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "5 अंकांच्या एका क्रमवारीतील मध्य अंक 5p असेल, तर त्या क्रमवारीतील तिसरा अंक काय असेल?",
+          "choices": [
+            "5p - 2",
+            "5p - 4",
+            "5p + 2",
+            "5p + 4"
+          ],
+          "solution": "5p च्या आ se 5 अंकांची क्रमवारी 5p - 4, 5p - 2, 5p, 5p + 2, 5p + 4 असेल. तिसरा अंक 5p - 2 असेल. 5p - 4 हा पहिला अंक असेल. 5p + 2 हा चौथा अंक असेल. 5p + 4 हा पाचवा अंक असेल.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The solution and options are correctly aligned with the English version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses the position of the first number",
+        "confuses the position of the fourth number",
+        "confuses the position of the fifth number"
+      ],
+      "solverAnswers": [
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies the sequence and the position of the third number. The reasoning for the distractors is accurate for a student who might confuse positions in the sequence.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 23,
+          "pageStart": 34,
+          "pageEnd": 35,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "SUMMARY",
+            "Navakankari"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 24,
+          "pageStart": 35,
+          "pageEnd": 36,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "SUMMARY",
+            "Navakankari"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 25,
+          "pageStart": 36,
+          "pageEnd": 37,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "SUMMARY",
+            "Navakankari"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T08:41:05.770Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A number is divisible by 12. Which of the following statements is always true?",
+      "choices": [
+        "The number is divisible by 10",
+        "The number is divisible by 3",
+        "The number is divisible by 5",
+        "The number is divisible by 8"
+      ],
+      "answerIndex": 1,
+      "solution": "A number divisible by 12 must also be divisible by its factors. Since 3 is a factor of 12, the number will always be divisible by 3. The number is not guaranteed to be divisible by 10, 5, or 8 because none of these are factors of 12.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक संख्या 12 से विभाज्य है। निम्नलिखित में से कौन सा कथन हमेशा सत्य है?",
+          "choices": [
+            "संख्या 10 से विभाज्य है",
+            "संख्या 3 से विभाज्य है",
+            "संख्या 5 से विभाज्य है",
+            "संख्या 8 से विभाज्य है"
+          ],
+          "solution": "12 से विभाज्य एक संख्या अपने गुणनखंडों से भी विभाज्य होती है। चूंकि 3, 12 का गुणनखंड है, इसलिए संख्या हमेशा 3 से विभाज्य होगी। 10, 5 या 8 से विभाज्य होने की गारंटी नहीं है क्योंकि इनमें से कोई भी 12 का गुणनखंड नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक संख्या 12 ने भाग जाते. खालील विधानांपैकी कोणते विधान नेहमी खरे असते?",
+          "choices": [
+            "संख्या 10 ने भाग जाते",
+            "संख्या 3 ने भाग जाते",
+            "संख्या 5 ने भाग जाते",
+            "संख्या 8 ने भाग जाते"
+          ],
+          "solution": "12 ने भाग जाणारी संख्या तिच्या अपवर्तकांनी भाग जाईल. कारण 3 हा 12 चा अपवर्तक आहे, तर संख्या नेहमी 3 ने भाग जाईल. 10, 5 किंवा 8 ने भाग जाण्याची खात्री नाही कारण या संख्या 12 च्या अपवर्तक नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses divisibility by 12 with divisibility by 10 due to similar number of factors",
+        null,
+        "Chooses a number not a factor of 12",
+        "Chooses a number not a factor of 12"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. A number divisible by 12 must be divisible by all its factors, and 3 is a factor of 12. The other options are not factors of 12 and are therefore incorrect.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "5.1 Is This a Multiple Of?"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "5.1 Is This a Multiple Of?"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "5.1 Is This a Multiple Of?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T08:41:05.770Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a number is not divisible by 18, what can be said about its divisibility by 9?",
+      "choices": [
+        "It is never divisible by 9.",
+        "It is always divisible by 9.",
+        "It is sometimes divisible by 9.",
+        "It is not possible to determine."
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is 'It is sometimes divisible by 9.' A number not divisible by 18 may still be divisible by 9 because 9 is a factor of 18, but not all multiples of 9 are multiples of 18. For example, 27 is divisible by 9 but not by 18. The other options are incorrect because a number not divisible by 18 can still be divisible by 9, and it is not always or never the case.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई संख्या 18 द्वारा विभाज्य नहीं है, तो इसके 9 द्वारा विभाज्य होने के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "यह कभी-भी 9 द्वारा विभाज्य नहीं होती।",
+            "यह हमेशा 9 द्वारा विभाज्य होती है।",
+            "यह कभी-कभी 9 द्वारा विभाज्य होती है।",
+            "निर्धारित करना संभव नहीं है।"
+          ],
+          "solution": "सही उत्तर 'यह कभी-कभी 9 द्वारा विभाज्य होती है।' है। कोई संख्या 18 द्वारा विभाज्य नहीं हो सकती, फिर भी यह 9 द्वारा विभाज्य हो सकती है क्योंकि 9, 18 का गुणक है, लेकिन 9 के सभी गुणज 18 के गुणज नहीं होते। उदाहरण के लिए, 27, 9 द्वारा विभाज्य है लेकिन 18 द्वारा विभाज्य नहीं है। अन्य विकल्प गलत हैं क्योंकि कोई संख्या 18 द्वारा विभाज्य नहीं हो सकती, फिर भी यह 9 द्वारा विभाज्य हो सकती है, और यह हमेशा या कभी-कभी ऐसा नहीं होता।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the logical structure, and uses appropriate mathematical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक संख्या 18 ने भाग जात नसेल, तर तिच्या 9 ने भाग जाण्याबद्दल काय म्हणायला शकता?",
+          "choices": [
+            "ती 9 ने भाग जात नाही.",
+            "ती नेहमी 9 ने भाग जाते.",
+            "ती कधी-कधी 9 ने भाग जाते.",
+            "निश्चित करणे शक्य नाही."
+          ],
+          "solution": "योग्य उत्तर 'ती कधी-कधी 9 ने भाग जाते.' आहे. 18 ने भाग जाणारी संख्या 9 ने भाग जाऊ शकते, कारण 9 हा 18 चा घटक आहे, परंतु सर्व 9 चे गुणक 18 चे गुणक नसतात. उदाहरणार्थ, 27 ही 9 ने भाग जाते परंतु 18 ने भाग जात नाही. इतर विकल्प चुकीचे आहेत कारण 18 ने भाग जाणारी संख्या 9 ने भाग जाऊ शकते, आणि हे नेहमी किंवा कधीही नाही असे नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the logical structure, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly assumes that not being divisible by 18 means not divisible by 9",
+        "Incorrectly assumes that not being divisible by 18 implies divisibility by 9",
+        null,
+        "Confuses divisibility by 18 with divisibility by 9, thinking that knowing a number isn't divisible by 18 gives no information about its divisibility by 9."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as a number not divisible by 18 can still be divisible by 9 (e.g., 27). The reasoning in the solution is sound and matches the key.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 16,
+          "pageStart": 22,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 17,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "SUMMARY",
+            "Navakankari"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 18,
+          "pageStart": 26,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "SUMMARY",
+            "Navakankari"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 19,
+          "pageStart": 27,
+          "pageEnd": 29,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "SUMMARY",
+            "Navakankari"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T08:41:05.770Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If the product of three consecutive integers is always a multiple of 6, what is the least possible value of the product of four consecutive integers?",
+      "choices": [
+        "24",
+        "12",
+        "6",
+        "0"
+      ],
+      "answerIndex": 0,
+      "solution": "The product of three consecutive integers is always divisible by 6, and the product of four consecutive integers will always be divisible by 24, which is 4 × 3 × 2 × 1. 24 is the least possible value. 12 is not divisible by 4, 6 is not divisible by 4, and 0 is not the least possible positive value.",
+      "checkExpr": "4*3*2*1",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि तीन लगातार पूर्णांकों का गुणनफल हमेशा 6 का गुणज होता है, तो चार लगातार पूर्णांकों के गुणनफल का न्यूनतम संभावित मान क्या है?",
+          "choices": [
+            "24",
+            "12",
+            "6",
+            "0"
+          ],
+          "solution": "तीन लगातार पूर्णांकों का गुणनफल हमेशा 6 से विभाज्य होता है, और चार लगातार पूर्णांकों का गुणनफल हमेशा 24 से विभाज्य होता है, जो 4 × 3 × 2 × 1 है। 24 न्यूनतम संभावित मान है। 12, 4 से विभाज्य नहीं है, 6, 4 से विभाज्य नहीं है, और 0, न्यूनतम संभावित धनात्मक मान नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तीन लगती अंकगणितीय संख्यांचा गुणाकार हमेशा 6 चा गुणक असतो, तर चार लगती अंकगणितीय संख्यांचा गुणाकार याचा न्यूनतम संभाव्य मूल्य काय असेल?",
+          "choices": [
+            "24",
+            "12",
+            "6",
+            "0"
+          ],
+          "solution": "तीन लगती अंकगणितीय संख्यांचा गुणाकार हमेशा 6 चा गुणक असतो, आणि चार लगती अंकगणितीय संख्यांचा गुणाकार हमेशा 24 चा गुणक असतो, जो 4 × 3 × 2 × 1 आहे. 24 हा न्यूनतम संभाव्य मूल्य आहे. 12, 4 चा गुणक नाही, 6, 4 चा गुणक नाही, आणि 0 हा न्यूनतम संभाव्य धनात्मक मूल्य नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses the rule for divisibility by 4",
+        "knows the rule for divisibility by 6 but not for 4",
+        "does not understand the concept of least possible value"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 24, as the product of four consecutive integers is always divisible by 24. The author's key is correct, but their reasoning is flawed because 0 is not a positive number and the question implicitly asks for the least positive value.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 23,
+          "pageStart": 34,
+          "pageEnd": 35,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "SUMMARY",
+            "Navakankari"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 24,
+          "pageStart": 35,
+          "pageEnd": 36,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "SUMMARY",
+            "Navakankari"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 25,
+          "pageStart": 36,
+          "pageEnd": 37,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "SUMMARY",
+            "Navakankari"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T08:41:05.770Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

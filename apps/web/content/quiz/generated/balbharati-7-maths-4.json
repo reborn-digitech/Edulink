@@ -21,49 +21,49 @@
   "board": "BALBHARATI",
   "book": "७ वी गणित इंग्रजी",
   "edition": "2026 edition",
-  "generatedAt": "2026-10-31T10:59:29.825Z",
+  "generatedAt": "2026-11-01T21:20:57.629Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the sum of the measures of two complementary angles?",
+      "stem": "Which of the following describes angles in a linear pair?",
       "choices": [
-        "90°",
-        "180°",
-        "360°",
-        "60°"
+        "They are complementary",
+        "They are vertical angles",
+        "They are adjacent and supplementary",
+        "They are adjacent and complementary"
       ],
-      "answerIndex": 0,
-      "solution": "Complementary angles are defined as two angles whose measures add up to 90°. This is a fundamental concept in geometry. The other options are incorrect because 180° refers to supplementary angles, 360° is the total around a point, and 60° is not a standard sum for any specific angle relationship.",
+      "answerIndex": 2,
+      "solution": "Angles in a linear pair are adjacent and supplementary because they form a straight line, which measures 180°. Complementary angles add up to 90°, which is incorrect for a linear pair. Vertical angles are opposite each other and not adjacent, so they do not form a linear pair. Adjacent and complementary angles would only add up to 90°, not 180°.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "दो पूरक कोणों के मापों का योग क्या है?",
+          "stem": "निम्नलिखित में से कौन-सा रेखीय युग्म में कोणों का वर्णन करता है?",
           "choices": [
-            "90°",
-            "180°",
-            "360°",
-            "60°"
+            "वे पूरक होते हैं",
+            "वे ऊर्ध्वाधर कोण होते हैं",
+            "वे संलग्न और सम्पूरक होते हैं",
+            "वे संलग्न और पूरक होते हैं"
           ],
-          "solution": "पूरक कोण दो कोण होते हैं जिनके मापों का योग 90° होता है। यह ज्यामिति की एक मूलभूत अवधारणा है। अन्य विकल्प गलत हैं क्योंकि 180° संपूरक कोणों के लिए होता है, 360° एक बिंदु के चारों ओर कुल होता है, और 60° कोण संबंध के किसी भी मानक योग के लिए नहीं होता है।",
+          "solution": "रेखीय युग्म में कोण संलग्न और सम्पूरक होते हैं क्योंकि वे एक सीधी रेखा बनाते हैं जिसका माप 180° होता है। पूरक कोण 90° तक जोड़ते हैं, जो रेखीय युग्म के लिए गलत है। ऊर्ध्वाधर कोण एक दूसरे के विपरीत होते हैं और संलग्न नहीं होते, इसलिए वे रेखीय युग्म नहीं बनाते। संलग्न और पूरक कोण केवल 90° तक जोड़ते हैं, 180° नहीं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard terminology from Hindi-medium textbooks.",
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi geometry terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "दोन पूरक कोनांच्या मापांची बेरीज किती असते?",
+          "stem": "खालीलपैकी कोणते रेषीय जोडीतील कोनांचे वर्णन करते?",
           "choices": [
-            "90°",
-            "180°",
-            "360°",
-            "60°"
+            "ते पूरक असतात",
+            "ते व्हर्टिकल कोन असतात",
+            "ते जवळचे आणि संपूरक असतात",
+            "ते जवळचे आणि पूरक असतात"
           ],
-          "solution": "पूरक कोन म्हणजे दोन कोन ज्यांच्या मापांची बेरीज 90° असते. हे ज्यामितीतील एक मूलभूत संकल्पना आहे. इतर विकल्प अयोग्य आहेत कारण 180° हा पूरक कोनांचा निर्देश करतो, 360° हा एका बिंदू भोवतीचा एकूण बरोबरी आहे आणि 60° हा कोणत्याही विशिष्ट कोन संबंधाचा मानक बेरीज नाही.",
+          "solution": "रेषीय जोडीतील कोन जवळचे आणि संपूरक असतात कारण ते एका सरळ रेषेचा भाग बनतात, ज्याचा माप 180° असतो. पूरक कोन 90° एकूण करतात, जे रेषीय जोडीसाठी अयोग्य आहे. व्हर्टिकल कोन एकमेकांच्या विरुद्ध असतात आणि जवळचे नसतात, म्हणून ते रेषीय जोडी निर्माण करत नाहीत. जवळचे आणि पूरक कोन 90° एकूण करतील, 180° नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for geometry concepts.",
+          "critique": "The translation is accurate and maintains the mathematical meaning. Technical terms like 'पूरक' (complementary) and 'संपूरक' (supplementary) are correctly used in Marathi.",
           "flag": null
         }
       },
@@ -72,210 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Confuses complementary with supplementary angles",
+        "Incorrectly identifies vertical angles as linear pairs",
         null,
-        "confuses complementary with supplementary angles",
-        "incorrectly assumes the sum of two angles is 180°",
-        "Confuses complementary angles with equilateral triangle angles"
+        "Confuses supplementary with complementary angles"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": null,
-      "critique": "The question is clear and the correct answer is 90°, as complementary angles are defined as two angles whose sum is 90°. The distractors reflect common misconceptions, such as confusing complementary with supplementary angles or equating them with angles in an equilateral triangle.",
-      "sources": [
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 22,
-          "pageStart": 34,
-          "pageEnd": 35,
-          "headingPath": [
-            "4. Angles and Pairs of Angles"
-          ]
-        },
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 23,
-          "pageStart": 36,
-          "pageEnd": 37,
-          "headingPath": [
-            "4. Angles and Pairs of Angles"
-          ]
-        },
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 24,
-          "pageStart": 37,
-          "pageEnd": 39,
-          "headingPath": [
-            "4. Angles and Pairs of Angles"
-          ]
-        }
-      ],
-      "edition": "2026 edition",
-      "generatedAt": "2026-10-31T10:59:29.825Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If two angles are supplementary and one of them measures 120°, what is the measure of the other angle?",
-      "choices": [
-        "60°",
-        "70°",
-        "90°",
-        "100°"
-      ],
-      "answerIndex": 0,
-      "solution": "Supplementary angles are defined as two angles that add up to 180°. If one angle is 120°, the other must be 180° - 120° = 60°. The other options do not result in a sum of 180° when added to 120°.",
-      "checkExpr": "180-120",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि दो कोण संपूरक हैं और उनमें से एक का माप 120° है, तो दूसरे कोण का माप क्या है?",
-          "choices": [
-            "60°",
-            "70°",
-            "90°",
-            "100°"
-          ],
-          "solution": "संपूरक कोण ऐसे कोण होते हैं जिनका योग 180° होता है। यदि एक कोण 120° है, तो दूसरा कोण 180° - 120° = 60° होगा। अन्य विकल्प 120° के साथ जोड़ने पर 180° के योग के बराबर नहीं होते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर दोन कोन अपूरक असून एकाचा माप 120° असेल, तर दुसऱ्या कोनाचे माप किती असेल?",
-          "choices": [
-            "60°",
-            "70°",
-            "90°",
-            "100°"
-          ],
-          "solution": "अपूरक कोन म्हणजे दोन कोन ज्यांच्या बेरजेने 180° मिळतात. जर एक कोन 120° असेल तर दुसरा 180° - 120° = 60° असेल. उरलेल्या विकल्पांमध्ये 120° ला जोडल्यास 180° मिळत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses supplementary angles with complementary angles, thinking 180 - 120 = 70 instead of 60.",
-        "Confuses supplementary angles with complementary angles, thinking they add to 90° instead of 180°",
-        "Mistakenly subtracts 80° instead of 60° from 180°"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct and aligns with the definition of supplementary angles. The reasoning for the distractors is plausible and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 22,
-          "pageStart": 34,
-          "pageEnd": 35,
-          "headingPath": [
-            "4. Angles and Pairs of Angles"
-          ]
-        },
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 23,
-          "pageStart": 36,
-          "pageEnd": 37,
-          "headingPath": [
-            "4. Angles and Pairs of Angles"
-          ]
-        },
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 24,
-          "pageStart": 37,
-          "pageEnd": 39,
-          "headingPath": [
-            "4. Angles and Pairs of Angles"
-          ]
-        }
-      ],
-      "edition": "2026 edition",
-      "generatedAt": "2026-10-31T10:59:29.825Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If two angles are in a linear pair, what is their sum?",
-      "choices": [
-        "90°",
-        "180°",
-        "270°",
-        "360°"
-      ],
-      "answerIndex": 1,
-      "solution": "Angles in a linear pair are supplementary, meaning their sum is 180°. The other options are incorrect because 90° is the sum of complementary angles, 270° and 360° are not possible for angles in a linear pair.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि दो कोण एक रेखीय युग्म में हों, तो उनका योग क्या होगा?",
-          "choices": [
-            "90°",
-            "180°",
-            "270°",
-            "360°"
-          ],
-          "solution": "एक रेखीय युग्म में कोण संपूरक होते हैं, जिसका अर्थ है कि उनका योग 180° होता है। अन्य विकल्प गलत हैं क्योंकि 90° पूरक कोणों का योग है, 270° और 360° एक रेखीय युग्म में कोणों के लिए संभव नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर दोन कोन रेषीय जोडीत असतील, तर त्यांची बेरीज किती असते?",
-          "choices": [
-            "90°",
-            "180°",
-            "270°",
-            "360°"
-          ],
-          "solution": "रेषीय जोडीतील कोन संपूरक असतात, म्हणजे त्यांची बेरीज 180° असते. इतर विकल्प चुकीचे आहेत कारण 90° ही संपूरक कोनांची बेरीज आहे, 270° आणि 360° रेषीय जोडीतील कोनांसाठी शक्य नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for geometry concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses linear pair with complementary angles",
-        null,
-        "Believes that a linear pair forms a three-quarters circle instead of a straight line",
-        "Confuses linear pair with full circle angle measure"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed. The correct answer is 180°, as angles in a linear pair are supplementary. The distractors reflect common misconceptions about angle relationships.",
+      "critique": "The correct answer is option 2, as angles in a linear pair are adjacent and supplementary. The author's solution and reasoning are accurate and align with standard geometric definitions.",
       "sources": [
         {
           "document": "balbharati/7/mathematics/703020004.pdf",
@@ -306,54 +116,149 @@
         }
       ],
       "edition": "2026 edition",
-      "generatedAt": "2026-10-31T10:59:29.825Z",
+      "generatedAt": "2026-11-01T21:20:57.629Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "In the given figure, if ∠ABC and ∠ABD form a linear pair, and ∠ABC = 50°, what is the measure of ∠ABD?",
+      "difficulty": 2,
+      "stem": "Which of the following is an example of a pair of complementary angles?",
       "choices": [
-        "130°",
-        "50°",
-        "90°",
-        "180°"
+        "45° and 45°",
+        "60° and 30°",
+        "90° and 45°",
+        "120° and 60°"
       ],
-      "answerIndex": 0,
-      "solution": "A linear pair of angles always adds up to 180°. Since ∠ABC is 50°, ∠ABD must be 180° - 50° = 130°. The option 50° is the same as ∠ABC and does not complete the linear pair, 90° is not the sum of a linear pair, and 180° would mean the angles are not separate.",
-      "checkExpr": "180-50",
+      "answerIndex": 1,
+      "solution": "Complementary angles are two angles whose measures add up to 90°. The pair 60° and 30° adds to 90°, so they are complementary. The other options do not sum to 90°, so they are not complementary.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "दिए गए आकृति में, यदि ∠ABC और ∠ABD एक रैखिक युग्म बनाते हैं, और ∠ABC = 50°, तो ∠ABD का माप क्या है?",
+          "stem": "निम्नलिखित में से कौन-सा पूरक कोणों के एक युग्म का उदाहरण है?",
           "choices": [
-            "130°",
-            "50°",
-            "90°",
-            "180°"
+            "45° और 45°",
+            "60° और 30°",
+            "90° और 45°",
+            "120° और 60°"
           ],
-          "solution": "एक रैखिक युग्म के कोण हमेशा 180° के बराबर होते हैं। ∠ABC 50° है, इसलिए ∠ABD के 180° - 50° = 130° होना चाहिए। 50° वाला विकल्प ∠ABC के समान है और रैखिक युग्म पूरा नहीं करता है, 90° एक रैखिक युग्म के योग के बराबर नहीं है, और 180° के अर्थ यह है कि कोण अलग-अलग नहीं है।",
-          "imageAlt": "एक आकृति में बिंदु A, B, C, D हैं जिनमें रेखाएँ AB, BC, BD और 50° का कोण ABC है।",
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for geometry concepts.",
+          "solution": "पूरक कोण वे कोण होते हैं जिनके मापों का योग 90° होता है। 60° और 30° का योग 90° होता है, इसलिए वे पूरक हैं। अन्य विकल्प 90° के योग के बराबर नहीं हैं, इसलिए वे पूरक नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "दिलेल्या आकृतीत, जर ∠ABC आणि ∠ABD एक रेषीय जोडी बनवतात, आणि ∠ABC = 50°, तर ∠ABD चे माप किती आहे?",
+          "stem": "खालीलपैकी कोणते अंशांच्या जोड्याचे उदाहरण आहे?",
           "choices": [
-            "130°",
-            "50°",
-            "90°",
-            "180°"
+            "45° आणि 45°",
+            "60° आणि 30°",
+            "90° आणि 45°",
+            "120° आणि 60°"
           ],
-          "solution": "रेषीय जोडीतील कोनांचे एकूण 180° असते. कारण ∠ABC 50° आहे, तर ∠ABD चे माप 180° - 50° = 130° असेल. 50° हा विकल्प ∠ABC च्या समान आहे आणि रेषीय जोडी पूर्ण करत नाही, 90° रेषीय जोडीचे बेरीज नाही, आणि 180° असल्यास कोन वेगळे नसतात.",
-          "imageAlt": "बिंदू A, B, C, D असलेली आकृती, रेषा AB, BC, BD आणि 50° मापाचा कोन ABC.",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "solution": "अपूर्णांक कोन हे असे कोन आहेत ज्यांच्या मापांची बेरीज 90° असते. 60° आणि 30° ची बेरीज 90° असल्यामुळे ते अपूर्णांक कोन आहेत. इतर विकल्प 90° ची बेरीज करत नाहीत, म्हणून ते अपूर्णांक कोन नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for 'complementary angles' (अपूर्णांक कोन).",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": "A diagram showing points A, B, C, D with lines AB, BC, BD and angle ABC of 50°.",
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "This pair adds up to 90°, but it is not the correct example as per the question's context.",
+        null,
+        "believes complementary angles can include a right angle and another angle",
+        "This pair adds up to 180°, which is the definition of supplementary angles."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1 (60° and 30°), as they sum to 90°, which is the definition of complementary angles. The author's reasoning is sound, and the misconceptions for the wrong options are valid.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 22,
+          "pageStart": 34,
+          "pageEnd": 35,
+          "headingPath": [
+            "4. Angles and Pairs of Angles"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 23,
+          "pageStart": 36,
+          "pageEnd": 37,
+          "headingPath": [
+            "4. Angles and Pairs of Angles"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 24,
+          "pageStart": 37,
+          "pageEnd": 39,
+          "headingPath": [
+            "4. Angles and Pairs of Angles"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-01T21:20:57.629Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If ∠PQR and ∠RQS form a linear pair and m∠PQR = 110°, what is the measure of ∠RQS?",
+      "choices": [
+        "70°",
+        "80°",
+        "90°",
+        "100°"
+      ],
+      "answerIndex": 0,
+      "solution": "A linear pair of angles means their sum is 180°. If ∠PQR is 110°, then ∠RQS is 180° - 110° = 70°. The option '80°' would be chosen by someone who subtracts 100° instead of 110°. The option '90°' would be chosen by someone who thinks ∠RQS is a right angle. The option '100°' would be chosen by someone who adds the angles instead of subtracting them.",
+      "checkExpr": "180-110",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि ∠PQR और ∠RQS एक रैखिक युग्म बनाते हैं और m∠PQR = 110°, तो ∠RQS का माप क्या है?",
+          "choices": [
+            "70°",
+            "80°",
+            "90°",
+            "100°"
+          ],
+          "solution": "एक रैखिक युग्म के कोणों का योग 180° होता है। यदि ∠PQR 110° है, तो ∠RQS 180° - 110° = 70° होगा। '80°' विकल्प को कोणों को घटाने के बजाय जोड़ने वाला चुन सकता है। '90°' विकल्प को कोण के एक समकोण होने का गलत विचार हो सकता है। '100°' विकल्प को कोणों को जोड़ देने वाला चुन सकता है।",
+          "imageAlt": "एक आलेख जो ∠PQR और ∠RQS के एक रैखिक युग्म को दर्शाता है।",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology. The correct answer remains option (1) and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर ∠PQR आणि ∠RQS एक रेषीय जोडी बनवत असतील आणि m∠PQR = 110°, तर ∠RQS चे माप किती असेल?",
+          "choices": [
+            "70°",
+            "80°",
+            "90°",
+            "100°"
+          ],
+          "solution": "रेषीय जोडीच्या कोनांचे बेरीज 180° असते. जर ∠PQR 110° असेल तर ∠RQS हा कोन 180° - 110° = 70° असेल. '80°' असा उत्तर निवडला जाईल जर कोणी 100° ची बेरीज केली असेल. '90°' असा उत्तर निवडला जाईल जर कोणी ∠RQS ला समकोन मानला असेल. '100°' असा उत्तर निवडला जाईल जर कोणी कोनांची बेरीज केली असेल.",
+          "imageAlt": "एक रेषीय जोडीच्या कोनांचे आकृती ∠PQR आणि ∠RQS दर्शवते.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi geometry terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A diagram showing a linear pair of angles ∠PQR and ∠RQS.",
       "figure": {
         "kind": "geometry",
         "spec": {
@@ -361,32 +266,492 @@
             "xMin": 0,
             "xMax": 10,
             "yMin": 0,
-            "yMax": 7,
+            "yMax": 10,
+            "unit": "cm"
+          },
+          "points": [
+            {
+              "id": "P",
+              "x": 1,
+              "y": 5,
+              "label": "P"
+            },
+            {
+              "id": "Q",
+              "x": 5,
+              "y": 5,
+              "label": "Q"
+            },
+            {
+              "id": "R",
+              "x": 5,
+              "y": 1,
+              "label": "R"
+            },
+            {
+              "id": "S",
+              "x": 9,
+              "y": 5,
+              "label": "S"
+            }
+          ],
+          "segments": [
+            {
+              "from": "P",
+              "to": "Q",
+              "label": "PQ"
+            },
+            {
+              "from": "Q",
+              "to": "R",
+              "label": "QR"
+            },
+            {
+              "from": "Q",
+              "to": "S",
+              "label": "QS"
+            }
+          ],
+          "angles": [
+            {
+              "vertex": "Q",
+              "from": "P",
+              "to": "S",
+              "measure": 180,
+              "label": "PQS"
+            }
+          ]
+        },
+        "labels": {
+          "P": {
+            "en": "P"
+          },
+          "Q": {
+            "en": "Q"
+          },
+          "R": {
+            "en": "R"
+          },
+          "S": {
+            "en": "S"
+          },
+          "PQ": {
+            "en": "PQ",
+            "hi": "PQ",
+            "mr": "PQ"
+          },
+          "QR": {
+            "en": "QR",
+            "hi": "QR",
+            "mr": "QR"
+          },
+          "QS": {
+            "en": "QS",
+            "hi": "QS",
+            "mr": "QS"
+          },
+          "PQS": {
+            "en": "PQS",
+            "hi": "PQS",
+            "mr": "PQS"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        null,
+        "subtracts the wrong angle from the total",
+        "thinks ∠RQS is a right angle",
+        "adds the angles instead of subtracting"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the definition of a linear pair. The reasoning for the distractors is sound and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 22,
+          "pageStart": 34,
+          "pageEnd": 35,
+          "headingPath": [
+            "4. Angles and Pairs of Angles"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 23,
+          "pageStart": 36,
+          "pageEnd": 37,
+          "headingPath": [
+            "4. Angles and Pairs of Angles"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 24,
+          "pageStart": 37,
+          "pageEnd": 39,
+          "headingPath": [
+            "4. Angles and Pairs of Angles"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-01T21:20:57.629Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If an angle measures 40°, what is the measure of its complement?",
+      "choices": [
+        "40°",
+        "50°",
+        "60°",
+        "140°"
+      ],
+      "answerIndex": 1,
+      "solution": "Complementary angles are two angles whose measures add up to 90°. To find the complement of 40°, subtract 40° from 90°, resulting in 50°. The other options do not add up to 90° when combined with 40°.",
+      "checkExpr": "90-40",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोण का माप 40° है, तो इसके पूरक का माप क्या है?",
+          "choices": [
+            "40°",
+            "50°",
+            "60°",
+            "140°"
+          ],
+          "solution": "पूरक कोण दो कोण होते हैं जिनके मापों का योग 90° होता है। 40° के पूरक को ज्ञात करने के लिए 90° में से 40° घटाएं, जिसके परिणामस्वरूप 50° प्राप्त होता है। अन्य विकल्प 40° के साथ जोड़ने पर 90° नहीं बनते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question, with appropriate terminology and correct answer placement.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर कोनाचा माप 40° असेल, तर त्याच्या पूरक कोनाचा माप किती असेल?",
+          "choices": [
+            "40°",
+            "50°",
+            "60°",
+            "140°"
+          ],
+          "solution": "पूरक कोन हे अशा दोन कोनांचे जोडे आहेत ज्यांच्या मापांची बेरीज 90° असते. 40° चा पूरक कोन शोधण्यासाठी, 90° मधून 40° वजा करा, ज्यामुळे 50° मिळतो. उरलेल्या विकल्पांमध्ये 40° सह बेरीज 90° नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for 'complementary angles' and 'measure'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "This is the given angle, not its complement.",
+        null,
+        "This is the correct answer, but a pupil might think that 90° - 40° = 60°.",
+        "This is the supplement of 40°, not its complement."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that complementary angles add up to 90°, and the calculation 90° - 40° = 50° is accurate. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 22,
+          "pageStart": 34,
+          "pageEnd": 35,
+          "headingPath": [
+            "4. Angles and Pairs of Angles"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 23,
+          "pageStart": 36,
+          "pageEnd": 37,
+          "headingPath": [
+            "4. Angles and Pairs of Angles"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 24,
+          "pageStart": 37,
+          "pageEnd": 39,
+          "headingPath": [
+            "4. Angles and Pairs of Angles"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-01T21:20:57.629Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In the figure, ∠AOB is a straight angle. What is the measure of ∠AOC if m∠BOC = 70°?",
+      "choices": [
+        "110°",
+        "100°",
+        "90°",
+        "70°"
+      ],
+      "answerIndex": 0,
+      "solution": "Since ∠AOB is a straight angle, it measures 180°. If ∠BOC is 70°, then ∠AOC is 180° minus 70°, which is 110°. The option '100°' would be chosen by someone who subtracts 80° instead of 70°. The option '90°' would be chosen by someone who thinks ∠AOC is a right angle. The option '70°' would be chosen by someone who confuses ∠BOC with ∠AOC.",
+      "checkExpr": "180-70",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "चित्र में, ∠AOB एक सीधा कोण है। यदि m∠BOC = 70° है, तो ∠AOC का माप क्या है?",
+          "choices": [
+            "110°",
+            "100°",
+            "90°",
+            "70°"
+          ],
+          "solution": "क्योंकि ∠AOB एक सीधा कोण है, इसका माप 180° है। यदि ∠BOC 70° है, तो ∠AOC 180° में से 70° घटाने पर 110° होता है। '100°' वाला विकल्प कोई 80° के बजाय 70° को घटाने से चुन सकता है। '90°' वाला विकल्प कोई ऐसा व्यक्ति चुन सकता है जो सोचता है कि ∠AOC एक समकोण है। '70°' वाला विकल्प कोई ऐसा व्यक्ति चुन सकता है जो ∠BOC को ∠AOC के साथ भूल जाता है।",
+          "imageAlt": "एक आकृति जिसमें AOB एक सीधा कोण है जिसका शीर्ष बिंदु O है।",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate geometric terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आकृतीत, ∠AOB एक सरळ कोन आहे. जर m∠BOC = 70° असेल तर ∠AOC चे माप किती असेल?",
+          "choices": [
+            "110°",
+            "100°",
+            "90°",
+            "70°"
+          ],
+          "solution": "कारण ∠AOB एक सरळ कोन आहे, त्यामुळे त्याचे माप 180° आहे. जर ∠BOC 70° असेल तर ∠AOC हा 180° वजा 70° असेल, जो 110° आहे. 100° ची निवड कोणी 80° वजा करत असेल तर केली जाऊ शकते. 90° ची निवड कोणी ∠AOC ला समकोन मानत असेल तर केली जाऊ शकते. 70° ची निवड कोणी ∠BOC आणि ∠AOC ची चूक करत असेल तर केली जाऊ शकते.",
+          "imageAlt": "एक आकृती जी सरळ कोन AOB दर्शवते जेथे O शीर्ष आहे.",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology common in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A diagram showing a straight angle AOB with point O as the vertex.",
+      "figure": {
+        "kind": "geometry",
+        "spec": {
+          "frame": {
+            "xMin": 0,
+            "xMax": 10,
+            "yMin": 0,
+            "yMax": 10,
             "unit": "cm"
           },
           "points": [
             {
               "id": "A",
-              "x": 2,
-              "y": 3,
+              "x": 1,
+              "y": 5,
+              "label": "A"
+            },
+            {
+              "id": "O",
+              "x": 5,
+              "y": 5,
+              "label": "O"
+            },
+            {
+              "id": "C",
+              "x": 9,
+              "y": 5,
+              "label": "C"
+            }
+          ],
+          "segments": [
+            {
+              "from": "A",
+              "to": "O",
+              "label": "AO"
+            },
+            {
+              "from": "O",
+              "to": "C",
+              "label": "OC"
+            }
+          ],
+          "angles": [
+            {
+              "vertex": "O",
+              "from": "A",
+              "to": "C",
+              "measure": 180,
+              "label": "AOB"
+            }
+          ]
+        },
+        "labels": {
+          "A": {
+            "en": "A"
+          },
+          "O": {
+            "en": "O"
+          },
+          "C": {
+            "en": "C"
+          },
+          "AO": {
+            "en": "AO",
+            "hi": "AO",
+            "mr": "AO"
+          },
+          "OC": {
+            "en": "OC",
+            "hi": "OC",
+            "mr": "OC"
+          },
+          "AOB": {
+            "en": "AOB",
+            "hi": "AOB",
+            "mr": "AOB"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        null,
+        "subtracts the wrong angle from the total",
+        "thinks ∠AOC is a right angle",
+        "confuses ∠BOC with ∠AOC"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and logically follows from the properties of straight angles. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 22,
+          "pageStart": 34,
+          "pageEnd": 35,
+          "headingPath": [
+            "4. Angles and Pairs of Angles"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 23,
+          "pageStart": 36,
+          "pageEnd": 37,
+          "headingPath": [
+            "4. Angles and Pairs of Angles"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 24,
+          "pageStart": 37,
+          "pageEnd": 39,
+          "headingPath": [
+            "4. Angles and Pairs of Angles"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-01T21:20:57.629Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In the figure, ∠ABC and ∠ABD are adjacent angles. If m∠ABC = 30° and m∠ABD = 150°, what is the measure of ∠CBD?",
+      "choices": [
+        "120°",
+        "100°",
+        "90°",
+        "60°"
+      ],
+      "answerIndex": 0,
+      "solution": "Since ∠ABC and ∠ABD are adjacent, ∠CBD can be found by subtracting ∠ABC from ∠ABD. 150° - 30° = 120°. The option '100°' would be chosen by someone who subtracts 50° instead of 30°. The option '90°' would be chosen by someone who thinks ∠CBD is a right angle. The option '60°' would be chosen by someone who subtracts the wrong angle from the total.",
+      "checkExpr": "150-30",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "आकृति में, ∠ABC और ∠ABD संलग्न कोण हैं। यदि m∠ABC = 30° और m∠ABD = 150°, तो ∠CBD का माप क्या है?",
+          "choices": [
+            "120°",
+            "100°",
+            "90°",
+            "60°"
+          ],
+          "solution": "क्योंकि ∠ABC और ∠ABD संलग्न हैं, ∠CBD को ∠ABD में से ∠ABC को घटाकर ज्ञात किया जा सकता है। 150° - 30° = 120°। '100°' वाला विकल्प कोई व्यक्ति 50° के बजाय 30° घटाने से चुन सकता है। '90°' वाला विकल्प कोई व्यक्ति जो ∠CBD को समकोण समझता है, चुन सकता है। '60°' वाला विकल्प कोई व्यक्ति जो गलत कोण को कुल से घटाता है, चुन सकता है।",
+          "imageAlt": "एक आकृति जिसमें दो संलग्न कोण, ∠ABC और ∠ABD हैं, जिनमें ∠ABC का माप 30° है और ∠ABD का माप 150° है।",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आकृतीत, ∠ABC आणि ∠ABD असंलग्न कोन आहेत. जर m∠ABC = 30° आणि m∠ABD = 150° असेल, तर ∠CBD चे माप किती आहे?",
+          "choices": [
+            "120°",
+            "100°",
+            "90°",
+            "60°"
+          ],
+          "solution": "कारण ∠ABC आणि ∠ABD असंलग्न आहेत, ∠CBD चे माप ∠ABC चे माप ∠ABD मधून वजा करून मिळते. 150° - 30° = 120°. '100°' असा उत्तर कोणीतरी 50° वजा करताना घेतला असेल. '90°' असा उत्तर कोणीतरी ∠CBD ला समकोन मानताना घेतला असेल. '60°' असा उत्तर कोणीतरी चुकीचा कोन वजा करताना घेतला असेल.",
+          "imageAlt": "दोन असंलग्न कोन, ∠ABC आणि ∠ABD दर्शविणारी आकृती, जिथे ∠ABC चे माप 30° आहे आणि ∠ABD चे माप 150° आहे.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for geometry.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A diagram showing two adjacent angles, ∠ABC and ∠ABD, with ∠ABC measuring 30° and ∠ABD measuring 150°.",
+      "figure": {
+        "kind": "geometry",
+        "spec": {
+          "frame": {
+            "xMin": 0,
+            "xMax": 10,
+            "yMin": 0,
+            "yMax": 10,
+            "unit": "cm"
+          },
+          "points": [
+            {
+              "id": "A",
+              "x": 1,
+              "y": 5,
               "label": "A"
             },
             {
               "id": "B",
               "x": 5,
-              "y": 3,
+              "y": 5,
               "label": "B"
             },
             {
               "id": "C",
-              "x": 2,
+              "x": 7,
               "y": 5,
               "label": "C"
             },
             {
               "id": "D",
-              "x": 8,
-              "y": 3,
+              "x": 9,
+              "y": 5,
               "label": "D"
             }
           ],
@@ -412,52 +777,64 @@
               "vertex": "B",
               "from": "A",
               "to": "C",
-              "measure": 50,
+              "measure": 30,
               "label": "ABC"
+            },
+            {
+              "vertex": "B",
+              "from": "A",
+              "to": "D",
+              "measure": 150,
+              "label": "ABD"
             }
           ]
         },
         "labels": {
           "A": {
-            "en": "Point A"
+            "en": "A"
           },
           "B": {
-            "en": "Point B"
+            "en": "B"
           },
           "C": {
-            "en": "Point C"
+            "en": "C"
           },
           "D": {
-            "en": "Point D"
+            "en": "D"
           },
           "AB": {
-            "en": "Line AB",
-            "hi": "रेखा AB",
-            "mr": "रेषा AB"
+            "en": "AB",
+            "hi": "AB",
+            "mr": "AB"
           },
           "BC": {
-            "en": "Line BC",
-            "hi": "रेखा BC",
-            "mr": "रेषा BC"
+            "en": "BC",
+            "hi": "BC",
+            "mr": "BC"
           },
           "BD": {
-            "en": "Line BD",
-            "hi": "रेखा BD",
-            "mr": "रेषा BD"
+            "en": "BD",
+            "hi": "BD",
+            "mr": "BD"
           },
           "ABC": {
-            "en": "Angle ABC",
-            "hi": "कोण ABC",
-            "mr": "कोन ABC"
+            "en": "ABC",
+            "hi": "ABC",
+            "mr": "ABC"
+          },
+          "ABD": {
+            "en": "ABD",
+            "hi": "ABD",
+            "mr": "ABD"
           }
         }
       },
       "needsFigure": true,
       "distractorReason": [
         null,
-        "Believes that angles in a linear pair are equal, confusing them with vertical angles",
-        "Confuses linear pair with right angle",
-        "Believes that a linear pair always sums to 180°, but confuses it with the measure of one angle in the pair"
+        "Confuses the sum of the angles with the difference, thinking 150° - 30° = 100°",
+        "thinks ∠CBD is a right angle",
+        "subtracts the wrong angle from the total"
       ],
       "solverAnswers": [
         0,
@@ -467,7 +844,7 @@
         0
       ],
       "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly applies the definition of a linear pair (summing to 180°) and subtracts 50° from 180° to get 130°. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "critique": "The solution is correct. ∠CBD = ∠ABD - ∠ABC = 150° - 30° = 120°. The distractors reflect common misconceptions.",
       "sources": [
         {
           "document": "balbharati/7/mathematics/703020004.pdf",
@@ -498,49 +875,348 @@
         }
       ],
       "edition": "2026 edition",
-      "generatedAt": "2026-10-31T10:59:29.825Z",
+      "generatedAt": "2026-11-01T21:20:57.629Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "In the given figure, lines AC and BD intersect at point P. If the measure of angle APB is 47°, what is the measure of angle CPD?",
+      "difficulty": 5,
+      "stem": "In the figure, ∠ABC is a right angle. What is the measure of ∠ABD if ∠DBC = 30° and ∠ABD is the complement of ∠DBC?",
       "choices": [
-        "47°",
-        "43°",
-        "133°",
-        "180°"
+        "30°",
+        "60°",
+        "90°",
+        "120°"
+      ],
+      "answerIndex": 1,
+      "solution": "Since ∠ABD is the complement of ∠DBC, their sum should be 90°. If ∠DBC is 30°, then ∠ABD is 90° - 30° = 60°. The option '30°' would be chosen by someone who confuses the angles. The option '90°' would be chosen by someone who thinks ∠ABD is a right angle. The option '120°' would be chosen by someone who adds the angles instead of subtracting them.",
+      "checkExpr": "90-30",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "आकृति में, ∠ABC एक समकोण है। यदि ∠DBC = 30° और ∠ABD, ∠DBC का पूरक है, तो ∠ABD का माप क्या है?",
+          "choices": [
+            "30°",
+            "60°",
+            "90°",
+            "120°"
+          ],
+          "solution": "क्योंकि ∠ABD, ∠DBC का पूरक है, इसका अर्थ है कि उनका योग 90° होना चाहिए। यदि ∠DBC 30° है, तो ∠ABD 90° - 30° = 60° होगा। विकल्प '30°' को कोई गलती से कोणों को बदल देता है। विकल्प '90°' को कोई गलती से सोचता है कि ∠ABD एक समकोण है। विकल्प '120°' को कोई गलती से कोणों को जोड़ देता है बजाय घटाने के।",
+          "imageAlt": "एक आकृति जिसमें एक समकोण ABC और 30 डिग्री का कोण DBC है।",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आकृतीमध्ये, ∠ABC एक समकोन आहे. जर ∠DBC = 30° आणि ∠ABD हा ∠DBC चा पूरक असेल, तर ∠ABD चे माप किती असेल?",
+          "choices": [
+            "30°",
+            "60°",
+            "90°",
+            "120°"
+          ],
+          "solution": "कारण ∠ABD हा ∠DBC चा पूरक आहे, तर त्यांच्या बेरजेचे माप 90° असावे. जर ∠DBC 30° असेल, तर ∠ABD हा 90° - 30° = 60° असेल. विकल्प '30°' हा कोणीतरी कोनांची चूक करत असेल. विकल्प '90°' हा कोणीतरी ∠ABD चे समकोन मानत असेल. विकल्प '120°' हा कोणीतरी कोन जोडत असेल आणि बेरजा करत असेल.",
+          "imageAlt": "एक आकृती जी एक समकोन ABC आणि 30 अंशाचा कोन DBC दर्शवते.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A diagram showing a right angle ABC and an angle DBC of 30 degrees.",
+      "figure": {
+        "kind": "geometry",
+        "spec": {
+          "frame": {
+            "xMin": 0,
+            "xMax": 10,
+            "yMin": 0,
+            "yMax": 10,
+            "unit": "cm"
+          },
+          "points": [
+            {
+              "id": "A",
+              "x": 1,
+              "y": 5,
+              "label": "A"
+            },
+            {
+              "id": "B",
+              "x": 5,
+              "y": 5,
+              "label": "B"
+            },
+            {
+              "id": "C",
+              "x": 9,
+              "y": 5,
+              "label": "C"
+            },
+            {
+              "id": "D",
+              "x": 7,
+              "y": 7,
+              "label": "D"
+            }
+          ],
+          "segments": [
+            {
+              "from": "A",
+              "to": "B",
+              "label": "AB"
+            },
+            {
+              "from": "B",
+              "to": "C",
+              "label": "BC"
+            },
+            {
+              "from": "B",
+              "to": "D",
+              "label": "BD"
+            }
+          ],
+          "angles": [
+            {
+              "vertex": "B",
+              "from": "A",
+              "to": "C",
+              "measure": 90,
+              "label": "ABC"
+            },
+            {
+              "vertex": "B",
+              "from": "D",
+              "to": "C",
+              "measure": 30,
+              "label": "DBC"
+            }
+          ]
+        },
+        "labels": {
+          "A": {
+            "en": "A"
+          },
+          "B": {
+            "en": "B"
+          },
+          "C": {
+            "en": "C"
+          },
+          "D": {
+            "en": "D"
+          },
+          "AB": {
+            "en": "AB",
+            "hi": "AB",
+            "mr": "AB"
+          },
+          "BC": {
+            "en": "BC",
+            "hi": "BC",
+            "mr": "BC"
+          },
+          "BD": {
+            "en": "BD",
+            "hi": "BD",
+            "mr": "BD"
+          },
+          "ABC": {
+            "en": "ABC",
+            "hi": "ABC",
+            "mr": "ABC"
+          },
+          "DBC": {
+            "en": "DBC",
+            "hi": "DBC",
+            "mr": "DBC"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "confuses the angles",
+        null,
+        "thinks ∠ABD is a right angle",
+        "adds the angles instead of subtracting"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. The correct answer is 60°, as ∠ABD is the complement of ∠DBC (30°), and complementary angles sum to 90°. The distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 22,
+          "pageStart": 34,
+          "pageEnd": 35,
+          "headingPath": [
+            "4. Angles and Pairs of Angles"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 23,
+          "pageStart": 36,
+          "pageEnd": 37,
+          "headingPath": [
+            "4. Angles and Pairs of Angles"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 24,
+          "pageStart": 37,
+          "pageEnd": 39,
+          "headingPath": [
+            "4. Angles and Pairs of Angles"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-01T21:20:57.629Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Two supplementary angles are in the ratio 2:3. What is the measure of the larger angle?",
+      "choices": [
+        "72°",
+        "108°",
+        "120°",
+        "150°"
+      ],
+      "answerIndex": 1,
+      "solution": "Supplementary angles add up to 180°. If the ratio is 2:3, the total parts are 5. Each part is 180° divided by 5, which is 36°. The larger angle, being 3 parts, is 3 × 36° = 108°. The other options do not result from dividing 180° into 5 equal parts or do not follow the 2:3 ratio.",
+      "checkExpr": "(180/5)*3",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "दो पूरक कोण 2:3 के अनुपात में हैं। बड़े कोण का माप क्या है?",
+          "choices": [
+            "72°",
+            "108°",
+            "120°",
+            "150°"
+          ],
+          "solution": "पूरक कोणों का योग 180° होता है। यदि अनुपात 2:3 है, तो कुल भाग 5 हैं। प्रत्येक भाग 180° को 5 से विभाजित करने पर 36° होता है। बड़ा कोण, जो 3 भाग है, 3 × 36° = 108° होता है। अन्य विकल्प 180° के 5 समान भागों में विभाजन या 2:3 अनुपात के अनुसार नहीं होते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used for mathematical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "दोन अपूरक कोन 2:3 च्या गुणोत्तरात आहेत. मोठ्या कोनाचा माप किती आहे?",
+          "choices": [
+            "72°",
+            "108°",
+            "120°",
+            "150°"
+          ],
+          "solution": "अपूरक कोनांचा एकूण बेरीज 180° असते. जर गुणोत्तर 2:3 असेल तर एकूण भाग 5 असतात. प्रत्येक भाग 180° ला 5 ने भागल्यास 36° येतो. मोठ्या कोनाचे 3 भाग असल्यामुळे तो 3 × 36° = 108° असतो. इतर उत्तरे 180° ला 5 समान भागांमध्ये विभागल्यामुळे येत नाहीत किंवा 2:3 च्या गुणोत्तराचे अनुसरण करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "This is the smaller angle in the ratio, not the larger one.",
+        null,
+        "Confuses supplementary angles with complementary angles and adds instead of divides",
+        "This is a common mistake where the total parts are miscalculated."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that supplementary angles sum to 180°, divides the total into 5 parts (2 + 3), and multiplies by 3 for the larger angle. The reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 22,
+          "pageStart": 34,
+          "pageEnd": 35,
+          "headingPath": [
+            "4. Angles and Pairs of Angles"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 23,
+          "pageStart": 36,
+          "pageEnd": 37,
+          "headingPath": [
+            "4. Angles and Pairs of Angles"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 24,
+          "pageStart": 37,
+          "pageEnd": 39,
+          "headingPath": [
+            "4. Angles and Pairs of Angles"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-01T21:20:57.629Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In a triangle, the measure of an exterior angle is 140°. What is the sum of the measures of the two non-adjacent interior angles?",
+      "choices": [
+        "140°",
+        "40°",
+        "180°",
+        "90°"
       ],
       "answerIndex": 0,
-      "solution": "When two lines intersect, the vertically opposite angles formed are equal. Since angle APB and angle CPD are vertically opposite, they have the same measure. Therefore, the measure of angle CPD is 47°. The other options do not match the property that vertically opposite angles are equal.",
+      "solution": "The measure of an exterior angle of a triangle is equal to the sum of the measures of its remote interior angles. So, if the exterior angle is 140°, the sum of the two non-adjacent interior angles is also 140°. The other options are incorrect because 40° is the complement of 140°, 180° is the sum of all interior angles of a triangle, and 90° is not related to the given angle.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "दिए गए चित्र में, रेखाएं AC और BD बिंदु P पर काटती हैं। यदि कोण APB का माप 47° है, तो कोण CPD का माप क्या है?",
+          "stem": "एक त्रिभुज में, बाह्य कोण का माप 140° है। दो असंलग्न आंतरिक कोणों के मापों का योग क्या है?",
           "choices": [
-            "47°",
-            "43°",
-            "133°",
-            "180°"
+            "140°",
+            "40°",
+            "180°",
+            "90°"
           ],
-          "solution": "जब दो रेखाएं एक दूसरे को काटती हैं, तो बने लंबाक्ष कोण बराबर होते हैं। कोण APB और कोण CPD लंबाक्ष कोण हैं, इसलिए उनका माप एक जैसा होता है। अतः कोण CPD का माप 47° है। अन्य विकल्प लंबाक्ष कोणों के गुण के अनुरूप नहीं हैं।",
+          "solution": "एक त्रिभुज के बाह्य कोण का माप उसके दूरस्थ आंतरिक कोणों के मापों के योग के बराबर होता है। इसलिए, यदि बाह्य कोण 140° है, तो दो असंलग्न आंतरिक कोणों के मापों का योग भी 140° है। अन्य विकल्प गलत हैं क्योंकि 40°, 140° का पूरक है, 180°, त्रिभुज के सभी आंतरिक कोणों के मापों का योग है, और 90°, दिए गए कोण से संबंधित नहीं है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard geometry terminology used in Hindi textbooks.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "दिलेल्या आकृतीत, रेषा AC आणि BD बिंदू P वर छेदतात. जर कोन APB चे माप 47° असेल, तर कोन CPD चे माप किती असेल?",
+          "stem": "त्रिकोणात बाह्य कोनाचा माप 140° आहे. दोन असंलग्न आंतरिक कोनांच्या मापांची बेरीज किती आहे?",
           "choices": [
-            "47°",
-            "43°",
-            "133°",
-            "180°"
+            "140°",
+            "40°",
+            "180°",
+            "90°"
           ],
-          "solution": "जेव्हा दोन रेषा छेदतात, तेव्हा तयार होणारे लंबकोन असलेले कोन एकरूप असतात. कोन APB आणि कोन CPD हे लंबकोन असलेले कोन असल्यामुळे, त्यांचे माप समान असते. म्हणून, कोन CPD चे माप 47° असेल. इतर विकल्प कोनांच्या गुणधर्माशी जुमानत नाहीत जे लंबकोन असलेले कोन एकरूप असतात.",
+          "solution": "त्रिकोणाच्या बाह्य कोनाचे माप त्याच्या दूरस्थ आंतरिक कोनांच्या मापांच्या बेरजेइतके असते. म्हणून, जर बाह्य कोन 140° असेल, तर दोन असंलग्न आंतरिक कोनांच्या मापांची बेरीज 140° असेल. इतर विकल्प चुकीचे आहेत कारण 40° हा 140° चा पूरक आहे, 180° ही त्रिकोणाच्या सर्व आंतरिक कोनांच्या मापांची बेरीज आहे आणि 90° हा दिलेल्या कोनाशी संबंधित नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for geometry.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology for geometry.",
           "flag": null
         }
       },
@@ -550,9 +1226,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Student subtracts 47° from 90°, thinking that the angles are complementary instead of vertical.",
-        "Confuses vertically opposite angles with right angles",
-        "Confuses vertically opposite angles with supplementary angles"
+        "Believes the exterior angle is supplementary to the remote interior angles, not equal to their sum",
+        "confuses exterior angle with interior angle",
+        "confuses the sum of interior angles of a triangle with the exterior angle property"
       ],
       "solverAnswers": [
         0,
@@ -561,8 +1237,8 @@
         0,
         0
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. Vertically opposite angles are equal, so angle CPD is 47°, matching the key. The distractors reflect common misconceptions about angle relationships.",
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly applies the exterior angle theorem, which states that an exterior angle of a triangle is equal to the sum of the two non-adjacent interior angles. The reasoning for the distractors is valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "balbharati/7/mathematics/703020004.pdf",
@@ -593,199 +1269,7 @@
         }
       ],
       "edition": "2026 edition",
-      "generatedAt": "2026-10-31T10:59:29.825Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "In the given figure, if ∠PQR and ∠RQS form a linear pair, and ∠PQR = 30°, what is the measure of ∠RQS?",
-      "choices": [
-        "150°",
-        "30°",
-        "90°",
-        "180°"
-      ],
-      "answerIndex": 0,
-      "solution": "A linear pair of angles always adds up to 180°, so ∠RQS must be 180° - 30° = 150°. The option 30° is incorrect because it is the measure of the other angle, not the supplementary one. The option 90° is incorrect because it does not satisfy the property of a linear pair. The option 180° is incorrect because it would imply the two angles are not separate but the same line, which is not the case.",
-      "checkExpr": "180-30",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "दिए गए चित्र में, यदि ∠PQR और ∠RQS एक रैखिक युग्म बनाते हैं, और ∠PQR = 30°, तो ∠RQS का माप क्या है?",
-          "choices": [
-            "150°",
-            "30°",
-            "90°",
-            "180°"
-          ],
-          "solution": "एक रैखिक युग्म के कोण हमेशा 180° के योग के बराबर होते हैं, इसलिए ∠RQS का माप 180° - 30° = 150° होना चाहिए। 30° विकल्प गलत है क्योंकि यह दूसरे कोण का माप है, न कि संपूरक कोण का। 90° विकल्प गलत है क्योंकि यह रैखिक युग्म के गुण को संतुष्ट नहीं करता है। 180° विकल्प गलत है क्योंकि इसका अर्थ होगा कि दोनों कोण अलग-अलग नहीं हैं बल्कि एक ही रेखा हैं, जो स्थिति में नहीं है।",
-          "imageAlt": "एक आरेख जिसमें बिंदु P, Q, R, S हैं और रेखाएँ PQ, QR, QS हैं और कोण PQR 30° है।",
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "आकृतीत, जर ∠PQR आणि ∠RQS रेषीय जोडी बनवतात, आणि ∠PQR = 30°, तर ∠RQS चे माप किती आहे?",
-          "choices": [
-            "150°",
-            "30°",
-            "90°",
-            "180°"
-          ],
-          "solution": "रेषीय जोडीच्या कोनांचे एकूण 180° असते, म्हणून ∠RQS हा 180° - 30° = 150° असेल. 30° चा विकल्प चुकीचा आहे कारण हा दुसऱ्या कोनाचे माप आहे, नाही की पूरक कोनाचे. 90° चा विकल्प चुकीचा आहे कारण हा रेषीय जोडीच्या गुणधर्माला अनुरूप नाही. 180° चा विकल्प चुकीचा आहे कारण हा दोन कोन एकाच रेषेवर असतील, जे नाही.",
-          "imageAlt": "बिंदू P, Q, R, S असलेली आकृती, रेषा PQ, QR, QS आणि 30° मापाचा कोन PQR.",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "A diagram showing points P, Q, R, S with lines PQ, QR, QS and angle PQR of 30°.",
-      "figure": {
-        "kind": "geometry",
-        "spec": {
-          "frame": {
-            "xMin": 0,
-            "xMax": 10,
-            "yMin": 0,
-            "yMax": 7,
-            "unit": "cm"
-          },
-          "points": [
-            {
-              "id": "P",
-              "x": 2,
-              "y": 3,
-              "label": "P"
-            },
-            {
-              "id": "Q",
-              "x": 5,
-              "y": 3,
-              "label": "Q"
-            },
-            {
-              "id": "R",
-              "x": 2,
-              "y": 5,
-              "label": "R"
-            },
-            {
-              "id": "S",
-              "x": 8,
-              "y": 3,
-              "label": "S"
-            }
-          ],
-          "segments": [
-            {
-              "from": "P",
-              "to": "Q",
-              "label": "PQ"
-            },
-            {
-              "from": "Q",
-              "to": "R",
-              "label": "QR"
-            },
-            {
-              "from": "Q",
-              "to": "S",
-              "label": "QS"
-            }
-          ],
-          "angles": [
-            {
-              "vertex": "Q",
-              "from": "P",
-              "to": "R",
-              "measure": 30,
-              "label": "PQR"
-            }
-          ]
-        },
-        "labels": {
-          "P": {
-            "en": "Point P"
-          },
-          "Q": {
-            "en": "Point Q"
-          },
-          "R": {
-            "en": "Point R"
-          },
-          "S": {
-            "en": "Point S"
-          },
-          "PQ": {
-            "en": "Line PQ",
-            "hi": "रेखा PQ",
-            "mr": "रेषा PQ"
-          },
-          "QR": {
-            "en": "Line QR",
-            "hi": "रेखा QR",
-            "mr": "रेषा QR"
-          },
-          "QS": {
-            "en": "Line QS",
-            "hi": "रेखा QS",
-            "mr": "रेषा QS"
-          },
-          "PQR": {
-            "en": "Angle PQR",
-            "hi": "कोण PQR",
-            "mr": "कोन PQR"
-          }
-        }
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        null,
-        "Believes that angles in a linear pair are always equal",
-        "Confuses linear pair with perpendicular lines or right angles",
-        "Confuses linear pair with a straight angle"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. A linear pair of angles always sums to 180°, so ∠RQS = 180° - 30° = 150°. The reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 22,
-          "pageStart": 34,
-          "pageEnd": 35,
-          "headingPath": [
-            "4. Angles and Pairs of Angles"
-          ]
-        },
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 23,
-          "pageStart": 36,
-          "pageEnd": 37,
-          "headingPath": [
-            "4. Angles and Pairs of Angles"
-          ]
-        },
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 24,
-          "pageStart": 37,
-          "pageEnd": 39,
-          "headingPath": [
-            "4. Angles and Pairs of Angles"
-          ]
-        }
-      ],
-      "edition": "2026 edition",
-      "generatedAt": "2026-10-31T10:59:29.825Z",
+      "generatedAt": "2026-11-01T21:20:57.629Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

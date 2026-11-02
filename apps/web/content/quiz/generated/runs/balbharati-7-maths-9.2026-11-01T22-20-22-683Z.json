@@ -1,0 +1,410 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T22:20:22.683Z",
+  "finishedAt": "2026-11-01T22:35:13.625Z",
+  "seconds": 891,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी गणित इंग्रजी",
+    "bookCode": "703020004",
+    "document": "balbharati/7/mathematics/703020004.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 9 — Direct Proportion and Inverse Proportion",
+    "edition": "2026 edition",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2022-23]\n9. In the given figure, DE ∥ BC, AE = a units, EC =b units, DE =x units and BC = y 1\nunits. Which of the following is true?\n(a) x= 𝑎+𝑏 𝑎𝑦 (b) y= 𝑎+𝑏 𝑎𝑥 (c) x= 𝑎+𝑏 𝑎𝑦 (d) 𝑦 𝑥 = 𝑎 𝑏",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n8. 1\nratio 3 : 1, then the value of 𝒚 is\n(A) 4 (B) 3 (C) 2 (D) 1\nA letter from the word INDEPENDENCE is selected at random. What is the",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n7. (a) ∆𝑃𝑄𝑅~ ∆ 𝐶𝐴𝐵"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 273998,
+      "in": 17,
+      "out": 17,
+      "rejects": 1,
+      "promptTokens": 13630,
+      "completionTokens": 3904
+    },
+    "critique": {
+      "calls": 18,
+      "ms": 530124,
+      "in": 17,
+      "out": 15,
+      "rejects": 2,
+      "promptTokens": 8099,
+      "completionTokens": 3091
+    },
+    "solver": {
+      "calls": 83,
+      "ms": 125520,
+      "in": 15,
+      "out": 14,
+      "rejects": 1,
+      "promptTokens": 12740,
+      "completionTokens": 825
+    },
+    "form": {
+      "calls": 13,
+      "ms": 163314,
+      "in": 14,
+      "out": 9,
+      "rejects": 5,
+      "promptTokens": 3482,
+      "completionTokens": 1105
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 8,
+      "ms": 1920,
+      "in": 9,
+      "out": 4,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 226076,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 9827,
+      "completionTokens": 4735
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "In the passage, it is stated that when the number of diameters increases, the number of divisions also increases. What is this relationship called?",
+      "ms": {
+        "draft": 38517,
+        "critique": 71050,
+        "solver": 6459,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the number of students increases, the number of laddoos each student gets decreases. What type of proportion is this?",
+      "ms": {
+        "draft": 38517,
+        "critique": 84198,
+        "solver": 15474,
+        "form": 32598
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A farmer picked 180 bors from his trees. He gave them equally to 45 students. Each student got bors. Had there been 60 students, each would have got bors. What is the relationship between the number of students and the number of bors each gets?",
+      "ms": {
+        "draft": 38517,
+        "critique": 66549,
+        "solver": 13311,
+        "form": 7296
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The cost of 12 quintals of soyabean is 36,000 rupees. How much will 8 quintals cost?",
+      "ms": {
+        "draft": 38517,
+        "critique": 68156,
+        "solver": 10765,
+        "form": 16095
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Jaya, Seema, Nikhil and Neelesh invested 360000 rupees in the ratio 3:4:7:6. They made a profit of 12%. How much profit did Nikhil make?",
+      "ms": {
+        "draft": 4694,
+        "critique": 11714
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Suresh and Ramesh together invested 144000 rupees in the ratio 4:5. They sold the land at a profit of 20%. What is Suresh's share of the profit?",
+      "ms": {
+        "draft": 4694,
+        "critique": 13651
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the number of workers increases, what happens to the time required to complete a task?",
+      "ms": {
+        "draft": 2946,
+        "critique": 8958,
+        "solver": 1701,
+        "form": 3941
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 600 rupees buy 15 bunches of feed, how many bunches can 1280 rupees buy?",
+      "ms": {
+        "draft": 2946,
+        "critique": 8398,
+        "solver": 13113
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 15 workers take 8 hours to build a wall, how many hours will 12 workers take?",
+      "ms": {
+        "draft": 38517,
+        "critique": 71429,
+        "solver": 11964,
+        "form": 49899
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Chinmaya and Sam invested 130000 rupees in a business in the proportion 3:2. What is the amount of Chinmaya's investment?",
+      "ms": {
+        "draft": 4694,
+        "critique": 5754,
+        "solver": 1241,
+        "form": 3537
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a business, if the profit is shared in the same proportion as the investment, which of the following is correct?",
+      "ms": {
+        "draft": 4694,
+        "critique": 10599,
+        "solver": 1519,
+        "form": 3544
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 10 pens cost 60 rupees, what is the cost of 13 pens?",
+      "ms": {
+        "draft": 2946,
+        "critique": 10002,
+        "solver": 2041,
+        "form": 4199
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 15 workers take 8 hours to build a wall, how many hours will 12 workers take?",
+      "ms": {
+        "draft": 2946,
+        "critique": 8138,
+        "solver": 2192,
+        "form": 3457
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "When two quantities increase or decrease in the same ratio, what is this relationship called?",
+      "ms": {
+        "draft": 2946,
+        "critique": 8864,
+        "solver": 1843,
+        "form": 5742,
+        "translation": 37716
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In a business, if the profit is shared in the same proportion as the investment, which of the following is correct?",
+      "ms": {
+        "draft": 4694,
+        "critique": 6179,
+        "solver": 1968,
+        "form": 3267,
+        "translation": 68153
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 10 pens cost 60 rupees, how much would 13 pens cost?",
+      "ms": {
+        "draft": 38517,
+        "critique": 75081,
+        "solver": 16204,
+        "form": 35671,
+        "translation": 47461
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Abdul, Sejal and Soham invested 30, 70 and 50 rupees respectively. Sayali invested 150 rupees. They made a profit of 420 rupees. What is Abdul's share of the profit?",
+      "ms": {
+        "draft": 4694,
+        "critique": 7710,
+        "solver": 1254,
+        "form": 6082,
+        "translation": 65174
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 1)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "In the passage, it is stated that when the number of diameters increases, the number of divisions also increases. What is this relationship called?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"does not recognize the pattern described in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If the number of students increases, the number of laddoos each student gets decreases. What type of proportion is this?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"does not recognize the relationship described in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A farmer picked 180 bors from his trees. He gave them equally to 45 students. Each student got bors. Had there been 60 students, each would have got bors. What is the relationship between the number of students and the number of bors each gets?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"does not recognize the relationship described in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The cost of 12 quintals of soyabean is 36,000 rupees. How much will 8 quintals cost?",
+      "reason": "option 3 repeats the stem's wording (\"36,000 rupees\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Jaya, Seema, Nikhil and Neelesh invested 360000 rupees in the ratio 3:4:7:6. They made a profit of 12%. How much profit did Nikhil make?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Suresh and Ramesh together invested 144000 rupees in the ratio 4:5. They sold the land at a profit of 20%. What is Suresh's share of the profit?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If the number of workers increases, what happens to the time required to complete a task?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Ignores the passage's explanation of inverse proportion…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If 600 rupees buy 15 bunches of feed, how many bunches can 1280 rupees buy?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If 15 workers take 8 hours to build a wall, how many hours will 12 workers take?",
+      "reason": "near-duplicate of served question cmvwctyy101mx0remykurz5b1 (cosine 0.961 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Chinmaya and Sam invested 130000 rupees in a business in the proportion 3:2. What is the amount of Chinmaya's investment?",
+      "reason": "near-duplicate of served question cmvwctyxr01ml0rem9i5dbfin (cosine 0.911 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "In a business, if the profit is shared in the same proportion as the investment, which of the following is correct?",
+      "reason": "near-duplicate of batch item \"In a business, if the profit is shared in the same…\" (cosine 1.000 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "If 10 pens cost 60 rupees, what is the cost of 13 pens?",
+      "reason": "near-duplicate of batch item \"If 10 pens cost 60 rupees, how much would 13 pens …\" (cosine 0.997 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If 15 workers take 8 hours to build a wall, how many hours will 12 workers take?",
+      "reason": "near-duplicate of served question cmvwctyy101mx0remykurz5b1 (cosine 0.966 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

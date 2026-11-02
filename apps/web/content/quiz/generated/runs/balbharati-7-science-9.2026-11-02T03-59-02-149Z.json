@@ -1,0 +1,470 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T03:59:02.149Z",
+  "finishedAt": "2026-11-02T04:05:55.163Z",
+  "seconds": 413,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "703020012",
+    "document": "balbharati/7/science/703020012.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 9 — Heat",
+    "edition": "First Edition 2017",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2024-25]\n7. B. Cooking of food",
+      "[INJSO 2021 — solutions or answer key]\n7. D. Water will lose more amount of energy while first converting to ice and releasing heat equivalent to\nthe latent heat.",
+      "[INJSO 2009 — question paper]\n19. The temperature of a substance of mass:m (in g) and of specific heat capacity\n¢(@inJ g' K) increases by ¢ °C . What is the heat change in J ?\n| a) met b) me(t +273)\np- \"me(t +273)\n5) 1000 d) 1000",
+      "[INJSO 2013 — question paper]\n59. A hot solid at temperature t is placed in a cool liquid at temperature t . Both 1 2\nacquire a common temperature t . Then: 0\nA. t 0 = (t 1 + t 2 )/2 always.\nB. t > (t + t )/2 if mass of solid is greater than the mass of the liquid. 0 1 2\nC. t > (t + t )/2 if specific heat capacity of solid is greater then the specific 0 1 2\nheat capacity of the liquid.\nD. Information provided is insufficient to draw any of the above con-\nclusion."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 85798,
+      "in": 23,
+      "out": 23,
+      "rejects": 0,
+      "promptTokens": 17192,
+      "completionTokens": 5297
+    },
+    "critique": {
+      "calls": 26,
+      "ms": 146229,
+      "in": 23,
+      "out": 23,
+      "rejects": 0,
+      "promptTokens": 11141,
+      "completionTokens": 4445
+    },
+    "solver": {
+      "calls": 137,
+      "ms": 60146,
+      "in": 23,
+      "out": 21,
+      "rejects": 2,
+      "promptTokens": 20993,
+      "completionTokens": 1279
+    },
+    "form": {
+      "calls": 22,
+      "ms": 94171,
+      "in": 21,
+      "out": 15,
+      "rejects": 6,
+      "promptTokens": 11170,
+      "completionTokens": 2644
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 17,
+      "ms": 2636,
+      "in": 15,
+      "out": 13,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 55,
+      "ms": 497975,
+      "in": 26,
+      "out": 26,
+      "rejects": 0,
+      "promptTokens": 30889,
+      "completionTokens": 15370
+    }
+  },
+  "kept": 13,
+  "keptByLevel": {
+    "1": 2,
+    "2": 4,
+    "3": 3,
+    "4": 1,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of heat transfer through conduction?",
+      "ms": {
+        "draft": 3840,
+        "critique": 5484,
+        "solver": 1691,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a hot solid is placed in a cool liquid, and they both reach the same temperature, which of the following is always true?",
+      "ms": {
+        "draft": 3840,
+        "critique": 6936,
+        "solver": 1445,
+        "form": 4248
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the experiment where pins are placed on metal bars and heated, which metal conducts heat the fastest?",
+      "ms": {
+        "draft": 3840,
+        "critique": 4591,
+        "solver": 1669,
+        "form": 3010
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why are heaters placed near the floor and air conditioners near the ceiling?",
+      "ms": {
+        "draft": 3520,
+        "critique": 5642,
+        "solver": 1608,
+        "form": 2589
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a bad conductor of heat?",
+      "ms": {
+        "draft": 10346,
+        "critique": 6264,
+        "solver": 1935
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a hot solid is placed in a cool liquid, and they reach a common temperature, what can be concluded?",
+      "ms": {
+        "draft": 5547,
+        "critique": 5537,
+        "solver": 15806
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the experiment with metal bars, why do the pins fall off the copper bar first?",
+      "ms": {
+        "draft": 5547,
+        "critique": 6819,
+        "solver": 9893,
+        "form": 3413
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the ice at the bottom of a test tube not melt when the upper part is heated?",
+      "ms": {
+        "draft": 5547,
+        "critique": 6287,
+        "solver": 1615,
+        "form": 3042
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a good conductor of heat?",
+      "ms": {
+        "draft": 10346,
+        "critique": 6080,
+        "solver": 1516,
+        "form": 3209
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What happens to the volume of a liquid when it is heated?",
+      "ms": {
+        "draft": 10346,
+        "critique": 4784,
+        "solver": 1779,
+        "form": 1848
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a method of heat transfer?",
+      "ms": {
+        "draft": 5547,
+        "critique": 5732,
+        "solver": 13974,
+        "form": 3726,
+        "translation": 23215
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a good conductor of heat?",
+      "ms": {
+        "draft": 3520,
+        "critique": 6896,
+        "solver": 855,
+        "form": 3050,
+        "translation": 38270
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the heat when a pot of boiling water is removed from the flame?",
+      "ms": {
+        "draft": 3840,
+        "critique": 6121,
+        "solver": 1656,
+        "form": 3814,
+        "translation": 38888
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the volume of a liquid when it is heated?",
+      "ms": {
+        "draft": 3520,
+        "critique": 5956,
+        "solver": 818,
+        "form": 3718,
+        "translation": 33311
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why are the houses in Rajasthan painted white?",
+      "ms": {
+        "draft": 10346,
+        "critique": 5737,
+        "solver": 1206,
+        "form": 3332,
+        "translation": 33710
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of the silvered surface in a thermos flask?",
+      "ms": {
+        "draft": 10346,
+        "critique": 5491,
+        "solver": 1245,
+        "form": 3041,
+        "translation": 33591
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why does a steel glass feel hot when you hold it while drinking hot milk?",
+      "ms": {
+        "draft": 3840,
+        "critique": 4287,
+        "solver": 1001,
+        "form": 0,
+        "translation": 40627
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why do we wear woolen clothes in winter?",
+      "ms": {
+        "draft": 5547,
+        "critique": 6898,
+        "solver": 1094,
+        "form": 4175,
+        "translation": 45120
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why does a steel spoon become hot when placed in hot water?",
+      "ms": {
+        "draft": 10346,
+        "critique": 4995,
+        "solver": 1136,
+        "form": 3390,
+        "translation": 41031
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is the correct reason for the expansion of a solid when heated?",
+      "ms": {
+        "draft": 3520,
+        "critique": 5697,
+        "solver": 2065,
+        "form": 1577,
+        "translation": 32308
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A steel spoon and a wooden spoon are placed in a cup of hot tea. Which one will feel hotter to the touch?",
+      "ms": {
+        "draft": 3520,
+        "critique": 3585,
+        "solver": 857,
+        "form": 2153,
+        "translation": 44394
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why does the heat from the sun reach the Earth even though there is no medium in space?",
+      "ms": {
+        "draft": 3840,
+        "critique": 6092,
+        "solver": 1538,
+        "form": 2535,
+        "translation": 44303
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why are thermos flasks effective in keeping liquids hot or cold for a long time?",
+      "ms": {
+        "draft": 3520,
+        "critique": 3789,
+        "solver": 849,
+        "form": 1699,
+        "translation": 46302
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of heat transfer through conduction?",
+      "reason": "the key is far longer than every distractor (63 vs 38 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a hot solid is placed in a cool liquid, and they both reach the same temperature, which of the following is always true?",
+      "reason": "options 0 and 1 say the same thing (\"The final temperature is the average of the initial temperatures\" / \"The final temperature is higher than the average of the initial temperatures\"); options 0 and 2 say the same thing (\"The final temperature is the average of the initial temperatures\" / \"The final temperature is lower than the average of the initial temperatures\"); options 1 and 2 say the same thing (\"The final temperature is higher than the average of the initial temperatures\" / \"The final temperature is lower than the average of the initial temperatures\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the experiment where pins are placed on metal bars and heated, which metal conducts heat the fastest?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.bar: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Why are heaters placed near the floor and air conditioners near the ceiling?",
+      "reason": "options 0 and 1 say the same thing (\"Because hot air rises and cold air sinks\" / \"Because cold air rises and hot air sinks\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a bad conductor of heat?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a hot solid is placed in a cool liquid, and they reach a common temperature, what can be concluded?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the experiment with metal bars, why do the pins fall off the copper bar first?",
+      "reason": "figure: figure spec refused: spec.parts.1.text.north: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the ice at the bottom of a test tube not melt when the upper part is heated?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.beaker: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a good conductor of heat?",
+      "reason": "near-duplicate of batch item \"Which of the following is a good conductor of heat…\" (cosine 1.000 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "What happens to the volume of a liquid when it is heated?",
+      "reason": "near-duplicate of batch item \"What happens to the volume of a liquid when it is …\" (cosine 1.000 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

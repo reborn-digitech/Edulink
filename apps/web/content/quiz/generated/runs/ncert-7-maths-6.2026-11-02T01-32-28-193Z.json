@@ -1,0 +1,818 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T01:32:28.193Z",
+  "finishedAt": "2026-11-02T01:41:58.989Z",
+  "seconds": 571,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "gegp1",
+    "document": "ncert/7/mathematics/gegp106.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 6 — Number Play",
+    "edition": "Reprint 2026-27",
+    "chunks": 20,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n7. C) 140 𝑂",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 22 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n9. Draw neat and clean figures wherever required. Take 𝜋 = 22 7 wherever required if not stated."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 192965,
+      "in": 46,
+      "out": 40,
+      "rejects": 6,
+      "promptTokens": 44195,
+      "completionTokens": 9628
+    },
+    "critique": {
+      "calls": 45,
+      "ms": 320004,
+      "in": 40,
+      "out": 31,
+      "rejects": 9,
+      "promptTokens": 20273,
+      "completionTokens": 7978
+    },
+    "solver": {
+      "calls": 184,
+      "ms": 90363,
+      "in": 31,
+      "out": 18,
+      "rejects": 13,
+      "promptTokens": 28850,
+      "completionTokens": 1719
+    },
+    "form": {
+      "calls": 7,
+      "ms": 26771,
+      "in": 18,
+      "out": 14,
+      "rejects": 4,
+      "promptTokens": 1806,
+      "completionTokens": 613
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 46,
+      "ms": 9580,
+      "in": 14,
+      "out": 6,
+      "rejects": 8,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 251048,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 13473,
+      "completionTokens": 6269
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 3,
+    "4": 0,
+    "5": 2,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "A group of children is standing in a line. Each child says the number of children in front of them who are taller than them. If the sequence of numbers said is 0, 1, 0, 1, 0, 1, 0, what is the correct arrangement of the children from tallest to shortest?",
+      "ms": {
+        "draft": 4901,
+        "critique": 5582,
+        "solver": 1533
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a line of 7 children, each child says the number of children in front of them who are taller than them. If the sequence of numbers is 0, 1, 0, 1, 0, 1, 0, what is the position of the tallest child in the line?",
+      "ms": {
+        "draft": 4901,
+        "critique": 6555,
+        "solver": 2273
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Two siblings, Martin and Maria, were born exactly one year apart. Today, their combined age is 112. Is this possible? Why or why not?",
+      "ms": {
+        "draft": 4901,
+        "critique": 9000,
+        "solver": 1349
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the parity of the product of a 27 × 13 grid of small squares?",
+      "ms": {
+        "draft": 4360,
+        "critique": 9038
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the sum of 5 odd numbers is even, what is the minimum number of even numbers that must be added to this sum to make it even again?",
+      "ms": {
+        "draft": 4901,
+        "critique": 9250,
+        "solver": 12064
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the hint given in the passage for completing a magic square?",
+      "ms": {
+        "draft": 3915,
+        "critique": 7642,
+        "solver": 1274
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which numbers cannot occur in any corner of a 3 × 3 magic square?",
+      "ms": {
+        "draft": 3915,
+        "critique": 8289,
+        "solver": 2089
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the sum of the numbers in any row, column, or diagonal of a 3 × 3 magic square using numbers 1 to 9?",
+      "ms": {
+        "draft": 3915,
+        "critique": 7656,
+        "solver": 1690,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a magic square is created using numbers 2 to 10, what is the magic sum?",
+      "ms": {
+        "draft": 3915,
+        "critique": 9898
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the sequence 1, 2, 3, 5, 8, 13, 21, 34, ...?",
+      "ms": {
+        "draft": 15337,
+        "critique": 9121
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How does the passage explain the method of counting rhythms?",
+      "ms": {
+        "draft": 15337,
+        "critique": 7256,
+        "solver": 1945,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If there are 13 rhythms for 6 beats, how many rhythms are there for 7 beats?",
+      "ms": {
+        "draft": 15337,
+        "critique": 8556,
+        "solver": 2201
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the parity of the 11th number in the sequence?",
+      "ms": {
+        "draft": 15337,
+        "critique": 6948,
+        "solver": 1691
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the expression that can list all odd numbers?",
+      "ms": {
+        "draft": 4705,
+        "critique": 8138,
+        "solver": 2030
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the parity of the 20th term of the Virahanka sequence?",
+      "ms": {
+        "draft": 4705,
+        "critique": 7487,
+        "solver": 994
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the centre number of a magic square is m, what is the expression obtained by adding the 3 terms of any row, column, or diagonal?",
+      "ms": {
+        "draft": 4705,
+        "critique": 7783,
+        "solver": 9248,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the expression that can list all odd numbers?",
+      "ms": {
+        "draft": 15280,
+        "critique": 6500
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the magic sum of a magic square is 60, what is the value of the number in the centre?",
+      "ms": {
+        "draft": 15280,
+        "critique": 6528
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the Virahanka sequence starts with 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, what will be the parity of the 20th term?",
+      "ms": {
+        "draft": 15280,
+        "critique": 7248,
+        "solver": 1662
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following expressions can represent all odd numbers?",
+      "ms": {
+        "draft": 15280,
+        "critique": 7139
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a magic square, if the expression for the centre number is m, what is the sum of the numbers in any row, column, or diagonal?",
+      "ms": {
+        "draft": 15280,
+        "critique": 7417
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the parity of the sum of 3 odd numbers and 3 even numbers?",
+      "ms": {
+        "draft": 15280,
+        "critique": 7249
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the parity of the 20th term of the Virahāṅka sequence?",
+      "ms": {
+        "draft": 3679,
+        "critique": 8186,
+        "solver": 2101
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many ways can the number 6 be written as a sum of 1s and 2s?",
+      "ms": {
+        "draft": 4067,
+        "critique": 8275,
+        "solver": 1658
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the sum of all numbers from 1 to 9?",
+      "ms": {
+        "draft": 5670,
+        "critique": 6454
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the parity of the 10th number in the Virahāṅka sequence?",
+      "ms": {
+        "draft": 4067,
+        "critique": 6868,
+        "solver": 8082,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the center number of a 3 × 3 magic square is 25, what is the magic sum?",
+      "ms": {
+        "draft": 3915,
+        "critique": 7156,
+        "solver": 2161,
+        "form": 4679
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the parity of the sum of an even number of odd numbers?",
+      "ms": {
+        "draft": 2987,
+        "critique": 7207,
+        "solver": 1591,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the parity of the sum of an odd number of odd numbers?",
+      "ms": {
+        "draft": 2987,
+        "critique": 6422,
+        "solver": 1822,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the parity of the sum of an odd number of even numbers?",
+      "ms": {
+        "draft": 3679,
+        "critique": 6133,
+        "solver": 2180,
+        "form": 3199
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the parity of the sum of an even number of odd numbers?",
+      "ms": {
+        "draft": 3679,
+        "critique": 5884,
+        "solver": 1379,
+        "form": 4807
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the parity of the sum of an odd number of odd numbers?",
+      "ms": {
+        "draft": 3679,
+        "critique": 6862,
+        "solver": 1640,
+        "form": 5047
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the parity of the sum of 2 even numbers and 2 odd numbers?",
+      "ms": {
+        "draft": 3679,
+        "critique": 7022,
+        "solver": 1699,
+        "form": 3008
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the next number in the Virahāṅka sequence after 55?",
+      "ms": {
+        "draft": 4067,
+        "critique": 8591,
+        "solver": 1762,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a number is the sum of the two previous numbers in the Virahāṅka sequence, what is the 7th number in the sequence?",
+      "ms": {
+        "draft": 4067,
+        "critique": 7278,
+        "solver": 1819,
+        "form": 0,
+        "translation": 33750
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Kishor has 5 boxes and 5 number cards, all containing odd numbers. He wants to place one card in each box so that the sum is 30. Is this possible?",
+      "ms": {
+        "draft": 4901,
+        "critique": 5859,
+        "solver": 1957,
+        "form": 0,
+        "translation": 51766
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the sum of an even number of even numbers is calculated, what will be its parity?",
+      "ms": {
+        "draft": 3679,
+        "critique": 6497,
+        "solver": 1638,
+        "form": 4404,
+        "translation": 41205
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the parity of the product of a 42 × 78 grid of small squares?",
+      "ms": {
+        "draft": 4360,
+        "critique": 7407,
+        "solver": 1665,
+        "form": 0,
+        "translation": 47662
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Martin and Maria’s ages are consecutive numbers. If their ages are 51 and 52, what is the parity of their sum?",
+      "ms": {
+        "draft": 4901,
+        "critique": 8333,
+        "solver": 14401,
+        "form": 0,
+        "translation": 38677
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the next number in the sequence is 89, what is the next number after that?",
+      "ms": {
+        "draft": 15337,
+        "critique": 6858,
+        "solver": 16856,
+        "form": 2429,
+        "translation": 33287
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the parity of the product of a 135 × 654 grid of small squares?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following algebraic expressions always has even parity?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following algebraic expressions always has odd parity?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the 100th odd number?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the parity of the sum of an even number of even numbers?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the parity of the sum of an odd number of even numbers?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A group of children is standing in a line. Each child says the number of children in front of them who are taller than them. If the sequence of numbers said is 0, 1, 0, 1, 0, 1, 0, what is the correct arrangement of the children from tallest to shortest?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In a line of 7 children, each child says the number of children in front of them who are taller than them. If the sequence of numbers is 0, 1, 0, 1, 0, 1, 0, what is the position of the tallest child in the line?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Two siblings, Martin and Maria, were born exactly one year apart. Today, their combined age is 112. Is this possible? Why or why not?",
+      "reason": "the solver picked option 0 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the parity of the product of a 27 × 13 grid of small squares?",
+      "reason": "the critic finds option 0 correct, the key is 1"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the sum of 5 odd numbers is even, what is the minimum number of even numbers that must be added to this sum to make it even again?",
+      "reason": "after redrafting distractor 1: the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the hint given in the passage for completing a magic square?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which numbers cannot occur in any corner of a 3 × 3 magic square?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the sum of the numbers in any row, column, or diagonal of a 3 × 3 magic square using numbers 1 to 9?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a magic square is created using numbers 2 to 10, what is the magic sum?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the name of the sequence 1, 2, 3, 5, 8, 13, 21, 34, ...?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "How does the passage explain the method of counting rhythms?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Does not understand the explanation given in the passage…\"); distractor 3's reason is not a one-line misconception (\"Does not recognize the pattern described in the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If there are 13 rhythms for 6 beats, how many rhythms are there for 7 beats?",
+      "reason": "the solver picked option 2 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What is the parity of the 11th number in the sequence?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the expression that can list all odd numbers?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What is the parity of the 20th term of the Virahanka sequence?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If the centre number of a magic square is m, what is the expression obtained by adding the 3 terms of any row, column, or diagonal?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the expression that can list all odd numbers?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the magic sum of a magic square is 60, what is the value of the number in the centre?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the Virahanka sequence starts with 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, what will be the parity of the 20th term?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following expressions can represent all odd numbers?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In a magic square, if the expression for the centre number is m, what is the sum of the numbers in any row, column, or diagonal?",
+      "reason": "the solution's working is not sound; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the parity of the sum of 3 odd numbers and 3 even numbers?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What is the parity of the 20th term of the Virahāṅka sequence?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "How many ways can the number 6 be written as a sum of 1s and 2s?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the sum of all numbers from 1 to 9?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the parity of the 10th number in the Virahāṅka sequence?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If the center number of a 3 × 3 magic square is 25, what is the magic sum?",
+      "reason": "near-duplicate of served question cmveqg24a016ugod8trnhlkpb (cosine 0.902 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the parity of the sum of an even number of odd numbers?",
+      "reason": "near-duplicate of served question cmvfwrcba013zgpfho37nxyxt (cosine 0.954 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the parity of the sum of an odd number of odd numbers?",
+      "reason": "near-duplicate of served question cmvfwrcba013zgpfho37nxyxt (cosine 0.951 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the parity of the sum of an odd number of even numbers?",
+      "reason": "near-duplicate of served question cmvfwrcba013zgpfho37nxyxt (cosine 0.945 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the parity of the sum of an even number of odd numbers?",
+      "reason": "near-duplicate of served question cmvfwrcba013zgpfho37nxyxt (cosine 0.954 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "What is the parity of the sum of an odd number of odd numbers?",
+      "reason": "near-duplicate of served question cmvfwrcba013zgpfho37nxyxt (cosine 0.951 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "What is the parity of the sum of 2 even numbers and 2 odd numbers?",
+      "reason": "near-duplicate of batch item \"If the sum of an even number of even numbers is ca…\" (cosine 0.906 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the next number in the Virahāṅka sequence after 55?",
+      "reason": "near-duplicate of served question cmveqg241015ugod8nlv1izh3 (cosine 0.966 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

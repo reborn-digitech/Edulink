@@ -21,49 +21,245 @@
   "board": "BALBHARATI",
   "book": "८ वी गणित इंग्रजी",
   "edition": "First Edition 2018",
-  "generatedAt": "2026-11-01T00:47:20.746Z",
+  "generatedAt": "2026-11-02T07:34:08.718Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "Which of the following is a polynomial in one variable?",
+      "stem": "Which of the following is a polynomial?",
       "choices": [
-        "3y + 2y + y + 5",
-        "x + 2x + 3y",
-        "3x + 4y + 5z",
-        "2a + 3b + 4c"
+        "An expression with negative exponents",
+        "An expression with fractional exponents",
+        "An expression with whole number exponents",
+        "An expression with decimal exponents"
       ],
-      "answerIndex": 0,
-      "solution": "The correct option, 3y + 2y + y + 5, is a polynomial in one variable because it contains only the variable y with whole number exponents. The other options include more than one variable, which disqualifies them from being polynomials in one variable.",
+      "answerIndex": 2,
+      "solution": "A polynomial is defined as an expression where each term has a variable raised to a whole number exponent. The correct option matches this definition. Expressions with negative, fractional, or decimal exponents do not meet the criteria for being polynomials.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन एक चर में बहुपद है?",
+          "stem": "निम्नलिखित में से कौन एक बहुपद है?",
           "choices": [
-            "3y + 2y + y + 5",
-            "x + 2x + 3y",
-            "3x + 4y + 5z",
-            "2a + 3b + 4c"
+            "ऋणात्मक घात वाला व्यंजक",
+            "अपरिमेय घात वाला व्यंजक",
+            "पूर्ण संख्या घात वाला व्यंजक",
+            "दशमलव घात वाला व्यंजक"
           ],
-          "solution": "सही विकल्प, 3y + 2y + y + 5, एक चर में बहुपद है क्योंकि इसमें केवल चर y है जिसके पूर्ण संख्या घात हैं। अन्य विकल्प एक से अधिक चर रखते हैं, जो इन्हें एक चर में बहुपद होने से अयोग्य बना देता है।",
+          "solution": "एक बहुपद की परिभाषा एक व्यंजक है जिसमें प्रत्येक पद में चर के पूर्ण संख्या घात होता है। सही विकल्प इस परिभाषा के अनुरूप है। ऋणात्मक, अपरिमेय या दशमलव घात वाले व्यंजक बहुपद बनाने की शर्तों को पूरा नहीं करते।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
+          "critique": "The Hindi translation accurately reflects the English question, with appropriate terminology used in a Hindi-medium curriculum.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते एक चलातील बहुपद आहे?",
+          "stem": "खालीलपैकी कोणते बहुपदी आहे?",
           "choices": [
-            "3y + 2y + y + 5",
-            "x + 2x + 3y",
-            "3x + 4y + 5z",
-            "2a + 3b + 4c"
+            "ऋणात्मक घात असलेले व्यंजक",
+            "अपूर्णांक घात असलेले व्यंजक",
+            "पूर्ण संख्या घात असलेले व्यंजक",
+            "दशांश घात असलेले व्यंजक"
           ],
-          "solution": "सही विकल्प, 3y + 2y + y + 5, एक चलातील बहुपद आहे कारण त्यामध्ये केवळ चल y आहे आणि त्याचे घात पूर्ण संख्या आहेत. इतर विकल्पांमध्ये एकापेक्षा जास्त चल असल्यामुळे ते एक चलातील बहुपद नाहीत.",
+          "solution": "बहुपदी एखादा व्यंजक आहे ज्यात प्रत्येक पदात चल एक पूर्ण संख्या घातावर असतो. बरोबर विकल्प ह्या व्याख्येशी जुळतो. ऋणात्मक, अपूर्णांक किंवा दशांश घात असलेले व्यंजक बहुपदी असण्याच्या मापदंडांना खात्री नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "critique": "The translation accurately reflects the original meaning, with appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses polynomials with general algebraic expressions",
+        "Incorrectly assumes fractional exponents are allowed",
+        null,
+        "Believing that decimal exponents are allowed in polynomials, not recognizing they are equivalent to fractional exponents"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution correctly identifies option 2 as the correct answer. The author's reasoning for the distractors aligns with common misconceptions students may have about polynomials.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 45,
+          "pageStart": 71,
+          "pageEnd": 73,
+          "headingPath": [
+            "10. Division of Polynomials",
+            "Part 2"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 46,
+          "pageStart": 73,
+          "pageEnd": 75,
+          "headingPath": [
+            "10. Division of Polynomials",
+            "Part 2"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 47,
+          "pageStart": 75,
+          "pageEnd": 76,
+          "headingPath": [
+            "10. Division of Polynomials",
+            "Part 2"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T07:34:08.718Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the degree of the polynomial 7x^4 + 5x^2 + 4x + 2?",
+      "choices": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "answerIndex": 2,
+      "solution": "The degree of a polynomial is determined by the highest exponent of the variable in any term. In the polynomial 7x^4 + 5x^2 + 4x + 2, the highest exponent is 4, making the degree 4. The option 2 is the exponent of a lower term, 3 is not present, and 5 is greater than the highest exponent in the polynomial.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "बहुपद 7x^4 + 5x^2 + 4x + 2 की घात क्या है?",
+          "choices": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "solution": "एक बहुपद की घात चर के किसी भी पद में उच्चतम घातांक द्वारा निर्धारित की जाती है। बहुपद 7x^4 + 5x^2 + 4x + 2 में उच्चतम घातांक 4 है, जिसके कारण बहुपद की घात 4 है। विकल्प 2 एक कम घात वाले पद का घात है, 3 उपस्थित नहीं है और 5 बहुपद में उपस्थित उच्चतम घात से अधिक है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "7x^4 + 5x^2 + 4x + 2 बहुपदीचा अंक किती आहे?",
+          "choices": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "solution": "बहुपदीचा अंक त्या बहुपदीमधील चलाच्या सर्वात मोठ्या घाताने ठरतो. 7x^4 + 5x^2 + 4x + 2 बहुपदीमध्ये सर्वात मोठा घात 4 आहे, त्यामुळे अंक 4 आहे. विकल्प 2 लहान घाताच्या पदाचा आहे, 3 उपलब्ध नाही, आणि 5 बहुपदीमधील सर्वात मोठ्या घातापेक्षा मोठा आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses the second highest degree instead of the highest.",
+        "Chooses the third highest degree instead of the highest.",
+        null,
+        "Chooses a degree not present in the polynomial."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 4, so the author's key is incorrect. The solution is sound but leads to the wrong key.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 45,
+          "pageStart": 71,
+          "pageEnd": 73,
+          "headingPath": [
+            "10. Division of Polynomials",
+            "Part 2"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 46,
+          "pageStart": 73,
+          "pageEnd": 75,
+          "headingPath": [
+            "10. Division of Polynomials",
+            "Part 2"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 47,
+          "pageStart": 75,
+          "pageEnd": 76,
+          "headingPath": [
+            "10. Division of Polynomials",
+            "Part 2"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T07:34:08.718Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a polynomial p(x) is divisible by (x - a), what can be said about p(a)?",
+      "choices": [
+        "p(a) = 0",
+        "p(a) = 1",
+        "p(a) = -1",
+        "p(a) is undefined"
+      ],
+      "answerIndex": 0,
+      "solution": "If a polynomial p(x) is divisible by (x - a), then (x - a) is a factor of p(x). This means that p(a) = 0. 'p(a) = 1', 'p(a) = -1', and 'p(a) is undefined' do not satisfy the condition of divisibility.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक बहुपद p(x), (x - a) से विभाज्य है, तो p(a) के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "p(a) = 0",
+            "p(a) = 1",
+            "p(a) = -1",
+            "p(a) अपरिभाषित है"
+          ],
+          "solution": "यदि एक बहुपद p(x), (x - a) से विभाज्य है, तो (x - a), p(x) का एक गुणनखंड है। इसका अर्थ है कि p(a) = 0। 'p(a) = 1', 'p(a) = -1' और 'p(a) अपरिभाषित है' विभाज्यता की स्थिति को संतुष्ट नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर बहुपद p(x) (x - a) ने विभाज्य असेल, तर p(a) बद्दल काय म्हणाल जाऊ शकते?",
+          "choices": [
+            "p(a) = 0",
+            "p(a) = 1",
+            "p(a) = -1",
+            "p(a) अअस्तित्वात नाही"
+          ],
+          "solution": "जर बहुपद p(x) (x - a) ने विभाज्य असेल, तर (x - a) हा p(x) चा अपवर्तक असतो. हे असे दर्शवते की p(a) = 0. 'p(a) = 1', 'p(a) = -1' आणि 'p(a) अअस्तित्वात नाही' ही विभाज्यतेच्या अटीला अनुरूप नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         }
       },
@@ -73,9 +269,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses polynomials with expressions containing multiple variables.",
-        "Includes multiple variables, which is not allowed in a polynomial in one variable.",
-        "Includes multiple variables, which is not allowed in a polynomial in one variable."
+        "Assumes the value is 1 instead of 0.",
+        "Assumes the value is -1 instead of 0.",
+        "Misunderstands the concept of divisibility."
       ],
       "solverAnswers": [
         0,
@@ -84,8 +280,8 @@
         0,
         0
       ],
-      "levelFlag": null,
-      "critique": "The correct answer is option 0, as it contains only one variable (y) with whole number exponents. The other options contain multiple variables, which disqualifies them as polynomials in one variable. The author's reasoning aligns with the mathematical definition of a polynomial in one variable.",
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly applies the factor theorem, which states that if (x - a) is a factor of p(x), then p(a) = 0. The reasoning for the distractors is valid, as they reflect common misconceptions.",
       "sources": [
         {
           "document": "balbharati/8/mathematics/803020004.pdf",
@@ -119,105 +315,7 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T00:47:20.746Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is an example of a polynomial?",
-      "choices": [
-        "x + 1/x",
-        "3x^2 + 4x + 5",
-        "x^2 + 3/x",
-        "2x - 1/x"
-      ],
-      "answerIndex": 1,
-      "solution": "A polynomial is an expression where each term has a variable raised to a non-negative integer power. 3x^2 + 4x + 5 meets this criterion because all exponents are whole numbers. The other options include terms with negative or fractional exponents, which are not allowed in polynomials.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन एक बहुपद का उदाहरण है?",
-          "choices": [
-            "x + 1/x",
-            "3x^2 + 4x + 5",
-            "x^2 + 3/x",
-            "2x - 1/x"
-          ],
-          "solution": "एक बहुपद एक अभिव्यक्ति होती है जिसमें प्रत्येक पद में चर की घात अऋणात्मक पूर्णांक होती है। 3x^2 + 4x + 5 इस मानदंड को पूरा करता है क्योंकि सभी घातें पूर्णांक हैं। अन्य विकल्पों में ऋणात्मक या भिन्नात्मक घात वाले पद शामिल हैं, जो बहुपद में अनुमेय नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate mathematical terminology used in a Hindi-medium context.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते बहुपदीचे उदाहरण आहे?",
-          "choices": [
-            "x + 1/x",
-            "3x^2 + 4x + 5",
-            "x^2 + 3/x",
-            "2x - 1/x"
-          ],
-          "solution": "बहुपदी हे असे व्यंजक आहे ज्यात प्रत्येक पदात चलाची घात अपूर्णांक किंवा ऋणात्मक नसते. 3x^2 + 4x + 5 हे शर्तील बरोबर आहे कारण सर्व घात पूर्ण संख्या आहेत. इतर विकल्पांमध्ये ऋणात्मक किंवा अपूर्णांक घात असलेले पद असतात, जे बहुपदीत अनुमत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Includes a term with a negative exponent, which is not a whole number.",
-        null,
-        "Student confuses polynomials with expressions that have variables in the denominator",
-        "Includes a term with a fractional exponent, which is not a whole number."
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as 3x^2 + 4x + 5 contains only whole number exponents. The other options contain terms with negative or fractional exponents, which are not allowed in polynomials. The author's reasoning aligns with common misconceptions students might have.",
-      "sources": [
-        {
-          "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 45,
-          "pageStart": 71,
-          "pageEnd": 73,
-          "headingPath": [
-            "10. Division of Polynomials",
-            "Part 2"
-          ]
-        },
-        {
-          "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 46,
-          "pageStart": 73,
-          "pageEnd": 75,
-          "headingPath": [
-            "10. Division of Polynomials",
-            "Part 2"
-          ]
-        },
-        {
-          "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 47,
-          "pageStart": 75,
-          "pageEnd": 76,
-          "headingPath": [
-            "10. Division of Polynomials",
-            "Part 2"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T00:47:20.746Z",
+      "generatedAt": "2026-11-02T07:34:08.718Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

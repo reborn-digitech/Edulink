@@ -21,49 +21,260 @@
   "board": "NCERT",
   "book": "Curiosity",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-29T23:49:46.593Z",
+  "generatedAt": "2026-11-02T14:27:17.261Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 2,
-      "stem": "Which of the following statements about the use of mirrors is correct?",
+      "difficulty": 1,
+      "stem": "What is the law of reflection?",
       "choices": [
-        "Concave mirrors are used in vehicle headlights to produce parallel beams of light.",
-        "Convex mirrors are used in dental clinics to see enlarged images of teeth.",
-        "Plane mirrors are used in telescopes to focus light from distant stars.",
-        "Concave mirrors are used in street lamps to spread light over a wide area."
+        "Angle of incidence is greater than angle of reflection",
+        "Angle of incidence is less than angle of reflection",
+        "Angle of incidence is equal to angle of reflection",
+        "Angle of incidence is double the angle of reflection"
       ],
-      "answerIndex": 0,
-      "solution": "The correct answer is that concave mirrors are used in vehicle headlights to produce parallel beams of light. Concave mirrors can converge light rays to form a parallel beam, which is useful for headlights. Convex mirrors are used in vehicles as side-view mirrors, not in dental clinics. Plane mirrors do not focus light, and concave mirrors are not used in street lamps for this purpose.",
+      "answerIndex": 2,
+      "solution": "The law of reflection states that the angle of incidence is equal to the angle of reflection. This is a fundamental principle in optics that describes how light behaves when it bounces off a surface. The other options incorrectly suggest different relationships between the angles, which do not align with the established scientific understanding.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा दर्पणों के उपयोग के बारे में कथन सही है?",
+          "stem": "प्रतिबिंबन का नियम क्या है?",
           "choices": [
-            "अवतल दर्पण कार के हेडलाइट में उपयोग किए जाते हैं ताकि प्रकाश की समानांतर किरणें बन सकें।",
-            "उत्तल दर्पण दंत चिकित्सा क्लिनिक में दांतों के बड़े चित्र देखने के लिए उपयोग किए जाते हैं।",
-            "समतल दर्पण दूर के तारों से प्रकाश को केंद्रित करने के लिए दूरबीन में उपयोग किए जाते हैं।",
-            "अवतल दर्पण चौराहों के लैंप में उपयोग किए जाते हैं ताकि प्रकाश एक विस्तृत क्षेत्र में फैल सके।"
+            "आपतन कोण अपवर्तन कोण से बड़ा होता है",
+            "आपतन कोण अपवर्तन कोण से छोटा होता है",
+            "आपतन कोण अपवर्तन कोण के बराबर होता है",
+            "आपतन कोण अपवर्तन कोण का दोगुना होता है"
           ],
-          "solution": "सही उत्तर यह है कि अवतल दर्पण कार के हेडलाइट में उपयोग किए जाते हैं ताकि प्रकाश की समानांतर किरणें बन सकें। अवतल दर्पण प्रकाश की किरणों को एकत्रित कर सकते हैं और एक समानांतर किरण बना सकते हैं, जो हेडलाइट के लिए उपयोगी है। उत्तल दर्पण वाहनों में बाहरी दृष्टि दर्पण के रूप में उपयोग किए जाते हैं, न कि दंत चिकित्सा क्लिनिक में। समतल दर्पण प्रकाश को केंद्रित नहीं करते हैं, और अवतल दर्पण इस उद्देश्य के लिए चौराहों के लैंप में उपयोग नहीं किए जाते हैं।",
+          "solution": "प्रतिबिंबन के नियम के अनुसार, आपतन कोण अपवर्तन कोण के बराबर होता है। यह ऑप्टिक्स में एक मूलभूत सिद्धांत है जो यह बताता है कि प्रकाश एक सतह से टकराने पर कैसे व्यवहार करता है। अन्य विकल्प गलत रूप से कोणों के बीच अलग संबंध का सुझाव देते हैं, जो वैज्ञानिक ज्ञान के साथ मेल नहीं खाते।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium science textbooks.",
+          "critique": "The translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता दर्पणाच्या वापराबद्दलचा विधान बरोबर आहे?",
+          "stem": "प्रतिबिंबनाचा नियम काय आहे?",
           "choices": [
-            "अवतल दर्पणे वाहनांच्या टायर बॅटरीमध्ये समांतर प्रकाश बीम तयार करण्यासाठी वापरले जातात.",
-            "उत्तल दर्पणे दातांच्या आकाराची विस्तृत छायाचित्रे दाखवण्यासाठी दंत उपचार केंद्रांमध्ये वापरले जातात.",
-            "समतल दर्पणे दूरच्या तारांमधून प्रकाश फोकस करण्यासाठी दूरदृष्टी यंत्रांमध्ये वापरले जातात.",
-            "अवतल दर्पणे रस्त्याच्या बरखासला दिव्यांमध्ये विस्तृत क्षेत्रात प्रकाश पसरवण्यासाठी वापरले जातात."
+            "अंश अंतर्गत अंशापेक्षा मोठा आहे",
+            "अंश अंतर्गत अंशापेक्षा लहान आहे",
+            "अंश अंतर्गत अंशाबरोबर आहे",
+            "अंश अंतर्गत अंशाच्या दुप्पट आहे"
           ],
-          "solution": "बरोबर उत्तर अवतल दर्पणे वाहनांच्या टायर बॅटरीमध्ये समांतर प्रकाश बीम तयार करण्यासाठी वापरले जातात. अवतल दर्पणे प्रकाश किरणांना एकत्रित करू शकतात आणि समांतर बीम तयार करतात, जे टायर बॅटरीसाठी उपयुक्त आहे. उत्तल दर्पणे वाहनांमध्ये बाजूच्या दृष्टीच्या दर्पणांमध्ये वापरले जातात, दातांच्या आकाराची छायाचित्रे दाखवण्यासाठी नाही. समतल दर्पण बीम फोकस करू शकत नाहीत, आणि अवतल दर्पणे रस्त्याच्या बरखासला दिव्यांमध्ये विस्तृत क्षेत्रात प्रकाश पसरवण्यासाठी वापरले जात नाहीत.",
+          "solution": "प्रतिबिंबनाचा नियम सांगतो की अंश अंतर्गत अंशाबरोबर आहे. हे प्रकाशशास्त्रातील एक मूलभूत नियम आहे जो जेव्हा प्रकाश एखाद्या पृष्ठभागावर टक्कर देतो तेव्हा प्रकाशाच्या वागण्याचे वर्णन करतो. इतर विकल्प अंशांमधील वेगवेगळ्या संबंधांचा चुकीचा अंदाज देतात, जे वैज्ञानिक अभ्यासाशी जुळत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific meaning. However, there is a minor terminology inconsistency: 'टायर बॅटरी' (tire battery) is likely a mistranslation of 'headlights' (हेडलाइट्स). This could confuse students, as 'tire battery' is not a standard term in Marathi for vehicle lighting.",
+          "critique": "The translation is accurate, maintains the correct answer position, and uses appropriate Marathi technical terms for optics.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the relationship between angles",
+        "Thinks the angle of incidence is smaller",
+        null,
+        "Believes the angle of incidence is double"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 2, as the law of reflection states that the angle of incidence is equal to the angle of reflection. The author's solution is accurate and matches the correct answer.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu110.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 10: — Light: Mirrors and Lenses",
+            "10.2 What Are the Characteristics of Images",
+            "Formed by Spherical Mirrors?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu110.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 10: — Light: Mirrors and Lenses",
+            "10.3 What Are the Laws of Reflection?",
+            "Activity 10.4: Let us experiment"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu110.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 10: — Light: Mirrors and Lenses",
+            "10.3 What Are the Laws of Reflection?",
+            "Activity 10.4: Let us experiment"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T14:27:17.261Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What kind of image is formed by a convex mirror regardless of the object's position?",
+      "choices": [
+        "Real and inverted",
+        "Real and erect",
+        "Virtual and inverted",
+        "Virtual and erect"
+      ],
+      "answerIndex": 3,
+      "solution": "A convex mirror always forms a virtual and erect image, no matter where the object is placed. This is because the reflecting surface of a convex mirror curves outward, causing the light rays to diverge after reflection. A real image requires the light rays to converge, which does not happen in a convex mirror. An inverted image would require the light rays to converge in a specific way, which is also not the case here. A virtual image is formed when the light rays appear to come from a point behind the mirror, which is what happens in a convex mirror.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किस प्रकार की छवि एक उत्तल दर्पण द्वारा वस्तु की स्थिति के बिना बनती है?",
+          "choices": [
+            "वास्तविक और उल्टी",
+            "वास्तविक और सीधी",
+            "आभासी और उल्टी",
+            "आभासी और सीधी"
+          ],
+          "solution": "एक उत्तल दर्पण हमेशा एक आभासी और सीधी छवि बनाता है, चाहे वस्तु कहाँ रखी जाए। यह इसलिए है क्योंकि एक उत्तल दर्पण की परावर्तक सतह बाहर की ओर वक्र होती है, जिसके कारण परावर्तन के बाद प्रकाश की किरणें बिखर जाती हैं। एक वास्तविक छवि के लिए प्रकाश की किरणों के अभिसरण की आवश्यकता होती है, जो उत्तल दर्पण में नहीं होता है। उल्टी छवि के लिए प्रकाश की किरणों के एक विशिष्ट तरीके से अभिसरण की आवश्यकता होती है, जो यहाँ भी नहीं होता है। आभासी छवि तब बनती है जब प्रकाश की किरणें दर्पण के पीछे के एक बिंदु से आती हुई लगती हैं, जो उत्तल दर्पण में होता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi terminology for optics.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "उत्तल दर्पणाने वस्तूच्या ठिकाणापासून अवलंबून राहून कोणत्या प्रकारचे छायाचित्र तयार होते?",
+          "choices": [
+            "खरे आणि उलटे",
+            "खरे आणि उभे",
+            "काल्पनिक आणि उलटे",
+            "काल्पनिक आणि उभे"
+          ],
+          "solution": "उत्तल दर्पण हमेशा काल्पनिक आणि उभे छायाचित्र तयार करतो, वस्तूच्या ठिकाणापासून अवलंबून राहून. हे त्याच्या परावर्तक पृष्ठभागामुळे होते जो बाहेर वाकलेला असतो, ज्यामुळे प्रकाशाच्या किरणांना परावर्तनानंतर विखुला होतो. खरे छायाचित्र तयार करण्यासाठी प्रकाशाच्या किरणांना एकत्रित होणे आवश्यक असते, जे उत्तल दर्पणामध्ये होत नाही. उलटे छायाचित्र तयार करण्यासाठी प्रकाशाच्या किरणांना विशिष्ट प्रकारे एकत्रित होणे आवश्यक असते, जे उत्तल दर्पणामध्ये होत नाही. काल्पनिक छायाचित्र तयार होते जेव्हा प्रकाशाच्या किरणांना दर्पणाच्या मागे एका बिंदूपासून येत असल्याचे वाटते, जे उत्तल दर्पणामध्ये होते.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the properties of concave mirrors with convex ones",
+        "Thinks convex mirrors can form real images",
+        "Thinks convex mirrors invert images like concave mirrors",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly explains that convex mirrors always form virtual and erect images. The reasoning aligns with standard optics principles and the author's key is accurate.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu110.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 10: — Light: Mirrors and Lenses",
+            "Probe and ponder"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu110.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 10: — Light: Mirrors and Lenses",
+            "10.1 What Are Spherical Mirrors?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu110.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 10: — Light: Mirrors and Lenses",
+            "10.1 What Are Spherical Mirrors?",
+            "Activity 10.2: Let us distinguish"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu110.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 10: — Light: Mirrors and Lenses",
+            "10.2 What Are the Characteristics of Images",
+            "Formed by Spherical Mirrors?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T14:27:17.261Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A student places an object 3 cm in front of a concave mirror. What kind of image is likely to be formed?",
+      "choices": [
+        "Virtual and erect",
+        "Real and inverted",
+        "Virtual and inverted",
+        "Real and erect"
+      ],
+      "answerIndex": 0,
+      "solution": "When an object is placed very close to a concave mirror (within the focal length), the image formed is virtual and erect. This happens because the light rays diverge after reflection and appear to come from a point behind the mirror. A real image would require the light rays to converge, which does not happen in this case. An inverted image is formed when the object is placed beyond the focal length, which is not the case here. A real and erect image is not possible with a concave mirror.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र एक वस्तु को अवतल दर्पण के सामने 3 सेमी की दूरी पर रखता है। किस प्रकार का प्रतिबिंब बनने की संभावना है?",
+          "choices": [
+            "आभासी और सीधा",
+            "वास्तविक और उल्टा",
+            "आभासी और उल्टा",
+            "वास्तविक और सीधा"
+          ],
+          "solution": "जब कोई वस्तु अवतल दर्पण के बहुत निकट रखी जाती है (फोकस दूरी के भीतर), तो बना प्रतिबिंब आभासी और सीधा होता है। इसका कारण यह है कि परावर्तन के बाद प्रकाश की किरणें अपसारी हो जाती हैं और दर्पण के पीछे के एक बिंदु से आती हुई लगती हैं। वास्तविक प्रतिबिंब के लिए प्रकाश की किरणों के अभिसारी होने की आवश्यकता होती है, जो इस स्थिति में नहीं होता है। उल्टा प्रतिबिंब तब बनता है जब वस्तु को फोकस दूरी के बाहर रखा जाता है, जो यहां नहीं है। एक वास्तविक और सीधा प्रतिबिंब अवतल दर्पण के साथ संभव नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi terminology for optics.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने एका अवतल दर्पणाच्या अगोदर 3 सें.मी. अंतरावर वस्तू ठेवली. तयार होणारा छायाचित्र कोणत्या प्रकारचा असेल?",
+          "choices": [
+            "काल्पनिक आणि उलटा",
+            "वास्तविक आणि उलटा",
+            "काल्पनिक आणि उलटा",
+            "वास्तविक आणि उलटा"
+          ],
+          "solution": "जेव्हा वस्तू अवतल दर्पणाच्या जवळ ठेवली जाते (फोकस अंतराच्या आत), तेव्हा तयार होणारा छायाचित्र काल्पनिक आणि उलटा असतो. हे त्यामुळे होते कारण प्रकाशाचे किरण अनुवर्तनानंतर विस्फारित होतात आणि दर्पणाच्या पाठीमागे एका बिंदूपासून येणारे असे दिसतात. वास्तविक छायाचित्र तयार करण्यासाठी प्रकाशाचे किरण एकत्रित होणे आवश्यक असते, जे या परिस्थितीत होत नाही. उलटा छायाचित्र तयार होतो जेव्हा वस्तू फोकस अंतराच्या बाहेर ठेवली जाते, जे येथे नाही. वास्तविक आणि उलटा छायाचित्र अवतल दर्पणासाठी शक्य नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The solution correctly identifies option (1) as the answer, and the distractors remain incorrect.",
           "flag": null
         }
       },
@@ -73,9 +284,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses the use of concave and convex mirrors in different contexts.",
-        "Misunderstands the purpose of convex mirrors in dental applications.",
-        "Believes plane mirrors have focusing properties, which they do not, as they reflect light without converging or diverging it."
+        "Thinks concave mirrors always form real images",
+        "Confuses the image formation for objects beyond the focal length",
+        "Thinks concave mirrors invert images when the object is close"
       ],
       "solverAnswers": [
         0,
@@ -85,444 +296,165 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 0, as concave mirrors are indeed used in vehicle headlights to produce parallel beams of light. The other options reflect common misconceptions about the uses of different types of mirrors.",
+      "critique": "The solution correctly explains that when an object is placed within the focal length of a concave mirror, the image is virtual and erect. The reasoning aligns with the physics of concave mirrors and the given scenario.",
       "sources": [
         {
           "document": "ncert/8/science/hecu110.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 6,
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 10: — Light: Mirrors and Lenses",
+            "Probe and ponder"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu110.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 10: — Light: Mirrors and Lenses",
+            "10.1 What Are Spherical Mirrors?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu110.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 10: — Light: Mirrors and Lenses",
+            "10.1 What Are Spherical Mirrors?",
+            "Activity 10.2: Let us distinguish"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu110.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
           "headingPath": [
             "Chapter 10: — Light: Mirrors and Lenses",
             "10.2 What Are the Characteristics of Images",
             "Formed by Spherical Mirrors?"
           ]
-        },
-        {
-          "document": "ncert/8/science/hecu110.pdf",
-          "ordinal": 5,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 10: — Light: Mirrors and Lenses",
-            "10.3 What Are the Laws of Reflection?",
-            "Activity 10.4: Let us experiment"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu110.pdf",
-          "ordinal": 6,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 10: — Light: Mirrors and Lenses",
-            "10.3 What Are the Laws of Reflection?",
-            "Activity 10.4: Let us experiment"
-          ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T23:49:46.593Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the function of the normal line in the law of reflection?",
-      "choices": [
-        "To indicate the direction of the incident ray",
-        "To measure the angle of incidence",
-        "To show the path of the reflected ray",
-        "To represent the surface of the mirror"
-      ],
-      "answerIndex": 1,
-      "solution": "The function of the normal line in the law of reflection is to measure the angle of incidence. The normal is a line perpendicular to the mirror's surface at the point of incidence, and the angle between the normal and the incident ray is the angle of incidence. The other options incorrectly describe the role of the normal line.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "अपवर्तन के नियम में सामान्य रेखा का कार्य क्या है?",
-          "choices": [
-            "आपतित किरण की दिशा दर्शाना",
-            "आपतन कोण को मापना",
-            "परावर्तित किरण के पथ को दर्शाना",
-            "दर्पण की सतह का प्रतिनिधित्व करना"
-          ],
-          "solution": "अपवर्तन के नियम में सामान्य रेखा का कार्य आपतन कोण को मापना है। सामान्य रेखा आपतन बिंदु पर दर्पण की सतह के लंबवत रेखा होती है, और सामान्य रेखा और आपतित किरण के बीच कोण आपतन कोण होता है। अन्य विकल्प सामान्य रेखा के कार्य का गलत वर्णन करते हैं।",
-          "imageAlt": "एक समतल दर्पण के साथ एक आम रेखा और आपतित एवं परावर्तित किरणों के साथ एक आरेख",
-          "critique": "Hindi translation accurately reflects the English original in meaning, technical terms, and correct answer position.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "प्रतिबिंबनाच्या कायद्यातील सामान्य रेषेचे कार्य काय आहे?",
-          "choices": [
-            "अवतल किरणाच्या दिशेचा निर्देश करणे",
-            "अवतल कोन मोजणे",
-            "प्रतिबिंबित किरणाच्या मार्गाचे दर्शन करणे",
-            "दर्पणाच्या सतहीचे प्रतिनिधित्व करणे"
-          ],
-          "solution": "प्रतिबिंबनाच्या कायद्यातील सामान्य रेषेचे कार्य अवतल कोन मोजणे आहे. सामान्य रेषा अवतल बिंदूवर दर्पणाच्या सतहीला लंब असते आणि सामान्य रेषा आणि अवतल किरणाच्या दरम्यानचा कोन अवतल कोन आहे. इतर विकल्प सामान्य रेषेच्या भूमिकेचे चुकीचे वर्णन करतात.",
-          "imageAlt": "एक तल दर्पणाचा आकृती ज्यात सामान्य रेषा आणि अवतल आणि प्रतिबिंबित किरण आहेत",
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for optical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "A diagram showing a plane mirror with a normal line and incident and reflected rays",
-      "figure": {
-        "kind": "diagram",
-        "spec": {
-          "parts": [
-            {
-              "part": "planeMirror",
-              "x": 45,
-              "y": 30,
-              "size": 20,
-              "labels": [
-                "mirror"
-              ],
-              "text": {
-                "normal": "normal",
-                "incidentRay": "incident_ray",
-                "reflectedRay": "reflected_ray"
-              }
-            }
-          ],
-          "arrows": [
-            {
-              "from": [
-                40,
-                30
-              ],
-              "to": [
-                50,
-                30
-              ],
-              "label": "incident_ray",
-              "curved": false
-            },
-            {
-              "from": [
-                50,
-                30
-              ],
-              "to": [
-                60,
-                30
-              ],
-              "label": "reflected_ray",
-              "curved": false
-            }
-          ],
-          "texts": [
-            {
-              "x": 45,
-              "y": 25,
-              "label": "normal"
-            }
-          ]
-        },
-        "labels": {
-          "mirror": {
-            "en": "Plane Mirror",
-            "hi": "समतल दर्पण",
-            "mr": "तल दर्पण"
-          },
-          "normal": {
-            "en": "Normal Line",
-            "hi": "सामान्य रेखा",
-            "mr": "सामान्य रेषा"
-          },
-          "incident_ray": {
-            "en": "Incident Ray",
-            "hi": "आपतित किरण",
-            "mr": "अवतल किरण"
-          },
-          "reflected_ray": {
-            "en": "Reflected Ray",
-            "hi": "परावर्तित किरण",
-            "mr": "प्रतिबिंबित किरण"
-          }
-        }
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        "Confuses the normal line with the direction of the incident ray.",
-        null,
-        "Misunderstands the role of the normal line as the path of the reflected ray.",
-        "Thinks the normal line represents the surface of the mirror, which is incorrect."
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as the normal line is used to measure the angle of incidence. The other options represent common misconceptions about the role of the normal line in the law of reflection.",
-      "sources": [
-        {
-          "document": "ncert/8/science/hecu110.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 10: — Light: Mirrors and Lenses",
-            "10.2 What Are the Characteristics of Images",
-            "Formed by Spherical Mirrors?"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu110.pdf",
-          "ordinal": 5,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 10: — Light: Mirrors and Lenses",
-            "10.3 What Are the Laws of Reflection?",
-            "Activity 10.4: Let us experiment"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu110.pdf",
-          "ordinal": 6,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 10: — Light: Mirrors and Lenses",
-            "10.3 What Are the Laws of Reflection?",
-            "Activity 10.4: Let us experiment"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T23:49:46.593Z",
+      "generatedAt": "2026-11-02T14:27:17.261Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "In a reflecting telescope, what is the primary function of the main mirror?",
+      "stem": "If a person holds a concave mirror facing the Sun and directs the reflected light onto a piece of paper, what is the effect on the paper?",
       "choices": [
-        "To produce a magnified image of the object",
-        "To focus and converge light rays from distant objects",
-        "To adjust the angle of incoming light",
-        "To create a virtual image for observation"
+        "It gets colder",
+        "It starts to burn",
+        "It becomes darker",
+        "It remains unaffected"
       ],
       "answerIndex": 1,
-      "solution": "The primary function of the main mirror in a reflecting telescope is to focus and converge light rays from distant objects. This is a key principle of concave mirrors, which are used to gather and direct light to a focal point. Other options incorrectly describe the role of the mirror or confuse it with other optical components.",
+      "solution": "A concave mirror converges parallel rays of sunlight to a single point, concentrating the energy. This concentration of light can generate enough heat to cause the paper to start burning. The other options are incorrect because they do not align with the physical properties of light and heat transfer.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "परावर्ती दूरबीन में मुख्य दर्पण का प्राथमिक कार्य क्या है?",
+          "stem": "यदि कोई व्यक्ति सूर्य की ओर एक अवतल दर्पण रखता है और परावर्तित प्रकाश को एक कागज के टुकड़े पर दिशा देता है तो कागज पर क्या प्रभाव पड़ता है?",
           "choices": [
-            "वस्तु के आवर्धित चित्र का निर्माण करना",
-            "दूर की वस्तुओं से आने वाले प्रकाश की किरणों को फोकस करना और अभिसरित करना",
-            "आगत प्रकाश के कोण को समायोजित करना",
-            "अवलोकन के लिए आभासी चित्र बनाना"
+            "यह ठंडा हो जाता है",
+            "यह जलने लगता है",
+            "यह गहरा हो जाता है",
+            "यह अप्रभावित रहता है"
           ],
-          "solution": "परावर्ती दूरबीन में मुख्य दर्पण का प्राथमिक कार्य दूर की वस्तुओं से आने वाले प्रकाश की किरणों को फोकस करना और अभिसरित करना होता है। यह अवतल दर्पण के मुख्य सिद्धांत के अनुरूप होता है, जिसका उपयोग प्रकाश को एक फोकस बिंदु पर एकत्रित करने और दिशा देने के लिए किया जाता है। अन्य विकल्प दर्पण के कार्य का गलत वर्णन करते हैं या इसे अन्य प्रकाशिक घटकों के साथ भ्रमित कर देते हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "solution": "एक अवतल दर्पण सूर्य के समानांतर प्रकाश किरणों को एक ही बिंदु पर अभिसरित करता है, ऊर्जा के केंद्रीकरण के कारण यह प्रकाश पर्याप्त गर्मी उत्पन्न कर सकता है जो कागज के टुकड़े को जलने लगाता है। अन्य विकल्प गलत हैं क्योंकि वे प्रकाश और ऊष्मा स्थानांतरण के भौतिक गुणों के साथ मेल नहीं खाते।",
+          "imageAlt": "एक अवतल दर्पण जो सूर्य के प्रकाश को एक कागज पर फोकस करता है",
+          "critique": "Translation accurately conveys the scientific concept with appropriate Hindi terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "प्रतिबिंबित दूरदर्शकात, मुख्य दर्पणाचा प्राथमिक कार्य काय आहे?",
+          "stem": "एक व्यक्ती एक अवतल दर्पण उजेडाकडे ठेवते आणि त्याच्या प्रतिबिंबित प्रकाशाला कागदावर दिशा देते, तर कागदावर काय परिणाम होतो?",
           "choices": [
-            "वस्तूचे विस्तारित छायाचित्र तयार करणे",
-            "दूरच्या वस्तूंमधून आलेल्या प्रकाशाच्या किरणांना एकत्रित करणे आणि फोकस करणे",
-            "आगमन प्रकाशाच्या कोनाचा अभिसरण करणे",
-            "अवलोकनासाठी आभासी छायाचित्र तयार करणे"
+            "तो थंड होतो",
+            "तो जळू लागतो",
+            "तो गडद होतो",
+            "तो अपरिवर्तित राहतो"
           ],
-          "solution": "प्रतिबिंबित दूरदर्शकात मुख्य दर्पणाचा प्राथमिक कार्य दूरच्या वस्तूंमधून आलेल्या प्रकाशाच्या किरणांना एकत्रित करणे आणि फोकस करणे आहे. हे अवतल दर्पणांच्या मूलभूत तत्वांपैकी एक आहे, जे प्रकाश एकत्रित करून फोकस बिंदूवर पाठविण्यासाठी वापरले जातात. इतर विकल्प दर्पणाच्या कार्याचे चुकीचे वर्णन करतात किंवा त्याला इतर ऑप्टिकल घटकांशी गुंतवून टाकतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for optical components.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Misunderstands the purpose of the mirror in a telescope.",
-        null,
-        "Believes the mirror's role is to produce a magnified image directly, which is not the case.",
-        "Confuses the mirror's function with that of a lens or other optical element."
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies the main mirror's role in focusing light, and the reasoning aligns with the correct answer. The distractors reflect common misconceptions about the function of mirrors in telescopes.",
-      "sources": [
-        {
-          "document": "ncert/8/science/hecu110.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 10: — Light: Mirrors and Lenses",
-            "10.2 What Are the Characteristics of Images",
-            "Formed by Spherical Mirrors?"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu110.pdf",
-          "ordinal": 5,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 10: — Light: Mirrors and Lenses",
-            "10.3 What Are the Laws of Reflection?",
-            "Activity 10.4: Let us experiment"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu110.pdf",
-          "ordinal": 6,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 10: — Light: Mirrors and Lenses",
-            "10.3 What Are the Laws of Reflection?",
-            "Activity 10.4: Let us experiment"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T23:49:46.593Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "What is the function of a convex lens?",
-      "choices": [
-        "To diverge light rays",
-        "To converge light rays",
-        "To reflect light rays",
-        "To absorb light rays"
-      ],
-      "answerIndex": 1,
-      "solution": "A convex lens is designed to converge light rays because it is thicker at the center and thinner at the edges, causing the light to bend inward. The other options are incorrect because diverging is the function of a convex lens, reflecting is the function of a mirror, and absorbing is not a characteristic of a lens.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक उत्तल लेंस का कार्य क्या है?",
-          "choices": [
-            "प्रकाश किरणों को अपसारित करना",
-            "प्रकाश किरणों को अभिसारित करना",
-            "प्रकाश किरणों को परावर्तित करना",
-            "प्रकाश किरणों को अवशोषित करना"
-          ],
-          "solution": "एक उत्तल लेंस के लिए अभिसारी किरणें बनाना डिज़ाइन किया गया है क्योंकि यह केंद्र में मोटा और किनारों पर पतला होता है, जिसके कारण प्रकाश अंदर की ओर मुड़ जाता है। अन्य विकल्प गलत हैं क्योंकि अपसारित करना एक उत्तल लेंस का कार्य नहीं है, परावर्तित करना एक दर्पण का कार्य है और अवशोषित करना लेंस की विशेषता नहीं है।",
-          "imageAlt": "एक उत्तल लेंस जिसमें समांतर किरणें एक बिंदु पर अभिसारित होती हैं",
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "उत्तल लेन्सचे कार्य काय आहे?",
-          "choices": [
-            "प्रकाशाच्या किरणांना विच्छिन्न करणे",
-            "प्रकाशाच्या किरणांना एकत्रित करणे",
-            "प्रकाशाच्या किरणांना परावर्तित करणे",
-            "प्रकाशाच्या किरणांना शोषून घेणे"
-          ],
-          "solution": "उत्तल लेन्स एकत्रित करण्यासाठी डिझाइन केलेले असते कारण ते मध्यात मोठे आणि किनार्यावर थरावट असते, ज्यामुळे प्रकाश आतमुखी वाकतो. इतर विकल्प चुकीचे आहेत कारण विच्छिन्न करणे उत्तल लेन्सचे कार्य नाही, परावर्तित करणे दर्पणचे कार्य आहे आणि शोषून घेणे लेन्सचे गुणधर्म नाही.",
-          "imageAlt": "उत्तल लेन्स ज्याच्या समांतर किरण एक बिंदूला एकत्रित होत आहेत",
+          "solution": "अवतल दर्पण समांतर प्रकाशाच्या किरणांना एका बिंदूवर एकत्रित करतो, जेणेकरून ऊर्जा एकत्रित होते. हा प्रकाशाचा संकेंद्रण ऊष्मा उत्पन्न करू शकतो जो कागदाला जळू देतो. इतर विकल्प अयोग्य आहेत कारण ते प्रकाश आणि ऊष्मा हस्तांतरणाच्या भौतिक गुणधर्मांशी जुळत नाहीत.",
+          "imageAlt": "अवतल दर्पणाच्या माध्यमातून उजेडाचा प्रकाश कागदावर एकत्रित करण्याचा आकृती",
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": "A convex lens with parallel rays converging to a point",
+      "imageAlt": "Diagram showing a concave mirror focusing sunlight on a paper",
       "figure": {
         "kind": "diagram",
         "spec": {
           "parts": [
             {
-              "part": "convexLens",
+              "part": "concaveMirror",
               "x": 50,
               "y": 30,
               "size": 20,
               "labels": [
-                "lens",
+                "mirror",
                 "principalAxis",
                 "focus"
               ],
               "text": {
-                "principalAxis": "principal_axis",
-                "focus": "focal_point"
+                "focus": "F"
               }
             }
           ],
           "arrows": [
             {
               "from": [
-                40,
-                30
+                30,
+                40
               ],
               "to": [
-                60,
+                50,
                 30
               ],
-              "label": "parallel_rays",
+              "label": "sunlight",
               "curved": false
             },
             {
               "from": [
-                60,
+                50,
                 30
               ],
               "to": [
-                60,
-                25
+                70,
+                40
               ],
-              "label": "converging_rays",
+              "label": "reflectedLight",
               "curved": false
             }
           ]
         },
         "labels": {
-          "principal_axis": {
-            "en": "principal axis",
-            "hi": "मुख्य अक्ष",
-            "mr": "मुख्य अक्ष"
+          "sunlight": {
+            "en": "sunlight",
+            "hi": "सूर्य का प्रकाश",
+            "mr": "उजेड"
           },
-          "focal_point": {
-            "en": "focal point",
-            "hi": "फोकस बिंदु",
-            "mr": "फोकस बिंदू"
-          },
-          "parallel_rays": {
-            "en": "parallel rays",
-            "hi": "समांतर किरणें",
-            "mr": "समांतर किरण"
-          },
-          "converging_rays": {
-            "en": "converging rays",
-            "hi": "अभिसारी किरणें",
-            "mr": "एकत्रित होणारे किरण"
+          "reflectedLight": {
+            "en": "reflected light",
+            "hi": "परावर्तित प्रकाश",
+            "mr": "प्रतिबिंबित प्रकाश"
           }
         }
       },
       "needsFigure": true,
       "distractorReason": [
-        "Confuses the function of a convex lens with that of a concave lens",
+        "Misunderstands the heating effect of concentrated light",
         null,
-        "Thinks the lens reflects light",
-        "Ignores the role of a lens in light manipulation"
+        "Assumes the mirror has no effect on the paper",
+        "Believes the paper is unaffected by light"
       ],
       "solverAnswers": [
         1,
@@ -532,7 +464,7 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed. The correct answer is 1, and the author's reasoning aligns with the scientific understanding of convex lenses. The distractors reflect common misconceptions.",
+      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors based on common misconceptions. The solution correctly identifies the effect of a concave mirror focusing sunlight.",
       "sources": [
         {
           "document": "ncert/8/science/hecu110.pdf",
@@ -568,49 +500,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T23:49:46.593Z",
+      "generatedAt": "2026-11-02T14:27:17.261Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "A convex lens is used to focus the light from a distant object. What happens to the light rays?",
+      "difficulty": 4,
+      "stem": "Based on the description of spherical mirrors, which of the following is true about concave mirrors?",
       "choices": [
-        "They converge at the focal point",
-        "They diverge from the focal point",
-        "They remain parallel",
-        "They bend at an angle"
+        "They can form both real and virtual images",
+        "They always form real images",
+        "They always form virtual images",
+        "They can only form inverted images"
       ],
       "answerIndex": 0,
-      "solution": "A convex lens causes parallel light rays to converge toward a single point, known as the focal point. This is a fundamental property of convex lenses, which are designed to focus light. The other options do not describe the correct behavior of light passing through a convex lens.",
+      "solution": "Concave mirrors can form both real and virtual images depending on the position of the object. When the object is placed within the focal length, the image is virtual and erect. When the object is placed beyond the focal length, the image is real and inverted. This is different from convex mirrors, which always form virtual and erect images. Concave mirrors do not always form real images, nor do they always form virtual images. They are also not limited to forming only inverted images.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक उत्तल लेंस का उपयोग दूर के वस्तु से प्रकाश को फोकस करने के लिए किया जाता है। प्रकाश की किरणें क्या होती हैं?",
+          "stem": "गोलीय दर्पणों के वर्णन के आधार पर, निम्नलिखित में से कौन-सा अवतल दर्पणों के बारे में सत्य है?",
           "choices": [
-            "वे फोकस बिंदु पर अभिसरित होती हैं",
-            "वे फोकस बिंदु से अपसारित होती हैं",
-            "वे समांतर रहती हैं",
-            "वे कोण पर मुड़ जाती हैं"
+            "वे वास्तविक एवं आभासी छवियाँ दोनों बना सकते हैं",
+            "वे हमेशा वास्तविक छवियाँ बनाते हैं",
+            "वे हमेशा आभासी छवियाँ बनाते हैं",
+            "वे केवल उल्टी छवियाँ बना सकते हैं"
           ],
-          "solution": "एक उत्तल लेंस समांतर प्रकाश किरणों को एक बिंदु पर अभिसरित करता है, जिसे फोकस बिंदु कहा जाता है। यह उत्तल लेंस का एक मूलभूत गुण है, जिसके लिए इनका डिज़ाइन किया जाता है। अन्य विकल्प प्रकाश के उत्तल लेंस से गुजरने के सही व्यवहार को नहीं बताते हैं।",
+          "solution": "अवतल दर्पण वास्तविक एवं आभासी छवियाँ दोनों बना सकते हैं, जो वस्तु की स्थिति पर निर्भर करता है। जब वस्तु फोकस लंबाई के भीतर रखी जाती है, तो छवि आभासी एवं सीधी होती है। जब वस्तु फोकस लंबाई के बाहर रखी जाती है, तो छवि वास्तविक एवं उल्टी होती है। यह उत्तल दर्पणों से अलग है, जो हमेशा आभासी एवं सीधी छवियाँ बनाते हैं। अवतल दर्पण हमेशा वास्तविक छवियाँ नहीं बनाते हैं, न ही वे हमेशा आभासी छवियाँ बनाते हैं। वे केवल उल्टी छवियाँ बनाने के लिए सीमित नहीं हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate, technical terms are standard in Hindi science textbooks, and the question structure matches the original.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms from Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "एक उत्तल लेन्स दूरच्या वस्तूपासून आलेल्या प्रकाशाचे केंद्रीकरण करण्यासाठी वापरला जातो. प्रकाशाच्या तरंगांचा काय फायदा होतो?",
+          "stem": "गोलीय दर्शकांच्या वर्णनावर आधारित, खालीलपैकी कोणते अवतल दर्शकांबद्दल खरे आहे?",
           "choices": [
-            "ते फोकस बिंदूवर एकत्रित होतात",
-            "ते फोकस बिंदूपासून विखुले होतात",
-            "ते समांतर राहतात",
-            "ते कोनात वाकलेले असतात"
+            "ते खरे आणि आभासी छाया दोन्ही तयार करू शकतात",
+            "ते नेहमी खरी छाया तयार करतात",
+            "ते नेहमी आभासी छाया तयार करतात",
+            "ते केवळ उलट छाया तयार करू शकतात"
           ],
-          "solution": "उत्तल लेन्स समांतर प्रकाश तरंगांना एका बिंदूकडे एकत्रित करतो, ज्याला फोकस बिंदू म्हणतात. हे उत्तल लेन्सचे एक मूलभूत गुणधर्म आहे, ज्यासाठी त्यांची रचना प्रकाशाचे केंद्रीकरण करण्यासाठी केली जाते. इतर विकल्प प्रकाशाच्या उत्तल लेन्समधून जाण्याच्या योग्य वर्तनाचे वर्णन करत नाहीत.",
+          "solution": "अवतल दर्शक वस्तूच्या स्थानावर अवलंबून खर्या आणि आभासी छाया दोन्ही तयार करू शकतात. जेव्हा वस्तू फोकस लांबीच्या आत ठेवली जाते तेव्हा छाया आभासी आणि उलट असते. जेव्हा वस्तू फोकस लांबीच्या बाहेर ठेवली जाते तेव्हा छाया खरी आणि उलट असते. हे उत्तल दर्शकांच्या विरुद्ध आहे, जे नेहमी आभासी आणि उलट छाया तयार करतात. अवतल दर्शक नेहमी खरी छाया तयार करत नाहीत, नाही तर नेहमी आभासी छाया तयार करत नाहीत. त्यांना केवळ उलट छाया तयार करण्याची मर्यादा नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for optics.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for optical mirrors.",
           "flag": null
         }
       },
@@ -620,9 +552,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Student confuses convex lens behavior with concave lens, thinking it spreads light out from the focal point instead of converging it",
-        "Confuses the behavior of a concave lens with a convex lens",
-        "Confuses the behavior of a glass plate with a convex lens"
+        "Thinks concave mirrors can only form one type of image",
+        "Thinks concave mirrors always form real images",
+        "Thinks concave mirrors only form inverted images"
       ],
       "solverAnswers": [
         0,
@@ -631,8 +563,118 @@
         0,
         0
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0, as a convex lens converges parallel light rays to the focal point. The author's solution is accurate, and the reasons for the wrong options reflect common misconceptions about lens behavior.",
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as concave mirrors can form both real and virtual images depending on the object's position. The author's solution is accurate and the reasoning for the distractors reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu110.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 10: — Light: Mirrors and Lenses",
+            "Probe and ponder"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu110.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 10: — Light: Mirrors and Lenses",
+            "10.1 What Are Spherical Mirrors?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu110.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 10: — Light: Mirrors and Lenses",
+            "10.1 What Are Spherical Mirrors?",
+            "Activity 10.2: Let us distinguish"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu110.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 10: — Light: Mirrors and Lenses",
+            "10.2 What Are the Characteristics of Images",
+            "Formed by Spherical Mirrors?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T14:27:17.261Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "A concave lens always produces an image that is erect and diminished in size. What happens to the size of the image as the object moves farther away from the lens?",
+      "choices": [
+        "It becomes smaller",
+        "It becomes larger",
+        "It remains the same",
+        "It becomes inverted"
+      ],
+      "answerIndex": 0,
+      "solution": "A concave lens always produces an erect and diminished image, regardless of the object's position. As the object moves farther away from the lens, the image becomes smaller. It does not become larger, remain the same, or become inverted, as concave lenses never produce inverted images. Hence, the correct answer is that the image becomes smaller.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक अवतल लेंस हमेशा एक ऊर्ध्वाधर एवं छोटे आकार के प्रतिबिंब का निर्माण करता है। जैसे-जैसे वस्तु लेंस से दूर हटती है, प्रतिबिंब के आकार पर क्या प्रभाव पड़ता है?",
+          "choices": [
+            "यह छोटा हो जाता है",
+            "यह बड़ा हो जाता है",
+            "यह समान रहता है",
+            "यह उल्टा हो जाता है"
+          ],
+          "solution": "एक अवतल लेंस हमेशा ऊर्ध्वाधर एवं छोटे आकार के प्रतिबिंब का निर्माण करता है, चाहे वस्तु की स्थिति कुछ भी हो। जैसे-जैसे वस्तु लेंस से दूर हटती है, प्रतिबिंब छोटा हो जाता है। यह बड़ा नहीं होता, समान नहीं रहता और उल्टा भी नहीं होता, क्योंकि अवतल लेंस कभी उल्टा प्रतिबिंब नहीं बनाते। अतः सही उत्तर यह है कि प्रतिबिंब छोटा हो जाता है।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning, technical terms are appropriate for Hindi-medium curriculum, and the structure matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक अवतल लेंस हमेशा एक ऊर्ध्वाधर आणि लहान आकाराचे छायाचित्र तयार करतो. जेव्हा वस्तू लेंसापासून दूर जाते तेव्हा छायाचित्राचा आकार काय होतो?",
+          "choices": [
+            "तो लहान होतो",
+            "तो मोठा होतो",
+            "तो एकसारखा रहातो",
+            "तो उलटा होतो"
+          ],
+          "solution": "अवतल लेंस हमेशा ऊर्ध्वाधर आणि लहान छायाचित्र तयार करतो, वस्तूच्या स्थानापासून बरोबर निर्भर करून. जेव्हा वस्तू लेंसापासून दूर जाते तेव्हा छायाचित्र लहान होते. ते मोठे होत नाही, एकसारखे रहात नाही किंवा उलटे होत नाही, कारण अवतल लेंस कधीही उलटे छायाचित्र तयार करत नाहीत. म्हणून, योग्य उत्तर असे आहे की छायाचित्र लहान होते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes that the image size increases with distance",
+        "Thinks the image size remains unchanged",
+        "Confuses the behavior of a convex lens"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly explains that a concave lens always forms an erect and diminished image, and as the object moves farther away, the image becomes smaller. The reasoning aligns with the physics of concave lenses.",
       "sources": [
         {
           "document": "ncert/8/science/hecu110.pdf",
@@ -669,7 +711,793 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T23:49:46.593Z",
+      "generatedAt": "2026-11-02T14:27:17.261Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the main function of a concave mirror in the context of focusing sunlight?",
+      "choices": [
+        "To reflect light in all directions",
+        "To spread out light",
+        "To converge light",
+        "To refract light"
+      ],
+      "answerIndex": 2,
+      "solution": "A concave mirror is designed to converge light rays to a single point, which is why it is effective in focusing sunlight. Spreading out light or reflecting it in all directions would not concentrate the sunlight, and refraction involves bending light through a medium, which does not apply to mirrors.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अवतल दर्पण के प्रकाश के फोकस में लाने के संदर्भ में मुख्य कार्य क्या है?",
+          "choices": [
+            "प्रकाश को सभी दिशाओं में परावर्तित करना",
+            "प्रकाश को फैलाना",
+            "प्रकाश को एकत्रित करना",
+            "प्रकाश के अपवर्तन करना"
+          ],
+          "solution": "अवतल दर्पण को प्रकाश की किरणों को एक बिंदु पर एकत्रित करने के लिए डिज़ाइन किया गया है, जिसके कारण यह सूर्य के प्रकाश के फोकस में लाने में प्रभावी है। प्रकाश को फैलाना या सभी दिशाओं में परावर्तित करना सूर्य प्रकाश के केंद्रित होने के लिए उपयुक्त नहीं है, और अपवर्तन एक माध्यम से प्रकाश के झुकाव के साथ जुड़ा हुआ है, जो दर्पण के लिए लागू नहीं होता है।",
+          "imageAlt": "एक अवतल दर्पण द्वारा सूर्य प्रकाश के फोकस में लाना दर्शाने वाला चित्र",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अवतल दर्शकाचे मुख्य कार्य कोणते आहे ज्याचा संदर्भ उजेडाच्या तूर्त लक्ष्य करण्याशी आहे?",
+          "choices": [
+            "उजेड विविध दिशांमध्ये परावर्तित करणे",
+            "उजेड विस्तारित करणे",
+            "उजेड एकत्रित करणे",
+            "उजेड अपवर्तित करणे"
+          ],
+          "solution": "अवतल दर्शक उजेडाच्या किरणांना एका बिंदूवर एकत्रित करण्यासाठी डिझाइन केलेला असतो, ज्यामुळे तो उजेडाच्या तूर्त लक्ष्य करण्यासाठी असमर्थ असतो. उजेड विविध दिशांमध्ये परावर्तित करणे किंवा त्याचा विस्तार करणे उजेडाच्या तूर्त लक्ष्य करण्यासाठी अयोग्य असते आणि अपवर्तन हा उजेडाच्या माध्यमातून वाकलेल्या किरणांचा विषय असतो, जो दर्शकांच्या विषयाशी लागू होत नाही.",
+          "imageAlt": "अवतल दर्शकाचा उजेड एकत्रित करण्याचा आरेख",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for optical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "Diagram showing a concave mirror focusing sunlight",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "concaveMirror",
+              "x": 50,
+              "y": 30,
+              "size": 20,
+              "labels": [
+                "mirror",
+                "principalAxis",
+                "focus"
+              ],
+              "text": {
+                "focus": "F"
+              }
+            }
+          ],
+          "arrows": [
+            {
+              "from": [
+                30,
+                40
+              ],
+              "to": [
+                50,
+                30
+              ],
+              "label": "sunlight",
+              "curved": false
+            },
+            {
+              "from": [
+                50,
+                30
+              ],
+              "to": [
+                70,
+                40
+              ],
+              "label": "focusedLight",
+              "curved": false
+            }
+          ]
+        },
+        "labels": {
+          "sunlight": {
+            "en": "sunlight",
+            "hi": "सूर्य प्रकाश",
+            "mr": "उजेड"
+          },
+          "focusedLight": {
+            "en": "focused light",
+            "hi": "केंद्रित प्रकाश",
+            "mr": "एकत्रित उजेड"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Confuses the function of a convex mirror",
+        "Misunderstands the behavior of a plane mirror",
+        null,
+        "Incorrectly assumes the mirror refracts light"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2 (To converge light), as concave mirrors are designed to focus parallel rays of light to a point. The author's reasoning is accurate and matches the scientific understanding of concave mirrors.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu110.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 10: — Light: Mirrors and Lenses",
+            "10.3 What Are the Laws of Reflection?",
+            "Activity 10.5: Let us experiment"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu110.pdf",
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 10: — Light: Mirrors and Lenses",
+            "10.3 What Are the Laws of Reflection?",
+            "Safety First"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu110.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 10: — Light: Mirrors and Lenses",
+            "10.4 What Is a Lens?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T14:27:17.261Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student uses a convex lens to focus sunlight onto a piece of paper. The paper starts to burn. What does this indicate about the lens?",
+      "choices": [
+        "It is a concave lens",
+        "It is a converging lens",
+        "It is a diverging lens",
+        "It is a plane lens"
+      ],
+      "answerIndex": 1,
+      "solution": "A convex lens converges parallel rays of light, such as sunlight, to a point. This concentration of light can cause the paper to burn. A concave lens diverges light, a diverging lens also diverges light, and a plane lens does not converge or diverge light. Hence, the correct answer is that the lens is a converging lens.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र एक उत्तल लेंस का उपयोग सूर्य के प्रकाश को कागज के टुकड़े पर फोकस करने के लिए करता है। कागज जलने लगता है। इससे लेंस के बारे में क्या संकेत मिलता है?",
+          "choices": [
+            "यह अवतल लेंस है",
+            "यह अभिसारी लेंस है",
+            "यह अपसारी लेंस है",
+            "यह समतल लेंस है"
+          ],
+          "solution": "एक उत्तल लेंस समांतर प्रकाश किरणों, जैसे सूर्य के प्रकाश को एक बिंदु पर अभिसारित करता है। इस प्रकाश के केंद्रीकरण के कारण कागज जल सकता है। एक अवतल लेंस प्रकाश को अपसारित करता है, अपसारी लेंस भी प्रकाश को अपसारित करता है, और समतल लेंस प्रकाश को अभिसारित या अपसारित नहीं करता है। इसलिए, सही उत्तर यह है कि लेंस एक अभिसारी लेंस है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard Hindi terminology for optical lenses.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने उत्तल लेन्स वापरून उन्हाच्या प्रकाशाचे कागदावर लक्ष्य केले. कागद जळू लागला. हे लेन्स बद्दल काय सूचित करते?",
+          "choices": [
+            "ते अवतल लेन्स आहे",
+            "ते अभिसारी लेन्स आहे",
+            "ते अपसारी लेन्स आहे",
+            "ते समतल लेन्स आहे"
+          ],
+          "solution": "उत्तल लेन्स समांतर प्रकाश तरंग, उदाहरणार्थ उन्हाचा प्रकाश, एका बिंदूवर एकत्रित करते. हा प्रकाशाचा संकेंद्रण कागद जाळू शकतो. अवतल लेन्स प्रकाश विस्तारित करते, अपसारी लेन्स देखील प्रकाश विस्तारित करते, आणि समतल लेन्स प्रकाश अभिसारी किंवा अपसारी करत नाही. म्हणून, योग्य उत्तर असे आहे की लेन्स अभिसारी लेन्स आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the properties of a concave lens",
+        null,
+        "Misunderstands the function of a diverging lens",
+        "Assumes a plane lens can focus light"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that a convex lens is a converging lens, which focuses light to a point. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu110.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 10: — Light: Mirrors and Lenses",
+            "10.4 What Is a Lens?",
+            "Activity 10.9: Let us experiment"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu110.pdf",
+          "ordinal": 11,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 10: — Light: Mirrors and Lenses",
+            "10.4 What Is a Lens?",
+            "Activity 10.10: Let us investigate"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu110.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 10: — Light: Mirrors and Lenses",
+            "10.4 What Is a Lens?",
+            "Activity 10.11: Let us investigate"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T14:27:17.261Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In a reflecting telescope, which type of mirror is used to gather and focus light?",
+      "choices": [
+        "Convex mirror",
+        "Plane mirror",
+        "Concave mirror",
+        "Prism"
+      ],
+      "answerIndex": 2,
+      "solution": "A concave mirror is used because it converges incoming parallel light rays to a focal point, which is essential for gathering and focusing light in a telescope. Convex mirrors diverge light, plane mirrors do not focus light, and prisms are used to refract or disperse light, not to focus it.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक परावर्ती दूरबीन में, प्रकाश को एकत्र करने और फोकस करने के लिए किस प्रकार के दर्पण का उपयोग किया जाता है?",
+          "choices": [
+            "उत्तल दर्पण",
+            "समतल दर्पण",
+            "अवतल दर्पण",
+            "प्रिज्म"
+          ],
+          "solution": "एक अवतल दर्पण का उपयोग किया जाता है क्योंकि यह आने वाली समांतर प्रकाश किरणों को एक फोकस बिंदु पर अभिसरित करता है, जो दूरबीन में प्रकाश को एकत्र करने और फोकस करने के लिए आवश्यक है। उत्तल दर्पण प्रकाश को बिखेर देते हैं, समतल दर्पण प्रकाश को फोकस नहीं करते हैं और प्रिज्म का उपयोग प्रकाश के अपवर्तन या विच्छेदन के लिए किया जाता है, न कि इसके फोकस करने के लिए।",
+          "imageAlt": "एक अवतल दर्पण द्वारा प्रकाश फोकस करता है",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "प्रतिबिंबित दूरदर्शकात, प्रकाश एकत्रित करण्यासाठी आणि फोकस करण्यासाठी कोणत्या प्रकारचे दर्पण वापरले जाते?",
+          "choices": [
+            "उत्तल दर्पण",
+            "समतल दर्पण",
+            "अवतल दर्पण",
+            "प्रिझम"
+          ],
+          "solution": "अवतल दर्पण वापरले जाते कारण ते येणाऱ्या समांतर प्रकाश तरंगांना एक फोकस बिंदूवर एकत्रित करते, जे दूरदर्शकात प्रकाश एकत्रित करण्यासाठी आवश्यक आहे. उत्तल दर्पण प्रकाश विखुरतात, समतल दर्पण प्रकाश फोकस करत नाहीत आणि प्रिझम प्रकाशाचे अपवर्तन किंवा विच्छेदन करण्यासाठी वापरले जातात, प्रकाश फोकस करण्यासाठी नाहीत.",
+          "imageAlt": "अवतल दर्पणाचा चित्र जो प्रकाश फोकस करतो",
+          "critique": "The translation is accurate and maintains the technical terminology used in Marathi science textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "Diagram showing a concave mirror focusing light",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "concaveMirror",
+              "x": 50,
+              "y": 30,
+              "size": 20,
+              "labels": [
+                "mirror",
+                "principalAxis",
+                "focus"
+              ],
+              "text": {
+                "focus": "F"
+              }
+            }
+          ],
+          "arrows": [
+            {
+              "from": [
+                30,
+                40
+              ],
+              "to": [
+                50,
+                30
+              ],
+              "label": "light",
+              "curved": false
+            },
+            {
+              "from": [
+                50,
+                30
+              ],
+              "to": [
+                70,
+                40
+              ],
+              "label": "focusedLight",
+              "curved": false
+            }
+          ]
+        },
+        "labels": {
+          "light": {
+            "en": "light",
+            "hi": "प्रकाश",
+            "mr": "प्रकाश"
+          },
+          "focusedLight": {
+            "en": "focused light",
+            "hi": "फोकस किया गया प्रकाश",
+            "mr": "फोकस केलेला प्रकाश"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Incorrectly assumes the mirror is convex",
+        "Confuses the function of a plane mirror",
+        null,
+        "Misunderstands the role of a prism"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. The correct answer is concave mirror, as it converges light, which is essential for reflecting telescopes. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu110.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 10: — Light: Mirrors and Lenses",
+            "10.3 What Are the Laws of Reflection?",
+            "Activity 10.5: Let us experiment"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu110.pdf",
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 10: — Light: Mirrors and Lenses",
+            "10.3 What Are the Laws of Reflection?",
+            "Safety First"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu110.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 10: — Light: Mirrors and Lenses",
+            "10.4 What Is a Lens?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T14:27:17.261Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A concave mirror forms a real, inverted, and diminished image. Where is the object likely placed?",
+      "choices": [
+        "At the focal point",
+        "Between the focal point and the mirror",
+        "Beyond the centre of curvature",
+        "Between the centre of curvature and the focal point"
+      ],
+      "answerIndex": 2,
+      "solution": "When an object is placed beyond the centre of curvature of a concave mirror, the image formed is real, inverted, and diminished. This is because the light rays converge at a point between the focal point and the centre of curvature. When the object is at the focal point, the image is formed at infinity. When the object is between the focal point and the mirror, the image is virtual and erect. When the object is between the centre of curvature and the focal point, the image is real, inverted, and enlarged.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक अवतल दर्पण एक वास्तविक, उल्टा और छोटा प्रतिबिंब बनाता है। वस्तु कहाँ संभवतः रखी जाती है?",
+          "choices": [
+            "फोकस बिंदु पर",
+            "फोकस बिंदु और दर्पण के बीच",
+            "वक्रता के केंद्र के बाहर",
+            "वक्रता के केंद्र और फोकस बिंदु के बीच"
+          ],
+          "solution": "जब एक वस्तु अवतल दर्पण के वक्रता के केंद्र के बाहर रखी जाती है, तो बना प्रतिबिंब वास्तविक, उल्टा और छोटा होता है। इसका कारण यह है कि प्रकाश की किरणें फोकस बिंदु और वक्रता के केंद्र के बीच एक बिंदु पर अभिसरित होती हैं। जब वस्तु फोकस बिंदु पर होती है, तो प्रतिबिंब अनंत पर बनता है। जब वस्तु फोकस बिंदु और दर्पण के बीच होती है, तो प्रतिबिंब आभासी और सीधा होता है। जब वस्तु वक्रता के केंद्र और फोकस बिंदु के बीच होती है, तो प्रतिबिंब वास्तविक, उल्टा और बड़ा होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate technical terms used in a Hindi-medium context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक अवतल दर्पण एक वास्तविक, उलट आणि लहान छाया बनवतो. वस्तु कुठे ठेवली जाऊ शकते?",
+          "choices": [
+            "फोकस बिंदूवर",
+            "फोकस बिंदू आणि दर्पण दरम्यान",
+            "वक्रता केंद्राच्या बाहेर",
+            "वक्रता केंद्र आणि फोकस बिंदू दरम्यान"
+          ],
+          "solution": "जेव्हा वस्तु अवतल दर्पणाच्या वक्रता केंद्राच्या बाहेर ठेवली जाते, तेव्हा बनलेली छाया वास्तविक, उलट आणि लहान असते. हे त्यामुळे होते कारण प्रकाशाचे किरण फोकस बिंदू आणि वक्रता केंद्र दरम्यान एकत्रित होतात. जेव्हा वस्तु फोकस बिंदूवर असते, तेव्हा छाया अनंतावर बनते. जेव्हा वस्तु फोकस बिंदू आणि दर्पण दरम्यान असते, तेव्हा छाया आभासी आणि उलट असते. जेव्हा वस्तु वक्रता केंद्र आणि फोकस बिंदू दरम्यान असते, तेव्हा छाया वास्तविक, उलट आणि मोठी असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks. The structure and meaning of the question and solution are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks the image is formed at the focal point",
+        "Thinks the image is virtual when it is real",
+        null,
+        "Thinks the image is enlarged when it is diminished"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and matches the key. The reasoning for the correct answer and the distractors is accurate and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu110.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 10: — Light: Mirrors and Lenses",
+            "Probe and ponder"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu110.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 10: — Light: Mirrors and Lenses",
+            "10.1 What Are Spherical Mirrors?"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu110.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 10: — Light: Mirrors and Lenses",
+            "10.1 What Are Spherical Mirrors?",
+            "Activity 10.2: Let us distinguish"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu110.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 10: — Light: Mirrors and Lenses",
+            "10.2 What Are the Characteristics of Images",
+            "Formed by Spherical Mirrors?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T14:27:17.261Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A student observes that the image of an object through a lens is always erect and diminished, regardless of the object's position. What type of lens is being used?",
+      "choices": [
+        "A convex lens",
+        "A concave lens",
+        "A plane lens",
+        "A cylindrical lens"
+      ],
+      "answerIndex": 1,
+      "solution": "A concave lens always produces an erect and diminished image, irrespective of the object's position. A convex lens can produce various types of images depending on the object's position. A plane lens does not alter the image, and a cylindrical lens has a different function. Therefore, the correct answer is that the lens is a concave lens.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र देखता है कि एक लेंस के माध्यम से वस्तु की छाया हमेशा सीधी और छोटी होती है, चाहे वस्तु की स्थिति कुछ भी हो। किस प्रकार के लेंस का उपयोग किया जा रहा है?",
+          "choices": [
+            "एक उत्तल लेंस",
+            "एक अवतल लेंस",
+            "एक समतल लेंस",
+            "एक बेलनाकार लेंस"
+          ],
+          "solution": "एक अवतल लेंस हमेशा एक सीधी और छोटी छाया बनाता है, चाहे वस्तु की स्थिति कुछ भी हो। एक उत्तल लेंस वस्तु की स्थिति के आधार पर विभिन्न प्रकार की छाया बना सकता है। एक समतल लेंस छाया को नहीं बदलता है, और एक बेलनाकार लेंस का कार्य अलग होता है। इसलिए, सही उत्तर यह है कि लेंस एक अवतल लेंस है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains the original meaning, and uses standard Hindi technical terms for lenses.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थीने लक्षात घेतले की एका लेन्समार्फत वस्तूचे छायाचित्र सदैव उलटे आणि लहान असते, वस्तूच्या स्थानापासून अवलंबून नसते. लेन्सचा प्रकार कोणता आहे?",
+          "choices": [
+            "एका उत्तल लेन्स",
+            "एका अवतल लेन्स",
+            "एका समतल लेन्स",
+            "एका सिलिंड्रिकल लेन्स"
+          ],
+          "solution": "अवतल लेन्स सदैव उलटे आणि लहान छायाचित्र तयार करते, वस्तूच्या स्थानापासून अवलंबून नसते. उत्तल लेन्स वस्तूच्या स्थानावर अवलंबून विविध प्रकारचे छायाचित्र तयार करू शकते. समतल लेन्स छायाचित्राचा बदल करत नाही आणि सिलिंड्रिकल लेन्स वेगळा कार्य करते. त्यामुळे योग्य उत्तर असे की, लेन्स अवतल लेन्स आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for optical lenses.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the behavior of a convex lens",
+        null,
+        "Misunderstands the properties of a plane lens",
+        "Incorrectly identifies a cylindrical lens as the one producing erect and diminished images"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that a concave lens always produces an erect and diminished image, regardless of object position. The reasoning for the other options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu110.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 10: — Light: Mirrors and Lenses",
+            "10.4 What Is a Lens?",
+            "Activity 10.9: Let us experiment"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu110.pdf",
+          "ordinal": 11,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 10: — Light: Mirrors and Lenses",
+            "10.4 What Is a Lens?",
+            "Activity 10.10: Let us investigate"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu110.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 10: — Light: Mirrors and Lenses",
+            "10.4 What Is a Lens?",
+            "Activity 10.11: Let us investigate"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T14:27:17.261Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "What is the primary reason a convex lens is used in a magnifying glass?",
+      "choices": [
+        "It converges light",
+        "It diverges light",
+        "It reflects light",
+        "It absorbs light"
+      ],
+      "answerIndex": 0,
+      "solution": "A convex lens is used in a magnifying glass because it converges light, focusing it to create a larger image. Diverging light would spread the image out, reflecting light would not magnify it, and absorbing light would prevent any image from forming.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक बारीक लेंस में उत्तल लेंस का उपयोग करने का प्राथमिक कारण क्या है?",
+          "choices": [
+            "यह प्रकाश को अभिसारी करता है",
+            "यह प्रकाश को अपसारी करता है",
+            "यह प्रकाश को परावर्तित करता है",
+            "यह प्रकाश को अवशोषित करता है"
+          ],
+          "solution": "एक उत्तल लेंस का उपयोग बारीक लेंस में इसलिए किया जाता है क्योंकि यह प्रकाश को अभिसारी करता है, जो एक बड़ा चित्र बनाने के लिए फोकस करता है। अपसारी प्रकाश चित्र को फैला देगा, परावर्तित प्रकाश इसके आकार को बढ़ाएगा नहीं और अवशोषित प्रकाश किसी भी चित्र के बनने से रोक देगा।",
+          "imageAlt": "एक उत्तल लेंस के द्वारा प्रकाश के अभिसरण का चित्र",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and logical structure.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मोठ्या लेन्समध्ये उत्तल लेन्स का वापरला जातो?",
+          "choices": [
+            "ते प्रकाश एकत्रित करते",
+            "ते प्रकाश विस्तारित करते",
+            "ते प्रकाश परावर्तित करते",
+            "ते प्रकाश शोषते"
+          ],
+          "solution": "उत्तल लेन्स मोठ्या लेन्समध्ये वापरला जातो कारण ते प्रकाश एकत्रित करते, जे मोठे चित्र तयार करते. प्रकाश विस्तारित करणे चित्र विस्तारित करेल, परावर्तित करणे चित्र मोठे करणार नाही आणि प्रकाश शोषणे चित्र तयार होऊ देणार नाही.",
+          "imageAlt": "उत्तल लेन्स जे प्रकाश एकत्रित करतो दाखविणारा आकृती",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi-medium science textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "Diagram showing a convex lens converging light",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "convexLens",
+              "x": 50,
+              "y": 30,
+              "size": 20,
+              "labels": [
+                "lens",
+                "principalAxis",
+                "focus"
+              ],
+              "text": {
+                "focus": "F"
+              }
+            }
+          ],
+          "arrows": [
+            {
+              "from": [
+                30,
+                40
+              ],
+              "to": [
+                50,
+                30
+              ],
+              "label": "light",
+              "curved": false
+            },
+            {
+              "from": [
+                50,
+                30
+              ],
+              "to": [
+                70,
+                40
+              ],
+              "label": "convergingLight",
+              "curved": false
+            }
+          ]
+        },
+        "labels": {
+          "light": {
+            "en": "light rays",
+            "hi": "प्रकाश किरणें",
+            "mr": "प्रकाश किरण"
+          },
+          "convergingLight": {
+            "en": "converging light",
+            "hi": "अभिसरण प्रकाश",
+            "mr": "एकत्रित प्रकाश"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        null,
+        "Confuses the behavior of a convex lens with a concave one",
+        "Assumes the lens spreads light",
+        "Misunderstands the function of a lens"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. The correct answer is 0, as a convex lens converges light, which is the basis of its function in a magnifying glass. The distractors reflect common misconceptions about lenses.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu110.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 10: — Light: Mirrors and Lenses",
+            "10.3 What Are the Laws of Reflection?",
+            "Activity 10.5: Let us experiment"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu110.pdf",
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 10: — Light: Mirrors and Lenses",
+            "10.3 What Are the Laws of Reflection?",
+            "Safety First"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu110.pdf",
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 10: — Light: Mirrors and Lenses",
+            "10.4 What Is a Lens?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T14:27:17.261Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

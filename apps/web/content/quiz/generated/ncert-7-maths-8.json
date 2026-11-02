@@ -21,49 +21,251 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-31T13:56:45.803Z",
+  "generatedAt": "2026-11-02T01:54:33.504Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 2,
-      "stem": "If a tap fills a tank in 1 hour, how much of the tank is filled in 1/3 hour?",
+      "difficulty": 1,
+      "stem": "What is the result of multiplying a fraction by its reciprocal?",
       "choices": [
-        "1/3",
-        "1/6",
-        "2/3",
-        "3/4"
+        "The product is 0",
+        "The product is 1",
+        "The product is the same as the original fraction",
+        "The product is the denominator of the original fraction"
       ],
-      "answerIndex": 0,
-      "solution": "If the tap fills the tank in 1 hour, then in 1/3 hour, it fills 1/3 of the tank. The option '1/2' incorrectly assumes that the fill rate is 1/2 per hour. '2/3' and '3/4' are incorrect results of different calculations. The correct answer is '1/3'.",
+      "answerIndex": 1,
+      "solution": "The correct answer is 'The product is 1' because the reciprocal of a fraction is defined as the number that, when multiplied by the original fraction, gives 1. A pupil might mistakenly think the product is 0 if they confuse reciprocal with opposite, think it is the same as the original fraction if they misunderstand the concept, or think it is the denominator if they misapply the definition of reciprocal.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक नल एक टैंक को 1 घंटे में भर दे, तो 1/3 घंटे में टैंक का कितना भाग भर जाएगा?",
+          "stem": "एक भिन्न के व्युत्क्रम से गुणा करने पर परिणाम क्या होता है?",
           "choices": [
-            "1/3",
-            "1/6",
-            "2/3",
-            "3/4"
+            "गुणनफल 0 होता है",
+            "गुणनफल 1 होता है",
+            "गुणनफल मूल भिन्न के समान होता है",
+            "गुणनफल मूल भिन्न के हर के समान होता है"
           ],
-          "solution": "यदि नल टैंक को 1 घंटे में भर दे, तो 1/3 घंटे में यह 1/3 टैंक भरता है। '1/2' गलत रूप से अनुमान लगाता है कि भराव दर 1/2 प्रति घंटा है। '2/3' और '3/4' अलग-अलग गणनाओं के गलत परिणाम हैं। सही उत्तर '1/3' है।",
+          "solution": "सही उत्तर 'गुणनफल 1 होता है' है क्योंकि एक भिन्न का व्युत्क्रम वह संख्या होती है जिसके मूल भिन्न से गुणा करने पर 1 प्राप्त होता है। एक छात्र गलती से व्युत्क्रम के स्थान पर विपरीत को समझ सकता है जिसके कारण वह गुणनफल 0 सोच सकता है, यदि वह अवधारणा को गलती से समझे तो वह यह सोच सकता है कि गुणनफल मूल भिन्न के समान होता है या यदि वह व्युत्क्रम के परिभाषा के गलत उपयोग करे तो वह यह सोच सकता है कि गुणनफल हर के समान होता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains in the same position, and the distractors are still incorrect.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "जर एक नळ 1 तासात टॅंक भरत असेल, तर 1/3 तासात टॅंकच्या किती भाग भरल्या जातील?",
+          "stem": "एका अपूर्णांकाचा व्युत्क्रमाने गुणाकार केल्यास परिणाम काय होतो?",
           "choices": [
-            "1/3",
-            "1/6",
-            "2/3",
-            "3/4"
+            "गुणाकार 0 असतो",
+            "गुणाकार 1 असतो",
+            "गुणाकार मूळ अपूर्णांकासारखाच असतो",
+            "गुणाकार मूळ अपूर्णांकाच्या छेदासारखाच असतो"
           ],
-          "solution": "जर नळ 1 तासात टॅंक भरत असेल, तर 1/3 तासात तो टॅंकच्या 1/3 भाग भरतो. '1/2' हा अपुरा अंदाज असतो की भरण्याचा दर 1/2 प्रति तास आहे. '2/3' आणि '3/4' हे वेगवेगळ्या गणनांचे चुकीचे निकाल आहेत. योग्य उत्तर '1/3' आहे.",
+          "solution": "बरोबर उत्तर 'गुणाकार 1 असतो' आहे कारण अपूर्णांकाचा व्युत्क्रम असा संख्या आहे जी मूळ अपूर्णांकाने गुणली असता 1 मिळतो. एका विद्यार्थी व्युत्क्रम आणि विरुद्ध यांच्या गोंधळात गुणाकार 0 असेल असे चूक करू शकतो, मूळ अपूर्णांकासारखाच गुणाकार असेल असे चूक करू शकतो जर तो अर्थाच्या अपूर्णतेमुळे असे समजल्यास आणि मूळ अपूर्णांकाच्या छेदासारखाच गुणाकार असेल असे चूक करू शकतो जर तो व्युत्क्रमाच्या व्याख्येचा चुकीचा अवलंब केल्यास.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology common in Marathi textbooks.",
+          "critique": "The translation accurately conveys the mathematical concepts and maintains the structure of the original question. The terms used are standard in Marathi mathematics education.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses reciprocal with opposite",
+        null,
+        "does not understand the definition of reciprocal",
+        "misunderstands the concept of reciprocal"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the mathematical definition of a reciprocal. The correct answer is 1, as multiplying a fraction by its reciprocal always results in 1.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 14,
+          "pageStart": 26,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.3 Some Problems Involving Fractions",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 15,
+          "pageStart": 30,
+          "pageEnd": 34,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.3 Some Problems Involving Fractions",
+            "Learning Material Sheets"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 16,
+          "pageStart": 34,
+          "pageEnd": 37,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.3 Some Problems Involving Fractions",
+            "Learning Material Sheets"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T01:54:33.504Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the reciprocal of a fraction?",
+      "choices": [
+        "The fraction itself",
+        "The fraction with numerator and denominator swapped",
+        "The fraction with numerator and denominator added",
+        "The fraction with numerator and denominator multiplied"
+      ],
+      "answerIndex": 1,
+      "solution": "The reciprocal of a fraction is the fraction with numerator and denominator swapped. This is because when a fraction is multiplied by its reciprocal, the product is 1. The other options are incorrect because they do not describe the correct mathematical relationship.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक भिन्न का व्युत्क्रम क्या होता है?",
+          "choices": [
+            "वह भिन्न स्वयं",
+            "अंश और हर के स्थान बदल दिए गए भिन्न",
+            "अंश और हर के जोड़े गए भिन्न",
+            "अंश और हर के गुणा किए गए भिन्न"
+          ],
+          "solution": "एक भिन्न का व्युत्क्रम वह भिन्न होता है जिसमें अंश और हर के स्थान बदल दिए जाते हैं। इसका कारण यह है कि जब एक भिन्न अपने व्युत्क्रम से गुणा की जाती है तो गुणनफल 1 होता है। अन्य विकल्प गलत हैं क्योंकि वे सही गणितीय संबंध का वर्णन नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका अपूर्णांकाचा व्युत्क्रम कोणता असतो?",
+          "choices": [
+            "तोच अपूर्णांक",
+            "अंश आणि हर बदललेला अपूर्णांक",
+            "अंश आणि हर जोडलेला अपूर्णांक",
+            "अंश आणि हर गुणलेला अपूर्णांक"
+          ],
+          "solution": "अपूर्णांकाचा व्युत्क्रम अंश आणि हर बदललेला अपूर्णांक असतो. कारण जेव्हा अपूर्णांक आणि त्याचा व्युत्क्रम गुणला जातो तेव्हा गुणाकार 1 होतो. इतर विकल्प चुकीचे असतात कारण ते योग्य गणितीय संबंध वर्णन करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the reciprocal with the fraction itself",
+        null,
+        "Does not understand the definition of reciprocal",
+        "Thinks the reciprocal is found by adding numerator and denominator instead of swapping them"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is mathematically sound. The correct answer is clearly option 1, and the author's reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 14,
+          "pageStart": 26,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.3 Some Problems Involving Fractions",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 15,
+          "pageStart": 30,
+          "pageEnd": 34,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.3 Some Problems Involving Fractions",
+            "Learning Material Sheets"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 16,
+          "pageStart": 34,
+          "pageEnd": 37,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.3 Some Problems Involving Fractions",
+            "Learning Material Sheets"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T01:54:33.504Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "If 3/5 of a class is present, what fraction of the class is absent?",
+      "choices": [
+        "2/5",
+        "3/5",
+        "2/3",
+        "5/5"
+      ],
+      "answerIndex": 0,
+      "solution": "If 3/5 of the class is present, then 2/5 of the class is absent. The other options are incorrect because 3/5 is the part present, 4/5 is more than the part present, and 5/5 is the whole class.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक कक्षा के 3/5 उपस्थित हैं, तो कक्षा का कौन-सा भाग अनुपस्थित है?",
+          "choices": [
+            "2/5",
+            "3/5",
+            "2/3",
+            "5/5"
+          ],
+          "solution": "यदि कक्षा के 3/5 उपस्थित हैं, तो कक्षा के 2/5 अनुपस्थित हैं। अन्य विकल्प गलत हैं क्योंकि 3/5 उपस्थित भाग है, 4/5 उपस्थित भाग से अधिक है और 5/5 पूरी कक्षा है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "3/5 शाळेच्या विद्यार्थी उपस्थित असल्यास, शाळेच्या किती भागाचा अनुपस्थित असेल?",
+          "choices": [
+            "2/5",
+            "3/5",
+            "2/3",
+            "5/5"
+          ],
+          "solution": "जर 3/5 शाळेच्या विद्यार्थी उपस्थित असल्यास, तर 2/5 शाळेच्या विद्यार्थी अनुपस्थित असतील. इतर विकल्प चुकीचे आहेत कारण 3/5 उपस्थित भाग आहे, 4/5 उपस्थित भागापेक्षा जास्त आहे आणि 5/5 पूर्ण शाळा आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for fractions and class concepts.",
           "flag": null
         }
       },
@@ -73,9 +275,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Believes the time and fraction are inversely related, so divides 1 by 3 instead of multiplying.",
-        "Believes that time and work are inversely proportional, so 1/3 hour fills 2/3 of the tank.",
-        "A student might think that the time and the fraction filled are inversely related, so 1/3 hour would fill 3/4 of the tank."
+        "Confuses the fraction present with the fraction absent",
+        "Student assumes the fraction absent is calculated by subtracting the present fraction from the total, but uses the numerator of the present fraction as the denominator",
+        "The student thinks that the total fraction must be 5/5, not realizing that 3/5 present means 2/5 absent."
       ],
       "solverAnswers": [
         0,
@@ -85,13 +287,103 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The question is straightforward. If a tap fills a tank in 1 hour, then in 1/3 of an hour, it fills 1/3 of the tank. The solution is correct, and the reasoning for the distractors reflects plausible misconceptions.",
+      "critique": "The question is straightforward. If 3/5 are present, then 1 - 3/5 = 2/5 are absent. The solution is correct and matches the key. The distractors reflect common misconceptions.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 3,
-          "pageStart": 7,
-          "pageEnd": 9,
+          "ordinal": 17,
+          "pageStart": 37,
+          "pageEnd": 39,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.3 Some Problems Involving Fractions",
+            "Learning Material Sheets"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 18,
+          "pageStart": 39,
+          "pageEnd": 39,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.3 Some Problems Involving Fractions",
+            "Learning Material Sheets"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T01:54:33.504Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a team can build 1 km of a canal in 8 days, how much of the canal can they build in 1 day?",
+      "choices": [
+        "1/4 km",
+        "1/8 km",
+        "1/16 km",
+        "1/2 km"
+      ],
+      "answerIndex": 1,
+      "solution": "If a team can build 1 km of a canal in 8 days, then in 1 day they build 1 divided by 8, which equals 1/8 km. The other options do not result from dividing 1 km by 8 days. 1/4 km would be the amount built in 2 days, 1/16 km would be if it took 16 days, and 1/2 km would be if it took 2 days.",
+      "checkExpr": "1/8",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक टीम 1 किमी नहर 8 दिन में बना सकती है, तो वे 1 दिन में कितनी नहर बना सकती हैं?",
+          "choices": [
+            "1/4 किमी",
+            "1/8 किमी",
+            "1/16 किमी",
+            "1/2 किमी"
+          ],
+          "solution": "यदि एक टीम 1 किमी नहर 8 दिन में बना सकती है, तो 1 दिन में वे 1 भाग 8 के बराबर, जो 1/8 किमी के बराबर है। अन्य विकल्प 1 किमी को 8 दिनों में विभाजित करने से प्राप्त नहीं होते। 1/4 किमी दो दिन में बने नहर की मात्रा होती है, 1/16 किमी यदि इसे 16 दिन लगते तो होती और 1/2 किमी यदि इसे 2 दिन लगते तो होती।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains in the same position, and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक टीम 1 किमी नाला बनवण्यास 8 दिवस घेते, तर त्यांनी 1 दिवसात किती नाला बनवता येईल?",
+          "choices": [
+            "1/4 किमी",
+            "1/8 किमी",
+            "1/16 किमी",
+            "1/2 किमी"
+          ],
+          "solution": "एक टीम 1 किमी नाला 8 दिवसांत बनवू शकते, म्हणून 1 दिवसात ते 1 भाग 8 चे बरोबर असेल, जे 1/8 किमी च्या बरोबर असेल. इतर विकल्प 1 किमी ला 8 दिवसांत भाग घालून मिळत नाहीत. 1/4 किमी हा 2 दिवसांत बनलेला असतो, 1/16 किमी हा 16 दिवसांत बनलेला असतो आणि 1/2 किमी हा 2 दिवसांत बनलेला असतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi technical terms. The solution explains the logic clearly and matches the English version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "divides 1 km by 4 days instead of 8",
+        null,
+        "divides 1 km by 16 days instead of 8",
+        "adds 1 km and 8 days instead of dividing"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. The team builds 1 km in 8 days, so in 1 day they build 1/8 km. The distractors reflect common misconceptions such as dividing by 4, 16, or adding instead of dividing.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 4,
           "headingPath": [
             "Chapter 8: Working with Fractions",
             "8.1 Multiplication of Fractions"
@@ -99,9 +391,9 @@
         },
         {
           "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 4,
-          "pageStart": 9,
-          "pageEnd": 11,
+          "ordinal": 1,
+          "pageStart": 4,
+          "pageEnd": 5,
           "headingPath": [
             "Chapter 8: Working with Fractions",
             "8.1 Multiplication of Fractions"
@@ -109,19 +401,9 @@
         },
         {
           "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 5,
-          "pageStart": 11,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.1 Multiplication of Fractions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 6,
-          "pageStart": 13,
-          "pageEnd": 14,
+          "ordinal": 2,
+          "pageStart": 5,
+          "pageEnd": 7,
           "headingPath": [
             "Chapter 8: Working with Fractions",
             "8.1 Multiplication of Fractions"
@@ -129,49 +411,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T13:56:45.803Z",
+      "generatedAt": "2026-11-02T01:54:33.504Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "If the reciprocal of a fraction is 3/4, what is the original fraction?",
+      "stem": "If a fraction is divided by another fraction, under what condition is the quotient greater than the dividend?",
       "choices": [
-        "4/3",
-        "3/4",
-        "2/3",
-        "1/2"
+        "When the divisor is less than 1",
+        "When the divisor is greater than 0",
+        "When the divisor is equal to 0",
+        "When the divisor is less than 0"
       ],
       "answerIndex": 0,
-      "solution": "The reciprocal of a fraction is obtained by swapping the numerator and denominator. So, if the reciprocal is 3/4, the original fraction must be 4/3. The other options are either the reciprocal itself or incorrect fractions.",
+      "solution": "When the divisor is less than 1, the quotient is greater than the dividend because dividing by a fraction less than 1 effectively multiplies the dividend by a number greater than 1. Dividing by a number greater than 0 does not guarantee the quotient will be larger, as it depends on whether the divisor is greater or less than 1. Dividing by 0 is undefined, and dividing by a negative number would result in a negative quotient, which may not be greater than the original dividend.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक भिन्न का व्युत्क्रम 3/4 है, तो मूल भिन्न क्या है?",
+          "stem": "यदि एक भिन्न को दूसरी भिन्न से विभाजित किया जाता है, तो किस स्थिति में भागफल भाजक से बड़ा होता है?",
           "choices": [
-            "4/3",
-            "3/4",
-            "2/3",
-            "1/2"
+            "जब भाजक 1 से कम होता है",
+            "जब भाजक 0 से अधिक होता है",
+            "जब भाजक 0 के बराबर होता है",
+            "जब भाजक 0 से कम होता है"
           ],
-          "solution": "एक भिन्न का व्युत्क्रम अंश और हर को बदलकर प्राप्त किया जाता है। इसलिए, यदि व्युत्क्रम 3/4 है, तो मूल भिन्न 4/3 होना चाहिए। अन्य विकल्प या तो व्युत्क्रम स्वयं हैं या गलत भिन्न हैं।",
+          "solution": "जब भाजक 1 से कम होता है, तो भागफल भाजक से बड़ा होता है क्योंकि 1 से कम भिन्न से विभाजित करना भाजक को 1 से अधिक संख्या से गुणा करने के समान होता है। 0 से अधिक भाजक से भाग देने पर भागफल बड़ा होने की गारंटी नहीं होती, क्योंकि यह निर्भर करता है कि भाजक 1 से अधिक है या कम। 0 से भाग देना अपरिभाषित होता है, और ऋणात्मक संख्या से भाग देने पर भागफल ऋणात्मक होता है, जो मूल भाजक से बड़ा नहीं हो सकता।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "Translation accurately reflects the original meaning with appropriate Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "जर एका अपूर्णांकाचा व्युत्क्रम 3/4 आहे, तर मूळ अपूर्णांक काय आहे?",
+          "stem": "एका अपूर्णांकाला दुसऱ्या अपूर्णांकाने भागल्यास, भागाकार भाजकापेक्षा मोठा असतो कोणत्या अटीत?",
           "choices": [
-            "4/3",
-            "3/4",
-            "2/3",
-            "1/2"
+            "जेव्हा भाजक 1 पेक्षा लहान असतो",
+            "जेव्हा भाजक 0 पेक्षा मोठा असतो",
+            "जेव्हा भाजक 0 बरोबर असतो",
+            "जेव्हा भाजक 0 पेक्षा लहान असतो"
           ],
-          "solution": "अपूर्णांकाचा व्युत्क्रम अंश आणि छेद बदलून मिळतो. म्हणून, जर व्युत्क्रम 3/4 असेल, तर मूळ अपूर्णांक 4/3 असेल. इतर विकल्प व्युत्क्रमाच असतात किंवा चुकीचे अपूर्णांक असतात.",
+          "solution": "जेव्हा भाजक 1 पेक्षा लहान असतो, तेव्हा भागाकार भाजकापेक्षा मोठा असतो कारण 1 पेक्षा लहान अपूर्णांकाने भागल्यास भाजकाला 1 पेक्षा मोठ्या संख्येने गुणल्यासारखे होते. 0 पेक्षा मोठ्या भाजकाने भागल्यास भागाकार मोठा असेल की नाही याची खात्री नसते, जे भाजक 1 पेक्षा मोठा असेल की लहान असेल यावर अवलंबून असते. 0 ने भागल्यास अनिश्चित असते आणि ऋण संख्येने भागल्यास भागाकार ऋण असतो, जे मूळ भाजकापेक्षा मोठे असू शकत नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -181,9 +463,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Chooses the reciprocal instead of the original fraction",
-        "Chooses the reciprocal instead of the original fraction",
-        "Chooses a different fraction that is not the reciprocal of 3/4"
+        "Students might think that as long as the divisor is not zero, the quotient will be larger, not realizing the importance of the divisor being less than 1.",
+        "Students sometimes confuse the effect of dividing by 0 with other division scenarios",
+        "Student mistakenly believes negative divisors affect the quotient size similarly to positive ones"
       ],
       "solverAnswers": [
         0,
@@ -193,7 +475,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The question is clear and the solution correctly identifies the original fraction as the reciprocal of 3/4, which is 4/3. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "critique": "The correct answer is 0. Dividing by a fraction less than 1 increases the quotient, which aligns with the solution. The other options are invalid: option 1 is incorrect because a divisor greater than 0 (but greater than 1) would decrease the quotient, option 2 is invalid because division by 0 is undefined, and option 3 is incorrect because dividing by a negative number would not necessarily make the quotient larger.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp108.pdf",
@@ -237,7 +519,213 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T13:56:45.803Z",
+      "generatedAt": "2026-11-02T01:54:33.504Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the product of 3/4 and 2/5?",
+      "choices": [
+        "5/9",
+        "6/20",
+        "3/10",
+        "1/2"
+      ],
+      "answerIndex": 2,
+      "solution": "Multiplying the numerators (3 × 2 = 6) and the denominators (4 × 5 = 20) gives 6/20. Simplifying this fraction gives 3/10. The other options result from incorrect multiplication or simplification.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "3/4 और 2/5 का गुणन क्या है?",
+          "choices": [
+            "5/9",
+            "6/20",
+            "3/10",
+            "1/2"
+          ],
+          "solution": "अंशों (3 × 2 = 6) और हरों (4 × 5 = 20) को गुणा करने से 6/20 प्राप्त होता है। इस भिन्न को सरल करने से 3/10 प्राप्त होता है। अन्य विकल्प गलत गुणा या सरलीकरण के कारण होते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "3/4 आणि 2/5 चा गुणाकार किती आहे?",
+          "choices": [
+            "5/9",
+            "6/20",
+            "3/10",
+            "1/2"
+          ],
+          "solution": "अंश (3 × 2 = 6) आणि छेद (4 × 5 = 20) गुणाकार करण्याने 6/20 मिळते. हा अपूर्णांक सोपा करण्याने 3/10 मिळते. इतर विकल्प अयोग्य गुणाकार किंवा सोपे करण्यामुळे मिळतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Adds the numerators and denominators separately",
+        "Fails to simplify the fraction correctly",
+        null,
+        "Confuses the numerator and denominator in the final answer"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3/10, as multiplying 3/4 and 2/5 gives 6/20, which simplifies to 3/10. The author's solution and reasoning are accurate.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 3,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.1 Multiplication of Fractions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 4,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.1 Multiplication of Fractions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 5,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.1 Multiplication of Fractions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 6,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.1 Multiplication of Fractions"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T01:54:33.504Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Maria bought 8 m of lace to decorate the bags she made for school. She used 2/3 m for each bag and finished the lace. How many bags did she decorate?",
+      "choices": [
+        "12",
+        "10",
+        "8",
+        "6"
+      ],
+      "answerIndex": 0,
+      "solution": "To find how many bags Maria decorated, we divide the total length of lace (8 m) by the length used per bag (2/3 m). This gives 8 ÷ (2/3) = 8 × (3/2) = 12. The other options are incorrect because they either multiply instead of divide or make errors in the division process.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मारिया ने स्कूल के बैगों को सजाने के लिए 8 मीटर लेस खरीदा। उसने प्रत्येक बैग के लिए 2/3 मीटर लेस का उपयोग किया और लेस समाप्त कर दिया। उसने कितने बैग सजाए?",
+          "choices": [
+            "12",
+            "10",
+            "8",
+            "6"
+          ],
+          "solution": "मारिया द्वारा सजाए गए बैगों की संख्या ज्ञात करने के लिए, हम कुल लेस की लंबाई (8 मीटर) को प्रत्येक बैग के लिए उपयोग की गई लेस की लंबाई (2/3 मीटर) से विभाजित करते हैं। इससे 8 ÷ (2/3) = 8 × (3/2) = 12 प्राप्त होता है। अन्य विकल्प गलत हैं क्योंकि वे विभाजन के बजाय गुणा करते हैं या विभाजन प्रक्रिया में त्रुटि करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मारिया शाळेच्या बॅगा अलंकृत करण्यासाठी 8 मी लाकडी बटण खरेदी केले. तिने प्रत्येक बॅगेसाठी 2/3 मी वापरले आणि लाकडी बटण संपले. तिने किती बॅगा अलंकृत केल्या?",
+          "choices": [
+            "12",
+            "10",
+            "8",
+            "6"
+          ],
+          "solution": "मारियाने किती बॅगा अलंकृत केल्या ते शोधण्यासाठी, आम्ही एकूण लाकडी बटणाची लांबी (8 मी) ला प्रत्येक बॅगेसाठी वापरलेल्या लांबी (2/3 मी) ने भागायला हवे. हे 8 ÷ (2/3) = 8 × (3/2) = 12 देते. इतर विकल्प चुकीचे आहेत कारण ते काही वेळा भागाकाराऐवजी गुणाकार करतात किंवा भागाकार प्रक्रियेत चूक करतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Multiplies instead of divides",
+        "Fails to convert the division of fractions correctly",
+        "Uses an incorrect value for the total length of lace"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Dividing 8 by 2/3 gives 12, and the author's reasoning for the other options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 11,
+          "pageStart": 22,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.3 Some Problems Involving Fractions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 12,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.3 Some Problems Involving Fractions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 13,
+          "pageStart": 24,
+          "pageEnd": 26,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.3 Some Problems Involving Fractions"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T01:54:33.504Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

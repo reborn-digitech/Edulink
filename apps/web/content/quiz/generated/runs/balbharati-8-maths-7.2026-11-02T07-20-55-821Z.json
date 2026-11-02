@@ -1,0 +1,510 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T07:20:55.821Z",
+  "finishedAt": "2026-11-02T07:24:57.956Z",
+  "seconds": 242,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी गणित इंग्रजी",
+    "bookCode": "803020004",
+    "document": "balbharati/8/mathematics/803020004.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 7 — Variation",
+    "edition": "First Edition 2018",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n8. B) 8𝑥 - 20 2",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n8. (b) 5 : 1",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n14. B) 3 8",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n8. 1\nratio 3 : 1, then the value of 𝒚 is\n(A) 4 (B) 3 (C) 2 (D) 1\nA letter from the word INDEPENDENCE is selected at random. What is the"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 90596,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 15400,
+      "completionTokens": 5633
+    },
+    "critique": {
+      "calls": 32,
+      "ms": 166007,
+      "in": 24,
+      "out": 15,
+      "rejects": 9,
+      "promptTokens": 14380,
+      "completionTokens": 5461
+    },
+    "solver": {
+      "calls": 133,
+      "ms": 71714,
+      "in": 15,
+      "out": 8,
+      "rejects": 7,
+      "promptTokens": 27860,
+      "completionTokens": 1634
+    },
+    "form": {
+      "calls": 3,
+      "ms": 9234,
+      "in": 8,
+      "out": 6,
+      "rejects": 2,
+      "promptTokens": 714,
+      "completionTokens": 196
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 8,
+      "ms": 1477,
+      "in": 6,
+      "out": 4,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 147461,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 9609,
+      "completionTokens": 4645
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 1,
+    "4": 2,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "If x varies directly as y, what is the relationship between x and y?",
+      "ms": {
+        "draft": 4103,
+        "critique": 4700,
+        "solver": 2454,
+        "form": 2891
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used when two quantities increase or decrease in the same proportion?",
+      "ms": {
+        "draft": 4103,
+        "critique": 4477,
+        "solver": 1577,
+        "form": 4229
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the cost of 3 notebooks is ` 60, what is the cost of 12 notebooks?",
+      "ms": {
+        "draft": 4103,
+        "critique": 4051,
+        "solver": 16537
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If x varies directly as y and inversely as z, and when x = 10, y = 5, z = 2, what is the value of x when y = 15 and z = 3?",
+      "ms": {
+        "draft": 4103,
+        "critique": 5428
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If x varies inversely as y, and when x = 10, y = 5, what is the value of x when y = 2?",
+      "ms": {
+        "draft": 4103,
+        "critique": 7021,
+        "solver": 11391
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 120 bags of half litre milk can be filled in 3 minutes, how long will it take to fill 1800 bags?",
+      "ms": {
+        "draft": 3826,
+        "critique": 6321,
+        "solver": 1534
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 18 boxes can be filled with 240 kg of sugar, how many boxes can be filled with 600 kg of sugar?",
+      "ms": {
+        "draft": 3826,
+        "critique": 5657
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the constant of variation if 15 workers can build a wall in 48 hours?",
+      "ms": {
+        "draft": 3826,
+        "critique": 5183,
+        "solver": 12876
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the cost of 5 pens is 25 rupees, and the cost of 3 pencils is 15 rupees, which of the following is not of direct variation?",
+      "ms": {
+        "draft": 3826,
+        "critique": 4369,
+        "solver": 6144
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the speed of a vehicle is inversely proportional to the time taken, and the speed is 48 km/h for 6 hours, what is the constant of proportionality?",
+      "ms": {
+        "draft": 3663,
+        "critique": 5007
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 120 bags of half-litre milk can be filled in 3 minutes, how long will it take to fill 1800 bags?",
+      "ms": {
+        "draft": 3663,
+        "critique": 7943
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 15 workers can build a wall in 48 hours, how many workers are needed to build the same wall in 30 hours?",
+      "ms": {
+        "draft": 3663,
+        "critique": 4383,
+        "solver": 14349
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the speed of a vehicle is inversely proportional to the time taken, and the speed is 48 km/h when the time is 6 hours, what will be the time if the speed is 72 km/h?",
+      "ms": {
+        "draft": 3663,
+        "critique": 5801
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the relationship between two quantities where an increase in one leads to a proportional increase in the other?",
+      "ms": {
+        "draft": 3508,
+        "critique": 5050
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If x varies directly as y, and x = 5 when y = 30, what is the constant of variation?",
+      "ms": {
+        "draft": 3508,
+        "critique": 6083
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The number of students in a row and the number of rows are in inverse variation. If there are 30 students in a row, how many rows are needed if there are 50 students in a row?",
+      "ms": {
+        "draft": 3508,
+        "critique": 6042
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If x varies directly as y and x = 4 when y = 10, what is the value of x when y = 25?",
+      "ms": {
+        "draft": 3508,
+        "critique": 5538
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the cost of groundnuts varies directly as its weight, and 5 kg of groundnuts cost ` 450, what is the cost of 100 kg of groundnuts?",
+      "ms": {
+        "draft": 3508,
+        "critique": 3297,
+        "solver": 4417
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of inverse variation?",
+      "ms": {
+        "draft": 3663,
+        "critique": 4774,
+        "solver": 1818,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A car travels at a speed of 60 km/h and takes 8 hours to cover a certain distance. What should be the increase in speed to cover the same distance in 6 hours?",
+      "ms": {
+        "draft": 3663,
+        "critique": 7013,
+        "solver": 13752,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of inverse variation?",
+      "ms": {
+        "draft": 3826,
+        "critique": 5837,
+        "solver": 1199,
+        "form": 3742,
+        "translation": 44102
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the cost of apples varies directly with the number of apples, and 10 apples cost ` 150, what is the cost of 15 apples?",
+      "ms": {
+        "draft": 3508,
+        "critique": 5014,
+        "solver": 1645,
+        "form": 0,
+        "translation": 18355
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The number of students in a row and the number of rows are in inverse variation. If there are 12 students in a row, and there are 10 rows, how many students will be in a row if there are 15 rows?",
+      "ms": {
+        "draft": 4103,
+        "critique": 6733,
+        "solver": 10234,
+        "form": 0,
+        "translation": 44418
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "If a car with speed 60 km/hr takes 8 hours to travel a distance, what should be the increase in speed to cover the same distance in 6 hours?",
+      "ms": {
+        "draft": 3826,
+        "critique": 5428,
+        "solver": 1019,
+        "form": 0,
+        "translation": 36080
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If x varies directly as y, what is the relationship between x and y?",
+      "reason": "options 0 and 3 are the same (\"x + y = k\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used when two quantities increase or decrease in the same proportion?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Uses a general term instead of the specific term from the pa…\"); distractor 3's reason is not a one-line misconception (\"Uses a term that is not defined in the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the cost of 3 notebooks is ` 60, what is the cost of 12 notebooks?",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If x varies directly as y and inversely as z, and when x = 10, y = 5, z = 2, what is the value of x when y = 15 and z = 3?",
+      "reason": "the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If x varies inversely as y, and when x = 10, y = 5, what is the value of x when y = 2?",
+      "reason": "distractors 0, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 120 bags of half litre milk can be filled in 3 minutes, how long will it take to fill 1800 bags?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If 18 boxes can be filled with 240 kg of sugar, how many boxes can be filled with 600 kg of sugar?",
+      "reason": "the critic finds option 1 correct, the key is 2; option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the constant of variation if 15 workers can build a wall in 48 hours?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the cost of 5 pens is 25 rupees, and the cost of 3 pencils is 15 rupees, which of the following is not of direct variation?",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If the speed of a vehicle is inversely proportional to the time taken, and the speed is 48 km/h for 6 hours, what is the constant of proportionality?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If 120 bags of half-litre milk can be filled in 3 minutes, how long will it take to fill 1800 bags?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 15 workers can build a wall in 48 hours, how many workers are needed to build the same wall in 30 hours?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the speed of a vehicle is inversely proportional to the time taken, and the speed is 48 km/h when the time is 6 hours, what will be the time if the speed is 72 km/h?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used to describe the relationship between two quantities where an increase in one leads to a proportional increase in the other?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If x varies directly as y, and x = 5 when y = 30, what is the constant of variation?",
+      "reason": "the solution's working is not sound; option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "The number of students in a row and the number of rows are in inverse variation. If there are 30 students in a row, how many rows are needed if there are 50 students in a row?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If x varies directly as y and x = 4 when y = 10, what is the value of x when y = 25?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the cost of groundnuts varies directly as its weight, and 5 kg of groundnuts cost ` 450, what is the cost of 100 kg of groundnuts?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is an example of inverse variation?",
+      "reason": "near-duplicate of batch item \"Which of the following is an example of inverse va…\" (cosine 1.000 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A car travels at a speed of 60 km/h and takes 8 hours to cover a certain distance. What should be the increase in speed to cover the same distance in 6 hours?",
+      "reason": "near-duplicate of batch item \"If a car with speed 60 km/hr takes 8 hours to trav…\" (cosine 0.983 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

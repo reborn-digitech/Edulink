@@ -1,0 +1,301 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T13:05:11.931Z",
+  "finishedAt": "2026-11-01T13:10:55.875Z",
+  "seconds": 344,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 6 — Fractions",
+    "edition": "First Edition 2026",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[RMO 2015 — question paper]\n3. Find all fractions which can be written simultaneously in the forms\n5k − 3\n6l − 1\nand , for some integers k, l.\n4l − 3",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n4. C Let numerator be x and denominator be y 1\nGiven , x + y = 11\n𝐱 𝟏\n(𝐲+𝟏) = 2\nSolving these equations, we get\nx = 4, y = 7; ∴ Fraction = 𝟒 7\n𝟒\n(C)",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n4. 1\nis increased by 1, the fraction becomes\n2 3\n(A) (B)\n9 8\n, then the fraction is\n4 5\n(C) (D)\n7 6\nIf one root of the quadratic equation 𝑎𝑥 + 𝑏𝑥 + 𝑐 = 0 is the reciprocal of the"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 64926,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 8988,
+      "completionTokens": 2664
+    },
+    "critique": {
+      "calls": 21,
+      "ms": 193619,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 9159,
+      "completionTokens": 3707
+    },
+    "solver": {
+      "calls": 122,
+      "ms": 101066,
+      "in": 12,
+      "out": 9,
+      "rejects": 3,
+      "promptTokens": 24598,
+      "completionTokens": 1448
+    },
+    "form": {
+      "calls": 2,
+      "ms": 8678,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 528,
+      "completionTokens": 159
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 17,
+      "ms": 4011,
+      "in": 9,
+      "out": 7,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 383973,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 14817,
+      "completionTokens": 6364
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 5,
+      "stem": "If a fraction is reduced to its simplest form and becomes 2/3, which of the following could be the original fraction?",
+      "ms": {
+        "draft": 6196,
+        "critique": 9876,
+        "solver": 16687
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a vulgar fraction?",
+      "ms": {
+        "draft": 4626,
+        "critique": 8179,
+        "solver": 21349
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following fractions is greater than 2/3?",
+      "ms": {
+        "draft": 4626,
+        "critique": 12970,
+        "solver": 23133
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a unit fraction?",
+      "ms": {
+        "draft": 6196,
+        "critique": 9071,
+        "solver": 18801,
+        "form": 4171
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a unit fraction?",
+      "ms": {
+        "draft": 4626,
+        "critique": 6853,
+        "solver": 2251,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for a fraction that has 1 as its numerator?",
+      "ms": {
+        "draft": 6196,
+        "critique": 9511,
+        "solver": 17141,
+        "form": 5353,
+        "translation": 54211
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a circle is divided into 8 equal parts and 3 parts are shaded, what fraction represents the shaded part?",
+      "ms": {
+        "draft": 6196,
+        "critique": 13267,
+        "solver": 18454,
+        "form": 0,
+        "translation": 65583
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the sum of 1/2 and 1/4?",
+      "ms": {
+        "draft": 4626,
+        "critique": 9716,
+        "solver": 22482,
+        "form": 0,
+        "translation": 36923
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following fractions is greater than 3/5?",
+      "ms": {
+        "draft": 6196,
+        "critique": 10196,
+        "solver": 13729,
+        "form": 1,
+        "translation": 51026
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If 1/3 of a cake is given to Ramesh, 1/6 to Seema, and the rest to their friend, what fraction of the cake is given to the friend?",
+      "ms": {
+        "draft": 4626,
+        "critique": 10033,
+        "solver": 10657,
+        "form": 0,
+        "translation": 51407
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If 3/4 of a water tank is filled and 1/2 of the tank is used, what fraction of the tank is left?",
+      "ms": {
+        "draft": 6196,
+        "critique": 9031,
+        "solver": 1597,
+        "form": 1,
+        "translation": 62889
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is an improper fraction?",
+      "ms": {
+        "draft": 4626,
+        "critique": 9209,
+        "solver": 2518,
+        "form": 0,
+        "translation": 46941
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a fraction is reduced to its simplest form and becomes 2/3, which of the following could be the original fraction?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is an example of a vulgar fraction?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following fractions is greater than 2/3?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is an example of a unit fraction?",
+      "reason": "near-duplicate of served question cmvvk0vkq00460rnd0rwq22hq (cosine 0.915 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a unit fraction?",
+      "reason": "near-duplicate of served question cmvvk0vkq00460rnd0rwq22hq (cosine 0.954 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

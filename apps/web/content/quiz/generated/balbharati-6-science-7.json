@@ -21,222 +21,49 @@
   "board": "BALBHARATI",
   "book": "६ वी सामान्य विज्ञान इंग्रजी",
   "edition": "First Edition 2026",
-  "generatedAt": "2026-10-31T04:46:24.012Z",
+  "generatedAt": "2026-11-01T17:32:03.558Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "Which of the following is a true statement about light?",
+      "stem": "What is essential for seeing or visibility along with the eyes?",
       "choices": [
-        "Light can travel through a vacuum.",
-        "Light can travel through a bent pipe.",
-        "Light is always visible.",
-        "Light can be heard."
+        "Air",
+        "Sound",
+        "Light",
+        "Heat"
       ],
-      "answerIndex": 0,
-      "solution": "The correct answer is 'Light can travel through a vacuum.' Light does not need a medium to travel, and it can move through a vacuum. The other options are incorrect because light cannot be heard, it cannot travel through a bent pipe, and it is not always visible.",
+      "answerIndex": 2,
+      "solution": "Light is essential for seeing or visibility along with the eyes. Without light, the eyes cannot detect objects because there is no illumination to reflect off surfaces. Other options like air, sound, and heat do not play a direct role in the process of visual perception.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा प्रकाश के बारे में एक सत्य कथन है?",
+          "stem": "दृश्यता या दृष्टि के लिए आंखों के साथ क्या आवश्यक होता है?",
           "choices": [
-            "प्रकाश निर्वात में यात्रा कर सकता है।",
-            "प्रकाश एक मुड़े हुए पाइप में यात्रा कर सकता है।",
-            "प्रकाश हमेशा दृश्यमान होता है।",
-            "प्रकाश को सुना जा सकता है।"
+            "हवा",
+            "ध्वनि",
+            "प्रकाश",
+            "ऊष्मा"
           ],
-          "solution": "सही उत्तर 'प्रकाश निर्वात में यात्रा कर सकता है।' है। प्रकाश के यात्रा करने के लिए माध्यम की आवश्यकता नहीं होती है, और यह निर्वात में गति कर सकता है। अन्य विकल्प गलत हैं क्योंकि प्रकाश को सुना नहीं जा सकता, यह मुड़े हुए पाइप में यात्रा नहीं कर सकता, और यह हमेशा दृश्यमान नहीं होता।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology as found in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते प्रकाशाबद्दल खरे विधान आहे?",
-          "choices": [
-            "प्रकाश निर्वातात जाऊ शकतो.",
-            "प्रकाश वक्र नळीतून जाऊ शकतो.",
-            "प्रकाश हमखास दिसतो.",
-            "प्रकाश ऐकू शकतो."
-          ],
-          "solution": "बरोबर उत्तर 'प्रकाश निर्वातात जाऊ शकतो.' आहे. प्रकाशला माध्यमाची आवश्यकता नसते आणि तो निर्वातात जाऊ शकतो. इतर विकल्प अयोग्य आहेत कारण प्रकाश ऐकू शकत नाही, तो वक्र नळीतून जाऊ शकत नाही आणि तो हमखास दिसत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Students often think light follows the path of the pipe due to a misunderstanding of light's straight-line propagation.",
-        "Pupils might think that light can travel through any object, like a bent pipe.",
-        "Pupils might believe that light is always visible, which is false because light is only visible when it enters the eye or reflects off objects."
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0, as light can indeed travel through a vacuum. The other options are incorrect, and the author's reasons for the distractors align with common misconceptions among students.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 67,
-          "pageStart": 78,
-          "pageEnd": 79,
-          "headingPath": [
-            "7. A Journey of Light",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T04:46:24.012Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the reason we cannot see objects in a completely dark room?",
-      "choices": [
-        "There is no light",
-        "The objects are not there",
-        "The eyes are closed",
-        "The objects are too far"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct answer is there is no light because vision requires light to reflect off objects and enter the eyes. Without light, no visual information can reach the eyes, making it impossible to see. The other options are incorrect because the presence of objects, the state of the eyes, or distance do not affect visibility in the absence of light.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "हम एक पूरी तरह अंधेरे कमरे में वस्तुओं को क्यों नहीं देख सकते?",
-          "choices": [
-            "प्रकाश नहीं है",
-            "वस्तुएँ नहीं हैं",
-            "आंखें बंद हैं",
-            "वस्तुएँ बहुत दूर हैं"
-          ],
-          "solution": "सही उत्तर प्रकाश नहीं है क्योंकि दृष्टि के लिए प्रकाश की आवश्यकता होती है जो वस्तुओं से परावर्तित होकर आंखों में प्रवेश करता है। प्रकाश के अभाव में आंखों तक कोई दृश्य सूचना नहीं पहुंच सकती, जिसके कारण देखना संभव नहीं होता। अन्य विकल्प गलत हैं क्योंकि वस्तुओं की उपस्थिति, आंखों की स्थिति या दूरी प्रकाश के अभाव में दृश्यता को प्रभावित नहीं करती।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology consistent with school-level science textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका पूर्णतः अंधार खोलीत वस्तू दिसत नाहीत याचा कारण काय आहे?",
-          "choices": [
-            "प्रकाश नाही",
-            "वस्तू नाहीत",
-            "डोळे बंद आहेत",
-            "वस्तू खूप दूर आहेत"
-          ],
-          "solution": "बरोबर उत्तर प्रकाश नाही कारण दृष्टीला वस्तूंवरून प्रकाश परावर्तित होणे आवश्यक आहे आणि डोळ्यांमध्ये प्रवेश करावा. प्रकाश नसल्यास डोळ्यांमध्ये दृश्य माहिती पोहोचू शकत नाही, त्यामुळे दिसणे शक्य नाही. इतर विकल्प अयोग्य आहेत कारण वस्तूंच्या उपस्थिती, डोळ्यांच्या अवस्थेच्या किंवा अंतरामुळे प्रकाश नसल्यास दृश्यता प्रभावित होत नाही.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The structure and logic of the question and solution are preserved.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Believes that if something is not visible, it must not exist",
-        "misunderstands the concept of visibility",
-        "misunderstands the concept of visibility and the role of the eyes in seeing"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0, as the absence of light prevents visibility. The other options reflect common misconceptions about vision and existence.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 61,
-          "pageStart": 72,
-          "pageEnd": 73,
-          "headingPath": [
-            "7. A Journey of Light"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 62,
-          "pageStart": 73,
-          "pageEnd": 73,
-          "headingPath": [
-            "7. A Journey of Light"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 63,
-          "pageStart": 74,
-          "pageEnd": 74,
-          "headingPath": [
-            "7. A Journey of Light"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T04:46:24.012Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What happens when light falls on opaque objects?",
-      "choices": [
-        "Reflection",
-        "Refraction",
-        "Absorption",
-        "Scattering"
-      ],
-      "answerIndex": 0,
-      "solution": "When light falls on opaque objects, the light is reflected off their surface because opaque materials do not allow light to pass through them. Refraction involves light bending as it passes through a medium, which does not occur with opaque objects. Absorption refers to light being taken in, but this is not the primary interaction for opaque objects. Scattering involves light being dispersed in different directions, which is not the main result of light hitting an opaque surface.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "अपारदर्शी वस्तुओं पर प्रकाश गिरता है तो क्या होता है?",
-          "choices": [
-            "परावर्तन",
-            "अपवर्तन",
-            "अवशोषण",
-            "प्रकीर्णन"
-          ],
-          "solution": "जब प्रकाश अपारदर्शी वस्तुओं पर गिरता है, तो प्रकाश उनकी सतह से परावर्तित हो जाता है क्योंकि अपारदर्शी सामग्री प्रकाश के पार जाने की अनुमति नहीं देती है। अपवर्तन प्रकाश के एक माध्यम से गुजरते समय झुकने के साथ होता है, जो अपारदर्शी वस्तुओं के साथ नहीं होता है। अवशोषण का अर्थ है प्रकाश के ले लिये जाने के साथ होता है, लेकिन यह अपारदर्शी वस्तुओं के साथ मुख्य अंतःक्रिया नहीं है। प्रकीर्णन प्रकाश के विभिन्न दिशाओं में फैल जाने के साथ होता है, जो अपारदर्शी सतह पर प्रकाश के टकराने के मुख्य परिणाम नहीं है।",
+          "solution": "आंखों के साथ दृश्यता या दृष्टि के लिए प्रकाश आवश्यक होता है। प्रकाश के बिना, आंखें वस्तुओं को नहीं देख सकतीं क्योंकि सतहों पर प्रकाश के परावर्तन के बिना कोई उजाला नहीं होता। अन्य विकल्प जैसे हवा, ध्वनि और ऊष्मा दृष्टि अपसारण की प्रक्रिया में सीधा भूमिका नहीं निभाते।",
           "imageAlt": null,
           "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "प्रकाश अपारदर्शक वस्तूंवर पडत असतो तेव्हा काय होते?",
+          "stem": "दृष्टी किंवा दृश्यता बरोबर डोळे घेऊन काय आवश्यक आहे?",
           "choices": [
-            "परावर्तन",
-            "अपवर्तन",
-            "अवशोषण",
-            "प्रसरण"
+            "हवा",
+            "ध्वनी",
+            "प्रकाश",
+            "ताप"
           ],
-          "solution": "जेव्हा प्रकाश अपारदर्शक वस्तूंवर पडतो तेव्हा प्रकाश त्यांच्या पृष्ठभागावर परावर्तित होतो कारण अपारदर्शक द्रव्यांमधून प्रकाश जाऊ शकत नाही. अपवर्तन हा प्रकाशाच्या माध्यमातून वाकलेल्या वास्तविकतेचा अभ्यास आहे, जो अपारदर्शक वस्तूंसाठी घडत नाही. अवशोषण हा प्रकाशाच्या घेतल्याचा अभ्यास आहे, परंतु हा अपारदर्शक वस्तूंसाठी मुख्य अंतःक्रिया नाही. प्रसरण हा प्रकाशाच्या विविध दिशांमध्ये बिखरलेल्या अभ्यासाचा अभ्यास आहे, जो अपारदर्शक पृष्ठभागावर प्रकाश टकल्यानंतर मुख्य परिणाम नाही.",
+          "solution": "डोळे घेऊन दृष्टी किंवा दृश्यता बरोबर प्रकाश आवश्यक आहे. प्रकाश नसल्यास, डोळे वस्तू ओळखू शकत नाहीत कारण त्यांच्या सतहींवर प्रकाश परावर्तित होत नाही. वायू, ध्वनी आणि ताप या विषयांमध्ये दृश्य अभिगमाच्या प्रक्रियेमध्ये सीधा भूमिका नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for scientific concepts.",
           "flag": null
         }
       },
@@ -245,200 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Belief that air is necessary for vision, not understanding the role of light",
+        "Believes sound is necessary for visibility because it is a sensory input like sight",
         null,
-        "Confuses reflection with other light phenomena",
-        "Incorrectly assumes that refraction occurs with opaque objects",
-        "Incorrectly assumes that absorption is the primary effect of light on opaque objects"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0 (Reflection), as the question states that reflection occurs when light falls on opaque objects. The other options are not mentioned in the context of opaque objects, and the reasons for the wrong options reflect common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 64,
-          "pageStart": 74,
-          "pageEnd": 75,
-          "headingPath": [
-            "7. A Journey of Light"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 65,
-          "pageStart": 75,
-          "pageEnd": 77,
-          "headingPath": [
-            "7. A Journey of Light"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 66,
-          "pageStart": 77,
-          "pageEnd": 78,
-          "headingPath": [
-            "7. A Journey of Light"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T04:46:24.012Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a light ray is reflected from a surface, which of the following is true about the angle of incidence and the angle of reflection?",
-      "choices": [
-        "They are always equal",
-        "They are always different",
-        "They add up to 90 degrees",
-        "They add up to 180 degrees"
-      ],
-      "answerIndex": 0,
-      "solution": "The angle of incidence and the angle of reflection are always equal according to the law of reflection. This is a fundamental principle in optics. The other options are incorrect because there is no rule that states they must be different or that they must add up to 90 or 180 degrees.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक प्रकाश किरण किसी सतह से परावर्तित होती है, तो निम्नलिखित में से कौन-सा अभिकोण और परावर्तन कोण के बारे में सही है?",
-          "choices": [
-            "वे हमेशा बराबर होते हैं",
-            "वे हमेशा अलग-अलग होते हैं",
-            "वे 90 डिग्री जोड़ते हैं",
-            "वे 180 डिग्री जोड़ते हैं"
-          ],
-          "solution": "परावर्तन के नियम के अनुसार अभिकोण और परावर्तन कोण हमेशा बराबर होते हैं। यह प्रकाशिकी में एक मूलभूत सिद्धांत है। अन्य विकल्प गलत हैं क्योंकि कोई नियम नहीं है जो यह कहता है कि वे अलग-अलग होने चाहिए या वे 90 या 180 डिग्री जोड़ना चाहिए।",
-          "imageAlt": null,
-          "critique": "Translation accurately reflects the original meaning, technical terms are standard in Hindi textbooks, and the correct answer remains option (1).",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एखादा प्रकाश किरण एखाद्या पृष्ठभागावर परावर्तित होत असेल, तर खालीलपैकी कोणते खरे आहे?",
-          "choices": [
-            "ते नेहमी समान असतात",
-            "ते नेहमी वेगळे असतात",
-            "ते 90 अंशांची बेरीज असतात",
-            "ते 180 अंशांची बेरीज असतात"
-          ],
-          "solution": "परावर्तनाच्या कायद्यानुसार, आपतन कोन आणि परावर्तन कोन नेहमी समान असतात. हे प्रकाशशास्त्रातील एक मूलभूत तत्व आहे. इतर विकल्प अयोग्य आहेत कारण त्यांना वेगळे असावे लागत नाहीत किंवा 90 किंवा 180 अंशांची बेरीज असावी लागत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for optics concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Believes the angles are different",
-        "Thinks the angles add up to 90 degrees",
-        "Thinks the angles add up to 180 degrees"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0, as the law of reflection states that the angle of incidence is equal to the angle of reflection. The other options represent common misconceptions about the relationship between these angles.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 64,
-          "pageStart": 74,
-          "pageEnd": 75,
-          "headingPath": [
-            "7. A Journey of Light"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 65,
-          "pageStart": 75,
-          "pageEnd": 77,
-          "headingPath": [
-            "7. A Journey of Light"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 66,
-          "pageStart": 77,
-          "pageEnd": 78,
-          "headingPath": [
-            "7. A Journey of Light"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T04:46:24.012Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Which of the following is an example of a natural source of light?",
-      "choices": [
-        "A bulb",
-        "A torch",
-        "The sun",
-        "A candle"
-      ],
-      "answerIndex": 2,
-      "solution": "The sun is a natural source of light because it produces its own light through nuclear fusion. Bulbs, torches, and candles are all artificial sources of light created by humans.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन एक प्राकृतिक प्रकाश स्रोत का उदाहरण है?",
-          "choices": [
-            "एक बल्ब",
-            "एक टॉर्च",
-            "सूर्य",
-            "एक मोमबत्ती"
-          ],
-          "solution": "सूर्य एक प्राकृतिक प्रकाश स्रोत है क्योंकि यह परमाणु संलयन के माध्यम से अपना प्रकाश उत्पन्न करता है। बल्ब, टॉर्च और मोमबत्ती सभी मनुष्य द्वारा बनाए गए कृत्रिम प्रकाश स्रोत हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. The correct answer remains in the same position, and the distractors are still incorrect. Technical terms like 'प्राकृतिक प्रकाश स्रोत' and 'कृत्रिम प्रकाश स्रोत' are standard in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते प्राकृतिक प्रकाशाचे स्रोत आहे?",
-          "choices": [
-            "एक बल्ब",
-            "एक टॉर्च",
-            "सूर्य",
-            "एक मोमबत्ती"
-          ],
-          "solution": "सूर्य हा प्राकृतिक प्रकाशाचा स्रोत आहे कारण तो परमाणू संलयनाद्वारे आपला प्रकाश उत्पन्न करतो. बल्ब, टॉर्च आणि मोमबत्ती हे सर्व मानवी निर्मित कृत्रिम प्रकाश स्रोत आहेत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for scientific concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Chooses a man-made source",
-        "Chooses a man-made source",
-        null,
-        "Chooses a man-made source"
+        "Believes heat is required for visibility, confusing thermal energy with light"
       ],
       "solverAnswers": [
         2,
@@ -448,414 +85,7 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 2 (The sun), as it is a natural source of light. The other options are all man-made. The author's reasoning is accurate and matches the correct understanding.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 64,
-          "pageStart": 74,
-          "pageEnd": 75,
-          "headingPath": [
-            "7. A Journey of Light"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 65,
-          "pageStart": 75,
-          "pageEnd": 77,
-          "headingPath": [
-            "7. A Journey of Light"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 66,
-          "pageStart": 77,
-          "pageEnd": 78,
-          "headingPath": [
-            "7. A Journey of Light"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T04:46:24.012Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Why can we not hear any sounds produced on the moon from the earth?",
-      "choices": [
-        "Because the moon is too far away",
-        "Because the moon has no atmosphere",
-        "Because sound cannot travel through space",
-        "Because the moon is not a luminous object"
-      ],
-      "answerIndex": 1,
-      "solution": "We cannot hear sounds from the moon on Earth because the moon has no atmosphere. Sound needs a medium like air to travel, and the moon's lack of atmosphere prevents sound waves from reaching Earth. The other options are incorrect because the distance, visibility, and luminosity of the moon do not affect the transmission of sound.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "हम पृथ्वी से चांद पर बने किसी भी ध्वनि क्यों नहीं सुन सकते?",
-          "choices": [
-            "क्योंकि चांद बहुत दूर है",
-            "क्योंकि चांद में कोई वातावरण नहीं है",
-            "क्योंकि ध्वनि अंतरिक्ष में यात्रा नहीं कर सकती",
-            "क्योंकि चांद एक प्रकाशमान वस्तु नहीं है"
-          ],
-          "solution": "हम पृथ्वी पर चांद पर बने ध्वनि नहीं सुन सकते क्योंकि चांद में कोई वातावरण नहीं है। ध्वनि के यात्रा के लिए वायु जैसा माध्यम आवश्यक है, और चांद के वातावरण के अभाव के कारण ध्वनि तरंगें पृथ्वी तक नहीं पहुंच सकतीं। अन्य विकल्प गलत हैं क्योंकि चांद की दूरी, दृश्यता और प्रकाशमानता ध्वनि के संचरण को प्रभावित नहीं करती है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "आपण मूनवर उत्पन्न झालेल्या कोणत्याही आवाजाचे ऐकू शकत नाही कारण तो पृथ्वीवरून का?",
-          "choices": [
-            "कारण मून खूप दूर आहे",
-            "कारण मूनला कोणताही वातावरण नाही",
-            "कारण आवाज अंतरिक्षातून पसरू शकत नाही",
-            "कारण मून एक ज्वलंत वस्तू नाही"
-          ],
-          "solution": "आपण मूनवर उत्पन्न झालेल्या आवाजाचे ऐकू शकत नाही कारण मूनला कोणताही वातावरण नाही. आवाज वायू अशा माध्यमातून पसरतो आणि मूनच्या वातावरणाच्या अभावामुळे आवाजाच्या तरंगांना पृथ्वीवर पोहोचणे शक्य नाही. इतर विकल्प अयोग्य आहेत कारण मूनची अंतर, दृश्यता आणि ज्वलंतता आवाजाच्या प्रसारावर प्रभाव टाकत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the effect of distance on sound transmission",
-        null,
-        "Believes sound can't travel through the vacuum of space, not realizing the moon's lack of atmosphere is the real reason",
-        "Confuses light with sound, thinking that only luminous objects can produce sound"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as sound requires a medium to travel and the moon has no atmosphere. The author's reasoning is sound, and the misconceptions listed for the wrong options are valid.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 67,
-          "pageStart": 78,
-          "pageEnd": 79,
-          "headingPath": [
-            "7. A Journey of Light",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T04:46:24.012Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Which of the following is a correct statement about the image formed in a pinhole camera?",
-      "choices": [
-        "It is upright.",
-        "It is inverted.",
-        "It is magnified.",
-        "It is virtual."
-      ],
-      "answerIndex": 1,
-      "solution": "The correct answer is 'It is inverted.' A pinhole camera forms an inverted image because light travels in straight lines. The other options are incorrect because the image is not upright, magnified, or virtual.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "पिनहोल कैमरे में बने चित्र के बारे में निम्नलिखित में से कौन-सा कथन सही है?",
-          "choices": [
-            "यह ऊर्ध्वाधर है।",
-            "यह उल्टा है।",
-            "यह बड़ा है।",
-            "यह आभासी है।"
-          ],
-          "solution": "सही उत्तर 'यह उल्टा है।' है। एक पिनहोल कैमरा उल्टा चित्र बनाता है क्योंकि प्रकाश सीधी रेखा में यात्रा करता है। अन्य विकल्प गलत हैं क्योंकि चित्र ऊर्ध्वाधर, बड़ा या आभासी नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "पिनहोल कॅमेरामध्ये तयार होणाऱ्या चित्राबद्दल खालीलपैकी कोणता विधान बरोबर आहे?",
-          "choices": [
-            "ते उभे असते.",
-            "ते उलटे असते.",
-            "ते विस्तारित असते.",
-            "ते आभासी असते."
-          ],
-          "solution": "बरोबर उत्तर 'ते उलटे असते.' आहे. पिनहोल कॅमेरामध्ये प्रकाश सरळ रेषेने जातो म्हणून उलटे चित्र तयार होते. इतर विधाने अचूक नाहीत कारण चित्र उभे, विस्तारित किंवा आभासी नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Pupils might think that the image is upright, which is incorrect.",
-        null,
-        "Pupils might think that the image is magnified, but pinhole cameras do not magnify the image.",
-        "Pupils might think that the image is virtual, but the image formed in a pinhole camera is real."
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct and matches the key. The pinhole camera forms an inverted real image, and the reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 67,
-          "pageStart": 78,
-          "pageEnd": 79,
-          "headingPath": [
-            "7. A Journey of Light",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T04:46:24.012Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "In a dark room, which of the following objects can be seen clearly?",
-      "choices": [
-        "A book.",
-        "A flame.",
-        "A mirror.",
-        "An oil lamp."
-      ],
-      "answerIndex": 1,
-      "solution": "The correct answer is 'A flame.' A flame is a self-luminous object and emits light, so it can be seen clearly in a dark room. The other options are incorrect because a book, a mirror, and an oil lamp do not emit light and cannot be seen clearly in the absence of light.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "अंधेरे कमरे में, निम्नलिखित वस्तुओं में से कौन दिखाई देती है?",
-          "choices": [
-            "एक किताब।",
-            "एक लौ।",
-            "एक दर्पण।",
-            "एक तेल का दीपक।"
-          ],
-          "solution": "सही उत्तर 'एक लौ' है। लौ एक स्वयं प्रकाशित वस्तु है और प्रकाश उत्सर्जित करती है, इसलिए अंधेरे कमरे में इसे स्पष्ट रूप से देखा जा सकता है। अन्य विकल्प गलत हैं क्योंकि एक किताब, एक दर्पण और एक तेल का दीपक प्रकाश उत्सर्जित नहीं करते हैं और प्रकाश के अभाव में इन्हें स्पष्ट रूप से नहीं देखा जा सकता।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate terminology used in a Hindi-medium context.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "अंधाराच्या खोलीत, खालील पैकी कोणता वस्तू स्पष्टपणे दिसेल?",
-          "choices": [
-            "एक पुस्तक.",
-            "एक ज्वाला.",
-            "एक दर्पण.",
-            "एक तेलबत्ती."
-          ],
-          "solution": "बरोबर उत्तर 'एक ज्वाला' आहे. ज्वाला एक स्वयंप्रकाशित वस्तू आहे आणि प्रकाश उत्सर्जित करते, म्हणून अंधाराच्या खोलीत ती स्पष्टपणे दिसते. इतर विकल्प अयोग्य आहेत कारण पुस्तक, दर्पण आणि तेलबत्ती प्रकाश उत्सर्जित करत नाहीत आणि प्रकाशाशिवाय त्यांना स्पष्टपणे दिसत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Pupils might think that a book can be seen in a dark room because they are familiar with it, but it needs light to be visible.",
-        null,
-        "Pupils might think that a mirror can be seen in a dark room, but it reflects light and needs an external light source.",
-        "Pupils might think that an oil lamp can be seen, but it needs to be lit to emit light."
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. A flame is self-luminous and visible in the dark, while the other options require external light to be seen.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 67,
-          "pageStart": 78,
-          "pageEnd": 79,
-          "headingPath": [
-            "7. A Journey of Light",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T04:46:24.012Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If there are ripples on the surface of water, how does it affect the image of the moon?",
-      "choices": [
-        "The image remains the same.",
-        "The image becomes distorted.",
-        "The image disappears.",
-        "The image becomes brighter."
-      ],
-      "answerIndex": 1,
-      "solution": "The correct answer is 'The image becomes distorted.' Ripples on the surface of water cause the light reflecting off the surface to scatter in different directions, which distorts the image of the moon. The other options are incorrect because the image does not remain the same, disappear, or become brighter.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "अगर पानी की सतह पर लहरें हैं, तो चांद के चित्र पर क्या प्रभाव पड़ता है?",
-          "choices": [
-            "चित्र वही रहता है।",
-            "चित्र विकृत हो जाता है।",
-            "चित्र गायब हो जाता है।",
-            "चित्र अधिक चमकदार हो जाता है।"
-          ],
-          "solution": "सही उत्तर 'चित्र विकृत हो जाता है।' है। पानी की सतह पर लहरें चमक के परावर्तन को विभिन्न दिशाओं में बिखेर देती हैं, जो चांद के चित्र को विकृत कर देता है। अन्य विकल्प गलत हैं क्योंकि चित्र वही नहीं रहता, गायब नहीं होता या अधिक चमकदार नहीं होता।",
-          "imageAlt": null,
-          "critique": "Translation accurately conveys the scientific concept with appropriate Hindi terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर पाण्याच्या पृष्ठभागावर रिपल्स असतील, तर चंद्राच्या छायाचित्रावर काय प्रभाव पडतो?",
-          "choices": [
-            "छायाचित्र समान रहाते.",
-            "छायाचित्र विकृत होते.",
-            "छायाचित्र अदृश्य होते.",
-            "छायाचित्र जास्त उजळ होते."
-          ],
-          "solution": "बरोबर उत्तर 'छायाचित्र विकृत होते.' आहे. पाण्याच्या पृष्ठभागावर असलेल्या रिपल्समुळे पृष्ठभागावरून प्रतिबिंबित होणारा प्रकाश विविध दिशांमध्ये फैलावतो, ज्यामुळे चंद्राच्या छायाचित्राचा विकृती होतो. इतर विकल्प अयोग्य आहेत कारण छायाचित्र समान रहात नाही, अदृश्य होत नाही किंवा जास्त उजळ होत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Pupils might think that the image remains the same, not realizing that ripples affect the reflection.",
-        null,
-        "Pupils might think that the image disappears, not understanding that the image is still present but distorted.",
-        "Pupils might think that the image becomes brighter, not knowing that ripples do not increase the intensity of light."
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is sound and correctly identifies that ripples on water cause distortion of the moon's image due to scattered light. The reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 67,
-          "pageStart": 78,
-          "pageEnd": 79,
-          "headingPath": [
-            "7. A Journey of Light",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T04:46:24.012Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "What can we infer about the propagation of light from the pinhole camera experiment?",
-      "choices": [
-        "Light can travel in a straight line",
-        "Light can only travel through a vacuum",
-        "Light can travel through a medium",
-        "Light can be bent by a lens"
-      ],
-      "answerIndex": 0,
-      "solution": "The pinhole camera experiment shows that light travels in a straight line, as rays from the top of the flame go to the bottom of the screen and vice versa. This supports the idea that light propagates in a straight line.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "पिनहोल कैमरा प्रयोग से प्रकाश के प्रसार के बारे में हम क्या निष्कर्ष निकाल सकते हैं?",
-          "choices": [
-            "प्रकाश एक सीधी रेखा में यात्रा कर सकता है",
-            "प्रकाश केवल निर्वात में ही यात्रा कर सकता है",
-            "प्रकाश एक माध्यम में यात्रा कर सकता है",
-            "प्रकाश एक लेंस द्वारा मुड़ा जा सकता है"
-          ],
-          "solution": "पिनहोल कैमरा प्रयोग दर्शाता है कि प्रकाश एक सीधी रेखा में यात्रा करता है, क्योंकि ज्वाला के शीर्ष से किरणें स्क्रीन के नीचे जाती हैं और विपरीत भी। इससे यह विचार समर्थित होता है कि प्रकाश एक सीधी रेखा में प्रसारित होता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology as used in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "पिनहोल कॅमेरा प्रयोगावरून प्रकाशाच्या पसरणाबद्दल आम्ही काय निष्कर्ष काढू शकतो?",
-          "choices": [
-            "प्रकाश थरगांमध्ये जाऊ शकतो",
-            "प्रकाश फक्त निर्वातात जाऊ शकतो",
-            "प्रकाश माध्यमातून जाऊ शकतो",
-            "प्रकाश लेंसामुळे वाकलेला जाऊ शकतो"
-          ],
-          "solution": "पिनहोल कॅमेरा प्रयोगामुळे प्रकाश थरगांमध्ये जातो, जेव्हा ज्वालेच्या वरच्या बाजूचे किरण छाननीच्या खालच्या बाजूला जातात आणि उलट असते. हे असे दर्शवते की प्रकाश थरगांमध्ये पसरतो.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms (e.g., 'थरगांमध्ये' for 'in straight lines', 'माध्यमातून' for 'through a medium').",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "students often confuse the requirements for light propagation with those of sound",
-        "misunderstands the behavior of light",
-        "misunderstands the behavior of light"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0, as the pinhole camera experiment directly demonstrates that light travels in a straight line. The other options are incorrect and represent common misconceptions about light propagation.",
+      "critique": "The question is straightforward and the correct answer is clearly 2 (Light). The reasoning provided by the author is accurate and matches the scientific understanding.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
@@ -886,7 +116,906 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T04:46:24.012Z",
+      "generatedAt": "2026-11-01T17:32:03.558Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which type of reflection occurs when light rays fall on a smooth surface like a plane mirror?",
+      "choices": [
+        "Irregular Reflection",
+        "Scattering",
+        "Absorption",
+        "Regular Reflection"
+      ],
+      "answerIndex": 3,
+      "solution": "Regular reflection occurs when light rays hit a smooth surface and reflect in a parallel manner, maintaining their direction. Irregular reflection happens on rough surfaces where light scatters in different directions. Scattering refers to light spreading out in multiple directions, not a type of reflection. Absorption is when light is taken in by a material, not reflected.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किस प्रकार के परावर्तन की स्थिति में प्रकाश की किरणें एक चिकनी सतह जैसे समतल दर्पण पर गिरती हैं?",
+          "choices": [
+            "अनियमित परावर्तन",
+            "बिखराव",
+            "अवशोषण",
+            "नियमित परावर्तन"
+          ],
+          "solution": "जब प्रकाश की किरणें एक चिकनी सतह पर गिरती हैं और समांतर रूप से परावर्तित होती हैं, तो नियमित परावर्तन होता है, जो अपनी दिशा बनाए रखती है। कच्ची सतहों पर अनियमित परावर्तन होता है जहां प्रकाश विभिन्न दिशाओं में बिखर जाता है। बिखराव का अर्थ है प्रकाश का विभिन्न दिशाओं में फैल जाना, जो परावर्तन का एक प्रकार नहीं है। अवशोषण तब होता है जब कोई पदार्थ प्रकाश को अवशोषित कर लेता है, न कि परावर्तित करता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणत्या प्रकारचे प्रतिबिंबन होते जेव्हा प्रकाशाचे किरण एका चकलेल्या पृष्ठभागावर येतात जसे की एका समतल दर्पणावर?",
+          "choices": [
+            "अनियमित प्रतिबिंबन",
+            "प्रसरण",
+            "अवशोषण",
+            "नियमित प्रतिबिंबन"
+          ],
+          "solution": "जेव्हा प्रकाशाचे किरण चकलेल्या पृष्ठभागावर येतात आणि समांतर प्रकारे परावर्तित होतात, तेव्हा नियमित प्रतिबिंबन होते. अनियमित प्रतिबिंबन खोल वस्तूंवर होते जेथे प्रकाश विविध दिशांमध्ये बिखेरला जातो. प्रसरण म्हणजे प्रकाशाचे विविध दिशांमध्ये पसरणे, प्रतिबिंबनाचा प्रकार नाही. अवशोषण म्हणजे एखाद्या सामग्रीने प्रकाश घेणे, परावर्तित करणे नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the technical terminology used in Marathi science textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses regular reflection with irregular reflection",
+        "Confuses reflection with scattering",
+        "Confuses reflection with absorption",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors based on common misconceptions. The solution aligns with scientific understanding.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 64,
+          "pageStart": 74,
+          "pageEnd": 75,
+          "headingPath": [
+            "7. A Journey of Light"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 65,
+          "pageStart": 75,
+          "pageEnd": 77,
+          "headingPath": [
+            "7. A Journey of Light"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 66,
+          "pageStart": 77,
+          "pageEnd": 78,
+          "headingPath": [
+            "7. A Journey of Light"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T17:32:03.558Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What happens to light when it moves through a tiny hole in a cardboard box?",
+      "choices": [
+        "It spreads out in all directions",
+        "It bends and changes direction",
+        "It forms an inverted image on the screen",
+        "It disappears completely"
+      ],
+      "answerIndex": 2,
+      "solution": "When light moves through a tiny hole in a cardboard box, it forms an inverted image on the screen because the light rays from the top of an object pass through the hole and hit the bottom of the screen, while rays from the bottom pass through and hit the top. This occurs due to the straight-line travel of light, creating an inverted image. The other options are incorrect because light does not spread out in all directions like a wave, nor does it bend or disappear completely.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक कार्डबोर्ड के बक्से में छोटे छेद से गुजरते हुए प्रकाश क्या होता है?",
+          "choices": [
+            "यह सभी दिशाओं में फैल जाता है",
+            "यह मुड़ जाता है और दिशा बदल जाती है",
+            "यह स्क्रीन पर उल्टा चित्र बनाता है",
+            "यह पूरी तरह से लुप्त हो जाता है"
+          ],
+          "solution": "जब प्रकाश एक कार्डबोर्ड के बक्से में छोटे छेद से गुजरता है, तो यह स्क्रीन पर उल्टा चित्र बनाता है क्योंकि वस्तु के शीर्ष से प्रकाश की किरणें छेद से गुजरकर स्क्रीन के नीचे पहुंचती हैं, जबकि नीचे से किरणें छेद से गुजरकर स्क्रीन के ऊपर पहुंचती हैं। यह सीधी रेखा में यात्रा करते हुए प्रकाश के कारण होता है, जिससे उल्टा चित्र बनता है। अन्य विकल्प गलत हैं क्योंकि प्रकाश तरंग की तरह सभी दिशाओं में फैल नहीं जाता है, न ही यह मुड़ जाता है या पूरी तरह से लुप्त हो जाता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "प्रकाश कार्डबोर्डच्या बॉक्समधून छोट्या छिद्रामार्फत जात असताना काय होते?",
+          "choices": [
+            "तो सर्व दिशांमध्ये पसरतो",
+            "तो वाकलेला आणि दिशा बदलतो",
+            "तो स्क्रीनवर उलटा छायाचित्र बनतो",
+            "तो पूर्णपणे नाहीसा होतो"
+          ],
+          "solution": "जेव्हा प्रकाश कार्डबोर्डच्या बॉक्समधून छोट्या छिद्रामार्फत जातो तेव्हा तो स्क्रीनवर उलटा छायाचित्र बनतो कारण वस्तूच्या वरच्या बाजूचे प्रकाशाचे किरण छिद्रामार्फत जाऊन स्क्रीनच्या खालच्या बाजूला जातात, तर खालच्या बाजूचे किरण स्क्रीनच्या वरच्या बाजूला जातात. हे थर्मल रेषा प्रवासामुळे होते, ज्यामुळे उलटा छायाचित्र तयार होतो. इतर विकल्प चुकीचे आहेत कारण प्रकाश तरंगाप्रमाणे सर्व दिशांमध्ये पसरत नाही, तर तो मोडत नाही किंवा पूर्णपणे नाहीसा होत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the scientific terminology, and preserves the logical structure of the question and solution.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks light spreads out",
+        "Believes light bends",
+        null,
+        "Does not understand that light forms an image"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as light passing through a small hole forms an inverted image, consistent with the pinhole camera effect. The other options reflect common misconceptions about light behavior.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 61,
+          "pageStart": 72,
+          "pageEnd": 73,
+          "headingPath": [
+            "7. A Journey of Light"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 62,
+          "pageStart": 73,
+          "pageEnd": 73,
+          "headingPath": [
+            "7. A Journey of Light"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 63,
+          "pageStart": 74,
+          "pageEnd": 74,
+          "headingPath": [
+            "7. A Journey of Light"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T17:32:03.558Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If the angle of incidence is 30°, what is the angle of reflection?",
+      "choices": [
+        "0°",
+        "60°",
+        "30°",
+        "90°"
+      ],
+      "answerIndex": 2,
+      "solution": "The law of reflection states that the angle of incidence is equal to the angle of reflection. Therefore, if the angle of incidence is 30°, the angle of reflection must also be 30°. The other options do not match this fundamental principle of reflection. 0° and 90° are not consistent with the relationship between incident and reflected angles, and 60° is double the given angle, which violates the law.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि आपतन कोण 30° है, तो परावर्तन कोण क्या है?",
+          "choices": [
+            "0°",
+            "60°",
+            "30°",
+            "90°"
+          ],
+          "solution": "परावर्तन के नियम कहते हैं कि आपतन कोण परावर्तन कोण के बराबर होता है। इसलिए, यदि आपतन कोण 30° है, तो परावर्तन कोण भी 30° होना चाहिए। अन्य विकल्प इस मूलभूत परावर्तन के सिद्धांत के साथ संगत नहीं हैं। 0° और 90° आपतित और परावर्तित कोणों के बीच संबंध के साथ संगत नहीं हैं, और 60° दिए गए कोण का दोगुना है, जो नियम के विरुद्ध है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as per Indian curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर आपातन कोन 30° असेल, तर परावर्तन कोन किती असेल?",
+          "choices": [
+            "0°",
+            "60°",
+            "30°",
+            "90°"
+          ],
+          "solution": "परावर्तनाचा नियम सांगतो की आपातन कोन परावर्तन कोनासोबत समान असतो. म्हणून, जर आपातन कोन 30° असेल, तर परावर्तन कोनही 30° असेल. इतर विकल्प या मूलभूत नियमाशी जुमानत नाहीत. 0° आणि 90° आपातन आणि परावर्तित कोनांमधील संबंधाशी जुमानत नाहीत आणि 60° दिलेल्या कोनाच्या दुप्पट आहे, जे नियमाचे उल्लंघन करते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology for physics concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses angle of reflection with 0°",
+        "Confuses angle of reflection with double the angle of incidence",
+        null,
+        "Confuses the angle of reflection with the angle between the reflected ray and the surface instead of the normal"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is correctly framed and the solution aligns with the law of reflection. The distractors reflect common misconceptions about the relationship between the angle of incidence and reflection.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 64,
+          "pageStart": 74,
+          "pageEnd": 75,
+          "headingPath": [
+            "7. A Journey of Light"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 65,
+          "pageStart": 75,
+          "pageEnd": 77,
+          "headingPath": [
+            "7. A Journey of Light"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 66,
+          "pageStart": 77,
+          "pageEnd": 78,
+          "headingPath": [
+            "7. A Journey of Light"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T17:32:03.558Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A person is trying to see a candle flame through a bent pipe. What will happen?",
+      "choices": [
+        "They will see the flame clearly",
+        "They will not see the flame",
+        "They will see the flame reflected",
+        "They will see the flame in a different color"
+      ],
+      "answerIndex": 1,
+      "solution": "Light travels in straight lines. Therefore, a person cannot see a candle flame through a bent pipe because the light from the flame cannot bend around the corners of the pipe. This is a practical application of the straight-line travel of light. Therefore, the correct answer is that they will not see the flame.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक व्यक्ति एक मुड़े हुए पाइप के द्वारा एक मोमबत्ती के लौं देखने की कोशिश कर रहा है। क्या होगा?",
+          "choices": [
+            "वे लौं स्पष्ट रूप से देखेंगे",
+            "वे लौं नहीं देख पाएंगे",
+            "वे लौं के परावर्तित रूप को देखेंगे",
+            "वे लौं को अलग रंग में देखेंगे"
+          ],
+          "solution": "प्रकाश सीधी रेखा में यात्रा करता है। इसलिए, एक व्यक्ति मुड़े हुए पाइप के द्वारा मोमबत्ती के लौं को नहीं देख सकता क्योंकि लौं से आने वाला प्रकाश पाइप के कोनों के चारों ओर मुड़ नहीं सकता। यह प्रकाश की सीधी रेखा में यात्रा के एक व्यावहारिक अनुप्रयोग है। इसलिए, सही उत्तर यह है कि वे लौं नहीं देख पाएंगे।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms like 'लौं' (flame) and 'प्रकाश' (light) as used in standard Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक व्यक्ती एका मुडत्या पाइपमधून विजेच्या ज्वालेचे निरीक्षण करत आहे. त्याला काय घडेल?",
+          "choices": [
+            "त्याला ज्वाला स्पष्ट दिसेल",
+            "त्याला ज्वाला दिसणार नाही",
+            "त्याला ज्वाला परावर्तित दिसेल",
+            "त्याला ज्वाला वेगळ्या रंगात दिसेल"
+          ],
+          "solution": "प्रकाश सरळ रेषेत जातो. म्हणून एखाद्या मुडत्या पाइपमधून विजेच्या ज्वालेचे निरीक्षण करता येत नाही कारण ज्वालेचा प्रकाश पाइपच्या कोनांमार्गे मुडत नाही. हे प्रकाशाच्या सरळ रेषेत जाण्याच्या वैशिष्ट्याचे व्यावहारिक अनुप्रयोग आहे. म्हणून योग्य उत्तर असे की, त्याला ज्वाला दिसणार नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks light can bend around corners",
+        null,
+        "Students may think light reflects off the inside of the pipe like a mirror",
+        "Believes the flame changes color"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly explains that light travels in straight lines, making it impossible to see the flame through a bent pipe. The reasoning for the wrong options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 67,
+          "pageStart": 78,
+          "pageEnd": 79,
+          "headingPath": [
+            "7. A Journey of Light",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T17:32:03.558Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In the pinhole camera experiment, why does the image of the candle flame appear upside down on the screen?",
+      "choices": [
+        "Because the light rays are absorbed",
+        "Because the light rays travel in a straight line",
+        "Because the screen is curved",
+        "Because the candle is too far away"
+      ],
+      "answerIndex": 1,
+      "solution": "The image of the candle flame appears upside down because the light rays travel in a straight line. Light from the top of the flame passes through the pinhole and hits the bottom of the screen, while light from the bottom of the flame passes through the pinhole and hits the top of the screen. The other options are incorrect because light rays are not absorbed, the screen is flat, and the distance of the candle does not cause the image to invert.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पिनहोल कैमरा प्रयोग में कैंडल ज्वाला की छाया स्क्रीन पर उल्टी क्यों दिखाई देती है?",
+          "choices": [
+            "क्योंकि प्रकाश किरणें अवशोषित हो जाती हैं",
+            "क्योंकि प्रकाश किरणें सीधी रेखा में यात्रा करती हैं",
+            "क्योंकि स्क्रीन वक्र है",
+            "क्योंकि मोमबत्ती बहुत दूर है"
+          ],
+          "solution": "कैंडल ज्वाला की छाया उल्टी दिखाई देती है क्योंकि प्रकाश किरणें सीधी रेखा में यात्रा करती हैं। ज्वाला के शीर्ष से प्रकाश पिनहोल से गुजरकर स्क्रीन के नीचे पड़ता है, जबकि ज्वाला के नीचे से प्रकाश पिनहोल से गुजरकर स्क्रीन के ऊपर पड़ता है। अन्य विकल्प गलत हैं क्योंकि प्रकाश किरणें अवशोषित नहीं होतीं, स्क्रीन समतल है, और मोमबत्ती की दूरी छाया के उल्टा होने के कारण नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All technical terms are appropriately translated and match standard Hindi textbook usage.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पिनहोल कॅमेरा प्रयोगात, मोमबत्तीच्या ज्वालेचा छायाचित्र तारखेवर उलटा दिसतो कारण?",
+          "choices": [
+            "कारण प्रकाश तरंग शोषले जातात",
+            "कारण प्रकाश तरंग सरळ रेषेत जातात",
+            "कारण तारखा वक्र आहे",
+            "कारण मोमबत्ती खूप दूर आहे"
+          ],
+          "solution": "मोमबत्तीच्या ज्वालेचा छायाचित्र उलटा दिसतो कारण प्रकाश तरंग सरळ रेषेत जातात. ज्वालेच्या वरच्या बाजूचा प्रकाश पिनहोलमधून जाऊन तारखेच्या खालच्या बाजूला जातो, तर ज्वालेच्या खालच्या बाजूचा प्रकाश पिनहोलमधून जाऊन तारखेच्या वरच्या बाजूला जातो. इतर विकल्प चुकीचे आहेत कारण प्रकाश तरंग शोषले जात नाहीत, तारखा सपाट आहे आणि मोमबत्तीच्या अंतरामुळे छायाचित्र उलटे होत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks light is absorbed",
+        null,
+        "Believes the screen is curved",
+        "Does not understand the concept of straight-line propagation"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as light rays travel in straight lines, causing the image to invert. The author's reasoning is accurate and aligns with the scientific explanation.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 61,
+          "pageStart": 72,
+          "pageEnd": 73,
+          "headingPath": [
+            "7. A Journey of Light"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 62,
+          "pageStart": 73,
+          "pageEnd": 73,
+          "headingPath": [
+            "7. A Journey of Light"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 63,
+          "pageStart": 74,
+          "pageEnd": 74,
+          "headingPath": [
+            "7. A Journey of Light"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T17:32:03.558Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is an example of light reflection?",
+      "choices": [
+        "A rainbow in the sky",
+        "A shadow on the ground",
+        "A mirror showing your face",
+        "A light bulb glowing"
+      ],
+      "answerIndex": 2,
+      "solution": "A mirror showing your face is an example of light reflection. Light from the object (your face) hits the mirror and bounces back into your eyes, allowing you to see the image. A rainbow is an example of dispersion, a shadow is due to light being blocked, and a light bulb glowing is emission of light. Therefore, the correct answer is that a mirror showing your face is an example of reflection.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा प्रकाश परावर्तन का उदाहरण है?",
+          "choices": [
+            "आकाश में इंद्रधनुष",
+            "जमीन पर छाया",
+            "एक दर्पण आपके चेहरे को दिखाता है",
+            "एक बल्ब चमक रहा है"
+          ],
+          "solution": "एक दर्पण आपके चेहरे को दिखाता है प्रकाश परावर्तन का उदाहरण है। वस्तु (आपका चेहरा) से प्रकाश दर्पण पर टकराता है और आपकी आंखों में वापस लौट जाता है, जिससे आप छवि देख सकते हैं। एक इंद्रधनुष अपवर्तन का उदाहरण है, छाया प्रकाश के रोके जाने के कारण होती है और एक बल्ब चमक रहा है उत्सर्जन के कारण होता है। इसलिए, सही उत्तर यह है कि एक दर्पण आपके चेहरे को दिखाता है प्रकाश परावर्तन का उदाहरण है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer is in the same position as in the English version.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते प्रकाश प्रतिबिंबाचे उदाहरण आहे?",
+          "choices": [
+            "आकाशात एक इंद्रधनुष",
+            "जमिनीवर एक छाया",
+            "एक दर्पण तुमचे चेहरे दाखवत आहे",
+            "एक बल्ब जळत आहे"
+          ],
+          "solution": "एक दर्पण तुमचे चेहरे दाखवत आहे हे प्रकाश प्रतिबिंबाचे उदाहरण आहे. वस्तू (तुमचे चेहरे) चा प्रकाश दर्पणावर आणि त्यानंतर तुमच्या डोळ्यांमध्ये परत येतो, जेणेकरून तुम्हाला छायाचित्र पाहता येते. एक इंद्रधनुष हे विच्छेदनाचे उदाहरण आहे, छाया प्रकाश अडवल्यामुळे होते आणि बल्ब जळत आहे हे प्रकाशाचे उत्सर्जन आहे. म्हणूनच, योग्य उत्तर एक दर्पण तुमचे चेहरे दाखवत आहे हे प्रतिबिंबाचे उदाहरण आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for physics concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses reflection with dispersion",
+        "Thinks reflection is the same as a shadow",
+        null,
+        "Misunderstands light emission"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that a mirror showing your face is an example of light reflection, and correctly distinguishes it from dispersion, shadow formation, and light emission. The misconceptions listed for the distractors are plausible for students at this level.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 67,
+          "pageStart": 78,
+          "pageEnd": 79,
+          "headingPath": [
+            "7. A Journey of Light",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T17:32:03.558Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a beam of light from the sun enters a glass of water, what happens to the light?",
+      "choices": [
+        "It becomes invisible",
+        "It bends",
+        "It splits into colors",
+        "It turns into heat"
+      ],
+      "answerIndex": 1,
+      "solution": "When light enters a different medium like water, it changes direction due to a phenomenon called refraction. This causes the light to bend. It does not become invisible because light is still present and visible. It does not split into colors, which requires a prism or specific conditions, and it does not turn into heat, as light and heat are different forms of energy.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि सूर्य की प्रकाश की किरण एक ग्लास पानी में प्रवेश करती है, तो प्रकाश के साथ क्या होता है?",
+          "choices": [
+            "यह अदृश्य हो जाता है",
+            "यह मुड़ जाता है",
+            "यह रंगों में विभक्त हो जाता है",
+            "यह ऊष्मा में बदल जाता है"
+          ],
+          "solution": "जब प्रकाश एक अलग माध्यम जैसे पानी में प्रवेश करता है, तो अपवर्तन नामक घटना के कारण यह दिशा बदल जाता है। इससे प्रकाश मुड़ जाता है। यह अदृश्य नहीं होता क्योंकि प्रकाश अभी भी उपस्थित रहता है और दृश्य होता है। इसे रंगों में विभक्त नहीं किया जाता, जिसके लिए प्रिज्म या विशिष्ट स्थितियां आवश्यक होती हैं, और यह ऊष्मा में बदल नहीं जाता, क्योंकि प्रकाश और ऊष्मा ऊर्जा के अलग-अलग रूप हैं।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning with appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सूर्याचा प्रकाशाचा एक किरण एका शीशाच्या ग्लासमध्ये प्रवेश करतो, तर प्रकाशाचा काय विचार होतो?",
+          "choices": [
+            "तो अदृश्य होतो",
+            "तो वाकडा होतो",
+            "तो रंगांमध्ये विभक्त होतो",
+            "तो ऊष्मेमध्ये बदलतो"
+          ],
+          "solution": "जेव्हा प्रकाश वेगळ्या माध्यमात जातो जसे की पाणी, तेव्हा तो अपवर्तन नावाच्या घटनेमुळे दिशा बदलतो. हे प्रकाशाला वाकडा करते. तो अदृश्य होत नाही कारण प्रकाश अजूनही उपलब्ध आहे आणि दृश्य आहे. तो रंगांमध्ये विभक्त होत नाही, ज्यासाठी प्रिझम किंवा विशिष्ट परिस्थिती आवश्यक आहे, आणि तो ऊष्मेमध्ये बदलत नाही, कारण प्रकाश आणि ऊष्मा वेगवेगळ्या ऊर्जेच्या स्वरूपात आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses refraction with invisibility",
+        null,
+        "Confuses refraction with dispersion",
+        "Confuses refraction with thermal conversion"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1 (It bends), as light refracts when entering a different medium like water. The other options represent common misconceptions about light behavior.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 64,
+          "pageStart": 74,
+          "pageEnd": 75,
+          "headingPath": [
+            "7. A Journey of Light"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 65,
+          "pageStart": 75,
+          "pageEnd": 77,
+          "headingPath": [
+            "7. A Journey of Light"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 66,
+          "pageStart": 77,
+          "pageEnd": 78,
+          "headingPath": [
+            "7. A Journey of Light"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T17:32:03.558Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why can we see the beam of light entering a room through a window in the morning or evening?",
+      "choices": [
+        "Because light reflects off the walls",
+        "Because light is absorbed by the air",
+        "Because we see the dust particles in the air",
+        "Because light travels in a straight line"
+      ],
+      "answerIndex": 2,
+      "solution": "We see the beam of light because we see the dust particles in the air. Light itself is invisible, but when it passes through dust, the particles scatter the light, making the beam visible. The other options are incorrect because light does not reflect off walls in a way that makes the beam visible, it is not absorbed by the air, and while light does travel in a straight line, that alone does not explain why we see the beam.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "सुबह या शाम के समय कमरे में खिड़की के माध्यम से प्रवेश करने वाले प्रकाश के किरण बीम क्यों दिखाई देते हैं?",
+          "choices": [
+            "क्योंकि प्रकाश दीवारों पर परावर्तित होता है",
+            "क्योंकि प्रकाश हवा द्वारा अवशोषित हो जाता है",
+            "क्योंकि हम हवा में धूल के कण देखते हैं",
+            "क्योंकि प्रकाश सीधी रेखा में यात्रा करता है"
+          ],
+          "solution": "हम प्रकाश के किरण बीम को देखते हैं क्योंकि हम हवा में धूल के कण देखते हैं। प्रकाश स्वयं अदृश्य होता है, लेकिन जब यह धूल के कणों से गुजरता है, तो कण प्रकाश को बिखेर देते हैं, जिससे किरण बीम दृश्यमान हो जाता है। अन्य विकल्प गलत हैं क्योंकि प्रकाश दीवारों पर ऐसा परावर्तित नहीं होता जिससे किरण बीम दृश्यमान हो जाए, यह हवा द्वारा अवशोषित नहीं होता है, और यह सच है कि प्रकाश सीधी रेखा में यात्रा करता है, लेकिन यह अकेले ही हमें किरण बीम क्यों दिखाई देता है, इसकी व्याख्या नहीं करता।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सकाळी किंवा संध्याकाळी एखाद्या खोलीत खिडकीतून प्रवेश करणाऱ्या प्रकाशाच्या तीराचा आम्ही का दिसतो?",
+          "choices": [
+            "कारण प्रकाश दिवाला परावर्तित होतो",
+            "कारण प्रकाश हवेद्वारे शोषला जातो",
+            "कारण आम्ही हवेतील धूल कणांचा दिसतो",
+            "कारण प्रकाश सरळ रेषेत जातो"
+          ],
+          "solution": "आम्ही प्रकाशाच्या तीराचा दिसतो कारण आम्ही हवेतील धूल कणांचा दिसतो. प्रकाश स्वतः अदृश्य असतो, परंतु जेव्हा तो धूल कणांमार्फत जातो तेव्हा कण त्याला प्रकीर्णित करतात, ज्यामुळे तीर दृश्य होतो. इतर विकल्प अयोग्य आहेत कारण प्रकाश दिवाला परावर्तित होत नाही जेणेकरून तीर दृश्य होईल, तो हवेद्वारे शोषला जात नाही आणि जरी प्रकाश सरळ रेषेत जात असला तरी ते आम्हाला तीर दिसण्याच्या कारणाचे वर्णन करत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks light reflects off walls",
+        "Believes light is absorbed",
+        null,
+        "Does not understand that we see dust particles"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as the visibility of the light beam is due to dust particles scattering the light. The other options reflect common misconceptions about light behavior.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 61,
+          "pageStart": 72,
+          "pageEnd": 73,
+          "headingPath": [
+            "7. A Journey of Light"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 62,
+          "pageStart": 73,
+          "pageEnd": 73,
+          "headingPath": [
+            "7. A Journey of Light"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 63,
+          "pageStart": 74,
+          "pageEnd": 74,
+          "headingPath": [
+            "7. A Journey of Light"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T17:32:03.558Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "What is the reason that we can see the moon from Earth?",
+      "choices": [
+        "It is a self-luminous object",
+        "It reflects sunlight",
+        "It emits light",
+        "It is a satellite of the Earth"
+      ],
+      "answerIndex": 1,
+      "solution": "The moon is not a source of its own light, but it reflects sunlight, which allows it to be visible from Earth. A self-luminous object would emit its own light, and the moon does not do this. Emitting light is similar to being self-luminous, which the moon is not. Being a satellite describes its relationship to Earth, but it does not explain why it is visible.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "भूमि से चाँद क्यों दिखाई देता है?",
+          "choices": [
+            "यह एक स्वयं प्रकाशित वस्तु है",
+            "यह सूर्य के प्रकाश को परावर्तित करता है",
+            "यह प्रकाश उत्सर्जित करता है",
+            "यह पृथ्वी का उपग्रह है"
+          ],
+          "solution": "चाँद अपने आप एक स्रोत नहीं है, लेकिन यह सूर्य के प्रकाश को परावर्तित करता है, जिसके कारण इसे पृथ्वी से देखा जा सकता है। एक स्वयं प्रकाशित वस्तु अपने आप प्रकाश उत्सर्जित करती है, और चाँद ऐसा नहीं करता है। प्रकाश उत्सर्जित करना स्वयं प्रकाशित होने के समान है, जो चाँद नहीं है। उपग्रह होना पृथ्वी के साथ इसके संबंध को दर्शाता है, लेकिन इसके दृश्य होने की व्याख्या नहीं करता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in Hindi science education.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "भूमीवरून चंद्र दिसतो याचा कारण काय आहे?",
+          "choices": [
+            "तो स्वतःच ज्योती उत्पन्न करणारा वस्तू आहे",
+            "तो सूर्याच्या प्रकाशाचे प्रतिबिंबित करतो",
+            "तो प्रकाश उत्सर्जित करतो",
+            "तो भूमीचा उपग्रह आहे"
+          ],
+          "solution": "चंद्र स्वतःच ज्योती उत्पन्न करणारा वस्तू नाही, परंतु तो सूर्याच्या प्रकाशाचे प्रतिबिंबित करतो, ज्यामुळे तो भूमीवरून दिसतो. स्वतःच ज्योती उत्पन्न करणारा वस्तू असल्यास तो स्वतःच ज्योती उत्पन्न करेल, आणि चंद्र असे करत नाही. प्रकाश उत्सर्जित करणे हे स्वतःच ज्योती उत्पन्न करण्यासारखे आहे, जे चंद्र नाही. उपग्रह असणे भूमीशी त्याच्या संबंधाचे वर्णन करते, परंतु ते त्याच्या दृश्यतेचे वर्णन करत नाही.",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses moon with a self-luminous object",
+        null,
+        "Confuses moon with an emitter of light",
+        "Confuses moon with a satellite of the Earth"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as the moon reflects sunlight, which allows us to see it from Earth. The other options are incorrect: the moon is not self-luminous, does not emit light like the sun, and being a satellite is a fact but not the reason for visibility.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 64,
+          "pageStart": 74,
+          "pageEnd": 75,
+          "headingPath": [
+            "7. A Journey of Light"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 65,
+          "pageStart": 75,
+          "pageEnd": 77,
+          "headingPath": [
+            "7. A Journey of Light"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 66,
+          "pageStart": 77,
+          "pageEnd": 78,
+          "headingPath": [
+            "7. A Journey of Light"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T17:32:03.558Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is the image in a pinhole camera always inverted?",
+      "choices": [
+        "Because light travels in straight lines",
+        "Because light travels in curved paths",
+        "Because light bends around the edges of the pinhole",
+        "Because the light is reflected inside the camera"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 'Because light travels in straight lines' because light rays from the top of the object pass through the pinhole and hit the bottom of the screen, creating an inverted image. This requires an insight into the behavior of light, which is a level 6 question.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पिनहोल कैमरे में छवि हमेशा उल्टी क्यों होती है?",
+          "choices": [
+            "क्योंकि प्रकाश सीधी रेखाओं में यात्रा करता है",
+            "क्योंकि प्रकाश वक्र पथों में यात्रा करता है",
+            "क्योंकि प्रकाश पिनहोल के किनारों के चारों ओर मुड़ जाता है",
+            "क्योंकि कैमरे के भीतर प्रकाश परावर्तित होता है"
+          ],
+          "solution": "सही उत्तर 'क्योंकि प्रकाश सीधी रेखाओं में यात्रा करता है' है क्योंकि वस्तु के शीर्ष से प्रकाश की किरणें पिनहोल से गुजरती हैं और स्क्रीन के नीचे टकराती हैं, जिससे उल्टी छवि बनती है। इसके लिए प्रकाश के व्यवहार की अवधारणा की आवश्यकता होती है, जो एक स्तर 6 का प्रश्न है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately rendered in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पिनहोल कॅमेरामध्ये छायाचित्र का अंतर्मुख असते?",
+          "choices": [
+            "कारण प्रकाश सीधा रेषेत जातो",
+            "कारण प्रकाश वक्र मार्गात जातो",
+            "कारण प्रकाश पिनहोलच्या किनार्यांमार्फत मोडतो",
+            "कारण प्रकाश कॅमेरामध्ये परावर्तित होतो"
+          ],
+          "solution": "सही उत्तर 'कारण प्रकाश सीधा रेषेत जातो' आहे कारण वस्तूच्या वरच्या बाजूचे प्रकाशाचे किरण पिनहोलमार्फत जाऊन स्क्रीनच्या खालच्या बाजूला जातात, ज्यामुळे उलटे छायाचित्र तयार होते. हे प्रकाशाच्या वर्तनाच्या अंतर्दृष्टीवर अवलंबून असते, जे एक स्तर 6 चे प्रश्न आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "students sometimes think light bends when it passes through a pinhole",
+        "believes light bends instead of travels in straight lines",
+        "Student thinks reflection causes inversion, not the straight-line path of light"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that light travels in straight lines, which explains the inverted image in a pinhole camera. All distractors represent common misconceptions about light behavior.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 67,
+          "pageStart": 78,
+          "pageEnd": 79,
+          "headingPath": [
+            "7. A Journey of Light",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T17:32:03.558Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

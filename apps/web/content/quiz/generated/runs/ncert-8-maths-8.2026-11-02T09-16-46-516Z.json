@@ -1,0 +1,685 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T09:16:46.516Z",
+  "finishedAt": "2026-11-02T09:26:03.135Z",
+  "seconds": 557,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash Part-II",
+    "bookCode": "hegp2",
+    "document": "ncert/8/mathematics/hegp201.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 8 — Fractions in Disguise",
+    "edition": "2025 edition (the site's Last-Modified)",
+    "chunks": 24,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n14. B) 3 8",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n4. 1\nis increased by 1, the fraction becomes\n2 3\n(A) (B)\n9 8\n, then the fraction is\n4 5\n(C) (D)\n7 6\nIf one root of the quadratic equation 𝑎𝑥 + 𝑏𝑥 + 𝑐 = 0 is the reciprocal of the",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n4. C Let numerator be x and denominator be y 1\nGiven , x + y = 11\n𝐱 𝟏\n(𝐲+𝟏) = 2\nSolving these equations, we get\nx = 4, y = 7; ∴ Fraction = 𝟒 7\n𝟒\n(C)",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2025-26]\n8. Answer: (C)\n𝑥 + 2 = 1 4 (4𝑥 + 6) + 1 2 so, 𝑃 = 1 4"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 12,
+      "ms": 201824,
+      "in": 39,
+      "out": 35,
+      "rejects": 4,
+      "promptTokens": 54336,
+      "completionTokens": 9685
+    },
+    "critique": {
+      "calls": 41,
+      "ms": 298188,
+      "in": 35,
+      "out": 29,
+      "rejects": 6,
+      "promptTokens": 19497,
+      "completionTokens": 7176
+    },
+    "solver": {
+      "calls": 187,
+      "ms": 90907,
+      "in": 29,
+      "out": 24,
+      "rejects": 5,
+      "promptTokens": 33298,
+      "completionTokens": 1817
+    },
+    "form": {
+      "calls": 2,
+      "ms": 10685,
+      "in": 24,
+      "out": 15,
+      "rejects": 9,
+      "promptTokens": 656,
+      "completionTokens": 234
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 52,
+      "ms": 10720,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 63,
+      "ms": 556193,
+      "in": 30,
+      "out": 30,
+      "rejects": 0,
+      "promptTokens": 34283,
+      "completionTokens": 14166
+    }
+  },
+  "kept": 15,
+  "keptByLevel": {
+    "1": 2,
+    "2": 3,
+    "3": 4,
+    "4": 2,
+    "5": 3,
+    "6": 1
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "What is the percentage of yellow paint in the mixture if red paint makes up 3/4 of the mixture?",
+      "ms": {
+        "draft": 6249,
+        "critique": 8341
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the symbol '%' represent?",
+      "ms": {
+        "draft": 6249,
+        "critique": 8005,
+        "solver": 12339
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a school, 15 of the 80 students come to school by walking. What percentage of the students come by walking?",
+      "ms": {
+        "draft": 6249,
+        "critique": 7243,
+        "solver": 1958,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a mixture, the ratio of millet to water is 2:7. What percentage of the mixture is millet?",
+      "ms": {
+        "draft": 4713,
+        "critique": 7392,
+        "solver": 1263,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 10% of a number is 5, what is 15% of the same number?",
+      "ms": {
+        "draft": 4713,
+        "critique": 7115,
+        "solver": 1607,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "On Day 7, a shopkeeper achieved 150% of his target, and on Day 8, he achieved 210% of his target. If his target was ₹5000, what was the total sales made on these two days?",
+      "ms": {
+        "draft": 4739,
+        "critique": 9711,
+        "solver": 1866
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Eesha scored 42 marks out of 50 in English and 70 marks out of 80 in Science. What is her Science score as a percentage?",
+      "ms": {
+        "draft": 4420,
+        "critique": 5866,
+        "solver": 1728,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A farmer harvested 260 kg of wheat last year and 650 kg this year. What percentage of last year’s harvest is this year’s harvest?",
+      "ms": {
+        "draft": 4739,
+        "critique": 8719,
+        "solver": 13401
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula to calculate the total amount received when interest is not compounded?",
+      "ms": {
+        "draft": 6156,
+        "critique": 11401
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula to calculate the total amount received when interest is compounded annually?",
+      "ms": {
+        "draft": 6156,
+        "critique": 10069,
+        "solver": 1375,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A fraction becomes 2/3 when 1 is added to its numerator. If the original fraction is x/y, which of the following equations correctly represents the situation?",
+      "ms": {
+        "draft": 4819,
+        "critique": 7465,
+        "solver": 6342,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a percentage?",
+      "ms": {
+        "draft": 3671,
+        "critique": 6877
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the meaning of the symbol '%'?",
+      "ms": {
+        "draft": 3671,
+        "critique": 7365
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a room of 100 people, 99% are left-handed. How many left-handed people have to leave the room to bring that percentage down to 98%?",
+      "ms": {
+        "draft": 3671,
+        "critique": 7734,
+        "solver": 1965
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 1 is added to the numerator and denominator of a fraction, it becomes 2/3. What is the original fraction if the sum of the numerator and denominator is 11?",
+      "ms": {
+        "draft": 3671,
+        "critique": 8110
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the principal is p, the rate of interest is r, and the time is t, what is the total amount after t years with simple interest?",
+      "ms": {
+        "draft": 3671,
+        "critique": 8498
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is 5% of 40?",
+      "ms": {
+        "draft": 5467,
+        "critique": 7725,
+        "solver": 15237,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If ₹6000 is invested at 10% p.a. without compounding for 3 years, what is the total amount received?",
+      "ms": {
+        "draft": 6341,
+        "critique": 7663,
+        "solver": 1684,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If ₹6000 is invested at 10% p.a. with compounding for 3 years, what is the total amount received?",
+      "ms": {
+        "draft": 6341,
+        "critique": 7354,
+        "solver": 996,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A shopkeeper buys a geometry box for ₹75 and sells it for ₹110. What is his profit margin with respect to the cost?",
+      "ms": {
+        "draft": 7071,
+        "critique": 4855,
+        "solver": 7592
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the profit margin of a shopkeeper who buys a geometry box for ₹75 and sells it for ₹110?",
+      "ms": {
+        "draft": 5007,
+        "critique": 8011,
+        "solver": 16544,
+        "form": 0,
+        "translation": 67763
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "If a carpenter wants a profit margin of 50% on a chair that costs ₹475, at what price should he sell the chair?",
+      "ms": {
+        "draft": 5007,
+        "critique": 6156,
+        "solver": 1842,
+        "form": 0,
+        "translation": 41281
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is 24% as a fraction?",
+      "ms": {
+        "draft": 6249,
+        "critique": 7332,
+        "solver": 1965,
+        "form": 4159,
+        "translation": 33825
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is 40% of 5?",
+      "ms": {
+        "draft": 5467,
+        "critique": 7910,
+        "solver": 1577,
+        "form": 0,
+        "translation": 25355
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If 20% of a number is 10, what is the number?",
+      "ms": {
+        "draft": 4713,
+        "critique": 8340,
+        "solver": 1594,
+        "form": 0,
+        "translation": 27861
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 25% of a quantity is 50, what is the full quantity?",
+      "ms": {
+        "draft": 6249,
+        "critique": 7061,
+        "solver": 1526,
+        "form": 7438,
+        "translation": 39151
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 25% of a value is 30, what is 50% of the same value?",
+      "ms": {
+        "draft": 4713,
+        "critique": 5753,
+        "solver": 1289,
+        "form": 0,
+        "translation": 31925
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is 75% of 80?",
+      "ms": {
+        "draft": 4713,
+        "critique": 7299,
+        "solver": 2047,
+        "form": 0,
+        "translation": 20262
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 40% of a distance is 92 km, what is 60% of the same distance?",
+      "ms": {
+        "draft": 4739,
+        "critique": 7893,
+        "solver": 1982,
+        "form": 0,
+        "translation": 33585
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The price of 1 kg tomatoes increased from ₹30 to ₹42. What is the percentage increase in price?",
+      "ms": {
+        "draft": 4420,
+        "critique": 7485,
+        "solver": 1286,
+        "form": 0,
+        "translation": 32088
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "A shopkeeper initially set the price of a product with a 35% profit margin. Due to poor sales, he decided to offer a 30% discount on the selling price. Will he make a profit or a loss?",
+      "ms": {
+        "draft": 5467,
+        "critique": 9194,
+        "solver": 1677,
+        "form": 0,
+        "translation": 28117
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Nandini has 25 marbles, of which 15 are white. What percentage of her marbles are white?",
+      "ms": {
+        "draft": 6249,
+        "critique": 9358,
+        "solver": 1462,
+        "form": 1,
+        "translation": 44672
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a class of 40 students, 25% are absent. How many students are present?",
+      "ms": {
+        "draft": 4713,
+        "critique": 8012,
+        "solver": 1465,
+        "form": 0,
+        "translation": 29404
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If 100% of a target is ₹5000, and on Day 4, a shopkeeper achieved 120% of the target, what was the amount of sales made on Day 4?",
+      "ms": {
+        "draft": 4739,
+        "critique": 9250,
+        "solver": 1662,
+        "form": 1,
+        "translation": 35403
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is 5% of 40? What is 40% of 5? What is 25% of 12? What is 12% of 25? What is 15% of 60? What is 60% of 15? What do you notice?",
+      "ms": {
+        "draft": 8286,
+        "critique": 7497,
+        "solver": 990,
+        "form": 0,
+        "translation": 60489
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "If 1% of 1 hour is 0.6 minutes, what is 100% of 1 hour?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "If a worker takes 18 days to pick coffee berries in 20% of the plantation, how many days will they take to pick coffee berries in the entire plantation?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Madhu and Madhav are comparing two products. DEF’s sugar content is 66% of the total weight. What percentage of DEF is not sugar?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "The average footfall in a theater decreased from 160 to 100. What is the percentage decrease in footfall?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the percentage of yellow paint in the mixture if red paint makes up 3/4 of the mixture?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What does the symbol '%' represent?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a school, 15 of the 80 students come to school by walking. What percentage of the students come by walking?",
+      "reason": "options are written to different precisions (0 and 2 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a mixture, the ratio of millet to water is 2:7. What percentage of the mixture is millet?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"(2/9)*100\" = 22.22222222222222, but the key says 22.22"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If 10% of a number is 5, what is 15% of the same number?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "On Day 7, a shopkeeper achieved 150% of his target, and on Day 8, he achieved 210% of his target. If his target was ₹5000, what was the total sales made on these two days?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Eesha scored 42 marks out of 50 in English and 70 marks out of 80 in Science. What is her Science score as a percentage?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A farmer harvested 260 kg of wheat last year and 650 kg this year. What percentage of last year’s harvest is this year’s harvest?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the formula to calculate the total amount received when interest is not compounded?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula to calculate the total amount received when interest is compounded annually?",
+      "reason": "options 1 and 2 say the same thing (\"p + (p × r × t)\" / \"p × r × t\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A fraction becomes 2/3 when 1 is added to its numerator. If the original fraction is x/y, which of the following equations correctly represents the situation?",
+      "reason": "options 1 and 3 say the same thing (\"x/(y + 1) = 2/3\" / \"x/(y - 1) = 2/3\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a percentage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the meaning of the symbol '%'?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In a room of 100 people, 99% are left-handed. How many left-handed people have to leave the room to bring that percentage down to 98%?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If 1 is added to the numerator and denominator of a fraction, it becomes 2/3. What is the original fraction if the sum of the numerator and denominator is 11?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the principal is p, the rate of interest is r, and the time is t, what is the total amount after t years with simple interest?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is 5% of 40?",
+      "reason": "options 2 and 3 are the same (\"20\"); options 2 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If ₹6000 is invested at 10% p.a. without compounding for 3 years, what is the total amount received?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"6000+6000*0.1*3\" = 7800, but the key says 6000"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If ₹6000 is invested at 10% p.a. with compounding for 3 years, what is the total amount received?",
+      "reason": "options 1 and 2 say the same thing (\"₹6000 × 1.1 × 1.1\" / \"₹6000 × 1.1 × 1.1 × 1.1\"); options 1 and 3 say the same thing (\"₹6000 × 1.1 × 1.1\" / \"₹6000 × 1.1 × 1.1 × 1.1 × 1.1\"); options 2 and 3 say the same thing (\"₹6000 × 1.1 × 1.1 × 1.1\" / \"₹6000 × 1.1 × 1.1 × 1.1 × 1.1\"); ARITHMETIC MISMATCH — checkExpr \"6000*1.1*1.1*1.1\" = 7986.000000000003, but the key says 6000"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A shopkeeper buys a geometry box for ₹75 and sells it for ₹110. What is his profit margin with respect to the cost?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

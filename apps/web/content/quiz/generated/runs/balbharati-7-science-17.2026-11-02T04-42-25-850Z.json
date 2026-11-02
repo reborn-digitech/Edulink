@@ -1,0 +1,498 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T04:42:25.850Z",
+  "finishedAt": "2026-11-02T04:48:03.143Z",
+  "seconds": 337,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "703020012",
+    "document": "balbharati/7/science/703020012.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 17 — Effects of Light",
+    "edition": "First Edition 2017",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2025-26]\n31. A. As sunlight passes through the atmosphere, Rayleigh scattering causes 1\nshorter wavelengths, such as blue and violet, to scatter more than other\ncolors, but our eyes are more sensitive to blue than violet.",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n25. Dispersion- The splitting of white light into seven colours on passing through a 2\nprism. (1 mark)\nVelocity is directly proportional to wavelength given constant frequency. So\nyellow will have greater wavelength than blue as the velocity of yellow light is\ngreater than blue. (0.5 + 0.5 mark)\nOR\nAngle of deflections of the two prisms need to be equal and opposite. While the\nfirst prism splits the light in the seven colours due to different angles of deflection,\nthe second prism combines the spectrum along a single ray and the colours again\ncombine to give white light as the emergent light. (1mark)\n(1mark)",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n14. When light enters the atmosphere it strikes on extremely fine particles, which deflect the 1\nrays of light in all possible directions, This is due to -\na) reflection of light\nb) atmospheric refraction\nc) scattering of light\nd) dispersion of light",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n38. Mohan and Rohit observed that shoots of a plant growing in shade bend 4\ntowards the sunlight. Whereas, leaves of ‘Touch me not’ plant fold and droop\nsoon after touching. They were curious to know how these movements occur\nin plants.\nA. Shoots of a plant bending towards light\nB. Folding of leaves Touch me not plant\nIn order to help them understand the movements in the plants, answer the\nfollowing questions:\nAttempt either subpart A or B.\nA. What causes the bending of shoots in the plants as shown in figure A?\nOR\nB. What causes the folding of the leaves in ‘Touch me not’ plant as shown\nin figure B? (2)\nC. Compare the movement of growth of the pollen tube towards ovule with\nthe movements sh"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 96171,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 17344,
+      "completionTokens": 5965
+    },
+    "critique": {
+      "calls": 29,
+      "ms": 170839,
+      "in": 24,
+      "out": 20,
+      "rejects": 4,
+      "promptTokens": 13857,
+      "completionTokens": 5065
+    },
+    "solver": {
+      "calls": 132,
+      "ms": 56482,
+      "in": 20,
+      "out": 16,
+      "rejects": 4,
+      "promptTokens": 21626,
+      "completionTokens": 1274
+    },
+    "form": {
+      "calls": 5,
+      "ms": 15305,
+      "in": 16,
+      "out": 9,
+      "rejects": 7,
+      "promptTokens": 1498,
+      "completionTokens": 470
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 21,
+      "ms": 3071,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 39,
+      "ms": 437529,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 25046,
+      "completionTokens": 13247
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 1,
+    "4": 0,
+    "5": 2,
+    "6": 3
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "What happens to the color of the sun as it sets, and why?",
+      "ms": {
+        "draft": 3926,
+        "critique": 5767,
+        "solver": 1561
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the reason for the reddish color observed from the front in an experiment with a table lamp and a beaker of milk and water?",
+      "ms": {
+        "draft": 3926,
+        "critique": 6483,
+        "solver": 1524,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In an experiment, a student observes that when a beam of light passes through a glass prism, it splits into different colors. What is the primary reason for this effect, and how does it relate to the scattering of light in the atmosphere?",
+      "ms": {
+        "draft": 3926,
+        "critique": 6852,
+        "solver": 1031,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a student adds more milk to a beaker of water, what happens to the reddish color seen from the front, and why?",
+      "ms": {
+        "draft": 3926,
+        "critique": 6524,
+        "solver": 2387
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of scattering of light in daily life?",
+      "ms": {
+        "draft": 3428,
+        "critique": 6105
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why is it not possible to see the shadow of a bird flying high in the sky?",
+      "ms": {
+        "draft": 3428,
+        "critique": 6053
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is observing a solar eclipse and notices that the sun's disc is partially covered. Which of the following is true about the situation?",
+      "ms": {
+        "draft": 3428,
+        "critique": 6812
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In which of the following situations would the penumbra not be formed?",
+      "ms": {
+        "draft": 3428,
+        "critique": 4865,
+        "solver": 13437
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main cause of a solar eclipse?",
+      "ms": {
+        "draft": 3428,
+        "critique": 6424,
+        "solver": 6700,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason for the occurrence of a total solar eclipse?",
+      "ms": {
+        "draft": 4667,
+        "critique": 6373,
+        "solver": 1316,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why is the shadow of a bird flying high not seen on the earth?",
+      "ms": {
+        "draft": 4667,
+        "critique": 6887,
+        "solver": 1100
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the main reason for the sky appearing blue during the day?",
+      "ms": {
+        "draft": 4667,
+        "critique": 6786,
+        "solver": 1697,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is not a type of eclipse?",
+      "ms": {
+        "draft": 4667,
+        "critique": 6404
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason we can see a beam of light in turbid water?",
+      "ms": {
+        "draft": 4008,
+        "critique": 6346,
+        "solver": 9893,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What happens to the color of the sun during sunset?",
+      "ms": {
+        "draft": 4008,
+        "critique": 6552,
+        "solver": 1580,
+        "form": 2904
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What causes the blue tinge seen when observing light through a beaker of water with added milk?",
+      "ms": {
+        "draft": 3926,
+        "critique": 5628,
+        "solver": 1095,
+        "form": 0,
+        "translation": 53504
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is responsible for the blue tinge observed when light is scattered at a 90-degree angle?",
+      "ms": {
+        "draft": 4008,
+        "critique": 6278,
+        "solver": 1118,
+        "form": 2418,
+        "translation": 42415
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which phenomenon is responsible for the different colours seen in the sky during sunrise and sunset?",
+      "ms": {
+        "draft": 4667,
+        "critique": 7219,
+        "solver": 10127,
+        "form": 0,
+        "translation": 58461
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why does the sky appear blue during the day?",
+      "ms": {
+        "draft": 4008,
+        "critique": 4660,
+        "solver": 1145,
+        "form": 4108,
+        "translation": 51676
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a dark room, a student uses a table lamp with a milky bulb and a beaker of water. After adding milk to the water, a blue tinge is seen at an angle. What is the most likely reason for this observation?",
+      "ms": {
+        "draft": 3926,
+        "critique": 7486,
+        "solver": 1935,
+        "form": 0,
+        "translation": 42421
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Why is the sky dark in space even though the sun is bright?",
+      "ms": {
+        "draft": 4008,
+        "critique": 6151,
+        "solver": 1620,
+        "form": 3744,
+        "translation": 51008
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why does the sun appear red at sunset even though it emits all colors of light?",
+      "ms": {
+        "draft": 4008,
+        "critique": 6110,
+        "solver": 1013,
+        "form": 3033,
+        "translation": 45238
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the sun were to suddenly disappear, what would happen to the Earth's atmosphere?",
+      "ms": {
+        "draft": 3428,
+        "critique": 6906,
+        "solver": 9670,
+        "form": 0,
+        "translation": 37256
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why can we read in the shade?",
+      "ms": {
+        "draft": 4667,
+        "critique": 6031,
+        "solver": 1209,
+        "form": 0,
+        "translation": 51740
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What happens to the color of the sun as it sets, and why?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the reason for the reddish color observed from the front in an experiment with a table lamp and a beaker of milk and water?",
+      "reason": "options 2 and 3 say the same thing (\"Because the blue light is not scattered at all\" / \"Because the red light is not scattered at all\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In an experiment, a student observes that when a beam of light passes through a glass prism, it splits into different colors. What is the primary reason for this effect, and how does it relate to the scattering of light in the atmosphere?",
+      "reason": "options 0 and 1 say the same thing (\"The splitting of light is due to refraction, and it is unrelated to scattering\" / \"The splitting of light is due to reflection, and it is unrelated to scattering\"); options 2 and 3 say the same thing (\"The splitting of light is due to scattering, and it is similar to what happens in the atmosphere\" / \"The splitting of light is due to diffraction, and it is similar to what happens in the atmosphere\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If a student adds more milk to a beaker of water, what happens to the reddish color seen from the front, and why?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of scattering of light in daily life?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Why is it not possible to see the shadow of a bird flying high in the sky?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student is observing a solar eclipse and notices that the sun's disc is partially covered. Which of the following is true about the situation?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In which of the following situations would the penumbra not be formed?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main cause of a solar eclipse?",
+      "reason": "options 0 and 1 say the same thing (\"The moon's shadow falling on the Earth\" / \"The Earth's shadow falling on the moon\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main reason for the occurrence of a total solar eclipse?",
+      "reason": "options 0 and 1 say the same thing (\"When the moon comes between the sun and the earth\" / \"When the earth comes between the sun and the moon\"); options 0 and 2 say the same thing (\"When the moon comes between the sun and the earth\" / \"When the sun comes between the earth and the moon\"); options 1 and 2 say the same thing (\"When the earth comes between the sun and the moon\" / \"When the sun comes between the earth and the moon\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Why is the shadow of a bird flying high not seen on the earth?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What is the main reason for the sky appearing blue during the day?",
+      "reason": "options 2 and 3 say the same thing (\"The atmosphere scatters blue light more than other colours\" / \"The atmosphere refracts blue light more than other colours\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is not a type of eclipse?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main reason we can see a beam of light in turbid water?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What happens to the color of the sun during sunset?",
+      "reason": "options 0 and 1 say the same thing (\"It appears red because blue light is scattered more\" / \"It appears blue because red light is scattered more\"); options 0 and 3 say the same thing (\"It appears red because blue light is scattered more\" / \"It appears blue because red light is scattered less\"); options 1 and 3 say the same thing (\"It appears blue because red light is scattered more\" / \"It appears blue because red light is scattered less\"); options 2 and 3 say the same thing (\"It appears red because red light is scattered less\" / \"It appears blue because red light is scattered less\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

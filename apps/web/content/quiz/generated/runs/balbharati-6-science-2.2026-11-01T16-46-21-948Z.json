@@ -1,0 +1,658 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T16:46:21.948Z",
+  "finishedAt": "2026-11-01T16:52:36.847Z",
+  "seconds": 375,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "603050012",
+    "document": "balbharati/6/science/603050012.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 2 — Measurement",
+    "edition": "First Edition 2026",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2022-23]\n6. (a) Only i 1",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n6. B. (ii), (iii), (iv)",
+      "[CBSE Class X Science, marking scheme, 2026-27]\n6. B. 17, 34",
+      "[CBSE Class X Science, sample question paper, 2026-27]\nthe inference he draws on the basis of his experiment be correct? Justify\nyour answer."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 145383,
+      "in": 34,
+      "out": 32,
+      "rejects": 2,
+      "promptTokens": 24226,
+      "completionTokens": 5792
+    },
+    "critique": {
+      "calls": 39,
+      "ms": 317180,
+      "in": 32,
+      "out": 17,
+      "rejects": 15,
+      "promptTokens": 15580,
+      "completionTokens": 6588
+    },
+    "solver": {
+      "calls": 131,
+      "ms": 76136,
+      "in": 17,
+      "out": 14,
+      "rejects": 3,
+      "promptTokens": 21925,
+      "completionTokens": 1354
+    },
+    "form": {
+      "calls": 2,
+      "ms": 6534,
+      "in": 14,
+      "out": 4,
+      "rejects": 10,
+      "promptTokens": 421,
+      "completionTokens": 135
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 18,
+      "ms": 6556,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 19,
+      "ms": 199514,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 9818,
+      "completionTokens": 4901
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a student measures the length of a table using their hand span and another student uses a ruler, which measurement will be more accurate?",
+      "ms": {
+        "draft": 3262,
+        "critique": 8829,
+        "solver": 2140,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to use a reference point when measuring distances on a sports field?",
+      "ms": {
+        "draft": 3262,
+        "critique": 7605,
+        "solver": 1384,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student measures the length of a classroom using a 15 cm ruler and a 1 m scale, which instrument is more suitable?",
+      "ms": {
+        "draft": 3262,
+        "critique": 8903,
+        "solver": 2196,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of non-standard measurement?",
+      "ms": {
+        "draft": 3262,
+        "critique": 9287,
+        "solver": 14283,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a unit used for measuring temperature?",
+      "ms": {
+        "draft": 5626,
+        "critique": 8668
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why is it important to use a thermometer to measure temperature?",
+      "ms": {
+        "draft": 5626,
+        "critique": 9822
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person's body temperature is measured as 37°C, what does this indicate?",
+      "ms": {
+        "draft": 5626,
+        "critique": 7129
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the correct method of measuring temperature using a thermometer?",
+      "ms": {
+        "draft": 5626,
+        "critique": 6893
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a standard unit of length?",
+      "ms": {
+        "draft": 3262,
+        "critique": 9671,
+        "solver": 11788,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student measured the temperature of a liquid and recorded it as 40°C. What is the most likely explanation for this?",
+      "ms": {
+        "draft": 5626,
+        "critique": 7846
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to determine what each small division on a thermometer represents before measuring temperature?",
+      "ms": {
+        "draft": 5626,
+        "critique": 7265
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of temperature?",
+      "ms": {
+        "draft": 4670,
+        "critique": 7273
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a non-standard method of measurement?",
+      "ms": {
+        "draft": 4670,
+        "critique": 8614
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student measures the length of a book with a ruler and then with a measuring tape, what will be the result?",
+      "ms": {
+        "draft": 4670,
+        "critique": 8077
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which instrument is used to measure temperature?",
+      "ms": {
+        "draft": 4670,
+        "critique": 6928,
+        "solver": 12990,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student measures the temperature of a leaf using a thermometer. What should he ensure while doing so?",
+      "ms": {
+        "draft": 4670,
+        "critique": 6052,
+        "solver": 765,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the instrument used to measure temperature?",
+      "ms": {
+        "draft": 2814,
+        "critique": 8149
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the normal temperature of the human body?",
+      "ms": {
+        "draft": 2814,
+        "critique": 8182
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of length?",
+      "ms": {
+        "draft": 2814,
+        "critique": 9592
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a non-standard method of length measurement?",
+      "ms": {
+        "draft": 2814,
+        "critique": 9866,
+        "solver": 15222,
+        "form": 3439
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the correct method of using a thermometer?",
+      "ms": {
+        "draft": 6089,
+        "critique": 7682,
+        "solver": 1912,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say is the definition of measurement?",
+      "ms": {
+        "draft": 3343,
+        "critique": 8755
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the Kelvin scale not commonly used for measuring body temperature?",
+      "ms": {
+        "draft": 6089,
+        "critique": 8463,
+        "solver": 2253
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person uses a hand span to measure the length of a table, what type of measurement is this considered?",
+      "ms": {
+        "draft": 3343,
+        "critique": 9224
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which unit is used to measure the length of a classroom?",
+      "ms": {
+        "draft": 3343,
+        "critique": 8600
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a disadvantage of using a traditional mercury thermometer?",
+      "ms": {
+        "draft": 6089,
+        "critique": 8334,
+        "solver": 20513
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A factory produces machine parts that must fit together perfectly. According to the passage, what type of measurement is required for such parts?",
+      "ms": {
+        "draft": 3343,
+        "critique": 8828,
+        "solver": 1276,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a game of cricket, the distance from the stumps to the bowling point is measured as fifteen steps. However, the results differ when different people measure it. What is the main reason for this?",
+      "ms": {
+        "draft": 3343,
+        "critique": 10264,
+        "solver": 12011
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which unit is used to measure temperature in research experiments?",
+      "ms": {
+        "draft": 2814,
+        "critique": 8863,
+        "solver": 15151,
+        "form": 3096,
+        "translation": 63707
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a reason why a thermometer is needed to measure temperature?",
+      "ms": {
+        "draft": 6089,
+        "critique": 7973,
+        "solver": 2138,
+        "form": 3,
+        "translation": 53576
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has a fever, which type of thermometer is most suitable for measuring their body temperature?",
+      "ms": {
+        "draft": 6089,
+        "critique": 8077,
+        "solver": 1266,
+        "form": 1,
+        "translation": 34139
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the reference point in the context of measuring distances on a sports field?",
+      "ms": {
+        "draft": 3262,
+        "critique": 8435,
+        "solver": 1422,
+        "form": 1,
+        "translation": 42299
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the purpose of a reference point in measurement?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student measures the length of a table using their hand span and another student uses a ruler, which measurement will be more accurate?",
+      "reason": "option 1 repeats the stem's wording (\"The hand span measurement will be more accurate\"); option 2 repeats the stem's wording (\"The ruler measurement will be more accurate\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is it important to use a reference point when measuring distances on a sports field?",
+      "reason": "the key is far longer than every distractor (50 vs 29 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a student measures the length of a classroom using a 15 cm ruler and a 1 m scale, which instrument is more suitable?",
+      "reason": "option 1 repeats the stem's wording (\"The 15 cm ruler is more suitable\"); option 2 repeats the stem's wording (\"The 1 m scale is more suitable\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of non-standard measurement?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a unit used for measuring temperature?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why is it important to use a thermometer to measure temperature?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person's body temperature is measured as 37°C, what does this indicate?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the correct method of measuring temperature using a thermometer?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a standard unit of length?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student measured the temperature of a liquid and recorded it as 40°C. What is the most likely explanation for this?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is it important to determine what each small division on a thermometer represents before measuring temperature?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the SI unit of temperature?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a non-standard method of measurement?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a student measures the length of a book with a ruler and then with a measuring tape, what will be the result?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which instrument is used to measure temperature?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"Confuses thermometer with balance, which is used for weight …\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A student measures the temperature of a leaf using a thermometer. What should he ensure while doing so?",
+      "reason": "option 3 is a catch-all (\"Both (b) and (c)\")"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the unit of temperature used in the passage for weather forecasting?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the instrument used to measure temperature?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the normal temperature of the human body?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the SI unit of length?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a non-standard method of length measurement?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the correct method of using a thermometer?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the passage say is the definition of measurement?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why is the Kelvin scale not commonly used for measuring body temperature?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person uses a hand span to measure the length of a table, what type of measurement is this considered?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, which unit is used to measure the length of a classroom?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following is a disadvantage of using a traditional mercury thermometer?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A factory produces machine parts that must fit together perfectly. According to the passage, what type of measurement is required for such parts?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a game of cricket, the distance from the stumps to the bowling point is measured as fifteen steps. However, the results differ when different people measure it. What is the main reason for this?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

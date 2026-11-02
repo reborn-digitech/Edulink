@@ -1,0 +1,866 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T01:11:33.522Z",
+  "finishedAt": "2026-11-02T01:20:01.235Z",
+  "seconds": 508,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "gegp1",
+    "document": "ncert/7/mathematics/gegp104.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 4 — Expressions Using Letter-Numbers",
+    "edition": "Reprint 2026-27",
+    "chunks": 25,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n7. C) 140 𝑂",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n4. A) 7",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n7. B 210 = 21 + (𝑛 − 1)21 ⇒ 𝑛 = 10\n(B) 𝟏𝟎 𝒕𝒉",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 13,
+      "ms": 189230,
+      "in": 45,
+      "out": 44,
+      "rejects": 1,
+      "promptTokens": 59678,
+      "completionTokens": 9598
+    },
+    "critique": {
+      "calls": 59,
+      "ms": 406545,
+      "in": 44,
+      "out": 36,
+      "rejects": 8,
+      "promptTokens": 26905,
+      "completionTokens": 10486
+    },
+    "solver": {
+      "calls": 292,
+      "ms": 191522,
+      "in": 36,
+      "out": 17,
+      "rejects": 19,
+      "promptTokens": 74000,
+      "completionTokens": 3503
+    },
+    "form": {
+      "calls": 3,
+      "ms": 9537,
+      "in": 17,
+      "out": 5,
+      "rejects": 12,
+      "promptTokens": 867,
+      "completionTokens": 245
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 45,
+      "ms": 8785,
+      "in": 5,
+      "out": 4,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 114304,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 8067,
+      "completionTokens": 3175
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 2
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the algebraic expression for Shabnam’s age if Aftab’s age is denoted by 'a'?",
+      "ms": {
+        "draft": 3391,
+        "critique": 6005
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the number of Ls is denoted by 'n', what is the expression for the number of matchsticks needed?",
+      "ms": {
+        "draft": 3391,
+        "critique": 6823
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the passage say is the meaning of the term 'letter-numbers'?",
+      "ms": {
+        "draft": 3391,
+        "critique": 7039,
+        "solver": 1835
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the side length of a square is denoted by 'q', what is the expression for its perimeter?",
+      "ms": {
+        "draft": 3391,
+        "critique": 7094
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the algebraic expression to find the total cost of 'c' coconuts and 'j' kg of jaggery, if a coconut costs ₹35 and 1 kg of jaggery costs ₹60?",
+      "ms": {
+        "draft": 3391,
+        "critique": 7440,
+        "solver": 1360,
+        "form": 2789
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the time taken for the roller mill to start is 10 seconds and each kg of grain takes 8 seconds, what is the expression for the total time to grind 'y' kg of grain?",
+      "ms": {
+        "draft": 3391,
+        "critique": 7115,
+        "solver": 1981,
+        "form": 2403
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the bottom middle cell in a 2 × 3 grid of dates has the value 'w', what is the expression for the cell above it?",
+      "ms": {
+        "draft": 3358,
+        "critique": 7987
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the simplified form of the expression l + b + l + b?",
+      "ms": {
+        "draft": 3358,
+        "critique": 6552,
+        "solver": 1819,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given grid, what is the expression for the cell to the left of 'w'?",
+      "ms": {
+        "draft": 3358,
+        "critique": 8731
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a sequence of multiples of 4, what is the 29th term?",
+      "ms": {
+        "draft": 3358,
+        "critique": 7422,
+        "solver": 1494
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the value of 5m + 3 is 13, what is the value of m?",
+      "ms": {
+        "draft": 3358,
+        "critique": 6515,
+        "solver": 16762
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the simplified form of 5c + 3c + 10c?",
+      "ms": {
+        "draft": 4515,
+        "critique": 8534,
+        "solver": 17447
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of like terms?",
+      "ms": {
+        "draft": 4515,
+        "critique": 8028,
+        "solver": 16331
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The area of a rectangle is found by multiplying its length and width. If the areas of two smaller rectangles are 4v and 3v, what is the total area of the bigger rectangle?",
+      "ms": {
+        "draft": 4515,
+        "critique": 11187,
+        "solver": 13130,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the correct simplification of the algebraic expression p + p + p + p?",
+      "ms": {
+        "draft": 4423,
+        "critique": 8705,
+        "solver": 1818,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 40x + 75y is the total amount paid to rent chairs and tables, and 6x + 10y is the amount returned, what is the simplified expression for the total amount paid?",
+      "ms": {
+        "draft": 4515,
+        "critique": 6997,
+        "solver": 14222
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the position of a design in a pattern is given by the formula 3n, which design appears at position 99?",
+      "ms": {
+        "draft": 4423,
+        "critique": 6016,
+        "solver": 1904
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the expression for the number of matchsticks required to make 'y' triangles in the given pattern?",
+      "ms": {
+        "draft": 5544,
+        "critique": 4738,
+        "solver": 1401,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the formula of the number machine that takes in two numbers and produces the result as 'two times the first number minus the second number'?",
+      "ms": {
+        "draft": 4423,
+        "critique": 6524,
+        "solver": 12381,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the number at the center of a specific shape is 'a', and the sum of all numbers in the shape is always 5 times the number at the center, what is the expression for the sum of all numbers?",
+      "ms": {
+        "draft": 5544,
+        "critique": 6402,
+        "solver": 934,
+        "form": 4345
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the simplified form of the expression 3a + 9b – 6 + 8a – 4b – 7a + 16?",
+      "ms": {
+        "draft": 3995,
+        "critique": 5579,
+        "solver": 21159
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the simplified form of the expression 2 (2x – 3) + 8x + 12?",
+      "ms": {
+        "draft": 3995,
+        "critique": 5893,
+        "solver": 21949
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the simplified form of the expression 3 (3a – 3b) – 8a – 4b –16?",
+      "ms": {
+        "draft": 3995,
+        "critique": 5166,
+        "solver": 23620
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the simplified form of the expression 23 + 4 (6m – 3n) – 8n – 3m –18?",
+      "ms": {
+        "draft": 3995,
+        "critique": 6192,
+        "solver": 1287
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the simplified form of the expression 8h – (5 + 7h) + 9?",
+      "ms": {
+        "draft": 3995,
+        "critique": 7137,
+        "solver": 2653
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the simplified form of the expression 8x – (2x – 3) + 12?",
+      "ms": {
+        "draft": 3995,
+        "critique": 6919,
+        "solver": 19969
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A snail climbs up 'u' cm during the day and slips down 'd' cm during the night. After 10 days, what is the expression for its total distance from the starting point?",
+      "ms": {
+        "draft": 4334,
+        "critique": 9064,
+        "solver": 1760,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the given expression, w + 2 becomes 4w + 20 along one path. Which of the following operations would lead to this result?",
+      "ms": {
+        "draft": 4334,
+        "critique": 6971
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the simplified form of the expression 3a + 2b?",
+      "ms": {
+        "draft": 4334,
+        "critique": 9678,
+        "solver": 17002
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an algebraic expression?",
+      "ms": {
+        "draft": 22006,
+        "critique": 5656,
+        "solver": 1759,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the algebraic expression 3a + 9b – 6 represent?",
+      "ms": {
+        "draft": 22006,
+        "critique": 6356,
+        "solver": 1797,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the algebraic expression 10 + 8 × y, what does the ‘y’ represent?",
+      "ms": {
+        "draft": 22006,
+        "critique": 7015,
+        "solver": 1462
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the expression for the number of matchsticks in Step y?",
+      "ms": {
+        "draft": 4301,
+        "critique": 7236
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total sum of numbers in a 2 × 2 square in terms of the top left number 'a'?",
+      "ms": {
+        "draft": 4301,
+        "critique": 5452,
+        "solver": 1832
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a pattern of matchsticks, how many matchsticks are needed for Step 33?",
+      "ms": {
+        "draft": 4301,
+        "critique": 6225,
+        "solver": 1463
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the value of the expression 10(y – 3) when y = 2?",
+      "ms": {
+        "draft": 5170,
+        "critique": 9053,
+        "solver": 1828
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the value of the expression 7k when k = 4?",
+      "ms": {
+        "draft": 5334,
+        "critique": 8558
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a 2 × 2 square of a calendar, if the top-left number is 'a', what is the number in the bottom-right corner?",
+      "ms": {
+        "draft": 5170,
+        "critique": 8236,
+        "solver": 13385
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the simplified form of the expression 5c + 3c + 10c?",
+      "ms": {
+        "draft": 6280,
+        "critique": 6690,
+        "solver": 12283,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the time taken to travel from one station to the next is t minutes, and the train stops for 2 minutes at each of the three stations, which of the following expressions correctly represents the total time taken to travel from Yahapur to Vahapur?",
+      "ms": {
+        "draft": 7218,
+        "critique": 6931,
+        "solver": 7073,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the value of 7k when k = 4?",
+      "ms": {
+        "draft": 3358,
+        "critique": 7979,
+        "solver": 1748,
+        "form": 0,
+        "translation": 19560
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the simplified form of the expression 2d – d – c – c?",
+      "ms": {
+        "draft": 4334,
+        "critique": 7712,
+        "solver": 1436,
+        "form": 0,
+        "translation": 20506
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Charu’s total score is 21p – 9q, and Krishita’s score is 23p – 7q. What is the difference between their scores?",
+      "ms": {
+        "draft": 4515,
+        "critique": 8744,
+        "solver": 14972,
+        "form": 0,
+        "translation": 33209
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a 2 × 2 square of a calendar, the top left number is 'a'. What is the expression for the number that is two rows below 'a'?",
+      "ms": {
+        "draft": 4423,
+        "critique": 6193,
+        "solver": 1838,
+        "form": 0,
+        "translation": 36489
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the algebraic expression for Shabnam’s age if Aftab’s age is denoted by 'a'?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If the number of Ls is denoted by 'n', what is the expression for the number of matchsticks needed?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What does the passage say is the meaning of the term 'letter-numbers'?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the side length of a square is denoted by 'q', what is the expression for its perimeter?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the algebraic expression to find the total cost of 'c' coconuts and 'j' kg of jaggery, if a coconut costs ₹35 and 1 kg of jaggery costs ₹60?",
+      "reason": "options 0 and 1 are the same (\"c + 35 + j + 60\"); options 0 and 2 are the same (\"c + 35 + j + 60\"); options 0 and 3 say the same thing (\"c + 35 + j + 60\" / \"c + j × 35 + 60\"); options 1 and 2 are the same (\"c × 35 × j × 60\"); options 1 and 3 say the same thing (\"c × 35 × j × 60\" / \"c + j × 35 + 60\"); options 2 and 3 say the same thing (\"c × 35 + j × 60\" / \"c + j × 35 + 60\"); option 0 repeats the stem's wording (\"c + 35 + j + 60\"); option 1 repeats the stem's wording (\"c × 35 × j × 60\"); option 2 repeats the stem's wording (\"c × 35 + j × 60\"); option 3 repeats the stem's wording (\"c + j × 35 + 60\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If the time taken for the roller mill to start is 10 seconds and each kg of grain takes 8 seconds, what is the expression for the total time to grind 'y' kg of grain?",
+      "reason": "options 0 and 1 are the same (\"10 + 8 + y\"); options 0 and 2 are the same (\"10 + 8 + y\"); options 0 and 3 are the same (\"10 + 8 + y\"); options 1 and 2 are the same (\"(10 + 8) × y\"); options 1 and 3 are the same (\"(10 + 8) × y\"); options 2 and 3 are the same (\"10 × 8 × y\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the bottom middle cell in a 2 × 3 grid of dates has the value 'w', what is the expression for the cell above it?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the simplified form of the expression l + b + l + b?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the given grid, what is the expression for the cell to the left of 'w'?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a sequence of multiples of 4, what is the 29th term?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the value of 5m + 3 is 13, what is the value of m?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the simplified form of 5c + 3c + 10c?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of like terms?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The area of a rectangle is found by multiplying its length and width. If the areas of two smaller rectangles are 4v and 3v, what is the total area of the bigger rectangle?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is the correct simplification of the algebraic expression p + p + p + p?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If 40x + 75y is the total amount paid to rent chairs and tables, and 6x + 10y is the amount returned, what is the simplified expression for the total amount paid?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the position of a design in a pattern is given by the formula 3n, which design appears at position 99?",
+      "reason": "the solver picked option 0 1 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What is the expression for the number of matchsticks required to make 'y' triangles in the given pattern?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); checkExpr \"2*y+1\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the formula of the number machine that takes in two numbers and produces the result as 'two times the first number minus the second number'?",
+      "reason": "options 1 and 3 say the same thing (\"2b - a\" / \"a - 2b\"); options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the number at the center of a specific shape is 'a', and the sum of all numbers in the shape is always 5 times the number at the center, what is the expression for the sum of all numbers?",
+      "reason": "options 1 and 3 are the same (\"a + 5\"); options mix numbers and words (2 of 4 are numbers); checkExpr \"5*a\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the simplified form of the expression (4x + 3y) – (3x + 4y)?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the simplified form of the expression 3a + 9b – 6 + 8a – 4b – 7a + 16?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the simplified form of the expression 2 (2x – 3) + 8x + 12?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the simplified form of the expression 3 (3a – 3b) – 8a – 4b –16?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the simplified form of the expression 23 + 4 (6m – 3n) – 8n – 3m –18?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the simplified form of the expression 8h – (5 + 7h) + 9?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the simplified form of the expression 8x – (2x – 3) + 12?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A snail climbs up 'u' cm during the day and slips down 'd' cm during the night. After 10 days, what is the expression for its total distance from the starting point?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In the given expression, w + 2 becomes 4w + 20 along one path. Which of the following operations would lead to this result?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the simplified form of the expression 3a + 2b?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an algebraic expression?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is 'w + 2' because it contains a letter-numbe…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What does the algebraic expression 3a + 9b – 6 represent?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is 'A combination of numbers and variables' b…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the algebraic expression 10 + 8 × y, what does the ‘y’ represent?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the expression for the number of matchsticks in Step y?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the total sum of numbers in a 2 × 2 square in terms of the top left number 'a'?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In a pattern of matchsticks, how many matchsticks are needed for Step 33?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the value of the expression 10(y – 3) when y = 2?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "What is the value of the expression 7k when k = 4?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a 2 × 2 square of a calendar, if the top-left number is 'a', what is the number in the bottom-right corner?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What is the simplified form of the expression 5c + 3c + 10c?",
+      "reason": "options are in more than one unit (c, none); options 0 and 1 are the same number"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If the time taken to travel from one station to the next is t minutes, and the train stops for 2 minutes at each of the three stations, which of the following expressions correctly represents the total time taken to travel from Yahapur to Vahapur?",
+      "reason": "near-duplicate of served question cmvepq68v012agod8i2dhxx0y (cosine 0.926 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

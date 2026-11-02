@@ -1,0 +1,229 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T12:38:37.118Z",
+  "finishedAt": "2026-11-01T12:43:46.328Z",
+  "seconds": 309,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — Three-Dimensional Shapes",
+    "edition": "First Edition 2026",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2026-27]\n11. Two cubes each of volume 64 cm are joined end to end to form a solid. The surface 3 1\narea of the resultant cuboid is:\n(A) 192 cm 2 (B) 160 cm 2 (C) 96 cm 2 (D) 80 cm 2",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n11. (d) 3√3cm",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n18. B Volume of cube, 𝑎 = 64 ⇒ 𝑎 = 4 cm 3 1\nOn joining two cubes of side = 4 cm, we get a cuboid whose\nLength (𝑙) = 8 cm, Breadth (𝑏) = 4 cm, Height (ℎ) = 4 cm\nSurface area of resulting cuboid = 2(𝑙𝑏 + 𝑏ℎ + ℎ 𝑙)\n= 2(8 × 4 + 4 × 4 + 4 × 8)\n𝟐 =160 cm 2\n(B) 𝟏𝟔𝟎𝐜𝐦",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 1,
+      "ms": 20174,
+      "in": 6,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 4528,
+      "completionTokens": 816
+    },
+    "critique": {
+      "calls": 6,
+      "ms": 40296,
+      "in": 6,
+      "out": 5,
+      "rejects": 1,
+      "promptTokens": 2291,
+      "completionTokens": 965
+    },
+    "solver": {
+      "calls": 25,
+      "ms": 15615,
+      "in": 5,
+      "out": 4,
+      "rejects": 1,
+      "promptTokens": 2480,
+      "completionTokens": 200
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 17,
+      "ms": 4265,
+      "in": 4,
+      "out": 1,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 7,
+      "ms": 29169,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2523,
+      "completionTokens": 1239
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If we place carrom pieces one on top of the other, what shape is formed?",
+      "ms": {
+        "draft": 16538,
+        "critique": 6912,
+        "solver": 3298
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If we increase the number of sides of a pyramid's base, which shape is formed?",
+      "ms": {
+        "draft": 16538,
+        "critique": 6970
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a three-dimensional shape?",
+      "ms": {
+        "draft": 16538,
+        "critique": 6310,
+        "solver": 2733,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which shape has a curved surface but no vertices or edges?",
+      "ms": {
+        "draft": 16538,
+        "critique": 8819,
+        "solver": 1533,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A shape has 5 faces, 5 vertices, and 8 edges. What is the shape?",
+      "ms": {
+        "draft": 16538,
+        "critique": 7727,
+        "solver": 1942,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the shape of a ball?",
+      "ms": {
+        "draft": 16538,
+        "critique": 6021,
+        "solver": 1624,
+        "form": 2,
+        "translation": 22128
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If we place carrom pieces one on top of the other, what shape is formed?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If we increase the number of sides of a pyramid's base, which shape is formed?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":2,\"stem\":\"Which of the following is a three-dimensional shape?\",\"options\":[\"Square\",\"Circle\",\"Cu"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a three-dimensional shape?",
+      "reason": "near-duplicate of served question cmvvj03wq00010rnds73w4p9t (cosine 0.927 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Which shape has a curved surface but no vertices or edges?",
+      "reason": "near-duplicate of served question cmvvmfooz000d0remhw9s6we8 (cosine 0.926 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A shape has 5 faces, 5 vertices, and 8 edges. What is the shape?",
+      "reason": "near-duplicate of served question cmvuxp50n000i0rgne7ijegiu (cosine 0.912 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

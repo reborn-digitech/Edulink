@@ -1,0 +1,812 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T08:14:35.135Z",
+  "finishedAt": "2026-11-02T08:23:43.394Z",
+  "seconds": 548,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash Part-I",
+    "bookCode": "hegp1",
+    "document": "ncert/8/mathematics/hegp102.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 2 — Power Play",
+    "edition": "Reprint 2026-27",
+    "chunks": 26,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n8. B) 8𝑥 - 20 2",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2025-26]\n8. (B) ଷଵ\nଷ଺\nProbability of getting sum 8 is ଷ଺ ହ\nProbability of not getting sum 8 is ଷଵ ଷ଺",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n14. B) 3 8",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n8. (d) RHS"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 205867,
+      "in": 43,
+      "out": 41,
+      "rejects": 2,
+      "promptTokens": 50773,
+      "completionTokens": 10959
+    },
+    "critique": {
+      "calls": 54,
+      "ms": 390368,
+      "in": 41,
+      "out": 31,
+      "rejects": 10,
+      "promptTokens": 26388,
+      "completionTokens": 10046
+    },
+    "solver": {
+      "calls": 244,
+      "ms": 141490,
+      "in": 31,
+      "out": 20,
+      "rejects": 11,
+      "promptTokens": 55265,
+      "completionTokens": 2710
+    },
+    "form": {
+      "calls": 11,
+      "ms": 50046,
+      "in": 20,
+      "out": 8,
+      "rejects": 12,
+      "promptTokens": 4852,
+      "completionTokens": 1192
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 50,
+      "ms": 9830,
+      "in": 8,
+      "out": 6,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 224584,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 13264,
+      "completionTokens": 5874
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 3,
+    "2": 1,
+    "3": 0,
+    "4": 0,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following represents the exponential form of 2 × 2 × 2 × 2?",
+      "ms": {
+        "draft": 3935,
+        "critique": 7420,
+        "solver": 1855,
+        "form": 3332
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the thickness of a paper is 0.001 cm and it is folded 10 times, what is the thickness after 10 folds?",
+      "ms": {
+        "draft": 3935,
+        "critique": 6345,
+        "solver": 1937
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the thickness of the paper after 20 folds if it starts at 0.001 cm?",
+      "ms": {
+        "draft": 3935,
+        "critique": 8292,
+        "solver": 1498
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the exponential form of 5 × 5 × 5 × 5 × 5?",
+      "ms": {
+        "draft": 3935,
+        "critique": 6111,
+        "solver": 1510,
+        "form": 4045
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the number of lotuses doubles every day, and the pond is fully covered on the 30th day, how many lotuses were there on the 29th day?",
+      "ms": {
+        "draft": 4940,
+        "critique": 8095,
+        "solver": 14787
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the number of lotuses in a pond triples every day, and 1 lotus is placed in the pond on day 1, how many lotuses will be there on day 5?",
+      "ms": {
+        "draft": 4940,
+        "critique": 7151,
+        "solver": 18494
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the value of 2^5 ÷ 2^3 in exponential form?",
+      "ms": {
+        "draft": 4940,
+        "critique": 7763,
+        "solver": 12618,
+        "form": 5907
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 2^3 × 5^3 is expressed as (2 × 5)^3, which rule is being applied?",
+      "ms": {
+        "draft": 4940,
+        "critique": 8309,
+        "solver": 1514,
+        "form": 4161
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a 5-digit lock has 10 options for each digit, how many passwords are possible?",
+      "ms": {
+        "draft": 4940,
+        "critique": 8539,
+        "solver": 12992
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct way to write the number 172 using powers of 10?",
+      "ms": {
+        "draft": 5649,
+        "critique": 6879,
+        "solver": 1828
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The number 561.903 can be written in scientific notation as 5.61903 × 10^n. What is the value of n?",
+      "ms": {
+        "draft": 5649,
+        "critique": 7936
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the fixed increase in distance with each step when building a ladder to the moon?",
+      "ms": {
+        "draft": 17426,
+        "critique": 7458
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The number 2,080,000 can be written in scientific notation as 2.08 × 10^n. What is the value of n?",
+      "ms": {
+        "draft": 5649,
+        "critique": 9368
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The distance between the Sun and Earth is given as 1.496 × 10^11 meters. Which of the following is the same value written in standard form?",
+      "ms": {
+        "draft": 5649,
+        "critique": 9294,
+        "solver": 15196,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person donates notebooks worth their weight in a year, and the weight of a notebook is 200 grams, how many notebooks would they donate in a year? Assume the person's weight is 60 kg.",
+      "ms": {
+        "draft": 17426,
+        "critique": 7692
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If one star is counted every second, how long would it take to count all the stars in the universe? The estimated number of stars in the observable universe is 2 × 10^22. Write the answer in scientific notation.",
+      "ms": {
+        "draft": 6605,
+        "critique": 7470,
+        "solver": 1749,
+        "form": 2997
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a person walks 400 km to reach a place and they walk at a speed of 5 km/h, how long would the journey take?",
+      "ms": {
+        "draft": 17426,
+        "critique": 6578,
+        "solver": 16876
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which number is greater, 4 or 3?",
+      "ms": {
+        "draft": 3950,
+        "critique": 5979
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of (1.2) if (12) = 144?",
+      "ms": {
+        "draft": 3950,
+        "critique": 6278
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following expressions is the same as 2 × 3?",
+      "ms": {
+        "draft": 3950,
+        "critique": 6830
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a number that is both a square and a cube?",
+      "ms": {
+        "draft": 3950,
+        "critique": 6120
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many digits should the unique ID code for 8.5 billion milk packets have, using digits 0–9?",
+      "ms": {
+        "draft": 3950,
+        "critique": 9205
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which expression correctly represents the thickness of a sheet of paper after it is folded 10 times, if the initial thickness is v?",
+      "ms": {
+        "draft": 3773,
+        "critique": 6627,
+        "solver": 2330,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "How many unique alphanumeric passcodes of length 5 can be created, if there are 26 letters and 10 digits?",
+      "ms": {
+        "draft": 3950,
+        "critique": 6019,
+        "solver": 14789,
+        "form": 2577
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "On a number line, the distance between the Sun and Saturn is 1.4335 × 10 m. The distance between the Sun and Earth is 1.496 × 10 m. Where would the Earth be positioned relative to Saturn?",
+      "ms": {
+        "draft": 3773,
+        "critique": 9431,
+        "solver": 1527,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a password is made using 6 letters from the English alphabet, how many different passwords are possible?",
+      "ms": {
+        "draft": 3773,
+        "critique": 8896,
+        "solver": 1790,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the value of 2 × 10?",
+      "ms": {
+        "draft": 3773,
+        "critique": 6372,
+        "solver": 16317
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct way to write 100 crore in terms of powers of 10?",
+      "ms": {
+        "draft": 6105,
+        "critique": 7481
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage compares the growth of a population using exponential growth. If a population doubles every day, how many times will it have doubled after 5 days?",
+      "ms": {
+        "draft": 6105,
+        "critique": 6094,
+        "solver": 2520,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the passage, it is mentioned that the highest denomination of a currency note ever printed was 1 sextillion pengő. If 1 sextillion is 10^21, how many times larger is this than 1 million?",
+      "ms": {
+        "draft": 6105,
+        "critique": 7641,
+        "solver": 1862
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person is 4840 days old, how many hours old are they? Use scientific notation for the answer.",
+      "ms": {
+        "draft": 6743,
+        "critique": 8587,
+        "solver": 1907,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 1000 × 1000 = 1,000,000, which of the following is the correct representation of this in powers of 10?",
+      "ms": {
+        "draft": 6105,
+        "critique": 6950,
+        "solver": 18744
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the estimated number of stars in the observable universe is 2 × 10^22, and one star is counted every second, how long would it take to count all the stars in the universe? Answer in terms of seconds using scientific notation.",
+      "ms": {
+        "draft": 6743,
+        "critique": 8755,
+        "solver": 8689
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 10^{100} is called a googol, then what is 10^{10^{100}} called?",
+      "ms": {
+        "draft": 5747,
+        "critique": 7491,
+        "solver": 1813,
+        "form": 3757
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the value of (–2)^4?",
+      "ms": {
+        "draft": 4518,
+        "critique": 7142,
+        "solver": 773,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe a number multiplied by itself multiple times?",
+      "ms": {
+        "draft": 3935,
+        "critique": 6872,
+        "solver": 1735,
+        "form": 5263,
+        "translation": 43476
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the numerical value of (– 2) × (– 10)?",
+      "ms": {
+        "draft": 3773,
+        "critique": 8418,
+        "solver": 12056,
+        "form": 0,
+        "translation": 31536
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is 4 × 4 × 4 in exponential form?",
+      "ms": {
+        "draft": 4940,
+        "critique": 6740,
+        "solver": 1812,
+        "form": 5624,
+        "translation": 35832
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the numerical value of 3⁴?",
+      "ms": {
+        "draft": 3935,
+        "critique": 6597,
+        "solver": 1264,
+        "form": 5145,
+        "translation": 27396
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number is written in scientific notation as 2.5 × 10^7, which of the following is the correct representation of this number in standard form?",
+      "ms": {
+        "draft": 5649,
+        "critique": 7469,
+        "solver": 13856,
+        "form": 0,
+        "translation": 39543
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following numbers is the largest when written in scientific notation?",
+      "ms": {
+        "draft": 5649,
+        "critique": 8742,
+        "solver": 10431,
+        "form": 0,
+        "translation": 42714
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the term used to describe the growth where each step is a multiple of the previous step, such as in folding a paper to reach the moon?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "If one could drink a glass of water (200 ml) every 10 seconds, how long would it take to finish the entire volume of water on Earth? The estimated number of drops of water on Earth is 2 × 10^22, assuming 16 drops per millilitre. Write the answer in scientific notation.",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following represents the exponential form of 2 × 2 × 2 × 2?",
+      "reason": "options are in more than one unit (⁴, ², ³, ⁵); options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the thickness of a paper is 0.001 cm and it is folded 10 times, what is the thickness after 10 folds?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the thickness of the paper after 20 folds if it starts at 0.001 cm?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the exponential form of 5 × 5 × 5 × 5 × 5?",
+      "reason": "options are in more than one unit (⁵, ⁴, ³, ²); options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If the number of lotuses doubles every day, and the pond is fully covered on the 30th day, how many lotuses were there on the 29th day?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the number of lotuses in a pond triples every day, and 1 lotus is placed in the pond on day 1, how many lotuses will be there on day 5?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the value of 2^5 ÷ 2^3 in exponential form?",
+      "reason": "options 1 and 3 are the same (\"2^8\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If 2^3 × 5^3 is expressed as (2 × 5)^3, which rule is being applied?",
+      "reason": "options 0 and 1 say the same thing (\"(a × b)^n = a^n × b^n\" / \"a^n × b^n = (a × b)^n\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a 5-digit lock has 10 options for each digit, how many passwords are possible?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is the correct way to write the number 172 using powers of 10?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "The number 561.903 can be written in scientific notation as 5.61903 × 10^n. What is the value of n?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used to describe the fixed increase in distance with each step when building a ladder to the moon?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "The number 2,080,000 can be written in scientific notation as 2.08 × 10^n. What is the value of n?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The distance between the Sun and Earth is given as 1.496 × 10^11 meters. Which of the following is the same value written in standard form?",
+      "reason": "figure: figure spec refused: spec: at most 40 ticks"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a person donates notebooks worth their weight in a year, and the weight of a notebook is 200 grams, how many notebooks would they donate in a year? Assume the person's weight is 60 kg.",
+      "reason": "the critic finds option 0 correct, the key is 3; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If one star is counted every second, how long would it take to count all the stars in the universe? The estimated number of stars in the observable universe is 2 × 10^22. Write the answer in scientific notation.",
+      "reason": "options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number; ARITHMETIC MISMATCH — checkExpr \"2*10^22\" = 2e+22, but the key says 2"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If a person walks 400 km to reach a place and they walk at a speed of 5 km/h, how long would the journey take?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which number is greater, 4 or 3?",
+      "reason": "the critic finds option 1 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the value of (1.2) if (12) = 144?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following expressions is the same as 2 × 3?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following is a number that is both a square and a cube?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "How many digits should the unique ID code for 8.5 billion milk packets have, using digits 0–9?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which expression correctly represents the thickness of a sheet of paper after it is folded 10 times, if the initial thickness is v?",
+      "reason": "options 1 and 2 are the same (\"2 × 10 × v\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "How many unique alphanumeric passcodes of length 5 can be created, if there are 26 letters and 10 digits?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "On a number line, the distance between the Sun and Saturn is 1.4335 × 10 m. The distance between the Sun and Earth is 1.496 × 10 m. Where would the Earth be positioned relative to Saturn?",
+      "reason": "option 3 is a catch-all (\"None of the above\"); option 0 repeats the stem's wording (\"Between the Sun and Saturn\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a password is made using 6 letters from the English alphabet, how many different passwords are possible?",
+      "reason": "option 3 is a catch-all (\"None of the above\"); options 0 and 2 are the same (\"26^6\"); ARITHMETIC MISMATCH — checkExpr \"26^6\" = 308915776, but the key says 26"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the value of 2 × 10?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is the correct way to write 100 crore in terms of powers of 10?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The passage compares the growth of a population using exponential growth. If a population doubles every day, how many times will it have doubled after 5 days?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In the passage, it is mentioned that the highest denomination of a currency note ever printed was 1 sextillion pengő. If 1 sextillion is 10^21, how many times larger is this than 1 million?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person is 4840 days old, how many hours old are they? Use scientific notation for the answer.",
+      "reason": "options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number; ARITHMETIC MISMATCH — checkExpr \"4840*24\" = 116160, but the key says 1.1"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 1000 × 1000 = 1,000,000, which of the following is the correct representation of this in powers of 10?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If the estimated number of stars in the observable universe is 2 × 10^22, and one star is counted every second, how long would it take to count all the stars in the universe? Answer in terms of seconds using scientific notation.",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If 10^{100} is called a googol, then what is 10^{10^{100}} called?",
+      "reason": "near-duplicate of served question cmvj117qc0f66gpfhd5hj0v2a (cosine 0.919 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "What is the value of (–2)^4?",
+      "reason": "near-duplicate of served question cmvj117pz0f5cgpfhq0i1vbsf (cosine 0.933 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

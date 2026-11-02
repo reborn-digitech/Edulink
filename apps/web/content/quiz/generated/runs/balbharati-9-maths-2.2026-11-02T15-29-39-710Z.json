@@ -1,0 +1,578 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T15:29:39.710Z",
+  "finishedAt": "2026-11-02T15:39:34.478Z",
+  "seconds": 595,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "९ वी गणित भाग-१ इंग्रजी",
+    "bookCode": "903000608",
+    "document": "balbharati/9/mathematics/903000608.pdf",
+    "classLevel": 9,
+    "subject": "Mathematics",
+    "chapter": "Chapter 2 — Real Numbers",
+    "edition": "2026 edition",
+    "chunks": 8,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n20. Assertion(A): (2 + √3)√3 is an irrational number. 1\nReason(R): Product of two irrational numbers is always irrational.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n4. The nature of roots of the quadratic equation 9x – 6x – 2 = 0 is: 2 1\n(a) No real roots (b) 2 equal real roots\n(c) 2 distinct real roots (d) More than 2 real roots",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n11. A) Irrational and distinct",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n26. Prove that √3 is an irrational number."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 165796,
+      "in": 31,
+      "out": 27,
+      "rejects": 4,
+      "promptTokens": 26722,
+      "completionTokens": 5575
+    },
+    "critique": {
+      "calls": 31,
+      "ms": 334350,
+      "in": 27,
+      "out": 25,
+      "rejects": 2,
+      "promptTokens": 13010,
+      "completionTokens": 5411
+    },
+    "solver": {
+      "calls": 149,
+      "ms": 108970,
+      "in": 25,
+      "out": 24,
+      "rejects": 1,
+      "promptTokens": 20888,
+      "completionTokens": 1331
+    },
+    "form": {
+      "calls": 11,
+      "ms": 56775,
+      "in": 24,
+      "out": 10,
+      "rejects": 14,
+      "promptTokens": 2782,
+      "completionTokens": 891
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 2,
+      "ms": 469,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 709025,
+      "in": 20,
+      "out": 20,
+      "rejects": 1,
+      "promptTokens": 24811,
+      "completionTokens": 12032
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 3,
+    "4": 3,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of a non-terminating recurring decimal?",
+      "ms": {
+        "draft": 4346,
+        "critique": 9586,
+        "solver": 1783,
+        "form": 5499
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of rational numbers?",
+      "ms": {
+        "draft": 4346,
+        "critique": 10838,
+        "solver": 2723,
+        "form": 3344
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the product of two irrational numbers is rational, what can be concluded?",
+      "ms": {
+        "draft": 4346,
+        "critique": 11337,
+        "solver": 2376,
+        "form": 4993
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an irrational number?",
+      "ms": {
+        "draft": 4483,
+        "critique": 8156,
+        "solver": 2444,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a and b are two real numbers, which of the following is always true?",
+      "ms": {
+        "draft": 4483,
+        "critique": 8972,
+        "solver": 2013,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a and b are two real numbers such that a < b, which of the following is true?",
+      "ms": {
+        "draft": 4483,
+        "critique": 10401,
+        "solver": 2430,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an irrational number?",
+      "ms": {
+        "draft": 5130,
+        "critique": 9895,
+        "solver": 3039,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a conjugate pair of 2√3?",
+      "ms": {
+        "draft": 5130,
+        "critique": 8413,
+        "solver": 1133,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an irrational number?",
+      "ms": {
+        "draft": 5310,
+        "critique": 14488,
+        "solver": 2276,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the absolute value of -3?",
+      "ms": {
+        "draft": 5310,
+        "critique": 14794
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the rationalizing factor of 7 + √3?",
+      "ms": {
+        "draft": 5310,
+        "critique": 15593,
+        "solver": 21248,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the conjugate of 2√3?",
+      "ms": {
+        "draft": 5310,
+        "critique": 15758
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of irrational numbers?",
+      "ms": {
+        "draft": 7379,
+        "critique": 13408,
+        "solver": 20159,
+        "form": 7044
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements is true about surds?",
+      "ms": {
+        "draft": 7379,
+        "critique": 10819,
+        "solver": 2504,
+        "form": 6231
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of rational numbers?",
+      "ms": {
+        "draft": 6450,
+        "critique": 13261,
+        "solver": 2861
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an irrational number?",
+      "ms": {
+        "draft": 6450,
+        "critique": 9552,
+        "solver": 1805,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the decimal form of the rational number 1/8?",
+      "ms": {
+        "draft": 6450,
+        "critique": 12857,
+        "solver": 10293,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What type of decimal expansion do irrational numbers have?",
+      "ms": {
+        "draft": 6450,
+        "critique": 10447,
+        "solver": 2821,
+        "form": 1,
+        "translation": 57385
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a binomial quadratic surd?",
+      "ms": {
+        "draft": 5310,
+        "critique": 16071,
+        "solver": 19482,
+        "form": 0,
+        "translation": 42725
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a rational number has a decimal expansion that is non-terminating and recurring, what can be said about its prime factors?",
+      "ms": {
+        "draft": 4346,
+        "critique": 10269,
+        "solver": 2494,
+        "form": 6733,
+        "translation": 133164
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a correct statement about the decimal expansion of 1/3?",
+      "ms": {
+        "draft": 4346,
+        "critique": 10290,
+        "solver": 2168,
+        "form": 6091,
+        "translation": 75673
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a rational number?",
+      "ms": {
+        "draft": 4483,
+        "critique": 8844,
+        "solver": 2638,
+        "form": 0,
+        "translation": 45950
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements is true about the product of two irrational numbers?",
+      "ms": {
+        "draft": 4483,
+        "critique": 10785,
+        "solver": 2295,
+        "form": 6132,
+        "translation": 72894
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a surd?",
+      "ms": {
+        "draft": 7379,
+        "critique": 11522,
+        "solver": 1912,
+        "form": 7135,
+        "translation": 51126
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the absolute value of -3?",
+      "ms": {
+        "draft": 5130,
+        "critique": 9590,
+        "solver": 1929,
+        "form": 0,
+        "translation": 36697
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the product of two surds is a rational number, what is one of them called?",
+      "ms": {
+        "draft": 7379,
+        "critique": 11992,
+        "solver": 2636,
+        "form": 5603,
+        "translation": 66825
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the decimal expansion of a number is non-terminating and non-recurring, what can be said about the number?",
+      "ms": {
+        "draft": 4346,
+        "critique": 9783,
+        "solver": 2101,
+        "form": 6152,
+        "translation": 118100
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is an example of a surd?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the value of |12 - (13 + 7) × 4|?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "Which of the following is not a surd?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is an example of a non-terminating recurring decimal?",
+      "reason": "options are in more than one unit (none, ...); options are written to different precisions (1 and 2 and 3 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a property of rational numbers?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the product of two irrational numbers is rational, what can be concluded?",
+      "reason": "option 3 is a catch-all (\"None of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an irrational number?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If a and b are two real numbers, which of the following is always true?",
+      "reason": "options 0 and 1 are the same (\"a < b\"); options 0 and 2 are the same (\"a < b\"); options 1 and 2 are the same (\"a > b\"); the key is far longer than every distractor (42 vs 5 characters); option lengths are unalike (5 to 42 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a and b are two real numbers such that a < b, which of the following is true?",
+      "reason": "option 3 is a catch-all (\"None of the above\"); options 0 and 1 are the same (\"a + c < b + c\"); options 0 and 2 are the same (\"a + c < b + c\"); options 1 and 2 are the same (\"a + c > b + c\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an irrational number?",
+      "reason": "options are in more than one unit (none, ...); options are written to different precisions (0 and 2 and 4 and 9 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a conjugate pair of 2√3?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the order of the surd √(5)?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an irrational number?",
+      "reason": "options are in more than one unit (none, ...); options are written to different precisions (0 and 2 and 4 and 9 decimals)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the absolute value of -3?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the rationalizing factor of 7 + √3?",
+      "reason": "options 0 and 2 say the same thing (\"7 - √3\" / \"√3 - 7\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is the conjugate of 2√3?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a property of irrational numbers?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following statements is true about surds?",
+      "reason": "the key is far longer than every distractor (96 vs 57 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a property of rational numbers?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is an irrational number?",
+      "reason": "options are in more than one unit (..., none); options are written to different precisions (1 and 3 and 8 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the decimal form of the rational number 1/8?",
+      "reason": "options 1 and 3 are the same (\"0.1252525...\"); options are in more than one unit (none, ...); options are written to different precisions (1 and 3 and 7 decimals); options 1 and 3 are the same number"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

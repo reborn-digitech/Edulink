@@ -21,49 +21,49 @@
   "board": "BALBHARATI",
   "book": "७ वी सामान्य विज्ञान इंग्रजी",
   "edition": "First Edition 2017",
-  "generatedAt": "2026-10-31T16:06:08.947Z",
+  "generatedAt": "2026-11-02T03:32:31.507Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "Which process is described as the taking in and using of food by living organisms?",
+      "stem": "What is the process of taking in and using food called?",
       "choices": [
         "Malnutrition",
-        "Photosynthesis",
+        "Digestion",
         "Nutrition",
-        "Respiration"
+        "Excretion"
       ],
       "answerIndex": 2,
-      "solution": "Nutrition is the process of taking in and using food by living organisms. Malnutrition refers to a lack of proper nutrition. Photosynthesis is the process by which plants make their own food. Respiration is the process of breaking down food to release energy.",
+      "solution": "Nutrition is the process of taking in and using food, which is essential for energy and growth in living organisms. Malnutrition refers to a deficiency in proper nutrition, digestion is the breakdown of food into smaller components, and excretion is the removal of waste from the body. Therefore, the correct answer is nutrition.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "कौन सी प्रक्रिया जीवित जीवों द्वारा भोजन के ग्रहण एवं उपयोग के रूप में वर्णित की जाती है?",
+          "stem": "खाद्य के अंतर्ग्रहण एवं उपयोग की प्रक्रिया क्या कहलाती है?",
           "choices": [
-            "मल्निर्विकरण",
-            "प्रकाशसंश्लेषण",
+            "अपोषण",
+            "पाचन",
             "पोषण",
-            "श्वसन"
+            "उत्सर्जन"
           ],
-          "solution": "पोषण जीवित जीवों द्वारा भोजन के ग्रहण एवं उपयोग की प्रक्रिया है। मल्निर्विकरण अच्छे पोषण की कमी को संदर्भित करता है। प्रकाशसंश्लेषण वह प्रक्रिया है जिसके द्वारा पौधे अपना भोजन बनाते हैं। श्वसन भोजन के विघटन द्वारा ऊर्जा के मुक्त होने की प्रक्रिया है।",
+          "solution": "पोषण खाद्य के अंतर्ग्रहण एवं उपयोग की प्रक्रिया है, जो जीवित जीवों में ऊर्जा एवं वृद्धि के लिए आवश्यक है। अपोषण उचित पोषण की कमी को कहते हैं, पाचन खाद्य के छोटे अवयवों में अपघटन है, एवं उत्सर्जन शरीर से अपशिष्ट के निष्कासन की प्रक्रिया है। अतः सही उत्तर पोषण है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology as found in standard textbooks.",
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in Hindi educational context.",
           "flag": null
         },
         "mr": {
-          "stem": "जीवनाच्या जीवांद्वारे खाद्य पदार्थ घेणे आणि वापरणे असे कोणत्या प्रक्रियेला म्हणतात?",
+          "stem": "खाद्य पदार्थ घेऊन त्याचा वापर करण्याच्या प्रक्रियेला काय म्हणतात?",
           "choices": [
-            "अपचेतना",
-            "प्रकाशसंश्लेषण",
-            "चेतना",
-            "श्वसन"
+            "अनैसर्गिक अन्न",
+            "पाचन",
+            "अन्नप्रक्रिया",
+            "मलत्याग"
           ],
-          "solution": "चेतना ही जीवनाच्या जीवांद्वारे खाद्य पदार्थ घेणे आणि वापरणे असे म्हणतात. अपचेतना हा योग्य चेतनेच्या अभावामुळे होणारा अवस्था आहे. प्रकाशसंश्लेषण ही वनस्पतींमार्फत आपला खाद्य पदार्थ तयार करण्याची प्रक्रिया आहे. श्वसन ही खाद्य पदार्थ तोडून ऊर्जा मुक्त करण्याची प्रक्रिया आहे.",
+          "solution": "अन्नप्रक्रिया ही खाद्य पदार्थ घेऊन त्याचा वापर करण्याच्या प्रक्रियेला म्हणतात, जी जीवंत प्राण्यांमध्ये ऊर्जा आणि वाढीसाठी आवश्यक आहे. अनैसर्गिक अन्न हा योग्य अन्नप्रक्रियेच्या अभावामुळे होतो, पाचन हा खाद्य पदार्थाच्या छोट्या घटकांमध्ये विघटनाची प्रक्रिया आहे आणि मलत्याग हा शरीरातून अपशिष्टाच्या निष्कासनाची प्रक्रिया आहे. त्यामुळे योग्य उत्तर अन्नप्रक्रिया आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological processes.",
+          "critique": "The Marathi translation is accurate and maintains the original meaning, with appropriate terminology used in Marathi textbooks.",
           "flag": null
         }
       },
@@ -73,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         "Confuses nutrition with malnutrition",
-        "Confuses photosynthesis with nutrition",
+        "Confuses digestion with nutrition",
         null,
-        "Confuses the process of using food with the process of releasing energy from it"
+        "Confuses nutrition with the removal of waste from the body"
       ],
       "solverAnswers": [
         2,
@@ -85,7 +85,7 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed and the solution correctly identifies 'Nutrition' as the process of taking in and using food. The distractors are common misconceptions that students might have.",
+      "critique": "The question is straightforward and the correct answer is clearly supported by the definition provided. The distractors represent common misconceptions about related biological processes.",
       "sources": [
         {
           "document": "balbharati/7/science/703020012.pdf",
@@ -116,49 +116,49 @@
         }
       ],
       "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T16:06:08.947Z",
+      "generatedAt": "2026-11-02T03:32:31.507Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 2,
-      "stem": "What is the main purpose of carbohydrates in the body?",
+      "difficulty": 1,
+      "stem": "What is the process by which plants make their own food?",
       "choices": [
-        "To supply energy",
-        "To repair damaged cells",
-        "To fight diseases",
-        "To help in growth"
+        "Respiration",
+        "Photosynthesis",
+        "Transpiration",
+        "Fermentation"
       ],
-      "answerIndex": 0,
-      "solution": "Carbohydrates are the main source of energy for the body. They are used to supply energy for doing work. Repairing damaged cells is the function of proteins. Fighting diseases is the function of vitamins and minerals. Growth is supported by proteins and other nutrients.",
+      "answerIndex": 1,
+      "solution": "Photosynthesis is the process by which plants make their own food using sunlight, carbon dioxide, and water. Respiration is for energy release, transpiration is water loss, and fermentation is an anaerobic process.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "शरीर में कार्बोहाइड्रेट का मुख्य उद्देश्य क्या है?",
+          "stem": "पौधे अपना खाना किस प्रक्रिया द्वारा बनाते हैं?",
           "choices": [
-            "ऊर्जा प्रदान करना",
-            "क्षतिग्रस्त कोशिकाओं का अवक्षय करना",
-            "रोगों के खिलाफ लड़ाई लड़ना",
-            "वृद्धि में सहायता करना"
+            "श्वसन",
+            "प्रकाश संश्लेषण",
+            "वाष्पोत्सर्जन",
+            "लैक्टिक अम्ल फेरमेंटेशन"
           ],
-          "solution": "कार्बोहाइड्रेट शरीर के लिए मुख्य ऊर्जा के स्रोत हैं। वे कार्य करने के लिए ऊर्जा प्रदान करने के लिए उपयोग किए जाते हैं। क्षतिग्रस्त कोशिकाओं का अवक्षय प्रोटीन का कार्य है। रोगों के खिलाफ लड़ाई विटामिन और खनिज का कार्य है। वृद्धि प्रोटीन और अन्य पोषक तत्वों द्वारा समर्थित है।",
+          "solution": "प्रकाश संश्लेषण पौधों द्वारा सूर्य के प्रकाश, कार्बन डाइऑक्साइड और पानी के उपयोग से अपना खाना बनाने की प्रक्रिया है। श्वसन ऊर्जा उत्पादन के लिए होता है, वाष्पोत्सर्जन पानी के नुकसान के लिए होता है और फेरमेंटेशन एनारोबिक प्रक्रिया है।",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for biological concepts.",
+          "critique": "Hindi translation is accurate, maintains original meaning, and uses standard scientific terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "शरीरातील कार्बोहायड्रेटचा मुख्य उद्देश काय आहे?",
+          "stem": "पौष्टिक पदार्थ तयार करण्याचा प्रक्रिया कोणती आहे?",
           "choices": [
-            "ऊर्जा पुरविणे",
-            "क्षतिग्रस्त सेल दुरुस्त करणे",
-            "रोगांविरुद्ध लढणे",
-            "वाढीस मदत करणे"
+            "श्वसन",
+            "प्रकाशसंश्लेषण",
+            "वाष्पोत्सर्जन",
+            "अनैसर्गिक श्वसन"
           ],
-          "solution": "कार्बोहायड्रेट शरीराच्या ऊर्जेचा मुख्य स्रोत आहेत. ते कार्य करण्यासाठी ऊर्जा पुरविली जाते. क्षतिग्रस्त सेल दुरुस्त करणे हा प्रोटीनचा कार्य आहे. रोगांविरुद्ध लढणे हा व्हिटॅमिन आणि खनिजांचा कार्य आहे. वाढीस मदत करणे प्रोटीन आणि इतर पोषक द्रव्यांचा कार्य आहे.",
+          "solution": "प्रकाशसंश्लेषण ही एक प्रक्रिया आहे ज्यामुळे वनस्पती आपला पौष्टिक पदार्थ सूर्यप्रकाश, कार्बन डायऑक्साइड आणि पाणी वापरून तयार करतात. श्वसन ही ऊर्जा रिलीज करण्यासाठी आहे, वाष्पोत्सर्जन ही पाणी गमावण्याची प्रक्रिया आहे आणि अनैसर्गिक श्वसन ही अनैसर्गिक प्रक्रिया आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology commonly found in textbooks.",
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses standard scientific terminology used in Marathi textbooks.",
           "flag": null
         }
       },
@@ -167,115 +167,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Confuses respiration with food production",
         null,
-        "Confuses the role of proteins with that of carbohydrates",
-        "Confuses the function of proteins with carbohydrates",
-        "Confuses the function of vitamins and minerals with carbohydrates"
+        "Knows the term but not the correct process",
+        "Confuses transpiration with food production"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": null,
-      "critique": "The solution correctly identifies carbohydrates as the main energy source and appropriately explains the roles of other nutrients. The reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 34,
-          "pageStart": 36,
-          "pageEnd": 37,
-          "headingPath": [
-            "4. Nutrition in Living Organisms"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 35,
-          "pageStart": 37,
-          "pageEnd": 38,
-          "headingPath": [
-            "4. Nutrition in Living Organisms"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 36,
-          "pageStart": 38,
-          "pageEnd": 39,
-          "headingPath": [
-            "4. Nutrition in Living Organisms"
-          ]
-        }
-      ],
-      "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T16:06:08.947Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a student observes a plant that traps and digests insects, which type of nutrition does it have?",
-      "choices": [
-        "Parasitic",
-        "Saprophytic",
-        "Autotrophic",
-        "Insectivorous"
-      ],
-      "answerIndex": 3,
-      "solution": "Insectivorous plants trap and digest insects to obtain nutrients, especially nitrogen. They are not parasitic, saprophytic, or autotrophic in the usual sense because they still perform photosynthesis.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक छात्र एक पौधा देखता है जो कीटों को फंसाता और पचाता है, तो इसका पोषण किस प्रकार का होता है?",
-          "choices": [
-            "परजीवी",
-            "मृतजीवी",
-            "स्वपोषी",
-            "कीटभक्षी"
-          ],
-          "solution": "कीटभक्षी पौधे कीटों को फंसाकर और पचाकर पोषक तत्व प्राप्त करते हैं, विशेष रूप से नाइट्रोजन। वे सामान्य अर्थ में परजीवी, मृतजीवी या स्वपोषी नहीं होते क्योंकि वे अपने अंगों द्वारा प्रकाश संश्लेषण करते रहते हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका विद्यार्थीने एका वनस्पती जी आक्रमण करते आणि जीवनसत्ता घेते, तिच्याकडे कोणत्या प्रकारचे पोषण आहे?",
-          "choices": [
-            "परजीवी",
-            "अपघटक",
-            "स्वपोषी",
-            "कीटकभक्षी"
-          ],
-          "solution": "कीटकभक्षी वनस्पती जीवनसत्ता घेण्यासाठी कीटकांचे आक्रमण करतात, विशेषतः नायट्रोजनसाठी. त्या सामान्य अर्थाने परजीवी, अपघटक किंवा स्वपोषी नाहीत कारण त्या अजूनही प्रकाशसंश्लेषण करतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for biological concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses insectivorous plants with parasites",
-        "Confuses insectivorous plants with decomposers",
-        "Confuses insectivorous plants with autotrophs",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct and aligns with the scientific understanding of insectivorous plants. The reasoning for the distractors reflects common misconceptions.",
+      "critique": "The question is well-constructed and the solution is accurate. The correct answer is Photosynthesis, and the author's explanations for the incorrect options align with common student misconceptions.",
       "sources": [
         {
           "document": "balbharati/7/science/703020012.pdf",
@@ -289,49 +194,49 @@
         }
       ],
       "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T16:06:08.947Z",
+      "generatedAt": "2026-11-02T03:32:31.507Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "What is the role of chlorophyll in the process of photosynthesis?",
+      "difficulty": 2,
+      "stem": "Which of the following is an example of saprophytic nutrition?",
       "choices": [
-        "To absorb sunlight",
-        "To release oxygen",
-        "To absorb carbon dioxide",
-        "To produce glucose"
+        "Yeast in bread making",
+        "Amoeba engulfing food",
+        "Cow chewing grass",
+        "Human digesting food"
       ],
       "answerIndex": 0,
-      "solution": "Chlorophyll absorbs sunlight, which is essential for the process of photosynthesis. Oxygen is released as a byproduct. Carbon dioxide is absorbed through the stomata. Glucose is the end product of photosynthesis.",
+      "solution": "Yeast is a saprophyte that breaks down organic matter to obtain nutrients. Amoebae perform holozoic nutrition, cows are herbivores, and humans perform holozoic nutrition.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "प्रकाशसंश्लेषण की प्रक्रिया में क्लोरोफिल की भूमिका क्या है?",
+          "stem": "निम्नलिखित में से कौन-सा मृतोपजीवी पोषण का उदाहरण है?",
           "choices": [
-            "सूर्य के प्रकाश को अवशोषित करना",
-            "ऑक्सीजन को उत्सर्जित करना",
-            "कार्बन डाइऑक्साइड को अवशोषित करना",
-            "ग्लूकोज का उत्पादन करना"
+            "रोटी बनाने में खमीर",
+            "अमीबा भोजन को ग्रहण करना",
+            "गाय घास चबाना",
+            "मनुष्य भोजन का पाचन करना"
           ],
-          "solution": "क्लोरोफिल सूर्य के प्रकाश को अवशोषित करता है, जो प्रकाशसंश्लेषण की प्रक्रिया के लिए आवश्यक है। ऑक्सीजन एक उत्पाद के रूप में उत्सर्जित होती है। कार्बन डाइऑक्साइड स्टोमेटा से अवशोषित होती है। ग्लूकोज प्रकाशसंश्लेषण का अंतिम उत्पाद है।",
+          "solution": "खमीर एक मृतोपजीवी है जो कार्बनिक पदार्थ के विघटन द्वारा पोषक तत्व प्राप्त करता है। अमीबा होलोजोइक पोषण करता है, गाय एक शाकाहारी है और मनुष्य होलोजोइक पोषण करता है।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi scientific terminology.",
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "फोटोसिंथेसिसच्या प्रक्रियेत क्लोरोफिलचा भाग काय आहे?",
+          "stem": "खालीलपैकी कोणते मृतजीवी पोषणाचे उदाहरण आहे?",
           "choices": [
-            "सूर्यप्रकाश शोषून घेणे",
-            "ऑक्सीजन बाहेर काढणे",
-            "कार्बन डायऑक्साइड शोषून घेणे",
-            "ग्लूकोज तयार करणे"
+            "रोटी बनवताना खमीर",
+            "अमीबा खाद्य गिळतो",
+            "गाय घास चावते",
+            "माणूस खाद्य पचवतो"
           ],
-          "solution": "क्लोरोफिल सूर्यप्रकाश शोषून घेते, जो फोटोसिंथेसिसच्या प्रक्रियेसाठी आवश्यक आहे. ऑक्सीजन बाहेर काढली जाते. कार्बन डायऑक्साइड स्टोमेटा मार्फत शोषला जातो. ग्लूकोज ही फोटोसिंथेसिसची अंतिम उत्पादन आहे.",
+          "solution": "खमीर हा मृतजीवी असून तो कार्बनिक पदार्थ विघटित करून पोषक तत्व मिळवतो. अमीबा होलोजोइक पोषण करतो, गाय हे शाकाहारी आहेत आणि माणूस होलोजोइक पोषण करतो.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
           "flag": null
         }
       },
@@ -341,9 +246,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses the role of chlorophyll with the role of other components",
-        "Confuses the byproduct of photosynthesis with the role of chlorophyll",
-        "Confuses the input of photosynthesis with the role of chlorophyll"
+        "Confuses phagocytosis with saprophytic nutrition, thinking all non-photosynthetic organisms feed this way",
+        "Confuses holozoic with saprophytic",
+        "Knows cows are herbivores but not saprophytic"
       ],
       "solverAnswers": [
         0,
@@ -352,103 +257,8 @@
         0,
         0
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is well-constructed, and the correct answer is clearly supported by the scientific explanation. The distractors reflect common misconceptions about the role of chlorophyll in photosynthesis.",
-      "sources": [
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 34,
-          "pageStart": 36,
-          "pageEnd": 37,
-          "headingPath": [
-            "4. Nutrition in Living Organisms"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 35,
-          "pageStart": 37,
-          "pageEnd": 38,
-          "headingPath": [
-            "4. Nutrition in Living Organisms"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 36,
-          "pageStart": 38,
-          "pageEnd": 39,
-          "headingPath": [
-            "4. Nutrition in Living Organisms"
-          ]
-        }
-      ],
-      "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T16:06:08.947Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "In which of the following organisms does digestion occur outside the body?",
-      "choices": [
-        "Amoeba",
-        "Frog",
-        "Human",
-        "Mushroom"
-      ],
-      "answerIndex": 3,
-      "solution": "Mushrooms perform digestion outside their bodies by secreting enzymes onto organic matter, breaking it down externally. Amoebae, frogs, and humans digest food internally within their bodies. This external digestion is a characteristic feature of fungi.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से किस जीव में भोजन का पाचन शरीर के बाहर होता है?",
-          "choices": [
-            "अमीबा",
-            "मेंढक",
-            "मनुष्य",
-            "कवक"
-          ],
-          "solution": "कवक अपने शरीर के बाहर एंजाइम छोड़कर भोजन का पाचन करते हैं, जो बाहरी रूप से जैव पदार्थ को अलग कर देते हैं। अमीबा, मेंढक और मनुष्य अपने शरीर के भीतर भोजन का पाचन करते हैं। बाहरी पाचन कवकों की विशेषता है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालील प्राण्यांमध्ये कोणत्या जीवामध्ये शरीरबाहेर पचन होते?",
-          "choices": [
-            "अमीबा",
-            "मांजर",
-            "माणूस",
-            "कुक्कुट"
-          ],
-          "solution": "कुक्कुट आपल्या शरीराबाहेर जैविक पदार्थांवर एन्झाइम शिंपडतात, ज्यामुळे ते बाहेरून विघटित होतात. अमीबा, मांजर आणि माणूस आपल्या शरीरांतर्गत खाद्य पचवतात. हे बाह्य पचन फंजाई (कुक्कुट) ची वैशिष्ट्य आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, with appropriate Marathi terms for biological concepts. 'कुक्कुट' is correctly used for 'mushroom' (though 'कुक्कुट' literally means 'chicken', it's a common term for fungi in some Marathi contexts).",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses intracellular with extracellular digestion",
-        "Confuses intracellular with extracellular digestion",
-        "Confuses intracellular with extracellular digestion",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that mushrooms perform extracellular digestion by secreting enzymes outside their bodies, while the other options (amoeba, frog, human) digest internally. The reasoning is sound and matches the scientific understanding.",
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (Yeast in bread making), as yeast is a saprophyte that absorbs nutrients from dead organic matter. The other options are all examples of holozoic nutrition, which is different from saprophytic nutrition. The author's reasoning for the distractors is valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "balbharati/7/science/703020012.pdf",
@@ -479,49 +289,49 @@
         }
       ],
       "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T16:06:08.947Z",
+      "generatedAt": "2026-11-02T03:32:31.507Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "Which of the following is a correct statement about parasitic plants?",
+      "difficulty": 2,
+      "stem": "What is the process by which food is converted into a soluble form in the body?",
       "choices": [
-        "They produce their own food",
-        "They depend on other plants for food",
-        "They are always green in colour",
-        "They do not need water or minerals"
+        "Ingestion",
+        "Absorption",
+        "Digestion",
+        "Egestion"
       ],
-      "answerIndex": 1,
-      "solution": "Parasitic plants depend on other plants for food. They cannot produce their own food. They may or may not be green. They still require water and minerals, which they absorb from the host plant.",
+      "answerIndex": 2,
+      "solution": "Digestion is the process by which food is broken down into simpler, soluble forms that can be absorbed by the body. Ingestion refers to taking food into the mouth, while absorption involves taking nutrients into the bloodstream. Egestion is the removal of undigested material from the body.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा एक परजीवी पौधों के बारे में सही कथन है?",
+          "stem": "शरीर में भोजन के विलेय रूप में बदलने की प्रक्रिया क्या है?",
           "choices": [
-            "वे अपना खाना स्वयं बनाते हैं",
-            "वे अन्य पौधों पर खाना के लिए निर्भर रहते हैं",
-            "वे हमेशा हरे रंग के होते हैं",
-            "उन्हें पानी या खनिज की आवश्यकता नहीं होती"
+            "अंतर्ग्रहण",
+            "अवशोषण",
+            "पाचन",
+            "उत्सर्जन"
           ],
-          "solution": "परजीवी पौधे अन्य पौधों पर खाना के लिए निर्भर रहते हैं। वे अपना खाना स्वयं नहीं बना सकते। वे हरे रंग के हो सकते हैं या नहीं भी हो सकते। वे अभी भी पानी और खनिज की आवश्यकता होती है, जिन्हें वे मेजबान पौधे से अवशोषित करते हैं।",
+          "solution": "पाचन वह प्रक्रिया है जिसमें भोजन को सरल, विलेय रूप में तोड़ा जाता है जिसे शरीर द्वारा अवशोषित किया जा सके। अंतर्ग्रहण मुख में भोजन के ले जाने को कहते हैं, जबकि अवशोषण पोषक तत्वों के रक्त में अवशोषित होने की प्रक्रिया है। उत्सर्जन अपचित सामग्री के शरीर से बाहर निकालने की प्रक्रिया है।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for biological concepts.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard biological terminology as taught in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता विधान परजीवी वनस्पतीबद्दल बरोबर आहे?",
+          "stem": "शरीरात खाद्य पदार्थ विलेय रूपात बदलल्याची प्रक्रिया कोणती आहे?",
           "choices": [
-            "त्या आपले खाद्य तयार करतात",
-            "त्या इतर वनस्पतींवर अवलंबून रहातात",
-            "त्या नेहमी हिरव्या रंगाच्या असतात",
-            "त्यांना पाणी किंवा खनिज आवश्यक नसतात"
+            "ग्राह्यकरण",
+            "अवशोषण",
+            "पाचन",
+            "निष्कासन"
           ],
-          "solution": "परजीवी वनस्पती इतर वनस्पतींवर अवलंबून रहातात. त्या आपले खाद्य तयार करू शकत नाहीत. त्या हिरव्या रंगाच्या असू शकतात किंवा नाही. त्यांना पाणी आणि खनिज आवश्यक असतात, जे ते मेजवानी वनस्पतीमधून शोषतात.",
+          "solution": "पाचन ही खाद्य पदार्थांना सोप्या, विलेय रूपात बदलण्याची प्रक्रिया आहे ज्यामुळे शरीर त्यांचे अवशोषण करू शकते. ग्राह्यकरण हे मुखात खाद्य घेण्याचे कार्य आहे, तर अवशोषण हे पोषक घटकांना रक्तात घेण्याचे कार्य आहे. निष्कासन हे अपचित खाद्य पदार्थांचे शरीराबाहेर काढण्याचे कार्य आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
+          "critique": "The translation is accurate and uses standard Marathi medical terminology.",
           "flag": null
         }
       },
@@ -530,93 +340,93 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses parasitic plants with autotrophic plants",
+        "Confuses ingestion with digestion",
+        "Confuses absorption with digestion",
         null,
-        "Belief that all plants must be green because they perform photosynthesis",
-        "Confuses the characteristics of parasitic plants with other plants"
+        "Confuses egestion with digestion"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        2,
+        2,
+        2,
+        2,
+        2
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as parasitic plants depend on other plants for food. The reasoning in the author's solution is accurate and aligns with biological understanding.",
+      "levelFlag": null,
+      "critique": "The correct answer is 'Digestion' as it refers to the process of breaking down food into a soluble form. The author's reasoning for the distractors aligns with common misconceptions students might have about the stages of digestion.",
       "sources": [
         {
           "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 34,
-          "pageStart": 36,
-          "pageEnd": 37,
+          "ordinal": 37,
+          "pageStart": 39,
+          "pageEnd": 40,
           "headingPath": [
             "4. Nutrition in Living Organisms"
           ]
         },
         {
           "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 35,
-          "pageStart": 37,
-          "pageEnd": 38,
+          "ordinal": 38,
+          "pageStart": 40,
+          "pageEnd": 42,
           "headingPath": [
             "4. Nutrition in Living Organisms"
           ]
         },
         {
           "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 36,
-          "pageStart": 38,
-          "pageEnd": 39,
+          "ordinal": 39,
+          "pageStart": 42,
+          "pageEnd": 42,
           "headingPath": [
             "4. Nutrition in Living Organisms"
           ]
         }
       ],
       "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T16:06:08.947Z",
+      "generatedAt": "2026-11-02T03:32:31.507Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "Which of the following best describes the mode of nutrition in lichens?",
+      "difficulty": 3,
+      "stem": "Which of the following is an example of a saprophytic organism?",
       "choices": [
-        "Autotrophic",
-        "Parasitic",
-        "Saprophytic",
-        "Symbiotic"
+        "Cuscuta",
+        "Drosera",
+        "Mushroom",
+        "Lichen"
       ],
-      "answerIndex": 3,
-      "solution": "Lichens consist of a mutualistic relationship between fungi and algae, where both organisms benefit from the association. The fungi absorb water and minerals, while the algae produce food through photosynthesis. This type of interaction is classified as symbiotic. Autotrophic refers to organisms that produce their own food, parasitic involves one organism benefiting at the expense of another, and saprophytic involves feeding on dead organic matter, none of which accurately describe the mutualistic nature of lichens.",
+      "answerIndex": 2,
+      "solution": "Mushrooms are saprophytic organisms that absorb nutrients from dead organic matter. Cuscuta is a parasitic plant, Drosera is an insectivorous plant, and Lichen is a symbiotic organism. The correct answer is Mushroom.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा लाइकेन में पोषण के तरीके का सबसे अच्छा वर्णन करता है?",
+          "stem": "निम्नलिखित में से कौन एक मृतजीवी संगठन का उदाहरण है?",
           "choices": [
-            "स्वपोषी",
-            "परजीवी",
-            "मृतजीवी",
-            "सहजीवी"
+            "कुसुता",
+            "ड्रोसेरा",
+            "कांटा",
+            "लाइकेन"
           ],
-          "solution": "लाइकेन में कवक और शैवाल के बीच एक लाभकारी संबंध होता है, जहां दोनों संगति से लाभ पाते हैं। कवक पानी और खनिज अवशोषित करता है, जबकि शैवाल प्रकाश संश्लेषण द्वारा भोजन बनाता है। इस प्रकार के अंतःक्रिया को सहजीवी के रूप में वर्गीकृत किया जाता है। स्वपोषी का अर्थ है जीव जो अपना भोजन बनाते हैं, परजीवी में एक जीव दूसरे के नुकसान पर लाभ उठाता है, और मृतजीवी में मृत जैविक पदार्थों पर पोषण होता है, जो लाइकेन की लाभकारी प्रकृति का ठीक से वर्णन नहीं करते हैं।",
+          "solution": "कांटे मृतजीवी संगठन होते हैं जो मृत जैविक पदार्थ से पोषक तत्व अवशोषित करते हैं। कुसुता एक परजीवी पौधा है, ड्रोसेरा एक कीटभक्षी पौधा है, और लाइकेन एक सहजीवी संगठन है। सही उत्तर कांटा है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi terminology from biology textbooks.",
-          "flag": null
+          "critique": "Hindi translation has incorrect option (3) as 'कांटा' (thorn) instead of 'सूर्यमुखी' (mushroom). 'कांटा' is not a saprophytic organism. The correct answer should be (3) 'कांटा' but it's not a valid organism. The translation has a major error in option 3.",
+          "flag": "translation critique: not one answer at the same position; a distractor no longer wrong; terms not the board's"
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते लाइकेनमधील पोषणाच्या पद्धतीचे सर्वात चांगले वर्णन करते?",
+          "stem": "खालीलपैकी कोणते एक परजीवी जीवाचे उदाहरण आहे?",
           "choices": [
-            "स्वपोषी",
-            "अपक्रांतिक",
-            "मृतप्राणी",
-            "सहजीवी"
+            "कुसुता",
+            "ड्रोसेरा",
+            "खाटी",
+            "लाइकेन"
           ],
-          "solution": "लाइकेनमध्ये कवक आणि शैवाल यांच्यात सहजीवी संबंध असतो, जेथे दोन्ही संस्थांना फायदा होतो. कवक पाणी आणि खनिज शोषतात, तर शैवाल फोटोसिंथेसिसद्वारे खाद्य तयार करतात. अशा प्रकारच्या अनुक्रमाला सहजीवी म्हणतात. स्वपोषी म्हणजे स्वतःचे खाद्य तयार करणारे सजीव, अपक्रांतिक हा एक सजीव दुसऱ्याच्या नुकसानातून फायदा घेणारा असतो आणि मृतप्राणी हा मृत जैविक पदार्थावर खाणारा असतो, जे लाइकेनच्या सहजीवी प्रकृतीला योग्यरित्या वर्णन करत नाहीत.",
+          "solution": "खाटी हे परजीवी जीव आहेत जे मृत जैविक पदार्थांमधून पोषक तत्वे शोषतात. कुसुता एक परजीवी वनस्पती आहे, ड्रोसेरा एक विषाणू खाणारी वनस्पती आहे आणि लाइकेन एक सहजीवी जीव आहे. योग्य उत्तर खाटी आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology as used in standard textbooks.",
+          "critique": "The Marathi translation accurately reflects the English original in meaning, structure, and terminology. 'खाटी' is the correct term for 'mushroom' in Marathi biology textbooks, and 'परजीवी' is the standard term for 'parasitic'.",
           "flag": null
         }
       },
@@ -625,115 +435,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses lichens with autotrophs",
-        "Confuses lichens with parasites",
-        "Confuses lichens with saprophytes",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and aligns with the scientific understanding of lichens as a symbiotic relationship. The reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 34,
-          "pageStart": 36,
-          "pageEnd": 37,
-          "headingPath": [
-            "4. Nutrition in Living Organisms"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 35,
-          "pageStart": 37,
-          "pageEnd": 38,
-          "headingPath": [
-            "4. Nutrition in Living Organisms"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 36,
-          "pageStart": 38,
-          "pageEnd": 39,
-          "headingPath": [
-            "4. Nutrition in Living Organisms"
-          ]
-        }
-      ],
-      "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T16:06:08.947Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Why do insectivorous plants have brightly colored parts?",
-      "choices": [
-        "To attract insects",
-        "To attract predators",
-        "To store water",
-        "To repel predators"
-      ],
-      "answerIndex": 0,
-      "solution": "Insectivorous plants have bright colors to attract insects, which they then trap and digest. They still need sunlight for photosynthesis, but the bright colors are for trapping prey, not for water storage or predator repulsion.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "क्यों शाकाहारी पौधों के रंगीन भाग होते हैं?",
-          "choices": [
-            "कीटों को आकर्षित करने के लिए",
-            "प्राकृतिक शिकारियों को आकर्षित करने के लिए",
-            "जल संग्रह करने के लिए",
-            "प्राकृतिक शिकारियों को दूर रखने के लिए"
-          ],
-          "solution": "शाकाहारी पौधों के रंगीन भाग कीटों को आकर्षित करने के लिए होते हैं, जिन्हें वे फंसाकर पचाते हैं। वे सूर्य के प्रकाश की आवश्यकता रखते हैं, लेकिन रंगीन भाग जल संग्रह या प्राकृतिक शिकारियों को दूर रखने के लिए नहीं होते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, with appropriate terminology used for biological concepts.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "किटकभक्षी वनस्पतींना रंगीबेरंगी भाग का असतात?",
-          "choices": [
-            "किटकांना आकर्षित करण्यासाठी",
-            "प्राण्यांना आकर्षित करण्यासाठी",
-            "पाणी जमा करण्यासाठी",
-            "प्राण्यांना दूर ठेवण्यासाठी"
-          ],
-          "solution": "किटकभक्षी वनस्पतींना रंगीबेरंगी भाग असतात कारण ते किटकांना आकर्षित करतात, ज्यांना ते अंगावर घेऊन खातात. त्यांना फोटोसिंथेसिससाठी सूर्यप्रकाश लागतो, परंतु रंगीबेरंगी भाग अंगावर घेण्यासाठी असतात, पाणी जमा करण्यासाठी किंवा प्राण्यांना दूर ठेवण्यासाठी नाहीत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer is in the same position (option 1), and the distractors remain incorrect.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
+        "Cuscuta is a parasitic plant, not a saprophytic organism.",
+        "Drosera is an insectivorous plant, not a saprophytic organism.",
         null,
-        "Confuses insects with predators, thinking bright colors attract animals that eat insects",
-        "Confuses plant color with photosynthesis needs",
-        "Confuses plant color with defense mechanisms"
+        "Lichen is a symbiotic organism, not a saprophytic organism."
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is well-constructed, and the solution correctly identifies the purpose of bright colors in insectivorous plants. The distractors reflect common misconceptions.",
+      "levelFlag": null,
+      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors based on common misconceptions about organism types.",
       "sources": [
         {
           "document": "balbharati/7/science/703020012.pdf",
@@ -747,7 +462,704 @@
         }
       ],
       "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T16:06:08.947Z",
+      "generatedAt": "2026-11-02T03:32:31.507Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a student eats a piece of bread, which part of the bread is digested first?",
+      "choices": [
+        "Proteins",
+        "Fats",
+        "Starch",
+        "Vitamins"
+      ],
+      "answerIndex": 2,
+      "solution": "Starch is the first part of bread to be digested because it is broken down by saliva into simpler sugars. Proteins are digested in the stomach, fats in the small intestine, and vitamins are absorbed directly without digestion.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक छात्र ब्रेड के एक टुकड़े को खाता है, तो ब्रेड के कौन से भाग का सबसे पहले पाचन होता है?",
+          "choices": [
+            "प्रोटीन",
+            "वसा",
+            "स्टार्च",
+            "विटामिन"
+          ],
+          "solution": "स्टार्च ब्रेड का पहला भाग होता है जिसका पाचन होता है क्योंकि यह लार द्वारा सरल शर्करा में टूट जाता है। प्रोटीन का पाचन पेट में होता है, वसा का छोटी आंत में और विटामिन का पचने के बिना ही अवशोषित हो जाता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi terminology used in textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक विद्यार्थी रोटीचा एक टुकडा खात असेल, तर रोटीचा कोणता भाग सर्वप्रथम चाचणीसाठी घेतला जातो?",
+          "choices": [
+            "प्रोटीन",
+            "तेल",
+            "स्टार्च",
+            "व्हिटॅमिन"
+          ],
+          "solution": "रोटीचा स्टार्च सर्वप्रथम चाचणीसाठी घेतला जातो कारण तो लाळेने सोप्पा साखरांमध्ये तोडला जातो. प्रोटीन मासिकामध्ये चाचणीसाठी घेतले जातात, तेल लहान आंतड्यामध्ये आणि व्हिटॅमिन चाचणीशिवाय ताबडतोब अवशोषित केले जातात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological processes.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses protein digestion with initial digestion",
+        "Confuses fat digestion with initial digestion",
+        null,
+        "Knows vitamins are not digested but not their role"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the correct answer. Starch is indeed the first component of bread to be digested by salivary amylase, while proteins and fats are digested later in the digestive tract, and vitamins are absorbed without digestion.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 40,
+          "pageStart": 42,
+          "pageEnd": 43,
+          "headingPath": [
+            "4. Nutrition in Living Organisms",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T03:32:31.507Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is an example of a parasitic plant?",
+      "choices": [
+        "Mushroom",
+        "Drosera",
+        "Lichen",
+        "Cuscuta"
+      ],
+      "answerIndex": 3,
+      "solution": "Cuscuta is a parasitic plant that attaches to other plants and takes nutrients from them. Mushroom is a fungus, Drosera is an insectivorous plant, and Lichen is a symbiotic organism. The correct answer is Cuscuta.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक परजीवी पौधे का उदाहरण है?",
+          "choices": [
+            "कैप्सूल",
+            "ड्रोसेरा",
+            "लाइकेन",
+            "कुसकुटा"
+          ],
+          "solution": "कुसकुटा एक परजीवी पौधा है जो अन्य पौधों पर चिपक जाता है और उनसे पोषक तत्व ले लेता है। कैप्सूल एक कवक है, ड्रोसेरा एक कीटभक्षी पौधा है और लाइकेन एक सहजीवी संगठन है। सही उत्तर कुसकुटा है।",
+          "imageAlt": null,
+          "critique": "All terms are correctly translated and match standard Hindi textbook terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता परजीवी वनस्पतीचा उदाहरण आहे?",
+          "choices": [
+            "कुक्कुट",
+            "ड्रोसेरा",
+            "लाइकेन",
+            "कुसुता"
+          ],
+          "solution": "कुसुता ही परजीवी वनस्पती आहे जी इतर वनस्पतींवर जुळवून त्यांच्यापासून पोषक तत्व घेते. कुक्कुट हा विषाणू आहे, ड्रोसेरा ही कीटकभक्षी वनस्पती आहे आणि लाइकेन हा सहजीवी संस्था आहे. योग्य उत्तर कुसुता आहे.",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original meaning, with appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Mushroom is a fungus, not a plant.",
+        "Drosera is an insectivorous plant, not a parasitic plant.",
+        "Lichen is a symbiotic organism, not a parasitic plant.",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. The correct answer is Cuscuta, a parasitic plant. The other options are correctly identified as non-parasitic: mushroom is a fungus, Drosera is insectivorous, and lichen is symbiotic. The distractors are based on common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 40,
+          "pageStart": 42,
+          "pageEnd": 43,
+          "headingPath": [
+            "4. Nutrition in Living Organisms",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T03:32:31.507Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In the given diagram, which part of the digestive system is responsible for absorbing water?",
+      "choices": [
+        "Stomach",
+        "Small intestine",
+        "Large intestine",
+        "Liver"
+      ],
+      "answerIndex": 2,
+      "solution": "The large intestine is responsible for absorbing water from the digested food. The stomach mainly digests food, the small intestine absorbs nutrients, and the liver produces bile.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "दिए गए आरेख में, पाचन तंत्र का कौन-सा भाग जल के अवशोषण के लिए उत्तरदायी है?",
+          "choices": [
+            "आमाशय",
+            "छोटी आंत",
+            "बड़ी आंत",
+            "यकृत"
+          ],
+          "solution": "बड़ी आंत अपचीत भोजन से जल के अवशोषण के लिए उत्तरदायी है। आमाशय मुख्य रूप से भोजन के पाचन के लिए उत्तरदायी है, छोटी आंत पोषक तत्वों के अवशोषण के लिए उत्तरदायी है, और यकृत बिलियस का उत्पादन करता है।",
+          "imageAlt": "पाचन तंत्र का आरेख जिसमें बड़ी आंत चिह्नित है।",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard medical terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "दिलेल्या आकृतीत, पाचक प्रणालीचा कोणता भाग अपच्या खाद्यातून पाणी अवशोषित करतो?",
+          "choices": [
+            "आतडे",
+            "लहान आतडे",
+            "मोठे आतडे",
+            "यकृत"
+          ],
+          "solution": "मोठे आतडे अपच्या खाद्यातून पाणी अवशोषित करते. आतडे खाद्याचे मुख्यतः अपचय करते, लहान आतडे पोषक द्रव्यांचे अवशोषण करते आणि यकृत बाइल तयार करते.",
+          "imageAlt": "पाचक व्यवस्थेची आकृती ज्यात मोठे आतडे लेबल केलेले आहे.",
+          "critique": "The Marathi translation accurately reflects the English question and solution, with appropriate terminology used in Marathi-medium education.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A diagram of the digestive tract with the large intestine labeled.",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "digestiveTract",
+              "x": 50,
+              "y": 30,
+              "size": 30,
+              "labels": [
+                "largeIntestine"
+              ]
+            }
+          ]
+        },
+        "labels": {
+          "largeIntestine": {
+            "en": "Large intestine",
+            "hi": "बड़ी आंत",
+            "mr": "मोठे आतडे"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Confuses stomach with the organ that absorbs water",
+        "Confuses small intestine with the organ that absorbs water",
+        null,
+        "Knows liver's role but not its function in water absorption"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the correct answer. The large intestine is indeed responsible for water absorption, while the stomach digests, the small intestine absorbs nutrients, and the liver produces bile.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 40,
+          "pageStart": 42,
+          "pageEnd": 43,
+          "headingPath": [
+            "4. Nutrition in Living Organisms",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T03:32:31.507Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student observed that a plant had yellowing leaves and retarded growth. Which nutrient deficiency might be the cause?",
+      "choices": [
+        "Nitrogen",
+        "Phosphorus",
+        "Potassium",
+        "Iron"
+      ],
+      "answerIndex": 0,
+      "solution": "Nitrogen deficiency often leads to yellowing leaves and stunted growth because nitrogen is essential for chlorophyll production and overall plant development. Phosphorus deficiency typically causes dark green or purple leaves and poor root growth. Potassium deficiency may result in leaf curling and necrotic spots. Iron deficiency usually causes interveinal chlorosis, not overall yellowing and growth issues.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र ने देखा कि एक पौधे के पत्ते पीले हो गए और वृद्धि धीमी हो गई। कौन सी पोषक तत्व की कमी इसका कारण हो सकती है?",
+          "choices": [
+            "नाइट्रोजन",
+            "फॉस्फोरस",
+            "पोटैशियम",
+            "लौह"
+          ],
+          "solution": "नाइट्रोजन की कमी आमतौर पर पीले पत्ते और अवरुद्ध वृद्धि के कारण होती है क्योंकि नाइट्रोजन क्लोरोफिल उत्पादन और सामान्य पौधे के विकास के लिए आवश्यक होता है। फॉस्फोरस की कमी आमतौर पर गहरे हरे या बैंगनी पत्ते और खराब जड़ वृद्धि के कारण होती है। पोटैशियम की कमी पत्ते के मुड़ने और नेक्रोटिक धब्बों के कारण हो सकती है। लौह की कमी आमतौर पर अंतर-स्पर्शी च्लोरोसिस के कारण होती है, न कि समग्र पीलापन और वृद्धि की समस्याओं के कारण।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard Hindi terms for nutrients.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने लक्षात आले की एका वनस्पतीच्या पानांचे पांढरे होणे आणि विकासाचा अवरोध आहे. कोणत्या पोषक द्रव्याच्या कमतरतेमुळे हे घडू शकते?",
+          "choices": [
+            "नाइट्रोजन",
+            "फॉस्फरस",
+            "पोटॅशियम",
+            "लोह"
+          ],
+          "solution": "नाइट्रोजनच्या कमतरतेमुळे पानांचे पांढरे होणे आणि विकासाचा अवरोध होऊ शकतो, कारण नाइट्रोजन हे क्लोरोफिल उत्पादनासाठी आवश्यक आहे आणि वनस्पतीच्या समग्र विकासासाठी आवश्यक आहे. फॉस्फरसच्या कमतरतेमुळे अंधार ग्रीन किंवा बैज रंगाचे पाने आणि खोलीच्या विकासाचा अवरोध होऊ शकतो. पोटॅशियमच्या कमतरतेमुळे पानांचे मोडलेले आणि नेक्रोटिक ठिकाण असू शकतात. लोहाच्या कमतरतेमुळे खांबांमधील क्लोरोसिस होऊ शकते, पांढरे होणे आणि विकासाचे समस्या नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi botanical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the effects of phosphorus with nitrogen",
+        "Confuses the effects of potassium with nitrogen",
+        "Confuses the effects of iron with nitrogen"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0 (Nitrogen), as nitrogen deficiency is indeed associated with yellowing leaves and stunted growth. The author's reasoning for the other options aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 37,
+          "pageStart": 39,
+          "pageEnd": 40,
+          "headingPath": [
+            "4. Nutrition in Living Organisms"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 38,
+          "pageStart": 40,
+          "pageEnd": 42,
+          "headingPath": [
+            "4. Nutrition in Living Organisms"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 39,
+          "pageStart": 42,
+          "pageEnd": 42,
+          "headingPath": [
+            "4. Nutrition in Living Organisms"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T03:32:31.507Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following organisms can survive without consuming any other organism?",
+      "choices": [
+        "Lice",
+        "Fungus",
+        "Cuscuta",
+        "Tapeworm"
+      ],
+      "answerIndex": 1,
+      "solution": "Fungus is a saprophytic organism that can survive by breaking down dead organic matter. Lice, Cuscuta, and Tapeworm are all parasites that depend on other organisms for food.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा जीव अन्य किसी जीव के बिना जीवित रह सकता है?",
+          "choices": [
+            "क्लोंग",
+            "कवक",
+            "कुसकूता",
+            "टेपवार्म"
+          ],
+          "solution": "कवक एक मृत जैव पदार्थ के विघटन द्वारा जीवित रह सकने वाला सैप्रोफाइटिक जीव है। क्लोंग, कुसकूता और टेपवार्म सभी परजीवी हैं जो भोजन के लिए अन्य जीवों पर निर्भर रहते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate with appropriate Hindi biological terms used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते जीव इतर कोणत्याही जीवाच्या खाण्याशिवाय जगू शकते?",
+          "choices": [
+            "क्षुद्रक",
+            "कवक",
+            "कुसुमतांबू",
+            "टॅपवॉर्म"
+          ],
+          "solution": "कवक हा एक सॅप्रोफाइटिक जीव आहे जो मृत जैविक पदार्थांचे विघटन करून जगू शकतो. क्षुद्रक, कुसुमतांबू आणि टॅपवॉर्म हे सर्व परजीवी आहेत जे खाद्यासाठी इतर जीवांवर अवलंबून असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Knows lice are parasites but not their classification",
+        null,
+        "Confuses Cuscuta with an autotrophic organism",
+        "Knows tapeworm is a parasite but not its classification"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. Fungus is a saprophyte and does not need to consume living organisms, while the other options are all parasites. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 40,
+          "pageStart": 42,
+          "pageEnd": 43,
+          "headingPath": [
+            "4. Nutrition in Living Organisms",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T03:32:31.507Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why do insectivorous plants like Drosera burmanii feed on insects?",
+      "choices": [
+        "To obtain nitrogen",
+        "To increase their size",
+        "To store energy",
+        "To get more sunlight"
+      ],
+      "answerIndex": 0,
+      "solution": "Insectivorous plants like Drosera burmanii feed on insects to obtain nitrogen, which is necessary for their growth and development. These plants typically live in environments where nitrogen is scarce, so they rely on insects as a source of this essential nutrient. The other options, such as increasing size, storing energy, or getting more sunlight, do not address the fundamental nutritional need that insects fulfill.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "क्यों लाल चट्टान वाले पौधे जैसे ड्रोसेरा बर्मानियाई कीटों पर भोजन करते हैं?",
+          "choices": [
+            "नाइट्रोजन प्राप्त करने के लिए",
+            "अपने आकार को बढ़ाने के लिए",
+            "ऊर्जा संग्रह करने के लिए",
+            "अधिक सूर्य के प्रकाश प्राप्त करने के लिए"
+          ],
+          "solution": "लाल चट्टान वाले पौधे जैसे ड्रोसेरा बर्मानियाई कीटों पर भोजन करते हैं ताकि नाइट्रोजन प्राप्त कर सकें, जो उनके विकास और वृद्धि के लिए आवश्यक है। ये पौधे आमतौर पर ऐसे वातावरण में रहते हैं जहां नाइट्रोजन की कमी होती है, इसलिए वे इस महत्वपूर्ण पोषक तत्व के स्रोत के रूप में कीटों पर निर्भर रहते हैं। अन्य विकल्प जैसे आकार बढ़ाना, ऊर्जा संग्रह करना या अधिक सूर्य के प्रकाश प्राप्त करना, कीटों द्वारा पूरा किए जाने वाले मूल आहारी आवश्यकता को नहीं बताते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate biological terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "का इंसेक्टिवोरस पौधे जसे की ड्रोसेरा बर्मानियाई कीटांवर खातात?",
+          "choices": [
+            "नाइट्रोजन मिळवण्यासाठी",
+            "त्यांच्या आकार वाढवण्यासाठी",
+            "ऊर्जा जमा करण्यासाठी",
+            "अधिक सूर्यप्रकाश मिळवण्यासाठी"
+          ],
+          "solution": "इंसेक्टिवोरस पौधे जसे की ड्रोसेरा बर्मानियाई कीटांवर खातात कारण ते नाइट्रोजन मिळवतात, जे त्यांच्या वाढी आणि विकासासाठी आवश्यक आहे. ही पौधे सामान्यतः नाइट्रोजन अत्यंत कमी असलेल्या वातावरणात राहतात, त्यामुळे ते या आवश्यक पोषक द्रव्याच्या स्रोत म्हणून कीटांवर अवलंबून राहतात. इतर निवडा, जसे की आकार वाढवणे, ऊर्जा जमा करणे किंवा अधिक सूर्यप्रकाश मिळवणे, कीटांच्या वापरामुळे भरून काढत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Pupils may think plants grow larger by eating insects, not understanding that plants get nutrients from soil and sunlight",
+        "confuses growth with nutrient needs",
+        "confuses energy storage with nutrient needs"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as insectivorous plants feed on insects to obtain nitrogen, which is lacking in their environment. The other options reflect common misconceptions about plant nutrition.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 34,
+          "pageStart": 36,
+          "pageEnd": 37,
+          "headingPath": [
+            "4. Nutrition in Living Organisms"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 35,
+          "pageStart": 37,
+          "pageEnd": 38,
+          "headingPath": [
+            "4. Nutrition in Living Organisms"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 36,
+          "pageStart": 38,
+          "pageEnd": 39,
+          "headingPath": [
+            "4. Nutrition in Living Organisms"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T03:32:31.507Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a student observes an organism that lives inside another organism, absorbs nutrients from it, and causes harm, which of the following best describes its nutrition?",
+      "choices": [
+        "Saprozoic",
+        "Parasitic",
+        "Saprophytic",
+        "Holozoic"
+      ],
+      "answerIndex": 1,
+      "solution": "Parasitic nutrition involves an organism living inside another and obtaining nutrients at the host's expense. Saprozoic organisms absorb liquid material from dead bodies, saprophytes break down dead matter, and holozoic organisms consume solid food.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक छात्र एक जीव का अवलोकन करता है जो दूसरे जीव के अंदर रहता है, उसके भोजन का अवशोषण करता है और हानि पहुंचाता है, तो निम्नलिखित में से कौन-सा इसके पोषण का सबसे अच्छा वर्णन करता है?",
+          "choices": [
+            "सैप्रोज़ोइक",
+            "परजीवी",
+            "सैप्रोफाइटिक",
+            "होलोज़ोइक"
+          ],
+          "solution": "परजीवी पोषण में एक जीव दूसरे में रहता है और मेजबान के नुकसान पर पोषण प्राप्त करता है। सैप्रोज़ोइक जीव मृत शरीरों से तरल पदार्थ अवशोषित करते हैं, सैप्रोफाइट जीव मृत पदार्थ के विघटन में सहायता करते हैं और होलोज़ोइक जीव ठोस भोजन का उपभोग करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थीने एका जीव निरीक्षण केला जो दुसऱ्या जीवामध्ये रहातो, त्यापासून पोषक घटक शोषतो आणि त्याला नुकसान पोहोचवतो, तर खालीलपैकी कोणते त्याच्या पोषणाचे सर्वात चांगले वर्णन करते?",
+          "choices": [
+            "सॅप्रोजोइक",
+            "परजीवी",
+            "सॅप्रोफाइटिक",
+            "हॉलोजोइक"
+          ],
+          "solution": "परजीवी पोषणामध्ये एका जीवाचा दुसऱ्या जीवामध्ये रहाणे आणि मालकाच्या खर्चावर पोषक घटक मिळवणे समाविष्ट असते. सॅप्रोजोइक जीव मृत शरीरापासून द्रव पदार्थ शोषतात, सॅप्रोफाइट जीव मृत पदार्थाचे विघटन करतात आणि हॉलोजोइक जीव घन खाद्य पदार्थ खातात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Knows saprozoic organisms absorb liquid material from dead bodies",
+        null,
+        "Confuses saprophytic with parasitic",
+        "Knows holozoic organisms consume solid food"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed, with a clear distinction between the types of nutrition. The correct answer is 1 (Parasitic), and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 37,
+          "pageStart": 39,
+          "pageEnd": 40,
+          "headingPath": [
+            "4. Nutrition in Living Organisms"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 38,
+          "pageStart": 40,
+          "pageEnd": 42,
+          "headingPath": [
+            "4. Nutrition in Living Organisms"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 39,
+          "pageStart": 42,
+          "pageEnd": 42,
+          "headingPath": [
+            "4. Nutrition in Living Organisms"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T03:32:31.507Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why do desert animals have a smaller number of heterotrophs compared to sea animals?",
+      "choices": [
+        "Desert animals have no need for food",
+        "Desert animals are autotrophs",
+        "There is less availability of food in the desert",
+        "Sea animals can photosynthesize"
+      ],
+      "answerIndex": 2,
+      "solution": "Desert animals have a smaller number of heterotrophs because there is less availability of food in the desert. Unlike the sea, which has a greater variety and abundance of organisms, deserts have limited resources.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मरुस्थलीय जानवरों में समुद्री जानवरों की तुलना में कम संख्या में हेटेरोट्रॉफ्स क्यों होते हैं?",
+          "choices": [
+            "मरुस्थलीय जानवरों को भोजन की आवश्यकता नहीं होती",
+            "मरुस्थलीय जानवर ऑटोट्रॉफ्स होते हैं",
+            "मरुस्थल में भोजन की कम उपलब्धता होती है",
+            "समुद्री जानवर फोटोसिंथेसाइज़ कर सकते हैं"
+          ],
+          "solution": "मरुस्थलीय जानवरों में कम संख्या में हेटेरोट्रॉफ्स होते हैं क्योंकि मरुस्थल में भोजन की कम उपलब्धता होती है। समुद्र के विपरीत, जिसमें जीवों की अधिक विविधता और उपलब्धता होती है, मरुस्थल में संसाधन सीमित होते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated, and the structure matches the English version.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मरुस्थलीय प्राणी मांसाहारी (हेटेरोट्रॉफ) च्या संख्या समुद्री प्राणींपेक्षा कमी का असतात?",
+          "choices": [
+            "मरुस्थलीय प्राणी खाद्याच्या आवश्यकतेचा नसतो",
+            "मरुस्थलीय प्राणी स्वपोषक (ऑटोट्रॉफ) असतात",
+            "मरुस्थलात खाद्याची कमतरता असते",
+            "समुद्री प्राणी प्रकाशसंश्लेषण करू शकतात"
+          ],
+          "solution": "मरुस्थलीय प्राणी मांसाहारी (हेटेरोट्रॉफ) च्या संख्या समुद्री प्राणींपेक्षा कमी असतात कारण मरुस्थलात खाद्याची कमतरता असते. समुद्रापेक्षा मरुस्थलात संसाधने मर्यादित असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi biological terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the concept of autotrophy",
+        "Confuses autotrophic and heterotrophic organisms",
+        null,
+        "Knows sea animals are not autotrophic but not the reason"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is logically sound, and the correct answer is well-justified. The explanation aligns with ecological principles about resource availability in different environments.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 40,
+          "pageStart": 42,
+          "pageEnd": 43,
+          "headingPath": [
+            "4. Nutrition in Living Organisms",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T03:32:31.507Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

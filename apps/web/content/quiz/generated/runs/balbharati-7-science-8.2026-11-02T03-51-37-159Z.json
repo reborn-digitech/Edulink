@@ -1,0 +1,561 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T03:51:37.159Z",
+  "finishedAt": "2026-11-02T03:59:01.005Z",
+  "seconds": 444,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "703020012",
+    "document": "balbharati/7/science/703020012.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 8 — Static Electricity",
+    "edition": "First Edition 2017",
+    "chunks": 8,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2012 — question paper]\n4. In the process of electrostatic induction...\na) a conductor is rubbed with an insulator.\nb) a charge is produced by friction.\nc) negative and positive charges are separated.\nd) electrons are ‘sprayed’ on the object.",
+      "[INJSO 2018 — question paper]\n24. Five polyester balls labeled P, Q, R, S & T are suspended from insulating threads. Several experiments\nare performed on the balls and the following observations are made.\nI. Ball P repels R and attracts Q\nII. Ball S attracts Q and has no effect on T\nIII. A negatively charged rod attracts both P and T\nWhich one of the following options correctly describes the nature of charges on the respective balls (0\nrefers to uncharged)?\nP Q R\na + - +\nb + - +\nc - + -\nd + - +\nS T\n0 +\n+ 0\n0 0\n0 0",
+      "[INJSO 2021 — solutions or answer key]\n8. D. Gravitational force is an attractive force and the Coulomb force, which is responsible for the\nscattering of alpha particles, is repulsive .",
+      "[INJSO 2018 — question paper]\n40.\nA) The electrostatic potential difference between two points A & B, corresponding to electrostatic\nforces, is defined as the change in electrostatic potential energy per unit charge as it moves from A to B.\nA charged particle of mass 0.02 kg moves under electrostatic forces only, from A to B having potential\ndifference of 10 volts as shown. Velocity of the particle at A is 20 m/s and at B is 40 m/s and their\ndirections are perpendicular. Calculate the charge q on the particle. [Total=2 marks]\nB) Two helicopters X and Y are stationary at a distance of 80 m from each other and 10 m above the\nsurface of sea (near the Antarctic). The two helicopters have sound detectors. Helicopter X is stat"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 5,
+      "ms": 94725,
+      "in": 28,
+      "out": 26,
+      "rejects": 3,
+      "promptTokens": 20887,
+      "completionTokens": 5797
+    },
+    "critique": {
+      "calls": 34,
+      "ms": 183447,
+      "in": 26,
+      "out": 23,
+      "rejects": 3,
+      "promptTokens": 14479,
+      "completionTokens": 5772
+    },
+    "solver": {
+      "calls": 166,
+      "ms": 71483,
+      "in": 23,
+      "out": 21,
+      "rejects": 2,
+      "promptTokens": 26751,
+      "completionTokens": 1620
+    },
+    "form": {
+      "calls": 7,
+      "ms": 17808,
+      "in": 21,
+      "out": 13,
+      "rejects": 8,
+      "promptTokens": 1632,
+      "completionTokens": 507
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 16,
+      "ms": 2612,
+      "in": 13,
+      "out": 8,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 291172,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 19001,
+      "completionTokens": 9868
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 1,
+    "4": 2,
+    "5": 0,
+    "6": 3
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of static electricity?",
+      "ms": {
+        "draft": 3040,
+        "critique": 4742
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, a plastic rod is rubbed with a woolen cloth and then brought near a neutral paper. The paper is attracted to the rod. Which of the following best explains this phenomenon?",
+      "ms": {
+        "draft": 3040,
+        "critique": 7291
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct statement about electric charges?",
+      "ms": {
+        "draft": 3040,
+        "critique": 5050,
+        "solver": 11089,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens when two objects with the same type of electric charge are brought close to each other?",
+      "ms": {
+        "draft": 3040,
+        "critique": 5027,
+        "solver": 11834,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for static electricity?",
+      "ms": {
+        "draft": 3040,
+        "critique": 6709
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a charged object is brought near a neutral object, what happens due to electrostatic induction?",
+      "ms": {
+        "draft": 12244,
+        "critique": 6774,
+        "solver": 1258,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following materials is used to make the lightning conductor?",
+      "ms": {
+        "draft": 12244,
+        "critique": 5884,
+        "solver": 10108,
+        "form": 3306
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why are coal and salt added to the pit in the ground along with the iron plate in a lightning conductor?",
+      "ms": {
+        "draft": 12244,
+        "critique": 4936,
+        "solver": 11125,
+        "form": 2567
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for the flow of electric charge during a lightning strike?",
+      "ms": {
+        "draft": 4119,
+        "critique": 4365,
+        "solver": 1352,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "An uncharged aluminium ball is brought near a negatively charged balloon. What happens when the ball touches the balloon?",
+      "ms": {
+        "draft": 4119,
+        "critique": 5233,
+        "solver": 2283
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Five balls P, Q, R, S, and T are suspended from insulating threads. P repels R and attracts Q. S attracts Q and has no effect on T. A negatively charged rod attracts both P and T. What can be concluded about the charge on ball R?",
+      "ms": {
+        "draft": 4119,
+        "critique": 5931,
+        "solver": 1131
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name given to the electric charge generated by friction?",
+      "ms": {
+        "draft": 3377,
+        "critique": 6146,
+        "solver": 1270,
+        "form": 3395
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an experiment, a charged straw is brought near an uncharged straw. What will happen?",
+      "ms": {
+        "draft": 3377,
+        "critique": 7738,
+        "solver": 11569,
+        "form": 2794
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a glass rod is rubbed with a silk cloth and then brought close to a plastic rod that has been rubbed with a woolen cloth, what will happen?",
+      "ms": {
+        "draft": 3040,
+        "critique": 6034,
+        "solver": 1247,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens when a negatively charged comb is brought close to a thin trickle of water?",
+      "ms": {
+        "draft": 3603,
+        "critique": 4701,
+        "solver": 1703,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens when an uncharged aluminium ball is brought near a negatively charged balloon?",
+      "ms": {
+        "draft": 3603,
+        "critique": 5077,
+        "solver": 1266,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens when a charged object is brought near an uncharged object?",
+      "ms": {
+        "draft": 3603,
+        "critique": 5501,
+        "solver": 1253,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A negatively charged rod is brought near a neutral object. What will happen?",
+      "ms": {
+        "draft": 3377,
+        "critique": 4908,
+        "solver": 1751,
+        "form": 3676
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of a gold leaf electroscope?",
+      "ms": {
+        "draft": 3603,
+        "critique": 4765,
+        "solver": 1402,
+        "form": 0,
+        "translation": 33520
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the flowing water when a negatively charged comb is brought close to it?",
+      "ms": {
+        "draft": 4119,
+        "critique": 4962,
+        "solver": 10457,
+        "form": 0,
+        "translation": 43066
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two objects are charged with opposite types of charges, what will happen when they are brought close to each other?",
+      "ms": {
+        "draft": 3377,
+        "critique": 6207,
+        "solver": 11251,
+        "form": 2519,
+        "translation": 32397
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why do charged objects attract uncharged objects?",
+      "ms": {
+        "draft": 3603,
+        "critique": 5001,
+        "solver": 1441,
+        "form": 0,
+        "translation": 32912
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "A gold leaf electroscope is used to detect electric charge. What happens to the gold leaves when a charged object is brought near the disc?",
+      "ms": {
+        "draft": 4119,
+        "critique": 6233,
+        "solver": 1274,
+        "form": 0,
+        "translation": 47614
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a plastic rod is rubbed against a woollen cloth, what will happen to the charges on the plastic rod?",
+      "ms": {
+        "draft": 3377,
+        "critique": 4812,
+        "solver": 826,
+        "form": 1751,
+        "translation": 28425
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is gold used in a gold leaf electroscope instead of another metal?",
+      "ms": {
+        "draft": 4119,
+        "critique": 6298,
+        "solver": 1395,
+        "form": 0,
+        "translation": 37164
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In the case of a lightning conductor, why is the upper end of the copper strip pointed?",
+      "ms": {
+        "draft": 12244,
+        "critique": 6598,
+        "solver": 5084,
+        "form": 0,
+        "translation": 32171
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the function of the metal wire in Benjamin Franklin's kite experiment?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is not a good conductor of electricity?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of static electricity?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In an experiment, a plastic rod is rubbed with a woolen cloth and then brought near a neutral paper. The paper is attracted to the rod. Which of the following best explains this phenomenon?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct statement about electric charges?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What happens when two objects with the same type of electric charge are brought close to each other?",
+      "reason": "options 2 and 3 are the same (\"They become neutral\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main reason for static electricity?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a charged object is brought near a neutral object, what happens due to electrostatic induction?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct option, so no reason needed here.…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following materials is used to make the lightning conductor?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Confuses copper with steel, which is not used in the passage…\"); distractor 1's reason is not a one-line misconception (\"Thinks plastic is used because it is an insulator, but the p…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Why are coal and salt added to the pit in the ground along with the iron plate in a lightning conductor?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses the purpose of the pit with weight, which is not me…\")"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"What material is a lightning conductor made of?\",\n      \"opti"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main reason for the flow of electric charge during a lightning strike?",
+      "reason": "the key is far longer than every distractor (61 vs 36 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "An uncharged aluminium ball is brought near a negatively charged balloon. What happens when the ball touches the balloon?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Five balls P, Q, R, S, and T are suspended from insulating threads. P repels R and attracts Q. S attracts Q and has no effect on T. A negatively charged rod attracts both P and T. What can be concluded about the charge on ball R?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name given to the electric charge generated by friction?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Imagines electricity as dynamic or moving, which is not the …\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In an experiment, a charged straw is brought near an uncharged straw. What will happen?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If a glass rod is rubbed with a silk cloth and then brought close to a plastic rod that has been rubbed with a woolen cloth, what will happen?",
+      "reason": "near-duplicate of served question cmvwmyxnj02mt0reme2af99pa (cosine 0.954 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What happens when a negatively charged comb is brought close to a thin trickle of water?",
+      "reason": "near-duplicate of served question cmvwmyxnm02mz0remgghz6leb (cosine 0.909 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What happens when an uncharged aluminium ball is brought near a negatively charged balloon?",
+      "reason": "near-duplicate of served question cmvwmyxnt02nh0remqvfkj2q8 (cosine 0.965 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What happens when a charged object is brought near an uncharged object?",
+      "reason": "near-duplicate of served question cmvwmyxnr02nb0remuorhm4ua (cosine 0.923 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A negatively charged rod is brought near a neutral object. What will happen?",
+      "reason": "near-duplicate of served question cmvwmyxnr02nb0remuorhm4ua (cosine 0.909 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

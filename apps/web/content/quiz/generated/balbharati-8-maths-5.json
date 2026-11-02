@@ -21,49 +21,49 @@
   "board": "BALBHARATI",
   "book": "८ वी गणित इंग्रजी",
   "edition": "First Edition 2018",
-  "generatedAt": "2026-11-01T00:22:00.844Z",
+  "generatedAt": "2026-11-02T07:15:48.460Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 3,
-      "stem": "What is the value of (x + 2y)^2?",
+      "difficulty": 2,
+      "stem": "If (x + 2y)^2 = x^2 + 4xy + 4y^2, what is the missing term in the expression (x + 2y)^2 = x^2 + _ + 4y^2?",
       "choices": [
-        "x + 2xy + 4y",
-        "x + 4xy + 4y",
-        "x + 4xy + 2y",
-        "x + 2xy + 2y"
+        "2xy",
+        "4xy",
+        "6xy",
+        "8xy"
       ],
       "answerIndex": 1,
-      "solution": "The correct expansion is x² + 4xy + 4y². This is derived by applying the formula (a + b)^2 = a² + 2ab + b². The other options either have incorrect coefficients or miss the square of the second term.",
+      "solution": "The expansion of (x + 2y)^2 is x^2 + 2(x)(2y) + (2y)^2, which simplifies to x^2 + 4xy + 4y^2. The missing term is 4xy. The other options are incorrect because 2xy is half of the correct middle term, and 6xy and 8xy are larger than the correct value.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "(x + 2y)^2 का मान क्या है?",
+          "stem": "यदि (x + 2y)^2 = x^2 + 4xy + 4y^2, तो व्यंजक (x + 2y)^2 = x^2 + _ + 4y^2 में लुप्त पद क्या है?",
           "choices": [
-            "x + 2xy + 4y",
-            "x + 4xy + 4y",
-            "x + 4xy + 2y",
-            "x + 2xy + 2y"
+            "2xy",
+            "4xy",
+            "6xy",
+            "8xy"
           ],
-          "solution": "सही विस्तार x² + 4xy + 4y² है। यह सूत्र (a + b)^2 = a² + 2ab + b² के अनुप्रयोग से प्राप्त किया गया है। अन्य विकल्प या तो गलत गुणांक रखते हैं या दूसरे पद के वर्ग को छोड़ देते हैं।",
+          "solution": "(x + 2y)^2 का विस्तार x^2 + 2(x)(2y) + (2y)^2 है, जो x^2 + 4xy + 4y^2 में सरलीकृत होता है। लुप्त पद 4xy है। अन्य विकल्प गलत हैं क्योंकि 2xy सही मध्य पद का आधा है, और 6xy और 8xy सही मान से बड़े हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate mathematical terminology in Hindi.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "x + 2y)^2 ची किंमत किती आहे?",
+          "stem": "जर (x + 2y)^2 = x^2 + 4xy + 4y^2, तर (x + 2y)^2 = x^2 + _ + 4y^2 मध्ये गायब असलेला पद कोणता आहे?",
           "choices": [
-            "x + 2xy + 4y",
-            "x + 4xy + 4y",
-            "x + 4xy + 2y",
-            "x + 2xy + 2y"
+            "2xy",
+            "4xy",
+            "6xy",
+            "8xy"
           ],
-          "solution": "सही विस्तार x² + 4xy + 4y² आहे. हा सूत्र (a + b)^2 = a² + 2ab + b² च्या अनुप्रयोगाने मिळतो. इतर विकल्पांमध्ये चुकीचे गुणक किंवा दुसऱ्या पदाचा वर्ग नसतो.",
+          "solution": "(x + 2y)^2 चा विस्तार x^2 + 2(x)(2y) + (2y)^2 असून, जो x^2 + 4xy + 4y^2 च्या रूपात सोपे केला जातो. गायब पद 4xy आहे. इतर विकल्प चुकीचे आहेत कारण 2xy हा खर्‍या मध्य पदाच्या अर्ध्या आहे, आणि 6xy आणि 8xy हे खर्‍या मूल्यापेक्षा मोठे आहेत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology common in Marathi-medium textbooks.",
           "flag": null
         }
       },
@@ -72,10 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Omits the correct coefficient of the middle term.",
+        "adds the coefficients incorrectly, thinking 2x * 2y = 2xy instead of 4xy",
         null,
-        "Correctly includes the middle term but incorrectly writes the square of the second term as 2y instead of 4y².",
-        "Incorrectly writes the square of the first term as x instead of x²."
+        "Confuses the coefficient of the middle term in a binomial square with the sum of the coefficients of the terms.",
+        "Student forgets to multiply the 2 from the binomial coefficient and just doubles the coefficient of the middle term"
       ],
       "solverAnswers": [
         1,
@@ -85,7 +85,7 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The correct expansion of (x + 2y)^2 is x² + 4xy + 4y², which matches option 1. The author's solution and reasoning are accurate and align with standard algebraic expansion.",
+      "critique": "The solution correctly expands (x + 2y)^2 and identifies the middle term as 4xy. The reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "balbharati/8/mathematics/803020004.pdf",
@@ -116,7 +116,102 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T00:22:00.844Z",
+      "generatedAt": "2026-11-02T07:15:48.460Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the value of (101)^3 using the expansion formula?",
+      "choices": [
+        "1030301",
+        "1030300",
+        "1030001",
+        "1030030"
+      ],
+      "answerIndex": 0,
+      "solution": "The value of (101)^3 can be calculated as (100 + 1)^3 = 100^3 + 3 × 100^2 × 1 + 3 × 100 × 1^2 + 1^3 = 1000000 + 30000 + 300 + 1 = 1030301. The other options have incorrect additions or misplacements of digits.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "101^3 का मान प्रसार सूत्र का प्रयोग करके क्या है?",
+          "choices": [
+            "1030301",
+            "1030300",
+            "1030001",
+            "1030030"
+          ],
+          "solution": "101^3 का मान (100 + 1)^3 = 100^3 + 3 × 100^2 × 1 + 3 × 100 × 1^2 + 1^3 = 1000000 + 30000 + 300 + 1 = 1030301 के रूप में गणना की जा सकती है। अन्य विकल्प गलत जोड़ या अंकों के गलत स्थान पर रखे जाने के कारण गलत हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "101^3 ची किंमत विस्तार सूत्राचा वापर करून काय असेल?",
+          "choices": [
+            "1030301",
+            "1030300",
+            "1030001",
+            "1030030"
+          ],
+          "solution": "101^3 ची किंमत (100 + 1)^3 असे काढता येईल = 100^3 + 3 × 100^2 × 1 + 3 × 100 × 1^2 + 1^3 = 1000000 + 30000 + 300 + 1 = 1030301. इतर पर्यायांमध्ये अपयश जोडणे किंवा अंकांच्या व्यवस्थित ठिकाणी नसणे असते.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the expansion of (a + b)^3 with a miscalculation of the middle terms, leading to an off-by-one error in the final digit.",
+        "adds the terms incorrectly",
+        "misses one of the terms in the expansion"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly applies the binomial expansion formula for (a + b)^3 and arrives at the correct answer of 1030301. The reasoning for the distractors is plausible and reflects common student errors.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 21,
+          "pageStart": 33,
+          "pageEnd": 35,
+          "headingPath": [
+            "5. Expansion formulae"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 22,
+          "pageStart": 35,
+          "pageEnd": 38,
+          "headingPath": [
+            "5. Expansion formulae"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 23,
+          "pageStart": 38,
+          "pageEnd": 38,
+          "headingPath": [
+            "5. Expansion formulae"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T07:15:48.460Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

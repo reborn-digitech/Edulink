@@ -21,427 +21,47 @@
   "board": "BALBHARATI",
   "book": "८ वी सामान्य विज्ञान इंग्रजी",
   "edition": "First Edition 2018",
-  "generatedAt": "2026-10-29T21:23:17.273Z",
+  "generatedAt": "2026-11-02T12:21:27.948Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 2,
-      "stem": "What is the function of the vocal cords in the human larynx?",
-      "choices": [
-        "To produce a flap that closes the air passage",
-        "To vibrate and produce sound",
-        "To control the flow of air to the lungs",
-        "To regulate the temperature of the air"
-      ],
-      "answerIndex": 1,
-      "solution": "The vocal cords vibrate as air passes through them, creating sound waves that allow speech. The other options describe functions related to airway protection, airflow regulation, and air warming, which are not the primary role of the vocal cords.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "मानव लारिक्स में वाक् डोरियों का कार्य क्या है?",
-          "choices": [
-            "वायु पासेज को बंद करने वाले पट्टी का उत्पादन करना",
-            "कांपना और ध्वनि उत्पन्न करना",
-            "फेफड़ों में वायु के प्रवाह का नियंत्रण करना",
-            "वायु के तापमान का नियमन करना"
-          ],
-          "solution": "जब वायु वाक् डोरियों से गुजरती है, तो वाक् डोरियां कांपती हैं जिससे ध्वनि तरंगें उत्पन्न होती हैं जो बोलने की अनुमति देती हैं। अन्य विकल्प हवा के मार्ग की सुरक्षा, हवा के प्रवाह का नियंत्रण और हवा के तापमान के नियमन से संबंधित कार्यों का वर्णन करते हैं, जो वाक् डोरियों के मुख्य कार्य नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All options are correctly translated and maintain their original meaning. The correct answer (option 1) is in the same position. The distractors remain incorrect in the Hindi version.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "मानव लारिन्क्स मधील आवाजाच्या ताणाचे कार्य काय आहे?",
-          "choices": [
-            "वायु प्रवेश बंद करणारा फ्लॅप तयार करणे",
-            "कापूस वाजवून आवाज तयार करणे",
-            "फुफ्फुसामार्गावर वायूच्या प्रवाहाचे नियंत्रण करणे",
-            "वायूच्या तापमानाचे नियमन करणे"
-          ],
-          "solution": "आवाजाच्या ताण वायू वाहत असताना वाजवतात, ज्यामुळे बोलण्यासाठी आवाजाच्या तरंगांची निर्मिती होते. इतर विकल्पांमध्ये वायुमार्गाच्या संरक्षणाशी संबंधित, वायूच्या प्रवाहाचे नियंत्रण आणि वायू तापमान वाढविण्याचे कार्य वर्णन केले गेले आहे, जे आवाजाच्या ताणाचे प्राथमिक कार्य नाही.",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Marathi.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "This describes the function of the epiglottis, not the vocal cords",
-        null,
-        "This is a misconception about how vocal cords work",
-        "This is not a function of the vocal cords"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as vocal cords vibrate to produce sound. The other options describe functions of different structures or misunderstand the role of the vocal cords.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 138,
-          "pageStart": 116,
-          "pageEnd": 116,
-          "headingPath": [
-            "15. Sound"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 139,
-          "pageStart": 116,
-          "pageEnd": 117,
-          "headingPath": [
-            "15. Sound"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 140,
-          "pageStart": 118,
-          "pageEnd": 118,
-          "headingPath": [
-            "15. Sound"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T21:23:17.273Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
       "difficulty": 3,
-      "stem": "If a student uses a flute and opens more holes, what change would they expect in the sound produced?",
+      "stem": "In a musical instrument like a flute, how can different notes be produced?",
       "choices": [
-        "The sound becomes louder",
-        "The pitch of the sound becomes higher",
-        "The sound becomes softer",
-        "The pitch of the sound becomes lower"
+        "By changing the length of the air column in the flute",
+        "By changing the length of the vibrating air column",
+        "By changing the size of the room",
+        "By changing the temperature of the air"
       ],
       "answerIndex": 1,
-      "solution": "Opening more holes on a flute shortens the vibrating air column, which increases the frequency of the sound wave, resulting in a higher pitch. The other options are incorrect because the loudness of the sound depends on how hard the air is blown, not the number of holes open, and a shorter air column does not produce a lower pitch.",
+      "solution": "The correct option is by changing the length of the vibrating air column, as this directly affects the pitch of the sound produced by the flute. Changing the size of the room or the temperature of the air does not influence the note produced by the instrument itself. Altering the length of the air column, rather than just the air column, is necessary because only the vibrating portion determines the sound frequency.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक छात्र एक बांसुरी का उपयोग करता है और अधिक छिद्र खोलता है, तो उत्पन्न ध्वनि में क्या परिवर्तन होगा?",
+          "stem": "एक संगीत वाद्य यंत्र जैसे बांसुरी में, विभिन्न नोट कैसे उत्पन्न किए जा सकते हैं?",
           "choices": [
-            "ध्वनि अधिक तीव्र हो जाती है",
-            "ध्वनि की तारतम्य अधिक हो जाती है",
-            "ध्वनि अधिक कमजोर हो जाती है",
-            "ध्वनि की तारतम्य कम हो जाती है"
+            "बांसुरी में हवा के स्तंभ की लंबाई बदलकर",
+            "हवा के स्तंभ की लंबाई बदलकर",
+            "कमरे के आकार को बदलकर",
+            "हवा के तापमान को बदलकर"
           ],
-          "solution": "बांसुरी पर अधिक छिद्र खोलने से दोलन कर रहे हवा के स्तंभ की लंबाई कम हो जाती है, जो ध्वनि तरंग की आवृत्ति बढ़ा देता है, जिसके परिणामस्वरूप उच्च तारतम्य होता है। अन्य विकल्प गलत हैं क्योंकि ध्वनि की तीव्रता हवा के कितना कमजोर या तेज फूंके जाने पर निर्भर करती है, न कि खुले छिद्रों की संख्या पर, और छोटा हवा का स्तंभ कम तारतम्य उत्पन्न नहीं करता।",
+          "solution": "सही विकल्प हवा के स्तंभ की लंबाई बदलकर है, क्योंकि यह सीधे बांसुरी द्वारा उत्पन्न ध्वनि के लहर के आवृत्ति पर प्रभाव डालता है। कमरे के आकार या हवा के तापमान को बदलना वाद्य यंत्र द्वारा उत्पन्न नोट पर प्रभाव नहीं डालता है। हवा के स्तंभ की लंबाई को बदलना आवश्यक है, क्योंकि केवल वास्तविक द्वारा हवा के स्तंभ की लंबाई ध्वनि आवृत्ति निर्धारित करती है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English content, with appropriate technical terms like 'तारतम्य' (pitch) and 'आवृत्ति' (frequency) used in the context of musical instruments.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms. The correct answer remains option 1, and the distractors are still incorrect.",
           "flag": null
         },
         "mr": {
-          "stem": "एका विद्यार्थ्याने बॉस्टन वापरून जास्तीत जास्त छिद्रे उघडली तर त्यांनी उत्पन्न झालेल्या आवाजात कोणती बदलत अपेक्षित करू शकतात?",
+          "stem": "म्युजिकल इंस्ट्रुमेंटसारख्या फ्ल्यूटमध्ये वेगवेगळे नोट्स कशी तयार करता येतात?",
           "choices": [
-            "आवाज जास्त जोरात होतो",
-            "आवाजाचा ताल जास्त उंच होतो",
-            "आवाज जास्त नरम होतो",
-            "आवाजाचा ताल जास्त खाली होतो"
+            "फ्ल्यूटमधील वायू वक्राच्या लांबीचा बदल करून",
+            "वायू वक्राच्या वाजत असलेल्या भागाच्या लांबीचा बदल करून",
+            "कमर्याच्या आकाराचा बदल करून",
+            "वायूच्या तापमानाचा बदल करून"
           ],
-          "solution": "बॉस्टन वर जास्तीत जास्त छिद्रे उघडल्याने वायु वक्र लहान होतो, जे आवाज तरंगाच्या वारंवारतेमध्ये वाढ होते, ज्यामुळे उंच ताल उत्पन्न होतो. इतर विकल्प अयोग्य आहेत कारण आवाजाच्या जोरावर वायुच्या जोरावर अवलंबून असतो, छिद्रांच्या संख्येवर नाही, आणि लहान वायु वक्र खालचा ताल उत्पन्न करत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the technical terms used in Marathi science education.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "This is a common misconception about how flute holes affect sound volume",
-        null,
-        "This is a misunderstanding of how flute holes affect pitch",
-        "This is a misconception about the effect of opening holes on pitch"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies that opening more holes shortens the air column, increasing frequency and pitch. The reasoning for the distractors aligns with common misconceptions about flute mechanics.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 138,
-          "pageStart": 116,
-          "pageEnd": 116,
-          "headingPath": [
-            "15. Sound"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 139,
-          "pageStart": 116,
-          "pageEnd": 117,
-          "headingPath": [
-            "15. Sound"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 140,
-          "pageStart": 118,
-          "pageEnd": 118,
-          "headingPath": [
-            "15. Sound"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T21:23:17.273Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "How does the human larynx produce different sounds?",
-      "choices": [
-        "By changing the length and tension of vocal cords",
-        "By changing the shape of the mouth",
-        "By changing the pitch of the voice",
-        "By changing the volume of the voice"
-      ],
-      "answerIndex": 0,
-      "solution": "The human larynx produces different sounds by changing the length and tension of the vocal cords. When the vocal cords are stretched or tightened, they vibrate at different frequencies, creating variations in pitch and tone. Changing the shape of the mouth, pitch, or volume affects how sound is modified after it is produced, but not the initial sound generation in the larynx.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "मानव लारिक्स कैसे अलग-अलग ध्वनियाँ उत्पन्न करता है?",
-          "choices": [
-            "वोकल कॉर्ड्स की लंबाई और तनाव को बदलकर",
-            "मुँह के आकार को बदलकर",
-            "आवाज की ऊँचाई को बदलकर",
-            "आवाज के आयतन को बदलकर"
-          ],
-          "solution": "मानव लारिक्स वोकल कॉर्ड्स की लंबाई और तनाव को बदलकर अलग-अलग ध्वनियाँ उत्पन्न करता है। जब वोकल कॉर्ड्स खींचे या तने हुए होते हैं, तो वे अलग-अलग आवृत्ति पर कंपन करते हैं, जिससे ऊँचाई और टोन में भिन्नता उत्पन्न होती है। मुँह के आकार, आवाज की ऊँचाई या आयतन को बदलना आवाज के उत्पादन के बाद ध्वनि को कैसे बदला जाता है, लेकिन लारिक्स में प्रारंभिक ध्वनि उत्पादन को नहीं बदलता।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated, and the structure matches the English version.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "माणसाच्या लारिन्क्स कशा प्रकारे विविध आवाज तयार करतात?",
-          "choices": [
-            "आवाजाच्या ताण आणि लांबीच्या बदलाने",
-            "मुखाच्या आकृतीच्या बदलाने",
-            "आवाजाच्या उंचीच्या बदलाने",
-            "आवाजाच्या विस्ताराच्या बदलाने"
-          ],
-          "solution": "माणसाच्या लारिन्क्स आवाजाच्या ताण आणि लांबीच्या बदलाने विविध आवाज तयार करतात. जेव्हा आवाजाच्या ताण वाढतात किंवा त्यांची लांबी बदलते, तेव्हा ते विविध आवृत्तींवर कंपन करतात, ज्यामुळे उंची आणि ध्वनीमध्ये बदल होतो. मुखाच्या आकृती, उंची किंवा विस्ताराच्या बदलाने आवाजाचे बदल होतो, परंतु लारिन्क्समध्ये आवाजाच्या उत्पादनाचा प्रारंभिक भाग बदलत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for anatomical terms like 'लारिन्क्स' (larynx) and 'आवाजाच्या ताण आणि लांबी' (tension and length of vocal cords).",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Focuses on the shape of the mouth instead of vocal cords",
-        "Refers to pitch as the main factor",
-        "Refers to volume as the main factor"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies that the larynx produces different sounds by changing the length and tension of the vocal cords. The other options are reasonable distractors based on common misconceptions about how speech is produced.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 138,
-          "pageStart": 116,
-          "pageEnd": 116,
-          "headingPath": [
-            "15. Sound"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 139,
-          "pageStart": 116,
-          "pageEnd": 117,
-          "headingPath": [
-            "15. Sound"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 140,
-          "pageStart": 118,
-          "pageEnd": 118,
-          "headingPath": [
-            "15. Sound"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T21:23:17.273Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "In a loudspeaker, how are sound waves produced?",
-      "choices": [
-        "By vibrating a magnet",
-        "By moving a coil back and forth",
-        "By heating a wire",
-        "By rotating a fan"
-      ],
-      "answerIndex": 1,
-      "solution": "In a loudspeaker, sound waves are produced by moving a coil back and forth. This movement creates vibrations that are transferred to the speaker cone, generating sound waves. Vibrating a magnet, heating a wire, or rotating a fan do not directly produce sound waves in this context.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक लूडस्पीकर में ध्वनि तरंगें कैसे उत्पन्न होती हैं?",
-          "choices": [
-            "एक चुंबक के कंपन द्वारा",
-            "एक कॉइल के आगे-पीछे गति द्वारा",
-            "तार के गर्म करने द्वारा",
-            "एक पंखे के घूमने द्वारा"
-          ],
-          "solution": "एक लूडस्पीकर में ध्वनि तरंगें कॉइल के आगे-पीछे गति द्वारा उत्पन्न होती हैं। इस गति से कंपन उत्पन्न होते हैं जो स्पीकर कॉन को स्थानांतरित हो जाते हैं, जिससे ध्वनि तरंगें उत्पन्न होती हैं। चुंबक के कंपन, तार के गर्म करने या पंखे के घूमने से इस संदर्भ में सीधे ध्वनि तरंगें उत्पन्न नहीं होती हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, technical terms match Hindi curriculum, and the correct answer remains option 1.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका लाउडस्पीकरमध्ये ध्वनी तरंग कशा प्रकारे तयार होतात?",
-          "choices": [
-            "चुंबकाच्या कंपनाने",
-            "कॉइलला आगल्या-पाठीमागे चालवून",
-            "ताराला उकळून",
-            "फॅनला फिरवून"
-          ],
-          "solution": "एका लाउडस्पीकरमध्ये ध्वनी तरंग कॉइलला आगल्या-पाठीमागे चालवून तयार होतात. हा गती विद्युत धारेच्या आधारावर असते आणि त्यामुळे कॉइलच्या गतीमुळे विद्युत धारा उत्पन्न होते. चुंबकाच्या कंपनाने, ताराला उकळून किंवा फॅनला फिरवून ध्वनी तरंग तयार होत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the role of the magnet with the coil",
-        null,
-        "Focuses on heating instead of movement",
-        "Refers to a fan instead of a coil"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as the coil's movement due to electromagnetic forces causes the speaker cone to vibrate and produce sound. The other options represent common misconceptions about the role of magnets, heating, and fans in sound production.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 138,
-          "pageStart": 116,
-          "pageEnd": 116,
-          "headingPath": [
-            "15. Sound"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 139,
-          "pageStart": 116,
-          "pageEnd": 117,
-          "headingPath": [
-            "15. Sound"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 140,
-          "pageStart": 118,
-          "pageEnd": 118,
-          "headingPath": [
-            "15. Sound"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T21:23:17.273Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If a person claps near a smartphone, and the app records the sound wave, what does the amplitude of the wave indicate?",
-      "choices": [
-        "The frequency of the sound",
-        "The pitch of the sound",
-        "The loudness of the sound",
-        "The wavelength of the sound"
-      ],
-      "answerIndex": 2,
-      "solution": "The amplitude of the wave indicates the loudness of the sound because it represents the maximum displacement of the wave from its rest position, which corresponds to how intense the sound is. Frequency relates to pitch, and wavelength is inversely related to frequency, but neither directly determines loudness. Therefore, the correct answer is the loudness of the sound.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि कोई व्यक्ति स्मार्टफोन के पास ताली मारता है, और एप ध्वनि तरंग को रिकॉर्ड करता है, तो तरंग के आयाम के द्वारा क्या दर्शाया जाता है?",
-          "choices": [
-            "ध्वनि की आवृत्ति",
-            "ध्वनि की तीव्रता",
-            "ध्वनि की लौटता",
-            "ध्वनि की तरंगदैर्ध्य"
-          ],
-          "solution": "तरंग के आयाम ध्वनि की तीव्रता को दर्शाता है क्योंकि यह तरंग के आराम की स्थिति से अधिकतम विस्थापन का प्रतिनिधित्व करता है, जो ध्वनि की तीव्रता के साथ मेल खाता है। आवृत्ति तीव्रता से संबंधित होती है, और तरंगदैर्ध्य आवृत्ति के व्युत्क्रमानुपाती होती है, लेकिन न तो तीव्रता के सीधे निर्धारण में सहायता करती है। इसलिए, सही उत्तर ध्वनि की तीव्रता है।",
-          "imageAlt": null,
-          "critique": "All terms are standard in Hindi science textbooks. 'तीव्रता' is the correct term for 'loudness', and 'लौटता' is a mistranslation of 'pitch' (should be 'टोन' or 'ऊँचाई').",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर कोणी एका स्मार्टफोन जवळ क्लॅप करत असेल आणि अॅप आवाजाचा तरंग नोंदवत असेल, तर तरंगाचा आयाम काय सूचित करतो?",
-          "choices": [
-            "आवाजाची वारंवारता",
-            "आवाजाचा तारतम्य",
-            "आवाजाची तीव्रता",
-            "आवाजाची तरंगलांबी"
-          ],
-          "solution": "तरंगाचा आयाम आवाजाची तीव्रता सूचित करतो कारण तो तरंगाच्या विश्रांतीच्या स्थितीपासून अधिकतम विस्थापन दर्शवतो, जे आवाजाच्या तीव्रतेशी संबंधित आहे. वारंवारता तारतम्याशी संबंधित आहे, आणि तरंगलांबी वारंवारतेशी व्यत्यासात्मक आहे, परंतु दोन्ही तीव्रतेला सीधा निर्धारित करत नाहीत. त्यामुळे, योग्य उत्तर आवाजाची तीव्रता आहे.",
+          "solution": "सही विकल्प वायू वक्राच्या वाजत असलेल्या भागाच्या लांबीचा बदल करून आहे, कारण हे फ्ल्यूटमार्फत तयार होणाऱ्या आवाजाच्या टोनला थेट प्रभावित करते. कमर्याच्या आकाराचा किंवा वायूच्या तापमानाचा बदल इंस्ट्रुमेंटच्या आवाजावर प्रभाव टाकत नाही. वायू वक्राच्या लांबीचा बदल करणे आवश्यक आहे, कारण केवळ वाजत असलेला भाग आवाजाच्या आवृत्तीला निश्चित करतो.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
           "flag": null
@@ -452,10 +72,105 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses amplitude with frequency",
-        "Confuses amplitude with pitch",
+        "Confuses the method of changing the air column length with the actual mechanism of producing different notes",
         null,
-        "Confuses amplitude with wavelength"
+        "Confuses size with sound production",
+        "Ignores the role of air column"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as changing the length of the vibrating air column is the actual mechanism for producing different notes in a flute. The author's reasoning for the other options is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 138,
+          "pageStart": 116,
+          "pageEnd": 116,
+          "headingPath": [
+            "15. Sound"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 139,
+          "pageStart": 116,
+          "pageEnd": 117,
+          "headingPath": [
+            "15. Sound"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 140,
+          "pageStart": 118,
+          "pageEnd": 118,
+          "headingPath": [
+            "15. Sound"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T12:21:27.948Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What happens to the vocal cords when a person produces a high-pitched sound?",
+      "choices": [
+        "They vibrate slowly",
+        "They become loose and relaxed",
+        "They vibrate rapidly",
+        "They vibrate at the same speed"
+      ],
+      "answerIndex": 2,
+      "solution": "When a person produces a high-pitched sound, the vocal cords vibrate rapidly. This is because the pitch of a sound is determined by the frequency of the vibrations. The other options describe conditions that would produce lower-pitched sounds or no sound at all.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक व्यक्ति द्वारा उच्च ध्वनि उत्पन्न करने पर वाक् तंतु क्या हो जाते हैं?",
+          "choices": [
+            "वे धीरे-धीरे कंपित होते हैं",
+            "वे ढीले और आरामदायक हो जाते हैं",
+            "वे तेजी से कंपित होते हैं",
+            "वे एक ही गति से कंपित होते हैं"
+          ],
+          "solution": "जब कोई व्यक्ति उच्च ध्वनि उत्पन्न करता है, तो वाक् तंतु तेजी से कंपित होते हैं। इसका कारण यह है कि ध्वनि की ऊंचाई कंपन की आवृत्ति द्वारा निर्धारित होती है। अन्य विकल्प निम्न ध्वनि उत्पन्न करने या कोई ध्वनि उत्पन्न न करने की स्थिति का वर्णन करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "उच्च-ताकद आवाज तयार करताना ओठांच्या ताणांचा काय फेरफार होतो?",
+          "choices": [
+            "ते धीम्या वेगाने कंपतात",
+            "ते ढिले आणि शांत राहतात",
+            "ते जलद वेगाने कंपतात",
+            "ते एकसारख्या वेगाने कंपतात"
+          ],
+          "solution": "जेव्हा व्यक्ती उच्च-ताकद आवाज तयार करते, तेव्हा ओठांच्या ताणांचे जलद वेगाने कंप होतो. हे त्यामुळे आहे कारण आवाजाची ताकद विचारांच्या वारंवारतेवर अवलंबून असते. इतर विकल्पांमध्ये खालच्या ताकदीच्या आवाज किंवा कोणताही आवाज तयार होण्याची अवस्था वर्णन केली आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes that slower vibrations lead to higher pitch",
+        "Thinks relaxation of vocal cords leads to higher pitch",
+        null,
+        "Confuses frequency with consistent vibration speed regardless of pitch"
       ],
       "solverAnswers": [
         2,
@@ -464,8 +179,103 @@
         2,
         2
       ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as high-pitched sounds are produced by rapid vibrations of the vocal cords. The author's reasoning aligns with scientific understanding, and the misconceptions listed for the wrong options are plausible for students.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 138,
+          "pageStart": 116,
+          "pageEnd": 116,
+          "headingPath": [
+            "15. Sound"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 139,
+          "pageStart": 116,
+          "pageEnd": 117,
+          "headingPath": [
+            "15. Sound"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 140,
+          "pageStart": 118,
+          "pageEnd": 118,
+          "headingPath": [
+            "15. Sound"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T12:21:27.948Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If the distance from a loudspeaker is increased, what happens to the sound level?",
+      "choices": [
+        "It increases",
+        "It decreases",
+        "It remains the same",
+        "It becomes louder"
+      ],
+      "answerIndex": 1,
+      "solution": "As the distance from a loudspeaker increases, the sound level decreases because sound waves spread out over a larger area, reducing their intensity. The other options are incorrect because they suggest the sound level increases or stays the same, which contradicts the physical behavior of sound propagation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक लाउडस्पीकर से दूरी बढ़ा दी जाए, तो ध्वनि स्तर पर क्या प्रभाव पड़ता है?",
+          "choices": [
+            "यह बढ़ जाता है",
+            "यह घट जाता है",
+            "यह एक ही रहता है",
+            "यह अधिक तीव्र हो जाता है"
+          ],
+          "solution": "जैसे-जैसे लाउडस्पीकर से दूरी बढ़ती है, ध्वनि स्तर घट जाता है क्योंकि ध्वनि तरंगें एक बड़े क्षेत्र में फैल जाती हैं, जिससे उनकी तीव्रता कम हो जाती है। अन्य विकल्प गलत हैं क्योंकि वे ध्वनि स्तर के बढ़ने या एक ही रहने का सुझाव देते हैं, जो ध्वनि प्रसार के भौतिक व्यवहार के विरोधी हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for physics concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका लाउडस्पीकरपासूनच्या अंतरात वाढ झाल्यास ध्वनी पातळीवर काय परिणाम होतो?",
+          "choices": [
+            "ती वाढते",
+            "ती घटते",
+            "ती तशीच रहाते",
+            "ती जास्त जोरात होते"
+          ],
+          "solution": "एका लाउडस्पीकरपासूनच्या अंतरात वाढ झाल्यास ध्वनी पातळी घटते कारण ध्वनी तरंग जास्त विस्तारलेल्या क्षेत्रात पसरतात आणि त्यामुळे त्यांची तीव्रता कमी होते. इतर विकल्प अयोग्य आहेत कारण ते ध्वनी पातळी वाढते किंवा तशीच रहाते असे सूचित करतात, जे ध्वनी प्रसाराच्या भौतिक वर्तनाशी विरोधात आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses sound level with distance",
+        null,
+        "Ignores the effect of distance",
+        "Incorrectly assumes sound level is constant"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and aligns with the key. Amplitude corresponds to loudness, and the reasoning for the other options reflects common misconceptions.",
+      "critique": "The correct answer is 1 (It decreases), as sound intensity decreases with distance from the source. The author's reasoning is sound, and the misconceptions listed for the wrong options are plausible for students.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -496,49 +306,49 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T21:23:17.273Z",
+      "generatedAt": "2026-11-02T12:21:27.948Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 6,
-      "stem": "Why do different musical instruments produce different notes even if they use similar methods of sound generation?",
+      "stem": "Why is it impossible for two astronauts on the moon to talk to each other directly?",
       "choices": [
-        "Because they use different amounts of water",
-        "Because they have different frequencies of vibration",
-        "Because they are played by different people",
-        "Because they have different amounts of air"
+        "Because there is no air",
+        "Because there is no gravity",
+        "Because they are too loud",
+        "Because they are too quiet"
       ],
-      "answerIndex": 1,
-      "solution": "The correct answer is because they have different frequencies of vibration. Different frequencies create different pitches, which are perceived as different notes. The other options do not directly affect the pitch of the sound produced.",
+      "answerIndex": 0,
+      "solution": "Sound requires a medium like air to travel, and since the moon has no atmosphere, sound cannot propagate between the astronauts. The other options are incorrect because gravity and volume do not affect the ability of sound to travel in a vacuum.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "अलग-अलग संगीत वाद्य यंत्र क्यों अलग-अलग नोट उत्पन्न करते हैं यदि वे ध्वनि उत्पादन की समान विधियों का उपयोग करते हैं?",
+          "stem": "चंद्रमा पर दो अंतरिक्ष यात्री एक दूसरे से सीधे बात क्यों नहीं कर सकते?",
           "choices": [
-            "क्योंकि वे अलग-अलग मात्रा में पानी का उपयोग करते हैं",
-            "क्योंकि वे अलग-अलग कंपन की आवृत्ति के साथ होते हैं",
-            "क्योंकि वे अलग-अलग लोगों द्वारा बजाए जाते हैं",
-            "क्योंकि वे अलग-अलग मात्रा में हवा के साथ होते हैं"
+            "क्योंकि वहाँ हवा नहीं है",
+            "क्योंकि वहाँ गुरुत्व नहीं है",
+            "क्योंकि वे बहुत अधिक आवाज बोल रहे हैं",
+            "क्योंकि वे बहुत कम आवाज बोल रहे हैं"
           ],
-          "solution": "सही उत्तर यह है कि वे अलग-अलग कंपन की आवृत्ति के साथ होते हैं। अलग-अलग आवृत्तियां अलग-अलग ध्वनि उत्पन्न करती हैं, जिन्हें अलग-अलग नोट के रूप में अनुभव किया जाता है। अन्य विकल्प ध्वनि के उत्पादन के लिए ध्वनि की ऊंचाई को सीधे प्रभावित नहीं करते।",
+          "solution": "ध्वनि एक माध्यम जैसे हवा के माध्यम से यात्रा करती है, और चंद्रमा पर कोई वातावरण नहीं है, इसलिए ध्वनि अंतरिक्ष यात्रियों के बीच प्रसारित नहीं हो सकती। अन्य विकल्प गलत हैं क्योंकि गुरुत्व और आवाज के स्तर निर्वात में ध्वनि के यात्रा करने में बाधा नहीं डालते।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology for physics concepts.",
+          "critique": "Translation is accurate, technical terms (like 'गुरुत्व' for gravity, 'हवा' for air) are standard in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "विविध संगीत वाद्यांनी समान ध्वनी उत्पादन पद्धती वापरूनही वेगवेगळे नोट्स का उत्पन्न करतात?",
+          "stem": "चंद्रावर दोन अंतरिक्ष यात्री एकमेकांशी सीधा बोलू शकत नाहीत कारण काय?",
           "choices": [
-            "कारण ते वेगवेगळ्या प्रमाणात पाणी वापरतात",
-            "कारण त्यांच्या विविध विस्तारांच्या वारंवारता असतात",
-            "कारण ते वेगवेगळ्या लोकांद्वारे खेळले जातात",
-            "कारण त्यांच्याकडे वेगवेगळ्या प्रमाणात हवा असतो"
+            "कारण त्यांच्याकडे वायू नाही",
+            "कारण त्यांच्याकडे गुरुत्व नाही",
+            "कारण ते खूप जास्त आवाज करतात",
+            "कारण ते खूप निरावाज आहेत"
           ],
-          "solution": "योग्य उत्तर हे असे आहे की त्यांच्या विविध विस्तारांच्या वारंवारता असतात. वेगवेगळ्या वारंवारता वेगवेगळ्या तारतम्यांचे निर्माण करतात, जे वेगवेगळ्या नोट्स म्हणून ओळखले जातात. इतर विकल्प ध्वनी उत्पादनाच्या तारतम्यावर सीधा प्रभाव टाकत नाहीत.",
+          "solution": "ध्वनी एखाद्या माध्यमाच्या आवश्यकतेने पसरतो जसे की वायू, आणि चंद्रावर कोणताही वातावरण नाही, त्यामुळे ध्वनी अंतरिक्ष यात्रींमध्ये पसरू शकत नाही. इतर विकल्प चुकीचे आहेत कारण गुरुत्व आणि आवाजाची तीव्रता विस्तारावर प्रभाव टाकत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for 'frequency of vibration' and 'pitch'.",
+          "critique": "The translation is accurate and maintains the scientific concepts correctly in Marathi.",
           "flag": null
         }
       },
@@ -547,146 +357,51 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "pupils might confuse the role of water level in the Jaltarang experiment with the sound production in instruments",
         null,
-        "This is a misconception about the role of the player in sound production",
-        "pupils might think air quantity directly affects pitch instead of air column length"
+        "students often confuse the need for air with the need for gravity to transmit sound",
+        "Believes sound travels better when louder, not considering the need for a medium",
+        "Believes sound can't travel in a vacuum because it's too quiet, not because it needs a medium"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as different frequencies of vibration are the primary reason for different notes. The author's reasoning for the distractors aligns with common misconceptions.",
+      "critique": "The correct answer is 0, as sound requires a medium to travel and the moon has no atmosphere. The author's reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 138,
-          "pageStart": 116,
+          "ordinal": 135,
+          "pageStart": 114,
+          "pageEnd": 114,
+          "headingPath": [
+            "15. Sound"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 136,
+          "pageStart": 114,
+          "pageEnd": 115,
+          "headingPath": [
+            "15. Sound"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 137,
+          "pageStart": 115,
           "pageEnd": 116,
-          "headingPath": [
-            "15. Sound"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 139,
-          "pageStart": 116,
-          "pageEnd": 117,
-          "headingPath": [
-            "15. Sound"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 140,
-          "pageStart": 118,
-          "pageEnd": 118,
           "headingPath": [
             "15. Sound"
           ]
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T21:23:17.273Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "In a flute, how is the frequency of sound changed?",
-      "choices": [
-        "By changing the tension of the strings",
-        "By changing the length of the vibrating air column",
-        "By changing the material of the flute",
-        "By changing the volume of the sound"
-      ],
-      "answerIndex": 1,
-      "solution": "In a flute, the frequency of sound is changed by altering the length of the vibrating air column. When the length of the air column changes, it affects the wavelength of the sound wave produced, which in turn changes the frequency. Changing the tension of strings, material, or volume does not directly influence the frequency of the sound produced by a flute.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक बांसुरी में ध्वनि की आवृत्ति कैसे बदली जाती है?",
-          "choices": [
-            "स्ट्रिंग्स के तनाव को बदलकर",
-            "कंपनशील हवा के स्तंभ की लंबाई को बदलकर",
-            "बांसुरी के सामग्री को बदलकर",
-            "ध्वनि के आयतन को बदलकर"
-          ],
-          "solution": "एक बांसुरी में ध्वनि की आवृत्ति कंपनशील हवा के स्तंभ की लंबाई को बदलकर बदली जाती है। जब हवा के स्तंभ की लंबाई बदल जाती है, तो उत्पन्न ध्वनि तरंग की तरंगदैर्ध्य प्रभावित होती है, जो आवृत्ति को बदल देती है। स्ट्रिंग्स के तनाव, सामग्री या आयतन को बदलना बांसुरी द्वारा उत्पन्न ध्वनि की आवृत्ति को सीधे प्रभावित नहीं करता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium science textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "फ्ल्यूटमध्ये ध्वनीची वारंवारता कशी बदलली जाते?",
-          "choices": [
-            "स्ट्रिंग्सच्या ताणाचे बदलणे",
-            "कंपन करणाऱ्या हवेच्या स्तंभाच्या लांबीचे बदलणे",
-            "फ्ल्यूटच्या काठिण्याचे बदलणे",
-            "ध्वनीच्या आवाजाचे बदलणे"
-          ],
-          "solution": "फ्ल्यूटमध्ये, ध्वनीची वारंवारता कंपन करणाऱ्या हवेच्या स्तंभाच्या लांबीचे बदलण्याद्वारे बदलली जाते. जेव्हा हवेच्या स्तंभाची लांबी बदलते तेव्हा तयार होणाऱ्या ध्वनी तरंगाच्या तरंगलांबीवर परिणाम होतो, जो वारंवारता बदलतो. स्ट्रिंग्सच्या ताणाचे, काठिण्याचे किंवा आवाजाचे बदलणे फ्ल्यूटमधून उत्पन्न होणाऱ्या ध्वनीच्या वारंवारतेवर सीधा परिणाम करत नाही.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Marathi-medium science textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Refers to string instruments instead of air column instruments",
-        null,
-        "Focuses on material instead of air column length",
-        "Confuses volume with frequency"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and aligns with the correct answer. The reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 138,
-          "pageStart": 116,
-          "pageEnd": 116,
-          "headingPath": [
-            "15. Sound"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 139,
-          "pageStart": 116,
-          "pageEnd": 117,
-          "headingPath": [
-            "15. Sound"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 140,
-          "pageStart": 118,
-          "pageEnd": 118,
-          "headingPath": [
-            "15. Sound"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T21:23:17.273Z",
+      "generatedAt": "2026-11-02T12:21:27.948Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

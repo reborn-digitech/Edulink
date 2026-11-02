@@ -1,0 +1,525 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T07:58:24.409Z",
+  "finishedAt": "2026-11-02T08:03:17.568Z",
+  "seconds": 293,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी गणित इंग्रजी",
+    "bookCode": "803020004",
+    "document": "balbharati/8/mathematics/803020004.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 16 — Surface area and Volume",
+    "edition": "First Edition 2018",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n18.\ntotal surface area of the resulting cuboid is\n(A) 128 cm 2 (B) 160 cm 2\n(C) 176 cm 2 (D) 192 cm 2\nAssertion-Reason Based Questions\nDirections: Questions number 19 and 20 are Assertion and Reason based\nquestions carrying 1 mark each. Two statements are given, one labelled\nAssertion (A) and the other labelled Reason (R).\nSelect the correct answer from the options (A), (B), (C) and (D) as given\nbelow:\n(A) Both Assertion (A) and Reason (R) are true and (R) is the correct\nexplanation of Assertion (A).\n(B) Both Assertion (A) and Reason (R) are true but (R) is not the correct\nexplanation of Assertion (A).\n(C) Assertion (A) is true but Reason (R) is false.\n(D) Assertion (A) is false but Reason (",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n18. B Volume of cube, 𝑎 = 64 ⇒ 𝑎 = 4 cm 3 1\nOn joining two cubes of side = 4 cm, we get a cuboid whose\nLength (𝑙) = 8 cm, Breadth (𝑏) = 4 cm, Height (ℎ) = 4 cm\nSurface area of resulting cuboid = 2(𝑙𝑏 + 𝑏ℎ + ℎ 𝑙)\n= 2(8 × 4 + 4 × 4 + 4 × 8)\n𝟐 =160 cm 2\n(B) 𝟏𝟔𝟎𝐜𝐦",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2026-27]\n11. (B) 160 cm 2 Side of cube = 4 cm 1\nDimensions of resulting cuboid: length = 8 cm, breadth = 4 cm, height\n= 4 cm.\nTotal surface area = 2 (8 × 4 + 4 × 4 + 8 × 4) = 160 cm 2",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2022-23]\n13. The sum of the length, breadth and height of a cuboid is 6√3cm and the length of its 1\ndiagonal is 2√3cm. The total surface area of the cuboid is\n(a) 48 cm 2 (b) 72 cm 2 (c) 96 cm 2 (d) 108 cm 2"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 103269,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 18664,
+      "completionTokens": 6175
+    },
+    "critique": {
+      "calls": 31,
+      "ms": 207572,
+      "in": 24,
+      "out": 21,
+      "rejects": 3,
+      "promptTokens": 14885,
+      "completionTokens": 5707
+    },
+    "solver": {
+      "calls": 153,
+      "ms": 78612,
+      "in": 21,
+      "out": 12,
+      "rejects": 9,
+      "promptTokens": 30343,
+      "completionTokens": 1596
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 5,
+      "rejects": 7,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 10,
+      "ms": 1874,
+      "in": 5,
+      "out": 3,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 104755,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 7118,
+      "completionTokens": 3304
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 2
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "A cuboid has a length of 5 cm, a breadth of 3 cm, and a height of 2 cm. What is its total surface area?",
+      "ms": {
+        "draft": 4663,
+        "critique": 8072
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula for the total surface area of a cuboid?",
+      "ms": {
+        "draft": 4663,
+        "critique": 6853,
+        "solver": 1851,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the total surface area of a cuboid with length 8 cm, breadth 4 cm and height 4 cm?",
+      "ms": {
+        "draft": 4663,
+        "critique": 7679,
+        "solver": 1954
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A cuboid has a length of 10 cm, a breadth of 5 cm, and a height of 3 cm. If the cuboid is painted on all sides, what is the total area to be painted?",
+      "ms": {
+        "draft": 4663,
+        "critique": 6178
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A cylindrical drum has a diameter of 20 cm and a height of 30 cm. What is its total surface area?",
+      "ms": {
+        "draft": 12649,
+        "critique": 6079,
+        "solver": 1823
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A cylinder has a curved surface area of 264 cm² and a height of 12 cm. What is the total surface area of the cylinder?",
+      "ms": {
+        "draft": 12649,
+        "critique": 7219,
+        "solver": 1376,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A cylindrical container with a diameter of 14 cm and a height of 10 cm is open at the top. What is the area of the sheet required to make the container?",
+      "ms": {
+        "draft": 12649,
+        "critique": 7032,
+        "solver": 1621,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula for the total surface area of a closed cylinder?",
+      "ms": {
+        "draft": 12649,
+        "critique": 8269,
+        "solver": 15526
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula for the volume of a cylinder?",
+      "ms": {
+        "draft": 12649,
+        "critique": 5441,
+        "solver": 645,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The volume of a cylinder is 1540 cm³ and the height is 10 cm. What is the total surface area of the cylinder?",
+      "ms": {
+        "draft": 12649,
+        "critique": 6845,
+        "solver": 933
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A cuboid is formed by joining two cubes of side 4 cm. What is the total surface area of the resulting cuboid?",
+      "ms": {
+        "draft": 3443,
+        "critique": 5169,
+        "solver": 1422
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A cylindrical tank with a diameter of 14 m and a height of 10 m is filled with water. If the tank is 75% full, how much water is in the tank?",
+      "ms": {
+        "draft": 3443,
+        "critique": 5613,
+        "solver": 11560
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula for the total surface area of a cylinder?",
+      "ms": {
+        "draft": 3443,
+        "critique": 8994,
+        "solver": 14394,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A cuboid is made by joining two cubes with side 3 cm. What is the total surface area of the resulting cuboid?",
+      "ms": {
+        "draft": 4820,
+        "critique": 6426
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A cuboid is formed by joining two cubes of side 4 cm. What is the total surface area of the cuboid?",
+      "ms": {
+        "draft": 4820,
+        "critique": 7344,
+        "solver": 1269
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A cuboidal warehouse has a length of 6 m, breadth of 4 m, and height of 4 m. How many cube-shaped boxes of side 40 cm can be completely filled in the warehouse?",
+      "ms": {
+        "draft": 4820,
+        "critique": 8257,
+        "solver": 2378
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A cuboidal fish tank has a length of 100 cm, breadth of 40 cm, and height of 50 cm. How many litres of water can it hold?",
+      "ms": {
+        "draft": 4820,
+        "critique": 7112,
+        "solver": 14253,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A cylindrical tank has a diameter of 1 m and a height of 2 m. What is its total surface area?",
+      "ms": {
+        "draft": 4820,
+        "critique": 6640,
+        "solver": 13086,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A cylindrical water tank has a diameter of 1 m and a height of 2 m. It is to be painted internally and externally. If the rate of painting is 80 rupees per square metre, what is the total cost?",
+      "ms": {
+        "draft": 4820,
+        "critique": 10868,
+        "solver": 564
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the volume of a cube with a side of 3 cm?",
+      "ms": {
+        "draft": 4663,
+        "critique": 7228,
+        "solver": 11813,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A cylinder has a curved surface area of 616 cm² and a height of 14 cm. What is the radius of the cylinder?",
+      "ms": {
+        "draft": 3443,
+        "critique": 4519,
+        "solver": 1492,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A cylinder has a radius of 5 cm and a height of 10 cm. What is the volume of the cylinder?",
+      "ms": {
+        "draft": 3443,
+        "critique": 7334,
+        "solver": 1613,
+        "form": 0,
+        "translation": 29186
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A cube of side 4 cm is divided into smaller cubes of side 1 cm. How many such smaller cubes are there?",
+      "ms": {
+        "draft": 4663,
+        "critique": 6280,
+        "solver": 2360,
+        "form": 0,
+        "translation": 34897
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A solid cylinder of radius 7 cm and height 14 cm is melted and recast into a number of smaller cylinders of radius 3.5 cm and height 7 cm. How many such small cylinders can be made?",
+      "ms": {
+        "draft": 3443,
+        "critique": 6871,
+        "solver": 12321,
+        "form": 0,
+        "translation": 36437
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A cuboid has a length of 5 cm, a breadth of 3 cm, and a height of 2 cm. What is its total surface area?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the formula for the total surface area of a cuboid?",
+      "reason": "options 2 and 3 are the same (\"l × b × h\"); options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the total surface area of a cuboid with length 8 cm, breadth 4 cm and height 4 cm?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A cuboid has a length of 10 cm, a breadth of 5 cm, and a height of 3 cm. If the cuboid is painted on all sides, what is the total area to be painted?",
+      "reason": "the critic finds option 0 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A cylindrical drum has a diameter of 20 cm and a height of 30 cm. What is its total surface area?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A cylinder has a curved surface area of 264 cm² and a height of 12 cm. What is the total surface area of the cylinder?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"2*3.14*3.5*(3.5+12)\" = 340.69, but the key says 352"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A cylindrical container with a diameter of 14 cm and a height of 10 cm is open at the top. What is the area of the sheet required to make the container?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"2*3.14*7*10 + 3.14*7*7\" = 593.46, but the key says 440"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the formula for the total surface area of a closed cylinder?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the formula for the volume of a cylinder?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The volume of a cylinder is 1540 cm³ and the height is 10 cm. What is the total surface area of the cylinder?",
+      "reason": "the solver picked option 1 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A cuboid is formed by joining two cubes of side 4 cm. What is the total surface area of the resulting cuboid?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A cylindrical tank with a diameter of 14 m and a height of 10 m is filled with water. If the tank is 75% full, how much water is in the tank?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the formula for the total surface area of a cylinder?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A cuboid is made by joining two cubes with side 3 cm. What is the total surface area of the resulting cuboid?",
+      "reason": "the critic finds option 3 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A cuboid is formed by joining two cubes of side 4 cm. What is the total surface area of the cuboid?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A cuboidal warehouse has a length of 6 m, breadth of 4 m, and height of 4 m. How many cube-shaped boxes of side 40 cm can be completely filled in the warehouse?",
+      "reason": "the solver picked option 1 1 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A cuboidal fish tank has a length of 100 cm, breadth of 40 cm, and height of 50 cm. How many litres of water can it hold?",
+      "reason": "options 0 and 2 are the same (\"200 litres\"); options 0 and 2 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A cylindrical tank has a diameter of 1 m and a height of 2 m. What is its total surface area?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"2*3.14*0.5*(0.5+2)\" = 7.8500000000000005, but the key says 15.7"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A cylindrical water tank has a diameter of 1 m and a height of 2 m. It is to be painted internally and externally. If the rate of painting is 80 rupees per square metre, what is the total cost?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What is the volume of a cube with a side of 3 cm?",
+      "reason": "near-duplicate of served question cmvx5h4oh03zd0remb48zibc6 (cosine 0.913 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "A cylinder has a curved surface area of 616 cm² and a height of 14 cm. What is the radius of the cylinder?",
+      "reason": "near-duplicate of served question cmvx5h4ov04010rem9ljpyeof (cosine 0.955 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

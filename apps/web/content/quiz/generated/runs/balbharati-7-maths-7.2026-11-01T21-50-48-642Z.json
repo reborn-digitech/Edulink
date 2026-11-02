@@ -1,0 +1,219 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T21:50:48.642Z",
+  "finishedAt": "2026-11-01T22:01:31.920Z",
+  "seconds": 643,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी गणित इंग्रजी",
+    "bookCode": "703020004",
+    "document": "balbharati/7/mathematics/703020004.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 7 — Joint Bar Graph",
+    "edition": "2026 edition",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n31. (A) The monthly income of Aryan and Babban are in the ratio 3:4 and their monthly 3\nexpenditures are in ratio 5:7. If each saves ₹ 15,000 per month, find their monthly\nincomes.\nOR\n(B) Solve the following system of equations graphically:\n2𝑥 + 𝑦 =6, 2 𝑥 – 𝑦 – 2=0. Find the area of the triangle so formed by two lines and 𝑥 -\naxis.\nFor Visually Impaired candidates:\nFive years hence, fathers age will be three times the age of son. Five years ago,\nfather was seven times as old as his son. Find their present ages.\n(Section – D)",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2023-24]\n27. Cost of two toys A and B are 50 and 75. On a particular Sunday shopkeeper P sells 7 toys of\ntype A and 10 toys of type B whereas shopkeeper Q sells 8 toys of type A and 6 toys of type B.\nFind income of both shopkeepers using matrix Algebra.",
+      "[CBSE Class XII Mathematics, marking scheme, 2026-27]\n5. (C) |𝑎𝑑𝑗(𝑃𝑄)| = |𝑎𝑑𝑗𝑄. 𝑎𝑑𝑗𝑃| = |𝑎𝑑𝑗𝑄||𝑎𝑑𝑗𝑃| = |𝑄||𝑃| = 3 × 2 = 6 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 1,
+      "ms": 66122,
+      "in": 6,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 4082,
+      "completionTokens": 1201
+    },
+    "critique": {
+      "calls": 6,
+      "ms": 211671,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 2707,
+      "completionTokens": 956
+    },
+    "solver": {
+      "calls": 30,
+      "ms": 50839,
+      "in": 6,
+      "out": 3,
+      "rejects": 3,
+      "promptTokens": 3740,
+      "completionTokens": 240
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 7,
+      "ms": 10449,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 667434,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6979,
+      "completionTokens": 3430
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "In the joint bar graph showing wheat production of Ajay and Vijay, which year had the highest combined wheat production?",
+      "ms": {
+        "draft": 11020,
+        "critique": 54777,
+        "solver": 8657
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the joint bar graph showing wheat production of Ajay and Vijay, in which year was the difference in their wheat production the least?",
+      "ms": {
+        "draft": 11020,
+        "critique": 54900,
+        "solver": 15784
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the joint bar graph showing the number of boys and girls in different classes, which class has the highest number of girls?",
+      "ms": {
+        "draft": 11020,
+        "critique": 26256,
+        "solver": 2117
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the joint bar graph showing the number of boys and girls in different classes, what is the total number of students in the 7th class?",
+      "ms": {
+        "draft": 11020,
+        "critique": 15497,
+        "solver": 1409,
+        "form": 0,
+        "translation": 200293
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the joint bar graph showing wheat production of Ajay and Vijay, what is the difference between the wheat production of Ajay and Vijay in 2015?",
+      "ms": {
+        "draft": 11020,
+        "critique": 49486,
+        "solver": 8665,
+        "form": 0,
+        "translation": 232778
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In the joint bar graph showing the number of boys and girls in different classes, which class has the lowest number of boys?",
+      "ms": {
+        "draft": 11020,
+        "critique": 22297,
+        "solver": 1176,
+        "form": 0,
+        "translation": 228033
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "In the joint bar graph showing wheat production of Ajay and Vijay, which year had the highest combined wheat production?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In the joint bar graph showing wheat production of Ajay and Vijay, in which year was the difference in their wheat production the least?",
+      "reason": "the solver picked option 1 1 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the joint bar graph showing the number of boys and girls in different classes, which class has the highest number of girls?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "The operation was aborted due to timeout"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

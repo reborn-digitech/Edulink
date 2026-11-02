@@ -21,47 +21,341 @@
   "board": "NCERT",
   "book": "Curiosity",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-31T09:15:02.122Z",
+  "generatedAt": "2026-11-01T20:09:25.016Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 2,
-      "stem": "Which of the following is an example of condensation?",
+      "difficulty": 1,
+      "stem": "What is the main reason water in an earthen pot feels cold?",
       "choices": [
-        "Water droplets forming on the outside of a glass tumbler",
-        "Water flowing from one container to another",
-        "Water turning into ice when cooled",
-        "Water evaporating from a puddle"
+        "The earthen pot is made of metal",
+        "The water is stored in a larger pot",
+        "The water evaporates from the pot's surface",
+        "The pot is kept in a refrigerator"
       ],
-      "answerIndex": 0,
-      "solution": "The correct answer is 'Water droplets forming on the outside of a glass tumbler' because condensation is the process where water vapour turns into liquid when it comes into contact with a cold surface. The other options represent different processes like flow, freezing, and evaporation, which are not condensation.",
+      "answerIndex": 2,
+      "solution": "The water in an earthen pot feels cold because the water evaporates from the pot's surface, which causes a cooling effect. The other options are incorrect because earthen pots are not made of metal, the size of the pot is not the main reason, and the pot is not usually kept in a refrigerator.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा द्रवीकरण का उदाहरण है?",
+          "stem": "एक गोंद के घड़े में पानी क्यों ठंडा लगता है?",
           "choices": [
-            "कांच के गिलास के बाहरी भाग पर पानी के बूंद बनना",
-            "एक बर्तन से दूसरे बर्तन में पानी के बहना",
-            "ठंडा करने पर पानी के बर्फ में बदल जाना",
-            "तालाब से पानी के वाष्पित हो जाना"
+            "गोंद के घड़े को धातु से बनाया जाता है",
+            "पानी एक बड़े घड़े में भंडारित किया जाता है",
+            "घड़े की सतह से पानी वाष्पित हो जाता है",
+            "घड़ा फ्रिज में रखा जाता है"
           ],
-          "solution": "सही उत्तर 'कांच के गिलास के बाहरी भाग पर पानी के बूंद बनना' है क्योंकि द्रवीकरण एक प्रक्रिया है जिसमें जल वाष्प ठंडी सतह के संपर्क में आकर द्रव में बदल जाता है। अन्य विकल्पों में प्रवाह, हिमीकरण और वाष्पीकरण जैसी अलग-अलग प्रक्रियाएं दर्शाई गई हैं जो द्रवीकरण नहीं हैं।",
+          "solution": "एक गोंद के घड़े में पानी ठंडा लगता है क्योंकि घड़े की सतह से पानी वाष्पित हो जाता है, जिसके कारण ठंडक का अनुभव होता है। अन्य विकल्प गलत हैं क्योंकि गोंद के घड़े धातु से नहीं बनाए जाते, घड़े के आकार का मुख्य कारण नहीं है, और घड़ा आमतौर पर फ्रिज में नहीं रखा जाता।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for a textbook context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एर्थन पोटमधील पाणी थंड का वाटते?",
+          "choices": [
+            "एर्थन पोट धातूने बनलेले असते",
+            "पाणी मोठ्या पोटात ठेवले जाते",
+            "पाणी पोटाच्या पृष्ठभागावर बाष्पीभूत होते",
+            "पोट रेफ्रिजरेटरमध्ये ठेवले जाते"
+          ],
+          "solution": "एर्थन पोटमधील पाणी थंड वाटते कारण पाणी पोटाच्या पृष्ठभागावर बाष्पीभूत होते, जे थंडीचा प्रभाव निर्माण करते. इतर विकल्प अयोग्य आहेत कारण एर्थन पोट धातूने बनलेले नसते, पोटाच्या आकाराचा मुख्य कारण नसतो आणि पोट नियमितपणे रेफ्रिजरेटरमध्ये ठेवले जात नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the material of the pot with its properties",
+        "Ignores the cooling effect of evaporation",
+        null,
+        "Misunderstands the purpose of the pot's size"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies evaporation as the cause of the cooling effect. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 10,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water",
+            "8.6 cooling Effect"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 11,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water",
+            "8.7 How Do clouds Give us Rain?"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 12,
+          "pageStart": 16,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water",
+            "8.7 How Do clouds Give us Rain?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-01T20:09:25.016Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the purpose of using sand in a pot-in-pot cooler?",
+      "choices": [
+        "To make the pot heavier",
+        "To keep the sand moist",
+        "To provide a medium for evaporation",
+        "To reduce the amount of water used"
+      ],
+      "answerIndex": 2,
+      "solution": "The purpose of using sand in a pot-in-pot cooler is to provide a medium for evaporation, which helps in cooling the water. The other options are incorrect because the weight of the pot, the moisture of the sand, and the amount of water used are not the main purposes.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पोट-इन-पोट कूलर में रेत का उपयोग करने का उद्देश्य क्या है?",
+          "choices": [
+            "पोट को भारी बनाने के लिए",
+            "रेत को नम रखने के लिए",
+            "वाष्पीकरण के लिए एक माध्यम प्रदान करने के लिए",
+            "उपयोग किए गए पानी की मात्रा कम करने के लिए"
+          ],
+          "solution": "पोट-इन-पोट कूलर में रेत का उपयोग करने का उद्देश्य वाष्पीकरण के लिए एक माध्यम प्रदान करना है, जो पानी के ठंडा होने में मदद करता है। अन्य विकल्प गलत हैं क्योंकि पोट के भार, रेत के नम रहने और उपयोग किए गए पानी की मात्रा का मुख्य उद्देश्य नहीं है।",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते घनीभवनाचे उदाहरण आहे?",
+          "stem": "पोट-इन-पोट कूलरमध्ये रेतीचा उपयोग करण्याचा हेतू काय आहे?",
           "choices": [
-            "काचेच्या ट्युम्बलरच्या बाहेर जल थेंब तयार होणे",
-            "एका भांड्यातून दुसऱ्या भांड्यात जल प्रवाह होणे",
-            "ठिसू ठेवल्यास पाणी बर्फात बदलणे",
-            "एका खड्ड्यातून पाणी वाफ बनून जाणे"
+            "पोटला भारी करणे",
+            "रेती ओली ठेवणे",
+            "वाफीकरणासाठी माध्यम प्रदान करणे",
+            "वापरलेल्या पाण्याचे प्रमाण कमी करणे"
           ],
-          "solution": "बरोबर उत्तर 'काचेच्या ट्युम्बलरच्या बाहेर जल थेंब तयार होणे' आहे कारण घनीभवन हा प्रक्रिया आहे जेव्हा जल वाफ थंड सतहशी संपर्कात आल्यास ती द्रव बनते. इतर निवडा प्रवाह, जमने आणि वाफ बनणे या वेगवेगळ्या प्रक्रियांचे उदाहरण आहेत, जे घनीभवन नाहीत.",
+          "solution": "पोट-इन-पोट कूलरमध्ये रेतीचा उपयोग वाफीकरणासाठी माध्यम प्रदान करण्यासाठी केला जातो, जे पाण्याला थंड करण्यास मदत करते. इतर विकल्प अयोग्य आहेत कारण पोटचा वजन, रेतीची ओलावा आणि वापरलेल्या पाण्याचे प्रमाण हे मुख्य हेतू नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as would be found in a Marathi-medium textbook.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Focuses on the weight of the pot",
+        "Misunderstands the role of moisture",
+        null,
+        "Ignores the cooling effect of evaporation"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as sand provides a medium for evaporation, which is the key mechanism in a pot-in-pot cooler. The other options reflect common misconceptions about the function of sand in this context.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 10,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water",
+            "8.6 cooling Effect"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 11,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water",
+            "8.7 How Do clouds Give us Rain?"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 12,
+          "pageStart": 16,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water",
+            "8.7 How Do clouds Give us Rain?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-01T20:09:25.016Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the main purpose of filling the gap between two earthen pots with sand in the pot-in-pot cooler model?",
+      "choices": [
+        "To make the structure more stable",
+        "To increase the heat absorption",
+        "To allow water to evaporate and create a cooling effect",
+        "To keep the pots separate from each other"
+      ],
+      "answerIndex": 2,
+      "solution": "The main purpose of filling the gap with sand is to allow water to evaporate, which cools the inner pot through the process of evaporation. The other options are incorrect because stability, heat absorption, and keeping the pots separate are not the primary functions of the sand in this setup.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पोट-इन-पोट कूलर मॉडल में दो टेंबल पोट के बीच के अंतर को भरने का मुख्य उद्देश्य क्या है?",
+          "choices": [
+            "संरचना को अधिक स्थायी बनाना",
+            "ऊष्मा अवशोषण बढ़ाना",
+            "जल के वाष्पीकरण की अनुमति देना और शीतलन प्रभाव उत्पन्न करना",
+            "पोट को एक दूसरे से अलग रखना"
+          ],
+          "solution": "दो टेंबल पोट के बीच के अंतर को भरने का मुख्य उद्देश्य जल के वाष्पीकरण की अनुमति देना है, जो वाष्पीकरण की प्रक्रिया के माध्यम से आंतरिक पोट को ठंडा करता है। अन्य विकल्प गलत हैं क्योंकि स्थायित्व, ऊष्मा अवशोषण और पोट को अलग रखना इस व्यवस्था में रेत के मुख्य कार्य नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पोट-इन-पोट कूलर मॉडेलमध्ये दोन गाजराच्या भांड्यांमधील अंतर भरण्याचा मुख्य उद्देश काय आहे?",
+          "choices": [
+            "रचना अधिक स्थिर करणे",
+            "ताप शोषण वाढवणे",
+            "पाणी वाफ बनवण्यास परवानगी देणे आणि थंडी उत्पन्न करणे",
+            "भांड्यांना एकमेकांपासून वेगळे ठेवणे"
+          ],
+          "solution": "गाजराच्या अंतरात भरण्याचा मुख्य उद्देश पाणी वाफ बनवणे आहे, जे वाफीकरणाच्या प्रक्रियेद्वारे आंतरिक भांड्याला थंड करते. इतर विकल्प चुकीचे आहेत कारण स्थिरता, ताप शोषण आणि भांड्यांना वेगळे ठेवणे हे या सेटअपमध्ये गाजराचे प्रमुख कार्य नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms like 'गाजराच्या भांड्यां' (earthen pots) and 'वाफीकरण' (evaporation).",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Focuses on physical structure rather than function",
+        "Misinterprets the role of sand as heat absorption",
+        null,
+        "Does not understand the cooling effect of evaporation"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as the sand allows water to evaporate and create a cooling effect. The other options are invalid because they misinterpret the function of the sand. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 10,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water",
+            "8.6 cooling Effect"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 11,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water",
+            "8.7 How Do clouds Give us Rain?"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 12,
+          "pageStart": 16,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water",
+            "8.7 How Do clouds Give us Rain?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-01T20:09:25.016Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What would happen to the mass of a glass tumbler if water seeped out of it during an experiment?",
+      "choices": [
+        "It would increase",
+        "It would decrease",
+        "It would remain the same",
+        "It would become zero"
+      ],
+      "answerIndex": 1,
+      "solution": "If water seeped out of the glass tumbler, the mass of the tumbler would decrease because some water would be lost. A pupil who does not understand the concept of mass conservation might think the mass remains the same. A pupil who misinterprets the process might think the mass increases or becomes zero.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक प्रयोग के दौरान जब पानी एक ग्लास टम्बलर से बाहर निकल जाए तो ग्लास टम्बलर का द्रव्यमान क्या होगा?",
+          "choices": [
+            "इसका द्रव्यमान बढ़ जाएगा",
+            "इसका द्रव्यमान घट जाएगा",
+            "इसका द्रव्यमान एक ही रहेगा",
+            "इसका द्रव्यमान शून्य हो जाएगा"
+          ],
+          "solution": "यदि पानी ग्लास टम्बलर से बाहर निकल जाए तो टम्बलर का द्रव्यमान घट जाएगा क्योंकि कुछ पानी खो जाएगा। द्रव्यमान संरक्षण के अवधारणा को समझ नहीं पाने वाला छात्र यह सोच सकता है कि द्रव्यमान एक ही रहेगा। प्रक्रिया के गलत अर्थ के कारण छात्र यह सोच सकता है कि द्रव्यमान बढ़ जाएगा या शून्य हो जाएगा।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "काचेच्या टम्बलरमधून पाणी बाहेर वाहून गेल्यास टम्बलरचा वजन काय होईल?",
+          "choices": [
+            "तो वाढेल",
+            "तो कमी होईल",
+            "तो अचल राहील",
+            "तो शून्य होईल"
+          ],
+          "solution": "जर काचेच्या टम्बलरमधून पाणी बाहेर वाहून गेले असेल तर टम्बलरचा वजन कमी होईल कारण त्यातील काही पाणी गेले असेल. वजन संरक्षणाच्या अंशतः अज्ञानामुळे एखादा विद्यार्थी असे समजू शकतो की वजन अचल राहील. घटनेच्या चुकीच्या व्याख्येमुळे एखादा विद्यार्थी असे समजू शकतो की वजन वाढेल किंवा शून्य होईल.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
@@ -72,20 +366,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Believes that condensation adds mass to the tumbler without considering that water is escaping from the tumbler",
         null,
-        "Confuses condensation with the movement of water",
-        "Mixes up freezing with condensation",
-        "Thinks condensation involves solidification instead of liquid formation"
+        "thinks mass is conserved regardless of the process",
+        "imagines an unrealistic scenario"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 0, as condensation involves the transformation of water vapor into liquid. The other options represent different processes (flow, freezing, evaporation), and the author's explanations for the distractors align with common misconceptions.",
+      "critique": "The solution correctly identifies that the mass would decrease as water leaves the tumbler, and the reasoning aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/6/science/fecu108.pdf",
@@ -129,49 +423,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T09:15:02.122Z",
+      "generatedAt": "2026-11-01T20:09:25.016Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 2,
-      "stem": "What is the main property of water vapour that allows it to spread in the air?",
+      "difficulty": 4,
+      "stem": "Based on the experiment described, what can be concluded about the water collected on the outer surface of the glass tumbler?",
       "choices": [
-        "It has a fixed shape",
-        "It has a fixed volume",
-        "It does not have a fixed shape",
-        "It cannot flow"
+        "It is due to evaporation",
+        "It is due to condensation",
+        "It is due to seepage",
+        "It is due to boiling"
       ],
-      "answerIndex": 2,
-      "solution": "The correct answer is 'It does not have a fixed shape' because gases, like water vapour, can expand to fill any container they occupy. Solids and liquids have fixed shapes and volumes, which prevents them from spreading out like gases do.",
+      "answerIndex": 1,
+      "solution": "The experiment shows that water droplets form on the outer surface of the tumbler when water vapour in the air comes into contact with the cold surface, which is condensation. A pupil who confuses the processes might think it is due to evaporation. A pupil who misunderstands the setup might think it is due to seepage or boiling.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "जल वाष्प के मुख्य गुण क्या है जो इसे हवा में फैलने की अनुमति देता है?",
+          "stem": "विवरण में वर्णित प्रयोग के आधार पर, ग्लास टम्बलर की बाहरी सतह पर एकत्रित पानी के बारे में क्या निष्कर्ष निकाला जा सकता है?",
           "choices": [
-            "इसका निश्चित आकार होता है",
-            "इसका निश्चित आयतन होता है",
-            "इसका निश्चित आकार नहीं होता है",
-            "इसका प्रवाह नहीं हो सकता है"
+            "यह वाष्पीकरण के कारण है",
+            "यह संघनन के कारण है",
+            "यह रिसाव के कारण है",
+            "यह उबलने के कारण है"
           ],
-          "solution": "सही उत्तर 'इसका निश्चित आकार नहीं होता है' है क्योंकि गैसें, जैसे जल वाष्प, किसी भी बर्तन को भर सकती हैं जिसमें वे रहती हैं। ठोस और द्रव्य के निश्चित आकार और आयतन होते हैं, जो इन्हें गैसों की तरह फैलने से रोकते हैं।",
+          "solution": "प्रयोग दर्शाता है कि हवा में जल वाष्प ठंडी सतह के संपर्क में आने पर ग्लास टम्बलर की बाहरी सतह पर जल की बूंदें बनती हैं, जो संघनन है। एक छात्र जो प्रक्रियाओं को गलत तरीके से समझता है, वह यह सोच सकता है कि यह वाष्पीकरण के कारण है। एक छात्र जो व्यवस्था को गलत तरीके से समझता है, वह रिसाव या उबलने के कारण सोच सकता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in Hindi science education.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "जल वाष्पच्या मुख्य गुणाचे वर्णन करा जे त्याला हवेत पसरण्यास परवानगी देते?",
+          "stem": "प्रयोगावर आधारित, ग्लास टम्बलरच्या बाह्य सतही जमलेल्या पाण्याबद्दल काय निष्कर्ष काढता येईल?",
           "choices": [
-            "त्याचे निश्चित आकार असतो",
-            "त्याचे निश्चित आयतन असतो",
-            "त्याला निश्चित आकार नसतो",
-            "तो वाहू शकत नाही"
+            "ते वाफीकरणामुळे आहे",
+            "ते वायूमयीकरणामुळे आहे",
+            "ते रिसणामुळे आहे",
+            "ते उकळणामुळे आहे"
           ],
-          "solution": "बरोबर उत्तर 'त्याला निश्चित आकार नसतो' आहे कारण वायू, जसे की जल वाष्प, त्यांनी घेतलेल्या कोणत्याही वास्तविक वस्तूचा भरून टाकतात. घन पदार्थ आणि द्रव यांना निश्चित आकार आणि आयतन असतो, जे त्यांना वायू प्रमाणे पसरण्यास अडवतात.",
+          "solution": "प्रयोगात दिसते की वायूमधील जल वाफा ठांगलेल्या सतहशी संपर्शात आल्याने ग्लास टम्बलरच्या बाह्य सतही पाण्याच्या थेंब तयार होतात, जे वायूमयीकरण आहे. एखादा विद्यार्थी या प्रक्रियांचा गैरसमज करू शकतो आणि ते वाफीकरणामुळे असल्याचे समजू शकतो. एखादा विद्यार्थी व्यवस्थेचा गैरसमज करू शकतो आणि ते रिसणामुळे किंवा उकळणामुळे असल्याचे समजू शकतो.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology as used in Marathi textbooks.",
           "flag": null
         }
       },
@@ -180,20 +474,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Thinks gases have a fixed shape",
-        "Confuses gas properties with liquid properties",
+        "confuses condensation with evaporation",
         null,
-        "Fails to understand the nature of gases"
+        "thinks seepage causes droplets",
+        "mixes up boiling with condensation"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed. The correct answer aligns with the scientific understanding that gases, like water vapour, do not have a fixed shape, allowing them to spread in the air. The distractors reflect common misconceptions about the properties of gases, liquids, and solids.",
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1 (condensation), as the water forms when water vapor in the air condenses on the cold surface. The other options represent common misconceptions about phase changes and physical processes.",
       "sources": [
         {
           "document": "ncert/6/science/fecu108.pdf",
@@ -237,524 +531,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T09:15:02.122Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Which activity in the house involves the process of evaporation?",
-      "choices": [
-        "Boiling water on a stove",
-        "Washing clothes with a detergent",
-        "Drying wet clothes with a fan",
-        "Freezing water in a refrigerator"
-      ],
-      "answerIndex": 2,
-      "solution": "Drying wet clothes with a fan involves evaporation, as the fan helps the water on the clothes to turn into vapour and escape. Boiling involves vaporization, washing does not involve evaporation, and freezing is a change to the solid state.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "घर में कौन सी गतिविधि वाष्पीकरण की प्रक्रिया के साथ जुड़ी होती है?",
-          "choices": [
-            "स्टोव पर पानी उबालना",
-            "डिटर्जेंट के साथ कपड़े धोना",
-            "फैन के साथ गीले कपड़े सुखाना",
-            "रेफ्रिजरेटर में पानी जमाना"
-          ],
-          "solution": "फैन के साथ गीले कपड़े सुखाना वाष्पीकरण के साथ जुड़ा होता है क्योंकि फैन पानी के वाष्प में बदलने और भाप के रूप में बाहर जाने में मदद करता है। उबालना वाष्पीकरण के साथ जुड़ा होता है, धोना वाष्पीकरण के साथ जुड़ा नहीं होता है, और जमाना ठोस अवस्था में परिवर्तन होता है।",
-          "imageAlt": null,
-          "critique": "Translation accurately preserves meaning, technical terms are appropriate for Hindi curriculum, and the correct answer remains option 2.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "घरातील कोणत्या क्रियाकलापात वाष्पीकरणाच्या प्रक्रियेचा समावेश होतो?",
-          "choices": [
-            "स्टोववर पाणी उकळणे",
-            "डिटर्जंट वापरून कपडे धुणे",
-            "फॅन वापरून भिजलेले कपडे शुष्क करणे",
-            "रेफ्रिजरेटरमध्ये पाणी जमाडणे"
-          ],
-          "solution": "फॅन वापरून भिजलेले कपडे शुष्क करणे वाष्पीकरणाच्या प्रक्रियेचा समावेश करते, कारण फॅन पाणी जे कपड्यांवर असते ते वाफेमध्ये बदलण्यास मदत करतो आणि त्याचा निर्गमन होतो. उकळणे हा वाष्पीकरणाचा विरोधी प्रकार आहे, धुणे वाष्पीकरणाशी संबंधित नाही आणि जमाडणे घन अवस्थेमध्ये बदलण्याचा प्रकार आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for scientific concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Involves vaporization, not evaporation",
-        "Does not involve the change of state of water",
-        null,
-        "Describes the purpose of using a fan, not the process itself"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 2, as drying wet clothes with a fan involves evaporation. The solution is sound and correctly identifies the misconception in the other options.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 13,
-          "pageStart": 19,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.7 How Do clouds Give us Rain?",
-            "Let us enhance our learning"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T09:15:02.122Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Which of the following is a process in which water changes from liquid to gas?",
-      "choices": [
-        "Freezing",
-        "Condensation",
-        "Evaporation",
-        "Melting"
-      ],
-      "answerIndex": 2,
-      "solution": "Evaporation is the process where water changes from liquid to gas. Freezing and melting are solid-liquid changes, and condensation is gas to liquid. Therefore, evaporation is the correct answer.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सी प्रक्रिया है जिसमें पानी द्रव से गैस में बदल जाता है?",
-          "choices": [
-            "हिमीकरण",
-            "तरलीकरण",
-            "वाष्पीकरण",
-            "गलन"
-          ],
-          "solution": "वाष्पीकरण वह प्रक्रिया है जिसमें पानी द्रव से गैस में बदल जाता है। हिमीकरण और गलन ठोस-द्रव परिवर्तन हैं, और तरलीकरण गैस से द्रव में परिवर्तन है। इसलिए, वाष्पीकरण सही उत्तर है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English question and options, with appropriate technical terms used in Hindi education context.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते प्रक्रिया आहे जेथे पाणी द्रवापासून वाफेमध्ये बदलते?",
-          "choices": [
-            "हिमीकरण",
-            "घनीकरण",
-            "वाष्पीकरण",
-            "वितळणे"
-          ],
-          "solution": "वाष्पीकरण ही प्रक्रिया आहे जेथे पाणी द्रवापासून वाफेमध्ये बदलते. हिमीकरण आणि वितळणे ही घन-द्रव बदल आहेत, आणि घनीकरण ही वाफेपासून द्रवामध्ये बदल आहे. म्हणूनच वाष्पीकरण हे योग्य उत्तर आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses freezing with evaporation",
-        "Confuses condensation with evaporation",
-        null,
-        "Confuses melting with evaporation"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed. The correct answer is evaporation, and the author's reasoning aligns with scientific understanding. The distractors reflect common misconceptions about phase changes.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 7,
-          "pageStart": 9,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.4 How can We change the States of Water?"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 8,
-          "pageStart": 11,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.5 How can Water be Evaporated Faster or",
-            "Slower?"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 9,
-          "pageStart": 12,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.5 How can Water be Evaporated Faster or",
-            "Slower?"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T09:15:02.122Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "In the pot-in-pot cooler model, why is sand used between the two pots?",
-      "choices": [
-        "To increase the weight of the structure",
-        "To provide insulation",
-        "To absorb moisture",
-        "To promote evaporation"
-      ],
-      "answerIndex": 1,
-      "solution": "Sand is used between the two pots in the pot-in-pot cooler to provide insulation. It helps retain the moisture and allows for gradual evaporation, which contributes to the cooling effect. Increasing weight, absorbing moisture, or promoting evaporation are not the main roles of sand in this setup.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "पोट-इन-पोट शीतलक मॉडल में, दो पात्रों के बीच रेत क्यों उपयोग की जाती है?",
-          "choices": [
-            "संरचना के भार को बढ़ाने के लिए",
-            "ऊष्मारोधन प्रदान करने के लिए",
-            "नमी को अवशोषित करने के लिए",
-            "वाष्पीकरण को बढ़ावा देने के लिए"
-          ],
-          "solution": "पोट-इन-पोट शीतलक में दो पात्रों के बीच रेत का उपयोग ऊष्मारोधन प्रदान करने के लिए किया जाता है। यह नमी को बरकरार रखने में मदद करता है और धीरे-धीरे वाष्पीकरण के कारण शीतलन प्रभाव में योगदान देता है। भार बढ़ाना, नमी को अवशोषित करना या वाष्पीकरण को बढ़ावा देना इस व्यवस्था में रेत के मुख्य कार्य नहीं हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, technical terms are appropriate for Hindi-medium curriculum, and the logic of the solution matches the original.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "पोट-इन-पोट शीतलक वस्तुस्थितीत, दोन पात्यांमध्ये रेत का वापरला जातो?",
-          "choices": [
-            "रचनेचा वजन वाढविण्यासाठी",
-            "ऊष्मारोधकता प्रदान करण्यासाठी",
-            "आर्द्रता शोषून घेण्यासाठी",
-            "वाष्पीभवन वाढविण्यासाठी"
-          ],
-          "solution": "पोट-इन-पोट शीतलक वस्तुस्थितीत दोन पात्यांमध्ये रेत ऊष्मारोधकता प्रदान करण्यासाठी वापरला जातो. तो आर्द्रता टिकवून ठेवतो आणि धीम्या गतीने वाष्पीभवन होऊ देतो, जे शीतलता प्रभावासाठी योगदान देतो. वजन वाढवणे, आर्द्रता शोषून घेणे किंवा वाष्पीभवन वाढवणे हे रेताचे मुख्य कार्य नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Thinks sand is used for weight",
-        null,
-        "Thinks sand absorbs moisture",
-        "Thinks sand helps with evaporation"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies insulation as the primary function of sand in the pot-in-pot cooler. The reasoning for the other options aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 10,
-          "pageStart": 14,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.6 cooling Effect"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 11,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.7 How Do clouds Give us Rain?"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 12,
-          "pageStart": 16,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.7 How Do clouds Give us Rain?"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T09:15:02.122Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "Which of the following best describes the role of dust particles in the formation of clouds?",
-      "choices": [
-        "They increase the temperature of the air",
-        "They act as nuclei for water droplets to form around",
-        "They prevent water vapour from condensing",
-        "They cause water to evaporate more quickly"
-      ],
-      "answerIndex": 1,
-      "solution": "Dust particles act as nuclei around which water vapour can condense to form tiny droplets, which eventually form clouds. They do not increase temperature, prevent condensation, or cause faster evaporation. The role of dust particles is essential in cloud formation.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा बादल बनने में धूल के कणों के कार्य का सबसे अच्छा वर्णन करता है?",
-          "choices": [
-            "वे हवा के तापमान को बढ़ाते हैं",
-            "वे पानी की बूंदों के लिए नाभिक के रूप में कार्य करते हैं",
-            "वे जल वाष्प के जमाव को रोकते हैं",
-            "वे पानी के वाष्पीकरण को अधिक तेज करते हैं"
-          ],
-          "solution": "धूल के कण पानी के वाष्प के जमाव के लिए नाभिक के रूप में कार्य करते हैं जो छोटी बूंदें बनाते हैं जो अंततः बादल बनाती हैं। वे तापमान नहीं बढ़ाते, जमाव को रोकते नहीं या वाष्पीकरण को तेज नहीं करते। धूल के कणों की भूमिका बादल बनने में आवश्यक है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, technical terms, and structure. The correct answer remains option (2), and all distractors remain incorrect.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते बादल तयार होण्यामध्ये धूल कणांच्या भूमिकेचे सर्वात चांगले वर्णन करते?",
-          "choices": [
-            "ते हवेचे तापमान वाढवतात",
-            "ते पाण्याच्या थेंबांच्या आसपास नाभिकांची भूमिका बजावतात",
-            "ते पाण्याच्या बाष्पाच्या घनीकरणाला रोखतात",
-            "ते पाणी जलद वाफ बनवतात"
-          ],
-          "solution": "धूल कण हवेतील पाण्याच्या बाष्पाला घनीकरणासाठी नाभिकांची भूमिका बजावतात आणि छोटे थेंब तयार करतात, जे बादल तयार करतात. ते तापमान वाढवत नाहीत, घनीकरण रोखत नाहीत किंवा वाफ जलद करत नाहीत. धूल कणांची भूमिका बादल तयार होण्यासाठी आवश्यक आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Thinks dust particles affect temperature",
-        null,
-        "Thinks dust stops condensation",
-        "Thinks dust causes evaporation"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies the role of dust particles as condensation nuclei, and the reasons for the wrong options align with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 10,
-          "pageStart": 14,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.6 cooling Effect"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 11,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.7 How Do clouds Give us Rain?"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 12,
-          "pageStart": 16,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.7 How Do clouds Give us Rain?"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T09:15:02.122Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "Which of the following is an example of a state change that requires the removal of heat?",
-      "choices": [
-        "Melting of ice",
-        "Evaporation of water",
-        "Condensation of water vapour",
-        "Boiling of water"
-      ],
-      "answerIndex": 2,
-      "solution": "Condensation is the process where water vapour turns into liquid, and it releases heat. Melting, evaporation, and boiling all require the addition of heat. Therefore, condensation is the correct answer.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्न में से कौन-सा ऊष्मा के निष्कासन की आवश्यकता वाले अवस्था परिवर्तन का उदाहरण है?",
-          "choices": [
-            "बर्फ का पिघलना",
-            "जल का वाष्पीकरण",
-            "जल वाष्प का द्रव बनना",
-            "जल का उबलना"
-          ],
-          "solution": "द्रव बनना वह प्रक्रिया है जिसमें जल वाष्प द्रव में बदल जाता है और ऊष्मा निष्कासित होती है। पिघलना, वाष्पीकरण और उबलना सभी ऊष्मा के अवशोषण की आवश्यकता रखते हैं। अतः द्रव बनना सही उत्तर है।",
-          "imageAlt": null,
-          "critique": "The translation accurately reflects the original meaning, with appropriate Hindi terminology used for scientific concepts.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते उष्णता दूर करण्याच्या आवश्यकतेने घडणारे अवस्था बदलाचे उदाहरण आहे?",
-          "choices": [
-            "हिमाचे वितळणे",
-            "पाण्याचे वाष्पीकरण",
-            "जल वाफचे घनीभवन",
-            "पाण्याचे उकळणे"
-          ],
-          "solution": "जल वाफचे घनीभवन हा प्रक्रिया आहे जेथे जल वाफ द्रव बनते आणि उष्णता बाहेर काढली जाते. वितळणे, वाष्पीकरण आणि उकळणे या सर्व प्रक्रियांमध्ये उष्णतेची आवश्यकता असते. म्हणून घनीभवन हा योग्य उत्तर आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses melting with condensation",
-        "Confuses evaporation with condensation",
-        null,
-        "Confuses boiling with condensation"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. Condensation is an exothermic process that releases heat, while melting, evaporation, and boiling are endothermic processes that require heat. The reasoning aligns with scientific principles.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 7,
-          "pageStart": 9,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.4 How can We change the States of Water?"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 8,
-          "pageStart": 11,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.5 How can Water be Evaporated Faster or",
-            "Slower?"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 9,
-          "pageStart": 12,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.5 How can Water be Evaporated Faster or",
-            "Slower?"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T09:15:02.122Z",
+      "generatedAt": "2026-11-01T20:09:25.016Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "If you place a cup of water in a freezer, what will happen to the water after a few hours?",
+      "stem": "What is the most likely reason for the appearance of water droplets on the outer surface of a glass tumbler containing ice?",
       "choices": [
-        "It will freeze into ice",
-        "It will evaporate",
-        "It will turn into steam",
-        "It will remain as water"
+        "Condensation of water vapour from the air",
+        "Seeping of water through the glass",
+        "Melting of ice",
+        "Evaporation of water"
       ],
       "answerIndex": 0,
-      "solution": "Water freezes when its temperature drops below 0°C, which occurs in a freezer. Evaporating or turning into steam requires heat, not cold. Remaining as water is impossible because the freezer's temperature is low enough to cause freezing.",
+      "solution": "The most likely reason is the condensation of water vapour from the air, which occurs when warm air meets the cold surface of the glass. Seeping of water through the glass is not possible under normal conditions. Melting of ice would result in liquid water inside the glass, not on the outside. Evaporation of water would remove moisture, not create droplets.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि आप एक कप पानी को फ्रीजर में रखते हैं, तो कुछ घंटों के बाद पानी क्या हो जाएगा?",
+          "stem": "बर्फ युक्त ग्लास टम्बलर के बाहरी सतह पर पानी की बूंदों के उत्पादन के लिए सबसे संभावित कारण क्या है?",
           "choices": [
-            "यह बर्फ में जम जाएगा",
-            "यह वाष्पित हो जाएगा",
-            "यह भाप में बदल जाएगा",
-            "यह पानी के रूप में रह जाएगा"
+            "हवा से जल वाष्प की संघनन",
+            "पानी के ग्लास में से बह जाना",
+            "बर्फ का पिघलना",
+            "पानी के वाष्पीकरण"
           ],
-          "solution": "जब पानी के तापमान में 0°C से नीचे गिर जाता है, तो यह बर्फ में जम जाता है, जो फ्रीजर में होता है। वाष्पित होना या भाप में बदलना गर्मी की आवश्यकता होती है, न कि ठंड। पानी के रूप में रहना संभव नहीं है क्योंकि फ्रीजर का तापमान इतना कम होता है कि जमने के लिए पर्याप्त होता है।",
+          "solution": "सबसे संभावित कारण हवा से जल वाष्प की संघनन है जो तब होता है जब गर्म हवा ग्लास की ठंडी सतह से मिलती है। पानी के ग्लास में से बह जाना सामान्य स्थितियों में संभव नहीं है। बर्फ का पिघलना ग्लास के अंदर तरल पानी के उत्पादन के कारण होता है, बाहर नहीं। पानी के वाष्पीकरण नमी को हटा देता है, न कि बूंदों के उत्पादन के कारण होता है।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the scientific concepts and terminology used in Hindi textbooks.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology consistent with standard science textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "जर तुम्ही एका ग्लास पाण्याची बरोबर फ्रीजरमध्ये ठेवली तर काही तासांनंतर पाणी काय होईल?",
+          "stem": "हिमाच्या बरोबरीत असलेल्या काचेच्या टम्बलरच्या बाह्य पृष्ठावर पाण्याच्या थुंक्यांच्या उद्भवाचा सर्वात शक्य कारण काय आहे?",
           "choices": [
-            "ते बर्फात बदलेल",
-            "ते वाफ म्हणून उद्भवेल",
-            "ते बर्फात बदलेल",
-            "ते पाणी रूपात राहील"
+            "हवेतील पाण्याच्या वाफेचे घनीभवन",
+            "पाणी काचेमधून वाहून जाणे",
+            "हिमाचे वितळणे",
+            "पाणी वाफा म्हणून उद्भवणे"
           ],
-          "solution": "पाणी 0°C पेक्षा कमी तापमानावर बर्फात बदलते, जे फ्रीजरमध्ये होते. वाफ म्हणून उद्भवण्यासाठी उष्णता आवश्यक असते, नकारात्मक तापमानाची आवश्यकता नसते. पाणी रूपात राहणे अशक्य आहे कारण फ्रीजरचे तापमान बर्फात बदलण्यासाठी पुरेसे खालात आहे.",
+          "solution": "सर्वात शक्य कारण हवेतील पाण्याच्या वाफेचे घनीभवन आहे, जे तापमान वाढलेल्या हवेला काचेच्या थंड पृष्ठाशी भेटते. पाणी काचेमधून वाहून जाणे सामान्य परिस्थितीत शक्य नाही. हिमाचे वितळणे टम्बलरच्या आत पाणी बनवेल, परंतु बाह्य पृष्ठावर नाही. पाण्याचे वाफा म्हणून उद्भवणे पाणी दूर करेल, परंतु थुंक्यांचे उद्भवणे नाही.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer (option 1) is in the same position as in the English version. The distractors are still incorrect in Marathi.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
         }
       },
@@ -764,9 +583,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "confuses freezing with evaporation",
-        "confuses evaporation with freezing",
-        "confuses heating with cooling"
+        "Confuses the process of condensation with seeping",
+        "Incorrectly assumes ice melts",
+        "Misunderstands the process of droplet formation"
       ],
       "solverAnswers": [
         0,
@@ -776,7 +595,7 @@
         0
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is well-constructed, with a clear correct answer and plausible misconceptions in the distractors. The reasoning aligns with basic scientific understanding of phase changes.",
+      "critique": "The correct answer is 0, as condensation of water vapor from the air is the scientifically accurate explanation. The other options represent common misconceptions.",
       "sources": [
         {
           "document": "ncert/6/science/fecu108.pdf",
@@ -809,49 +628,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T09:15:02.122Z",
+      "generatedAt": "2026-11-01T20:09:25.016Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "Which of the following best explains why sludge is left in heaps before being used as manure?",
+      "stem": "A two-wheeler seat becomes very hot on a sunny day. How can you cool it down?",
       "choices": [
-        "To increase its weight",
-        "To allow evaporation of water",
-        "To make it more compact",
-        "To reduce its volume"
+        "Use a fan to blow air over it",
+        "Put a wet cloth on it",
+        "Spray water on it",
+        "Use a cooler"
       ],
       "answerIndex": 1,
-      "solution": "Leaving sludge in heaps allows water to evaporate, reducing its moisture content and making it easier to handle and transport. The other options are not related to the purpose of leaving it in heaps.",
+      "solution": "Using a fan to blow air over a wet cloth can cool the seat down through evaporation. The other options do not use evaporation effectively.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा सबसे अच्छा स्पष्टीकरण देता है कि क्यों समाप्त खाद के रूप में उपयोग करने से पहले अवशेष को ढेर में छोड़ दिया जाता है?",
+          "stem": "एक दो पहिया सीट धूप के दिन बहुत गर्म हो जाती है। इसे ठंडा करने के लिए क्या कर सकते हैं?",
           "choices": [
-            "इसके वजन को बढ़ाने के लिए",
-            "जल के वाष्पीकरण की अनुमति देने के लिए",
-            "इसे अधिक घना बनाने के लिए",
-            "इसके आयतन को कम करने के लिए"
+            "इसके ऊपर हवा बहाने के लिए एक पंखा उपयोग करें",
+            "इस पर गीला कपड़ा रखें",
+            "इस पर पानी छिड़कें",
+            "एक कूलर उपयोग करें"
           ],
-          "solution": "अवशेष को ढेर में छोड़ देने से जल का वाष्पीकरण होता है, जिससे इसकी नमी की मात्रा कम हो जाती है और इसे हाथ लगाने और परिवहन करने में आसानी होती है। अन्य विकल्प ढेर में छोड़े जाने के उद्देश्य से संबंधित नहीं हैं।",
+          "solution": "गीले कपड़े पर हवा बहाने के लिए एक पंखा उपयोग करके सीट को वाष्पीकरण के माध्यम से ठंडा किया जा सकता है। अन्य विकल्प वाष्पीकरण के साथ अच्छी तरह से काम नहीं करते हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi technical terms used.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते सर्वात चांगले स्लेज ला खत म्हणून वापरण्यापूर्वी ढिगात ठेवल्याचे स्पष्टीकरण देते?",
+          "stem": "एक दुचक्का खुर्ची सूर्याच्या दिवसाला खूप गरम होते. ती थंड करण्यासाठी काय करावे?",
           "choices": [
-            "त्याचा वजन वाढविणे",
-            "पाणी वाफ करण्यास परवानगी देणे",
-            "त्याला अधिक घन करणे",
-            "त्याचा आकार कमी करणे"
+            "त्यावर हवा वाहून देणारा फॅन वापरा",
+            "त्यावर ओला कपडा ठेवा",
+            "त्यावर पाणी छिडकून द्या",
+            "त्यावर कूलर वापरा"
           ],
-          "solution": "स्लेज ढिगात ठेवल्याने पाणी वाफ करते, ज्यामुळे त्याचा नमता कमी होतो आणि त्याचे वापर आणि परिवहन सोपे होते. इतर विकल्प ढिगात ठेवण्याच्या उद्देशाशी संबंधित नाहीत.",
+          "solution": "ओल्या कपड्यावर हवा वाहून देणारा फॅन वापरून वाफीकरणाद्वारे खुर्ची थंड होऊ शकते. इतर विकल्प वाफीकरणाचा उत्तम प्रकारे वापर करत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for technical terms like 'फॅन' (fan) and 'कूलर' (cooler).",
           "flag": null
         }
       },
@@ -860,10 +679,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Incorrectly assumes evaporation increases weight",
+        "Does not use evaporation.",
         null,
-        "Incorrectly assumes compaction is the main purpose",
-        "Incorrectly assumes evaporation reduces volume"
+        "Does not use evaporation.",
+        "Does not use evaporation."
       ],
       "solverAnswers": [
         1,
@@ -873,7 +692,7 @@
         1
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as evaporation of water is the primary purpose of leaving sludge in heaps. The author's reasoning for the wrong options aligns with common misconceptions.",
+      "critique": "The correct answer is 1 (Put a wet cloth on it), as evaporation of water from the cloth cools the seat. The author's reasoning is sound, and the reasons for the other options being wrong are valid misconceptions.",
       "sources": [
         {
           "document": "ncert/6/science/fecu108.pdf",
@@ -888,171 +707,103 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T09:15:02.122Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If a student spreads water on a plate and places it in a windy area, what will happen to the evaporation rate compared to a still area?",
-      "choices": [
-        "It will increase",
-        "It will decrease",
-        "It will remain the same",
-        "It will stop"
-      ],
-      "answerIndex": 0,
-      "solution": "Wind increases the evaporation rate because it removes water vapor from the surface, allowing more water molecules to escape into the air. The other options are incorrect because wind does not decrease or stop evaporation, nor does it leave the rate unchanged.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक छात्र एक प्लेट पर पानी फैलाता है और उसे हवादार क्षेत्र में रख देता है, तो वाष्पीकरण की दर क्या होगी, जबकि एक शांत क्षेत्र की तुलना में?",
-          "choices": [
-            "यह बढ़ जाएगी",
-            "यह घट जाएगी",
-            "यह समान रहेगी",
-            "यह रुक जाएगी"
-          ],
-          "solution": "हवा वाष्पीकरण की दर को बढ़ाती है क्योंकि यह सतह से जल वाष्प को हटा देती है, जिससे अधिक जल अणु हवा में बाहर निकल सकते हैं। अन्य विकल्प गलत हैं क्योंकि हवा वाष्पीकरण को घटाती या रोकती नहीं है, न ही इसकी दर अपरिवर्तित रहती है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the meaning, and uses appropriate scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका विद्यार्थीने प्लेटवर पाणी फैलावतो आणि त्याला वाऱ्याच्या ठिकाणी ठेवतो, तर वाऱ्याच्या ठिकाणी उत्सारण दर कमी ठिकाणी तुलनेत काय होईल?",
-          "choices": [
-            "तो वाढेल",
-            "तो कमी होईल",
-            "तो एकसारखा राहील",
-            "तो थांबेल"
-          ],
-          "solution": "वाऱ्यामुळे उत्सारण दर वाढतो कारण तो पृष्ठभागावरील जल वाफ दूर करतो, जेणेकरून जल अणू वातावरणात बाहेर पडू शकतात. इतर विकल्प अयोग्य आहेत कारण वाऱ्यामुळे उत्सारण कमी होत नाही किंवा थांबत नाही, आणि दर एकसारखा राहत नाही.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology common in Marathi textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Student thinks wind reduces evaporation because they confuse it with cooling effects",
-        "Incorrectly assumes that wind slows evaporation",
-        "Incorrectly assumes no effect on evaporation"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that wind increases evaporation by removing water vapor from the surface, supporting the correct answer. The author's reasoning for the wrong options aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 7,
-          "pageStart": 9,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.4 How can We change the States of Water?"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 8,
-          "pageStart": 11,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.5 How can Water be Evaporated Faster or",
-            "Slower?"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 9,
-          "pageStart": 12,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.5 How can Water be Evaporated Faster or",
-            "Slower?"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T09:15:02.122Z",
+      "generatedAt": "2026-11-01T20:09:25.016Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 6,
-      "stem": "If the sand in the pot-in-pot cooler dries up, what will happen to the cooling effect?",
+      "stem": "Why does water in a surahi stay cold even in hot weather?",
       "choices": [
-        "The cooling effect will increase",
-        "The cooling effect will decrease",
-        "The cooling effect will remain the same",
-        "The cooling effect will stop completely"
+        "Because the surahi is made of metal",
+        "Because the water is stored in a sealed container",
+        "Because the water evaporates from the surface of the surahi",
+        "Because the surahi is kept in a refrigerator"
       ],
-      "answerIndex": 1,
-      "solution": "The correct answer is that the cooling effect will decrease. The sand helps retain moisture, which is necessary for evaporation. If the sand dries up, there will be less evaporation, and therefore less cooling. The other options are incorrect because the cooling effect will not increase or remain the same, and it will not stop completely unless all moisture is gone.",
+      "answerIndex": 2,
+      "solution": "The water in a surahi stays cold because the water evaporates from the surface, which causes a cooling effect. The other options are incorrect because surahis are not made of metal, they are not sealed, and they are not usually kept in a refrigerator.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि पोट-इन-पोट कूलर में रेत सूख जाए, तो शीतलन प्रभाव पर क्या प्रभाव पड़ेगा?",
+          "stem": "एक सुराही में पानी गर्म वातावरण में भी ठंडा क्यों रहता है?",
           "choices": [
-            "शीतलन प्रभाव बढ़ जाएगा",
-            "शीतलन प्रभाव कम हो जाएगा",
-            "शीतलन प्रभाव एक समान रहेगा",
-            "शीतलन प्रभाव पूरी तरह बंद हो जाएगा"
+            "क्योंकि सुराही धातु की बनी होती है",
+            "क्योंकि पानी एक बंद बर्तन में रखा जाता है",
+            "क्योंकि सुराही की सतह से पानी वाष्पित हो जाता है",
+            "क्योंकि सुराही को फ्रिज में रखा जाता है"
           ],
-          "solution": "सही उत्तर यह है कि शीतलन प्रभाव कम हो जाएगा। रेत नमी को बरकरार रखती है, जो वाष्पीकरण के लिए आवश्यक है। यदि रेत सूख जाती है, तो वाष्पीकरण कम हो जाएगा, और इसलिए शीतलन कम हो जाएगा। अन्य विकल्प गलत हैं क्योंकि शीतलन प्रभाव बढ़ेगा या एक समान रहेगा नहीं, और यह पूरी तरह से बंद नहीं होगा जब तक कि सभी नमी न हो जाए।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms in Hindi.",
+          "solution": "सुराही में पानी ठंडा रहता है क्योंकि सुराही की सतह से पानी वाष्पित हो जाता है, जिसके कारण शीतलन प्रभाव होता है। अन्य विकल्प गलत हैं क्योंकि सुराही धातु की नहीं होती, वे बंद नहीं होतीं और उन्हें आमतौर पर फ्रिज में नहीं रखा जाता।",
+          "imageAlt": "एक आरेख जिसमें एक सुराही को एक बीकर के रूप में दर्शाया गया है जिसका लेबल 'सुराही' है",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms. The correct answer remains option 2, and all distractors are still incorrect.",
           "flag": null
         },
         "mr": {
-          "stem": "पोट-इन-पोट कूलरमधील रेती वाळून गेल्यास, शीतलन प्रभावावर काय परिणाम होईल?",
+          "stem": "उष्ण हवामानातही सुराहीतील पाणी थंड का राहते?",
           "choices": [
-            "शीतलन प्रभाव वाढेल",
-            "शीतलन प्रभाव कमी होईल",
-            "शीतलन प्रभाव त्याच राहील",
-            "शीतलन प्रभाव पूर्णपणे थांबेल"
+            "कारण सुराही धातूने बनलेली असते",
+            "कारण पाणी बंद पात्रात ठेवले जाते",
+            "कारण सुराहीच्या पृष्ठभागावरून पाणी वाफ बनून जाते",
+            "कारण सुराही रेफ्रिजरेटरमध्ये ठेवली जाते"
           ],
-          "solution": "बरोबर उत्तर असे आहे की शीतलन प्रभाव कमी होईल. रेती आर्द्रता राखण्यास मदत करते, जी वाष्पीकरणासाठी आवश्यक आहे. जर रेती वाळून गेली तर वाष्पीकरण कमी होईल आणि त्यामुळे शीतलन कमी होईल. इतर विकल्प चुकीचे आहेत कारण शीतलन प्रभाव वाढणार नाही किंवा त्याच राहणार नाही, आणि ते पूर्णपणे थांबेल जर आर्द्रता पूर्णपणे न राहिल्यास.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "solution": "सुराहीतील पाणी थंड राहते कारण पाणी सुराहीच्या पृष्ठभागावरून वाफ बनून जाते, ज्यामुळे थंडीचा प्रभाव होतो. इतर विकल्प चुकीचे आहेत कारण सुराही धातूने बनलेल्या नसतात, त्यांचे पात्र बंद नसते आणि त्यांना सामान्यतः रेफ्रिजरेटरमध्ये ठेवले जात नाही.",
+          "imageAlt": "एक आकृती जी सुराही दर्शवते, जी बीकर असलेल्या निर्देशांकाने दर्शवली गेली आहे आणि लेबल 'सुराही' असलेली आहे",
+          "critique": "The translation is accurate and natural, with appropriate Marathi terminology for a textbook context.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
+      "imageAlt": "A diagram showing a surahi, represented as a beaker with the label 'surahi'",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "beaker",
+              "x": 50,
+              "y": 30,
+              "size": 30,
+              "labels": [
+                "beaker"
+              ],
+              "text": {
+                "beaker": "surahi"
+              }
+            }
+          ],
+          "texts": [
+            {
+              "x": 50,
+              "y": 10,
+              "label": "surahi"
+            }
+          ]
+        },
+        "labels": {
+          "surahi": {
+            "en": "surahi",
+            "hi": "सुराही",
+            "mr": "सुराही"
+          }
+        }
+      },
+      "needsFigure": true,
       "distractorReason": [
-        "Thinks the cooling effect increases when sand dries up, which is incorrect because drying sand reduces moisture and evaporation",
+        "Confuses the material of the surahi with its properties",
+        "Ignores the cooling effect of evaporation",
         null,
-        "Thinks the cooling effect remains the same, which is incorrect as the sand is necessary for evaporation",
-        "Thinks the cooling effect stops completely, which is not accurate unless all moisture is gone, but the sand is only drying up, not completely dry."
+        "Misunderstands the storage method of the surahi"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is sound and aligns with the correct reasoning. The key is correct as drying sand reduces evaporation, which decreases the cooling effect.",
+      "critique": "The correct answer is 2, as evaporation from the surface of the surahi leads to cooling. The author's reasoning is sound and aligns with the scientific principle of evaporative cooling. The distractors reflect common misconceptions about the material, sealing, and storage of a surahi.",
       "sources": [
         {
           "document": "ncert/6/science/fecu108.pdf",
@@ -1086,105 +837,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T09:15:02.122Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "A student places a glass of water in a refrigerator. After a few hours, they notice that the water has turned into ice. Which of the following best explains this change?",
-      "choices": [
-        "The water absorbed heat from the refrigerator",
-        "The water lost heat to the refrigerator",
-        "The water underwent condensation",
-        "The water underwent evaporation"
-      ],
-      "answerIndex": 1,
-      "solution": "When water is placed in a refrigerator, it loses heat to the surroundings, which causes it to cool down and eventually freeze. The process of losing heat is what leads to the phase change from liquid to solid. Absorbing heat, condensation, or evaporation do not explain the transformation into ice.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक छात्र एक शीशे के पानी के कप को रेफ्रिजरेटर में रखता है। कुछ घंटों बाद, वे देखते हैं कि पानी बर्फ में बदल गया है। निम्नलिखित में से कौन सा सबसे अच्छा इस परिवर्तन की व्याख्या करता है?",
-          "choices": [
-            "पानी ने रेफ्रिजरेटर से ऊष्मा अवशोषित की",
-            "पानी ने रेफ्रिजरेटर को ऊष्मा हानि की",
-            "पानी ने द्रवीकरण का अनुभव किया",
-            "पानी ने वाष्पीकरण का अनुभव किया"
-          ],
-          "solution": "जब पानी को रेफ्रिजरेटर में रखा जाता है, तो यह वातावरण से ऊष्मा हानि करता है, जिसके कारण यह ठंडा हो जाता है और अंततः जम जाता है। ऊष्मा हानि की प्रक्रिया ही तरल से ठोस में चरण परिवर्तन के कारण होती है। ऊष्मा अवशोषण, द्रवीकरण या वाष्पीकरण बर्फ में परिवर्तन की व्याख्या नहीं करते।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains the original meaning, and uses appropriate scientific terms in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका विद्यार्थ्याने फ्रिजमध्ये एक ग्लास पाणी ठेवले. काही तासांनंतर, त्यांना असे लक्षात येते की पाणी बर्फात बदलले आहे. खालीलपैकी कोणते सर्वात चांगले या बदलाचे विवरण देते?",
-          "choices": [
-            "पाणी फ्रिजमधून ऊष्मा शोषली",
-            "पाणी फ्रिजला ऊष्मा गमावली",
-            "पाणी द्रवीकरण झाले",
-            "पाणी वाष्पीकरण झाले"
-          ],
-          "solution": "जेव्हा पाणी फ्रिजमध्ये ठेवले जाते, तेव्हा ते आजूबाजूच्या ऊष्मा गमावते, ज्यामुळे ते थंड होऊन अखेर बर्फात बदलते. ऊष्मा गमावण्याची प्रक्रिया ही द्रवापासून घनात बदलाच्या घटनेला जबाबदार असते. ऊष्मा शोषण, द्रवीकरण किंवा वाष्पीकरण पाणी बर्फात बदलण्याचे विवरण देत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Thinks the water gains heat",
-        null,
-        "Thinks condensation causes freezing",
-        "Thinks evaporation leads to freezing"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as water loses heat to the refrigerator, causing it to freeze. The other options reflect common misconceptions about heat transfer and phase changes.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 10,
-          "pageStart": 14,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.6 cooling Effect"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 11,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.7 How Do clouds Give us Rain?"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 12,
-          "pageStart": 16,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.7 How Do clouds Give us Rain?"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T09:15:02.122Z",
+      "generatedAt": "2026-11-01T20:09:25.016Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

@@ -21,146 +21,47 @@
   "board": "BALBHARATI",
   "book": "८ वी सामान्य विज्ञान इंग्रजी",
   "edition": "First Edition 2018",
-  "generatedAt": "2026-10-27T13:21:53.005Z",
+  "generatedAt": "2026-11-02T10:39:33.245Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 2,
-      "stem": "What is the SI unit of pressure?",
+      "difficulty": 1,
+      "stem": "What is the force that acts between two objects without them being in contact?",
       "choices": [
-        "Dyne",
-        "Newton",
-        "N/m",
-        "Pa"
+        "Contact force",
+        "Muscular force",
+        "Frictional force",
+        "Non-contact force"
       ],
       "answerIndex": 3,
-      "solution": "The SI unit of pressure is Pascal (Pa). Dyne is the unit of force in the CGS system, Newton is the SI unit of force, and N/m is not a standard unit of pressure.",
+      "solution": "Non-contact force is the correct answer because it refers to forces that can act between objects even when they are not physically touching, such as gravity or magnetism. Contact force, muscular force, and frictional force all require direct physical interaction between objects to occur.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "दाब का एसआई मात्रक क्या है?",
+          "stem": "दो वस्तुओं के संपर्क में न होने पर उनके बीच कार्य करने वाला बल क्या है?",
           "choices": [
-            "डाइन",
-            "न्यूटन",
-            "एन/मी",
-            "पा"
+            "संपर्क बल",
+            "मांसपेशी बल",
+            "घर्षण बल",
+            "असंपर्क बल"
           ],
-          "solution": "दाब का एसआई मात्रक पास्कल (पा) है। डाइन सीजीएस प्रणाली में बल का मात्रक है, न्यूटन बल का एसआई मात्रक है, और एन/मी दाब के मानक मात्रक के रूप में नहीं है।",
+          "solution": "असंपर्क बल सही उत्तर है क्योंकि यह वे बल हैं जो वस्तुओं के भौतिक रूप से संपर्क में न होने पर भी उनके बीच कार्य कर सकते हैं, जैसे कि गुरुत्वाकर्षण या चुंबकत्व। संपर्क बल, मांसपेशी बल और घर्षण बल सभी वस्तुओं के बीच सीधे भौतिक संपर्क के बिना उत्पन्न नहीं हो सकते।",
           "imageAlt": null,
-          "critique": "All terms and structure match the original English question. The Hindi translation is accurate and pedagogically appropriate for a Hindi-medium student.",
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi scientific terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "दाबाचे एसआय एकक कोणते आहे?",
+          "stem": "दोन वस्तूंमध्ये संपर्श न ठेवता कार्य करणारा बल कोणता असतो?",
           "choices": [
-            "डायन",
-            "न्यूटन",
-            "एन/मी",
-            "पीए"
+            "संपर्श बल",
+            "मांसपेशी बल",
+            "घर्षण बल",
+            "असंपर्श बल"
           ],
-          "solution": "दाबाचे एसआय एकक पास्कल (पीए) आहे. डायन हे सीजीएस प्रणालीमधील बलाचे एकक आहे, न्यूटन हे बलाचे एसआय एकक आहे, आणि एन/मी हे दाबाचे मानक एकक नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, with appropriate Marathi terms for scientific units (e.g., 'पास्कल' for Pascal, 'एन/मी' for N/m).",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses unit of force with unit of pressure",
-        "Confuses unit of force with unit of pressure",
-        "Incorrectly states unit of pressure as N/m",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is Pa (Pascal), which is the SI unit of pressure. The other options are either units of force (dyne, newton) or an incorrect expression (N/m). The author's reasoning aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 32,
-          "pageStart": 31,
-          "pageEnd": 31,
-          "headingPath": [
-            "3. Force and Pressure",
-            "7.85 x 10 kg/m3",
-            "10 kg/m"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 33,
-          "pageStart": 31,
-          "pageEnd": 32,
-          "headingPath": [
-            "3. Force and Pressure",
-            "0.02"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 34,
-          "pageStart": 32,
-          "pageEnd": 32,
-          "headingPath": [
-            "3. Force and Pressure",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-27T13:21:53.005Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "The buoyant force in liquids of different density is............",
-      "choices": [
-        "The same",
-        "Density",
-        "Different",
-        "Area"
-      ],
-      "answerIndex": 2,
-      "solution": "The buoyant force depends on the density of the liquid. In liquids of different density, the buoyant force will be different. The other options do not correctly fill the blank in the sentence.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "अलग-अलग घनत्व वाले द्रवों में उत्प्लावक बल ............ होता है।",
-          "choices": [
-            "एक समान",
-            "घनत्व",
-            "भिन्न",
-            "क्षेत्रफल"
-          ],
-          "solution": "उत्प्लावक बल द्रव के घनत्व पर निर्भर करता है। अलग-अलग घनत्व वाले द्रवों में उत्प्लावक बल भिन्न होता है। अन्य विकल्प वाक्य में रिक्त स्थान को सही से भरते नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "द्रवांच्या विविध घनतेमध्ये उत्पन्न होणारी उत्प्लावक बल असते............",
-          "choices": [
-            "समान",
-            "घनता",
-            "विविध",
-            "क्षेत्रफळ"
-          ],
-          "solution": "उत्प्लावक बल द्रवाच्या घनतेवर अवलंबून असते. विविध घनतेच्या द्रवांमध्ये उत्प्लावक बल विविध असते. इतर विकल्प वाक्यातील खालील जागेला बरोबर भरत नाहीत.",
+          "solution": "असंपर्श बल हे योग्य उत्तर आहे कारण ते बल वस्तूंमध्ये संपर्श न ठेवता कार्य करू शकते, जसे की गुरुत्वाकर्षण किंवा चुंबकत्व. संपर्श बल, मांसपेशी बल आणि घर्षण बल यांना वस्तूंमध्ये थेट शारीरिक संपर्श असणे आवश्यक असते.",
           "imageAlt": null,
           "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
           "flag": null
@@ -171,10 +72,105 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the concept of buoyant force",
-        "Confuses the meaning of the sentence",
+        "Confuses contact force with non-contact force",
+        "Mistakes muscular force as a non-contact force",
+        "Confuses frictional force with non-contact force",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the solution correctly identifies non-contact force as the correct answer. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 22,
+          "pageStart": 24,
+          "pageEnd": 24,
+          "headingPath": [
+            "3. Force and Pressure"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 23,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "3. Force and Pressure"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 24,
+          "pageStart": 25,
+          "pageEnd": 26,
+          "headingPath": [
+            "3. Force and Pressure"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T10:39:33.245Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What happens to the buoyant force when an object is submerged more deeply in a liquid?",
+      "choices": [
+        "It increases",
+        "It decreases",
+        "It remains the same",
+        "It increases with depth"
+      ],
+      "answerIndex": 2,
+      "solution": "The buoyant force depends on the volume of the object and the density of the liquid, not on the depth. So, the buoyant force remains the same regardless of how deep the object is submerged. A pupil might think the force increases with depth, but that is not correct.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक वस्तु के द्रव में अधिक गहराई तक डूब जाने पर उत्प्लावक बल क्या होता है?",
+          "choices": [
+            "यह बढ़ जाता है",
+            "यह घट जाता है",
+            "यह समान रहता है",
+            "यह गहराई के साथ बढ़ता है"
+          ],
+          "solution": "उत्प्लावक बल वस्तु के आयतन और द्रव के घनत्व पर निर्भर करता है, गहराई पर नहीं। इसलिए, वस्तु के कितनी गहराई तक डूब जाने पर भी उत्प्लावक बल समान रहता है। एक छात्र यह सोच सकता है कि बल गहराई के साथ बढ़ता है, लेकिन यह सही नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक वस्तू द्रवात अधिक खोल बुडवली गेल्यास उत्प्लावक बलाचा काय फेरफार होतो?",
+          "choices": [
+            "ते वाढते",
+            "ते कमी होते",
+            "ते एकसारखे रहाते",
+            "ते खोलीत वाढते"
+          ],
+          "solution": "उत्प्लावक बल वस्तूच्या आयतनावर आणि द्रवाच्या घनतेवर अवलंबून असते, खोलीवर नाही. म्हणून वस्तू जितकी खोल बुडवली गेली तितकी उत्प्लावक बल एकसारखे रहाते. एका विद्यार्थ्याला असे वाटू शकते की बल खोलीत वाढते, परंतु हे बरोबर नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses depth with pressure",
+        "Thinks pressure affects buoyancy",
         null,
-        "Confuses the factors affecting buoyant force"
+        "Confuses buoyant force with pressure, thinking it increases with depth"
       ],
       "solverAnswers": [
         2,
@@ -184,186 +180,78 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 2 (Different), as buoyant force depends on the density of the liquid. The author's reasoning for the distractors aligns with common misconceptions.",
+      "critique": "The solution correctly identifies that buoyant force depends on volume and liquid density, not depth. The reasoning aligns with the physics of buoyancy.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 32,
-          "pageStart": 31,
+          "ordinal": 29,
+          "pageStart": 28,
+          "pageEnd": 29,
+          "headingPath": [
+            "3. Force and Pressure"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 30,
+          "pageStart": 29,
+          "pageEnd": 30,
+          "headingPath": [
+            "3. Force and Pressure"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 31,
+          "pageStart": 30,
           "pageEnd": 31,
           "headingPath": [
-            "3. Force and Pressure",
-            "7.85 x 10 kg/m3",
-            "10 kg/m"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 33,
-          "pageStart": 31,
-          "pageEnd": 32,
-          "headingPath": [
-            "3. Force and Pressure",
-            "0.02"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 34,
-          "pageStart": 32,
-          "pageEnd": 32,
-          "headingPath": [
-            "3. Force and Pressure",
-            "Exercises"
+            "3. Force and Pressure"
           ]
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-27T13:21:53.005Z",
+      "generatedAt": "2026-11-02T10:39:33.245Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "A camel has broad feet. What is the purpose of this adaptation?",
+      "stem": "A car is moving on a flat road and then the engine is switched off. Why does the car eventually stop?",
       "choices": [
-        "To increase pressure on the sand",
-        "To reduce pressure on the sand",
-        "To increase the area of contact",
-        "To reduce the area of contact"
+        "Because of the force of gravity",
+        "Because of the force of friction",
+        "Because of the magnetic force",
+        "Because of the electrostatic force"
       ],
       "answerIndex": 1,
-      "solution": "Camels have broad feet to reduce pressure on the sand, which helps them walk on soft surfaces without sinking. Pressure is force divided by area, so increasing the area of contact decreases pressure. The other options are incorrect because increasing pressure or reducing the area of contact would make it harder for the camel to move on sand, and the feet do not reduce the force applied.",
+      "solution": "The correct answer is because of the force of friction. Friction acts between the car's tires and the road, opposing the motion and gradually bringing the car to a stop. Gravity pulls the car downward but does not directly slow it, while magnetic and electrostatic forces are not relevant in this situation.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक ऊंट के पैर चौड़े होते हैं। इस अनुकूलन का उद्देश्य क्या है?",
+          "stem": "एक कार तेजी से एक समतल सड़क पर चल रही है और फिर इंजन बंद कर दिया जाता है। कार अंततः क्यों रुक जाती है?",
           "choices": [
-            "रेत पर दाब बढ़ाना",
-            "रेत पर दाब कम करना",
-            "संपर्क क्षेत्र बढ़ाना",
-            "संपर्क क्षेत्र कम करना"
+            "गुरुत्वाकर्षण बल के कारण",
+            "घर्षण बल के कारण",
+            "चुंबकीय बल के कारण",
+            "स्थिर वैद्युत बल के कारण"
           ],
-          "solution": "ऊंटों के चौड़े पैर रेत पर दाब कम करने के लिए होते हैं, जो नरम सतह पर चलने में सहायता करता है और डूबने से बचाता है। दाब बल के क्षेत्र से विभाजित होता है, इसलिए संपर्क क्षेत्र बढ़ाने से दाब कम हो जाता है। अन्य विकल्प गलत हैं क्योंकि दाब बढ़ाना या संपर्क क्षेत्र कम करना ऊंट के लिए रेत पर चलना कठिन कर देगा, और पैर लगाए गए बल को कम नहीं करते।",
+          "solution": "सही उत्तर घर्षण बल के कारण है। घर्षण कार के पहियों और सड़क के बीच कार्य करता है, गति का विरोध करता है और धीरे-धीरे कार को रुकने के लिए मजबूर करता है। गुरुत्वाकर्षण नीचे की ओर खींचता है लेकिन सीधे इसे धीमा नहीं करता है, जबकि चुंबकीय और स्थिर वैद्युत बल इस स्थिति में संबंधित नहीं हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology as found in Hindi textbooks.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium science textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "एका अंजीराच्या पाय विस्तृत आहेत. ही अनुकूलनाचा उद्देश काय आहे?",
+          "stem": "एक गाडी सपाट रस्त्यावर चालत असते आणि नंतर इंजिन बंद केले जाते. गाडी अखेर का थांबते?",
           "choices": [
-            "रेतीवर दाब वाढवणे",
-            "रेतीवर दाब कमी करणे",
-            "संपर्काचे क्षेत्रफळ वाढवणे",
-            "संपर्काचे क्षेत्रफळ कमी करणे"
+            "गुरुत्वाकर्षणाच्या बलामुळे",
+            "घर्षणाच्या बलामुळे",
+            "चुंबकीय बलामुळे",
+            "स्थिरविद्युत बलामुळे"
           ],
-          "solution": "अंजीरांच्या पाय विस्तृत असतात कारण रेतीवर दाब कमी करणे, जे नरम सतहीवर चालण्यास मदत करते आणि ते रेतीत बुडत नाहीत. दाब बलाचे क्षेत्रफळाने भाग असतो, त्यामुळे संपर्काचे क्षेत्रफळ वाढवल्याने दाब कमी होतो. इतर विकल्प अयोग्य आहेत कारण दाब वाढवणे किंवा संपर्काचे क्षेत्रफळ कमी करणे रेतीवर चालण्यास अडथळा निर्माण करेल आणि पाय बल लागू करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Mistakenly believes broad feet increase pressure",
-        null,
-        "Confuses the relationship between area and pressure, thinking larger area increases contact instead of reducing pressure",
-        "Confuses area and force"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly explains that broad feet increase the area of contact, which reduces pressure. The key is correct, and the reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 25,
-          "pageStart": 26,
-          "pageEnd": 27,
-          "headingPath": [
-            "3. Force and Pressure"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 26,
-          "pageStart": 27,
-          "pageEnd": 27,
-          "headingPath": [
-            "3. Force and Pressure"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 27,
-          "pageStart": 28,
-          "pageEnd": 28,
-          "headingPath": [
-            "3. Force and Pressure"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 28,
-          "pageStart": 28,
-          "pageEnd": 28,
-          "headingPath": [
-            "3. Force and Pressure"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-27T13:21:53.005Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "A box is being pulled by two people in the same direction. What is the net force acting on the box?",
-      "choices": [
-        "Sum of the two forces",
-        "Difference of the two forces",
-        "Zero",
-        "Cannot be determined"
-      ],
-      "answerIndex": 0,
-      "solution": "When two forces act on an object in the same direction, they add together to produce the net force. This is because forces in the same direction reinforce each other. The difference would apply if the forces were in opposite directions, zero if they canceled each other, and cannot be determined if the magnitudes were unknown.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक बॉक्स दो लोगों द्वारा एक ही दिशा में खींचा जा रहा है। बॉक्स पर कार्य कर रहे शुद्ध बल क्या है?",
-          "choices": [
-            "दोनों बलों का योग",
-            "दोनों बलों का अंतर",
-            "शून्य",
-            "निर्धारित नहीं किया जा सकता"
-          ],
-          "solution": "जब दो बल एक वस्तु पर एक ही दिशा में कार्य करते हैं, तो वे एक दूसरे के साथ जुड़ जाते हैं और शुद्ध बल उत्पन्न करते हैं। इसका कारण यह है कि एक ही दिशा में बल एक दूसरे को मजबूत कर देते हैं। अंतर केवल तब लागू होता है जब बल विपरीत दिशाओं में होते हैं, शून्य तब जब वे एक दूसरे को रद्द कर देते हैं, और अज्ञात परिमाणों के लिए निर्धारित नहीं किया जा सकता।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका बॉक्सला दोन लोक एकाच दिशेने खेचत आहेत. बॉक्सवर कार्य करणारी एकूण बले काय आहेत?",
-          "choices": [
-            "दोन बलांचा बेरीज",
-            "दोन बलांचा फरक",
-            "शून्य",
-            "निश्चित करता येत नाही"
-          ],
-          "solution": "जेव्हा दोन बल एका वस्तूवर एकाच दिशेने क्रियाशील होतात तेव्हा ते एकत्रितपणे एकूण बल तयार करतात. हे कारण असे आहे की एकाच दिशेने क्रियाशील बल एकमेकांना बल देतात. बल विरुद्ध दिशेने क्रियाशील असल्यास फरक वापरला जाईल, जर बल एकमेकांना रद्द केले असेल तर शून्य असेल आणि जर बलांच्या मापांची माहिती नसेल तर निश्चित करता येत नाही.",
+          "solution": "योग्य उत्तर घर्षणाच्या बलामुळे आहे. गाडीच्या टायर आणि रस्त्यामध्ये घर्षण क्रियाशील असतो, जो गतीला विरोध करतो आणि गाडीला थांबवतो. गुरुत्वाकर्षण गाडीला खाली खेचते परंतु ते सीधा गतीला मंदी नये, तर चुंबकीय आणि स्थिरविद्युत बले या स्थितीत असंबंधित आहेत.",
           "imageAlt": null,
           "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for physics concepts.",
           "flag": null
@@ -374,399 +262,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Ignores the role of friction",
         null,
-        "Confuses same-direction forces with opposite-direction forces",
-        "Confuses same-direction forces with opposite-direction forces",
-        "Confuses balanced forces with unbalanced forces"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is well-constructed. The correct answer is clearly the sum of the two forces when they act in the same direction. The author's reasoning for the distractors is accurate and reflects common student misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 22,
-          "pageStart": 24,
-          "pageEnd": 24,
-          "headingPath": [
-            "3. Force and Pressure"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 23,
-          "pageStart": 24,
-          "pageEnd": 25,
-          "headingPath": [
-            "3. Force and Pressure"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 24,
-          "pageStart": 25,
-          "pageEnd": 26,
-          "headingPath": [
-            "3. Force and Pressure"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-27T13:21:53.005Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "In a container filled with water, how does the pressure at a point depend on the depth?",
-      "choices": [
-        "It decreases with depth",
-        "It remains the same",
-        "It increases with depth",
-        "It depends on the shape of the container"
-      ],
-      "answerIndex": 2,
-      "solution": "Pressure in a fluid increases with depth because the weight of the fluid above a point increases as you go deeper, exerting more force per unit area. The other options are incorrect because pressure does not decrease with depth, nor does it stay constant; it is also independent of the container's shape.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "जल से भरे एक बर्तन में, एक बिंदु पर दाब गहराई पर कैसे निर्भर करता है?",
-          "choices": [
-            "यह गहराई के साथ घटता है",
-            "यह एक समान रहता है",
-            "यह गहराई के साथ बढ़ता है",
-            "यह बर्तन के आकार पर निर्भर करता है"
-          ],
-          "solution": "एक द्रव में दाब गहराई के साथ बढ़ता है क्योंकि एक बिंदु पर ऊपर के द्रव के भार में वृद्धि होती है, जो एक इकाई क्षेत्र पर अधिक बल डालता है। अन्य विकल्प गलत हैं क्योंकि दाब गहराई के साथ घटता नहीं है, न ही यह एक समान रहता है; यह बर्तन के आकार पर निर्भर नहीं करता।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium science textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "पाण्याने भरलेल्या एका वासरात, एका बिंदूवरील दाब गहनतेवर कसा अवलंबून असतो?",
-          "choices": [
-            "तो गहनतेसह कमी होतो",
-            "तो एकसारखा रहातो",
-            "तो गहनतेसह वाढतो",
-            "तो वासराच्या आकृतीवर अवलंबून असतो"
-          ],
-          "solution": "तरल मध्ये दाब गहनतेसह वाढतो कारण एका बिंदूवर वरून असलेल्या तरलाचा वजन वाढतो, जो एकक क्षेत्रावर अधिक बल लावतो. इतर विकल्प अयोग्य आहेत कारण दाब गहनतेसह कमी होत नाही, आणि तो स्थिर रहात नाही; तो वासराच्या आकृतीवर अवलंबून नसतो.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Believes pressure decreases with depth",
-        "Thinks pressure remains constant",
-        null,
-        "Assumes pressure depends on container shape"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2, as pressure in a liquid increases with depth due to the increasing weight of the liquid above. The author's reasoning aligns with scientific principles and the reasons for the wrong options reflect common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 25,
-          "pageStart": 26,
-          "pageEnd": 27,
-          "headingPath": [
-            "3. Force and Pressure"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 26,
-          "pageStart": 27,
-          "pageEnd": 27,
-          "headingPath": [
-            "3. Force and Pressure"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 27,
-          "pageStart": 28,
-          "pageEnd": 28,
-          "headingPath": [
-            "3. Force and Pressure"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 28,
-          "pageStart": 28,
-          "pageEnd": 28,
-          "headingPath": [
-            "3. Force and Pressure"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-27T13:21:53.005Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "A car is moving on a smooth road and the engine is switched off. Why does it eventually stop?",
-      "choices": [
-        "Because of friction",
-        "Because of gravity",
-        "Because of inertia",
-        "Because of pressure"
-      ],
-      "answerIndex": 0,
-      "solution": "The car stops because friction acts against its motion, gradually reducing its speed. Gravity pulls the car downward but does not directly affect its forward motion. Inertia is the tendency to stay in motion, not the reason it stops. Pressure is unrelated to the car's stopping force.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक कार चिकनी सड़क पर गति कर रही है और इंजन बंद है। अंततः यह क्यों रुक जाती है?",
-          "choices": [
-            "घर्षण के कारण",
-            "गुरुत्वाकर्षण के कारण",
-            "जड़ता के कारण",
-            "दबाव के कारण"
-          ],
-          "solution": "कार घर्षण के कारण रुक जाती है, जो इसकी गति के विरुद्ध कार्य करता है और धीरे-धीरे इसकी गति कम कर देता है। गुरुत्वाकर्षण कार को नीचे की ओर खींचता है लेकिन इसकी आगे की गति को सीधे प्रभावित नहीं करता। जड़ता गति में बने रहने की प्रवृत्ति है, न कि रुकने का कारण। दबाव कार के रुकने के बल से संबंधित नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard physics terminology appropriate for a Hindi-medium curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एक गाडी सुलकलेल्या र道路वर चालत आहे आणि इंजिन बंद आहे. ती अखेर का थांबते?",
-          "choices": [
-            "थराहीमुळे",
-            "गुरुत्वाकर्षणामुळे",
-            "जडत्वामुळे",
-            "दाबामुळे"
-          ],
-          "solution": "गाडी थराहीच्या कारणामुळे थांबते, जो तिच्या गतीविरुद्ध कार्य करतो आणि धीरे धीरे तिच्या वेगाला कमी करतो. गुरुत्वाकर्षण गाडीला खाली खेचते परंतु तिच्या आगेकूची गतीला सीधा प्रभावित करत नाही. जडत्व ही गतीत राहण्याची प्रवृत्ती आहे, ती थांबण्याचे कारण नाही. दाब हा गाडीच्या थांबण्याच्या बलाशी संबंधित नाही.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi-medium textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses friction with other forces",
-        "Confuses gravity with other forces",
-        "Misunderstands the concept of inertia"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0 (friction), as friction is the force that opposes motion and causes the car to stop. The other options represent common misconceptions about physics concepts.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 22,
-          "pageStart": 24,
-          "pageEnd": 24,
-          "headingPath": [
-            "3. Force and Pressure"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 23,
-          "pageStart": 24,
-          "pageEnd": 25,
-          "headingPath": [
-            "3. Force and Pressure"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 24,
-          "pageStart": 25,
-          "pageEnd": 26,
-          "headingPath": [
-            "3. Force and Pressure"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-27T13:21:53.005Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "A solid object weighs 100 N in air and 70 N when fully submerged in water. What is the buoyant force acting on the object?",
-      "choices": [
-        "100 N",
-        "70 N",
-        "30 N",
-        "170 N"
-      ],
-      "answerIndex": 2,
-      "solution": "The buoyant force is calculated by subtracting the apparent weight in water from the actual weight in air. This gives 100 N - 70 N = 30 N. The other options do not represent the correct difference between the two weights.",
-      "checkExpr": "100-70",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक ठोस वस्तु हवा में 100 न्यूटन के भार के साथ होती है और पानी में पूरी तरह से डूबे हुए 70 न्यूटन के भार के साथ होती है। वस्तु पर कार्य करने वाला उत्प्लावन बल क्या है?",
-          "choices": [
-            "100 न्यूटन",
-            "70 न्यूटन",
-            "30 न्यूटन",
-            "170 न्यूटन"
-          ],
-          "solution": "उत्प्लावन बल की गणना हवा में वास्तविक भार में से पानी में दृश्य भार को घटाकर की जाती है। इससे 100 न्यूटन - 70 न्यूटन = 30 न्यूटन प्राप्त होता है। अन्य विकल्प दोनों भारों के बीच सही अंतर का प्रतिनिधित्व नहीं करते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as per Hindi-medium curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एक घन पदार्थ वायूत 100 एन आणि पाण्यात पूर्णपणे बुडवल्यास 70 एन वजन असते. पदार्थावर क्रियाशील उत्प्लावक बल किती आहे?",
-          "choices": [
-            "100 एन",
-            "70 एन",
-            "30 एन",
-            "170 एन"
-          ],
-          "solution": "उत्प्लावक बल वायूत वजनापासून पाण्यात असलेल्या दिसणारे वजन वजा करून गणले जाते. हे 100 एन - 70 एन = 30 एन देते. इतर विकल्प दोन वजनांमधील योग्य फरक दर्शवत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Chooses the weight in air as the buoyant force",
-        "Chooses the weight in water as the buoyant force",
-        null,
-        "Chooses the sum of the weights as the buoyant force"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly calculates the buoyant force as the difference between the weight in air and the apparent weight in water. The reasoning aligns with the physics of buoyancy.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 29,
-          "pageStart": 28,
-          "pageEnd": 29,
-          "headingPath": [
-            "3. Force and Pressure"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 30,
-          "pageStart": 29,
-          "pageEnd": 30,
-          "headingPath": [
-            "3. Force and Pressure"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 31,
-          "pageStart": 30,
-          "pageEnd": 31,
-          "headingPath": [
-            "3. Force and Pressure"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-27T13:21:53.005Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "An object weighs 200 N in air and 150 N in a liquid. If the density of the liquid is twice that of water, what will be the buoyant force in the liquid compared to water?",
-      "choices": [
-        "Same as in water",
-        "Twice as in water",
-        "Half as in water",
-        "Four times as in water"
-      ],
-      "answerIndex": 1,
-      "solution": "The buoyant force depends on the density of the liquid. Since the density of the liquid is twice that of water, the buoyant force will be twice as much as in water. This is based on the principle that the buoyant force is proportional to the density of the liquid. The other options do not align with this relationship.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक वस्तु का वायु में भार 200 न्यूटन है और एक द्रव में 150 न्यूटन है। यदि द्रव का घनत्व पानी के घनत्व के दोगुना है, तो द्रव में उत्प्लावन बल पानी की तुलना में क्या होगा?",
-          "choices": [
-            "पानी के समान",
-            "पानी के दोगुना",
-            "पानी के आधा",
-            "पानी के चार गुना"
-          ],
-          "solution": "उत्प्लावन बल द्रव के घनत्व पर निर्भर करता है। चूंकि द्रव का घनत्व पानी के घनत्व के दोगुना है, इसलिए उत्प्लावन बल पानी के दोगुना होगा। यह उत्प्लावन बल के सिद्धांत पर आधारित है कि उत्प्लावन बल द्रव के घनत्व के समानुपाती होता है। अन्य विकल्प इस संबंध के साथ मेल नहीं खाते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard technical terms as found in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एक वस्तू हवेत 200 एन वजन करते आणि द्रावकात 150 एन वजन करते. जर द्रावकाची घनता पाण्याच्या दुप्पट असेल, तर द्रावकात उत्पन्न होणारा उत्क्षेप बल पाण्यात उत्पन्न होणार्‍या उत्क्षेप बलाच्या तुलनेत काय असेल?",
-          "choices": [
-            "पाण्यात इतकाच",
-            "पाण्यात दुप्पट",
-            "पाण्यात अर्धा",
-            "पाण्यात चारपट"
-          ],
-          "solution": "उत्क्षेप बल पाण्याच्या घनतेवर अवलंबून असते. जर द्रावकाची घनता पाण्याच्या दुप्पट असेल तर उत्क्षेप बल पाण्यात उत्पन्न होणार्‍या उत्क्षेप बलाच्या दुप्पट असेल. हे उत्क्षेप बल पाण्याच्या घनतेवर अवलंबून असते या तत्त्वावर आधारित आहे. इतर विकल्प ह्या संबंधाशी जुळत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms like 'उत्क्षेप बल' (buoyant force) and 'घनता' (density) as used in Marathi textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Assumes the buoyant force remains the same",
-        null,
-        "Confuses the relationship between buoyant force and density",
-        "Confuses the relationship between buoyant force and density"
+        "Confuses other forces with friction",
+        "A student might confuse electrostatic force with other forces acting on objects in motion"
       ],
       "solverAnswers": [
         1,
@@ -775,8 +274,103 @@
         1,
         1
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. The buoyant force is proportional to the density of the fluid, and since the liquid's density is twice that of water, the buoyant force will also be twice as much. The reasoning aligns with the principle of buoyancy.",
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the physical principle that friction is the force that opposes motion and causes a moving object to stop when the engine is turned off.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 22,
+          "pageStart": 24,
+          "pageEnd": 24,
+          "headingPath": [
+            "3. Force and Pressure"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 23,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "3. Force and Pressure"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 24,
+          "pageStart": 25,
+          "pageEnd": 26,
+          "headingPath": [
+            "3. Force and Pressure"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T10:39:33.245Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A wooden block floats on the surface of water. What can be said about the buoyant force acting on the block?",
+      "choices": [
+        "It is less than the weight of the block",
+        "It is equal to the weight of the block",
+        "It is greater than the weight of the block",
+        "It is equal to the weight of the displaced water"
+      ],
+      "answerIndex": 1,
+      "solution": "When an object floats, the buoyant force acting on it must balance its weight, making the buoyant force equal to the weight of the block. If the buoyant force were less, the block would sink, and if it were greater, the block would rise. The buoyant force is also equal to the weight of the displaced water, but the question specifically asks about the relationship to the block's weight, not the displaced water.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक लकड़ी का ब्लॉक पानी की सतह पर तैरता है। ब्लॉक पर कार्य करने वाले उत्प्लावक बल के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "यह ब्लॉक के भार से कम है",
+            "यह ब्लॉक के भार के बराबर है",
+            "यह ब्लॉक के भार से अधिक है",
+            "यह विस्थापित पानी के भार के बराबर है"
+          ],
+          "solution": "जब कोई वस्तु तैरती है, तो उस पर कार्य करने वाला उत्प्लावक बल उसके भार के संतुलन में होता है, जिसके कारण उत्प्लावक बल ब्लॉक के भार के बराबर होता है। यदि उत्प्लावक बल कम होता तो ब्लॉक डूब जाता और यदि अधिक होता तो ब्लॉक ऊपर उठ जाता। उत्प्लावक बल विस्थापित पानी के भार के बराबर भी होता है, लेकिन प्रश्न विशेष रूप से ब्लॉक के भार के संबंध में पूछता है, न कि विस्थापित पानी के भार के संबंध में।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, technical terms, and structure. All options and the solution are correctly translated, maintaining the same logical relationships and scientific concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक लाकडीचा ब्लॉक पाण्याच्या पृष्ठभागावर तरंगतो. ब्लॉकवर क्रियाशील उत्प्लावक बलाबद्दल काय म्हणता येईल?",
+          "choices": [
+            "ते ब्लॉकच्या वजनापेक्षा कमी आहे",
+            "ते ब्लॉकच्या वजनास समान आहे",
+            "ते ब्लॉकच्या वजनापेक्षा जास्त आहे",
+            "ते विस्थापित पाण्याच्या वजनास समान आहे"
+          ],
+          "solution": "जेव्हा वस्तू तरंगते, तेव्हा तिच्यावर क्रियाशील उत्प्लावक बल तिच्या वजनाला संतुलित करते, ज्यामुळे उत्प्लावक बल ब्लॉकच्या वजनास समान होते. जर उत्प्लावक बल कमी असते तर ब्लॉक डुबून जाईल आणि जर ते जास्त असते तर ब्लॉक वर उठेल. उत्प्लावक बल विस्थापित पाण्याच्या वजनास समान असते, परंतु प्रश्न विशेषतः ब्लॉकच्या वजनाशी संबंधित असलेल्या संबंधाबद्दल विचारतो, नाही की विस्थापित पाण्याशी.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes floating means the object is lighter than the fluid, not recognizing that buoyant force equals weight for a floating object",
+        null,
+        "Believes that floating means the buoyant force must be greater to keep the object afloat",
+        "Confuses buoyant force with the weight of displaced water instead of the object's own weight"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as the buoyant force equals the weight of the floating object. The author's reasoning is accurate, and the misconceptions described for the wrong options are common among students.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -807,49 +401,190 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-27T13:21:53.005Z",
+      "generatedAt": "2026-11-02T10:39:33.245Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "A ship made of iron floats on water while an iron nail sinks. What is the reason for this?",
+      "difficulty": 4,
+      "stem": "In the experiment with two plastic bottles and magnets, what happens when the north pole of one magnet is near the south pole of the other?",
       "choices": [
-        "The ship is lighter than the nail",
-        "The ship is made of less dense material",
-        "The buoyant force on the ship is greater than its weight",
-        "The ship has a larger surface area"
+        "The bottles move away from each other",
+        "The bottles remain stationary",
+        "The bottles move towards each other",
+        "The bottles rotate in place"
       ],
       "answerIndex": 2,
-      "solution": "The correct answer is that the buoyant force on the ship is greater than its weight. A ship is designed to displace a large volume of water, which increases the buoyant force acting on it. Since this force exceeds the ship's weight, it floats. The other options are incorrect because weight depends on mass and gravity, not just size, and density is the same for both the ship and the nail since they are made of iron.",
+      "solution": "When the north pole of one magnet is near the south pole of another, they attract each other because opposite magnetic poles attract. This attraction causes the bottles to move toward each other. The other options do not reflect the fundamental behavior of magnetic forces between opposite poles.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक लोहे से बना जहाज पानी पर तैरता है जबकि एक लोहे की कील डूब जाती है। इसका कारण क्या है?",
+          "stem": "दो प्लास्टिक के बोतल और चुंबकों के प्रयोग में, जब एक चुंबक के उत्तर ध्रुव दूसरे चुंबक के दक्षिण ध्रुव के पास होता है तो क्या होता है?",
           "choices": [
-            "जहाज कील के मुकाबले हल्का होता है",
-            "जहाज कम घनत्व वाले सामग्री से बना होता है",
-            "जहाज पर उत्प्लावक बल इसके भार से अधिक होता है",
-            "जहाज का सतह क्षेत्र अधिक होता है"
+            "बोतल एक-दूसरे से दूर जाते हैं",
+            "बोतल गतिहीन रहते हैं",
+            "बोतल एक-दूसरे की ओर जाते हैं",
+            "बोतल जगह पर घूमते हैं"
           ],
-          "solution": "सही उत्तर यह है कि जहाज पर उत्प्लावक बल इसके भार से अधिक होता है। एक जहाज को बड़ी मात्रा में पानी के विस्थापन के लिए डिज़ाइन किया जाता है, जो इस पर कार्य करने वाले उत्प्लावक बल को बढ़ाता है। चूंकि यह बल जहाज के भार से अधिक होता है, इसलिए यह तैरता है। अन्य विकल्प गलत हैं क्योंकि भार द्रव्यमान और गुरुत्वाकर्षण पर निर्भर करता है, न कि केवल आकार पर, और घनत्व जहाज और कील दोनों के लिए समान होता है क्योंकि दोनों लोहे से बने होते हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi science textbooks.",
+          "solution": "जब एक चुंबक के उत्तर ध्रुव दूसरे चुंबक के दक्षिण ध्रुव के पास होता है, तो वे एक-दूसरे को आकर्षित करते हैं क्योंकि विपरीत चुंबकीय ध्रुव आकर्षित करते हैं। इस आकर्षण के कारण बोतल एक-दूसरे की ओर जाते हैं। अन्य विकल्प विपरीत ध्रुवों के बीच चुंबकीय बल के मूल व्यवहार को दर्शाते नहीं हैं।",
+          "imageAlt": "दो बार चुंबक जिनके विपरीत ध्रुव एक-दूसरे के सामने हैं, इनके बीच आकर्षण बल दिखाया गया है।",
+          "critique": "Translation accurately reflects the original meaning with appropriate Hindi terminology for magnetic poles and behavior.",
           "flag": null
         },
         "mr": {
-          "stem": "लोखंडाचा एक जहाज पाण्यावर तरंगतो तर लोखंडाचा सुई डूबतो. ह्याचे कारण काय आहे?",
+          "stem": "दोन प्लास्टिक बाटली आणि चुंबकांच्या प्रयोगात, एका चुंबकाचा उत्तर ध्रुव दुसऱ्या चुंबकाच्या दक्षिण ध्रुवाजवळ असताना काय होते?",
           "choices": [
-            "जहाज सुईपेक्षा हलका आहे",
-            "जहाज कमी घनत्वाच्या पदार्थापासून बनलेला आहे",
-            "जहाजवर लागणारा उत्प्लावक बल त्याच्या वजनापेक्षा जास्त आहे",
-            "जहाजाचा जास्त सतह क्षेत्र आहे"
+            "बाटल्या एकमेकांपासून दूर जातात",
+            "बाटल्या स्थिर रहातात",
+            "बाटल्या एकमेकांकडे जातात",
+            "बाटल्या जागेवर फिरतात"
           ],
-          "solution": "योग्य उत्तर हे आहे की जहाजवर लागणारा उत्प्लावक बल त्याच्या वजनापेक्षा जास्त आहे. जहाज अशा प्रकारे बनवला जातो की तो जास्त पाणी विस्थापित करतो, ज्यामुळे त्यावर लागणारा उत्प्लावक बल वाढतो. त्यामुळे हा बल जहाजाच्या वजनापेक्षा जास्त असतो आणि तो तरंगतो. इतर विकल्प चुकीचे आहेत कारण वजन मास आणि गुरुत्वाकर्षणवर अवलंबून असते, फक्त आकारावर अवलंबून नसते आणि घनत्व जहाज आणि सुई दोन्ही लोखंडापासून बनलेले असल्यामुळे ते समान असते.",
+          "solution": "जेव्हा एका चुंबकाचा उत्तर ध्रुव दुसऱ्या चुंबकाच्या दक्षिण ध्रुवाजवळ असतो तेव्हा ते एकमेकांकडे आकर्षित होतात कारण विरुद्ध चुंबकीय ध्रुव एकमेकांना आकर्षित करतात. हा आकर्षण बाटल्यांना एकमेकांकडे खेचतो. इतर विकल्प विरुद्ध ध्रुवांमधील चुंबकीय बलाच्या मूलभूत वर्तनाचे प्रतिनिधित्व करत नाहीत.",
+          "imageAlt": "दोन बार चुंबक ज्यांचे विरुद्ध ध्रुव एकमेकांकडे असतात, त्यांमध्ये आकर्षक बल दर्शविले आहे.",
+          "critique": "The translation is accurate, maintains the correct answer position, and uses appropriate Marathi terminology for magnetic poles and forces.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "Two bar magnets with opposite poles facing each other, showing an attractive force between them.",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "barMagnet",
+              "x": 20,
+              "y": 30,
+              "size": 15,
+              "labels": [
+                "north",
+                "south"
+              ]
+            },
+            {
+              "part": "barMagnet",
+              "x": 80,
+              "y": 30,
+              "size": 15,
+              "labels": [
+                "south",
+                "north"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": [
+                40,
+                30
+              ],
+              "to": [
+                60,
+                30
+              ],
+              "label": "force"
+            }
+          ]
+        },
+        "labels": {
+          "force": {
+            "en": "attractive force",
+            "hi": "आकर्षण बल",
+            "mr": "आकर्षक बल"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Assumes like poles repel but misinterprets the direction",
+        "Does not understand the effect of magnetic force",
+        null,
+        "Misinterprets the direction of motion"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as opposite poles attract. The author's solution is correct, and the reasons for the wrong options align with common misconceptions about magnetic forces.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 22,
+          "pageStart": 24,
+          "pageEnd": 24,
+          "headingPath": [
+            "3. Force and Pressure"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 23,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "3. Force and Pressure"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 24,
+          "pageStart": 25,
+          "pageEnd": 26,
+          "headingPath": [
+            "3. Force and Pressure"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T10:39:33.245Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A metal block is immersed in a fluid, and the buoyant force acting on it is measured. If the same block is immersed in a fluid with higher density, what happens to the buoyant force?",
+      "choices": [
+        "It decreases",
+        "It increases",
+        "It remains the same",
+        "It becomes zero"
+      ],
+      "answerIndex": 1,
+      "solution": "The buoyant force depends on the density of the fluid. A denser fluid provides a greater buoyant force. A pupil might think the buoyant force remains the same, but the chapter clearly states that the buoyant force depends on the density of the liquid.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक धातु के ब्लॉक को एक तरल में डुबोया जाता है, और इस पर कार्य करने वाले उत्प्लावक बल को मापा जाता है। यदि उसी ब्लॉक को एक अधिक घनत्व वाले तरल में डुबोया जाता है, तो उत्प्लावक बल पर क्या प्रभाव पड़ता है?",
+          "choices": [
+            "यह कम हो जाता है",
+            "यह बढ़ जाता है",
+            "यह समान रहता है",
+            "यह शून्य हो जाता है"
+          ],
+          "solution": "उत्प्लावक बल तरल के घनत्व पर निर्भर करता है। एक अधिक घनत्व वाला तरल अधिक उत्प्लावक बल प्रदान करता है। एक छात्र यह सोच सकता है कि उत्प्लावक बल समान रहता है, लेकिन अध्याय में स्पष्ट रूप से कहा गया है कि उत्प्लावक बल द्रव के घनत्व पर निर्भर करता है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms like 'उत्प्लावक बल' (buoyant force) and 'घनत्व' (density) as used in Marathi textbooks.",
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक धातूचा ब्लॉक द्रवात बुडवला जातो आणि त्यावर क्रियाकलाप असलेला उत्प्लावन बल मोजला जातो. जर तोच ब्लॉक अधिक घनता असलेल्या द्रवात बुडवला गेला, तर उत्प्लावन बलावर काय परिणाम होतो?",
+          "choices": [
+            "ते कमी होते",
+            "ते वाढते",
+            "ते एकसारखे रहाते",
+            "ते शून्य होते"
+          ],
+          "solution": "उत्प्लावन बल द्रवाच्या घनतेवर अवलंबून असते. घन द्रव अधिक उत्प्लावन बल प्रदान करतो. एका विद्यार्थी उत्प्लावन बल एकसारखे रहाते असे विचार करू शकतो, परंतु अध्याय स्पष्टपणे सांगतो की उत्प्लावन बल द्रवाच्या घनतेवर अवलंबून असते.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English original in meaning, structure, and terminology. Technical terms like 'उत्प्लावन बल' (buoyant force) and 'घनता' (density) are correctly used as per standard Marathi science terminology.",
           "flag": null
         }
       },
@@ -858,10 +593,200 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Pupil might think that the ship is lighter, which is not the case as both are made of iron",
-        "Pupil might think that the material is less dense, but iron is denser than water",
+        "Thinks density does not affect buoyancy",
         null,
-        "Pupil might think that surface area is the key factor, but it is the volume of displaced water that matters"
+        "Believes buoyancy is constant",
+        "Believes that buoyant force depends only on the object's volume, not the fluid's density"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Buoyant force is directly proportional to fluid density, so increasing the fluid density increases the buoyant force. The author's reasoning aligns with the physics principle and the misconceptions students might have.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 29,
+          "pageStart": 28,
+          "pageEnd": 29,
+          "headingPath": [
+            "3. Force and Pressure"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 30,
+          "pageStart": 29,
+          "pageEnd": 30,
+          "headingPath": [
+            "3. Force and Pressure"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 31,
+          "pageStart": 30,
+          "pageEnd": 31,
+          "headingPath": [
+            "3. Force and Pressure"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T10:39:33.245Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a force of 10 N is applied on an object in one direction and a force of 6 N is applied in the opposite direction, what is the net force on the object?",
+      "choices": [
+        "4 N in the direction of the 10 N force",
+        "16 N in the direction of the 10 N force",
+        "4 N in the direction of the 6 N force",
+        "16 N in the direction of the 6 N force"
+      ],
+      "answerIndex": 0,
+      "solution": "When two forces act in opposite directions, the net force is the difference between them. Subtracting 6 N from 10 N gives 4 N, and the direction of the net force is the same as the larger force. The other options incorrectly add the forces or reverse the direction of the net force.",
+      "checkExpr": "10-6",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी वस्तु पर एक दिशा में 10 न्यूटन का बल लगाया जाता है और विपरीत दिशा में 6 न्यूटन का बल लगाया जाता है, तो वस्तु पर शुद्ध बल क्या है?",
+          "choices": [
+            "10 न्यूटन के बल की दिशा में 4 न्यूटन",
+            "10 न्यूटन के बल की दिशा में 16 न्यूटन",
+            "6 न्यूटन के बल की दिशा में 4 न्यूटन",
+            "6 न्यूटन के बल की दिशा में 16 न्यूटन"
+          ],
+          "solution": "जब दो बल विपरीत दिशाओं में कार्य करते हैं, तो शुद्ध बल उनके अंतर के बराबर होता है। 10 न्यूटन में से 6 न्यूटन को घटाने से 4 न्यूटन प्राप्त होता है, और शुद्ध बल की दिशा बड़े बल की दिशा के समान होती है। अन्य विकल्प बलों को जोड़ देते हैं या शुद्ध बल की दिशा को उलट देते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question, with appropriate terminology and logical structure. The correct answer (option 1) is in the same position, and the distractors remain incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर 10 न्यूटनचा बल वस्तूवर एका दिशेत आणि 6 न्यूटनचा बल विरुद्ध दिशेत लावला गेला तर वस्तूवरील नेट बल किती असेल?",
+          "choices": [
+            "10 न्यूटनच्या दिशेत 4 न्यूटन",
+            "10 न्यूटनच्या दिशेत 16 न्यूटन",
+            "6 न्यूटनच्या दिशेत 4 न्यूटन",
+            "6 न्यूटनच्या दिशेत 16 न्यूटन"
+          ],
+          "solution": "जेव्हा दोन बल विरुद्ध दिशेत कार्य करतात तेव्हा नेट बल त्यांच्या फरकाच्या बरोबर असतो. 6 न्यूटन वजा करून 10 न्यूटन देऊन 4 न्यूटन मिळतो आणि नेट बलची दिशा मोठ्या बलाच्या दिशेत असते. इतर विकल्प बलांची बेरीज करतात किंवा नेट बलाची दिशा उलट करतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Adds the forces instead of subtracting them",
+        "Confuses the direction of the net force",
+        "Misunderstands the concept of net force"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly calculates the net force by subtracting the smaller force from the larger one and identifies the direction of the net force. All distractors represent common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 22,
+          "pageStart": 24,
+          "pageEnd": 24,
+          "headingPath": [
+            "3. Force and Pressure"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 23,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "3. Force and Pressure"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 24,
+          "pageStart": 25,
+          "pageEnd": 26,
+          "headingPath": [
+            "3. Force and Pressure"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T10:39:33.245Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A stone is submerged in water, and the length of a rubberband holding it is reduced. What is the reason for this?",
+      "choices": [
+        "The rubberband becomes weaker in water",
+        "The weight of the stone increases in water",
+        "The buoyant force reduces the effective weight of the stone",
+        "The stone becomes heavier in water"
+      ],
+      "answerIndex": 2,
+      "solution": "The buoyant force reduces the effective weight of the stone when it is submerged in water. This means the force pulling the stone down is less, so the rubberband stretches less. The buoyant force is an upward force exerted by the fluid on the object. The other options are based on incorrect understanding of buoyancy.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पत्थर पानी में डूबा हुआ है, और इसे बांधे रखने वाले रबर के बैंड की लंबाई कम हो गई है। इसका कारण क्या है?",
+          "choices": [
+            "रबर का बैंड पानी में कमजोर हो जाता है",
+            "पानी में पत्थर का भार बढ़ जाता है",
+            "उत्प्लावन बल पत्थर के प्रभावी भार को कम कर देता है",
+            "पानी में पत्थर भारी हो जाता है"
+          ],
+          "solution": "जब पत्थर पानी में डूबा होता है, तो उत्प्लावन बल पत्थर के प्रभावी भार को कम कर देता है। इसका मतलब है कि पत्थर के नीचे की ओर खींचने वाला बल कम हो जाता है, इसलिए रबर का बैंड कम खिंच जाता है। उत्प्लावन बल तरल द्वारा वस्तु पर ऊपर की ओर लगाया जाने वाला बल होता है। अन्य विकल्प उत्प्लावन की गलत समझ पर आधारित हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific terminology and meaning of the original question.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक शिला पाण्यात बुडवली गेली आहे आणि तिला बांधणारा रबरी बेल्टची लांबी कमी झाली आहे. ह्याचा कारण काय आहे?",
+          "choices": [
+            "रबरी बेल्ट पाण्यात कमजोर होतो",
+            "पाण्यात शिलेचा वजन वाढतो",
+            "उत्प्लावन बल शिलेच्या प्रभावी वजनाला कमी करते",
+            "पाण्यात शिला भारी होते"
+          ],
+          "solution": "जेव्हा शिला पाण्यात बुडवली जाते तेव्हा उत्प्लावन बल शिलेच्या प्रभावी वजनाला कमी करते. ह्याचा अर्थ शिलेला खाली खेचणारा बल कमी असतो, म्हणून रबरी बेल्ट कमी विस्तारतो. उत्प्लावन बल हे द्रव द्वारे वस्तूवर लागू केलेले वरचे बल आहे. इतर विकल्प उत्प्लावनाच्या चुकीच्या समजावर आधारित आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes that the rubberband's properties change in water",
+        "Confuses the effect of buoyancy with an increase in weight",
+        null,
+        "Ignores the role of buoyant force in reducing the effective weight"
       ],
       "solverAnswers": [
         2,
@@ -871,7 +796,7 @@
         2
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2, as the buoyant force must exceed the weight for an object to float. The author's reasoning aligns with this, and the misconceptions listed for the other options are plausible for students.",
+      "critique": "The solution correctly identifies that the buoyant force reduces the effective weight of the stone, leading to less stretching of the rubber band. All distractors reflect common misconceptions about buoyancy.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -902,7 +827,7 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-27T13:21:53.005Z",
+      "generatedAt": "2026-11-02T10:39:33.245Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

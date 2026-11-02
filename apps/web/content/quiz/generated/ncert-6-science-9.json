@@ -21,147 +21,49 @@
   "board": "NCERT",
   "book": "Curiosity",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-31T09:26:44.305Z",
+  "generatedAt": "2026-11-01T20:21:20.507Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 2,
-      "stem": "Which method is described as the process of letting heavier particles settle at the bottom of a liquid?",
-      "choices": [
-        "Filtration",
-        "Decantation",
-        "Sedimentation",
-        "Evaporation"
-      ],
-      "answerIndex": 2,
-      "solution": "Sedimentation is the process where heavier particles naturally settle at the bottom of a liquid due to gravity. Filtration involves passing the mixture through a filter to separate particles, decantation is pouring off the liquid after particles have settled, and evaporation removes liquid by heating. Sedimentation specifically refers to the settling of particles without any additional steps.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "कौन सी विधि एक द्रव के नीचे भारी कणों के बैठ जाने की प्रक्रिया के रूप में वर्णित की जाती है?",
-          "choices": [
-            "पर्याप्त निस्यंदन",
-            "अपकेंद्रण",
-            "अवसादन",
-            "वाष्पीकरण"
-          ],
-          "solution": "अवसादन एक प्रक्रिया है जिसमें भारी कण गुरुत्वाकर्षण के कारण द्रव के नीचे बैठ जाते हैं। निस्यंदन में मिश्रण को एक छलनी के माध्यम से गुजारा जाता है ताकि कणों को अलग किया जा सके, अपकेंद्रण एक ऐसी विधि है जिसमें कणों के बैठ जाने के बाद द्रव को बाहर निकाल दिया जाता है, और वाष्पीकरण में गर्म करके द्रव को हटा दिया जाता है। अवसादन विशेष रूप से बिना किसी अतिरिक्त कदम के कणों के बैठ जाने को संदर्भित करता है।",
-          "imageAlt": null,
-          "critique": "All terms are standard in Hindi science textbooks. 'Decantation' is correctly translated as 'अपकेंद्रण' and 'sedimentation' as 'अवसादन'.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "कोणत्या पद्धतीला द्रवाच्या खालच्या बाजूला भारी कणांच्या बसण्याच्या प्रक्रियेचे वर्णन केले जाते?",
-          "choices": [
-            "विलगीकरण",
-            "आस्तरण",
-            "अवक्षेपण",
-            "वाष्पीकरण"
-          ],
-          "solution": "अवक्षेपण ही एक प्रक्रिया आहे जेथे भारी कण गुरुत्वाकर्षणमुळे द्रवाच्या खालच्या बाजूला स्वतःच बसतात. विलगीकरणात मिश्रणाला फिल्टरमधून वाहून नेले जाते, आस्तरण हे कणांच्या बसल्यानंतर द्रव वाहून नेण्याचे आहे आणि वाष्पीकरणात उष्णतेने द्रव दूर केला जातो. अवक्षेपणात विशिष्टपणे कोणत्याही अतिरिक्त कृतीशिवाय कणांचे बसणे होते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, with appropriate Marathi scientific terms used. The meaning, options, and solution all align correctly with the English version.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses sedimentation with decantation",
-        "Confuses sedimentation with filtration",
-        null,
-        "Confuses sedimentation with evaporation"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed, with a clear and accurate definition of sedimentation. The distractors are common misconceptions, and the solution correctly identifies the correct answer.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu109.pdf",
-          "ordinal": 3,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 9: Methods of Separation in Everyday Life",
-            "कबीर"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu109.pdf",
-          "ordinal": 4,
-          "pageStart": 7,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 9: Methods of Separation in Everyday Life",
-            "कबीर"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu109.pdf",
-          "ordinal": 5,
-          "pageStart": 9,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 9: Methods of Separation in Everyday Life",
-            "कबीर"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T09:26:44.305Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a farmer wants to separate husk from grains, which method should they use?",
+      "difficulty": 1,
+      "stem": "Which method of separation is used when solid particles are heavier and settle down in a liquid?",
       "choices": [
         "Handpicking",
-        "Threshing",
-        "Winnowing",
-        "Sieving"
+        "Magnetic separation",
+        "Decantation",
+        "Filtration"
       ],
       "answerIndex": 2,
-      "solution": "Winnowing is used to separate heavier and lighter components, such as husk from grains, by using wind or blowing air. Handpicking is used for small quantities, threshing separates grains from stalks, and sieving is used for solid-solid mixtures based on size.",
+      "solution": "Decantation is used when solid particles are heavier and settle down in a liquid. The liquid is then carefully poured out, leaving the solid behind. Handpicking is used for large, visible impurities. Magnetic separation is used for magnetic materials. Filtration is used for finer solid particles that do not settle.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक किसान अनाज से छिलका अलग करना चाहता है, तो उसे कौन सी विधि का उपयोग करना चाहिए?",
+          "stem": "जब ठोस कण भारी होते हैं और एक द्रव में बैठ जाते हैं, तो किस अलगाव की विधि का उपयोग किया जाता है?",
           "choices": [
-            "हाथ से चुनना",
-            "तहानी",
-            "हवाई अलगाव",
-            "चानणा"
+            "हाथ से चुनाव",
+            "चुंबकीय अलगाव",
+            "निस्यंदन",
+            "अपोहन"
           ],
-          "solution": "हवाई अलगाव का उपयोग वायु या हवा बहाकर भारी और हल्के घटकों को अलग करने के लिए किया जाता है, जैसे कि अनाज से छिलका। हाथ से चुनना छोटी मात्रा में उपयोग किया जाता है, तहानी अनाज को छड़ी से अलग करती है, और चानणा आकार के आधार पर ठोस-ठोस मिश्रण के लिए उपयोग किया जाता है।",
+          "solution": "जब ठोस कण भारी होते हैं और एक द्रव में बैठ जाते हैं, तो निस्यंदन का उपयोग किया जाता है। द्रव को फिर से ध्यान से बाहर निकाल दिया जाता है, ठोस के पीछे छोड़ दिया जाता है। हाथ से चुनाव बड़े दृश्य अशुद्धियों के लिए उपयोग किया जाता है। चुंबकीय अलगाव चुंबकीय सामग्री के लिए उपयोग किया जाता है। अपोहन छोटे ठोस कणों के लिए उपयोग किया जाता है जो बैठ नहीं जाते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, with appropriate technical terms used in Indian textbooks.",
+          "critique": "Hindi translation is accurate and uses standard scientific terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "एका शेतकऱ्याला गहूपासून घास वेगळा करायचा असेल, तर त्यांनी कोणती पद्धत वापरावी?",
+          "stem": "कोणत्या विलगीकरणाच्या पद्धतीचा वापर वापरला जातो जेव्हा घन कण तरल मध्ये भारी असतात आणि खाली पडतात?",
           "choices": [
             "हाताने निवडणे",
-            "मळणे",
-            "वाऱ्याने वेगळे करणे",
-            "सिंगणे"
+            "चुंबकीय विलगीकरण",
+            "निर्मलीकरण",
+            "पाणी विसर्जन"
           ],
-          "solution": "वाऱ्याने वेगळे करणे ही एक अशी पद्धत आहे जी भारी आणि हलक्या घटकांना वेगळे करते, उदाहरणार्थ घास आणि गहू वेगळे करते, वाऱ्याचा वापर करून. हाताने निवडणे ही लहान प्रमाणात वापरली जाते, मळणे ही गहू आणि बांडांमधून वेगळे करते, आणि सिंगणे ही आकारानुसार घटकांना वेगळे करण्यासाठी वापरली जाते.",
+          "solution": "निर्मलीकरण ही पद्धत वापरली जाते जेव्हा घन कण तरल मध्ये भारी असतात आणि खाली पडतात. तरल नंतर सावधगिरीने बाजूला घेतले जाते, घन कण शिल्लक रहातात. हाताने निवडणे ही मोठ्या आणि दृश्य अशुद्धींसाठी वापरली जाते. चुंबकीय विलगीकरण ही चुंबकीय पदार्थांसाठी वापरली जाते. पाणी विसर्जन ही अल्प घन कणांसाठी वापरली जाते जे खाली पडत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the technical terms used in Marathi science textbooks.",
+          "critique": "All terms are standard Marathi scientific terms used in textbooks.",
           "flag": null
         }
       },
@@ -170,10 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses winnowing with handpicking",
-        "Confuses winnowing with threshing",
+        "Confuses decantation with handpicking, which is used for large impurities.",
+        "Confuses decantation with magnetic separation, which is used for magnetic materials.",
         null,
-        "Confuses winnowing with sieving"
+        "Does not understand the use of decantation for heavy solid particles settling in a liquid."
       ],
       "solverAnswers": [
         2,
@@ -183,279 +85,83 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 2 (Winnowing), as it is the method used to separate husk from grains by using air. The author's explanation is accurate, and the reasons for the wrong options reflect common misconceptions.",
+      "critique": "The question is well-constructed and the solution is accurate. Decantation is indeed the correct method when heavier solid particles settle in a liquid. The distractors are plausible misconceptions that students might have.",
       "sources": [
         {
           "document": "ncert/6/science/fecu109.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
+          "ordinal": 9,
+          "pageStart": 17,
+          "pageEnd": 18,
           "headingPath": [
             "Chapter 9: Methods of Separation in Everyday Life",
-            "कबीर"
+            "Let us enhance our learning"
           ]
         },
         {
           "document": "ncert/6/science/fecu109.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 4,
+          "ordinal": 10,
+          "pageStart": 18,
+          "pageEnd": 19,
           "headingPath": [
             "Chapter 9: Methods of Separation in Everyday Life",
-            "कबीर"
+            "Learning further"
           ]
         },
         {
           "document": "ncert/6/science/fecu109.pdf",
-          "ordinal": 2,
-          "pageStart": 4,
-          "pageEnd": 6,
+          "ordinal": 11,
+          "pageStart": 19,
+          "pageEnd": 19,
           "headingPath": [
             "Chapter 9: Methods of Separation in Everyday Life",
-            "कबीर"
+            "Notes"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T09:26:44.305Z",
+      "generatedAt": "2026-11-01T20:21:20.507Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "If a mixture of tea leaves and tea is left undisturbed, what happens to the tea leaves?",
-      "choices": [
-        "They dissolve in the tea",
-        "They float on the surface",
-        "They settle at the bottom",
-        "They mix completely with the tea"
-      ],
-      "answerIndex": 2,
-      "solution": "Tea leaves are heavier and do not dissolve in the liquid, so they settle at the bottom due to gravity. Dissolving is incorrect because tea leaves are not soluble. Floating is unlikely because they are denser than the liquid. Mixing completely is also incorrect as the leaves remain as solid particles.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि चाय के पत्ते और चाय के मिश्रण को अस्थिर छोड़ दिया जाए, तो चाय के पत्ते क्या हो जाते हैं?",
-          "choices": [
-            "वे चाय में घुल जाते हैं",
-            "वे सतह पर तैरते रहते हैं",
-            "वे तल पर बैठ जाते हैं",
-            "वे चाय के साथ पूरी तरह मिश्रित हो जाते हैं"
-          ],
-          "solution": "चाय के पत्ते भारी होते हैं और द्रव में घुल नहीं जाते, इसलिए गुरुत्वाकर्षण के कारण वे तल पर बैठ जाते हैं। घुलना गलत है क्योंकि चाय के पत्ते अघुलनशील होते हैं। तैरना असंभव है क्योंकि वे द्रव की तुलना में घनत्व में अधिक होते हैं। पूरी तरह मिश्रित होना भी गलत है क्योंकि पत्ते ठोस कणों के रूप में रहते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology commonly found in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "चहा पाने आणि चहा असलेल्या मिश्रणाला अचल ठेवल्यास, चहा पाने काय होतात?",
-          "choices": [
-            "ते चहात विरघळतात",
-            "ते पृष्ठभागावर तरंगतात",
-            "ते तलावर बसतात",
-            "ते चहासह पूर्णपणे मिसळतात"
-          ],
-          "solution": "चहा पाने भारी असतात आणि द्रावकात विरघळत नाहीत, म्हणून गुरुत्वाकर्षणामुळे ते तलावर बसतात. विरघळणे अयोग्य आहे कारण चहा पाने अद्राव्य आहेत. तरंगणे असंभाव्य आहे कारण ते द्रावकापेक्षा घन असतात. पूर्णपणे मिसळणे देखील अयोग्य आहे कारण पाने घन कणांच्या रूपात राहतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific meaning. Technical terms like 'विरघळतात' (dissolve), 'तरंगतात' (float), 'तलावर बसतात' (settle at the bottom) are appropriate for a Marathi-medium science curriculum.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Thinks tea leaves dissolve",
-        "Thinks tea leaves float",
-        null,
-        "Thinks tea leaves mix completely"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed. The correct answer is 2, as tea leaves are insoluble and heavier, so they settle at the bottom. The distractors reflect common misconceptions about solubility and mixing.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu109.pdf",
-          "ordinal": 3,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 9: Methods of Separation in Everyday Life",
-            "कबीर"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu109.pdf",
-          "ordinal": 4,
-          "pageStart": 7,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 9: Methods of Separation in Everyday Life",
-            "कबीर"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu109.pdf",
-          "ordinal": 5,
-          "pageStart": 9,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 9: Methods of Separation in Everyday Life",
-            "कबीर"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T09:26:44.305Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "In filtration, what is the name of the liquid that passes through the filter paper?",
-      "choices": [
-        "Residue",
-        "Filtrate",
-        "Solute",
-        "Solvent"
-      ],
-      "answerIndex": 1,
-      "solution": "The liquid that passes through the filter paper is called the filtrate. Residue refers to the solid that remains on the filter, solute is the substance dissolved in a solvent, and solvent is the liquid that dissolves the solute. Filtrate is the correct term for the liquid that successfully passes through during filtration.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "फिल्ट्रेशन में, फिल्टर कागज से गुजरने वाले द्रव का नाम क्या होता है?",
-          "choices": [
-            "अवशेष",
-            "फिल्ट्रेट",
-            "विलेय",
-            "विलायक"
-          ],
-          "solution": "फिल्टर कागज से गुजरने वाला द्रव फिल्ट्रेट कहलाता है। अवशेष वह ठोस होता है जो फिल्टर पर रह जाता है, विलेय वह पदार्थ होता है जो विलायक में घुला रहता है, और विलायक वह द्रव होता है जो विलेय को घोलता है। फिल्ट्रेशन के दौरान जो द्रव सफलतापूर्वक गुजर जाता है, उसके लिए फिल्ट्रेट शब्द सही है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology used in Hindi textbooks. The correct answer remains option (2) 'फिल्ट्रेट' as in the original.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "फिल्टरीकरणात, फिल्टर कागदावरून जाणारा द्रवाचे नाव काय आहे?",
-          "choices": [
-            "अवशेष",
-            "फिल्ट्रेट",
-            "द्रावक",
-            "द्राव्य"
-          ],
-          "solution": "फिल्टर कागदावरून जाणारा द्रव फिल्ट्रेट म्हणून ओळखला जातो. अवशेष हा फिल्टरवर राहणारा घन पदार्थ आहे, द्रावक हा द्राव्य विसर्जित करणारा द्रव आहे आणि द्राव्य हा द्रावकात विसर्जित होणारा पदार्थ आहे. फिल्ट्रेट हा फिल्टरीकरणादरम्यान फिल्टर कागदावरून जाणारा द्रवाचे योग्य नाव आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses filtrate with residue",
-        null,
-        "Confuses filtrate with solute",
-        "Confuses filtrate with solvent"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is well-constructed and the solution is accurate. The correct answer is 'filtrate', and the distractors reflect common misconceptions about filtration terminology.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu109.pdf",
-          "ordinal": 3,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 9: Methods of Separation in Everyday Life",
-            "कबीर"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu109.pdf",
-          "ordinal": 4,
-          "pageStart": 7,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 9: Methods of Separation in Everyday Life",
-            "कबीर"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu109.pdf",
-          "ordinal": 5,
-          "pageStart": 9,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 9: Methods of Separation in Everyday Life",
-            "कबीर"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T09:26:44.305Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If a student wants to separate a mixture of sand and water, which method would be most effective?",
+      "difficulty": 2,
+      "stem": "What method of separation is used when tea leaves are removed from tea by letting the liquid flow into a cup without disturbing the sediment?",
       "choices": [
         "Decantation",
         "Filtration",
         "Evaporation",
         "Distillation"
       ],
-      "answerIndex": 1,
-      "solution": "Filtration is the most effective method because it allows water to pass through a filter while trapping the solid sand particles. Decantation would not fully separate the sand from the water, as some particles may remain suspended. Evaporation removes the water, leaving only the sand, but it is not a separation method for mixtures where both components are needed. Distillation is used for separating liquids with different boiling points, not for solid-liquid mixtures.",
+      "answerIndex": 0,
+      "solution": "Decantation is the process where the liquid is carefully poured out, leaving the heavier insoluble particles (tea leaves) at the bottom. Filtration involves using a filter to separate solids from liquids, evaporation is used to separate a solute from a solution, and distillation is for separating mixtures of liquids with different boiling points.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक छात्र जो रेत और पानी के मिश्रण को अलग करना चाहता है, कौन सी विधि सबसे अधिक प्रभावी होगी?",
+          "stem": "चाय के पत्ते चाय से किस अलगाव की विधि का उपयोग करके हटाए जाते हैं जब तरल पदार्थ को एक कप में बहाया जाता है बिना अवसाद के हिलाए?",
           "choices": [
-            "अपकेंद्रण",
+            "अलगाव",
             "छानना",
             "वाष्पीकरण",
             "आसवन"
           ],
-          "solution": "छानना सबसे अधिक प्रभावी विधि है क्योंकि यह पानी को एक छानने के माध्यम से गुजरने देता है जबकि ठोस रेत के कणों को रोक देता है। अपकेंद्रण रेत को पानी से पूरी तरह से अलग नहीं कर पाएगा, क्योंकि कुछ कण लटके रह सकते हैं। वाष्पीकरण पानी को हटा देता है, जिससे केवल रेत बचता है, लेकिन यह दोनों घटकों की आवश्यकता होने पर मिश्रण के लिए एक अलगीकरण विधि नहीं है। आसवन का उपयोग अलग-अलग क्वथनांक वाले द्रवों के अलगीकरण के लिए किया जाता है, ठोस-द्रव मिश्रण के लिए नहीं।",
+          "solution": "अलगाव एक प्रक्रिया है जहां तरल को ध्यान से बाहर निकाला जाता है, जिससे भारी अविलेय कण (चाय के पत्ते) तल पर रह जाते हैं। छानना एक छानने के कपड़े का उपयोग करके ठोसों को तरल से अलग करने की प्रक्रिया है, वाष्पीकरण का उपयोग विलेय को विलयन से अलग करने के लिए किया जाता है, और आसवन का उपयोग विभिन्न क्वथनांक वाले तरलों के मिश्रण को अलग करने के लिए किया जाता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology as found in Hindi textbooks.",
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated, and the correct answer remains in the same position.",
           "flag": null
         },
         "mr": {
-          "stem": "एका विद्यार्थ्याला रेणू आणि पाणी यांच्या मिश्रणाचे विलगीकरण करायचे असेल, तर कोणती पद्धत सर्वात अधिक प्रभावी असेल?",
+          "stem": "चहा च्या पानांनी चहा विशिष्ट वस्तू वगळून द्रव एका ग्लास मध्ये वाहून जाऊ दिल्याने काढले जाते, त्यासाठी कोणता विलगीकरणाचा पद्धत वापरली जाते?",
           "choices": [
-            "अलगीकरण",
+            "काढणे",
             "विलगीकरण",
             "वाष्पीकरण",
             "आस्थापन"
           ],
-          "solution": "विलगीकरण ही सर्वात अधिक प्रभावी पद्धत आहे कारण ती पाणी एका फिल्टरमधून जाऊ देते जेणेकरून घाणेरड्या रेणू घेऊन ठेवते. अलगीकरण रेणू आणि पाणी विलग करण्यास पूर्णपणे अयशस्वी ठरते, कारण काही कण अजूनही अलग राहू शकतात. वाष्पीकरण पाणी दूर करते आणि फक्त रेणू ठेवते, परंतु दोन्ही घटकांची आवश्यकता असलेल्या मिश्रणांसाठी ही विलगीकरणाची पद्धत नाही. आस्थापन ही वेगवेगळ्या उबवण्याच्या बिंदूंसह द्रवांच्या विलगीकरणासाठी वापरली जाते, घाणेरड्या-द्रव मिश्रणांसाठी नाही.",
+          "solution": "काढणे ही प्रक्रिया आहे जेव्हा द्रव जास्त वजनाच्या अविलीन कणांसह खाली ठेवून खाली जाऊ दिले जाते (चहा च्या पानांनी). विलगीकरण हा द्रवापासून घन पदार्थ विलग करण्यासाठी फिल्टर वापरून केला जातो, वाष्पीकरण हा विरघळलेल्या पदार्थाला विरघळलेल्या द्रवापासून विलग करण्यासाठी वापरला जातो आणि आस्थापन हा वेगवेगळ्या उबदार बिंदू असलेल्या द्रवांच्या मिश्रणांना विलग करण्यासाठी वापरला जातो.",
           "imageAlt": null,
-          "critique": "The translation is accurate and uses appropriate Marathi scientific terminology. The solution correctly explains why filtration is the best method, and the distractors remain incorrect as in the original.",
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Marathi science textbooks.",
           "flag": null
         }
       },
@@ -464,20 +170,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Chooses decantation, which is less effective",
         null,
-        "Chooses evaporation, which is not the best method",
-        "Chooses distillation, which is not applicable here"
+        "Confuses decantation with filtration, which uses a filter.",
+        "Confuses evaporation with the process of removing solid particles from a liquid.",
+        "Confuses distillation with the process of separating liquids."
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and aligns with the key. Filtration is indeed the most effective method for separating sand and water, as it allows the water to pass through while retaining the sand on the filter paper.",
+      "levelFlag": null,
+      "critique": "The question correctly identifies decantation as the method used when tea leaves are removed by pouring the liquid without disturbing the sediment. The author's reasoning aligns with the correct scientific explanation.",
       "sources": [
         {
           "document": "ncert/6/science/fecu109.pdf",
@@ -511,47 +217,47 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T09:26:44.305Z",
+      "generatedAt": "2026-11-01T20:21:20.507Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "Why is sieving not suitable for separating salt from seawater?",
+      "difficulty": 2,
+      "stem": "Which method of separation is used to separate a mixture of iron nails and sand?",
       "choices": [
-        "Because salt dissolves in water",
-        "Because salt is not solid",
-        "Because salt is not present in seawater",
-        "Because salt is heavier than water"
+        "Handpicking",
+        "Filtration",
+        "Decantation",
+        "Magnetic separation"
       ],
-      "answerIndex": 0,
-      "solution": "Sieving is not suitable because salt dissolves in water. The correct method is evaporation, where water is removed, leaving behind salt. Salt being heavier than water is not the reason for not using sieving. Salt is present in seawater, and it is solid, but it dissolves, making sieving ineffective.",
+      "answerIndex": 3,
+      "solution": "Magnetic separation is used to separate a mixture of iron nails and sand. Iron is magnetic, so it can be separated using a magnet. Handpicking is used for large, visible impurities. Filtration is used for finer solid particles. Decantation is used for heavier solid particles settling in a liquid.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "क्यों समुद्री जल से नमक के अलग करने के लिए छानना उपयुक्त नहीं है?",
+          "stem": "लोहे के कील और रेत के मिश्रण को अलग करने के लिए कौन सी विधि का उपयोग किया जाता है?",
           "choices": [
-            "क्योंकि नमक पानी में घुल जाता है",
-            "क्योंकि नमक ठोस नहीं है",
-            "क्योंकि नमक समुद्री जल में उपस्थित नहीं है",
-            "क्योंकि नमक पानी के मुकाबले भारी है"
+            "हाथ से चुनना",
+            "पर्दाथन",
+            "अपकेंद्रण",
+            "चुंबकीय अलगीकरण"
           ],
-          "solution": "छानना उपयुक्त नहीं है क्योंकि नमक पानी में घुल जाता है। सही विधि वाष्पीकरण है, जिसमें पानी को हटा दिया जाता है, जिससे नमक बच जाता है। नमक पानी के मुकाबले भारी होना छानने के उपयोग के अयोग्य होने का कारण नहीं है। नमक समुद्री जल में उपस्थित है, और यह ठोस है, लेकिन यह घुल जाता है, जिसके कारण छानना अकार्यक्षम हो जाता है।",
+          "solution": "लोहे के कील और रेत के मिश्रण को अलग करने के लिए चुंबकीय अलगीकरण का उपयोग किया जाता है। लोहा चुंबकीय होता है, इसलिए इसे एक चुंबक के उपयोग से अलग किया जा सकता है। हाथ से चुनना बड़े और दृश्यमान अशुद्धियों के लिए उपयोग किया जाता है। पर्दाथन छोटे ठोस कणों के लिए उपयोग किया जाता है। अपकेंद्रण भारी ठोस कणों के लिए उपयोग किया जाता है जो तरल में बैठ जाते हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "का तलावणे समुद्राच्या पाण्यापासून खारटपणा विभागण्यास उपयुक्त नाही?",
+          "stem": "लोहाचे नाळे आणि रेतीच्या मिश्रणाला विभक्त करण्यासाठी कोणती विभक्तीची विधी वापरली जाते?",
           "choices": [
-            "कारण खारटपणा पाण्यात विरघळतो",
-            "कारण खारटपणा घन नाही",
-            "कारण खारटपणा समुद्राच्या पाण्यात नसतो",
-            "कारण खारटपणा पाण्यापेक्षा भारी असतो"
+            "हाताने निवडणे",
+            "पारदर्शकता",
+            "अपक्षेपण",
+            "चुंबकीय विभक्ती"
           ],
-          "solution": "तलावणे उपयुक्त नाही कारण खारटपणा पाण्यात विरघळतो. योग्य पद्धत हे वाष्पीकरण आहे, जेथे पाणी हवेत जाते आणि खारटपणा राहतो. खारटपणा पाण्यापेक्षा भारी असल्याचे कारण तलावणे वापरण्यास अयोग्य नाही. समुद्राच्या पाण्यात खारटपणा असतो आणि तो घन असतो, परंतु तो विरघळतो, ज्यामुळे तलावणे अयोग्य ठरते.",
+          "solution": "लोहाचे नाळे आणि रेतीच्या मिश्रणाला विभक्त करण्यासाठी चुंबकीय विभक्ती वापरली जाते. लोह चुंबकीय असतो, म्हणून ते एका चुंबकाच्या माध्यमातून विभक्त केले जाऊ शकते. हाताने निवडणे मोठ्या आणि दृश्य अशा अशुद्धींसाठी वापरले जाते. पारदर्शकता लहान घन कणांसाठी वापरली जाते. अपक्षेपण वाहक घन कणांसाठी वापरली जाते.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
@@ -562,10 +268,108 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Confuses magnetic separation with handpicking, which is used for large impurities.",
+        "Confuses magnetic separation with filtration, which is used for finer solid particles.",
+        "Confuses magnetic separation with decantation, which is used for heavier solid particles settling in a liquid.",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is magnetic separation, as iron is magnetic and can be separated from sand using a magnet. The other options are incorrect because they apply to different types of mixtures.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 9,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 9: Methods of Separation in Everyday Life",
+            "Let us enhance our learning"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 10,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 9: Methods of Separation in Everyday Life",
+            "Learning further"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 11,
+          "pageStart": 19,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 9: Methods of Separation in Everyday Life",
+            "Notes"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-01T20:21:20.507Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In the process of filtration, what is the name of the solid that remains on the filter paper?",
+      "choices": [
+        "Residue",
+        "Filtrate",
+        "Solute",
+        "Solvent"
+      ],
+      "answerIndex": 0,
+      "solution": "Residue is the solid that remains on the filter paper after filtration. Filtrate is the liquid that passes through the filter, solute is the substance dissolved in a solvent, and solvent is the liquid in which a solute is dissolved.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "फिल्टरीकरण की प्रक्रिया में, फिल्टर पेपर पर रहने वाले ठोस के नाम क्या है?",
+          "choices": [
+            "अवशेष",
+            "फिल्ट्रेट",
+            "विलेय",
+            "विलायक"
+          ],
+          "solution": "अवशेष वह ठोस है जो फिल्टरीकरण के बाद फिल्टर पेपर पर रह जाता है। फिल्ट्रेट वह द्रव है जो फिल्टर से गुजर जाता है, विलेय वह पदार्थ है जो विलायक में घुला होता है और विलायक वह द्रव है जिसमें विलेय घुला होता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "फिल्टरीकरणाच्या प्रक्रियेत, फिल्टर कागदावर राहणारा घन पदार्थाचे नाव काय आहे?",
+          "choices": [
+            "अवशेष",
+            "फिल्ट्रेट",
+            "द्राव्य",
+            "द्रावक"
+          ],
+          "solution": "अवशेष हा घन पदार्थ आहे जो फिल्टरीकरणानंतर फिल्टर कागदावर राहतो. फिल्ट्रेट हा तर फिल्टरमार्फत जाणारा द्रव आहे, द्राव्य हा द्रावकात विरघळलेला पदार्थ आहे आणि द्रावक हा द्राव्य विरघळविणारा द्रव आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and uses standard Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
         null,
-        "Misunderstands the concept of dissolution",
-        "Misunderstands the physical state of salt",
-        "Confuses salt's properties with other substances"
+        "Confuses residue with filtrate, which is the liquid that passes through the filter.",
+        "Confuses residue with solute, which is the substance dissolved in a solvent.",
+        "Confuses residue with solvent, which is the liquid in which a solute is dissolved."
       ],
       "solverAnswers": [
         0,
@@ -574,14 +378,14 @@
         0,
         0
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0, as salt dissolves in water, making sieving ineffective. The author's reasoning is sound, and the misconceptions listed for the wrong options are plausible for students.",
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed and the solution is accurate. The correct answer is 'Residue' and the distractors are common misconceptions.",
       "sources": [
         {
           "document": "ncert/6/science/fecu109.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
           "headingPath": [
             "Chapter 9: Methods of Separation in Everyday Life",
             "कबीर"
@@ -589,9 +393,9 @@
         },
         {
           "document": "ncert/6/science/fecu109.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 4,
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
           "headingPath": [
             "Chapter 9: Methods of Separation in Everyday Life",
             "कबीर"
@@ -599,9 +403,9 @@
         },
         {
           "document": "ncert/6/science/fecu109.pdf",
-          "ordinal": 2,
-          "pageStart": 4,
-          "pageEnd": 6,
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 11,
           "headingPath": [
             "Chapter 9: Methods of Separation in Everyday Life",
             "कबीर"
@@ -609,7 +413,301 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T09:26:44.305Z",
+      "generatedAt": "2026-11-01T20:21:20.507Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "A student mixed oil and water in a beaker and observed that oil floats on top of water. What method can be used to separate them?",
+      "choices": [
+        "Filtration",
+        "Decantation",
+        "Distillation",
+        "Evaporation"
+      ],
+      "answerIndex": 1,
+      "solution": "Decantation is the correct method because oil and water are immiscible and form layers. The top layer (oil) can be poured off. Filtration is for solids and liquids, distillation is for separating miscible liquids, and evaporation is for dissolving solids in liquids.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र ने बीकर में तेल और पानी मिलाया और देखा कि तेल पानी के ऊपर तैरता है। इन्हें अलग करने के लिए कौन-सी विधि का उपयोग किया जा सकता है?",
+          "choices": [
+            "पर्याप्त निस्यंदन",
+            "अलग करना",
+            "आसवन",
+            "वाष्पीकरण"
+          ],
+          "solution": "अलग करना सही विधि है क्योंकि तेल और पानी अमिश्रणीय होते हैं और पर слои बनाते हैं। ऊपरी परत (तेल) को बाहर निकाला जा सकता है। निस्यंदन ठोस और तरल के लिए होता है, आसवन विलेय ठोस के लिए होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate and maintains the original meaning, with appropriate technical terms used in Indian curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने बीकरमध्ये तेल आणि पाणी मिसळले आणि त्यांनी पाण्यावर तेल तरंगत असल्याचे निरीक्षण केले. त्यांना वेगळे करण्यासाठी कोणता पद्धत वापरता येईल?",
+          "choices": [
+            "विलगीकरण",
+            "निर्मलीकरण",
+            "आस्थापन",
+            "वाष्पीकरण"
+          ],
+          "solution": "निर्मलीकरण ही योग्य पद्धत आहे कारण तेल आणि पाणी अमिश्रित आहेत आणि थर बनवतात. वरचा थर (तेल) वाहून घेता येईल. विलगीकरण हे घन पदार्थ आणि द्रव पदार्थांसाठी आहे, आस्थापन हे मिश्रित द्रव पदार्थांना वेगळे करण्यासाठी आहे आणि वाष्पीकरण हे द्रव पदार्थांमध्ये घोललेल्या घन पदार्थांना वेगळे करण्यासाठी आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses filtration with decantation",
+        null,
+        "Does not recognize immiscible liquids",
+        "Does not know the use of distillation for liquids"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies decantation as the method for separating immiscible liquids like oil and water. The reasoning aligns with the scientific principle that immiscible liquids form layers and can be separated by pouring off the top layer.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 9,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 9: Methods of Separation in Everyday Life",
+            "Let us enhance our learning"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 10,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 9: Methods of Separation in Everyday Life",
+            "Learning further"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 11,
+          "pageStart": 19,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 9: Methods of Separation in Everyday Life",
+            "Notes"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-01T20:21:20.507Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In a scenario where a tea strainer is used to filter muddy water, which of the following best describes the function of the strainer?",
+      "choices": [
+        "It allows all particles to pass through",
+        "It separates solid particles from the liquid",
+        "It evaporates the water",
+        "It changes the chemical composition of the mixture"
+      ],
+      "answerIndex": 1,
+      "solution": "The tea strainer functions as a filter that allows the liquid to pass through while retaining the solid particles. It does not allow all particles to pass through, it does not evaporate water, and it does not change the chemical composition of the mixture.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक ऐसे परिदृश्य में जहां चाय के छानने वाले उपकरण का उपयोग गंदे पानी के छानने के लिए किया जाता है, निम्नलिखित में से कौन-सा छानने वाले उपकरण के कार्य का सबसे अच्छा वर्णन करता है?",
+          "choices": [
+            "यह सभी कणों को पार करने देता है",
+            "यह ठोस कणों को द्रव से अलग करता है",
+            "यह पानी के वाष्पीकरण करता है",
+            "यह मिश्रण के रासायनिक संघटन को बदल देता है"
+          ],
+          "solution": "चाय के छानने वाले उपकरण एक छानने वाला के रूप में कार्य करता है जो द्रव को पार करने देता है जबकि ठोस कणों को रखता है। यह सभी कणों को पार करने नहीं देता है, पानी के वाष्पीकरण को नहीं करता है और मिश्रण के रासायनिक संघटन को नहीं बदलता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms. The correct answer remains option (2) and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मिसळलेल्या पाण्याला विलग करण्यासाठी चहा विलगीकरण वापरल्यास, खालीलपैकी कोणते विलगीकरणाच्या कार्याचे उत्तम वर्णन करते?",
+          "choices": [
+            "ते सर्व कणांना वाहून जाण्याची परवानगी देते",
+            "ते घाणेरड्या पाण्यापासून घाण विलग करते",
+            "ते पाणी वाफ करते",
+            "ते मिश्रणाची रासायनिक रचना बदलते"
+          ],
+          "solution": "चहा विलगीकरण एक फिल्टर म्हणून कार्य करते जे तरल पदार्थ वाहून जाण्याची परवानगी देते जेव्हा घाण राहते. ते सर्व कणांना वाहून जाण्याची परवानगी देत नाही, पाणी वाफ करत नाही आणि मिश्रणाची रासायनिक रचना बदलत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for filtration and separation processes.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes the strainer allows all particles to pass through.",
+        null,
+        "Believes the strainer evaporates the water.",
+        "Believes the strainer changes the chemical composition of the mixture."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as the tea strainer separates solid particles from the liquid. The other options represent common misconceptions about the function of a strainer.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Methods of Separation in Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Methods of Separation in Everyday Life",
+            "कबीर"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Methods of Separation in Everyday Life",
+            "कबीर"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-01T20:21:20.507Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A mixture of oil and water is left undisturbed. What will happen to the oil?",
+      "choices": [
+        "It will dissolve in water.",
+        "It will sink to the bottom of the container.",
+        "It will float on the surface of the water.",
+        "It will mix with water and form a homogeneous solution."
+      ],
+      "answerIndex": 2,
+      "solution": "Oil will float on the surface of the water because it is less dense than water. Oil does not dissolve in water, so it forms a separate layer. The other options are incorrect because oil does not dissolve, does not sink, and does not form a homogeneous solution with water.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "तेल और पानी के मिश्रण को अस्पर्शित छोड़ दिया जाता है। तेल पर क्या होगा?",
+          "choices": [
+            "यह पानी में घुल जाएगा।",
+            "यह बर्तन के तल में डूब जाएगा।",
+            "यह पानी की सतह पर तैरेगा।",
+            "यह पानी के साथ मिलकर एक समांगी घोल बनाएगा।"
+          ],
+          "solution": "तेल पानी की सतह पर तैरेगा क्योंकि यह पानी की तुलना में कम घनत्व वाला होता है। तेल पानी में घुल नहीं जाता है, इसलिए यह अलग स्तर बनाता है। अन्य विकल्प गलत हैं क्योंकि तेल घुल नहीं जाता है, न ही डूबता है और पानी के साथ समांगी घोल नहीं बनाता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate technical terms used in a Hindi-medium context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तेल आणि पाणी याचा मिश्रण अचूक ठेवला गेला. तेलाचा काय विचार होईल?",
+          "choices": [
+            "ते पाण्यात विरघळेल.",
+            "ते बरखालीच्या तळापर्यंत खाली जाईल.",
+            "ते पाण्याच्या पृष्ठभागावर तरंगेल.",
+            "ते पाण्यासह मिसळून एकसारखे द्रावण बनवील."
+          ],
+          "solution": "तेल पाण्याच्या पृष्ठभागावर तरंगेल, कारण ते पाण्यापेक्षा कमी घनता असते. तेल पाण्यात विरघळत नाही, म्हणून ते अलग थर बनवते. इतर विकल्प चूक आहेत कारण तेल विरघळत नाही, खाली जात नाही आणि पाण्यासह एकसारखे द्रावण बनवत नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes that oil dissolves in water, which is incorrect.",
+        "Confuses the density of oil with water, thinking it will sink.",
+        null,
+        "Believes that oil and water will form a homogeneous solution, which is incorrect."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the scientific principle that oil is less dense than water and does not dissolve, thus floating on the surface.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 9,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 9: Methods of Separation in Everyday Life",
+            "Let us enhance our learning"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 10,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 9: Methods of Separation in Everyday Life",
+            "Learning further"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu109.pdf",
+          "ordinal": 11,
+          "pageStart": 19,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 9: Methods of Separation in Everyday Life",
+            "Notes"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-01T20:21:20.507Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

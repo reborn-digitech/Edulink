@@ -1,0 +1,740 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T15:16:53.027Z",
+  "finishedAt": "2026-11-02T15:29:37.464Z",
+  "seconds": 764,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "९ वी गणित भाग-१ इंग्रजी",
+    "bookCode": "903000608",
+    "document": "balbharati/9/mathematics/903000608.pdf",
+    "classLevel": 9,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — Sets",
+    "edition": "2026 edition",
+    "chunks": 12,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[RMO 2013 — question paper]\n3. A finite non-empty set of integers is called 3-good if the sum of its elements is divisible by 3.\nFind the number of non-empty 3-good subsets of {0, 1, 2, . . . , 9}.",
+      "[CBSE Class XII Mathematics, sample question paper, 2022-23]\n33. Define the relation R in the set 𝑁 × 𝑁 as follows:\nFor (a, b), (c, d) ∈ 𝑁 × 𝑁, (a, b) R (c, d) iff ad = bc. Prove that R is an equivalence\nrelation in 𝑁 × 𝑁.\nOR\nGiven a non-empty set X, define the relation R in P(X) as follows:empty set X, define the relation R in P(X) as follows:\nFor A, B ∈ 𝑃(𝑋), (𝐴, 𝐵) ∈ 𝑅 iff 𝐴 ⊂ 𝐵. Prove that R is reflexive, transitivetransitive and not\nsymmetric.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n9. C) 30",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n9. Draw neat and clean figures wherever required."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 7,
+      "ms": 204969,
+      "in": 38,
+      "out": 37,
+      "rejects": 2,
+      "promptTokens": 34067,
+      "completionTokens": 9505
+    },
+    "critique": {
+      "calls": 52,
+      "ms": 404246,
+      "in": 37,
+      "out": 33,
+      "rejects": 4,
+      "promptTokens": 24108,
+      "completionTokens": 8929
+    },
+    "solver": {
+      "calls": 270,
+      "ms": 204376,
+      "in": 33,
+      "out": 25,
+      "rejects": 8,
+      "promptTokens": 68282,
+      "completionTokens": 3284
+    },
+    "form": {
+      "calls": 4,
+      "ms": 27875,
+      "in": 25,
+      "out": 9,
+      "rejects": 16,
+      "promptTokens": 2753,
+      "completionTokens": 579
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 1,
+      "ms": 248,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 399728,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 19039,
+      "completionTokens": 8655
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 3,
+    "2": 1,
+    "3": 2,
+    "4": 3,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 3,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a finite set?",
+      "ms": {
+        "draft": 4408,
+        "critique": 6074,
+        "solver": 1824,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a set according to the chapter?",
+      "ms": {
+        "draft": 4408,
+        "critique": 6571,
+        "solver": 1653,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "How many elements are in the set { x | x is an integer, -3 < x < 3 }?",
+      "ms": {
+        "draft": 4408,
+        "critique": 8923
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the number of elements in the set { x | x is a natural number and x < 10 }?",
+      "ms": {
+        "draft": 4408,
+        "critique": 9852,
+        "solver": 2057,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a singleton set?",
+      "ms": {
+        "draft": 4408,
+        "critique": 5631,
+        "solver": 19679
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How many elements are in the set { x | x is a natural number, x^2 = 9 }?",
+      "ms": {
+        "draft": 4408,
+        "critique": 7287,
+        "solver": 1666,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of equal sets?",
+      "ms": {
+        "draft": 4573,
+        "critique": 7728,
+        "solver": 2034,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If A = {1, 2, 3} and B = {1, 2, 3, 4}, which of the following is true?",
+      "ms": {
+        "draft": 4573,
+        "critique": 7697,
+        "solver": 1355,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If A = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9} and B = {1, 2, 3, 4}, then which of the following is not a subset of A?",
+      "ms": {
+        "draft": 4573,
+        "critique": 9145
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following represents the complement of set A = {2, 4, 6, 8, 10} if the universal set U = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}?",
+      "ms": {
+        "draft": 4573,
+        "critique": 7393,
+        "solver": 18940,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If A = {1, 2, 3, 4, 5}, B = {2, 3, 4}, and C = {1, 2, 3, 4, 5, 6}, which of the following is not true?",
+      "ms": {
+        "draft": 4573,
+        "critique": 8789,
+        "solver": 22246
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the complement of the universal set?",
+      "ms": {
+        "draft": 8800,
+        "critique": 8149,
+        "solver": 15498,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If A is a subset of B, what is A intersection B?",
+      "ms": {
+        "draft": 8800,
+        "critique": 6914,
+        "solver": 20821,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a class of 70 students, 45 like cricket and 52 like kho-kho. All students like at least one game. How many like both games?",
+      "ms": {
+        "draft": 8800,
+        "critique": 9066,
+        "solver": 14447
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If A = {1, 3, 5, 7} and B = {2, 3, 6, 8}, what is A intersection B?",
+      "ms": {
+        "draft": 8800,
+        "critique": 10014,
+        "solver": 19857,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If A and B are two sets such that A union B is equal to B, what can be said about A?",
+      "ms": {
+        "draft": 8800,
+        "critique": 6955,
+        "solver": 21289,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the universal set is {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, and set A is {1, 3, 5, 7}, what is the complement of A?",
+      "ms": {
+        "draft": 8800,
+        "critique": 8350,
+        "solver": 24867,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a hostel, 125 students are there. 80 drink tea, 60 drink coffee, and 20 drink both. How many students do not drink tea or coffee?",
+      "ms": {
+        "draft": 4016,
+        "critique": 6411
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a hostel, there are 125 students. 80 drink tea, 60 drink coffee, and 20 drink both. How many students do not drink tea or coffee?",
+      "ms": {
+        "draft": 6358,
+        "critique": 8325
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If n(A) = 45, n(B) = 52, and n(A ∪ B) = 70, what is the value of n(A ∩ B)?",
+      "ms": {
+        "draft": 6358,
+        "critique": 6573,
+        "solver": 3148
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If M = {1, 3, 5} and N = {2, 4, 6}, then what is M ∪ N?",
+      "ms": {
+        "draft": 6358,
+        "critique": 8728,
+        "solver": 1511,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If P = {1, 2, ..., 10}, what type of set is P?",
+      "ms": {
+        "draft": 6358,
+        "critique": 5949,
+        "solver": 16657,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of equal sets?",
+      "ms": {
+        "draft": 4747,
+        "critique": 6150,
+        "solver": 2540,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If A = {1, 2, 3} and B = {1, 2, 3, 4}, which of the following statements is true?",
+      "ms": {
+        "draft": 4747,
+        "critique": 9080,
+        "solver": 2425,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an empty set?",
+      "ms": {
+        "draft": 4747,
+        "critique": 9232,
+        "solver": 19274
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following sets is not a subset of the set of integers?",
+      "ms": {
+        "draft": 4747,
+        "critique": 9494,
+        "solver": 16047
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If A = {x | x is a prime number between 1 and 10}, what is the number of elements in set A?",
+      "ms": {
+        "draft": 20435,
+        "critique": 7470,
+        "solver": 1628
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is an empty set?",
+      "ms": {
+        "draft": 20435,
+        "critique": 5764,
+        "solver": 9567
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for a collection of well-defined objects?",
+      "ms": {
+        "draft": 4016,
+        "critique": 10686,
+        "solver": 1727,
+        "form": 2360,
+        "translation": 37666
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a finite set?",
+      "ms": {
+        "draft": 4016,
+        "critique": 8428,
+        "solver": 2038,
+        "form": 0,
+        "translation": 40128
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a set?",
+      "ms": {
+        "draft": 20435,
+        "critique": 7764,
+        "solver": 12910,
+        "form": 4090,
+        "translation": 39635
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an empty set?",
+      "ms": {
+        "draft": 4573,
+        "critique": 9528,
+        "solver": 21702,
+        "form": 0,
+        "translation": 45811
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If n(A) = 15, n(A ∪ B) = 29, and n(A ∩ B) = 7, then what is n(B)?",
+      "ms": {
+        "draft": 4016,
+        "critique": 7427,
+        "solver": 1295,
+        "form": 0,
+        "translation": 33230
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a class of 28 students, 8 have only dogs, 6 have only cats, and 10 have both. How many students do not have a dog or cat?",
+      "ms": {
+        "draft": 6358,
+        "critique": 9891,
+        "solver": 1576,
+        "form": 0,
+        "translation": 58461
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Observe the Venn diagram and determine the set A ∪ B.",
+      "ms": {
+        "draft": 6358,
+        "critique": 7367,
+        "solver": 2616,
+        "form": 1,
+        "translation": 54310
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following represents a finite set?",
+      "ms": {
+        "draft": 20435,
+        "critique": 8423,
+        "solver": 1951,
+        "form": 3897,
+        "translation": 44572
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a subset of the set of natural numbers?",
+      "ms": {
+        "draft": 4747,
+        "critique": 7401,
+        "solver": 1540,
+        "form": 0,
+        "translation": 40424
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is a null set?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a finite set?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed (as per rules) is not provi…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a set according to the chapter?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed (as per rules) is not provi…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "How many elements are in the set { x | x is an integer, -3 < x < 3 }?",
+      "reason": "the critic finds option 0 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the number of elements in the set { x | x is a natural number and x < 10 }?",
+      "reason": "checkExpr \"9\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is a singleton set?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "How many elements are in the set { x | x is a natural number, x^2 = 9 }?",
+      "reason": "checkExpr \"1\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of equal sets?",
+      "reason": "options 0 and 2 say the same thing (\"{1, 2, 3} and {3, 2, 1}\" / \"{1, 2, 3} and {1, 2, 4}\"); options 0 and 3 say the same thing (\"{1, 2, 3} and {3, 2, 1}\" / \"{1, 2, 3} and {1, 2}\"); options 2 and 3 say the same thing (\"{1, 2, 3} and {1, 2, 4}\" / \"{1, 2, 3} and {1, 2}\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If A = {1, 2, 3} and B = {1, 2, 3, 4}, which of the following is true?",
+      "reason": "options 0 and 1 say the same thing (\"A is a subset of B\" / \"B is a subset of A\"); options 0 and 3 say the same thing (\"A is a subset of B\" / \"A is not a subset of B\"); options 1 and 3 say the same thing (\"B is a subset of A\" / \"A is not a subset of B\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If A = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9} and B = {1, 2, 3, 4}, then which of the following is not a subset of A?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following represents the complement of set A = {2, 4, 6, 8, 10} if the universal set U = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}?",
+      "reason": "options 0 and 3 say the same thing (\"{1, 3, 5, 7, 9}\" / \"{1, 3, 5, 7, 9, 11}\"); option 0 repeats the stem's wording (\"{1, 3, 5, 7, 9}\"); option 1 repeats the stem's wording (\"{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}\"); option 2 repeats the stem's wording (\"{2, 4, 6, 8, 10}\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If A = {1, 2, 3, 4, 5}, B = {2, 3, 4}, and C = {1, 2, 3, 4, 5, 6}, which of the following is not true?",
+      "reason": "after redrafting distractors 0, 1, 2: the critic finds option 2 correct, the key is 3"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is the complement of the universal set?",
+      "reason": "options 2 and 3 are the same (\"A superset of the set\"); distractor 3's reason is not a one-line misconception (\"Thinks the complement is a larger set than the original set,…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If A is a subset of B, what is A intersection B?",
+      "reason": "options 1 and 2 are the same (\"B\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "In a class of 70 students, 45 like cricket and 52 like kho-kho. All students like at least one game. How many like both games?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If A = {1, 3, 5, 7} and B = {2, 3, 6, 8}, what is A intersection B?",
+      "reason": "option 1 repeats the stem's wording (\"{1, 2, 3, 5, 6, 7, 8}\"); option 2 repeats the stem's wording (\"{1, 3, 5, 7}\"); option 3 repeats the stem's wording (\"{2, 3, 6, 8}\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If A and B are two sets such that A union B is equal to B, what can be said about A?",
+      "reason": "options 0 and 1 say the same thing (\"A is a subset of B\" / \"A is not a subset of B\"); options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the universal set is {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, and set A is {1, 3, 5, 7}, what is the complement of A?",
+      "reason": "options 1 and 2 say the same thing (\"{1, 3, 5, 7, 2, 4, 6, 8, 10}\" / \"{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 3, 5, 7}\"); option 0 repeats the stem's wording (\"{2, 4, 6, 8, 10}\"); option 1 repeats the stem's wording (\"{1, 3, 5, 7, 2, 4, 6, 8, 10}\"); option 2 repeats the stem's wording (\"{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 3, 5, 7}\"); option 3 repeats the stem's wording (\"{1, 3, 5, 7}\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a hostel, 125 students are there. 80 drink tea, 60 drink coffee, and 20 drink both. How many students do not drink tea or coffee?",
+      "reason": "the critic finds option 0 correct, the key is 1; option 0 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":1,\"stem\":\"If A and B are two sets, and A ∩ B = B, which of the following must be true?\",\"options"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In a hostel, there are 125 students. 80 drink tea, 60 drink coffee, and 20 drink both. How many students do not drink tea or coffee?",
+      "reason": "the critic finds option 1 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If n(A) = 45, n(B) = 52, and n(A ∪ B) = 70, what is the value of n(A ∩ B)?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If M = {1, 3, 5} and N = {2, 4, 6}, then what is M ∪ N?",
+      "reason": "options 0 and 3 say the same thing (\"{1, 2, 3, 4, 5, 6}\" / \"{1, 3, 5, 2, 4, 6}\"); option 0 repeats the stem's wording (\"{1, 2, 3, 4, 5, 6}\"); option 3 repeats the stem's wording (\"{1, 3, 5, 2, 4, 6}\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If P = {1, 2, ..., 10}, what type of set is P?",
+      "reason": "option 3 is a catch-all (\"None of these\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of equal sets?",
+      "reason": "options 0 and 2 say the same thing (\"{1, 2, 3} and {3, 2, 1}\" / \"{1, 2} and {1, 2, 3}\"); options 0 and 3 say the same thing (\"{1, 2, 3} and {3, 2, 1}\" / \"{1, 2, 3} and {1, 3, 5}\"); options 2 and 3 say the same thing (\"{1, 2} and {1, 2, 3}\" / \"{1, 2, 3} and {1, 3, 5}\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If A = {1, 2, 3} and B = {1, 2, 3, 4}, which of the following statements is true?",
+      "reason": "options 0 and 1 say the same thing (\"A is a subset of B\" / \"B is a subset of A\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is an empty set?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following sets is not a subset of the set of integers?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If A = {x | x is a prime number between 1 and 10}, what is the number of elements in set A?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following is an empty set?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

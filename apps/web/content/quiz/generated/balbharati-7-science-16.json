@@ -21,334 +21,49 @@
   "board": "BALBHARATI",
   "book": "७ वी सामान्य विज्ञान इंग्रजी",
   "edition": "First Edition 2017",
-  "generatedAt": "2026-10-31T17:59:14.260Z",
+  "generatedAt": "2026-11-02T04:36:46.941Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is mineral oil also known as?",
+      "stem": "Which of the following is a mineral resource found in the ocean?",
       "choices": [
-        "Crude oil",
-        "Petrol",
-        "Bitumen",
-        "LPG"
-      ],
-      "answerIndex": 0,
-      "solution": "Mineral oil is also known as crude oil because it is a naturally occurring liquid hydrocarbon mixture. Petrol is a refined product of crude oil, not the same as mineral oil. Bitumen is a thick, sticky form of petroleum, and LPG is a gaseous fuel, not a liquid oil.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "खनिज तेल के अन्य नाम क्या है?",
-          "choices": [
-            "कच्चा तेल",
-            "पेट्रोल",
-            "बिटुमेन",
-            "एलपीजी"
-          ],
-          "solution": "खनिज तेल को कच्चा तेल के रूप में भी जाना जाता है क्योंकि यह एक प्राकृतिक रूप से उत्पन्न तरल हाइड्रोकार्बन मिश्रण है। पेट्रोल कच्चे तेल का एक अपरिष्कृत उत्पाद है, खनिज तेल के समान नहीं है। बिटुमेन पेट्रोलियम के एक मोटे और चिपचिपा रूप है, और एलपीजी एक गैसीय ईंधन है, तरल तेल नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खनिज तेल दुसऱ्या प्रकारे कोणते म्हणतात?",
-          "choices": [
-            "कच्चे तेल",
-            "पेट्रोल",
-            "बिटुमेन",
-            "एलपीजी"
-          ],
-          "solution": "खनिज तेल असे कच्चे तेल म्हणतात कारण ते प्राकृतिकरित्या घटक असलेले तरल हायड्रोकार्बन असते. पेट्रोल हे कच्च्या तेलाचे निर्माण केलेले उत्पादन असते, खनिज तेलाचे समान नसते. बिटुमेन हे पेट्रोलियमचे जास्त घन आणि चिकट रूप असते आणि एलपीजी हे वाफले ईंधन असते, तर तरल तेल नसते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Students may confuse mineral oil with its refined products like petrol",
-        "Confuses mineral oil with a heavier, thicker form of petroleum",
-        "Confuses mineral oil with a refined petroleum product commonly used as fuel"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0 (Crude oil), as mineral oil is another term for crude oil. The author's reasoning for the other options is valid and reflects common student misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 119,
-          "pageStart": 117,
-          "pageEnd": 118,
-          "headingPath": [
-            "16. Natural Resources"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 120,
-          "pageStart": 118,
-          "pageEnd": 119,
-          "headingPath": [
-            "16. Natural Resources"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 121,
-          "pageStart": 119,
-          "pageEnd": 120,
-          "headingPath": [
-            "16. Natural Resources"
-          ]
-        }
-      ],
-      "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T17:59:14.260Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "What is the main component of natural gas?",
-      "choices": [
-        "Methane",
-        "Ethane",
-        "Propane",
-        "Butane"
-      ],
-      "answerIndex": 0,
-      "solution": "Methane is the main component of natural gas because it is the simplest hydrocarbon and makes up the majority of the gas. Ethane, propane, and butane are other hydrocarbons but are present in much smaller quantities. Natural gas is primarily composed of methane due to its chemical structure and abundance in nature.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "प्राकृतिक गैस का मुख्य घटक क्या है?",
-          "choices": [
-            "मीथेन",
-            "एथेन",
-            "प्रोपेन",
-            "ब्यूटेन"
-          ],
-          "solution": "मीथेन प्राकृतिक गैस का मुख्य घटक है क्योंकि यह सबसे सरल हाइड्रोकार्बन है और गैस के अधिकांश हिस्से का निर्माण करता है। एथेन, प्रोपेन और ब्यूटेन अन्य हाइड्रोकार्बन हैं लेकिन इनकी मात्रा बहुत कम होती है। प्राकृतिक गैस मीथेन से मुख्य रूप से बनी होती है क्योंकि इसकी रासायनिक संरचना और प्रकृति में उपलब्धता के कारण।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, technical terms are standard in Hindi textbooks, and the question structure matches the original.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "प्राकृतिक वायूचा मुख्य घटक कोणता आहे?",
-          "choices": [
-            "मीथेन",
-            "इथेन",
-            "प्रोपेन",
-            "ब्यूटेन"
-          ],
-          "solution": "मीथेन प्राकृतिक वायूचा मुख्य घटक आहे कारण तो सरलतम हायड्रोकार्बन आहे आणि तो वायूच्या अधिकांश भागाचे बनवतो. इथेन, प्रोपेन आणि ब्यूटेन इतर हायड्रोकार्बन आहेत परंतु ते खूप लहान प्रमाणात आढळतात. प्राकृतिक वायू मीथेनच्या रासायनिक संरचनेमुळे आणि प्रकृतीत त्याच्या उपलब्धतेमुळे जास्तीत जास्त मीथेन द्वारे बनलेला असतो.",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are correctly used in Marathi.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses ethane with methane",
-        "Confuses propane with methane",
-        "Confuses butane with methane"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is straightforward and tests recall of basic facts about natural gas composition. The correct answer is methane, and the distractors are common hydrocarbons that may be confused with methane by students.",
-      "sources": [
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 119,
-          "pageStart": 117,
-          "pageEnd": 118,
-          "headingPath": [
-            "16. Natural Resources"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 120,
-          "pageStart": 118,
-          "pageEnd": 119,
-          "headingPath": [
-            "16. Natural Resources"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 121,
-          "pageStart": 119,
-          "pageEnd": 120,
-          "headingPath": [
-            "16. Natural Resources"
-          ]
-        }
-      ],
-      "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T17:59:14.260Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the purpose of adding ethyl mercaptan to LPG?",
-      "choices": [
-        "To increase its weight",
-        "To give it a smell",
-        "To make it more flammable",
-        "To make it more liquid"
-      ],
-      "answerIndex": 1,
-      "solution": "Ethyl mercaptan is added to LPG to give it a distinct smell, which helps detect leaks quickly. It does not affect the weight, flammability, or liquid state of LPG. The other options are incorrect because they do not align with the chemical properties of ethyl mercaptan.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एथिल मर्कैप्टन को एलपीजी में क्यों मिलाया जाता है?",
-          "choices": [
-            "इसके वजन को बढ़ाने के लिए",
-            "इसे एक गंध देने के लिए",
-            "इसे अधिक ज्वलनशील बनाने के लिए",
-            "इसे अधिक तरल बनाने के लिए"
-          ],
-          "solution": "एथिल मर्कैप्टन को एलपीजी में इसके एक अलग गंध देने के लिए मिलाया जाता है जो रिसाव की पहचान करने में मदद करता है। यह एलपीजी के वजन, ज्वलनशीलता या तरल अवस्था पर प्रभाव नहीं डालता है। अन्य विकल्प गलत हैं क्योंकि वे एथिल मर्कैप्टन के रासायनिक गुणों के अनुरूप नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium science textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एथिल मर्कॅप्टॅन लीक पॉवर गॅसमध्ये कशासाठी जोडला जातो?",
-          "choices": [
-            "त्याचा वजन वाढविण्यासाठी",
-            "त्याला वास देण्यासाठी",
-            "त्याला जास्त ज्वलनशील बनविण्यासाठी",
-            "त्याला जास्त द्रव बनविण्यासाठी"
-          ],
-          "solution": "एथिल मर्कॅप्टॅन लीक पॉवर गॅसमध्ये त्याला विशिष्ट वास देण्यासाठी जोडला जातो, जेणेकरून त्याच्या रिस समजू शकतो. त्याचा वजन, ज्वलनशीलता किंवा द्रव अवस्था वर प्रभाव पडत नाही. इतर विकल्प चुकीचे आहेत कारण ते एथिल मर्कॅप्टॅनच्या रासायनिक गुणधर्मांशी जुळत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for chemical substances.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the purpose of ethyl mercaptan with weight",
-        null,
-        "Confuses the purpose with flammability",
-        "Confuses the purpose with liquefaction"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct and aligns with the correct answer. Ethyl mercaptan is indeed added to LPG for its strong odor, which helps detect leaks. The other options represent common misconceptions about the purpose of the additive.",
-      "sources": [
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 119,
-          "pageStart": 117,
-          "pageEnd": 118,
-          "headingPath": [
-            "16. Natural Resources"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 120,
-          "pageStart": 118,
-          "pageEnd": 119,
-          "headingPath": [
-            "16. Natural Resources"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 121,
-          "pageStart": 119,
-          "pageEnd": 120,
-          "headingPath": [
-            "16. Natural Resources"
-          ]
-        }
-      ],
-      "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T17:59:14.260Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Which of the following is a non-metallic mineral?",
-      "choices": [
-        "Iron",
         "Gold",
-        "Copper",
-        "Sulphur"
+        "Trees",
+        "Fish",
+        "Grass"
       ],
-      "answerIndex": 3,
-      "solution": "Sulphur is a non-metallic mineral because it does not exhibit the properties of metals, such as conductivity or malleability. Iron, gold, and copper are all metallic elements that are typically shiny, conductive, and malleable.",
+      "answerIndex": 0,
+      "solution": "Gold is a mineral resource found in the ocean because it is a naturally occurring inorganic solid with a definite chemical composition. Trees, fish, and grass are living organisms and not classified as minerals.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन एक अधातु मिनरल है?",
+          "stem": "निम्नलिखित में से कौन एक मिनरल संसाधन है जो महासागर में पाया जाता है?",
           "choices": [
-            "लोहा",
             "सोना",
-            "तांबा",
-            "सल्फर"
+            "पेड़",
+            "मछली",
+            "घास"
           ],
-          "solution": "सल्फर एक अधातु मिनरल है क्योंकि यह धातुओं के गुण, जैसे चालकता या ढालनशीलता को नहीं दर्शाता है। लोहा, सोना और तांबा सभी धातुमय तत्व हैं जो आमतौर पर चमकदार, चालक और ढालनशील होते हैं।",
+          "solution": "सोना महासागर में पाया जाने वाला एक मिनरल संसाधन है क्योंकि यह एक प्राकृतिक रूप से उत्पन्न अकार्बनिक ठोस है जिसका निश्चित रासायनिक संघटन होता है। पेड़, मछली और घास जीवित जीव हैं और इन्हें मिनरल के रूप में वर्गीकृत नहीं किया जाता है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for minerals and metals.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology for mineral resources.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता अधातु मूलद्रव्य आहे?",
+          "stem": "खालीलपैकी समुद्रात आढळणारा खनिज संसाधन कोणता आहे?",
           "choices": [
-            "लोह",
             "सोने",
-            "तांबे",
-            "गंधक"
+            "वृक्ष",
+            "मासे",
+            "लिंबू"
           ],
-          "solution": "गंधक हा अधातु मूलद्रव्य आहे कारण तो धातूंच्या गुणधर्मांसारखा विद्युत वाहकता किंवा विकृतीकरण दर्शवत नाही. लोह, सोने आणि तांबे हे सर्व धातूंचे घटक आहेत जे सामान्यतः चमकदार, विद्युत वाहक आणि विकृतीकरण असतात.",
+          "solution": "सोने समुद्रात आढळणारा खनिज संसाधन आहे कारण ते प्राकृतिकरित्या घटनाक्रमात अकार्बनिक घटक असतो आणि त्याची निश्चित रासायनिक रचना असते. वृक्ष, मासे आणि लिंबू हे जीवित जीव असून खनिज म्हणून वर्गीकृत केले जात नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for scientific concepts.",
+          "critique": "The translation is accurate, with appropriate Marathi terms for 'mineral resource' and 'inorganic solid'. 'Lemon' (लिंबू) is an unusual choice for a distractor, but it's still a living organism and thus correctly classified as wrong.",
           "flag": null
         }
       },
@@ -357,305 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses metallic minerals with non-metallic minerals",
-        "Confuses metallic minerals with non-metallic minerals",
-        "Confuses metallic minerals with non-metallic minerals",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 3 (Sulphur), as it is a non-metallic mineral. The other options are all metallic minerals. The author's reasoning for the distractors is valid, as students may confuse metallic and non-metallic minerals.",
-      "sources": [
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 116,
-          "pageStart": 114,
-          "pageEnd": 115,
-          "headingPath": [
-            "16. Natural Resources"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 117,
-          "pageStart": 115,
-          "pageEnd": 116,
-          "headingPath": [
-            "16. Natural Resources"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 118,
-          "pageStart": 116,
-          "pageEnd": 117,
-          "headingPath": [
-            "16. Natural Resources"
-          ]
-        }
-      ],
-      "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T17:59:14.260Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If the underground reserves of fossil fuels are exhausted, what would be the most likely consequence?",
-      "choices": [
-        "An increase in the use of renewable energy sources",
-        "A decrease in the demand for energy",
-        "A complete stop in the use of all fuels",
-        "An energy crisis"
-      ],
-      "answerIndex": 3,
-      "solution": "If fossil fuel reserves are exhausted, there would be a significant disruption in energy supply, leading to an energy crisis. Renewable energy sources may increase, but this is not guaranteed or immediate. A decrease in energy demand or a complete stop in fuel use is unlikely without major societal or technological changes.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि जमीन के नीचे जमा जीवाश्म ईंधन के भंडार समाप्त हो जाएं, तो सबसे संभावित परिणाम क्या होगा?",
-          "choices": [
-            "पुनर्वासी ऊर्जा स्रोतों के उपयोग में वृद्धि",
-            "ऊर्जा की मांग में कमी",
-            "सभी ईंधनों के उपयोग में पूर्ण रोक",
-            "ऊर्जा संकट"
-          ],
-          "solution": "यदि जीवाश्म ईंधन के भंडार समाप्त हो जाते हैं, तो ऊर्जा के आपूर्ति में महत्वपूर्ण व्यवधान होगा, जिसके परिणामस्वरूप ऊर्जा संकट हो सकता है। पुनर्वासी ऊर्जा स्रोतों के उपयोग में वृद्धि हो सकती है, लेकिन यह निश्चित या तत्काल नहीं हो सकती। ऊर्जा की मांग में कमी या सभी ईंधनों के उपयोग में पूर्ण रोक बिना महत्वपूर्ण सामाजिक या तकनीकी परिवर्तन के असंभव है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated, and the correct answer remains option 3.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर खोदकून बाहेर काढता येणारी ज्वलनीय इंधनाची जागतिक भंडारे संपली, तर त्याचा सर्वात शक्य असा परिणाम काय असेल?",
-          "choices": [
-            "नवीकरणीय ऊर्जा स्रोतांचा वापर वाढेल",
-            "ऊर्जेची मागणी कमी होईल",
-            "सर्व इंधनांचा वापर बंद होईल",
-            "ऊर्जा संकट उद्भवेल"
-          ],
-          "solution": "जर ज्वलनीय इंधनाची भंडारे संपली, तर ऊर्जा पुरवठ्यात मोठा अडथळा येईल, ज्यामुळे ऊर्जा संकट उद्भवेल. नवीकरणीय ऊर्जा स्रोतांचा वापर वाढू शकतो, परंतु ते खात्रीनाक किंवा तात्काळ होणार नाही. ऊर्जेची मागणी कमी होणे किंवा सर्व इंधनांचा वापर बंद होणे विशिष्ट सामाजिक किंवा तंत्रज्ञानिक बदलाशिवाय असंभव आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Assumes that renewable energy will replace fossil fuels automatically",
-        "Misunderstands the relationship between fuel availability and demand",
-        "Does not recognize the severity of fossil fuel depletion",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies the energy crisis as the most likely consequence of fossil fuel exhaustion, and the reasoning aligns with the passage. The distractors reflect common misconceptions about energy transitions, demand, and fuel depletion.",
-      "sources": [
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 119,
-          "pageStart": 117,
-          "pageEnd": 118,
-          "headingPath": [
-            "16. Natural Resources"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 120,
-          "pageStart": 118,
-          "pageEnd": 119,
-          "headingPath": [
-            "16. Natural Resources"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 121,
-          "pageStart": 119,
-          "pageEnd": 120,
-          "headingPath": [
-            "16. Natural Resources"
-          ]
-        }
-      ],
-      "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T17:59:14.260Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "What would happen if underground mineral resources are exhausted?",
-      "choices": [
-        "More forests would be created",
-        "The energy crisis would worsen",
-        "The environment would improve",
-        "The population would decrease"
-      ],
-      "answerIndex": 1,
-      "solution": "If underground mineral resources are exhausted, the energy crisis would worsen because these resources are essential for energy production. Other options are incorrect because creating more forests, improving the environment, or reducing the population are not direct consequences of resource depletion.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि भूमिगत खनिज संसाधन समाप्त हो जाएं तो क्या होगा?",
-          "choices": [
-            "अधिक वन बनेंगे",
-            "ऊर्जा संकट बिगड़ जाएगा",
-            "पर्यावरण सुधर जाएगा",
-            "जनसंख्या कम हो जाएगी"
-          ],
-          "solution": "यदि भूमिगत खनिज संसाधन समाप्त हो जाएं तो ऊर्जा संकट बिगड़ जाएगा क्योंकि ये संसाधन ऊर्जा उत्पादन के लिए आवश्यक हैं। अन्य विकल्प गलत हैं क्योंकि अधिक वन बनाना, पर्यावरण को सुधारना या जनसंख्या कम करना संसाधन के विनाश के सीधे परिणाम नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालील खनिज संसाधने निर्वात झाल्यास काय होईल?",
-          "choices": [
-            "अधिक वन तयार होईल",
-            "ऊर्जा संकट वाढेल",
-            "पर्यावरण सुधारेल",
-            "लोकसंख्या कमी होईल"
-          ],
-          "solution": "खालील खनिज संसाधने निर्वात झाल्यास ऊर्जा संकट वाढेल कारण ही संसाधने ऊर्जा उत्पादनासाठी आवश्यक आहेत. इतर विकल्प चुकीचे आहेत कारण अधिक वन तयार करणे, पर्यावरण सुधारणे किंवा लोकसंख्या कमी करणे हे संसाधन निर्वात होण्याचे थेट परिणाम नाहीत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Marathi educational materials.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Believes that mineral resource exhaustion would create more forests",
         null,
-        "Believes that the environment would improve",
-        "Believes that the population would decrease"
+        "confuses biotic resources with abiotic",
+        "confuses biotic resources with abiotic",
+        "confuses biotic resources with abiotic"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 1, as the exhaustion of underground mineral resources would likely worsen the energy crisis. The other options represent misconceptions about environmental or demographic outcomes.",
-      "sources": [
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 119,
-          "pageStart": 117,
-          "pageEnd": 118,
-          "headingPath": [
-            "16. Natural Resources"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 120,
-          "pageStart": 118,
-          "pageEnd": 119,
-          "headingPath": [
-            "16. Natural Resources"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 121,
-          "pageStart": 119,
-          "pageEnd": 120,
-          "headingPath": [
-            "16. Natural Resources"
-          ]
-        }
-      ],
-      "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T17:59:14.260Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a person collects conches and shells from the ocean, which of the following can they make?",
-      "choices": [
-        "Medicines",
-        "Poultry feed",
-        "Decorative articles",
-        "Edible oil"
-      ],
-      "answerIndex": 2,
-      "solution": "Shells and conches are often used to create decorative items due to their unique shapes and colors. While shells can be used in some medicinal or agricultural applications, the most direct and common use is for decoration. Edible oil is unrelated to shells or conches, and poultry feed is not typically made from them.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि कोई व्यक्ति समुद्र से खांचे और शेल्स एकत्र करता है, तो निम्नलिखित में से क्या वे बना सकते हैं?",
-          "choices": [
-            "दवाएं",
-            "पक्षी भोजन",
-            "सजावटी वस्तुएं",
-            "खाद्य तेल"
-          ],
-          "solution": "शेल्स और खांचे अक्सर अपने विशिष्ट आकार और रंगों के कारण सजावटी वस्तुएं बनाने के लिए उपयोग किए जाते हैं। शेल्स का कुछ चिकित्सा या कृषि अनुप्रयोगों में उपयोग किया जा सकता है, लेकिन सबसे सीधा और सामान्य उपयोग सजावट के लिए होता है। खाद्य तेल शेल्स या खांचे से असंबद्ध है, और पक्षी भोजन आमतौर पर इनसे नहीं बनाया जाता है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated for a Hindi-medium context.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एखादा माणूस समुद्रातून कॉन्च आणि खोकले एकत्रित करतो, तर खालीलपैकी काय त्यांनी बनवू शकतो?",
-          "choices": [
-            "औषधे",
-            "मुंगीचे खाद्यपदार्थ",
-            "सजावटीचे वस्तू",
-            "खाद्य तेल"
-          ],
-          "solution": "खोकले आणि कॉन्च त्यांच्या विशिष्ट आकृती आणि रंगांमुळे सजावटीच्या वस्तू बनवण्यासाठी वापरले जातात. खोकल्यांचा काही औषधी किंवा कृषी अनुप्रयोगांमध्ये वापर केला जाऊ शकतो, परंतु सर्वात सीधा आणि सामान्य वापर सजावटीसाठी आहे. खाद्य तेल खोकल्यांच्या किंवा कॉन्चच्या अनुप्रयोगाशी संबंधित नाही, आणि मुंगीचे खाद्यपदार्थ त्यांच्या वापराशी संबंधित नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses shells and conches with medicinal ingredients like those from sea cucumbers or fungi",
-        "This is a use of potassium, not shells.",
-        null,
-        "This is not mentioned in relation to conches and shells."
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 2 (Decorative articles), as the passage explicitly mentions this use. The other options are either unrelated or based on misconceptions about the uses of shells and conches.",
+      "critique": "The correct answer is 0 (Gold), as it is a mineral resource. Trees, fish, and grass are biotic resources, not minerals, and the author's reasoning correctly identifies this misconception.",
       "sources": [
         {
           "document": "balbharati/7/science/703020012.pdf",
@@ -678,142 +108,47 @@
         }
       ],
       "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T17:59:14.260Z",
+      "generatedAt": "2026-11-02T04:36:46.941Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "Which of the following is a protective function of forests?",
+      "difficulty": 2,
+      "stem": "Which of the following is used to make electric wires?",
       "choices": [
-        "Providing medicinal plants",
-        "Producing wood for furniture",
-        "Reducing soil erosion",
-        "Generating electricity"
-      ],
-      "answerIndex": 2,
-      "solution": "Reducing soil erosion is a protective function of forests because tree roots hold soil in place, preventing it from being washed away by water or wind. Providing medicinal plants and producing wood are more about resource use, while generating electricity is unrelated to the natural role of forests.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा वनों का संरक्षक कार्य है?",
-          "choices": [
-            "औषधीय पौधे प्रदान करना",
-            "मेजबानी के लिए लकड़ी उत्पादित करना",
-            "मृदा अपरदन कम करना",
-            "बिजली उत्पन्न करना"
-          ],
-          "solution": "मृदा अपरदन कम करना वनों का एक संरक्षक कार्य है क्योंकि पेड़ों की जड़ें मृदा को एक स्थान पर रखती हैं, जिससे यह पानी या हवा के कारण धोये नहीं जाते। औषधीय पौधे प्रदान करना और लकड़ी उत्पादित करना अधिक संसाधन उपयोग के बारे में हैं, जबकि बिजली उत्पन्न करना वनों के प्राकृतिक कार्य से संबंधित नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते जंगलांचे रक्षक कार्य आहे?",
-          "choices": [
-            "औषधी वनस्पती पुरविणे",
-            "फर्नीचरसाठी लाकूड तयार करणे",
-            "मातीच्या अपरदनाचे नियंत्रण करणे",
-            "विद्युत उत्पादन करणे"
-          ],
-          "solution": "जंगलांचे रक्षक कार्य म्हणून मातीच्या अपरदनाचे नियंत्रण करणे आहे कारण झाडांच्या मूळ जमिनीला एकत्र ठेवतात, जमिनीला पाण्याने किंवा हवावायूने धुवून जाण्यापासून रोखतात. औषधी वनस्पती पुरविणे आणि लाकूड तयार करणे ही संसाधन वापराची गोष्ट आहे, तर विद्युत उत्पादन करणे जंगलांच्या प्राकृतिक भूमिकेशी संबंधित नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Chooses a productive function as a protective one",
-        "Chooses a productive function as a protective one",
-        null,
-        "Confuses electricity generation with a forest function"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2, as reducing soil erosion is a protective function of forests. The other options are either productive functions or unrelated. The author's reasoning aligns with standard ecological knowledge.",
-      "sources": [
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 119,
-          "pageStart": 117,
-          "pageEnd": 118,
-          "headingPath": [
-            "16. Natural Resources"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 120,
-          "pageStart": 118,
-          "pageEnd": 119,
-          "headingPath": [
-            "16. Natural Resources"
-          ]
-        },
-        {
-          "document": "balbharati/7/science/703020012.pdf",
-          "ordinal": 121,
-          "pageStart": 119,
-          "pageEnd": 120,
-          "headingPath": [
-            "16. Natural Resources"
-          ]
-        }
-      ],
-      "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T17:59:14.260Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "What is the main component of bauxite?",
-      "choices": [
-        "Iron oxide",
-        "Aluminium oxide",
-        "Copper sulphate",
-        "Zinc sulphate"
+        "Iron",
+        "Copper",
+        "Graphite",
+        "Mica"
       ],
       "answerIndex": 1,
-      "solution": "Bauxite is primarily composed of aluminium oxide, which is the main component due to its high aluminium content. Iron oxide, copper sulphate, and zinc sulphate are not the primary constituents of bauxite. These other compounds are not as prevalent in the mineral's composition.",
+      "solution": "Copper is used to make electric wires because it is a good conductor of electricity. Iron, graphite, and mica are not as effective for this purpose.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "बॉक्साइट का मुख्य घटक क्या है?",
+          "stem": "निम्नलिखित में से किसका उपयोग विद्युत के तार बनाने के लिए किया जाता है?",
           "choices": [
-            "लोहा ऑक्साइड",
-            "एल्यूमीनियम ऑक्साइड",
-            "तांबा सल्फेट",
-            "जिंक सल्फेट"
+            "लोहा",
+            "तांबा",
+            "ग्रेफाइट",
+            "माइका"
           ],
-          "solution": "बॉक्साइट मुख्य रूप से एल्यूमीनियम ऑक्साइड से बना होता है, जो इसका मुख्य घटक होता है क्योंकि इसमें उच्च मात्रा में एल्यूमीनियम होता है। लोहा ऑक्साइड, तांबा सल्फेट और जिंक सल्फेट बॉक्साइट के प्रमुख घटक नहीं हैं। ये अन्य यौगिक खनिज के संरचना में इतने प्रचुर नहीं होते हैं।",
+          "solution": "तांबा विद्युत के तार बनाने के लिए उपयोग किया जाता है क्योंकि यह विद्युत का अच्छा चालक है। लोहा, ग्रेफाइट और माइका इस उद्देश्य के लिए इतना प्रभावी नहीं हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate, technical terms are standard in Hindi textbooks, and the structure matches the original.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi technical terms used.",
           "flag": null
         },
         "mr": {
-          "stem": "बॉक्साईटचा मुख्य घटक कोणता आहे?",
+          "stem": "खालीलपैकी कोणता विद्युत तार बनवण्यासाठी वापरला जातो?",
           "choices": [
-            "लोह ऑक्साइड",
-            "एल्युमिनियम ऑक्साइड",
-            "तांबा सल्फेट",
-            "जिंक सल्फेट"
+            "लोह",
+            "तांबे",
+            "ग्रेफाइट",
+            "मायका"
           ],
-          "solution": "बॉक्साईट मुख्यतः एल्युमिनियम ऑक्साइड द्वारे बनलेले असते, जो त्याचा मुख्य घटक असतो कारण त्यात उच्च एल्युमिनियम असतो. लोह ऑक्साइड, तांबा सल्फेट आणि जिंक सल्फेट बॉक्साईटचे मुख्य घटक नसतात. या इतर यौगिकांची खनिजाच्या रचनेत जास्त प्रमाणात उपस्थिती नसते.",
+          "solution": "तांबे विद्युत तार बनवण्यासाठी वापरला जातो कारण तो विद्युतचा चांगला वाहक आहे. लोह, ग्रेफाइट आणि मायका यांना या उद्देशासाठी इतकी असमान नाहीत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
           "flag": null
@@ -824,10 +159,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses bauxite with iron ore",
+        "Confuses iron with a good conductor of electricity",
         null,
-        "Confuses ore composition with common mineral compounds like sulfates",
-        "Confuses ore composition with common chemical compounds of metals"
+        "Does not recognize that copper is a good conductor",
+        "Confuses mica with a conductor of electricity"
       ],
       "solverAnswers": [
         1,
@@ -836,8 +171,8 @@
         1,
         1
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1 (Aluminium oxide). The solution is sound and matches the author's key. The distractors are based on plausible misconceptions.",
+      "levelFlag": null,
+      "critique": "The correct answer is 1 (Copper), as it is a good conductor of electricity. The author's reasoning is accurate, and the misconceptions listed for the wrong options are plausible for students.",
       "sources": [
         {
           "document": "balbharati/7/science/703020012.pdf",
@@ -868,47 +203,498 @@
         }
       ],
       "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T17:59:14.260Z",
+      "generatedAt": "2026-11-02T04:36:46.941Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "Which of the following best explains why the conservation of ocean resources is important?",
+      "difficulty": 2,
+      "stem": "Which of the following is an example of a biodegradable substance?",
       "choices": [
-        "To ensure that all countries have equal access to ocean resources.",
-        "To prevent the depletion of limited resources.",
-        "To ensure that ocean resources are available for future generations.",
-        "To make sure that only certain countries can use ocean resources."
+        "Plastic",
+        "Metal",
+        "Wood",
+        "Glass"
       ],
-      "answerIndex": 1,
-      "solution": "The correct answer is 'To prevent the depletion of limited resources' because natural resources in the ocean are finite and overuse can lead to their exhaustion. Other options are incorrect because they focus on fairness of access or restricting use to certain countries, which do not address the core issue of resource sustainability.",
+      "answerIndex": 2,
+      "solution": "Wood is an example of a biodegradable substance because it can be broken down naturally by microorganisms. Plastic, metal, and glass do not decompose easily and do not break down into simple organic substances.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा विकल्प महासागरीय संसाधनों के संरक्षण के महत्व की बेहतर व्याख्या करता है?",
+          "stem": "निम्नलिखित में से कौन एक जैव अपघटनीय पदार्थ का उदाहरण है?",
           "choices": [
-            "सभी देशों को महासागरीय संसाधनों तक समान पहुंच सुनिश्चित करना।",
-            "सीमित संसाधनों के अंत होने को रोकना।",
-            "भविष्य की पीढ़ियों के लिए महासागरीय संसाधनों की उपलब्धता सुनिश्चित करना।",
-            "यह सुनिश्चित करना कि केवल कुछ देश महासागरीय संसाधनों का उपयोग कर सकें।"
+            "प्लास्टिक",
+            "धातु",
+            "लकड़ी",
+            "कांच"
           ],
-          "solution": "सही उत्तर 'सीमित संसाधनों के अंत होने को रोकना' है क्योंकि महासागर में प्राकृतिक संसाधन सीमित होते हैं और अत्यधिक उपयोग उनके अंत होने के कारण हो सकता है। अन्य विकल्प गलत हैं क्योंकि वे उपलब्धि की न्यायसंगतता या केवल कुछ देशों के उपयोग को सीमित करने पर ध्यान केंद्रित करते हैं, जो संसाधनों के जीवंत रहने के मूल समस्या को नहीं संबोधित करते।",
+          "solution": "लकड़ी एक जैव अपघटनीय पदार्थ का उदाहरण है क्योंकि इसे सूक्ष्मजीवों द्वारा प्राकृतिक रूप से अपघटित किया जा सकता है। प्लास्टिक, धातु और कांच आसानी से अपघटित नहीं होते और सरल कार्बनिक पदार्थों में विघटित नहीं होते।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms common in Hindi educational materials.",
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in Indian science education.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते समुद्र संसाधनांच्या संरक्षणाच्या महत्त्वाचे सर्वात चांगले स्पष्टीकरण आहे?",
+          "stem": "खालीलपैकी कोणते जैवनिर्मूल्य पदार्थाचे उदाहरण आहे?",
           "choices": [
-            "सर्व देशांना समुद्र संसाधनांच्या समान प्रवेशाची खात्री करणे.",
-            "सीमित संसाधनांच्या निर्मूलनाची टाळणे.",
-            "भविष्यातील पिढ्यांसाठी समुद्र संसाधनांची उपलब्धता खात्री करणे.",
-            "केवळ काही देशांनी समुद्र संसाधनांचा वापर करावा याची खात्री करणे."
+            "प्लास्टिक",
+            "धातू",
+            "लाकडे",
+            "काच"
           ],
-          "solution": "बरोबर उत्तर 'सीमित संसाधनांच्या निर्मूलनाची टाळणे' आहे कारण समुद्रातील प्राकृतिक संसाधने सीमित आहेत आणि अतिवापर त्यांच्या निर्मूलनाला कारणीभूत होऊ शकतो. इतर विकल्प चुकीचे आहेत कारण ते वितरणाच्या न्याय्यतेवर किंवा काही देशांनीच वापर करावा यावर भर देतात, जे संसाधनांच्या स्थिरतेच्या मुख्य मुद्द्याला नाही जुमानतात.",
+          "solution": "लाकडे जैवनिर्मूल्य पदार्थाचे उदाहरण आहे कारण ते मायक्रोऑर्गनिझम्स द्वारे प्राकृतिकरित्या विघटित केले जाऊ शकते. प्लास्टिक, धातू आणि काच सहज विघटित होत नाहीत आणि साधे जैविक पदार्थांमध्ये विघटित होत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation accurately preserves the meaning, technical terms, and structure of the original question. The correct answer remains option (3) 'लाकडे' and the explanation is consistent.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "mistakes non-biodegradable substances for biodegradable",
+        "mistakes non-biodegradable substances for biodegradable",
+        null,
+        "mistakes non-biodegradable substances for biodegradable"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is wood, which is biodegradable. The other options are non-biodegradable, and the author's reasoning aligns with common misconceptions students might have.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 122,
+          "pageStart": 121,
+          "pageEnd": 122,
+          "headingPath": [
+            "16. Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 123,
+          "pageStart": 122,
+          "pageEnd": 122,
+          "headingPath": [
+            "16. Natural Resources",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T04:36:46.941Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following is an example of a fossil fuel?",
+      "choices": [
+        "Natural gas",
+        "Mica",
+        "Bauxite",
+        "Copper"
+      ],
+      "answerIndex": 0,
+      "solution": "Natural gas is a fossil fuel formed from the remains of ancient plants and animals. Mica, bauxite, and copper are minerals but not fossil fuels.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक जीवाश्म ईंधन का उदाहरण है?",
+          "choices": [
+            "प्राकृतिक गैस",
+            "माइका",
+            "बॉक्साइट",
+            "तांबा"
+          ],
+          "solution": "प्राकृतिक गैस एक जीवाश्म ईंधन है जो पुराने पौधों और जानवरों के अवशेषों से बनती है। माइका, बॉक्साइट और तांबा खनिज हैं लेकिन जीवाश्म ईंधन नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology for geological terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक जीवाश्म इंधनाचे उदाहरण आहे?",
+          "choices": [
+            "प्राकृतिक वायू",
+            "मायका",
+            "बॉक्साईट",
+            "तांबे"
+          ],
+          "solution": "प्राकृतिक वायू जीवाश्म इंधन आहे जे प्राचीन वनस्पती आणि प्राण्यांच्या अवशेषांपासून बनलेले आहे. मायका, बॉक्साईट आणि तांबे खनिज आहेत परंतु जीवाश्म इंधन नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms for minerals and fossil fuels.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses energy minerals with fossil fuels",
+        "Believes bauxite is a fossil fuel due to confusion between minerals and energy sources",
+        "Student thinks all metals are fossil fuels because they are found underground and used for energy"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed. The correct answer is clearly natural gas, and the distractors are plausible misconceptions about mineral vs. fossil fuel classification.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 116,
+          "pageStart": 114,
+          "pageEnd": 115,
+          "headingPath": [
+            "16. Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 117,
+          "pageStart": 115,
+          "pageEnd": 116,
+          "headingPath": [
+            "16. Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 118,
+          "pageStart": 116,
+          "pageEnd": 117,
+          "headingPath": [
+            "16. Natural Resources"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T04:36:46.941Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a person uses a lot of plastic packaging, what might be the environmental impact?",
+      "choices": [
+        "It helps in the production of soap",
+        "It leads to soil pollution",
+        "It is biodegradable",
+        "It reduces waste"
+      ],
+      "answerIndex": 1,
+      "solution": "Plastic is non-biodegradable, so it can accumulate in the environment and lead to soil pollution. It does not break down easily, which means it does not reduce waste and can actually increase it. Plastic packaging is not related to soap production in a way that would make it environmentally beneficial. Therefore, the correct answer is that it leads to soil pollution.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई व्यक्ति बहुत अधिक प्लास्टिक पैकिंग का उपयोग करता है, तो पर्यावरण पर क्या प्रभाव पड़ सकता है?",
+          "choices": [
+            "इसके कारण साबुन के उत्पादन में सहायता होती है",
+            "इसके कारण मिट्टी के प्रदूषण होता है",
+            "इसके बायोडिग्रेडेबल होता है",
+            "इसके कारण अपशिष्ट कम हो जाता है"
+          ],
+          "solution": "प्लास्टिक अविघटनशील होता है, इसलिए यह पर्यावरण में संचित हो सकता है और मिट्टी के प्रदूषण का कारण बन सकता है। यह आसानी से टूट नहीं पाता है, जिसके कारण यह अपशिष्ट कम नहीं होता है और वास्तव में बढ़ सकता है। प्लास्टिक पैकिंग साबुन के उत्पादन में कोई पर्यावरण अनुकूल तरीका नहीं है। इसलिए, सही उत्तर यह है कि यह मिट्टी के प्रदूषण का कारण बनता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology as found in standard textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका व्यक्तीने बरेच प्लास्टिक पॅकिंग वापरल्यास, वातावरणावर काय परिणाम होऊ शकतो?",
+          "choices": [
+            "ते साबण तयार करण्यात मदत करते",
+            "ते जमीन प्रदूषणाला लावते",
+            "ते जैव अपघटनीय आहे",
+            "ते कचरा कमी करते"
+          ],
+          "solution": "प्लास्टिक अजैव अपघटनीय आहे, म्हणून ते वातावरणात जमा होऊ शकते आणि जमीन प्रदूषणाला लावू शकते. ते सहज विघटित होत नाही, जे की ते कचरा कमी करत नाही आणि त्याऐवजी तो वाढवू शकतो. प्लास्टिक पॅकिंग आहे जे साबण तयार करण्याशी संबंधित नाही, जे वातावरणासाठी पर्यायी फायदा देऊ शकत नाही. म्हणून, योग्य उत्तर ते जमीन प्रदूषणाला लावते आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms like 'अजैव अपघटनीय' for 'non-biodegradable' and 'जमीन प्रदूषण' for 'soil pollution'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes plastic is used in soap production due to confusion with other materials like oils or chemicals",
+        null,
+        "This is a misconception about plastic, which is not biodegradable.",
+        "This is incorrect as plastic is not biodegradable."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as plastic is non-biodegradable and contributes to soil pollution. The reasoning in the author's solution is sound and aligns with scientific understanding.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 122,
+          "pageStart": 121,
+          "pageEnd": 122,
+          "headingPath": [
+            "16. Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 123,
+          "pageStart": 122,
+          "pageEnd": 122,
+          "headingPath": [
+            "16. Natural Resources",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T04:36:46.941Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is a bio-resource from the ocean?",
+      "choices": [
+        "Copper",
+        "Sodium",
+        "Fishes",
+        "Uranium"
+      ],
+      "answerIndex": 2,
+      "solution": "Fishes are considered bio-resources because they are living organisms that can be sustainably harvested for food and other uses. Copper and uranium are non-renewable mineral resources, while sodium is a chemical element, not a living resource from the ocean.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्न में से कौन सा महासागर से जैव संसाधन है?",
+          "choices": [
+            "तांबा",
+            "सोडियम",
+            "मछलियां",
+            "यूरेनियम"
+          ],
+          "solution": "मछलियां जैव संसाधन मानी जाती हैं क्योंकि वे खाद्य और अन्य उपयोगों के लिए सतत रूप से खत्म किए जा सकने वाले जीवित जीव हैं। तांबा और यूरेनियम अक्षय खनिज संसाधन हैं, जबकि सोडियम एक रासायनिक तत्व है, जो महासागर से जीवित संसाधन नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते समुद्रापासून जैव संसाधन आहे?",
+          "choices": [
+            "तांबे",
+            "सोडियम",
+            "मासे",
+            "युरेनियम"
+          ],
+          "solution": "मासे जैव संसाधन मानले जातात कारण ते जीवित संसाधन आहेत ज्यांना खाद्यपदार्थ आणि इतर उपयोगांसाठी सतत उपलब्ध करू शकतात. तांबे आणि युरेनियम हे अक्षय खनिज संसाधन नाहीत, तर सोडियम हे रासायनिक घटक आहे, समुद्रापासून जीवित संसाधन नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "This is a mineral resource found in the ocean.",
+        "This is a mineral used in various industries.",
+        null,
+        "This is a mineral resource, not a bio-resource."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies 'fishes' as a bio-resource, while the other options are minerals. The reasoning for the distractors aligns with common misconceptions about the classification of ocean resources.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 122,
+          "pageStart": 121,
+          "pageEnd": 122,
+          "headingPath": [
+            "16. Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 123,
+          "pageStart": 122,
+          "pageEnd": 122,
+          "headingPath": [
+            "16. Natural Resources",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T04:36:46.941Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following is an example of a mineral that is used in the preparation of medicines?",
+      "choices": [
+        "Iron",
+        "Copper",
+        "Manganese",
+        "Aluminium"
+      ],
+      "answerIndex": 2,
+      "solution": "Manganese is used in the preparation of medicines. Iron, copper, and aluminium are not primarily used for this purpose.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक खनिज का उदाहरण है जिसका औषधि के तैयार करने में उपयोग किया जाता है?",
+          "choices": [
+            "लोहा",
+            "तांबा",
+            "मैंगनीज",
+            "एल्यूमीनियम"
+          ],
+          "solution": "मैंगनीज का उपयोग औषधि के तैयार करने में किया जाता है। लोहा, तांबा और एल्यूमीनियम का मुख्य रूप से इस उद्देश्य के लिए उपयोग नहीं किया जाता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता खनिज औषधांच्या तयारीत वापरला जातो याचा उदाहरण आहे?",
+          "choices": [
+            "लोह",
+            "तांबे",
+            "मॅंगनीज",
+            "अॅल्युमिनियम"
+          ],
+          "solution": "मॅंगनीज औषधांच्या तयारीत वापरला जातो. लोह, तांबे आणि अॅल्युमिनियम यांचा मुख्यतः या हेतूने वापर केला जात नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, with appropriate Marathi terms for elements (लोह, तांबे, मॅंगनीज, अॅल्युमिनियम) that match standard textbook usage.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses iron with a mineral used in medicines",
+        "Confuses copper with a mineral used in medicines",
+        null,
+        "Confuses aluminium with a mineral used in medicines"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2 (Manganese), as it is used in medicine. The other options are not primarily used for this purpose, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 116,
+          "pageStart": 114,
+          "pageEnd": 115,
+          "headingPath": [
+            "16. Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 117,
+          "pageStart": 115,
+          "pageEnd": 116,
+          "headingPath": [
+            "16. Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 118,
+          "pageStart": 116,
+          "pageEnd": 117,
+          "headingPath": [
+            "16. Natural Resources"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T04:36:46.941Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a forest is cleared, which of the following will most likely occur?",
+      "choices": [
+        "Increased soil erosion",
+        "Improved water quality",
+        "More wildlife",
+        "Increased atmospheric gases"
+      ],
+      "answerIndex": 0,
+      "solution": "Clearing a forest removes the roots that hold soil in place, leading to increased soil erosion. The other options, such as improved water quality or more wildlife, are not supported by scientific principles related to deforestation. Increased atmospheric gases may occur due to reduced carbon absorption, but the most direct and likely effect is soil erosion.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक वन को साफ कर दिया जाता है, तो निम्नलिखित में से कौन-सा सबसे अधिक संभावित घटित होगा?",
+          "choices": [
+            "बढ़ी हुई मृदा कटाव",
+            "सुधरी हुई जल गुणवत्ता",
+            "अधिक जीव-जंतु",
+            "बढ़े हुए वायुमंडलीय गैसें"
+          ],
+          "solution": "वन के साफ कर देने से मृदा को स्थिर रखने वाली जड़ें हटा दी जाती हैं, जिसके कारण मृदा कटाव बढ़ जाता है। अन्य विकल्प, जैसे कि सुधरी हुई जल गुणवत्ता या अधिक जीव-जंतु, वन विनाश से संबंधित वैज्ञानिक सिद्धांतों द्वारा समर्थित नहीं हैं। वायुमंडलीय गैसों की बढ़ोतरी जीवाणुओं द्वारा कार्बन अवशोषण में कमी के कारण हो सकती है, लेकिन सबसे सीधा और संभावित प्रभाव मृदा कटाव है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as per Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका जंगलाची नीट कापणी केली जाईल, तर खालीलपैकी कोणते घडेल?",
+          "choices": [
+            "जमीन अपरदन वाढेल",
+            "जल गुणवत्ता सुधारेल",
+            "अधिक जीवजंतू असतील",
+            "वातावरणातील वायू वाढतील"
+          ],
+          "solution": "जंगल कापल्याने जमीन टिकून राहणाऱ्या मुळांचा नाश होतो, ज्यामुळे जमीन अपरदन वाढतो. इतर विकल्प, जसे की जल गुणवत्ता सुधारेल किंवा अधिक जीवजंतू असतील, याचा वनक्षयाशी संबंध नाही. वातावरणातील वायू वाढतील याची शक्यता असू शकते, परंतु जमीन अपरदन हा सर्वात सीधा आणि शक्य परिणाम आहे.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for environmental concepts.",
           "flag": null
@@ -919,20 +705,115 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Believes conservation is about fairness rather than sustainability",
         null,
-        "Confuses long-term sustainability with immediate availability",
-        "Believes conservation is about restricting access rather than preserving availability"
+        "Believes removing trees improves water clarity by reducing runoff",
+        "Believes removing trees will create more open space for animals to live",
+        "Believes clearing forests adds more gases to the atmosphere instead of reducing them"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as it aligns with the idea of preventing resource depletion due to their limited nature. The other options reflect common misconceptions about conservation being about fairness, future availability, or restricted access.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as clearing forests typically leads to increased soil erosion. The author's reasoning is sound, and the misconceptions listed for the other options are plausible student errors.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 119,
+          "pageStart": 117,
+          "pageEnd": 118,
+          "headingPath": [
+            "16. Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 120,
+          "pageStart": 118,
+          "pageEnd": 119,
+          "headingPath": [
+            "16. Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 121,
+          "pageStart": 119,
+          "pageEnd": 120,
+          "headingPath": [
+            "16. Natural Resources"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T04:36:46.941Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a new oil well is drilled in the ocean, what might be the impact on marine life?",
+      "choices": [
+        "It will increase the population of fish",
+        "It will improve the quality of water",
+        "It will pollute the environment",
+        "It will reduce the number of marine animals"
+      ],
+      "answerIndex": 2,
+      "solution": "Drilling for oil can cause oil spills and pollution, which harms marine life. This is a known environmental impact of drilling for mineral oil. It is not likely to increase fish populations or improve water quality, and while it may affect marine animals, the direct impact is pollution.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अगर समुद्र में एक नया तेल कुएं खोदा जाता है, तो समुद्री जीवन पर क्या प्रभाव पड़ सकता है?",
+          "choices": [
+            "इससे मछलियों की आबादी बढ़ जाएगी",
+            "इससे पानी की गुणवत्ता सुधर जाएगी",
+            "इससे पर्यावरण प्रदूषित हो जाएगा",
+            "इससे समुद्री जीवों की संख्या कम हो जाएगी"
+          ],
+          "solution": "तेल के खनन से तेल के रिसाव और प्रदूषण हो सकता है, जो समुद्री जीवन को नुकसान पहुंचाता है। यह खनन के लिए खनिज तेल के ज्ञात पर्यावरणीय प्रभावों में से एक है। मछलियों की आबादी बढ़ने या पानी की गुणवत्ता सुधरने की संभावना नहीं है, और यह समुद्री जीवों पर प्रभाव डाल सकता है, लेकिन सीधा प्रभाव प्रदूषण है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms. The correct answer remains option (2), and all distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "समुद्रात नवीन तेल खोदणारे बोअर खोदल्यास समुद्री जीवनावर काय परिणाम होऊ शकतो?",
+          "choices": [
+            "मासांची लोकसंख्या वाढेल",
+            "पाण्याची गुणवत्ता सुधारेल",
+            "पर्यावरण प्रदूषित होईल",
+            "समुद्री प्राण्यांची संख्या कमी होईल"
+          ],
+          "solution": "तेल खोदणे तेल फुटल्याच्या घटना आणि प्रदूषणाचा कारण बनते, जे समुद्री जीवनाला हानी पोहोचवते. हे खनिज तेलाच्या खोदण्याचे ज्ञात पर्यावरणीय परिणाम आहे. मासांच्या लोकसंख्येत वाढ किंवा पाण्याच्या गुणवत्तेत सुधारणा होण्याची शक्यता नाही, आणि त्यामुळे समुद्री प्राण्यांची संख्या कमी होऊ शकते, परंतु थेट परिणाम प्रदूषण आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for environmental concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "This is a misunderstanding of the environmental impact of oil drilling.",
+        "This is not a likely effect of oil drilling in the ocean.",
+        null,
+        "This is a possible outcome, but the direct cause is pollution."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as oil drilling can lead to pollution, which directly harms marine life. The other options represent misconceptions or indirect effects that are not as directly supported by the environmental impact of oil drilling.",
       "sources": [
         {
           "document": "balbharati/7/science/703020012.pdf",
@@ -955,7 +836,276 @@
         }
       ],
       "edition": "First Edition 2017",
-      "generatedAt": "2026-10-31T17:59:14.260Z",
+      "generatedAt": "2026-11-02T04:36:46.941Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "What is the significance of forests in maintaining atmospheric gases?",
+      "choices": [
+        "They help maintain balance",
+        "They increase carbon dioxide",
+        "They increase oxygen",
+        "They decrease oxygen"
+      ],
+      "answerIndex": 0,
+      "solution": "Forests help maintain the balance of atmospheric gases by absorbing carbon dioxide and releasing oxygen through photosynthesis. The other options are incorrect because they suggest changes that contradict the role of forests in stabilizing gas levels.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "वायुमंडलीय गैसों के संतुलन के बरकरार रखने में वनों का क्या महत्व है?",
+          "choices": [
+            "वे संतुलन बनाए रखते हैं",
+            "वे कार्बन डाइऑक्साइड बढ़ाते हैं",
+            "वे ऑक्सीजन बढ़ाते हैं",
+            "वे ऑक्सीजन कम करते हैं"
+          ],
+          "solution": "वन प्रकाश संश्लेषण द्वारा वायुमंडलीय गैसों के संतुलन को बरकरार रखते हैं क्योंकि वे कार्बन डाइऑक्साइड को अवशोषित करते हैं और ऑक्सीजन उत्सर्जित करते हैं। अन्य विकल्प गलत हैं क्योंकि वे ऐसे परिवर्तन के संकेत देते हैं जो वनों द्वारा गैस स्तर के स्थिरीकरण के कार्य के विपरीत हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and maintains the same meaning, correct answer, and incorrect options. Technical terms like 'वायुमंडलीय गैसों' (atmospheric gases) and 'प्रकाश संश्लेषण' (photosynthesis) are appropriately used in a Hindi educational context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "वातावरणातील वायूंच्या संतुलनात जंगलांचा काय अर्थ आहे?",
+          "choices": [
+            "ते संतुलन ठेवतात",
+            "ते कार्बन डायऑक्साइड वाढवतात",
+            "ते ऑक्सीजन वाढवतात",
+            "ते ऑक्सीजन कमी करतात"
+          ],
+          "solution": "जंगल फोटोसंश्लेषणाद्वारे वातावरणातील वायूंच्या संतुलनाला ठेवतात कारण ते कार्बन डायऑक्साइड शोषून घेतात आणि ऑक्सीजन बाहेर काढतात. इतर विकल्प चुकीचे आहेत कारण ते जंगलांच्या वायूंच्या पातळीत स्थिरता ठेवण्याच्या भूमिकेला विरोध करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes that forests release more carbon dioxide than they absorb",
+        "Believes plants release carbon dioxide instead of absorbing it",
+        "Student thinks forests consume oxygen instead of producing it"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as forests play a critical role in maintaining the balance of atmospheric gases by absorbing CO2 and releasing O2. The other options reflect common misconceptions about the role of forests in the carbon and oxygen cycles.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 119,
+          "pageStart": 117,
+          "pageEnd": 118,
+          "headingPath": [
+            "16. Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 120,
+          "pageStart": 118,
+          "pageEnd": 119,
+          "headingPath": [
+            "16. Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 121,
+          "pageStart": 119,
+          "pageEnd": 120,
+          "headingPath": [
+            "16. Natural Resources"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T04:36:46.941Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why should the use of natural resources be controlled?",
+      "choices": [
+        "To prevent the ocean from becoming too full of waste",
+        "To ensure their availability for future generations",
+        "To reduce the cost of resources",
+        "To prevent overfishing and protect marine life"
+      ],
+      "answerIndex": 1,
+      "solution": "Controlling the use of natural resources ensures they remain available for future generations, as overuse can lead to their depletion. Preventing the ocean from becoming too full of waste and reducing the cost of resources are not the primary reasons for controlling resource use. Preventing overfishing is a specific example of resource control, but the broader goal is to maintain availability over time.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "प्राकृतिक संसाधनों के उपयोग को क्यों नियंत्रित करना चाहिए?",
+          "choices": [
+            "समुद्र के अत्यधिक अपशिष्ट से बचाने के लिए",
+            "भविष्य की पीढ़ियों के लिए उनकी उपलब्धता सुनिश्चित करने के लिए",
+            "संसाधनों की लागत कम करने के लिए",
+            "अत्यधिक मछली पकड़ने और समुद्री जीवन की रक्षा करने के लिए"
+          ],
+          "solution": "प्राकृतिक संसाधनों के उपयोग को नियंत्रित करने से भविष्य की पीढ़ियों के लिए उनकी उपलब्धता सुनिश्चित होती है, क्योंकि अत्यधिक उपयोग उनके अंत होने के कारण हो सकता है। समुद्र के अत्यधिक अपशिष्ट से बचाना और संसाधनों की लागत कम करना संसाधनों के उपयोग के नियंत्रण के मुख्य कारण नहीं हैं। अत्यधिक मछली पकड़ने को रोकना संसाधन नियंत्रण का एक विशिष्ट उदाहरण है, लेकिन व्यापक लक्ष्य समय के साथ उपलब्धता बनाए रखना है।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning, technical terms are appropriately used in Hindi, and the correct answer remains option 1.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "प्राकृतिक संसाधनांचा वापर नियंत्रित का करावा?",
+          "choices": [
+            "समुद्राला अतिरिक्त कचरा भरू नये म्हणून",
+            "भविष्यातील पिढ्यांसाठी त्यांच्या उपलब्धतेची खात्री करण्यासाठी",
+            "संसाधनांच्या खर्चात घट करण्यासाठी",
+            "अतिमात्र शिकार करू नये आणि समुद्री जीवन बचावावे म्हणून"
+          ],
+          "solution": "प्राकृतिक संसाधनांचा वापर नियंत्रित करणे भविष्यातील पिढ्यांसाठी त्यांच्या उपलब्धतेची खात्री करते, कारण अतिरिक्त वापर त्यांच्या निर्मूलनाचा कारण बनू शकतो. समुद्राला अतिरिक्त कचरा भरू नये म्हणून आणि संसाधनांच्या खर्चात घट करण्यासाठी हे नियंत्रण असलेले मुख्य कारण नाहीत. अतिमात्र शिकार रोखणे हे संसाधन नियंत्रणाचे एक विशिष्ट उदाहरण आहे, परंतु व्यापक उद्देश वेळेवर उपलब्धता ठेवणे आहे.",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original meaning, with appropriate Marathi terminology for environmental concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "students may incorrectly believe that overuse of resources causes physical overcrowding in the ocean",
+        null,
+        "Believes that controlling resources will lower prices rather than preserve them",
+        "students confuse the general idea of resource management with specific issues like fishing"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as controlling resource use ensures availability for future generations. The author's solution is sound and aligns with the correct reasoning. All distractors reflect plausible misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 122,
+          "pageStart": 121,
+          "pageEnd": 122,
+          "headingPath": [
+            "16. Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 123,
+          "pageStart": 122,
+          "pageEnd": 122,
+          "headingPath": [
+            "16. Natural Resources",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T04:36:46.941Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is it important to protect marine resources?",
+      "choices": [
+        "They are unlimited in supply",
+        "They are not used by humans",
+        "They are essential for the environment",
+        "They are only used by fish"
+      ],
+      "answerIndex": 2,
+      "solution": "Marine resources are essential for the environment because they support ecosystems and maintain balance in nature. The other options are incorrect because marine resources are not unlimited, are used by humans, and are not exclusively used by fish.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "समुद्री संसाधनों की रक्षा क्यों महत्वपूर्ण है?",
+          "choices": [
+            "उनकी आपूर्ति असीमित है",
+            "मनुष्य उनका उपयोग नहीं करते हैं",
+            "वे पर्यावरण के लिए आवश्यक हैं",
+            "उनका उपयोग केवल मछलियां करती हैं"
+          ],
+          "solution": "समुद्री संसाधन पर्यावरण के लिए आवश्यक हैं क्योंकि वे पारिस्थितिक तंत्र का समर्थन करते हैं और प्रकृति में संतुलन बनाए रखते हैं। अन्य विकल्प गलत हैं क्योंकि समुद्री संसाधन असीमित नहीं हैं, मनुष्य उनका उपयोग करते हैं, और वे केवल मछलियों द्वारा उपयोग नहीं किए जाते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "समुद्री संसाधनांचा रक्षण करणे का महत्वाचे आहे?",
+          "choices": [
+            "ते पुरेशी प्रमाणात उपलब्ध आहेत",
+            "माणसांनी त्यांचा वापर केलेला नाही",
+            "ते पर्यावरणासाठी आवश्यक आहेत",
+            "ते केवळ मासांनी वापरले जातात"
+          ],
+          "solution": "समुद्री संसाधने पर्यावरणासाठी आवश्यक आहेत कारण ते परिसंस्था आणि प्रकृतीचे संतुलन बनवतात. इतर विकल्प चुकीचे आहेत कारण समुद्री संसाधने अमर्यादित नाहीत, माणसांनी त्यांचा वापर केलेला आहे आणि ते केवळ मासांनी वापरले जात नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for environmental concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "overestimates the availability of resources",
+        "ignores the role of humans in resource use",
+        null,
+        "ignores the role of humans in resource use"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as marine resources are essential for the environment and must be protected. The other options are clearly incorrect, and the author's reasoning for the wrong options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 122,
+          "pageStart": 121,
+          "pageEnd": 122,
+          "headingPath": [
+            "16. Natural Resources"
+          ]
+        },
+        {
+          "document": "balbharati/7/science/703020012.pdf",
+          "ordinal": 123,
+          "pageStart": 122,
+          "pageEnd": 122,
+          "headingPath": [
+            "16. Natural Resources",
+            "t t t"
+          ]
+        }
+      ],
+      "edition": "First Edition 2017",
+      "generatedAt": "2026-11-02T04:36:46.941Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

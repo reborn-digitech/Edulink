@@ -21,49 +21,49 @@
   "board": "BALBHARATI",
   "book": "६ वी गणित इंग्रजी",
   "edition": "First Edition 2026",
-  "generatedAt": "2026-10-31T01:51:51.911Z",
+  "generatedAt": "2026-11-01T14:28:44.317Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 2,
-      "stem": "If the principal is ₹8,000 and the interest is ₹640, what is the amount?",
+      "difficulty": 1,
+      "stem": "What is the term used for the money deposited in a bank?",
       "choices": [
-        "₹8,640",
-        "₹7,360",
-        "₹8,000",
-        "₹640"
+        "Loan",
+        "Interest",
+        "Principal",
+        "Deposit"
       ],
-      "answerIndex": 0,
-      "solution": "The amount is the sum of the principal and the interest. So, ₹8,000 + ₹640 = ₹8,640. The other options are incorrect because '₹7,360' is the difference, '₹8,000' is the principal, and '₹640' is the interest.",
-      "checkExpr": "8000+640",
+      "answerIndex": 3,
+      "solution": "The correct term is 'Deposit' because it refers to the money placed into a bank by an individual or organization. 'Loan' is money borrowed from a bank, 'Interest' is the extra money earned on a deposit, and 'Principal' is the original amount of a deposit before any interest is added.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि मूलधन ₹8,000 है और ब्याज ₹640 है, तो राशि क्या है?",
+          "stem": "बैंक में जमा की गई धनराशि के लिए क्या शब्द प्रयोग किया जाता है?",
           "choices": [
-            "₹8,640",
-            "₹7,360",
-            "₹8,000",
-            "₹640"
+            "ऋण",
+            "ब्याज",
+            "मूलधन",
+            "जमा"
           ],
-          "solution": "राशि मूलधन और ब्याज के योग होती है। अतः ₹8,000 + ₹640 = ₹8,640। अन्य विकल्प गलत हैं क्योंकि '₹7,360' अंतर है, '₹8,000' मूलधन है और '₹640' ब्याज है।",
+          "solution": "सही शब्द 'जमा' है क्योंकि यह वह धनराशि है जो व्यक्ति या संगठन द्वारा बैंक में जमा की जाती है। 'ऋण' बैंक से उधार ली गई धनराशि है, 'ब्याज' जमा पर अतिरिक्त धनराशि है, और 'मूलधन' ब्याज जोड़े जाने से पहले जमा की गई मूल धनराशि है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology as per Indian curriculum.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All options and the solution are correctly translated and maintain the same logical relationships.",
           "flag": null
         },
         "mr": {
-          "stem": "मुद्दल ₹8,000 आणि व्याज ₹640 असल्यास, एकूण रक्कम किती असेल?",
+          "stem": "बँकेत जमा केलेल्या रकमेसाठी वापरलेला शब्द कोणता आहे?",
           "choices": [
-            "₹8,640",
-            "₹7,360",
-            "₹8,000",
-            "₹640"
+            "कर्ज",
+            "व्याज",
+            "मूळ रक्कम",
+            "जमा"
           ],
-          "solution": "एकूण रक्कम मुद्दल आणि व्याजाची बेरीज असते. म्हणून, ₹8,000 + ₹640 = ₹8,640. इतर विकल्प चुकीचे आहेत कारण '₹7,360' ही फरक आहे, '₹8,000' हे मुद्दल आहे आणि '₹640' हे व्याज आहे.",
+          "solution": "सही शब्द 'जमा' आहे कारण तो व्यक्ती किंवा संस्थेने बँकेत ठेवलेल्या रकमेला संदर्भित करतो. 'कर्ज' ही बँकेकडून घेतलेली रक्कम आहे, 'व्याज' ही जमावर मिळणारी अतिरिक्त रक्कम आहे आणि 'मूळ रक्कम' ही व्याज जोडल्यापूर्वीची जमाची मूळ रक्कम आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi financial terminology.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for financial concepts.",
           "flag": null
         }
       },
@@ -72,108 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        null,
-        "Subtracts the interest from the principal",
-        "Confuses principal with amount",
-        "Confuses interest with amount"
+        "Confuses deposit with loan",
+        "Confuses deposit with interest",
+        "Confuses deposit with principal",
+        null
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        3,
+        3,
+        3,
+        3,
+        3
       ],
       "levelFlag": null,
-      "critique": "The question is straightforward. The amount is correctly calculated as principal plus interest. The distractors reflect common misconceptions: subtracting interest, confusing principal with amount, and confusing interest with amount.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 92,
-          "pageStart": 146,
-          "pageEnd": 148,
-          "headingPath": [
-            "17. Bank and Simple Interest",
-            "Bank"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 93,
-          "pageStart": 148,
-          "pageEnd": 148,
-          "headingPath": [
-            "17. Bank and Simple Interest",
-            "Bank"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T01:51:51.911Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a person deposits ₹5,000 in a bank and the interest rate is 5% per annum, how much interest will they earn in one year?",
-      "choices": [
-        "₹250",
-        "₹500",
-        "₹750",
-        "₹1,000"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct answer is ₹250. Interest is calculated by multiplying the principal amount by the rate of interest, so 5% of ₹5,000 is ₹250. The other options are incorrect because they do not match the mathematical result of this calculation.",
-      "checkExpr": "5000*5/100",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि कोई व्यक्ति बैंक में ₹5,000 जमा करता है और ब्याज दर 5% प्रति वर्ष है, तो वह एक वर्ष में कितना ब्याज कमाएगा?",
-          "choices": [
-            "₹250",
-            "₹500",
-            "₹750",
-            "₹1,000"
-          ],
-          "solution": "सही उत्तर ₹250 है। ब्याज की गणना मूल राशि के ब्याज दर से गुणा करके की जाती है, इसलिए ₹5,000 का 5% ₹250 है। अन्य विकल्प गलत हैं क्योंकि इनका गणितीय परिणाम इस गणना के साथ मेल नहीं खाता।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate financial terminology as used in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका व्यक्तीने बँकेत ₹5,000 जमा केले आणि व्याज दर 5% वार्षिक आहे, तर त्यांना एका वर्षात किती व्याज मिळेल?",
-          "choices": [
-            "₹250",
-            "₹500",
-            "₹750",
-            "₹1,000"
-          ],
-          "solution": "बरोबर उत्तर ₹250 आहे. व्याज मूळ रकमेच्या व्याज दराने गुणाकार करून गणले जाते, म्हणून ₹5,000 चे 5% ₹250 आहे. इतर उत्तरे चुकीची आहेत कारण ते या गणनेच्या गणितीय निकालाशी जुळत नाहीत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Believes interest is calculated as a percentage of the total amount including the principal, rather than just the principal",
-        "Miscalculates 5% as 15% of the principal amount",
-        "Believes interest is calculated on the total amount including the principal and previous interest"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct. The interest is calculated as 5% of ₹5,000, which is ₹250. The other options represent common misconceptions about how simple interest is calculated.",
+      "critique": "The question is straightforward and the correct answer is clearly 'Deposit'. The author's reasoning for the distractors is accurate and reflects common misconceptions.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
@@ -207,47 +119,145 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T01:51:51.911Z",
+      "generatedAt": "2026-11-01T14:28:44.317Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "Radhika took a loan of ₹25,000 from a bank at 8 p.c.p.a. After a year, she returned ₹27,000. How much extra did she pay?",
+      "difficulty": 1,
+      "stem": "What is the term for the amount of money deposited in a bank or given by the bank to the borrower?",
       "choices": [
-        "₹2,000",
-        "₹25,000",
-        "₹27,000",
-        "₹5,000"
+        "Principal",
+        "Interest",
+        "Amount",
+        "Rate"
       ],
       "answerIndex": 0,
-      "solution": "The extra amount paid is the interest, which is calculated as (8% of ₹25,000) = ₹2,000. The other options are incorrect because '₹25,000' is the principal, '₹27,000' is the total amount, and '₹5,000' is higher than the correct interest.",
-      "checkExpr": "25000*8/100",
+      "solution": "The term for the amount of money deposited in a bank or given by the bank to the borrower is 'principal.' 'Interest' refers to the additional money paid on top of the principal, 'amount' is the total sum of principal and interest, and 'rate' is the percentage used to calculate interest.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "राधिका ने बैंक से 8 प्रतिशत वार्षिक ब्याज दर पर ₹25,000 का ऋण लिया। एक वर्ष बाद उसने ₹27,000 वापस कर दिए। उसने कितना अतिरिक्त राशि दी?",
+          "stem": "बैंक में जमा राशि या बैंक द्वारा उधारकर्ता को दी गई राशि के लिए क्या शब्द है?",
           "choices": [
-            "₹2,000",
-            "₹25,000",
-            "₹27,000",
-            "₹5,000"
+            "मूलधन",
+            "ब्याज",
+            "राशि",
+            "दर"
           ],
-          "solution": "अतिरिक्त राशि ब्याज है, जो (8% of ₹25,000) = ₹2,000 के रूप में गणना की गई है। अन्य विकल्प गलत हैं क्योंकि '₹25,000' मूलधन है, '₹27,000' कुल राशि है, और '₹5,000' सही ब्याज से अधिक है।",
+          "solution": "बैंक में जमा राशि या बैंक द्वारा उधारकर्ता को दी गई राशि के लिए शब्द 'मूलधन' है। 'ब्याज' मूलधन पर अतिरिक्त राशि के लिए शब्द है, 'राशि' मूलधन और ब्याज के कुल योग के लिए शब्द है, और 'दर' ब्याज की गणना के लिए प्रतिशत है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate financial terminology as used in Hindi-medium textbooks.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All technical terms are standard in Hindi educational materials.",
           "flag": null
         },
         "mr": {
-          "stem": "राधिकाने बँकेकडून 8 प्रतिशत वार्षिक दराने 25,000 रुपये व्याज घेतले. एक वर्षानंतर तिने 27,000 रुपये परत केले. तिने किती अतिरिक्त रक्कम दिली?",
+          "stem": "बँकेत जमा केलेल्या किंवा बँकेने उतरविलेल्या रकमेच्या नावाचा शब्द काय आहे?",
           "choices": [
-            "2,000 रुपये",
-            "25,000 रुपये",
-            "27,000 रुपये",
-            "5,000 रुपये"
+            "मुद्दल",
+            "व्याज",
+            "रक्कम",
+            "दर"
           ],
-          "solution": "अतिरिक्त रक्कम ही व्याज आहे, जे 25,000 रुपयांच्या 8% म्हणून गणले जाते = 2,000 रुपये. इतर विकल्प चुकीचे आहेत कारण '25,000 रुपये' ही मूळ रक्कम आहे, '27,000 रुपये' ही एकूण रक्कम आहे आणि '5,000 रुपये' ही चुकीच्या व्याजापेक्षा जास्त आहे.",
+          "solution": "बँकेत जमा केलेल्या किंवा बँकेने उतरविलेल्या रकमेच्या नावाचा शब्द 'मुद्दल' आहे. 'व्याज' हा शब्द मुद्दलावर वाढलेल्या अतिरिक्त रकमेला संबोधतो, 'रक्कम' ही मुद्दल आणि व्याजाची एकूण रक्कम आहे आणि 'दर' हा व्याजाची गणना करण्यासाठी वापरलेल्या टक्क्यांच्या प्रमाणाला संबोधतो.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, uses standard financial terminology, and maintains the same meaning and structure as the English version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses principal with interest",
+        "Confuses principal with amount",
+        "Confuses principal with rate"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution correctly identifies 'principal' as the correct term. The distractors are common misconceptions that students might have.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 89,
+          "pageStart": 141,
+          "pageEnd": 142,
+          "headingPath": [
+            "17. Bank and Simple Interest",
+            "Bank"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 90,
+          "pageStart": 143,
+          "pageEnd": 144,
+          "headingPath": [
+            "17. Bank and Simple Interest",
+            "Bank"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 91,
+          "pageStart": 144,
+          "pageEnd": 146,
+          "headingPath": [
+            "17. Bank and Simple Interest",
+            "Bank"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T14:28:44.317Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the term for the amount of money that the bank pays to the depositor or charges from the borrower?",
+      "choices": [
+        "Principal",
+        "Interest",
+        "Amount",
+        "Rate"
+      ],
+      "answerIndex": 1,
+      "solution": "Interest is the term for the amount of money that the bank pays to the depositor or charges from the borrower. Principal refers to the initial amount of money deposited or borrowed. Amount is the total sum of the principal plus interest. Rate is the percentage used to calculate interest.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "बैंक द्वारा जमाकर्ता को दी जाने वाली धनराशि या उधारकर्ता से ली जाने वाली धनराशि के लिए क्या शब्द प्रयोग किया जाता है?",
+          "choices": [
+            "मूलधन",
+            "ब्याज",
+            "राशि",
+            "दर"
+          ],
+          "solution": "ब्याज वह धनराशि है जो बैंक द्वारा जमाकर्ता को दी जाती है या उधारकर्ता से ली जाती है। मूलधन वह प्रारंभिक धनराशि है जो जमा की जाती है या उधार ली जाती है। राशि मूलधन और ब्याज का कुल योग होती है। दर ब्याज की गणना के लिए प्रयोग किए जाने वाला प्रतिशत होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All technical terms are standard in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "बँक डिपॉझिटरला देते किंवा उत्तरदायीला व्याज घेते त्या पैशाच्या प्रमाणासाठी कोणते शब्द वापरले जाते?",
+          "choices": [
+            "मुद्दल",
+            "व्याज",
+            "एकूण रक्कम",
+            "दर"
+          ],
+          "solution": "व्याज हा बँक डिपॉझिटरला देते किंवा उत्तरदायीला व्याज घेते त्या पैशाच्या प्रमाणासाठी वापरला जाणारा शब्द आहे. मुद्दल हा डिपॉझिट केलेल्या किंवा उत्तरदायीला दिलेल्या प्रारंभिक पैशाच्या प्रमाणासाठी वापरला जातो. एकूण रक्कम हा मुद्दल आणि व्याजाच्या एकूण रकमेसाठी वापरला जातो. दर हा व्याज काढण्यासाठी वापरला जाणारा प्रतिशत आहे.",
           "imageAlt": null,
           "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi financial terminology.",
           "flag": null
@@ -258,108 +268,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Confuses interest with principal",
         null,
-        "Confuses principal with interest",
-        "Confuses amount with interest",
-        "Incorrect interest calculation"
+        "Confuses interest with amount",
+        "Confuses interest with rate"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is ₹2,000, which is the interest. The solution is sound and matches the author's key. The distractors are all plausible misconceptions: confusing principal, total amount, or miscalculating interest.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 92,
-          "pageStart": 146,
-          "pageEnd": 148,
-          "headingPath": [
-            "17. Bank and Simple Interest",
-            "Bank"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 93,
-          "pageStart": 148,
-          "pageEnd": 148,
-          "headingPath": [
-            "17. Bank and Simple Interest",
-            "Bank"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T01:51:51.911Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If a person deposits ₹20,000 in a bank at a rate of 5% p.a. for one year, what will be the total amount received at the end of the year?",
-      "choices": [
-        "₹21,000",
-        "₹20,500",
-        "₹22,000",
-        "₹20,000"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct answer is '₹21,000' because the interest is calculated as (20,000 × 5% × 1) = ₹1,000, and the total amount is ₹20,000 + ₹1,000 = ₹21,000. The other options are incorrect because they do not reflect the correct calculation of interest and principal.",
-      "checkExpr": "20000 + (20000 * 0.05)",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि कोई व्यक्ति बैंक में 5% प्रति वर्ष की दर से एक वर्ष के लिए ₹20,000 जमा करता है, तो वर्ष के अंत में प्राप्त कुल राशि क्या होगी?",
-          "choices": [
-            "₹21,000",
-            "₹20,500",
-            "₹22,000",
-            "₹20,000"
-          ],
-          "solution": "सही उत्तर '₹21,000' है क्योंकि ब्याज की गणना (20,000 × 5% × 1) = ₹1,000 के रूप में की जाती है, और कुल राशि ₹20,000 + ₹1,000 = ₹21,000 है। अन्य विकल्प गलत हैं क्योंकि वे ब्याज और मूलधन की सही गणना को दर्शाने में असमर्थ हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi financial terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका व्यक्तीने बँकेत एका वर्षासाठी 5% वार्षिक दराने ₹20,000 जमा केले, तर वर्षाच्या अखेरीस मिळणारी एकूण रक्कम किती असेल?",
-          "choices": [
-            "₹21,000",
-            "₹20,500",
-            "₹22,000",
-            "₹20,000"
-          ],
-          "solution": "बरोबर उत्तर '₹21,000' आहे कारण व्याज (20,000 × 5% × 1) = ₹1,000 असे गणले जाते आणि एकूण रक्कम ₹20,000 + ₹1,000 = ₹21,000 असते. इतर उत्तरे चुकीची आहेत कारण ते व्याज आणि मुद्दलाच्या योग्य गणनेचे प्रतिबिंबित करत नाहीत.",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Marathi financial terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Calculates only the interest without adding it to the principal amount",
-        "Calculating simple interest as 10% instead of 5% and adding it to the principal",
-        "Believes that no interest is earned if the time period is exactly one year"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is ₹21,000, as the interest is calculated correctly as 5% of ₹20,000, which is ₹1,000. The other options reflect common misconceptions about simple interest.",
+      "levelFlag": null,
+      "critique": "The correct answer is 'Interest' as it refers to the amount paid by the bank to the depositor or charged from the borrower. The other options are correctly identified as incorrect based on their definitions.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
@@ -393,47 +315,47 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T01:51:51.911Z",
+      "generatedAt": "2026-11-01T14:28:44.317Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "If the principal is ₹35,500 and the amount is ₹39,760, what is the interest?",
+      "difficulty": 2,
+      "stem": "What is the purpose of a savings account?",
       "choices": [
-        "₹4,260",
-        "₹35,500",
-        "₹39,760",
-        "₹3,260"
+        "To conduct large financial transactions",
+        "To save money and develop a habit of saving",
+        "To provide loans to businesses",
+        "To keep valuables safe"
       ],
-      "answerIndex": 0,
-      "solution": "The interest is the difference between the amount and the principal, so ₹39,760 - ₹35,500 = ₹4,260. The other options are incorrect because '₹35,500' is the principal, '₹39,760' is the amount, and '₹3,260' is a lower value than the correct interest.",
-      "checkExpr": "39760-35500",
+      "answerIndex": 1,
+      "solution": "The purpose of a savings account is to help individuals save money and build a habit of saving, which supports financial discipline. Conducting large financial transactions is typically handled by checking or business accounts, providing loans to businesses is the role of banks or financial institutions, and keeping valuables safe is managed through secure storage options like safety deposit boxes.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि मूलधन ₹35,500 और राशि ₹39,760 है, तो ब्याज क्या है?",
+          "stem": "बचत खाते का उद्देश्य क्या है?",
           "choices": [
-            "₹4,260",
-            "₹35,500",
-            "₹39,760",
-            "₹3,260"
+            "बड़े वित्तीय लेन-देन करना",
+            "पैसा बचाना और बचत के आदत विकसित करना",
+            "व्यवसायों को ऋण प्रदान करना",
+            "मूल्यवान वस्तुओं को सुरक्षित रखना"
           ],
-          "solution": "ब्याज राशि और मूलधन के अंतर के बराबर होता है, इसलिए ₹39,760 - ₹35,500 = ₹4,260। अन्य विकल्प गलत हैं क्योंकि '₹35,500' मूलधन है, '₹39,760' राशि है, और '₹3,260' सही ब्याज से कम मूल्य है।",
+          "solution": "बचत खाते का उद्देश्य व्यक्तियों को पैसा बचाने और बचत के आदत विकसित करने में सहायता करना होता है, जो वित्तीय अनुशासन का समर्थन करता है। बड़े वित्तीय लेन-देन आमतौर पर चेकिंग या व्यावसायिक खातों द्वारा किए जाते हैं, व्यवसायों को ऋण प्रदान करना बैंक या वित्तीय संस्थानों का कार्य होता है, और मूल्यवान वस्तुओं को सुरक्षित रखना सुरक्षित भंडारण विकल्पों जैसे सुरक्षित डिपॉजिट बॉक्स द्वारा प्रबंधित किया जाता है।",
           "imageAlt": null,
-          "critique": "Translation is accurate, technical terms like 'मूलधन' (principal) and 'राशि' (amount) are standard in Hindi textbooks.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate banking terminology common in Hindi-medium education.",
           "flag": null
         },
         "mr": {
-          "stem": "मुद्दल ₹35,500 आणि रक्कम ₹39,760 असल्यास व्याज किती असेल?",
+          "stem": "बचत खात्याचा उद्देश काय आहे?",
           "choices": [
-            "₹4,260",
-            "₹35,500",
-            "₹39,760",
-            "₹3,260"
+            "मोठ्या आर्थिक व्यवहार करणे",
+            "पैसे बचत करणे आणि बचत चा आदत विकसित करणे",
+            "व्यवसायांना कर्ज देणे",
+            "मूल्यवान वस्तू जपून ठेवणे"
           ],
-          "solution": "व्याज म्हणजे रक्कम आणि मुद्दल यांच्या फरकाने दर्शवले जाते, म्हणून ₹39,760 - ₹35,500 = ₹4,260. इतर विकल्प चुकीचे आहेत कारण '₹35,500' मुद्दल आहे, '₹39,760' रक्कम आहे आणि '₹3,260' चुकीच्या व्याजापेक्षा कमी आहे.",
+          "solution": "बचत खात्याचा उद्देश व्यक्तींना पैसे बचत करण्यास आणि बचत चा आदत विकसित करण्यास मदत करणे आहे, जे आर्थिक नियंत्रणाला समर्थन देते. मोठ्या आर्थिक व्यवहार खास करून चेकिंग किंवा व्यवसाय खात्यांद्वारे व्यवहार केले जातात, व्यवसायांना कर्ज देणे हे बँका किंवा आर्थिक संस्थांचे कार्य आहे, आणि मूल्यवान वस्तू जपून ठेवणे हे सुरक्षित भंडारण विकल्पांमध्ये जसे की सुरक्षित डिपॉझिट बॉक्स द्वारे व्यवस्थापित केले जाते.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi financial terminology.",
           "flag": null
@@ -444,20 +366,314 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Confuses savings account with current account",
         null,
-        "Confuses principal with interest",
-        "Confuses amount with interest",
-        "Incorrect subtraction"
+        "Confuses savings account with loan facility",
+        "Confuses savings account with locker facility"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as a savings account's primary purpose is to encourage saving. The other options represent common misconceptions about the functions of different banking services.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 89,
+          "pageStart": 141,
+          "pageEnd": 142,
+          "headingPath": [
+            "17. Bank and Simple Interest",
+            "Bank"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 90,
+          "pageStart": 143,
+          "pageEnd": 144,
+          "headingPath": [
+            "17. Bank and Simple Interest",
+            "Bank"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 91,
+          "pageStart": 144,
+          "pageEnd": 146,
+          "headingPath": [
+            "17. Bank and Simple Interest",
+            "Bank"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T14:28:44.317Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main function of a current account?",
+      "choices": [
+        "To help people develop the habit of saving",
+        "To allow large daily transactions",
+        "To provide loans to businesses",
+        "To keep valuables safe"
+      ],
+      "answerIndex": 1,
+      "solution": "The main function of a current account is to allow large daily transactions, as it is designed for frequent and high-volume financial activities. Saving habits are associated with savings accounts, loans are provided by financial institutions through lending mechanisms, and securing valuables is the purpose of safe deposit boxes or lockers.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "करंट खाते का मुख्य कार्य क्या है?",
+          "choices": [
+            "लोगों को बचत के आदत विकसित करने में मदद करना",
+            "बड़े दैनिक लेन-देन की अनुमति देना",
+            "व्यवसायों को लोन प्रदान करना",
+            "मूल्यवान वस्तुओं को सुरक्षित रखना"
+          ],
+          "solution": "करंट खाते का मुख्य कार्य बड़े दैनिक लेन-देन की अनुमति देना है, क्योंकि इसका उद्देश्य अक्सर और उच्च आयाम वाले वित्तीय गतिविधियों के लिए डिज़ाइन किया गया है। बचत के आदत के साथ-साथ बचत खाते जुड़े हुए हैं, लोन वित्तीय संस्थान लेन-देन के माध्यम से प्रदान करते हैं, और मूल्यवान वस्तुओं के संरक्षण का उद्देश्य सुरक्षित डिपॉजिट बॉक्स या लॉकर के लिए है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi banking terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "करंट खात्याचे मुख्य कार्य काय आहे?",
+          "choices": [
+            "लोकांना बचत चालू करण्याचा सवय लावणे",
+            "मोठ्या दैनिक व्यवहारांची परवानगी देणे",
+            "व्यवसायांना कर्ज पुरवणे",
+            "मूल्यवान वस्तू खात्री ठेवणे"
+          ],
+          "solution": "करंट खात्याचे मुख्य कार्य मोठ्या दैनिक व्यवहारांची परवानगी देणे आहे, कारण ते वारंवार आणि उच्च वॉल्यूमच्या वित्तीय क्रियाकलापांसाठी डिझाइन केलेले आहे. बचत सवय बचत खात्याशी जोडलेली आहे, कर्ज व्यवसायांना वित्तीय संस्थांमार्फत लोन मॅकेनिझमद्वारे पुरवले जाते आणि मूल्यवान वस्तू खात्री ठेवणे हे सेफ डिपॉजिट बॉक्स किंवा लॉकरचे उद्देश आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi banking terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses current account with savings account",
+        null,
+        "Confuses current account with loan facility",
+        "Confuses current account with locker facility"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, with a clear correct answer and plausible misconceptions for the distractors. The solution correctly identifies the function of a current account as facilitating large daily transactions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 89,
+          "pageStart": 141,
+          "pageEnd": 142,
+          "headingPath": [
+            "17. Bank and Simple Interest",
+            "Bank"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 90,
+          "pageStart": 143,
+          "pageEnd": 144,
+          "headingPath": [
+            "17. Bank and Simple Interest",
+            "Bank"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 91,
+          "pageStart": 144,
+          "pageEnd": 146,
+          "headingPath": [
+            "17. Bank and Simple Interest",
+            "Bank"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T14:28:44.317Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a bank offers 4% simple interest per annum, how much money will be in the account after 2 years if ₹10,000 is deposited?",
+      "choices": [
+        "₹10,400",
+        "₹10,800",
+        "₹11,200",
+        "₹11,600"
+      ],
+      "answerIndex": 1,
+      "solution": "The total amount after 2 years will be ₹10,800. Simple interest for 2 years is ₹800 (4% of ₹10,000 per year), so the total is ₹10,000 + ₹800 = ₹10,800. The other options are incorrect: ₹10,400 is for 1 year, ₹11,200 is for 6% interest, and ₹11,600 is for 8% interest.",
+      "checkExpr": "10000 + 10000*4*2/100",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक बैंक 4% साधारण ब्याज प्रति वर्ष प्रदान करता है, तो ₹10,000 जमा कराने पर 2 वर्ष बाद खाते में कितनी राशि होगी?",
+          "choices": [
+            "₹10,400",
+            "₹10,800",
+            "₹11,200",
+            "₹11,600"
+          ],
+          "solution": "2 वर्ष बाद कुल राशि ₹10,800 होगी। 2 वर्ष का साधारण ब्याज ₹800 (प्रति वर्ष ₹10,000 का 4%) है, इसलिए कुल राशि ₹10,000 + ₹800 = ₹10,800 है। अन्य विकल्प गलत हैं: ₹10,400 एक वर्ष के लिए है, ₹11,200 छः प्रतिशत ब्याज के लिए है और ₹11,600 आठ प्रतिशत ब्याज के लिए है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi financial terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर बँक 4% साधा व्याज वार्षिक देत असेल, तर ₹10,000 जमा केल्यास 2 वर्षानंतर खात्यात किती रक्कम असेल?",
+          "choices": [
+            "₹10,400",
+            "₹10,800",
+            "₹11,200",
+            "₹11,600"
+          ],
+          "solution": "2 वर्षानंतर एकूण रक्कम ₹10,800 असेल. 2 वर्षांसाठी साधे व्याज ₹800 (वार्षिक ₹10,000 चे 4%) असेल, म्हणून एकूण रक्कम ₹10,000 + ₹800 = ₹10,800. इतर विकल्प चुकीचे आहेत: ₹10,400 एका वर्षासाठी आहे, ₹11,200 6% व्याजासाठी आहे आणि ₹11,600 8% व्याजासाठी आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi financial terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Calculates interest for 1 year instead of 2",
+        null,
+        "Calculates interest at 6% instead of 4%",
+        "Calculates interest at 8% instead of 4%"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct, as interest is calculated as the difference between the amount and the principal. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "critique": "The correct answer is ₹10,800, calculated as simple interest of 4% per annum for 2 years on ₹10,000. The author's solution and reasoning are accurate.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 89,
+          "pageStart": 141,
+          "pageEnd": 142,
+          "headingPath": [
+            "17. Bank and Simple Interest",
+            "Bank"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 90,
+          "pageStart": 143,
+          "pageEnd": 144,
+          "headingPath": [
+            "17. Bank and Simple Interest",
+            "Bank"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 91,
+          "pageStart": 144,
+          "pageEnd": 146,
+          "headingPath": [
+            "17. Bank and Simple Interest",
+            "Bank"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T14:28:44.317Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Nancy took a loan of ₹18,650 at the rate of 10 p.c.p.a. from a bank to buy a sewing machine. What amount will she have to pay after one year?",
+      "choices": [
+        "₹18,650",
+        "₹19,515",
+        "₹18,655",
+        "₹19,650"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is '₹19,515' because the interest is (10% of ₹18,650) = ₹1,865. So, the total amount is ₹18,650 + ₹1,865 = ₹19,515. The other options are incorrect: ₹18,650 is only the principal, ₹18,655 is incorrect addition, and ₹19,650 is a higher incorrect amount.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "नैंसी ने एक सिलाई मशीन खरीदने के लिए बैंक से ₹18,650 का ऋण लिया। 10 प्रतिशत वार्षिक ब्याज की दर से एक साल बाद उसे कितनी राशि चुकानी होगी?",
+          "choices": [
+            "₹18,650",
+            "₹19,515",
+            "₹18,655",
+            "₹19,650"
+          ],
+          "solution": "सही उत्तर '₹19,515' है क्योंकि ब्याज (₹18,650 का 10%) = ₹1,865 है। अतः कुल राशि ₹18,650 + ₹1,865 = ₹19,515 है। अन्य विकल्प गलत हैं: ₹18,650 केवल मूलधन है, ₹18,655 गलत जोड़ है और ₹19,650 एक उच्च गलत राशि है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question, with appropriate financial terms used in a Hindi-medium context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "नॅन्सीने एका बँकेकडून एका सिलिंग मशीन खरेदी करण्यासाठी ₹18,650 चा ऋण घेतला. 1 वर्षानंतर तिला किती रक्कम भरावी लागेल?",
+          "choices": [
+            "₹18,650",
+            "₹19,515",
+            "₹18,655",
+            "₹19,650"
+          ],
+          "solution": "सही उत्तर '₹19,515' आहे कारण व्याज (₹18,650 चे 10%) = ₹1,865. म्हणून, कुल रक्कम ₹18,650 + ₹1,865 = ₹19,515. इतर उत्तरे चुकीची आहेत: ₹18,650 हा केवळ मूलधन आहे, ₹18,655 हा चुकीचा जोडणारा आहे आणि ₹19,650 ही जास्त चुकीची रक्कम आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate financial terminology as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses principal with amount",
+        null,
+        "Adds interest incorrectly",
+        "Confuses principal with amount"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly calculates simple interest as 10% of ₹18,650, which is ₹1,865, and adds it to the principal to get ₹19,515. The reasoning for the distractors is valid and reflects common student misconceptions.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
@@ -481,7 +697,193 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T01:51:51.911Z",
+      "generatedAt": "2026-11-01T14:28:44.317Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a person deposits ₹20,000 in a bank and receives ₹22,000 after 1 year, what is the rate of interest?",
+      "choices": [
+        "5%",
+        "10%",
+        "15%",
+        "20%"
+      ],
+      "answerIndex": 1,
+      "solution": "The rate of interest is 10%. The interest earned is ₹2,000, and 10% of ₹20,000 is ₹2,000. The other options are incorrect: 5% would be ₹1,000, 15% would be ₹3,000, and 20% would be ₹4,000.",
+      "checkExpr": "(22000-20000)/20000*100",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई व्यक्ति बैंक में ₹20,000 जमा करता है और 1 साल बाद ₹22,000 प्राप्त करता है, तो ब्याज की दर क्या है?",
+          "choices": [
+            "5%",
+            "10%",
+            "15%",
+            "20%"
+          ],
+          "solution": "ब्याज की दर 10% है। अर्जित ब्याज ₹2,000 है, और ₹20,000 का 10% ₹2,000 है। अन्य विकल्प गलत हैं: 5% ₹1,000 होगा, 15% ₹3,000 होगा, और 20% ₹4,000 होगा।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains in the same position, and all distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका व्यक्तीने बँकेत ₹20,000 जमा केले आणि 1 वर्षानंतर ₹22,000 मिळाले, तर व्याजाचा दर किती आहे?",
+          "choices": [
+            "5%",
+            "10%",
+            "15%",
+            "20%"
+          ],
+          "solution": "व्याजाचा दर 10% आहे. व्याजाची रक्कम ₹2,000 आहे, आणि ₹20,000 चे 10% ₹2,000 आहे. इतर विकल्प चुकीचे आहेत: 5% हा ₹1,000 असेल, 15% हा ₹3,000 असेल आणि 20% हा ₹4,000 असेल.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi financial terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Calculates 5% instead of 10%",
+        null,
+        "Calculates 15% instead of 10%",
+        "Calculates 20% instead of 10%"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The interest is ₹2,000 on ₹20,000, which is 10%. The other options are incorrect as they do not match the interest amount.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 89,
+          "pageStart": 141,
+          "pageEnd": 142,
+          "headingPath": [
+            "17. Bank and Simple Interest",
+            "Bank"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 90,
+          "pageStart": 143,
+          "pageEnd": 144,
+          "headingPath": [
+            "17. Bank and Simple Interest",
+            "Bank"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 91,
+          "pageStart": 144,
+          "pageEnd": 146,
+          "headingPath": [
+            "17. Bank and Simple Interest",
+            "Bank"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T14:28:44.317Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If the principal is ₹35,000 and the interest is ₹2,800, what is the rate of interest per annum?",
+      "choices": [
+        "6%",
+        "8%",
+        "7%",
+        "9%"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is '8%' because the rate is calculated as (Interest ÷ Principal) × 100 = (2,800 ÷ 35,000) × 100 = 8%. The other options are incorrect as they do not match the calculated rate.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि मूलधन ₹35,000 है और ब्याज ₹2,800 है, तो वार्षिक ब्याज दर क्या है?",
+          "choices": [
+            "6%",
+            "8%",
+            "7%",
+            "9%"
+          ],
+          "solution": "सही उत्तर '8%' है क्योंकि ब्याज दर की गणना (ब्याज ÷ मूलधन) × 100 = (2,800 ÷ 35,000) × 100 = 8% के रूप में की जाती है। अन्य विकल्प गलत हैं क्योंकि वे गणना के द्वारा प्राप्त दर के साथ मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "All elements match the original. The Hindi translation uses standard financial terms like 'मूलधन' (principal), 'ब्याज' (interest), and 'ब्याज दर' (rate of interest) as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मुद्दल ₹35,000 आणि व्याज ₹2,800 असल्यास वार्षिक व्याजदर किती आहे?",
+          "choices": [
+            "6%",
+            "8%",
+            "7%",
+            "9%"
+          ],
+          "solution": "बरोबर उत्तर '8%' आहे कारण व्याजदर (व्याज ÷ मुद्दल) × 100 = (2,800 ÷ 35,000) × 100 = 8% असा गणला जातो. इतर विकल्प चुकीचे आहेत कारण ते गणलेल्या दराशी मेळ नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi financial terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the interest amount with the rate by dividing the interest by 100 instead of the principal.",
+        null,
+        "Confuses the interest rate with the ratio of interest to principal without adjusting for 100.",
+        "Overestimates the rate"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct, and the reasoning aligns with the standard formula for calculating simple interest rate. The author's key and reasoning are accurate.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 92,
+          "pageStart": 146,
+          "pageEnd": 148,
+          "headingPath": [
+            "17. Bank and Simple Interest",
+            "Bank"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 93,
+          "pageStart": 148,
+          "pageEnd": 148,
+          "headingPath": [
+            "17. Bank and Simple Interest",
+            "Bank"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T14:28:44.317Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

@@ -1,0 +1,596 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T11:37:09.722Z",
+  "finishedAt": "2026-11-02T11:45:06.293Z",
+  "seconds": 477,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 10 — Cell and Cell Organelles",
+    "edition": "First Edition 2018",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2023-24]\nMarking Scheme (2023-24)\nClass-X\nScience (Subject Code – 086) b\nQ. No. Answer Marks\nSection–A\n1 b) Barium sulphate\n2 b) Colourless\n3 d) NaHCO 3\n4 a) Sodium\n6 d) 11 (2,8,1)\n7 c) 14\n8 b) Mushroom\n9 a) tongue\n10 c) Vegetative propagation\n11 c) Growth hormones under the influence of the enzymes coded by a gene. 1\n12 c) lack of oxygen and formation of lactic acid. 1\n13 d) behind the mirror and its position varies according to the object distance. 1\n14 c) scattering of light.\n15 c) CFCs, Ozone\n16 a) Broken down by biological processes\n17 d) Assertion is false but Reason is true\n18 a) Both A and R are true and R is the correct explanation of A. 1\n19 d) Assertion is false but Reason is true 1\n20 c) ",
+      "[INJSO 2020 — question paper]\n14. Chromophores are commonly used as biological stains to view cell organelles better. When\nan epithelial cell (e.g. skin cell) is stained with a basic dye like methylene blue and observed\nunder a light microscope (total magnification of 100X), the visible cell organelle(s) will be\nA. Blue nucleus and blue mitochondria.\nB. Blue nucleus and blue endosomes.\nC. Blue nucleus and pink mitochondria.\nD. Blue nucleus.",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n8. D. carbon dioxide in human cells",
+      "[INJSO 2021 — question paper]\n3. Descriptions of four biological samples (I - IV) are given below.\nI: Can be viewed using a light microscope with a total magnification of 1000X; possesses cell wall\nand does not possess mitochondria.\nII: Can be seen using a light microscope with a total magnification of 100X; possesses cell wall and\nhas a nucleus.\nIII: Needs electron microscope for viewing; can be found attached to the membrane system in the\ncytoplasm.\nIV: Needs electron microscope for viewing; cannot replicate on its own, needs other specific cells\nfor replication.\nI, II, III, and IV respectively represent:\nA. virus; plant cell; ribosome; bacteria. B. plant cell; bacteria; vacuole; virus.\nC. bacteria; plant cell; ribosom"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 139154,
+      "in": 31,
+      "out": 29,
+      "rejects": 2,
+      "promptTokens": 26036,
+      "completionTokens": 6643
+    },
+    "critique": {
+      "calls": 41,
+      "ms": 300493,
+      "in": 29,
+      "out": 24,
+      "rejects": 5,
+      "promptTokens": 18545,
+      "completionTokens": 6999
+    },
+    "solver": {
+      "calls": 196,
+      "ms": 109466,
+      "in": 24,
+      "out": 23,
+      "rejects": 1,
+      "promptTokens": 32442,
+      "completionTokens": 1990
+    },
+    "form": {
+      "calls": 10,
+      "ms": 34892,
+      "in": 23,
+      "out": 15,
+      "rejects": 8,
+      "promptTokens": 2450,
+      "completionTokens": 782
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 58,
+      "ms": 9979,
+      "in": 15,
+      "out": 10,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 43,
+      "ms": 507100,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 24272,
+      "completionTokens": 12245
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 2,
+    "2": 3,
+    "3": 0,
+    "4": 1,
+    "5": 1,
+    "6": 3
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the cytoplasm?",
+      "ms": {
+        "draft": 3445,
+        "critique": 7583,
+        "solver": 1303,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following cell structures can be seen only with an electron microscope?",
+      "ms": {
+        "draft": 3445,
+        "critique": 9013,
+        "solver": 1705,
+        "form": 5715
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the nucleus considered the control center of the cell?",
+      "ms": {
+        "draft": 3445,
+        "critique": 7891
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which organelle is described as the 'secretory organ' of the cell?",
+      "ms": {
+        "draft": 3987,
+        "critique": 7496,
+        "solver": 1441,
+        "form": 3102
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to a cell when lysosomes burst?",
+      "ms": {
+        "draft": 3987,
+        "critique": 7259
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which organelle is responsible for the production of ATP in a cell?",
+      "ms": {
+        "draft": 3987,
+        "critique": 6634
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which organelle has its own DNA and ribosomes, allowing it to produce proteins?",
+      "ms": {
+        "draft": 3987,
+        "critique": 8065
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the function of the inner membrane of mitochondria?",
+      "ms": {
+        "draft": 3987,
+        "critique": 7849,
+        "solver": 14888
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If red blood cells had mitochondria, what would be the most likely effect?",
+      "ms": {
+        "draft": 3873,
+        "critique": 6545
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is not a membrane-bound cell organelle?",
+      "ms": {
+        "draft": 3873,
+        "critique": 6244,
+        "solver": 16768,
+        "form": 3018
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which cell organelle is responsible for producing energy in the form of ATP?",
+      "ms": {
+        "draft": 8617,
+        "critique": 7909,
+        "solver": 14496,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a function of the cell wall?",
+      "ms": {
+        "draft": 4431,
+        "critique": 7814,
+        "solver": 2048,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following processes allows water to move from an area of high water concentration to an area of low water concentration through a selectively permeable membrane?",
+      "ms": {
+        "draft": 4431,
+        "critique": 8068,
+        "solver": 1675,
+        "form": 3897
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a plant cell is placed in a hypertonic solution, what will happen to the cell?",
+      "ms": {
+        "draft": 4431,
+        "critique": 7879,
+        "solver": 10259,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to a plant cell when it is placed in a hypertonic solution?",
+      "ms": {
+        "draft": 3445,
+        "critique": 7838,
+        "solver": 13364,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the site of ATP production in a cell?",
+      "ms": {
+        "draft": 3834,
+        "critique": 7390,
+        "solver": 1454,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the main function of the plasma membrane?",
+      "ms": {
+        "draft": 3834,
+        "critique": 4394,
+        "solver": 658,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which cell organelle is referred to as the ATP producing factory?",
+      "ms": {
+        "draft": 3873,
+        "critique": 5608,
+        "solver": 1562,
+        "form": 4875
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a function of lysosomes?",
+      "ms": {
+        "draft": 8617,
+        "critique": 8244,
+        "solver": 13979,
+        "form": 3468
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the site of protein synthesis in a cell?",
+      "ms": {
+        "draft": 3834,
+        "critique": 7994,
+        "solver": 1406,
+        "form": 0,
+        "translation": 40757
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the site of photosynthesis in a plant cell?",
+      "ms": {
+        "draft": 3834,
+        "critique": 6873,
+        "solver": 2213,
+        "form": 0,
+        "translation": 43601
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of the plasma membrane?",
+      "ms": {
+        "draft": 3445,
+        "critique": 8287,
+        "solver": 12115,
+        "form": 0,
+        "translation": 48512
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of the cell wall in plant cells?",
+      "ms": {
+        "draft": 3445,
+        "critique": 7931,
+        "solver": 14741,
+        "form": 0,
+        "translation": 39916
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of lysosomes in a cell?",
+      "ms": {
+        "draft": 3987,
+        "critique": 7814,
+        "solver": 12143,
+        "form": 2623,
+        "translation": 50577
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the function of the Golgi complex in a cell?",
+      "ms": {
+        "draft": 8617,
+        "critique": 8480,
+        "solver": 16038,
+        "form": 3888,
+        "translation": 77723
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is most likely to be found in a plant cell but not in an animal cell?",
+      "ms": {
+        "draft": 3873,
+        "critique": 10095,
+        "solver": 2065,
+        "form": 3089,
+        "translation": 45473
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the nucleus considered the control center of the cell?",
+      "ms": {
+        "draft": 4431,
+        "critique": 6698,
+        "solver": 9221,
+        "form": 0,
+        "translation": 48038
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do mitochondria have folded inner membranes?",
+      "ms": {
+        "draft": 8617,
+        "critique": 8551,
+        "solver": 13371,
+        "form": 0,
+        "translation": 68488
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which organelle is responsible for the green color of leaves?",
+      "ms": {
+        "draft": 3873,
+        "critique": 7894,
+        "solver": 1854,
+        "form": 4237,
+        "translation": 40121
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is the site of storage of genetic material in a cell?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the primary function of the endoplasmic reticulum?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the cytoplasm?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following cell structures can be seen only with an electron microscope?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer, no reason needed…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is the nucleus considered the control center of the cell?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which organelle is described as the 'secretory organ' of the cell?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct option, no reason needed for distractor reason, as i…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What happens to a cell when lysosomes burst?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which organelle is responsible for the production of ATP in a cell?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which organelle has its own DNA and ribosomes, allowing it to produce proteins?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the function of the inner membrane of mitochondria?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If red blood cells had mitochondria, what would be the most likely effect?",
+      "reason": "the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is not a membrane-bound cell organelle?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which cell organelle is responsible for producing energy in the form of ATP?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a function of the cell wall?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, it is a direct sta…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following processes allows water to move from an area of high water concentration to an area of low water concentration through a selectively permeable membrane?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer is not the longest option, it is a direct sta…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a plant cell is placed in a hypertonic solution, what will happen to the cell?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What happens to a plant cell when it is placed in a hypertonic solution?",
+      "reason": "near-duplicate of served question cmvg79ib902i9gpfhlwks61z8 (cosine 0.910 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is the site of ATP production in a cell?",
+      "reason": "near-duplicate of served question cmvf2bsup02udgod85wg8vewa (cosine 0.945 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is the main function of the plasma membrane?",
+      "reason": "near-duplicate of batch item \"Which of the following is a function of the plasma…\" (cosine 0.945 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which cell organelle is referred to as the ATP producing factory?",
+      "reason": "near-duplicate of served question cmvg79ib402i3gpfhbkk6ii3d (cosine 0.964 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "Which of the following is a function of lysosomes?",
+      "reason": "near-duplicate of served question cmvmudd2o0291gp21nrveg4ln (cosine 0.907 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

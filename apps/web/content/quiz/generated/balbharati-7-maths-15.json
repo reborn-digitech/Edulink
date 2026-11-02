@@ -21,153 +21,49 @@
   "board": "BALBHARATI",
   "book": "७ वी गणित इंग्रजी",
   "edition": "2026 edition",
-  "generatedAt": "2026-10-31T12:30:10.828Z",
+  "generatedAt": "2026-11-01T23:43:32.258Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "What is the term used to describe the estimate of the time taken to cycle to school every day, calculated by adding the time taken each day and dividing by the number of days?",
+      "difficulty": 3,
+      "stem": "If the sum of the distances of the six students from the school is 5700 m, what is the average distance?",
       "choices": [
-        "Median",
-        "Mode",
-        "Range",
-        "Average"
-      ],
-      "answerIndex": 3,
-      "solution": "The term refers to the value obtained by summing all the times and dividing by the number of days, which is the definition of an average. Median is the middle value in a sorted list, mode is the most frequent value, and range is the difference between the highest and lowest values. None of these fit the described calculation.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "आम तौर पर स्कूल जाने में लगे समय के अनुमान के लिए क्या शब्द प्रयोग किया जाता है, जो दिन प्रति दिन लगे समय को जोड़कर दिनों की संख्या से विभाजित करके गणना की जाती है?",
-          "choices": [
-            "माध्यिका",
-            "बहुलक",
-            "परास",
-            "माध्य"
-          ],
-          "solution": "इस शब्द का अर्थ वह मान है जो सभी समय को जोड़कर दिनों की संख्या से विभाजित करके प्राप्त किया जाता है, जो माध्य के परिभाषा के अनुरूप है। माध्यिका किसी सॉर्ट किए गए सूची में मध्य मान होता है, बहुलक सबसे अधिक बार आने वाला मान होता है और परास उच्चतम और निम्नतम मान के बीच का अंतर होता है। इनमें से कोई भी वर्णित गणना के अनुरूप नहीं है।",
-          "imageAlt": null,
-          "critique": "Hindi translation accurately reflects the English original in meaning, terminology, and structure. All statistical terms used are standard in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "दररोज शाळेत चाल करण्याच्या वेळेच्या अंदाजासाठी वापरल्या जाणार्‍या शब्दाचे नाव काय आहे? हा अंदाज दररोज घेतलेल्या वेळा जोडून दिवसांच्या संख्येने भागल्यास मिळतो.",
-          "choices": [
-            "मध्यमान",
-            "बहुलक",
-            "परिसर",
-            "सरासरी"
-          ],
-          "solution": "हा शब्द सर्व वेळा जोडून दिवसांच्या संख्येने भागल्यास मिळणार्‍या मूल्यास संबोधतो, जे सरासरीचे निर्वचन आहे. मध्यमान हा वर्गीकृत यादीतील मध्यम मूल्य आहे, बहुलक हा सर्वाधिक वारंवारता असलेला मूल्य आहे आणि परिसर हा उच्चतम आणि निम्नतम मूल्यांच्या फरकास संबोधतो. यापैकी कोणताही शब्द वर्णन केलेल्या गणनेसाठी योग्य नाही.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology as used in Marathi textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses average with median, which is a different measure of central tendency.",
-        "Confuses average with mode, which is the most frequent value.",
-        "Confuses average with range, which is the difference between the highest and lowest values.",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The question correctly identifies 'average' as the term for the mean, which is calculated by summing values and dividing by the number of values. The author's solution is accurate and the reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 69,
-          "pageStart": 105,
-          "pageEnd": 106,
-          "headingPath": [
-            "15. Statistics"
-          ]
-        },
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 70,
-          "pageStart": 106,
-          "pageEnd": 107,
-          "headingPath": [
-            "15. Statistics"
-          ]
-        },
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 71,
-          "pageStart": 107,
-          "pageEnd": 109,
-          "headingPath": [
-            "15. Statistics"
-          ]
-        },
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 72,
-          "pageStart": 109,
-          "pageEnd": 109,
-          "headingPath": [
-            "15. Statistics"
-          ]
-        }
-      ],
-      "edition": "2026 edition",
-      "generatedAt": "2026-10-31T12:30:10.828Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the term used to describe the 'average' of a set of numbers in mathematics?",
-      "choices": [
-        "Mean",
-        "Median",
-        "Mode",
-        "Range"
+        "950 m",
+        "1000 m",
+        "1140 m",
+        "5700 m"
       ],
       "answerIndex": 0,
-      "solution": "In mathematics, the term 'mean' refers to the average of a set of numbers, calculated by adding all the numbers together and dividing by the total count. The median is the middle value when numbers are ordered, the mode is the most frequently occurring number, and the range is the difference between the highest and lowest values. Therefore, the correct answer is 'Mean'.",
-      "checkExpr": null,
+      "solution": "To find the average distance, divide the total sum of distances by the number of students. So, 5700 m divided by 6 equals 950 m. The other options do not result from this calculation; 1000 m and 1140 m are incorrect divisions, and 5700 m is the total sum, not the average.",
+      "checkExpr": "5700/6",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "गणित में संख्याओं के सेट के 'औसत' के लिए उपयोग किया जाने वाला शब्द क्या है?",
+          "stem": "यदि छह छात्रों की स्कूल से दूरी का योग 5700 मीटर है, तो औसत दूरी क्या है?",
           "choices": [
-            "माध्य",
-            "मध्यिका",
-            "बहुलक",
-            "परास"
+            "950 मीटर",
+            "1000 मीटर",
+            "1140 मीटर",
+            "5700 मीटर"
           ],
-          "solution": "गणित में, 'माध्य' शब्द संख्याओं के सेट के औसत को संदर्भित करता है, जिसे सभी संख्याओं को जोड़कर कुल संख्याओं की संख्या से विभाजित करके गणना की जाती है। मध्यिका क्रम में व्यवस्थित संख्याओं के मध्य का मान होता है, बहुलक सबसे अधिक बार आने वाली संख्या होती है और परास उच्चतम और निम्नतम मान के बीच का अंतर होता है। इसलिए, सही उत्तर 'माध्य' है।",
+          "solution": "औसत दूरी ज्ञात करने के लिए, दूरियों के कुल योग को छात्रों की संख्या से विभाजित करें। इसलिए, 5700 मीटर को 6 से विभाजित करने पर 950 मीटर प्राप्त होता है। अन्य विकल्प इस गणना से प्राप्त नहीं होते; 1000 मीटर और 1140 मीटर गलत विभाजन हैं, और 5700 मीटर कुल योग है, न कि औसत।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi mathematical terminology used.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "गणितात संख्यांच्या एका श्रेणीच्या 'सरासरी' ला कोणत्या शब्दाने ओळखले जाते?",
+          "stem": "सहा विद्यार्थ्यांच्या शाळेपासून अंतरांची बेरीज 5700 मी असल्यास, त्यांचे सरासरी अंतर किती असेल?",
           "choices": [
-            "मीन",
-            "मध्यम",
-            "मोड",
-            "रेंज"
+            "950 मी",
+            "1000 मी",
+            "1140 मी",
+            "5700 मी"
           ],
-          "solution": "गणितात, 'मीन' शब्दाने संख्यांच्या श्रेणीची सरासरी दर्शवली जाते, जी सर्व संख्या जोडून एकूण गणनेने भागल्याने मिळते. मध्यम ही व्यवस्थित केलेल्या संख्यांची मध्य विलक्षण असते, मोड ही सर्वात जास्त वेळा घडणारी संख्या असते आणि रेंज ही सर्वात मोठी आणि सर्वात लहान संख्यांमधील फरक असतो. म्हणूनच, योग्य उत्तर 'मीन' आहे.",
+          "solution": "सरासरी अंतर शोधण्यासाठी, अंतरांची एकूण बेरीज विद्यार्थ्यांच्या संख्येने भागा. म्हणून, 5700 मी ला 6 ने भागल्यास 950 मी मिळते. इतर विकल्प या गणनेतून मिळत नाहीत; 1000 मी आणि 1140 मी चुकीच्या भागाकारांपासून मिळतात, आणि 5700 मी ही सरासरी नसून एकूण बेरीज आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for mathematical concepts.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology for mathematical concepts.",
           "flag": null
         }
       },
@@ -177,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses average with median",
-        "Confuses average with mode",
-        "Confuses average with range"
+        "Chooses the total sum instead of dividing by number of students",
+        "Chooses a number that is not the correct division of the total sum",
+        "Chooses the total sum instead of dividing by number of students"
       ],
       "solverAnswers": [
         0,
@@ -189,7 +85,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed, with a clear definition of 'average' as the mean. The solution correctly identifies the mean as the correct answer and explains the other options accurately.",
+      "critique": "The solution is correct: average is sum divided by number of students (5700 / 6 = 950). The author's reasoning for the distractors is valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "balbharati/7/mathematics/703020004.pdf",
@@ -229,153 +125,49 @@
         }
       ],
       "edition": "2026 edition",
-      "generatedAt": "2026-10-31T12:30:10.828Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the term used to describe the number of times a particular score appears in a data set?",
-      "choices": [
-        "Frequency",
-        "Mean",
-        "Median",
-        "Mode"
-      ],
-      "answerIndex": 0,
-      "solution": "The term for the number of times a particular score appears in a data set is frequency, as it directly refers to how often a value occurs. Mean is the average of all values, median is the middle value when data is ordered, and mode is the most frequently occurring value. Therefore, the correct answer is 'Frequency'.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "किसी डेटा सेट में एक विशेष स्कोर के बार बार आने की संख्या के लिए कौन सा शब्द प्रयोग किया जाता है?",
-          "choices": [
-            "बारंबारता",
-            "माध्य",
-            "मध्यिका",
-            "बहुलक"
-          ],
-          "solution": "किसी डेटा सेट में एक विशेष स्कोर के बार बार आने की संख्या के लिए शब्द बारंबारता है, क्योंकि यह सीधे एक मान के आवर्तन की बारंबारता को संदर्भित करता है। माध्य सभी मानों के औसत होता है, मध्यिका डेटा को क्रम में रखने पर मध्य का मान होता है और बहुलक सबसे अधिक बार आने वाला मान होता है। इसलिए सही उत्तर 'बारंबारता' है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and options, with appropriate terminology used in Indian curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एखाद्या विशिष्ट गुणाच्या एकूण डेटा सेटमध्ये किती वेळा आल्याच्या शब्दाला काय म्हणतात?",
-          "choices": [
-            "बारंबारता",
-            "मध्यम",
-            "मध्यक्रम",
-            "बहुलक"
-          ],
-          "solution": "एखाद्या विशिष्ट गुणाच्या एकूण डेटा सेटमध्ये किती वेळा आल्याच्या शब्दाला बारंबारता म्हणतात, कारण तो मूल्य जास्तीत जास्त वेळा येण्याच्या गोष्टीला सूचित करतो. मध्यम हा सर्व मूल्यांच्या औसताला सूचित करतो, मध्यक्रम हा डेटा व्यवस्थित केल्यानंतर मध्यम मूल्याला सूचित करतो आणि बहुलक हा सर्वात जास्त वेळा येणाऱ्या मूल्याला सूचित करतो. म्हणून, योग्य उत्तर 'बारंबारता' आहे.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, with appropriate statistical terminology used in Indian Marathi-medium education.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses frequency with mean",
-        "Confuses frequency with median",
-        "Confuses frequency with mode"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is clear and the correct answer is 'Frequency'. The author's reasoning for the distractors is valid, as students often confuse these statistical terms.",
-      "sources": [
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 69,
-          "pageStart": 105,
-          "pageEnd": 106,
-          "headingPath": [
-            "15. Statistics"
-          ]
-        },
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 70,
-          "pageStart": 106,
-          "pageEnd": 107,
-          "headingPath": [
-            "15. Statistics"
-          ]
-        },
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 71,
-          "pageStart": 107,
-          "pageEnd": 109,
-          "headingPath": [
-            "15. Statistics"
-          ]
-        },
-        {
-          "document": "balbharati/7/mathematics/703020004.pdf",
-          "ordinal": 72,
-          "pageStart": 109,
-          "pageEnd": 109,
-          "headingPath": [
-            "15. Statistics"
-          ]
-        }
-      ],
-      "edition": "2026 edition",
-      "generatedAt": "2026-10-31T12:30:10.828Z",
+      "generatedAt": "2026-11-01T23:43:32.258Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "Asmita cycled to school for six days. The total time taken was 114 minutes. What is the average time she took per day?",
+      "stem": "If the distances of six students from the school are 950 m, 800 m, 700 m, 1.5 km, 1 km, and 750 m, what is the average distance in meters?",
       "choices": [
-        "18 minutes",
-        "19 minutes",
-        "20 minutes",
-        "22 minutes"
+        "900 m",
+        "950 m",
+        "1000 m",
+        "1050 m"
       ],
       "answerIndex": 1,
-      "solution": "To find the average time Asmita took per day, divide the total time by the number of days: 114 ÷ 6 = 19. The correct answer is 19 minutes because it represents the mean time per day. The other options do not result from this calculation and are therefore incorrect.",
-      "checkExpr": "114/6",
+      "solution": "Convert all distances to meters: 950, 800, 700, 1500, 1000, and 750. Adding these gives 5700. Dividing by 6 students results in 950 meters. The other options are incorrect because they do not match the result of this calculation.",
+      "checkExpr": "5700/6",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "अस्मिता छह दिन तक स्कूल जाने के लिए साइकिल चलाई। कुल समय 114 मिनट लगा। प्रति दिन उसके द्वारा लिया गया औसत समय क्या है?",
+          "stem": "यदि छह छात्रों की स्कूल से दूरी 950 मी, 800 मी, 700 मी, 1.5 किमी, 1 किमी, और 750 मी है, तो मीटर में औसत दूरी क्या है?",
           "choices": [
-            "18 मिनट",
-            "19 मिनट",
-            "20 मिनट",
-            "22 मिनट"
+            "900 मी",
+            "950 मी",
+            "1000 मी",
+            "1050 मी"
           ],
-          "solution": "अस्मिता द्वारा प्रति दिन लिए गए औसत समय को ज्ञात करने के लिए, कुल समय को दिनों की संख्या से विभाजित करें: 114 ÷ 6 = 19। सही उत्तर 19 मिनट है क्योंकि यह प्रति दिन औसत समय का प्रतिनिधित्व करता है। अन्य विकल्प इस गणना से प्राप्त नहीं होते हैं और इसलिए गलत हैं।",
+          "solution": "सभी दूरियों को मीटर में बदलें: 950, 800, 700, 1500, 1000 और 750। इनका योग 5700 होता है। 6 छात्रों से विभाजित करने पर 950 मीटर प्राप्त होता है। अन्य विकल्प गलत हैं क्योंकि इनका परिणाम इस गणना के परिणाम से मेल नहीं खाता।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi terminology for units and mathematical concepts.",
           "flag": null
         },
         "mr": {
-          "stem": "अस्मिताने छह दिवस शाळेसाठी व्हेंचल चालवले. एकूण वेळ 114 मिनिटे लागल्या. दररोज तिला किती वेळ लागली असेल?",
+          "stem": "सहा विद्यार्थ्यांच्या शाळेपासूनच्या अंतरांची सरासरी मीटरमध्ये किती असेल? जर त्यांची अंतरे क्रमाने 950 मी, 800 मी, 700 मी, 1.5 किमी, 1 किमी आणि 750 मी असतील.",
           "choices": [
-            "18 मिनिटे",
-            "19 मिनिटे",
-            "20 मिनिटे",
-            "22 मिनिटे"
+            "900 मी",
+            "950 मी",
+            "1000 मी",
+            "1050 मी"
           ],
-          "solution": "अस्मिताच्या दररोज वेळाचे सरासरी शोधण्यासाठी, एकूण वेळ दिवसांच्या संख्येने भाग घ्यावी: 114 ÷ 6 = 19. योग्य उत्तर 19 मिनिटे आहे कारण हे दररोज वेळाचे सरासरी असते. इतर उत्तरे ह्या गणनेपासून उद्भवत नाहीत आणि त्यामुळे अयोग्य आहेत.",
+          "solution": "सर्व अंतरे मीटरमध्ये बदलावीत: 950, 800, 700, 1500, 1000 आणि 750. यांची बेरीज 5700 असते. 6 विद्यार्थ्यांनी विभाजित केल्यास 950 मीटर मिळतात. इतर विकल्प चुकीचे असतात कारण ते या गणनेच्या निकालाशी जुळत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology. The structure and logic of the question and solution are preserved.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for units and mathematical concepts.",
           "flag": null
         }
       },
@@ -384,10 +176,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Uses total time instead of average",
+        "Pupils may incorrectly add the numbers without converting units, resulting in a lower average.",
         null,
-        "Assumes the average is the middle value in the list of times, without calculating the actual sum and division.",
-        "Chooses one of the given individual times"
+        "Fails to convert units properly",
+        "Adds 1.5 km as 150 instead of 1500"
       ],
       "solverAnswers": [
         1,
@@ -397,7 +189,7 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The solution is correct and straightforward. The average is calculated by dividing 114 by 6, which equals 19. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "critique": "The solution is correct. All distances were converted to meters, summed to 5700, and divided by 6 to get 950. The author's reasoning for the distractors is valid and reflects common student misconceptions.",
       "sources": [
         {
           "document": "balbharati/7/mathematics/703020004.pdf",
@@ -437,49 +229,49 @@
         }
       ],
       "edition": "2026 edition",
-      "generatedAt": "2026-10-31T12:30:10.828Z",
+      "generatedAt": "2026-11-01T23:43:32.258Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 4,
-      "stem": "A frequency table was made for the number of peas in 50 pods. The sum of all scores was 206. What is the average number of peas in a pod?",
+      "stem": "Based on the frequency table for the number of peas in the pods, what is the average number of peas per pod?",
       "choices": [
-        "2.06",
         "4.12",
-        "5.12",
-        "6.21"
+        "4.00",
+        "3.00",
+        "2.00"
       ],
-      "answerIndex": 1,
-      "solution": "To find the average number of peas in a pod, divide the total number of peas (206) by the number of pods (50), which gives 206 ÷ 50 = 4.12. The other options are incorrect because they do not result from dividing the total by the number of pods. 2.06 is too low, 5.12 and 6.21 are not mathematically consistent with the given numbers.",
+      "answerIndex": 0,
+      "solution": "To find the average number of peas per pod, sum the total number of peas and divide by the number of pods. If the total is 206 and there are 50 pods, 206 divided by 50 equals 4.12. The other options do not result from this calculation.",
       "checkExpr": "206/50",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "50 टोकरियों में चना की संख्या के लिए एक बारंबारता सारणी बनाई गई थी। सभी अंकों का योग 206 था। एक टोकरी में चना की औसत संख्या क्या है?",
+          "stem": "कांटों में गोभी के दानों की बारंबारता सारणी के आधार पर, प्रति कांटे में गोभी के दानों की औसत संख्या क्या है?",
           "choices": [
-            "2.06",
             "4.12",
-            "5.12",
-            "6.21"
+            "4.00",
+            "3.00",
+            "2.00"
           ],
-          "solution": "एक टोकरी में चना की औसत संख्या ज्ञात करने के लिए, कुल चना की संख्या (206) को टोकरियों की संख्या (50) से विभाजित करें, जो 206 ÷ 50 = 4.12 देता है। अन्य विकल्प गलत हैं क्योंकि वे टोकरियों की संख्या से कुल के विभाजन से प्राप्त नहीं होते। 2.06 बहुत कम है, 5.12 और 6.21 दिए गए संख्याओं के गणितीय रूप से संगत नहीं हैं।",
+          "solution": "प्रति कांटे में गोभी के दानों की औसत संख्या ज्ञात करने के लिए, कुल दानों के योग को कांटों की संख्या से विभाजित करें। यदि कुल 206 दाने हैं और 50 कांटे हैं, तो 206 को 50 से विभाजित करने पर 4.12 प्राप्त होता है। अन्य विकल्प इस गणना से प्राप्त नहीं होते।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The structure and logic of the question and solution are preserved.",
           "flag": null
         },
         "mr": {
-          "stem": "50 बटाट्यांमध्ये असलेल्या बटाट्यांच्या संख्येचे एक वारंवारता टेबल तयार करण्यात आले. सर्व गुणांची बेरीज 206 होती. एका बटाट्यामध्ये बटाट्यांची सरासरी संख्या किती आहे?",
+          "stem": "कुकड्यांमध्ये असलेल्या बीजांच्या संख्येच्या बारंबारता टेबलवर आधारित, प्रति कुकड्यातील बीजांची सरासरी संख्या किती आहे?",
           "choices": [
-            "2.06",
             "4.12",
-            "5.12",
-            "6.21"
+            "4.00",
+            "3.00",
+            "2.00"
           ],
-          "solution": "एका बटाट्यामध्ये बटाट्यांची सरासरी संख्या शोधण्यासाठी, बटाट्यांच्या एकूण संख्या (206) ला बटाट्यांच्या संख्येने (50) भागणे आवश्यक आहे, जे 206 ÷ 50 = 4.12 देते. इतर विकल्प चुकीचे आहेत कारण ते बटाट्यांच्या संख्येने एकूण बटाट्यांच्या संख्येने भागल्यानंतर मिळत नाहीत. 2.06 खूप कमी आहे, 5.12 आणि 6.21 दिलेल्या संख्यांच्या गणितानुसार तार्किक नाहीत.",
+          "solution": "प्रति कुकड्यातील बीजांची सरासरी शोधण्यासाठी, एकूण बीजांची संख्या बेरीज करा आणि कुकड्यांच्या संख्येने भागा. जर एकूण 206 असेल आणि 50 कुकडे असतील, तर 206 ला 50 ने भागल्यास 4.12 मिळतो. इतर विकल्प ह्या गणनेपासून मिळत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for statistical concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -488,20 +280,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Pupil divides the total by 100 instead of 50 due to misunderstanding decimal placement",
         null,
-        "Chooses the sum directly",
-        "Chooses an arbitrary number"
+        "Mistakenly adds only the distinct values and divides by the number of distinct values",
+        "Student calculates total number of pods instead of total peas and divides by number of pods",
+        "Student divides the total number of pods by the number of peas instead of the total number of peas by the number of pods"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 4.12, as the average is calculated by dividing the total (206) by the number of pods (50). The author's reasoning for the distractors is plausible and reflects common misconceptions.",
+      "critique": "The solution is correct and matches the key. The calculation of 206 divided by 50 equals 4.12, which is option 0. The author's explanations for the distractors are plausible misconceptions.",
       "sources": [
         {
           "document": "balbharati/7/mathematics/703020004.pdf",
@@ -541,7 +333,215 @@
         }
       ],
       "edition": "2026 edition",
-      "generatedAt": "2026-10-31T12:30:10.828Z",
+      "generatedAt": "2026-11-01T23:43:32.258Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In the frequency table, what does the letter 'N' represent?",
+      "choices": [
+        "Total number of scores",
+        "Sum of all frequencies",
+        "Total number of tally marks",
+        "Frequency of the highest score"
+      ],
+      "answerIndex": 0,
+      "solution": "The letter 'N' represents the total number of scores because it is the sum of all individual data points in a frequency table. The other options are incorrect because 'N' does not refer to the sum of frequencies (which is the same as the total number of scores), the total number of tally marks (which also equals 'N'), or the frequency of the highest score (which is a separate value).",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "आवृत्ति सारणी में अक्षर 'N' क्या प्रस्तुत करता है?",
+          "choices": [
+            "सभी अंकों की कुल संख्या",
+            "सभी आवृत्तियों का योग",
+            "सभी टैली चिह्नों की कुल संख्या",
+            "उच्चतम अंक की आवृत्ति"
+          ],
+          "solution": "अक्षर 'N' सभी अंकों की कुल संख्या का प्रतिनिधित्व करता है क्योंकि यह आवृत्ति सारणी में सभी व्यक्तिगत डेटा बिंदुओं के योग होता है। अन्य विकल्प गलत हैं क्योंकि 'N' सभी आवृत्तियों के योग (जो कि अंकों की कुल संख्या के समान होता है) को संदर्भित नहीं करता है, सभी टैली चिह्नों की कुल संख्या (जो भी 'N' के बराबर होती है) या उच्चतम अंक की आवृत्ति (जो एक अलग मान होता है) को संदर्भित नहीं करता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for statistical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तालिकेमध्ये 'N' चा अर्थ काय आहे?",
+          "choices": [
+            "मिळालेल्या गुणांची एकूण संख्या",
+            "सर्व बारमासींची बेरीज",
+            "मिळालेल्या ताली मार्कची एकूण संख्या",
+            "उच्चतम गुणाची बारमासी"
+          ],
+          "solution": "तालिकेमध्ये 'N' म्हणजे एकूण गुणांची संख्या आहे कारण ते सर्व विशिष्ट डेटा बिंदूंच्या बेरजेने बनते. इतर विकल्प चुकीचे आहेत कारण 'N' म्हणजे बारमासींची बेरीज (जी एकूण गुणांच्या संख्येच्या समान आहे), मिळालेल्या ताली मार्कची एकूण संख्या (जी देखील 'N' च्या समान आहे) किंवा उच्चतम गुणाची बारमासी (जी वेगळी असते) नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for statistical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses N with sum of frequencies",
+        "Confuses N with total tally marks",
+        "Confuses N with frequency of the highest score"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as 'N' represents the total number of scores, which is equivalent to the sum of all frequencies. The other options reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 69,
+          "pageStart": 105,
+          "pageEnd": 106,
+          "headingPath": [
+            "15. Statistics"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 70,
+          "pageStart": 106,
+          "pageEnd": 107,
+          "headingPath": [
+            "15. Statistics"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 71,
+          "pageStart": 107,
+          "pageEnd": 109,
+          "headingPath": [
+            "15. Statistics"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 72,
+          "pageStart": 109,
+          "pageEnd": 109,
+          "headingPath": [
+            "15. Statistics"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-01T23:43:32.258Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a dice is cast 40 times and the scores are recorded, what is the purpose of using a frequency table?",
+      "choices": [
+        "To record the exact scores on each roll",
+        "To find the average score easily",
+        "To count the total number of rolls",
+        "To identify the mode score"
+      ],
+      "answerIndex": 1,
+      "solution": "A frequency table organizes data by showing how often each score occurs, making it easier to calculate the average by summing the products of scores and their frequencies. Recording exact scores is unnecessary because the table groups them, counting total rolls is not its purpose as it's already known, and identifying the mode is possible but not the main reason for using the table.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक पासा 40 बार फेंका जाता है और अंक दर्ज किए जाते हैं, तो आवृत्ति सारणी का उपयोग करने का उद्देश्य क्या है?",
+          "choices": [
+            "प्रत्येक फेंक में ठीक अंक दर्ज करना",
+            "आसानी से औसत अंक ज्ञात करना",
+            "फेंकों की कुल संख्या गिनना",
+            "मोड अंक पहचानना"
+          ],
+          "solution": "एक आवृत्ति सारणी डेटा को उन अंकों की आवृत्ति के आधार पर संगठित करती है, जो औसत अंक की गणना करने में सहायता करती है। ठीक अंक दर्ज करना आवश्यक नहीं है क्योंकि सारणी उन्हें समूहीकृत कर देती है, कुल फेंकों की गिनती इसका उद्देश्य नहीं है क्योंकि यह पहले से ही ज्ञात होता है, और मोड अंक पहचानना संभव है लेकिन इस सारणी के उपयोग का मुख्य कारण नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English content with appropriate terminology and maintains the same logical structure and answer.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका छक्का 40 वेळा फेकला जातो आणि गुण नोंदवले जातात, तर बारंबारता टेबल वापरण्याचा उद्देश काय आहे?",
+          "choices": [
+            "प्रत्येक फेकेवर अचूक गुण नोंदवणे",
+            "सरासरी गुण सहज शोधणे",
+            "फेकांची एकूण संख्या गणणे",
+            "मोड गुण ओळखणे"
+          ],
+          "solution": "बारंबारता टेबल डेटा असे संगोपन करते की प्रत्येक गुण किती वेळा घडतो, ज्यामुळे गुण आणि त्यांच्या बारंबारतांच्या गुणाकारांची बेरीज करून सरासरी सहज शोधता येते. अचूक गुण नोंदवणे आवश्यक नाही कारण टेबल त्यांना समूहीत करतो, एकूण फेकांची गणना करणे टेबलचे उद्देश नाही कारण ती आधीच ज्ञात आहे, आणि मोड गुण ओळखणे शक्य आहे परंतु टेबल वापरण्याचा मुख्य उद्देश नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology consistent with Marathi-medium education.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks the table records exact scores",
+        null,
+        "Thinks the table counts total rolls",
+        "Thinks the table identifies the mode"
+      ],
+      "solverAnswers": [
+        3,
+        1,
+        3,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as a frequency table helps in calculating the average more easily by summarizing the data. The other options are incorrect because a frequency table does not record exact scores, count total rolls (which is already known), or directly identify the mode (though it can help in finding it).",
+      "sources": [
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 69,
+          "pageStart": 105,
+          "pageEnd": 106,
+          "headingPath": [
+            "15. Statistics"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 70,
+          "pageStart": 106,
+          "pageEnd": 107,
+          "headingPath": [
+            "15. Statistics"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 71,
+          "pageStart": 107,
+          "pageEnd": 109,
+          "headingPath": [
+            "15. Statistics"
+          ]
+        },
+        {
+          "document": "balbharati/7/mathematics/703020004.pdf",
+          "ordinal": 72,
+          "pageStart": 109,
+          "pageEnd": 109,
+          "headingPath": [
+            "15. Statistics"
+          ]
+        }
+      ],
+      "edition": "2026 edition",
+      "generatedAt": "2026-11-01T23:43:32.258Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

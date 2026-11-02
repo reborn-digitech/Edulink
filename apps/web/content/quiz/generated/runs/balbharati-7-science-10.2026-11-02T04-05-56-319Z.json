@@ -1,0 +1,552 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T04:05:56.319Z",
+  "finishedAt": "2026-11-02T04:11:08.948Z",
+  "seconds": 313,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "703020012",
+    "document": "balbharati/7/science/703020012.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 10 — Disaster Management",
+    "edition": "First Edition 2017",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2021 — solutions or answer key]\n1. C. Responses to fight-flight situation can either be the result of acute stress such as loss of\nbowel/bladder control and shivering while some could be to help overcome the situation such as pupil\ndilation to accept more light.",
+      "[CBSE Class X Science, sample question paper, 2022-23]\n33. Why is damage to the ozone layer a cause for concern? What are its causes and 3\nwhat steps are being taken to limit this damage?",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n7. C. Use of plastic as packaging material. 1",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n7. B. Cooking of food"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 5,
+      "ms": 75155,
+      "in": 28,
+      "out": 24,
+      "rejects": 5,
+      "promptTokens": 19449,
+      "completionTokens": 4666
+    },
+    "critique": {
+      "calls": 31,
+      "ms": 167193,
+      "in": 24,
+      "out": 20,
+      "rejects": 4,
+      "promptTokens": 12397,
+      "completionTokens": 5388
+    },
+    "solver": {
+      "calls": 146,
+      "ms": 61727,
+      "in": 20,
+      "out": 15,
+      "rejects": 5,
+      "promptTokens": 21679,
+      "completionTokens": 1470
+    },
+    "form": {
+      "calls": 8,
+      "ms": 17017,
+      "in": 15,
+      "out": 8,
+      "rejects": 7,
+      "promptTokens": 1849,
+      "completionTokens": 597
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 18,
+      "ms": 2711,
+      "in": 8,
+      "out": 4,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 19,
+      "ms": 130872,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 9485,
+      "completionTokens": 4647
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 0,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "What should be done to prevent the bunds on a farm from getting washed away in the rainy season?",
+      "ms": {
+        "draft": 2183,
+        "critique": 5622,
+        "solver": 972
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main cause of famine according to the passage?",
+      "ms": {
+        "draft": 2183,
+        "critique": 5894,
+        "solver": 1289,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a cause of famine according to the passage?",
+      "ms": {
+        "draft": 2183,
+        "critique": 6304,
+        "solver": 1128,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is a cloudburst according to the passage?",
+      "ms": {
+        "draft": 2183,
+        "critique": 4145,
+        "solver": 1107,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What can be done to ease the severity of a famine according to the passage?",
+      "ms": {
+        "draft": 2183,
+        "critique": 5304,
+        "solver": 1511,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a protective measure against floods according to the passage?",
+      "ms": {
+        "draft": 2183,
+        "critique": 5075,
+        "solver": 1733
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Where do most lightning strikes occur?",
+      "ms": {
+        "draft": 2746,
+        "critique": 4805,
+        "solver": 1082
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What should you avoid doing during a lightning strike?",
+      "ms": {
+        "draft": 3041,
+        "critique": 6992,
+        "solver": 1198
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a natural calamity?",
+      "ms": {
+        "draft": 3041,
+        "critique": 5348,
+        "solver": 10066,
+        "form": 3202
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is not a remedial measure for a cloudburst?",
+      "ms": {
+        "draft": 3041,
+        "critique": 6049,
+        "solver": 12404
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a true statement about disaster management?",
+      "ms": {
+        "draft": 3041,
+        "critique": 7607,
+        "solver": 8951,
+        "form": 2972
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a consequence of a tsunami?",
+      "ms": {
+        "draft": 3041,
+        "critique": 7083,
+        "solver": 8991,
+        "form": 1132
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a natural cause of famine?",
+      "ms": {
+        "draft": 3096,
+        "critique": 7493
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the most effective way to prevent water scarcity in a region?",
+      "ms": {
+        "draft": 3096,
+        "critique": 6136
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the most appropriate action to take during heavy rain to avoid danger?",
+      "ms": {
+        "draft": 3096,
+        "critique": 4804
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to make plans for flood control at different levels?",
+      "ms": {
+        "draft": 3096,
+        "critique": 5686
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a precaution to take during a thunderstorm?",
+      "ms": {
+        "draft": 2746,
+        "critique": 6184,
+        "solver": 1736,
+        "form": 2224
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you are on a boat during a thunderstorm, what should you do?",
+      "ms": {
+        "draft": 2746,
+        "critique": 5134,
+        "solver": 1223,
+        "form": 3235
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for the loud sound heard during a lightning strike?",
+      "ms": {
+        "draft": 2482,
+        "critique": 5143,
+        "solver": 11684,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct precaution to take during a thunderstorm?",
+      "ms": {
+        "draft": 2482,
+        "critique": 7383,
+        "solver": 10350,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main reason lightning is dangerous?",
+      "ms": {
+        "draft": 2746,
+        "critique": 4410,
+        "solver": 1481,
+        "form": 2689,
+        "translation": 32758
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the correct way to protect yourself if you are caught in a storm?",
+      "ms": {
+        "draft": 2746,
+        "critique": 5858,
+        "solver": 1623,
+        "form": 2416,
+        "translation": 38348
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the safest place to be during a thunderstorm?",
+      "ms": {
+        "draft": 2482,
+        "critique": 4610,
+        "solver": 1285,
+        "form": 0,
+        "translation": 38112
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason for a cloudburst to occur?",
+      "ms": {
+        "draft": 3096,
+        "critique": 6003,
+        "solver": 5002,
+        "form": 1153,
+        "translation": 17681
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is NOT a precaution to take during a thunderstorm?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What should be done to prevent the bunds on a farm from getting washed away in the rainy season?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main cause of famine according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a cause of famine according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is a cloudburst according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What can be done to ease the severity of a famine according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is a protective measure against floods according to the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Where do most lightning strikes occur?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What should you avoid doing during a lightning strike?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a natural calamity?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is not a remedial measure for a cloudburst?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is a true statement about disaster management?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is a consequence of a tsunami?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"Which of the following is not a natural calamity?\",\n      \"op"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the primary reason for the creation of islands according to the passage?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a correct effect of a volcanic eruption?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is a tsunami?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a natural cause of famine?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the most effective way to prevent water scarcity in a region?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "What is the most appropriate action to take during heavy rain to avoid danger?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is it important to make plans for flood control at different levels?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a precaution to take during a thunderstorm?",
+      "reason": "near-duplicate of served question cmvwng41602px0remb2km3lij (cosine 0.935 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If you are on a boat during a thunderstorm, what should you do?",
+      "reason": "near-duplicate of served question cmvwng42g02q90remmv677z1p (cosine 0.917 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the main reason for the loud sound heard during a lightning strike?",
+      "reason": "near-duplicate of served question cmvwng41q02q30remrv1ggjju (cosine 0.931 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a correct precaution to take during a thunderstorm?",
+      "reason": "near-duplicate of served question cmvwng41602px0remb2km3lij (cosine 0.927 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

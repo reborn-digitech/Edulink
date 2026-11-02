@@ -21,49 +21,49 @@
   "board": "BALBHARATI",
   "book": "८ वी गणित इंग्रजी",
   "edition": "First Edition 2018",
-  "generatedAt": "2026-11-01T01:27:23.713Z",
+  "generatedAt": "2026-11-02T08:03:18.772Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 3,
-      "stem": "A chord of length 14 cm is drawn in a circle with a perpendicular from the centre to the chord. What is the length of the segment from the midpoint of the chord to one end of the chord?",
+      "stem": "In a circle with centre O, a chord PQ is drawn. If the perpendicular from O to PQ divides PQ into two equal parts, what property of the circle is being demonstrated?",
       "choices": [
-        "7 cm",
-        "14 cm",
-        "21 cm",
-        "28 cm"
+        "The chord is the diameter of the circle",
+        "The chord is longer than the radius",
+        "The perpendicular from the centre to the chord bisects the chord",
+        "The perpendicular from the centre to the chord is equal to the radius"
       ],
-      "answerIndex": 0,
-      "solution": "The perpendicular from the center of a circle to a chord always bisects the chord. Therefore, a chord of 14 cm is split into two equal parts of 7 cm each. The correct answer is 7 cm because it represents half the length of the chord. The other options are incorrect as they do not reflect the bisection of the chord by the perpendicular.",
-      "checkExpr": "14/2",
+      "answerIndex": 2,
+      "solution": "The correct answer is 'The perpendicular from the centre to the chord bisects the chord'. This is a fundamental geometric property of circles, where a line drawn from the center perpendicular to a chord always divides the chord into two equal parts. The other options are incorrect because a chord is not necessarily a diameter, it may not be longer than the radius, and the perpendicular from the center to a chord is not equal to the radius unless the chord is the diameter.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "14 सेमी लंबाई की एक जीवा एक वृत्त में खींची गई है जिसमें केंद्र से जीवा पर लंब खींचा गया है। जीवा के मध्य बिंदु से जीवा के एक सिरे तक के खंड की लंबाई कितनी है?",
+          "stem": "O केंद्र वाले एक वृत्त में, एक जीवा PQ खींची गई है। यदि O से PQ पर लंब, PQ को दो समान भागों में विभाजित करता है, तो वृत्त का कौन सा गुण दर्शाया जा रहा है?",
           "choices": [
-            "7 सेमी",
-            "14 सेमी",
-            "21 सेमी",
-            "28 सेमी"
+            "जीवा वृत्त का व्यास है",
+            "जीवा त्रिज्या से लंबी है",
+            "केंद्र से जीवा पर लंब जीवा को दो समान भागों में विभाजित करता है",
+            "केंद्र से जीवा पर लंब त्रिज्या के बराबर है"
           ],
-          "solution": "वृत्त के केंद्र से जीवा पर खींचा गया लंब हमेशा जीवा को समद्विभाजित करता है। अतः 14 सेमी लंबाई की जीवा को दो समान भागों में 7 सेमी के दो भागों में बांट दिया जाता है। सही उत्तर 7 सेमी है क्योंकि यह जीवा की लंबाई के आधे को दर्शाता है। अन्य विकल्प गलत हैं क्योंकि वे जीवा के समद्विभाजन को दर्शाने में असमर्थ हैं।",
+          "solution": "सही उत्तर 'केंद्र से जीवा पर लंब जीवा को दो समान भागों में विभाजित करता है' है। यह वृत्त का एक मूलभूत ज्यामितीय गुण है, जहां केंद्र से एक जीवा पर खींची गई रेखा हमेशा जीवा को दो समान भागों में विभाजित करती है। अन्य विकल्प गलत हैं क्योंकि जीवा आवश्यक रूप से व्यास नहीं होती, यह त्रिज्या से लंबी हो सकती है या नहीं, और केंद्र से जीवा पर लंब त्रिज्या के बराबर होता है केवल तभी जब जीवा व्यास हो।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a Hindi-medium curriculum.",
           "flag": null
         },
         "mr": {
-          "stem": "14 सेंमी लांबीचा एक ज्या वर्तुळात आकृती काढली गेली आहे. ज्याच्या केंद्रापासून ज्या वर लंब आहे. ज्या च्या मध्यबिंदूपासून ज्या च्या एका टोकापर्यंतचा खंडाचा लांबी किती असेल?",
+          "stem": "वर्तुळाच्या केंद्राच्या O वरून एक जीवा PQ आखली आहे. जर O पासून PQ वर लंब रेषा PQ ला दोन समान भागांमध्ये विभागत असेल तर वर्तुळाचा कोणता गुण दाखवला जात आहे?",
           "choices": [
-            "7 सेंमी",
-            "14 सेंमी",
-            "21 सेंमी",
-            "28 सेंमी"
+            "जीवा वर्तुळाचा व्यास आहे",
+            "जीवा त्रिज्येपेक्षा लांब आहे",
+            "केंद्रापासून जीवेवर लंब जीवेला दोन समान भागांमध्ये विभागतो",
+            "केंद्रापासून जीवेवर लंब त्रिज्येएवढे असते"
           ],
-          "solution": "वर्तुळाच्या केंद्रापासून ज्यावर लंब घालल्यास तो ज्याला दोन समान भागांमध्ये विभाजित करतो. म्हणून 14 सेंमी लांबीचा ज्या दोन समान भागांमध्ये 7 सेंमी लांबीच्या भागांमध्ये विभाजित केला जातो. योग्य उत्तर 7 सेंमी असेल कारण ते ज्याच्या लांबीच्या अर्ध्या लांबीचे प्रतिनिधित्व करते. इतर विकल्प चुकीचे आहेत कारण ते ज्याच्या द्विभाजनाचे प्रतिनिधित्व करत नाहीत.",
+          "solution": "बरोबर उत्तर 'केंद्रापासून जीवेवर लंब जीवेला दोन समान भागांमध्ये विभागतो' आहे. हे वर्तुळाचे एक मूलभूत भौमितिक गुणधर्म आहे, जेथे केंद्रापासून जीवेवर एक रेषा लंब असल्यास ती जीवेला दोन समान भागांमध्ये विभागते. इतर विकल्प चुकीचे आहेत कारण जीवा नेहमी व्यास असेल असे नाही, ती त्रिज्येपेक्षा लांब असेल असे नाही आणि केंद्रापासून जीवेवर लंब त्रिज्येएवढे असेल असे नाही, जर जीवा व्यास नसेल तर.",
           "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the original English question and solution, with appropriate terminology used in a Marathi-medium context.",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate geometric terminology as used in Marathi textbooks.",
           "flag": null
         }
       },
@@ -72,20 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Confuses the property of the diameter with the perpendicular",
+        "Assumes the chord's length based on the radius",
         null,
-        "A student might think the entire chord length is the same as the segment from the midpoint to the end, not realizing the perpendicular bisects the chord.",
-        "incorrectly assumes the whole chord length is the segment length",
-        "adds the chord length twice, which is incorrect"
+        "The misconception that the perpendicular from the center is always equal to the radius"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": null,
-      "critique": "The question is clear and the solution is correct. The perpendicular from the center of a circle to a chord bisects the chord, so the segment from the midpoint to one end is half the chord length, which is 7 cm.",
+      "critique": "The question correctly identifies the property that a perpendicular from the center of a circle to a chord bisects the chord. The solution is sound and matches the correct answer. The distractors reflect plausible misconceptions.",
       "sources": [
         {
           "document": "balbharati/8/mathematics/803020004.pdf",
@@ -116,7 +116,197 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T01:27:23.713Z",
+      "generatedAt": "2026-11-02T08:03:18.772Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If two arcs of a circle are congruent, what can be said about the chords corresponding to these arcs?",
+      "choices": [
+        "The chords are of different lengths",
+        "The chords are of the same length",
+        "The chords are parallel",
+        "The chords are perpendicular"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 'The chords are of the same length'. In a circle, if two arcs are congruent, their corresponding chords must also be congruent because the length of a chord is directly related to the measure of its arc. The other options are incorrect because there is no general rule that congruent arcs lead to chords being parallel or perpendicular, and different lengths would contradict the definition of congruence.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी वृत्त के दो चाप सर्वांगसम हैं, तो इन चापों के संगत जीवाओं के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "जीवाएं अलग-अलग लंबाई की होती हैं",
+            "जीवाएं एक ही लंबाई की होती हैं",
+            "जीवाएं समांतर होती हैं",
+            "जीवाएं लंब होती हैं"
+          ],
+          "solution": "सही उत्तर 'जीवाएं एक ही लंबाई की होती हैं' है। वृत्त में, यदि दो चाप सर्वांगसम हैं, तो उनकी संगत जीवाएं भी सर्वांगसम होनी चाहिए क्योंकि जीवा की लंबाई उस चाप के माप से सीधे संबंधित होती है। अन्य विकल्प गलत हैं क्योंकि सर्वांगसम चापों के कारण जीवाएं समांतर या लंब होने का कोई सामान्य नियम नहीं है, और अलग-अलग लंबाई के विकल्प सर्वांगसमता के निर्वचन के विरोधी होंगे।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका वर्तुळाचे दोन चाप एकरूप असतील, तर या चापांच्या संगत ज्या जीवा असतात त्यांचे काय म्हणायला हवे?",
+          "choices": [
+            "जीवा वेगळ्या लांबीच्या असतात",
+            "जीवा एकसारख्या लांबीच्या असतात",
+            "जीवा समांतर असतात",
+            "जीवा लंब असतात"
+          ],
+          "solution": "बरोबर उत्तर 'जीवा एकसारख्या लांबीच्या असतात' आहे. वर्तुळात, जर दोन चाप एकरूप असतील तर त्यांच्या संगत जीवा देखील एकरूप असतील कारण जीवेची लांबी त्याच्या चापाच्या मापाशी सीधा संबंध असतो. इतर विकल्प चुकीचे आहेत कारण एकरूप चापांमुळे जीवा समांतर किंवा लंब असण्याचा सामान्य नियम नाही आणि वेगळ्या लांबीमुळे एकरूपतेच्या नियमाचा उल्लंघन होतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the relationship between congruent arcs and chords",
+        null,
+        "Confuses the properties of parallel and perpendicular lines",
+        "Does not understand that congruent arcs imply equal chord lengths"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the mathematical principle that congruent arcs in a circle correspond to congruent chords. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 76,
+          "pageStart": 124,
+          "pageEnd": 125,
+          "headingPath": [
+            "17. Circle : Chord and Arc"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 77,
+          "pageStart": 126,
+          "pageEnd": 128,
+          "headingPath": [
+            "17. Circle : Chord and Arc"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 78,
+          "pageStart": 128,
+          "pageEnd": 128,
+          "headingPath": [
+            "17. Circle : Chord and Arc"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T08:03:18.772Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "In a circle with centre O, a chord PQ is 14 cm long. A perpendicular is drawn from O to PQ, intersecting at point A. What is the length of AP?",
+      "choices": [
+        "7 cm",
+        "14 cm",
+        "21 cm",
+        "28 cm"
+      ],
+      "answerIndex": 0,
+      "solution": "The perpendicular drawn from the centre of a circle to a chord bisects the chord. Since the length of PQ is 14 cm, AP is half of PQ, which is 7 cm.",
+      "checkExpr": "14/2",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "O केंद्र वाले एक वृत्त में, एक जीवा PQ 14 सेमी लंबी है। O से PQ पर लंब खींचा जाता है, जो बिंदु A पर प्रतिच्छेद करता है। AP की लंबाई क्या है?",
+          "choices": [
+            "7 सेमी",
+            "14 सेमी",
+            "21 सेमी",
+            "28 सेमी"
+          ],
+          "solution": "वृत्त के केंद्र से जीवा पर खींचा गया लंब जीवा को समद्विभाजित करता है। चूंकि PQ की लंबाई 14 सेमी है, AP जीवा PQ के आधे के बराबर है, जो 7 सेमी है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the mathematical meaning, with appropriate Hindi terminology used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका वर्तुळाच्या केंद्रापासून O, एका जीवा PQ ची लांबी 14 सेंमी आहे. O पासून PQ ला लंब रेषा काढली जाते, जी PQ ला बिंदू A वर छेदते. AP ची लांबी किती आहे?",
+          "choices": [
+            "7 सेंमी",
+            "14 सेंमी",
+            "21 सेंमी",
+            "28 सेंमी"
+          ],
+          "solution": "वर्तुळाच्या केंद्रापासून जीवा ला दिलेला लंब जीवाला दुभागतो. PQ ची लांबी 14 सेंमी असल्यामुळे AP ही PQ च्या अर्ध्या लांबीची असेल, जी 7 सेंमी आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "A student might think the length of AP is the same as the chord PQ, not realizing that the perpendicular from the center bisects the chord.",
+        "Confuses the length of the chord with the length of AP",
+        "Adds the length of the chord to itself unnecessarily"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is correct. The key is accurate, and the reasoning for the distractors reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 76,
+          "pageStart": 124,
+          "pageEnd": 125,
+          "headingPath": [
+            "17. Circle : Chord and Arc"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 77,
+          "pageStart": 126,
+          "pageEnd": 128,
+          "headingPath": [
+            "17. Circle : Chord and Arc"
+          ]
+        },
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 78,
+          "pageStart": 128,
+          "pageEnd": 128,
+          "headingPath": [
+            "17. Circle : Chord and Arc"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T08:03:18.772Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

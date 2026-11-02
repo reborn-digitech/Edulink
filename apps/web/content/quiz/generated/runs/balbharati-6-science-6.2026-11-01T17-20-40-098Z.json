@@ -1,0 +1,543 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T17:20:40.098Z",
+  "finishedAt": "2026-11-01T17:31:51.114Z",
+  "seconds": 671,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "603050012",
+    "document": "balbharati/6/science/603050012.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 6 — Properties of Substances",
+    "edition": "First Edition 2026",
+    "chunks": 8,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2022 — question paper]\n2. A student took a sandy soil sample from a desert area, put it in a bucket and poured tap water on it. After\nsome time, the soil settled down in the bucket. She wanted to know if the sample had any soluble\nsubstances in it. Comparison of which of these properties between supernatant bucket water and the\noriginal tap water will most likely answer her question definitively.\nA. pH B. density C. temperature D. light scattering in identical containers",
+      "[INJSO 2012 — question paper]\n65. Sunita was checking chemical properties of some compounds. During her experiments, she\nobserved that when she heated an orange solid 'A', she obtained copious amounts of a green residue\n'B', a colourless gas 'C' and some water vapour. She passed the dry gas 'C' over heated Mg, and\nobtained a white solid 'D'. When she tested the white solid 'D', she found that it reacted with water\nto give a pungent smelling gas 'E', which formed dense fumes with HCl. Can you identify the\nsubstances A, B, C, D, E ? Give chemical reactions in support of your answer.\nTotal: 5 Marks",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n17. to 20 consist of two statements – Assertion (A) and Reason (R). Answer\nthese questions by selecting the appropriate option given below:\nA. Both A and R are true, and R is the correct explanation of A.\nB. Both A and R are true, and R is not the correct explanation of A.\nC. A is true but R is false.\nD. A is false but R is true\n17 Assertion (A): On adding dil. HCl to a test tube containing a substance ‘X’, a 1\ncolourless gas is produced which gives a pop sound when a burning match\nstick is brought near it.\nReason (R): In this reaction metal ‘X’ is displaced by Hydrogen.",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n37. to 39 are case-based/data -based questions.\n37 4\nA. Derive the names of A, Y, Z, M, P & R\nAttempt either subpart B or C.\nB. Improvise an activity to test Z.\nOR\nC. Name the process in which compounds X, Y & Z are formed from A.\nJustify your response.\n- - - - - - - - - - - - - -\nFor visually impaired students\nA. Distinguish between ethanol and ethanoic acid experimentally.\nAttempt either subpart B or C.\nB. Give the IUPAC name of the first member of Alkene which is formed by\naddition of conc. sulphuric acid to it. Illustrate the change with the help\nof a chemical equation.\nOR\nC. “All combustion reactions are oxidation but all oxidation reactions are\nnot combustion.” Justify."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 118336,
+      "in": 29,
+      "out": 28,
+      "rejects": 1,
+      "promptTokens": 26173,
+      "completionTokens": 5183
+    },
+    "critique": {
+      "calls": 32,
+      "ms": 254661,
+      "in": 28,
+      "out": 27,
+      "rejects": 1,
+      "promptTokens": 13989,
+      "completionTokens": 5568
+    },
+    "solver": {
+      "calls": 164,
+      "ms": 90731,
+      "in": 27,
+      "out": 24,
+      "rejects": 3,
+      "promptTokens": 25759,
+      "completionTokens": 1548
+    },
+    "form": {
+      "calls": 13,
+      "ms": 45840,
+      "in": 24,
+      "out": 17,
+      "rejects": 7,
+      "promptTokens": 3336,
+      "completionTokens": 914
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 17,
+      "out": 17,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 20,
+      "ms": 3829,
+      "in": 17,
+      "out": 17,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 71,
+      "ms": 1099105,
+      "in": 34,
+      "out": 34,
+      "rejects": 0,
+      "promptTokens": 41088,
+      "completionTokens": 20510
+    }
+  },
+  "kept": 17,
+  "keptByLevel": {
+    "1": 2,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 3,
+    "6": 0
+  },
+  "flagged": 7,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a 'substance' according to the passage?",
+      "ms": {
+        "draft": 3421,
+        "critique": 5768,
+        "solver": 1727
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the change of state of a substance?",
+      "ms": {
+        "draft": 3421,
+        "critique": 6139,
+        "solver": 2849,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following properties of a substance is determined by how tightly its particles hold each other?",
+      "ms": {
+        "draft": 3421,
+        "critique": 6594,
+        "solver": 1443
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an object, according to the passage?",
+      "ms": {
+        "draft": 3421,
+        "critique": 6314,
+        "solver": 1519,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage states that the density of a substance is the mass of 1 cubic centimetre of that substance. Which of the following is true about the density of a substance?",
+      "ms": {
+        "draft": 4390,
+        "critique": 6522,
+        "solver": 2805,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the unit of density mentioned in the passage?",
+      "ms": {
+        "draft": 4390,
+        "critique": 9430,
+        "solver": 1788,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student is told that a certain substance is in a state where its particles are free to move and are not tightly bound. She is also told that it does not have a fixed shape or volume. What is the state of the substance?",
+      "ms": {
+        "draft": 4465,
+        "critique": 8865,
+        "solver": 6281,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the definition of matter according to the passage?",
+      "ms": {
+        "draft": 3799,
+        "critique": 5918,
+        "solver": 1547,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT a state of matter according to the passage?",
+      "ms": {
+        "draft": 3799,
+        "critique": 7126
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why a solid retains its shape while a liquid does not?",
+      "ms": {
+        "draft": 11253,
+        "critique": 7173,
+        "solver": 12609,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student measures the mass of a substance as 50 grams and its volume as 10 cm³, what is its density?",
+      "ms": {
+        "draft": 3799,
+        "critique": 6555,
+        "solver": 18000
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the correct state of water?",
+      "ms": {
+        "draft": 3040,
+        "critique": 14229,
+        "solver": 20632,
+        "form": 4122,
+        "translation": 122047
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What happens when light rays fall on an opaque substance?",
+      "ms": {
+        "draft": 3040,
+        "critique": 12351,
+        "solver": 1879,
+        "form": 5891,
+        "translation": 60601
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following properties of a substance is determined by how tightly its particles hold each other?",
+      "ms": {
+        "draft": 4390,
+        "critique": 7809,
+        "solver": 2000,
+        "form": 3569,
+        "translation": 49420
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of a transparent substance?",
+      "ms": {
+        "draft": 4465,
+        "critique": 8247,
+        "solver": 2287,
+        "form": 0,
+        "translation": 42146
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does it mean if oil floats on water?",
+      "ms": {
+        "draft": 3040,
+        "critique": 12669,
+        "solver": 2585,
+        "form": 4556,
+        "translation": 43100
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following describes the gaseous state of a substance?",
+      "ms": {
+        "draft": 3040,
+        "critique": 11418,
+        "solver": 1085,
+        "form": 5373,
+        "translation": 143383
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the particles of a substance when it is in the solid state?",
+      "ms": {
+        "draft": 3421,
+        "critique": 6652,
+        "solver": 3431,
+        "form": 2064,
+        "translation": 51597
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student measures the mass and volume of an object and calculates its density. Which of the following can be determined using this information?",
+      "ms": {
+        "draft": 4390,
+        "critique": 7318,
+        "solver": 1599,
+        "form": 4809,
+        "translation": 53246
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a substance is placed in a container and it takes the shape of the container but does not occupy the entire volume, which state is it in?",
+      "ms": {
+        "draft": 4465,
+        "critique": 7582,
+        "solver": 1249,
+        "form": 0,
+        "translation": 39096
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a liquid has a volume of 3 ml and a mass of 7.5 grams, what is its density?",
+      "ms": {
+        "draft": 3040,
+        "critique": 11466,
+        "solver": 2211,
+        "form": 3353,
+        "translation": 69658
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student places an object in a container filled with water and notices that the water level rises. What does this indicate about the object?",
+      "ms": {
+        "draft": 4390,
+        "critique": 7485,
+        "solver": 1588,
+        "form": 3283,
+        "translation": 42802
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "If a substance has a density of 19.3 g/cm³, what can we conclude about it?",
+      "ms": {
+        "draft": 3799,
+        "critique": 8490,
+        "solver": 2173,
+        "form": 2636,
+        "translation": 72417
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "A student observes that a substance does not allow light to pass through it. She also notices that the substance has a fixed shape and volume. What state is the substance in?",
+      "ms": {
+        "draft": 4465,
+        "critique": 9102,
+        "solver": 1629,
+        "form": 0,
+        "translation": 40116
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following groups contains only substances in the liquid state?",
+      "ms": {
+        "draft": 3040,
+        "critique": 6884,
+        "solver": 2524,
+        "form": 3730,
+        "translation": 104075
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a student observes that a substance is in the gaseous state, what can be inferred about its particles?",
+      "ms": {
+        "draft": 3421,
+        "critique": 8089,
+        "solver": 2257,
+        "form": 3051,
+        "translation": 62686
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student adds a substance to water and observes that the water level rises. She also notices that the substance does not dissolve. What can be concluded about the substance?",
+      "ms": {
+        "draft": 4390,
+        "critique": 6607,
+        "solver": 2196,
+        "form": 3701,
+        "translation": 40378
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student is given two substances: one is a liquid, and the other is a gas. She is asked to determine which one has a higher density. Which property of the substances should she compare?",
+      "ms": {
+        "draft": 4465,
+        "critique": 8507,
+        "solver": 1380,
+        "form": 1,
+        "translation": 52698
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following best describes the state of a substance when its particles are tightly bound?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a 'substance' according to the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the change of state of a substance?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "According to the passage, which of the following properties of a substance is determined by how tightly its particles hold each other?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of an object, according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage states that the density of a substance is the mass of 1 cubic centimetre of that substance. Which of the following is true about the density of a substance?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the unit of density mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student is told that a certain substance is in a state where its particles are free to move and are not tightly bound. She is also told that it does not have a fixed shape or volume. What is the state of the substance?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the definition of matter according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is NOT a state of matter according to the passage?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best explains why a solid retains its shape while a liquid does not?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Mixes up composition with physical properties of matter stat…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a student measures the mass of a substance as 50 grams and its volume as 10 cm³, what is its density?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

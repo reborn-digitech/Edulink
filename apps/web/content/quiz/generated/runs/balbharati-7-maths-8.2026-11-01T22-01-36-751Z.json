@@ -1,0 +1,407 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T22:01:36.751Z",
+  "finishedAt": "2026-11-01T22:20:19.956Z",
+  "seconds": 1123,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी गणित इंग्रजी",
+    "bookCode": "703020004",
+    "document": "balbharati/7/mathematics/703020004.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 8 — Algebraic Expressions and Operations on them",
+    "edition": "2026 edition",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2023-24]\n27. P(x) = 5x + 5x + 1 2\nି ௕ ି ହ\nα+β = ௔ = ହ = -1\n௖ ଵ\nαβ = ௔ = ହ\n𝛼 + 𝛽 ଶ ଶ = (𝛼 + 𝛽) - 2𝛼𝛽 ଶ\n2 ଵ\n= (-1) – 2 ቀ ቁ ହ\nଶ ଷ\n= 1 - ହ = ହ\nିଵ ିଵ ଵ ଵ\n𝛼 + 𝛽 = ఈ + ఉ\n( 𝛼+𝛽) (ି ଵ)\n= ఈఉ = భ = -5\nఱ\n½\n½\n½\n½\nଵଶ = 9 ½\n½\n½\n½\n½\n½\n½",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n28. 5\nFrom given polynomial 𝛼 + 𝛽 = 6\n𝛼 + 𝛽 2 2 = ( ) - 2 x 5 6 2 1 6 = 13 36\n2 2 1 2 1\nAnd 𝛼 𝛽 = ( ) = 6 36\n𝑥 - 2 13 36 𝑥 + 36 1\n½\n½\n, 𝛼𝛽 = 1 6 1\n½\n½\n Required polynomial is 36𝑥 -13 𝑥+1",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n27. If 𝛼, β are zeroes of quadratic polynomial 5x + 5x + 1, find the value of 2 3\n1. 𝛼 + 𝛽 ଶ ଶ\n2. 𝛼 ି ଵ + 𝛽 ି ଵ",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2023-24]\n27. Cost of two toys A and B are 50 and 75. On a particular Sunday shopkeeper P sells 7 toys of\ntype A and 10 toys of type B whereas shopkeeper Q sells 8 toys of type A and 6 toys of type B.\nFind income of both shopkeepers using matrix Algebra."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 427927,
+      "in": 17,
+      "out": 17,
+      "rejects": 1,
+      "promptTokens": 15296,
+      "completionTokens": 4044
+    },
+    "critique": {
+      "calls": 22,
+      "ms": 833053,
+      "in": 17,
+      "out": 10,
+      "rejects": 7,
+      "promptTokens": 10831,
+      "completionTokens": 3945
+    },
+    "solver": {
+      "calls": 90,
+      "ms": 273056,
+      "in": 10,
+      "out": 6,
+      "rejects": 4,
+      "promptTokens": 26919,
+      "completionTokens": 1171
+    },
+    "form": {
+      "calls": 1,
+      "ms": 3106,
+      "in": 6,
+      "out": 3,
+      "rejects": 3,
+      "promptTokens": 225,
+      "completionTokens": 73
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 7,
+      "ms": 10355,
+      "in": 3,
+      "out": 2,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 115947,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 5238,
+      "completionTokens": 2413
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is the simplest form of 5 ÷ 3/7?",
+      "ms": {
+        "draft": 27610,
+        "critique": 56931
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following expressions has the value 37?",
+      "ms": {
+        "draft": 27610,
+        "critique": 64688,
+        "solver": 11947
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Shubhangi has twice as many 20-rupee notes as she has 50-rupee notes, and she has 2700 rupees in total. How many 50-rupee notes does she have?",
+      "ms": {
+        "draft": 27610,
+        "critique": 63808
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the sum of Rakesh’s and Sania’s ages is 27 years and Rakesh is 5 years younger than Sania, what is Sania's age?",
+      "ms": {
+        "draft": 27610,
+        "critique": 50512,
+        "solver": 91976
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a class, the number of boys is 3 times the number of girls. If the total number of students is 40, how many boys are there?",
+      "ms": {
+        "draft": 27610,
+        "critique": 27357,
+        "solver": 9611
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the product of (23xyz) and (15xyz)?",
+      "ms": {
+        "draft": 28221,
+        "critique": 38524,
+        "solver": 7322,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the number of jambhul trees is 60 more than the number of ashoka trees and there are 200 trees in total, how many jambhul trees are there?",
+      "ms": {
+        "draft": 28221,
+        "critique": 43780
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the result of simplifying the expression (3x + 11y) + (17x + 13y)?",
+      "ms": {
+        "draft": 28221,
+        "critique": 47338,
+        "solver": 66836
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Shubhangi has twice as many 20-rupee notes as 50-rupee notes and she has 2700 rupees in total, how many 50-rupee notes does she have?",
+      "ms": {
+        "draft": 28221,
+        "critique": 40101
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of an algebraic expression?",
+      "ms": {
+        "draft": 18589,
+        "critique": 44056
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the coefficient of the variable x in the expression 2x + 3y?",
+      "ms": {
+        "draft": 18589,
+        "critique": 41727,
+        "solver": 5176,
+        "form": 3106
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the number of squares in the stick pattern is represented by n, what is the algebraic expression for the number of sticks?",
+      "ms": {
+        "draft": 18589,
+        "critique": 24286
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Virat made twice as many runs as Rohit and their total score is 198, how many runs did Virat make?",
+      "ms": {
+        "draft": 28221,
+        "critique": 47241,
+        "solver": 66146,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the sum of two consecutive natural numbers is 69, what is the larger number?",
+      "ms": {
+        "draft": 18589,
+        "critique": 41944
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a rectangle has a length of (3x + 2) and a breadth of (2x + 1), what is the algebraic expression for its area?",
+      "ms": {
+        "draft": 18589,
+        "critique": 35776,
+        "solver": 8948,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the sum of Rakesh's and Sania's ages is 27 years and Rakesh is 5 years younger than Sania, what is Sania's age?",
+      "ms": {
+        "draft": 28221,
+        "critique": 40663,
+        "solver": 65887,
+        "form": 0,
+        "translation": 56844
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is the simplest form of the expression (3x + 11y) - (17x + 13y)?",
+      "ms": {
+        "draft": 27610,
+        "critique": 39035,
+        "solver": 10887,
+        "form": 0,
+        "translation": 53214
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is the simplest form of 5 ÷ 3/7?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following expressions has the value 37?",
+      "reason": "the solver picked option 1 3 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Shubhangi has twice as many 20-rupee notes as she has 50-rupee notes, and she has 2700 rupees in total. How many 50-rupee notes does she have?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the sum of Rakesh’s and Sania’s ages is 27 years and Rakesh is 5 years younger than Sania, what is Sania's age?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a class, the number of boys is 3 times the number of girls. If the total number of students is 40, how many boys are there?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the product of (23xyz) and (15xyz)?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the number of jambhul trees is 60 more than the number of ashoka trees and there are 200 trees in total, how many jambhul trees are there?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the result of simplifying the expression (3x + 11y) + (17x + 13y)?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If Shubhangi has twice as many 20-rupee notes as 50-rupee notes and she has 2700 rupees in total, how many 50-rupee notes does she have?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is an example of an algebraic expression?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the coefficient of the variable x in the expression 2x + 3y?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If the number of squares in the stick pattern is represented by n, what is the algebraic expression for the number of sticks?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If Virat made twice as many runs as Rohit and their total score is 198, how many runs did Virat make?",
+      "reason": "options 0 and 1 are the same (\"99\"); options 0 and 3 are the same (\"99\"); options 1 and 3 are the same (\"99\"); options 0 and 1 are the same number; options 0 and 3 are the same number; options 1 and 3 are the same number"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the sum of two consecutive natural numbers is 69, what is the larger number?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If a rectangle has a length of (3x + 2) and a breadth of (2x + 1), what is the algebraic expression for its area?",
+      "reason": "near-duplicate of served question cmvwckr8601m40remplh94n3e (cosine 0.928 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

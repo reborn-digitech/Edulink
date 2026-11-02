@@ -1,0 +1,316 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T13:45:10.578Z",
+  "finishedAt": "2026-11-01T13:49:27.895Z",
+  "seconds": 257,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 11 — Decimal Fractions",
+    "edition": "First Edition 2026",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n6. A) 11 9",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n6. (b) 12",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2022-23]\n14. [( 10000 ) − 1] × 100 = [ √ 6 − 1] × 100\n(C) option"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 70229,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 9108,
+      "completionTokens": 2802
+    },
+    "critique": {
+      "calls": 17,
+      "ms": 153793,
+      "in": 12,
+      "out": 7,
+      "rejects": 5,
+      "promptTokens": 8426,
+      "completionTokens": 2976
+    },
+    "solver": {
+      "calls": 64,
+      "ms": 59211,
+      "in": 7,
+      "out": 4,
+      "rejects": 3,
+      "promptTokens": 15356,
+      "completionTokens": 819
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 2,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 18,
+      "ms": 4581,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 52902,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 3751,
+      "completionTokens": 1532
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the name of the symbol used to separate the integer part from the decimal part in a number?",
+      "ms": {
+        "draft": 7293,
+        "critique": 8326
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the place value of 8 in the number 9.8?",
+      "ms": {
+        "draft": 7293,
+        "critique": 9413
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a decimal fraction?",
+      "ms": {
+        "draft": 7293,
+        "critique": 10655
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a decimal fraction is written as 0.05, which of the following is its common fraction form?",
+      "ms": {
+        "draft": 7293,
+        "critique": 8857
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Arrange the numbers 2.37, 2.4, and 2.3 in ascending order.",
+      "ms": {
+        "draft": 7293,
+        "critique": 10591,
+        "solver": 16068
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 25.382 is written as a common fraction, what is the denominator of the fraction?",
+      "ms": {
+        "draft": 7293,
+        "critique": 10831,
+        "solver": 15608
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following numbers has 5 in the hundredths place?",
+      "ms": {
+        "draft": 16748,
+        "critique": 8150
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the place value of the digit 8 in the number 9.8?",
+      "ms": {
+        "draft": 16748,
+        "critique": 7113,
+        "solver": 16554,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the place value of the digit 4 in the number 54.632?",
+      "ms": {
+        "draft": 16748,
+        "critique": 10505,
+        "solver": 1764,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A shopkeeper sells 1.75 kg of rice and 2.3 kg of wheat. What is the total weight of the rice and wheat?",
+      "ms": {
+        "draft": 16748,
+        "critique": 12235,
+        "solver": 20503
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a decimal fraction?",
+      "ms": {
+        "draft": 16748,
+        "critique": 6725,
+        "solver": 18493,
+        "form": 0,
+        "translation": 22394
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 0.75 is written as a common fraction, what is its simplest form?",
+      "ms": {
+        "draft": 16748,
+        "critique": 12467,
+        "solver": 2654,
+        "form": 0,
+        "translation": 25019
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the name of the symbol used to separate the integer part from the decimal part in a number?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the place value of 8 in the number 9.8?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a decimal fraction?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a decimal fraction is written as 0.05, which of the following is its common fraction form?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Arrange the numbers 2.37, 2.4, and 2.3 in ascending order.",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If 25.382 is written as a common fraction, what is the denominator of the fraction?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following numbers has 5 in the hundredths place?",
+      "reason": "the solution's working is not sound; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the place value of the digit 8 in the number 9.8?",
+      "reason": "options are in more than one unit (units, tenths, hundredths, thousandths); options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the place value of the digit 4 in the number 54.632?",
+      "reason": "options are in more than one unit (units, tenths, hundredths, thousandths); options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A shopkeeper sells 1.75 kg of rice and 2.3 kg of wheat. What is the total weight of the rice and wheat?",
+      "reason": "after redrafting distractors 0, 2, 3: option 2 is not wrong"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

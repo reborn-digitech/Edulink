@@ -21,34 +21,434 @@
   "board": "BALBHARATI",
   "book": "६ वी सामान्य विज्ञान इंग्रजी",
   "edition": "First Edition 2026",
-  "generatedAt": "2026-10-31T06:10:17.609Z",
+  "generatedAt": "2026-11-01T18:10:11.460Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 3,
-      "stem": "If a force is applied to an object and the object moves in the direction of the force, what is the work done?",
+      "difficulty": 1,
+      "stem": "What is the term used for the effort applied to push, pull, stop, throw, or give pressure on an object?",
       "choices": [
-        "Zero",
-        "Positive",
-        "Negative",
-        "Cannot be determined"
+        "Force",
+        "Motion",
+        "Pressure",
+        "Energy"
       ],
-      "answerIndex": 1,
-      "solution": "When a force is applied to an object and the object moves in the direction of the force, the work done is positive. Work is defined as the product of force and displacement in the direction of the force. If the displacement is in the opposite direction, the work done is negative. If there is no displacement, the work done is zero.",
+      "answerIndex": 0,
+      "solution": "The term for the effort applied to push, pull, stop, throw, or give pressure on an object is called 'Force' because it is a fundamental concept in physics that describes any interaction that, when unopposed, will change the motion of an object. Motion refers to the change in position of an object, pressure is a force distributed over an area, and energy is the capacity to do work, not the direct application of effort.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
-      "translations": {},
+      "translations": {
+        "hi": {
+          "stem": "एक वस्तु पर धक्का देने, खींचने, रोकने, फेंकने या दबाव डालने के लिए लगाए गए प्रयास के लिए शब्द क्या है?",
+          "choices": [
+            "बल",
+            "गति",
+            "दबाव",
+            "ऊर्जा"
+          ],
+          "solution": "एक वस्तु पर धक्का देने, खींचने, रोकने, फेंकने या दबाव डालने के लिए लगाए गए प्रयास के लिए शब्द 'बल' है क्योंकि यह भौतिकी की एक मूलभूत अवधारणा है जो किसी अंतर्क्रिया को व्यक्त करती है जो अवरोध के बिना वस्तु की गति को बदल सकती है। गति वस्तु की स्थिति में परिवर्तन को दर्शाती है, दबाव एक क्षेत्र पर वितरित बल है और ऊर्जा कार्य करने की क्षमता है, प्रत्यक्ष प्रयास के लिए नहीं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard physics terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एखाद्या वस्तूवर धक्का देण्यासाठी, खेचण्यासाठी, थांबवण्यासाठी, फेकण्यासाठी किंवा दाब देण्यासाठी लागणारा प्रयत्न यासाठी वापरलेला शब्द काय आहे?",
+          "choices": [
+            "बल",
+            "गती",
+            "दाब",
+            "ऊर्जा"
+          ],
+          "solution": "एखाद्या वस्तूवर धक्का देण्यासाठी, खेचण्यासाठी, थांबवण्यासाठी, फेकण्यासाठी किंवा दाब देण्यासाठी लागणारा प्रयत्न यासाठी वापरलेला शब्द 'बल' असतो कारण भौतिकशास्त्रात बल हा एक मूलभूत संकल्पना आहे जी वस्तूच्या गतीत बदल करते. गती ही वस्तूच्या स्थानातील बदल दर्शवते, दाब हा एका क्षेत्रावर वितरित बल आहे आणि ऊर्जा ही कार्य करण्याची क्षमता आहे, नक्की प्रयत्नाच्या लक्ष्यावर नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
       "imageKey": null,
       "imageAlt": null,
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Thinks work done is zero if there is displacement",
         null,
-        "Confuses the sign of work done",
-        "Does not know the definition of work done"
+        "Confuses the term 'Force' with 'Motion'",
+        "Confuses the term 'Force' with 'Pressure'",
+        "Confuses the term 'Force' with 'Energy'"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and aligns with basic physics definitions. The correct answer is 'Force,' and the distractors represent common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 96,
+          "pageStart": 110,
+          "pageEnd": 112,
+          "headingPath": [
+            "11. Force and Pressure"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 97,
+          "pageStart": 112,
+          "pageEnd": 113,
+          "headingPath": [
+            "11. Force and Pressure"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 98,
+          "pageStart": 113,
+          "pageEnd": 114,
+          "headingPath": [
+            "11. Force and Pressure"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T18:10:11.460Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which type of force is applied by the muscles in the body to perform different tasks?",
+      "choices": [
+        "Muscular force",
+        "Mechanical force",
+        "Gravitational force",
+        "Magnetic force"
+      ],
+      "answerIndex": 0,
+      "solution": "Muscular force is the correct answer because it is the force generated by the contraction of muscles in the body to perform actions. Mechanical force refers to forces involved in machines or physical systems, gravitational force is the pull between objects due to mass, and magnetic force is the attraction or repulsion between magnetic materials.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "शरीर में विभिन्न कार्य करने के लिए मांसपेशियों द्वारा किस प्रकार का बल लगाया जाता है?",
+          "choices": [
+            "मांसपेशीय बल",
+            "यांत्रिक बल",
+            "गुरुत्वाकर्षण बल",
+            "चुंबकीय बल"
+          ],
+          "solution": "मांसपेशीय बल सही उत्तर है क्योंकि यह शरीर में मांसपेशियों के संकुचन द्वारा उत्पन्न बल है जो कार्य करने के लिए उपयोग किया जाता है। यांत्रिक बल मशीनों या भौतिक प्रणालियों में शामिल बलों के लिए होता है, गुरुत्वाकर्षण बल द्रव्यमान के कारण वस्तुओं के बीच आकर्षण होता है और चुंबकीय बल चुंबकीय सामग्री के बीच आकर्षण या प्रतिकर्षण होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "शरीरातील विविध कार्य करण्यासाठी अंगातील मांसपेशी द्वारे कोणत्या प्रकारचा बल लागू केला जातो?",
+          "choices": [
+            "मांसपेशीय बल",
+            "यांत्रिक बल",
+            "गुरुत्वीय बल",
+            "चुंबकीय बल"
+          ],
+          "solution": "मांसपेशीय बल हे शरीरातील मांसपेशींच्या संकुचनाद्वारे उत्पन्न होणारे बल आहे जे कार्य करण्यासाठी वापरले जाते. यांत्रिक बल हे मशीन किंवा भौतिक प्रणालींमध्ये असलेल्या बलांचे वर्णन करते, गुरुत्वीय बल हे द्रव्यमानामुळे वस्तूंमध्ये असलेले आकर्षण आहे आणि चुंबकीय बल हे चुंबकीय पदार्थांमध्ये असलेले आकर्षण किंवा प्रतिकर्षण आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses 'Muscular force' with 'Mechanical force'",
+        "Confuses 'Muscular force' with 'Gravitational force'",
+        "Confuses 'Muscular force' with 'Magnetic force'"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and tests recall of basic force types. The correct answer is clearly 'Muscular force' as per the definition given. The distractors represent common misconceptions where students confuse muscular force with other types of forces.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 96,
+          "pageStart": 110,
+          "pageEnd": 112,
+          "headingPath": [
+            "11. Force and Pressure"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 97,
+          "pageStart": 112,
+          "pageEnd": 113,
+          "headingPath": [
+            "11. Force and Pressure"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 98,
+          "pageStart": 113,
+          "pageEnd": 114,
+          "headingPath": [
+            "11. Force and Pressure"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T18:10:11.460Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the force that pulls objects towards the Earth called?",
+      "choices": [
+        "Gravitational force",
+        "Magnetic force",
+        "Frictional force",
+        "Electrostatic force"
+      ],
+      "answerIndex": 0,
+      "solution": "Gravitational force is the correct answer because it is the fundamental force that attracts objects with mass towards each other, including the Earth pulling objects toward its center. Magnetic force involves attraction or repulsion between magnetic materials, frictional force opposes motion between surfaces, and electrostatic force acts between charged objects, none of which are responsible for pulling objects toward the Earth.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पृथ्वी की ओर वस्तुओं को खींचने वाला बल क्या कहलाता है?",
+          "choices": [
+            "गुरुत्वाकर्षण बल",
+            "चुंबकीय बल",
+            "घर्षण बल",
+            "स्थिर वैद्युत बल"
+          ],
+          "solution": "गुरुत्वाकर्षण बल सही उत्तर है क्योंकि यह आधुनिक बल है जो द्रव्यमान वाली वस्तुओं को एक दूसरे की ओर आकर्षित करता है, जिसमें पृथ्वी वस्तुओं को इसके केंद्र की ओर खींचती है। चुंबकीय बल चुंबकीय पदार्थों के बीच आकर्षण या प्रतिकर्षण के कारण होता है, घर्षण बल तलों के बीच गति का विरोध करता है, और स्थिर वैद्युत बल आवेशित वस्तुओं के बीच कार्य करता है, जिनमें से कोई भी पृथ्वी की ओर वस्तुओं को खींचने के लिए उत्तरदायी नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "भूमीकडे वस्तू खेचणारा बल काय म्हणतात?",
+          "choices": [
+            "गुरुत्वीय बल",
+            "चुंबकीय बल",
+            "घर्षण बल",
+            "विद्युत स्थैतिक बल"
+          ],
+          "solution": "गुरुत्वीय बल हा बरोबर उत्तर आहे कारण हे मूलभूत बल द्रव्यमान असलेल्या वस्तूंना एकमेकांकडे खेचते, जे भूमी वस्तूंना तिच्या केंद्राकडे खेचते. चुंबकीय बल हा चुंबकीय सामग्रीमध्ये आकर्षण किंवा प्रतिकर्षण घडवतो, घर्षण बल हा सतहींमध्ये गतीला विरोध करतो आणि विद्युत स्थैतिक बल हा आवेशित वस्तूंमध्ये कार्य करतो, ज्यापैकी कोणाचेही भूमीकडे वस्तू खेचण्याचे कार्य नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms as used in standard textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses 'Gravitational force' with 'Magnetic force'",
+        "Confuses 'Gravitational force' with 'Frictional force'",
+        "Confuses 'Gravitational force' with 'Electrostatic force'"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and tests recall of a basic scientific concept. The correct answer is clearly 'Gravitational force,' and the distractors represent common misconceptions about different types of forces.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 96,
+          "pageStart": 110,
+          "pageEnd": 112,
+          "headingPath": [
+            "11. Force and Pressure"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 97,
+          "pageStart": 112,
+          "pageEnd": 113,
+          "headingPath": [
+            "11. Force and Pressure"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 98,
+          "pageStart": 113,
+          "pageEnd": 114,
+          "headingPath": [
+            "11. Force and Pressure"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T18:10:11.460Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which force is responsible for wind and storms due to differences in atmospheric pressure?",
+      "choices": [
+        "Gravitational force",
+        "Magnetic force",
+        "Frictional force",
+        "Air pressure force"
+      ],
+      "answerIndex": 3,
+      "solution": "Air pressure force is responsible for wind and storms because differences in atmospheric pressure cause air to move from high-pressure areas to low-pressure areas, creating wind. Gravitational force affects the weight of air but does not directly cause wind. Magnetic force is unrelated to atmospheric pressure changes. Frictional force opposes motion but does not initiate wind or storms.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "वायुमंडलीय दबाव में अंतर के कारण हवा और तूफान के लिए कौन सा बल उत्तरदायी है?",
+          "choices": [
+            "गुरुत्वाकर्षण बल",
+            "चुंबकीय बल",
+            "घर्षण बल",
+            "हवा का दबाव बल"
+          ],
+          "solution": "हवा का दबाव बल हवा और तूफान के लिए उत्तरदायी है क्योंकि वायुमंडलीय दबाव में अंतर हवा के ऊंचे दबाव वाले क्षेत्रों से नीचे दबाव वाले क्षेत्रों में गति करने के कारण हवा के बहाव का कारण बनता है। गुरुत्वाकर्षण बल हवा के भार को प्रभावित करता है लेकिन हवा के बहाव के लिए सीधे उत्तरदायी नहीं है। चुंबकीय बल वायुमंडलीय दबाव में परिवर्तन से संबंधित नहीं है। घर्षण बल गति का विरोध करता है लेकिन हवा या तूफान की शुरुआत नहीं करता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "वायूमार्गातील वातावरणीय दाबातील फरकामुळे वाऱ्या आणि वादळांची जबाबदार बल कोणते आहे?",
+          "choices": [
+            "गुरुत्वीय बल",
+            "चुंबकीय बल",
+            "घर्षण बल",
+            "हवा दाब बल"
+          ],
+          "solution": "हवा दाब बल वाऱ्या आणि वादळांची जबाबदार आहे कारण वातावरणीय दाबातील फरकामुळे हवा उच्च दाबाच्या क्षेत्रापासून निम्न दाबाच्या क्षेत्राकडे गेल्यामुळे वारा तयार होतो. गुरुत्वीय बल हवेच्या वजनावर प्रभाव टाकते परंतु वारा तयार करत नाही. चुंबकीय बल वातावरणीय दाबातील बदलाशी संबंधित नाही. घर्षण बल गतीला विरोध करते परंतु वारा किंवा वादळांची सुरुवात करत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with textbook usage.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses gravitational force with air pressure force",
+        "Confuses magnetic force with air pressure force",
+        "Confuses frictional force with air pressure force",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 3 (Air pressure force), as the question clearly links wind and storms to differences in atmospheric pressure. The author's explanation is accurate and the reasoning for the distractors reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 102,
+          "pageStart": 117,
+          "pageEnd": 119,
+          "headingPath": [
+            "11. Force and Pressure",
+            "Exercises"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 103,
+          "pageStart": 119,
+          "pageEnd": 119,
+          "headingPath": [
+            "11. Force and Pressure",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T18:10:11.460Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a result of differences in atmospheric pressure?",
+      "choices": [
+        "The flow of water in a river",
+        "The movement of wind",
+        "The melting of ice",
+        "The formation of clouds"
+      ],
+      "answerIndex": 1,
+      "solution": "Differences in atmospheric pressure cause wind to flow. The other options are not directly caused by atmospheric pressure differences.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन वायुमंडलीय दबाव में अंतर का परिणाम है?",
+          "choices": [
+            "नदी में पानी का प्रवाह",
+            "हवा के गति",
+            "बर्फ का पिघलना",
+            "बादलों का निर्माण"
+          ],
+          "solution": "वायुमंडलीय दबाव में अंतर हवा के प्रवाह के कारण होता है। अन्य विकल्प वायुमंडलीय दबाव में अंतर के सीधे कारण नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते वातावरणीय दाबातील फरकाचे निर्णायक परिणाम आहे?",
+          "choices": [
+            "नदीत पाण्याचा प्रवाह",
+            "हवाचा गती",
+            "बर्फाचे वितळणे",
+            "ढगांचे निर्माण"
+          ],
+          "solution": "वातावरणीय दाबातील फरकामुळे हवाचा गती होतो. इतर विकल्प वातावरणीय दाबातील फरकामुळे दर्शवले जात नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "This is caused by gravity and the slope of the land.",
+        null,
+        "This is a result of temperature and humidity, not pressure differences.",
+        "This is caused by temperature changes, not pressure differences."
       ],
       "solverAnswers": [
         1,
@@ -58,7 +458,7 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The solution is correct and aligns with the physics definition of work. The correct answer is 1, as work is positive when displacement is in the direction of the force.",
+      "critique": "The correct answer is 1, as wind is indeed caused by differences in atmospheric pressure. The author's reasoning for the other options is consistent with common misconceptions.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
@@ -82,137 +482,49 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T06:10:17.609Z",
+      "generatedAt": "2026-11-01T18:10:11.460Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "A force that acts on an object without touching it is most likely to be:",
-      "choices": [
-        "Magnetic force",
-        "Muscular force",
-        "Frictional force",
-        "Gravitational force"
-      ],
-      "answerIndex": 3,
-      "solution": "The correct answer is gravitational force because it acts on an object without direct contact. Magnetic force can act without contact, but it is not the most common example. Muscular force and frictional force require contact. Gravitational force is a non-contact force that pulls objects towards each other.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "किसी वस्तु पर स्पर्श किए बिना कार्य करने वाला बल अधिक संभावना होता है:",
-          "choices": [
-            "चुंबकीय बल",
-            "मांसपेशी बल",
-            "घर्षण बल",
-            "गुरुत्वाकर्षण बल"
-          ],
-          "solution": "सही उत्तर गुरुत्वाकर्षण बल है क्योंकि यह किसी वस्तु पर सीधे संपर्क के बिना कार्य करता है। चुंबकीय बल भी बिना संपर्क के कार्य कर सकता है, लेकिन यह सबसे सामान्य उदाहरण नहीं है। मांसपेशी बल और घर्षण बल के लिए संपर्क आवश्यक होता है। गुरुत्वाकर्षण बल एक अस्पर्शी बल है जो वस्तुओं को एक दूसरे की ओर खींचता है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका वस्तूवर छेडछाड करणारा बल ज्याने त्या वस्तूला स्पर्श केलेला नाही तो असण्याची शक्यता सर्वात जास्त असते:",
-          "choices": [
-            "चुंबकीय बल",
-            "मांसपेशी बल",
-            "घर्षण बल",
-            "गुरुत्वीय बल"
-          ],
-          "solution": "बरोबर उत्तर गुरुत्वीय बल आहे कारण ते वस्तूवर दूरस्थ स्पर्श न करता कार्य करते. चुंबकीय बल दूरस्थ असू शकते, परंतु ते सर्वात सामान्य उदाहरण नाही. मांसपेशी बल आणि घर्षण बल यांना स्पर्श आवश्यक असतो. गुरुत्वीय बल हे अन्योन्य क्रिया बल आहे जे वस्तूंना एकमेकांकडे खेचते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses magnetic force with non-contact force",
-        "Mistakes muscular force as a non-contact force",
-        "Misidentifies frictional force as acting without contact",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        0,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed. The correct answer is gravitational force, which is a non-contact force. The author's reasoning is accurate, and the distractors reflect common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 102,
-          "pageStart": 117,
-          "pageEnd": 119,
-          "headingPath": [
-            "11. Force and Pressure",
-            "Exercises"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 103,
-          "pageStart": 119,
-          "pageEnd": 119,
-          "headingPath": [
-            "11. Force and Pressure",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T06:10:17.609Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "A person is standing on a wooden plank. What will happen to the pressure if the person stands on one foot instead of both?",
+      "difficulty": 2,
+      "stem": "What happens to the pressure exerted on a surface if the area of contact increases, assuming the force remains the same?",
       "choices": [
         "It increases",
         "It decreases",
-        "It remains the same",
+        "It stays the same",
         "It becomes zero"
       ],
-      "answerIndex": 0,
-      "solution": "The correct answer is it increases. When the person stands on one foot, the area of contact decreases, leading to an increase in pressure. The other options do not accurately describe the relationship between area and pressure.",
+      "answerIndex": 1,
+      "solution": "Pressure is defined as force per unit area. When the area of contact increases while the force remains constant, the pressure exerted on the surface decreases because the same force is spread over a larger area. The other options are incorrect because pressure does not increase with area, nor does it stay the same or become zero when area changes.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक व्यक्ति लकड़ी के प्लैंक पर खड़ा है। यदि व्यक्ति दोनों पैरों के बजाय एक पैर पर खड़ा हो जाए तो दाब क्या होगा?",
+          "stem": "एक सतह पर लगने वाले दाब में क्या परिवर्तन होता है यदि संपर्क क्षेत्रफल बढ़ जाता है, जबकि बल समान रहता है?",
           "choices": [
             "यह बढ़ जाता है",
             "यह घट जाता है",
-            "यह समान रहता है",
+            "यह एक ही रहता है",
             "यह शून्य हो जाता है"
           ],
-          "solution": "सही उत्तर यह बढ़ जाता है। जब व्यक्ति एक पैर पर खड़ा होता है तो संपर्क क्षेत्र घट जाता है, जिसके कारण दाब बढ़ जाता है। अन्य विकल्प दाब और क्षेत्र के बीच संबंध को सही ढंग से वर्णित नहीं करते हैं।",
+          "solution": "दाब एक इकाई क्षेत्रफल पर लगने वाले बल के रूप में परिभाषित किया जाता है। जब संपर्क क्षेत्रफल बढ़ जाता है लेकिन बल समान रहता है, तो सतह पर लगने वाला दाब घट जाता है क्योंकि एक ही बल एक बड़े क्षेत्रफल पर फैल जाता है। अन्य विकल्प गलत हैं क्योंकि दाब क्षेत्रफल के साथ बढ़ता नहीं है, न ही यह क्षेत्रफल बदलने पर एक ही रहता है या शून्य हो जाता है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms like 'दाब' (pressure) and 'क्षेत्र' (area).",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard physics terminology commonly found in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "एक व्यक्ती लाकडीच्या प्लॅंकवर उभी आहे. जर व्यक्ती दोन्ही बाजूंवर उभी राहिल्याऐवजी एका पायावर उभी राहिली तर दाब काय होईल?",
+          "stem": "सतत बल राहिल्यास, संपर्काच्या क्षेत्रात वाढ झाल्यास एखाद्या पृष्ठभागावर लागणारा दाब काय होतो?",
           "choices": [
             "तो वाढतो",
             "तो कमी होतो",
-            "तो तेच राहतो",
+            "तो तसाच राहतो",
             "तो शून्य होतो"
           ],
-          "solution": "बरोबर उत्तर तो वाढतो. जेव्हा व्यक्ती एका पायावर उभी राहते तेव्हा संपर्शाचा क्षेत्रफळ कमी होतो, ज्यामुळे दाब वाढतो. इतर उत्तरे दाब आणि क्षेत्रफळ यांच्या संबंधाचे योग्य वर्णन करत नाहीत.",
+          "solution": "दाब एकक क्षेत्रावरील बल म्हणून व्याख्यात केला जातो. जेव्हा बल स्थिर राहते आणि संपर्काच्या क्षेत्रात वाढ होते, तेव्हा पृष्ठभागावर लागणारा दाब कमी होतो कारण एकसारखा बल जास्त क्षेत्रावर वितरित होतो. इतर विकल्प अयोग्य आहेत कारण दाब क्षेत्रासह वाढत नाही, आणि क्षेत्र बदलल्यास दाब तसाच राहत नाही किंवा शून्य होत नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms like 'दाब' (pressure) and 'क्षेत्रफळ' (area).",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The structure and logic of the question and solution are preserved.",
           "flag": null
         }
       },
@@ -221,81 +533,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Believes that pressure increases with area",
         null,
-        "Thinks pressure decreases with reduced area",
-        "Believes pressure remains the same",
-        "Fails to understand the inverse relationship between pressure and area"
+        "Confuses pressure with force, thinking that force is independent of area",
+        "Confuses the relationship between pressure and area, thinking it remains the same or becomes zero."
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that reducing the area of contact increases pressure, as pressure is inversely proportional to area. The reasoning for the distractors aligns with common misconceptions about the relationship between area and pressure.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 102,
-          "pageStart": 117,
-          "pageEnd": 119,
-          "headingPath": [
-            "11. Force and Pressure",
-            "Exercises"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 103,
-          "pageStart": 119,
-          "pageEnd": 119,
-          "headingPath": [
-            "11. Force and Pressure",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T06:10:17.609Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "A person stands on a board with many sharp nails. Why do the nails not pierce his feet?",
-      "choices": [
-        "The force is distributed over a large area",
-        "The force is concentrated on a small area",
-        "The nails are not sharp enough",
-        "The nails are made of a soft material"
-      ],
-      "answerIndex": 0,
-      "solution": "The force is distributed over a large area because the person's weight is spread across many nails, reducing the pressure on each nail. If the force were concentrated on a small area, the pressure would be high enough to pierce the skin. The sharpness and material of the nails are not relevant to why they do not pierce the feet in this situation.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {},
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Student confuses pressure with force, thinking that concentrating force prevents penetration",
-        "confuses the effect of area on pressure",
-        "confuses the properties of nails"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0, as the force is distributed over a large area when standing on many nails, reducing pressure. The reasoning in the author's solution is sound and matches the key.",
+      "levelFlag": null,
+      "critique": "The solution correctly applies the formula for pressure (P = F/A) and correctly concludes that increasing the area while keeping force constant decreases pressure. The reasoning aligns with the correct answer.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
@@ -326,49 +577,49 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T06:10:17.609Z",
+      "generatedAt": "2026-11-01T18:10:11.460Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "A sharp knife cuts a fruit easily, while a blunt knife does not. What is the reason for this?",
+      "difficulty": 3,
+      "stem": "A person is carrying a heavy bag with a narrow strap on their shoulder. What will happen?",
       "choices": [
-        "A sharp knife applies more force",
-        "A sharp knife has more mass",
-        "A sharp knife has a smaller area of contact",
-        "A sharp knife has less weight"
+        "The pressure on the shoulder will be less",
+        "The pressure on the shoulder will be more",
+        "The pressure on the shoulder will be the same",
+        "The bag will fall"
       ],
-      "answerIndex": 2,
-      "solution": "The correct answer is a sharp knife has a smaller area of contact. Pressure is force divided by area. A sharp knife has a smaller area, so it exerts more pressure, making it easier to cut. The other options do not explain the relationship between area and pressure.",
+      "answerIndex": 1,
+      "solution": "Pressure is force divided by area. A narrow strap reduces the area of contact, so the same force from the heavy bag is spread over a smaller area, increasing the pressure on the shoulder. A broader strap would distribute the force over a larger area, reducing pressure. The other options do not account for the relationship between area and pressure.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक तीखा चाकू फल को आसानी से काटता है, जबकि एक बुन्दल चाकू नहीं काटता। इसका कारण क्या है?",
+          "stem": "एक व्यक्ति अपने कंधे पर भारी बैग के साथ एक संकरी पट्टी ले रहा है। क्या होगा?",
           "choices": [
-            "एक तीखा चाकू अधिक बल लगाता है",
-            "एक तीखा चाकू अधिक द्रव्यमान रखता है",
-            "एक तीखा चाकू संपर्क के छोटे क्षेत्र के साथ होता है",
-            "एक तीखा चाकू कम भार रखता है"
+            "कंधे पर दाब कम होगा",
+            "कंधे पर दाब अधिक होगा",
+            "कंधे पर दाब समान रहेगा",
+            "बैग गिर जाएगा"
           ],
-          "solution": "सही उत्तर एक तीखा चाकू संपर्क के छोटे क्षेत्र के साथ होता है। दाब बल के क्षेत्र से विभाजित होता है। एक तीखा चाकू छोटा क्षेत्र रखता है, इसलिए यह अधिक दाब डालता है, जिससे काटना आसान हो जाता है। अन्य विकल्प दाब और क्षेत्र के बीच संबंध को समझाने में असमर्थ हैं।",
+          "solution": "दाब बल के क्षेत्रफल से विभाजित होता है। एक संकरी पट्टी संपर्क के क्षेत्रफल को कम कर देती है, इसलिए भारी बैग के कारण बल एक छोटे क्षेत्रफल पर फैल जाता है, कंधे पर दाब बढ़ जाता है। एक चौड़ी पट्टी बल को बड़े क्षेत्रफल पर बांट देती है, जिससे दाब कम हो जाता है। अन्य विकल्प एरिया और दाब के बीच संबंध को ध्यान में नहीं रखते हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate, technical terms like 'दाब' (pressure), 'क्षेत्र' (area), 'बल' (force) are standard in Hindi science textbooks.",
+          "critique": "Translation accurately reflects the original meaning, technical terms are standard in Hindi textbooks, and the correct answer remains option 1.",
           "flag": null
         },
         "mr": {
-          "stem": "एक तीक्ष्ण काटा फळ कापतो, तर एक झुरकलेला काटा कापत नाही. ह्याचे कारण काय आहे?",
+          "stem": "एक व्यक्ती आपल्या खांद्यावर एक भारी बॅग घेऊन जात आहे. ज्याचा एक अतिशय निरीक्षण वापरला जात आहे. काय होईल?",
           "choices": [
-            "तीक्ष्ण काटा जास्त बल लावतो",
-            "तीक्ष्ण काटा जास्त द्रव्यमान असतो",
-            "तीक्ष्ण काटा संपर्काचे लहान क्षेत्र असते",
-            "तीक्ष्ण काटा कमी वजन असतो"
+            "खांद्यावर दाब कमी होईल",
+            "खांद्यावर दाब जास्त होईल",
+            "खांद्यावर दाब समान राहील",
+            "बॅग खाली पडेल"
           ],
-          "solution": "तीक्ष्ण काटा संपर्काचे लहान क्षेत्र असते हा योग्य उत्तर आहे. दाब हा बल आणि क्षेत्राच्या भागात असतो. तीक्ष्ण काटा लहान क्षेत्र असल्यामुळे तो जास्त दाब लावतो, ज्यामुळे कापणे सोपे होते. इतर विकल्प दाब आणि क्षेत्राच्या संबंधाचे व्याख्यान करत नाहीत.",
+          "solution": "दाब बलाच्या क्षेत्राने भागलेले असते. एक निरीक्षण वापरल्याने संपर्क क्षेत्र कमी होते, म्हणून भारी बॅगचा बल लहान क्षेत्रावर वितरित होते, जेणेकरून खांद्यावर दाब वाढतो. एक विस्तृत बॅग बल जास्त क्षेत्रावर वितरित करेल, जेणेकरून दाब कमी होईल. इतर विकल्प दाब आणि क्षेत्र यांच्या संबंधाचा विचार करत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms. The correct answer remains option (2) in both languages.",
           "flag": null
         }
       },
@@ -377,20 +628,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Thinks sharpness relates to force",
-        "Confuses mass with cutting ability",
+        "Incorrectly believes that a narrow strap reduces pressure",
         null,
-        "Fails to understand the role of area in pressure"
+        "Believes that the width of the strap does not affect pressure",
+        "Does not understand the concept of pressure"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2, as pressure is force per unit area, and a sharp knife reduces the area of contact, increasing pressure. The author's reasoning is sound and matches the scientific principle.",
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution correctly applies the principle that pressure is inversely proportional to the area of contact. The reasoning for the correct answer and the distractors align with common student misconceptions.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
@@ -414,34 +665,61 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T06:10:17.609Z",
+      "generatedAt": "2026-11-01T18:10:11.460Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "Why is it important to reduce friction in machines?",
+      "difficulty": 3,
+      "stem": "A performer stands on a board with many sharp nails. Why do the nails not pierce his feet?",
       "choices": [
-        "To increase the speed of machines",
-        "To decrease the wear and tear of machines",
-        "To make machines easier to control",
-        "To make machines heavier"
+        "The pressure is very high",
+        "The force is distributed over a large area",
+        "The nails are not sharp",
+        "The force is balanced"
       ],
       "answerIndex": 1,
-      "solution": "Reducing friction in machines decreases the resistance between moving parts, which helps prevent damage and prolongs the machine's lifespan. While friction can affect speed, the primary benefit of reducing it is minimizing wear and tear. The other options are not scientifically accurate because reducing friction does not make machines easier to control or heavier.",
+      "solution": "The force is distributed over a large area because the performer's weight is spread across many nails, reducing the pressure on each nail. This lower pressure prevents the nails from piercing his feet. The other options are incorrect because high pressure would cause piercing, sharp nails would increase the risk, and balanced force does not address the relationship between force and pressure.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
-      "translations": {},
+      "translations": {
+        "hi": {
+          "stem": "एक कलाकार बहुत सारे तीखे सुई पर खड़ा होता है। सुई क्यों उसके पैरों को छेद नहीं देती?",
+          "choices": [
+            "दाब बहुत अधिक है",
+            "बल बड़े क्षेत्र पर वितरित होता है",
+            "सुई तीखी नहीं है",
+            "बल संतुलित है"
+          ],
+          "solution": "कलाकार के वजन के कारण बल बहुत सारी सुई पर फैल जाता है, जिससे प्रत्येक सुई पर दाब कम हो जाता है। इस कम दाब के कारण सुई पैरों को छेद नहीं देती। अन्य विकल्प गलत हैं क्योंकि उच्च दाब छेद कर सकता है, तीखी सुई जोखिम बढ़ा सकती है, और संतुलित बल बल और दाब के संबंध को समाप्त नहीं करता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate technical terms and logical structure.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक कलाकार अनेक तीक्ष्ण नाकांच्या बोर्डावर उभा असतो. नाकांनी त्याच्या पायांना घुसू नये, कारण काय?",
+          "choices": [
+            "दाब खूप जास्त आहे",
+            "बल एका मोठ्या क्षेत्रावर वितरित केले जाते",
+            "नाक तीक्ष्ण नाहीत",
+            "बल संतुलित आहे"
+          ],
+          "solution": "कलाकाराचा वजन अनेक नाकांवर वितरित होतो, ज्यामुळे प्रत्येक नाकावर दाब कमी होतो. हा कमी दाब नाकांना पायांमध्ये घुसण्यापासून रोखतो. इतर विकल्प अयोग्य आहेत कारण जास्त दाब घुसण्यास कारणीभूत ठरेल, तीक्ष्ण नाक जोखीम वाढवतील आणि संतुलित बल बल आणि दाब यांच्या संबंधाला नकार देत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for physics concepts like 'दाब' (pressure) and 'बल' (force).",
+          "flag": null
+        }
+      },
       "imageKey": null,
       "imageAlt": null,
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "focuses on the effect of friction on speed rather than wear and tear",
+        "Believes that high pressure prevents piercing",
         null,
-        "Students might think reducing friction makes machines easier to handle, not realizing it primarily reduces wear and heat",
-        "misinterprets the purpose of reducing friction"
+        "Student assumes that sharpness is the reason nails don't pierce, not considering pressure or force distribution",
+        "Confuses the role of sharpness of nails in piercing the feet, ignoring the effect of pressure and area."
       ],
       "solverAnswers": [
         1,
@@ -450,81 +728,345 @@
         1,
         1
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as reducing friction decreases wear and tear. The author's reasoning is sound, and the misconceptions listed for the wrong options are plausible for students.",
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as the performer's weight is distributed over many nails, reducing the pressure on each nail. The author's reasoning is sound and matches the correct physics principle. The distractors reflect common misconceptions.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 96,
-          "pageStart": 110,
-          "pageEnd": 112,
+          "ordinal": 99,
+          "pageStart": 114,
+          "pageEnd": 115,
           "headingPath": [
             "11. Force and Pressure"
           ]
         },
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 97,
-          "pageStart": 112,
-          "pageEnd": 113,
+          "ordinal": 100,
+          "pageStart": 115,
+          "pageEnd": 116,
           "headingPath": [
             "11. Force and Pressure"
           ]
         },
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 98,
-          "pageStart": 113,
-          "pageEnd": 114,
+          "ordinal": 101,
+          "pageStart": 116,
+          "pageEnd": 117,
           "headingPath": [
             "11. Force and Pressure"
           ]
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T06:10:17.609Z",
+      "generatedAt": "2026-11-01T18:10:11.460Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "Why does the spacecraft Columbia burn up during re-entry into the Earth's atmosphere?",
+      "difficulty": 4,
+      "stem": "A sharp knife cuts fruits more easily than a blunt one. Why?",
       "choices": [
-        "Due to high speed and friction",
-        "Due to high temperature",
-        "Due to strong magnetic field",
-        "Due to gravitational pull"
+        "It has less mass",
+        "It has a larger area of contact",
+        "It has a smaller area of contact",
+        "It is heavier"
       ],
-      "answerIndex": 0,
-      "solution": "The spacecraft burns up due to high speed and friction with the atmosphere, which generates intense heat. High temperature is a result of this process, not the cause. A strong magnetic field and gravitational pull do not directly lead to burning during re-entry.",
+      "answerIndex": 2,
+      "solution": "A sharp knife has a smaller area of contact, which increases the pressure exerted on the fruit. This makes it easier to cut. The other options do not explain the relationship between pressure and area of contact.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "अंतरिक्ष यान कोलंबिया पृथ्वी के वातावरण में प्रवेश करते समय क्यों जल जाता है?",
+          "stem": "एक तीखा चाकू फलों को एक मोटे चाकू की तुलना में अधिक आसानी से काटता है। क्यों?",
           "choices": [
-            "उच्च गति और घर्षण के कारण",
-            "उच्च तापमान के कारण",
-            "मजबूत चुंबकीय क्षेत्र के कारण",
-            "गुरुत्वाकर्षण बल के कारण"
+            "इसका द्रव्यमान कम होता है",
+            "इसका संपर्क क्षेत्र बड़ा होता है",
+            "इसका संपर्क क्षेत्र छोटा होता है",
+            "यह भारी होता है"
           ],
-          "solution": "अंतरिक्ष यान वातावरण के साथ उच्च गति और घर्षण के कारण जल जाता है, जो अत्यधिक गर्मी उत्पन्न करता है। उच्च तापमान इस प्रक्रिया का परिणाम है, न कि कारण। मजबूत चुंबकीय क्षेत्र और गुरुत्वाकर्षण बल अंतरिक्ष यान के जलने के सीधे कारण नहीं हैं।",
+          "solution": "एक तीखा चाकू छोटे संपर्क क्षेत्र के कारण फल पर अधिक दाब डालता है। इससे काटना आसान हो जाता है। अन्य विकल्प दाब और संपर्क क्षेत्र के संबंध को समझाने में असमर्थ हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium science textbooks.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms like 'संपर्क क्षेत्र' (contact area) and 'दाब' (pressure) as used in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "अंतरिक्ष यान कोलंबिया चंद्रावर परत येताना पृथ्वीच्या वातावरणात का जळून जाते?",
+          "stem": "एक तीव्र काटा फळे जास्त सोपे कापतो जेव्हा एक निराळा असतो. का?",
           "choices": [
-            "उच्च वेग आणि घर्षण कारणामुळे",
-            "उच्च तापमानामुळे",
-            "मजबूत चुंबकीय क्षेत्रामुळे",
-            "गुरुत्वाकर्षण प्रभावामुळे"
+            "त्याचा जास्त द्रव्यमान असतो",
+            "त्याचा जास्त संपर्क क्षेत्र असतो",
+            "त्याचा लहान संपर्क क्षेत्र असतो",
+            "तो भारी असतो"
           ],
-          "solution": "अंतरिक्ष यान वातावरणाशी उच्च वेग आणि घर्षण कारणामुळे जळून जाते, जे अतिशय उष्णता उत्पन्न करते. उच्च तापमान हा या प्रक्रियेचा परिणाम आहे, निर्माण करणारा नाही. मजबूत चुंबकीय क्षेत्र आणि गुरुत्वाकर्षण प्रभाव अंतरिक्ष यानाच्या जळण्यास लक्ष्य करत नाहीत.",
+          "solution": "एक तीव्र काटा लहान संपर्क क्षेत्र असतो, जे फळावर लागणारा दाब वाढतो. हे कापणे सोपे करते. इतर विकल्प दाब आणि संपर्क क्षेत्राच्या संबंधाचे व्याख्यान करत नाहीत.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Marathi textbooks.",
+          "critique": "The translation is accurate and maintains the scientific meaning. Technical terms like 'संपर्क क्षेत्र' (contact area) are appropriate for Marathi-medium education.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "students may confuse mass with sharpness, thinking lighter objects cut better",
+        "This would decrease pressure, making it harder to cut.",
+        null,
+        "students often confuse mass with force or pressure, thinking that heavier objects exert more force"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as a sharp knife has a smaller area of contact, increasing pressure. The solution is sound and the reasons for the distractors align with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 102,
+          "pageStart": 117,
+          "pageEnd": 119,
+          "headingPath": [
+            "11. Force and Pressure",
+            "Exercises"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 103,
+          "pageStart": 119,
+          "pageEnd": 119,
+          "headingPath": [
+            "11. Force and Pressure",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T18:10:11.460Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a bicycle chain is not lubricated with grease or oil, what will happen?",
+      "choices": [
+        "The chain will move faster",
+        "The chain will become lighter",
+        "The chain will get damaged due to friction",
+        "The chain will not move"
+      ],
+      "answerIndex": 2,
+      "solution": "Without lubrication, friction between the chain's parts increases, causing excessive wear and damage over time. Lubrication reduces this friction, making movement smoother and preventing damage. The chain will still move, though less efficiently, and it will not become lighter. Therefore, the correct answer is that the chain will get damaged due to friction.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि बाइसिकल के चेन को ग्रीस या तेल से लुब्रिकेट नहीं किया जाता है, तो क्या होगा?",
+          "choices": [
+            "चेन तेजी से चलेगा",
+            "चेन हल्का हो जाएगा",
+            "चेन घर्षण के कारण क्षतिग्रस्त हो जाएगा",
+            "चेन चलेगा नहीं"
+          ],
+          "solution": "बिना लुब्रिकेशन के, चेन के भागों के बीच घर्षण बढ़ जाता है, जिसके कारण समय के साथ अत्यधिक खराबी और क्षति होती है। लुब्रिकेशन इस घर्षण को कम करता है, जिससे गति चिकनी हो जाती है और क्षति रोकी जाती है। चेन अभी भी चलेगा, यद्यपि कम प्रभावी रूप से, और यह हल्का नहीं होगा। इसलिए, सही उत्तर यह है कि चेन घर्षण के कारण क्षतिग्रस्त हो जाएगा।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर बाइसिकलचा चेन ग्रीस किंवा तेलाने लुब्रिकेट केला जात नाही, तर काय होईल?",
+          "choices": [
+            "चेन जास्त वेगाने चालेल",
+            "चेन हलका होईल",
+            "चेन घर्षणामुळे नुकसान होईल",
+            "चेन चालणार नाही"
+          ],
+          "solution": "लुब्रिकेशन न असल्यास, चेनच्या भागांमध्ये घर्षण वाढतो, ज्यामुळे वेळेत अतिशय घातक नुकसान होते. लुब्रिकेशन घर्षण कमी करते, ज्यामुळे चालना चांगली होते आणि नुकसान टाळला जातो. चेन अजूनही चालेल, जरी कमी दक्षतेने, आणि तो हलका होणार नाही. म्हणून, योग्य उत्तर असे की चेन घर्षणामुळे नुकसान होईल.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes that friction decreases speed",
+        "Does not understand the role of lubrication",
+        null,
+        "Incorrectly thinks that friction stops movement completely"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as lack of lubrication increases friction, leading to damage. The reasoning in the solution is sound and matches the explanation provided.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 102,
+          "pageStart": 117,
+          "pageEnd": 119,
+          "headingPath": [
+            "11. Force and Pressure",
+            "Exercises"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 103,
+          "pageStart": 119,
+          "pageEnd": 119,
+          "headingPath": [
+            "11. Force and Pressure",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T18:10:11.460Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A heavy bag is carried on the shoulder with two different straps. One is broad and the other is narrow. How does the pressure on the shoulder differ?",
+      "choices": [
+        "It is the same in both cases",
+        "It is higher with the broad strap",
+        "It is lower with the narrow strap",
+        "It is higher with the narrow strap"
+      ],
+      "answerIndex": 3,
+      "solution": "Pressure is inversely related to the area over which a force is applied. A narrower strap reduces the contact area, increasing the pressure on the shoulder. A broader strap spreads the force over a larger area, resulting in lower pressure. The correct answer reflects this fundamental relationship between pressure, force, and area.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक भारी बैग को दो अलग-अलग फीतों के साथ कंधे पर ले जाया जाता है। एक चौड़ा और दूसरा संकरा है। कंधे पर दबाव में क्या अंतर होता है?",
+          "choices": [
+            "दोनों मामलों में यह समान होता है",
+            "चौड़े फीते के साथ अधिक होता है",
+            "संकरे फीते के साथ कम होता है",
+            "संकरे फीते के साथ अधिक होता है"
+          ],
+          "solution": "दबाव बल के लागू होने वाले क्षेत्र के व्युत्क्रमानुपाती होता है। एक संकरा फीता संपर्क क्षेत्र को कम कर देता है, जिससे कंधे पर दबाव बढ़ जाता है। एक चौड़ा फीता बल को बड़े क्षेत्र पर फैला देता है, जिसके परिणामस्वरूप दबाव कम हो जाता है। सही उत्तर दबाव, बल और क्षेत्र के बीच आधारभूत संबंध को प्रतिबिंबित करता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question, with appropriate technical terms like 'दबाव' (pressure), 'क्षेत्र' (area), and 'बल' (force) used in line with standard Hindi science terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "भारी बॅग खांबावर दोन वेगवेगळ्या पट्ट्यांवर घेऊन जातली जाते. एक विस्तीर्ण आहे आणि दुसरा अतिशय निरीक्षण आहे. खांबावर दाब कसा वेगळा असतो?",
+          "choices": [
+            "दोन्ही बाबींमध्ये समान असतो",
+            "विस्तीर्ण पट्ट्यावर जास्त असतो",
+            "निरीक्षण पट्ट्यावर कमी असतो",
+            "निरीक्षण पट्ट्यावर जास्त असतो"
+          ],
+          "solution": "दाब बलाच्या लागू होणाऱ्या क्षेत्राशी व्यस्त असतो. निरीक्षण पट्टा संपर्क क्षेत्र कमी करतो, ज्यामुळे खांबावर दाब वाढतो. विस्तीर्ण पट्टा बल जास्तीत जास्त क्षेत्रावर वितरित करतो, ज्यामुळे दाब कमी होतो. योग्य उत्तर दाब, बल आणि क्षेत्रातील या मूलभूत संबंधाला दर्शवते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms like 'दाब' (pressure), 'क्षेत्र' (area), and 'बल' (force).",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes pressure is independent of the area of contact",
+        "This is incorrect as pressure increases with a smaller area.",
+        "This is the opposite of what happens with pressure and area.",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly applies the principle that pressure is inversely proportional to the area of contact. The narrow strap has less area, so it exerts higher pressure, making option 3 correct.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 102,
+          "pageStart": 117,
+          "pageEnd": 119,
+          "headingPath": [
+            "11. Force and Pressure",
+            "Exercises"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 103,
+          "pageStart": 119,
+          "pageEnd": 119,
+          "headingPath": [
+            "11. Force and Pressure",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T18:10:11.460Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "What is the reason that a straw can be used to drink water?",
+      "choices": [
+        "The atmospheric pressure pushes the water up",
+        "The force of gravity pulls the water down",
+        "The force of friction stops the water from flowing",
+        "The force of magnetism attracts the water"
+      ],
+      "answerIndex": 0,
+      "solution": "When you drink through a straw, you remove air from it, reducing the pressure inside. The higher atmospheric pressure outside then pushes the water up into the straw. The other options are incorrect because gravity pulls water down, friction does not stop water flow in this context, and magnetism has no effect on water in this situation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छड़ी के द्वारा पानी पीने का कारण क्या है?",
+          "choices": [
+            "वायुमंडलीय दबाव पानी को ऊपर धकेलता है",
+            "गुरुत्वाकर्षण का बल पानी को नीचे खींचता है",
+            "घर्षण का बल पानी के प्रवाह को रोकता है",
+            "चुंबकत्व का बल पानी को आकर्षित करता है"
+          ],
+          "solution": "जब आप छड़ी के द्वारा पीते हैं, तो आप छड़ी से हवा हटा देते हैं, जिससे छड़ी के अंदर दबाव कम हो जाता है। बाहर के अधिक वायुमंडलीय दबाव के कारण पानी छड़ी में ऊपर धकेला जाता है। अन्य विकल्प गलत हैं क्योंकि गुरुत्वाकर्षण पानी को नीचे खींचता है, घर्षण इस संदर्भ में पानी के प्रवाह को नहीं रोकता है, और चुंबकत्व पानी पर इस स्थिति में कोई प्रभाव नहीं डालता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पाणी घेण्यासाठी एका ट्यूब वापरण्याचे कारण काय आहे?",
+          "choices": [
+            "वातावरणाचा दाब पाणी वर धक्का देतो",
+            "गुरुत्वाकर्षणाचा बल पाणी खाली खेचतो",
+            "घर्षणाचा बल पाणी वाहण्यास थांबवतो",
+            "चुंबकीयतेचा बल पाणी आकर्षित करतो"
+          ],
+          "solution": "जेव्हा तुम्ही ट्यूब मार्फत पाणी पिता, तेव्हा तुम्ही त्यातून हवा काढता, ज्यामुळे आतला दाब कमी होतो. बाहेरील जास्त वातावरणाचा दाब नंतर पाणी ट्यूबमध्ये वर धक्का देतो. इतर विकल्प चुकीचे आहेत कारण गुरुत्वाकर्षण पाणी खाली खेचतो, घर्षण ह्या परिस्थितीत पाणी वाहण्यास थांबवत नाही आणि चुंबकीयतेचा कोणताही परिणाम ह्या परिस्थितीत पाणी वर नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
         }
       },
@@ -534,9 +1076,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses the effect of heat with the cause of burning during re-entry",
-        "Believes magnetic forces are strong enough to affect spacecraft during re-entry",
-        "Believes gravity is the main cause of heat during re-entry, not recognizing the role of friction"
+        "Confuses the role of atmospheric pressure with gravitational force",
+        "Confuses the role of friction with the mechanism of drinking",
+        "Confuses the role of magnetic force with the mechanism of drinking."
       ],
       "solverAnswers": [
         0,
@@ -546,38 +1088,133 @@
         0
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0, as the spacecraft burns due to friction with the atmosphere caused by high speed. The other options represent common misconceptions about the causes of heat during re-entry.",
+      "critique": "The solution correctly identifies that atmospheric pressure is the key factor. The reasoning aligns with the scientific explanation of how straws work, and the misconceptions listed for the other options are plausible for students.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 96,
-          "pageStart": 110,
-          "pageEnd": 112,
+          "ordinal": 99,
+          "pageStart": 114,
+          "pageEnd": 115,
           "headingPath": [
             "11. Force and Pressure"
           ]
         },
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 97,
-          "pageStart": 112,
-          "pageEnd": 113,
+          "ordinal": 100,
+          "pageStart": 115,
+          "pageEnd": 116,
           "headingPath": [
             "11. Force and Pressure"
           ]
         },
         {
           "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 98,
-          "pageStart": 113,
-          "pageEnd": 114,
+          "ordinal": 101,
+          "pageStart": 116,
+          "pageEnd": 117,
           "headingPath": [
             "11. Force and Pressure"
           ]
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T06:10:17.609Z",
+      "generatedAt": "2026-11-01T18:10:11.460Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why does atmospheric pressure decrease with height?",
+      "choices": [
+        "The air becomes denser at higher altitudes",
+        "There is less air above at higher altitudes",
+        "The temperature decreases with height",
+        "The Earth's gravitational pull decreases with height"
+      ],
+      "answerIndex": 1,
+      "solution": "Atmospheric pressure decreases with height because there is less air above at higher altitudes. The weight of the air above causes pressure, so less air means less pressure. The other options are unrelated or incorrect explanations.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "वायुमंडलीय दबाव ऊंचाई के साथ क्यों कम हो जाता है?",
+          "choices": [
+            "ऊंचाई पर हवा अधिक घनी हो जाती है",
+            "ऊंचाई पर ऊपर से कम हवा होती है",
+            "ऊंचाई के साथ तापमान कम हो जाता है",
+            "पृथ्वी के गुरुत्वाकर्षण बल ऊंचाई के साथ कम हो जाता है"
+          ],
+          "solution": "वायुमंडलीय दबाव ऊंचाई के साथ कम हो जाता है क्योंकि ऊंचाई पर ऊपर से कम हवा होती है। हवा के ऊपर के भार के कारण दबाव होता है, इसलिए कम हवा के कारण कम दबाव होता है। अन्य विकल्प असंबंधित या गलत स्पष्टीकरण हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "वातावरणीय दाब उंचीसह का कमी होतो?",
+          "choices": [
+            "उंच अंतरावर हवा जास्त घन असते",
+            "उंच अंतरावर वरच्या बाजूला कमी हवा असते",
+            "उंचीसह तापमान कमी होते",
+            "भूमीचा गुरुत्वाकर्षण प्रभाव उंचीसह कमी होतो"
+          ],
+          "solution": "वातावरणीय दाब उंचीसह कमी होतो कारण उंच अंतरावर वरच्या बाजूला कमी हवा असते. हवेच्या वजनामुळे दाब असतो, म्हणून कमी हवा असल्याने कमी दाब असतो. इतर विकल्प असंबंधित किंवा चूक व्याख्या आहेत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms. The correct answer is in the same position (option 2), and the distractors remain incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses air density with pressure",
+        null,
+        "Misunderstands the effect of temperature on pressure",
+        "Incorrectly applies gravity to atmospheric pressure"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as atmospheric pressure decreases with height due to the reduced weight of air above. The other options reflect common misconceptions about air density, temperature, and gravity.",
+      "sources": [
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 99,
+          "pageStart": 114,
+          "pageEnd": 115,
+          "headingPath": [
+            "11. Force and Pressure"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 100,
+          "pageStart": 115,
+          "pageEnd": 116,
+          "headingPath": [
+            "11. Force and Pressure"
+          ]
+        },
+        {
+          "document": "balbharati/6/science/603050012.pdf",
+          "ordinal": 101,
+          "pageStart": 116,
+          "pageEnd": 117,
+          "headingPath": [
+            "11. Force and Pressure"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T18:10:11.460Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

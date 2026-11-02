@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-31T12:33:47.073Z",
+  "generatedAt": "2026-11-01T23:56:44.771Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "How many days would it take for an albatross to cover 12,000 km if it can cover 900–1000 km in a day?",
+      "difficulty": 2,
+      "stem": "How many sticks are required to make the digit 7?",
       "choices": [
-        "12–13 days",
-        "10–12 days",
-        "12–15 days",
-        "10–14 days"
+        "3",
+        "4",
+        "5",
+        "6"
       ],
       "answerIndex": 0,
-      "solution": "An albatross can travel 900–1000 km per day. Dividing 12,000 km by 900 km gives approximately 13.3 days, and dividing by 1000 km gives exactly 12 days, so the range is 12–13 days. The other options either use incorrect ranges or do not match the division result.",
+      "solution": "The digit 7 is typically formed with three straight lines: one horizontal line at the top and two diagonal lines connecting to the bottom. The option 3 is correct because it matches the standard configuration of the digit. Options 4, 5, and 6 require more lines than necessary to form the shape of 7.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक एल्बेट्रॉस के 12,000 किमी की दूरी तय करने में कितने दिन लगेंगे अगर यह एक दिन में 900–1000 किमी की दूरी तय कर सकता है?",
+          "stem": "अंक 7 बनाने के लिए कितनी छड़ियाँ आवश्यक हैं?",
           "choices": [
-            "12–13 दिन",
-            "10–12 दिन",
-            "12–15 दिन",
-            "10–14 दिन"
+            "3",
+            "4",
+            "5",
+            "6"
           ],
-          "solution": "एक एल्बेट्रॉस एक दिन में 900–1000 किमी की दूरी तय कर सकता है। 12,000 किमी को 900 किमी से विभाजित करने पर लगभग 13.3 दिन प्राप्त होते हैं, और 1000 किमी से विभाजित करने पर ठीक 12 दिन प्राप्त होते हैं, इसलिए अंतराल 12–13 दिन है। अन्य विकल्प या गलत अंतराल का उपयोग करते हैं या विभाजन परिणाम के साथ मेल नहीं खाते।",
+          "solution": "अंक 7 आमतौर पर तीन सीधी रेखाओं के साथ बनाया जाता है: शीर्ष पर एक क्षैतिज रेखा और नीचे जाने वाली दो तिरछी रेखाएँ। विकल्प 3 सही है क्योंकि यह अंक के मानक विन्यास के साथ मेल खाता है। विकल्प 4, 5 और 6 अंक 7 के आकृति बनाने के लिए आवश्यक रेखाओं की संख्या से अधिक हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for mathematical concepts.",
           "flag": null
         },
         "mr": {
-          "stem": "एक अल्बॅट्रॉस 12,000 किमी अंतर किती दिवसांत ओलांडू शकेल, जर तो एक दिवसात 900–1000 किमी अंतर ओलांडू शकतो?",
+          "stem": "अक्षर 7 तयार करण्यासाठी किती छड्या लागतात?",
           "choices": [
-            "12–13 दिवस",
-            "10–12 दिवस",
-            "12–15 दिवस",
-            "10–14 दिवस"
+            "3",
+            "4",
+            "5",
+            "6"
           ],
-          "solution": "एक अल्बॅट्रॉस एक दिवसात 900–1000 किमी अंतर ओलांडू शकतो. 12,000 किमी ला 900 किमी ने भागल्यास जवळपास 13.3 दिवस मिळतात, आणि 1000 किमी ने भागल्यास त्याच 12 दिवस मिळतात, त्यामुळे श्रेणी 12–13 दिवस असेल. इतर विकल्प चुकीच्या श्रेणी वापरतात किंवा भागाकार परिणामाशी जुळत नाहीत.",
+          "solution": "अक्षर 7 ला तीन सरळ रेषा वापरून तयार केले जाते: वरच्या बाजूला एक आडवी रेषा आणि खालच्या बाजूला दोन तिरकस रेषा. विकल्प 3 बरोबर आहे कारण तो अक्षराच्या मानक रूपात जुळतो. विकल्प 4, 5 आणि 6 ला अक्षराचा आकार तयार करण्यासाठी आवश्यक असलेल्या रेषांपेक्षा जास्त रेषा लागतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for digits and lines.",
           "flag": null
         }
       },
@@ -73,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "A pupil might divide 12,000 by 1000 instead of 900, leading to an underestimate.",
-        "Confuses the range of daily distance with the total range of days",
-        "Student divides 12,000 by 900 but forgets to account for the upper range of the daily distance"
+        "Student counts the diagonal as two sticks instead of one",
+        "Confuses the number of sticks for the digit 7 with the number of sticks for the digit 5",
+        "Student counts the horizontal and vertical lines of 7 as separate sticks, including the top bar and the diagonal as three separate sticks"
       ],
       "solverAnswers": [
         0,
@@ -85,7 +85,304 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 0 (12–13 days). Dividing 12,000 by 900 gives approximately 13.33, and dividing by 1000 gives 12, so the range is 12–13 days. The other options reflect common misconceptions in division or range interpretation.",
+      "critique": "The question is based on a visual representation of the digit 7, which is commonly drawn with three straight lines. The correct answer is 3 (option 0). The author's reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp101.pdf",
+          "ordinal": 14,
+          "pageStart": 22,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 1: Large Numbers Around Us",
+            "1.5 Patterns in Products",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp101.pdf",
+          "ordinal": 15,
+          "pageStart": 23,
+          "pageEnd": 26,
+          "headingPath": [
+            "Chapter 1: Large Numbers Around Us",
+            "1.5 Patterns in Products",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp101.pdf",
+          "ordinal": 16,
+          "pageStart": 26,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 1: Large Numbers Around Us",
+            "1.5 Patterns in Products",
+            "SUMMARY"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-01T23:56:44.771Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If the sum of the populations of cities is less than 8,50,000, which of the following could be the possible sum?",
+      "choices": [
+        "8,40,000",
+        "8,50,000",
+        "8,60,000",
+        "8,70,000"
+      ],
+      "answerIndex": 0,
+      "solution": "If the sum of the populations of cities is less than 8,50,000, the possible sum could be 8,40,000. The other options are either equal to or greater than 8,50,000, which does not meet the condition.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि शहरों की जनसंख्या का योग 8,50,000 से कम है, तो निम्नलिखित में से कौन सा संभावित योग हो सकता है?",
+          "choices": [
+            "8,40,000",
+            "8,50,000",
+            "8,60,000",
+            "8,70,000"
+          ],
+          "solution": "यदि शहरों की जनसंख्या का योग 8,50,000 से कम है, तो संभावित योग 8,40,000 हो सकता है। अन्य विकल्प या तो 8,50,000 के बराबर हैं या उससे अधिक हैं, जो शर्त के अनुरूप नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate numerical formatting and terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "शहरांच्या लोकसंख्यांच्या बेरजेची 8,50,000 पेक्षा कमी असेल, तर खालीलपैकी कोणती बेरजा शक्य असू शकते?",
+          "choices": [
+            "8,40,000",
+            "8,50,000",
+            "8,60,000",
+            "8,70,000"
+          ],
+          "solution": "शहरांच्या लोकसंख्यांच्या बेरजेची 8,50,000 पेक्षा कमी असेल, तर शक्य बेरजा 8,40,000 असू शकते. इतर विकल्प 8,50,000 इतक्या किंवा त्यापेक्षा जास्त असतात, जे अट पूर्ण करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for numerical values and mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "chooses a value equal to 8,50,000",
+        "chooses a value greater than 8,50,000",
+        "chooses a value greater than 8,50,000"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the solution correctly identifies 8,40,000 as the only value less than 8,50,000. The reasoning for the other options is accurate and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp101.pdf",
+          "ordinal": 8,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 1: Large Numbers Around Us",
+            "1.4 Exact and Approximate Values"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp101.pdf",
+          "ordinal": 9,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 1: Large Numbers Around Us",
+            "1.5 Patterns in Products"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp101.pdf",
+          "ordinal": 10,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 1: Large Numbers Around Us",
+            "1.5 Patterns in Products"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-01T23:56:44.771Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If the difference between two numbers is near 10,00,000 and less than 10,00,000, which of the following could be the difference?",
+      "choices": [
+        "9,90,000",
+        "10,00,000",
+        "10,10,000",
+        "10,20,000"
+      ],
+      "answerIndex": 0,
+      "solution": "If the difference between two numbers is near 10,00,000 and less than 10,00,000, the possible difference could be 9,90,000. The other options are either equal to or greater than 10,00,000, which does not meet the condition.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अगर दो संख्याओं के बीच का अंतर लगभग 10,00,000 है और 10,00,000 से कम है, तो निम्नलिखित में से कौन-सा अंतर हो सकता है?",
+          "choices": [
+            "9,90,000",
+            "10,00,000",
+            "10,10,000",
+            "10,20,000"
+          ],
+          "solution": "अगर दो संख्याओं के बीच का अंतर लगभग 10,00,000 है और 10,00,000 से कम है, तो संभावित अंतर 9,90,000 हो सकता है। अन्य विकल्प या तो 10,00,000 के बराबर हैं या उससे अधिक हैं, जो शर्त को पूरा नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate numerical notation and terminology common in Hindi-medium education.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "दोन संख्यांच्या फरकाचे मूल्य 10,00,000 जवळ आहे पण 10,00,000 पेक्षा कमी आहे, तर खालीलपैकी कोणता फरक असू शकतो?",
+          "choices": [
+            "9,90,000",
+            "10,00,000",
+            "10,10,000",
+            "10,20,000"
+          ],
+          "solution": "दोन संख्यांच्या फरकाचे मूल्य 10,00,000 जवळ आहे पण 10,00,000 पेक्षा कमी आहे, तर फरक म्हणून 9,90,000 असू शकतो. उरलेल्या विकल्पांमध्ये फरक 10,00,000 च्या बरोबर किंवा जास्त आहे, जे अट पूर्ण करत नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate numerical notation and terminology as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Student thinks that 'less than 10,00,000' means the difference could be exactly 10,00,000.",
+        "chooses a value greater than 10,00,000",
+        "chooses a value greater than 10,00,000"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is correctly interpreted as asking for a difference that is both 'near 10,00,000' and 'less than 10,00,000'. Option 0 (9,90,000) satisfies this. The author's reasoning is sound and the misconceptions listed for the other options are plausible.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp101.pdf",
+          "ordinal": 8,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 1: Large Numbers Around Us",
+            "1.4 Exact and Approximate Values"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp101.pdf",
+          "ordinal": 9,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 1: Large Numbers Around Us",
+            "1.5 Patterns in Products"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp101.pdf",
+          "ordinal": 10,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 1: Large Numbers Around Us",
+            "1.5 Patterns in Products"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-01T23:56:44.771Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "If a newborn blue whale weighs 2,700 kg, and a baby elephant weighs 100 kg, how many times heavier is the newborn blue whale compared to the baby elephant?",
+      "choices": [
+        "27",
+        "270",
+        "2700",
+        "27,000"
+      ],
+      "answerIndex": 0,
+      "solution": "The question states that a newborn blue whale weighs 2,700 kg and a baby elephant weighs 100 kg. Dividing 2,700 by 100 gives 27. The option '27' is the correct answer. '270' is 10 times larger, '2700' is 100 times larger, and '27,000' is 1000 times larger than the correct value.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक नवजात नीला व्हेल 2,700 किग्रा भार रखता है, और एक बच्चा हाथी 100 किग्रा भार रखता है, तो नवजात नीला व्हेल, बच्चा हाथी की तुलना में कितना भारी होता है?",
+          "choices": [
+            "27",
+            "270",
+            "2700",
+            "27,000"
+          ],
+          "solution": "प्रश्न कहता है कि एक नवजात नीला व्हेल 2,700 किग्रा भार रखता है और एक बच्चा हाथी 100 किग्रा भार रखता है। 2,700 को 100 से विभाजित करने पर 27 प्राप्त होता है। '27' विकल्प सही उत्तर है। '270' सही मान के 10 गुना बड़ा है, '2700' सही मान के 100 गुना बड़ा है, और '27,000' सही मान के 1000 गुना बड़ा है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक नवजात ब्लू व्हेल 2,700 किग्रा वजन करत असेल आणि एक बाळ हायना 100 किग्रा वजन करत असेल, तर नवजात ब्लू व्हेल हायनापेक्षा किती पट भारी असेल?",
+          "choices": [
+            "27",
+            "270",
+            "2700",
+            "27,000"
+          ],
+          "solution": "प्रश्नात नवजात ब्लू व्हेल 2,700 किग्रा वजन करत असेल आणि बाळ हायना 100 किग्रा वजन करत असेल असे म्हटले आहे. 2,700 ला 100 ने भागल्यास 27 मिळते. '27' हा विकल्प बरोबर उत्तर आहे. '270' हा बरोबर मूल्याच्या 10 पट जास्त आहे, '2700' हा 100 पट जास्त आहे आणि '27,000' हा 1000 पट जास्त आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terms for 'blue whale' and 'baby elephant'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Multiplies by 10 instead of dividing",
+        "Multiplies by 100 instead of dividing",
+        "Multiplies by 1000 instead of dividing"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct calculation is 2,700 ÷ 100 = 27. The author's solution is correct, and the reasoning for the distractors aligns with common misconceptions (e.g., multiplying instead of dividing).",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp101.pdf",
@@ -119,49 +416,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T12:33:47.073Z",
+      "generatedAt": "2026-11-01T23:56:44.771Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 2,
-      "stem": "Which of the following is the Indian name for the number 1,000,000?",
+      "difficulty": 4,
+      "stem": "The population of a town was 75,000 in 2011 and increased to 1,06,000 in 2024. What is the increase in population?",
       "choices": [
-        "Ten thousand",
-        "One lakh",
-        "One crore",
-        "One million"
+        "25,000",
+        "31,000",
+        "6,000",
+        "30,000"
       ],
       "answerIndex": 1,
-      "solution": "The correct answer is One lakh. In the Indian system, 1,00,000 is called one lakh, while 1,000,000 is called ten lakh. A pupil might confuse it with ten thousand, which is 10,000. Another might think it is one crore, which is 100 lakh. A third might think it is one million, which is the American name for the number.",
+      "solution": "The increase in population is calculated by subtracting the initial population from the final population: 106,000 - 75,000 = 31,000. The option '25,000' is incorrect because it does not match the actual difference. The option '6,000' is too small and does not reflect the true increase. The option '30,000' is close but not the exact value.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा संख्या 1,000,000 का भारतीय नाम है?",
+          "stem": "एक शहर की जनसंख्या 2011 में 75,000 थी और 2024 में 1,06,000 हो गई। जनसंख्या में कितनी वृद्धि हुई?",
           "choices": [
-            "दस हजार",
-            "एक लाख",
-            "एक करोड़",
-            "एक मिलियन"
+            "25,000",
+            "31,000",
+            "6,000",
+            "30,000"
           ],
-          "solution": "सही उत्तर एक लाख है। भारतीय प्रणाली में, 1,00,000 को एक लाख कहा जाता है, जबकि 1,000,000 को दस लाख कहा जाता है। एक छात्र इसे दस हजार, जो 10,000 है, के साथ भ्रमित कर सकता है। दूसरा छात्र इसे एक करोड़, जो 100 लाख है, के साथ भ्रमित कर सकता है। तीसरा छात्र इसे एक मिलियन के रूप में सोच सकता है, जो संख्या का अमेरिकी नाम है।",
+          "solution": "जनसंख्या में वृद्धि की गणना प्रारंभिक जनसंख्या को अंतिम जनसंख्या में से घटाकर की जाती है: 106,000 - 75,000 = 31,000। विकल्प '25,000' गलत है क्योंकि यह वास्तविक अंतर के बराबर नहीं है। विकल्प '6,000' बहुत छोटा है और वास्तविक वृद्धि का प्रतिबिंब नहीं है। विकल्प '30,000' निकट है लेकिन ठीक मान नहीं है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. Technical terms like 'लाख' (lakh) and 'करोड़' (crore) are correctly used as per Indian numbering system conventions.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains option (2) and the distractors are still incorrect.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते संख्या 1,000,000 चे भारतीय नाव आहे?",
+          "stem": "2011 मध्ये एका शहराची लोकसंख्या 75,000 होती आणि 2024 मध्ये 1,06,000 झाली. लोकसंख्येत किती वाढ झाली?",
           "choices": [
-            "दहा हजार",
-            "एक लाख",
-            "एक कोटी",
-            "एक मिलियन"
+            "25,000",
+            "31,000",
+            "6,000",
+            "30,000"
           ],
-          "solution": "बरोबर उत्तर एक लाख आहे. भारतीय पद्धतीत, 1,00,000 लाख म्हणतात, तर 1,000,000 दहा लाख म्हणतात. एखादा विद्यार्थी त्याचा चूकून दहा हजार, जे 10,000 आहे, असे विचार करू शकतो. दुसरा विद्यार्थी त्याचा चूकून एक कोटी, जे 100 लाख आहे, असे विचार करू शकतो. तिसरा विद्यार्थी त्याचा चूकून एक मिलियन, जे संख्येचे अमेरिकन नाव आहे, असे विचार करू शकतो.",
+          "solution": "लोकसंख्येतील वाढ ही सुरुवातीच्या लोकसंख्येच्या विरुद्ध अंतिम लोकसंख्या वजा करून काढली जाते: 106,000 - 75,000 = 31,000. '25,000' हा विकल्प चुकीचा आहे कारण तो खर्‍या फरकाशी मेळ बसत नाही. '6,000' हा विकल्प खूप लहान आहे आणि खर्‍या वाढीचे प्रतिबिंब दर्शवत नाही. '30,000' हा विकल्प जवळ आहे पण तो अचूक मूल्य नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, with appropriate use of Marathi numerical terms (लाख, कोटी, मिलियन) that match Indian numerical system terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
           "flag": null
         }
       },
@@ -170,10 +467,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "confuses the Indian name for 10,000 with 1,000,000",
+        "confuses the difference between 1 lakh and 75,000",
         null,
-        "confuses one lakh with one crore",
-        "thinks the American name is the Indian name"
+        "confuses the difference between 1,06,000 and 1 lakh",
+        "miscalculates the total increase"
       ],
       "solverAnswers": [
         1,
@@ -182,268 +479,45 @@
         1,
         1
       ],
-      "levelFlag": null,
-      "critique": "The solution is correct. The Indian system uses 'lakh' and 'crore' for large numbers, and 1,000,000 is indeed called 'ten lakh' in the Indian system, not 'one lakh'. The author's reasoning for the distractors is accurate and reflects common misconceptions.",
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 31,000 (1,06,000 - 75,000). The author's reasoning is sound, and the distractors represent common misconceptions.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp101.pdf",
-          "ordinal": 4,
-          "pageStart": 6,
-          "pageEnd": 8,
+          "ordinal": 14,
+          "pageStart": 22,
+          "pageEnd": 23,
           "headingPath": [
             "Chapter 1: Large Numbers Around Us",
-            "1.2 Land of Tens"
+            "1.5 Patterns in Products",
+            "SUMMARY"
           ]
         },
         {
           "document": "ncert/7/mathematics/gegp101.pdf",
-          "ordinal": 5,
-          "pageStart": 8,
-          "pageEnd": 9,
+          "ordinal": 15,
+          "pageStart": 23,
+          "pageEnd": 26,
           "headingPath": [
             "Chapter 1: Large Numbers Around Us",
-            "1.3 Of Crores and Crores!"
+            "1.5 Patterns in Products",
+            "SUMMARY"
           ]
         },
         {
           "document": "ncert/7/mathematics/gegp101.pdf",
-          "ordinal": 6,
-          "pageStart": 9,
-          "pageEnd": 9,
+          "ordinal": 16,
+          "pageStart": 26,
+          "pageEnd": 28,
           "headingPath": [
             "Chapter 1: Large Numbers Around Us",
-            "1.3 Of Crores and Crores!"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp101.pdf",
-          "ordinal": 7,
-          "pageStart": 9,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 1: Large Numbers Around Us",
-            "1.4 Exact and Approximate Values"
+            "1.5 Patterns in Products",
+            "SUMMARY"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T12:33:47.073Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If a school has 732 people and the principal orders 750 sweets, what is the reason for this action?",
-      "choices": [
-        "To round down the number of people",
-        "To round up the number of people",
-        "To make the calculation easier",
-        "To save money on sweets"
-      ],
-      "answerIndex": 1,
-      "solution": "The correct answer is To round up the number of people. Rounding up means approximating the number to a higher value, which is what the principal did by ordering 750 sweets instead of 700. A pupil might think that the principal is rounding down, which would mean ordering fewer sweets, but that is not the case. Another might think the principal is making the calculation easier, which is not the main reason. A third might think the principal is trying to save money, which is also not the case.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक स्कूल में 732 लोग हैं और प्रधानाचार्य 750 लड्डू के आदेश देता है तो इस कार्रवाई का क्या कारण है?",
-          "choices": [
-            "लोगों की संख्या को नीचे गोल करना",
-            "लोगों की संख्या को ऊपर गोल करना",
-            "गणना सरल करना",
-            "लड्डू पर पैसा बचाना"
-          ],
-          "solution": "सही उत्तर लोगों की संख्या को ऊपर गोल करना है। ऊपर गोल करना का अर्थ है संख्या का उच्चतर मान लेना, जो प्रधानाचार्य ने 700 के बजाय 750 लड्डू आदेश देकर किया। एक छात्र यह सोच सकता है कि प्रधानाचार्य नीचे गोल कर रहा है, जिसका अर्थ होगा कम लड्डू आदेश देना, लेकिन ऐसा नहीं है। एक अन्य छात्र यह सोच सकता है कि प्रधानाचार्य गणना सरल कर रहा है, जो मुख्य कारण नहीं है। तीसरा छात्र यह सोच सकता है कि प्रधानाचार्य पैसा बचाने की कोशिश कर रहा है, जो भी सही नहीं है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for mathematical rounding.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका शाळेत 732 लोक आहेत आणि प्राचार्यांनी 750 गोडी आदेश दिल्या, या कृतीचे कारण काय आहे?",
-          "choices": [
-            "लोकांच्या संख्येचे फेकून देणे",
-            "लोकांच्या संख्येचे वाढवून देणे",
-            "गणना सोपी करणे",
-            "गोडीवर खर्च बचत करणे"
-          ],
-          "solution": "बरोबर उत्तर लोकांच्या संख्येचे वाढवून देणे आहे. वाढवून देणे म्हणजे उच्च मूल्याकडे अंदाज करणे, जे प्राचार्यांनी 700 ऐवजी 750 गोडी आदेश देऊन केले. एका विद्यार्थ्याला असे वाटू शकते की प्राचार्य फेकून देत आहे, जे कमी गोडी आदेश देण्याचे अर्थ असते, परंतु हे नाही. एका विद्यार्थ्याला असे वाटू शकते की प्राचार्य गणना सोपी करत आहे, जे मुख्य कारण नाही. तिसरा विद्यार्थी असे वाटू शकतो की प्राचार्य खर्च बचत करत आहे, जे देखील नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for mathematical concepts like 'rounding up' and 'rounding down'.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "confuses rounding up with rounding down",
-        null,
-        "thinks rounding is done for simplicity",
-        "thinks rounding is done to save money"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is sound and correctly identifies that rounding up is the reason for ordering more sweets than the number of people. The reasoning for the other options aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp101.pdf",
-          "ordinal": 4,
-          "pageStart": 6,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 1: Large Numbers Around Us",
-            "1.2 Land of Tens"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp101.pdf",
-          "ordinal": 5,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 1: Large Numbers Around Us",
-            "1.3 Of Crores and Crores!"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp101.pdf",
-          "ordinal": 6,
-          "pageStart": 9,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 1: Large Numbers Around Us",
-            "1.3 Of Crores and Crores!"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp101.pdf",
-          "ordinal": 7,
-          "pageStart": 9,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 1: Large Numbers Around Us",
-            "1.4 Exact and Approximate Values"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T12:33:47.073Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "What is the total number of zeroes in 1 crore?",
-      "choices": [
-        "5",
-        "6",
-        "7",
-        "8"
-      ],
-      "answerIndex": 2,
-      "solution": "The correct answer is 7. In the Indian system, 1 crore is written as 1,00,00,000, which has seven zeroes. A pupil might think it has 5 zeroes, which is the number of zeroes in 1 lakh. Another might think it has 6 zeroes, which is incorrect. A third might think it has 8 zeroes, which is also wrong.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "1 करोड़ में कुल कितने शून्य होते हैं?",
-          "choices": [
-            "5",
-            "6",
-            "7",
-            "8"
-          ],
-          "solution": "सही उत्तर 7 है। भारतीय प्रणाली के अनुसार, 1 करोड़ को 1,00,00,000 के रूप में लिखा जाता है, जिसमें सात शून्य होते हैं। एक छात्र 1 लाख में शून्यों की संख्या के कारण यह सोच सकता है कि इसमें 5 शून्य होते हैं। दूसरा छात्र 6 शून्यों के कारण यह सोच सकता है, जो गलत है। तीसरा छात्र 8 शून्यों के कारण यह सोच सकता है, जो भी गलत है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Indian numbering terms like 'करोड़' and 'लाख'.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "1 कोटी मध्ये एकूण किती शून्य असतात?",
-          "choices": [
-            "5",
-            "6",
-            "7",
-            "8"
-          ],
-          "solution": "बरोबर उत्तर 7 आहे. भारतीय पद्धतीत, 1 कोटी लिहिला जातो 1,00,00,000, ज्यामध्ये सात शून्य असतात. एक विद्यार्थी असे विचार करू शकतो की त्यामध्ये 5 शून्य असतात, जे 1 लाख मधील शून्यांच्या संख्येच्या बरोबर आहे. दुसरा विद्यार्थी 6 शून्य असतील असे विचार करू शकतो, जे चुकीचे आहे. तिसरा विद्यार्थी 8 शून्य असतील असे विचार करू शकतो, जे चुकीचे आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate use of Marathi numerical terms like 'कोटी' and 'लाख' which are standard in Marathi textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "confuses 1 crore with 1 lakh",
-        "thinks the number of zeroes is one less than it actually is",
-        null,
-        "thinks the number of zeroes is one more than it actually is"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 7, as 1 crore is written as 1,00,00,000 in the Indian numbering system, which contains seven zeroes. The author's solution is correct, and the reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp101.pdf",
-          "ordinal": 4,
-          "pageStart": 6,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 1: Large Numbers Around Us",
-            "1.2 Land of Tens"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp101.pdf",
-          "ordinal": 5,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 1: Large Numbers Around Us",
-            "1.3 Of Crores and Crores!"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp101.pdf",
-          "ordinal": 6,
-          "pageStart": 9,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 1: Large Numbers Around Us",
-            "1.3 Of Crores and Crores!"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp101.pdf",
-          "ordinal": 7,
-          "pageStart": 9,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 1: Large Numbers Around Us",
-            "1.4 Exact and Approximate Values"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T12:33:47.073Z",
+      "generatedAt": "2026-11-01T23:56:44.771Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

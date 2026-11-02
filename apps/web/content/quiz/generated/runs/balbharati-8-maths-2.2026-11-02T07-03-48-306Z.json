@@ -1,0 +1,513 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T07:03:48.306Z",
+  "finishedAt": "2026-11-02T07:10:11.387Z",
+  "seconds": 383,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी गणित इंग्रजी",
+    "bookCode": "803020004",
+    "document": "balbharati/8/mathematics/803020004.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 2 — Parallel lines and transversals",
+    "edition": "First Edition 2018",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n4. (b) Parallel.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2022-23]\n33. Prove that if a line is drawn parallel to one side of a triangle intersecting the other 5\ntwo sides in distinct points, then the other two sides are divided in the same ratio.\nUsing the above theorem prove that a line through the point of intersection of the\ndiagonals and parallel to the base of the trapezium divides the non parallel sides in\nthe same ratio.",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n38.\n(i) XY ║PQ and AP is transversal.\n∠APD = ∠PAX (alternative interior angles)\n∠APD=45˚\n(ii) Since XY || PQ and AQ is a transversal\nso alternate interior angles are equal\nhence ∠YAQ = ∠AQD=30˚\n(iii) In ∆ 𝐴𝐷𝑃, θ = 45˚\ntan 𝜃 = ஻ ௉\ntan 45˚ = ଵ଴଴ ௉஽\nPD=100 m\nBoat P is 100 m from the light house\nIn ∆𝐴𝐷𝑄, θ = 30˚\ntan 𝜃 = ஻ ௉\ntan 30 = ଵ଴଴ ஽ொ\n√ଷ ଵ = ଵ଴଴ ஽ொ\nDQ = 100√3 m\nOR",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n22. In the figure, altitudes AD and CE of Δ ABC intersect 2\neach other at the point P. Show that:\n(i) ΔABD ~ ΔCBE\n(ii) ΔPDC ~ ΔBEC\n[OR]\nBF BE\nIn the figure, DE || AC and DF || AE. Prove that FE = EC"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 114947,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 17436,
+      "completionTokens": 7077
+    },
+    "critique": {
+      "calls": 31,
+      "ms": 190211,
+      "in": 24,
+      "out": 18,
+      "rejects": 6,
+      "promptTokens": 14663,
+      "completionTokens": 5507
+    },
+    "solver": {
+      "calls": 139,
+      "ms": 69431,
+      "in": 18,
+      "out": 13,
+      "rejects": 5,
+      "promptTokens": 29096,
+      "completionTokens": 1435
+    },
+    "form": {
+      "calls": 6,
+      "ms": 28354,
+      "in": 13,
+      "out": 7,
+      "rejects": 6,
+      "promptTokens": 3307,
+      "completionTokens": 875
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 7,
+      "ms": 1257,
+      "in": 7,
+      "out": 5,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 167411,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 11638,
+      "completionTokens": 5628
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 1,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What are lines that do not intersect each other called?",
+      "ms": {
+        "draft": 6748,
+        "critique": 6126
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two parallel lines are intersected by a transversal, what is the sum of the measures of the interior angles on the same side of the transversal?",
+      "ms": {
+        "draft": 6748,
+        "critique": 6879
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the given figure, line l is a transversal of parallel lines m and n. If ∠1 is 110°, what is the measure of ∠3?",
+      "ms": {
+        "draft": 6748,
+        "critique": 6444
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, line l is a transversal of parallel lines m and n. If ∠1 is 110°, what is the measure of ∠2?",
+      "ms": {
+        "draft": 6748,
+        "critique": 7882
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a transversal?",
+      "ms": {
+        "draft": 6748,
+        "critique": 6879,
+        "solver": 10438,
+        "form": 1973
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the given figure, line l is a transversal of parallel lines m and n. If ∠1 is 110°, what is the measure of ∠4?",
+      "ms": {
+        "draft": 6748,
+        "critique": 6789
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a pair of alternate interior angles formed when a transversal intersects two parallel lines?",
+      "ms": {
+        "draft": 4755,
+        "critique": 5518,
+        "solver": 1349
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a line is parallel to another line and a transversal cuts both, what is the measure of the angle opposite to an angle of 100°?",
+      "ms": {
+        "draft": 4755,
+        "critique": 7328
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given diagram, if line m is parallel to line n and a transversal intersects them, which of the following is true about ∠x and ∠y?",
+      "ms": {
+        "draft": 4755,
+        "critique": 6121,
+        "solver": 1274
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a pair of alternate interior angles when a transversal intersects two parallel lines?",
+      "ms": {
+        "draft": 11610,
+        "critique": 6218,
+        "solver": 1774
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a pair of corresponding angles when a transversal intersects two parallel lines?",
+      "ms": {
+        "draft": 11610,
+        "critique": 6610,
+        "solver": 2616
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a transversal intersects two parallel lines and one of the interior angles formed is 100°, what is the measure of its adjacent angle?",
+      "ms": {
+        "draft": 11610,
+        "critique": 6189,
+        "solver": 11324,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given diagram, if line l is parallel to line m and a transversal intersects them, and the measure of ∠x is 105°, what is the measure of its corresponding angle?",
+      "ms": {
+        "draft": 11610,
+        "critique": 6613,
+        "solver": 13148,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a transversal intersects two parallel lines and the measure of one alternate interior angle is 80°, what is the measure of the other alternate interior angle?",
+      "ms": {
+        "draft": 11610,
+        "critique": 7920,
+        "solver": 14498,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the figure, line p is parallel to line q, and line r is a transversal. If ∠1 is 50°, what is the measure of ∠3?",
+      "ms": {
+        "draft": 12566,
+        "critique": 7455,
+        "solver": 1735
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a transversal intersects two parallel lines, and one of the interior angles is 120°, what is the measure of the other interior angle on the same side of the transversal?",
+      "ms": {
+        "draft": 12566,
+        "critique": 6630,
+        "solver": 13505,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the figure, line p is parallel to line q, and line r is a transversal. If ∠2 is 110°, what is the measure of ∠6?",
+      "ms": {
+        "draft": 12566,
+        "critique": 6867,
+        "solver": 10412,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of angles formed by two parallel lines and a transversal?",
+      "ms": {
+        "draft": 12566,
+        "critique": 6271,
+        "solver": 2062,
+        "form": 3315
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a transversal intersects two parallel lines and one of the corresponding angles is 60°, what is the measure of the corresponding angle?",
+      "ms": {
+        "draft": 12566,
+        "critique": 5473,
+        "solver": 1304,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a transversal intersects two parallel lines, which of the following is true about the corresponding angles?",
+      "ms": {
+        "draft": 4755,
+        "critique": 5877,
+        "solver": 1284,
+        "form": 3049,
+        "translation": 33739
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, line l is a transversal to parallel lines p and q. If ∠1 is 110°, what is the measure of ∠5?",
+      "ms": {
+        "draft": 12566,
+        "critique": 6017,
+        "solver": 14460,
+        "form": 0,
+        "translation": 24087
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a line is drawn parallel to one side of a triangle, intersecting the other two sides, what can be said about the ratio of the segments formed on those sides?",
+      "ms": {
+        "draft": 4755,
+        "critique": 4762,
+        "solver": 1481,
+        "form": 1975,
+        "translation": 39886
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a transversal cuts two parallel lines and one of the interior angles is 100°, which of the following must be the measure of the angle adjacent to it on the same side?",
+      "ms": {
+        "draft": 11610,
+        "critique": 5079,
+        "solver": 1134,
+        "form": 0,
+        "translation": 27098
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If two lines are cut by a transversal and the alternate interior angles are equal, what can be concluded about the two lines?",
+      "ms": {
+        "draft": 4755,
+        "critique": 3706,
+        "solver": 930,
+        "form": 2751,
+        "translation": 38926
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What are lines that do not intersect each other called?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If two parallel lines are intersected by a transversal, what is the sum of the measures of the interior angles on the same side of the transversal?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In the given figure, line l is a transversal of parallel lines m and n. If ∠1 is 110°, what is the measure of ∠3?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the given figure, line l is a transversal of parallel lines m and n. If ∠1 is 110°, what is the measure of ∠2?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a transversal?",
+      "reason": "options 0 and 2 are the same (\"A line that intersects two lines at one point\"); distractor 3's reason is not a one-line misconception (\"Confuses transversal with a line that doesn't intersect any …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In the given figure, line l is a transversal of parallel lines m and n. If ∠1 is 110°, what is the measure of ∠4?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a pair of alternate interior angles formed when a transversal intersects two parallel lines?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a line is parallel to another line and a transversal cuts both, what is the measure of the angle opposite to an angle of 100°?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the given diagram, if line m is parallel to line n and a transversal intersects them, which of the following is true about ∠x and ∠y?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a pair of alternate interior angles when a transversal intersects two parallel lines?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a pair of corresponding angles when a transversal intersects two parallel lines?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a transversal intersects two parallel lines and one of the interior angles formed is 100°, what is the measure of its adjacent angle?",
+      "reason": "options 1 and 2 are the same (\"100°\"); options 1 and 2 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given diagram, if line l is parallel to line m and a transversal intersects them, and the measure of ∠x is 105°, what is the measure of its corresponding angle?",
+      "reason": "options 0 and 2 are the same (\"75°\"); options 1 and 3 are the same (\"105°\"); options 0 and 2 are the same number; options 1 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a transversal intersects two parallel lines and the measure of one alternate interior angle is 80°, what is the measure of the other alternate interior angle?",
+      "reason": "options 1 and 2 are the same (\"100°\"); options 1 and 3 are the same (\"100°\"); options 2 and 3 are the same (\"100°\"); options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In the figure, line p is parallel to line q, and line r is a transversal. If ∠1 is 50°, what is the measure of ∠3?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a transversal intersects two parallel lines, and one of the interior angles is 120°, what is the measure of the other interior angle on the same side of the transversal?",
+      "reason": "options 0 and 3 are the same (\"60°\"); options 0 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the figure, line p is parallel to line q, and line r is a transversal. If ∠2 is 110°, what is the measure of ∠6?",
+      "reason": "options 0 and 2 are the same (\"70°\"); options 0 and 2 are the same number"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a property of angles formed by two parallel lines and a transversal?",
+      "reason": "near-duplicate of batch item \"If a transversal intersects two parallel lines, wh…\" (cosine 0.901 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a transversal intersects two parallel lines and one of the corresponding angles is 60°, what is the measure of the corresponding angle?",
+      "reason": "near-duplicate of served question cmvx2wjrm03l90remrg6q706c (cosine 0.935 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

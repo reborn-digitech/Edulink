@@ -21,49 +21,49 @@
   "board": "BALBHARATI",
   "book": "८ वी सामान्य विज्ञान इंग्रजी",
   "edition": "First Edition 2018",
-  "generatedAt": "2026-10-29T21:38:27.682Z",
+  "generatedAt": "2026-11-02T12:34:07.492Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 3,
-      "stem": "Why are plastic tanks used for storage of chemicals?",
+      "difficulty": 2,
+      "stem": "Which material is used to make thermocol?",
       "choices": [
-        "Because they are lightweight",
-        "Because they are non-corrosive",
-        "Because they are easily available",
-        "Because they are cheap"
+        "Polypropylene",
+        "PVC",
+        "Polystyrene",
+        "Polyethylene"
       ],
-      "answerIndex": 1,
-      "solution": "Plastic is non-corrosive, which means it does not react with chemicals. This makes it suitable for storing chemicals. While plastic is lightweight and cheap, the main reason for its use in chemical storage is its non-corrosive nature. Easily available is not the primary reason.",
+      "answerIndex": 2,
+      "solution": "Thermocol is made from polystyrene. Polypropylene is used for containers, PVC for pipes, and polyethylene for bags.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "रासायनिक पदार्थों के भंडारण के लिए प्लास्टिक के टैंक क्यों उपयोग किए जाते हैं?",
+          "stem": "कौन सा सामग्री थर्मोकॉल बनाने के लिए उपयोग की जाती है?",
           "choices": [
-            "क्योंकि वे हल्के होते हैं",
-            "क्योंकि वे अम्लीय नहीं होते हैं",
-            "क्योंकि वे आसानी से उपलब्ध होते हैं",
-            "क्योंकि वे सस्ते होते हैं"
+            "पॉलीप्रोपाइलीन",
+            "PVC",
+            "पॉलीस्टाइरीन",
+            "पॉलीथीलीन"
           ],
-          "solution": "प्लास्टिक अम्लीय नहीं होता, जिसका अर्थ है कि यह रासायनिक पदार्थों के साथ अभिक्रिया नहीं करता। इसके कारण यह रासायनिक पदार्थों के भंडारण के लिए उपयुक्त होता है। यद्यपि प्लास्टिक हल्का और सस्ता होता है, लेकिन रासायनिक भंडारण में इसके उपयोग का मुख्य कारण इसकी अम्लीय न होने की विशेषता है। आसानी से उपलब्ध होना मुख्य कारण नहीं है।",
+          "solution": "थर्मोकॉल पॉलीस्टाइरीन से बनाया जाता है। पॉलीप्रोपाइलीन कंटेनरों के लिए उपयोग किया जाता है, PVC पाइपों के लिए और पॉलीथीलीन बैगों के लिए।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, with appropriate technical terms like 'अम्लीय नहीं' (non-acidic) used instead of transliterated terms. The correct answer remains in the same position (option 1). All distractors remain incorrect in the Hindi version.",
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are correctly used in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "रसायनांच्या भंडारणासाठी प्लास्टिकच्या टॅंकचा वापर का केला जातो?",
+          "stem": "थर्मोकॉल बनवण्यासाठी कोणता सामग्री वापरली जाते?",
           "choices": [
-            "कारण ते हलके असतात",
-            "कारण ते अक्षयोद्भवी असतात",
-            "कारण ते सहज उपलब्ध असतात",
-            "कारण ते स्वस्त असतात"
+            "पॉलीप्रॉपायलीन",
+            "PVC",
+            "पॉलीस्टायरीन",
+            "पॉलीएथिलीन"
           ],
-          "solution": "प्लास्टिक अक्षयोद्भवी असते, जे अर्थात ते रसायनांशी प्रतिक्रिया करत नाही. हे रसायनांच्या भंडारणासाठी योग्य बनवते. प्लास्टिक हलके आणि स्वस्त असल्याने, त्याचा वापर रसायनांच्या भंडारणासाठी करतात. सहज उपलब्ध असणे हे मुख्य कारण नाही.",
+          "solution": "थर्मोकॉल पॉलीस्टायरीनमधून बनवला जातो. पॉलीप्रॉपायलीन भांडारांसाठी वापरला जातो, PVC नळींसाठी आणि पॉलीएथिलीन बॅगांसाठी.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
+          "critique": "The Marathi translation accurately reflects the English content with appropriate technical terms used in Marathi textbooks.",
           "flag": null
         }
       },
@@ -72,105 +72,96 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Focuses on the lightness of plastic",
+        "Confuses polypropylene with thermocol",
+        "Confuses PVC with thermocol",
         null,
-        "Focuses on the cost and availability of plastic",
-        "Focuses on the cost and availability of plastic"
+        "Confuses polyethylene with thermocol"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 1, as plastic's non-corrosive nature is the primary reason for its use in chemical storage. The other options, while possibly true, are not the main reason. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "critique": "The solution is correct. Thermocol is indeed made from polystyrene, and the other options are correctly identified as materials with different uses.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 149,
-          "pageStart": 126,
-          "pageEnd": 126,
-          "headingPath": [
-            "17. Man made Materials"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 150,
-          "pageStart": 126,
-          "pageEnd": 127,
-          "headingPath": [
-            "17. Man made Materials",
-            "Wooden chair Wood Comb Plastic"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 151,
-          "pageStart": 127,
-          "pageEnd": 128,
-          "headingPath": [
-            "17. Man made Materials",
-            "Wooden chair Wood Comb Plastic"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 152,
-          "pageStart": 128,
+          "ordinal": 153,
+          "pageStart": 129,
           "pageEnd": 129,
           "headingPath": [
             "17. Man made Materials",
             "Wooden chair Wood Comb Plastic"
           ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 154,
+          "pageStart": 129,
+          "pageEnd": 130,
+          "headingPath": [
+            "17. Man made Materials",
+            "Wooden chair Wood Comb Plastic"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 155,
+          "pageStart": 130,
+          "pageEnd": 131,
+          "headingPath": [
+            "17. Man made Materials",
+            "Exercises"
+          ]
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T21:38:27.682Z",
+      "generatedAt": "2026-11-02T12:34:07.492Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "Which of the following is an example of a degradable material?",
+      "difficulty": 2,
+      "stem": "What is the main reason for using glass as an insulator in electric appliances?",
       "choices": [
-        "Polyethylene",
-        "Thermocol",
-        "PVC",
-        "Jute"
+        "It is transparent",
+        "It is hard and brittle",
+        "It is a poor conductor of heat",
+        "It is a poor conductor of electricity"
       ],
       "answerIndex": 3,
-      "solution": "Jute is a natural material that can be easily degraded in the environment. Polyethylene, Thermocol, and PVC are non-degradable plastics. Hence, the correct answer is Jute.",
+      "solution": "Glass is used as an insulator in electric appliances because it is a poor conductor of electricity. Its transparency and hardness are not the reasons for its use as an insulator. It is a poor conductor of heat, but that is not the main reason for its use in electric appliances.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा विघटनीय पदार्थ का उदाहरण है?",
+          "stem": "विद्युत यंत्रों में विद्युत विच्छेदक के रूप में कांच का उपयोग करने का मुख्य कारण क्या है?",
           "choices": [
-            "पॉलीथीन",
-            "थर्मोकॉल",
-            "पीवीसी",
-            "जूट"
+            "यह पारदर्शी है",
+            "यह कठोर और भंगुर है",
+            "यह ऊष्मा का खराब चालक है",
+            "यह विद्युत का खराब चालक है"
           ],
-          "solution": "जूट एक प्राकृतिक पदार्थ है जो पर्यावरण में आसानी से विघटित हो जाता है। पॉलीथीन, थर्मोकॉल और पीवीसी अविघटनीय प्लास्टिक हैं। अतः सही उत्तर जूट है।",
+          "solution": "विद्युत यंत्रों में कांच का उपयोग विद्युत विच्छेदक के रूप में इसलिए किया जाता है क्योंकि यह विद्युत का खराब चालक है। इसकी पारदर्शिता और कठोरता इसके विद्युत विच्छेदक के रूप में उपयोग के कारण नहीं हैं। यह ऊष्मा का खराब चालक है, लेकिन इसके विद्युत यंत्रों में उपयोग के लिए इसका मुख्य कारण नहीं है।",
           "imageAlt": null,
-          "critique": "All terms are standard in Hindi science textbooks. 'जूट' is the correct term for 'jute', and 'विघटनीय' is the standard term for 'degradable'.",
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi technical terms.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते एक विघटनीय सामग्रीचे उदाहरण आहे?",
+          "stem": "विद्युत उपकरणांमध्ये विद्युत अवाहक म्हणून काचेचा वापर करण्याचा मुख्य कारण काय आहे?",
           "choices": [
-            "पॉलिएथिलीन",
-            "थर्मोकॉल",
-            "PVC",
-            "जूत"
+            "ती दृश्यमान आहे",
+            "ती कठीण आणि भंगुर आहे",
+            "ती उष्णतेची खराब वाहक आहे",
+            "ती विद्युतची खराब वाहक आहे"
           ],
-          "solution": "जूत ही प्राकृतिक सामग्री आहे जी पर्यावरणात सहज विघटित होऊ शकते. पॉलिएथिलीन, थर्मोकॉल आणि PVC ही अविघटनीय प्लास्टिक आहेत. म्हणूनच, योग्य उत्तर जूत आहे.",
+          "solution": "विद्युत उपकरणांमध्ये काचेचा विद्युत अवाहक म्हणून वापर केला जातो कारण ती विद्युतची खराब वाहक आहे. तिची दृश्यमानता आणि कठोरता विद्युत अवाहक म्हणून वापरल्याचे कारण नाहीत. ती उष्णतेची खराब वाहक आहे, परंतु विद्युत उपकरणांमध्ये तिचा वापर करण्याचे मुख्य कारण उष्णतेची खराब वाहकता नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The correct answer remains in the same position (option 4). All distractors are still incorrect in Marathi.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
           "flag": null
         }
       },
@@ -179,9 +170,9 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "It is a type of plastic, which is non-degradable",
-        "It is a type of plastic, which is non-degradable",
-        "It is a type of plastic, which is non-degradable",
+        "Confuses transparency with insulation",
+        "Confuses physical properties with electrical properties",
+        "Confuses heat conduction with electrical conduction",
         null
       ],
       "solverAnswers": [
@@ -191,115 +182,8 @@
         3,
         3
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. Jute is a natural, biodegradable material, while polyethylene, thermocol, and PVC are synthetic plastics that are not easily degraded.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 149,
-          "pageStart": 126,
-          "pageEnd": 126,
-          "headingPath": [
-            "17. Man made Materials"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 150,
-          "pageStart": 126,
-          "pageEnd": 127,
-          "headingPath": [
-            "17. Man made Materials",
-            "Wooden chair Wood Comb Plastic"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 151,
-          "pageStart": 127,
-          "pageEnd": 128,
-          "headingPath": [
-            "17. Man made Materials",
-            "Wooden chair Wood Comb Plastic"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 152,
-          "pageStart": 128,
-          "pageEnd": 129,
-          "headingPath": [
-            "17. Man made Materials",
-            "Wooden chair Wood Comb Plastic"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T21:38:27.682Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "Which of the following is a thermoplastic?",
-      "choices": [
-        "Bakelite",
-        "PVC",
-        "Melamine",
-        "Epoxy resin"
-      ],
-      "answerIndex": 1,
-      "solution": "PVC is a thermoplastic, which means it can be softened and reshaped when heated. A pupil who confuses thermoplastics with thermosetting plastics might choose the wrong option. Bakelite, melamine, and epoxy resin are thermosetting plastics, which do not soften when heated.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन एक थर्मोप्लास्टिक है?",
-          "choices": [
-            "बैकेलाइट",
-            "पीवीसी",
-            "मेलामिन",
-            "एपॉक्सी रेजिन"
-          ],
-          "solution": "पीवीसी एक थर्मोप्लास्टिक है, जिसका अर्थ है कि जब इसे गर्म किया जाता है तो इसे नरम करके फिर से आकार दिया जा सकता है। एक छात्र जो थर्मोप्लास्टिक को थर्मोसेटिंग प्लास्टिक से गलती से जानता है, गलत विकल्प चुन सकता है। बैकेलाइट, मेलामिन और एपॉक्सी रेजिन थर्मोसेटिंग प्लास्टिक हैं, जो गर्म करने पर नरम नहीं होते।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, with proper use of Hindi technical terms for plastics. The structure and meaning match the original English question.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते एक थर्मोप्लास्टिक आहे?",
-          "choices": [
-            "बॅकेलाइट",
-            "पीव्हीसी",
-            "मेलामाइन",
-            "इपॉक्सी रेजिन"
-          ],
-          "solution": "पीव्हीसी हे थर्मोप्लास्टिक आहे, जे उष्णता दिल्यास मऊ होऊन पुन्हा आकार देता येतो. एखादा विद्यार्थी थर्मोप्लास्टिक आणि थर्मोसेटिंग प्लास्टिक यांच्यात चूक करू शकतो आणि चुकीचा विकल्प निवडू शकतो. बॅकेलाइट, मेलामाइन आणि इपॉक्सी रेजिन हे थर्मोसेटिंग प्लास्टिक आहेत, जे उष्णता दिल्यास मऊ होत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for plastics.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "confuses bakelite with thermoplastic",
-        null,
-        "confuses melamine with thermoplastic",
-        "confuses epoxy resin with thermoplastic"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. PVC is a thermoplastic, while Bakelite, melamine, and epoxy resin are thermosetting plastics. The author's reasoning for the distractors is valid, as students often confuse the two types of plastics.",
+      "levelFlag": null,
+      "critique": "The correct answer is 3, as glass is used as an insulator because it is a poor conductor of electricity. The author's reasoning is sound and matches the scientific understanding.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -333,105 +217,7 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T21:38:27.682Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Why is glass considered non-degradable?",
-      "choices": [
-        "It does not dissolve in water",
-        "It is very hard",
-        "It does not break down naturally",
-        "It is transparent"
-      ],
-      "answerIndex": 2,
-      "solution": "Glass is considered non-degradable because it does not break down naturally over time. A pupil who thinks it is because it does not dissolve in water might choose the wrong option. It is hard, but that is not the reason for non-degradability. Transparency also has no connection to it.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "कांच को अपशिष्ट नहीं माना जाता क्यों?",
-          "choices": [
-            "यह पानी में घुल जाता है",
-            "यह बहुत कठोर होता है",
-            "यह प्राकृतिक रूप से टूट नहीं जाता",
-            "यह पारदर्शी होता है"
-          ],
-          "solution": "कांच को अपशिष्ट नहीं माना जाता क्योंकि यह समय के साथ प्राकृतिक रूप से टूट नहीं जाता। एक छात्र जो यह सोचता है कि यह पानी में घुल जाता है तो गलत विकल्प चुन सकता है। यह कठोर होता है, लेकिन यह अपशिष्ट न होने का कारण नहीं है। पारदर्शिता का इससे कोई संबंध नहीं है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "काच अघटनीय मानली जाते कारण काय?",
-          "choices": [
-            "ती पाण्यात विरघळत नाही",
-            "ती खूप कठीण असते",
-            "ती प्राकृतिकरित्या विघटित होत नाही",
-            "ती पारदर्शक असते"
-          ],
-          "solution": "काच अघटनीय मानली जाते कारण ती समयाच्या आधारे प्राकृतिकरित्या विघटित होत नाही. एखादा विद्यार्थी जर ती पाण्यात विरघळत नसल्यामुळे असे मानत असेल तर तो चूक करेल. ती कठीण असते, परंतु ते अघटनीयतेचे कारण नाही. पारदर्शकता देखील त्याशी संबंधित नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "thinks it does not dissolve in water",
-        "thinks it is hard",
-        null,
-        "thinks it is transparent"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2, as glass is non-degradable because it does not break down naturally. The other options represent common misconceptions about the properties of glass.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 153,
-          "pageStart": 129,
-          "pageEnd": 129,
-          "headingPath": [
-            "17. Man made Materials",
-            "Wooden chair Wood Comb Plastic"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 154,
-          "pageStart": 129,
-          "pageEnd": 130,
-          "headingPath": [
-            "17. Man made Materials",
-            "Wooden chair Wood Comb Plastic"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 155,
-          "pageStart": 130,
-          "pageEnd": 131,
-          "headingPath": [
-            "17. Man made Materials",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T21:38:27.682Z",
+      "generatedAt": "2026-11-02T12:34:07.492Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

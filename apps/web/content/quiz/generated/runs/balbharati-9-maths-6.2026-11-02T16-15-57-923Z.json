@@ -1,0 +1,764 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T16:15:57.923Z",
+  "finishedAt": "2026-11-02T16:28:02.439Z",
+  "seconds": 725,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "९ वी गणित भाग-१ इंग्रजी",
+    "bookCode": "903000608",
+    "document": "balbharati/9/mathematics/903000608.pdf",
+    "classLevel": 9,
+    "subject": "Mathematics",
+    "chapter": "Chapter 6 — Financial Planning",
+    "edition": "2026 edition",
+    "chunks": 12,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2026-27]\n9. (C) Principal component increases and interest component decreases. 1",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2022-23]\n25. Mitul invested ₹ 3,50,000 in a fund. At the end of the year the value of the fund is ₹ 4,37,500.\nWhat is the nominal rate of interest, if the market price is same at the end of the year? 2",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n9. C) 30",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2026-27]\n6. (D) The future value of perpetuity is undefined. 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 303757,
+      "in": 40,
+      "out": 39,
+      "rejects": 1,
+      "promptTokens": 36711,
+      "completionTokens": 11171
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 528485,
+      "in": 39,
+      "out": 31,
+      "rejects": 8,
+      "promptTokens": 23765,
+      "completionTokens": 8840
+    },
+    "solver": {
+      "calls": 221,
+      "ms": 198688,
+      "in": 31,
+      "out": 20,
+      "rejects": 11,
+      "promptTokens": 50638,
+      "completionTokens": 2479
+    },
+    "form": {
+      "calls": 5,
+      "ms": 25104,
+      "in": 20,
+      "out": 10,
+      "rejects": 10,
+      "promptTokens": 1220,
+      "completionTokens": 402
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 4,
+      "ms": 1158,
+      "in": 10,
+      "out": 8,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 419854,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 17871,
+      "completionTokens": 7843
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 3,
+    "2": 1,
+    "3": 3,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the main purpose of financial planning according to the passage?",
+      "ms": {
+        "draft": 8664,
+        "critique": 7880
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Mr. Shaikh invested Rs. 4,00,000 in a glass industry. He received Rs. 5,20,000 after 2 years. He then invested his gains in a fixed deposit and in shares in the ratio 3:2. How much did he invest in the fixed deposit?",
+      "ms": {
+        "draft": 8664,
+        "critique": 9495,
+        "solver": 3470
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Anil's monthly income to expenditure ratio is 5:4. Aman's monthly income to expenditure ratio is 3:2. 4% of Aman's monthly income is equal to 7% of Anil's monthly income. If Anil's monthly expenditure is Rs. 96,000, what is Aman's annual income?",
+      "ms": {
+        "draft": 8664,
+        "critique": 11120
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Anil's monthly income to expenditure ratio is 5:4. Aman's monthly income to expenditure ratio is 3:2. 4% of Aman's monthly income is equal to 7% of Anil's monthly income. If Anil's monthly expenditure is Rs. 96,000, which of the following is correct?",
+      "ms": {
+        "draft": 8664,
+        "critique": 11120
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Mr. Shah invested Rs. 3,20,000 in a bank at 10% compound interest. What is the amount he received after 2 years?",
+      "ms": {
+        "draft": 8664,
+        "critique": 8665,
+        "solver": 16942,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the definition of savings according to the passage?",
+      "ms": {
+        "draft": 8664,
+        "critique": 9010,
+        "solver": 22686,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a source of income mentioned in the passage?",
+      "ms": {
+        "draft": 6513,
+        "critique": 9736,
+        "solver": 2168,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If Amita invested Rs. 35,000 in two schemes, part at 4% and the rest at 5%, and earned a total interest of Rs. 1,530, what is the amount invested at 4%?",
+      "ms": {
+        "draft": 5990,
+        "critique": 9710,
+        "solver": 20968,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a farmer's income is Rs. 16,800 and his expenditure is Rs. 11,200, what is the ratio of his income to his expenditure?",
+      "ms": {
+        "draft": 5990,
+        "critique": 12441,
+        "solver": 26703
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is a permissible deduction under section 80C?",
+      "ms": {
+        "draft": 6513,
+        "critique": 10975,
+        "solver": 2057,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Mr. Mehta's annual income is ₹4,50,000 and he has no deductions. What is the tax he has to pay according to the tax table given in the passage?",
+      "ms": {
+        "draft": 6513,
+        "critique": 10445,
+        "solver": 2736
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Mrs. Hinduja's taxable income is Rs. 16,30,000. What is her total income tax payable?",
+      "ms": {
+        "draft": 8563,
+        "critique": 8709,
+        "solver": 2272
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Mr. Ahmed's taxable income is Rs. 4,60,000. What is his income tax?",
+      "ms": {
+        "draft": 8563,
+        "critique": 15151
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a person's income is ₹13,25,000 and they are a senior citizen, what is the total income tax they have to pay according to the passage?",
+      "ms": {
+        "draft": 6513,
+        "critique": 15029,
+        "solver": 18019,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Mr. Kartarsingh's monthly income is Rs. 42,000, and he contributes Rs. 3,000 to GPF. He also invested Rs. 15,000 in NSC and donated Rs. 12,000 to the PM's Relief Fund. What is his taxable income?",
+      "ms": {
+        "draft": 8563,
+        "critique": 6374
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Mr. Shekhar spends 60% of his income. From the balance, he donates Rs. 300 to an orphanage and is left with Rs. 3,200. What is his income?",
+      "ms": {
+        "draft": 6663,
+        "critique": 11553,
+        "solver": 2445
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Mr. Kartarsingh (age 48 years) has a monthly income of Rs. 42,000 after deductions. Every month he contributes Rs. 3,000 to GPF and buys Rs. 15,000 worth of NSC. He donates Rs. 12,000 to the PM's Relief Fund. What is his income tax?",
+      "ms": {
+        "draft": 6663,
+        "critique": 12190,
+        "solver": 3005
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "At the start of a year there were Rs. 24,000 in a savings account. After adding Rs. 56,000, the total amount was invested at 7.5% compound interest. What will be the total amount after 3 years?",
+      "ms": {
+        "draft": 6663,
+        "critique": 12794,
+        "solver": 5073
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Mr. Pandit is 75 years old and has an annual income of Rs. 13,25,000. What is the total income tax he has to pay, including all cesses?",
+      "ms": {
+        "draft": 10170,
+        "critique": 15159
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Mr. Hiralal invested Rs. 2,15,000 in a Mutual Fund and got Rs. 3,05,000 after 2 years. Mr. Ramniklal invested Rs. 1,40,000 at 8% compound interest for 2 years. What is the percent gain of each? Whose investment was more profitable?",
+      "ms": {
+        "draft": 6663,
+        "critique": 13428,
+        "solver": 37206,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A farmer's income from agricultural produce is exempt from taxation. If a farmer earns Rs. 5,00,000 from agriculture and has other income of Rs. 3,00,000, what is the taxable income?",
+      "ms": {
+        "draft": 10170,
+        "critique": 11350,
+        "solver": 1961,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Mr. Mhatre is 50 years old with a gross total income of Rs. 12,00,000. He has invested Rs. 1,30,000 in various schemes. What is his taxable income after deductions?",
+      "ms": {
+        "draft": 10170,
+        "critique": 15900,
+        "solver": 3055
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Mrs. Deshmukh is 65 years old and has a taxable income of Rs. 6,00,000. What is the income tax she has to pay based on Table II?",
+      "ms": {
+        "draft": 10170,
+        "critique": 12681
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of taxation according to the passage?",
+      "ms": {
+        "draft": 6796,
+        "critique": 9505,
+        "solver": 1680,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of financial planning according to the passage?",
+      "ms": {
+        "draft": 7575,
+        "critique": 12701
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If Anil's monthly income is 9600 rupees and he saves 1920 rupees, what percentage of his income does he save?",
+      "ms": {
+        "draft": 6796,
+        "critique": 8253,
+        "solver": 29146
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Amita invested some part of 35000 rupees at 4% and the rest at 5% interest for one year. Her total gain was 1530 rupees. What is the amount invested at 4%?",
+      "ms": {
+        "draft": 6796,
+        "critique": 13502,
+        "solver": 25679
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Mr. Shaikh invested Rs. 4,00,000 in a glass industry and received Rs. 5,20,000 after 2 years. He invested his profit in fixed deposit and shares in the ratio 3:2. What is the amount invested in shares?",
+      "ms": {
+        "draft": 7575,
+        "critique": 15454,
+        "solver": 1584
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Mr. Shah invested Rs. 3,20,000 in a bank at 10% compound interest and Rs. 2,40,000 in mutual funds. He received Rs. 3,05,000 after 2 years. What is the percentage gain from the mutual fund?",
+      "ms": {
+        "draft": 7575,
+        "critique": 15745,
+        "solver": 19542,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the maximum permissible amount under section 80C of income tax for different types of investments?",
+      "ms": {
+        "draft": 6663,
+        "critique": 12700,
+        "solver": 3710,
+        "form": 5767
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the assessment year for a person who earned income during the financial year 2017-18?",
+      "ms": {
+        "draft": 6663,
+        "critique": 13179,
+        "solver": 3657,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the tax paid directly by the taxpayer called?",
+      "ms": {
+        "draft": 5990,
+        "critique": 11506,
+        "solver": 3124,
+        "form": 4433,
+        "translation": 53991
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the maximum permissible amount under section 80C of income tax?",
+      "ms": {
+        "draft": 8563,
+        "critique": 8802,
+        "solver": 1920,
+        "form": 4768,
+        "translation": 60500
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the assessment year for a person who earned income during the financial year 2017-18?",
+      "ms": {
+        "draft": 8563,
+        "critique": 7717,
+        "solver": 3055,
+        "form": 5723,
+        "translation": 49548
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a direct tax?",
+      "ms": {
+        "draft": 5990,
+        "critique": 9196,
+        "solver": 2617,
+        "form": 6438,
+        "translation": 60872
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a farmer's income is Rs. 16,800 and his expenditure is Rs. 11,200, what is his saving?",
+      "ms": {
+        "draft": 5990,
+        "critique": 9110,
+        "solver": 2077,
+        "form": 0,
+        "translation": 46723
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person's gross total income is ₹12,00,000 and they have saved ₹1,50,000 under section 80C, what is their taxable income?",
+      "ms": {
+        "draft": 6513,
+        "critique": 13084,
+        "solver": 1527,
+        "form": 0,
+        "translation": 60396
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Mr. Mehta's annual income is Rs. 4,50,000. He does not have any deductions. Which income tax slab does his taxable income fall into?",
+      "ms": {
+        "draft": 10170,
+        "critique": 14307,
+        "solver": 2700,
+        "form": 0,
+        "translation": 43343
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If Anil's monthly income is Rs. 9,600 and he saves Rs. 1,920, what percentage of his income does he save?",
+      "ms": {
+        "draft": 5990,
+        "critique": 9300,
+        "solver": 2636,
+        "form": 0,
+        "translation": 38614
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the basic exemption limit according to the passage?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main purpose of financial planning according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Mr. Shaikh invested Rs. 4,00,000 in a glass industry. He received Rs. 5,20,000 after 2 years. He then invested his gains in a fixed deposit and in shares in the ratio 3:2. How much did he invest in the fixed deposit?",
+      "reason": "the solver picked option 1 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Anil's monthly income to expenditure ratio is 5:4. Aman's monthly income to expenditure ratio is 3:2. 4% of Aman's monthly income is equal to 7% of Anil's monthly income. If Anil's monthly expenditure is Rs. 96,000, what is Aman's annual income?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Anil's monthly income to expenditure ratio is 5:4. Aman's monthly income to expenditure ratio is 3:2. 4% of Aman's monthly income is equal to 7% of Anil's monthly income. If Anil's monthly expenditure is Rs. 96,000, which of the following is correct?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Mr. Shah invested Rs. 3,20,000 in a bank at 10% compound interest. What is the amount he received after 2 years?",
+      "reason": "option 3 repeats the stem's wording (\"Rs. 3,20,000\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the definition of savings according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a source of income mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Confuses income sources mentioned in the passage with others…\"); distractor 2's reason is not a one-line misconception (\"Incorrectly assumes agriculture is a source of income as per…\"); distractor 3's reason is not a one-line misconception (\"Misreads the passage and includes property as a source of in…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If Amita invested Rs. 35,000 in two schemes, part at 4% and the rest at 5%, and earned a total interest of Rs. 1,530, what is the amount invested at 4%?",
+      "reason": "checkExpr \"12000\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a farmer's income is Rs. 16,800 and his expenditure is Rs. 11,200, what is the ratio of his income to his expenditure?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is a permissible deduction under section 80C?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Mr. Mehta's annual income is ₹4,50,000 and he has no deductions. What is the tax he has to pay according to the tax table given in the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Mrs. Hinduja's taxable income is Rs. 16,30,000. What is her total income tax payable?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Mr. Ahmed's taxable income is Rs. 4,60,000. What is his income tax?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a person's income is ₹13,25,000 and they are a senior citizen, what is the total income tax they have to pay according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; ARITHMETIC MISMATCH — checkExpr \"110000 + 0.3*(1325000-1000000) + 0.02*(110000 + 0.3*(1325000-1000000)) + 0.01*(110000 + 0.3*(1325000-1000000))\" = 213725, but the key says 437500"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Mr. Kartarsingh's monthly income is Rs. 42,000, and he contributes Rs. 3,000 to GPF. He also invested Rs. 15,000 in NSC and donated Rs. 12,000 to the PM's Relief Fund. What is his taxable income?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Mr. Shekhar spends 60% of his income. From the balance, he donates Rs. 300 to an orphanage and is left with Rs. 3,200. What is his income?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Mr. Kartarsingh (age 48 years) has a monthly income of Rs. 42,000 after deductions. Every month he contributes Rs. 3,000 to GPF and buys Rs. 15,000 worth of NSC. He donates Rs. 12,000 to the PM's Relief Fund. What is his income tax?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "At the start of a year there were Rs. 24,000 in a savings account. After adding Rs. 56,000, the total amount was invested at 7.5% compound interest. What will be the total amount after 3 years?",
+      "reason": "the solver picked option 1 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Mr. Pandit is 75 years old and has an annual income of Rs. 13,25,000. What is the total income tax he has to pay, including all cesses?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Mr. Hiralal invested Rs. 2,15,000 in a Mutual Fund and got Rs. 3,05,000 after 2 years. Mr. Ramniklal invested Rs. 1,40,000 at 8% compound interest for 2 years. What is the percent gain of each? Whose investment was more profitable?",
+      "reason": "options 0 and 3 say the same thing (\"Mr. Hiralal: 41.86%, Mr. Ramniklal: 16.64%, Mr. Hiralal more profitable\" / \"Mr. Hiralal: 41.86%, Mr. Ramniklal: 16.64%, Mr. Ramniklal more profitable\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A farmer's income from agricultural produce is exempt from taxation. If a farmer earns Rs. 5,00,000 from agriculture and has other income of Rs. 3,00,000, what is the taxable income?",
+      "reason": "option 0 repeats the stem's wording (\"Rs. 3,00,000\"); option 1 repeats the stem's wording (\"Rs. 5,00,000\"); checkExpr \"300000\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Mr. Mhatre is 50 years old with a gross total income of Rs. 12,00,000. He has invested Rs. 1,30,000 in various schemes. What is his taxable income after deductions?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Mrs. Deshmukh is 65 years old and has a taxable income of Rs. 6,00,000. What is the income tax she has to pay based on Table II?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of taxation according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main purpose of financial planning according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If Anil's monthly income is 9600 rupees and he saves 1920 rupees, what percentage of his income does he save?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Amita invested some part of 35000 rupees at 4% and the rest at 5% interest for one year. Her total gain was 1530 rupees. What is the amount invested at 4%?",
+      "reason": "after redraft: the solver picked option 0 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Mr. Shaikh invested Rs. 4,00,000 in a glass industry and received Rs. 5,20,000 after 2 years. He invested his profit in fixed deposit and shares in the ratio 3:2. What is the amount invested in shares?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Mr. Shah invested Rs. 3,20,000 in a bank at 10% compound interest and Rs. 2,40,000 in mutual funds. He received Rs. 3,05,000 after 2 years. What is the percentage gain from the mutual fund?",
+      "reason": "options mix numbers and words (3 of 4 are numbers); ARITHMETIC MISMATCH — checkExpr \"(65000*100)/240000\" = 27.083333333333332, but the key says 27.08"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the maximum permissible amount under section 80C of income tax for different types of investments?",
+      "reason": "near-duplicate of batch item \"What is the maximum permissible amount under secti…\" (cosine 0.904 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the assessment year for a person who earned income during the financial year 2017-18?",
+      "reason": "near-duplicate of batch item \"What is the assessment year for a person who earne…\" (cosine 1.000 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,566 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T02:06:25.769Z",
+  "finishedAt": "2026-11-02T02:18:11.935Z",
+  "seconds": 706,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash-II",
+    "bookCode": "gegp2",
+    "document": "ncert/7/mathematics/gegp201.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 9 — Geometric Twins",
+    "edition": "2025 edition (the site's Last-Modified)",
+    "chunks": 11,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[RMO 2014 — question paper]\n1. Let ABCD be an isosceles trapezium having an incircle; let AB and CD be\nthe parallel sides and let CE be the perpendicular from C on to AB. Prove\nthat CE is equal to the geometric mean of AB and CD.",
+      "[INMO 2009 — question paper]\n4. All the points in the plane are coloured using three colours. Prove that there exists a\ntriangle with vertices having the same colour such that either it is isosceles or its angles are\nin geometric progression.\nSolution:\nConsider a circle of positive radius in the plane and inscribe a regular heptagon ABCDEFG\nin it. Since the seven vertices of this heptagon are coloured by three colours, some three ver-\ntices have the same colour, by pigeon-hole principle. Consider the triangle formed by these\nthree vertices. Let us call the part of the circumference separated by any two consecutive\nvertices of the heptagon an arc. The three vertices of the same colour are separated by arcs\nof length [,7n",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n16. are 1\n(A) Congruent but not similar (B) Similar but not congruent\n(C)Neither congruent nor similar (D) Congruent as well as similar\nIf tangents PA and PB from a point P to a circle with centre O and respective point",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n7. (a) ∆𝑃𝑄𝑅~ ∆ 𝐶𝐴𝐵"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 5,
+      "ms": 145848,
+      "in": 27,
+      "out": 27,
+      "rejects": 1,
+      "promptTokens": 23015,
+      "completionTokens": 7005
+    },
+    "critique": {
+      "calls": 35,
+      "ms": 280430,
+      "in": 27,
+      "out": 27,
+      "rejects": 0,
+      "promptTokens": 16193,
+      "completionTokens": 6235
+    },
+    "solver": {
+      "calls": 191,
+      "ms": 121289,
+      "in": 27,
+      "out": 18,
+      "rejects": 9,
+      "promptTokens": 37472,
+      "completionTokens": 2007
+    },
+    "form": {
+      "calls": 10,
+      "ms": 59441,
+      "in": 18,
+      "out": 13,
+      "rejects": 5,
+      "promptTokens": 4431,
+      "completionTokens": 1228
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 47,
+      "ms": 10125,
+      "in": 13,
+      "out": 8,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 35,
+      "ms": 385940,
+      "in": 16,
+      "out": 16,
+      "rejects": 1,
+      "promptTokens": 19621,
+      "completionTokens": 9422
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 6,
+      "stem": "Two triangles are congruent. Which of the following must be true about their corresponding parts?",
+      "ms": {
+        "draft": 14471,
+        "critique": 8351,
+        "solver": 2072,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the diagram, △ABD and △CDB are congruent. What is the reason for their congruence?",
+      "ms": {
+        "draft": 14471,
+        "critique": 6178,
+        "solver": 18213,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two triangles satisfy the RHS condition, which of the following must be true?",
+      "ms": {
+        "draft": 4742,
+        "critique": 10000,
+        "solver": 15467,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, ∆ABC and ∆DEF are right-angled at B and E, respectively. If AB = DE, BC = EF, and AC = DF, which congruence condition applies?",
+      "ms": {
+        "draft": 4742,
+        "critique": 9719,
+        "solver": 19207
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a right-angled triangle, the hypotenuse is 5 cm, and one of the other sides is 3 cm. What is the length of the third side?",
+      "ms": {
+        "draft": 4742,
+        "critique": 10136,
+        "solver": 16541
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Two right-angled triangles have the same hypotenuse and one other side. Can they be non-congruent?",
+      "ms": {
+        "draft": 4742,
+        "critique": 7288,
+        "solver": 2802
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does RHS stand for in the context of triangle congruence?",
+      "ms": {
+        "draft": 4742,
+        "critique": 4410,
+        "solver": 819
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the construction of a right-angled triangle with base 4 cm and hypotenuse 5 cm, how many different triangles can be formed?",
+      "ms": {
+        "draft": 3346,
+        "critique": 9729,
+        "solver": 2573
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the figure, are ΔDFE and ΔGED congruent? It is given that DF = DG and FE = GE.",
+      "ms": {
+        "draft": 11072,
+        "critique": 8674,
+        "solver": 15234
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the figure, Point O is the midpoint of AD and BC. What is the relationship between AB and CD?",
+      "ms": {
+        "draft": 11072,
+        "critique": 8093,
+        "solver": 16027,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the figure, AB = AD, CB = CD. Which pair of triangles is congruent?",
+      "ms": {
+        "draft": 11072,
+        "critique": 8579,
+        "solver": 1801,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the figure, given that ∠ABC = ∠DBC and ∠ACB = ∠DCB, what is the relationship between ∠BAC and ∠BDC?",
+      "ms": {
+        "draft": 11072,
+        "critique": 9239,
+        "solver": 17374
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the figure, given that ∠ABD = ∠DCA and ∠ACB = ∠DBC, what is the relationship between ∠BAC and ∠BDC?",
+      "ms": {
+        "draft": 11072,
+        "critique": 10399,
+        "solver": 17984
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is correct when stating the congruence of two triangles?",
+      "ms": {
+        "draft": 20425,
+        "critique": 7768,
+        "solver": 1895
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which condition guarantees the congruence of two right-angled triangles if their hypotenuse and one side are equal?",
+      "ms": {
+        "draft": 4742,
+        "critique": 7403,
+        "solver": 1514,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which condition states that two right-angled triangles are congruent if their hypotenuse and one side are equal?",
+      "ms": {
+        "draft": 3346,
+        "critique": 7909,
+        "solver": 1812,
+        "form": 5898
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe figures that are exact copies of each other or have the same shape and size?",
+      "ms": {
+        "draft": 20425,
+        "critique": 10997,
+        "solver": 1725,
+        "form": 3939
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two triangles have the same side lengths, what can be said about their shape and size?",
+      "ms": {
+        "draft": 20425,
+        "critique": 7286,
+        "solver": 1719,
+        "form": 5005
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If two triangles have the same side lengths, how can we confirm that they are congruent?",
+      "ms": {
+        "draft": 20425,
+        "critique": 7261,
+        "solver": 1201,
+        "form": 2244
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for figures that have the same shape and size?",
+      "ms": {
+        "draft": 14471,
+        "critique": 7729,
+        "solver": 2056,
+        "form": 4454,
+        "translation": 63817
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct way to denote that two triangles are congruent?",
+      "ms": {
+        "draft": 14471,
+        "critique": 7282,
+        "solver": 2603,
+        "form": 1,
+        "translation": 40978
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of an equilateral triangle?",
+      "ms": {
+        "draft": 3346,
+        "critique": 8048,
+        "solver": 2088,
+        "form": 3207,
+        "translation": 33575
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two triangles have the same side lengths, what can be said about them?",
+      "ms": {
+        "draft": 14471,
+        "critique": 5703,
+        "solver": 1183,
+        "form": 0,
+        "translation": 43263
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a right-angled triangle, which side is called the hypotenuse?",
+      "ms": {
+        "draft": 3346,
+        "critique": 7695,
+        "solver": 1238,
+        "form": 5858,
+        "translation": 45394
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If two right-angled triangles have their hypotenuses and one side equal, what can be concluded about their congruence?",
+      "ms": {
+        "draft": 3346,
+        "critique": 7909,
+        "solver": 2437,
+        "form": 3970,
+        "translation": 54951
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Meera and Rabia measured the sides of a triangle as 40 cm, 60 cm, and 80 cm. Rabia suggested measuring the angles to create a congruent triangle. Meera disagreed. Who is correct?",
+      "ms": {
+        "draft": 14471,
+        "critique": 8921,
+        "solver": 2121,
+        "form": 0,
+        "translation": 67260
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If two triangles have the same side lengths, which condition guarantees their congruence?",
+      "ms": {
+        "draft": 3346,
+        "critique": 8191,
+        "solver": 1812,
+        "form": 5294,
+        "translation": 31427
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":3,\"stem\":\"In the figure, AB = AD, CB = CD. Which pair of triangles is congruent?\",\"options\":[\"ΔA"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Two triangles are congruent. Which of the following must be true about their corresponding parts?",
+      "reason": "option 3 is a catch-all (\"None of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the diagram, △ABD and △CDB are congruent. What is the reason for their congruence?",
+      "reason": "options 0 and 2 are the same (\"They have the same side lengths\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If two triangles satisfy the RHS condition, which of the following must be true?",
+      "reason": "options 2 and 3 say the same thing (\"They have one right angle and the hypotenuse equal\" / \"They have one right angle, the hypotenuse, and one other side equal\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the given figure, ∆ABC and ∆DEF are right-angled at B and E, respectively. If AB = DE, BC = EF, and AC = DF, which congruence condition applies?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a right-angled triangle, the hypotenuse is 5 cm, and one of the other sides is 3 cm. What is the length of the third side?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Two right-angled triangles have the same hypotenuse and one other side. Can they be non-congruent?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What does RHS stand for in the context of triangle congruence?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In the construction of a right-angled triangle with base 4 cm and hypotenuse 5 cm, how many different triangles can be formed?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the figure, are ΔDFE and ΔGED congruent? It is given that DF = DG and FE = GE.",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the figure, Point O is the midpoint of AD and BC. What is the relationship between AB and CD?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the figure, AB = AD, CB = CD. Which pair of triangles is congruent?",
+      "reason": "figure: figure cannot be drawn in en: no en text for label BD"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In the figure, given that ∠ABC = ∠DBC and ∠ACB = ∠DCB, what is the relationship between ∠BAC and ∠BDC?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In the figure, given that ∠ABD = ∠DCA and ∠ACB = ∠DBC, what is the relationship between ∠BAC and ∠BDC?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is correct when stating the congruence of two triangles?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which condition guarantees the congruence of two right-angled triangles if their hypotenuse and one side are equal?",
+      "reason": "near-duplicate of served question cmvwhm66o01y30remfx1bul92 (cosine 0.956 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which condition states that two right-angled triangles are congruent if their hypotenuse and one side are equal?",
+      "reason": "near-duplicate of served question cmvwhm66o01y30remfx1bul92 (cosine 0.914 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the term used to describe figures that are exact copies of each other or have the same shape and size?",
+      "reason": "near-duplicate of batch item \"What is the term for figures that have the same sh…\" (cosine 0.935 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If two triangles have the same side lengths, what can be said about their shape and size?",
+      "reason": "near-duplicate of batch item \"If two triangles have the same side lengths, what …\" (cosine 0.947 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If two triangles have the same side lengths, how can we confirm that they are congruent?",
+      "reason": "near-duplicate of batch item \"If two triangles have the same side lengths, which…\" (cosine 0.917 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

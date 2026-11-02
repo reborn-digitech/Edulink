@@ -1,0 +1,569 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T05:02:33.383Z",
+  "finishedAt": "2026-11-02T05:11:39.563Z",
+  "seconds": 546,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "703020012",
+    "document": "balbharati/7/science/703020012.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 20 — In the World of Stars",
+    "edition": "First Edition 2017",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2024-25]\n7. B. Cooking of food",
+      "[CBSE Class X Science, marking scheme, 2026-27]\n7. C. Secondary Consumer",
+      "[CBSE Class X Science, marking scheme, 2026-27]\n30. B. Hold the lens above a sheet of paper and adjust until the smallest, 1\nbrightest spot is formed.",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n7. C. Use of plastic as packaging material. 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 107117,
+      "in": 30,
+      "out": 30,
+      "rejects": 0,
+      "promptTokens": 23797,
+      "completionTokens": 6563
+    },
+    "critique": {
+      "calls": 33,
+      "ms": 196101,
+      "in": 30,
+      "out": 25,
+      "rejects": 5,
+      "promptTokens": 14964,
+      "completionTokens": 5665
+    },
+    "solver": {
+      "calls": 145,
+      "ms": 65531,
+      "in": 25,
+      "out": 21,
+      "rejects": 4,
+      "promptTokens": 20775,
+      "completionTokens": 1311
+    },
+    "form": {
+      "calls": 19,
+      "ms": 59860,
+      "in": 21,
+      "out": 17,
+      "rejects": 4,
+      "promptTokens": 6655,
+      "completionTokens": 1752
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 17,
+      "out": 17,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 23,
+      "ms": 3782,
+      "in": 17,
+      "out": 16,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 69,
+      "ms": 635894,
+      "in": 32,
+      "out": 32,
+      "rejects": 0,
+      "promptTokens": 38247,
+      "completionTokens": 18098
+    }
+  },
+  "kept": 16,
+  "keptByLevel": {
+    "1": 2,
+    "2": 4,
+    "3": 2,
+    "4": 3,
+    "5": 2,
+    "6": 3
+  },
+  "flagged": 8,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is true about the Pole Star?",
+      "ms": {
+        "draft": 11116,
+        "critique": 4980,
+        "solver": 1336,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the moon completes one revolution around the earth in 27.3 days, how many nakshatras does it pass through in one day?",
+      "ms": {
+        "draft": 11116,
+        "critique": 5523,
+        "solver": 1885
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements is supported by the passage?",
+      "ms": {
+        "draft": 11116,
+        "critique": 6059,
+        "solver": 1633,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which circle is formed when the sky is seen from a great distance?",
+      "ms": {
+        "draft": 11154,
+        "critique": 7046
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the motion of the sun when it rises in the east and sets in the west?",
+      "ms": {
+        "draft": 11154,
+        "critique": 6251
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a star rises at 8 pm tonight, when will it rise after a month?",
+      "ms": {
+        "draft": 11154,
+        "critique": 6445
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Why is it said that the sun enters a nakshatra in the rainy season?",
+      "ms": {
+        "draft": 11154,
+        "critique": 6153,
+        "solver": 1716
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the relation between a zodiac sign and a nakshatra?",
+      "ms": {
+        "draft": 6598,
+        "critique": 6568
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct statement about the Pole Star?",
+      "ms": {
+        "draft": 6598,
+        "critique": 5389,
+        "solver": 1405
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains the concept of apparent motion of the sun?",
+      "ms": {
+        "draft": 6598,
+        "critique": 7806,
+        "solver": 1746
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a reason why the Pole Star is important for sky watching?",
+      "ms": {
+        "draft": 6598,
+        "critique": 9161
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a correct statement about stars according to the passage?",
+      "ms": {
+        "draft": 4071,
+        "critique": 5124,
+        "solver": 946,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the Earth is at position B in the diagram, which zodiac sign would the sun appear to be in?",
+      "ms": {
+        "draft": 6598,
+        "critique": 5841,
+        "solver": 13444,
+        "form": 2299
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the sun appears to enter a particular zodiac sign, what does it actually mean?",
+      "ms": {
+        "draft": 11116,
+        "critique": 6359,
+        "solver": 979,
+        "form": 3996
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the first stage in the lifecycle of a star?",
+      "ms": {
+        "draft": 2839,
+        "critique": 4502,
+        "solver": 957,
+        "form": 3297,
+        "translation": 32715
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is used to define the zodiac signs?",
+      "ms": {
+        "draft": 2762,
+        "critique": 6614,
+        "solver": 1600,
+        "form": 4006,
+        "translation": 65948
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the name of the virtual sphere that represents the sky as seen from Earth?",
+      "ms": {
+        "draft": 2839,
+        "critique": 4981,
+        "solver": 2222,
+        "form": 2776,
+        "translation": 38851
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a zodiac sign?",
+      "ms": {
+        "draft": 11116,
+        "critique": 5155,
+        "solver": 1242,
+        "form": 3582,
+        "translation": 29708
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a constellation?",
+      "ms": {
+        "draft": 11116,
+        "critique": 6146,
+        "solver": 1644,
+        "form": 2240,
+        "translation": 27829
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the motion of the sun when it rises in the east and sets in the west?",
+      "ms": {
+        "draft": 2762,
+        "critique": 6408,
+        "solver": 1110,
+        "form": 5520,
+        "translation": 43181
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a star rises at 8 pm tonight, when will it rise tomorrow?",
+      "ms": {
+        "draft": 2839,
+        "critique": 4640,
+        "solver": 1657,
+        "form": 3126,
+        "translation": 36921
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a star rises at 8 pm tonight, at what time will it rise after a month?",
+      "ms": {
+        "draft": 2762,
+        "critique": 6779,
+        "solver": 2114,
+        "form": 2992,
+        "translation": 31429
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a group of stars that form a particular figure in the sky?",
+      "ms": {
+        "draft": 2839,
+        "critique": 6620,
+        "solver": 1647,
+        "form": 4733,
+        "translation": 60571
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the meaning of 'The sun enters a nakshatra'?",
+      "ms": {
+        "draft": 11154,
+        "critique": 6896,
+        "solver": 10267,
+        "form": 2646,
+        "translation": 40727
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is the circle that appears to touch the ground from a great distance?",
+      "ms": {
+        "draft": 2762,
+        "critique": 5734,
+        "solver": 1238,
+        "form": 5033,
+        "translation": 28394
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Why is the Pole Star useful for sky watching?",
+      "ms": {
+        "draft": 2839,
+        "critique": 6611,
+        "solver": 1590,
+        "form": 4327,
+        "translation": 42987
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Why is it said that the sun enters a nakshatra in the rainy season?",
+      "ms": {
+        "draft": 2762,
+        "critique": 5856,
+        "solver": 2124,
+        "form": 2726,
+        "translation": 40550
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the main reason stars appear to move across the sky?",
+      "ms": {
+        "draft": 2839,
+        "critique": 6703,
+        "solver": 1952,
+        "form": 3727,
+        "translation": 44350
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the main reason for the sun's apparent motion across the sky?",
+      "ms": {
+        "draft": 11154,
+        "critique": 6496,
+        "solver": 7173,
+        "form": 1726,
+        "translation": 36154
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What does it mean when it is said that the sun enters a nakshatra?",
+      "ms": {
+        "draft": 2762,
+        "critique": 5003,
+        "solver": 1314,
+        "form": 4205,
+        "translation": 32038
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is true about the Pole Star?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the moon completes one revolution around the earth in 27.3 days, how many nakshatras does it pass through in one day?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following statements is supported by the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which circle is formed when the sky is seen from a great distance?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the motion of the sun when it rises in the east and sets in the west?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a star rises at 8 pm tonight, when will it rise after a month?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Why is it said that the sun enters a nakshatra in the rainy season?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the relation between a zodiac sign and a nakshatra?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is a correct statement about the Pole Star?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following best explains the concept of apparent motion of the sun?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is a reason why the Pole Star is important for sky watching?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a correct statement about stars according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the Earth is at position B in the diagram, which zodiac sign would the sun appear to be in?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'zodiac'"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If the sun appears to enter a particular zodiac sign, what does it actually mean?",
+      "reason": "near-duplicate of served question cmvwuytkv036h0rem14zrimtx (cosine 0.919 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

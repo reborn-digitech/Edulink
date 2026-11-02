@@ -21,49 +21,49 @@
   "board": "BALBHARATI",
   "book": "८ वी गणित इंग्रजी",
   "edition": "First Edition 2018",
-  "generatedAt": "2026-11-01T00:06:14.025Z",
+  "generatedAt": "2026-11-02T07:03:48.306Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "What are lines called that do not intersect each other in the same plane?",
+      "difficulty": 2,
+      "stem": "If a transversal intersects two parallel lines, which of the following is true about the corresponding angles?",
       "choices": [
-        "Parallel lines",
-        "Perpendicular lines",
-        "Intersecting lines",
-        "Skew lines"
+        "They are equal",
+        "They are supplementary",
+        "They are perpendicular",
+        "They are always 90°"
       ],
       "answerIndex": 0,
-      "solution": "Parallel lines are defined as lines that do not intersect each other in the same plane. Perpendicular lines intersect at a 90-degree angle, intersecting lines cross each other at some point, and skew lines are not in the same plane, so they do not apply here.",
+      "solution": "When a transversal intersects two parallel lines, corresponding angles are formed in the same relative position at each intersection. These angles are equal in measure due to the parallel nature of the lines. The other options are incorrect because supplementary angles add up to 180°, perpendicular angles are 90°, and not all corresponding angles are 90°.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक ही तल में एक दूसरे को काटे बिना रेखाओं के क्या नाम दिया जाता है?",
+          "stem": "यदि एक तिर्यक रेखा दो समांतर रेखाओं को काटती है, तो निम्नलिखित में से कौन-सा सही है आंतरिक संगत कोणों के बारे में?",
           "choices": [
-            "समांतर रेखाएं",
-            "लंब रेखाएं",
-            "छेदक रेखाएं",
-            "तिर्यक रेखाएं"
+            "वे बराबर होते हैं",
+            "वे पूरक होते हैं",
+            "वे लंबवत होते हैं",
+            "वे हमेशा 90° होते हैं"
           ],
-          "solution": "समांतर रेखाएं एक ही तल में एक दूसरे को नहीं काटती हैं। लंब रेखाएं 90 डिग्री के कोण पर काटती हैं, छेदक रेखाएं किसी बिंदु पर काटती हैं और तिर्यक रेखाएं एक ही तल में नहीं होती हैं, इसलिए यहां ये लागू नहीं होती हैं।",
+          "solution": "जब एक तिर्यक रेखा दो समांतर रेखाओं को काटती है, तो एक ही सापेक्ष स्थिति में संगत कोण बनते हैं। रेखाओं के समांतर होने के कारण इन कोणों के माप समान होते हैं। अन्य विकल्प गलत हैं क्योंकि पूरक कोणों के योग 180° होता है, लंबवत कोण 90° होते हैं, और सभी संगत कोण 90° नहीं होते।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and maintains the correct meaning, options, and solution. Technical terms like 'समांतर रेखाएं' (parallel lines), 'लंब रेखाएं' (perpendicular lines), 'छेदक रेखाएं' (intersecting lines), and 'तिर्यक रेखाएं' (skew lines) are appropriate and commonly used in Hindi textbooks.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard geometric terminology as taught in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "समान समतलात एकमेकांना छेदू न शकणार्‍या रेषा कशा म्हणतात?",
+          "stem": "जर एखादा छेदक दोन समांतर रेषांना छेदत असेल, तर खालीलपैकी कोणते खरे आहे?",
           "choices": [
-            "समांतर रेषा",
-            "लंब रेषा",
-            "छेदक रेषा",
-            "विषम रेषा"
+            "ते समान आहेत",
+            "ते पूरक आहेत",
+            "ते लंब आहेत",
+            "ते नेहमी 90° आहेत"
           ],
-          "solution": "समांतर रेषा ह्या एका समतलात एकमेकांना छेदू शकत नाहीत. लंब रेषा 90 अंशाच्या कोनात छेदतात, छेदक रेषा कोणत्याही बिंदूत छेदतात आणि विषम रेषा एका समतलात नसतात, म्हणून त्या येथे लागू होत नाहीत.",
+          "solution": "जेव्हा एखादा छेदक दोन समांतर रेषांना छेदतो, तेव्हा त्याच्या प्रत्येक छेदनबिंदूवर एकाच सापेक्ष स्थितीत असलेले अनुरूप कोन तयार होतात. रेषांच्या समांतरतेमुळे हे कोन मापाने समान असतात. इतर विकल्प अयोग्य आहेत कारण पूरक कोनांची बेरीज 180° असते, लंब कोन 90° असतात, आणि सर्व अनुरूप कोन 90° असतील असे नाही.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Marathi textbooks.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -73,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses parallel lines with perpendicular lines",
-        "Confuses parallel lines with intersecting lines",
-        "Confuses parallel lines with skew lines"
+        "confuses corresponding angles with supplementary angles",
+        "mistakenly assumes corresponding angles are always perpendicular",
+        "incorrectly thinks all corresponding angles are right angles"
       ],
       "solverAnswers": [
         0,
@@ -85,102 +85,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The question is straightforward and aligns with the definition of parallel lines. The solution correctly identifies the definition from the passage and rules out other options based on their properties.",
-      "sources": [
-        {
-          "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 11,
-          "pageStart": 17,
-          "pageEnd": 18,
-          "headingPath": [
-            "2. Parallel lines and transversals"
-          ]
-        },
-        {
-          "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 12,
-          "pageStart": 18,
-          "pageEnd": 20,
-          "headingPath": [
-            "2. Parallel lines and transversals"
-          ]
-        },
-        {
-          "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 13,
-          "pageStart": 20,
-          "pageEnd": 22,
-          "headingPath": [
-            "2. Parallel lines and transversals"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T00:06:14.025Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "Which of the following is a pair of alternate interior angles formed when a transversal intersects two parallel lines?",
-      "choices": [
-        "∠c and ∠e",
-        "∠b and ∠h",
-        "∠a and ∠e",
-        "∠d and ∠h"
-      ],
-      "answerIndex": 0,
-      "solution": "Alternate interior angles are formed on opposite sides of the transversal and inside the two parallel lines. ∠c and ∠e meet this definition. ∠b and ∠h are on the same side of the transversal, making them same-side interior angles. ∠a and ∠e are not both inside the parallel lines, and ∠d and ∠h are on opposite sides but not both inside.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा एक ऐसा युग्म है जो दो समांतर रेखाओं के एक तिर्यक रेखा द्वारा काटे जाने पर बने विषम अंतः कोणों का युग्म है?",
-          "choices": [
-            "∠c और ∠e",
-            "∠b और ∠h",
-            "∠a और ∠e",
-            "∠d और ∠h"
-          ],
-          "solution": "विषम अंतः कोण तिर्यक रेखा के विपरीत ओर और दो समांतर रेखाओं के भीतर बनते हैं। ∠c और ∠e इस परिभाषा के अनुरूप हैं। ∠b और ∠h तिर्यक रेखा के एक ही ओर हैं, जिससे वे समान-भुज अंतः कोण बनते हैं। ∠a और ∠e दोनों समांतर रेखाओं के भीतर नहीं हैं, और ∠d और ∠h विपरीत ओर हैं लेकिन दोनों समांतर रेखाओं के भीतर नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते एक विषम अंतर्गत कोनांचे जोडे असते जेव्हा एक छेदिका दोन समांतर रेषांना छेदते?",
-          "choices": [
-            "∠c आणि ∠e",
-            "∠b आणि ∠h",
-            "∠a आणि ∠e",
-            "∠d आणि ∠h"
-          ],
-          "solution": "विषम अंतर्गत कोनांचे जोडे छेदिकेच्या विरुद्ध बाजूने आणि दोन समांतर रेषांमध्ये तयार होतात. ∠c आणि ∠e हे या व्याख्येस अनुरूप आहेत. ∠b आणि ∠h हे छेदिकेच्या एकाच बाजूवर असल्याने ते समांतर अंतर्गत कोन आहेत. ∠a आणि ∠e हे दोन्ही समांतर रेषांमध्ये नसल्याने ते अंतर्गत कोन नाहीत, आणि ∠d आणि ∠h हे विरुद्ध बाजूवर असले तरी दोन्ही समांतर रेषांमध्ये नसल्याने ते अंतर्गत कोन नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the technical terminology used in Marathi mathematics textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "confuses corresponding angles with alternate interior angles",
-        "refers to a pair of exterior angles",
-        "refers to a pair of corresponding angles"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is ∠c and ∠e, which are alternate interior angles. The author's solution is correct, and the reasons for the other options align with common misconceptions.",
+      "critique": "The correct answer is that corresponding angles are equal when a transversal intersects two parallel lines. The other options reflect common misconceptions about angle relationships.",
       "sources": [
         {
           "document": "balbharati/8/mathematics/803020004.pdf",
@@ -193,61 +98,153 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T00:06:14.025Z",
+      "generatedAt": "2026-11-02T07:03:48.306Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 2,
-      "stem": "What is a line called if it intersects two other lines at two distinct points?",
+      "difficulty": 4,
+      "stem": "In the given figure, line l is a transversal to parallel lines p and q. If ∠1 is 110°, what is the measure of ∠5?",
       "choices": [
-        "Parallel line",
-        "Transversal",
-        "Perpendicular line",
-        "Skew line"
+        "70°",
+        "110°",
+        "180°",
+        "250°"
       ],
       "answerIndex": 1,
-      "solution": "A line that intersects two other lines at two distinct points is called a transversal because it crosses both lines. Parallel lines never intersect, perpendicular lines intersect at 90 degrees, and skew lines are not in the same plane, so they do not fit the definition.",
+      "solution": "The correct answer is 110° because ∠1 and ∠5 are corresponding angles, and corresponding angles are congruent when two parallel lines are intersected by a transversal. The other options are incorrect because they do not match the property of corresponding angles being congruent.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "दो अन्य रेखाओं को दो अलग-अलग बिंदुओं पर प्रतिच्छेद करने वाली रेखा क्या कहलाती है?",
+          "stem": "दिए गए आकृति में, रेखा l समांतर रेखाओं p और q के लिए एक अनुलंब है। यदि ∠1 110° है, तो ∠5 का माप क्या है?",
           "choices": [
-            "समांतर रेखा",
-            "तिर्यक रेखा",
-            "लंब रेखा",
-            "झुकी हुई रेखा"
+            "70°",
+            "110°",
+            "180°",
+            "250°"
           ],
-          "solution": "दो अन्य रेखाओं को दो अलग-अलग बिंदुओं पर प्रतिच्छेद करने वाली रेखा को तिर्यक रेखा कहते हैं क्योंकि यह दोनों रेखाओं को काटती है। समांतर रेखाएं कभी भी प्रतिच्छेद नहीं करती हैं, लंब रेखाएं 90 डिग्री पर प्रतिच्छेद करती हैं और झुकी हुई रेखाएं एक ही समतल में नहीं होती हैं, इसलिए वे परिभाषा के अनुरूप नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard mathematical terminology as found in Hindi textbooks.",
+          "solution": "सही उत्तर 110° है क्योंकि ∠1 और ∠5 संगत कोण हैं, और जब दो समांतर रेखाएं एक अनुलंब द्वारा काटी जाती हैं, तो संगत कोण सर्वांगसम होते हैं। अन्य विकल्प गलत हैं क्योंकि वे संगत कोणों के गुण के अनुरूप नहीं हैं।",
+          "imageAlt": "दो समांतर रेखाएं p और q जिनके बीच एक अनुलंब l है। ∠1 110° है, और ∠5 ज्ञात करना है।",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "दोन वेगवेगळ्या बिंदूंवर दुसर्या दोन रेषांना छेदणारी रेषा कशी ओळखली जाते?",
+          "stem": "दिलेल्या आकृतीत, रेषा l ही समांतर रेषा p आणि q ला छेदक आहे. जर ∠1 110° असेल, तर ∠5 चे माप किती असेल?",
           "choices": [
-            "समांतर रेषा",
-            "ट्रान्सवर्सल",
-            "काटकोन रेषा",
-            "खुंटलेली रेषा"
+            "70°",
+            "110°",
+            "180°",
+            "250°"
           ],
-          "solution": "दोन वेगवेगळ्या बिंदूंवर दुसर्या दोन रेषांना छेदणारी रेषा ट्रान्सवर्सल म्हणतात कारण ती दोन्ही रेषांना छेदते. समांतर रेषा कधीही छेदत नाहीत, काटकोन रेषा 90 अंशांवर छेदतात आणि खुंटलेल्या रेषांचा एकाच समतलात असत नाहीत, म्हणून त्यांचा वरील वर्णनाशी जुळत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
+          "solution": "बरोबर उत्तर 110° आहे कारण ∠1 आणि ∠5 हे अनुरूप कोन आहेत आणि समांतर रेषांना छेदकाने छेदल्यास अनुरूप कोन समान असतात. इतर उत्तरे अचूक नाहीत कारण अनुरूप कोन समान असतात या गुणधर्माशी ते जुळत नाहीत.",
+          "imageAlt": "दोन समांतर रेषा p आणि q आहेत आणि छेदक l आहे. ∠1 110° आहे आणि ∠5 शोधायचा आहे.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
+      "imageAlt": "Two parallel lines p and q with a transversal l. ∠1 is 110°, and ∠5 is to be found.",
+      "figure": {
+        "kind": "geometry",
+        "spec": {
+          "frame": {
+            "xMin": 0,
+            "xMax": 10,
+            "yMin": 0,
+            "yMax": 10,
+            "unit": "units"
+          },
+          "points": [
+            {
+              "id": "A",
+              "x": 1,
+              "y": 1,
+              "label": "A"
+            },
+            {
+              "id": "B",
+              "x": 9,
+              "y": 1,
+              "label": "B"
+            },
+            {
+              "id": "C",
+              "x": 1,
+              "y": 9,
+              "label": "C"
+            },
+            {
+              "id": "D",
+              "x": 9,
+              "y": 9,
+              "label": "D"
+            },
+            {
+              "id": "E",
+              "x": 5,
+              "y": 5,
+              "label": "E"
+            }
+          ],
+          "segments": [
+            {
+              "from": "A",
+              "to": "B",
+              "label": "p"
+            },
+            {
+              "from": "C",
+              "to": "D",
+              "label": "q"
+            },
+            {
+              "from": "A",
+              "to": "C",
+              "label": "l"
+            }
+          ],
+          "angles": [
+            {
+              "vertex": "A",
+              "from": "E",
+              "to": "B",
+              "measure": 110,
+              "label": "1"
+            },
+            {
+              "vertex": "C",
+              "from": "A",
+              "to": "E",
+              "label": "5"
+            }
+          ]
+        },
+        "labels": {
+          "1": {
+            "en": "∠1"
+          },
+          "5": {
+            "en": "∠5"
+          },
+          "p": {
+            "en": "p"
+          },
+          "q": {
+            "en": "q"
+          },
+          "l": {
+            "en": "l"
+          }
+        }
+      },
+      "needsFigure": true,
       "distractorReason": [
-        "Confuses transversal with parallel line",
+        "Confuses corresponding angles with supplementary angles",
         null,
-        "Confuses transversal with perpendicular line",
-        "Confuses transversal with skew line"
+        "Believes that angles on a straight line are always equal, not supplementary.",
+        "Thinking that the angle is the reflex angle of 110°"
       ],
       "solverAnswers": [
         1,
@@ -256,8 +253,8 @@
         1,
         1
       ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed and the solution correctly identifies 'transversal' as the correct answer. The misconceptions listed for the wrong options are accurate and reflect common student errors.",
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. ∠1 and ∠5 are corresponding angles, and since the lines are parallel, they are congruent. ∠1 is 110°, so ∠5 is also 110°. The author's reasoning for the distractors is valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "balbharati/8/mathematics/803020004.pdf",
@@ -288,203 +285,126 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T00:06:14.025Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "If a transversal intersects two parallel lines and one of the corresponding angles is 100°, what is the measure of the corresponding angle?",
-      "choices": [
-        "100°",
-        "80°",
-        "120°",
-        "70°"
-      ],
-      "answerIndex": 0,
-      "solution": "According to the properties of parallel lines and transversals, corresponding angles are equal. If one corresponding angle is 100°, the other must also be 100°. The other options refer to supplementary or alternate angles, which are not applicable here.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक तिर्यक रेखा दो समांतर रेखाओं को काटती है और एक संगत कोण 100° है, तो संगत कोण का माप क्या है?",
-          "choices": [
-            "100°",
-            "80°",
-            "120°",
-            "70°"
-          ],
-          "solution": "समांतर रेखाओं और तिर्यक रेखाओं के गुणधर्म के अनुसार, संगत कोण बराबर होते हैं। यदि एक संगत कोण 100° है, तो दूसरा भी 100° होना चाहिए। अन्य विकल्प अपूरक या वैकल्पिक कोणों के हैं, जो यहां लागू नहीं होते।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are standard in Hindi textbooks, and the correct answer remains in the same position.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एक छेदिका दोन समांतर रेषांना छेदत असेल आणि त्यापैकी एक संगत कोन 100° असेल, तर संगत कोनाचे माप किती असेल?",
-          "choices": [
-            "100°",
-            "80°",
-            "120°",
-            "70°"
-          ],
-          "solution": "समांतर रेषांच्या आणि छेदिकेच्या गुणधर्मानुसार, संगत कोन समान असतात. जर एक संगत कोन 100° असेल, तर दुसरा देखील 100° असेल. इतर विकल्प अतिपूरक किंवा विरुद्ध कोनांवर आधारित आहेत, जे येथे लागू होत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "A student might think that corresponding angles are supplementary instead of equal.",
-        "confuses corresponding angles with supplementary angles",
-        "incorrectly assumes a different relationship between angles in parallel lines and transversals"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is straightforward and the solution is correct. The correct answer is 100°, as corresponding angles are equal when a transversal intersects two parallel lines. The distractors reflect common misconceptions about angle relationships.",
-      "sources": [
-        {
-          "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 14,
-          "pageStart": 22,
-          "pageEnd": 23,
-          "headingPath": [
-            "2. Parallel lines and transversals"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T00:06:14.025Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "In the diagram, if lines l and m are parallel, and a transversal intersects them, what is the measure of ∠x if ∠y is 105° and they are on the same side of the transversal?",
-      "choices": [
-        "75°",
-        "105°",
-        "180°",
-        "80°"
-      ],
-      "answerIndex": 0,
-      "solution": "If ∠x and ∠y are on the same side of the transversal and the lines are parallel, they are supplementary, meaning their sum is 180°. If ∠y is 105°, then ∠x is 180° - 105° = 75°. The other options are incorrect because they either represent the same angle or do not follow the supplementary angle rule.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "आरेख में, यदि रेखाएं l और m समांतर हैं, और एक तिर्यक रेखा इनको काटती है, तो यदि ∠y का माप 105° है और वे तिर्यक रेखा के एक ही ओर हैं, तो ∠x का माप क्या है?",
-          "choices": [
-            "75°",
-            "105°",
-            "180°",
-            "80°"
-          ],
-          "solution": "यदि ∠x और ∠y तिर्यक रेखा के एक ही ओर हैं और रेखाएं समांतर हैं, तो वे पूरक कोण होते हैं, जिनका योग 180° होता है। यदि ∠y का माप 105° है, तो ∠x का माप 180° - 105° = 75° होगा। अन्य विकल्प गलत हैं क्योंकि वे या तो एक ही कोण का प्रतिनिधित्व करते हैं या पूरक कोण नियम का पालन नहीं करते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a Hindi-medium educational context.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "आकृतीत, जर रेखा l आणि m समांतर असतील आणि एक छेदिका त्यांना छेदत असेल, तर ∠x चे माप किती असेल जर ∠y 105° असेल आणि ते छेदिकेच्या एकाच बाजूवर असतील?",
-          "choices": [
-            "75°",
-            "105°",
-            "180°",
-            "80°"
-          ],
-          "solution": "जर ∠x आणि ∠y छेदिकेच्या एकाच बाजूवर असतील आणि रेखा समांतर असतील, तर ते पूरक कोन असतात, ज्याचा बेरीज 180° असते. जर ∠y 105° असेल, तर ∠x हा 180° - 105° = 75° असेल. इतर विकल्प चुकीचे असतात कारण ते एकाच कोनाचे दर्शवतात किंवा पूरक कोनाच्या नियमाचे अनुसरण करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses same-side interior angles with corresponding angles, thinking they are equal instead of supplementary",
-        "refers to the measure of the same angle",
-        "incorrectly assumes the angles are equal"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that same-side interior angles are supplementary. The reasoning aligns with standard geometric principles, and the author's explanation of the distractors reflects common student misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 14,
-          "pageStart": 22,
-          "pageEnd": 23,
-          "headingPath": [
-            "2. Parallel lines and transversals"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T00:06:14.025Z",
+      "generatedAt": "2026-11-02T07:03:48.306Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "Two parallel lines are intersected by a transversal. If one of the alternate interior angles is 70°, what is the measure of the angle adjacent to the other alternate interior angle?",
+      "stem": "If a line is drawn parallel to one side of a triangle, intersecting the other two sides, what can be said about the ratio of the segments formed on those sides?",
       "choices": [
-        "110°",
-        "70°",
-        "180°",
-        "90°"
+        "They are equal",
+        "They are supplementary",
+        "They are in the same ratio",
+        "They are perpendicular"
       ],
-      "answerIndex": 0,
-      "solution": "Alternate interior angles are equal, so the other alternate interior angle is also 70°. The angle adjacent to it would be supplementary, making it 180° - 70° = 110°. The other options do not follow the properties of parallel lines and transversals.",
+      "answerIndex": 2,
+      "solution": "When a line is drawn parallel to one side of a triangle, it divides the other two sides proportionally. This means the segments formed on those sides have the same ratio. The other options do not align with geometric principles, as equality, supplementarity, or perpendicularity are not guaranteed in this situation.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "दो समांतर रेखाएं एक तिर्यक रेखा द्वारा काटी जाती हैं। यदि एक एकांतर आंतरिक कोण 70° है, तो अन्य एकांतर आंतरिक कोण के समीपवर्ती कोण का माप क्या है?",
+          "stem": "यदि एक त्रिभुज के एक भुजा के समांतर एक रेखा खींची जाती है, जो अन्य दो भुजाओं को काटती है, तो उन भुजाओं पर बने खंडों के अनुपात के बारे में क्या कहा जा सकता है?",
           "choices": [
-            "110°",
-            "70°",
-            "180°",
-            "90°"
+            "वे बराबर हैं",
+            "वे संपूरक हैं",
+            "वे एक ही अनुपात में हैं",
+            "वे लंबवत हैं"
           ],
-          "solution": "एकांतर आंतरिक कोण बराबर होते हैं, अतः अन्य एकांतर आंतरिक कोण भी 70° है। इसके समीपवर्ती कोण संपूरक होगा, जिसके कारण यह 180° - 70° = 110° होगा। अन्य विकल्प समांतर रेखाओं और तिर्यक रेखा के गुणों का अनुसरण नहीं करते।",
+          "solution": "जब एक त्रिभुज के एक भुजा के समांतर एक रेखा खींची जाती है, तो वह अन्य दो भुजाओं को आनुपातिक रूप से विभाजित करती है। इसका अर्थ है कि उन भुजाओं पर बने खंड एक ही अनुपात में होते हैं। अन्य विकल्प ज्यामितीय सिद्धांतों के अनुरूप नहीं हैं, क्योंकि समानता, संपूरकता या लंबवता इस स्थिति में निश्चित नहीं होती है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a Hindi-medium math context.",
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate geometric terminology and correct answer positioning.",
           "flag": null
         },
         "mr": {
-          "stem": "दोन समांतर रेषा एका छेदिकेने छेदल्या गेल्या आहेत. जर अंतर्गत विषम कोनापैकी एक 70° असेल, तर इतर अंतर्गत कोनाच्या जवळच्या कोनाचे माप किती असेल?",
+          "stem": "जर त्रिकोणाच्या एका बाजूला समांतर एक रेषा काढली जाते आणि इतर दोन बाजूंना छेदते, तर त्या बाजूंवर तयार झालेल्या खंडांच्या गुणोत्तराबद्दल काय म्हणता येईल?",
           "choices": [
-            "110°",
-            "70°",
-            "180°",
-            "90°"
+            "ते समान आहेत",
+            "ते पूरक आहेत",
+            "ते एकाच गुणोत्तरात आहेत",
+            "ते लंब आहेत"
           ],
-          "solution": "अंतर्गत विषम कोन समान असतात, म्हणून इतर अंतर्गत विषम कोनही 70° असेल. त्याच्या जवळचा कोन अतिरिक्त असेल, ज्यामुळे तो 180° - 70° = 110° असेल. इतर विकल्प समांतर रेषा आणि छेदिकेच्या गुणधर्मांचे अनुसरण करत नाहीत.",
+          "solution": "जर त्रिकोणाच्या एका बाजूला समांतर एक रेषा काढली जाते, तर ती इतर दोन बाजूंना अनुपातात विभाजित करते. ह्याचा अर्थ त्या बाजूंवर तयार झालेल्या खंडांचे गुणोत्तर समान असते. इतर विकल्प भूमितीच्या तत्वांना अनुरूप नाहीत, कारण समानता, पूरकता किंवा लंबता या गोष्टी या परिस्थितीत खात्रीशीर नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terminology for geometry.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "thinks the segments are equal, not considering the ratio",
+        "assumes the segments are supplementary, a common mistake",
+        null,
+        "mistakenly thinks the segments are perpendicular, which is not the case"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question correctly applies the basic proportionality theorem (Thales' theorem), and the correct answer is option 2. The author's reasoning for the wrong options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 14,
+          "pageStart": 22,
+          "pageEnd": 23,
+          "headingPath": [
+            "2. Parallel lines and transversals"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T07:03:48.306Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a transversal cuts two parallel lines and one of the interior angles is 100°, which of the following must be the measure of the angle adjacent to it on the same side?",
+      "choices": [
+        "80°",
+        "100°",
+        "120°",
+        "180°"
+      ],
+      "answerIndex": 0,
+      "solution": "When a transversal intersects two parallel lines, the adjacent interior angles on the same side are supplementary. So, if one angle is 100°, the adjacent angle is 180° - 100° = 80°. The other options do not follow the supplementary angle property.",
+      "checkExpr": "180-100",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक तिर्यक रेखा दो समांतर रेखाओं को काटती है और एक आंतरिक कोण 100° है, तो निम्नलिखित में से कौन-सा उस कोण के समान पक्ष पर आसन्न कोण के माप के रूप में होना चाहिए?",
+          "choices": [
+            "80°",
+            "100°",
+            "120°",
+            "180°"
+          ],
+          "solution": "जब एक तिर्यक रेखा दो समांतर रेखाओं को काटती है, तो एक ही पक्ष पर आसन्न आंतरिक कोण पूरक होते हैं। इसलिए, यदि एक कोण 100° है, तो आसन्न कोण 180° - 100° = 80° होगा। अन्य विकल्प पूरक कोण के गुण के अनुसार नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate use of standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक छेदिका दोन समांतर रेषांना छेदत असेल आणि त्यापैकी एक आंतरिक कोन 100° असेल, तर खालीलपैकी कोणता खालीलपैकी एका बाजूला त्याच्या जवळच्या कोनाच्या मापाचा अवश्य असेल?",
+          "choices": [
+            "80°",
+            "100°",
+            "120°",
+            "180°"
+          ],
+          "solution": "जेव्हा एक छेदिका दोन समांतर रेषांना छेदते तेव्हा एका बाजूला असलेले आंतरिक कोन पूरक असतात. म्हणून, जर एक कोन 100° असेल तर जवळचा कोन 180° - 100° = 80° असेल. इतर विकल्प पूरक कोनाच्या गुणधर्माचे अनुसरण करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -494,9 +414,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses the adjacent angle with the alternate interior angle, thinking they are equal instead of supplementary.",
-        "refers to the measure of the alternate interior angle",
-        "incorrectly assumes the angles are supplementary"
+        "confuses supplementary angles with equal angles",
+        "incorrectly assumes the adjacent angle is equal to the given angle",
+        "mistakenly adds the angles instead of subtracting"
       ],
       "solverAnswers": [
         0,
@@ -506,7 +426,7 @@
         0
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that alternate interior angles are equal and that adjacent angles are supplementary. The reasoning aligns with the properties of parallel lines and transversals.",
+      "critique": "The solution correctly applies the property that adjacent interior angles formed by a transversal cutting parallel lines are supplementary. The correct answer is 80°, and the reasoning for the other options aligns with common misconceptions.",
       "sources": [
         {
           "document": "balbharati/8/mathematics/803020004.pdf",
@@ -519,7 +439,84 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T00:06:14.025Z",
+      "generatedAt": "2026-11-02T07:03:48.306Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If two lines are cut by a transversal and the alternate interior angles are equal, what can be concluded about the two lines?",
+      "choices": [
+        "They are parallel",
+        "They are perpendicular",
+        "They intersect at one point",
+        "They are not straight lines"
+      ],
+      "answerIndex": 0,
+      "solution": "If two lines are cut by a transversal and the alternate interior angles are equal, the lines must be parallel because this is a defining property of parallel lines. Perpendicular lines form right angles, not equal alternate interior angles. Lines that intersect at one point are not parallel, and all lines in this context are assumed to be straight.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक तिर्यक रेखा द्वारा दो रेखाएं काटी जाती हैं और अंतः कोण बराबर होते हैं, तो दोनों रेखाओं के बारे में क्या निष्कर्ष निकाला जा सकता है?",
+          "choices": [
+            "वे समांतर हैं",
+            "वे लंबवत हैं",
+            "वे एक बिंदु पर काटती हैं",
+            "वे सीधी रेखाएं नहीं हैं"
+          ],
+          "solution": "यदि एक तिर्यक रेखा द्वारा दो रेखाएं काटी जाती हैं और अंतः कोण बराबर होते हैं, तो रेखाएं आवश्यक रूप से समांतर होती हैं क्योंकि यह समांतर रेखाओं के एक परिभाषित गुण है। लंबवत रेखाएं समकोण बनाती हैं, न कि बराबर अंतः कोण। एक बिंदु पर काटने वाली रेखाएं समांतर नहीं होतीं, और इस संदर्भ में सभी रेखाएं सीधी मानी जाती हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi geometry terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर दोन रेषा एका छेदिकेने कापल्या जातात आणि अंतर्गत विरुद्ध कोन बरोबर असतात, तर दोन रेषांबद्दल काय निष्कर्ष काढता येईल?",
+          "choices": [
+            "त्या समांतर असतात",
+            "त्या लंब असतात",
+            "त्या एका बिंदूत छेदतात",
+            "त्या सरळ रेषा नसतात"
+          ],
+          "solution": "जर दोन रेषा एका छेदिकेने कापल्या जातात आणि अंतर्गत विरुद्ध कोन बरोबर असतात, तर रेषा आवश्यकतेने समांतर असतात कारण हे समांतर रेषांचे परिभाषित गुणधर्म आहे. लंब रेषा समकोन तयार करतात, अंतर्गत विरुद्ध कोन नाहीत. एका बिंदूत छेदणार्या रेषा समांतर नसतात आणि या संदर्भात सर्व रेषा सरळ मानल्या जातात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses parallel lines with perpendicular lines",
+        "thinks the lines intersect, which is not the case when alternate interior angles are equal",
+        "incorrectly believes the lines are not straight"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed and the solution correctly identifies that equal alternate interior angles imply parallel lines. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/mathematics/803020004.pdf",
+          "ordinal": 14,
+          "pageStart": 22,
+          "pageEnd": 23,
+          "headingPath": [
+            "2. Parallel lines and transversals"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T07:03:48.306Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

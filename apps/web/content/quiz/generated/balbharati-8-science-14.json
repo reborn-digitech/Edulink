@@ -21,275 +21,49 @@
   "board": "BALBHARATI",
   "book": "८ वी सामान्य विज्ञान इंग्रजी",
   "edition": "First Edition 2018",
-  "generatedAt": "2026-10-29T21:15:52.683Z",
+  "generatedAt": "2026-11-02T12:10:31.025Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 2,
-      "stem": "What is the main purpose of a thermometer?",
+      "stem": "Which of the following is a property of a thermometer?",
       "choices": [
-        "To measure the mass of an object",
-        "To measure the temperature of an object",
-        "To measure the volume of an object",
-        "To measure the density of an object"
-      ],
-      "answerIndex": 1,
-      "solution": "The correct answer is 'To measure the temperature of an object' because a thermometer is designed for this specific purpose. The other options describe different physical properties that are not measured by a thermometer.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "थर्मामीटर का मुख्य उद्देश्य क्या है?",
-          "choices": [
-            "किसी वस्तु के द्रव्यमान को मापना",
-            "किसी वस्तु के तापमान को मापना",
-            "किसी वस्तु के आयतन को मापना",
-            "किसी वस्तु के घनत्व को मापना"
-          ],
-          "solution": "सही उत्तर 'किसी वस्तु के तापमान को मापना' है क्योंकि थर्मामीटर इस विशिष्ट उद्देश्य के लिए डिज़ाइन किया गया है। अन्य विकल्प किसी अन्य भौतिक गुण को दर्शाते हैं जिन्हें थर्मामीटर द्वारा मापा नहीं जाता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard scientific terminology appropriate for a Hindi-medium curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "तापमापकाचा मुख्य उद्देश काय आहे?",
-          "choices": [
-            "एका वस्तूचा द्रव्यमान मोजणे",
-            "एका वस्तूचा तापमान मोजणे",
-            "एका वस्तूचा आयतन मोजणे",
-            "एका वस्तूचा घनत्व मोजणे"
-          ],
-          "solution": "सही उत्तर 'एका वस्तूचा तापमान मोजणे' आहे कारण तापमापक या विशिष्ट उद्देशासाठी डिझाइन केलेला आहे. इतर विकल्पांमध्ये तापमापकाद्वारे मोजले जाणारे विशिष्ट भौतिक गुणधर्म नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi scientific terms used.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "confuses the function of a thermometer",
-        null,
-        "describes the function of other instruments",
-        "describes the function of other instruments"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The question is clear and the correct answer is unambiguous. The distractors are plausible for students who confuse the functions of different measuring instruments.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 124,
-          "pageStart": 107,
-          "pageEnd": 108,
-          "headingPath": [
-            "14. Measurement and Effects of Heat",
-            "C = 5 x"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 125,
-          "pageStart": 108,
-          "pageEnd": 108,
-          "headingPath": [
-            "14. Measurement and Effects of Heat",
-            "or,"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 126,
-          "pageStart": 108,
-          "pageEnd": 109,
-          "headingPath": [
-            "14. Measurement and Effects of Heat",
-            "or,"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 127,
-          "pageStart": 109,
-          "pageEnd": 110,
-          "headingPath": [
-            "14. Measurement and Effects of Heat",
-            "or,"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 128,
-          "pageStart": 110,
-          "pageEnd": 110,
-          "headingPath": [
-            "14. Measurement and Effects of Heat",
-            "DT = T – T Q = m C , DT = T – T"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T21:15:52.683Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the primary effect of heat on a solid when it is heated?",
-      "choices": [
-        "It changes shape",
-        "It expands",
-        "It changes state",
-        "It contracts"
-      ],
-      "answerIndex": 1,
-      "solution": "When a solid is heated, it expands. This is a direct effect of heat on solids. The correct answer is 'It expands'. The other options are incorrect because they do not describe the primary effect of heat on solids.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "ठोस के ऊष्मा का प्रमुख प्रभाव क्या होता है जब इसे गर्म किया जाता है?",
-          "choices": [
-            "यह आकृति बदल जाती है",
-            "यह फैल जाता है",
-            "यह अवस्था बदल जाता है",
-            "यह सिकुड़ जाता है"
-          ],
-          "solution": "जब एक ठोस को गर्म किया जाता है, तो यह फैल जाता है। यह ठोस पर ऊष्मा का सीधा प्रभाव है। सही उत्तर 'यह फैल जाता है' है। अन्य विकल्प गलत हैं क्योंकि वे ठोस पर ऊष्मा के प्रमुख प्रभाव का वर्णन नहीं करते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology as found in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "ठोस वर उष्णता लागल्यास त्याचा प्राथमिक परिणाम काय असतो?",
-          "choices": [
-            "ते आकृती बदलते",
-            "ते विस्तारते",
-            "ते अवस्था बदलते",
-            "ते अस्ताव्यस्त होते"
-          ],
-          "solution": "ठोस उष्णता लागल्यास ते विस्तारते. हा ठोसावर उष्णतेचा सीधा परिणाम आहे. योग्य उत्तर 'ते विस्तारते' आहे. इतर विकल्प चुकीचे आहेत कारण ते ठोसावर उष्णतेच्या प्राथमिक परिणामाचे वर्णन करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "confuses the effect of heat on solids with that on liquids",
-        null,
-        "refers to the change of state, which is not the primary effect",
-        "incorrectly states that heat causes contraction"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed. The correct answer is 'It expands,' which is the primary effect of heat on solids. The other options represent common misconceptions or secondary effects.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 129,
-          "pageStart": 110,
-          "pageEnd": 110,
-          "headingPath": [
-            "14. Measurement and Effects of Heat",
-            "DT = T – T = DT"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 130,
-          "pageStart": 111,
-          "pageEnd": 111,
-          "headingPath": [
-            "14. Measurement and Effects of Heat",
-            "DT = T – T = DT"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 131,
-          "pageStart": 111,
-          "pageEnd": 112,
-          "headingPath": [
-            "14. Measurement and Effects of Heat",
-            "DT = T – T = DT"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 132,
-          "pageStart": 112,
-          "pageEnd": 113,
-          "headingPath": [
-            "14. Measurement and Effects of Heat",
-            "DT = T – T = DT"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T21:15:52.683Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "What happens to the kinetic energy of atoms in a hot object when it is placed in contact with a cold object?",
-      "choices": [
-        "It decreases",
-        "It increases",
-        "It remains the same",
-        "It becomes zero"
+        "It measures the temperature of an object",
+        "It measures the heat content of an object",
+        "It measures the specific heat of an object",
+        "It measures the kinetic energy of atoms"
       ],
       "answerIndex": 0,
-      "solution": "The correct answer is 'It decreases' because when a hot object is placed in contact with a cold object, heat is transferred from the hot object to the cold object. This causes the kinetic energy of the atoms in the hot object to decrease. The option 'It increases' is incorrect because it describes the kinetic energy of the cold object, not the hot one. 'It remains the same' and 'It becomes zero' are incorrect as the transfer of heat always affects the kinetic energy of the atoms.",
+      "solution": "The correct answer is It measures the temperature of an object. A thermometer is designed to detect and quantify the degree of hotness or coldness of a substance. The option It measures the heat content of an object is incorrect because heat content depends on mass and specific heat, not just temperature. The option It measures the specific heat of an object is incorrect because specific heat is a material property, not a direct measurement. The option It measures the kinetic energy of atoms is incorrect because while temperature relates to average kinetic energy, a thermometer does not measure this directly.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक गर्म वस्तु में परमाणुओं की गतिज ऊर्जा पर क्या प्रभाव पड़ता है जब इसे ठंडी वस्तु के संपर्क में रखा जाता है?",
+          "stem": "निम्नलिखित में से कौन एक थर्मामीटर का गुण है?",
           "choices": [
-            "यह कम हो जाती है",
-            "यह बढ़ जाती है",
-            "यह एक ही रहती है",
-            "यह शून्य हो जाती है"
+            "यह किसी वस्तु के ताप को मापता है",
+            "यह किसी वस्तु की ऊष्मा सामग्री को मापता है",
+            "यह किसी वस्तु की विशिष्ट ऊष्मा को मापता है",
+            "यह परमाणुओं की गतिज ऊर्जा को मापता है"
           ],
-          "solution": "सही उत्तर 'यह कम हो जाती है' है क्योंकि जब एक गर्म वस्तु को ठंडी वस्तु के संपर्क में रखा जाता है, तो गर्म वस्तु से ठंडी वस्तु में ऊष्मा का संचरण होता है। इससे गर्म वस्तु के परमाणुओं की गतिज ऊर्जा कम हो जाती है। 'यह बढ़ जाती है' विकल्प गलत है क्योंकि यह ठंडी वस्तु की गतिज ऊर्जा का वर्णन करता है, न कि गर्म वस्तु की। 'यह एक ही रहती है' और 'यह शून्य हो जाती है' गलत हैं क्योंकि ऊष्मा के संचरण के कारण परमाणुओं की गतिज ऊर्जा हमेशा प्रभावित होती है।",
+          "solution": "सही उत्तर यह है कि यह किसी वस्तु के ताप को मापता है। एक थर्मामीटर को किसी पदार्थ के गर्म या ठंडे होने के डिग्री को निर्धारित और मापने के लिए डिज़ाइन किया गया है। विकल्प यह कि यह किसी वस्तु की ऊष्मा सामग्री को मापता है, गलत है क्योंकि ऊष्मा सामग्री द्रव्यमान और विशिष्ट ऊष्मा पर निर्भर करती है, तापमान पर नहीं। विकल्प यह कि यह किसी वस्तु की विशिष्ट ऊष्मा को मापता है, गलत है क्योंकि विशिष्ट ऊष्मा एक सामग्री का गुण है, तापमान की सीधी माप नहीं है। विकल्प यह कि यह परमाणुओं की गतिज ऊर्जा को मापता है, गलत है क्योंकि तापमान औसत गतिज ऊर्जा से संबंधित है, लेकिन एक थर्मामीटर इसकी सीधी माप नहीं करता।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology commonly found in Hindi-medium textbooks.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology as found in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "उष्ण वस्तूमधील अणूंच्या गतिज ऊर्जेवर काय परिणाम होतो जेव्हा ती थंड वस्तूशी संपर्कात असते?",
+          "stem": "खालीलपैकी थर्मॉमीटरचे एक गुणधर्म कोणते आहे?",
           "choices": [
-            "ती कमी होते",
-            "ती वाढते",
-            "ती अचल राहते",
-            "ती शून्य होते"
+            "एखाद्या वस्तूचे तापमान मोजते",
+            "एखाद्या वस्तूचे उष्णता अंश मोजते",
+            "एखाद्या वस्तूचे विशिष्ट उष्णता मोजते",
+            "अणूंचे गतिज ऊर्जा मोजते"
           ],
-          "solution": "बरोबर उत्तर 'ती कमी होते' आहे कारण जेव्हा उष्ण वस्तू थंड वस्तूशी संपर्कात असते तेव्हा उष्णता उष्ण वस्तूपासून थंड वस्तूकडे पसरते. ह्यामुळे उष्ण वस्तूमधील अणूंच्या गतिज ऊर्जेमध्ये कमी होते. 'ती वाढते' हे उत्तर चूक आहे कारण ते थंड वस्तूच्या गतिज ऊर्जेचे वर्णन करते, नाही की उष्ण वस्तूचे. 'ती अचल राहते' आणि 'ती शून्य होते' हे उत्तर चूक आहेत कारण उष्णतेचा हस्तांतर अणूंच्या गतिज ऊर्जेवर नेहमी परिणाम करतो.",
+          "solution": "योग्य उत्तर एखाद्या वस्तूचे तापमान मोजते. थर्मॉमीटर एका वस्तूच्या उष्णतेचे व थंडीचे पातळी ओळखण्यासाठी आणि मोजण्यासाठी डिझाइन केलेले आहे. एखाद्या वस्तूचे उष्णता अंश मोजते हा विकल्प अयोग्य आहे कारण उष्णता अंश द्रव्यमान आणि विशिष्ट उष्णतेवर अवलंबून असतो, तापमानावर नाही. एखाद्या वस्तूचे विशिष्ट उष्णता मोजते हा विकल्प अयोग्य आहे कारण विशिष्ट उष्णता एक वस्तूचे गुणधर्म आहे, जे सीधा मोजले जात नाही. अणूंचे गतिज ऊर्जा मोजते हा विकल्प अयोग्य आहे कारण तापमान एकूण गतिज ऊर्जेशी संबंधित असला तरी, थर्मॉमीटर याचे सीधा मोजत नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Marathi science textbooks.",
           "flag": null
         }
       },
@@ -299,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "describes the effect on the cold object",
-        "ignores the process of heat transfer",
-        "misunderstands the concept of energy transfer"
+        "confuses calorimeter with thermometer",
+        "confuses specific heat with thermometer's function",
+        "misunderstands the role of thermometer"
       ],
       "solverAnswers": [
         0,
@@ -311,7 +85,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The solution correctly identifies that heat transfer causes the kinetic energy of the hot object to decrease. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "critique": "The question is well-constructed. The correct answer is clearly 0, and the reasoning for the other options aligns with common misconceptions students might have about thermometers.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -365,49 +139,49 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T21:15:52.683Z",
+      "generatedAt": "2026-11-02T12:10:31.025Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "A solid expands when heated. The expansion of a solid can be described in terms of linear, areal, and volumetric expansion. Which of these is the expansion of the area of a solid?",
+      "difficulty": 2,
+      "stem": "What happens to the atoms of a solid when it is heated?",
       "choices": [
-        "Linear expansion",
-        "Areal expansion",
-        "Volumetric expansion",
-        "Thermal expansion"
+        "They move closer together",
+        "They vibrate more",
+        "They become free",
+        "They change shape"
       ],
       "answerIndex": 1,
-      "solution": "Areal expansion refers to the increase in the area of a solid when heated. The correct answer is 'Areal expansion'. The other options are incorrect because they refer to different types of expansion.",
+      "solution": "When a solid is heated, its atoms vibrate more. They do not move closer together; they expand. They do not become free; they remain in fixed positions. They do not change shape; they maintain their structure.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक ठोस गर्म होने पर फैलता है। एक ठोस के फैलाव का वर्णन रैखिक, क्षेत्रीय और आयतन में फैलाव के रूप में किया जा सकता है। इनमें से कौन-सा ठोस के क्षेत्र के फैलाव का वर्णन करता है?",
+          "stem": "ठोस के परमाणु क्या होते हैं जब इसे गर्म किया जाता है?",
           "choices": [
-            "रैखिक फैलाव",
-            "क्षेत्रीय फैलाव",
-            "आयतन फैलाव",
-            "ऊष्मीय फैलाव"
+            "वे एक दूसरे के निकट आ जाते हैं",
+            "वे अधिक झूलते हैं",
+            "वे मुक्त हो जाते हैं",
+            "वे आकार बदल देते हैं"
           ],
-          "solution": "क्षेत्रीय फैलाव गर्म होने पर एक ठोस के क्षेत्र में वृद्धि को संदर्भित करता है। सही उत्तर 'क्षेत्रीय फैलाव' है। अन्य विकल्प गलत हैं क्योंकि वे अलग-अलग प्रकार के फैलाव को संदर्भित करते हैं।",
+          "solution": "जब एक ठोस को गर्म किया जाता है, तो इसके परमाणु अधिक झूलते हैं। वे एक दूसरे के निकट नहीं आते हैं; वे फैल जाते हैं। वे मुक्त नहीं होते हैं; वे निश्चित स्थिति में रहते हैं। वे आकार नहीं बदलते हैं; वे अपनी संरचना बनाए रखते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi-medium science textbooks.",
+          "critique": "The Hindi translation accurately conveys the scientific concepts and maintains the same meaning, structure, and intent as the English version.",
           "flag": null
         },
         "mr": {
-          "stem": "एका घनाचा उष्णतेने विस्तार होतो. घनाचा विस्तार रेखीय, क्षेत्रफळीय आणि आयतनीय विस्ताराच्या शब्दांमध्ये वर्णन केला जाऊ शकतो. घनाच्या क्षेत्रफळाचा विस्तार कोणता आहे?",
+          "stem": "ठोस वाढत्या तापमानामुळे त्याचे परमाणू काय होतात?",
           "choices": [
-            "रेखीय विस्तार",
-            "क्षेत्रफळीय विस्तार",
-            "आयतनीय विस्तार",
-            "तापमानीय विस्तार"
+            "ते जवळ येतात",
+            "ते अधिक झटके मारतात",
+            "ते मुक्त होतात",
+            "ते आकृती बदलतात"
           ],
-          "solution": "क्षेत्रफळीय विस्तार हा उष्णतेने घनाच्या क्षेत्रफळात वाढ होण्याला म्हणतात. योग्य उत्तर 'क्षेत्रफळीय विस्तार' आहे. इतर पर्याय अयोग्य आहेत कारण ते वेगवेगळ्या विस्तारांचा संदर्भ देतात.",
+          "solution": "जेव्हा ठोस तापला जातो तेव्हा त्याचे परमाणू अधिक झटके मारतात. ते जवळ येत नाहीत; ते विस्तारतात. ते मुक्त होत नाहीत; ते निश्चित स्थानावर राहतात. ते आकृती बदलत नाहीत; ते त्यांची संरचना टिकवून राहतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the technical terms used in Marathi science textbooks.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
           "flag": null
         }
       },
@@ -416,10 +190,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "refers to the linear expansion, which is the increase in length",
+        "confuses expansion with movement",
         null,
-        "refers to the volumetric expansion, which is the increase in volume",
-        "uses a general term instead of the specific type"
+        "confuses free movement with vibration",
+        "confuses melting with shape change"
       ],
       "solverAnswers": [
         1,
@@ -429,7 +203,95 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The question is clear and the correct answer is 'Areal expansion'. The author's reasoning is accurate and matches the correct understanding of thermal expansion.",
+      "critique": "The correct answer is 1, as heating a solid increases atomic vibration. The distractors reflect common misconceptions about expansion, free movement, and shape change.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 133,
+          "pageStart": 113,
+          "pageEnd": 113,
+          "headingPath": [
+            "14. Measurement and Effects of Heat",
+            "Exercises"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 134,
+          "pageStart": 113,
+          "pageEnd": 113,
+          "headingPath": [
+            "14. Measurement and Effects of Heat",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T12:10:31.025Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the unit of the coefficient of linear expansion?",
+      "choices": [
+        "C",
+        "C^(-1)",
+        "m/C",
+        "cal/(g C)"
+      ],
+      "answerIndex": 1,
+      "solution": "The coefficient of linear expansion is defined as the change in length per unit length per degree Celsius, so its unit is 1/C or C^(-1). The other options are units for different physical quantities.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "रैखिक प्रसार के गुणांक का मात्रक क्या है?",
+          "choices": [
+            "C",
+            "C^(-1)",
+            "m/C",
+            "cal/(g C)"
+          ],
+          "solution": "रैखिक प्रसार के गुणांक की परिभाषा प्रति डिग्री सेल्सियस प्रति इकाई लंबाई में परिवर्तन है, इसलिए इसका मात्रक 1/C या C^(-1) है। अन्य विकल्प अलग-अलग भौतिक राशियों के मात्रक हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रेखीय प्रसरणाच्या गुणांकाची एकक कोणती आहे?",
+          "choices": [
+            "C",
+            "C^(-1)",
+            "m/C",
+            "cal/(g C)"
+          ],
+          "solution": "रेखीय प्रसरणाचा गुणांक एकक लांबीच्या प्रति डिग्री सेल्सिअस बदलाच्या रूपात व्यक्त केला जातो, म्हणून त्याचे एकक 1/C किंवा C^(-1) असते. इतर विकल्पांमध्ये वेगवेगळ्या भौतिक राशींचे एकक असतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi-medium textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses the unit with the temperature unit",
+        null,
+        "assumes the unit is based on length and temperature",
+        "uses the unit of specific heat capacity instead"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. The coefficient of linear expansion has units of inverse temperature (C⁻¹), as it represents the fractional change in length per degree Celsius. The other options correspond to different physical quantities.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -473,49 +335,49 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T21:15:52.683Z",
+      "generatedAt": "2026-11-02T12:10:31.025Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "What is the temperature in Celsius and Fahrenheit that is the same?",
+      "difficulty": 3,
+      "stem": "The volumetric expansion coefficient of a liquid is defined by which formula?",
       "choices": [
-        "-40 °C",
-        "-20 °C",
-        "0 °C",
-        "40 °C"
+        "V = V(1 + βΔT)",
+        "A = A(1 + αΔT)",
+        "l = l(1 + λΔT)",
+        "P = P(1 + γΔT)"
       ],
       "answerIndex": 0,
-      "solution": "The correct answer is -40 °C because the formula shows that at -40, the Celsius and Fahrenheit scales are equal. The other options do not satisfy the condition where Celsius and Fahrenheit are the same. This requires understanding the relationship between the two scales, which is a deeper insight than just recalling the formula.",
+      "solution": "The formula V = V(1 + βΔT) correctly represents volumetric expansion, where β is the volumetric expansion coefficient. Areal expansion is described by a similar formula with α, linear expansion with λ, and there is no standard formula for pressure expansion using γ.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "सेल्सियस और फारेनहाइट में कौन सा तापमान एक समान होता है?",
+          "stem": "एक द्रव के आयतन प्रसार गुणांक को किस सूत्र द्वारा परिभाषित किया जाता है?",
           "choices": [
-            "-40 °C",
-            "-20 °C",
-            "0 °C",
-            "40 °C"
+            "V = V(1 + βΔT)",
+            "A = A(1 + αΔT)",
+            "l = l(1 + λΔT)",
+            "P = P(1 + γΔT)"
           ],
-          "solution": "सही उत्तर -40 °C है क्योंकि सूत्र दर्शाता है कि -40 पर सेल्सियस और फारेनहाइट पैमाने समान होते हैं। अन्य विकल्प तब संतुष्ट नहीं होते जब सेल्सियस और फारेनहाइट समान होते हैं। इसके लिए दोनों पैमानों के बीच संबंध की समझ आवश्यक होती है, जो कि सूत्र को याद रखने से गहरा अंतर्दृष्टि है।",
+          "solution": "सूत्र V = V(1 + βΔT) आयतन प्रसार को सही ढंग से दर्शाता है, जहां β आयतन प्रसार गुणांक है। क्षेत्र प्रसार के लिए एक समान सूत्र होता है जिसमें α होता है, रेखीय प्रसार के लिए λ होता है, और दबाव प्रसार के लिए कोई मानक सूत्र γ के साथ नहीं होता।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer (-40 °C) is in the same position as in the English version.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi technical terms for thermal expansion.",
           "flag": null
         },
         "mr": {
-          "stem": "सेल्सियस आणि फॅरेनहाइटमध्ये समान असलेले तापमान किती आहे?",
+          "stem": "तरल पदार्थाचा आयतनिक विस्तार गुणक कोणत्या सूत्राने व्यक्त केला जातो?",
           "choices": [
-            "-40 °C",
-            "-20 °C",
-            "0 °C",
-            "40 °C"
+            "V = V(1 + βΔT)",
+            "A = A(1 + αΔT)",
+            "l = l(1 + λΔT)",
+            "P = P(1 + γΔT)"
           ],
-          "solution": "हा योग्य उत्तर -40 °C आहे कारण सूत्राने दाखवल्याप्रमाणे -40 वर सेल्सियस आणि फॅरेनहाइट मापन पद्धती समान असतात. इतर विकल्पांमध्ये सेल्सियस आणि फॅरेनहाइट समान असत नाहीत. हे दोन मापन पद्धतींमधील संबंधाच्या अधिक गहन बुद्धीच्या आवश्यकतेसह येते, जे सूत्राच्या आठवणीपेक्षा अधिक आहे.",
+          "solution": "V = V(1 + βΔT) हे आयतनिक विस्ताराचे योग्य सूत्र आहे, जेथे β हा आयतनिक विस्तार गुणक आहे. क्षेत्रफळ विस्ताराचे समान सूत्र असून α ने व्यक्त केले जाते, रेखीय विस्तारासाठी λ वापरला जातो आणि दाब विस्तारासाठी γ वापरल्याचे मानक सूत्र नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi terms for temperature scales.",
+          "critique": "The translation is accurate and maintains the technical terminology used in Marathi textbooks. The structure and meaning of the question and options are preserved.",
           "flag": null
         }
       },
@@ -525,9 +387,323 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Student confuses the formula for converting Celsius to Fahrenheit and incorrectly solves the equation.",
-        "Student confuses the point where Celsius and Fahrenheit are equal with the freezing point of water",
-        "Student confuses the temperature where Celsius and Fahrenheit are equal with the temperature where they have the same numerical value but opposite signs."
+        "confuses areal expansion with volumetric",
+        "confuses linear expansion with volumetric",
+        "uses an undefined formula"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct formula for volumetric expansion of a liquid is V = V(1 + βΔT). The other options refer to areal, linear, and an undefined formula, which are common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 129,
+          "pageStart": 110,
+          "pageEnd": 110,
+          "headingPath": [
+            "14. Measurement and Effects of Heat",
+            "DT = T – T = DT"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 130,
+          "pageStart": 111,
+          "pageEnd": 111,
+          "headingPath": [
+            "14. Measurement and Effects of Heat",
+            "DT = T – T = DT"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 131,
+          "pageStart": 111,
+          "pageEnd": 112,
+          "headingPath": [
+            "14. Measurement and Effects of Heat",
+            "DT = T – T = DT"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 132,
+          "pageStart": 112,
+          "pageEnd": 113,
+          "headingPath": [
+            "14. Measurement and Effects of Heat",
+            "DT = T – T = DT"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T12:10:31.025Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A steel ball is dropped from a height of 1 m on to a horizontal non-conducting surface. Every time it bounces, it reaches 80% of its previous height. What is the total distance traveled by the ball after 4 bounces?",
+      "choices": [
+        "1.0 m",
+        "3.6 m",
+        "4.0 m",
+        "5.6 m"
+      ],
+      "answerIndex": 3,
+      "solution": "The ball travels 1 m down, then 0.8 m up and 0.8 m down, then 0.64 m up and 0.64 m down, then 0.512 m up and 0.512 m down. Adding these gives 1 + 0.8 + 0.8 + 0.64 + 0.64 + 0.512 + 0.512 = 5.6 m. The first option is the initial drop only. The second option is the sum of the first two bounces. The third option is the height of the first bounce only.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "1 मीटर की ऊंचाई से एक स्टील के गेंद को क्षैतिज अचालक सतह पर गिराया जाता है। प्रत्येक बार यह लुढ़कती है, तो यह पिछली ऊंचाई के 80% तक पहुंचती है। 4 बार लुढ़कने के बाद गेंद द्वारा तय की गई कुल दूरी क्या है?",
+          "choices": [
+            "1.0 मीटर",
+            "3.6 मीटर",
+            "4.0 मीटर",
+            "5.6 मीटर"
+          ],
+          "solution": "गेंद 1 मीटर नीचे जाती है, फिर 0.8 मीटर ऊपर और 0.8 मीटर नीचे जाती है, फिर 0.64 मीटर ऊपर और 0.64 मीटर नीचे जाती है, फिर 0.512 मीटर ऊपर और 0.512 मीटर नीचे जाती है। इनको जोड़ने पर 1 + 0.8 + 0.8 + 0.64 + 0.64 + 0.512 + 0.512 = 5.6 मीटर प्राप्त होता है। पहला विकल्प केवल प्रारंभिक गिरावट है। दूसरा विकल्प पहले दो लुढ़कनों के योग है। तीसरा विकल्प केवल पहले लुढ़कन की ऊंचाई है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains in the same position (option 3), and all distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक इस्पाती गोला 1 मीटर उंचीवरून एका क्षैतिज अवाहक पृष्ठभागावर टाकला जातो. प्रत्येक वेळी तो उडी मारतो, तेव्हा तो आधीच्या उंचीच्या 80% इतका जातो. 4 उडीनंतर गोल्याने पार केलेला एकूण अंतर किती असेल?",
+          "choices": [
+            "1.0 मीटर",
+            "3.6 मीटर",
+            "4.0 मीटर",
+            "5.6 मीटर"
+          ],
+          "solution": "गोला 1 मीटर खाली जातो, नंतर 0.8 मीटर वर आणि 0.8 मीटर खाली जातो, नंतर 0.64 मीटर वर आणि 0.64 मीटर खाली जातो, नंतर 0.512 मीटर वर आणि 0.512 मीटर खाली जातो. यांची बेरीज करताना 1 + 0.8 + 0.8 + 0.64 + 0.64 + 0.512 + 0.512 = 5.6 मीटर मिळते. पहिला विकल्प हा प्रथम खाली जाण्याचा अंतर आहे. दुसरा विकल्प हा पहिल्या दोन उडींची बेरीज आहे. तिसरा विकल्प हा पहिल्या उडीच्या उंचीच अंतर आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The solution and options are correctly aligned with the English version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "considers only the initial drop",
+        "adds only the first two bounces",
+        "considers only the first bounce height",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly accounts for the ball's motion, including both upward and downward distances for each bounce, and arrives at the correct total distance of 5.6 m.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 133,
+          "pageStart": 113,
+          "pageEnd": 113,
+          "headingPath": [
+            "14. Measurement and Effects of Heat",
+            "Exercises"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 134,
+          "pageStart": 113,
+          "pageEnd": 113,
+          "headingPath": [
+            "14. Measurement and Effects of Heat",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T12:10:31.025Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the main function of a thermometer?",
+      "choices": [
+        "To measure the volume of an object",
+        "To measure the mass of an object",
+        "To measure the temperature of an object",
+        "To measure the pressure of an object"
+      ],
+      "answerIndex": 2,
+      "solution": "The main function of a thermometer is to measure the temperature of an object. The other options are not the primary functions of a thermometer.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "थर्मामीटर का मुख्य कार्य क्या है?",
+          "choices": [
+            "किसी वस्तु के आयतन को मापना",
+            "किसी वस्तु के द्रव्यमान को मापना",
+            "किसी वस्तु के तापमान को मापना",
+            "किसी वस्तु के दबाव को मापना"
+          ],
+          "solution": "थर्मामीटर का मुख्य कार्य किसी वस्तु के तापमान को मापना है। अन्य विकल्प थर्मामीटर के प्राथमिक कार्य नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तापमापकाचे मुख्य कार्य काय आहे?",
+          "choices": [
+            "एका वस्तूचा आयतन मोजणे",
+            "एका वस्तूचा द्रव्यमान मोजणे",
+            "एका वस्तूचा तापमान मोजणे",
+            "एका वस्तूचा दाब मोजणे"
+          ],
+          "solution": "तापमापकाचे मुख्य कार्य एका वस्तूचा तापमान मोजणे आहे. इतर पर्याय तापमापकाचे प्राथमिक कार्य नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses thermometer with a graduated cylinder or other volume-measuring device",
+        "Confuses thermometer with a scale or balance",
+        null,
+        "Confuses thermometer with a barometer or pressure gauge"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as a thermometer is designed to measure temperature. The other options are plausible misconceptions, as they confuse thermometers with other measuring devices.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 124,
+          "pageStart": 107,
+          "pageEnd": 108,
+          "headingPath": [
+            "14. Measurement and Effects of Heat",
+            "C = 5 x"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 125,
+          "pageStart": 108,
+          "pageEnd": 108,
+          "headingPath": [
+            "14. Measurement and Effects of Heat",
+            "or,"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 126,
+          "pageStart": 108,
+          "pageEnd": 109,
+          "headingPath": [
+            "14. Measurement and Effects of Heat",
+            "or,"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 127,
+          "pageStart": 109,
+          "pageEnd": 110,
+          "headingPath": [
+            "14. Measurement and Effects of Heat",
+            "or,"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 128,
+          "pageStart": 110,
+          "pageEnd": 110,
+          "headingPath": [
+            "14. Measurement and Effects of Heat",
+            "DT = T – T Q = m C , DT = T – T"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T12:10:31.025Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why do rails have gaps at specific distances?",
+      "choices": [
+        "To allow for expansion due to temperature changes",
+        "To reduce the weight of the rail",
+        "To make the train run faster",
+        "To improve the aesthetic appearance"
+      ],
+      "answerIndex": 0,
+      "solution": "Rails have gaps to allow for expansion when temperatures rise, preventing damage from buckling. Metals expand when heated, and without gaps, the rails could warp or break. The other options do not relate to the physical behavior of materials under temperature changes.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "रेल के टुकड़ों में विशिष्ट दूरी पर अंतर क्यों होता है?",
+          "choices": [
+            "तापमान में परिवर्तन के कारण प्रसार के लिए",
+            "रेल के वजन को कम करने के लिए",
+            "ट्रेन को तेज चलाने के लिए",
+            "आकर्षक दिखाई देने के लिए"
+          ],
+          "solution": "रेल में अंतर तापमान बढ़ने पर प्रसार के लिए होता है, जिससे बुर्जन के कारण नुकसान न हो। धातुएं गर्म होने पर फैलती हैं, और बिना अंतर के रेल विकृत हो सकती हैं या टूट सकती हैं। अन्य विकल्प तापमान परिवर्तन के कारण सामग्री के भौतिक व्यवहार से संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रेल्वे लाईनमध्ये विशिष्ट अंतरावर अंतर असतात का कारण?",
+          "choices": [
+            "तापमानामुळे विस्तारासाठी",
+            "रेल्वे लाईनच्या वजनात कमी करण्यासाठी",
+            "ट्रेन जास्त वेगाने धावण्यासाठी",
+            "अंदाजाच्या दृष्टीने सुंदर दिसावी म्हणून"
+          ],
+          "solution": "रेल्वे लाईनमध्ये अंतर तापमानामुळे विस्तारासाठी असतात, ज्यामुळे तापल्यावर त्यांच्या विकृती किंवा तुटण्याचा धोका टाळला जातो. धातू तापल्यावर विस्तारतात, आणि अंतर नसल्यास रेल्वे लाईन विकृत होऊ शकतात किंवा तुटू शकतात. इतर विकल्प तापमानामुळे सामग्रीच्या भौतिक वर्तनाशी संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation accurately conveys the technical concept of thermal expansion in railway tracks, using appropriate Marathi terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the purpose of gaps with weight reduction",
+        "Ignores the role of thermal expansion",
+        "Focuses on aesthetics rather than function"
       ],
       "solverAnswers": [
         0,
@@ -537,61 +713,31 @@
         0
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is -40 °C, as it is the only temperature where Celsius and Fahrenheit are numerically equal. The author's reasoning is sound, and the misconceptions listed for the distractors are plausible.",
+      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors based on common misconceptions. The solution correctly identifies the role of thermal expansion in rail design.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 124,
-          "pageStart": 107,
-          "pageEnd": 108,
+          "ordinal": 133,
+          "pageStart": 113,
+          "pageEnd": 113,
           "headingPath": [
             "14. Measurement and Effects of Heat",
-            "C = 5 x"
+            "Exercises"
           ]
         },
         {
           "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 125,
-          "pageStart": 108,
-          "pageEnd": 108,
+          "ordinal": 134,
+          "pageStart": 113,
+          "pageEnd": 113,
           "headingPath": [
             "14. Measurement and Effects of Heat",
-            "or,"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 126,
-          "pageStart": 108,
-          "pageEnd": 109,
-          "headingPath": [
-            "14. Measurement and Effects of Heat",
-            "or,"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 127,
-          "pageStart": 109,
-          "pageEnd": 110,
-          "headingPath": [
-            "14. Measurement and Effects of Heat",
-            "or,"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 128,
-          "pageStart": 110,
-          "pageEnd": 110,
-          "headingPath": [
-            "14. Measurement and Effects of Heat",
-            "DT = T – T Q = m C , DT = T – T"
+            "Exercises"
           ]
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T21:15:52.683Z",
+      "generatedAt": "2026-11-02T12:10:31.025Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

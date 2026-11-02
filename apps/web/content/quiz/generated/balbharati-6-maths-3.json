@@ -21,47 +21,47 @@
   "board": "BALBHARATI",
   "book": "६ वी गणित इंग्रजी",
   "edition": "First Edition 2026",
-  "generatedAt": "2026-10-31T00:00:40.056Z",
+  "generatedAt": "2026-11-01T12:51:07.547Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 2,
-      "stem": "Which of the following is a natural number?",
+      "difficulty": 1,
+      "stem": "Which of the following is the correct definition of whole numbers?",
       "choices": [
-        "0",
-        "-5",
-        "1",
-        "-10"
+        "Natural numbers with zero",
+        "Positive numbers only",
+        "Negative numbers only",
+        "All numbers"
       ],
-      "answerIndex": 2,
-      "solution": "Natural numbers are the set of positive integers starting from 1. Therefore, 1 is a natural number. 0 is not considered a natural number because it is neither positive nor negative. -5 and -10 are negative numbers, which are not included in the set of natural numbers.",
+      "answerIndex": 0,
+      "solution": "Whole numbers are defined as natural numbers combined with zero. This is correct because whole numbers start from zero and include all positive integers. The other options are incorrect because they exclude zero or include numbers that are not considered whole numbers, such as negative numbers or all numbers.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन एक प्राकृतिक संख्या है?",
+          "stem": "निम्नलिखित में से कौन-सा पूर्ण संख्याओं की सही परिभाषा है?",
           "choices": [
-            "0",
-            "-5",
-            "1",
-            "-10"
+            "प्राकृतिक संख्याएँ सहित शून्य",
+            "केवल सकारात्मक संख्याएँ",
+            "केवल ऋणात्मक संख्याएँ",
+            "सभी संख्याएँ"
           ],
-          "solution": "प्राकृतिक संख्याएँ 1 से शुरू होने वाली धनात्मक पूर्णांकों के सेट होती हैं। इसलिए, 1 एक प्राकृतिक संख्या है। 0 को प्राकृतिक संख्या नहीं माना जाता है क्योंकि यह न तो धनात्मक है और न ही ऋणात्मक। -5 और -10 ऋणात्मक संख्याएँ हैं, जो प्राकृतिक संख्याओं के सेट में शामिल नहीं हैं।",
+          "solution": "पूर्ण संख्याओं को प्राकृतिक संख्याओं और शून्य के संयोजन के रूप में परिभाषित किया जाता है। यह सही है क्योंकि पूर्ण संख्याएँ शून्य से शुरू होती हैं और सभी धनात्मक पूर्णांक शामिल होते हैं। अन्य विकल्प गलत हैं क्योंकि वे शून्य को छोड़ देते हैं या ऐसी संख्याओं को शामिल करते हैं जिन्हें पूर्ण संख्याएँ माना नहीं जाता है, जैसे ऋणात्मक संख्याएँ या सभी संख्याएँ।",
           "imageAlt": null,
-          "critique": "Translation accurately reflects the original meaning, technical terms are standard in Hindi textbooks, and the correct answer remains in the same position.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता एक प्राकृतिक संख्या आहे?",
+          "stem": "खालीलपैकी कोणते पूर्ण संख्यांचे बरोबर व्याख्यान आहे?",
           "choices": [
-            "0",
-            "-5",
-            "1",
-            "-10"
+            "प्राकृतिक संख्यांसह शून्य",
+            "मात्र धनात्मक संख्या",
+            "मात्र ऋणात्मक संख्या",
+            "सर्व संख्या"
           ],
-          "solution": "प्राकृतिक संख्या ही 1 या धनात्मक पूर्णांकापासून सुरू होणारी संख्या आहे. म्हणूनच 1 ही एक प्राकृतिक संख्या आहे. 0 ही प्राकृतिक संख्या मानली जात नाही कारण ती धनात्मक किंवा ऋणात्मक नाही. -5 आणि -10 ही ऋणात्मक संख्या आहेत, ज्या प्राकृतिक संख्यांच्या संचात समाविष्ट नाहीत.",
+          "solution": "पूर्ण संख्या प्राकृतिक संख्यांसह शून्य असतात. हे बरोबर आहे कारण पूर्ण संख्या शून्यपासून सुरू होतात आणि सर्व धनात्मक पूर्णांकांचा समावेश होतो. इतर विकल्प बरोबर नाहीत कारण ते शून्य वगळतात किंवा पूर्ण संख्या मानल्या जाणार्या संख्यांपासून भिन्न असलेल्या संख्यांचा समावेश करतात, जसे की ऋणात्मक संख्या किंवा सर्व संख्या.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -72,123 +72,115 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses whole numbers with natural numbers",
-        "Confuses negative numbers with natural numbers",
         null,
-        "Confuses natural numbers with integers, believing negative numbers can be natural"
+        "Confuses whole numbers with natural numbers",
+        "Confuses whole numbers with negative numbers",
+        "Confuses whole numbers with all numbers"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": null,
-      "critique": "The solution correctly identifies 1 as the natural number, and the reasoning aligns with common misconceptions about natural numbers versus whole numbers and integers.",
+      "critique": "The correct definition of whole numbers is natural numbers with zero. The other options reflect common misconceptions about the scope of whole numbers.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 24,
-          "pageStart": 32,
-          "pageEnd": 33,
+          "ordinal": 27,
+          "pageStart": 36,
+          "pageEnd": 38,
           "headingPath": [
             "3. In the World of Numbers"
           ]
         },
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 25,
-          "pageStart": 33,
-          "pageEnd": 34,
+          "ordinal": 28,
+          "pageStart": 39,
+          "pageEnd": 40,
           "headingPath": [
             "3. In the World of Numbers"
           ]
         },
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 26,
-          "pageStart": 35,
-          "pageEnd": 36,
+          "ordinal": 29,
+          "pageStart": 40,
+          "pageEnd": 40,
           "headingPath": [
             "3. In the World of Numbers"
           ]
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T00:00:40.056Z",
+      "generatedAt": "2026-11-01T12:51:07.547Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "Which of the following numbers is greater than -2 but less than 0?",
+      "difficulty": 3,
+      "stem": "If a number is formed using the digits 5, 3, 2, 1, and 4, each only once, what is the largest number possible?",
       "choices": [
-        "-3",
-        "-1",
-        "1",
-        "2"
+        "54321",
+        "54231",
+        "53421",
+        "53214"
       ],
-      "answerIndex": 1,
-      "solution": "The number -1 is greater than -2 because it is closer to zero on the number line, and it is less than 0 because it is still negative. -3 is less than -2, and 1 and 2 are positive numbers, which are greater than 0.",
+      "answerIndex": 0,
+      "solution": "To form the largest number using the digits 5, 3, 2, 1, and 4, each only once, we arrange them in descending order: 5, 4, 3, 2, 1. This gives 54321. The other options are smaller numbers formed by rearranging the digits differently.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सी संख्या -2 से अधिक परन्तु 0 से कम है?",
+          "stem": "यदि कोई संख्या अंक 5, 3, 2, 1 और 4 का प्रयोग करके बनाई जाए, प्रत्येक केवल एक बार, तो संभव सबसे बड़ी संख्या क्या होगी?",
           "choices": [
-            "-3",
-            "-1",
-            "1",
-            "2"
+            "54321",
+            "54231",
+            "53421",
+            "53214"
           ],
-          "solution": "संख्या -1, -2 से अधिक है क्योंकि यह संख्या रेखा पर शून्य के निकट है, और यह 0 से कम है क्योंकि यह अभी भी ऋणात्मक है। -3, -2 से कम है, और 1 और 2 धनात्मक संख्याएँ हैं, जो 0 से अधिक हैं।",
-          "imageAlt": "संख्या रेखा जिस पर -5 से 5 तक पूर्णांक दर्शाए गए हैं",
+          "solution": "अंक 5, 3, 2, 1 और 4 का प्रयोग करके सबसे बड़ी संख्या बनाने के लिए हम इन्हें अवरोही क्रम में व्यवस्थित करते हैं: 5, 4, 3, 2, 1। इससे 54321 प्राप्त होता है। अन्य विकल्प अंकों के अलग-अलग क्रम में व्यवस्थित करके बनी छोटी संख्याएं हैं।",
+          "imageAlt": null,
           "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खालील पैकी कोणता संख्या -2 पेक्षा मोठा आहे पण 0 पेक्षा लहान आहे?",
+          "stem": "एका संख्या 5, 3, 2, 1 आणि 4 या अंकांचा वापर करून बनवली जाते, प्रत्येक अंक फक्त एकदा वापरला जातो, तर शक्य असलेली सर्वात मोठी संख्या काय असेल?",
           "choices": [
-            "-3",
-            "-1",
-            "1",
-            "2"
+            "54321",
+            "54231",
+            "53421",
+            "53214"
           ],
-          "solution": "संख्या -1 ही -2 पेक्षा मोठी आहे कारण ती संख्या रेषेवर शून्याच्या जवळ आहे, आणि ती 0 पेक्षा लहान आहे कारण ती अजूनही ऋण आहे. -3 ही -2 पेक्षा लहान आहे, आणि 1 आणि 2 ही धन संख्या आहेत, ज्या 0 पेक्षा मोठ्या आहेत.",
-          "imageAlt": "एका संख्या रेषेवर -5 ते 5 पर्यंत पूर्णांक दर्शविले आहेत",
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "solution": "5, 3, 2, 1 आणि 4 या अंकांचा वापर करून सर्वात मोठी संख्या बनवण्यासाठी, आम्ही त्यांना घडत जाणार्‍या क्रमाने व्यवस्थित करतो: 5, 4, 3, 2, 1. हे 54321 देते. इतर विकल्प अंकांच्या वेगळ्या व्यवस्थित करण्यामुळे लहान संख्या आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for digits and numbers.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": "A number line showing integers from -5 to 5",
-      "figure": {
-        "kind": "numberline",
-        "spec": {
-          "min": -5,
-          "max": 5,
-          "step": 1
-        },
-        "labels": {}
-      },
-      "needsFigure": true,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
       "distractorReason": [
-        "chooses a number less than -2",
         null,
-        "Confuses negative numbers with positive numbers, thinking that -1 is greater than 0",
-        "chooses a positive number greater than 0', "
+        "Confuses the order of digits after placing the largest digit first",
+        "Thinks the digits should be arranged in a different order, such as 5, 4, 3, 1, 2",
+        "Thinks the digits should be arranged in a different order, such as 5, 3, 4, 2, 1"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is well-constructed. The correct answer is -1, which is greater than -2 and less than 0. The distractors reflect common misconceptions about the ordering of negative numbers and the difference between positive and negative numbers.",
+      "levelFlag": null,
+      "critique": "The solution is correct. The largest number is formed by arranging the digits in descending order, which gives 54321. The distractors reflect common misconceptions about digit ordering after the first digit.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
@@ -219,7 +211,7 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T00:00:40.056Z",
+      "generatedAt": "2026-11-01T12:51:07.547Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

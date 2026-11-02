@@ -21,49 +21,49 @@
   "board": "BALBHARATI",
   "book": "८ वी गणित इंग्रजी",
   "edition": "First Edition 2018",
-  "generatedAt": "2026-11-01T00:34:55.459Z",
+  "generatedAt": "2026-11-02T07:24:59.056Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 2,
-      "stem": "If a quadrilateral has all sides equal and all angles equal, what type of quadrilateral is it?",
+      "difficulty": 1,
+      "stem": "Which of the following is a property of a rectangle?",
       "choices": [
-        "Rectangle",
-        "Rhombus",
-        "Square",
-        "Parallelogram"
+        "All sides are equal",
+        "All angles are equal",
+        "Diagonals are perpendicular",
+        "Opposite sides are congruent"
       ],
-      "answerIndex": 2,
-      "solution": "A square is a quadrilateral with all sides equal and all angles equal, making it the correct answer. A rectangle has all angles equal but not necessarily all sides equal. A rhombus has all sides equal but not necessarily all angles equal. A parallelogram may have opposite sides and angles equal, but not all sides and angles.",
+      "answerIndex": 3,
+      "solution": "A rectangle is defined by having opposite sides that are congruent, which is a fundamental geometric property. While all angles in a rectangle are equal (each being 90 degrees), this is not the defining property being asked. A rectangle does not have all sides equal, as that would make it a square, and its diagonals are not perpendicular, unlike in a rhombus or square.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक चतुर्भुज में सभी भुजाएँ समान और सभी कोण समान हों, तो यह किस प्रकार का चतुर्भुज है?",
+          "stem": "निम्नलिखित में से कौन-सा एक आयत का गुण है?",
           "choices": [
-            "आयत",
-            "समचतुर्भुज",
-            "वर्ग",
-            "समांतर चतुर्भुज"
+            "सभी भुजाएं समान होती हैं",
+            "सभी कोण समान होते हैं",
+            "विकर्ण लंबवत होते हैं",
+            "विपरीत भुजाएं सर्वांगसम होती हैं"
           ],
-          "solution": "वर्ग एक चतुर्भुज है जिसमें सभी भुजाएँ समान और सभी कोण समान होते हैं, जिसके कारण यह सही उत्तर है। आयत में सभी कोण समान होते हैं लेकिन आवश्यक नहीं कि सभी भुजाएँ समान हों। समचतुर्भुज में सभी भुजाएँ समान होती हैं लेकिन आवश्यक नहीं कि सभी कोण समान हों। समांतर चतुर्भुज में सम्मुख भुजाएँ और कोण समान हो सकते हैं, लेकिन सभी भुजाएँ और कोण आवश्यक नहीं कि समान हों।",
+          "solution": "एक आयत के विपरीत भुजाएं सर्वांगसम होती हैं, जो एक मूलभूत ज्यामितीय गुण है। एक आयत में सभी कोण समान होते हैं (प्रत्येक 90 डिग्री होता है), लेकिन यह पूछे गए परिभाषा गुण नहीं है। एक आयत में सभी भुजाएं समान नहीं होती हैं, क्योंकि ऐसा होने पर यह एक वर्ग बन जाएगा, और इसके विकर्ण लंबवत नहीं होते हैं, जैसा कि एक समचतुर्भुज या वर्ग में होता है।",
           "imageAlt": null,
-          "critique": "Translation accurately preserves meaning, technical terms are standard in Hindi textbooks, and the correct answer remains option (2).",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "जर चौकोनाच्या सर्व बाजू एकसारख्या असतील आणि सर्व कोन एकसारखे असतील तर तो चौकोन कोणत्या प्रकारचा असेल?",
+          "stem": "खालीलपैकी कोणते एक चौकोनाचे गुणधर्म आहे?",
           "choices": [
-            "आयत",
-            "समभुज",
-            "वर्ग",
-            "समांतरभुज"
+            "सर्व बाजू बरोबर आहेत",
+            "सर्व कोन बरोबर आहेत",
+            "कर्ण लंब आहेत",
+            "विरुद्ध बाजू एकरूप आहेत"
           ],
-          "solution": "वर्ग हा चौकोन आहे ज्याच्या सर्व बाजू एकसारख्या असतात आणि सर्व कोन एकसारखे असतात, ज्यामुळे तो योग्य उत्तर असतो. आयताच्या सर्व कोन एकसारखे असतात पण बाजू नक्कीच एकसारख्या असत नाहीत. समभुजाच्या सर्व बाजू एकसारख्या असतात पण कोन नक्कीच एकसारखे असत नाहीत. समांतरभुजाच्या विरुद्ध बाजू आणि कोन एकसारखे असतात, पण सर्व बाजू आणि कोन एकसारखे असत नाहीत.",
+          "solution": "एक चौकोनाची विशेषता विरुद्ध बाजू एकरूप असणे ही आहे, हे एक मूलभूत भूमितीय गुणधर्म आहे. चौकोनाच्या सर्व कोनांमध्ये बरोबर असतात (प्रत्येक 90 अंश असतो), हे विचारलेल्या विशेषतेचे निर्धारण नाही. चौकोनाच्या सर्व बाजू बरोबर असतात, हे चौकोन असेल तर ते चौरस असेल आणि त्याच्या कर्ण लंब असतात, हे विरुद्ध चौरस किंवा चौकोनात असतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi geometric terminology.",
           "flag": null
         }
       },
@@ -73,19 +73,19 @@
       "needsFigure": false,
       "distractorReason": [
         "Confuses rectangle with square",
-        "Confuses rhombus with square",
-        null,
-        "Confuses parallelogram with square"
+        "Incorrectly assumes all angles are the main property",
+        "Confuses rectangle with rhombus or square",
+        null
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        1,
+        3,
+        3,
+        3,
+        3
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed and the solution is accurate. The correct answer is 'Square' as it is the only quadrilateral with all sides and all angles equal.",
+      "critique": "The correct answer is 3, as opposite sides of a rectangle are congruent. The other options are incorrect: a rectangle does not have all sides equal (that is a square), its diagonals are not perpendicular (only in a square or rhombus), and while all angles are equal, that is not the defining property being asked.",
       "sources": [
         {
           "document": "balbharati/8/mathematics/803020004.pdf",
@@ -116,49 +116,49 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T00:34:55.459Z",
+      "generatedAt": "2026-11-02T07:24:59.056Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "In a rectangle, what can be said about the diagonals?",
+      "difficulty": 5,
+      "stem": "In a trapezium, which of the following is true?",
       "choices": [
-        "They are not congruent",
-        "They bisect each other",
-        "They are perpendicular",
-        "They are not equal"
+        "Both pairs of opposite sides are parallel",
+        "Only one pair of opposite sides is parallel",
+        "All sides are equal",
+        "All angles are equal"
       ],
       "answerIndex": 1,
-      "solution": "In a rectangle, the diagonals bisect each other because they intersect at their midpoints, which is a fundamental geometric property of rectangles. The diagonals are congruent, so 'they are not congruent' and 'they are not equal' are incorrect. While diagonals in a square or rhombus are perpendicular, this is not true for a rectangle.",
+      "solution": "The correct answer is 'Only one pair of opposite sides is parallel' because a trapezium is defined as a quadrilateral with exactly one pair of parallel sides. The other options describe shapes like parallelograms, rhombuses, or squares, which have different properties such as two pairs of parallel sides or all sides equal.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक आयत में, विकर्णों के बारे में क्या कहा जा सकता है?",
+          "stem": "एक समलम्ब चतुर्भुज में, निम्नलिखित में से कौन सा सत्य है?",
           "choices": [
-            "वे सर्वांगसम नहीं होते",
-            "वे एक दूसरे को समद्विभाजित करते हैं",
-            "वे लंबवत होते हैं",
-            "वे बराबर नहीं होते"
+            "दोनों विपरीत भुजाओं के युग्म समांतर होते हैं",
+            "केवल एक विपरीत भुजा का युग्म समांतर होता है",
+            "सभी भुजाएं समान होती हैं",
+            "सभी कोण समान होते हैं"
           ],
-          "solution": "एक आयत में, विकर्ण एक दूसरे को समद्विभाजित करते हैं क्योंकि वे अपने मध्य बिंदुओं पर प्रतिच्छेद करते हैं, जो आयत के एक मूलभूत ज्यामितीय गुण है। विकर्ण सर्वांगसम होते हैं, इसलिए 'वे सर्वांगसम नहीं होते' और 'वे बराबर नहीं होते' गलत हैं। जबकि वर्ग या समचतुर्भुज में विकर्ण लंबवत होते हैं, यह आयत के लिए सत्य नहीं है।",
+          "solution": "सही उत्तर 'केवल एक विपरीत भुजा का युग्म समांतर होता है' है क्योंकि एक समलम्ब चतुर्भुज की परिभाषा एक चतुर्भुज होती है जिसके ठीक एक युग्म समांतर भुजाएं होती हैं। अन्य विकल्प समांतर चतुर्भुज, समचतुर्भुज या वर्ग जैसे आकृतियों का वर्णन करते हैं, जिनके गुण अलग होते हैं जैसे दो युग्म समांतर भुजाएं या सभी भुजाएं समान होती हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate geometric terminology.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated and maintain their intended logical relationships.",
           "flag": null
         },
         "mr": {
-          "stem": "आयतात, त्याच्या विकर्णांबद्दल काय म्हणता येईल?",
+          "stem": "ट्रॅपेझियममध्ये, खालीलपैकी कोणते खरे आहे?",
           "choices": [
-            "ते एकरूप नाहीत",
-            "ते एकमेकांना दुभागतात",
-            "ते लंब आहेत",
-            "ते समान नाहीत"
+            "दोन्ही विरुद्ध बाजू एकमेकांना समांतर असतात",
+            "केवळ एक जोडी विरुद्ध बाजू एकमेकांना समांतर असतात",
+            "सर्व बाजू समान असतात",
+            "सर्व कोन समान असतात"
           ],
-          "solution": "आयतात, विकर्ण एकमेकांना दुभागतात कारण ते त्यांच्या मध्यबिंदूंवर छेदतात, हे आयतांच्या मूलभूत भूमितीय गुणधर्मांपैकी एक आहे. विकर्ण एकरूप असतात, म्हणून 'ते एकरूप नाहीत' आणि 'ते समान नाहीत' अयोग्य आहेत. चौरस किंवा समभुजाच्या विकर्ण लंब असतात, परंतु आयताच्या विकर्णांबद्दल हे खरे नाही.",
+          "solution": "उत्तम उत्तर 'केवळ एक जोडी विरुद्ध बाजू एकमेकांना समांतर असतात' आहे कारण ट्रॅपेझियम म्हणजे थोडक्यात एका जोडी समांतर बाजू असलेला चौकोन आहे. इतर विकल्पांमध्ये समांतर बाजूंच्या दोन जोड्या किंवा सर्व बाजू समान असलेल्या आकृतींचा उल्लेख आहे ज्यांच्या वैशिष्ट्यांमध्ये वेगवेगळे गुणधर्म असतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for geometry.",
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
           "flag": null
         }
       },
@@ -167,10 +167,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Incorrectly assumes diagonals are not congruent in a rectangle",
+        "Describes a parallelogram",
         null,
-        "Confuses the property of bisecting with perpendicularity",
-        "Incorrectly assumes diagonals are not equal"
+        "Confuses properties of different quadrilaterals",
+        "Describes a square or regular quadrilateral"
       ],
       "solverAnswers": [
         1,
@@ -179,103 +179,8 @@
         1,
         1
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is option 1. The solution is sound and aligns with the properties of a rectangle. The author's reasoning for the wrong options is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 31,
-          "pageStart": 51,
-          "pageEnd": 52,
-          "headingPath": [
-            "8. Quadrilateral : Constructions and Types"
-          ]
-        },
-        {
-          "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 32,
-          "pageStart": 52,
-          "pageEnd": 54,
-          "headingPath": [
-            "8. Quadrilateral : Constructions and Types"
-          ]
-        },
-        {
-          "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 33,
-          "pageStart": 54,
-          "pageEnd": 55,
-          "headingPath": [
-            "8. Quadrilateral : Constructions and Types"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T00:34:55.459Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "In a parallelogram, if one angle is 118°, what is the measure of its adjacent angle?",
-      "choices": [
-        "62°",
-        "118°",
-        "180°",
-        "72°"
-      ],
-      "answerIndex": 0,
-      "solution": "In a parallelogram, adjacent angles are supplementary, meaning they add up to 180°. Therefore, if one angle is 118°, the adjacent angle is 180° - 118° = 62°. The option '118°' is the measure of the opposite angle, not the adjacent one. '180°' is the sum of the two angles, not the individual measure. '72°' is the result of incorrectly subtracting from 180° in a different context.",
-      "checkExpr": "180-118",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक समांतर चतुर्भुज में, यदि एक कोण 118° है, तो इसके संलग्न कोण का माप क्या है?",
-          "choices": [
-            "62°",
-            "118°",
-            "180°",
-            "72°"
-          ],
-          "solution": "एक समांतर चतुर्भुज में, संलग्न कोण पूरक होते हैं, अर्थात वे 180° के बराबर जुड़ते हैं। इसलिए, यदि एक कोण 118° है, तो संलग्न कोण 180° - 118° = 62° होता है। विकल्प '118°' विपरीत कोण का माप है, न कि संलग्न कोण का। '180°' दो कोणों के योग का माप है, न कि अलग-अलग माप। '72°' एक अलग संदर्भ में 180° से गलत रूप से घटाने पर प्राप्त परिणाम है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "समांतर चौकोनात, जर एक कोन 118° असेल, तर त्याच्या जवळच्या कोनाचे माप किती असेल?",
-          "choices": [
-            "62°",
-            "118°",
-            "180°",
-            "72°"
-          ],
-          "solution": "समांतर चौकोनात, जवळच्या कोन अनुपूरक असतात, म्हणजेच त्यांचे बेरीज 180° असते. त्यामुळे, जर एक कोन 118° असेल, तर जवळच्या कोनाचे माप 180° - 118° = 62° असेल. '118°' हे विरुद्ध कोनाचे माप आहे, जवळच्या कोनाचे नाही. '180°' हे दोन कोनांची बेरीज आहे, निर्दिष्ट माप नाही. '72°' हे 180° मधून वेगळ्या संदर्भात चुकीच्या पद्धतीने बेरीज केल्याने मिळालेले आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses opposite angles with adjacent angles",
-        "Misunderstands the relationship between adjacent angles",
-        "Thinks the sum of the angles is the measure of one angle"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly applies the property that adjacent angles in a parallelogram are supplementary. The reasoning for the distractors aligns with common misconceptions.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question correctly identifies that a trapezium has only one pair of opposite sides parallel. The other options are incorrect and correspond to other quadrilateral types, which aligns with the author's reasoning.",
       "sources": [
         {
           "document": "balbharati/8/mathematics/803020004.pdf",
@@ -315,49 +220,49 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T00:34:55.459Z",
+      "generatedAt": "2026-11-02T07:24:59.056Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "If in a quadrilateral, the diagonals are equal and bisect each other, what type of quadrilateral is it?",
+      "difficulty": 6,
+      "stem": "In a quadrilateral, if the diagonals are not congruent but bisect each other, what type of quadrilateral is it?",
       "choices": [
-        "Rhombus",
-        "Kite",
         "Rectangle",
-        "Trapezium"
+        "Square",
+        "Rhombus",
+        "Parallelogram"
       ],
-      "answerIndex": 2,
-      "solution": "A rectangle has diagonals that are equal in length and bisect each other, which matches the given condition. A rhombus has diagonals that bisect each other but are not equal. A kite has one pair of equal diagonals, but they do not bisect each other. A trapezium does not have equal diagonals or bisecting diagonals.",
+      "answerIndex": 3,
+      "solution": "A parallelogram has diagonals that bisect each other, but they are not necessarily congruent. Rectangles and squares have congruent diagonals, which rules them out. A rhombus has diagonals that bisect each other at right angles but are not congruent, but it is a specific type of parallelogram. Therefore, the most general and correct answer is a parallelogram.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक चतुर्भुज में विकर्ण बराबर हों और एक दूसरे को समद्विभाजित करें, तो चतुर्भुज किस प्रकार का होगा?",
+          "stem": "एक चतुर्भुज में, यदि विकर्ण सर्वांगसम नहीं हैं लेकिन एक दूसरे को समद्विभाजित करते हैं, तो यह कौन-सा प्रकार का चतुर्भुज है?",
           "choices": [
-            "समचतुर्भुज",
-            "पतंग",
             "आयत",
-            "समलम्ब चतुर्भुज"
+            "वर्ग",
+            "समचतुर्भुज",
+            "समांतर चतुर्भुज"
           ],
-          "solution": "एक आयत में बराबर लंबाई वाले विकर्ण होते हैं और वे एक दूसरे को समद्विभाजित करते हैं, जो दिए गए शर्त के अनुरूप है। एक समचतुर्भुज में विकर्ण एक दूसरे को समद्विभाजित करते हैं लेकिन वे बराबर नहीं होते। एक पतंग में एक जोड़ा बराबर विकर्ण होता है, लेकिन वे एक दूसरे को समद्विभाजित नहीं करते। एक समलम्ब चतुर्भुज में बराबर विकर्ण नहीं होते और विकर्ण एक दूसरे को समद्विभाजित नहीं करते।",
+          "solution": "एक समांतर चतुर्भुज के विकर्ण एक दूसरे को समद्विभाजित करते हैं, लेकिन वे आवश्यक रूप से सर्वांगसम नहीं होते हैं। आयत और वर्ग के विकर्ण सर्वांगसम होते हैं, जो इन्हें बाहर कर देता है। समचतुर्भुज के विकर्ण एक दूसरे को समकोण पर समद्विभाजित करते हैं, लेकिन वे सर्वांगसम नहीं होते हैं, लेकिन यह एक विशिष्ट प्रकार का समांतर चतुर्भुज है। इसलिए, सबसे सामान्य और सही उत्तर समांतर चतुर्भुज है।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi geometry terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "चतुर्भुजात विकर्ण समान आहेत आणि एकमेकांना दुभागतात, तर तो चतुर्भुज कोणत्या प्रकारचा असेल?",
+          "stem": "चतुर्भुजात, जर विकर्ण समान नसतील पण एकमेकांना दुभागत असतील, तर तो चतुर्भुज कोणत्या प्रकारचा असेल?",
           "choices": [
-            "समभुज",
-            "पानखडा",
             "आयत",
-            "समलंब"
+            "वर्ग",
+            "समचतुर्भुज",
+            "समांतर चौकोन"
           ],
-          "solution": "आयताचे विकर्ण समान लांबीचे असतात आणि एकमेकांना दुभागतात, जे दिलेल्या अटीशी जुळते. समभुजाचे विकर्ण एकमेकांना दुभागतात परंतु ते समान नसतात. पानखड्याचे एक जोडी विकर्ण समान असतात, परंतु ते एकमेकांना दुभागत नाहीत. समलंबाचे विकर्ण समान नसतात किंवा एकमेकांना दुभागत नाहीत.",
+          "solution": "समांतर चौकोनाचे विकर्ण एकमेकांना दुभागतात, परंतु ते आवश्यकता नसतील. आयत आणि वर्गाचे विकर्ण समान असतात, जे त्यांना बाजूला ठेवतात. समचतुर्भुजाचे विकर्ण एकमेकांना लंबरूपाने दुभागतात पण समान नसतात, परंतु तो समांतर चौकोनाचा विशिष्ट प्रकार आहे. म्हणून, सर्वात सामान्य आणि योग्य उत्तर समांतर चौकोन आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for geometric shapes.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for geometric shapes.",
           "flag": null
         }
       },
@@ -366,20 +271,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses rhombus with rectangle",
-        "Confuses properties of a kite",
-        null,
-        "Confuses trapezium with rectangle"
+        "Confuses rectangle with parallelogram",
+        "Confuses square with parallelogram",
+        "Confuses rhombus with parallelogram",
+        null
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        3,
+        3,
+        3,
+        3,
+        3
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and aligns with the properties of quadrilaterals. A rectangle is the only quadrilateral with equal and bisecting diagonals.",
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. A parallelogram has diagonals that bisect each other but are not necessarily congruent, which matches the condition in the question. The other options (rectangle, square, rhombus) have congruent or perpendicular diagonals, which do not fit the description.",
       "sources": [
         {
           "document": "balbharati/8/mathematics/803020004.pdf",
@@ -410,111 +315,7 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T00:34:55.459Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If the diagonals of a rhombus intersect at right angles and one of the diagonals is 16 cm, what is the length of half of that diagonal?",
-      "choices": [
-        "8 cm",
-        "16 cm",
-        "4 cm",
-        "32 cm"
-      ],
-      "answerIndex": 0,
-      "solution": "In a rhombus, the diagonals bisect each other. So, if one diagonal is 16 cm, half of that diagonal is 16/2 = 8 cm. The option '16 cm' is the full length of the diagonal, not half. '4 cm' is a quarter of the diagonal, not half. '32 cm' is double the length of the diagonal, which is incorrect.",
-      "checkExpr": "16/2",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक समचतुर्भुज के विकर्ण समकोण पर प्रतिच्छेद करते हैं और विकर्ण में से एक 16 सेमी है, तो उस विकर्ण के आधे की लंबाई क्या है?",
-          "choices": [
-            "8 सेमी",
-            "16 सेमी",
-            "4 सेमी",
-            "32 सेमी"
-          ],
-          "solution": "एक समचतुर्भुज में, विकर्ण एक दूसरे को समद्विभाजित करते हैं। इसलिए, यदि एक विकर्ण 16 सेमी है, तो उस विकर्ण के आधे की लंबाई 16/2 = 8 सेमी है। विकल्प '16 सेमी' विकर्ण की पूरी लंबाई है, न कि आधी। '4 सेमी' विकर्ण के एक चौथाई है, न कि आधा। '32 सेमी' विकर्ण की लंबाई का दोगुना है, जो गलत है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एका वृत्ताकार चौकोनाच्या विकर्ण लंबकोनात छेद करतात आणि एका विकर्णाची लांबी 16 सेंमी आहे, तर त्या विकर्णाच्या अर्ध्याची लांबी किती असेल?",
-          "choices": [
-            "8 सेंमी",
-            "16 सेंमी",
-            "4 सेंमी",
-            "32 सेंमी"
-          ],
-          "solution": "एका चौकोनात, विकर्ण एकमेकांना दुभागतात. म्हणून, जर एका विकर्णाची लांबी 16 सेंमी असेल तर त्या विकर्णाच्या अर्ध्याची लांबी 16/2 = 8 सेंमी असेल. '16 सेंमी' हा विकर्णाच्या पूर्ण लांबीचा विकल्प आहे, अर्ध्याचा नाही. '4 सेंमी' हा विकर्णाच्या चौथाईचा विकल्प आहे, अर्ध्याचा नाही. '32 सेंमी' हा विकर्णाच्या दुप्पट लांबीचा विकल्प आहे, जो चूक आहे.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the full length of the diagonal with half of it",
-        "Confuses the diagonal length with half the side length of the rhombus",
-        "Incorrectly divides the diagonal by 4 instead of 2"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is straightforward and the solution is correct. The key is correct, and the reasoning for the distractors is plausible and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 34,
-          "pageStart": 55,
-          "pageEnd": 57,
-          "headingPath": [
-            "8. Quadrilateral : Constructions and Types"
-          ]
-        },
-        {
-          "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 35,
-          "pageStart": 57,
-          "pageEnd": 58,
-          "headingPath": [
-            "8. Quadrilateral : Constructions and Types"
-          ]
-        },
-        {
-          "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 36,
-          "pageStart": 58,
-          "pageEnd": 60,
-          "headingPath": [
-            "8. Quadrilateral : Constructions and Types"
-          ]
-        },
-        {
-          "document": "balbharati/8/mathematics/803020004.pdf",
-          "ordinal": 37,
-          "pageStart": 60,
-          "pageEnd": 60,
-          "headingPath": [
-            "8. Quadrilateral : Constructions and Types"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T00:34:55.459Z",
+      "generatedAt": "2026-11-02T07:24:59.056Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

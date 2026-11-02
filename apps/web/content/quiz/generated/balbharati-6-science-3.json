@@ -21,144 +21,49 @@
   "board": "BALBHARATI",
   "book": "६ वी सामान्य विज्ञान इंग्रजी",
   "edition": "First Edition 2026",
-  "generatedAt": "2026-10-31T04:09:07.164Z",
+  "generatedAt": "2026-11-01T16:52:41.210Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "What is the process called when heavy solid particles settle at the bottom of a liquid?",
+      "difficulty": 6,
+      "stem": "Which method is used to separate a mixture of sawdust and water?",
       "choices": [
         "Filtration",
-        "Sedimentation",
+        "Evaporation",
         "Decantation",
-        "Sieving"
+        "Sedimentation"
       ],
-      "answerIndex": 1,
-      "solution": "Sedimentation is the process where heavy solid particles settle at the bottom of a liquid due to gravity. Filtration involves separating solids from liquids using a filter, decantation is pouring off the liquid after solids have settled, and sieving is used to separate particles based on size.",
+      "answerIndex": 0,
+      "solution": "Filtration is used to separate solid particles from a liquid. Sawdust is a solid that does not dissolve in water, so it can be trapped by a filter. Evaporation would remove the water, leaving any dissolved substances, but not the sawdust. Decantation and sedimentation are not effective for separating small, floating particles like sawdust.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "जब भारी ठोस कण तरल के नीचे बैठ जाते हैं तो इस प्रक्रिया को क्या कहते हैं?",
+          "stem": "किस विधि का उपयोग लकड़ी के चूर्ण और पानी के मिश्रण को अलग करने के लिए किया जाता है?",
           "choices": [
             "अपोलन",
-            "अवसादन",
+            "वाष्पीकरण",
             "निकास",
-            "छानन"
+            "अवसादन"
           ],
-          "solution": "अवसादन वह प्रक्रिया है जिसमें भारी ठोस कण गुरुत्वाकर्षण के कारण तरल के नीचे बैठ जाते हैं। अपोलन में एक छलनी के उपयोग से ठोसों को तरल से अलग किया जाता है, निकास ठोसों के बैठ जाने के बाद तरल को बाहर निकालना है, और छानन का उपयोग कणों के आकार के आधार पर अलग करने के लिए किया जाता है।",
+          "solution": "अपोलन का उपयोग तरल पदार्थ से ठोस कणों को अलग करने के लिए किया जाता है। लकड़ी के चूर्ण एक ठोस है जो पानी में घुलकर नहीं जाता, इसलिए इसे एक फिल्टर द्वारा रोका जा सकता है। वाष्पीकरण पानी को हटा देगा, केवल घुले हुए पदार्थ छोड़ देगा, लेकिन लकड़ी के चूर्ण को नहीं। निकास और अवसादन लकड़ी के चूर्ण जैसे छोटे, तैरते कणों को अलग करने के लिए प्रभावी नहीं हैं।",
           "imageAlt": null,
-          "critique": "Hindi translation accurately reflects the English original in meaning, terminology, and structure. Technical terms like 'अवसादन' (sedimentation) and 'अपोलन' (filtration) are standard in Hindi science textbooks.",
+          "critique": "All terms are standard Hindi scientific terms used in textbooks. 'अपोलन' (filtration) is the correct term, not a transliteration. 'निकास' (decantation) and 'अवसादन' (sedimentation) are also standard terms.",
           "flag": null
         },
         "mr": {
-          "stem": "तरल पदार्थाच्या खालच्या बाजूला भारी घन कण निकामी होण्याच्या प्रक्रियेला काय म्हणतात?",
+          "stem": "पाण्याच्या मिश्रणातून चूर्ण लाकडाचे मिश्रण कशाच्या माध्यमातून विलग करतात?",
           "choices": [
             "विलगीकरण",
-            "अवक्षेपण",
-            "निर्मलीकरण",
-            "सोयरी करणे"
-          ],
-          "solution": "अवक्षेपण ही प्रक्रिया आहे जेव्हा भारी घन कण गुरुत्वाकर्षणामुळे तरल पदार्थाच्या खालच्या बाजूला निकामी होतात. विलगीकरण हा तरल पदार्थापासून घन पदार्थांना विलग करण्यासाठी फिल्टर वापरणे आहे, निर्मलीकरण हे घन पदार्थ निकामी झाल्यानंतर तरल पदार्थ विसर्जित करणे आहे आणि सोयरी करणे हे आकारानुसार कणांना विलग करण्यासाठी वापरले जाते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses with the process of filtering",
-        null,
-        "Misunderstands the definition",
-        "Mixes up the terms of separation"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 'Sedimentation' as it refers to the process where heavy particles settle at the bottom of a liquid. The other options are valid separation techniques but do not describe this specific process.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 27,
-          "pageStart": 35,
-          "pageEnd": 36,
-          "headingPath": [
-            "3. Let’s Separate the Components"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 28,
-          "pageStart": 36,
-          "pageEnd": 37,
-          "headingPath": [
-            "3. Let’s Separate the Components"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 29,
-          "pageStart": 37,
-          "pageEnd": 39,
-          "headingPath": [
-            "3. Let’s Separate the Components"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T04:09:07.164Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which method is used to separate alum dissolved in water?",
-      "choices": [
-        "evaporation",
-        "sedimentation",
-        "filtration",
-        "decantation"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct answer is 'evaporation' because it is used to separate a dissolved solid from a liquid by turning the liquid into vapour. The other options are incorrect because they refer to different methods of separation.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "जल में घुले एलुम को किस विधि द्वारा अलग किया जाता है?",
-          "choices": [
             "वाष्पीकरण",
-            "अवसादन",
-            "छानन",
-            "अपकेंद्रण"
+            "निर्वाहन",
+            "अवक्षेपण"
           ],
-          "solution": "सही उत्तर 'वाष्पीकरण' है क्योंकि इसका उपयोग तरल पदार्थ से घुले ठोस पदार्थ को अलग करने के लिए किया जाता है जिसमें तरल पदार्थ को वाष्प में बदल दिया जाता है। अन्य विकल्प गलत हैं क्योंकि वे अलगाव की अलग-अलग विधियों को संदर्भित करते हैं।",
+          "solution": "विलगीकरण हे द्रव्यातून घन कणांना विलग करण्यासाठी वापरले जाते. चूर्ण लाकडे द्रव्यात विरघळत नाहीत, म्हणून ते फिल्टरद्वारे अडकतात. वाष्पीकरण द्रव्य दूर करते, विरघळलेल्या पदार्थांना राखते, पण चूर्ण लाकडे राखत नाही. निर्वाहन आणि अवक्षेपण हे चूर्ण लाकडासारख्या छोट्या, तरंगत्या कणांचे विलगीकरण करण्यासाठी अचूक नाहीत.",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard technical terms as found in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जलात विरघळलेले अॅलम विलग करण्यासाठी कोणती पद्धत वापरली जाते?",
-          "choices": [
-            "वाष्पीकरण",
-            "अवक्षेपण",
-            "किरणांचे विलगीकरण",
-            "रेचक विलगीकरण"
-          ],
-          "solution": "योग्य उत्तर 'वाष्पीकरण' आहे कारण ते द्रवापासून विरघळलेले घटक विलग करण्यासाठी वापरले जाते जेणेकरून द्रव वाफेमध्ये बदलतो. इतर पर्याय अयोग्य आहेत कारण ते विलगीकरणाच्या वेगवेगळ्या पद्धतींचा संदर्भ देतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi scientific terminology used.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
         }
       },
@@ -168,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "a method used to separate solid particles that settle at the bottom of a liquid",
-        "a method used to separate solid substances that are not dissolved in a liquid",
-        "a method used to separate two liquids, one heavy and one light"
+        "Confuses filtration with evaporation",
+        "Confuses filtration with decantation",
+        "Confuses filtration with sedimentation"
       ],
       "solverAnswers": [
         0,
@@ -179,8 +84,8 @@
         0,
         0
       ],
-      "levelFlag": null,
-      "critique": "The solution is correct. Evaporation is the right method to separate a dissolved solid like alum from water. The other options are correctly dismissed as they apply to different separation scenarios.",
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is filtration, as sawdust is a solid that does not dissolve in water and can be separated by passing the mixture through a filter. The other options are incorrect because evaporation would remove the water, decantation is for separating liquids from settled solids, and sedimentation alone is not sufficient for sawdust.",
       "sources": [
         {
           "document": "balbharati/6/science/603050012.pdf",
@@ -222,339 +127,7 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T04:09:07.164Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Which statement is true about filtration?",
-      "choices": [
-        "It is used to separate substances that are not dissolved in a liquid.",
-        "It is used to separate metals from non-metals.",
-        "It is used to separate salt from seawater.",
-        "It is used to separate lightweight debris from grains."
-      ],
-      "answerIndex": 0,
-      "solution": "The correct answer is 'It is used to separate substances that are not dissolved in a liquid.' Filtration works by allowing liquids and dissolved substances to pass through a filter while retaining solid particles. The other options describe methods like magnetic separation, distillation, and sieving, which are not filtration.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "फिल्टर के बारे में कौन सा कथन सही है?",
-          "choices": [
-            "यह एक त lí के अद्रव्य वस्तुओं को अलग करने के लिए प्रयोग किया जाता है।",
-            "यह धातुओं को अधातुओं से अलग करने के लिए प्रयोग किया जाता है।",
-            "यह समुद्र के जल से नमक को अलग करने के लिए प्रयोग किया जाता है।",
-            "यह अनाज से हल्का अपशिष्ट को अलग करने के लिए प्रयोग किया जाता है।"
-          ],
-          "solution": "सही उत्तर 'यह एक त lí के अद्रव्य वस्तुओं को अलग करने के लिए प्रयोग किया जाता है।' फिल्टर कार्य करता है जब तरल पदार्थ और घुले हुए पदार्थ एक फिल्टर के माध्यम से गुजरते हैं जबकि ठोस कण रखे जाते हैं। अन्य विकल्प चुंबकीय पृथक्करण, आसवन और छलनी के तरीकों का वर्णन करते हैं, जो फिल्टर नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms. The correct answer is in the same position (option 1), and the distractors remain incorrect.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "फिल्टरीकरण बद्दल कोणता विधान खरा आहे?",
-          "choices": [
-            "ते द्रावकात अद्राव्य द्रव्यांना विभक्त करण्यासाठी वापरले जाते.",
-            "ते धातूंना अधातूंपासून विभक्त करण्यासाठी वापरले जाते.",
-            "ते समुद्राच्या पाण्यातून खारट पाणी विभक्त करण्यासाठी वापरले जाते.",
-            "ते गहूमधून हलके अपशिष्ट विभक्त करण्यासाठी वापरले जाते."
-          ],
-          "solution": "योग्य उत्तर 'ते द्रावकात अद्राव्य द्रव्यांना विभक्त करण्यासाठी वापरले जाते.' फिल्टरीकरण द्रावक आणि द्राव्य द्रव्यांना फिल्टर माध्यमातून पार करते जेणेकरून घन कणांना रोखते. इतर विकल्प मॅग्नेटिक विभक्ती, आवासीय विभक्ती आणि सिव्हिंग या पद्धतींचे वर्णन करतात, जे फिल्टरीकरण नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "A student might confuse filtration with magnetic separation, thinking it can separate materials based on metal content.",
-        "a method used to separate salt from seawater by evaporation",
-        "Confuses filtration with winnowing, which separates light and heavy particles by wind."
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0, as filtration is used to separate undissolved solids from a liquid. The other options describe different separation techniques (magnetic separation, evaporation, and winnowing), which align with the author's reasons.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 30,
-          "pageStart": 39,
-          "pageEnd": 40,
-          "headingPath": [
-            "3. Let’s Separate the Components"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 31,
-          "pageStart": 40,
-          "pageEnd": 41,
-          "headingPath": [
-            "3. Let’s Separate the Components"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 32,
-          "pageStart": 42,
-          "pageEnd": 43,
-          "headingPath": [
-            "3. Let’s Separate the Components",
-            "Exercises"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 33,
-          "pageStart": 43,
-          "pageEnd": 43,
-          "headingPath": [
-            "3. Let’s Separate the Components",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T04:09:07.164Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "How can sawdust mixed in a container of water be separated?",
-      "choices": [
-        "Using a magnet",
-        "By evaporation",
-        "By filtration",
-        "By decantation"
-      ],
-      "answerIndex": 2,
-      "solution": "The correct answer is 'By filtration' because it is used to separate solid substances that are not dissolved in a liquid. The other options are incorrect because they refer to methods that are not suitable for this specific case.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "जल के एक बर्तन में मिले चाकू के चूर्ण को कैसे अलग किया जा सकता है?",
-          "choices": [
-            "एक चुंबक के द्वारा",
-            "वाष्पीकरण द्वारा",
-            "छानना द्वारा",
-            "अपकेंद्रण द्वारा"
-          ],
-          "solution": "सही उत्तर 'छानना द्वारा' है क्योंकि यह एक तरल में घुले ठोस पदार्थों को अलग करने के लिए उपयोग किया जाता है। अन्य विकल्प गलत हैं क्योंकि ये विशिष्ट मामले के लिए उपयुक्त विधियां नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology as found in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "पाण्याच्या एका बरखाच्यात घोललेल्या दांडीच्या चूर्णाला कशाने वेगळे केले जाऊ शकते?",
-          "choices": [
-            "चुंबकाचा वापर करून",
-            "वाष्पीकरणाद्वारे",
-            "विलगीकरणाद्वारे",
-            "निवडण्याद्वारे"
-          ],
-          "solution": "बरोबर उत्तर 'विलगीकरणाद्वारे' आहे कारण ते द्रव्यात अद्रवीकृत घन पदार्थांना वेगळे करण्यासाठी वापरले जाते. इतर विकल्प चुकीचे आहेत कारण ते विशिष्ट उदाहरणासाठी अनुपयुक्त विधींच्या बाबतीत आहेत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation accurately conveys the meaning of the English question and options. Technical terms like 'विलगीकरण' (filtration) are correctly used as per Marathi textbooks. The correct answer remains option (3) in the same position. All distractors are still incorrect in Marathi.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "a method used to separate magnetic substances",
-        "a method used to separate a dissolved solid from a liquid",
-        null,
-        "a method used to separate two liquids, one heavy and one light"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is filtration, as it separates undissolved solids from a liquid. The author's reasoning is accurate and matches the correct method.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 30,
-          "pageStart": 39,
-          "pageEnd": 40,
-          "headingPath": [
-            "3. Let’s Separate the Components"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 31,
-          "pageStart": 40,
-          "pageEnd": 41,
-          "headingPath": [
-            "3. Let’s Separate the Components"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 32,
-          "pageStart": 42,
-          "pageEnd": 43,
-          "headingPath": [
-            "3. Let’s Separate the Components",
-            "Exercises"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 33,
-          "pageStart": 43,
-          "pageEnd": 43,
-          "headingPath": [
-            "3. Let’s Separate the Components",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T04:09:07.164Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "In the experiment described, after mixing oil and water, what happened when the mixture was left undisturbed?",
-      "choices": [
-        "The oil and water mixed completely",
-        "The oil and water formed two layers",
-        "The oil evaporated",
-        "The water turned into ice"
-      ],
-      "answerIndex": 1,
-      "solution": "Oil and water do not mix because they have different densities, causing them to separate into two distinct layers. The oil, being less dense, floats on top of the water. The other options are incorrect because oil does not evaporate under normal conditions, and water does not turn into ice unless frozen.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "विवरण में बताए गए प्रयोग में, तेल और पानी के मिश्रण को अस्पर्श छोड़ देने पर क्या हुआ?",
-          "choices": [
-            "तेल और पानी पूरी तरह मिश्रित हो गए",
-            "तेल और पानी दो लेयर बना लिए",
-            "तेल वाष्पित हो गया",
-            "पानी बर्फ में बदल गया"
-          ],
-          "solution": "तेल और पानी अलग-अलग घनत्व के कारण मिश्रित नहीं होते हैं, जिसके कारण वे दो अलग-अलग लेयर बना लेते हैं। तेल कम घनत्व के कारण पानी के ऊपर तैर जाता है। अन्य विकल्प गलत हैं क्योंकि सामान्य स्थितियों में तेल वाष्पित नहीं होता है और पानी बर्फ में बदल जाता है केवल जब इसे जमाया जाता है।",
-          "imageAlt": "एक बीकर में तेल और पानी के मिश्रण",
-          "critique": "All elements match the original. 'लेयर' is a commonly used term in Hindi textbooks for 'layer'.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "प्रयोगात वर्णन केलेल्या विषयात, तेल आणि पाणी मिसळल्यानंतर, मिश्रण अचल ठेवल्यास काय झाले?",
-          "choices": [
-            "तेल आणि पाणी पूर्णपणे मिसळले",
-            "तेल आणि पाणी दोन थर बनवले",
-            "तेल वाष्पीभूत झाले",
-            "पाणी बर्फात बदलले"
-          ],
-          "solution": "तेल आणि पाणी एकमेकांसोबत मिसळत नाहीत कारण त्यांचे घनत्व वेगवेगळे असतात, ज्यामुळे ते दोन वेगळे थर बनवतात. तेल, जे कमी घनत्व असलेले असते, पाण्यावर तरंगते. इतर विकल्प अयोग्य आहेत कारण सामान्य परिस्थितीत तेल वाष्पीभूत होत नाही आणि पाणी बर्फात बदलत नाही जोपर्यंत ते थंड केले जात नाही.",
-          "imageAlt": "एक बीकरमध्ये तेल आणि पाण्याचा मिश्रण",
-          "critique": "Translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "A beaker containing a mixture of oil and water",
-      "figure": {
-        "kind": "diagram",
-        "spec": {
-          "parts": [
-            {
-              "part": "beaker",
-              "x": 50,
-              "y": 31.25,
-              "size": 40,
-              "labels": [
-                "liquid"
-              ],
-              "text": {
-                "liquid": "mix"
-              }
-            }
-          ]
-        },
-        "labels": {
-          "mix": {
-            "en": "oil and water",
-            "hi": "तेल और पानी",
-            "mr": "तेल आणि पाणी"
-          }
-        }
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        "Misinterprets the experiment",
-        null,
-        "Ignores the concept of layer formation",
-        "Does not understand the properties of oil and water"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as oil and water are immiscible and form two distinct layers due to differences in density. The other options represent common misconceptions about the behavior of oil and water.",
-      "sources": [
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 27,
-          "pageStart": 35,
-          "pageEnd": 36,
-          "headingPath": [
-            "3. Let’s Separate the Components"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 28,
-          "pageStart": 36,
-          "pageEnd": 37,
-          "headingPath": [
-            "3. Let’s Separate the Components"
-          ]
-        },
-        {
-          "document": "balbharati/6/science/603050012.pdf",
-          "ordinal": 29,
-          "pageStart": 37,
-          "pageEnd": 39,
-          "headingPath": [
-            "3. Let’s Separate the Components"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T04:09:07.164Z",
+      "generatedAt": "2026-11-01T16:52:41.210Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

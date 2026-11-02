@@ -21,49 +21,49 @@
   "board": "BALBHARATI",
   "book": "६ वी गणित इंग्रजी",
   "edition": "First Edition 2026",
-  "generatedAt": "2026-10-31T00:51:30.469Z",
+  "generatedAt": "2026-11-01T13:56:55.647Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 2,
-      "stem": "What is the percentage of bad sugarcane seedlings if 700 out of 14000 were bad?",
+      "difficulty": 1,
+      "stem": "What does the symbol % mean?",
       "choices": [
-        "5%",
-        "70%",
-        "10%",
-        "15%"
+        "How many out of 100",
+        "How many out of 10",
+        "How many out of 1000",
+        "How many out of 10000"
       ],
       "answerIndex": 0,
-      "solution": "To find the percentage of bad sugarcane seedlings, divide the number of bad seedlings by the total number and multiply by 100: (700/14000) × 100 = 5%. The other options do not match this calculation. 70% is too high, 10% and 15% are not the result of dividing 700 by 14000 and multiplying by 100.",
-      "checkExpr": "700/14000*100",
+      "solution": "The symbol % means 'how many out of 100'. This is because the percentage represents a part of a whole, where the whole is considered as 100. The option 'how many out of 10' refers to a different measurement, 'how many out of 1000' is associated with a different symbol, and 'how many out of 10000' is not a standard representation.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि 14000 में से 700 खराब गन्ने के बीज हैं तो खराब गन्ने के बीजों का प्रतिशत क्या है?",
+          "stem": "प्रतीक % का अर्थ क्या है?",
           "choices": [
-            "5%",
-            "70%",
-            "10%",
-            "15%"
+            "100 में से कितना",
+            "10 में से कितना",
+            "1000 में से कितना",
+            "10000 में से कितना"
           ],
-          "solution": "खराब गन्ने के बीजों का प्रतिशत ज्ञात करने के लिए खराब बीजों की संख्या को कुल संख्या से विभाजित करें और 100 से गुणा करें: (700/14000) × 100 = 5%। अन्य विकल्प इस गणना के अनुरूप नहीं हैं। 70% बहुत अधिक है, 10% और 15% 700 को 14000 से विभाजित करके और 100 से गुणा करके प्राप्त नहीं होते।",
+          "solution": "प्रतीक % का अर्थ '100 में से कितना' होता है। ऐसा इसलिए है क्योंकि प्रतिशत एक पूर्ण के एक हिस्से का प्रतिनिधित्व करता है, जहां पूर्ण को 100 माना जाता है। विकल्प '10 में से कितना' एक अलग मापदंड को संदर्भित करता है, '1000 में से कितना' एक अलग प्रतीक से जुड़ा हुआ है, और '10000 में से कितना' मानक प्रस्तुति नहीं है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated and maintain their original logical relationships. The term 'प्रतिशत' (percentage) is correctly used, and the phrasing '100 में से कितना' is standard in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "14000 मधून 700 खारे गवताची बियाणी असल्यास खारे गवताची बियाणीचे टक्के किती आहेत?",
+          "stem": "चिन्ह % म्हणजे काय?",
           "choices": [
-            "5%",
-            "70%",
-            "10%",
-            "15%"
+            "100 मधून किती",
+            "10 मधून किती",
+            "1000 मधून किती",
+            "10000 मधून किती"
           ],
-          "solution": "खारे गवताची बियाणीचे टक्के शोधण्यासाठी, खारे बियाणीची संख्या एकूण संख्या भाग द्यावी आणि 100 ने गुणाकार करावा: (700/14000) × 100 = 5%. इतर विकल्प या गणनेशी मेळ नाहीत. 70% खूप जास्त आहे, 10% आणि 15% हे 700 ला 14000 ने भाग देऊन आणि 100 ने गुणाकार करून मिळत नाहीत.",
+          "solution": "चिन्ह % म्हणजे '100 मधून किती' होय. कारण शेकडा एका एकूणाचा भाग दर्शवतो, जेथे एकूण म्हणजे 100 घेतले जाते. '10 मधून किती' हा विकल्प वेगळ्या मापनाचा दाखला आहे, '1000 मधून किती' हा वेगळ्या चिन्हाशी संबंधित आहे आणि '10000 मधून किती' मानक प्रतिनिधित्व नाही.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The structure and logic of the question and solution are preserved.",
+          "critique": "The Marathi translation accurately reflects the English original in meaning, structure, and terminology. The term 'शेकडा' (percentage) is correctly used, and the options are properly translated as '100 मधून किती' etc., which are standard Marathi expressions.",
           "flag": null
         }
       },
@@ -73,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Miscalculates the percentage by dividing 14000 by 700 instead of 700 by 14000",
-        "Adds 700 to 14000 and divides by 100",
-        "Divides 700 by 7000 and multiplies by 100 (incorrect division method)"
+        "confuses % with /",
+        "does not understand the meaning of %",
+        "confuses % with /"
       ],
       "solverAnswers": [
         0,
@@ -85,7 +85,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The calculation (700/14000) × 100 = 5% is correct. The author's reasoning for the distractors aligns with common misconceptions.",
+      "critique": "The correct answer is 0, as % means 'how many out of 100'. The author's reasoning is sound, and the misconceptions described for the wrong options are plausible for students at this level.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
@@ -99,49 +99,49 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T00:51:30.469Z",
+      "generatedAt": "2026-11-01T13:56:55.647Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 2,
-      "stem": "In a class of 50 students, 20 students are boys. What is the percentage of boys in the class?",
+      "difficulty": 1,
+      "stem": "What does the word 'percent' mean?",
       "choices": [
-        "20%",
-        "30%",
-        "40%",
-        "50%"
+        "How many out of a hundred",
+        "How many out of a thousand",
+        "How many out of ten",
+        "How many out of a hundred and ten"
       ],
-      "answerIndex": 2,
-      "solution": "To find the percentage of boys, divide the number of boys (20) by the total number of students (50) and multiply by 100. This gives 40%. The other options are incorrect because they do not match the calculation.",
-      "checkExpr": "20/50*100",
+      "answerIndex": 0,
+      "solution": "The word 'percent' means 'how many out of a hundred' because the term 'per cent' literally translates to 'per hundred' in Latin. The other options incorrectly associate the term with different numerical bases, such as a thousand or ten, which do not align with the standard definition of percentage.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "50 छात्रों की एक कक्षा में, 20 छात्र लड़के हैं। कक्षा में लड़कों का प्रतिशत क्या है?",
+          "stem": "शब्द 'प्रतिशत' का अर्थ क्या है?",
           "choices": [
-            "20%",
-            "30%",
-            "40%",
-            "50%"
+            "सौ में से कितना",
+            "हजार में से कितना",
+            "दस में से कितना",
+            "एक सौ दस में से कितना"
           ],
-          "solution": "लड़कों के प्रतिशत की गणना करने के लिए, लड़कों की संख्या (20) को कुल छात्रों की संख्या (50) से विभाजित करें और 100 से गुणा करें। इससे 40% प्राप्त होता है। अन्य विकल्प गलत हैं क्योंकि वे गणना के साथ मेल नहीं खाते।",
+          "solution": "शब्द 'प्रतिशत' का अर्थ 'सौ में से कितना' होता है क्योंकि शब्द 'प्रति शत' लैटिन में 'सौ प्रति' के रूप में अनुवादित होता है। अन्य विकल्प गलत गणितीय आधारों के साथ शब्द के साथ जुड़े हुए हैं, जैसे हजार या दस, जो प्रतिशत के मानक परिभाषा के साथ मेल नहीं खाते।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
+          "critique": "The Hindi translation accurately reflects the meaning, structure, and terminology of the original English question. All options are correctly translated and maintain their original intent and correctness.",
           "flag": null
         },
         "mr": {
-          "stem": "50 विद्यार्थ्यांच्या वर्गात 20 विद्यार्थी मुले आहेत. वर्गातील मुलांचे टक्केवारी किती आहे?",
+          "stem": "शब्द 'टक्का' म्हणजे काय?",
           "choices": [
-            "20%",
-            "30%",
-            "40%",
-            "50%"
+            "शेकडा एका बरोबर किती",
+            "हजारांतून किती",
+            "दहांतून किती",
+            "शेकडा वीसांतून किती"
           ],
-          "solution": "मुलांची टक्केवारी शोधण्यासाठी, मुलांची संख्या (20) विद्यार्थ्यांच्या एकूण संख्येने (50) भागले आणि 100 ने गुणले जाते. हे 40% देते. इतर विकल्प चूकीचे आहेत कारण ते गणनेशी जुळत नाहीत.",
+          "solution": "शब्द 'टक्का' म्हणजे 'शेकडा एका बरोबर किती' कारण शब्द 'पर सेंट' लॅटिनमध्ये 'शेकडा एका बरोबर' अर्थ देतो. इतर विकल्प गैरसमजूतपणे शब्दाला विविध संख्यात्मक आधारांसह जोडतात, जसे की हजार किंवा दहा, जे टक्केवारीच्या मानक व्याख्येशी सुसंगत नाहीत.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The Marathi translation accurately reflects the English question and options, with appropriate terminology used in Marathi education context.",
           "flag": null
         }
       },
@@ -150,20 +150,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "incorrectly assumes the number of boys is the percentage",
-        "Believes that percentage is calculated by dividing the number of boys by the total number of students minus the number of boys",
         null,
-        "incorrectly assumes the number of boys is 30% of the total"
+        "Confuses percent with per thousand",
+        "Incorrectly interprets the meaning",
+        "Adds an extra number to the definition"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": null,
-      "critique": "The correct calculation is (20/50)*100 = 40%. The author's solution is correct, and the reasons for the distractors are plausible misconceptions.",
+      "critique": "The correct answer is 0, as 'percent' literally means 'per hundred.' The other options represent common misconceptions or incorrect interpretations of the term.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
@@ -177,7 +177,277 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T00:51:30.469Z",
+      "generatedAt": "2026-11-01T13:56:55.647Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Rohit bought a book for ₹200 and sold it for ₹240. What is the percentage profit?",
+      "choices": [
+        "10%",
+        "20%",
+        "25%",
+        "40%"
+      ],
+      "answerIndex": 1,
+      "solution": "Profit = ₹240 - ₹200 = ₹40. Percentage profit = (40/200) × 100 = 20%. The other options are incorrect calculations of the profit percentage.",
+      "checkExpr": "(240-200)/200*100",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "रोहित ने एक किताब ₹200 में खरीदी और ₹240 में बेच दी। लाभ का प्रतिशत क्या है?",
+          "choices": [
+            "10%",
+            "20%",
+            "25%",
+            "40%"
+          ],
+          "solution": "लाभ = ₹240 - ₹200 = ₹40। लाभ का प्रतिशत = (40/200) × 100 = 20%। अन्य विकल्प लाभ के प्रतिशत की गलत गणना है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains option (2) and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रोहितने एक पुस्तक ₹200 मध्ये खरेदी केली आणि ₹240 मध्ये विकली. त्याचा टक्केवारी नफा किती आहे?",
+          "choices": [
+            "10%",
+            "20%",
+            "25%",
+            "40%"
+          ],
+          "solution": "नफा = ₹240 - ₹200 = ₹40. टक्केवारी नफा = (40/200) × 100 = 20%. इतर विकल्प नफा टक्केवारीच्या चुकीच्या गणनेने मिळतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology for profit and percentage calculations.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "calculates the profit as a percentage of the selling price instead of the cost price",
+        null,
+        "Calculates profit as a percentage of the selling price instead of the cost price",
+        "mistakenly calculates the profit as a percentage of the cost price but makes a calculation error"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly calculates the profit as ₹40 and then divides by the cost price (₹200) to get 20%. The distractors reflect common misconceptions, such as using the selling price instead of the cost price or calculation errors.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 69,
+          "pageStart": 104,
+          "pageEnd": 106,
+          "headingPath": [
+            "13. Percentage"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 70,
+          "pageStart": 106,
+          "pageEnd": 108,
+          "headingPath": [
+            "13. Percentage"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 71,
+          "pageStart": 108,
+          "pageEnd": 110,
+          "headingPath": [
+            "13. Percentage",
+            "Ramesh Shoe Mart"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T13:56:55.647Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In an election, 63% of the voters cast their votes. If the total number of voters is 10,000, how many voters did not cast their votes?",
+      "choices": [
+        "3700",
+        "370",
+        "6300",
+        "630"
+      ],
+      "answerIndex": 0,
+      "solution": "63% of 10,000 voters cast their votes, which means 6300 voters cast their votes. Therefore, 10,000 - 6300 = 3700 voters did not cast their votes. The other options are incorrect calculations or misinterpretations of the percentage.",
+      "checkExpr": "10000-63*10000/100",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक चुनाव में, 63% मतदाता अपने मत डालते हैं। यदि मतदाताओं की कुल संख्या 10,000 है, तो कितने मतदाताओं ने अपना मत नहीं डाला?",
+          "choices": [
+            "3700",
+            "370",
+            "6300",
+            "630"
+          ],
+          "solution": "10,000 मतदाताओं में से 63% मतदाताओं ने अपना मत डाला, जिसका अर्थ है कि 6300 मतदाताओं ने अपना मत डाला। अतः 10,000 - 6300 = 3700 मतदाताओं ने अपना मत नहीं डाला। अन्य विकल्प गलत गणना या प्रतिशत के गलत अर्थ के हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains in the same position (option 1), and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "निवडणूकीत, 63% मतदारांनी मत टाकले. जर मतदारांची एकूण संख्या 10,000 असेल, तर मत टाकले नाहीत अशा मतदारांची संख्या किती?",
+          "choices": [
+            "3700",
+            "370",
+            "6300",
+            "630"
+          ],
+          "solution": "10,000 मतदारांच्या 63% मतदारांनी मत टाकले, जे 6300 मतदार आहेत. म्हणून, 10,000 - 6300 = 3700 मतदारांनी मत टाकले नाही. इतर विकल्प अपयशी गणना किंवा शेकडा गैरसमजामुळे अचूक नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer is in the same position (option 1) and the distractors remain incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Student subtracts 63 from 100 but forgets to add a zero, thinking 63% of 10,000 is 630 instead of 6300.",
+        "misinterprets the percentage as a number instead of a proportion",
+        "misinterprets the percentage as a number instead of a proportion"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3700, as 63% of 10,000 is 6300, and 10,000 - 6300 = 3700. The author's solution is correct, and the reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 69,
+          "pageStart": 104,
+          "pageEnd": 106,
+          "headingPath": [
+            "13. Percentage"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 70,
+          "pageStart": 106,
+          "pageEnd": 108,
+          "headingPath": [
+            "13. Percentage"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 71,
+          "pageStart": 108,
+          "pageEnd": 110,
+          "headingPath": [
+            "13. Percentage",
+            "Ramesh Shoe Mart"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T13:56:55.647Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a cricket team played 20 matches and lost 40%, how many matches did it win?",
+      "choices": [
+        "12",
+        "10",
+        "8",
+        "6"
+      ],
+      "answerIndex": 0,
+      "solution": "If the team lost 40% of 20 matches, it lost 8 matches. The remaining 12 matches were won. The option '10' is incorrect because it is 50% of 20, not 60%. The option '8' is incorrect because it is 40% of 20, not 60%. The option '6' is incorrect because it is 30% of 20, not 60%.",
+      "checkExpr": "20*(100-40)/100",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक क्रिकेट टीम ने 20 मैच खेले और 40% हार गई, तो इसने कितने मैच जीते?",
+          "choices": [
+            "12",
+            "10",
+            "8",
+            "6"
+          ],
+          "solution": "यदि टीम ने 20 मैचों में 40% हार गई, तो इसने 8 मैच हारे। शेष 12 मैच जीते गए। विकल्प '10' गलत है क्योंकि यह 20 का 50% है, न कि 60%। विकल्प '8' गलत है क्योंकि यह 20 का 40% है, न कि 60%। विकल्प '6' गलत है क्योंकि यह 20 का 30% है, न कि 60%।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains in the same position (option 1), and all distractors remain incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका क्रिकेट संघाने 20 सामने खेळले आणि 40% गमावले, तर त्याने किती सामने जिंकले?",
+          "choices": [
+            "12",
+            "10",
+            "8",
+            "6"
+          ],
+          "solution": "जर संघाने 20 सामंदांच्या 40% गमावले, तर त्याने 8 सामंद गमावले. उरलेले 12 सामंद जिंकले. '10' विकल्प चुकीचा आहे कारण तो 20 चा 50% आहे, 60% नाही. '8' विकल्प चुकीचा आहे कारण तो 20 चा 40% आहे, 60% नाही. '6' विकल्प चुकीचा आहे कारण तो 20 चा 30% आहे, 60% नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The solution clearly explains why other options are incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "calculates 50% instead of 60%",
+        "calculates 40% instead of 60%",
+        "calculates 30% instead of 60%"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The team lost 40% of 20 matches, which is 8, so they won 12. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 72,
+          "pageStart": 110,
+          "pageEnd": 111,
+          "headingPath": [
+            "13. Percentage",
+            "Ramesh Shoe Mart"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T13:56:55.647Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

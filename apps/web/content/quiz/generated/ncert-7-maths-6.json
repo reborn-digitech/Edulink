@@ -21,146 +21,47 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-31T13:36:30.895Z",
+  "generatedAt": "2026-11-02T01:32:28.193Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 4,
-      "stem": "In a 3 × 3 magic square, if the centre number is 5, what is the sum of the four corner numbers?",
+      "difficulty": 2,
+      "stem": "If a number is the sum of the two previous numbers in the Virahāṅka sequence, what is the 7th number in the sequence?",
       "choices": [
-        "10",
-        "20",
-        "30",
-        "40"
+        "3",
+        "5",
+        "8",
+        "13"
       ],
-      "answerIndex": 1,
-      "solution": "In a 3 × 3 magic square, the sum of the four corner numbers is 20. This is because the total sum of all numbers in the square is 45 (1 + 2 + ... + 9), and the sum of the four corners is 20. The other options are incorrect because 10 is too low, 30 is too high, and 40 is even higher than the total sum of all numbers.",
+      "answerIndex": 2,
+      "solution": "The Virahāṅka sequence starts with 1, 2, 3, 5, 8, 13, 21, ... Each number is the sum of the two preceding numbers. The 7th number is 8. The incorrect options are either earlier numbers in the sequence or numbers that do not follow the rule.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "3 × 3 जादूई वर्ग में, यदि केंद्र संख्या 5 है, तो चार कोने की संख्याओं का योग क्या है?",
+          "stem": "यदि कोई संख्या विरहांका अनुक्रम में दो पहले संख्याओं के योग है, तो अनुक्रम में 7वीं संख्या क्या है?",
           "choices": [
-            "10",
-            "20",
-            "30",
-            "40"
+            "3",
+            "5",
+            "8",
+            "13"
           ],
-          "solution": "3 × 3 जादूई वर्ग में, चार कोने की संख्याओं का योग 20 है। इसका कारण यह है कि वर्ग में सभी संख्याओं का कुल योग 45 (1 + 2 + ... + 9) है, और चार कोने का योग 20 है। अन्य विकल्प गलत हैं क्योंकि 10 बहुत कम है, 30 बहुत अधिक है, और 40 सभी संख्याओं के कुल योग से अधिक है।",
+          "solution": "विरहांका अनुक्रम 1, 2, 3, 5, 8, 13, 21, ... से शुरू होता है। प्रत्येक संख्या दो पहले की संख्याओं के योग के बराबर होती है। 7वीं संख्या 8 है। गलत विकल्प या तो अनुक्रम में पहले की संख्याएं हैं या ऐसी संख्याएं हैं जो नियम का अनुसरण नहीं करती है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology for a Hindi-medium curriculum.",
+          "critique": "The Hindi translation accurately reflects the English version in meaning, structure, and terminology. The sequence and solution are correctly translated, and the correct answer remains option (2).",
           "flag": null
         },
         "mr": {
-          "stem": "3 × 3 चौकटीत जर केंद्रीय संख्या 5 असेल, तर चार कोनांच्या संख्यांची बेरीज किती असेल?",
+          "stem": "जर एक संख्या विरहांक अनुक्रमातील दोन पूर्वीच्या संख्यांची बेरीज असेल तर अनुक्रमातील 7 वी संख्या कोणती असेल?",
           "choices": [
-            "10",
-            "20",
-            "30",
-            "40"
-          ],
-          "solution": "3 × 3 चौकटीत, चार कोनांच्या संख्यांची बेरीज 20 असते. हे कारण असे आहे की चौकटीतील सर्व संख्यांची बेरीज 45 (1 + 2 + ... + 9) असते, आणि चार कोनांच्या संख्यांची बेरीज 20 असते. इतर विकल्प अयोग्य आहेत कारण 10 खूप कमी आहे, 30 खूप जास्त आहे आणि 40 ही सर्व संख्यांच्या बेरजेपेक्षा जास्त आहे.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The structure and logic of the question and solution are preserved.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Thinks the sum of the four corners is half the total sum of all numbers",
-        null,
-        "Thinks the sum of the four corners is 30, which is too high",
-        "Thinks the sum of the four corners is the total sum of all numbers"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. In a 3×3 magic square with center number 5, the total sum is 45, and the sum of the four corners is 20. The reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp106.pdf",
-          "ordinal": 6,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 6: Number Play",
-            "6.3 Some Explorations in Grids"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp106.pdf",
-          "ordinal": 7,
-          "pageStart": 11,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 6: Number Play",
-            "6.3 Some Explorations in Grids"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp106.pdf",
-          "ordinal": 8,
-          "pageStart": 13,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 6: Number Play",
-            "6.4 Nature’s Favourite Sequence: The Virahāṅka–",
-            "Fibonacci Numbers!"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T13:36:30.895Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If the number of rhythms for 6 beats is 13, what is the number of rhythms for 7 beats?",
-      "choices": [
-        "15",
-        "21",
-        "8",
-        "5"
-      ],
-      "answerIndex": 1,
-      "solution": "The number of rhythms for 7 beats is calculated by adding the number of rhythms for 6 beats (13) and 5 beats (8), resulting in 21. This follows a pattern where each number of beats is the sum of the two previous numbers. The other options do not match this pattern.",
-      "checkExpr": "13+8",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि 6 बीट्स के लिए रिद्म की संख्या 13 है, तो 7 बीट्स के लिए रिद्म की संख्या क्या है?",
-          "choices": [
-            "15",
-            "21",
+            "3",
+            "5",
             "8",
-            "5"
+            "13"
           ],
-          "solution": "7 बीट्स के लिए रिद्म की संख्या 6 बीट्स के लिए रिद्म की संख्या (13) और 5 बीट्स के लिए रिद्म की संख्या (8) को जोड़कर गणना की जाती है, जिसके परिणामस्वरूप 21 प्राप्त होता है। इस पैटर्न के अनुसार प्रत्येक बीट्स की संख्या पिछली दो संख्याओं के योग के बराबर होती है। अन्य विकल्प इस पैटर्न के अनुरूप नहीं हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology for mathematical concepts.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "6 बीट्ससाठी रिथमची संख्या 13 असल्यास 7 बीट्ससाठी रिथमची संख्या किती असेल?",
-          "choices": [
-            "15",
-            "21",
-            "8",
-            "5"
-          ],
-          "solution": "7 बीट्ससाठी रिथमची संख्या 6 बीट्सच्या रिथमची संख्या (13) आणि 5 बीट्सच्या रिथमची संख्या (8) च्या बेरजेने काढली जाते, जी 21 असते. हा पॅटर्न असतो की प्रत्येक बीटची संख्या दोन आधीच्या संख्यांच्या बेरजेसारखी असते. इतर विकल्प ह्या पॅटर्नला अनुरूप नाहीत.",
+          "solution": "विरहांक अनुक्रम 1, 2, 3, 5, 8, 13, 21, ... असतो. प्रत्येक संख्या दोन पूर्वीच्या संख्यांची बेरीज असते. 7 वी संख्या 8 असते. चुकीचे विकल्प अनुक्रमातील आधीच्या संख्या असतात किंवा नियमाचे अनुसरण करत नाहीत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
           "flag": null
@@ -171,20 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Adds 2 to 13",
+        "Chooses the 3rd number in the sequence",
+        "Chooses the 5th number in the sequence",
         null,
-        "Mistakenly assumes the sequence is the same as earlier numbers",
-        "Mistakenly assumes the sequence is decreasing"
+        "Chooses the 8th number in the sequence"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        2,
+        2,
+        2,
+        2,
+        2
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question implies a recursive pattern where the number of rhythms for n beats is the sum of the rhythms for (n-1) and (n-2) beats. Given 6 beats = 13, and assuming 5 beats = 8, then 7 beats = 13 + 8 = 21. The solution is sound and matches the key.",
+      "levelFlag": null,
+      "critique": "The solution is correct. The 7th number in the Virahāṅka sequence is indeed 8, and the author's reasoning for the distractors aligns with common student misconceptions.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp106.pdf",
@@ -231,47 +132,47 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T13:36:30.895Z",
+      "generatedAt": "2026-11-02T01:32:28.193Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "If the next number in the sequence is given by adding the two previous numbers, what is the parity of the next number after 55 in the sequence?",
+      "difficulty": 3,
+      "stem": "Kishor has 5 boxes and 5 number cards, all containing odd numbers. He wants to place one card in each box so that the sum is 30. Is this possible?",
       "choices": [
-        "Odd",
-        "Even",
-        "Both",
-        "Neither"
+        "Yes, it is possible",
+        "No, it is not possible",
+        "Only if the numbers are even",
+        "Only if the numbers are zero"
       ],
-      "answerIndex": 0,
-      "solution": "The next number in the sequence is obtained by adding the two previous numbers. Since 55 is odd and the number before it (34) is even, their sum (89) is odd. The sum of an odd and an even number is always odd, so the correct answer is Odd. Even is incorrect because it contradicts the rules of addition. Both and Neither are incorrect because there is a definite parity for the sum.",
+      "answerIndex": 1,
+      "solution": "It is not possible because the sum of any 5 odd numbers is always odd, and 30 is an even number. The first option is incorrect because the sum of 5 odd numbers is always odd. The third option is incorrect because the question states the cards contain odd numbers. The fourth option is incorrect because zero is not an odd number.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि अनुक्रम में अगली संख्या पिछली दो संख्याओं के योग द्वारा दी जाती है, तो 55 के बाद अगली संख्या की समगुणता क्या होगी?",
+          "stem": "किशोर के पास 5 बक्से और 5 संख्या कार्ड हैं, जिनमें सभी विषम संख्याएं हैं। वह प्रत्येक बक्से में एक कार्ड रखना चाहता है ताकि योग 30 हो। क्या यह संभव है?",
           "choices": [
-            "विषम",
-            "सम",
-            "दोनों",
-            "कोई नहीं"
+            "हाँ, यह संभव है",
+            "नहीं, यह संभव नहीं है",
+            "केवल यदि संख्याएं सम हों",
+            "केवल यदि संख्याएं शून्य हों"
           ],
-          "solution": "अनुक्रम में अगली संख्या पिछली दो संख्याओं के योग द्वारा प्राप्त की जाती है। 55 विषम है और उसके पहले की संख्या (34) सम है, इसलिए उनका योग (89) विषम होता है। एक विषम और एक सम संख्या का योग हमेशा विषम होता है, इसलिए सही उत्तर विषम है। सम गलत है क्योंकि यह जोड़ के नियमों के विरुद्ध है। दोनों और कोई नहीं गलत हैं क्योंकि योग के लिए एक निश्चित समगुणता होती है।",
+          "solution": "यह संभव नहीं है क्योंकि किन्हीं 5 विषम संख्याओं का योग हमेशा विषम होता है, और 30 एक सम संख्या है। पहला विकल्प गलत है क्योंकि 5 विषम संख्याओं का योग हमेशा विषम होता है। तीसरा विकल्प गलत है क्योंकि प्रश्न में कार्डों में विषम संख्याएं हैं। चौथा विकल्प गलत है क्योंकि शून्य एक विषम संख्या नहीं है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "critique": "The translation is accurate, maintains the logical structure, and uses standard Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "अनुक्रमातील आगामी संख्या आधीच्या दोन संख्यांच्या बेरजेने दिली जाते, तर 55 नंतरच्या संख्येची समानता काय असेल?",
+          "stem": "किशोरला 5 बॉक्स आणि 5 संख्या कार्ड आहेत, ज्यात सर्व विषम संख्या आहेत. तो प्रत्येक बॉक्स मध्ये एक कार्ड ठेवू इच्छितो जेणेकरून बेरीज 30 होईल. हे शक्य आहे का?",
           "choices": [
-            "अजोड",
-            "जोड",
-            "दोन्ही",
-            "कोणतेही नाही"
+            "होय, शक्य आहे",
+            "नाही, शक्य नाही",
+            "फक्त जर संख्या सम असतील",
+            "फक्त जर संख्या शून्य असतील"
           ],
-          "solution": "अनुक्रमातील आगामी संख्या आधीच्या दोन संख्यांच्या बेरजेने मिळते. 55 अजोड आहे आणि त्यापूर्वीची संख्या (34) जोड आहे, त्यांची बेरीज (89) अजोड आहे. अजोड आणि जोड संख्यांची बेरीज नेहमी अजोड असते, म्हणून सही उत्तर अजोड आहे. जोड असे नाही कारण ते बेरजेच्या नियमांच्या विरुद्ध आहे. दोन्ही आणि कोणतेही नाही हे असे कारणास्तव चुकीचे आहे कारण बेरीजला एक निश्चित समानता असते.",
+          "solution": "हे शक्य नाही कारण कोणत्याही 5 विषम संख्यांची बेरीज असेच विषम असते, आणि 30 ही एक सम संख्या आहे. पहिला विकल्प चुकीचा आहे कारण 5 विषम संख्यांची बेरीज असेच विषम असते. तिसरा विकल्प चुकीचा आहे कारण प्रश्न सांगतो की कार्डमध्ये विषम संख्या आहेत. चौथा विकल्प चुकीचा आहे कारण शून्य ही विषम संख्या नाही.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -282,10 +183,107 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Fails to recognize the parity of the sum of odd numbers",
         null,
-        "Confuses the sum of odd and even numbers",
-        "Thinks the parity alternates in a different way",
-        "Does not understand the concept of parity"
+        "Confuses odd and even numbers",
+        "Does not understand what zero represents"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that the sum of five odd numbers is always odd, and since 30 is even, it is not possible. The reasoning for the wrong options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6: Number Play"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.2 Picking Parity"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.2 Picking Parity"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T01:32:28.193Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If the sum of an even number of even numbers is calculated, what will be its parity?",
+      "choices": [
+        "Even",
+        "Odd",
+        "Both",
+        "None"
+      ],
+      "answerIndex": 0,
+      "solution": "The sum of an even number of even numbers is always even because adding even numbers results in an even number. Each even number can be expressed as 2 times an integer, and the sum of such terms will also be a multiple of 2. Choosing 'Odd' would be incorrect because even numbers cannot sum to an odd result. 'Both' and 'None' are incorrect because the parity is consistently even in this case.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक सम संख्या के सम संख्याओं का योग किया जाता है, तो इसकी समानता क्या होगी?",
+          "choices": [
+            "सम",
+            "विषम",
+            "दोनों",
+            "कोई नहीं"
+          ],
+          "solution": "सम संख्या के सम संख्याओं का योग हमेशा सम होता है क्योंकि सम संख्याओं को जोड़ने से सम संख्या प्राप्त होती है। प्रत्येक सम संख्या को 2 के पूर्णांक के गुणन के रूप में व्यक्त किया जा सकता है, और ऐसे पदों का योग भी 2 का गुणज होगा। 'विषम' चुनना गलत होगा क्योंकि सम संख्याएं विषम परिणाम नहीं दे सकतीं। 'दोनों' और 'कोई नहीं' गलत हैं क्योंकि इस मामले में समानता हमेशा सम होती है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate mathematical terminology used in a Hindi-medium context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर सम अंकांच्या सम अंकांची बेरीज केली जाते, तर तिची समानता काय असेल?",
+          "choices": [
+            "सम",
+            "असम",
+            "दोन्ही",
+            "कोणतेही नाही"
+          ],
+          "solution": "सम अंकांच्या सम अंकांची बेरीज नेहमी सम असते कारण सम अंकांची बेरीज सम अंक असते. प्रत्येक सम अंक 2 च्या पूर्णांकाच्या गुणाकाराप्रमाणे लिहिता येतो आणि अशा प्रकारे असलेल्या विधानांची बेरीज देखील 2 च्या गुणाकाराप्रमाणे असते. 'असम' निवडणे चूक असेल कारण सम अंकांची बेरीज असम अंकांमध्ये रूपांतरित होऊ शकत नाही. 'दोन्ही' आणि 'कोणतेही नाही' चूक असतात कारण ह्या प्रकरणात समानता नेहमी सम असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the mathematical meaning. Technical terms like 'सम' (even) and 'असम' (odd) are correctly used as per Marathi curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "pupil thinks adding even numbers can result in an odd sum",
+        "pupil thinks the result depends on the number of terms",
+        "pupil is confused"
       ],
       "solverAnswers": [
         0,
@@ -294,8 +292,301 @@
         0,
         0
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that the sum of an odd (55) and even (34) number is odd (89), and the reasoning aligns with the correct answer.",
+      "levelFlag": null,
+      "critique": "The solution is correct. The sum of an even number of even numbers is always even, as even numbers are divisible by 2 and their sum remains divisible by 2.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 13,
+          "pageStart": 18,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.5 Digits in Disguise"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 14,
+          "pageStart": 19,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 15,
+          "pageStart": 21,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "SUMMARY"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T01:32:28.193Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the parity of the product of a 42 × 78 grid of small squares?",
+      "choices": [
+        "odd",
+        "even",
+        "both",
+        "neither"
+      ],
+      "answerIndex": 1,
+      "solution": "The parity of a product depends on the parity of the numbers involved. 42 is an even number, and 78 is also an even number. The product of two even numbers is always even. Therefore, the total number of small squares in the grid, which is 42 × 78, will be even. The correct answer is 'even'. The option 'odd' is incorrect because the product of two even numbers is even, not odd. The other options are irrelevant as the product must be either odd or even.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "42 × 78 छोटे वर्गों के ग्रिड के गुणनफल की समगुणिता क्या है?",
+          "choices": [
+            "विषम",
+            "सम",
+            "दोनों",
+            "कोई नहीं"
+          ],
+          "solution": "गुणनफल की समगुणिता संख्याओं की समगुणिता पर निर्भर करती है। 42 एक सम संख्या है और 78 भी एक सम संख्या है। दो सम संख्याओं का गुणनफल हमेशा सम होता है। इसलिए, ग्रिड में छोटे वर्गों की कुल संख्या, जो 42 × 78 है, सम होगी। सही उत्तर 'सम' है। 'विषम' विकल्प गलत है क्योंकि दो सम संख्याओं का गुणनफल सम होता है, विषम नहीं। अन्य विकल्प असंबंधित हैं क्योंकि गुणनफल या तो विषम हो सकता है या सम।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, uses appropriate mathematical terminology, and preserves the structure and logic of the original question.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "42 × 78 च्या छोट्या चौरसांच्या जाळ्याच्या गुणाकाराची सम विषमता काय आहे?",
+          "choices": [
+            "अयोग्य",
+            "सम",
+            "दोन्ही",
+            "कोणतेही नाही"
+          ],
+          "solution": "गुणाकाराची सम विषमता संख्यांच्या सम विषमतेवर अवलंबून असते. 42 ही एक सम संख्या आहे आणि 78 ही सम संख्या आहे. दोन सम संख्यांचा गुणाकार हमेशा सम असतो. त्यामुळे जाळ्यातील छोट्या चौरसांची एकूण संख्या, जी 42 × 78 आहे, सम असेल. योग्य उत्तर 'सम' आहे. 'अयोग्य' उत्तर अयोग्य आहे कारण दोन सम संख्यांचा गुणाकार अयोग्य नसतो, तर सम असतो. इतर उत्तरे असंबंधित आहेत कारण गुणाकार अयोग्य किंवा सम असणारच आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the original English question and solution. All technical terms (e.g., 'सम', 'अयोग्य') are standard in Marathi math textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses the rule for multiplying even and odd numbers",
+        null,
+        "does not recognize that even × even = even",
+        "does not understand the concept of parity"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that the product of two even numbers is always even, and thus the parity of the grid is even. The reasoning is sound and matches the correct answer.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.2 Picking Parity"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.3 Some Explorations in Grids"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.3 Some Explorations in Grids"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T01:32:28.193Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Martin and Maria’s ages are consecutive numbers. If their ages are 51 and 52, what is the parity of their sum?",
+      "choices": [
+        "Even",
+        "Odd",
+        "Both even and odd",
+        "Neither even nor odd"
+      ],
+      "answerIndex": 1,
+      "solution": "The sum of 51 and 52 is 103, which is odd. The first option is incorrect because the sum of an even and an odd number is always odd. The third and fourth options are incorrect because the sum must be either even or odd.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मार्टिन और मारिया की आयु लगातार संख्याएँ हैं। यदि उनकी आयु 51 और 52 है, तो उनके योग की समता क्या है?",
+          "choices": [
+            "सम",
+            "विषम",
+            "दोनों सम और विषम",
+            "न तो सम और न विषम"
+          ],
+          "solution": "51 और 52 का योग 103 है, जो विषम है। पहला विकल्प गलत है क्योंकि एक सम और एक विषम संख्या का योग हमेशा विषम होता है। तीसरा और चौथा विकल्प गलत हैं क्योंकि योग या तो सम हो सकता है या विषम।",
+          "imageAlt": null,
+          "critique": "Translation accurately preserves meaning, technical terms (सम, विषम) are standard in Hindi math textbooks, and the correct answer remains option (2).",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मार्टिन आणि मारियाच्या वयांचे संख्या अनुक्रमिक आहेत. जर त्यांची वय 51 आणि 52 असेल, तर त्यांच्या बेरजेची सम विषमता काय आहे?",
+          "choices": [
+            "सम",
+            "विषम",
+            "दोन्ही सम आणि विषम",
+            "कोणतीही सम किंवा विषम नाही"
+          ],
+          "solution": "51 आणि 52 ची बेरजा 103 आहे, जी विषम आहे. पहिला विकल्प चुकीचा आहे कारण सम आणि विषम संख्यांची बेरजा नेहमी विषम असते. तिसरा आणि चौथा विकल्प चुकीचे आहेत कारण बेरजा नेहमी सम किंवा विषम असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes that consecutive numbers always add to an even sum",
+        null,
+        "Thinks the sum of consecutive numbers can be both even and odd",
+        "Does not understand the concept of parity"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the sum of 51 and 52 is 103, which is odd. The reasoning for the incorrect options aligns with common misconceptions about parity and consecutive numbers.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6: Number Play"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.2 Picking Parity"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.2 Picking Parity"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T01:32:28.193Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If the next number in the sequence is 89, what is the next number after that?",
+      "choices": [
+        "144",
+        "123",
+        "112",
+        "100"
+      ],
+      "answerIndex": 0,
+      "solution": "The sequence follows the rule where each number is the sum of the two preceding numbers. Since the last number is 89, the next number is 55 + 89 = 144. The other options do not result from adding the two previous numbers in the sequence.",
+      "checkExpr": "55+89",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि अनुक्रम में अगली संख्या 89 है, तो अगली संख्या क्या होगी?",
+          "choices": [
+            "144",
+            "123",
+            "112",
+            "100"
+          ],
+          "solution": "अनुक्रम में प्रत्येक संख्या दो पहले की संख्याओं के योग के नियम के अनुसार होती है। चूंकि अंतिम संख्या 89 है, अगली संख्या 55 + 89 = 144 होगी। अन्य विकल्प अनुक्रम में दो पहले की संख्याओं के योग से नहीं बनते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अनुक्रमातील अगदी नंतरचा संख्या 89 असल्यास, त्यानंतरची संख्या काय असेल?",
+          "choices": [
+            "144",
+            "123",
+            "112",
+            "100"
+          ],
+          "solution": "अनुक्रमाचा नियम असा आहे की प्रत्येक संख्या दोन आधीच्या संख्यांच्या बेरजेने असते. जर शेवटची संख्या 89 असेल तर अगदी नंतरची संख्या 55 + 89 = 144 असेल. इतर विकल्पांमधून अनुक्रमातील दोन आधीच्या संख्यांची बेरजा मिळत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the Fibonacci sequence with a different arithmetic progression",
+        "Confuses the Fibonacci sequence with a simple addition of previous two numbers, but adds 35 instead of 34 to 89",
+        "Does not apply the rule correctly"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        3,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The sequence follows the Fibonacci pattern, where each number is the sum of the two preceding ones. The next number after 89 is indeed 144 (55 + 89). The other options do not follow this rule, and the author's explanations for the wrong choices align with common misconceptions.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp106.pdf",
@@ -342,7 +633,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T13:36:30.895Z",
+      "generatedAt": "2026-11-02T01:32:28.193Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

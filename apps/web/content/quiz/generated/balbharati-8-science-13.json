@@ -21,47 +21,230 @@
   "board": "BALBHARATI",
   "book": "८ वी सामान्य विज्ञान इंग्रजी",
   "edition": "First Edition 2018",
-  "generatedAt": "2026-10-29T21:05:20.794Z",
+  "generatedAt": "2026-11-02T12:00:40.142Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 2,
-      "stem": "Which of the following is an example of a chemical change?",
+      "difficulty": 4,
+      "stem": "Based on the electronic configuration, which element does not form a chemical bond?",
       "choices": [
-        "Melting of ice",
-        "Boiling of water",
-        "Dissolution of salt in water",
-        "Darkening of a cut potato"
+        "Sodium",
+        "Chlorine",
+        "Calcium",
+        "Noble gases"
       ],
       "answerIndex": 3,
-      "solution": "The darkening of a cut potato is a chemical change because it involves a change in the composition of the potato, leading to the formation of a new substance. Melting of ice, boiling of water, and dissolution of salt in water are physical changes as they do not involve the formation of new substances.",
+      "solution": "Noble gases do not form chemical bonds because their outer electron shells are completely filled, making them stable. Other elements like sodium, chlorine, and calcium have incomplete electron shells and tend to form bonds to achieve stability. This stability of noble gases makes them chemically inert.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन रासायनिक परिवर्तन का उदाहरण है?",
+          "stem": "इलेक्ट्रॉन विन्यास के आधार पर, कौन-सा तत्व रासायनिक बंध नहीं बनाता है?",
           "choices": [
-            "बर्फ का पिघलना",
-            "जल के उबलना",
-            "नमक के पानी में घुलना",
-            "काटे गए आलू का काला हो जाना"
+            "सोडियम",
+            "क्लोरीन",
+            "कैल्शियम",
+            "नोबल गैसें"
           ],
-          "solution": "काटे गए आलू का काला हो जाना एक रासायनिक परिवर्तन है क्योंकि इसमें आलू के संघटन में परिवर्तन होता है, जिसके कारण एक नई पदार्थ के बनने के कारण होता है। बर्फ का पिघलना, जल के उबलना और नमक के पानी में घुलना भौतिक परिवर्तन हैं क्योंकि इनमें नए पदार्थ के बनने के कारण नहीं होता है।",
+          "solution": "नोबल गैसें रासायनिक बंध नहीं बनाती हैं क्योंकि उनके बाहरी इलेक्ट्रॉन कोश पूर्ण रूप से भरे होते हैं, जिससे वे स्थायी हो जाते हैं। सोडियम, क्लोरीन और कैल्शियम जैसे अन्य तत्वों के बाहरी इलेक्ट्रॉन कोश अपूर्ण होते हैं और वे स्थायित्व प्राप्त करने के लिए बंध बनाने की प्रवृत्ति रखते हैं। नोबल गैसों की इस स्थायित्व के कारण वे रासायनिक रूप से अक्रिय होती हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "इलेक्ट्रॉन विन्यासावर आधारित, कोणता घटक रासायनिक बंध निर्माण करत नाही?",
+          "choices": [
+            "सोडियम",
+            "क्लोरीन",
+            "कॅल्शियम",
+            "नोबल गॅस"
+          ],
+          "solution": "नोबल गॅस रासायनिक बंध निर्माण करत नाहीत कारण त्यांचे बाह्य इलेक्ट्रॉन शेल पूर्णपणे भरलेले असतात, ज्यामुळे ते स्थिर असतात. सोडियम, क्लोरीन आणि कॅल्शियम या इतर घटकांचे बाह्य इलेक्ट्रॉन शेल अपूर्ण असतात आणि ते स्थिरता मिळवण्यासाठी बंध निर्माण करतात. नोबल गॅसची ही स्थिरता त्यांना रासायनिकदृष्ट्या निष्क्रिय बनवते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific meaning. 'नोबल गॅस' is the correct Marathi term for 'noble gases' and is commonly used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks sodium does not form bonds, but it forms ionic bonds.",
+        "Believes chlorine does not form bonds, but it does form ionic bonds.",
+        "Confuses calcium with noble gases, but calcium forms bonds as it has incomplete electron configuration.",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Noble gases have a complete valence shell and do not typically form chemical bonds, while the other elements have incomplete electron configurations and do form bonds.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 114,
+          "pageStart": 101,
+          "pageEnd": 101,
+          "headingPath": [
+            "13. Chemical Change and Chemical Bond"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 115,
+          "pageStart": 102,
+          "pageEnd": 102,
+          "headingPath": [
+            "13. Chemical Change and Chemical Bond"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 116,
+          "pageStart": 102,
+          "pageEnd": 102,
+          "headingPath": [
+            "13. Chemical Change and Chemical Bond"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 117,
+          "pageStart": 102,
+          "pageEnd": 103,
+          "headingPath": [
+            "13. Chemical Change and Chemical Bond",
+            "Cl Mg Cl"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T12:00:40.142Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is a characteristic of a chemical change?",
+      "choices": [
+        "No change in properties",
+        "Change is reversible",
+        "Change is permanent",
+        "No change in mass"
+      ],
+      "answerIndex": 2,
+      "solution": "A chemical change results in a permanent transformation where new substances are formed. Unlike physical changes, chemical changes cannot be easily reversed. 'No change in properties' and 'No change in mass' are characteristics of physical changes, while 'Change is reversible' is incorrect because chemical changes are not typically reversible.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा रासायनिक परिवर्तन की विशेषता है?",
+          "choices": [
+            "गुणों में कोई परिवर्तन नहीं",
+            "परिवर्तन उलटा जा सकता है",
+            "परिवर्तन स्थायी होता है",
+            "द्रव्यमान में कोई परिवर्तन नहीं"
+          ],
+          "solution": "एक रासायनिक परिवर्तन में नए पदार्थ बनते हैं जो स्थायी रूप से परिवर्तित हो जाते हैं। भौतिक परिवर्तन के विपरीत, रासायनिक परिवर्तन आसानी से उलटे नहीं हो सकते। 'गुणों में कोई परिवर्तन नहीं' और 'द्रव्यमान में कोई परिवर्तन नहीं' भौतिक परिवर्तन की विशेषताएं हैं, जबकि 'परिवर्तन उलटा जा सकता है' गलत है क्योंकि रासायनिक परिवर्तन आमतौर पर उलटे नहीं होते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते रासायनिक बदलाचे लक्षण आहे?",
+          "choices": [
+            "गुणधर्मात कोणताही बदल नाही",
+            "बदल व्यतिरिक्त आहे",
+            "बदल अस्थायी आहे",
+            "द्रव्यमानात कोणताही बदल नाही"
+          ],
+          "solution": "रासायनिक बदलामुळे अस्थायी रूपांतर होते जेथे नवीन द्रव्ये तयार होतात. भौतिक बदलांच्या तुलनेत, रासायनिक बदल सहज व्यतिरिक्त करता येत नाहीत. 'गुणधर्मात कोणताही बदल नाही' आणि 'द्रव्यमानात कोणताही बदल नाही' हे भौतिक बदलांचे लक्षण आहेत, तर 'बदल व्यतिरिक्त आहे' हे अयोग्य आहे कारण रासायनिक बदल सामान्यतः व्यतिरिक्त करता येत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology. The solution correctly identifies option (2) as the answer and explains why the other options are incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "students often confuse chemical changes with physical changes, thinking that properties remain the same",
+        "confused with physical changes",
+        null,
+        "not aware of the properties of chemical changes"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as a chemical change is indeed permanent. The author's reasoning for the distractors aligns with common misconceptions about chemical vs. physical changes.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 118,
+          "pageStart": 103,
+          "pageEnd": 104,
+          "headingPath": [
+            "13. Chemical Change and Chemical Bond",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T12:00:40.142Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "What is the main reason for the formation of chemical bonds?",
+      "choices": [
+        "To complete the electron octet/duplet of atoms",
+        "To increase the mass of atoms",
+        "To form a new element",
+        "To increase the volume of atoms"
+      ],
+      "answerIndex": 0,
+      "solution": "The main reason for the formation of chemical bonds is to complete the electron octet or duplet of atoms. This allows atoms to achieve a more stable electronic configuration, which is energetically favorable. The other options are incorrect because increasing mass or volume does not drive bond formation, and forming a new element is not a result of bonding.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "रासायनिक बंधन के निर्माण का मुख्य कारण क्या है?",
+          "choices": [
+            "परमाणुओं के इलेक्ट्रॉन अष्टक/द्विक को पूरा करना",
+            "परमाणुओं के द्रव्यमान को बढ़ाना",
+            "एक नए तत्व का निर्माण करना",
+            "परमाणुओं के आयतन को बढ़ाना"
+          ],
+          "solution": "रासायनिक बंधन के निर्माण का मुख्य कारण परमाणुओं के इलेक्ट्रॉन अष्टक या द्विक को पूरा करना है। इससे परमाणुओं को एक अधिक स्थायी इलेक्ट्रॉनिक व्यवस्था प्राप्त होती है, जो ऊर्जा के अनुकूल होती है। अन्य विकल्प गलत हैं क्योंकि द्रव्यमान या आयतन को बढ़ाना बंधन निर्माण को प्रेरित नहीं करता है, और एक नए तत्व का निर्माण आबंधन का परिणाम नहीं है।",
           "imageAlt": null,
           "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi scientific terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते रासायनिक बदलाचे उदाहरण आहे?",
+          "stem": "रासायनिक बंध तयार होण्याचे मुख्य कारण काय आहे?",
           "choices": [
-            "हिमाचे घनीभवन",
-            "पाण्याचे उकळणे",
-            "लवणाचे पाण्यात विरघळणे",
-            "कापलेल्या आल्याचे काळे पडणे"
+            "अणूंचे इलेक्ट्रॉन ऑक्टेट/ड्यूप्लेट पूर्ण करणे",
+            "अणूंचे वजन वाढवणे",
+            "नवीन घटक तयार करणे",
+            "अणूंचा आयतन वाढवणे"
           ],
-          "solution": "कापलेल्या आल्याचे काळे पडणे रासायनिक बदल आहे कारण त्यामुळे आल्याच्या घटकांमध्ये बदल होतो आणि नवीन पदार्थ तयार होतो. हिमाचे घनीभवन, पाण्याचे उकळणे आणि लवणाचे पाण्यात विरघळणे भौमितिक बदल आहेत कारण त्यांमध्ये नवीन पदार्थ तयार होत नाहीत.",
+          "solution": "रासायनिक बंध तयार होण्याचे मुख्य कारण अणूंचे इलेक्ट्रॉन ऑक्टेट किंवा ड्यूप्लेट पूर्ण करणे आहे. हे अणूंना अधिक स्थिर इलेक्ट्रॉन विन्यास प्राप्त करण्यास मदत करते, जे ऊर्जातील अनुकूल असते. इतर विकल्प अयोग्य आहेत कारण बंध तयार होण्याचा धोका वजन किंवा आयतन वाढवण्याशी नसतो आणि नवीन घटक तयार करणे बंधनाचा परिणाम नसतो.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
@@ -72,200 +255,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses physical and chemical changes",
-        "Confuses physical and chemical changes",
-        "Confuses physical and chemical changes",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct. The darkening of a cut potato is a chemical change due to oxidation, while the other options are physical changes. The author's reasoning for the distractors is valid as students often confuse physical and chemical changes.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 111,
-          "pageStart": 99,
-          "pageEnd": 99,
-          "headingPath": [
-            "13. Chemical Change and Chemical Bond"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 112,
-          "pageStart": 99,
-          "pageEnd": 100,
-          "headingPath": [
-            "13. Chemical Change and Chemical Bond"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 113,
-          "pageStart": 100,
-          "pageEnd": 101,
-          "headingPath": [
-            "13. Chemical Change and Chemical Bond"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T21:05:20.794Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is a physical change?",
-      "choices": [
-        "Ripening of mango",
-        "Melting of ice",
-        "Burning of paper",
-        "Rusting of iron"
-      ],
-      "answerIndex": 1,
-      "solution": "Melting of ice is a physical change because it involves a change in the state of matter without the formation of new substances. Ripening of mango, burning of paper, and rusting of iron are all chemical changes as they involve the formation of new substances.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा भौतिक परिवर्तन है?",
-          "choices": [
-            "आम का पकना",
-            "बर्फ का पिघलना",
-            "कागज का जलना",
-            "लोहे का जंग लगना"
-          ],
-          "solution": "बर्फ का पिघलना भौतिक परिवर्तन है क्योंकि यह पदार्थ के अवस्था में परिवर्तन के साथ होता है बिना नए पदार्थों के बने। आम का पकना, कागज का जलना और लोहे का जंग लगना सभी रासायनिक परिवर्तन हैं क्योंकि इनमें नए पदार्थों के बनने के साथ होता है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता भौमितिक बदल आहे?",
-          "choices": [
-            "आंबा वाढणे",
-            "हिम वितळणे",
-            "कागद जाळणे",
-            "लोखंडाचा अंकुर लागणे"
-          ],
-          "solution": "हिम वितळणे भौमितिक बदल आहे कारण त्यामध्ये पदार्थाच्या अवस्थेत बदल होतो आणि नवीन पदार्थ तयार होत नाहीत. आंबा वाढणे, कागद जाळणे आणि लोखंडाचा अंकुर लागणे हे सर्व रासायनिक बदल आहेत कारण त्यामध्ये नवीन पदार्थ तयार होतात.",
-          "imageAlt": null,
-          "critique": "The translation accurately reflects the original meaning, with appropriate Marathi terms for scientific concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses physical and chemical changes",
         null,
-        "Does not recognize the nature of physical changes",
-        "Confuses chemical and physical changes"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed. The correct answer is 'Melting of ice' as it is a physical change. The author's solution and reasoning for the wrong options are accurate and reflect common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 111,
-          "pageStart": 99,
-          "pageEnd": 99,
-          "headingPath": [
-            "13. Chemical Change and Chemical Bond"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 112,
-          "pageStart": 99,
-          "pageEnd": 100,
-          "headingPath": [
-            "13. Chemical Change and Chemical Bond"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 113,
-          "pageStart": 100,
-          "pageEnd": 101,
-          "headingPath": [
-            "13. Chemical Change and Chemical Bond"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T21:05:20.794Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "In a chemical reaction, what is the role of the arrow in a chemical equation?",
-      "choices": [
-        "It indicates the direction of the reaction",
-        "It represents the catalyst used",
-        "It shows the amount of reactants",
-        "It represents the energy involved"
-      ],
-      "answerIndex": 0,
-      "solution": "The arrow in a chemical equation indicates the direction of the reaction, showing that the substances on the left side (reactants) are transformed into the substances on the right side (products). The other options do not accurately describe the role of the arrow in a chemical equation.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "रासायनिक अभिक्रिया में, रासायनिक समीकरण में तीर की भूमिका क्या होती है?",
-          "choices": [
-            "इसके द्वारा अभिक्रिया की दिशा दर्शाई जाती है",
-            "इसके द्वारा उत्प्रेरक का प्रतिनिधित्व किया जाता है",
-            "इसके द्वारा अभिकारकों की मात्रा दर्शाई जाती है",
-            "इसके द्वारा शामिल ऊर्जा का प्रतिनिधित्व किया जाता है"
-          ],
-          "solution": "रासायनिक समीकरण में तीर अभिक्रिया की दिशा दर्शाता है, जो बताता है कि बाएं तरफ के पदार्थ (अभिकारक) दाएं तरफ के पदार्थ (उत्पाद) में परिवर्तित हो जाते हैं। अन्य विकल्प रासायनिक समीकरण में तीर की भूमिका का सही वर्णन नहीं करते हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "रासायनिक अभिक्रियेत, रासायनिक समीकरणात बाणाची भूमिका काय असते?",
-          "choices": [
-            "ते अभिक्रियेच्या दिशेचे निर्देश करते",
-            "ते वापरलेल्या उत्प्रेरकाचे प्रतिनिधित्व करते",
-            "ते अभिकारकांच्या प्रमाणाचे दर्शवते",
-            "ते संलग्न ऊर्जेचे प्रतिनिधित्व करते"
-          ],
-          "solution": "रासायनिक समीकरणात बाणाची भूमिका अभिक्रियेच्या दिशेचे निर्देश करणे असते, जे बाजूला असलेल्या पदार्थांना (अभिकारक) उजव्या बाजूला असलेल्या पदार्थांमध्ये (उत्पादक) रूपांतरित करते. इतर विकल्प रासायनिक समीकरणात बाणाच्या भूमिकेचे अचूक वर्णन करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Misunderstands the purpose of the arrow",
-        "Confuses the role of catalysts",
-        "Does not understand the components of a chemical equation"
+        "Confuses the purpose of chemical bonds with other physical properties",
+        "Confuses the purpose of chemical bonds with other physical properties",
+        "Confuses the purpose of chemical bonds with other physical properties"
       ],
       "solverAnswers": [
         0,
@@ -275,80 +268,90 @@
         0
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0, as the arrow in a chemical equation clearly indicates the direction of the reaction. The other options represent common misconceptions about the roles of catalysts, reactant quantities, and energy in chemical equations.",
+      "critique": "The correct answer is 0, as atoms form chemical bonds to achieve a stable electron configuration. The other options are incorrect and represent common misconceptions about the purpose of chemical bonds.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 111,
-          "pageStart": 99,
-          "pageEnd": 99,
-          "headingPath": [
-            "13. Chemical Change and Chemical Bond"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 112,
-          "pageStart": 99,
-          "pageEnd": 100,
-          "headingPath": [
-            "13. Chemical Change and Chemical Bond"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 113,
-          "pageStart": 100,
+          "ordinal": 114,
+          "pageStart": 101,
           "pageEnd": 101,
           "headingPath": [
             "13. Chemical Change and Chemical Bond"
           ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 115,
+          "pageStart": 102,
+          "pageEnd": 102,
+          "headingPath": [
+            "13. Chemical Change and Chemical Bond"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 116,
+          "pageStart": 102,
+          "pageEnd": 102,
+          "headingPath": [
+            "13. Chemical Change and Chemical Bond"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 117,
+          "pageStart": 102,
+          "pageEnd": 103,
+          "headingPath": [
+            "13. Chemical Change and Chemical Bond",
+            "Cl Mg Cl"
+          ]
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T21:05:20.794Z",
+      "generatedAt": "2026-11-02T12:00:40.142Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "Which of the following is a characteristic of a chemical change?",
+      "difficulty": 5,
+      "stem": "Which of the following is a product of a chemical reaction?",
       "choices": [
-        "It can be reversed easily",
-        "It involves the formation of new substances",
-        "It does not change the properties of the substances",
-        "It only changes the physical state of the substance"
+        "Reactant",
+        "Energy",
+        "Catalyst",
+        "New substance"
       ],
-      "answerIndex": 1,
-      "solution": "A chemical change involves the formation of new substances with different properties. Unlike physical changes, chemical changes are usually irreversible and result in the creation of new compounds. The other options describe characteristics of physical changes.",
+      "answerIndex": 3,
+      "solution": "A new substance is formed as a result of a chemical reaction, making it the correct answer. Reactants are the starting materials, not the products. Energy may be involved in a reaction but is not a product itself. A catalyst speeds up a reaction without being consumed or becoming a product.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा रासायनिक परिवर्तन का गुण है?",
+          "stem": "निम्नलिखित में से कौन रासायनिक अभिक्रिया का उत्पाद है?",
           "choices": [
-            "इसे आसानी से उलटा किया जा सकता है",
-            "इसमें नए पदार्थों के बनने की प्रक्रिया होती है",
-            "इसमें पदार्थों के गुणों में परिवर्तन नहीं होता है",
-            "इसमें केवल पदार्थ के भौतिक अवस्था में परिवर्तन होता है"
+            "अभिकारक",
+            "ऊर्जा",
+            "उत्प्रेरक",
+            "नया पदार्थ"
           ],
-          "solution": "एक रासायनिक परिवर्तन में नए पदार्थों के बनने की प्रक्रिया होती है जिनके अलग-अलग गुण होते हैं। भौतिक परिवर्तन के विपरीत, रासायनिक परिवर्तन आमतौर पर अनुत्क्रमणीय होते हैं और नए यौगिकों के निर्माण में परिणत होते हैं। अन्य विकल्प भौतिक परिवर्तन के गुणों का वर्णन करते हैं।",
+          "solution": "रासायनिक अभिक्रिया के परिणामस्वरूप एक नया पदार्थ बनता है, जिसके कारण यह सही उत्तर है। अभिकारक शुरूआती सामग्री होती है, उत्पाद नहीं। ऊर्जा अभिक्रिया में शामिल हो सकती है लेकिन यह उत्पाद नहीं होती। उत्प्रेरक अभिक्रिया को तेज करता है बिना खपत किए या उत्पाद बने।",
           "imageAlt": null,
-          "critique": "Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in Hindi science education.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते रासायनिक बदलाचे लक्षण आहे?",
+          "stem": "खालीलपैकी कोणते रासायनिक अभिक्रियेचे उत्पादन आहे?",
           "choices": [
-            "ते सहज उलटू शकते",
-            "त्यात नवीन द्रव्यांची निर्मिती होते",
-            "त्यामुळे द्रव्यांच्या गुणधर्मांमध्ये बदल होत नाही",
-            "ते द्रव्याच्या भौतिक अवस्थेमध्ये फक्त बदल करते"
+            "अभिकारक",
+            "ऊर्जा",
+            "उत्प्रेरक",
+            "नवीन द्रव्य"
           ],
-          "solution": "रासायनिक बदलात विशिष्ट गुणधर्म असलेल्या नवीन द्रव्यांची निर्मिती होते. भौतिक बदलांच्या तुलनेत, रासायनिक बदल सामान्यतः अनुत्क्रमित असतात आणि नवीन यौगिकांची निर्मिती होते. इतर विकल्प भौतिक बदलांचे लक्षण वर्णन करतात.",
+          "solution": "रासायनिक अभिक्रियेमुळे नवीन द्रव्य तयार होते, ज्यामुळे ते बरोबर उत्तर बनते. अभिकारक हे सुरुवातीचे सामग्री असतात, उत्पादन नसतात. ऊर्जा अभिक्रियेमध्ये सहभागी असू शकते पण ती स्वतः उत्पादन नसते. उत्प्रेरक अभिक्रियेला वेग देते पण ते उपभोगले जात नाही किंवा उत्पादन बनत नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
         }
       },
@@ -357,51 +360,34 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses chemical and physical changes",
-        null,
-        "Does not understand the definition of a chemical change",
-        "Misunderstands the nature of chemical changes"
+        "confuses reactants with products",
+        "not aware of the role of energy",
+        "not familiar with the concept",
+        null
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        3,
+        3,
+        3,
+        3,
+        3
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as a chemical change involves the formation of new substances. The other options describe characteristics of physical changes, which aligns with the author's reasoning.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 'New substance' as it is the defining feature of a chemical reaction. The author's reasoning for the distractors aligns with common student misconceptions.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 111,
-          "pageStart": 99,
-          "pageEnd": 99,
+          "ordinal": 118,
+          "pageStart": 103,
+          "pageEnd": 104,
           "headingPath": [
-            "13. Chemical Change and Chemical Bond"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 112,
-          "pageStart": 99,
-          "pageEnd": 100,
-          "headingPath": [
-            "13. Chemical Change and Chemical Bond"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 113,
-          "pageStart": 100,
-          "pageEnd": 101,
-          "headingPath": [
-            "13. Chemical Change and Chemical Bond"
+            "13. Chemical Change and Chemical Bond",
+            "Exercises"
           ]
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T21:05:20.794Z",
+      "generatedAt": "2026-11-02T12:00:40.142Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

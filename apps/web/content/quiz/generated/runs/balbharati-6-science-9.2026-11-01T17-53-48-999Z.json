@@ -1,0 +1,679 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T17:53:48.999Z",
+  "finishedAt": "2026-11-01T18:02:20.129Z",
+  "seconds": 511,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "603050012",
+    "document": "balbharati/6/science/603050012.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 9 — From Diet to Health",
+    "edition": "First Edition 2026",
+    "chunks": 11,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2023-24]\n29. We are advised to take iodised salt in our diet by doctors. Justify it's importance in our 3\nbody.",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n7. B. Cooking of food",
+      "[CBSE Class X Science, sample question paper, 2022-23]\n23. Patients whose gallbladder are removed are recommended to eat less oily food. 2\nWhy?",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n4. D. insulin from pancreas"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 138299,
+      "in": 37,
+      "out": 33,
+      "rejects": 4,
+      "promptTokens": 31474,
+      "completionTokens": 6439
+    },
+    "critique": {
+      "calls": 40,
+      "ms": 293971,
+      "in": 33,
+      "out": 26,
+      "rejects": 7,
+      "promptTokens": 16542,
+      "completionTokens": 6723
+    },
+    "solver": {
+      "calls": 182,
+      "ms": 98583,
+      "in": 26,
+      "out": 23,
+      "rejects": 3,
+      "promptTokens": 30841,
+      "completionTokens": 1888
+    },
+    "form": {
+      "calls": 17,
+      "ms": 52084,
+      "in": 23,
+      "out": 18,
+      "rejects": 5,
+      "promptTokens": 3966,
+      "completionTokens": 1177
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 22,
+      "ms": 4260,
+      "in": 18,
+      "out": 9,
+      "rejects": 9,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 39,
+      "ms": 417556,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 20435,
+      "completionTokens": 9930
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 2,
+    "2": 1,
+    "3": 3,
+    "4": 2,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the main purpose of food according to the passage?",
+      "ms": {
+        "draft": 3906,
+        "critique": 6900,
+        "solver": 1388,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person in the Konkan region of Maharashtra wants to follow a healthy diet, which food ingredients should they use more of?",
+      "ms": {
+        "draft": 3906,
+        "critique": 7466,
+        "solver": 2437,
+        "form": 4994
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A person in the summer season is advised to eat foods that are easy to digest. Which of the following would be the best choice?",
+      "ms": {
+        "draft": 3906,
+        "critique": 6131
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements best explains the importance of including seasonal fruits and vegetables in the diet?",
+      "ms": {
+        "draft": 3906,
+        "critique": 8989,
+        "solver": 1960,
+        "form": 2212
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a 'Regional Diet' as described in the passage?",
+      "ms": {
+        "draft": 3906,
+        "critique": 7207,
+        "solver": 17800
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a source of carbohydrates?",
+      "ms": {
+        "draft": 2755,
+        "critique": 6962
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following best describes a 'Balanced diet'?",
+      "ms": {
+        "draft": 3906,
+        "critique": 7001,
+        "solver": 1277,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a source of fats?",
+      "ms": {
+        "draft": 2755,
+        "critique": 8319
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Meena eats noodles, biscuits, and bread but avoids leafy vegetables, fruits, and milk. She has stomach ache and constipation. What change in her diet should she make?",
+      "ms": {
+        "draft": 3226,
+        "critique": 6734,
+        "solver": 12368
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a nutrient that helps in the growth and repair of the body?",
+      "ms": {
+        "draft": 14487,
+        "critique": 9383
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student eats only noodles, biscuits, and bread, and avoids leafy vegetables, fruits, and milk. Which of the following health issues might they face?",
+      "ms": {
+        "draft": 14487,
+        "critique": 9158
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In which of the following ways can the body get the nutrients it needs?",
+      "ms": {
+        "draft": 14487,
+        "critique": 9905
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A person is advised to include carrots, spinach, and papaya in their diet. What is the most likely reason for this advice?",
+      "ms": {
+        "draft": 14487,
+        "critique": 7384
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a source of carbohydrates?",
+      "ms": {
+        "draft": 3815,
+        "critique": 10745,
+        "solver": 12446,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is NOT a reason for the variation in regional diets?",
+      "ms": {
+        "draft": 4975,
+        "critique": 7837,
+        "solver": 7443
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to cut vegetables after washing them?",
+      "ms": {
+        "draft": 4426,
+        "critique": 6830,
+        "solver": 1673,
+        "form": 4244
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A person with a deficiency of vitamin 'B' is most likely to experience which symptom?",
+      "ms": {
+        "draft": 4426,
+        "critique": 7937,
+        "solver": 2545,
+        "form": 3202
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What are the useful substances that our body gets from food called?",
+      "ms": {
+        "draft": 3226,
+        "critique": 6965,
+        "solver": 2570,
+        "form": 2576
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a person is suffering from night blindness, which food item should they include in their diet?",
+      "ms": {
+        "draft": 3226,
+        "critique": 6738,
+        "solver": 1903,
+        "form": 3129
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A person is suffering from night blindness. Which of the following nutrients should be included in their diet to improve their condition?",
+      "ms": {
+        "draft": 14487,
+        "critique": 8464,
+        "solver": 1664,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the main source of energy for the body?",
+      "ms": {
+        "draft": 14487,
+        "critique": 9019,
+        "solver": 12190,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which vitamin deficiency causes night blindness?",
+      "ms": {
+        "draft": 4210,
+        "critique": 6511,
+        "solver": 1562,
+        "form": 3488
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which test is used to detect the presence of starch in food?",
+      "ms": {
+        "draft": 4210,
+        "critique": 7638,
+        "solver": 1985,
+        "form": 2742
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the main reason for recommending less oily food to patients who have had their gallbladder removed?",
+      "ms": {
+        "draft": 3815,
+        "critique": 10084,
+        "solver": 1690,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a source of proteins?",
+      "ms": {
+        "draft": 2755,
+        "critique": 7536,
+        "solver": 16025,
+        "form": 2243,
+        "translation": 56138
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which food item is rich in vitamin C?",
+      "ms": {
+        "draft": 4210,
+        "critique": 6991,
+        "solver": 1472,
+        "form": 2621,
+        "translation": 42252
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which vitamin deficiency causes night blindness?",
+      "ms": {
+        "draft": 4426,
+        "critique": 7127,
+        "solver": 1626,
+        "form": 3175,
+        "translation": 51639
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What should a person with a goitre include in their diet?",
+      "ms": {
+        "draft": 4426,
+        "critique": 8983,
+        "solver": 1777,
+        "form": 4207,
+        "translation": 42287
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What should be done to preserve the nutritive value of vegetables during cooking?",
+      "ms": {
+        "draft": 4210,
+        "critique": 6331,
+        "solver": 2095,
+        "form": 3482,
+        "translation": 47132
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main source of energy for the body?",
+      "ms": {
+        "draft": 3226,
+        "critique": 6220,
+        "solver": 1328,
+        "form": 3628,
+        "translation": 37852
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct test for identifying starch in food?",
+      "ms": {
+        "draft": 4426,
+        "critique": 8390,
+        "solver": 1881,
+        "form": 4155,
+        "translation": 62406
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which disease is caused due to the deficiency of iodine?",
+      "ms": {
+        "draft": 4210,
+        "critique": 7380,
+        "solver": 17673,
+        "form": 2427,
+        "translation": 33954
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the water used for boiling vegetables is thrown away, what is the likely consequence?",
+      "ms": {
+        "draft": 3226,
+        "critique": 6626,
+        "solver": 890,
+        "form": 2051,
+        "translation": 40080
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is a source of vitamins?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is a source of minerals?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is a source of water?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main purpose of food according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer is directly stated in the passage, 'Food nour…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person in the Konkan region of Maharashtra wants to follow a healthy diet, which food ingredients should they use more of?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is based on the passage's idea of regional di…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A person in the summer season is advised to eat foods that are easy to digest. Which of the following would be the best choice?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following statements best explains the importance of including seasonal fruits and vegetables in the diet?",
+      "reason": "the key is far longer than every distractor (51 vs 23 characters); distractor 3's reason is not a one-line misconception (\"Correct answer is directly stated in the passage, 'Seasonal …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a 'Regional Diet' as described in the passage?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a source of carbohydrates?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following best describes a 'Balanced diet'?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer is directly stated in the passage, 'The food …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a source of fats?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Meena eats noodles, biscuits, and bread but avoids leafy vegetables, fruits, and milk. She has stomach ache and constipation. What change in her diet should she make?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the main cause of rickets?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a nutrient that helps in the growth and repair of the body?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student eats only noodles, biscuits, and bread, and avoids leafy vegetables, fruits, and milk. Which of the following health issues might they face?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In which of the following ways can the body get the nutrients it needs?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A person is advised to include carrots, spinach, and papaya in their diet. What is the most likely reason for this advice?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is a source of carbohydrates?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following is NOT a reason for the variation in regional diets?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Why is it important to cut vegetables after washing them?",
+      "reason": "near-duplicate of served question cmvvf4aew017y0rgnpy6mbndt (cosine 0.932 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A person with a deficiency of vitamin 'B' is most likely to experience which symptom?",
+      "reason": "near-duplicate of served question cmvvzf3s000wi0remllilq6qy (cosine 0.925 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What are the useful substances that our body gets from food called?",
+      "reason": "near-duplicate of served question cmvvf4adx015y0rgnmfs0n8eu (cosine 0.903 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "If a person is suffering from night blindness, which food item should they include in their diet?",
+      "reason": "near-duplicate of served question cmvvf4aet017s0rgnrohnirh7 (cosine 0.940 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "A person is suffering from night blindness. Which of the following nutrients should be included in their diet to improve their condition?",
+      "reason": "near-duplicate of served question cmvvf4aet017s0rgnrohnirh7 (cosine 0.909 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is the main source of energy for the body?",
+      "reason": "near-duplicate of batch item \"What is the main source of energy for the body?…\" (cosine 0.977 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which vitamin deficiency causes night blindness?",
+      "reason": "near-duplicate of batch item \"Which vitamin deficiency causes night blindness?…\" (cosine 1.000 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which test is used to detect the presence of starch in food?",
+      "reason": "near-duplicate of served question cmvvf4aek017a0rgnab37bki1 (cosine 0.953 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "What is the main reason for recommending less oily food to patients who have had their gallbladder removed?",
+      "reason": "near-duplicate of served question cmvvf4aeq017m0rgn64rpzkc8 (cosine 0.916 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

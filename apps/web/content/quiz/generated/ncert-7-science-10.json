@@ -21,128 +21,49 @@
   "board": "NCERT",
   "book": "Curiosity",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-31T23:20:44.670Z",
+  "generatedAt": "2026-11-02T06:31:20.206Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "What was Kamala Sohonie's area of research?",
+      "difficulty": 3,
+      "stem": "What would happen to a plant that receives no sunlight but has enough water?",
       "choices": [
-        "Respiration in animals",
-        "Respiration in plants",
-        "Photosynthesis in animals",
-        "Photosynthesis in plants"
-      ],
-      "answerIndex": 1,
-      "solution": "Kamala Sohonie's research focused on respiration in plants, which is a well-established scientific fact. The other options are incorrect because respiration is not a process unique to animals, and photosynthesis is not related to respiration. Photosynthesis in plants is a separate process and not what she studied.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "कमला सोहनी के अनुसंधान का क्षेत्र क्या था?",
-          "choices": [
-            "जंतुओं में श्वसन",
-            "पौधों में श्वसन",
-            "जंतुओं में प्रकाश संश्लेषण",
-            "पौधों में प्रकाश संश्लेषण"
-          ],
-          "solution": "कमला सोहनी के अनुसंधान का केंद्र बिंदु पौधों में श्वसन रहा, जो एक अच्छी तरह से स्थापित वैज्ञानिक तथ्य है। अन्य विकल्प गलत हैं क्योंकि श्वसन एक प्रक्रिया है जो जंतुओं तक सीमित नहीं है, और प्रकाश संश्लेषण श्वसन से संबंधित नहीं है। पौधों में प्रकाश संश्लेषण एक अलग प्रक्रिया है और वह अध्ययन नहीं किया गया था।",
-          "imageAlt": null,
-          "critique": "Translation accurately reflects the original meaning, technical terms are appropriate for Hindi-medium curriculum, and the correct answer remains option 1.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "कमला सोहोणीच्या संशोधनाचा क्षेत्र कोणता होता?",
-          "choices": [
-            "प्राण्यांमधील श्वासोच्छ्वास",
-            "वनस्पतींमधील श्वासोच्छ्वास",
-            "प्राण्यांमधील प्रकाशसंश्लेषण",
-            "वनस्पतींमधील प्रकाशसंश्लेषण"
-          ],
-          "solution": "कमला सोहोणीच्या संशोधनाचा केंद्रबिंदू वनस्पतींमधील श्वासोच्छ्वास होता, हे एक चांगल्या प्रकारे स्थापित वैज्ञानिक तथ्य आहे. इतर विकल्प अयोग्य आहेत कारण श्वासोच्छ्वास हा प्राण्यांच्या विशिष्ट प्रक्रियेचा नसून प्रकाशसंश्लेषण श्वासोच्छ्वासशी संबंधित नाही. वनस्पतींमधील प्रकाशसंश्लेषण ही एक वेगळी प्रक्रिया आहे आणि ती तिने अभ्यासलेली नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses plants with animals",
-        null,
-        "confuses respiration with photosynthesis and incorrectly applies it to animals",
-        "Mistakes photosynthesis for respiration and animals for plants"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as the question is a direct recall of the passage. The author's reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu110.pdf",
-          "ordinal": 16,
-          "pageStart": 16,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 10: Life Processes in Plants",
-            "10.4 Do Plants Respire?",
-            "Exploratory Projects"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T23:20:44.670Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What does the presence of a blue-black colour in the iodine test indicate about a leaf's ability to produce starch?",
-      "choices": [
-        "The leaf is non-green",
-        "The leaf is not exposed to sunlight",
-        "The leaf contains starch",
-        "The leaf is not performing photosynthesis"
+        "It will grow better than a plant in sunlight",
+        "It will grow faster than a plant in shade",
+        "It will not grow as well as a plant in sunlight",
+        "It will grow the same as a plant in sunlight"
       ],
       "answerIndex": 2,
-      "solution": "The blue-black colour in the iodine test indicates that starch is present in the leaf. This is a direct chemical reaction between iodine and starch, which is a well-established scientific observation. The other options are incorrect because the test does not determine the leaf's color, light exposure, or photosynthetic activity, only the presence of starch.",
+      "solution": "Sunlight is essential for photosynthesis, the process by which plants produce their food. Without sunlight, a plant cannot perform photosynthesis efficiently, leading to poor growth. The correct answer is that it will not grow as well as a plant in sunlight. The other options are incorrect because they suggest better or equal growth without sunlight, which is not possible.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "आयोडीन परीक्षण में नीला-काला रंग की उपस्थिति पत्ती के स्टार्च उत्पादन क्षमता के बारे में क्या संकेत देती है?",
+          "stem": "एक पौधे पर क्या होगा जिसे कोई सूर्य प्रकाश नहीं मिलता है लेकिन पर्याप्त पानी है?",
           "choices": [
-            "पत्ती गैर-हरी है",
-            "पत्ती सूर्य के प्रकाश में नहीं है",
-            "पत्ती में स्टार्च है",
-            "पत्ती फोटोसिंथेसिस नहीं कर रही है"
+            "यह सूर्य प्रकाश में पौधे की तुलना में बेहतर बढ़ेगा",
+            "यह छाया में पौधे की तुलना में तेजी से बढ़ेगा",
+            "यह सूर्य प्रकाश में पौधे की तुलना में अच्छी तरह से नहीं बढ़ेगा",
+            "यह सूर्य प्रकाश में पौधे के समान बढ़ेगा"
           ],
-          "solution": "आयोडीन परीक्षण में नीला-काला रंग की उपस्थिति पत्ती में स्टार्च की उपस्थिति को दर्शाती है। यह आयोडीन और स्टार्च के बीच एक सीधा रासायनिक अभिक्रिया है, जो एक अच्छी तरह से स्थापित वैज्ञानिक अवलोकन है। अन्य विकल्प गलत हैं क्योंकि परीक्षण पत्ती के रंग, प्रकाश के संपर्क में रहने या प्रकाश संश्लेषण की क्रिया का निर्धारण नहीं करता है, केवल स्टार्च की उपस्थिति का निर्धारण करता है।",
+          "solution": "सूर्य प्रकाश पौधों द्वारा अपना भोजन बनाने वाली प्रक्रिया, प्रकाश संश्लेषण के लिए आवश्यक है। सूर्य प्रकाश के बिना, एक पौधा प्रकाश संश्लेषण के लिए पर्याप्त रूप से कार्य नहीं कर सकता है, जिसके परिणामस्वरूप खराब वृद्धि होती है। सही उत्तर यह है कि यह सूर्य प्रकाश में पौधे की तुलना में अच्छी तरह से नहीं बढ़ेगा। अन्य विकल्प गलत हैं क्योंकि वे सूर्य प्रकाश के बिना बेहतर या समान वृद्धि का सुझाव देते हैं, जो संभव नहीं है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the scientific terminology, and preserves the meaning and structure of the original question and solution.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for biological processes.",
           "flag": null
         },
         "mr": {
-          "stem": "आयोडीन चाचणीत नील-काळा रंग असल्याने पानाच्या स्टार्च तयार करण्याच्या क्षमतेबद्दल काय सूचित करतो?",
+          "stem": "एका वनस्पतीला कोणत्याही सूर्यप्रकाशाचा अभाव असेल पण तिला पुरेसा पाणी मिळेल तर काय होईल?",
           "choices": [
-            "पान हिरवे नाही",
-            "पान सूर्याच्या प्रकाशाला उघडे नाही",
-            "पानात स्टार्च आहे",
-            "पान फोटोसिंथेसिस करीत नाही"
+            "ती सूर्यप्रकाशात असलेल्या वनस्पतीपेक्षा चांगले वाढेल",
+            "ती छायेत असलेल्या वनस्पतीपेक्षा जलद वाढेल",
+            "ती सूर्यप्रकाशात असलेल्या वनस्पतीपेक्षा चांगले वाढणार नाही",
+            "ती सूर्यप्रकाशात असलेल्या वनस्पतीपेक्षा एकसारखी वाढेल"
           ],
-          "solution": "आयोडीन चाचणीत नील-काळा रंग पानात स्टार्च असल्याचे सूचित करतो. ही सीधा रासायनिक प्रतिक्रिया आयोडीन आणि स्टार्चमध्ये होते, जी एक जाणीवपूर्वक वैज्ञानिक नोंद आहे. इतर विकल्प चुकीचे आहेत कारण चाचणी पानाच्या रंग, प्रकाशाच्या प्रतिसादाच्या किंवा फोटोसिंथेसिसच्या क्रियाशीलतेचे निर्धारण करत नाही, केवळ स्टार्च असल्याचे निर्धारण करते.",
+          "solution": "सूर्यप्रकाश फोटोसंश्लेषणासाठी आवश्यक आहे, ज्यामुळे वनस्पती आपले खाद्य तयार करते. सूर्यप्रकाश नसल्यास, वनस्पती फोटोसंश्लेषण योग्यरित्या करू शकत नाही, ज्यामुळे वाढ खराब होते. योग्य उत्तर म्हणजे ती सूर्यप्रकाशात असलेल्या वनस्पतीपेक्षा चांगले वाढणार नाही. इतर उत्तरे चुकीची आहेत कारण ते सूर्यप्रकाश नसतानाही चांगली किंवा समान वाढ असल्याचे सूचित करतात, जे शक्य नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for botanical concepts.",
           "flag": null
         }
       },
@@ -151,10 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the effect of chlorophyll with starch presence",
-        "Assumes sunlight is the only factor for starch",
+        "Believes sunlight is not important for plant growth",
+        "Incorrectly assumes that shade is better for plant growth",
         null,
-        "Does not understand the purpose of the test\",\"Misinterprets the role of photosynthesis"
+        "Belief that water alone is sufficient for plant growth, ignoring the role of sunlight in photosynthesis"
       ],
       "solverAnswers": [
         2,
@@ -164,7 +85,115 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 2, as the iodine test directly detects starch. The other options reflect common misconceptions about the relationship between chlorophyll, sunlight, and photosynthesis.",
+      "critique": "The solution is sound and correctly identifies option 2 as the correct answer based on the experiment described. The reasoning aligns with the scientific understanding that sunlight is essential for photosynthesis and plant growth.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu110.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 10: Life Processes in Plants"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu110.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 10: Life Processes in Plants",
+            "10.1 How Do Plants Grow?"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu110.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 10: Life Processes in Plants",
+            "10.1 How Do Plants Grow?"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu110.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 10: Life Processes in Plants",
+            "10.2 How Do Plants Get Food for their",
+            "10.2.1 Leaves: the ̒ food factories̓ of plants"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T06:31:20.206Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the primary site for photosynthesis in a plant?",
+      "choices": [
+        "Roots",
+        "Stems",
+        "Leaves",
+        "Flowers"
+      ],
+      "answerIndex": 2,
+      "solution": "The primary site for photosynthesis in a plant is the leaves. Leaves contain chlorophyll, which is essential for the process of photosynthesis. The other options do not have the necessary chlorophyll or structure for photosynthesis.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पौधे में प्राथमिक स्थान क्या है जहां प्रकाश संश्लेषण होता है?",
+          "choices": [
+            "जड़ें",
+            "तने",
+            "पत्तियां",
+            "फूल"
+          ],
+          "solution": "एक पौधे में प्रकाश संश्लेषण का प्राथमिक स्थान पत्तियां हैं। पत्तियां में क्लोरोफिल होता है, जो प्रकाश संश्लेषण की प्रक्रिया के लिए आवश्यक है। अन्य विकल्प प्रकाश संश्लेषण के लिए आवश्यक क्लोरोफिल या संरचना नहीं रखते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi terminology for botanical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "वनस्पतीत फोटोसिंथेसिसचे प्राथमिक स्थान कोणते आहे?",
+          "choices": [
+            "मूळे",
+            "कांडे",
+            "पाने",
+            "पुष्पे"
+          ],
+          "solution": "वनस्पतीत फोटोसिंथेसिसचे प्राथमिक स्थान पाने आहे. पानांमध्ये क्लोरोफिल असतो, जे फोटोसिंथेसिसच्या प्रक्रियेसाठी आवश्यक आहे. इतर विकल्पांमध्ये फोटोसिंथेसिससाठी आवश्यक क्लोरोफिल किंवा संरचना नसते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi botanical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the role of roots",
+        "Misunderstands the function of stems",
+        null,
+        "Incorrectly identifies flowers as the site of photosynthesis"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the scientific understanding that leaves are the primary site of photosynthesis due to their chlorophyll content and structure.",
       "sources": [
         {
           "document": "ncert/7/science/gecu110.pdf",
@@ -212,47 +241,238 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T23:20:44.670Z",
+      "generatedAt": "2026-11-02T06:31:20.206Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "What is the function of stomata in plants?",
+      "difficulty": 4,
+      "stem": "What is the significance of the sap of the coconut palm in Kamala Sohonie's research?",
       "choices": [
-        "To absorb water",
-        "To exchange gases",
-        "To produce food",
-        "To transport nutrients"
+        "It was used as a fuel source",
+        "It was used as a drink called Neera",
+        "It was used to make soap",
+        "It was used for making alcoholic beverages"
       ],
       "answerIndex": 1,
-      "solution": "Stomata are small pores on the surface of leaves that allow for the exchange of gases like carbon dioxide and oxygen. This is a key function discussed in the chapter. The other options are not related to the function of stomata.",
+      "solution": "The sap of the coconut palm was used as a drink called Neera, which is the correct answer because it directly relates to its natural use as a sweet, nutritious liquid. The other options, such as fuel, soap, or alcoholic beverages, are not scientifically accurate representations of the sap's primary use in this context.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "पौधों में स्टोमेटा का कार्य क्या होता है?",
+          "stem": "कमला सोहनी के अनुसंधान में नारियल के वृक्ष के रस का क्या महत्व है?",
           "choices": [
-            "जल का अवशोषण करना",
-            "गैसों का आदान-प्रदान करना",
-            "भोजन का उत्पादन करना",
-            "पोषक तत्वों का परिवहन करना"
+            "इसे ईंधन के रूप में उपयोग किया गया",
+            "इसे नीरा नामक एक पेय के रूप में उपयोग किया गया",
+            "इसे साबुन बनाने के लिए उपयोग किया गया",
+            "इसे शराब बनाने के लिए उपयोग किया गया"
           ],
-          "solution": "स्टोमेटा पत्तियों की सतह पर छोटे छिद्र होते हैं जो कार्बन डाइऑक्साइड और ऑक्सीजन जैसी गैसों के आदान-प्रदान की अनुमति देते हैं। यह अध्याय में चर्चित एक मुख्य कार्य है। अन्य विकल्प स्टोमेटा के कार्य से संबंधित नहीं हैं।",
+          "solution": "नारियल के वृक्ष के रस का उपयोग एक पेय के रूप में नीरा कहलाता है, जो सीधे रूप से इसके प्राकृतिक उपयोग के साथ जुड़ा हुआ है, जो एक मीठा, पौष्टिक तरल है। अन्य विकल्प, ईंधन, साबुन या शराब के रूप में, इस संदर्भ में रस के मुख्य उपयोग के वैज्ञानिक रूप से सटीक प्रतिनिधित्व नहीं हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated and maintain their original intent.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains in the same position. The distractors remain incorrect, and the term 'Neera' is used as a proper noun, not a transliteration.",
           "flag": null
         },
         "mr": {
-          "stem": "वनस्पतींमध्ये स्टोमॅटा ची कार्ये काय आहेत?",
+          "stem": "कोकोनट पालखीच्या रसाचा कमला सोहोणी यांच्या संशोधनात काय अर्थ आहे?",
           "choices": [
-            "पाणी शोषून घेणे",
-            "गॅसचा विनिमय करणे",
-            "खाद्य तयार करणे",
-            "पोषक द्रव्यांचा परिवहन करणे"
+            "त्याचा ईंधन स्रोत म्हणून वापर केला गेला",
+            "त्याचा नीरा नावाच्या पेयासाठी वापर केला गेला",
+            "त्याचा साबण तयार करण्यासाठी वापर केला गेला",
+            "त्याचा अल्कोहॉलिक पेयांच्या तयारीसाठी वापर केला गेला"
           ],
-          "solution": "स्टोमॅटा हे पानांच्या सतही लहान छिद्र असतात जे कार्बन डायऑक्साईड आणि ऑक्सीजन या गॅसच्या विनिमयासाठी परवानगी देतात. हे एक महत्वाचे कार्य असून अध्यायात चर्चा केली गेली आहे. इतर विकल्प स्टोमॅटाच्या कार्याशी संबंधित नाहीत.",
+          "solution": "कोकोनट पालखीच्या रसाचा नीरा नावाच्या पेयासाठी वापर केला गेला, हे त्याच्या प्राकृतिक वापराशी सीधा संबंधित असल्याने योग्य उत्तर आहे. ईंधन, साबण किंवा अल्कोहॉलिक पेयांसाठी वापर करणे हे या संदर्भात वैज्ञानिकदृष्ट्या अचूक प्रतिनिधित्व नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Belief that plant saps can be converted into fuels due to their organic content",
+        null,
+        "believes coconut sap is processed into household products like soap",
+        "A common misconception is that coconut sap is fermented into alcohol, similar to other plant saps."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as the passage explicitly states that Kamala Sohonie's research involved the sap of the coconut palm as a nutritive drink called Neera. The other options reflect common misconceptions about the uses of coconut sap.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu110.pdf",
+          "ordinal": 16,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 10: Life Processes in Plants",
+            "10.4 Do Plants Respire?",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T06:31:20.206Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In the iodine test, what colour change indicates the presence of starch?",
+      "choices": [
+        "No change",
+        "Blue-black",
+        "Red",
+        "Green"
+      ],
+      "answerIndex": 1,
+      "solution": "In the iodine test, a blue-black colour change indicates the presence of starch. This is a key indicator used in the experiment. The other options do not indicate the presence of starch.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "आयोडीन परीक्षण में, स्टार्च की उपस्थिति के संकेत के रूप में कौन सा रंग परिवर्तन होता है?",
+          "choices": [
+            "कोई परिवर्तन नहीं",
+            "नीला-काला",
+            "लाल",
+            "हरा"
+          ],
+          "solution": "आयोडीन परीक्षण में, नीला-काला रंग परिवर्तन स्टार्च की उपस्थिति को दर्शाता है। यह प्रयोग में एक महत्वपूर्ण संकेत है। अन्य विकल्प स्टार्च की उपस्थिति को दर्शाते नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आयोडिन चाचणीत, स्टार्चच्या उपस्थितीचे द्योतक रंग बदल कोणता असतो?",
+          "choices": [
+            "कोणताही बदल नाही",
+            "निळा-काळा",
+            "लाल",
+            "हिरवा"
+          ],
+          "solution": "आयोडिन चाचणीत, स्टार्चच्या उपस्थितीचे द्योतक निळा-काळा रंग बदल असतो. हा प्रयोगात वापरल्या जाणारा महत्वपूर्ण संकेत आहे. इतर विकल्प स्टार्चच्या उपस्थितीचे द्योतक नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the test for chlorophyll",
+        null,
+        "Misidentifies the colour change for other substances",
+        "Incorrectly assumes a different colour indicates starch"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1 (blue-black), which is the standard result of the iodine test for starch. The distractors reflect common misconceptions about other color changes in plant biology.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu110.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 10: Life Processes in Plants",
+            "10.2 How Do Plants Get Food for their",
+            "10.2.1 Leaves: the ̒ food factories̓ of plants"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu110.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 10: Life Processes in Plants",
+            "10.2 How Do Plants Get Food for their",
+            "10.2.1 Leaves: the ̒ food factories̓ of plants"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu110.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 10: Life Processes in Plants",
+            "10.2 How Do Plants Get Food for their",
+            "10.2.2 Role of air in the preparation of food"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu110.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 10: Life Processes in Plants",
+            "10.2 How Do Plants Get Food for their",
+            "10.2.2 Role of air in the preparation of food"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T06:31:20.206Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A plant placed in a dark room with no water will show which of the following?",
+      "choices": [
+        "It will grow normally",
+        "It will grow better than a plant in the dark",
+        "It will die due to lack of water and sunlight",
+        "It will grow only if there is some light"
+      ],
+      "answerIndex": 2,
+      "solution": "A plant requires both water and sunlight for survival and growth. Without water, the plant cannot perform essential functions, and without sunlight, it cannot carry out photosynthesis. Therefore, the plant will die due to the lack of both water and sunlight. The other options are incorrect because they suggest the plant can grow or survive without these essential resources.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पौधा जिसे अंधेरे कमरे में बिना पानी के रखा जाए, निम्नलिखित में से कौन-सा दिखाएगा?",
+          "choices": [
+            "यह सामान्य रूप से बढ़ेगा",
+            "यह अंधेरे में रखे पौधे की तुलना में बेहतर बढ़ेगा",
+            "यह पानी और सूर्य के प्रकाश के अभाव में मर जाएगा",
+            "यह केवल यदि कुछ प्रकाश हो तो बढ़ेगा"
+          ],
+          "solution": "एक पौधा जीवित रहने और बढ़ने के लिए पानी और सूर्य के प्रकाश दोनों की आवश्यकता होती है। पानी के बिना पौधा आवश्यक कार्य कर नहीं सकता, और सूर्य के प्रकाश के बिना यह प्रकाश संश्लेषण कर नहीं सकता। इसलिए, पौधा पानी और सूर्य के प्रकाश के अभाव में मर जाएगा। अन्य विकल्प गलत हैं क्योंकि वे पौधे के इन आवश्यक संसाधनों के बिना बढ़ने या जीवित रहने के बारे में सुझाव देते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका गडद खोलीत असलेल्या वनस्पतीला कोणत्या खालील प्रकारचा दिसेल?",
+          "choices": [
+            "ती सामान्यपणे वाढेल",
+            "ती गडद खोलीत असलेल्या वनस्पतीपेक्षा चांगल्या प्रकारे वाढेल",
+            "ती पाणी आणि सूर्यप्रकाशाच्या अभावामुळे मरेल",
+            "ती केवळ जर थोडा प्रकाश असेल तर वाढेल"
+          ],
+          "solution": "एका वनस्पतीला जीवनासाठी आणि वाढीसाठी पाणी आणि सूर्यप्रकाश दोन्ही आवश्यक असतात. पाणी नसल्यास वनस्पती आवश्यक क्रियाकलाप करू शकत नाही आणि सूर्यप्रकाश नसल्यास ती प्रकाशसंश्लेषण करू शकत नाही. त्यामुळे पाणी आणि सूर्यप्रकाश दोन्ही अभावामुळे वनस्पती मरेल. इतर पर्याय चुकीचे आहेत कारण ते वनस्पतीला या आवश्यक संसाधनांशिवाय जगू शकते असे सूचित करतात.",
           "imageAlt": null,
           "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
           "flag": null
@@ -263,178 +483,128 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "confuses stomata with root structures",
+        "Believes plants can grow without water or sunlight",
+        "Believes water alone is sufficient for growth, ignoring the need for sunlight",
         null,
-        "Confuses photosynthesis with the function of stomata",
-        "Confuses stomata with vascular tissues like xylem and phloem"
+        "Incorrectly assumes that some light is sufficient"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as stomata are indeed responsible for gas exchange. The author's reasoning for the distractors is accurate and reflects common student misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu110.pdf",
-          "ordinal": 16,
-          "pageStart": 16,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 10: Life Processes in Plants",
-            "10.4 Do Plants Respire?",
-            "Exploratory Projects"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T23:20:44.670Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Which of the following best describes the process of respiration in plants?",
-      "choices": [
-        "It occurs only in the leaves",
-        "It occurs in all living cells",
-        "It only takes place during the day",
-        "It only takes place during the night"
-      ],
-      "answerIndex": 1,
-      "solution": "Respiration in plants is a process that occurs in all living cells to produce energy, which is necessary for various cellular functions. This means it is not limited to just the leaves or specific times of day. The other options are incorrect because respiration does not occur only during the day or night, nor is it restricted to the leaves.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा पौधों में श्वसन की प्रक्रिया का सबसे अच्छा वर्णन करता है?",
-          "choices": [
-            "यह पत्तियों में ही होता है",
-            "यह सभी जीवित कोशिकाओं में होता है",
-            "यह केवल दिन में होता है",
-            "यह केवल रात में होता है"
-          ],
-          "solution": "पौधों में श्वसन एक प्रक्रिया है जो सभी जीवित कोशिकाओं में ऊर्जा उत्पन्न करने के लिए होती है, जो कोशिकीय कार्यों के लिए आवश्यक है। इसका अर्थ है कि यह केवल पत्तियों या दिन के किसी विशिष्ट समय तक सीमित नहीं है। अन्य विकल्प गलत हैं क्योंकि श्वसन केवल दिन या रात में नहीं होता है, और यह पत्तियों तक सीमित नहीं है।",
-          "imageAlt": null,
-          "critique": "Translation accurately reflects the original meaning with appropriate Hindi biological terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते वाढीच्या प्रक्रियेचे वर्णन करते?",
-          "choices": [
-            "ते पानांमध्ये घडते",
-            "ते सर्व जीवित कोशिकांमध्ये घडते",
-            "ते दिवसात घडते",
-            "ते रात्री घडते"
-          ],
-          "solution": "वनस्पतींमध्ये श्वसन ही एक प्रक्रिया आहे जी सर्व जीवित कोशिकांमध्ये ऊर्जा तयार करण्यासाठी घडते, जी कोशिकीय कार्यांसाठी आवश्यक आहे. हे पानांमध्ये किंवा दिवसाच्या विशिष्ट वेळेमध्ये मर्यादित नाही. इतर विकल्प अयोग्य आहेत कारण श्वसन दिवसात किंवा रात्री घडत नाही, आणि पानांमध्ये मर्यादित नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for biological processes.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Incorrectly assumes respiration is limited to leaves",
-        null,
-        "Incorrectly assumes respiration is limited to certain times",
-        "Incorrectly assumes respiration is limited to certain times"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as respiration occurs in all living cells of plants and is not restricted to leaves or specific times of day. The distractors reflect common misconceptions about the location and timing of plant respiration.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu110.pdf",
-          "ordinal": 16,
-          "pageStart": 16,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 10: Life Processes in Plants",
-            "10.4 Do Plants Respire?",
-            "Exploratory Projects"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T23:20:44.670Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If a plant is kept in a closed bottle with no access to air, what would happen to its respiration?",
-      "choices": [
-        "It would stop completely",
-        "It would continue as long as there is water",
-        "It would continue as long as there is light",
-        "It would continue as long as there is food"
-      ],
-      "answerIndex": 0,
-      "solution": "Respiration requires oxygen, which is not available in a closed bottle without air. Therefore, the process would stop completely. The other options are incorrect because they assume respiration can occur without oxygen.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक पौधे को वायु के प्रवेश के बिना एक बंद बोतल में रखा जाए, तो इसकी श्वसन की प्रक्रिया क्या होगी?",
-          "choices": [
-            "यह पूरी तरह बंद हो जाएगा",
-            "यह तब तक जारी रहेगा जब तक पानी हो",
-            "यह तब तक जारी रहेगा जब तक प्रकाश हो",
-            "यह तब तक जारी रहेगा जब तक भोजन हो"
-          ],
-          "solution": "श्वसन के लिए ऑक्सीजन की आवश्यकता होती है, जो बिना वायु के बंद बोतल में उपलब्ध नहीं होती है। इसलिए प्रक्रिया पूरी तरह बंद हो जाएगी। अन्य विकल्प गलत हैं क्योंकि वे अनुमान लगाते हैं कि ऑक्सीजन के बिना श्वसन हो सकता है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका वनस्पतीला वायूच्या प्रवेशाशिवाय बंद बॉटलमध्ये ठेवले गेले तर तिच्या श्वसनावर काय परिणाम होईल?",
-          "choices": [
-            "ते पूर्णपणे थांबेल",
-            "ते पाणी असल्यास चालू राहील",
-            "ते प्रकाश असल्यास चालू राहील",
-            "ते खाद्य असल्यास चालू राहील"
-          ],
-          "solution": "श्वसनाला ऑक्सीजन आवश्यक असतो, जो बंद बॉटलमध्ये वायू नसल्यास उपलब्ध नसतो. म्हणून ते पूर्णपणे थांबेल. इतर विकल्प चुकीचे आहेत कारण ते ऑक्सीजन शिवाय श्वसन चालू राहू शकते असे मानतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Incorrectly assumes respiration can occur without oxygen",
-        "Incorrectly assumes water is sufficient for respiration",
-        "Incorrectly assumes light is necessary for respiration"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that respiration requires oxygen, which is absent in a closed bottle. The reasoning for the distractors aligns with common misconceptions about respiration.",
+      "critique": "The correct answer is 2, as the plant lacks both water and sunlight, which are essential for survival. The reasoning in the solution is sound and matches the explanation provided.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu110.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 10: Life Processes in Plants"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu110.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 10: Life Processes in Plants",
+            "10.1 How Do Plants Grow?"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu110.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 10: Life Processes in Plants",
+            "10.1 How Do Plants Grow?"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu110.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 10: Life Processes in Plants",
+            "10.2 How Do Plants Get Food for their",
+            "10.2.1 Leaves: the ̒ food factories̓ of plants"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T06:31:20.206Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a plant in a bottle garden does not receive enough sunlight, what would be the most likely effect on the plant?",
+      "choices": [
+        "It would grow faster",
+        "It would stop growing",
+        "It would produce more leaves",
+        "It would become more resistant to disease"
+      ],
+      "answerIndex": 1,
+      "solution": "Sunlight is essential for photosynthesis, and without enough sunlight, a plant would not be able to carry out this process effectively, leading to stunted growth. The other options are incorrect because they do not align with the basic principles of plant growth.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक बोतल बगीचे में एक पौधा पर्याप्त सूर्य प्रकाश नहीं प्राप्त करता है, तो पौधे पर सबसे संभावित प्रभाव क्या होगा?",
+          "choices": [
+            "यह तेजी से बढ़ेगा",
+            "यह बढ़ना बंद कर देगा",
+            "यह अधिक पत्तियां उत्पन्न करेगा",
+            "यह बीमारी के प्रति अधिक प्रतिरोधी हो जाएगा"
+          ],
+          "solution": "सूर्य प्रकाश प्रकाश संश्लेषण के लिए आवश्यक है, और पर्याप्त सूर्य प्रकाश के बिना, एक पौधा इस प्रक्रिया को प्रभावी ढंग से करने में असमर्थ होगा, जिसके परिणामस्वरूप बढ़त कमजोर हो जाएगी। अन्य विकल्प गलत हैं क्योंकि वे पौधे के विकास के मूल सिद्धांतों के अनुरूप नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका बॉटल बगारमधील वनस्पतीला पुरेसे सूर्यप्रकाश मिळत नसेल तर वनस्पतीवर सर्वात जास्त संभाव्य परिणाम काय असेल?",
+          "choices": [
+            "ती जास्त वेगाने वाढेल",
+            "ती वाढणे थांबवेल",
+            "ती जास्त पाने तयार करेल",
+            "ती रोगांच्या प्रतिकारक असेल"
+          ],
+          "solution": "सूर्यप्रकाश फोटोसिंथेसिससाठी आवश्यक आहे आणि पुरेसा सूर्यप्रकाश नसल्यास, वनस्पतीला हा प्रक्रिया प्रभावीपणे करता येणार नाही, ज्यामुळे वाढ अडकलेली जाईल. इतर विकल्प अयोग्य आहेत कारण ते वनस्पतीच्या वाढीच्या मूलभूत तत्त्वांशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi botanical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses with a different plant response",
+        null,
+        "mentions a different effect of sunlight",
+        "mentions a different plant behavior"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that lack of sunlight disrupts photosynthesis, leading to stunted growth. The reasoning for the distractors is plausible and reflects common misconceptions.",
       "sources": [
         {
           "document": "ncert/7/science/gecu110.pdf",
@@ -449,49 +619,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T23:20:44.670Z",
+      "generatedAt": "2026-11-02T06:31:20.206Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "In the experiment described in Activity 10.3, a leaf from a plant kept in the dark does not show starch even in green patches. What does this suggest about the role of sunlight?",
+      "stem": "Based on the experiment described, what conclusion can be drawn about the role of carbon dioxide in the process of photosynthesis?",
       "choices": [
-        "Sunlight is not needed for starch production",
-        "Sunlight is necessary for chlorophyll to function",
-        "Sunlight is the only factor in starch production",
-        "Sunlight helps in the absorption of water"
+        "Carbon dioxide is not needed for photosynthesis",
+        "Carbon dioxide is used to produce oxygen",
+        "Carbon dioxide is essential for the synthesis of starch",
+        "Carbon dioxide is only needed in the dark"
       ],
-      "answerIndex": 1,
-      "solution": "The experiment shows that even green patches in a leaf from a dark-placed plant do not produce starch, which suggests that sunlight is necessary for chlorophyll to function in starch production. The other options are incorrect because the experiment shows that sunlight is essential, not the only factor, and does not directly relate to water absorption.",
+      "answerIndex": 2,
+      "solution": "The experiment shows that the part of the leaf inside the bottle, which did not have access to carbon dioxide, did not produce starch. This indicates that carbon dioxide is essential for the synthesis of starch. The other options are incorrect based on the experiment's results.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "गतिविधि 10.3 में वर्णित प्रयोग में, अंधेरे में रखे गए पौधे के पत्ते में हरे धब्बों में भी स्टार्च नहीं दिखाई देता है। इसका क्या अर्थ है कि सूर्य के प्रकाश की भूमिका के बारे में?",
+          "stem": "चित्रित प्रयोग के आधार पर, प्रकाश संश्लेषण की प्रक्रिया में कार्बन डाइऑक्साइड की भूमिका के बारे में कौन-सा निष्कर्ष निकाला जा सकता है?",
           "choices": [
-            "सूर्य के प्रकाश की आवश्यकता नहीं होती है स्टार्च उत्पादन के लिए",
-            "सूर्य के प्रकाश की आवश्यकता होती है क्लोरोफिल के कार्य करने के लिए",
-            "सूर्य के प्रकाश ही स्टार्च उत्पादन का एकमात्र कारक है",
-            "सूर्य के प्रकाश पानी के अवशोषण में सहायता करता है"
+            "कार्बन डाइऑक्साइड के बिना प्रकाश संश्लेषण संभव है",
+            "कार्बन डाइऑक्साइड ऑक्सीजन के उत्पादन में उपयोग किया जाता है",
+            "कार्बन डाइऑक्साइड स्टार्च के संश्लेषण के लिए आवश्यक है",
+            "कार्बन डाइऑक्साइड केवल अंधेरे में आवश्यक है"
           ],
-          "solution": "प्रयोग दर्शाता है कि अंधेरे में रखे गए पौधे के पत्ते में हरे धब्बों में भी स्टार्च नहीं बनता है, जो कि सूर्य के प्रकाश की आवश्यकता होती है क्लोरोफिल के कार्य करने के लिए स्टार्च उत्पादन में। अन्य विकल्प गलत हैं क्योंकि प्रयोग दर्शाता है कि सूर्य के प्रकाश आवश्यक है, लेकिन एकमात्र कारक नहीं है, और पानी के अवशोषण से सीधा संबंध नहीं है।",
+          "solution": "प्रयोग दर्शाता है कि बोतल के अंदर के पत्ते के भाग, जिसे कार्बन डाइऑक्साइड के पहुंच नहीं हुई, स्टार्च का उत्पादन नहीं कर पाया। इसका अर्थ है कि कार्बन डाइऑक्साइड स्टार्च के संश्लेषण के लिए आवश्यक है। अन्य विकल्प प्रयोग के परिणामों के आधार पर गलत हैं।",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "क्रियाकलाप 10.3 मध्ये वर्णन केलेल्या प्रयोगात, अंधारात ठेवलेल्या वनस्पतीच्या पानातून रंगहीन भागांमध्ये असलेल्या हिरव्या भागांमध्ये देखील स्टार्च दिसत नाही. हे सूर्यप्रकाशाच्या भूमिकेबद्दल काय सूचित करते?",
+          "stem": "फोटोसिंथेसिसच्या प्रक्रियेतील कार्बन डायऑक्साइडच्या भूमिकेबद्दल उद्गार काय असू शकतो?",
           "choices": [
-            "सूर्यप्रकाशाची आवश्यकता स्टार्च तयार करण्यासाठी नाही",
-            "सूर्यप्रकाश हा क्लोरोफिलच्या कार्यासाठी आवश्यक आहे",
-            "सूर्यप्रकाश हा स्टार्च तयार करण्याचा एकमात्र कारक आहे",
-            "सूर्यप्रकाश पाण्याच्या अवशोषणामध्ये मदत करतो"
+            "कार्बन डायऑक्साइड फोटोसिंथेसिससाठी आवश्यक नाही",
+            "कार्बन डायऑक्साइड ऑक्सिजन तयार करण्यासाठी वापरला जातो",
+            "कार्बन डायऑक्साइड स्टार्चच्या संश्लेषणासाठी आवश्यक आहे",
+            "कार्बन डायऑक्साइड अंधारात फक्त आवश्यक आहे"
           ],
-          "solution": "हा प्रयोग दर्शवतो की अंधारात ठेवलेल्या वनस्पतीच्या पानातून रंगहीन भागांमध्ये असलेल्या हिरव्या भागांमध्ये देखील स्टार्च तयार होत नाही, जे सूर्यप्रकाशाच्या आवश्यकतेचा सूचित करतो की क्लोरोफिल स्टार्च तयार करण्यासाठी कार्य करण्यासाठी आवश्यक आहे. इतर विकल्प चुकीचे आहेत कारण प्रयोग दर्शवतो की सूर्यप्रकाश आवश्यक आहे, एकमात्र कारक नाही, आणि पाण्याच्या अवशोषणाशी सीधा संबंध नाही.",
+          "solution": "प्रयोगाने दर्शवले आहे की बाटलीतील पानाचा भाग, ज्याला कार्बन डायऑक्साइडचा प्रवेश नव्हता, स्टार्च तयार करू शकला नाही. हे दर्शवते की कार्बन डायऑक्साइड स्टार्चच्या संश्लेषणासाठी आवश्यक आहे. इतर विकल्प प्रयोगाच्या निकालावरून चूकीचे आहेत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi scientific terminology.",
           "flag": null
         }
       },
@@ -500,20 +670,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Misinterprets the role of sunlight as unnecessary",
+        "Misinterprets the role of carbon dioxide",
+        "Confuses the products of photosynthesis",
         null,
-        "Assumes starch production is independent of sunlight",
-        "Overlooks the role of chlorophyll in the process\",\"Confuses the role of sunlight with water absorption"
+        "Incorrectly assumes carbon dioxide is not needed in photosynthesis"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as the experiment shows that even green patches (which contain chlorophyll) do not produce starch in the absence of sunlight, indicating that sunlight is necessary for chlorophyll to function in starch production. The other options are invalid because they misinterpret the role of sunlight.",
+      "critique": "The correct answer is 2, as the experiment shows that the absence of carbon dioxide prevents starch synthesis, confirming its essential role. The other options reflect common misconceptions about the role of CO2 in photosynthesis.",
       "sources": [
         {
           "document": "ncert/7/science/gecu110.pdf",
@@ -561,7 +731,198 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T23:20:44.670Z",
+      "generatedAt": "2026-11-02T06:31:20.206Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "How might the study of plant respiration help in improving the nutritive value of plant foods?",
+      "choices": [
+        "By increasing the amount of water in the plant",
+        "By reducing the number of leaves",
+        "By understanding how plants use nutrients",
+        "By changing the color of the leaves"
+      ],
+      "answerIndex": 2,
+      "solution": "Understanding plant respiration helps scientists determine how plants process and utilize nutrients, which can lead to improved methods of enhancing the nutritional content of plant foods. The other options are incorrect because they do not relate to the process of respiration or its impact on nutrition.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पौधों के श्वसन के अध्ययन से पौधों के भोजन में पोषक मूल्य में सुधार कैसे हो सकता है?",
+          "choices": [
+            "पौधे में जल की मात्रा बढ़ाकर",
+            "पत्तियों की संख्या कम करके",
+            "पता लगाने में सहायता करता है कि पौधे पोषक तत्व का उपयोग कैसे करते हैं",
+            "पत्तियों के रंग को बदलकर"
+          ],
+          "solution": "पौधों के श्वसन के अध्ययन से वैज्ञानिक पता लगा सकते हैं कि पौधे पोषक तत्वों को कैसे प्रक्रमित और उपयोग करते हैं, जो पौधों के भोजन में पोषक मूल्य बढ़ाने के तरीकों में सुधार कर सकता है। अन्य विकल्प गलत हैं क्योंकि वे श्वसन की प्रक्रिया या पोषण पर इसके प्रभाव से संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "वनस्पतींच्या श्वसनाच्या अभ्यासामुळे वनस्पतींच्या खाद्यांच्या पोषकता मूल्यात सुधारणा कशी होऊ शकते?",
+          "choices": [
+            "वनस्पतीमध्ये पाणी वाढवून",
+            "पानांची संख्या कमी करून",
+            "वनस्पती कशा प्रकारे पोषक तत्वांचा वापर करतात याच्या समजूतीमुळे",
+            "पानांचा रंग बदलून"
+          ],
+          "solution": "वनस्पतींच्या श्वसनाच्या अभ्यासामुळे वैज्ञानिकांना वनस्पती कशा प्रकारे पोषक तत्वांचा प्रक्रिया करतात आणि वापरतात याची जाणीव होते, ज्यामुळे वनस्पतींच्या खाद्यांच्या पोषकता मूल्यात सुधारणा करण्याच्या विधींचा विकास होऊ शकतो. इतर विकल्प चुकीचे आहेत कारण ते श्वसनाच्या प्रक्रियेशी किंवा पोषणावरील त्याच्या परिणामाशी संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "mentions a different factor affecting plants",
+        "confuses with other plant processes",
+        null,
+        "mentions a different aspect of plant biology"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is option 2, as understanding plant respiration relates directly to nutrient utilization. The other options are unrelated or based on misconceptions about plant biology.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu110.pdf",
+          "ordinal": 16,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 10: Life Processes in Plants",
+            "10.4 Do Plants Respire?",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T06:31:20.206Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a leaf is kept in a sealed container with no carbon dioxide, what would happen to its ability to produce starch?",
+      "choices": [
+        "It would produce more starch",
+        "It would produce less starch",
+        "It would stop producing starch",
+        "It would produce starch only in green patches"
+      ],
+      "answerIndex": 2,
+      "solution": "Without carbon dioxide, the leaf would not be able to produce starch because carbon dioxide is an essential component of photosynthesis. The leaf would stop producing starch entirely. The other options are incorrect because they suggest a continued or partial ability to produce starch without carbon dioxide.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक पत्ती को कार्बन डाइऑक्साइड के बिना एक बंद कंटेनर में रखा जाए, तो इसकी स्टार्च उत्पादन क्षमता पर क्या प्रभाव पड़ेगा?",
+          "choices": [
+            "यह अधिक स्टार्च उत्पादित करेगा",
+            "यह कम स्टार्च उत्पादित करेगा",
+            "यह स्टार्च उत्पादन बंद कर देगा",
+            "यह हरे धब्बों में ही स्टार्च उत्पादित करेगा"
+          ],
+          "solution": "कार्बन डाइऑक्साइड के बिना, पत्ती स्टार्च उत्पादन नहीं कर सकेगी क्योंकि कार्बन डाइऑक्साइड प्रकाश संश्लेषण के लिए आवश्यक घटक है। पत्ती पूरी तरह से स्टार्च उत्पादन बंद कर देगी। अन्य विकल्प गलत हैं क्योंकि ये कार्बन डाइऑक्साइड के बिना स्टार्च उत्पादन की एक लगातार या आंशिक क्षमता के सुझाव देते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका बंद बरखान्यात कार्बन डायऑक्साइड नसल्यास, एका पानाच्या स्टार्च तयार करण्याच्या क्षमतेवर काय परिणाम होईल?",
+          "choices": [
+            "ते जास्त स्टार्च तयार करेल",
+            "ते कमी स्टार्च तयार करेल",
+            "ते स्टार्च तयार करणे बंद करेल",
+            "ते हिरव्या भागांमध्ये स्टार्च तयार करेल"
+          ],
+          "solution": "कार्बन डायऑक्साइड नसल्यास, पान स्टार्च तयार करू शकणार नाही कारण कार्बन डायऑक्साइड हा प्रकाशसंश्लेषणाचा आवश्यक घटक आहे. पानाने स्टार्च तयार करणे पूर्णपणे बंद करावे लागेल. इतर विकल्प चुकीचे आहेत कारण ते कार्बन डायऑक्साइड शिवाय स्टार्च तयार करण्याच्या क्षमतेचा आंशिक अस्तित्व सूचित करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes carbon dioxide is not essential",
+        "Assumes partial starch production is possible",
+        null,
+        "Incorrectly assumes green patches can function without carbon dioxide"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that carbon dioxide is essential for photosynthesis and therefore starch production. The reasoning aligns with the scientific understanding of plant physiology.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu110.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 10: Life Processes in Plants",
+            "10.2 How Do Plants Get Food for their",
+            "10.2.1 Leaves: the ̒ food factories̓ of plants"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu110.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 10: Life Processes in Plants",
+            "10.2 How Do Plants Get Food for their",
+            "10.2.1 Leaves: the ̒ food factories̓ of plants"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu110.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 10: Life Processes in Plants",
+            "10.2 How Do Plants Get Food for their",
+            "10.2.2 Role of air in the preparation of food"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu110.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 10: Life Processes in Plants",
+            "10.2 How Do Plants Get Food for their",
+            "10.2.2 Role of air in the preparation of food"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-11-02T06:31:20.206Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

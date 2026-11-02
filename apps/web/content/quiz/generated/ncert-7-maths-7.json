@@ -21,152 +21,71 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-31T13:44:33.217Z",
+  "generatedAt": "2026-11-02T01:42:00.233Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 4,
-      "stem": "Which of the following is a correct method to construct an equilateral triangle with side length 4 cm?",
+      "stem": "What is the significance of the triangle inequality in the construction of triangles?",
       "choices": [
-        "Draw a base of 4 cm, then draw a line of 4 cm from one end and another line of 4 cm from the other end",
-        "Draw a base of 4 cm, then draw two arcs of 4 cm from each end to find the third vertex",
-        "Draw a base of 4 cm, then draw a perpendicular line from the midpoint of the base and measure 4 cm up",
-        "Draw a base of 4 cm, then mark a point 4 cm away from one end and 4 cm away from the other end without drawing arcs"
+        "It helps in choosing the correct type of triangle to construct",
+        "It helps in determining the correct order of constructing the sides",
+        "It helps in checking whether a triangle can be constructed with given side lengths",
+        "It helps in measuring the angles of the triangle"
       ],
-      "answerIndex": 1,
-      "solution": "The correct method is to draw a base of 4 cm, then draw two arcs of 4 cm from each end to find the third vertex. This ensures that the third vertex is at the correct distance from both ends, forming an equilateral triangle. The other options either skip the step of drawing arcs or suggest drawing lines directly without using the arcs, which would not ensure the correct distances.",
+      "answerIndex": 2,
+      "solution": "The triangle inequality is significant because it allows one to determine if three given side lengths can form a valid triangle. It states that the sum of the lengths of any two sides must be greater than the length of the third side. The other options are incorrect because the type of triangle is determined by angles or side ratios, the order of construction is not governed by this rule, and angles are measured using other methods such as trigonometry.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सी एक सही विधि है 4 सेमी भुजा लंबाई के एक समबाहु त्रिभुज के निर्माण के लिए?",
+          "stem": "त्रिभुज असमानता का निर्माण में क्या महत्व है?",
           "choices": [
-            "4 सेमी का आधार खींचें, फिर एक छोर से 4 सेमी की रेखा खींचें और दूसरे छोर से 4 सेमी की रेखा खींचें",
-            "4 सेमी का आधार खींचें, फिर प्रत्येक छोर से 4 सेमी के दो चाप खींचें ताकि तीसरा शीर्ष ज्ञात हो जाए",
-            "4 सेमी का आधार खींचें, फिर आधार के मध्य बिंदु से लंब रेखा खींचें और 4 सेमी ऊपर मापें",
-            "4 सेमी का आधार खींचें, फिर एक छोर से 4 सेमी दूर एक बिंदु अंकित करें और दूसरे छोर से 4 सेमी दूर एक बिंदु अंकित करें बिना चाप खींचे"
+            "इससे सही प्रकार के त्रिभुज का चयन करने में सहायता मिलती है",
+            "इससे सही क्रम में भुजाओं के निर्माण का निर्धारण करने में सहायता मिलती है",
+            "इससे दिए गए भुजा लंबाई के साथ एक त्रिभुज के निर्माण की जांच करने में सहायता मिलती है",
+            "इससे त्रिभुज के कोणों के मापन में सहायता मिलती है"
           ],
-          "solution": "सही विधि एक 4 सेमी का आधार खींचना है, फिर प्रत्येक छोर से 4 सेमी के दो चाप खींचना है ताकि तीसरा शीर्ष ज्ञात हो जाए। इससे यह सुनिश्चित हो जाता है कि तीसरा शीर्ष दोनों छोरों से सही दूरी पर है, जिससे एक समबाहु त्रिभुज बनता है। अन्य विकल्प चाप खींचने के चरण को छोड़ देते हैं या बिना चाप खींचे रेखा खींचने की सलाह देते हैं, जो सही दूरी सुनिश्चित नहीं करते।",
-          "imageAlt": "4 सेमी के आधार AB के साथ एक आरेख, जिसमें A और B से क्रमशः 4 सेमी के दो चाप खींचे गए हैं जो एक समबाहु त्रिभुज के तीसरे शीर्ष C को ज्ञात करते हैं।",
-          "critique": "Hindi translation accurately reflects the original English question and solution, with appropriate geometric terminology used in Indian curriculum.",
+          "solution": "त्रिभुज असमानता का महत्व इसलिए है क्योंकि यह निर्धारित करने में सहायता करता है कि दिए गए भुजा लंबाई एक वैध त्रिभुज बना सकती हैं। यह कहता है कि किन्हीं दो भुजाओं की लंबाई के योग को तीसरी भुजा की लंबाई से अधिक होना चाहिए। अन्य विकल्प गलत हैं क्योंकि त्रिभुज के प्रकार को कोणों या भुजा अनुपात द्वारा निर्धारित किया जाता है, निर्माण के क्रम को इस नियम द्वारा नियंत्रित नहीं किया जाता है और कोणों के मापन के लिए अन्य विधियों जैसे त्रिकोणमिति का उपयोग किया जाता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the meaning, structure, and technical terms of the original English question. The correct answer remains in the same position, and the distractors are still incorrect.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता एक अक्षरशः त्रिकोण बनवण्याचा योग्य विधान आहे ज्याच्या बाजूची लांबी 4 सेंमी आहे?",
+          "stem": "त्रिकोणाच्या निर्मितीमध्ये त्रिकोणाच्या असमानतेचा काय अर्थ आहे?",
           "choices": [
-            "4 सेंमी आधार रेखा आखा, नंतर एका टोकापासून 4 सेंमी लांबीची रेखा आखा आणि दुसऱ्या टोकापासून 4 सेंमी लांबीची रेखा आखा",
-            "4 सेंमी आधार रेखा आखा, नंतर प्रत्येक टोकापासून 4 सेंमी चे चाप आखा आणि तिसरा शिरोबिंदू शोधा",
-            "4 सेंमी आधार रेखा आखा, नंतर आधाराच्या मध्यबिंदूपासून लंब रेखा आखा आणि 4 सेंमी वर उंची मोजा",
-            "4 सेंमी आधार रेखा आखा, नंतर एका टोकापासून 4 सेंमी अंतरावर बिंदू निश्चित करा आणि दुसऱ्या टोकापासून 4 सेंमी अंतरावर बिंदू निश्चित करा चाप आखल्याशिवाय"
+            "त्यामुळे निर्मितीसाठी योग्य प्रकारचा त्रिकोण निवडता येतो",
+            "त्यामुळे बाजूंच्या निर्मितीच्या योग्य क्रमाची निश्चित करता येते",
+            "त्यामुळे दिलेल्या बाजूंच्या लांबींनी त्रिकोण निर्मित करता येईल की नाही ते तपासता येते",
+            "त्यामुळे त्रिकोणाच्या कोनांचे मोजमाप करता येते"
           ],
-          "solution": "योग्य विधान आहे: 4 सेंमी आधार रेखा आखा, नंतर प्रत्येक टोकापासून 4 सेंमी चे चाप आखा आणि तिसरा शिरोबिंदू शोधा. हे सुनिश्चित करते की तिसरा शिरोबिंदू दोन्ही टोकांपासून योग्य अंतरावर आहे, जे अक्षरशः त्रिकोण तयार करते. इतर पर्याय चाप आखण्याच्या टप्प्याला अनुपस्थित असतात किंवा चाप न आखता रेखा आखण्याचा विचार करतात, जे योग्य अंतरांची खात्री देत नाही.",
-          "imageAlt": "4 सेंमी आधार AB असलेला एक आकृती, ज्यावर A आणि B पासून 4 सेंमी चे चाप आखले गेले आहेत आणि तिसरा शिरोबिंदू C शोधला गेला आहे.",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for geometry.",
+          "solution": "त्रिकोणाच्या असमानतेचा अर्थ असा आहे की ती तीन दिलेल्या बाजूंच्या लांबींनी वैध त्रिकोण बनवता येईल की नाही ते ठरवण्यास मदत करते. ती सांगते की कोणत्याही दोन बाजूंच्या लांबींची बेरीज तिसरी बाजूच्या लांबीपेक्षा मोठी असावी. इतर विकल्प अयोग्य आहेत कारण त्रिकोणाचा प्रकार कोन किंवा बाजूंच्या गुणोत्तरावर ठरतो, बाजूंच्या निर्मितीचा क्रम या नियमाने नियंत्रित केला जात नाही आणि कोनांचे मोजमाप त्रिकोणमितीसारख्या इतर पद्धतींद्वारे केले जाते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": "A diagram showing a base AB of 4 cm, with two arcs of 4 cm drawn from A and B respectively to find the third vertex C of an equilateral triangle.",
-      "figure": {
-        "kind": "geometry",
-        "spec": {
-          "frame": {
-            "xMin": 0,
-            "xMax": 10,
-            "yMin": 0,
-            "yMax": 7,
-            "unit": "cm"
-          },
-          "points": [
-            {
-              "id": "A",
-              "x": 2,
-              "y": 3,
-              "label": "A"
-            },
-            {
-              "id": "B",
-              "x": 6,
-              "y": 3,
-              "label": "B"
-            },
-            {
-              "id": "C",
-              "x": 4,
-              "y": 5.2,
-              "label": "C"
-            }
-          ],
-          "segments": [
-            {
-              "from": "A",
-              "to": "B",
-              "label": "AB",
-              "length": {
-                "value": 4,
-                "unit": "cm"
-              }
-            },
-            {
-              "from": "A",
-              "to": "C",
-              "length": {
-                "value": 4,
-                "unit": "cm"
-              }
-            },
-            {
-              "from": "B",
-              "to": "C",
-              "length": {
-                "value": 4,
-                "unit": "cm"
-              }
-            }
-          ],
-          "arcs": [
-            {
-              "center": "A",
-              "radius": 4,
-              "from": 0,
-              "to": 180,
-              "dashed": true
-            },
-            {
-              "center": "B",
-              "radius": 4,
-              "from": 180,
-              "to": 360,
-              "dashed": true
-            }
-          ]
-        },
-        "labels": {
-          "AB": {
-            "en": "4 cm",
-            "hi": "4 सेमी",
-            "mr": "4 सेंमी"
-          }
-        }
-      },
-      "needsFigure": true,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
       "distractorReason": [
-        "This skips the step of drawing arcs, which is necessary to find the correct point C, and incorrectly suggests drawing lines directly without using the arcs of the required lengths",
+        "Confuses the purpose of the triangle inequality with choosing the type of triangle",
+        "Confuses the purpose of the triangle inequality with the order of construction",
         null,
-        "Student believes that an equilateral triangle can be constructed by drawing a perpendicular from the midpoint and measuring the same length",
-        "This suggests a method that is not suitable for constructing an equilateral triangle"
+        "Confuses the purpose of the triangle inequality with measuring angles"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct method involves drawing arcs from both ends of the base to locate the third vertex, ensuring equal lengths. Option 1 correctly describes this. The other options either omit the arc-drawing step or suggest incorrect construction methods.",
+      "critique": "The correct answer is 2, as the triangle inequality is used to check if a triangle can be constructed with given side lengths. The other options represent common misconceptions about the purpose of the triangle inequality.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp107.pdf",
@@ -212,49 +131,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T13:44:33.217Z",
+      "generatedAt": "2026-11-02T01:42:00.233Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "In a triangle, if one angle is 140°, and the other two angles are equal, what is the measure of each of the other two angles?",
+      "stem": "If a triangle has sides of lengths 10 cm, 15 cm, and 30 cm, what can we conclude about its existence?",
       "choices": [
-        "20°",
-        "30°",
-        "40°",
-        "50°"
+        "It can exist if we rearrange the sides",
+        "It can exist if the angles are changed",
+        "It cannot exist because the triangle inequality is violated",
+        "It can exist if one of the sides is extended"
       ],
-      "answerIndex": 0,
-      "solution": "The sum of the angles in a triangle is 180°. So, the sum of the other two angles is 180° - 140° = 40°. Since they are equal, each is 40° / 2 = 20°. The option 30° is incorrect because it assumes the remaining sum is 60°. The option 40° is incorrect because it assumes one of the angles is 40°. The option 50° is incorrect because it assumes the remaining sum is 100°.",
-      "checkExpr": "(180-140)/2",
+      "answerIndex": 2,
+      "solution": "The correct answer is 'It cannot exist because the triangle inequality is violated.' For a triangle to exist, the sum of the lengths of any two sides must be greater than the length of the third side. Here, 10 + 15 = 25, which is less than 30, violating this rule. Rearranging the sides, changing angles, or extending a side does not satisfy the fundamental requirement of the triangle inequality.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक त्रिभुज में, यदि एक कोण 140° है, और अन्य दो कोण बराबर हैं, तो अन्य दो कोणों में से प्रत्येक का माप क्या है?",
+          "stem": "यदि एक त्रिभुज की भुजाओं की लंबाइयां 10 सेमी, 15 सेमी, और 30 सेमी हैं, तो इसके अस्तित्व के बारे में हम क्या निष्कर्ष निकाल सकते हैं?",
           "choices": [
-            "20°",
-            "30°",
-            "40°",
-            "50°"
+            "इसका अस्तित्व हो सकता है यदि भुजाओं को पुनः व्यवस्थित किया जाए",
+            "इसका अस्तित्व हो सकता है यदि कोणों को बदल दिया जाए",
+            "इसका अस्तित्व नहीं हो सकता क्योंकि त्रिभुज के अस्तित्व के नियम का उल्लंघन होता है",
+            "इसका अस्तित्व हो सकता है यदि एक भुजा को बढ़ा दिया जाए"
           ],
-          "solution": "त्रिभुज के कोणों का योग 180° होता है। इसलिए, अन्य दो कोणों का योग 180° - 140° = 40° है। चूंकि वे बराबर हैं, प्रत्येक 40° / 2 = 20° है। 30° विकल्प गलत है क्योंकि यह मान लेता है कि शेष योग 60° है। 40° विकल्प गलत है क्योंकि यह मान लेता है कि एक कोण 40° है। 50° विकल्प गलत है क्योंकि यह मान लेता है कि शेष योग 100° है।",
+          "solution": "सही उत्तर 'इसका अस्तित्व नहीं हो सकता क्योंकि त्रिभुज के अस्तित्व के नियम का उल्लंघन होता है' है। एक त्रिभुज के अस्तित्व के लिए, किन्हीं दो भुजाओं की लंबाइयों के योग को तीसरी भुजा की लंबाई से अधिक होना चाहिए। यहां, 10 + 15 = 25, जो 30 से कम है, जो इस नियम का उल्लंघन करता है। भुजाओं को पुनः व्यवस्थित करना, कोणों को बदलना, या एक भुजा को बढ़ाना त्रिभुज के अस्तित्व की मूल आवश्यकता को पूरा नहीं करता।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and technical terms. The correct answer remains option (3), and all distractors are still incorrect. The term 'त्रिभुज के अस्तित्व के नियम' is appropriate for a Hindi-medium textbook.",
           "flag": null
         },
         "mr": {
-          "stem": "त्रिकोणात जर एक कोन 140° असेल आणि इतर दोन कोन समान असतील, तर इतर दोन कोनांपैकी प्रत्येकाचे माप किती असेल?",
+          "stem": "जर एका त्रिकोणाच्या बाजूंच्या लांबी 10 सें.मी., 15 सें.मी. आणि 30 सें.मी. असतील, तर त्याच्या अस्तित्वाबद्दल आपण काय निष्कर्ष काढू शकतो?",
           "choices": [
-            "20°",
-            "30°",
-            "40°",
-            "50°"
+            "जर बाजू बदलल्या गेल्या तर तो असू शकतो",
+            "जर कोन बदलले गेले तर तो असू शकतो",
+            "तो असू शकत नाही कारण त्रिकोणाच्या अस्तित्वाचा नियम उल्लंघिला गेला आहे",
+            "जर एका बाजूला वाढवली गेली तर तो असू शकतो"
           ],
-          "solution": "त्रिकोणाच्या कोनांची बेरीज 180° असते. म्हणून, इतर दोन कोनांची बेरीज 180° - 140° = 40° असेल. त्यांना समान मानल्यास, प्रत्येक 40° / 2 = 20° असेल. 30° ची निवड चुकीची आहे कारण ती उरलेल्या बेरीजला 60° मानते. 40° ची निवड चुकीची आहे कारण ती एका कोनाला 40° मानते. 50° ची निवड चुकीची आहे कारण ती उरलेल्या बेरीजला 100° मानते.",
+          "solution": "बरोबर उत्तर 'तो असू शकत नाही कारण त्रिकोणाच्या अस्तित्वाचा नियम उल्लंघिला गेला आहे' आहे. एका त्रिकोणाच्या अस्तित्वासाठी, कोणत्याही दोन बाजूंच्या लांबीची बेरीज तिसरी बाजूच्या लांबीपेक्षा मोठी असावी. येथे, 10 + 15 = 25, जे 30 पेक्षा कमी आहे, जे हा नियम उल्लंघित करते. बाजू बदलणे, कोन बदलणे किंवा बाजू वाढवणे हे त्रिकोणाच्या अस्तित्वाच्या मूलभूत आवश्यकतेला पूर्ण करत नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The correct answer is in the same position (option 2) and the distractors remain incorrect.",
           "flag": null
         }
       },
@@ -263,304 +182,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Believes that rearrangement can fix the inequality",
+        "Thinks that changing angles can bypass the triangle inequality",
         null,
-        "assumes the remaining sum is 60°",
-        "assumes one of the angles is 40°",
-        "assumes the remaining sum is 100°"
+        "Does not understand the concept of the triangle inequality"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and logically sound. The correct answer is 20°, and the author's reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp107.pdf",
-          "ordinal": 10,
-          "pageStart": 17,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 7: A Tale of Three Intersecting Lines",
-            "7.3 Construction of Triangles When Some Sides",
-            "and Angles are Given"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp107.pdf",
-          "ordinal": 11,
-          "pageStart": 18,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 7: A Tale of Three Intersecting Lines",
-            "7.3 Construction of Triangles When Some Sides",
-            "and Angles are Given"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp107.pdf",
-          "ordinal": 12,
-          "pageStart": 20,
-          "pageEnd": 22,
-          "headingPath": [
-            "Chapter 7: A Tale of Three Intersecting Lines",
-            "7.3 Construction of Triangles When Some Sides",
-            "and Angles are Given"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp107.pdf",
-          "ordinal": 13,
-          "pageStart": 22,
-          "pageEnd": 22,
-          "headingPath": [
-            "Chapter 7: A Tale of Three Intersecting Lines",
-            "7.3 Construction of Triangles When Some Sides",
-            "and Angles are Given"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T13:44:33.217Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "If two circles of the same size intersect at two points, how many equilateral triangles can be formed using the centers and the intersection points?",
-      "choices": [
-        "1",
-        "2",
-        "3",
-        "4"
-      ],
-      "answerIndex": 1,
-      "solution": "When two circles of the same size intersect at two points, the centers of the circles and the two intersection points form two equilateral triangles. The correct option states that two equilateral triangles can be formed. The other options are incorrect because only two equilateral triangles can be formed, not one, three, or four.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि समान आकार के दो वृत्त दो बिंदुओं पर प्रतिच्छेद करते हैं, तो केंद्रों और प्रतिच्छेद बिंदुओं के उपयोग से कितने समबाहु त्रिभुज बनाए जा सकते हैं?",
-          "choices": [
-            "1",
-            "2",
-            "3",
-            "4"
-          ],
-          "solution": "जब समान आकार के दो वृत्त दो बिंदुओं पर प्रतिच्छेद करते हैं, तो वृत्तों के केंद्र और दोनों प्रतिच्छेद बिंदु दो समबाहु त्रिभुज बनाते हैं। सही विकल्प बताता है कि दो समबाहु त्रिभुज बनाए जा सकते हैं। अन्य विकल्प गलत हैं क्योंकि केवल दो समबाहु त्रिभुज बनाए जा सकते हैं, न कि एक, तीन या चार।",
-          "imageAlt": "दो प्रतिच्छेद करते वृत्त जिनके केंद्र A और B हैं और दो प्रतिच्छेद बिंदु C और D हैं, जो दो समबाहु त्रिभुज ABC और ABD बनाते हैं",
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi technical terms used.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "समान आकाराच्या दोन वर्तुळांच्या दोन बिंदूंवर छेदन झाल्यास, केंद्रे आणि छेदन बिंदू वापरून किती समभुज त्रिकोण तयार करता येतील?",
-          "choices": [
-            "1",
-            "2",
-            "3",
-            "4"
-          ],
-          "solution": "समान आकाराच्या दोन वर्तुळांच्या दोन बिंदूंवर छेदन झाल्यास, वर्तुळांच्या केंद्रांच्या आणि दोन छेदन बिंदूंच्या आधारे दोन समभुज त्रिकोण तयार होतात. बरोबर उत्तर म्हणजे दोन समभुज त्रिकोण तयार करता येतात. इतर उत्तरे अयोग्य आहेत कारण फक्त दोन समभुज त्रिकोण तयार करता येतात, एक, तीन किंवा चार नाहीत.",
-          "imageAlt": "दोन छेदक वर्तुळे ज्यांचे केंद्र A आणि B आहेत आणि दोन छेदन बिंदू C आणि D आहेत, जे दोन समभुज त्रिकोण ABC आणि ABD तयार करतात",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "Two intersecting circles with centers A and B and two intersection points C and D, forming two equilateral triangles ABC and ABD",
-      "figure": {
-        "kind": "geometry",
-        "spec": {
-          "frame": {
-            "xMin": 0,
-            "xMax": 10,
-            "yMin": 0,
-            "yMax": 10,
-            "unit": "cm"
-          },
-          "points": [
-            {
-              "id": "A",
-              "x": 3,
-              "y": 5
-            },
-            {
-              "id": "B",
-              "x": 7,
-              "y": 5
-            },
-            {
-              "id": "C",
-              "x": 5,
-              "y": 7
-            },
-            {
-              "id": "D",
-              "x": 5,
-              "y": 3
-            }
-          ],
-          "circles": [
-            {
-              "center": "A",
-              "radius": 2
-            },
-            {
-              "center": "B",
-              "radius": 2
-            }
-          ],
-          "polygons": [
-            {
-              "vertices": [
-                "A",
-                "C",
-                "B"
-              ]
-            },
-            {
-              "vertices": [
-                "A",
-                "D",
-                "B"
-              ]
-            }
-          ]
-        },
-        "labels": {
-          "A": {
-            "en": "Center of first circle"
-          },
-          "B": {
-            "en": "Center of second circle"
-          },
-          "C": {
-            "en": "Intersection point 1"
-          },
-          "D": {
-            "en": "Intersection point 2"
-          }
-        }
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        "Undercounts the number of equilateral triangles",
-        null,
-        "Overcounts the number of equilateral triangles",
-        "Incorrectly assumes that only one equilateral triangle can be formed"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2, as the centers A and B and the intersection points C and D form two equilateral triangles: ABC and ABD. The author's solution is correct, and the reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp107.pdf",
-          "ordinal": 14,
-          "pageStart": 22,
-          "pageEnd": 24,
-          "headingPath": [
-            "Chapter 7: A Tale of Three Intersecting Lines",
-            "7.4 Constructions Related to Altitudes of Triangles"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp107.pdf",
-          "ordinal": 15,
-          "pageStart": 24,
-          "pageEnd": 26,
-          "headingPath": [
-            "Chapter 7: A Tale of Three Intersecting Lines",
-            "7.5 Types of Triangles"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp107.pdf",
-          "ordinal": 16,
-          "pageStart": 26,
-          "pageEnd": 28,
-          "headingPath": [
-            "Chapter 7: A Tale of Three Intersecting Lines",
-            "7.5 Types of Triangles",
-            "SUMMARY"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T13:44:33.217Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "If three lengths satisfy the triangle inequality, what can be said about the existence of a triangle with those lengths?",
-      "choices": [
-        "A triangle can always be constructed.",
-        "A triangle may or may not be constructed.",
-        "A triangle cannot be constructed.",
-        "A triangle can only be constructed if the lengths are equal."
-      ],
-      "answerIndex": 0,
-      "solution": "If three lengths satisfy the triangle inequality, a triangle can always be constructed. This is because the condition ensures that the arcs drawn from the endpoints of the longest side will intersect, allowing the third vertex to be formed. The other options are incorrect because they either contradict the triangle inequality or make incorrect assumptions about the construction process.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि तीन लंबाईयां त्रिभुज के असमानता के नियम को संतुष्ट करती हैं, तो उन लंबाईयों के साथ एक त्रिभुज के अस्तित्व के बारे में क्या कहा जा सकता है?",
-          "choices": [
-            "एक त्रिभुज हमेशा बनाया जा सकता है।",
-            "एक त्रिभुज बनाया जा सकता है या नहीं भी बन सकता है।",
-            "एक त्रिभुज नहीं बनाया जा सकता है।",
-            "एक त्रिभुज केवल तभी बनाया जा सकता है जब लंबाईयां बराबर हों।"
-          ],
-          "solution": "यदि तीन लंबाईयां त्रिभुज की असमानता को संतुष्ट करती हैं, तो एक त्रिभुज हमेशा बनाया जा सकता है। इसका कारण यह है कि शर्त यह सुनिश्चित करती है कि सबसे लंबी भुजा के अंत बिंदुओं से खींचे गए चाप परस्पर काटेंगे, जिससे तीसरे शीर्ष का निर्माण संभव हो जाता है। अन्य विकल्प गलत हैं क्योंकि वे त्रिभुज की असमानता के विरोधाभास करते हैं या निर्माण प्रक्रिया के बारे में गलत अनुमान लगाते हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for mathematical concepts.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर तीन लांबी त्रिकोणाच्या असमानतेच्या नियमाचे पालन करत असतील, तर त्या लांबींचा वापर करून त्रिकोण तयार करता येईल का?",
-          "choices": [
-            "त्रिकोण नेहमी तयार करता येईल.",
-            "त्रिकोण तयार करता येऊ शकतो किंवा नाही.",
-            "त्रिकोण तयार करता येणार नाही.",
-            "त्रिकोण तयार करता येईल केवळ जर लांबी समान असतील."
-          ],
-          "solution": "जर तीन लांबी त्रिकोणाच्या असमानतेच्या नियमाचे पालन करत असतील, तर त्रिकोण नेहमी तयार करता येतो. हे त्यामुळे आहे कारण हा नियम तीन बिंदूंपासून आलेल्या चापांच्या छेदनबिंदूमुळे तिसरा शिरोबिंदू तयार करतो. इतर विकल्प चुकीचे आहेत कारण ते त्रिकोणाच्या असमानतेच्या नियमाचे उल्लंघन करतात किंवा त्रिकोण तयार करण्याच्या प्रक्रियेबद्दल चुकीच्या अंदाजांवर आधारित आहेत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Misunderstands the certainty of triangle construction",
-        "Incorrectly assumes uncertainty",
-        "Fails to recognize the implication of the triangle inequality"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and aligns with the mathematical principle that if three lengths satisfy the triangle inequality, a triangle can always be constructed. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "critique": "The solution correctly applies the triangle inequality theorem, and the reasoning aligns with the key. All distractors reflect common misconceptions about triangle formation.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp107.pdf",
@@ -597,7 +232,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-31T13:44:33.217Z",
+      "generatedAt": "2026-11-02T01:42:00.233Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

@@ -1,0 +1,315 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-01T14:41:59.366Z",
+  "finishedAt": "2026-11-01T14:45:59.047Z",
+  "seconds": 240,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 19 — Magical Mathematics - 2",
+    "edition": "First Edition 2026",
+    "chunks": 2,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n6. (b) 12",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n6. A) 11 9",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n6. (c) 5 Unit"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 102448,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 7316,
+      "completionTokens": 4335
+    },
+    "critique": {
+      "calls": 14,
+      "ms": 112962,
+      "in": 12,
+      "out": 8,
+      "rejects": 4,
+      "promptTokens": 6428,
+      "completionTokens": 2654
+    },
+    "solver": {
+      "calls": 54,
+      "ms": 33487,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 10548,
+      "completionTokens": 540
+    },
+    "form": {
+      "calls": 2,
+      "ms": 6748,
+      "in": 7,
+      "out": 4,
+      "rejects": 3,
+      "promptTokens": 532,
+      "completionTokens": 153
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 21,
+      "ms": 4997,
+      "in": 4,
+      "out": 3,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 194201,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 7641,
+      "completionTokens": 4037
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 2,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If you have 4 discs in the Tower of Hanoi game, how many moves are needed to move all discs from one stick to another?",
+      "ms": {
+        "draft": 6487,
+        "critique": 7763
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a pan balance is used to find a light object among nine identical objects, how many times must it be used at a minimum?",
+      "ms": {
+        "draft": 6487,
+        "critique": 8569
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main focus of the chapter titled 'Magical Mathematics - 2'?",
+      "ms": {
+        "draft": 6487,
+        "critique": 9625,
+        "solver": 2023
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the activity where two squares are joined to form a new square, what is the relationship between the areas of the original squares and the new square?",
+      "ms": {
+        "draft": 6487,
+        "critique": 7871,
+        "solver": 2445,
+        "form": 5828
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the sum of the areas of two squares is equal to the area of a third square, what can be said about the side lengths of the original squares?",
+      "ms": {
+        "draft": 6487,
+        "critique": 10250,
+        "solver": 2060,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the side BC of a square is half of the side QR of another square, and the two squares are joined, will a new square always be formed?",
+      "ms": {
+        "draft": 6487,
+        "critique": 8596,
+        "solver": 12133,
+        "form": 1953
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the figure where a square of side 6 units is combined with a square of side 3 units, and a new square is formed by joining the cut pieces, what is the side length of the new square?",
+      "ms": {
+        "draft": 10588,
+        "critique": 8735
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a pan balance is used once to find a lightweight object among 3 identical objects, how many times would it be used to find a lightweight object among 9 identical objects?",
+      "ms": {
+        "draft": 10588,
+        "critique": 9923
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the number of moves required to solve the Tower of Hanoi with 3 discs is 7, what is the number of moves required to solve it with 4 discs?",
+      "ms": {
+        "draft": 10588,
+        "critique": 7398,
+        "solver": 9458,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a pan balance is used three times to find a lightweight object among nine identical objects, how many times would it be used to find a lightweight object among 27 identical objects?",
+      "ms": {
+        "draft": 10588,
+        "critique": 10904,
+        "solver": 2343,
+        "form": 0,
+        "translation": 65551
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a square of side 6 units is combined with a square of side 3 units, what is the area of the newly formed square?",
+      "ms": {
+        "draft": 10588,
+        "critique": 8182,
+        "solver": 1870,
+        "form": 0,
+        "translation": 60926
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the number of moves required to solve the Tower of Hanoi with 3 discs is 7, and with 4 discs is 15, what is the number of moves required to solve it with 5 discs?",
+      "ms": {
+        "draft": 10588,
+        "critique": 7123,
+        "solver": 2408,
+        "form": 0,
+        "translation": 62456
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If you have 4 discs in the Tower of Hanoi game, how many moves are needed to move all discs from one stick to another?",
+      "reason": "the critic finds option 2 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a pan balance is used to find a light object among nine identical objects, how many times must it be used at a minimum?",
+      "reason": "the critic finds option 1 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main focus of the chapter titled 'Magical Mathematics - 2'?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the activity where two squares are joined to form a new square, what is the relationship between the areas of the original squares and the new square?",
+      "reason": "options 0 and 1 say the same thing (\"The area of the new square is the sum of the areas of the original squares\" / \"The area of the new square is the difference of the areas of the original squares\"); options 0 and 2 say the same thing (\"The area of the new square is the sum of the areas of the original squares\" / \"The area of the new square is the product of the areas of the original squares\"); options 1 and 2 say the same thing (\"The area of the new square is the difference of the areas of the original squares\" / \"The area of the new square is the product of the areas of the original squares\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the sum of the areas of two squares is equal to the area of a third square, what can be said about the side lengths of the original squares?",
+      "reason": "options 0 and 1 say the same thing (\"The sum of the side lengths of the original squares equals the side length of the third square\" / \"The product of the side lengths of the original squares equals the side length of the third square\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the side BC of a square is half of the side QR of another square, and the two squares are joined, will a new square always be formed?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the figure where a square of side 6 units is combined with a square of side 3 units, and a new square is formed by joining the cut pieces, what is the side length of the new square?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a pan balance is used once to find a lightweight object among 3 identical objects, how many times would it be used to find a lightweight object among 9 identical objects?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If the number of moves required to solve the Tower of Hanoi with 3 discs is 7, what is the number of moves required to solve it with 4 discs?",
+      "reason": "near-duplicate of batch item \"If the number of moves required to solve the Tower…\" (cosine 0.963 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

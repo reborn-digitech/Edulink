@@ -21,50 +21,50 @@
   "board": "BALBHARATI",
   "book": "६ वी गणित इंग्रजी",
   "edition": "First Edition 2026",
-  "generatedAt": "2026-10-31T00:21:26.126Z",
+  "generatedAt": "2026-11-01T13:33:29.288Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 2,
-      "stem": "What is the term used for a value of the variable that satisfies an equation?",
+      "stem": "Which of the following pairs has an equality?",
       "choices": [
-        "Root",
-        "Solution",
-        "Value",
-        "Result"
+        "14 1; 5-3",
+        "6 7; 14",
+        "5 3; 14+1",
+        "5 3; 14-1"
       ],
-      "answerIndex": 1,
-      "solution": "A solution is a value of the variable that makes an equation true. 'Root' is often used in the context of functions or polynomials, 'value' is too vague, and 'result' does not specifically describe a variable that satisfies an equation. Therefore, 'Solution' is the correct term.",
+      "answerIndex": 3,
+      "solution": "The pair 5 3; 14-1 has an equality because 5 + 3 = 8 and 14 - 1 = 13. The other pairs do not have equal values. 14 + 1 = 15, not 8. 6 + 7 = 13, not 14. 5 + 3 = 8, not 13.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक समीकरण को संतुष्ट करने वाले चर के मान के लिए क्या शब्द प्रयोग किया जाता है?",
+          "stem": "निम्नलिखित में से कौन-सा युग्म समानता रखता है?",
           "choices": [
-            "मूल",
-            "हल",
-            "मान",
-            "परिणाम"
+            "14 1; 5-3",
+            "6 7; 14",
+            "5 3; 14+1",
+            "5 3; 14-1"
           ],
-          "solution": "हल एक ऐसा मान है जो समीकरण को सत्य बनाता है। 'मूल' का उपयोग आमतौर पर फलनों या बहुपदों के संदर्भ में किया जाता है, 'मान' बहुत व्यापक है और 'परिणाम' एक ऐसे चर को विशेष रूप से वर्णित नहीं करता है जो समीकरण को संतुष्ट करता है। इसलिए, 'हल' सही शब्द है।",
+          "solution": "युग्म 5 3; 14-1 समानता रखता है क्योंकि 5 + 3 = 8 और 14 - 1 = 13। अन्य युग्मों में समान मान नहीं है। 14 + 1 = 15, नहीं 8। 6 + 7 = 13, नहीं 14। 5 + 3 = 8, नहीं 13।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate mathematical terminology used in a Hindi-medium context.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "समीकरणाला खात्री देणारा चलाचा मूल्य कोणत्या शब्दाने ओळखला जातो?",
+          "stem": "खालीलपैकी कोणत्या जोडीत समानता आहे?",
           "choices": [
-            "मूळ",
-            "उत्तर",
-            "मूल्य",
-            "निकाल"
+            "14 1; 5-3",
+            "6 7; 14",
+            "5 3; 14+1",
+            "5 3; 14-1"
           ],
-          "solution": "उत्तर हा चलाचा मूल्य आहे जो समीकरणाला खात्री देतो. 'मूळ' शब्दाचा वापर फंक्शन किंवा बहुपदींच्या संदर्भात केला जातो, 'मूल्य' खूप व्यापक आहे आणि 'निकाल' समीकरणाला खात्री देणारा चलाचा मूल्य विशिष्टपणे वर्णन करत नाही. म्हणूनच, 'उत्तर' हा योग्य शब्द आहे.",
+          "solution": "5 3; 14-1 जोडीत समानता आहे कारण 5 + 3 = 8 आणि 14 - 1 = 13. इतर जोड्यांमध्ये समान मूल्य नाही. 14 + 1 = 15, 8 नाही. 6 + 7 = 13, 14 नाही. 5 + 3 = 8, 13 नाही.",
           "imageAlt": null,
-          "critique": "The Marathi translation has significant issues: the stem and solution are mistranslated, the correct answer is incorrectly labeled as (2) 'उत्तर' (Answer) instead of (1) 'मूळ' (Root), and the terminology is not consistent with standard Marathi math terminology.",
-          "flag": "translation critique: meaning changed; not one answer at the same position; a distractor no longer wrong; terms not the board's"
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
         }
       },
       "imageKey": null,
@@ -72,93 +72,75 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses solution with root",
-        null,
-        "Confuses solution with value",
-        "Confuses solution with result"
+        "Adds 14 and 1 instead of subtracting",
+        "Adds 6 and 7 instead of subtracting",
+        "Adds 5 and 3 instead of subtracting",
+        null
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        3,
+        3,
+        3,
+        3,
+        3
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 'Solution' as it is the standard term for a value that satisfies an equation. The other options are either too general or not standard terminology in this context.",
+      "critique": "The correct answer is option 3, as 5 + 3 = 8 and 14 - 1 = 13, which is not equal. However, the author's solution incorrectly states that 5 + 3 = 8 and 14 - 1 = 13, which is not an equality. The author's reasoning is flawed, as none of the pairs actually have equality. The correct answer should be none of the options, but the key is set to 3.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 55,
-          "pageStart": 83,
-          "pageEnd": 85,
-          "headingPath": [
-            "9. Equations"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 56,
-          "pageStart": 85,
-          "pageEnd": 86,
-          "headingPath": [
-            "9. Equations"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 57,
-          "pageStart": 86,
-          "pageEnd": 87,
+          "ordinal": 58,
+          "pageStart": 87,
+          "pageEnd": 88,
           "headingPath": [
             "9. Equations"
           ]
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T00:21:26.126Z",
+      "generatedAt": "2026-11-01T13:33:29.288Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 2,
-      "stem": "Which of the following represents a 'variable' in the context of equations?",
+      "difficulty": 3,
+      "stem": "Which rule is used first while evaluating an expression with multiple operations?",
       "choices": [
-        "A fixed number",
-        "A letter used to denote an unknown quantity",
-        "A symbol for a mathematical operation",
-        "A constant value"
+        "Multiplication and division from left to right",
+        "Addition and subtraction from left to right",
+        "Operations in brackets first",
+        "Use of letters for unknown numbers"
       ],
-      "answerIndex": 1,
-      "solution": "The correct answer is 'A letter used to denote an unknown quantity' because variables in equations are symbols, usually letters, that represent values that can change or are not yet known. A fixed number, a symbol for a mathematical operation, and a constant value do not fit this definition since they do not represent quantities that vary.",
+      "answerIndex": 2,
+      "solution": "The correct rule is to evaluate operations in brackets first because they indicate the part of the expression that must be calculated before anything else. Multiplication and division, as well as addition and subtraction, are handled after brackets are resolved. The use of letters for unknown numbers relates to algebra, not the order of operations.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन सा समीकरण के संदर्भ में 'चर' का प्रतिनिधित्व करता है?",
+          "stem": "किस नियम का उपयोग एक व्यंजक के मूल्यांकन में बहुत सारे संक्रियाओं के साथ किया जाता है?",
           "choices": [
-            "एक निश्चित संख्या",
-            "एक अज्ञात मात्रा को दर्शाने वाला अक्षर",
-            "गणितीय संक्रिया के लिए एक प्रतीक",
-            "एक नियत मान"
+            "बाएं से दाएं गुणा और भाग",
+            "बाएं से दाएं जोड़ और घटाव",
+            "कोष्ठक में संक्रियाएं पहले",
+            "अज्ञात संख्याओं के लिए अक्षरों का उपयोग"
           ],
-          "solution": "सही उत्तर 'एक अज्ञात मात्रा को दर्शाने वाला अक्षर' है क्योंकि समीकरणों में चर वे प्रतीक होते हैं, जो आमतौर पर अक्षर होते हैं, जो बदल सकने वाले मानों या अभी ज्ञात नहीं होने वाले मानों का प्रतिनिधित्व करते हैं। एक निश्चित संख्या, गणितीय संक्रिया के लिए एक प्रतीक, और एक नियत मान इस परिभाषा के अनुरूप नहीं हैं क्योंकि वे बदलने वाली मात्राओं का प्रतिनिधित्व नहीं करते हैं।",
+          "solution": "सही नियम कोष्ठक में संक्रियाओं के पहले मूल्यांकन करना है क्योंकि वे व्यंजक के वह हिस्सा दर्शाते हैं जिसे किसी अन्य चीज से पहले गणना करनी चाहिए। गुणा और भाग, साथ ही जोड़ और घटाव, कोष्ठक के निपटान के बाद हाथ में लिए जाते हैं। अज्ञात संख्याओं के लिए अक्षरों का उपयोग बीजगणित से संबंधित है, आदेश संक्रियाओं से नहीं।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology as found in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते समीकरणाच्या संदर्भात 'चल' दर्शविते?",
+          "stem": "एकापेक्षा अधिक क्रियांसह एका व्यंजकाचे मूल्यांकन करताना प्रथम कोणता नियम वापरला जातो?",
           "choices": [
-            "एक निश्चित संख्या",
-            "अज्ञात मूल्य दर्शविणारा अक्षर",
-            "गणितीय क्रिया सूचित करणारा प्रतीक",
-            "एक स्थिर मूल्य"
+            "बाजूने बरोबर गुणाकार आणि भागाकार",
+            "बाजूने बरोबर बेरीज आणि वजाबाकी",
+            "प्रथम कोष्टकातील क्रिया",
+            "अज्ञात संख्यांसाठी अक्षरांचा वापर"
           ],
-          "solution": "बरोबर उत्तर 'अज्ञात मूल्य दर्शविणारा अक्षर' आहे कारण समीकरणांमध्ये चल म्हणजे बदलू शकणारे किंवा अजून ज्ञात नसलेले मूल्य दर्शविणारा प्रतीक, सामान्यतः अक्षर. निश्चित संख्या, गणितीय क्रिया सूचित करणारा प्रतीक आणि स्थिर मूल्य हे या व्याख्येस अनुरूप नाहीत कारण ते बदलणारे मूल्य दर्शवित नाहीत.",
+          "solution": "कोष्टकातील क्रिया प्रथम मूल्यांकन करणे योग्य नियम आहे कारण ते व्यंजकाच्या भागाला सूचित करतात ज्याचे अन्य काही गोष्टीपूर्वी गणना करावी लागते. गुणाकार आणि भागाकार, सहसा बेरीज आणि वजाबाकी नंतर विचारात घेतले जातात. अज्ञात संख्यांसाठी अक्षरांचा वापर बीजगणिताशी संबंधित आहे, ऑर्डर ऑफ ऑपरेशनशी नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
           "flag": null
         }
       },
@@ -167,10 +149,105 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses variable with a fixed number",
+        "Confuses the order of operations",
+        "Confuses the order of operations",
         null,
-        "Incorrectly identifies a variable as a mathematical operation",
-        "Misunderstands the definition of a variable"
+        "Misunderstands the rules of operation evaluation"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as the first step in evaluating an expression with multiple operations is to handle operations inside brackets. The other options describe subsequent steps or are unrelated to the order of operations.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 52,
+          "pageStart": 79,
+          "pageEnd": 80,
+          "headingPath": [
+            "9. Equations"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 53,
+          "pageStart": 80,
+          "pageEnd": 82,
+          "headingPath": [
+            "9. Equations"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 54,
+          "pageStart": 82,
+          "pageEnd": 83,
+          "headingPath": [
+            "9. Equations"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-11-01T13:33:29.288Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If the sum of two consecutive natural numbers is 131, what is the larger number?",
+      "choices": [
+        "65",
+        "66",
+        "67",
+        "68"
+      ],
+      "answerIndex": 1,
+      "solution": "If two consecutive natural numbers add up to 131, we can represent them as m and m + 1. Adding these gives m + (m + 1) = 131, which simplifies to 2m + 1 = 131. Solving for m gives m = 65, so the larger number is 66. Choosing 65 would be incorrect because it is the smaller number. Choosing 67 or 68 would be incorrect because they do not satisfy the equation.",
+      "checkExpr": "(131-1)/2+1",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि दो क्रमागत प्राकृत संख्याओं का योग 131 है, तो बड़ी संख्या कौन-सी है?",
+          "choices": [
+            "65",
+            "66",
+            "67",
+            "68"
+          ],
+          "solution": "यदि दो क्रमागत प्राकृत संख्याएँ 131 के योग के बराबर हैं, तो हम उन्हें m और m + 1 के रूप में निरूपित कर सकते हैं। इनका योग m + (m + 1) = 131 होता है, जो 2m + 1 = 131 में सरलीकृत हो जाता है। m के लिए हल करने पर m = 65 प्राप्त होता है, इसलिए बड़ी संख्या 66 है। 65 चुनना गलत होगा क्योंकि यह छोटी संख्या है। 67 या 68 चुनना गलत होगा क्योंकि वे समीकरण को संतुष्ट नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर दोन अनुक्रमिक प्राकृतिक संख्यांची बेरीज 131 असेल, तर मोठी संख्या कोणती असेल?",
+          "choices": [
+            "65",
+            "66",
+            "67",
+            "68"
+          ],
+          "solution": "जर दोन अनुक्रमिक प्राकृतिक संख्यांची बेरीज 131 असेल, तर आपण त्यांना m आणि m + 1 असे दर्शवू शकतो. याची बेरीज m + (m + 1) = 131 असते, जी 2m + 1 = 131 अशी सोपीकरण केली जाऊ शकते. m चे मूल्य 65 असते, म्हणून मोठी संख्या 66 असते. 65 निवडणे चुकीचे असेल कारण ती लहान संख्या आहे. 67 किंवा 68 निवडणे चुकीचे असेल कारण ते समीकरणाचे उकल नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for natural numbers and consecutive numbers.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses the smaller number instead of the larger",
+        null,
+        "Student adds 131 by 1 and divides by 2, forgetting to subtract 1 before dividing",
+        "Adds 1 instead of subtracting 1 before dividing"
       ],
       "solverAnswers": [
         1,
@@ -179,8 +256,8 @@
         1,
         1
       ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as a variable is indeed a letter used to denote an unknown quantity. The other options correctly represent fixed numbers, operations, and constants, which are not variables.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The equation m + (m + 1) = 131 leads to m = 65, so the larger number is 66. The reasoning for the distractors aligns with common student misconceptions.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
@@ -211,7 +288,7 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-31T00:21:26.126Z",
+      "generatedAt": "2026-11-01T13:33:29.288Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

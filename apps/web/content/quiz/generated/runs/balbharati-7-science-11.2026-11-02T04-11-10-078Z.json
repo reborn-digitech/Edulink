@@ -1,0 +1,632 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T04:11:10.078Z",
+  "finishedAt": "2026-11-02T04:16:12.950Z",
+  "seconds": 303,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "७ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "703020012",
+    "document": "balbharati/7/science/703020012.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 11 — Cell Structure and Micro-organisms",
+    "edition": "First Edition 2017",
+    "chunks": 10,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2021 — solutions or answer key]\n3. C. I represents bacteria since it does not possess mitochondria but has cell wall; II represents plant cell\ndue to presence of cell wall and nucleus; III represents ribosomes which are found attached to the\nendoplasmic reticulum in the cytoplasm; IV represent viruses which need host cells for replication.",
+      "[INJSO 2021 — question paper]\n3. Descriptions of four biological samples (I - IV) are given below.\nI: Can be viewed using a light microscope with a total magnification of 1000X; possesses cell wall\nand does not possess mitochondria.\nII: Can be seen using a light microscope with a total magnification of 100X; possesses cell wall and\nhas a nucleus.\nIII: Needs electron microscope for viewing; can be found attached to the membrane system in the\ncytoplasm.\nIV: Needs electron microscope for viewing; cannot replicate on its own, needs other specific cells\nfor replication.\nI, II, III, and IV respectively represent:\nA. virus; plant cell; ribosome; bacteria. B. plant cell; bacteria; vacuole; virus.\nC. bacteria; plant cell; ribosom",
+      "[CBSE Class X Science, sample question paper, 2022-23]\n35. (a) Why is it not possible to reconstruct the whole organism from a fragment in 5\ncomplex multicellular organisms?\n(b) Sexual maturation of reproductive tissues and organs are necessary link for\nreproduction. Elucidate.\nOR\n(a) How are variations useful for species if there is drastic alteration in the niches?\n(b) Explain how the uterus and placenta provide necessary conditions for proper\ngrowth and development of the embryo after implantation?",
+      "[NSEJS 2015 — question paper]\n62. Mitochondrial equivalent in prokaryotic bacterial cell is\na) ribosomes b) thylakoid\nc) cytoplasmic plasma membrane d) cyanosomes"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 115611,
+      "in": 34,
+      "out": 29,
+      "rejects": 5,
+      "promptTokens": 27272,
+      "completionTokens": 6962
+    },
+    "critique": {
+      "calls": 38,
+      "ms": 227226,
+      "in": 29,
+      "out": 26,
+      "rejects": 3,
+      "promptTokens": 17229,
+      "completionTokens": 6702
+    },
+    "solver": {
+      "calls": 188,
+      "ms": 79122,
+      "in": 26,
+      "out": 19,
+      "rejects": 7,
+      "promptTokens": 30575,
+      "completionTokens": 1876
+    },
+    "form": {
+      "calls": 12,
+      "ms": 31197,
+      "in": 19,
+      "out": 7,
+      "rejects": 12,
+      "promptTokens": 2983,
+      "completionTokens": 850
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 18,
+      "ms": 2693,
+      "in": 7,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 194002,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 13406,
+      "completionTokens": 6754
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 5,
+      "stem": "A student observes a cell that has a cell wall and chloroplasts but no nucleus. What could this cell be?",
+      "ms": {
+        "draft": 2538,
+        "critique": 6037
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a characteristic of plant cells?",
+      "ms": {
+        "draft": 2538,
+        "critique": 6732,
+        "solver": 11268,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the primary reason micro-organisms are found in soil?",
+      "ms": {
+        "draft": 2863,
+        "critique": 5745,
+        "solver": 1621,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the structure of prokaryotic cells?",
+      "ms": {
+        "draft": 2863,
+        "critique": 5566,
+        "solver": 2026,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the main reason that some micro-organisms can survive in extreme environments?",
+      "ms": {
+        "draft": 2863,
+        "critique": 5964,
+        "solver": 2072,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a drop of yoghurt is mixed with lukewarm milk and kept for 8-10 hours, what is the expected result?",
+      "ms": {
+        "draft": 2863,
+        "critique": 5534,
+        "solver": 14365
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a disease caused by a pathogen?",
+      "ms": {
+        "draft": 2738,
+        "critique": 6142,
+        "solver": 1244
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following micro-organisms is described as unicellular and lacking membrane-bound organelles?",
+      "ms": {
+        "draft": 2863,
+        "critique": 8035,
+        "solver": 11958,
+        "form": 2540
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the role of micro-organisms in the environment?",
+      "ms": {
+        "draft": 2738,
+        "critique": 6631,
+        "solver": 1305,
+        "form": 2863
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for food poisoning?",
+      "ms": {
+        "draft": 2738,
+        "critique": 6414,
+        "solver": 13345
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following can be used to kill pathogens in food?",
+      "ms": {
+        "draft": 2738,
+        "critique": 6338,
+        "solver": 839
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the Swachha Bharat Abhiyan important according to the passage?",
+      "ms": {
+        "draft": 2738,
+        "critique": 3819,
+        "solver": 663,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of micro-organisms?",
+      "ms": {
+        "draft": 4191,
+        "critique": 6351,
+        "solver": 1715,
+        "form": 3473
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a correct statement about micro-organisms based on the passage?",
+      "ms": {
+        "draft": 4191,
+        "critique": 6356,
+        "solver": 1581,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In which of the following environments would micro-organisms most likely grow?",
+      "ms": {
+        "draft": 4191,
+        "critique": 6059,
+        "solver": 1375,
+        "form": 3697
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a feature of prokaryotic cells?",
+      "ms": {
+        "draft": 4191,
+        "critique": 7454,
+        "solver": 11308,
+        "form": 3523
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a micro-organism is found in a stagnant water puddle and requires an electron microscope for observation, what can be inferred about the micro-organism?",
+      "ms": {
+        "draft": 4191,
+        "critique": 5685,
+        "solver": 1615
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the fundamental structural and functional unit of living organisms?",
+      "ms": {
+        "draft": 6303,
+        "critique": 5866
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observes a cell under a microscope and notes that it has a cell wall, a large central vacuole, and chloroplasts. Which of the following is most likely the type of cell observed?",
+      "ms": {
+        "draft": 6303,
+        "critique": 5366
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of plant cells that is not present in animal cells?",
+      "ms": {
+        "draft": 6303,
+        "critique": 6599,
+        "solver": 10780
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct match between the cell organelle and its function as described in the passage?",
+      "ms": {
+        "draft": 6303,
+        "critique": 6224,
+        "solver": 10650
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student observes a cell under an electron microscope and sees that it has a cell membrane, cytoplasm, and ribosomes, but no nucleus or other membrane-bound organelles. Which of the following is this cell most likely to be?",
+      "ms": {
+        "draft": 6303,
+        "critique": 7217,
+        "solver": 5734,
+        "form": 1390
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a micro-organism that can be used to clear an oil slick from a lake or ocean?",
+      "ms": {
+        "draft": 2385,
+        "critique": 5900,
+        "solver": 1242,
+        "form": 3494
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of micro-organisms?",
+      "ms": {
+        "draft": 2863,
+        "critique": 5856,
+        "solver": 1139,
+        "form": 2512,
+        "translation": 34333
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary structural and functional unit of all living organisms?",
+      "ms": {
+        "draft": 2538,
+        "critique": 4276,
+        "solver": 993,
+        "form": 3746,
+        "translation": 25410
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of the nucleus in a cell?",
+      "ms": {
+        "draft": 2538,
+        "critique": 4830,
+        "solver": 10046,
+        "form": 3030,
+        "translation": 37171
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a common feature of both plant and animal cells?",
+      "ms": {
+        "draft": 2538,
+        "critique": 4453,
+        "solver": 1579,
+        "form": 0,
+        "translation": 28987
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following can be observed using a light microscope?",
+      "ms": {
+        "draft": 2538,
+        "critique": 6864,
+        "solver": 1426,
+        "form": 3583,
+        "translation": 32545
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why are antibiotics not recommended for treating common colds?",
+      "ms": {
+        "draft": 2738,
+        "critique": 6794,
+        "solver": 1152,
+        "form": 1792,
+        "translation": 32133
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student observes a cell that has a cell wall and chloroplasts but no nucleus. What could this cell be?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a characteristic of plant cells?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the primary reason micro-organisms are found in soil?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the structure of prokaryotic cells?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the main reason that some micro-organisms can survive in extreme environments?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a drop of yoghurt is mixed with lukewarm milk and kept for 8-10 hours, what is the expected result?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a disease caused by a pathogen?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following micro-organisms is described as unicellular and lacking membrane-bound organelles?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the role of micro-organisms in the environment?",
+      "reason": "option 3 is a catch-all (\"Both B and C\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main reason for food poisoning?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following can be used to kill pathogens in food?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is the Swachha Bharat Abhiyan important according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is a correct statement about micro-organisms based on the passage?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is a reason for food poisoning, according to the passage?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the main purpose of a vaccine, as described in the passage?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is a way to prevent the spread of diseases, according to the passage?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What happens to the body temperature when micro-organisms enter the body, as mentioned in the passage?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a characteristic of micro-organisms?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Incorrectly assumes micro-organisms are not widespread in th…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is a correct statement about micro-organisms based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Incorrectly assumes that all micro-organisms have a cell wal…\"); distractor 1's reason is not a one-line misconception (\"Misunderstands the reproduction process of some micro-organi…\"); distractor 2's reason is not a one-line misconception (\"Incorrectly assumes that all micro-organisms are harmful, bu…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In which of the following environments would micro-organisms most likely grow?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Incorrectly assumes that micro-organisms can grow in an oxyg…\"); distractor 3's reason is not a one-line misconception (\"Confuses the conditions that are suitable for microbial grow…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a feature of prokaryotic cells?",
+      "reason": "options 0 and 3 say the same thing (\"They have a nucleus\" / \"3: They have a nucleus\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a micro-organism is found in a stagnant water puddle and requires an electron microscope for observation, what can be inferred about the micro-organism?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is the fundamental structural and functional unit of living organisms?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student observes a cell under a microscope and notes that it has a cell wall, a large central vacuole, and chloroplasts. Which of the following is most likely the type of cell observed?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of plant cells that is not present in animal cells?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is a correct match between the cell organelle and its function as described in the passage?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student observes a cell under an electron microscope and sees that it has a cell membrane, cytoplasm, and ribosomes, but no nucleus or other membrane-bound organelles. Which of the following is this cell most likely to be?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Which of the following is an example of a micro-organism that can be used to clear an oil slick from a lake or ocean?",
+      "reason": "near-duplicate of served question cmvwns34d02se0remqi1n0zdw (cosine 0.916 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

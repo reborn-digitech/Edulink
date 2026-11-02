@@ -21,49 +21,49 @@
   "board": "BALBHARATI",
   "book": "८ वी गणित इंग्रजी",
   "edition": "First Edition 2018",
-  "generatedAt": "2026-11-01T00:25:42.192Z",
+  "generatedAt": "2026-11-02T07:18:30.929Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "Which of the following is a factor of the expression x^2 + 9x + 18?",
+      "difficulty": 5,
+      "stem": "If the HCF of 480 and 720 is 240, what is the LCM of 480 and 720?",
       "choices": [
-        "(x + 3)",
-        "(x + 18)",
-        "(x + 6)",
-        "(x + 9)"
+        "1440",
+        "1200",
+        "1080",
+        "960"
       ],
       "answerIndex": 0,
-      "solution": "The expression x^2 + 9x + 18 can be factorized as (x + 3)(x + 6). Therefore, (x + 3) is a factor. The other options do not multiply to give the original expression.",
-      "checkExpr": null,
+      "solution": "The product of two numbers is equal to the product of their HCF and LCM. So, LCM = (480 × 720) / 240 = 1440. The correct answer is 1440. The other options are incorrect due to miscalculations.",
+      "checkExpr": "(480*720)/240",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन व्यंजक x^2 + 9x + 18 का एक गुणनखंड है?",
+          "stem": "यदि 480 और 720 का महत्तम समापवर्तक 240 है, तो 480 और 720 का लघुत्तम समापवर्तक क्या है?",
           "choices": [
-            "(x + 3)",
-            "(x + 18)",
-            "(x + 6)",
-            "(x + 9)"
+            "1440",
+            "1200",
+            "1080",
+            "960"
           ],
-          "solution": "व्यंजक x^2 + 9x + 18 को (x + 3)(x + 6) के रूप में गुणनखंडित किया जा सकता है। अतः (x + 3) एक गुणनखंड है। अन्य विकल्प मूल व्यंजक नहीं देते।",
+          "solution": "दो संख्याओं का गुणनफल उनके महत्तम समापवर्तक और लघुत्तम समापवर्तक के गुणनफल के बराबर होता है। अतः लघुत्तम समापवर्तक = (480 × 720) / 240 = 1440। सही उत्तर 1440 है। अन्य विकल्प गणना त्रुटि के कारण गलत हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology as found in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते व्यंजक x^2 + 9x + 18 चे अपवर्तक आहे?",
+          "stem": "480 आणि 720 चा महत्तम सामान्य अपवर्तक 240 असेल तर 480 आणि 720 चा लघुत्तम सामान्य अपवर्त्य किती असेल?",
           "choices": [
-            "(x + 3)",
-            "(x + 18)",
-            "(x + 6)",
-            "(x + 9)"
+            "1440",
+            "1200",
+            "1080",
+            "960"
           ],
-          "solution": "व्यंजक x^2 + 9x + 18 ला (x + 3)(x + 6) म्हणून अपवर्तित केले जाऊ शकते. म्हणून (x + 3) हे अपवर्तक आहे. इतर विकल्प मूळ व्यंजक देत नाहीत.",
+          "solution": "दोन संख्यांचा गुणाकार त्यांच्या महत्तम सामान्य अपवर्तक आणि लघुत्तम सामान्य अपवर्त्याच्या गुणाकाराएवजी असतो. म्हणून, लघुत्तम सामान्य अपवर्त्य = (480 × 720) / 240 = 1440. योग्य उत्तर 1440 आहे. इतर उत्तरे गणनाच्या चूकीमुळे चुकीची आहेत.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -73,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses the correct factor with the constant term",
-        "Chooses the constant term directly",
-        "Chooses the coefficient of x directly"
+        "Confuses LCM with a multiple of HCF but incorrectly calculates it as 480 + 720",
+        "Confuses LCM with HCF multiplied by one of the numbers instead of dividing the product by HCF",
+        "Confuses LCM with HCF multiplied by one of the numbers instead of dividing by HCF"
       ],
       "solverAnswers": [
         0,
@@ -84,8 +84,8 @@
         0,
         0
       ],
-      "levelFlag": null,
-      "critique": "The solution is correct. The expression factors to (x + 3)(x + 6), making (x + 3) the correct answer. The author's reasoning for the distractors aligns with common misconceptions.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly applies the formula LCM = (product of numbers) / HCF, and the correct answer is 1440. The distractors reflect plausible misconceptions about the relationship between HCF, LCM, and the numbers.",
       "sources": [
         {
           "document": "balbharati/8/mathematics/803020004.pdf",
@@ -116,7 +116,7 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-11-01T00:25:42.192Z",
+      "generatedAt": "2026-11-02T07:18:30.929Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

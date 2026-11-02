@@ -21,49 +21,49 @@
   "board": "BALBHARATI",
   "book": "८ वी सामान्य विज्ञान इंग्रजी",
   "edition": "First Edition 2018",
-  "generatedAt": "2026-10-29T21:31:27.002Z",
+  "generatedAt": "2026-11-02T12:27:59.689Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 3,
-      "stem": "If the angle of incidence is 30°, what will be the angle of reflection?",
+      "difficulty": 2,
+      "stem": "What type of reflection allows us to see the image of the Moon in water?",
       "choices": [
-        "30°",
-        "60°",
-        "90°",
-        "15°"
+        "Regular reflection",
+        "Irregular reflection",
+        "Diffuse reflection",
+        "Scattering"
       ],
       "answerIndex": 0,
-      "solution": "According to the law of reflection, the angle of incidence is equal to the angle of reflection. So if the angle of incidence is 30°, the angle of reflection is also 30°. The other options do not follow the law of reflection.",
+      "solution": "Regular reflection allows us to see the image of the Moon in water because it occurs on smooth surfaces, which reflect light in a single direction. Irregular and diffuse reflection happen on rough surfaces, scattering light in many directions, while scattering refers to light being dispersed in various directions, not forming a clear image.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि आपतन कोण 30° है, तो परावर्तन कोण क्या होगा?",
+          "stem": "जल में चाँद के चित्र को देखने में कौन-सा परावर्तन सहायता करता है?",
           "choices": [
-            "30°",
-            "60°",
-            "90°",
-            "15°"
+            "नियमित परावर्तन",
+            "अनियमित परावर्तन",
+            "बिस्तृत परावर्तन",
+            "प्रकीर्णन"
           ],
-          "solution": "परावर्तन के नियम के अनुसार, आपतन कोण परावर्तन कोण के बराबर होता है। अतः यदि आपतन कोण 30° है, तो परावर्तन कोण भी 30° होगा। अन्य विकल्प परावर्तन के नियम के अनुरूप नहीं हैं।",
+          "solution": "जल में चाँद के चित्र को देखने में नियमित परावर्तन सहायता करता है क्योंकि यह चिकनी सतहों पर होता है जो प्रकाश को एक ही दिशा में परावर्तित करती है। अनियमित और बिस्तृत परावर्तन की असमान सतहों पर होता है जो प्रकाश को विभिन्न दिशाओं में बिखेर देती हैं, जबकि प्रकीर्णन का अर्थ है प्रकाश का विभिन्न दिशाओं में बिखर जाना, जो स्पष्ट चित्र नहीं बनाता।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard physics terminology as found in Hindi-medium textbooks.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology consistent with standard science textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "जर अभिसरण कोन 30° असेल, तर परावर्तन कोन किती असेल?",
+          "stem": "जलामध्ये चंद्राचे छायाचित्र पाहण्यास कोणत्या प्रकारच्या प्रतिबिंबाची आवश्यकता असते?",
           "choices": [
-            "30°",
-            "60°",
-            "90°",
-            "15°"
+            "नियमित प्रतिबिंब",
+            "अनियमित प्रतिबिंब",
+            "विसर्जित प्रतिबिंब",
+            "प्रसरण"
           ],
-          "solution": "परावर्तनाच्या कायद्यानुसार, अभिसरण कोन परावर्तन कोनासोबत समान असतो. म्हणून जर अभिसरण कोन 30° असेल, तर परावर्तन कोन देखील 30° असेल. इतर विकल्प परावर्तनाच्या कायद्याच्या नियमांचे अनुसरण करत नाहीत.",
+          "solution": "जलामध्ये चंद्राचे छायाचित्र पाहण्यास नियमित प्रतिबिंब आवश्यक असतो कारण ते सुरेख पृष्ठभागावर होते जे प्रकाशाला एका दिशेने परावर्तित करते. अनियमित आणि विसर्जित प्रतिबिंब खराब पृष्ठभागावर होतात, प्रकाशाला अनेक दिशांमध्ये बिखेरतात, तर प्रसरण हा प्रकाशाचा विविध दिशांमध्ये विसर्जन आहे, जो स्पष्ट छायाचित्र निर्माण करत नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms like 'अभिसरण कोन' (angle of incidence) and 'परावर्तन कोन' (angle of reflection).",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
         }
       },
@@ -73,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Adds the angle of incidence and reflection",
-        "Subtracts the angle of incidence from 90°",
-        "Divides the angle of incidence by 2"
+        "Confuses regular reflection with irregular",
+        "Confuses regular reflection with diffuse",
+        "Confuses regular reflection with scattering"
       ],
       "solverAnswers": [
         0,
@@ -85,7 +85,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The question is straightforward and aligns with the law of reflection. The correct answer is 30°, and the author's reasoning for the distractors is valid and reflects common student misconceptions.",
+      "critique": "The question is well-constructed. Regular reflection is the correct answer, as smooth surfaces like water allow for clear images. The distractors represent common misconceptions about reflection types.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -119,7 +119,486 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-29T21:31:27.002Z",
+      "generatedAt": "2026-11-02T12:27:59.689Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What type of reflection occurs when light reflects off a wooden surface?",
+      "choices": [
+        "Regular reflection",
+        "Irregular reflection",
+        "Total internal reflection",
+        "Diffuse reflection"
+      ],
+      "answerIndex": 1,
+      "solution": "Light reflecting off a wooden surface undergoes irregular reflection. This is because the surface is not smooth, and the reflected rays scatter in different directions. Regular reflection occurs on smooth surfaces, and diffuse reflection is another term for irregular reflection, but the correct term from the chapter is irregular reflection.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "लाख की सतह पर प्रकाश परावर्तित होने पर किस प्रकार का परावर्तन होता है?",
+          "choices": [
+            "नियमित परावर्तन",
+            "अनियमित परावर्तन",
+            "पूर्ण आंतरिक परावर्तन",
+            "बिसरित परावर्तन"
+          ],
+          "solution": "लाख की सतह पर प्रकाश के परावर्तन के कारण अनियमित परावर्तन होता है। इसका कारण यह है कि सतह चिकनी नहीं होती है और परावर्तित किरणें विभिन्न दिशाओं में बिखर जाती हैं। नियमित परावर्तन चिकनी सतहों पर होता है, और बिसरित परावर्तन अनियमित परावर्तन का एक अन्य शब्द है, लेकिन अध्याय के अनुसार सही शब्द अनियमित परावर्तन है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणत्या प्रकारचे परावर्तन लाकडाच्या पृष्ठभागावरून प्रकाश परावर्तित होते?",
+          "choices": [
+            "नियमित परावर्तन",
+            "अनियमित परावर्तन",
+            "पूर्ण आंतरिक परावर्तन",
+            "विसर्जित परावर्तन"
+          ],
+          "solution": "लाकडाच्या पृष्ठभागावरून प्रकाश अनियमित परावर्तन दर्शवतो. हे कारण त्याचा पृष्ठभाग चकाकीचा नसल्यामुळे, परावर्तित किरण विविध दिशांमध्ये फैलावतात. नियमित परावर्तन चकाकीच्या पृष्ठभागावर होते, आणि विसर्जित परावर्तन हे अनियमित परावर्तनाचे दुसरे नाव आहे, परंतु अभ्यासपुस्तकातील योग्य शब्द अनियमित परावर्तन आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology as used in standard textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses the correct term but misnames it",
+        null,
+        "Confuses regular and irregular reflection",
+        "Does not understand the difference between regular and irregular reflection"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that irregular reflection occurs on rough surfaces like wood, and the reasoning aligns with standard physics concepts. The distractors reflect common misconceptions about reflection types.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 146,
+          "pageStart": 122,
+          "pageEnd": 123,
+          "headingPath": [
+            "16. Reflection of Light",
+            "i =r , i =r ,..."
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 147,
+          "pageStart": 123,
+          "pageEnd": 124,
+          "headingPath": [
+            "16. Reflection of Light",
+            "i =r , i =r ,..."
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 148,
+          "pageStart": 124,
+          "pageEnd": 125,
+          "headingPath": [
+            "16. Reflection of Light",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T12:27:59.689Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the role of the normal in the laws of reflection?",
+      "choices": [
+        "It is the direction of the incident light",
+        "It is the direction of the reflected light",
+        "It is a line perpendicular to the surface at the point of incidence",
+        "It is a line parallel to the surface"
+      ],
+      "answerIndex": 2,
+      "solution": "The normal is a line that is perpendicular to the surface at the point where the light hits. This definition is essential for applying the laws of reflection. The other options are incorrect because the normal is not a direction of light or parallel to the surface.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "प्रकाश के परावर्तन के नियमों में सामान्य रेखा की भूमिका क्या है?",
+          "choices": [
+            "यह आपतित प्रकाश की दिशा है",
+            "यह परावर्तित प्रकाश की दिशा है",
+            "यह सतह के आपतन बिंदु पर लंब रेखा है",
+            "यह सतह के समांतर रेखा है"
+          ],
+          "solution": "सामान्य रेखा सतह के आपतन बिंदु पर लंब रेखा होती है। इस परिभाषा की आवश्यकता परावर्तन के नियमों के लागू करने के लिए होती है। अन्य विकल्प गलत हैं क्योंकि सामान्य रेखा प्रकाश की दिशा नहीं है या सतह के समांतर नहीं है।",
+          "imageAlt": "एक समतल दर्पण का आरेख जिसमें आपतन बिंदु पर सामान्य रेखा है, आपतित एवं परावर्तित किरणों को दर्शाता है।",
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are correctly used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "प्रतिबिंबनाच्या कायद्यांमध्ये सामान्याची भूमिका काय आहे?",
+          "choices": [
+            "ते अवतल प्रकाशाचा दिशा आहे",
+            "ते प्रतिबिंबित प्रकाशाचा दिशा आहे",
+            "ते अवतल बिंदूवर सतहला लंब असलेला रेषा आहे",
+            "ते सतहला समांतर असलेला रेषा आहे"
+          ],
+          "solution": "सामान्य ही अवतल बिंदूवर सतहला लंब असलेली रेषा आहे. ही व्याख्या प्रतिबिंबनाच्या कायद्यांच्या अवलंबनासाठी आवश्यक आहे. इतर विकल्प चुकीचे आहेत कारण सामान्य प्रकाशाचा दिशा नाही किंवा सतहला समांतर नाही.",
+          "imageAlt": "एक समतल दर्पणाचा आकृती, ज्यामध्ये अवतल बिंदूवर सामान्य रेषा दर्शविली गेली आहे, ज्यामध्ये अवतल आणि प्रतिबिंबित किरण दर्शविले गेले आहेत.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A diagram of a plane mirror with the normal line at the point of incidence, showing the incident and reflected rays.",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "planeMirror",
+              "x": 50,
+              "y": 30,
+              "size": 20,
+              "labels": [
+                "mirror",
+                "normal"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": [
+                40,
+                30
+              ],
+              "to": [
+                50,
+                30
+              ],
+              "label": "incident",
+              "curved": false
+            },
+            {
+              "from": [
+                50,
+                30
+              ],
+              "to": [
+                60,
+                30
+              ],
+              "label": "reflected",
+              "curved": false
+            }
+          ],
+          "texts": [
+            {
+              "x": 50,
+              "y": 20,
+              "label": "normal"
+            }
+          ]
+        },
+        "labels": {
+          "normal": {
+            "en": "normal",
+            "hi": "सामान्य",
+            "mr": "सामान्य"
+          },
+          "incident": {
+            "en": "incident ray",
+            "hi": "आपतित किरण",
+            "mr": "अवतल किरण"
+          },
+          "reflected": {
+            "en": "reflected ray",
+            "hi": "परावर्तित किरण",
+            "mr": "प्रतिबिंबित किरण"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Confuses the normal with the incident ray",
+        "Confuses the normal with the reflected ray",
+        null,
+        "Believes the normal is parallel to the surface"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the correct answer is clearly supported by the definition of the normal in the laws of reflection. The distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 142,
+          "pageStart": 120,
+          "pageEnd": 120,
+          "headingPath": [
+            "16. Reflection of Light"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 143,
+          "pageStart": 120,
+          "pageEnd": 122,
+          "headingPath": [
+            "16. Reflection of Light"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 144,
+          "pageStart": 122,
+          "pageEnd": 122,
+          "headingPath": [
+            "16. Reflection of Light"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 145,
+          "pageStart": 122,
+          "pageEnd": 122,
+          "headingPath": [
+            "16. Reflection of Light",
+            "i r"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T12:27:59.689Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a light ray enters a medium and changes direction, what is this process called?",
+      "choices": [
+        "Reflection",
+        "Refraction",
+        "Scattering",
+        "Absorption"
+      ],
+      "answerIndex": 1,
+      "solution": "Refraction is the process where light changes direction as it passes from one medium to another, due to a change in its speed. Reflection involves light bouncing back from a surface without entering a new medium. Scattering occurs when light is deflected in multiple directions by particles, and absorption is when light is taken in by a material rather than changing direction.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक प्रकाश किरण एक माध्यम में प्रवेश करती है और दिशा बदल जाती है, तो इस प्रक्रिया को क्या कहते हैं?",
+          "choices": [
+            "परावर्तन",
+            "अपवर्तन",
+            "किरण का बिखराव",
+            "अवशोषण"
+          ],
+          "solution": "अपवर्तन वह प्रक्रिया है जिसमें प्रकाश एक माध्यम से दूसरे माध्यम में गुजरते समय अपनी गति में परिवर्तन के कारण दिशा बदल देता है। परावर्तन में प्रकाश एक सतह से वापस लौट जाता है बिना नए माध्यम में प्रवेश किए। बिखराव में प्रकाश कणों द्वारा विभिन्न दिशाओं में विचलित हो जाता है और अवशोषण में प्रकाश एक पदार्थ द्वारा अवशोषित कर लिया जाता है बिना दिशा बदले।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एखादा प्रकाश किरण माध्यमातून प्रवेश करतो आणि दिशा बदलतो, तर हा प्रक्रिया काय म्हणतात?",
+          "choices": [
+            "परावर्तन",
+            "अपवर्तन",
+            "प्रसरण",
+            "अवशोषण"
+          ],
+          "solution": "अपवर्तन ही प्रक्रिया आहे जेव्हा प्रकाश एका माध्यमातून दुसऱ्या माध्यमात प्रवेश करताना त्याच्या वेगात बदल होऊन दिशा बदलते. परावर्तन ही एखाद्या पृष्ठभागावरून प्रकाश फिरून जाण्याची प्रक्रिया आहे जेव्हा तो नवीन माध्यमात प्रवेश करत नाही. प्रसरण ही अशी प्रक्रिया आहे जेव्हा कणांमुळे प्रकाश विविध दिशांमध्ये विचलित होतो आणि अवशोषण ही प्रक्रिया आहे जेव्हा माध्यम प्रकाश घेऊन टाकतो आणि तो दिशा बदलत नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi-medium science textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses refraction with reflection",
+        null,
+        "Confuses refraction with scattering",
+        "Confuses refraction with absorption"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is clear and the correct answer (refraction) is correctly identified. The author's reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 142,
+          "pageStart": 120,
+          "pageEnd": 120,
+          "headingPath": [
+            "16. Reflection of Light"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 143,
+          "pageStart": 120,
+          "pageEnd": 122,
+          "headingPath": [
+            "16. Reflection of Light"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 144,
+          "pageStart": 122,
+          "pageEnd": 122,
+          "headingPath": [
+            "16. Reflection of Light"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 145,
+          "pageStart": 122,
+          "pageEnd": 122,
+          "headingPath": [
+            "16. Reflection of Light",
+            "i r"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T12:27:59.689Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why do we see objects even when they are not light sources?",
+      "choices": [
+        "Because they emit light",
+        "Because they absorb light",
+        "Because they reflect light",
+        "Because they refract light"
+      ],
+      "answerIndex": 2,
+      "solution": "We see objects because light reflects off their surfaces and enters our eyes. Objects that are not light sources do not emit their own light, so they must reflect light from other sources. Absorption would prevent light from reaching our eyes, and refraction changes the direction of light but does not make objects visible on their own.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "हम वस्तुओं को क्यों देख सकते हैं जब वे प्रकाश स्रोत नहीं होते?",
+          "choices": [
+            "क्योंकि वे प्रकाश उत्सर्जित करते हैं",
+            "क्योंकि वे प्रकाश अवशोषित करते हैं",
+            "क्योंकि वे प्रकाश परावर्तित करते हैं",
+            "क्योंकि वे प्रकाश अपवर्तित करते हैं"
+          ],
+          "solution": "हम वस्तुओं को देखते हैं क्योंकि उनकी सतहों से प्रकाश परावर्तित होता है और हमारी आंखों में प्रवेश करता है। प्रकाश स्रोत नहीं होने वाली वस्तुएं अपना प्रकाश उत्सर्जित नहीं करती हैं, इसलिए उन्हें अन्य स्रोतों से प्रकाश परावर्तित करना पड़ता है। अवशोषण प्रकाश के हमारी आंखों तक पहुंचने से रोकता है, और अपवर्तन प्रकाश की दिशा बदल देता है लेकिन वस्तुओं के अपने आप दृश्य होने में सहायता नहीं करता।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आम्हाला वस्तू दिसतात कारण त्या प्रकाश स्रोत नसतात?",
+          "choices": [
+            "कारण ते प्रकाश उत्सर्जित करतात",
+            "कारण ते प्रकाश शोषतात",
+            "कारण ते प्रकाश परावर्तित करतात",
+            "कारण ते प्रकाश अपवर्तित करतात"
+          ],
+          "solution": "आम्हाला वस्तू दिसतात कारण प्रकाश त्यांच्या सतहीवरून परावर्तित होऊन आमच्या डोळ्यांमध्ये जातो. प्रकाश स्रोत नसलेल्या वस्तू आपला प्रकाश उत्सर्जित करत नाहीत, म्हणून त्यांना इतर स्रोतांमधून प्रकाश परावर्तित करणे आवश्यक असते. शोषणामुळे प्रकाश आमच्या डोळ्यांमध्ये पोहोचू शकत नाही आणि अपवर्तन प्रकाशाच्या दिशेत बदल करतो पण वस्तू आपल्याला एकट्याने दिसण्यासाठी पुरेसा नसतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses reflection with emission",
+        "Confuses reflection with absorption",
+        null,
+        "Confuses reflection with refraction"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2 (reflect light), as the explanation aligns with the physics of vision. The author's reasoning is sound, and the misconceptions listed for the wrong options are valid student errors.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 142,
+          "pageStart": 120,
+          "pageEnd": 120,
+          "headingPath": [
+            "16. Reflection of Light"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 143,
+          "pageStart": 120,
+          "pageEnd": 122,
+          "headingPath": [
+            "16. Reflection of Light"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 144,
+          "pageStart": 122,
+          "pageEnd": 122,
+          "headingPath": [
+            "16. Reflection of Light"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 145,
+          "pageStart": 122,
+          "pageEnd": 122,
+          "headingPath": [
+            "16. Reflection of Light",
+            "i r"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-11-02T12:27:59.689Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

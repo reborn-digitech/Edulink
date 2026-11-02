@@ -1,0 +1,470 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-11-02T07:54:24.857Z",
+  "finishedAt": "2026-11-02T07:58:23.197Z",
+  "seconds": 238,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी गणित इंग्रजी",
+    "bookCode": "803020004",
+    "document": "balbharati/8/mathematics/803020004.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 15 — Area",
+    "edition": "First Edition 2018",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2024-25]\n1. (C) 4\n 3 \nThe required area is given by 4 x dx =  x 2  = 2 ( 8 − 1 ) = 14 squnits.\n 1 ( )  3  3 3\n \n 2  1",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n10. (c) 8cm",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n12. (d) 9π cm 2",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2025-26]\n7. D) 8[ - గ √ଷ ] cm 2 1\n଺ ସ\nRequired Area=8 × area of one segment (with r = 1cm and 𝜃 = 60˚)\n଺଴° 2 √ଷ 2\n=8x ( ଷ଺଴° x 𝜋 x 1 − ସ x 1 )\n= 8[ − గ ଺ √ଷ ସ ] cm 2\nFor Visually Impaired candidates:\n(D) 9𝜋cm 2\narea of circle=𝜋(3 ) ଶ\n=9 𝜋 cm 2"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 111641,
+      "in": 23,
+      "out": 20,
+      "rejects": 3,
+      "promptTokens": 19432,
+      "completionTokens": 6485
+    },
+    "critique": {
+      "calls": 27,
+      "ms": 173191,
+      "in": 20,
+      "out": 11,
+      "rejects": 9,
+      "promptTokens": 12814,
+      "completionTokens": 4784
+    },
+    "solver": {
+      "calls": 101,
+      "ms": 49998,
+      "in": 11,
+      "out": 8,
+      "rejects": 3,
+      "promptTokens": 22992,
+      "completionTokens": 1109
+    },
+    "form": {
+      "calls": 4,
+      "ms": 26390,
+      "in": 8,
+      "out": 2,
+      "rejects": 6,
+      "promptTokens": 4644,
+      "completionTokens": 911
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 10,
+      "ms": 1801,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 57560,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 5326,
+      "completionTokens": 2706
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "How is the height of a parallelogram defined?",
+      "ms": {
+        "draft": 3583,
+        "critique": 5157
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula to calculate the area of a parallelogram?",
+      "ms": {
+        "draft": 3583,
+        "critique": 5462
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the base of a parallelogram is 12 cm and the height is 7 cm, what is its area?",
+      "ms": {
+        "draft": 3583,
+        "critique": 6454,
+        "solver": 10645,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula for the area of a rhombus?",
+      "ms": {
+        "draft": 3583,
+        "critique": 6143,
+        "solver": 1314,
+        "form": 4942
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the diagonals of a rhombus are 10 cm and 16 cm, what is its area?",
+      "ms": {
+        "draft": 3583,
+        "critique": 6348,
+        "solver": 12167
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A figure is composed of a right-angled triangle, a trapezium, and a right-angled triangle. The area of the triangle is 65 sq m, the trapezium is 405 sq m, and the other triangle is 136 sq m. What is the total area of the figure?",
+      "ms": {
+        "draft": 7160,
+        "critique": 6991
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula for the area of a trapezium?",
+      "ms": {
+        "draft": 3583,
+        "critique": 6446,
+        "solver": 1695,
+        "form": 2906
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A figure is made up of a square and a semicircle. The side of the square is 14 cm, and the diameter of the semicircle is equal to the side of the square. What is the total area of the figure?",
+      "ms": {
+        "draft": 7160,
+        "critique": 6761
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A circular garden has a diameter of 70 m and a road of 7 m width surrounds it. What is the area of the road?",
+      "ms": {
+        "draft": 7160,
+        "critique": 8279
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A circle has a circumference of 88 cm. What is the area of the circle?",
+      "ms": {
+        "draft": 7160,
+        "critique": 5186,
+        "solver": 883,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, ABCD is a trapezium with AB = 10 m, CD = 15 m, and the height is 8 m. What is the area of the trapezium?",
+      "ms": {
+        "draft": 4817,
+        "critique": 6225
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which formula is used to find the area of a triangle when the lengths of all three sides are known?",
+      "ms": {
+        "draft": 4817,
+        "critique": 7616
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A circular garden has a radius of 21 m. A 2 m wide road surrounds the garden. What is the area of the road?",
+      "ms": {
+        "draft": 4817,
+        "critique": 7286
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The sides of a triangle are 13 cm, 14 cm, and 15 cm. What is the area of the triangle?",
+      "ms": {
+        "draft": 4817,
+        "critique": 6696,
+        "solver": 10848
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula for the area of a circle?",
+      "ms": {
+        "draft": 4817,
+        "critique": 7406,
+        "solver": 10433,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A circle of radius 14 cm is divided into 12 equal sectors. These sectors are rearranged to form a shape that closely resembles a rectangle. What is the approximate area of this shape?",
+      "ms": {
+        "draft": 4817,
+        "critique": 7940,
+        "solver": 16515
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A trapezium has parallel sides of 10 cm and 14 cm, and a height of 8 cm. The area of the trapezium is 96 sq cm. What is the length of the non-parallel sides of the trapezium?",
+      "ms": {
+        "draft": 4240,
+        "critique": 6622
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A parallelogram has a base of 12 cm and a height of 8 cm. What is its area?",
+      "ms": {
+        "draft": 4240,
+        "critique": 9335,
+        "solver": 12024,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A parallelogram has an area of 120 sq cm and a base of 10 cm. What is its height?",
+      "ms": {
+        "draft": 4240,
+        "critique": 7738,
+        "solver": 5287,
+        "form": 0,
+        "translation": 24392
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A trapezium has parallel sides of 24 cm and 36 cm, and a height of 10 cm. What is the area of the trapezium?",
+      "ms": {
+        "draft": 7160,
+        "critique": 5799,
+        "solver": 1083,
+        "form": 0,
+        "translation": 29478
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "How is the height of a parallelogram defined?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the formula to calculate the area of a parallelogram?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the base of a parallelogram is 12 cm and the height is 7 cm, what is its area?",
+      "reason": "options are in more than one unit (sq cm, cm); options 0 and 1 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the formula for the area of a rhombus?",
+      "reason": "options 1 and 2 are the same (\"Diagonal 1 + Diagonal 2\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the diagonals of a rhombus are 10 cm and 16 cm, what is its area?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A figure is composed of a right-angled triangle, a trapezium, and a right-angled triangle. The area of the triangle is 65 sq m, the trapezium is 405 sq m, and the other triangle is 136 sq m. What is the total area of the figure?",
+      "reason": "the critic finds option 0 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the formula for the area of a trapezium?",
+      "reason": "options 0 and 1 are the same (\"(Sum of parallel sides) ÷ Height\"); options 0 and 2 are the same (\"(Sum of parallel sides) ÷ Height\"); options 0 and 3 say the same thing (\"(Sum of parallel sides) ÷ Height\" / \"(Sum of parallel sides) × ½ × Height\"); options 1 and 2 are the same (\"(Sum of parallel sides) × Height\"); options 1 and 3 say the same thing (\"(Sum of parallel sides) × Height\" / \"(Sum of parallel sides) × ½ × Height\"); options 2 and 3 say the same thing (\"(Sum of parallel sides) + Height\" / \"(Sum of parallel sides) × ½ × Height\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A figure is made up of a square and a semicircle. The side of the square is 14 cm, and the diameter of the semicircle is equal to the side of the square. What is the total area of the figure?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A circular garden has a diameter of 70 m and a road of 7 m width surrounds it. What is the area of the road?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A circle has a circumference of 88 cm. What is the area of the circle?",
+      "reason": "figure: figure spec refused: spec.circles.0: Unrecognized key(s) in object: 'label'"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A rhombus has diagonals of 14 cm and 10 cm. What is its area?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A trapezium has parallel sides of 15 cm and 9 cm, and a height of 6 cm. What is its area?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A triangle has sides of 10 cm, 12 cm, and 14 cm. What is its area using Heron's formula?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the given figure, ABCD is a trapezium with AB = 10 m, CD = 15 m, and the height is 8 m. What is the area of the trapezium?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which formula is used to find the area of a triangle when the lengths of all three sides are known?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A circular garden has a radius of 21 m. A 2 m wide road surrounds the garden. What is the area of the road?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "The sides of a triangle are 13 cm, 14 cm, and 15 cm. What is the area of the triangle?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the formula for the area of a circle?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A circle of radius 14 cm is divided into 12 equal sectors. These sectors are rearranged to form a shape that closely resembles a rectangle. What is the approximate area of this shape?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A trapezium has parallel sides of 10 cm and 14 cm, and a height of 8 cm. The area of the trapezium is 96 sq cm. What is the length of the non-parallel sides of the trapezium?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A parallelogram has a base of 12 cm and a height of 8 cm. What is its area?",
+      "reason": "options are in more than one unit (cm, sq cm); options 0 and 1 are the same number"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}
