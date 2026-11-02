@@ -115,7 +115,7 @@ export default async function VacancyPage({
                 <p className="text-sm text-fg-muted">{t("vacancies.yourThread")}</p>
                 <Link
                   href={`/enquiries/${myEnquiryId}`}
-                  className="text-sm font-medium text-accent hover:underline"
+                  className="-my-3 inline-flex min-h-11 items-center text-sm font-medium text-accent hover:underline"
                 >
                   {t("vacancies.openThreadLink")}
                 </Link>

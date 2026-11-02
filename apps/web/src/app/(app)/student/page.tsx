@@ -193,7 +193,7 @@ export default async function StudentHome() {
               : t("student.todayLessonsBody")
           }
           action={
-            <Link href="/timetable" className="text-sm font-medium text-accent hover:underline">
+            <Link href="/timetable" className="-my-3 inline-flex min-h-11 items-center text-sm font-medium text-accent hover:underline">
               {t("teacher.openTimetable")}
             </Link>
           }
@@ -249,10 +249,10 @@ export default async function StudentHome() {
           action={
             // The fortnight ahead — exams, work, sessions, closures and (when the school allows) fee dates — on one dated list; "My fees" sits beside it.
             <span className="flex flex-wrap items-center gap-3">
-              <Link href="/student/agenda" className="text-sm font-medium text-accent hover:underline" data-testid="student-agenda-link">
+              <Link href="/student/agenda" className="-my-3 inline-flex min-h-11 items-center text-sm font-medium text-accent hover:underline" data-testid="student-agenda-link">
                 {t("agenda.link")}
               </Link>
-              <Link href="/student/fees" className="text-sm font-medium text-accent hover:underline" data-testid="student-fees-link">
+              <Link href="/student/fees" className="-my-3 inline-flex min-h-11 items-center text-sm font-medium text-accent hover:underline" data-testid="student-fees-link">
                 {t("fees.myFeesTitle")}
               </Link>
             </span>

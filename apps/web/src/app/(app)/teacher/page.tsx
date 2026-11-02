@@ -58,7 +58,7 @@ export default async function TeacherHome() {
             title={t("exams.marksTodoTitle")}
             description={t("exams.marksTodoBody")}
             action={
-              <Link href="/teacher/exams" className="text-sm font-medium text-accent hover:underline">
+              <Link href="/teacher/exams" className="-my-3 inline-flex min-h-11 items-center text-sm font-medium text-accent hover:underline">
                 {t("exams.openGrid")}
               </Link>
             }

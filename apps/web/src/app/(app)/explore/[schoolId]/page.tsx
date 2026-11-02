@@ -261,7 +261,7 @@ export default async function SchoolProfilePage({
                 <p className="text-sm text-fg-muted">{t("explore.yourEnquiry")}</p>
                 <Link
                   href={`/enquiries/${myEnquiryId}`}
-                  className="text-sm font-medium text-accent hover:underline"
+                  className="-my-3 inline-flex min-h-11 items-center text-sm font-medium text-accent hover:underline"
                 >
                   {t("explore.openEnquiryLink")}
                 </Link>

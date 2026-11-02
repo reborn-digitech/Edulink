@@ -6,7 +6,7 @@ import { config } from "dotenv";
 import { NAV, PRIMARY_ACTION } from "../src/lib/nav";
 import { ROLE_HOME, type Role } from "../src/lib/constants";
 import { contextFor, sessions, VIEWPORTS } from "./actors";
-import { overflow, smallTargets } from "./checks";
+import { overflow, smallTargets, overflowers } from "./checks";
 
 config({ path: ".env" });
 const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL ?? process.env.DATABASE_URL });
@@ -123,7 +123,7 @@ for (const [role, hrefs, prefixes] of walked) {
             serious.map((v) => `${v.id} (${v.impact}): ${v.help} — ${v.nodes.slice(0, 3).map((n) => n.target.join(" ")).join(" | ")}`),
           ).toEqual([]);
           if (theme === "light") {
-            expect(await overflow(page), `${href} scrolls sideways`).toBeLessThanOrEqual(0);
+            expect(await overflow(page), `${href} scrolls sideways: ${await overflowers(page)}`).toBeLessThanOrEqual(0);
             expect(await smallTargets(page), `${href}: interactive elements under 44px`).toEqual([]);
           }
           expect(broken, `${href}: invalid nesting or duplicate keys`).toEqual([]);
@@ -214,7 +214,7 @@ test.describe("homes in Marathi at 390 px", () => {
         const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "best-practice"]).analyze();
         const serious = results.violations.filter((v) => v.impact === "serious" || v.impact === "critical");
         expect(serious.map((v) => `${v.id} (${v.impact}): ${v.help} — ${v.nodes.slice(0, 3).map((n) => n.target.join(" ")).join(" | ")}`)).toEqual([]);
-        expect(await overflow(page)).toBeLessThanOrEqual(0);
+        expect(await overflow(page), `scrolls sideways: ${await overflowers(page)}`).toBeLessThanOrEqual(0);
         expect(await smallTargets(page)).toEqual([]);
         expect(broken).toEqual([]);
         await context.close();

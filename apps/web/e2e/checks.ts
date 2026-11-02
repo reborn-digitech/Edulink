@@ -13,6 +13,29 @@ export async function overflow(page: Page): Promise<number> {
   return page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
 }
 
+/**
+ * The elements whose right edge passes the window, widest first, for the failure message beside `overflow`: a
+ * sideways scroll found only on the runner (its fonts, its scrollbar) is otherwise a number with no element to it
+ * (run 41432347740, 2 November 2026: 20 px on /expert/profile and 1 px on /principal, neither seen on a Mac).
+ */
+export async function overflowers(page: Page): Promise<string> {
+  return page.evaluate(() => {
+    const w = document.documentElement.clientWidth;
+    const out: { right: number; label: string }[] = [];
+    for (const el of document.querySelectorAll<HTMLElement>("body *")) {
+      const r = el.getBoundingClientRect();
+      if (r.width === 0 || r.right <= w + 0.5) continue;
+      const text = (el.textContent ?? "").trim().replace(/\s+/g, " ").slice(0, 40);
+      out.push({ right: r.right, label: `${el.tagName.toLowerCase()}.${String(el.className).split(" ").slice(0, 4).join(".")} ${Math.round(r.left)}→${Math.round(r.right)} "${text}"` });
+    }
+    return out
+      .sort((a, b) => b.right - a.right)
+      .slice(0, 6)
+      .map((o) => o.label)
+      .join(" | ");
+  });
+}
+
 export async function smallTargets(page: Page): Promise<string[]> {
   return page.evaluate(() => {
     const out: string[] = [];

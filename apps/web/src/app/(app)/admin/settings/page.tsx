@@ -191,7 +191,7 @@ export default async function SettingsPage() {
                 {directory.published ? t("explore.publishedBadge") : t("explore.unpublishedBadge")}
               </Badge>
               {directory.published && (
-                <Link href={`/explore/${ctx.schoolId}`} className="text-sm font-medium text-accent hover:underline">
+                <Link href={`/explore/${ctx.schoolId}`} className="-my-3 inline-flex min-h-11 items-center text-sm font-medium text-accent hover:underline">
                   {t("explore.title")} →
                 </Link>
               )}

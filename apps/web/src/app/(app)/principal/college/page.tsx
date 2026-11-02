@@ -180,7 +180,8 @@ export default async function PrincipalCollegePage() {
           <Card>
             <CardHeader icon={<MedalIcon weight="duotone" className="size-5" />} title={t("collegeHub.cheapestTitle")} description={t("collegeHub.notAScore")} action={<Button asChild size="sm" variant="secondary"><Link href="/iqac/predictor">{t("collegeHub.openPredictor")}</Link></Button>} />
             <CardBody>
-              <ol className="list-decimal space-y-1 pl-5 text-sm">
+              {/* break-words: a metric's name can hold one slash-joined word longer than a phone is wide ("(NET/SLET/GATE/GMAT/CAT/GRE/TOEFL/Civil"), which pushed the page 1 px sideways at 360 px on CI run 41432347740. */}
+              <ol className="list-decimal space-y-1 break-words pl-5 text-sm">
                 {g.predictor.cheapest.map((m) => (
                   <li key={m.code}>
                     <span className="font-medium">{m.code}</span> {m.text} <span className="text-fg-muted">· {t("collegeHub.gainPer", { gain: m.gainPerUnit.toFixed(3), unit: m.unit })}</span>

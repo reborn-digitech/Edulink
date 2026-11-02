@@ -5,7 +5,7 @@ import { config } from "dotenv";
 import { ASSISTANT_NOT_FOR } from "../src/lib/nav";
 import { ROLE_HOME, type Role } from "../src/lib/constants";
 import { contextFor, sessions, VIEWPORTS } from "./actors";
-import { overflow, smallTargets } from "./checks";
+import { overflow, smallTargets, overflowers } from "./checks";
 
 /**
  * VIDURA'S BUTTON AND DRAWER under the accessibility gate (Vidura pass 1, 17 Oct 2026; Phase C's panel spec rewritten):
@@ -96,7 +96,7 @@ for (const key of keys) {
     });
     expect(nameWidth).toBeGreaterThanOrEqual(0);
     expect(nameWidth).toBeLessThanOrEqual(1);
-    expect(await overflow(page)).toBeLessThanOrEqual(0);
+    expect(await overflow(page), `scrolls sideways: ${await overflowers(page)}`).toBeLessThanOrEqual(0);
     expect(await smallTargets(page)).toEqual([]);
     expect(await serious(page)).toEqual([]);
     await button.click();

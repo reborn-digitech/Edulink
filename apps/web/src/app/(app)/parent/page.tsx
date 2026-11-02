@@ -393,7 +393,7 @@ export default async function ParentDashboard({
               : t("parent.todayLessonsBody")
           }
           action={
-            <Link href="/parent/timetable" className="text-sm font-medium text-accent hover:underline">
+            <Link href="/parent/timetable" className="-my-3 inline-flex min-h-11 items-center text-sm font-medium text-accent hover:underline">
               {t("teacher.openTimetable")}
             </Link>
           }
@@ -442,7 +442,7 @@ export default async function ParentDashboard({
           title={t("parent.comingUp")}
           description={t("parent.workDueSoon")}
           action={
-            <Link href={`/parent/agenda?child=${selectedId}`} className="text-sm font-medium text-accent hover:underline" data-testid="parent-agenda-link">
+            <Link href={`/parent/agenda?child=${selectedId}`} className="-my-3 inline-flex min-h-11 items-center text-sm font-medium text-accent hover:underline" data-testid="parent-agenda-link">
               {t("agenda.link")}
             </Link>
           }
