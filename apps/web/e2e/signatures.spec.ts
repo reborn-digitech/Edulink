@@ -116,8 +116,11 @@ test("a teacher keeps a signature and no seal, and the rules offer the class tea
   expect(await overflow(page), "the page scrolls sideways").toBeLessThanOrEqual(0);
   expect(await smallTargets(page), "interactive elements under 44px").toEqual([]);
   expect(await seriousViolations(page, "signatures TEACHER light")).toEqual([]);
-  // The office's page is not a teacher's.
-  expect((await page.goto("/admin/signatures", { waitUntil: "networkidle" }))?.url()).not.toContain("/admin/signatures");
+  // The office's page is not a teacher's: requireRole sends them to choose a context. The shell has begun streaming
+  // when the redirect is thrown, so the document itself answers 200 and the browser is moved by the page; what is
+  // read is where the page settles, not the response's address.
+  await page.goto("/admin/signatures", { waitUntil: "networkidle" });
+  await expect(page).toHaveURL(/\/switch/);
   await context.close();
 
   const office = await contextFor(browser, admin.cookie, { viewport: DESK, theme: "light", locale: "en" }, baseURL!);
@@ -150,7 +153,13 @@ test("a template says who signs each line and whether the seal is printed, and t
   const page = await context.newPage();
   expect((await page.goto("/admin/certificates/new", { waitUntil: "networkidle" }))?.status()).toBe(200);
   const preview = page.getByTestId("preview-signatures");
+  // A new template starts from the first preset (certificate-rules.ts), which signs on both lines and prints the
+  // seal; the test starts from nobody signing and no seal, then adds each.
+  await page.getByTestId("template-signerLeft").selectOption("NONE");
+  await page.getByTestId("template-signerRight").selectOption("NONE");
+  await page.getByLabel("Print the school seal").uncheck();
   await expect(preview.getByText("signature")).toHaveCount(0);
+  await expect(preview.getByText("seal")).toHaveCount(0);
   await page.getByTestId("template-signerRight").selectOption("PRINCIPAL");
   await expect(preview.getByText("signature")).toHaveCount(1);
   await page.getByTestId("template-signerLeft").selectOption("ADMIN");

@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { PrismaClient } from "@prisma/client";
 import { config } from "dotenv";
+import { en } from "@edulink/i18n/en";
 import { contextFor, sessions, VIEWPORTS } from "./actors";
 import { overflow, seriousViolations, smallTargets } from "./checks";
 
@@ -18,7 +19,8 @@ const all = sessions();
 const DESK = { width: 1280, height: 900 };
 const STAMP = Date.now();
 const TITLE = `ZZ e2e ${STAMP} how rockets stay up`;
-const LINK = `https://meet.zz.test/e2e-${STAMP}`;
+// A room on one of the four services a slot may name (lib/meeting-links.ts, 17 October 2026): Jitsi's own host.
+const LINK = `https://meet.jit.si/zz-e2e-${STAMP}`;
 const open = async (browser: import("@playwright/test").Browser, actor: keyof typeof all, baseURL: string, viewport = DESK, theme: "light" | "dark" = "light") => (await contextFor(browser, all[actor]!.cookie, { viewport, theme, locale: "en" }, baseURL)).newPage();
 
 test.afterAll(async () => {
@@ -37,10 +39,10 @@ test("an expert offers a time, a pupil asks, a guardian agrees, the office reads
   const local = `${at.getFullYear()}-${String(at.getMonth() + 1).padStart(2, "0")}-${String(at.getDate()).padStart(2, "0")}T03:15`;
   await expert.getByTestId("slot-title").fill(TITLE);
   await expert.getByTestId("slot-starts").fill(local);
-  // A plain http link is refused; the https one is taken.
+  // A link off the four services is refused, with the sentence the slot door gives; the Jitsi room is taken.
   await expert.getByTestId("slot-link").fill("http://meet.zz.test/plain");
   await expert.getByTestId("slot-offer").click();
-  await expect(expert.getByTestId("slot-error")).toHaveText("Give an https link to your meeting room.");
+  await expect(expert.getByTestId("slot-error")).toHaveText(en.seats.refuseMeetingLink);
   await expert.getByTestId("slot-link").fill(LINK);
   await expert.getByTestId("slot-offer").click();
   const mine = expert.getByTestId("provider-slot").filter({ hasText: TITLE });

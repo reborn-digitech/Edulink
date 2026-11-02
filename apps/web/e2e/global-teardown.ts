@@ -1,3 +1,5 @@
+import { existsSync, readFileSync, unlinkSync } from "node:fs";
+import { join } from "node:path";
 import { PrismaClient } from "@prisma/client";
 import { config } from "dotenv";
 import { removeHarnessExam } from "./harness-exam";
@@ -13,6 +15,13 @@ export default async function globalTeardown() {
     const school = await db.school.findUnique({ where: { slug: "zz-northgate-school" }, select: { id: true } });
     if (school) await removeHarnessExam(db, school.id);
     await db.session.deleteMany({ where: { userAgent: "e2e" } });
+    // The platform features global-setup.ts switched on for the run go back off: exactly those, none the operator had on.
+    const list = join(__dirname, ".features.json");
+    if (existsSync(list)) {
+      const switched = JSON.parse(readFileSync(list, "utf8")) as string[];
+      if (switched.length) await db.platformFeature.updateMany({ where: { code: { in: switched } }, data: { enabled: false } });
+      unlinkSync(list);
+    }
   } finally {
     await db.$disconnect();
   }

@@ -3,7 +3,7 @@ import { writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { PrismaClient } from "@prisma/client";
 import { config } from "dotenv";
-import { dutiesForRole } from "@edulink/contracts";
+import { dutiesForRole, PLATFORM_FEATURES } from "@edulink/contracts";
 import { HARNESS_EXAM_NAME } from "./harness-exam";
 
 /**
@@ -160,5 +160,24 @@ export default async function globalSetup() {
   }
 
   writeFileSync(join(__dirname, ".sessions.json"), JSON.stringify(sessions, null, 2));
+
+  // THE PLATFORM'S FEATURE SWITCHES (2 November 2026). Since 15 October every platform feature is off until the
+  // operator turns it on (lib/platform-features.ts), and the expert, mentoring, vacancy and session pages answer
+  // 404 FEATURE_OFF while it is; CI's first run after that month found the axe walk and gig-sessions.spec.ts
+  // refusing on exactly those pages. The sweeps take `--features=on`; this run does the same unless E2E_FEATURES=off:
+  // every feature that is off is switched on here, and global-teardown.ts switches exactly those back off from the
+  // list in e2e/.features.json, so a run against the dev database leaves the switches as it found them. The plans
+  // are left alone: a plan that is not on sale locks nothing (person-plans.ts planLockFor), and none is on sale here.
+  const switched: string[] = [];
+  if (process.env.E2E_FEATURES !== "off") {
+    const rows = await db.platformFeature.findMany({ select: { code: true, enabled: true } });
+    for (const code of PLATFORM_FEATURES) {
+      if (rows.find((r) => r.code === code)?.enabled) continue;
+      await db.platformFeature.upsert({ where: { code }, create: { code, enabled: true }, update: { enabled: true } });
+      switched.push(code);
+    }
+    if (switched.length) console.log(`e2e: switched on for this run: ${switched.join(", ")}`);
+  }
+  writeFileSync(join(__dirname, ".features.json"), JSON.stringify(switched));
   await db.$disconnect();
 }

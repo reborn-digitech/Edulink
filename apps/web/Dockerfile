@@ -43,10 +43,11 @@ ENV NEXT_TELEMETRY_DISABLED=1 APP_COMMIT=$APP_COMMIT
 # a deployed server says so at boot (env.ts) and serves without browser push.
 ARG NEXT_PUBLIC_VAPID_PUBLIC_KEY
 # `next build` no longer type-checks or lints (next.config.ts, 4 Oct 2026: its worker ran out of heap at 184 models);
-# the battery job runs tsc and eslint before this image is built, so the tree here has passed both. 4 GB is for the build itself.
+# the battery job runs tsc and eslint before this image is built, so the tree here has passed both. 8 GB is for the build
+# itself, the same number as the package's build script (it ran out at 4 GB in CI's image job on 2 November 2026).
 RUN cd apps/web && npx prisma generate \
   && if [ -z "${NEXT_PUBLIC_VAPID_PUBLIC_KEY:-}" ]; then unset NEXT_PUBLIC_VAPID_PUBLIC_KEY; fi \
-  && NODE_OPTIONS=--max-old-space-size=4096 npx next build
+  && npm run build
 
 # MEMORY: give each container at least 4 GB (LOAD-8, 4 Oct 2026). One server
 # process measured 1.1 GB resident after start, 1.4-2.5 GB under the school

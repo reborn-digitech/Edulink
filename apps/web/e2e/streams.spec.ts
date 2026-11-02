@@ -4,6 +4,7 @@ import { PrismaClient } from "@prisma/client";
 import { config } from "dotenv";
 import { presetUnion, type StreamCode } from "@edulink/contracts";
 import { en } from "@edulink/i18n/en";
+import { tileHref } from "../src/lib/stream-tiles";
 import { contextFor } from "./actors";
 import { overflow, seriousViolations, smallTargets } from "./checks";
 
@@ -81,10 +82,13 @@ for (const label of ["Vidya", "Shastri", "Architecture"]) {
     } else {
       await expect(banner).toHaveCount(0);
     }
-    // A built tile whose module is on carries its figure line; a coming one says so.
+    // A built tile whose module is on carries its figure line; a coming one — a tile with no page yet, as
+    // stream-tiles.ts says (the clinical and studio desks were built on 11 October 2026; field work is still to come)
+    // — says so, and a built one must not.
     for (const tile of preset.homeTiles) {
       const li = page.locator(`[data-testid=stream-home] li[data-tile=${tile}]`);
-      if (["clinicalPostings", "studios", "fieldWork"].includes(tile)) await expect(li).toContainText(en.streams.tileComing);
+      if (tileHref(tile, "ADMIN") === null) await expect(li).toContainText(en.streams.tileComing);
+      else await expect(li).not.toContainText(en.streams.tileComing);
     }
     expect(await overflow(page)).toBeLessThanOrEqual(0);
     expect(await seriousViolations(page, `${label} /admin`)).toEqual([]);

@@ -91,16 +91,23 @@ test("signed out: /register paints its form from the HTML alone", async ({ brows
 });
 
 test("signed in: /parent paints its heading and first sentence from the HTML alone", async ({ browser, baseURL }) => {
+  // Every section has had a loading.tsx since the alignment pass of 5 October 2026 (A3-states-3): the frame and a
+  // skeleton stream first and the page's own HTML follows in the same response, moved into place by the inline
+  // script React streams with it — no bundle, no hydration, no client island. So this page is opened with the
+  // script files refused rather than with JavaScript off: what paints is what the server's one response holds.
   const actor = all.PARENT!;
-  const context = await contextFor(browser, actor.cookie, { viewport: { width: 390, height: 844 }, theme: "light", locale: "en", javaScriptEnabled: false }, baseURL!);
+  const context = await contextFor(browser, actor.cookie, { viewport: { width: 390, height: 844 }, theme: "light", locale: "en" }, baseURL!);
+  await context.route(/\.js(\?|$)/, (route) => route.abort());
   const page = await context.newPage();
   const response = await page.goto("/parent");
   expect(response?.status()).toBe(200);
   const html = await response!.text();
   const heading = page.locator("main h1").first();
   await expect(heading).toBeVisible();
-  expect(inShell(html, (await heading.innerText()).trim())).toBe(true);
+  expect(html).toContain((await heading.innerText()).trim());
   expect(await whyNotPainted(page, "main h1")).toEqual([]);
   expect(await whyNotPainted(page, "main p")).toEqual([]);
+  // No script file was fetched: the words came with the document.
+  expect(await page.evaluate(() => performance.getEntriesByType("resource").filter((e) => /\.js(\?|$)/.test(e.name) && (e as PerformanceResourceTiming).transferSize > 0).length)).toBe(0);
   await context.close();
 });

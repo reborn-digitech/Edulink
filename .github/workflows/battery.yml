@@ -207,8 +207,11 @@ jobs:
     runs-on: ubuntu-24.04
     # Measured on run 36936519173: set-up, seed and build 8 minutes, the page
     # sweep 1.3, the API sweep 2, the fixtures again and the contract tests 1 —
-    # 12 in all; 1.5 × 12 = 18, so 20.
-    timeout-minutes: 20
+    # 12 in all; 1.5 × 12 = 18, so 20. On run 41352685224 (2 November 2026)
+    # the build alone took 11 minutes and the API sweep, which since item 13
+    # walks every role variant of every door (13 to 22 minutes on a Mac), was
+    # cut at the cap five minutes in; 60 leaves it room to finish.
+    timeout-minutes: 60
     services:
       postgres:
         # pgvector for the assistant's content tables (migration 20261008151729_assistant_content).
@@ -330,7 +333,10 @@ jobs:
         suite: [axe, pages]
     # Measured on run 36936519173: set-up, seed and build 8 minutes, the
     # browsers 0.5, the axe walk 21 — 30 for the longer entry; 1.5 × 30 = 45.
-    timeout-minutes: 45
+    # On run 41352685224 (2 November 2026) the walk was 1,240 pages (the new
+    # roles, modules and college streams) and reached 625 in 33 minutes before
+    # the cap: about 67 minutes whole, plus 12 to build; 100 covers it.
+    timeout-minutes: 100
     services:
       postgres:
         # pgvector for the assistant's content tables (migration 20261008151729_assistant_content).
