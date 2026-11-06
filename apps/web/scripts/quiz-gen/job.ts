@@ -223,6 +223,7 @@ export async function landChapter(
   }
   if (problem) {
     fs.hold(fileName);
+    if (previous !== null) fs.restore(fileName, previous);
     return { loaded: 0, created: 0, figuresHeld: 0, problem: `set aside in generated/held (${problem})`, dropped, held: true, nothingNew: false };
   }
   let result;
@@ -230,9 +231,32 @@ export async function landChapter(
     result = await loadGeneratedBatches(ownerDb, [{ file: fileName, batch: file as unknown as QueueBatch }]);
   } catch (error) {
     fs.hold(fileName);
+    // The chapter's file keeps what earlier passes landed; only this pass's batch is set aside.
+    if (previous !== null) fs.restore(fileName, previous);
     return { loaded: 0, created: 0, figuresHeld: 0, problem: `set aside in generated/held (the loader refused it: ${(error as Error).message.split("\n")[0]!.slice(0, 300)})`, dropped, held: true, nothingNew: false };
   }
+  // THE FILE ACCUMULATES (6 November 2026). Until now each pass REPLACED the chapter's file with its own batch, so the
+  // items of every earlier pass lived on only in the database and in whatever daily snapshot had caught the file; when
+  // the dev database was lost that day, 14,000 served items came back as 3,000 from the files and 8,400 from the
+  // snapshots' history. Now a landed pass is written as what the file held before it plus this pass's items (by stem,
+  // an item already there kept as it was), so the file is the whole durable record of the chapter and the loader, which
+  // matches by stem, reads it back whole. The bank check and the loader above still saw this pass's batch alone.
+  fs.write(fileName, withEarlierPasses(previous, file));
   return { loaded: result.created + result.updated, created: result.created, figuresHeld: result.figuresFailed.length, problem: null, dropped, held: false, nothingNew: result.created === 0 };
+}
+
+/** The chapter's file as the whole record: the earlier passes' items (from the file's text before this pass) first, then this pass's items whose stem is new. */
+export function withEarlierPasses(previous: string | null, file: GeneratedTopicFile): GeneratedTopicFile {
+  if (previous === null) return file;
+  let earlier: GeneratedTopicFile["questions"];
+  try {
+    earlier = (JSON.parse(previous) as { questions?: GeneratedTopicFile["questions"] }).questions ?? [];
+  } catch {
+    return file;
+  }
+  const seen = new Set(earlier.map((q) => q.stem.trim()));
+  const added = file.questions.filter((q) => !seen.has(q.stem.trim()));
+  return { ...file, questions: [...earlier, ...added] };
 }
 
 /** The item indexes a verify report names in this batch alone ("generated/<file>[7]: …"); another file's errors are not this chapter's to drop. */

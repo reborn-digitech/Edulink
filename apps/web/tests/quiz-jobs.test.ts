@@ -29,7 +29,7 @@ import { GET as serversGet } from "@/app/api/v1/appadmin/quiz-jobs/servers/route
 import { POST as serverStartPost } from "@/app/api/v1/appadmin/quiz-jobs/servers/[server]/start/route";
 import { POST as serverStopPost } from "@/app/api/v1/appadmin/quiz-jobs/servers/[server]/stop/route";
 import { chaptersWanted, planCombos } from "../scripts/quiz-gen/plan";
-import { passContinues, landChapter, ownItemErrors } from "../scripts/quiz-gen/job";
+import { passContinues, landChapter, ownItemErrors, withEarlierPasses } from "../scripts/quiz-gen/job";
 import type { GeneratedTopicFile } from "../scripts/quiz-gen/shape";
 import { isServed } from "@/lib/quiz-served";
 import { chat2Enabled, handOverTo, neededServers, requiredServers, type HolderDb } from "@/lib/model-holders";
@@ -213,10 +213,13 @@ describe("a finished chapter lands in the bank as it goes", () => {
         { difficulty: 1, stem: `ZZ QJ ${STAMP}: what is 3+4?`, choices: ["7", "5", "12", "-7"], answerIndex: 0, solution: "ZZ: three and four make seven.", checkExpr: "3+4", translations: { hi: { stem: `ZZ QJ ${STAMP}: 3+4 कितना है?`, choices: ["७", "५", "१२", "-७"], solution: "ZZ: सात।" } } },
       ],
     } as unknown as GeneratedTopicFile;
-    const refused = await landChapter(db, "zz-qj.json", file, () => "ZZ: the bank did not verify");
+    // An in-memory batch folder: a landing writes the chapter's file back whole (6 Nov 2026), and this one must not land
+    // in content/quiz/generated, where the bank's loader would read it as a real batch.
+    const memory = { write: () => undefined, hold: () => undefined, restore: () => undefined, stemOf: () => null };
+    const refused = await landChapter(db, "zz-qj.json", file, () => "ZZ: the bank did not verify", memory);
     expect(refused).toEqual({ loaded: 0, created: 0, figuresHeld: 0, problem: "set aside in generated/held (ZZ: the bank did not verify)", dropped: 0, held: true, nothingNew: false });
     expect(await db.quizTopic.count({ where: { slug: LAND_SLUG } })).toBe(0);
-    const landed = await landChapter(db, "zz-qj.json", file, () => null);
+    const landed = await landChapter(db, "zz-qj.json", file, () => null, memory);
     expect(landed).toEqual({ loaded: 1, created: 1, figuresHeld: 0, problem: null, dropped: 0, held: false, nothingNew: false });
     const row = await db.quizQuestion.findFirstOrThrow({ where: { topic: { slug: LAND_SLUG } }, select: { generated: true, takenDownAt: true, needsFigure: true, imageKey: true, reviewedAt: true, translations: { select: { language: true } } } });
     expect(row).toMatchObject({ generated: true, reviewedAt: null });
@@ -532,12 +535,39 @@ describe("a batch the bank check refuses", () => {
     try {
       const r = await landChapter(ownerDb, "zz-batch.json", file, verify, fs);
       expect(r).toMatchObject({ loaded: 2, dropped: 1, held: false, problem: null });
-      expect(writes).toEqual([2]);
+      // Once with the refused item dropped for the check, once landed as the chapter's whole record (no earlier pass here).
+      expect(writes).toEqual([2, 2]);
       expect(held).toEqual([]);
       const stuck = await landChapter(ownerDb, "zz-batch.json", file, () => "✗ generated/other.json: has no questions", fs);
       expect(stuck).toMatchObject({ loaded: 0, dropped: 0, held: true });
       expect(stuck.problem).toMatch(/set aside in generated\/held/);
       expect(held).toEqual(["zz-batch.json"]);
+    } finally {
+      loader.mockRestore();
+    }
+  });
+  it("a landed pass is written as the earlier passes' items plus its own, by stem, and a held pass leaves the earlier ones in place (6 Nov 2026)", async () => {
+    const earlier = JSON.stringify({ name: "ZZ", questions: [{ stem: "a", difficulty: 1 }, { stem: "x", difficulty: 2 }] });
+    const file = { name: "ZZ", generatedAt: "later", questions: [{ stem: "a", difficulty: 9 }, { stem: "b", difficulty: 1 }] } as never;
+    // The pure merge: earlier first and as it was, then the new stems.
+    const merged = withEarlierPasses(earlier, file);
+    expect(merged.questions.map((q) => `${q.stem}:${q.difficulty}`)).toEqual(["a:1", "x:2", "b:1"]);
+    expect(withEarlierPasses(null, file)).toBe(file);
+    expect(withEarlierPasses("{not json", file)).toBe(file);
+    // Through the landing: the final write holds the merge; a held batch puts the earlier text back.
+    const written: { questions: { stem: string }[] }[] = [];
+    const restored: (string | null)[] = [];
+    const held: string[] = [];
+    const fs = { write: (_n: string, f: { questions: { stem: string }[] }) => void written.push(f), hold: (n: string) => void held.push(n), restore: (_n: string, p: string | null) => void restored.push(p), stemOf: () => null };
+    const loader = vi.spyOn(await import("../scripts/quiz-queue-load"), "loadGeneratedBatches").mockResolvedValue({ created: 1, updated: 1, settled: 0, duplicates: 0, topicsMade: 0, topicsAdopted: 0, boardsSet: 0, figuresDrawn: 0, figuresKept: 0, figuresFailed: [] });
+    try {
+      const r = await landChapter({} as never, "zz-batch.json", file, () => null, fs, earlier);
+      expect(r).toMatchObject({ loaded: 2, held: false });
+      expect(written.at(-1)!.questions.map((q) => q.stem)).toEqual(["a", "x", "b"]);
+      const stuck = await landChapter({} as never, "zz-batch.json", file, () => "✗ generated/other.json: has no questions", fs, earlier);
+      expect(stuck.held).toBe(true);
+      expect(held).toEqual(["zz-batch.json"]);
+      expect(restored).toEqual([earlier]);
     } finally {
       loader.mockRestore();
     }
